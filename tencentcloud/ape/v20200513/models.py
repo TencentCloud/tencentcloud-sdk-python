@@ -25,17 +25,7 @@ class AuthInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 主键
-        :type Id: str
-        :param Name: 授权人名称
-        :type Name: str
-        :param Code: 身份证号/社会信用代码
-        :type Code: str
-        :param Type: 授权人类型
-        :type Type: int
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        """
+        :param Id: 主键\n        :type Id: str\n        :param Name: 授权人名称\n        :type Name: str\n        :param Code: 身份证号/社会信用代码\n        :type Code: str\n        :param Type: 授权人类型\n        :type Type: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        """
         self.Id = None
         self.Name = None
         self.Code = None
@@ -65,9 +55,7 @@ class BatchDescribeOrderCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderIds: 要下载授权书的订单id
-        :type OrderIds: list of str
-        """
+        :param OrderIds: 要下载授权书的订单id\n        :type OrderIds: list of str\n        """
         self.OrderIds = None
 
 
@@ -89,11 +77,7 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificateUrls: 授权书的下载地址
-        :type CertificateUrls: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CertificateUrls: 授权书的下载地址\n        :type CertificateUrls: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CertificateUrls = None
         self.RequestId = None
 
@@ -110,9 +94,7 @@ class BatchDescribeOrderImageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderIds: 要下载图片的订单id
-        :type OrderIds: list of str
-        """
+        :param OrderIds: 要下载图片的订单id\n        :type OrderIds: list of str\n        """
         self.OrderIds = None
 
 
@@ -134,11 +116,7 @@ class BatchDescribeOrderImageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageUrls: 图片的下载地址
-        :type ImageUrls: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ImageUrls: 图片的下载地址\n        :type ImageUrls: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ImageUrls = None
         self.RequestId = None
 
@@ -155,9 +133,7 @@ class CreateOrderAndDownloadsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageInfos: ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
-        :type ImageInfos: list of ImageInfo
-        """
+        :param ImageInfos: ImageId必填，单张购买，所有必填，会员身份可以省略部分参数\n        :type ImageInfos: list of ImageInfo\n        """
         self.ImageInfos = None
 
 
@@ -185,13 +161,7 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
     def __init__(self):
         """
         :param DownloadInfos: 成功核销后可以获取图片基本信息和原图地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DownloadInfos: list of DownloadInfo
-        :param TotalCount: 可下载图片数量
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DownloadInfos: list of DownloadInfo\n        :param TotalCount: 可下载图片数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DownloadInfos = None
         self.TotalCount = None
         self.RequestId = None
@@ -215,13 +185,7 @@ class CreateOrderAndPayRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 图片ID
-        :type ImageId: int
-        :param AuthUserId: 授权人ID
-        :type AuthUserId: str
-        :param MarshalId: 售卖组合id
-        :type MarshalId: int
-        """
+        :param ImageId: 图片ID\n        :type ImageId: int\n        :param AuthUserId: 授权人ID\n        :type AuthUserId: str\n        :param MarshalId: 售卖组合id\n        :type MarshalId: int\n        """
         self.ImageId = None
         self.AuthUserId = None
         self.MarshalId = None
@@ -247,11 +211,7 @@ class CreateOrderAndPayResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: 订单ID
-        :type OrderId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param OrderId: 订单ID\n        :type OrderId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OrderId = None
         self.RequestId = None
 
@@ -268,11 +228,7 @@ class DescribeAuthUsersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 分页大小
-        :type Limit: int
-        :param Offset: 页偏移量
-        :type Offset: int
-        """
+        :param Limit: 分页大小\n        :type Limit: int\n        :param Offset: 页偏移量\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -297,15 +253,7 @@ class DescribeAuthUsersResponse(AbstractModel):
     def __init__(self):
         """
         :param Users: 授权人信息数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Users: list of AuthInfo
-        :param TotalCount: 总记录数
-        :type TotalCount: int
-        :param OldUser: 是否是老策略用户
-        :type OldUser: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Users: list of AuthInfo\n        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param OldUser: 是否是老策略用户\n        :type OldUser: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Users = None
         self.TotalCount = None
         self.OldUser = None
@@ -331,17 +279,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 默认10
-        :type Limit: int
-        :param Offset: 默认0
-        :type Offset: int
-        :param BeginTime: 开始时间晚于指定时间
-        :type BeginTime: str
-        :param EndTime: 结束时间早于指定时间
-        :type EndTime: str
-        :param ImageIds: 无效值，过滤结果为空
-        :type ImageIds: list of int
-        """
+        :param Limit: 默认10\n        :type Limit: int\n        :param Offset: 默认0\n        :type Offset: int\n        :param BeginTime: 开始时间晚于指定时间\n        :type BeginTime: str\n        :param EndTime: 结束时间早于指定时间\n        :type EndTime: str\n        :param ImageIds: 无效值，过滤结果为空\n        :type ImageIds: list of int\n        """
         self.Limit = None
         self.Offset = None
         self.BeginTime = None
@@ -372,13 +310,7 @@ class DescribeDownloadInfosResponse(AbstractModel):
     def __init__(self):
         """
         :param DownloadInfos: 核销下载记录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DownloadInfos: list of DownloadInfo
-        :param TotalCount: 总记录数量
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DownloadInfos: list of DownloadInfo\n        :param TotalCount: 总记录数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DownloadInfos = None
         self.TotalCount = None
         self.RequestId = None
@@ -402,9 +334,7 @@ class DescribeImageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 图片ID
-        :type ImageId: int
-        """
+        :param ImageId: 图片ID\n        :type ImageId: int\n        """
         self.ImageId = None
 
 
@@ -426,37 +356,7 @@ class DescribeImageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 图片ID
-        :type ImageId: int
-        :param Title: 图片标题
-        :type Title: str
-        :param Description: 图片描述
-        :type Description: str
-        :param PreviewUrl: 图片预览链接
-        :type PreviewUrl: str
-        :param ThumbUrl: 图片缩略图
-        :type ThumbUrl: str
-        :param Vendor: 图片供应商
-        :type Vendor: str
-        :param Marshals: 图片售卖组合信息
-        :type Marshals: list of ImageMarshal
-        :param Width: 宽
-        :type Width: int
-        :param Height: 高
-        :type Height: int
-        :param ImageFormat: 图片格式 jpg/eps/psd/...
-        :type ImageFormat: str
-        :param ImageSenseType: 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
-        :type ImageSenseType: str
-        :param Keywords: 关键词，多关键词用空格分隔
-        :type Keywords: str
-        :param LayeredGalleryId: 分层图库id
-        :type LayeredGalleryId: int
-        :param Orientation: 构图方式：horizontal:横图、vertical:竖图、square:方图
-        :type Orientation: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ImageId: 图片ID\n        :type ImageId: int\n        :param Title: 图片标题\n        :type Title: str\n        :param Description: 图片描述\n        :type Description: str\n        :param PreviewUrl: 图片预览链接\n        :type PreviewUrl: str\n        :param ThumbUrl: 图片缩略图\n        :type ThumbUrl: str\n        :param Vendor: 图片供应商\n        :type Vendor: str\n        :param Marshals: 图片售卖组合信息\n        :type Marshals: list of ImageMarshal\n        :param Width: 宽\n        :type Width: int\n        :param Height: 高\n        :type Height: int\n        :param ImageFormat: 图片格式 jpg/eps/psd/...\n        :type ImageFormat: str\n        :param ImageSenseType: 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板\n        :type ImageSenseType: str\n        :param Keywords: 关键词，多关键词用空格分隔\n        :type Keywords: str\n        :param LayeredGalleryId: 分层图库id\n        :type LayeredGalleryId: int\n        :param Orientation: 构图方式：horizontal:横图、vertical:竖图、square:方图\n        :type Orientation: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ImageId = None
         self.Title = None
         self.Description = None
@@ -504,19 +404,7 @@ class DescribeImagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 页偏移量
-        :type Offset: int
-        :param Limit: 页大小
-        :type Limit: int
-        :param Keyword: 搜索关键字
-        :type Keyword: str
-        :param Orientation: 构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图
-        :type Orientation: str
-        :param ImageSenseType: 图片类型，可选以下值：照片、插画
-        :type ImageSenseType: str
-        :param LayeredGalleryIds: 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
-        :type LayeredGalleryIds: list of int
-        """
+        :param Offset: 页偏移量\n        :type Offset: int\n        :param Limit: 页大小\n        :type Limit: int\n        :param Keyword: 搜索关键字\n        :type Keyword: str\n        :param Orientation: 构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图\n        :type Orientation: str\n        :param ImageSenseType: 图片类型，可选以下值：照片、插画\n        :type ImageSenseType: str\n        :param LayeredGalleryIds: 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)\n        :type LayeredGalleryIds: list of int\n        """
         self.Offset = None
         self.Limit = None
         self.Keyword = None
@@ -548,19 +436,7 @@ class DescribeImagesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 页偏移量
-        :type Offset: int
-        :param Limit: 页大小
-        :type Limit: int
-        :param Total: 总条数
-        :type Total: int
-        :param HaveMore: 是否有下一页
-        :type HaveMore: bool
-        :param Items: 图片信息数组
-        :type Items: list of ImageItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Offset: 页偏移量\n        :type Offset: int\n        :param Limit: 页大小\n        :type Limit: int\n        :param Total: 总条数\n        :type Total: int\n        :param HaveMore: 是否有下一页\n        :type HaveMore: bool\n        :param Items: 图片信息数组\n        :type Items: list of ImageItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Offset = None
         self.Limit = None
         self.Total = None
@@ -590,25 +466,7 @@ class DownloadInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageInfo: 图片基础信息
-        :type ImageInfo: :class:`tencentcloud.ape.v20200513.models.ImageInfo`
-        :param ImageUrl: 图片原图URL
-        :type ImageUrl: str
-        :param ImageThumbUrl: 图片缩略图URL
-        :type ImageThumbUrl: str
-        :param OrderId: 订单Id
-        :type OrderId: str
-        :param OrderCreateTime: 订单创建时间
-        :type OrderCreateTime: str
-        :param DownloadId: 下载Id
-        :type DownloadId: str
-        :param DownloadTime: 下载时间
-        :type DownloadTime: str
-        :param ConsumeType: 图片购买类型，单张/会员
-        :type ConsumeType: int
-        :param FirstDownload: 是否首次下载
-        :type FirstDownload: bool
-        """
+        :param ImageInfo: 图片基础信息\n        :type ImageInfo: :class:`tencentcloud.ape.v20200513.models.ImageInfo`\n        :param ImageUrl: 图片原图URL\n        :type ImageUrl: str\n        :param ImageThumbUrl: 图片缩略图URL\n        :type ImageThumbUrl: str\n        :param OrderId: 订单Id\n        :type OrderId: str\n        :param OrderCreateTime: 订单创建时间\n        :type OrderCreateTime: str\n        :param DownloadId: 下载Id\n        :type DownloadId: str\n        :param DownloadTime: 下载时间\n        :type DownloadTime: str\n        :param ConsumeType: 图片购买类型，单张/会员\n        :type ConsumeType: int\n        :param FirstDownload: 是否首次下载\n        :type FirstDownload: bool\n        """
         self.ImageInfo = None
         self.ImageUrl = None
         self.ImageThumbUrl = None
@@ -648,23 +506,11 @@ class ImageInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 图片Id
-        :type ImageId: int
-        :param LicenseScopeId: 授权场景Id
-        :type LicenseScopeId: int
-        :param DimensionsNameId: 尺寸名称Id
-        :type DimensionsNameId: int
-        :param UserId: 平台用户标识
-        :type UserId: str
-        :param DownloadPrice: 平台用户下载图片购买的价格(单位:分)
-        :type DownloadPrice: int
-        :param DownloadType: 下载类型。匹配集合中的任意元素：
+        :param ImageId: 图片Id\n        :type ImageId: int\n        :param LicenseScopeId: 授权场景Id\n        :type LicenseScopeId: int\n        :param DimensionsNameId: 尺寸名称Id\n        :type DimensionsNameId: int\n        :param UserId: 平台用户标识\n        :type UserId: str\n        :param DownloadPrice: 平台用户下载图片购买的价格(单位:分)\n        :type DownloadPrice: int\n        :param DownloadType: 下载类型。匹配集合中的任意元素：
 <li>Single: 单张购买下载</li>
 <li>BasicEnterpriseMember: 企业基础会员下载</li>
 <li>AdvancedEnterpriseMember: 企业高级会员下载</li>
-<li>DistinguishedEnterpriseMember: 企业尊享会员下载</li>
-        :type DownloadType: str
-        """
+<li>DistinguishedEnterpriseMember: 企业尊享会员下载</li>\n        :type DownloadType: str\n        """
         self.ImageId = None
         self.LicenseScopeId = None
         self.DimensionsNameId = None
@@ -696,25 +542,7 @@ class ImageItem(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 图片ID
-        :type ImageId: int
-        :param Title: 图片标题
-        :type Title: str
-        :param Description: 图片描述
-        :type Description: str
-        :param PreviewUrl: 图片预览链接
-        :type PreviewUrl: str
-        :param ThumbUrl: 图片缩略图
-        :type ThumbUrl: str
-        :param Vendor: 图片供应商
-        :type Vendor: str
-        :param Keywords: 图片关键词
-        :type Keywords: str
-        :param Width: 宽
-        :type Width: int
-        :param Height: 高
-        :type Height: int
-        """
+        :param ImageId: 图片ID\n        :type ImageId: int\n        :param Title: 图片标题\n        :type Title: str\n        :param Description: 图片描述\n        :type Description: str\n        :param PreviewUrl: 图片预览链接\n        :type PreviewUrl: str\n        :param ThumbUrl: 图片缩略图\n        :type ThumbUrl: str\n        :param Vendor: 图片供应商\n        :type Vendor: str\n        :param Keywords: 图片关键词\n        :type Keywords: str\n        :param Width: 宽\n        :type Width: int\n        :param Height: 高\n        :type Height: int\n        """
         self.ImageId = None
         self.Title = None
         self.Description = None
@@ -752,29 +580,7 @@ class ImageMarshal(AbstractModel):
 
     def __init__(self):
         """
-        :param MarshalId: 售卖组合唯一标识
-        :type MarshalId: int
-        :param Height: 图片高度
-        :type Height: int
-        :param Width: 图片宽度
-        :type Width: int
-        :param Size: 图片大小
-        :type Size: int
-        :param Format: 图片格式
-        :type Format: str
-        :param Price: 图片价格(单位:分)
-        :type Price: int
-        :param LicenseScope: 授权范围
-        :type LicenseScope: str
-        :param IsVip: 是否支持VIP购买
-        :type IsVip: bool
-        :param LicenseScopeId: 授权范围id
-        :type LicenseScopeId: int
-        :param DimensionsName: 尺寸
-        :type DimensionsName: str
-        :param DimensionsNameId: 尺寸id
-        :type DimensionsNameId: int
-        """
+        :param MarshalId: 售卖组合唯一标识\n        :type MarshalId: int\n        :param Height: 图片高度\n        :type Height: int\n        :param Width: 图片宽度\n        :type Width: int\n        :param Size: 图片大小\n        :type Size: int\n        :param Format: 图片格式\n        :type Format: str\n        :param Price: 图片价格(单位:分)\n        :type Price: int\n        :param LicenseScope: 授权范围\n        :type LicenseScope: str\n        :param IsVip: 是否支持VIP购买\n        :type IsVip: bool\n        :param LicenseScopeId: 授权范围id\n        :type LicenseScopeId: int\n        :param DimensionsName: 尺寸\n        :type DimensionsName: str\n        :param DimensionsNameId: 尺寸id\n        :type DimensionsNameId: int\n        """
         self.MarshalId = None
         self.Height = None
         self.Width = None

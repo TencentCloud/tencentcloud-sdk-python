@@ -25,21 +25,7 @@ class CreateSessionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientSession: 客户端session信息，从JSSDK请求中获得
-        :type ClientSession: str
-        :param GameId: 游戏ID
-        :type GameId: str
-        :param UserId: 游戏用户ID
-        :type UserId: str
-        :param GameParas: 游戏参数
-        :type GameParas: str
-        :param GameRegion: 游戏区域
-        :type GameRegion: str
-        :param ImageUrl: 背景图url
-        :type ImageUrl: str
-        :param Resolution: 分辨率
-        :type Resolution: str
-        """
+        :param ClientSession: 客户端session信息，从JSSDK请求中获得\n        :type ClientSession: str\n        :param GameId: 游戏ID\n        :type GameId: str\n        :param UserId: 游戏用户ID\n        :type UserId: str\n        :param GameParas: 游戏参数\n        :type GameParas: str\n        :param GameRegion: 游戏区域\n        :type GameRegion: str\n        :param ImageUrl: 背景图url\n        :type ImageUrl: str\n        :param Resolution: 分辨率\n        :type Resolution: str\n        """
         self.ClientSession = None
         self.GameId = None
         self.UserId = None
@@ -73,11 +59,7 @@ class CreateSessionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ServerSession: 服务端session信息，返回给JSSDK
-        :type ServerSession: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ServerSession: 服务端session信息，返回给JSSDK\n        :type ServerSession: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServerSession = None
         self.RequestId = None
 
@@ -94,17 +76,7 @@ class DayStreamPlayInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Bandwidth: 带宽（单位Mbps）。
-        :type Bandwidth: float
-        :param Flux: 流量 （单位MB）。
-        :type Flux: float
-        :param Online: 在线人数。
-        :type Online: int
-        :param Request: 请求数。
-        :type Request: int
-        :param Time: 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
-        :type Time: str
-        """
+        :param Bandwidth: 带宽（单位Mbps）。\n        :type Bandwidth: float\n        :param Flux: 流量 （单位MB）。\n        :type Flux: float\n        :param Online: 在线人数。\n        :type Online: int\n        :param Request: 请求数。\n        :type Request: int\n        :param Time: 数据时间点，格式：yyyy-mm-dd HH:MM:SS。\n        :type Time: str\n        """
         self.Bandwidth = None
         self.Flux = None
         self.Online = None
@@ -135,17 +107,9 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param EndTime: 结束时间，北京时间，格式：2019-04-28 10:36:00
-结束时间 和 开始时间  必须在同一天内。
-        :type EndTime: str
-        :param PlayDomain: 播放域名。
-        :type PlayDomain: str
-        :param StartTime: 开始时间，北京时间，格式：2019-04-28 10:36:00
-当前时间 和 开始时间 间隔不超过30天。
-        :type StartTime: str
-        :param StreamName: 流名称，精确匹配。
-若不填，则为查询总体播放数据。
-        :type StreamName: str
-        """
+结束时间 和 开始时间  必须在同一天内。\n        :type EndTime: str\n        :param PlayDomain: 播放域名。\n        :type PlayDomain: str\n        :param StartTime: 开始时间，北京时间，格式：2019-04-28 10:36:00
+当前时间 和 开始时间 间隔不超过30天。\n        :type StartTime: str\n        :param StreamName: 流名称，精确匹配。
+若不填，则为查询总体播放数据。\n        :type StreamName: str\n        """
         self.EndTime = None
         self.PlayDomain = None
         self.StartTime = None
@@ -173,11 +137,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInfoList: 统计信息列表。
-        :type DataInfoList: list of DayStreamPlayInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DataInfoList: 统计信息列表。\n        :type DataInfoList: list of DayStreamPlayInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataInfoList = None
         self.RequestId = None
 
@@ -205,15 +165,7 @@ class DescribeWorkersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionDetail: 各个区域的机器情况
-        :type RegionDetail: list of WorkerRegionInfo
-        :param Idle: 空闲机器总数量
-        :type Idle: int
-        :param RegionNum: 区域个数
-        :type RegionNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RegionDetail: 各个区域的机器情况\n        :type RegionDetail: list of WorkerRegionInfo\n        :param Idle: 空闲机器总数量\n        :type Idle: int\n        :param RegionNum: 区域个数\n        :type RegionNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionDetail = None
         self.Idle = None
         self.RegionNum = None
@@ -239,16 +191,8 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AppName: 应用名称。
-        :type AppName: str
-        :param DomainName: 您的推流域名。
-        :type DomainName: str
-        :param StreamName: 流名称。
-        :type StreamName: str
-        :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
-注意：默认禁播90天，且最长支持禁播90天。
-        :type ResumeTime: str
-        """
+        :param AppName: 应用名称。\n        :type AppName: str\n        :param DomainName: 您的推流域名。\n        :type DomainName: str\n        :param StreamName: 流名称。\n        :type StreamName: str\n        :param ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+注意：默认禁播90天，且最长支持禁播90天。\n        :type ResumeTime: str\n        """
         self.AppName = None
         self.DomainName = None
         self.StreamName = None
@@ -276,9 +220,7 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -293,15 +235,7 @@ class RegisterIMRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Nickname: 用户昵称
-        :type Nickname: str
-        :param UserId: 用户唯一ID，建议采用用户小程序OpenID加盐形式
-        :type UserId: str
-        :param HeadImgUrl: 用户头像URL
-        :type HeadImgUrl: str
-        :param Level: 用户身份，默认值：0，表示无特殊身份
-        :type Level: int
-        """
+        :param Nickname: 用户昵称\n        :type Nickname: str\n        :param UserId: 用户唯一ID，建议采用用户小程序OpenID加盐形式\n        :type UserId: str\n        :param HeadImgUrl: 用户头像URL\n        :type HeadImgUrl: str\n        :param Level: 用户身份，默认值：0，表示无特殊身份\n        :type Level: int\n        """
         self.Nickname = None
         self.UserId = None
         self.HeadImgUrl = None
@@ -329,11 +263,7 @@ class RegisterIMResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UserKey: 用来传递给插件的关键字段
-        :type UserKey: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param UserKey: 用来传递给插件的关键字段\n        :type UserKey: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserKey = None
         self.RequestId = None
 
@@ -350,9 +280,7 @@ class StopGameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 游戏用户ID
-        :type UserId: str
-        """
+        :param UserId: 游戏用户ID\n        :type UserId: str\n        """
         self.UserId = None
 
 
@@ -374,9 +302,7 @@ class StopGameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -391,11 +317,7 @@ class WorkerRegionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Idle: 该区域空闲机器数量
-        :type Idle: int
-        :param Region: 区域
-        :type Region: str
-        """
+        :param Idle: 该区域空闲机器数量\n        :type Idle: int\n        :param Region: 区域\n        :type Region: str\n        """
         self.Idle = None
         self.Region = None
 

@@ -25,25 +25,7 @@ class AddCustomRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 规则名称
-        :type Name: str
-        :param SortId: 优先级
-        :type SortId: str
-        :param ExpireTime: 过期时间
-        :type ExpireTime: str
-        :param Strategies: 策略详情
-        :type Strategies: list of Strategy
-        :param Domain: 需要添加策略的域名
-        :type Domain: str
-        :param ActionType: 动作类型
-        :type ActionType: str
-        :param Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空
-        :type Redirect: str
-        :param Edition: "clb-waf"或者"sparta-waf"
-        :type Edition: str
-        :param Bypass: 放行的详情
-        :type Bypass: str
-        """
+        :param Name: 规则名称\n        :type Name: str\n        :param SortId: 优先级\n        :type SortId: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: str\n        :param Strategies: 策略详情\n        :type Strategies: list of Strategy\n        :param Domain: 需要添加策略的域名\n        :type Domain: str\n        :param ActionType: 动作类型\n        :type ActionType: str\n        :param Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空\n        :type Redirect: str\n        :param Edition: "clb-waf"或者"sparta-waf"\n        :type Edition: str\n        :param Bypass: 放行的详情\n        :type Bypass: str\n        """
         self.Name = None
         self.SortId = None
         self.ExpireTime = None
@@ -86,14 +68,8 @@ class AddCustomRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
-        :param RuleId: 添加成功的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败\n        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`\n        :param RuleId: 添加成功的规则ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RuleId = None
         self.RequestId = None
@@ -114,15 +90,7 @@ class BotStatPointItem(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeStamp: 横坐标
-        :type TimeStamp: str
-        :param Key: value的所属对象
-        :type Key: str
-        :param Value: 纵列表
-        :type Value: int
-        :param Label: Key对应的页面展示内容
-        :type Label: str
-        """
+        :param TimeStamp: 横坐标\n        :type TimeStamp: str\n        :param Key: value的所属对象\n        :type Key: str\n        :param Value: 纵列表\n        :type Value: int\n        :param Label: Key对应的页面展示内容\n        :type Label: str\n        """
         self.TimeStamp = None
         self.Key = None
         self.Value = None
@@ -150,25 +118,7 @@ class CreateAttackDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名，所有域名填写all
-        :type Domain: str
-        :param FromTime: 查询起始时间
-        :type FromTime: str
-        :param ToTime: 查询结束时间
-        :type ToTime: str
-        :param Name: 下载任务名字
-        :type Name: str
-        :param RiskLevel: 风险等级
-        :type RiskLevel: int
-        :param Status: 拦截状态
-        :type Status: int
-        :param RuleId: 自定义策略ID
-        :type RuleId: int
-        :param AttackIp: 攻击者IP
-        :type AttackIp: str
-        :param AttackType: 攻击类型
-        :type AttackType: str
-        """
+        :param Domain: 域名，所有域名填写all\n        :type Domain: str\n        :param FromTime: 查询起始时间\n        :type FromTime: str\n        :param ToTime: 查询结束时间\n        :type ToTime: str\n        :param Name: 下载任务名字\n        :type Name: str\n        :param RiskLevel: 风险等级\n        :type RiskLevel: int\n        :param Status: 拦截状态\n        :type Status: int\n        :param RuleId: 自定义策略ID\n        :type RuleId: int\n        :param AttackIp: 攻击者IP\n        :type AttackIp: str\n        :param AttackType: 攻击类型\n        :type AttackType: str\n        """
         self.Domain = None
         self.FromTime = None
         self.ToTime = None
@@ -206,11 +156,7 @@ class CreateAttackDownloadTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Flow: 任务ID
-        :type Flow: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Flow: 任务ID\n        :type Flow: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Flow = None
         self.RequestId = None
 
@@ -227,9 +173,7 @@ class DeleteAttackDownloadRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 下载任务记录唯一标记
-        :type Id: int
-        """
+        :param Id: 下载任务记录唯一标记\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -251,9 +195,7 @@ class DeleteAttackDownloadRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -268,9 +210,7 @@ class DeleteDownloadRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Flow: 记录id
-        :type Flow: str
-        """
+        :param Flow: 记录id\n        :type Flow: str\n        """
         self.Flow = None
 
 
@@ -292,9 +232,7 @@ class DeleteDownloadRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -309,11 +247,7 @@ class DeleteSessionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param Edition: clb-waf 或者 sprta-waf
-        :type Edition: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param Edition: clb-waf 或者 sprta-waf\n        :type Edition: str\n        """
         self.Domain = None
         self.Edition = None
 
@@ -338,11 +272,7 @@ class DeleteSessionResponse(AbstractModel):
     def __init__(self):
         """
         :param Data: 结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -359,11 +289,7 @@ class DescribeCustomRulesPagingInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 当前页码
-        :type Offset: int
-        :param Limit: 当前页的最大数据条数
-        :type Limit: int
-        """
+        :param Offset: 当前页码\n        :type Offset: int\n        :param Limit: 当前页的最大数据条数\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -387,17 +313,7 @@ class DescribeCustomRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param Paging: 分页参数
-        :type Paging: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRulesPagingInfo`
-        :param Edition: clb-waf或者sparta-waf
-        :type Edition: str
-        :param ActionType: 过滤参数：动作类型：0放行，1阻断，2人机识别，3观察，4重定向
-        :type ActionType: str
-        :param Search: 过滤参数：规则名称过滤条件
-        :type Search: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param Paging: 分页参数\n        :type Paging: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRulesPagingInfo`\n        :param Edition: clb-waf或者sparta-waf\n        :type Edition: str\n        :param ActionType: 过滤参数：动作类型：0放行，1阻断，2人机识别，3观察，4重定向\n        :type ActionType: str\n        :param Search: 过滤参数：规则名称过滤条件\n        :type Search: str\n        """
         self.Domain = None
         self.Paging = None
         self.Edition = None
@@ -429,13 +345,7 @@ class DescribeCustomRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleList: 规则详情
-        :type RuleList: list of DescribeCustomRulesRspRuleListItem
-        :param TotalCount: 规则条数
-        :type TotalCount: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleList: 规则详情\n        :type RuleList: list of DescribeCustomRulesRspRuleListItem\n        :param TotalCount: 规则条数\n        :type TotalCount: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleList = None
         self.TotalCount = None
         self.RequestId = None
@@ -459,27 +369,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
 
     def __init__(self):
         """
-        :param ActionType: 动作类型
-        :type ActionType: str
-        :param Bypass: 跳过的策略
-        :type Bypass: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param ExpireTime: 过期时间
-        :type ExpireTime: str
-        :param Name: 策略名称
-        :type Name: str
-        :param Redirect: 重定向地址
-        :type Redirect: str
-        :param RuleId: 策略ID
-        :type RuleId: str
-        :param SortId: 优先级
-        :type SortId: str
-        :param Status: 状态
-        :type Status: str
-        :param Strategies: 策略详情
-        :type Strategies: list of Strategy
-        """
+        :param ActionType: 动作类型\n        :type ActionType: str\n        :param Bypass: 跳过的策略\n        :type Bypass: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: str\n        :param Name: 策略名称\n        :type Name: str\n        :param Redirect: 重定向地址\n        :type Redirect: str\n        :param RuleId: 策略ID\n        :type RuleId: str\n        :param SortId: 优先级\n        :type SortId: str\n        :param Status: 状态\n        :type Status: str\n        :param Strategies: 策略详情\n        :type Strategies: list of Strategy\n        """
         self.ActionType = None
         self.Bypass = None
         self.CreateTime = None
@@ -524,13 +414,7 @@ class DescribeFlowTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 需要获取流量趋势的域名, all表示所有域名
-        :type Domain: str
-        :param StartTs: 起始时间戳，精度秒
-        :type StartTs: int
-        :param EndTs: 结束时间戳，精度秒
-        :type EndTs: int
-        """
+        :param Domain: 需要获取流量趋势的域名, all表示所有域名\n        :type Domain: str\n        :param StartTs: 起始时间戳，精度秒\n        :type StartTs: int\n        :param EndTs: 结束时间戳，精度秒\n        :type EndTs: int\n        """
         self.Domain = None
         self.StartTs = None
         self.EndTs = None
@@ -556,11 +440,7 @@ class DescribeFlowTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 流量趋势数据
-        :type Data: list of BotStatPointItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 流量趋势数据\n        :type Data: list of BotStatPointItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -589,11 +469,7 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
     def __init__(self):
         """
         :param Data: 地域（标准的ap-格式）列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -610,11 +486,7 @@ class ModifyAccessPeriodRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: 访问日志保存期限，范围为[1, 30]
-        :type Period: int
-        :param TopicId: 日志主题
-        :type TopicId: str
-        """
+        :param Period: 访问日志保存期限，范围为[1, 30]\n        :type Period: int\n        :param TopicId: 日志主题\n        :type TopicId: str\n        """
         self.Period = None
         self.TopicId = None
 
@@ -638,9 +510,7 @@ class ModifyAccessPeriodResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -655,15 +525,7 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RuleId: 规则ID
-        :type RuleId: int
-        :param Status: 开关的状态，1是开启、0是关闭
-        :type Status: int
-        :param Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-        :type Edition: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RuleId: 规则ID\n        :type RuleId: int\n        :param Status: 开关的状态，1是开启、0是关闭\n        :type Status: int\n        :param Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。\n        :type Edition: str\n        """
         self.Domain = None
         self.RuleId = None
         self.Status = None
@@ -691,11 +553,7 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败\n        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -714,11 +572,7 @@ class ResponseCode(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: 如果成功则返回Success，失败则返回yunapi定义的错误码
-        :type Code: str
-        :param Message: 如果成功则返回Success，失败则返回WAF定义的二级错误码
-        :type Message: str
-        """
+        :param Code: 如果成功则返回Success，失败则返回yunapi定义的错误码\n        :type Code: str\n        :param Message: 如果成功则返回Success，失败则返回WAF定义的二级错误码\n        :type Message: str\n        """
         self.Code = None
         self.Message = None
 
@@ -742,15 +596,7 @@ class Strategy(AbstractModel):
 
     def __init__(self):
         """
-        :param Field: 匹配字段
-        :type Field: str
-        :param CompareFunc: 逻辑符号
-        :type CompareFunc: str
-        :param Content: 匹配内容
-        :type Content: str
-        :param Arg: 匹配参数
-        :type Arg: str
-        """
+        :param Field: 匹配字段\n        :type Field: str\n        :param CompareFunc: 逻辑符号\n        :type CompareFunc: str\n        :param Content: 匹配内容\n        :type Content: str\n        :param Arg: 匹配参数\n        :type Arg: str\n        """
         self.Field = None
         self.CompareFunc = None
         self.Content = None

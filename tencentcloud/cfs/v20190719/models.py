@@ -25,11 +25,7 @@ class AvailableProtoStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param SaleStatus: 售卖状态。可选值有 sale_out 售罄、saling可售、no_saling不可销售
-        :type SaleStatus: str
-        :param Protocol: 协议类型。可选值有 NFS、CIFS
-        :type Protocol: str
-        """
+        :param SaleStatus: 售卖状态。可选值有 sale_out 售罄、saling可售、no_saling不可销售\n        :type SaleStatus: str\n        :param Protocol: 协议类型。可选值有 NFS、CIFS\n        :type Protocol: str\n        """
         self.SaleStatus = None
         self.Protocol = None
 
@@ -53,17 +49,7 @@ class AvailableRegion(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: 区域名称，如“ap-beijing”
-        :type Region: str
-        :param RegionName: 区域名称，如“bj”
-        :type RegionName: str
-        :param RegionStatus: 区域可用情况，当区域内至少有一个可用区处于可售状态时，取值为AVAILABLE，否则为UNAVAILABLE
-        :type RegionStatus: str
-        :param Zones: 可用区数组
-        :type Zones: list of AvailableZone
-        :param RegionCnName: 区域中文名称，如“广州”
-        :type RegionCnName: str
-        """
+        :param Region: 区域名称，如“ap-beijing”\n        :type Region: str\n        :param RegionName: 区域名称，如“bj”\n        :type RegionName: str\n        :param RegionStatus: 区域可用情况，当区域内至少有一个可用区处于可售状态时，取值为AVAILABLE，否则为UNAVAILABLE\n        :type RegionStatus: str\n        :param Zones: 可用区数组\n        :type Zones: list of AvailableZone\n        :param RegionCnName: 区域中文名称，如“广州”\n        :type RegionCnName: str\n        """
         self.Region = None
         self.RegionName = None
         self.RegionStatus = None
@@ -98,13 +84,7 @@ class AvailableType(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocols: 协议与售卖详情
-        :type Protocols: list of AvailableProtoStatus
-        :param Type: 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储
-        :type Type: str
-        :param Prepayment: 是否支持预付费。返回值中 true 为支持、false 为不支持
-        :type Prepayment: bool
-        """
+        :param Protocols: 协议与售卖详情\n        :type Protocols: list of AvailableProtoStatus\n        :param Type: 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储\n        :type Type: str\n        :param Prepayment: 是否支持预付费。返回值中 true 为支持、false 为不支持\n        :type Prepayment: bool\n        """
         self.Protocols = None
         self.Type = None
         self.Prepayment = None
@@ -135,17 +115,7 @@ class AvailableZone(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区名称
-        :type Zone: str
-        :param ZoneId: 可用区ID
-        :type ZoneId: int
-        :param ZoneCnName: 可用区中文名称
-        :type ZoneCnName: str
-        :param Types: Type数组
-        :type Types: list of AvailableType
-        :param ZoneName: 可用区中英文名称
-        :type ZoneName: str
-        """
+        :param Zone: 可用区名称\n        :type Zone: str\n        :param ZoneId: 可用区ID\n        :type ZoneId: int\n        :param ZoneCnName: 可用区中文名称\n        :type ZoneCnName: str\n        :param Types: Type数组\n        :type Types: list of AvailableType\n        :param ZoneName: 可用区中英文名称\n        :type ZoneName: str\n        """
         self.Zone = None
         self.ZoneId = None
         self.ZoneCnName = None
@@ -180,29 +150,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
-        :type Zone: str
-        :param NetInterface: 网络类型，值为 VPC，BASIC；其中 VPC 为私有网络，BASIC 为基础网络
-        :type NetInterface: str
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param Protocol: 文件系统协议类型， 值为 NFS、CIFS; 若留空则默认为 NFS协议
-        :type Protocol: str
-        :param StorageType: 文件系统存储类型，值为 SD ；其中 SD 为标准型存储， HP为性能存储。
-        :type StorageType: str
-        :param VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
-        :type VpcId: str
-        :param SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。
-        :type SubnetId: str
-        :param MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP
-        :type MountIP: str
-        :param FsName: 用户自定义文件系统名称
-        :type FsName: str
-        :param ResourceTags: 文件系统标签
-        :type ResourceTags: list of TagInfo
-        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
-        :type ClientToken: str
-        """
+        :param Zone: 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表\n        :type Zone: str\n        :param NetInterface: 网络类型，值为 VPC，BASIC；其中 VPC 为私有网络，BASIC 为基础网络\n        :type NetInterface: str\n        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param Protocol: 文件系统协议类型， 值为 NFS、CIFS; 若留空则默认为 NFS协议\n        :type Protocol: str\n        :param StorageType: 文件系统存储类型，值为 SD ；其中 SD 为标准型存储， HP为性能存储。\n        :type StorageType: str\n        :param VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。\n        :type VpcId: str\n        :param SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。\n        :type SubnetId: str\n        :param MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP\n        :type MountIP: str\n        :param FsName: 用户自定义文件系统名称\n        :type FsName: str\n        :param ResourceTags: 文件系统标签\n        :type ResourceTags: list of TagInfo\n        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。\n        :type ClientToken: str\n        """
         self.Zone = None
         self.NetInterface = None
         self.PGroupId = None
@@ -249,25 +197,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: 文件系统创建时间
-        :type CreationTime: str
-        :param CreationToken: 用户自定义文件系统名称
-        :type CreationToken: str
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param LifeCycleState: 文件系统状态
-        :type LifeCycleState: str
-        :param SizeByte: 文件系统已使用容量大小
-        :type SizeByte: int
-        :param ZoneId: 可用区 ID
-        :type ZoneId: int
-        :param FsName: 用户自定义文件系统名称
-        :type FsName: str
-        :param Encrypted: 文件系统是否加密
-        :type Encrypted: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CreationTime: 文件系统创建时间\n        :type CreationTime: str\n        :param CreationToken: 用户自定义文件系统名称\n        :type CreationToken: str\n        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param LifeCycleState: 文件系统状态\n        :type LifeCycleState: str\n        :param SizeByte: 文件系统已使用容量大小\n        :type SizeByte: int\n        :param ZoneId: 可用区 ID\n        :type ZoneId: int\n        :param FsName: 用户自定义文件系统名称\n        :type FsName: str\n        :param Encrypted: 文件系统是否加密\n        :type Encrypted: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CreationTime = None
         self.CreationToken = None
         self.FileSystemId = None
@@ -298,11 +228,7 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
-        :type Name: str
-        :param DescInfo: 权限组描述信息，1-255个字符
-        :type DescInfo: str
-        """
+        :param Name: 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线\n        :type Name: str\n        :param DescInfo: 权限组描述信息，1-255个字符\n        :type DescInfo: str\n        """
         self.Name = None
         self.DescInfo = None
 
@@ -326,19 +252,7 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param Name: 权限组名字
-        :type Name: str
-        :param DescInfo: 权限组描述信息
-        :type DescInfo: str
-        :param BindCfsNum: 已经与该权限组绑定的文件系统个数
-        :type BindCfsNum: int
-        :param CDate: 权限组创建时间
-        :type CDate: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param Name: 权限组名字\n        :type Name: str\n        :param DescInfo: 权限组描述信息\n        :type DescInfo: str\n        :param BindCfsNum: 已经与该权限组绑定的文件系统个数\n        :type BindCfsNum: int\n        :param CDate: 权限组创建时间\n        :type CDate: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -363,17 +277,7 @@ class CreateCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param AuthClientIp: 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
-        :type AuthClientIp: str
-        :param Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
-        :type Priority: int
-        :param RWPermission: 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
-        :type RWPermission: str
-        :param UserPermission: 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
-        :type UserPermission: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param AuthClientIp: 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。\n        :type AuthClientIp: str\n        :param Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低\n        :type Priority: int\n        :param RWPermission: 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读\n        :type RWPermission: str\n        :param UserPermission: 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。\n        :type UserPermission: str\n        """
         self.PGroupId = None
         self.AuthClientIp = None
         self.Priority = None
@@ -403,21 +307,7 @@ class CreateCfsRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 规则 ID
-        :type RuleId: str
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param AuthClientIp: 客户端 IP
-        :type AuthClientIp: str
-        :param RWPermission: 读写权限
-        :type RWPermission: str
-        :param UserPermission: 用户权限
-        :type UserPermission: str
-        :param Priority: 优先级
-        :type Priority: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param AuthClientIp: 客户端 IP\n        :type AuthClientIp: str\n        :param RWPermission: 读写权限\n        :type RWPermission: str\n        :param UserPermission: 用户权限\n        :type UserPermission: str\n        :param Priority: 优先级\n        :type Priority: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleId = None
         self.PGroupId = None
         self.AuthClientIp = None
@@ -444,9 +334,7 @@ class DeleteCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
-        :type FileSystemId: str
-        """
+        :param FileSystemId: 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。\n        :type FileSystemId: str\n        """
         self.FileSystemId = None
 
 
@@ -468,9 +356,7 @@ class DeleteCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -485,9 +371,7 @@ class DeleteCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        """
         self.PGroupId = None
 
 
@@ -509,13 +393,7 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param AppId: 用户 ID
-        :type AppId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param AppId: 用户 ID\n        :type AppId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.AppId = None
         self.RequestId = None
@@ -534,11 +412,7 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param RuleId: 规则 ID
-        :type RuleId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param RuleId: 规则 ID\n        :type RuleId: str\n        """
         self.PGroupId = None
         self.RuleId = None
 
@@ -562,13 +436,7 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 规则 ID
-        :type RuleId: str
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleId = None
         self.PGroupId = None
         self.RequestId = None
@@ -587,11 +455,7 @@ class DeleteMountTargetRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param MountTargetId: 挂载点 ID
-        :type MountTargetId: str
-        """
+        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param MountTargetId: 挂载点 ID\n        :type MountTargetId: str\n        """
         self.FileSystemId = None
         self.MountTargetId = None
 
@@ -615,9 +479,7 @@ class DeleteMountTargetResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -638,11 +500,7 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionZones: 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
-        :type RegionZones: list of AvailableRegion
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RegionZones: 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息\n        :type RegionZones: list of AvailableRegion\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionZones = None
         self.RequestId = None
 
@@ -664,9 +522,7 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID。
-        :type FileSystemId: str
-        """
+        :param FileSystemId: 文件系统 ID。\n        :type FileSystemId: str\n        """
         self.FileSystemId = None
 
 
@@ -688,11 +544,7 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClientList: 客户端列表
-        :type ClientList: list of FileSystemClient
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ClientList: 客户端列表\n        :type ClientList: list of FileSystemClient\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClientList = None
         self.RequestId = None
 
@@ -714,13 +566,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param VpcId: 私有网络（VPC） ID
-        :type VpcId: str
-        :param SubnetId: 子网 ID
-        :type SubnetId: str
-        """
+        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param VpcId: 私有网络（VPC） ID\n        :type VpcId: str\n        :param SubnetId: 子网 ID\n        :type SubnetId: str\n        """
         self.FileSystemId = None
         self.VpcId = None
         self.SubnetId = None
@@ -746,13 +592,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystems: 文件系统信息
-        :type FileSystems: list of FileSystemInfo
-        :param TotalCount: 文件系统总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FileSystems: 文件系统信息\n        :type FileSystems: list of FileSystemInfo\n        :param TotalCount: 文件系统总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FileSystems = None
         self.TotalCount = None
         self.RequestId = None
@@ -782,11 +622,7 @@ class DescribeCfsPGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupList: 权限组信息列表
-        :type PGroupList: list of PGroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PGroupList: 权限组信息列表\n        :type PGroupList: list of PGroupInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PGroupList = None
         self.RequestId = None
 
@@ -808,9 +644,7 @@ class DescribeCfsRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        """
         self.PGroupId = None
 
 
@@ -832,11 +666,7 @@ class DescribeCfsRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleList: 权限组规则列表
-        :type RuleList: list of PGroupRuleInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleList: 权限组规则列表\n        :type RuleList: list of PGroupRuleInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleList = None
         self.RequestId = None
 
@@ -864,11 +694,7 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsServiceStatus: 该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通
-        :type CfsServiceStatus: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CfsServiceStatus: 该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通\n        :type CfsServiceStatus: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CfsServiceStatus = None
         self.RequestId = None
 
@@ -885,9 +711,7 @@ class DescribeMountTargetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        """
+        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        """
         self.FileSystemId = None
 
 
@@ -909,13 +733,7 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MountTargets: 挂载点详情
-        :type MountTargets: list of MountInfo
-        :param NumberOfMountTargets: 挂载点数量
-        :type NumberOfMountTargets: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MountTargets: 挂载点详情\n        :type MountTargets: list of MountInfo\n        :param NumberOfMountTargets: 挂载点数量\n        :type NumberOfMountTargets: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MountTargets = None
         self.NumberOfMountTargets = None
         self.RequestId = None
@@ -939,19 +757,7 @@ class FileSystemClient(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsVip: 文件系统IP地址
-        :type CfsVip: str
-        :param ClientIp: 客户端IP地址
-        :type ClientIp: str
-        :param VpcId: 文件系统所属VPCID
-        :type VpcId: str
-        :param Zone: 可用区名称，例如ap-beijing-1，请参考 概览文档中的地域与可用区列表
-        :type Zone: str
-        :param ZoneName: 可用区中文名称
-        :type ZoneName: str
-        :param MountDirectory: 该文件系统被挂载到客户端上的路径信息
-        :type MountDirectory: str
-        """
+        :param CfsVip: 文件系统IP地址\n        :type CfsVip: str\n        :param ClientIp: 客户端IP地址\n        :type ClientIp: str\n        :param VpcId: 文件系统所属VPCID\n        :type VpcId: str\n        :param Zone: 可用区名称，例如ap-beijing-1，请参考 概览文档中的地域与可用区列表\n        :type Zone: str\n        :param ZoneName: 可用区中文名称\n        :type ZoneName: str\n        :param MountDirectory: 该文件系统被挂载到客户端上的路径信息\n        :type MountDirectory: str\n        """
         self.CfsVip = None
         self.ClientIp = None
         self.VpcId = None
@@ -983,43 +789,7 @@ class FileSystemInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: 创建时间
-        :type CreationTime: str
-        :param CreationToken: 用户自定义名称
-        :type CreationToken: str
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param LifeCycleState: 文件系统状态
-        :type LifeCycleState: str
-        :param SizeByte: 文件系统已使用容量
-        :type SizeByte: int
-        :param SizeLimit: 文件系统最大空间限制
-        :type SizeLimit: int
-        :param ZoneId: 区域 ID
-        :type ZoneId: int
-        :param Zone: 区域名称
-        :type Zone: str
-        :param Protocol: 文件系统协议类型
-        :type Protocol: str
-        :param StorageType: 文件系统存储类型
-        :type StorageType: str
-        :param StorageResourcePkg: 文件系统绑定的预付费存储包
-        :type StorageResourcePkg: str
-        :param BandwidthResourcePkg: 文件系统绑定的预付费带宽包（暂未支持）
-        :type BandwidthResourcePkg: str
-        :param PGroup: 文件系统绑定权限组信息
-        :type PGroup: :class:`tencentcloud.cfs.v20190719.models.PGroup`
-        :param FsName: 用户自定义名称
-        :type FsName: str
-        :param Encrypted: 文件系统是否加密
-        :type Encrypted: bool
-        :param KmsKeyId: 加密所使用的密钥，可以为密钥的 ID 或者 ARN
-        :type KmsKeyId: str
-        :param AppId: 应用ID
-        :type AppId: int
-        :param BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
-        :type BandwidthLimit: float
-        """
+        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param CreationToken: 用户自定义名称\n        :type CreationToken: str\n        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param LifeCycleState: 文件系统状态\n        :type LifeCycleState: str\n        :param SizeByte: 文件系统已使用容量\n        :type SizeByte: int\n        :param SizeLimit: 文件系统最大空间限制\n        :type SizeLimit: int\n        :param ZoneId: 区域 ID\n        :type ZoneId: int\n        :param Zone: 区域名称\n        :type Zone: str\n        :param Protocol: 文件系统协议类型\n        :type Protocol: str\n        :param StorageType: 文件系统存储类型\n        :type StorageType: str\n        :param StorageResourcePkg: 文件系统绑定的预付费存储包\n        :type StorageResourcePkg: str\n        :param BandwidthResourcePkg: 文件系统绑定的预付费带宽包（暂未支持）\n        :type BandwidthResourcePkg: str\n        :param PGroup: 文件系统绑定权限组信息\n        :type PGroup: :class:`tencentcloud.cfs.v20190719.models.PGroup`\n        :param FsName: 用户自定义名称\n        :type FsName: str\n        :param Encrypted: 文件系统是否加密\n        :type Encrypted: bool\n        :param KmsKeyId: 加密所使用的密钥，可以为密钥的 ID 或者 ARN\n        :type KmsKeyId: str\n        :param AppId: 应用ID\n        :type AppId: int\n        :param BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定\n        :type BandwidthLimit: float\n        """
         self.CreationTime = None
         self.CreationToken = None
         self.FileSystemId = None
@@ -1077,27 +847,7 @@ class MountInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param MountTargetId: 挂载点 ID
-        :type MountTargetId: str
-        :param IpAddress: 挂载点 IP
-        :type IpAddress: str
-        :param FSID: 挂载根目录
-        :type FSID: str
-        :param LifeCycleState: 挂载点状态
-        :type LifeCycleState: str
-        :param NetworkInterface: 网络类型
-        :type NetworkInterface: str
-        :param VpcId: 私有网络 ID
-        :type VpcId: str
-        :param VpcName: 私有网络名称
-        :type VpcName: str
-        :param SubnetId: 子网 Id
-        :type SubnetId: str
-        :param SubnetName: 子网名称
-        :type SubnetName: str
-        """
+        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param MountTargetId: 挂载点 ID\n        :type MountTargetId: str\n        :param IpAddress: 挂载点 IP\n        :type IpAddress: str\n        :param FSID: 挂载根目录\n        :type FSID: str\n        :param LifeCycleState: 挂载点状态\n        :type LifeCycleState: str\n        :param NetworkInterface: 网络类型\n        :type NetworkInterface: str\n        :param VpcId: 私有网络 ID\n        :type VpcId: str\n        :param VpcName: 私有网络名称\n        :type VpcName: str\n        :param SubnetId: 子网 Id\n        :type SubnetId: str\n        :param SubnetName: 子网名称\n        :type SubnetName: str\n        """
         self.FileSystemId = None
         self.MountTargetId = None
         self.IpAddress = None
@@ -1137,11 +887,7 @@ class PGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组ID
-        :type PGroupId: str
-        :param Name: 权限组名称
-        :type Name: str
-        """
+        :param PGroupId: 权限组ID\n        :type PGroupId: str\n        :param Name: 权限组名称\n        :type Name: str\n        """
         self.PGroupId = None
         self.Name = None
 
@@ -1165,17 +911,7 @@ class PGroupInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组ID
-        :type PGroupId: str
-        :param Name: 权限组名称
-        :type Name: str
-        :param DescInfo: 描述信息
-        :type DescInfo: str
-        :param CDate: 创建时间
-        :type CDate: str
-        :param BindCfsNum: 关联文件系统个数
-        :type BindCfsNum: int
-        """
+        :param PGroupId: 权限组ID\n        :type PGroupId: str\n        :param Name: 权限组名称\n        :type Name: str\n        :param DescInfo: 描述信息\n        :type DescInfo: str\n        :param CDate: 创建时间\n        :type CDate: str\n        :param BindCfsNum: 关联文件系统个数\n        :type BindCfsNum: int\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -1205,17 +941,7 @@ class PGroupRuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param AuthClientIp: 允许访问的客户端IP
-        :type AuthClientIp: str
-        :param RWPermission: 读写权限, ro为只读，rw为读写
-        :type RWPermission: str
-        :param UserPermission: 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
-        :type UserPermission: str
-        :param Priority: 规则优先级，1-100。 其中 1 为最高，100为最低
-        :type Priority: int
-        """
+        :param RuleId: 规则ID\n        :type RuleId: str\n        :param AuthClientIp: 允许访问的客户端IP\n        :type AuthClientIp: str\n        :param RWPermission: 读写权限, ro为只读，rw为读写\n        :type RWPermission: str\n        :param UserPermission: 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。\n        :type UserPermission: str\n        :param Priority: 规则优先级，1-100。 其中 1 为最高，100为最低\n        :type Priority: int\n        """
         self.RuleId = None
         self.AuthClientIp = None
         self.RWPermission = None
@@ -1251,11 +977,7 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CfsServiceStatus: 该用户当前 CFS 服务的状态，none 是未开通，creating 是开通中，created 是已开通
-        :type CfsServiceStatus: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CfsServiceStatus: 该用户当前 CFS 服务的状态，none 是未开通，creating 是开通中，created 是已开通\n        :type CfsServiceStatus: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CfsServiceStatus = None
         self.RequestId = None
 
@@ -1272,11 +994,7 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1300,11 +1018,7 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param FsName: 用户自定义文件系统名称
-        :type FsName: str
-        """
+        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param FsName: 用户自定义文件系统名称\n        :type FsName: str\n        """
         self.FileSystemId = None
         self.FsName = None
 
@@ -1328,15 +1042,7 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationToken: 用户自定义文件系统名称
-        :type CreationToken: str
-        :param FileSystemId: 文件系统ID
-        :type FileSystemId: str
-        :param FsName: 用户自定义文件系统名称
-        :type FsName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CreationToken: 用户自定义文件系统名称\n        :type CreationToken: str\n        :param FileSystemId: 文件系统ID\n        :type FileSystemId: str\n        :param FsName: 用户自定义文件系统名称\n        :type FsName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CreationToken = None
         self.FileSystemId = None
         self.FsName = None
@@ -1357,11 +1063,7 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        """
         self.PGroupId = None
         self.FileSystemId = None
 
@@ -1385,13 +1087,7 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param FileSystemId: 文件系统 ID\n        :type FileSystemId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.FileSystemId = None
         self.RequestId = None
@@ -1410,11 +1106,7 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FsLimit: 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
-        :type FsLimit: int
-        :param FileSystemId: 文件系统ID，目前仅支持标准型文件系统。
-        :type FileSystemId: str
-        """
+        :param FsLimit: 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。\n        :type FsLimit: int\n        :param FileSystemId: 文件系统ID，目前仅支持标准型文件系统。\n        :type FileSystemId: str\n        """
         self.FsLimit = None
         self.FileSystemId = None
 
@@ -1438,9 +1130,7 @@ class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1455,13 +1145,7 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param Name: 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
-        :type Name: str
-        :param DescInfo: 权限组描述信息，1-255个字符
-        :type DescInfo: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param Name: 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线\n        :type Name: str\n        :param DescInfo: 权限组描述信息，1-255个字符\n        :type DescInfo: str\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -1487,15 +1171,7 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组ID
-        :type PGroupId: str
-        :param Name: 权限组名称
-        :type Name: str
-        :param DescInfo: 描述信息
-        :type DescInfo: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PGroupId: 权限组ID\n        :type PGroupId: str\n        :param Name: 权限组名称\n        :type Name: str\n        :param DescInfo: 描述信息\n        :type DescInfo: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.Name = None
         self.DescInfo = None
@@ -1516,19 +1192,7 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param RuleId: 规则 ID
-        :type RuleId: str
-        :param AuthClientIp: 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
-        :type AuthClientIp: str
-        :param RWPermission: 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
-        :type RWPermission: str
-        :param UserPermission: 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
-        :type UserPermission: str
-        :param Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
-        :type Priority: int
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param AuthClientIp: 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。\n        :type AuthClientIp: str\n        :param RWPermission: 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读\n        :type RWPermission: str\n        :param UserPermission: 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。\n        :type UserPermission: str\n        :param Priority: 规则优先级，参数范围1-100。 其中 1 为最高，100为最低\n        :type Priority: int\n        """
         self.PGroupId = None
         self.RuleId = None
         self.AuthClientIp = None
@@ -1560,21 +1224,7 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PGroupId: 权限组 ID
-        :type PGroupId: str
-        :param RuleId: 规则 ID
-        :type RuleId: str
-        :param AuthClientIp: 允许访问的客户端 IP 或者 IP 段
-        :type AuthClientIp: str
-        :param RWPermission: 读写权限
-        :type RWPermission: str
-        :param UserPermission: 用户权限
-        :type UserPermission: str
-        :param Priority: 优先级
-        :type Priority: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PGroupId: 权限组 ID\n        :type PGroupId: str\n        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param AuthClientIp: 允许访问的客户端 IP 或者 IP 段\n        :type AuthClientIp: str\n        :param RWPermission: 读写权限\n        :type RWPermission: str\n        :param UserPermission: 用户权限\n        :type UserPermission: str\n        :param Priority: 优先级\n        :type Priority: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PGroupId = None
         self.RuleId = None
         self.AuthClientIp = None

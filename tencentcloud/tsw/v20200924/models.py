@@ -26,30 +26,14 @@ class AgentShell(AbstractModel):
     def __init__(self):
         """
         :param Token: 鉴权token
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Token: str
-        :param EtlIp: 数据接收Ip
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EtlIp: str
-        :param EtlPort: 数据接收port
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EtlPort: str
-        :param ByHandAccess: 手动接入脚本串
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ByHandAccess: str
-        :param ByShellAccess: 自动接入脚本串
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ByShellAccess: str
-        :param SkyWalkingPort: SkyWalking数据接收port
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SkyWalkingPort: str
-        :param ZipkinPort: Zipkin数据接收port
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ZipkinPort: str
-        :param JaegerPort: Jaeger数据接收port
-注意：此字段可能返回 null，表示取不到有效值。
-        :type JaegerPort: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Token: str\n        :param EtlIp: 数据接收Ip
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EtlIp: str\n        :param EtlPort: 数据接收port
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EtlPort: str\n        :param ByHandAccess: 手动接入脚本串
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ByHandAccess: str\n        :param ByShellAccess: 自动接入脚本串
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ByShellAccess: str\n        :param SkyWalkingPort: SkyWalking数据接收port
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SkyWalkingPort: str\n        :param ZipkinPort: Zipkin数据接收port
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ZipkinPort: str\n        :param JaegerPort: Jaeger数据接收port
+注意：此字段可能返回 null，表示取不到有效值。\n        :type JaegerPort: str\n        """
         self.Token = None
         self.EtlIp = None
         self.EtlPort = None
@@ -92,11 +76,7 @@ class DescribeAgentShellResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 接入信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.tsw.v20200924.models.AgentShell`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.tsw.v20200924.models.AgentShell`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 

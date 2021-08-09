@@ -25,11 +25,7 @@ class AttributeMap(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 属性字典 key [a-zA-Z0-9-\.]*
-        :type Key: str
-        :param Value: 属性字典 value
-        :type Value: int
-        """
+        :param Key: 属性字典 key [a-zA-Z0-9-\.]*\n        :type Key: str\n        :param Value: 属性字典 value\n        :type Value: int\n        """
         self.Key = None
         self.Value = None
 
@@ -53,11 +49,7 @@ class CancelMatchingRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配 Code
-        :type MatchCode: str
-        :param MatchTicketId: 要取消的匹配匹配票据 ID
-        :type MatchTicketId: str
-        """
+        :param MatchCode: 匹配 Code\n        :type MatchCode: str\n        :param MatchTicketId: 要取消的匹配匹配票据 ID\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.MatchTicketId = None
 
@@ -81,11 +73,7 @@ class CancelMatchingResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ErrCode: 错误码
-        :type ErrCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ErrCode: 错误码\n        :type ErrCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ErrCode = None
         self.RequestId = None
 
@@ -102,33 +90,7 @@ class CreateMatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchName: 匹配名称，[a-zA-Z0-9-\.]* 长度128
-        :type MatchName: str
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        :param Timeout: 超时时间，1-600秒
-        :type Timeout: int
-        :param ServerType: 是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源
-        :type ServerType: int
-        :param MatchDesc: 匹配描述，最长1024
-        :type MatchDesc: str
-        :param NotifyUrl: 只支持https 和 http 协议
-        :type NotifyUrl: str
-        :param ServerRegion: 游戏服务器队列地域
-        :type ServerRegion: str
-        :param ServerQueue: 游戏服务器队列
-        :type ServerQueue: str
-        :param CustomPushData: 自定义推送数据
-        :type CustomPushData: str
-        :param ServerSessionData: 游戏服务器会话数据
-        :type ServerSessionData: str
-        :param GameProperties: 游戏属性，key-value结构的数组
-        :type GameProperties: list of StringKV
-        :param LogSwitch: 日志开关，0表示关，1表示开
-        :type LogSwitch: int
-        :param Tags: 标签，key-value结构的数组
-        :type Tags: list of StringKV
-        """
+        :param MatchName: 匹配名称，[a-zA-Z0-9-\.]* 长度128\n        :type MatchName: str\n        :param RuleCode: 规则code\n        :type RuleCode: str\n        :param Timeout: 超时时间，1-600秒\n        :type Timeout: int\n        :param ServerType: 是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源\n        :type ServerType: int\n        :param MatchDesc: 匹配描述，最长1024\n        :type MatchDesc: str\n        :param NotifyUrl: 只支持https 和 http 协议\n        :type NotifyUrl: str\n        :param ServerRegion: 游戏服务器队列地域\n        :type ServerRegion: str\n        :param ServerQueue: 游戏服务器队列\n        :type ServerQueue: str\n        :param CustomPushData: 自定义推送数据\n        :type CustomPushData: str\n        :param ServerSessionData: 游戏服务器会话数据\n        :type ServerSessionData: str\n        :param GameProperties: 游戏属性，key-value结构的数组\n        :type GameProperties: list of StringKV\n        :param LogSwitch: 日志开关，0表示关，1表示开\n        :type LogSwitch: int\n        :param Tags: 标签，key-value结构的数组\n        :type Tags: list of StringKV\n        """
         self.MatchName = None
         self.RuleCode = None
         self.Timeout = None
@@ -184,11 +146,7 @@ class CreateMatchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchInfo: 匹配信息
-        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MatchInfo: 匹配信息\n        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchInfo = None
         self.RequestId = None
 
@@ -207,15 +165,7 @@ class CreateRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: 规则名称，[a-zA-Z0-9-\.]* 长度128
-        :type RuleName: str
-        :param RuleScript: 规则脚本，长度65535
-        :type RuleScript: str
-        :param RuleDesc: 规则描述，最长1024
-        :type RuleDesc: str
-        :param Tags: 标签，key-value结构的数组，最多关联50组标签
-        :type Tags: list of StringKV
-        """
+        :param RuleName: 规则名称，[a-zA-Z0-9-\.]* 长度128\n        :type RuleName: str\n        :param RuleScript: 规则脚本，长度65535\n        :type RuleScript: str\n        :param RuleDesc: 规则描述，最长1024\n        :type RuleDesc: str\n        :param Tags: 标签，key-value结构的数组，最多关联50组标签\n        :type Tags: list of StringKV\n        """
         self.RuleName = None
         self.RuleScript = None
         self.RuleDesc = None
@@ -248,11 +198,7 @@ class CreateRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleInfo: 规则信息
-        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleInfo: 规则信息\n        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleInfo = None
         self.RequestId = None
 
@@ -271,9 +217,7 @@ class DeleteMatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        """
+        :param MatchCode: 匹配code\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -295,9 +239,7 @@ class DeleteMatchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -312,9 +254,7 @@ class DeleteRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        """
+        :param RuleCode: 规则code\n        :type RuleCode: str\n        """
         self.RuleCode = None
 
 
@@ -336,9 +276,7 @@ class DeleteRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -353,15 +291,7 @@ class DescribeDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始时间，单位：秒
-        :type StartTime: int
-        :param EndTime: 截止时间，单位：秒
-        :type EndTime: int
-        :param TimeType: 时间粒度，1表示1天；2表示1小时；3表示1分钟；4表示10分钟；5表示30分钟
-        :type TimeType: int
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        """
+        :param StartTime: 起始时间，单位：秒\n        :type StartTime: int\n        :param EndTime: 截止时间，单位：秒\n        :type EndTime: int\n        :param TimeType: 时间粒度，1表示1天；2表示1小时；3表示1分钟；4表示10分钟；5表示30分钟\n        :type TimeType: int\n        :param MatchCode: 匹配code\n        :type MatchCode: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.TimeType = None
@@ -390,14 +320,8 @@ class DescribeDataResponse(AbstractModel):
     def __init__(self):
         """
         :param OverviewData: 匹配概况
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OverviewData: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`
-        :param TrendData: 匹配请求次数趋势数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrendData: :class:`tencentcloud.gpm.v20200820.models.ReportTrendData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OverviewData: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`\n        :param TrendData: 匹配请求次数趋势数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrendData: :class:`tencentcloud.gpm.v20200820.models.ReportTrendData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OverviewData = None
         self.TrendData = None
         self.RequestId = None
@@ -420,13 +344,7 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量，页码
-        :type Offset: int
-        :param Limit: 每页数量
-        :type Limit: int
-        :param MatchCode: 搜索的字符串
-        :type MatchCode: str
-        """
+        :param Offset: 偏移量，页码\n        :type Offset: int\n        :param Limit: 每页数量\n        :type Limit: int\n        :param MatchCode: 搜索的字符串\n        :type MatchCode: str\n        """
         self.Offset = None
         self.Limit = None
         self.MatchCode = None
@@ -453,14 +371,8 @@ class DescribeMatchCodesResponse(AbstractModel):
     def __init__(self):
         """
         :param MatchCodes: 匹配Code
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchCodes: list of MatchCodeAttr
-        :param TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchCodes: list of MatchCodeAttr\n        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchCodes = None
         self.TotalCount = None
         self.RequestId = None
@@ -484,9 +396,7 @@ class DescribeMatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        """
+        :param MatchCode: 匹配code\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -509,11 +419,7 @@ class DescribeMatchResponse(AbstractModel):
     def __init__(self):
         """
         :param MatchInfo: 匹配信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchInfo = None
         self.RequestId = None
 
@@ -532,17 +438,7 @@ class DescribeMatchesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNumber: 当前页号，不传则获取所有有权限的资源。
-        :type PageNumber: int
-        :param PageSize: 单页大小，不传则获取所有有权限的资源。
-        :type PageSize: int
-        :param SearchType: 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
-        :type SearchType: str
-        :param Keyword: 查询关键词，针对SearchType进行具体过滤的内容。
-        :type Keyword: str
-        :param Tags: 标签列表，用于过滤。
-        :type Tags: list of Tag
-        """
+        :param PageNumber: 当前页号，不传则获取所有有权限的资源。\n        :type PageNumber: int\n        :param PageSize: 单页大小，不传则获取所有有权限的资源。\n        :type PageSize: int\n        :param SearchType: 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。\n        :type SearchType: str\n        :param Keyword: 查询关键词，针对SearchType进行具体过滤的内容。\n        :type Keyword: str\n        :param Tags: 标签列表，用于过滤。\n        :type Tags: list of Tag\n        """
         self.PageNumber = None
         self.PageSize = None
         self.SearchType = None
@@ -578,21 +474,7 @@ class DescribeMatchesResponse(AbstractModel):
     def __init__(self):
         """
         :param MatchInfoList: 匹配信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchInfoList: list of MatchInfo
-        :param TotalCount: 总记录数
-        :type TotalCount: int
-        :param PageNumber: 当前页号，不填默认返回第一页
-        :type PageNumber: int
-        :param PageSize: 单页大小，不填默认取 30，最大值不能超过 30
-        :type PageSize: int
-        :param SearchType: 查询类型（可选）：matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
-        :type SearchType: str
-        :param Keyword: 查询关键词（可选）
-        :type Keyword: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchInfoList: list of MatchInfo\n        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param PageNumber: 当前页号，不填默认返回第一页\n        :type PageNumber: int\n        :param PageSize: 单页大小，不填默认取 30，最大值不能超过 30\n        :type PageSize: int\n        :param SearchType: 查询类型（可选）：matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value\n        :type SearchType: str\n        :param Keyword: 查询关键词（可选）\n        :type Keyword: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchInfoList = None
         self.TotalCount = None
         self.PageNumber = None
@@ -624,9 +506,7 @@ class DescribeMatchingProgressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchTicketIds: 匹配票据 ID列表, 列表长度 12。
-        :type MatchTicketIds: list of MTicket
-        """
+        :param MatchTicketIds: 匹配票据 ID列表, 列表长度 12。\n        :type MatchTicketIds: list of MTicket\n        """
         self.MatchTicketIds = None
 
 
@@ -654,14 +534,8 @@ class DescribeMatchingProgressResponse(AbstractModel):
     def __init__(self):
         """
         :param MatchTickets: 匹配票据列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchTickets: list of MatchTicket
-        :param ErrCode: 错误码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchTickets: list of MatchTicket\n        :param ErrCode: 错误码
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchTickets = None
         self.ErrCode = None
         self.RequestId = None
@@ -685,9 +559,7 @@ class DescribeRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        """
+        :param RuleCode: 规则code\n        :type RuleCode: str\n        """
         self.RuleCode = None
 
 
@@ -710,11 +582,7 @@ class DescribeRuleResponse(AbstractModel):
     def __init__(self):
         """
         :param RuleInfo: 规则信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleInfo = None
         self.RequestId = None
 
@@ -733,17 +601,7 @@ class DescribeRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNumber: 当前页号，不传则返回第一页
-        :type PageNumber: int
-        :param PageSize: 单页大小，最大 30，不填默认30
-        :type PageSize: int
-        :param SearchType: 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
-        :type SearchType: str
-        :param Keyword: 查询关键词，针对SearchType进行具体过滤的内容。
-        :type Keyword: str
-        :param Tags: 标签列表，用于过滤。
-        :type Tags: list of Tag
-        """
+        :param PageNumber: 当前页号，不传则返回第一页\n        :type PageNumber: int\n        :param PageSize: 单页大小，最大 30，不填默认30\n        :type PageSize: int\n        :param SearchType: 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。\n        :type SearchType: str\n        :param Keyword: 查询关键词，针对SearchType进行具体过滤的内容。\n        :type Keyword: str\n        :param Tags: 标签列表，用于过滤。\n        :type Tags: list of Tag\n        """
         self.PageNumber = None
         self.PageSize = None
         self.SearchType = None
@@ -779,21 +637,7 @@ class DescribeRulesResponse(AbstractModel):
     def __init__(self):
         """
         :param RuleInfoList: 规则信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleInfoList: list of RuleBriefInfo
-        :param TotalCount: 总记录数
-        :type TotalCount: int
-        :param PageNumber: 当前页号
-        :type PageNumber: int
-        :param PageSize: 单页大小
-        :type PageSize: int
-        :param SearchType: 查询类型（可选）matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
-        :type SearchType: str
-        :param Keyword: 查询关键词（可选）
-        :type Keyword: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleInfoList: list of RuleBriefInfo\n        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param PageNumber: 当前页号\n        :type PageNumber: int\n        :param PageSize: 单页大小\n        :type PageSize: int\n        :param SearchType: 查询类型（可选）matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value\n        :type SearchType: str\n        :param Keyword: 查询关键词（可选）\n        :type Keyword: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleInfoList = None
         self.TotalCount = None
         self.PageNumber = None
@@ -825,9 +669,7 @@ class DescribeTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        """
+        :param MatchCode: 匹配code\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -850,14 +692,8 @@ class DescribeTokenResponse(AbstractModel):
     def __init__(self):
         """
         :param MatchToken: 当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchToken: str
-        :param CompatibleSpan: 当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CompatibleSpan: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchToken: str\n        :param CompatibleSpan: 当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CompatibleSpan: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchToken = None
         self.CompatibleSpan = None
         self.RequestId = None
@@ -876,11 +712,7 @@ class MTicket(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配Code
-        :type MatchCode: str
-        :param MatchTicketId: 匹配票据 ID
-        :type MatchTicketId: str
-        """
+        :param MatchCode: 匹配Code\n        :type MatchCode: str\n        :param MatchTicketId: 匹配票据 ID\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.MatchTicketId = None
 
@@ -904,19 +736,7 @@ class MatchAttribute(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 属性名 长度 128 [a-zA-Z0-9-\.]*
-        :type Name: str
-        :param Type: 属性类型: 0 数值; 1 string; 默认 0
-        :type Type: int
-        :param NumberValue: 数字属性值 默认 0.0
-        :type NumberValue: float
-        :param StringValue: 字符串属性值 长度 128 默认 ""
-        :type StringValue: str
-        :param ListValue: list 属性值
-        :type ListValue: list of str
-        :param MapValue: 字典属性值
-        :type MapValue: list of AttributeMap
-        """
+        :param Name: 属性名 长度 128 [a-zA-Z0-9-\.]*\n        :type Name: str\n        :param Type: 属性类型: 0 数值; 1 string; 默认 0\n        :type Type: int\n        :param NumberValue: 数字属性值 默认 0.0\n        :type NumberValue: float\n        :param StringValue: 字符串属性值 长度 128 默认 ""\n        :type StringValue: str\n        :param ListValue: list 属性值\n        :type ListValue: list of str\n        :param MapValue: 字典属性值\n        :type MapValue: list of AttributeMap\n        """
         self.Name = None
         self.Type = None
         self.NumberValue = None
@@ -954,9 +774,7 @@ class MatchCodeAttr(AbstractModel):
     def __init__(self):
         """
         :param MatchCode: 匹配code
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchCode: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchCode: str\n        """
         self.MatchCode = None
 
 
@@ -978,74 +796,24 @@ class MatchInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        :param MatchName: 匹配名称
-        :type MatchName: str
-        :param MatchDesc: 匹配描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchDesc: str
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param Timeout: 超时时间
-        :type Timeout: int
-        :param NotifyUrl: 接收通知地址
-        :type NotifyUrl: str
-        :param ServerType: 是否为匹配结果请求服务器资源，0否，1请求GSE资源
-        :type ServerType: int
-        :param ServerRegion: 服务器队列所在地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServerRegion: str
-        :param ServerQueue: 服务器队列
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServerQueue: str
-        :param CustomPushData: 自定义推送数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomPushData: str
-        :param ServerSessionData: 游戏服务器会话数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServerSessionData: str
-        :param GameProperties: 游戏属性
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GameProperties: list of StringKV
-        :param LogSwitch: 日志开关，0表示关，1表示开
-        :type LogSwitch: int
-        :param LogsetId: 日志集id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogsetId: str
-        :param LogsetName: 日志集名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogsetName: str
-        :param LogTopicId: 日志主题id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogTopicId: str
-        :param LogTopicName: 日志主题名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogTopicName: str
-        :param Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of StringKV
-        :param Region: 地区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Region: str
-        :param AppId: 用户AppId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppId: str
-        :param Uin: 用户主账号Uin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Uin: str
-        :param CreateUin: 用户创建账号Uin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateUin: str
-        :param RuleName: 规则名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleName: str
-        :param LogStatus: 日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogStatus: int
-        """
+        :param MatchCode: 匹配code\n        :type MatchCode: str\n        :param MatchName: 匹配名称\n        :type MatchName: str\n        :param MatchDesc: 匹配描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchDesc: str\n        :param RuleCode: 规则code\n        :type RuleCode: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Timeout: 超时时间\n        :type Timeout: int\n        :param NotifyUrl: 接收通知地址\n        :type NotifyUrl: str\n        :param ServerType: 是否为匹配结果请求服务器资源，0否，1请求GSE资源\n        :type ServerType: int\n        :param ServerRegion: 服务器队列所在地域
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServerRegion: str\n        :param ServerQueue: 服务器队列
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServerQueue: str\n        :param CustomPushData: 自定义推送数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomPushData: str\n        :param ServerSessionData: 游戏服务器会话数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServerSessionData: str\n        :param GameProperties: 游戏属性
+注意：此字段可能返回 null，表示取不到有效值。\n        :type GameProperties: list of StringKV\n        :param LogSwitch: 日志开关，0表示关，1表示开\n        :type LogSwitch: int\n        :param LogsetId: 日志集id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogsetId: str\n        :param LogsetName: 日志集名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogsetName: str\n        :param LogTopicId: 日志主题id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogTopicId: str\n        :param LogTopicName: 日志主题名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogTopicName: str\n        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of StringKV\n        :param Region: 地区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: str\n        :param Uin: 用户主账号Uin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Uin: str\n        :param CreateUin: 用户创建账号Uin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateUin: str\n        :param RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleName: str\n        :param LogStatus: 日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogStatus: int\n        """
         self.MatchCode = None
         self.MatchName = None
         self.MatchDesc = None
@@ -1125,32 +893,12 @@ class MatchTicket(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 匹配票据 ID长度 128 [a-zA-Z0-9-\.]*
-        :type Id: str
-        :param MatchCode: 匹配 Code
-        :type MatchCode: str
-        :param MatchResult: 根据 MatchType 取不同的结构序列化结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchResult: str
-        :param MatchType: 表示不同的匹配类型,NORMAL | GSE
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchType: str
-        :param Players: 玩家信息列表
-        :type Players: list of Player
-        :param Status: 匹配状态: SEARCHING 匹配中; PLACING 匹配放置中; COMPLETED 匹配完成; CANCELLED 匹配取消; TIMEDOUT 匹配超时; FAILED 匹配失败
-        :type Status: str
-        :param StatusMessage: 匹配状态信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusMessage: str
-        :param StatusReason: 匹配状态原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusReason: str
-        :param StartTime: 收到发起匹配请求的时间 eg: "2020-08-17T08:14:38.077Z"
-        :type StartTime: str
-        :param EndTime: 匹配请求因完成、失败、超时、被取消而停止执行的时间 eg: "2020-08-17T08:14:38.077Z"
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndTime: str
-        """
+        :param Id: 匹配票据 ID长度 128 [a-zA-Z0-9-\.]*\n        :type Id: str\n        :param MatchCode: 匹配 Code\n        :type MatchCode: str\n        :param MatchResult: 根据 MatchType 取不同的结构序列化结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchResult: str\n        :param MatchType: 表示不同的匹配类型,NORMAL | GSE
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchType: str\n        :param Players: 玩家信息列表\n        :type Players: list of Player\n        :param Status: 匹配状态: SEARCHING 匹配中; PLACING 匹配放置中; COMPLETED 匹配完成; CANCELLED 匹配取消; TIMEDOUT 匹配超时; FAILED 匹配失败\n        :type Status: str\n        :param StatusMessage: 匹配状态信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusMessage: str\n        :param StatusReason: 匹配状态原因
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusReason: str\n        :param StartTime: 收到发起匹配请求的时间 eg: "2020-08-17T08:14:38.077Z"\n        :type StartTime: str\n        :param EndTime: 匹配请求因完成、失败、超时、被取消而停止执行的时间 eg: "2020-08-17T08:14:38.077Z"
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: str\n        """
         self.Id = None
         self.MatchCode = None
         self.MatchResult = None
@@ -1195,35 +943,7 @@ class ModifyMatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchName: 匹配名称，[a-zA-Z0-9-\.]* 长度128
-        :type MatchName: str
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        :param Timeout: 超时时间，1-600秒
-        :type Timeout: int
-        :param ServerType: 是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源
-        :type ServerType: int
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        :param MatchDesc: 匹配描述，最长1024
-        :type MatchDesc: str
-        :param NotifyUrl: 只支持 http 和 https 协议
-        :type NotifyUrl: str
-        :param ServerRegion: 游戏服务器队列地域
-        :type ServerRegion: str
-        :param ServerQueue: 游戏服务器队列
-        :type ServerQueue: str
-        :param CustomPushData: 自定义推送数据
-        :type CustomPushData: str
-        :param ServerSessionData: 游戏服务器会话数据
-        :type ServerSessionData: str
-        :param GameProperties: 游戏属性，key-value结构的数组
-        :type GameProperties: list of StringKV
-        :param LogSwitch: 日志开关，0表示关，1表示开
-        :type LogSwitch: int
-        :param Tags: 标签，key-value结构的数组
-        :type Tags: list of StringKV
-        """
+        :param MatchName: 匹配名称，[a-zA-Z0-9-\.]* 长度128\n        :type MatchName: str\n        :param RuleCode: 规则code\n        :type RuleCode: str\n        :param Timeout: 超时时间，1-600秒\n        :type Timeout: int\n        :param ServerType: 是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源\n        :type ServerType: int\n        :param MatchCode: 匹配code\n        :type MatchCode: str\n        :param MatchDesc: 匹配描述，最长1024\n        :type MatchDesc: str\n        :param NotifyUrl: 只支持 http 和 https 协议\n        :type NotifyUrl: str\n        :param ServerRegion: 游戏服务器队列地域\n        :type ServerRegion: str\n        :param ServerQueue: 游戏服务器队列\n        :type ServerQueue: str\n        :param CustomPushData: 自定义推送数据\n        :type CustomPushData: str\n        :param ServerSessionData: 游戏服务器会话数据\n        :type ServerSessionData: str\n        :param GameProperties: 游戏属性，key-value结构的数组\n        :type GameProperties: list of StringKV\n        :param LogSwitch: 日志开关，0表示关，1表示开\n        :type LogSwitch: int\n        :param Tags: 标签，key-value结构的数组\n        :type Tags: list of StringKV\n        """
         self.MatchName = None
         self.RuleCode = None
         self.Timeout = None
@@ -1281,11 +1001,7 @@ class ModifyMatchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchInfo: 匹配信息
-        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MatchInfo: 匹配信息\n        :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchInfo = None
         self.RequestId = None
 
@@ -1304,15 +1020,7 @@ class ModifyRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        :param RuleName: 规则名称，只能包含数字、字母、. 和 -
-        :type RuleName: str
-        :param RuleDesc: 规则描述，最长1024
-        :type RuleDesc: str
-        :param Tags: 标签，key-value结构的数组，最多关联50组标签
-        :type Tags: list of StringKV
-        """
+        :param RuleCode: 规则code\n        :type RuleCode: str\n        :param RuleName: 规则名称，只能包含数字、字母、. 和 -\n        :type RuleName: str\n        :param RuleDesc: 规则描述，最长1024\n        :type RuleDesc: str\n        :param Tags: 标签，key-value结构的数组，最多关联50组标签\n        :type Tags: list of StringKV\n        """
         self.RuleCode = None
         self.RuleName = None
         self.RuleDesc = None
@@ -1345,11 +1053,7 @@ class ModifyRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleInfo: 规则信息
-        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleInfo: 规则信息\n        :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleInfo = None
         self.RequestId = None
 
@@ -1368,13 +1072,7 @@ class ModifyTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配Code。
-        :type MatchCode: str
-        :param CompatibleSpan: 单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。
-        :type CompatibleSpan: int
-        :param MatchToken: Token，[a-zA-Z0-9-_.], 长度0-64。如果为空，将由GPM随机生成。
-        :type MatchToken: str
-        """
+        :param MatchCode: 匹配Code。\n        :type MatchCode: str\n        :param CompatibleSpan: 单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。\n        :type CompatibleSpan: int\n        :param MatchToken: Token，[a-zA-Z0-9-_.], 长度0-64。如果为空，将由GPM随机生成。\n        :type MatchToken: str\n        """
         self.MatchCode = None
         self.CompatibleSpan = None
         self.MatchToken = None
@@ -1400,14 +1098,8 @@ class ModifyTokenResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchToken: 成功设置的Token。
-        :type MatchToken: str
-        :param CompatibleSpan: 当前Token被替换后，GPM将持续推送原Token的时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CompatibleSpan: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MatchToken: 成功设置的Token。\n        :type MatchToken: str\n        :param CompatibleSpan: 当前Token被替换后，GPM将持续推送原Token的时间。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CompatibleSpan: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchToken = None
         self.CompatibleSpan = None
         self.RequestId = None
@@ -1426,21 +1118,7 @@ class Player(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*
-        :type Id: str
-        :param Name: 玩家昵称，长度 128
-        :type Name: str
-        :param MatchAttributes: 玩家匹配属性，最多 10 条
-        :type MatchAttributes: list of MatchAttribute
-        :param Team: 队伍名，可以传递不同队伍名，长度 128 [a-zA-Z0-9-\.]*
-        :type Team: str
-        :param CustomPlayerStatus: 自定义玩家状态 透传参数 [0, 99999]
-        :type CustomPlayerStatus: int
-        :param CustomProfile: 自定义玩家信息 透传参数 长度 1024
-        :type CustomProfile: str
-        :param RegionLatencies: 各区域延迟，最多 20 条
-        :type RegionLatencies: list of RegionLatency
-        """
+        :param Id: 玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*\n        :type Id: str\n        :param Name: 玩家昵称，长度 128\n        :type Name: str\n        :param MatchAttributes: 玩家匹配属性，最多 10 条\n        :type MatchAttributes: list of MatchAttribute\n        :param Team: 队伍名，可以传递不同队伍名，长度 128 [a-zA-Z0-9-\.]*\n        :type Team: str\n        :param CustomPlayerStatus: 自定义玩家状态 透传参数 [0, 99999]\n        :type CustomPlayerStatus: int\n        :param CustomProfile: 自定义玩家信息 透传参数 长度 1024\n        :type CustomProfile: str\n        :param RegionLatencies: 各区域延迟，最多 20 条\n        :type RegionLatencies: list of RegionLatency\n        """
         self.Id = None
         self.Name = None
         self.MatchAttributes = None
@@ -1499,11 +1177,7 @@ ap-mumbai          亚太地区(孟买)
 na-ashburn          美国东部(弗吉尼亚)
 ap-bangkok          亚太地区(曼谷)
 eu-moscow          欧洲地区(莫斯科)
-ap-tokyo          亚太地区(东京)
-        :type Region: str
-        :param Latency: 毫秒延迟 0～999999
-        :type Latency: int
-        """
+ap-tokyo          亚太地区(东京)\n        :type Region: str\n        :param Latency: 毫秒延迟 0～999999\n        :type Latency: int\n        """
         self.Region = None
         self.Latency = None
 
@@ -1527,17 +1201,7 @@ class ReportOverviewData(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalTimes: 总次数
-        :type TotalTimes: str
-        :param SuccessPercent: 成功率
-        :type SuccessPercent: float
-        :param TimeoutPercent: 超时率
-        :type TimeoutPercent: float
-        :param FailPercent: 失败率
-        :type FailPercent: float
-        :param AverageSec: 平均匹配时间
-        :type AverageSec: float
-        """
+        :param TotalTimes: 总次数\n        :type TotalTimes: str\n        :param SuccessPercent: 成功率\n        :type SuccessPercent: float\n        :param TimeoutPercent: 超时率\n        :type TimeoutPercent: float\n        :param FailPercent: 失败率\n        :type FailPercent: float\n        :param AverageSec: 平均匹配时间\n        :type AverageSec: float\n        """
         self.TotalTimes = None
         self.SuccessPercent = None
         self.TimeoutPercent = None
@@ -1567,19 +1231,7 @@ class ReportTrendData(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalList: 总次数
-        :type TotalList: list of str
-        :param CancelList: 被取消次数
-        :type CancelList: list of str
-        :param SuccessList: 成功次数
-        :type SuccessList: list of str
-        :param FailList: 失败次数
-        :type FailList: list of str
-        :param TimeoutList: 超时次数
-        :type TimeoutList: list of str
-        :param TimeList: 时间数组，单位：秒
-        :type TimeList: list of str
-        """
+        :param TotalList: 总次数\n        :type TotalList: list of str\n        :param CancelList: 被取消次数\n        :type CancelList: list of str\n        :param SuccessList: 成功次数\n        :type SuccessList: list of str\n        :param FailList: 失败次数\n        :type FailList: list of str\n        :param TimeoutList: 超时次数\n        :type TimeoutList: list of str\n        :param TimeList: 时间数组，单位：秒\n        :type TimeList: list of str\n        """
         self.TotalList = None
         self.CancelList = None
         self.SuccessList = None
@@ -1611,15 +1263,7 @@ class RuleBriefInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: 规则名称 [a-zA-Z\d-\.]*
-        :type RuleName: str
-        :param MatchCodeList: 关联匹配
-        :type MatchCodeList: list of StringKV
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        """
+        :param RuleName: 规则名称 [a-zA-Z\d-\.]*\n        :type RuleName: str\n        :param MatchCodeList: 关联匹配\n        :type MatchCodeList: list of StringKV\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param RuleCode: 规则code\n        :type RuleCode: str\n        """
         self.RuleName = None
         self.MatchCodeList = None
         self.CreateTime = None
@@ -1652,36 +1296,14 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: 规则名称 [a-zA-Z0-9-\.]*
-        :type RuleName: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param RuleDesc: 规则描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleDesc: str
-        :param RuleScript: 规则脚本
-        :type RuleScript: str
-        :param Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of StringKV
-        :param MatchCodeList: 关联匹配
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchCodeList: list of StringKV
-        :param RuleCode: 规则code
-        :type RuleCode: str
-        :param Region: 地区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Region: str
-        :param AppId: 用户AppId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppId: str
-        :param Uin: 用户Uin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Uin: str
-        :param CreateUin: 用户OwnerUin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateUin: str
-        """
+        :param RuleName: 规则名称 [a-zA-Z0-9-\.]*\n        :type RuleName: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param RuleDesc: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleDesc: str\n        :param RuleScript: 规则脚本\n        :type RuleScript: str\n        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of StringKV\n        :param MatchCodeList: 关联匹配
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchCodeList: list of StringKV\n        :param RuleCode: 规则code\n        :type RuleCode: str\n        :param Region: 地区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: str\n        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Uin: str\n        :param CreateUin: 用户OwnerUin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateUin: str\n        """
         self.RuleName = None
         self.CreateTime = None
         self.RuleDesc = None
@@ -1733,15 +1355,7 @@ class StartMatchingBackfillRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配code
-        :type MatchCode: str
-        :param Players: 玩家信息
-        :type Players: list of Player
-        :param GameServerSessionId: 游戏服务器回话 ID [1-256] 个ASCII 字符
-        :type GameServerSessionId: str
-        :param MatchTicketId: 匹配票据 Id 默认 "" 为空则由 GPM 自动生成 长度 [1, 128]
-        :type MatchTicketId: str
-        """
+        :param MatchCode: 匹配code\n        :type MatchCode: str\n        :param Players: 玩家信息\n        :type Players: list of Player\n        :param GameServerSessionId: 游戏服务器回话 ID [1-256] 个ASCII 字符\n        :type GameServerSessionId: str\n        :param MatchTicketId: 匹配票据 Id 默认 "" 为空则由 GPM 自动生成 长度 [1, 128]\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.Players = None
         self.GameServerSessionId = None
@@ -1775,11 +1389,7 @@ class StartMatchingBackfillResponse(AbstractModel):
     def __init__(self):
         """
         :param MatchTicket: 匹配票据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchTicket: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MatchTicket: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MatchTicket = None
         self.RequestId = None
 
@@ -1798,13 +1408,7 @@ class StartMatchingRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchCode: 匹配 Code。
-        :type MatchCode: str
-        :param Players: 玩家信息 最多 200 条。
-        :type Players: list of Player
-        :param MatchTicketId: 匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
-        :type MatchTicketId: str
-        """
+        :param MatchCode: 匹配 Code。\n        :type MatchCode: str\n        :param Players: 玩家信息 最多 200 条。\n        :type Players: list of Player\n        :param MatchTicketId: 匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -\n        :type MatchTicketId: str\n        """
         self.MatchCode = None
         self.Players = None
         self.MatchTicketId = None
@@ -1835,13 +1439,7 @@ class StartMatchingResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ErrCode: 错误码。
-        :type ErrCode: int
-        :param MatchTicketId: 匹配票据 ID长度 128。
-        :type MatchTicketId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ErrCode: 错误码。\n        :type ErrCode: int\n        :param MatchTicketId: 匹配票据 ID长度 128。\n        :type MatchTicketId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ErrCode = None
         self.MatchTicketId = None
         self.RequestId = None
@@ -1860,11 +1458,7 @@ class StringKV(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 键
-        :type Key: str
-        :param Value: 值
-        :type Value: str
-        """
+        :param Key: 键\n        :type Key: str\n        :param Value: 值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -1888,11 +1482,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 

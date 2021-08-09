@@ -25,15 +25,7 @@ class Location(AbstractModel):
 
     def __init__(self):
         """
-        :param XMin: 位置矩形框的左上角横坐标
-        :type XMin: int
-        :param YMin: 位置矩形框的左上角纵坐标
-        :type YMin: int
-        :param XMax: 位置矩形框的右下角横坐标
-        :type XMax: int
-        :param YMax: 位置矩形框的右下角纵坐标
-        :type YMax: int
-        """
+        :param XMin: 位置矩形框的左上角横坐标\n        :type XMin: int\n        :param YMin: 位置矩形框的左上角纵坐标\n        :type YMin: int\n        :param XMax: 位置矩形框的右下角横坐标\n        :type XMax: int\n        :param YMax: 位置矩形框的右下角纵坐标\n        :type YMax: int\n        """
         self.XMin = None
         self.YMin = None
         self.XMax = None
@@ -64,25 +56,9 @@ class ProductInfo(AbstractModel):
         """
         :param FindSKU: 1表示找到同款商品，以下字段为同款商品信息； 
 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目。  
-是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
-        :type FindSKU: int
-        :param Location: 本商品在图片中的坐标，表示为矩形框的四个顶点坐标。
-        :type Location: :class:`tencentcloud.iir.v20200417.models.Location`
-        :param Name: 商品名称
-        :type Name: str
-        :param Brand: 商品品牌
-        :type Brand: str
-        :param Price: 参考价格，综合多个信息源，仅供参考。
-        :type Price: str
-        :param ProductCategory: 识别结果的商品类目。 
+是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。\n        :type FindSKU: int\n        :param Location: 本商品在图片中的坐标，表示为矩形框的四个顶点坐标。\n        :type Location: :class:`tencentcloud.iir.v20200417.models.Location`\n        :param Name: 商品名称\n        :type Name: str\n        :param Brand: 商品品牌\n        :type Brand: str\n        :param Price: 参考价格，综合多个信息源，仅供参考。\n        :type Price: str\n        :param ProductCategory: 识别结果的商品类目。 
 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。 
-当类别为“非商品”时，除Location、Score和本字段之外的商品信息为空。
-        :type ProductCategory: str
-        :param Score: 输入图片中的主体物品和输出结果的相似度。分值越大，输出结果与输入图片是同款的可能性越高。
-        :type Score: float
-        :param Image: 搜索到的商品配图URL
-        :type Image: str
-        """
+当类别为“非商品”时，除Location、Score和本字段之外的商品信息为空。\n        :type ProductCategory: str\n        :param Score: 输入图片中的主体物品和输出结果的相似度。分值越大，输出结果与输入图片是同款的可能性越高。\n        :type Score: float\n        :param Image: 搜索到的商品配图URL\n        :type Image: str\n        """
         self.FindSKU = None
         self.Location = None
         self.Name = None
@@ -121,13 +97,9 @@ class RecognizeProductRequest(AbstractModel):
     def __init__(self):
         """
         :param ImageUrl: 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
-建议先对图片进行压缩，以便提升处理速度。
-        :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
+建议先对图片进行压缩，以便提升处理速度。\n        :type ImageUrl: str\n        :param ImageBase64: 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
 与ImageUrl同时存在时优先使用ImageUrl字段。
-**注意：图片需要base64编码，并且要去掉编码头部。**
-        :type ImageBase64: str
-        """
+**注意：图片需要base64编码，并且要去掉编码头部。**\n        :type ImageBase64: str\n        """
         self.ImageUrl = None
         self.ImageBase64 = None
 
@@ -153,14 +125,8 @@ class RecognizeProductResponse(AbstractModel):
         """
         :param RegionDetected: 检测到的图片中的商品位置和品类预测。 
 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
-最多可以输出__3组__检测结果。
-        :type RegionDetected: list of RegionDetected
-        :param ProductInfo: 图像识别出的商品的详细信息。 
-当图像中检测到多个物品时，会对显著性最高的进行识别。
-        :type ProductInfo: :class:`tencentcloud.iir.v20200417.models.ProductInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+最多可以输出__3组__检测结果。\n        :type RegionDetected: list of RegionDetected\n        :param ProductInfo: 图像识别出的商品的详细信息。 
+当图像中检测到多个物品时，会对显著性最高的进行识别。\n        :type ProductInfo: :class:`tencentcloud.iir.v20200417.models.ProductInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionDetected = None
         self.ProductInfo = None
         self.RequestId = None
@@ -189,13 +155,7 @@ class RegionDetected(AbstractModel):
     def __init__(self):
         """
         :param Category: 商品的品类预测结果。 
-包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
-        :type Category: str
-        :param CategoryScore: 商品品类预测的置信度
-        :type CategoryScore: float
-        :param Location: 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标
-        :type Location: :class:`tencentcloud.iir.v20200417.models.Location`
-        """
+包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。\n        :type Category: str\n        :param CategoryScore: 商品品类预测的置信度\n        :type CategoryScore: float\n        :param Location: 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标\n        :type Location: :class:`tencentcloud.iir.v20200417.models.Location`\n        """
         self.Category = None
         self.CategoryScore = None
         self.Location = None

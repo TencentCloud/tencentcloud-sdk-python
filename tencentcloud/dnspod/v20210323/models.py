@@ -25,28 +25,8 @@ class AddRecordBatch(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordType: 记录类型, 详见 DescribeRecordType 接口。
-        :type RecordType: str
-        :param Value: 记录值。
-        :type Value: str
-        :param SubDomain: 子域名(主机记录)。
-        :type SubDomain: str
-        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口。
-        :type RecordLine: str
-        :param RecordLineId: 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId
-        :type RecordLineId: str
-        :param Weight: 记录权重值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Weight: int
-        :param MX: 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选
-        :type MX: int
-        :param TTL: 记录的 TTL 值，默认600
-        :type TTL: int
-        :param Enabled: 记录状态。0表示禁用，1表示启用，默认启用
-        :type Enabled: int
-        :param Remark: 记录别名
-        :type Remark: str
-        """
+        :param RecordType: 记录类型, 详见 DescribeRecordType 接口。\n        :type RecordType: str\n        :param Value: 记录值。\n        :type Value: str\n        :param SubDomain: 子域名(主机记录)。\n        :type SubDomain: str\n        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口。\n        :type RecordLine: str\n        :param RecordLineId: 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId\n        :type RecordLineId: str\n        :param Weight: 记录权重值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Weight: int\n        :param MX: 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选\n        :type MX: int\n        :param TTL: 记录的 TTL 值，默认600\n        :type TTL: int\n        :param Enabled: 记录状态。0表示禁用，1表示启用，默认启用\n        :type Enabled: int\n        :param Remark: 记录别名\n        :type Remark: str\n        """
         self.RecordType = None
         self.Value = None
         self.SubDomain = None
@@ -87,41 +67,17 @@ class BatchRecordInfo(AbstractModel):
     def __init__(self):
         """
         :param RecordId: 记录 ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordId: int
-        :param SubDomain: 子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubDomain: str
-        :param RecordType: 记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordType: str
-        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordLine: str
-        :param Value: 记录值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        :param TTL: 记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TTL: int
-        :param Status: 记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Id: 此条记录在列表中的ID
-        :type Id: int
-        :param Enabled: 记录生效状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Enabled: int
-        :param MX: 记录的MX权重
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MX: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordId: int\n        :param SubDomain: 子域名(主机记录)。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubDomain: str\n        :param RecordType: 记录类型, 详见 DescribeRecordType 接口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordType: str\n        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordLine: str\n        :param Value: 记录值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        :param TTL: 记录的 TTL 值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TTL: int\n        :param Status: 记录添加状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Id: 此条记录在列表中的ID\n        :type Id: int\n        :param Enabled: 记录生效状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Enabled: int\n        :param MX: 记录的MX权重
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MX: int\n        """
         self.RecordId = None
         self.SubDomain = None
         self.RecordType = None
@@ -165,13 +121,7 @@ class CreateDomainAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainAlias: 域名别名
-        :type DomainAlias: str
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
-        :type DomainId: int
-        """
+        :param DomainAlias: 域名别名\n        :type DomainAlias: str\n        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain\n        :type DomainId: int\n        """
         self.DomainAlias = None
         self.Domain = None
         self.DomainId = None
@@ -197,11 +147,7 @@ class CreateDomainAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainAliasId: 域名别名ID
-        :type DomainAliasId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DomainAliasId: 域名别名ID\n        :type DomainAliasId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DomainAliasId = None
         self.RequestId = None
 
@@ -219,26 +165,12 @@ class CreateDomainBatchDetail(AbstractModel):
     def __init__(self):
         """
         :param RecordList: 见RecordInfoBatch
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordList: list of CreateDomainBatchRecord
-        :param Id: 任务编号
-        :type Id: int
-        :param Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Domain: str
-        :param DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainGrade: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordList: list of CreateDomainBatchRecord\n        :param Id: 任务编号\n        :type Id: int\n        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        :param DomainGrade: 域名等级
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainGrade: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Status: 该条任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        """
         self.RecordList = None
         self.Id = None
         self.Domain = None
@@ -278,32 +210,14 @@ class CreateDomainBatchRecord(AbstractModel):
     def __init__(self):
         """
         :param SubDomain: 子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubDomain: str
-        :param RecordType: 记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordType: str
-        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordLine: str
-        :param Value: 记录值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        :param TTL: 记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TTL: int
-        :param Status: 记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Id: 此条记录在列表中的ID
-        :type Id: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubDomain: str\n        :param RecordType: 记录类型, 详见 DescribeRecordType 接口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordType: str\n        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordLine: str\n        :param Value: 记录值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        :param TTL: 记录的 TTL 值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TTL: int\n        :param Status: 记录添加状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Id: 此条记录在列表中的ID\n        :type Id: int\n        """
         self.SubDomain = None
         self.RecordType = None
         self.RecordLine = None
@@ -341,11 +255,7 @@ class CreateDomainBatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainList: 域名数组
-        :type DomainList: list of str
-        :param RecordValue: 每个域名添加 @ 和 www 的 A 记录值，记录值为IP，如果不传此参数或者传空，将只添加域名，不添加记录。
-        :type RecordValue: str
-        """
+        :param DomainList: 域名数组\n        :type DomainList: list of str\n        :param RecordValue: 每个域名添加 @ 和 www 的 A 记录值，记录值为IP，如果不传此参数或者传空，将只添加域名，不添加记录。\n        :type RecordValue: str\n        """
         self.DomainList = None
         self.RecordValue = None
 
@@ -369,13 +279,7 @@ class CreateDomainBatchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DetailList: 批量添加域名信息
-        :type DetailList: list of CreateDomainBatchDetail
-        :param JobId: 批量任务的ID
-        :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DetailList: 批量添加域名信息\n        :type DetailList: list of CreateDomainBatchDetail\n        :param JobId: 批量任务的ID\n        :type JobId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DetailList = None
         self.JobId = None
         self.RequestId = None
@@ -399,9 +303,7 @@ class CreateDomainGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupName: 域名分组
-        :type GroupName: str
-        """
+        :param GroupName: 域名分组\n        :type GroupName: str\n        """
         self.GroupName = None
 
 
@@ -423,11 +325,7 @@ class CreateDomainGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 域名分组ID
-        :type GroupId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param GroupId: 域名分组ID\n        :type GroupId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -444,13 +342,7 @@ class CreateDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param GroupId: 域名分组ID
-        :type GroupId: int
-        :param IsMark: 是否星标域名，”yes”、”no” 分别代表是和否。
-        :type IsMark: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param GroupId: 域名分组ID\n        :type GroupId: int\n        :param IsMark: 是否星标域名，”yes”、”no” 分别代表是和否。\n        :type IsMark: str\n        """
         self.Domain = None
         self.GroupId = None
         self.IsMark = None
@@ -476,11 +368,7 @@ class CreateDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainInfo: 域名信息
-        :type DomainInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCreateInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DomainInfo: 域名信息\n        :type DomainInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCreateInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DomainInfo = None
         self.RequestId = None
 
@@ -500,29 +388,13 @@ class CreateRecordBatchDetail(AbstractModel):
     def __init__(self):
         """
         :param RecordList: 见RecordInfoBatch
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordList: list of CreateRecordBatchRecord
-        :param Id: 任务编号
-        :type Id: int
-        :param Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Domain: str
-        :param DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainGrade: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param DomainId: 域名ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainId: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordList: list of CreateRecordBatchRecord\n        :param Id: 任务编号\n        :type Id: int\n        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        :param DomainGrade: 域名等级
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainGrade: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Status: 该条任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        :param DomainId: 域名ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainId: int\n        """
         self.RecordList = None
         self.Id = None
         self.Domain = None
@@ -564,35 +436,15 @@ class CreateRecordBatchRecord(AbstractModel):
     def __init__(self):
         """
         :param SubDomain: 子域名(主机记录)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubDomain: str
-        :param RecordType: 记录类型, 详见 DescribeRecordType 接口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordType: str
-        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordLine: str
-        :param Value: 记录值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        :param TTL: 记录的 TTL 值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TTL: int
-        :param Status: 记录添加状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Id: 此条记录在列表中的ID
-        :type Id: int
-        :param MX: 记录的MX权重
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MX: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubDomain: str\n        :param RecordType: 记录类型, 详见 DescribeRecordType 接口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordType: str\n        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordLine: str\n        :param Value: 记录值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        :param TTL: 记录的 TTL 值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TTL: int\n        :param Status: 记录添加状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Id: 此条记录在列表中的ID\n        :type Id: int\n        :param MX: 记录的MX权重
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MX: int\n        """
         self.SubDomain = None
         self.RecordType = None
         self.RecordLine = None
@@ -632,11 +484,7 @@ class CreateRecordBatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainIdList: 域名ID，多个 domain_id 用英文逗号进行分割。
-        :type DomainIdList: list of str
-        :param RecordList: 记录数组
-        :type RecordList: list of AddRecordBatch
-        """
+        :param DomainIdList: 域名ID，多个 domain_id 用英文逗号进行分割。\n        :type DomainIdList: list of str\n        :param RecordList: 记录数组\n        :type RecordList: list of AddRecordBatch\n        """
         self.DomainIdList = None
         self.RecordList = None
 
@@ -665,13 +513,7 @@ class CreateRecordBatchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DetailList: 批量添加域名信息
-        :type DetailList: list of CreateRecordBatchDetail
-        :param JobId: 批量任务的ID
-        :type JobId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DetailList: 批量添加域名信息\n        :type DetailList: list of CreateRecordBatchDetail\n        :param JobId: 批量任务的ID\n        :type JobId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DetailList = None
         self.JobId = None
         self.RequestId = None
@@ -695,29 +537,7 @@ class CreateRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。
-        :type RecordType: str
-        :param RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
-        :type RecordLine: str
-        :param Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-        :type Value: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。
-        :type SubDomain: str
-        :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
-        :type RecordLineId: str
-        :param MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
-        :type MX: int
-        :param TTL: TTL，范围1-604800，不同等级域名最小值不同。
-        :type TTL: int
-        :param Weight: 权重信息，0到100的整数。仅企业 VIP 域名可用，0 表示关闭，不传该参数，表示不设置权重信息。
-        :type Weight: int
-        :param Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
-        :type Status: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。\n        :type RecordType: str\n        :param RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。\n        :type RecordLine: str\n        :param Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。\n        :type Value: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。\n        :type SubDomain: str\n        :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。\n        :type RecordLineId: str\n        :param MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。\n        :type MX: int\n        :param TTL: TTL，范围1-604800，不同等级域名最小值不同。\n        :type TTL: int\n        :param Weight: 权重信息，0到100的整数。仅企业 VIP 域名可用，0 表示关闭，不传该参数，表示不设置权重信息。\n        :type Weight: int\n        :param Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。\n        :type Status: str\n        """
         self.Domain = None
         self.RecordType = None
         self.RecordLine = None
@@ -759,11 +579,7 @@ class CreateRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordId: 记录ID
-        :type RecordId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RecordId: 记录ID\n        :type RecordId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordId = None
         self.RequestId = None
 
@@ -780,13 +596,7 @@ class DeleteDomainAliasRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainAliasId: 域名别名ID
-        :type DomainAliasId: int
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
-        :type DomainId: int
-        """
+        :param DomainAliasId: 域名别名ID\n        :type DomainAliasId: int\n        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain\n        :type DomainId: int\n        """
         self.DomainAliasId = None
         self.Domain = None
         self.DomainId = None
@@ -812,9 +622,7 @@ class DeleteDomainAliasResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -829,11 +637,7 @@ class DeleteDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.DomainId = None
 
@@ -857,9 +661,7 @@ class DeleteDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -874,13 +676,7 @@ class DeleteRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordId: 记录 ID 。
-        :type RecordId: int
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordId: 记录 ID 。\n        :type RecordId: int\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.RecordId = None
         self.DomainId = None
@@ -906,9 +702,7 @@ class DeleteRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -923,13 +717,7 @@ class DeleteShareDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param Account: 域名共享的账号
-        :type Account: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param Account: 域名共享的账号\n        :type Account: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.Account = None
         self.DomainId = None
@@ -955,9 +743,7 @@ class DeleteShareDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -973,29 +759,13 @@ class DescribeBatchTaskDetail(AbstractModel):
     def __init__(self):
         """
         :param RecordList: 见BatchRecordInfo
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordList: list of BatchRecordInfo
-        :param Id: 任务编号
-        :type Id: int
-        :param Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Domain: str
-        :param DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainGrade: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param DomainId: 域名ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainId: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordList: list of BatchRecordInfo\n        :param Id: 任务编号\n        :type Id: int\n        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        :param DomainGrade: 域名等级
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainGrade: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Status: 该条任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        :param DomainId: 域名ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainId: int\n        """
         self.RecordList = None
         self.Id = None
         self.Domain = None
@@ -1036,9 +806,7 @@ class DescribeBatchTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 任务ID
-        :type JobId: int
-        """
+        :param JobId: 任务ID\n        :type JobId: int\n        """
         self.JobId = None
 
 
@@ -1060,21 +828,7 @@ class DescribeBatchTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DetailList: 批量任务详情
-        :type DetailList: list of DescribeBatchTaskDetail
-        :param TotalCount: 总任务条数
-        :type TotalCount: int
-        :param SuccessCount: 成功条数
-        :type SuccessCount: int
-        :param FailCount: 失败条数
-        :type FailCount: int
-        :param JobType: 批量任务类型
-        :type JobType: str
-        :param CreatedAt: 任务创建时间
-        :type CreatedAt: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DetailList: 批量任务详情\n        :type DetailList: list of DescribeBatchTaskDetail\n        :param TotalCount: 总任务条数\n        :type TotalCount: int\n        :param SuccessCount: 成功条数\n        :type SuccessCount: int\n        :param FailCount: 失败条数\n        :type FailCount: int\n        :param JobType: 批量任务类型\n        :type JobType: str\n        :param CreatedAt: 任务创建时间\n        :type CreatedAt: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DetailList = None
         self.TotalCount = None
         self.SuccessCount = None
@@ -1106,17 +860,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
-        :type Type: str
-        :param Offset: 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
-        :type Offset: int
-        :param Limit: 要获取的域名数量, 比如获取20个, 则为20。默认值为3000。
-        :type Limit: int
-        :param GroupId: 分组ID, 获取指定分组的域名
-        :type GroupId: int
-        :param Keyword: 根据关键字搜索域名
-        :type Keyword: str
-        """
+        :param Type: 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。\n        :type Type: str\n        :param Offset: 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。\n        :type Offset: int\n        :param Limit: 要获取的域名数量, 比如获取20个, 则为20。默认值为3000。\n        :type Limit: int\n        :param GroupId: 分组ID, 获取指定分组的域名\n        :type GroupId: int\n        :param Keyword: 根据关键字搜索域名\n        :type Keyword: str\n        """
         self.Type = None
         self.Offset = None
         self.Limit = None
@@ -1146,13 +890,7 @@ class DescribeDomainListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainCountInfo: 列表页统计信息
-        :type DomainCountInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`
-        :param DomainList: 域名列表
-        :type DomainList: list of DomainListItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DomainCountInfo: 列表页统计信息\n        :type DomainCountInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`\n        :param DomainList: 域名列表\n        :type DomainList: list of DomainListItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DomainCountInfo = None
         self.DomainList = None
         self.RequestId = None
@@ -1178,15 +916,7 @@ class DescribeDomainLogListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        :param Offset: 记录开始的偏移，第一条记录为 0，依次类推，默认为0
-        :type Offset: int
-        :param Limit: 共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条。
-        :type Limit: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        :param Offset: 记录开始的偏移，第一条记录为 0，依次类推，默认为0\n        :type Offset: int\n        :param Limit: 共要获取的日志条数，比如获取20条，则为20，默认为500条，单次最多获取500条。\n        :type Limit: int\n        """
         self.Domain = None
         self.DomainId = None
         self.Offset = None
@@ -1215,15 +945,7 @@ class DescribeDomainLogListResponse(AbstractModel):
     def __init__(self):
         """
         :param LogList: 域名信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogList: list of str
-        :param PageSize: 分页大小
-        :type PageSize: int
-        :param TotalCount: 日志总条数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogList: list of str\n        :param PageSize: 分页大小\n        :type PageSize: int\n        :param TotalCount: 日志总条数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogList = None
         self.PageSize = None
         self.TotalCount = None
@@ -1244,11 +966,7 @@ class DescribeDomainPurviewRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.DomainId = None
 
@@ -1272,11 +990,7 @@ class DescribeDomainPurviewResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PurviewList: 域名权限列表
-        :type PurviewList: list of PurviewInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PurviewList: 域名权限列表\n        :type PurviewList: list of PurviewInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PurviewList = None
         self.RequestId = None
 
@@ -1298,11 +1012,7 @@ class DescribeDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.DomainId = None
 
@@ -1326,11 +1036,7 @@ class DescribeDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainInfo: 域名信息
-        :type DomainInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DomainInfo: 域名信息\n        :type DomainInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DomainInfo = None
         self.RequestId = None
 
@@ -1349,11 +1055,7 @@ class DescribeDomainShareInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.DomainId = None
 
@@ -1377,13 +1079,7 @@ class DescribeDomainShareInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ShareList: 域名共享信息
-        :type ShareList: list of DomainShareInfo
-        :param Owner: 域名拥有者账号
-        :type Owner: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ShareList: 域名共享信息\n        :type ShareList: list of DomainShareInfo\n        :param Owner: 域名拥有者账号\n        :type Owner: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ShareList = None
         self.Owner = None
         self.RequestId = None
@@ -1407,15 +1103,9 @@ class DescribeRecordLineListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名。
-        :type Domain: str
-        :param DomainGrade: 域名等级。
+        :param Domain: 域名。\n        :type Domain: str\n        :param DomainGrade: 域名等级。
 + 旧套餐：D_FREE、D_PLUS、D_EXTRA、D_EXPERT、D_ULTRA 分别对应免费套餐、个人豪华、企业1、企业2、企业3。
-+ 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。
-        :type DomainGrade: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
++ 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。\n        :type DomainGrade: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.DomainGrade = None
         self.DomainId = None
@@ -1441,13 +1131,7 @@ class DescribeRecordLineListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LineList: 线路列表。
-        :type LineList: list of LineInfo
-        :param LineGroupList: 线路分组列表。
-        :type LineGroupList: list of LineGroupInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param LineList: 线路列表。\n        :type LineList: list of LineInfo\n        :param LineGroupList: 线路分组列表。\n        :type LineGroupList: list of LineGroupInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LineList = None
         self.LineGroupList = None
         self.RequestId = None
@@ -1476,31 +1160,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 要获取的解析记录所属的域名
-        :type Domain: str
-        :param DomainId: 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数
-        :type DomainId: int
-        :param Subdomain: 解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录
-        :type Subdomain: str
-        :param RecordType: 获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等
-        :type RecordType: str
-        :param RecordLine: 获取某条线路名称的解析记录
-        :type RecordLine: str
-        :param RecordLineId: 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数
-        :type RecordLineId: str
-        :param GroupId: 获取某个分组下的解析记录时，传这个分组Id
-        :type GroupId: int
-        :param Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
-        :type Keyword: str
-        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。
-        :type SortField: str
-        :param SortType: 排序方式，正序：ASC，逆序：DESC。默认值为ASC。
-        :type SortType: str
-        :param Offset: 偏移量，默认值为0。
-        :type Offset: int
-        :param Limit: 限制数量，当前Limit最大支持3000。默认值为100。
-        :type Limit: int
-        """
+        :param Domain: 要获取的解析记录所属的域名\n        :type Domain: str\n        :param DomainId: 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数\n        :type DomainId: int\n        :param Subdomain: 解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录\n        :type Subdomain: str\n        :param RecordType: 获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等\n        :type RecordType: str\n        :param RecordLine: 获取某条线路名称的解析记录\n        :type RecordLine: str\n        :param RecordLineId: 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数\n        :type RecordLineId: str\n        :param GroupId: 获取某个分组下的解析记录时，传这个分组Id\n        :type GroupId: int\n        :param Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值\n        :type Keyword: str\n        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。\n        :type SortField: str\n        :param SortType: 排序方式，正序：ASC，逆序：DESC。默认值为ASC。\n        :type SortType: str\n        :param Offset: 偏移量，默认值为0。\n        :type Offset: int\n        :param Limit: 限制数量，当前Limit最大支持3000。默认值为100。\n        :type Limit: int\n        """
         self.Domain = None
         self.DomainId = None
         self.Subdomain = None
@@ -1544,13 +1204,7 @@ class DescribeRecordListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordCountInfo: 记录的数量统计信息
-        :type RecordCountInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`
-        :param RecordList: 获取的记录列表
-        :type RecordList: list of RecordListItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RecordCountInfo: 记录的数量统计信息\n        :type RecordCountInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`\n        :param RecordList: 获取的记录列表\n        :type RecordList: list of RecordListItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordCountInfo = None
         self.RecordList = None
         self.RequestId = None
@@ -1576,13 +1230,7 @@ class DescribeRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordId: 记录 ID 。
-        :type RecordId: int
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordId: 记录 ID 。\n        :type RecordId: int\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.RecordId = None
         self.DomainId = None
@@ -1608,11 +1256,7 @@ class DescribeRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordInfo: 记录信息
-        :type RecordInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RecordInfo: 记录信息\n        :type RecordInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordInfo = None
         self.RequestId = None
 
@@ -1633,9 +1277,7 @@ class DescribeRecordTypeRequest(AbstractModel):
         """
         :param DomainGrade: 域名等级。
 + 旧套餐：D_FREE、D_PLUS、D_EXTRA、D_EXPERT、D_ULTRA 分别对应免费套餐、个人豪华、企业1、企业2、企业3。
-+ 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。
-        :type DomainGrade: str
-        """
++ 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。\n        :type DomainGrade: str\n        """
         self.DomainGrade = None
 
 
@@ -1657,11 +1299,7 @@ class DescribeRecordTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TypeList: 记录类型列表
-        :type TypeList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TypeList: 记录类型列表\n        :type TypeList: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TypeList = None
         self.RequestId = None
 
@@ -1684,11 +1322,7 @@ class DescribeUserDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UserInfo: 帐户信息
-        :type UserInfo: :class:`tencentcloud.dnspod.v20210323.models.UserInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param UserInfo: 帐户信息\n        :type UserInfo: :class:`tencentcloud.dnspod.v20210323.models.UserInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserInfo = None
         self.RequestId = None
 
@@ -1707,31 +1341,7 @@ class DomainCountInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainTotal: 符合条件的域名数量
-        :type DomainTotal: int
-        :param AllTotal: 用户可以查看的所有域名数量
-        :type AllTotal: int
-        :param MineTotal: 用户账号添加的域名数量
-        :type MineTotal: int
-        :param ShareTotal: 共享给用户的域名数量
-        :type ShareTotal: int
-        :param VipTotal: 付费域名数量
-        :type VipTotal: int
-        :param PauseTotal: 暂停的域名数量
-        :type PauseTotal: int
-        :param ErrorTotal: dns设置错误的域名数量
-        :type ErrorTotal: int
-        :param LockTotal: 锁定的域名数量
-        :type LockTotal: int
-        :param SpamTotal: 封禁的域名数量
-        :type SpamTotal: int
-        :param VipExpire: 30天内即将到期的域名数量
-        :type VipExpire: int
-        :param ShareOutTotal: 分享给其它人的域名数量
-        :type ShareOutTotal: int
-        :param GroupTotal: 指定分组内的域名数量
-        :type GroupTotal: int
-        """
+        :param DomainTotal: 符合条件的域名数量\n        :type DomainTotal: int\n        :param AllTotal: 用户可以查看的所有域名数量\n        :type AllTotal: int\n        :param MineTotal: 用户账号添加的域名数量\n        :type MineTotal: int\n        :param ShareTotal: 共享给用户的域名数量\n        :type ShareTotal: int\n        :param VipTotal: 付费域名数量\n        :type VipTotal: int\n        :param PauseTotal: 暂停的域名数量\n        :type PauseTotal: int\n        :param ErrorTotal: dns设置错误的域名数量\n        :type ErrorTotal: int\n        :param LockTotal: 锁定的域名数量\n        :type LockTotal: int\n        :param SpamTotal: 封禁的域名数量\n        :type SpamTotal: int\n        :param VipExpire: 30天内即将到期的域名数量\n        :type VipExpire: int\n        :param ShareOutTotal: 分享给其它人的域名数量\n        :type ShareOutTotal: int\n        :param GroupTotal: 指定分组内的域名数量\n        :type GroupTotal: int\n        """
         self.DomainTotal = None
         self.AllTotal = None
         self.MineTotal = None
@@ -1775,15 +1385,7 @@ class DomainCreateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 域名ID
-        :type Id: int
-        :param Domain: 域名
-        :type Domain: str
-        :param Punycode: 域名的punycode
-        :type Punycode: str
-        :param GradeNsList: 域名的NS列表
-        :type GradeNsList: list of str
-        """
+        :param Id: 域名ID\n        :type Id: int\n        :param Domain: 域名\n        :type Domain: str\n        :param Punycode: 域名的punycode\n        :type Punycode: str\n        :param GradeNsList: 域名的NS列表\n        :type GradeNsList: list of str\n        """
         self.Id = None
         self.Domain = None
         self.Punycode = None
@@ -1811,56 +1413,10 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名ID
-        :type DomainId: int
-        :param Status: 域名状态
-        :type Status: str
-        :param Grade: 域名套餐等级
-        :type Grade: str
-        :param GroupId: 域名分组ID
-        :type GroupId: int
-        :param IsMark: 是否星标域名
-        :type IsMark: str
-        :param TTL: TTL(DNS记录缓存时间)
-        :type TTL: int
-        :param CnameSpeedup: cname加速启用状态
-        :type CnameSpeedup: str
-        :param Remark: 域名备注
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Remark: str
-        :param Punycode: 域名Punycode
-        :type Punycode: str
-        :param DnsStatus: 域名DNS状态
-        :type DnsStatus: str
-        :param DnspodNsList: 域名的NS列表
-        :type DnspodNsList: list of str
-        :param Domain: 域名
-        :type Domain: str
-        :param GradeLevel: 域名等级代号
-        :type GradeLevel: int
-        :param UserId: 域名所属的用户ID
-        :type UserId: int
-        :param IsVip: 是否为付费域名
-        :type IsVip: str
-        :param Owner: 域名所有者的账号
-        :type Owner: str
-        :param GradeTitle: 域名等级的描述
-        :type GradeTitle: str
-        :param CreatedOn: 域名创建时间
-        :type CreatedOn: str
-        :param UpdatedOn: 最后操作时间
-        :type UpdatedOn: str
-        :param Uin: 腾讯云账户Uin
-        :type Uin: str
-        :param ActualNsList: 域名实际使用的NS列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActualNsList: list of str
-        :param RecordCount: 域名的记录数量
-        :type RecordCount: int
-        :param OwnerNick: 域名所有者的账户昵称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OwnerNick: str
-        """
+        :param DomainId: 域名ID\n        :type DomainId: int\n        :param Status: 域名状态\n        :type Status: str\n        :param Grade: 域名套餐等级\n        :type Grade: str\n        :param GroupId: 域名分组ID\n        :type GroupId: int\n        :param IsMark: 是否星标域名\n        :type IsMark: str\n        :param TTL: TTL(DNS记录缓存时间)\n        :type TTL: int\n        :param CnameSpeedup: cname加速启用状态\n        :type CnameSpeedup: str\n        :param Remark: 域名备注
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param Punycode: 域名Punycode\n        :type Punycode: str\n        :param DnsStatus: 域名DNS状态\n        :type DnsStatus: str\n        :param DnspodNsList: 域名的NS列表\n        :type DnspodNsList: list of str\n        :param Domain: 域名\n        :type Domain: str\n        :param GradeLevel: 域名等级代号\n        :type GradeLevel: int\n        :param UserId: 域名所属的用户ID\n        :type UserId: int\n        :param IsVip: 是否为付费域名\n        :type IsVip: str\n        :param Owner: 域名所有者的账号\n        :type Owner: str\n        :param GradeTitle: 域名等级的描述\n        :type GradeTitle: str\n        :param CreatedOn: 域名创建时间\n        :type CreatedOn: str\n        :param UpdatedOn: 最后操作时间\n        :type UpdatedOn: str\n        :param Uin: 腾讯云账户Uin\n        :type Uin: str\n        :param ActualNsList: 域名实际使用的NS列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActualNsList: list of str\n        :param RecordCount: 域名的记录数量\n        :type RecordCount: int\n        :param OwnerNick: 域名所有者的账户昵称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OwnerNick: str\n        """
         self.DomainId = None
         self.Status = None
         self.Grade = None
@@ -1926,51 +1482,7 @@ class DomainListItem(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 系统分配给域名的唯一标识
-        :type DomainId: int
-        :param Name: 域名的原始格式
-        :type Name: str
-        :param Status: 域名的状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM
-        :type Status: str
-        :param TTL: 域名默认的解析记录默认TTL值
-        :type TTL: int
-        :param CNAMESpeedup: 是否开启CNAME加速，开启：ENABLE，未开启：DISABLE
-        :type CNAMESpeedup: str
-        :param DNSStatus: DNS 设置状态，错误：DNSERROR，正常：空字符串
-        :type DNSStatus: str
-        :param Grade: 域名的套餐等级代码
-        :type Grade: str
-        :param GroupId: 域名所属的分组Id
-        :type GroupId: int
-        :param SearchEnginePush: 是否开启搜索引擎推送优化，是：YES，否：NO
-        :type SearchEnginePush: str
-        :param Remark: 域名备注说明
-        :type Remark: str
-        :param Punycode: 经过punycode编码后的域名格式
-        :type Punycode: str
-        :param EffectiveDNS: 系统为域名分配的有效DNS
-        :type EffectiveDNS: list of str
-        :param GradeLevel: 域名套餐等级对应的序号
-        :type GradeLevel: int
-        :param GradeTitle: 套餐名称
-        :type GradeTitle: str
-        :param IsVip: 是否是付费套餐
-        :type IsVip: str
-        :param VipStartAt: 付费套餐开通时间
-        :type VipStartAt: str
-        :param VipEndAt: 付费套餐到期时间
-        :type VipEndAt: str
-        :param VipAutoRenew: 域名是否开通VIP自动续费，是：YES，否：NO，默认：DEFAULT
-        :type VipAutoRenew: str
-        :param RecordCount: 域名下的记录数量
-        :type RecordCount: int
-        :param CreatedOn: 域名添加时间
-        :type CreatedOn: str
-        :param UpdatedOn: 域名更新时间
-        :type UpdatedOn: str
-        :param Owner: 域名所属账号
-        :type Owner: str
-        """
+        :param DomainId: 系统分配给域名的唯一标识\n        :type DomainId: int\n        :param Name: 域名的原始格式\n        :type Name: str\n        :param Status: 域名的状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM\n        :type Status: str\n        :param TTL: 域名默认的解析记录默认TTL值\n        :type TTL: int\n        :param CNAMESpeedup: 是否开启CNAME加速，开启：ENABLE，未开启：DISABLE\n        :type CNAMESpeedup: str\n        :param DNSStatus: DNS 设置状态，错误：DNSERROR，正常：空字符串\n        :type DNSStatus: str\n        :param Grade: 域名的套餐等级代码\n        :type Grade: str\n        :param GroupId: 域名所属的分组Id\n        :type GroupId: int\n        :param SearchEnginePush: 是否开启搜索引擎推送优化，是：YES，否：NO\n        :type SearchEnginePush: str\n        :param Remark: 域名备注说明\n        :type Remark: str\n        :param Punycode: 经过punycode编码后的域名格式\n        :type Punycode: str\n        :param EffectiveDNS: 系统为域名分配的有效DNS\n        :type EffectiveDNS: list of str\n        :param GradeLevel: 域名套餐等级对应的序号\n        :type GradeLevel: int\n        :param GradeTitle: 套餐名称\n        :type GradeTitle: str\n        :param IsVip: 是否是付费套餐\n        :type IsVip: str\n        :param VipStartAt: 付费套餐开通时间\n        :type VipStartAt: str\n        :param VipEndAt: 付费套餐到期时间\n        :type VipEndAt: str\n        :param VipAutoRenew: 域名是否开通VIP自动续费，是：YES，否：NO，默认：DEFAULT\n        :type VipAutoRenew: str\n        :param RecordCount: 域名下的记录数量\n        :type RecordCount: int\n        :param CreatedOn: 域名添加时间\n        :type CreatedOn: str\n        :param UpdatedOn: 域名更新时间\n        :type UpdatedOn: str\n        :param Owner: 域名所属账号\n        :type Owner: str\n        """
         self.DomainId = None
         self.Name = None
         self.Status = None
@@ -2034,13 +1546,7 @@ class DomainShareInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ShareTo: 域名共享对象的账号
-        :type ShareTo: str
-        :param Mode: 共享模式，“rw”：可读写。 “r”:：只读
-        :type Mode: str
-        :param Status: 共享状态“enabled”：共享成功。“pending”：共享到的账号不存在, 等待注册
-        :type Status: str
-        """
+        :param ShareTo: 域名共享对象的账号\n        :type ShareTo: str\n        :param Mode: 共享模式，“rw”：可读写。 “r”:：只读\n        :type Mode: str\n        :param Status: 共享状态“enabled”：共享成功。“pending”：共享到的账号不存在, 等待注册\n        :type Status: str\n        """
         self.ShareTo = None
         self.Mode = None
         self.Status = None
@@ -2066,15 +1572,7 @@ class LineGroupInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param LineId: 线路分组ID
-        :type LineId: str
-        :param Name: 线路分组名称
-        :type Name: str
-        :param Type: 分组类型
-        :type Type: str
-        :param LineList: 线路分组包含的线路列表
-        :type LineList: list of str
-        """
+        :param LineId: 线路分组ID\n        :type LineId: str\n        :param Name: 线路分组名称\n        :type Name: str\n        :param Type: 分组类型\n        :type Type: str\n        :param LineList: 线路分组包含的线路列表\n        :type LineList: list of str\n        """
         self.LineId = None
         self.Name = None
         self.Type = None
@@ -2102,11 +1600,7 @@ class LineInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 线路名称
-        :type Name: str
-        :param LineId: 线路ID
-        :type LineId: str
-        """
+        :param Name: 线路名称\n        :type Name: str\n        :param LineId: 线路ID\n        :type LineId: str\n        """
         self.Name = None
         self.LineId = None
 
@@ -2130,13 +1624,7 @@ class LockInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名 ID
-        :type DomainId: int
-        :param LockCode: 域名解锁码
-        :type LockCode: str
-        :param LockEnd: 域名自动解锁日期
-        :type LockEnd: str
-        """
+        :param DomainId: 域名 ID\n        :type DomainId: int\n        :param LockCode: 域名解锁码\n        :type LockCode: str\n        :param LockEnd: 域名自动解锁日期\n        :type LockEnd: str\n        """
         self.DomainId = None
         self.LockCode = None
         self.LockEnd = None
@@ -2162,13 +1650,7 @@ class ModifyDomainLockRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param LockDays: 域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。
-        :type LockDays: int
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param LockDays: 域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。\n        :type LockDays: int\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.LockDays = None
         self.DomainId = None
@@ -2194,11 +1676,7 @@ class ModifyDomainLockResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LockInfo: 域名锁定信息
-        :type LockInfo: :class:`tencentcloud.dnspod.v20210323.models.LockInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param LockInfo: 域名锁定信息\n        :type LockInfo: :class:`tencentcloud.dnspod.v20210323.models.LockInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LockInfo = None
         self.RequestId = None
 
@@ -2217,13 +1695,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param Account: 域名需要转入的账号，支持Uin或者邮箱格式
-        :type Account: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param Account: 域名需要转入的账号，支持Uin或者邮箱格式\n        :type Account: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.Account = None
         self.DomainId = None
@@ -2249,9 +1721,7 @@ class ModifyDomainOwnerResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2266,13 +1736,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        :param Remark: 域名备注，删除备注请提交空内容。
-        :type Remark: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        :param Remark: 域名备注，删除备注请提交空内容。\n        :type Remark: str\n        """
         self.Domain = None
         self.DomainId = None
         self.Remark = None
@@ -2298,9 +1762,7 @@ class ModifyDomainRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2315,13 +1777,7 @@ class ModifyDomainStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param Status: 域名状态，”enable” 、”disable” 分别代表启用和暂停
-        :type Status: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param Status: 域名状态，”enable” 、”disable” 分别代表启用和暂停\n        :type Status: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.Status = None
         self.DomainId = None
@@ -2347,9 +1803,7 @@ class ModifyDomainStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2364,13 +1818,7 @@ class ModifyDomainUnlockRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param LockCode: 域名解锁码，锁定的时候会返回。
-        :type LockCode: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param LockCode: 域名解锁码，锁定的时候会返回。\n        :type LockCode: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.LockCode = None
         self.DomainId = None
@@ -2396,9 +1844,7 @@ class ModifyDomainUnlockResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2413,21 +1859,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordId: 记录ID。
-        :type RecordId: int
-        :param RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
-        :type RecordLine: str
-        :param Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-        :type Value: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。
-        :type SubDomain: str
-        :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
-        :type RecordLineId: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordId: 记录ID。\n        :type RecordId: int\n        :param RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。\n        :type RecordLine: str\n        :param Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。\n        :type Value: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。\n        :type SubDomain: str\n        :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。\n        :type RecordLineId: str\n        """
         self.Domain = None
         self.RecordId = None
         self.RecordLine = None
@@ -2461,11 +1893,7 @@ class ModifyDynamicDNSResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordId: 记录ID
-        :type RecordId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RecordId: 记录ID\n        :type RecordId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordId = None
         self.RequestId = None
 
@@ -2483,29 +1911,13 @@ class ModifyRecordBatchDetail(AbstractModel):
     def __init__(self):
         """
         :param RecordList: 见RecordInfoBatchModify
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordList: list of BatchRecordInfo
-        :param Id: 任务编号
-        :type Id: int
-        :param Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Domain: str
-        :param DomainGrade: 域名等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainGrade: str
-        :param ErrMsg: 错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrMsg: str
-        :param Status: 该条任务运行状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Operation: 操作类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param DomainId: 域名ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainId: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordList: list of BatchRecordInfo\n        :param Id: 任务编号\n        :type Id: int\n        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        :param DomainGrade: 域名等级
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainGrade: str\n        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrMsg: str\n        :param Status: 该条任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Operation: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Operation: str\n        :param DomainId: 域名ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainId: int\n        """
         self.RecordList = None
         self.Id = None
         self.Domain = None
@@ -2546,17 +1958,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordIdList: 记录ID数组
-        :type RecordIdList: list of int non-negative
-        :param Change: 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
-        :type Change: str
-        :param ChangeTo: 修改为，具体依赖 change 字段，必填参数。
-        :type ChangeTo: str
-        :param Value: 要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。
-        :type Value: str
-        :param MX: MX记录优先级，仅当修改为 MX 记录时为必填参数。
-        :type MX: str
-        """
+        :param RecordIdList: 记录ID数组\n        :type RecordIdList: list of int non-negative\n        :param Change: 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。\n        :type Change: str\n        :param ChangeTo: 修改为，具体依赖 change 字段，必填参数。\n        :type ChangeTo: str\n        :param Value: 要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。\n        :type Value: str\n        :param MX: MX记录优先级，仅当修改为 MX 记录时为必填参数。\n        :type MX: str\n        """
         self.RecordIdList = None
         self.Change = None
         self.ChangeTo = None
@@ -2586,13 +1988,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 批量任务ID
-        :type JobId: int
-        :param DetailList: 见modifyRecordBatchDetail
-        :type DetailList: list of ModifyRecordBatchDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param JobId: 批量任务ID\n        :type JobId: int\n        :param DetailList: 见modifyRecordBatchDetail\n        :type DetailList: list of ModifyRecordBatchDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.JobId = None
         self.DetailList = None
         self.RequestId = None
@@ -2616,15 +2012,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordId: 记录 ID 。
-        :type RecordId: int
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        :param Remark: 解析记录备注，删除备注请提交空内容。
-        :type Remark: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordId: 记录 ID 。\n        :type RecordId: int\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        :param Remark: 解析记录备注，删除备注请提交空内容。\n        :type Remark: str\n        """
         self.Domain = None
         self.RecordId = None
         self.DomainId = None
@@ -2652,9 +2040,7 @@ class ModifyRecordRemarkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2669,31 +2055,7 @@ class ModifyRecordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。
-        :type RecordType: str
-        :param RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。
-        :type RecordLine: str
-        :param Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
-        :type Value: str
-        :param RecordId: 记录 ID 。
-        :type RecordId: int
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。
-        :type SubDomain: str
-        :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
-        :type RecordLineId: str
-        :param MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。
-        :type MX: int
-        :param TTL: TTL，范围1-604800，不同等级域名最小值不同。
-        :type TTL: int
-        :param Weight: 权重信息，0到100的整数。仅企业 VIP 域名可用，0 表示关闭，不传该参数，表示不设置权重信息。
-        :type Weight: int
-        :param Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
-        :type Status: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。\n        :type RecordType: str\n        :param RecordLine: 记录线路，通过 API 记录线路获得，中文，比如：默认。\n        :type RecordLine: str\n        :param Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。\n        :type Value: str\n        :param RecordId: 记录 ID 。\n        :type RecordId: int\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。\n        :type SubDomain: str\n        :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。\n        :type RecordLineId: str\n        :param MX: MX 优先级，当记录类型是 MX 时有效，范围1-20，MX 记录时必选。\n        :type MX: int\n        :param TTL: TTL，范围1-604800，不同等级域名最小值不同。\n        :type TTL: int\n        :param Weight: 权重信息，0到100的整数。仅企业 VIP 域名可用，0 表示关闭，不传该参数，表示不设置权重信息。\n        :type Weight: int\n        :param Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。\n        :type Status: str\n        """
         self.Domain = None
         self.RecordType = None
         self.RecordLine = None
@@ -2737,11 +2099,7 @@ class ModifyRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordId: 记录ID
-        :type RecordId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RecordId: 记录ID\n        :type RecordId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordId = None
         self.RequestId = None
 
@@ -2758,15 +2116,7 @@ class ModifyRecordStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        :param RecordId: 记录 ID 。
-        :type RecordId: int
-        :param Status: 记录的状态。取值范围为 ENABLE 和 DISABLE。如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
-        :type Status: str
-        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
-        :type DomainId: int
-        """
+        :param Domain: 域名\n        :type Domain: str\n        :param RecordId: 记录 ID 。\n        :type RecordId: int\n        :param Status: 记录的状态。取值范围为 ENABLE 和 DISABLE。如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。\n        :type Status: str\n        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。\n        :type DomainId: int\n        """
         self.Domain = None
         self.RecordId = None
         self.Status = None
@@ -2794,11 +2144,7 @@ class ModifyRecordStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordId: 记录ID。
-        :type RecordId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RecordId: 记录ID。\n        :type RecordId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordId = None
         self.RequestId = None
 
@@ -2815,11 +2161,7 @@ class PurviewInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 权限名称
-        :type Name: str
-        :param Value: 权限值
-        :type Value: str
-        """
+        :param Name: 权限名称\n        :type Name: str\n        :param Value: 权限值\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -2843,13 +2185,7 @@ class RecordCountInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SubdomainCount: 子域名数量
-        :type SubdomainCount: int
-        :param ListCount: 列表返回的记录数
-        :type ListCount: int
-        :param TotalCount: 总的记录数
-        :type TotalCount: int
-        """
+        :param SubdomainCount: 子域名数量\n        :type SubdomainCount: int\n        :param ListCount: 列表返回的记录数\n        :type ListCount: int\n        :param TotalCount: 总的记录数\n        :type TotalCount: int\n        """
         self.SubdomainCount = None
         self.ListCount = None
         self.TotalCount = None
@@ -2875,41 +2211,13 @@ class RecordInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 记录 ID 。
-        :type Id: int
-        :param SubDomain: 子域名(主机记录)。
-        :type SubDomain: str
-        :param RecordType: 记录类型, 详见 DescribeRecordType 接口。
-        :type RecordType: str
-        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口。
-        :type RecordLine: str
-        :param RecordLineId: 解析记录的线路 ID ，详见 DescribeRecordLineList 接口。
-        :type RecordLineId: str
-        :param Value: 记录值。
-        :type Value: str
-        :param Weight: 记录权重值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Weight: int
-        :param MX: 记录的 MX 记录值，非 MX 记录类型，默认为 0。
-        :type MX: int
-        :param TTL: 记录的 TTL 值。
-        :type TTL: int
-        :param Enabled: 记录状态。0表示禁用，1表示启用。
-        :type Enabled: int
-        :param MonitorStatus: 该记录的 D 监控状态。
+        :param Id: 记录 ID 。\n        :type Id: int\n        :param SubDomain: 子域名(主机记录)。\n        :type SubDomain: str\n        :param RecordType: 记录类型, 详见 DescribeRecordType 接口。\n        :type RecordType: str\n        :param RecordLine: 解析记录的线路，详见 DescribeRecordLineList 接口。\n        :type RecordLine: str\n        :param RecordLineId: 解析记录的线路 ID ，详见 DescribeRecordLineList 接口。\n        :type RecordLineId: str\n        :param Value: 记录值。\n        :type Value: str\n        :param Weight: 记录权重值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Weight: int\n        :param MX: 记录的 MX 记录值，非 MX 记录类型，默认为 0。\n        :type MX: int\n        :param TTL: 记录的 TTL 值。\n        :type TTL: int\n        :param Enabled: 记录状态。0表示禁用，1表示启用。\n        :type Enabled: int\n        :param MonitorStatus: 该记录的 D 监控状态。
 "Ok" : 服务器正常。
 "Warn" : 该记录有报警, 服务器返回 4XX。
 "Down" : 服务器宕机。
-"" : 该记录未开启 D 监控。
-        :type MonitorStatus: str
-        :param Remark: 记录的备注。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Remark: str
-        :param UpdatedOn: 记录最后更新时间。
-        :type UpdatedOn: str
-        :param DomainId: 域名 ID 。
-        :type DomainId: int
-        """
+"" : 该记录未开启 D 监控。\n        :type MonitorStatus: str\n        :param Remark: 记录的备注。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param UpdatedOn: 记录最后更新时间。\n        :type UpdatedOn: str\n        :param DomainId: 域名 ID 。\n        :type DomainId: int\n        """
         self.Id = None
         self.SubDomain = None
         self.RecordType = None
@@ -2957,35 +2265,9 @@ class RecordListItem(AbstractModel):
 
     def __init__(self):
         """
-        :param RecordId: 记录Id
-        :type RecordId: int
-        :param Value: 记录值
-        :type Value: str
-        :param Status: 记录状态，启用：ENABLE，暂停：DISABLE
-        :type Status: str
-        :param UpdatedOn: 更新时间
-        :type UpdatedOn: str
-        :param Name: 主机名
-        :type Name: str
-        :param Line: 记录线路
-        :type Line: str
-        :param LineId: 线路Id
-        :type LineId: str
-        :param Type: 记录类型
-        :type Type: str
-        :param Weight: 记录权重，用于负载均衡记录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Weight: int
-        :param MonitorStatus: 记录监控状态，正常：OK，告警：WARN，宕机：DOWN，未设置监控或监控暂停则为空
-        :type MonitorStatus: str
-        :param Remark: 记录备注说明
-        :type Remark: str
-        :param TTL: 记录缓存时间
-        :type TTL: int
-        :param MX: MX值，只有MX记录有
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MX: int
-        """
+        :param RecordId: 记录Id\n        :type RecordId: int\n        :param Value: 记录值\n        :type Value: str\n        :param Status: 记录状态，启用：ENABLE，暂停：DISABLE\n        :type Status: str\n        :param UpdatedOn: 更新时间\n        :type UpdatedOn: str\n        :param Name: 主机名\n        :type Name: str\n        :param Line: 记录线路\n        :type Line: str\n        :param LineId: 线路Id\n        :type LineId: str\n        :param Type: 记录类型\n        :type Type: str\n        :param Weight: 记录权重，用于负载均衡记录
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Weight: int\n        :param MonitorStatus: 记录监控状态，正常：OK，告警：WARN，宕机：DOWN，未设置监控或监控暂停则为空\n        :type MonitorStatus: str\n        :param Remark: 记录备注说明\n        :type Remark: str\n        :param TTL: 记录缓存时间\n        :type TTL: int\n        :param MX: MX值，只有MX记录有
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MX: int\n        """
         self.RecordId = None
         self.Value = None
         self.Status = None
@@ -3031,29 +2313,7 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Nick: 用户昵称
-        :type Nick: str
-        :param Id: 用户ID
-        :type Id: int
-        :param Email: 用户账号, 邮箱格式
-        :type Email: str
-        :param Status: 账号状态：”enabled”: 正常；”disabled”: 被封禁
-        :type Status: str
-        :param Telephone: 电话号码
-        :type Telephone: str
-        :param EmailVerified: 邮箱是否通过验证：”yes”: 通过；”no”: 未通过
-        :type EmailVerified: str
-        :param TelephoneVerified: 手机是否通过验证：”yes”: 通过；”no”: 未通过
-        :type TelephoneVerified: str
-        :param UserGrade: 账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级。
-        :type UserGrade: str
-        :param RealName: 用户名称, 企业用户对应为公司名称
-        :type RealName: str
-        :param WechatBinded: 是否绑定微信：”yes”: 通过；”no”: 未通过
-        :type WechatBinded: str
-        :param Uin: 用户UIN
-        :type Uin: int
-        """
+        :param Nick: 用户昵称\n        :type Nick: str\n        :param Id: 用户ID\n        :type Id: int\n        :param Email: 用户账号, 邮箱格式\n        :type Email: str\n        :param Status: 账号状态：”enabled”: 正常；”disabled”: 被封禁\n        :type Status: str\n        :param Telephone: 电话号码\n        :type Telephone: str\n        :param EmailVerified: 邮箱是否通过验证：”yes”: 通过；”no”: 未通过\n        :type EmailVerified: str\n        :param TelephoneVerified: 手机是否通过验证：”yes”: 通过；”no”: 未通过\n        :type TelephoneVerified: str\n        :param UserGrade: 账号等级, 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级。\n        :type UserGrade: str\n        :param RealName: 用户名称, 企业用户对应为公司名称\n        :type RealName: str\n        :param WechatBinded: 是否绑定微信：”yes”: 通过；”no”: 未通过\n        :type WechatBinded: str\n        :param Uin: 用户UIN\n        :type Uin: int\n        """
         self.Nick = None
         self.Id = None
         self.Email = None

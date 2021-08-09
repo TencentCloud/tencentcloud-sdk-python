@@ -25,11 +25,7 @@ class Error(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: 一级错误描述
-        :type Code: str
-        :param Message: 二级错误描述
-        :type Message: str
-        """
+        :param Code: 一级错误描述\n        :type Code: str\n        :param Message: 二级错误描述\n        :type Message: str\n        """
         self.Code = None
         self.Message = None
 
@@ -53,19 +49,7 @@ class FlowProductRemindRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProviderUin: 服务商uin
-        :type ProviderUin: str
-        :param SignId: 服务商实例ID
-        :type SignId: str
-        :param ResourceId: 云市场实例ID
-        :type ResourceId: str
-        :param TotalFlow: 实例总流量
-        :type TotalFlow: str
-        :param LeftFlow: 剩余流量
-        :type LeftFlow: str
-        :param FlowUnit: 流量单位
-        :type FlowUnit: str
-        """
+        :param ProviderUin: 服务商uin\n        :type ProviderUin: str\n        :param SignId: 服务商实例ID\n        :type SignId: str\n        :param ResourceId: 云市场实例ID\n        :type ResourceId: str\n        :param TotalFlow: 实例总流量\n        :type TotalFlow: str\n        :param LeftFlow: 剩余流量\n        :type LeftFlow: str\n        :param FlowUnit: 流量单位\n        :type FlowUnit: str\n        """
         self.ProviderUin = None
         self.SignId = None
         self.ResourceId = None
@@ -97,16 +81,8 @@ class FlowProductRemindResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 是否成功
-        :type Success: str
-        :param FlowId: 流水号
-        :type FlowId: str
-        :param Info: 消息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 是否成功\n        :type Success: str\n        :param FlowId: 流水号\n        :type FlowId: str\n        :param Info: 消息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.FlowId = None
         self.Info = None
@@ -127,9 +103,7 @@ class GetUsagePlanUsageAmountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 用于查询实例的Id
-        :type InstanceId: str
-        """
+        :param InstanceId: 用于查询实例的Id\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -151,15 +125,7 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaxRequestNum: 最大调用量
-        :type MaxRequestNum: int
-        :param InUseRequestNum: 已经调用量
-        :type InUseRequestNum: int
-        :param RemainingRequestNum: 剩余调用量
-        :type RemainingRequestNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaxRequestNum: 最大调用量\n        :type MaxRequestNum: int\n        :param InUseRequestNum: 已经调用量\n        :type InUseRequestNum: int\n        :param RemainingRequestNum: 剩余调用量\n        :type RemainingRequestNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaxRequestNum = None
         self.InUseRequestNum = None
         self.RemainingRequestNum = None
@@ -180,31 +146,7 @@ class OfflineProductDeal(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductCode: 产品标签
-        :type ProductCode: str
-        :param SubProductCode: 子产品标签
-        :type SubProductCode: str
-        :param BillingItemCode: 计费项
-        :type BillingItemCode: str
-        :param SubBillingItemCode: 计费细项
-        :type SubBillingItemCode: str
-        :param UnitPrice: 单价（单位：分）
-        :type UnitPrice: float
-        :param Dosage: 用量
-        :type Dosage: float
-        :param DosageUnit: 用量单位
-        :type DosageUnit: str
-        :param TimeSpan: 商品的时间大小，当TimeUnit 是package时，timeSpan 只能传1。当TimeUnit是year；month；day；hour；minute；second，传具体时长。
-        :type TimeSpan: float
-        :param TimeUnit: 商品的时间单位：year:年；month:月；day:日；hour:小时；minute:分钟；second:秒; package:与价格无关,一次性购买的产品传package
-        :type TimeUnit: str
-        :param OriginPrice: 原价 （单位：分）OriginPrice=round(UnitPrice * Dosage * TimeSpan)
-        :type OriginPrice: int
-        :param Discount: 折扣百分比，传入0-100的值
-        :type Discount: float
-        :param Fee: 最终扣费金额（单位：分）Fee=round(OriginPrice*Discount/100)
-        :type Fee: int
-        """
+        :param ProductCode: 产品标签\n        :type ProductCode: str\n        :param SubProductCode: 子产品标签\n        :type SubProductCode: str\n        :param BillingItemCode: 计费项\n        :type BillingItemCode: str\n        :param SubBillingItemCode: 计费细项\n        :type SubBillingItemCode: str\n        :param UnitPrice: 单价（单位：分）\n        :type UnitPrice: float\n        :param Dosage: 用量\n        :type Dosage: float\n        :param DosageUnit: 用量单位\n        :type DosageUnit: str\n        :param TimeSpan: 商品的时间大小，当TimeUnit 是package时，timeSpan 只能传1。当TimeUnit是year；month；day；hour；minute；second，传具体时长。\n        :type TimeSpan: float\n        :param TimeUnit: 商品的时间单位：year:年；month:月；day:日；hour:小时；minute:分钟；second:秒; package:与价格无关,一次性购买的产品传package\n        :type TimeUnit: str\n        :param OriginPrice: 原价 （单位：分）OriginPrice=round(UnitPrice * Dosage * TimeSpan)\n        :type OriginPrice: int\n        :param Discount: 折扣百分比，传入0-100的值\n        :type Discount: float\n        :param Fee: 最终扣费金额（单位：分）Fee=round(OriginPrice*Discount/100)\n        :type Fee: int\n        """
         self.ProductCode = None
         self.SubProductCode = None
         self.BillingItemCode = None
@@ -249,15 +191,9 @@ class SyncUserAndOrderInfoDetail(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 腾讯云订单总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param MarketOrders: 腾讯云订单列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MarketOrders: list of str
-        :param OwnerUin: 腾讯云用户Uin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OwnerUin: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param MarketOrders: 腾讯云订单列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MarketOrders: list of str\n        :param OwnerUin: 腾讯云用户Uin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OwnerUin: str\n        """
         self.TotalCount = None
         self.MarketOrders = None
         self.OwnerUin = None
@@ -283,11 +219,7 @@ class SyncUserAndOrderInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserInfo: 企业微信用户信息
-        :type UserInfo: :class:`tencentcloud.market.v20191010.models.WeChatUserInfo`
-        :param OrderInfo: 企业微信订单信息
-        :type OrderInfo: :class:`tencentcloud.market.v20191010.models.WeChatOrderInfo`
-        """
+        :param UserInfo: 企业微信用户信息\n        :type UserInfo: :class:`tencentcloud.market.v20191010.models.WeChatUserInfo`\n        :param OrderInfo: 企业微信订单信息\n        :type OrderInfo: :class:`tencentcloud.market.v20191010.models.WeChatOrderInfo`\n        """
         self.UserInfo = None
         self.OrderInfo = None
 
@@ -315,13 +247,7 @@ class SyncUserAndOrderInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Details: 同步用户信息订单信息详情
-        :type Details: :class:`tencentcloud.market.v20191010.models.SyncUserAndOrderInfoDetail`
-        :param Info: 返回信息 成功返回 0 success
-        :type Info: :class:`tencentcloud.market.v20191010.models.Error`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Details: 同步用户信息订单信息详情\n        :type Details: :class:`tencentcloud.market.v20191010.models.SyncUserAndOrderInfoDetail`\n        :param Info: 返回信息 成功返回 0 success\n        :type Info: :class:`tencentcloud.market.v20191010.models.Error`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Details = None
         self.Info = None
         self.RequestId = None
@@ -344,33 +270,7 @@ class WeChatOrderInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: 企业微信订单号
-        :type OrderId: str
-        :param OrderStatus: 订单状态。0-未⽀支付，1-已⽀支付，2-已关闭， 3-未⽀支付且已过期， 4-申请退款中， 5-申请退款成功， 6-退款被拒绝
-        :type OrderStatus: int
-        :param OrderType: 订单类型。0-普通订单，1-扩容订单，2-续期，3-版本变更更
-        :type OrderType: int
-        :param SuiteId: 应⽤id
-        :type SuiteId: str
-        :param EditionId: 购买版本ID
-        :type EditionId: str
-        :param EditionName: 购买版本名称
-        :type EditionName: str
-        :param Price: 实付款金额，单位分
-        :type Price: int
-        :param OrderTime: 下单时间
-        :type OrderTime: int
-        :param PaidTime: 付款时间
-        :type PaidTime: int
-        :param Remark: 备注
-        :type Remark: str
-        :param UseBeginTime: 资源使用开始时间
-        :type UseBeginTime: int
-        :param UseEndTime: 资源使用结束时间
-        :type UseEndTime: int
-        :param Deals: 磐石详细的四层订单
-        :type Deals: :class:`tencentcloud.market.v20191010.models.OfflineProductDeal`
-        """
+        :param OrderId: 企业微信订单号\n        :type OrderId: str\n        :param OrderStatus: 订单状态。0-未⽀支付，1-已⽀支付，2-已关闭， 3-未⽀支付且已过期， 4-申请退款中， 5-申请退款成功， 6-退款被拒绝\n        :type OrderStatus: int\n        :param OrderType: 订单类型。0-普通订单，1-扩容订单，2-续期，3-版本变更更\n        :type OrderType: int\n        :param SuiteId: 应⽤id\n        :type SuiteId: str\n        :param EditionId: 购买版本ID\n        :type EditionId: str\n        :param EditionName: 购买版本名称\n        :type EditionName: str\n        :param Price: 实付款金额，单位分\n        :type Price: int\n        :param OrderTime: 下单时间\n        :type OrderTime: int\n        :param PaidTime: 付款时间\n        :type PaidTime: int\n        :param Remark: 备注\n        :type Remark: str\n        :param UseBeginTime: 资源使用开始时间\n        :type UseBeginTime: int\n        :param UseEndTime: 资源使用结束时间\n        :type UseEndTime: int\n        :param Deals: 磐石详细的四层订单\n        :type Deals: :class:`tencentcloud.market.v20191010.models.OfflineProductDeal`\n        """
         self.OrderId = None
         self.OrderStatus = None
         self.OrderType = None
@@ -418,11 +318,7 @@ class WeChatUserInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param PaidCorpId: 客户企业的corpid
-        :type PaidCorpId: str
-        :param PaidCorpName: 客户企业的Corp全称
-        :type PaidCorpName: str
-        """
+        :param PaidCorpId: 客户企业的corpid\n        :type PaidCorpId: str\n        :param PaidCorpName: 客户企业的Corp全称\n        :type PaidCorpName: str\n        """
         self.PaidCorpId = None
         self.PaidCorpName = None
 

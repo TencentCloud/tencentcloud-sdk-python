@@ -26,27 +26,13 @@ class ActivityInfo(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: 活动使用模板id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplateId: str
-        :param ActivityTitle: 活动标题
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivityTitle: str
-        :param ActivityDesc: 活动描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivityDesc: str
-        :param ActivityCover: 活动封面地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivityCover: str
-        :param ActivityType: 活动类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivityType: str
-        :param ActivityId: 活动id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivityId: str
-        :param PersonalConfig: 活动模板自定义配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PersonalConfig: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateId: str\n        :param ActivityTitle: 活动标题
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityTitle: str\n        :param ActivityDesc: 活动描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityDesc: str\n        :param ActivityCover: 活动封面地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityCover: str\n        :param ActivityType: 活动类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityType: str\n        :param ActivityId: 活动id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityId: str\n        :param PersonalConfig: 活动模板自定义配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PersonalConfig: str\n        """
         self.TemplateId = None
         self.ActivityTitle = None
         self.ActivityDesc = None
@@ -80,11 +66,7 @@ class CheckStaffChUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 员工ID
-        :type UserId: list of str
-        :param OperateType: 渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用
-        :type OperateType: str
-        """
+        :param UserId: 员工ID\n        :type UserId: list of str\n        :param OperateType: 渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用\n        :type OperateType: str\n        """
         self.UserId = None
         self.OperateType = None
 
@@ -108,9 +90,7 @@ class CheckStaffChUserResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -125,13 +105,7 @@ class CopyActivityChannelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ActivityId: 活动ID
-        :type ActivityId: str
-        :param ChannelFrom: 来源渠道ID
-        :type ChannelFrom: str
-        :param ChannelTo: 目的渠道id
-        :type ChannelTo: list of str
-        """
+        :param ActivityId: 活动ID\n        :type ActivityId: str\n        :param ChannelFrom: 来源渠道ID\n        :type ChannelFrom: str\n        :param ChannelTo: 目的渠道id\n        :type ChannelTo: list of str\n        """
         self.ActivityId = None
         self.ChannelFrom = None
         self.ChannelTo = None
@@ -157,9 +131,7 @@ class CopyActivityChannelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -174,17 +146,7 @@ class CreateProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectName: 项目名称
-        :type ProjectName: str
-        :param ProjectOrg: 项目机构
-        :type ProjectOrg: str
-        :param ProjectBudget: 项目预算
-        :type ProjectBudget: str
-        :param ProjectIntroduction: 项目简介
-        :type ProjectIntroduction: str
-        :param ProjectOrgId: 所属部门ID
-        :type ProjectOrgId: str
-        """
+        :param ProjectName: 项目名称\n        :type ProjectName: str\n        :param ProjectOrg: 项目机构\n        :type ProjectOrg: str\n        :param ProjectBudget: 项目预算\n        :type ProjectBudget: str\n        :param ProjectIntroduction: 项目简介\n        :type ProjectIntroduction: str\n        :param ProjectOrgId: 所属部门ID\n        :type ProjectOrgId: str\n        """
         self.ProjectName = None
         self.ProjectOrg = None
         self.ProjectBudget = None
@@ -214,11 +176,7 @@ class CreateProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectId = None
         self.RequestId = None
 
@@ -235,11 +193,7 @@ class CreateSubProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 所属项目id
-        :type ProjectId: str
-        :param SubProjectName: 子项目名称
-        :type SubProjectName: str
-        """
+        :param ProjectId: 所属项目id\n        :type ProjectId: str\n        :param SubProjectName: 子项目名称\n        :type SubProjectName: str\n        """
         self.ProjectId = None
         self.SubProjectName = None
 
@@ -263,11 +217,7 @@ class CreateSubProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SubProjectId: 子项目id
-        :type SubProjectId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SubProjectId: 子项目id\n        :type SubProjectId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubProjectId = None
         self.RequestId = None
 
@@ -285,65 +235,25 @@ class CustomerInfo(AbstractModel):
     def __init__(self):
         """
         :param Activity: 总活跃度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Activity: int
-        :param AudienceUserId: 客户ID
-        :type AudienceUserId: str
-        :param Avatar: 头像
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Avatar: str
-        :param City: 最近记录城市
-注意：此字段可能返回 null，表示取不到有效值。
-        :type City: str
-        :param LastActiveTime: 最活跃时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastActiveTime: str
-        :param MarkFlag: 是否星标客户
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MarkFlag: str
-        :param MonthActive: 30天活跃度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MonthActive: int
-        :param MonthRecommend: 30天推荐度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MonthRecommend: int
-        :param Phone: 手机号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Phone: str
-        :param Province: 最近记录省份
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Province: str
-        :param RealName: 姓名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RealName: str
-        :param RelChannelFlag: 员工标识 0 未关联 1 已关联
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RelChannelFlag: int
-        :param Sex: 性别 1男 2女
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Sex: int
-        :param Spread: 传播力（好友数）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Spread: int
-        :param WeekActive: 7天活跃度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WeekActive: int
-        :param WeekRecommend: 7天推荐度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WeekRecommend: int
-        :param WxCity: 微信城市
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxCity: str
-        :param WxCountry: 微信国家或地区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxCountry: str
-        :param WxNickname: 微信呢称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxNickname: str
-        :param WxProvince: 微信省份
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxProvince: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Activity: int\n        :param AudienceUserId: 客户ID\n        :type AudienceUserId: str\n        :param Avatar: 头像
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Avatar: str\n        :param City: 最近记录城市
+注意：此字段可能返回 null，表示取不到有效值。\n        :type City: str\n        :param LastActiveTime: 最活跃时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastActiveTime: str\n        :param MarkFlag: 是否星标客户
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MarkFlag: str\n        :param MonthActive: 30天活跃度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MonthActive: int\n        :param MonthRecommend: 30天推荐度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MonthRecommend: int\n        :param Phone: 手机号
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        :param Province: 最近记录省份
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Province: str\n        :param RealName: 姓名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RealName: str\n        :param RelChannelFlag: 员工标识 0 未关联 1 已关联
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RelChannelFlag: int\n        :param Sex: 性别 1男 2女
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Sex: int\n        :param Spread: 传播力（好友数）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Spread: int\n        :param WeekActive: 7天活跃度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WeekActive: int\n        :param WeekRecommend: 7天推荐度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WeekRecommend: int\n        :param WxCity: 微信城市
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxCity: str\n        :param WxCountry: 微信国家或地区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxCountry: str\n        :param WxNickname: 微信呢称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxNickname: str\n        :param WxProvince: 微信省份
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxProvince: str\n        """
         self.Activity = None
         self.AudienceUserId = None
         self.Avatar = None
@@ -403,9 +313,7 @@ class DeleteProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: str
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: str\n        """
         self.ProjectId = None
 
 
@@ -427,9 +335,7 @@ class DeleteProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -444,9 +350,7 @@ class DescribeCustomerRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户ID
-        :type UserId: str
-        """
+        :param UserId: 用户ID\n        :type UserId: str\n        """
         self.UserId = None
 
 
@@ -469,95 +373,35 @@ class DescribeCustomerResponse(AbstractModel):
     def __init__(self):
         """
         :param AddressList: 地址列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AddressList: list of str
-        :param UserId: 用户id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserId: str
-        :param Avatar: 头像
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Avatar: str
-        :param Birthday: 生日
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Birthday: str
-        :param City: 城市
-注意：此字段可能返回 null，表示取不到有效值。
-        :type City: str
-        :param CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: str
-        :param Device: 设备
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Device: str
-        :param Industrys: 行业
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Industrys: list of str
-        :param LastActiveTime: 上次登录时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastActiveTime: str
-        :param MarkFlag: 是否星标 1是 0否
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MarkFlag: str
-        :param Model: 手机型号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Model: str
-        :param OpenId: 微信openid
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OpenId: str
-        :param PayFeature: 消费特点
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PayFeature: str
-        :param Phone: 手机号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Phone: str
-        :param PhoneList: 手机号码列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneList: str
-        :param Province: 最近记录省份
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Province: str
-        :param RealName: 姓名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RealName: str
-        :param RelChannelFlag: 员工标识 0：非员工 1：员工
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RelChannelFlag: str
-        :param Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Remark: str
-        :param Sex: 性别 1男 2女
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Sex: str
-        :param SourceAudienceVo: 最初来源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SourceAudienceVo: str
-        :param SubWechats: 关注公众号列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubWechats: list of str
-        :param UnionId: 微信unionid
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnionId: str
-        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UpdateTime: str
-        :param UserTypes: 用户类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserTypes: list of str
-        :param WxCity: 城市
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxCity: str
-        :param WxCountry: 国家
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxCountry: str
-        :param WxNickname: 昵称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxNickname: str
-        :param WxProvince: 省份
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WxProvince: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AddressList: list of str\n        :param UserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param Avatar: 头像
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Avatar: str\n        :param Birthday: 生日
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Birthday: str\n        :param City: 城市
+注意：此字段可能返回 null，表示取不到有效值。\n        :type City: str\n        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param Device: 设备
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Device: str\n        :param Industrys: 行业
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Industrys: list of str\n        :param LastActiveTime: 上次登录时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastActiveTime: str\n        :param MarkFlag: 是否星标 1是 0否
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MarkFlag: str\n        :param Model: 手机型号
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Model: str\n        :param OpenId: 微信openid
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OpenId: str\n        :param PayFeature: 消费特点
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PayFeature: str\n        :param Phone: 手机号
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        :param PhoneList: 手机号码列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneList: str\n        :param Province: 最近记录省份
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Province: str\n        :param RealName: 姓名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RealName: str\n        :param RelChannelFlag: 员工标识 0：非员工 1：员工
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RelChannelFlag: str\n        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param Sex: 性别 1男 2女
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Sex: str\n        :param SourceAudienceVo: 最初来源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SourceAudienceVo: str\n        :param SubWechats: 关注公众号列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubWechats: list of str\n        :param UnionId: 微信unionid
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UnionId: str\n        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param UserTypes: 用户类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserTypes: list of str\n        :param WxCity: 城市
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxCity: str\n        :param WxCountry: 国家
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxCountry: str\n        :param WxNickname: 昵称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxNickname: str\n        :param WxProvince: 省份
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WxProvince: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AddressList = None
         self.UserId = None
         self.Avatar = None
@@ -630,33 +474,7 @@ class DescribeCustomersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param QueryType: 查询类型，0.个人，1负责部门，2.指定部门
-        :type QueryType: str
-        :param GroupId: 分组ID
-        :type GroupId: str
-        :param MarkFlag: 是否星级标记 1是 0否
-        :type MarkFlag: int
-        :param TagIds: 客户标签，多个标签用逗号隔开
-        :type TagIds: str
-        :param RelChannelFlag: 员工标识筛选，0：非员工，1：员工
-        :type RelChannelFlag: str
-        :param NeedPhoneFlag: 必须存在手机 1是 0否
-        :type NeedPhoneFlag: int
-        :param Province: 省份
-        :type Province: str
-        :param City: 城市
-        :type City: str
-        :param Sex: 性别 1男 2女
-        :type Sex: str
-        :param KeyWord: 城市
-        :type KeyWord: str
-        :param Offset: 查询开始位置
-        :type Offset: int
-        :param Limit: 每页记录条数
-        :type Limit: int
-        :param SubProjectId: 子项目ID
-        :type SubProjectId: str
-        """
+        :param QueryType: 查询类型，0.个人，1负责部门，2.指定部门\n        :type QueryType: str\n        :param GroupId: 分组ID\n        :type GroupId: str\n        :param MarkFlag: 是否星级标记 1是 0否\n        :type MarkFlag: int\n        :param TagIds: 客户标签，多个标签用逗号隔开\n        :type TagIds: str\n        :param RelChannelFlag: 员工标识筛选，0：非员工，1：员工\n        :type RelChannelFlag: str\n        :param NeedPhoneFlag: 必须存在手机 1是 0否\n        :type NeedPhoneFlag: int\n        :param Province: 省份\n        :type Province: str\n        :param City: 城市\n        :type City: str\n        :param Sex: 性别 1男 2女\n        :type Sex: str\n        :param KeyWord: 城市\n        :type KeyWord: str\n        :param Offset: 查询开始位置\n        :type Offset: int\n        :param Limit: 每页记录条数\n        :type Limit: int\n        :param SubProjectId: 子项目ID\n        :type SubProjectId: str\n        """
         self.QueryType = None
         self.GroupId = None
         self.MarkFlag = None
@@ -702,14 +520,8 @@ class DescribeCustomersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总记录条数
-        :type TotalCount: int
-        :param UserList: 数据列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserList: list of CustomerInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 总记录条数\n        :type TotalCount: int\n        :param UserList: 数据列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserList: list of CustomerInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.UserList = None
         self.RequestId = None
@@ -733,9 +545,7 @@ class DescribeProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: str
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: str\n        """
         self.ProjectId = None
 
 
@@ -757,26 +567,8 @@ class DescribeProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目id
-        :type ProjectId: str
-        :param ProjectName: 项目名称
-        :type ProjectName: str
-        :param ProjectBudget: 项目预算
-        :type ProjectBudget: float
-        :param ProjectOrg: 项目机构
-        :type ProjectOrg: str
-        :param ProjectIntroduction: 项目简介
-        :type ProjectIntroduction: str
-        :param SubProjectList: 子项目列表
-        :type SubProjectList: list of SubProjectInfo
-        :param ProjectStatus: 项目状态
-        :type ProjectStatus: str
-        :param ProjectOrgId: 项目机构Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProjectOrgId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProjectId: 项目id\n        :type ProjectId: str\n        :param ProjectName: 项目名称\n        :type ProjectName: str\n        :param ProjectBudget: 项目预算\n        :type ProjectBudget: float\n        :param ProjectOrg: 项目机构\n        :type ProjectOrg: str\n        :param ProjectIntroduction: 项目简介\n        :type ProjectIntroduction: str\n        :param SubProjectList: 子项目列表\n        :type SubProjectList: list of SubProjectInfo\n        :param ProjectStatus: 项目状态\n        :type ProjectStatus: str\n        :param ProjectOrgId: 项目机构Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectOrgId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectId = None
         self.ProjectName = None
         self.ProjectBudget = None
@@ -812,9 +604,7 @@ class DescribeProjectStockRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubProjectId: 子项目id
-        :type SubProjectId: str
-        """
+        :param SubProjectId: 子项目id\n        :type SubProjectId: str\n        """
         self.SubProjectId = None
 
 
@@ -836,11 +626,7 @@ class DescribeProjectStockResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectStocks: 项目库存列表
-        :type ProjectStocks: list of ProjectStock
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProjectStocks: 项目库存列表\n        :type ProjectStocks: list of ProjectStock\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectStocks = None
         self.RequestId = None
 
@@ -862,17 +648,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNo: 页码
-        :type PageNo: int
-        :param PageSize: 页面大小
-        :type PageSize: int
-        :param SearchWord: 过滤规则
-        :type SearchWord: str
-        :param Filters: 部门范围过滤
-        :type Filters: :class:`tencentcloud.solar.v20181011.models.Filters`
-        :param ProjectStatus: 项目状态, 0:编辑中 1:运营中 2:已下线 3:已删除 4:审批中
-        :type ProjectStatus: int
-        """
+        :param PageNo: 页码\n        :type PageNo: int\n        :param PageSize: 页面大小\n        :type PageSize: int\n        :param SearchWord: 过滤规则\n        :type SearchWord: str\n        :param Filters: 部门范围过滤\n        :type Filters: :class:`tencentcloud.solar.v20181011.models.Filters`\n        :param ProjectStatus: 项目状态, 0:编辑中 1:运营中 2:已下线 3:已删除 4:审批中\n        :type ProjectStatus: int\n        """
         self.PageNo = None
         self.PageSize = None
         self.SearchWord = None
@@ -904,13 +680,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectList: 项目列表
-        :type ProjectList: list of ProjectInfo
-        :param TotalCount: 项目数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProjectList: 项目列表\n        :type ProjectList: list of ProjectInfo\n        :param TotalCount: 项目数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectList = None
         self.TotalCount = None
         self.RequestId = None
@@ -934,9 +704,7 @@ class DescribeResourceTemplateHeadersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WxAppId: 微信公众号appId
-        :type WxAppId: str
-        """
+        :param WxAppId: 微信公众号appId\n        :type WxAppId: str\n        """
         self.WxAppId = None
 
 
@@ -958,14 +726,8 @@ class DescribeResourceTemplateHeadersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 记录条数
-        :type TotalCount: int
-        :param TmplList: 模板列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TmplList: list of ResourceTemplateHeader
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 记录条数\n        :type TotalCount: int\n        :param TmplList: 模板列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TmplList: list of ResourceTemplateHeader\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TmplList = None
         self.RequestId = None
@@ -989,9 +751,7 @@ class DescribeSubProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubProjectId: 子项目id
-        :type SubProjectId: str
-        """
+        :param SubProjectId: 子项目id\n        :type SubProjectId: str\n        """
         self.SubProjectId = None
 
 
@@ -1014,35 +774,15 @@ class DescribeSubProjectResponse(AbstractModel):
     def __init__(self):
         """
         :param ProductInfo: 作品信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductInfo: :class:`tencentcloud.solar.v20181011.models.ProductInfo`
-        :param ActivityInfo: 活动信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivityInfo: :class:`tencentcloud.solar.v20181011.models.ActivityInfo`
-        :param ShareTitle: 分享标题
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ShareTitle: str
-        :param ShareDesc: 分享描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ShareDesc: str
-        :param ShareImg: 分享图标
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ShareImg: str
-        :param HasStrategy: 是否已创建策略
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HasStrategy: int
-        :param SubProjectStatus: 子项目状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubProjectStatus: str
-        :param ShareAppId: 分享公众号的appId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ShareAppId: str
-        :param ShareWsId: 分享公众号的wsId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ShareWsId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductInfo: :class:`tencentcloud.solar.v20181011.models.ProductInfo`\n        :param ActivityInfo: 活动信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityInfo: :class:`tencentcloud.solar.v20181011.models.ActivityInfo`\n        :param ShareTitle: 分享标题
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ShareTitle: str\n        :param ShareDesc: 分享描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ShareDesc: str\n        :param ShareImg: 分享图标
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ShareImg: str\n        :param HasStrategy: 是否已创建策略
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HasStrategy: int\n        :param SubProjectStatus: 子项目状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubProjectStatus: str\n        :param ShareAppId: 分享公众号的appId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ShareAppId: str\n        :param ShareWsId: 分享公众号的wsId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ShareWsId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProductInfo = None
         self.ActivityInfo = None
         self.ShareTitle = None
@@ -1079,9 +819,7 @@ class ExpireFlowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 工单ID
-        :type FlowId: str
-        """
+        :param FlowId: 工单ID\n        :type FlowId: str\n        """
         self.FlowId = None
 
 
@@ -1103,9 +841,7 @@ class ExpireFlowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1120,13 +856,7 @@ class Filters(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 过滤类型, 0: 默认(可见部门+自创) 1: 自创 2: 指定部门(部门在可见范围内)
-        :type Type: int
-        :param DeptIds: 指定部门Id, 类型2使用
-        :type DeptIds: list of str
-        :param UserIds: 用户Id列表
-        :type UserIds: list of str
-        """
+        :param Type: 过滤类型, 0: 默认(可见部门+自创) 1: 自创 2: 指定部门(部门在可见范围内)\n        :type Type: int\n        :param DeptIds: 指定部门Id, 类型2使用\n        :type DeptIds: list of str\n        :param UserIds: 用户Id列表\n        :type UserIds: list of str\n        """
         self.Type = None
         self.DeptIds = None
         self.UserIds = None
@@ -1152,19 +882,7 @@ class ModifyProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: str
-        :param ProjectName: 项目名称
-        :type ProjectName: str
-        :param ProjectBudget: 项目预算
-        :type ProjectBudget: str
-        :param ProjectOrg: 项目机构
-        :type ProjectOrg: str
-        :param ProjectIntroduction: 项目简介
-        :type ProjectIntroduction: str
-        :param ProjectOrgId: 项目机构Id
-        :type ProjectOrgId: str
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: str\n        :param ProjectName: 项目名称\n        :type ProjectName: str\n        :param ProjectBudget: 项目预算\n        :type ProjectBudget: str\n        :param ProjectOrg: 项目机构\n        :type ProjectOrg: str\n        :param ProjectIntroduction: 项目简介\n        :type ProjectIntroduction: str\n        :param ProjectOrgId: 项目机构Id\n        :type ProjectOrgId: str\n        """
         self.ProjectId = None
         self.ProjectName = None
         self.ProjectBudget = None
@@ -1196,9 +914,7 @@ class ModifyProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1213,9 +929,7 @@ class OffLineProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: str
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: str\n        """
         self.ProjectId = None
 
 
@@ -1237,9 +951,7 @@ class OffLineProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1255,27 +967,13 @@ class ProductInfo(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: 模板id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplateId: str
-        :param ProductTitle: 模板主题
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductTitle: str
-        :param ProductDesc: 模板描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductDesc: str
-        :param ProductCover: 模板封面地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductCover: str
-        :param ProductId: 内容作品id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductId: str
-        :param ProductUrl: 作品预览链接
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductUrl: str
-        :param ProductName: 作品名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductName: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateId: str\n        :param ProductTitle: 模板主题
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductTitle: str\n        :param ProductDesc: 模板描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductDesc: str\n        :param ProductCover: 模板封面地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductCover: str\n        :param ProductId: 内容作品id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductId: str\n        :param ProductUrl: 作品预览链接
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductUrl: str\n        :param ProductName: 作品名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductName: str\n        """
         self.TemplateId = None
         self.ProductTitle = None
         self.ProductDesc = None
@@ -1309,24 +1007,8 @@ class ProjectInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: str
-        :param ProjectName: 项目名称
-        :type ProjectName: str
-        :param ProjectOrg: 项目所属机构
-        :type ProjectOrg: str
-        :param ProjectBudget: 项目预算
-        :type ProjectBudget: float
-        :param ProjectStatus: 项目状态
-        :type ProjectStatus: str
-        :param CreateTime: 项目创建时间
-        :type CreateTime: str
-        :param ProjectIntroduction: 项目简介
-        :type ProjectIntroduction: str
-        :param ProjectOrgId: 项目所属机构Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProjectOrgId: str
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: str\n        :param ProjectName: 项目名称\n        :type ProjectName: str\n        :param ProjectOrg: 项目所属机构\n        :type ProjectOrg: str\n        :param ProjectBudget: 项目预算\n        :type ProjectBudget: float\n        :param ProjectStatus: 项目状态\n        :type ProjectStatus: str\n        :param CreateTime: 项目创建时间\n        :type CreateTime: str\n        :param ProjectIntroduction: 项目简介\n        :type ProjectIntroduction: str\n        :param ProjectOrgId: 项目所属机构Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectOrgId: str\n        """
         self.ProjectId = None
         self.ProjectName = None
         self.ProjectOrg = None
@@ -1362,21 +1044,7 @@ class ProjectStock(AbstractModel):
 
     def __init__(self):
         """
-        :param PrizeId: 奖品id
-        :type PrizeId: str
-        :param PrizeBat: 奖品批次
-        :type PrizeBat: int
-        :param PrizeName: 奖品名称
-        :type PrizeName: str
-        :param UsedStock: 已分配奖品数量
-        :type UsedStock: int
-        :param RemainStock: 该奖品剩余库存数量
-        :type RemainStock: int
-        :param PoolIdx: 奖品所在奖池index
-        :type PoolIdx: int
-        :param PoolName: 奖品所在奖池名称
-        :type PoolName: str
-        """
+        :param PrizeId: 奖品id\n        :type PrizeId: str\n        :param PrizeBat: 奖品批次\n        :type PrizeBat: int\n        :param PrizeName: 奖品名称\n        :type PrizeName: str\n        :param UsedStock: 已分配奖品数量\n        :type UsedStock: int\n        :param RemainStock: 该奖品剩余库存数量\n        :type RemainStock: int\n        :param PoolIdx: 奖品所在奖池index\n        :type PoolIdx: int\n        :param PoolName: 奖品所在奖池名称\n        :type PoolName: str\n        """
         self.PrizeId = None
         self.PrizeBat = None
         self.PrizeName = None
@@ -1410,17 +1078,7 @@ class ReplenishProjectStockRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubProjectId: 项目id
-        :type SubProjectId: str
-        :param PrizeId: 奖品id
-        :type PrizeId: str
-        :param PrizeNum: 奖品数量
-        :type PrizeNum: int
-        :param PoolIndex: 奖池索引
-        :type PoolIndex: int
-        :param PoolName: 奖池名称
-        :type PoolName: str
-        """
+        :param SubProjectId: 项目id\n        :type SubProjectId: str\n        :param PrizeId: 奖品id\n        :type PrizeId: str\n        :param PrizeNum: 奖品数量\n        :type PrizeNum: int\n        :param PoolIndex: 奖池索引\n        :type PoolIndex: int\n        :param PoolName: 奖池名称\n        :type PoolName: str\n        """
         self.SubProjectId = None
         self.PrizeId = None
         self.PrizeNum = None
@@ -1450,9 +1108,7 @@ class ReplenishProjectStockResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1468,20 +1124,10 @@ class ResourceTemplateHeader(AbstractModel):
     def __init__(self):
         """
         :param Content: 模板预览区内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Content: str
-        :param Example: 模板预览示例
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Example: str
-        :param KeyArray: 模板预览区域键数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyArray: str
-        :param TemplateId: 模板id
-        :type TemplateId: str
-        :param Title: 模板标题
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Title: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Content: str\n        :param Example: 模板预览示例
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Example: str\n        :param KeyArray: 模板预览区域键数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyArray: str\n        :param TemplateId: 模板id\n        :type TemplateId: str\n        :param Title: 模板标题
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Title: str\n        """
         self.Content = None
         self.Example = None
         self.KeyArray = None
@@ -1511,31 +1157,7 @@ class SendWxTouchTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 客户分组ID
-        :type GroupId: str
-        :param DistinctFlag: 去除今日已发送的客户
-        :type DistinctFlag: bool
-        :param IsSendNow: 是否立马发送
-        :type IsSendNow: bool
-        :param SendDate: 发送时间，一般为0
-        :type SendDate: int
-        :param TaskName: 任务名称
-        :type TaskName: str
-        :param WxTouchType: 微信触达类型，text, news, smallapp, tmplmsg
-        :type WxTouchType: str
-        :param Title: 标题
-        :type Title: str
-        :param Content: 文本内容
-        :type Content: str
-        :param NewsId: 图文素材ID
-        :type NewsId: str
-        :param SmallProgramId: 小程序卡片ID
-        :type SmallProgramId: str
-        :param TemplateId: 模板消息ID
-        :type TemplateId: str
-        :param WxAppId: 微信公众号appId
-        :type WxAppId: str
-        """
+        :param GroupId: 客户分组ID\n        :type GroupId: str\n        :param DistinctFlag: 去除今日已发送的客户\n        :type DistinctFlag: bool\n        :param IsSendNow: 是否立马发送\n        :type IsSendNow: bool\n        :param SendDate: 发送时间，一般为0\n        :type SendDate: int\n        :param TaskName: 任务名称\n        :type TaskName: str\n        :param WxTouchType: 微信触达类型，text, news, smallapp, tmplmsg\n        :type WxTouchType: str\n        :param Title: 标题\n        :type Title: str\n        :param Content: 文本内容\n        :type Content: str\n        :param NewsId: 图文素材ID\n        :type NewsId: str\n        :param SmallProgramId: 小程序卡片ID\n        :type SmallProgramId: str\n        :param TemplateId: 模板消息ID\n        :type TemplateId: str\n        :param WxAppId: 微信公众号appId\n        :type WxAppId: str\n        """
         self.GroupId = None
         self.DistinctFlag = None
         self.IsSendNow = None
@@ -1579,9 +1201,7 @@ class SendWxTouchTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1596,13 +1216,7 @@ class SubProjectInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SubProjectId: 子项目id
-        :type SubProjectId: str
-        :param SubProjectName: 子项目名称
-        :type SubProjectName: str
-        :param SubProjectStatus: 子项目状态
-        :type SubProjectStatus: str
-        """
+        :param SubProjectId: 子项目id\n        :type SubProjectId: str\n        :param SubProjectName: 子项目名称\n        :type SubProjectName: str\n        :param SubProjectStatus: 子项目状态\n        :type SubProjectStatus: str\n        """
         self.SubProjectId = None
         self.SubProjectName = None
         self.SubProjectStatus = None

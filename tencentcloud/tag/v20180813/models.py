@@ -25,13 +25,7 @@ class AddResourceTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        """
         self.TagKey = None
         self.TagValue = None
         self.Resource = None
@@ -57,9 +51,7 @@ class AddResourceTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -74,19 +66,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
-        :type ServiceType: str
-        :param ResourceIds: 资源ID数组，资源个数最多为50
-        :type ResourceIds: list of str
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
-        :type ResourceRegion: str
-        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
-        :type ResourcePrefix: str
-        """
+        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）\n        :type ServiceType: str\n        :param ResourceIds: 资源ID数组，资源个数最多为50\n        :type ResourceIds: list of str\n        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填\n        :type ResourceRegion: str\n        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填\n        :type ResourcePrefix: str\n        """
         self.ServiceType = None
         self.ResourceIds = None
         self.TagKey = None
@@ -118,9 +98,7 @@ class AttachResourcesTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -135,11 +113,7 @@ class CreateTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -163,9 +137,7 @@ class CreateTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -180,11 +152,7 @@ class DeleteResourceTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        """
         self.TagKey = None
         self.Resource = None
 
@@ -208,9 +176,7 @@ class DeleteResourceTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -225,11 +191,7 @@ class DeleteTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 需要删除的标签键
-        :type TagKey: str
-        :param TagValue: 需要删除的标签值
-        :type TagValue: str
-        """
+        :param TagKey: 需要删除的标签键\n        :type TagKey: str\n        :param TagValue: 需要删除的标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -253,9 +215,7 @@ class DeleteTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -270,19 +230,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 业务类型
-        :type ServiceType: str
-        :param ResourcePrefix: 资源前缀
-        :type ResourcePrefix: str
-        :param ResourceIds: 资源ID数组，大小不超过50
-        :type ResourceIds: list of str
-        :param ResourceRegion: 资源所在地域
-        :type ResourceRegion: str
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        """
+        :param ServiceType: 业务类型\n        :type ServiceType: str\n        :param ResourcePrefix: 资源前缀\n        :type ResourcePrefix: str\n        :param ResourceIds: 资源ID数组，大小不超过50\n        :type ResourceIds: list of str\n        :param ResourceRegion: 资源所在地域\n        :type ResourceRegion: str\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        """
         self.ServiceType = None
         self.ResourcePrefix = None
         self.ResourceIds = None
@@ -314,17 +262,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of TagResource
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of TagResource\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -352,19 +290,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 业务类型
-        :type ServiceType: str
-        :param ResourcePrefix: 资源前缀
-        :type ResourcePrefix: str
-        :param ResourceIds: 资源唯一标记
-        :type ResourceIds: list of str
-        :param ResourceRegion: 资源所在地域
-        :type ResourceRegion: str
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        """
+        :param ServiceType: 业务类型\n        :type ServiceType: str\n        :param ResourcePrefix: 资源前缀\n        :type ResourcePrefix: str\n        :param ResourceIds: 资源唯一标记\n        :type ResourceIds: list of str\n        :param ResourceRegion: 资源所在地域\n        :type ResourceRegion: str\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        """
         self.ServiceType = None
         self.ResourcePrefix = None
         self.ResourceIds = None
@@ -396,17 +322,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of TagResource
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of TagResource\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -434,21 +350,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 业务类型
-        :type ServiceType: str
-        :param ResourcePrefix: 资源前缀
-        :type ResourcePrefix: str
-        :param ResourceRegion: 资源地域
-        :type ResourceRegion: str
-        :param ResourceIds: 资源唯一标识
-        :type ResourceIds: list of str
-        :param TagKeys: 资源标签键
-        :type TagKeys: list of str
-        :param Limit: 每页大小，默认为 400
-        :type Limit: int
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        """
+        :param ServiceType: 业务类型\n        :type ServiceType: str\n        :param ResourcePrefix: 资源前缀\n        :type ResourcePrefix: str\n        :param ResourceRegion: 资源地域\n        :type ResourceRegion: str\n        :param ResourceIds: 资源唯一标识\n        :type ResourceIds: list of str\n        :param TagKeys: 资源标签键\n        :type TagKeys: list of str\n        :param Limit: 每页大小，默认为 400\n        :type Limit: int\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        """
         self.ServiceType = None
         self.ResourcePrefix = None
         self.ResourceRegion = None
@@ -482,17 +384,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Rows: 资源标签
-        :type Rows: list of ResourceIdTag
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Rows: 资源标签\n        :type Rows: list of ResourceIdTag\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -520,23 +412,7 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateUin: 创建者uin
-        :type CreateUin: int
-        :param ResourceRegion: 资源所在地域
-        :type ResourceRegion: str
-        :param ServiceType: 业务类型
-        :type ServiceType: str
-        :param ResourcePrefix: 资源前缀
-        :type ResourcePrefix: str
-        :param ResourceId: 资源唯一标识。只输入ResourceId进行查询可能会查询较慢，或者无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）
-        :type ResourceId: str
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        :param CosResourceId: 是否是cos的资源（0或者1），输入的ResourceId为cos资源时必填
-        :type CosResourceId: int
-        """
+        :param CreateUin: 创建者uin\n        :type CreateUin: int\n        :param ResourceRegion: 资源所在地域\n        :type ResourceRegion: str\n        :param ServiceType: 业务类型\n        :type ServiceType: str\n        :param ResourcePrefix: 资源前缀\n        :type ResourcePrefix: str\n        :param ResourceId: 资源唯一标识。只输入ResourceId进行查询可能会查询较慢，或者无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）\n        :type ResourceId: str\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        :param CosResourceId: 是否是cos的资源（0或者1），输入的ResourceId为cos资源时必填\n        :type CosResourceId: int\n        """
         self.CreateUin = None
         self.ResourceRegion = None
         self.ServiceType = None
@@ -572,18 +448,8 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Limit: int
-        :param Rows: 资源标签
-        :type Rows: list of TagResource
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Limit: int\n        :param Rows: 资源标签\n        :type Rows: list of TagResource\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -611,23 +477,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagFilters: 标签过滤数组
-        :type TagFilters: list of TagFilter
-        :param CreateUin: 创建标签者uin
-        :type CreateUin: int
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        :param ResourcePrefix: 资源前缀
-        :type ResourcePrefix: str
-        :param ResourceId: 资源唯一标记
-        :type ResourceId: str
-        :param ResourceRegion: 资源所在地域
-        :type ResourceRegion: str
-        :param ServiceType: 业务类型
-        :type ServiceType: str
-        """
+        :param TagFilters: 标签过滤数组\n        :type TagFilters: list of TagFilter\n        :param CreateUin: 创建标签者uin\n        :type CreateUin: int\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        :param ResourcePrefix: 资源前缀\n        :type ResourcePrefix: str\n        :param ResourceId: 资源唯一标记\n        :type ResourceId: str\n        :param ResourceRegion: 资源所在地域\n        :type ResourceRegion: str\n        :param ServiceType: 业务类型\n        :type ServiceType: str\n        """
         self.TagFilters = None
         self.CreateUin = None
         self.Offset = None
@@ -668,18 +518,8 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Limit: int
-        :param Rows: 资源标签
-        :type Rows: list of ResourceTag
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Limit: int\n        :param Rows: 资源标签\n        :type Rows: list of ResourceTag\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -707,23 +547,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagFilters: 标签过滤数组
-        :type TagFilters: list of TagFilter
-        :param CreateUin: 创建标签者uin
-        :type CreateUin: int
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        :param ResourcePrefix: 资源前缀
-        :type ResourcePrefix: str
-        :param ResourceId: 资源唯一标记
-        :type ResourceId: str
-        :param ResourceRegion: 资源所在地域
-        :type ResourceRegion: str
-        :param ServiceType: 业务类型
-        :type ServiceType: str
-        """
+        :param TagFilters: 标签过滤数组\n        :type TagFilters: list of TagFilter\n        :param CreateUin: 创建标签者uin\n        :type CreateUin: int\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        :param ResourcePrefix: 资源前缀\n        :type ResourcePrefix: str\n        :param ResourceId: 资源唯一标记\n        :type ResourceId: str\n        :param ResourceRegion: 资源所在地域\n        :type ResourceRegion: str\n        :param ServiceType: 业务类型\n        :type ServiceType: str\n        """
         self.TagFilters = None
         self.CreateUin = None
         self.Offset = None
@@ -764,17 +588,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Rows: 资源标签
-        :type Rows: list of ResourceTag
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Rows: 资源标签\n        :type Rows: list of ResourceTag\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -802,15 +616,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
-        :type CreateUin: int
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        :param ShowProject: 是否展现项目
-        :type ShowProject: int
-        """
+        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询\n        :type CreateUin: int\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        :param ShowProject: 是否展现项目\n        :type ShowProject: int\n        """
         self.CreateUin = None
         self.Offset = None
         self.Limit = None
@@ -838,17 +644,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -871,15 +667,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKeys: 标签键列表
-        :type TagKeys: list of str
-        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
-        :type CreateUin: int
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        """
+        :param TagKeys: 标签键列表\n        :type TagKeys: list of str\n        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询\n        :type CreateUin: int\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        """
         self.TagKeys = None
         self.CreateUin = None
         self.Offset = None
@@ -907,17 +695,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of Tag
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of Tag\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -945,15 +723,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKeys: 标签键列表
-        :type TagKeys: list of str
-        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
-        :type CreateUin: int
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        """
+        :param TagKeys: 标签键列表\n        :type TagKeys: list of str\n        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询\n        :type CreateUin: int\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        """
         self.TagKeys = None
         self.CreateUin = None
         self.Offset = None
@@ -981,17 +751,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of Tag
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of Tag\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -1019,21 +779,7 @@ class DescribeTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
-        :type TagKey: str
-        :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
-        :type TagValue: str
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
-        :type CreateUin: int
-        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
-        :type TagKeys: list of str
-        :param ShowProject: 是否展现项目标签
-        :type ShowProject: int
-        """
+        :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签\n        :type TagKey: str\n        :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签\n        :type TagValue: str\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询\n        :type CreateUin: int\n        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值\n        :type TagKeys: list of str\n        :param ShowProject: 是否展现项目标签\n        :type ShowProject: int\n        """
         self.TagKey = None
         self.TagValue = None
         self.Offset = None
@@ -1067,17 +813,7 @@ class DescribeTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of TagWithDelete
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of TagWithDelete\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -1105,21 +841,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
-        :type TagKey: str
-        :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
-        :type TagValue: str
-        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
-        :type Offset: int
-        :param Limit: 每页大小，默认为 15
-        :type Limit: int
-        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
-        :type CreateUin: int
-        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
-        :type TagKeys: list of str
-        :param ShowProject: 是否展现项目标签
-        :type ShowProject: int
-        """
+        :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签\n        :type TagKey: str\n        :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签\n        :type TagValue: str\n        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍\n        :type Offset: int\n        :param Limit: 每页大小，默认为 15\n        :type Limit: int\n        :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询\n        :type CreateUin: int\n        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值\n        :type TagKeys: list of str\n        :param ShowProject: 是否展现项目标签\n        :type ShowProject: int\n        """
         self.TagKey = None
         self.TagValue = None
         self.Offset = None
@@ -1153,17 +875,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 结果总数
-        :type TotalCount: int
-        :param Offset: 数据位移偏量
-        :type Offset: int
-        :param Limit: 每页大小
-        :type Limit: int
-        :param Tags: 标签列表
-        :type Tags: list of TagWithDelete
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 结果总数\n        :type TotalCount: int\n        :param Offset: 数据位移偏量\n        :type Offset: int\n        :param Limit: 每页大小\n        :type Limit: int\n        :param Tags: 标签列表\n        :type Tags: list of TagWithDelete\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Offset = None
         self.Limit = None
@@ -1191,17 +903,7 @@ class DetachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
-        :type ServiceType: str
-        :param ResourceIds: 资源ID数组，资源个数最多为50
-        :type ResourceIds: list of str
-        :param TagKey: 需要解绑的标签键
-        :type TagKey: str
-        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
-        :type ResourceRegion: str
-        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
-        :type ResourcePrefix: str
-        """
+        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）\n        :type ServiceType: str\n        :param ResourceIds: 资源ID数组，资源个数最多为50\n        :type ResourceIds: list of str\n        :param TagKey: 需要解绑的标签键\n        :type TagKey: str\n        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填\n        :type ResourceRegion: str\n        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填\n        :type ResourcePrefix: str\n        """
         self.ServiceType = None
         self.ResourceIds = None
         self.TagKey = None
@@ -1231,9 +933,7 @@ class DetachResourcesTagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1248,13 +948,7 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        :param ReplaceTags: 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
-        :type ReplaceTags: list of Tag
-        :param DeleteTags: 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
-        :type DeleteTags: list of TagKeyObject
-        """
+        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        :param ReplaceTags: 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。\n        :type ReplaceTags: list of Tag\n        :param DeleteTags: 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。\n        :type DeleteTags: list of TagKeyObject\n        """
         self.Resource = None
         self.ReplaceTags = None
         self.DeleteTags = None
@@ -1290,9 +984,7 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1307,19 +999,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
-        :type ServiceType: str
-        :param ResourceIds: 资源ID数组，资源个数最多为50
-        :type ResourceIds: list of str
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
-        :type ResourceRegion: str
-        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
-        :type ResourcePrefix: str
-        """
+        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）\n        :type ServiceType: str\n        :param ResourceIds: 资源ID数组，资源个数最多为50\n        :type ResourceIds: list of str\n        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填\n        :type ResourceRegion: str\n        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填\n        :type ResourcePrefix: str\n        """
         self.ServiceType = None
         self.ResourceIds = None
         self.TagKey = None
@@ -1351,9 +1031,7 @@ class ModifyResourcesTagValueResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1369,12 +1047,8 @@ class ResourceIdTag(AbstractModel):
     def __init__(self):
         """
         :param ResourceId: 资源唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceId: str
-        :param TagKeyValues: 标签键值对
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagKeyValues: list of Tag
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceId: str\n        :param TagKeyValues: 标签键值对
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagKeyValues: list of Tag\n        """
         self.ResourceId = None
         self.TagKeyValues = None
 
@@ -1404,21 +1078,11 @@ class ResourceTag(AbstractModel):
     def __init__(self):
         """
         :param ResourceRegion: 资源所在地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceRegion: str
-        :param ServiceType: 业务类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceType: str
-        :param ResourcePrefix: 资源前缀
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourcePrefix: str
-        :param ResourceId: 资源唯一标记
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceId: str
-        :param Tags: 资源标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceRegion: str\n        :param ServiceType: 业务类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceType: str\n        :param ResourcePrefix: 资源前缀
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourcePrefix: str\n        :param ResourceId: 资源唯一标记
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceId: str\n        :param Tags: 资源标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        """
         self.ResourceRegion = None
         self.ServiceType = None
         self.ResourcePrefix = None
@@ -1453,11 +1117,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1481,11 +1141,7 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值数组 多个值的话是或的关系
-        :type TagValue: list of str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值数组 多个值的话是或的关系\n        :type TagValue: list of str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -1509,9 +1165,7 @@ class TagKeyObject(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        """
         self.TagKey = None
 
 
@@ -1533,20 +1187,8 @@ class TagResource(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        :param ResourceId: 资源ID
-        :type ResourceId: str
-        :param TagKeyMd5: 标签键MD5值
-        :type TagKeyMd5: str
-        :param TagValueMd5: 标签值MD5值
-        :type TagValueMd5: str
-        :param ServiceType: 资源类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceType: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param TagKeyMd5: 标签键MD5值\n        :type TagKeyMd5: str\n        :param TagValueMd5: 标签值MD5值\n        :type TagValueMd5: str\n        :param ServiceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceType: str\n        """
         self.TagKey = None
         self.TagValue = None
         self.ResourceId = None
@@ -1578,13 +1220,7 @@ class TagWithDelete(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        :param CanDelete: 是否可以删除
-        :type CanDelete: int
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        :param CanDelete: 是否可以删除\n        :type CanDelete: int\n        """
         self.TagKey = None
         self.TagValue = None
         self.CanDelete = None
@@ -1610,13 +1246,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 资源关联的标签键
-        :type TagKey: str
-        :param TagValue: 修改后的标签值
-        :type TagValue: str
-        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
-        :type Resource: str
-        """
+        :param TagKey: 资源关联的标签键\n        :type TagKey: str\n        :param TagValue: 修改后的标签值\n        :type TagValue: str\n        :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)\n        :type Resource: str\n        """
         self.TagKey = None
         self.TagValue = None
         self.Resource = None
@@ -1642,9 +1272,7 @@ class UpdateResourceTagValueResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

@@ -25,31 +25,7 @@ class Container(AbstractModel):
 
     def __init__(self):
         """
-        :param Command: 容器启动命令
-        :type Command: str
-        :param Args: 容器启动参数
-        :type Args: list of str
-        :param EnvironmentVars: 容器环境变量
-        :type EnvironmentVars: list of EnvironmentVar
-        :param Image: 镜像
-        :type Image: str
-        :param Name: 容器名，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 63个字符
-        :type Name: str
-        :param Cpu: CPU，单位：核
-        :type Cpu: float
-        :param Memory: 内存，单位：Gi
-        :type Memory: float
-        :param RestartCount: 重启次数
-        :type RestartCount: int
-        :param CurrentState: 当前状态
-        :type CurrentState: :class:`tencentcloud.cis.v20180408.models.ContainerState`
-        :param PreviousState: 上一次状态
-        :type PreviousState: :class:`tencentcloud.cis.v20180408.models.ContainerState`
-        :param WorkingDir: 容器工作目录
-        :type WorkingDir: str
-        :param ContainerId: 容器ID
-        :type ContainerId: str
-        """
+        :param Command: 容器启动命令\n        :type Command: str\n        :param Args: 容器启动参数\n        :type Args: list of str\n        :param EnvironmentVars: 容器环境变量\n        :type EnvironmentVars: list of EnvironmentVar\n        :param Image: 镜像\n        :type Image: str\n        :param Name: 容器名，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 63个字符\n        :type Name: str\n        :param Cpu: CPU，单位：核\n        :type Cpu: float\n        :param Memory: 内存，单位：Gi\n        :type Memory: float\n        :param RestartCount: 重启次数\n        :type RestartCount: int\n        :param CurrentState: 当前状态\n        :type CurrentState: :class:`tencentcloud.cis.v20180408.models.ContainerState`\n        :param PreviousState: 上一次状态\n        :type PreviousState: :class:`tencentcloud.cis.v20180408.models.ContainerState`\n        :param WorkingDir: 容器工作目录\n        :type WorkingDir: str\n        :param ContainerId: 容器ID\n        :type ContainerId: str\n        """
         self.Command = None
         self.Args = None
         self.EnvironmentVars = None
@@ -102,37 +78,7 @@ class ContainerInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 容器实例ID
-        :type InstanceId: str
-        :param InstanceName: 容器实例名称
-        :type InstanceName: str
-        :param VpcId: 容器实例所属VpcId
-        :type VpcId: str
-        :param SubnetId: 容器实例所属SubnetId
-        :type SubnetId: str
-        :param State: 容器实例状态
-        :type State: str
-        :param Containers: 容器列表
-        :type Containers: list of Container
-        :param RestartPolicy: 重启策略
-        :type RestartPolicy: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param StartTime: 启动时间
-        :type StartTime: str
-        :param Zone: 可用区
-        :type Zone: str
-        :param VpcName: Vpc名称
-        :type VpcName: str
-        :param VpcCidr: VpcCidr
-        :type VpcCidr: str
-        :param SubnetName: SubnetName
-        :type SubnetName: str
-        :param SubnetCidr: 子网Cidr
-        :type SubnetCidr: str
-        :param LanIp: 内网IP
-        :type LanIp: str
-        """
+        :param InstanceId: 容器实例ID\n        :type InstanceId: str\n        :param InstanceName: 容器实例名称\n        :type InstanceName: str\n        :param VpcId: 容器实例所属VpcId\n        :type VpcId: str\n        :param SubnetId: 容器实例所属SubnetId\n        :type SubnetId: str\n        :param State: 容器实例状态\n        :type State: str\n        :param Containers: 容器列表\n        :type Containers: list of Container\n        :param RestartPolicy: 重启策略\n        :type RestartPolicy: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param StartTime: 启动时间\n        :type StartTime: str\n        :param Zone: 可用区\n        :type Zone: str\n        :param VpcName: Vpc名称\n        :type VpcName: str\n        :param VpcCidr: VpcCidr\n        :type VpcCidr: str\n        :param SubnetName: SubnetName\n        :type SubnetName: str\n        :param SubnetCidr: 子网Cidr\n        :type SubnetCidr: str\n        :param LanIp: 内网IP\n        :type LanIp: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.VpcId = None
@@ -187,13 +133,7 @@ class ContainerLog(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 容器名称
-        :type Name: str
-        :param Log: 日志
-        :type Log: str
-        :param Time: 日志记录时间
-        :type Time: str
-        """
+        :param Name: 容器名称\n        :type Name: str\n        :param Log: 日志\n        :type Log: str\n        :param Time: 日志记录时间\n        :type Time: str\n        """
         self.Name = None
         self.Log = None
         self.Time = None
@@ -219,17 +159,7 @@ class ContainerState(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 容器运行开始时间
-        :type StartTime: str
-        :param State: 容器状态
-        :type State: str
-        :param Reason: 状态详情
-        :type Reason: str
-        :param FinishTime: 容器运行结束时间
-        :type FinishTime: str
-        :param ExitCode: 容器运行退出码
-        :type ExitCode: int
-        """
+        :param StartTime: 容器运行开始时间\n        :type StartTime: str\n        :param State: 容器状态\n        :type State: str\n        :param Reason: 状态详情\n        :type Reason: str\n        :param FinishTime: 容器运行结束时间\n        :type FinishTime: str\n        :param ExitCode: 容器运行退出码\n        :type ExitCode: int\n        """
         self.StartTime = None
         self.State = None
         self.Reason = None
@@ -259,19 +189,7 @@ class CreateContainerInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区
-        :type Zone: str
-        :param VpcId: vpcId
-        :type VpcId: str
-        :param SubnetId: subnetId
-        :type SubnetId: str
-        :param InstanceName: 容器实例名称，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 40个字符
-        :type InstanceName: str
-        :param RestartPolicy: 重启策略（Always,OnFailure,Never）
-        :type RestartPolicy: str
-        :param Containers: 容器列表
-        :type Containers: list of Container
-        """
+        :param Zone: 可用区\n        :type Zone: str\n        :param VpcId: vpcId\n        :type VpcId: str\n        :param SubnetId: subnetId\n        :type SubnetId: str\n        :param InstanceName: 容器实例名称，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 40个字符\n        :type InstanceName: str\n        :param RestartPolicy: 重启策略（Always,OnFailure,Never）\n        :type RestartPolicy: str\n        :param Containers: 容器列表\n        :type Containers: list of Container\n        """
         self.Zone = None
         self.VpcId = None
         self.SubnetId = None
@@ -308,11 +226,7 @@ class CreateContainerInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 容器实例ID
-        :type InstanceId: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 容器实例ID\n        :type InstanceId: str\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -329,9 +243,7 @@ class DeleteContainerInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceName: 容器实例名称
-        :type InstanceName: str
-        """
+        :param InstanceName: 容器实例名称\n        :type InstanceName: str\n        """
         self.InstanceName = None
 
 
@@ -353,11 +265,7 @@ class DeleteContainerInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Msg: 操作信息
-        :type Msg: str
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param Msg: 操作信息\n        :type Msg: str\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.Msg = None
         self.RequestId = None
 
@@ -374,9 +282,7 @@ class DescribeContainerInstanceEventsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceName: 容器实例名称
-        :type InstanceName: str
-        """
+        :param InstanceName: 容器实例名称\n        :type InstanceName: str\n        """
         self.InstanceName = None
 
 
@@ -398,11 +304,7 @@ class DescribeContainerInstanceEventsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EventList: 容器实例事件列表
-        :type EventList: list of Event
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param EventList: 容器实例事件列表\n        :type EventList: list of Event\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.EventList = None
         self.RequestId = None
 
@@ -424,9 +326,7 @@ class DescribeContainerInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceName: 容器实例名称
-        :type InstanceName: str
-        """
+        :param InstanceName: 容器实例名称\n        :type InstanceName: str\n        """
         self.InstanceName = None
 
 
@@ -448,11 +348,7 @@ class DescribeContainerInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ContainerInstance: 容器实例详细信息
-        :type ContainerInstance: :class:`tencentcloud.cis.v20180408.models.ContainerInstance`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param ContainerInstance: 容器实例详细信息\n        :type ContainerInstance: :class:`tencentcloud.cis.v20180408.models.ContainerInstance`\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.ContainerInstance = None
         self.RequestId = None
 
@@ -471,16 +367,10 @@ class DescribeContainerInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为10
-        :type Limit: int
-        :param Filters: 过滤条件。
+        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为10\n        :type Limit: int\n        :param Filters: 过滤条件。
 - Zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。
 - VpcId - String - 是否必填：否 -（过滤条件）按照VpcId过滤。
-- InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。
-        :type Filters: list of Filter
-        """
+- InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。\n        :type Filters: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -511,13 +401,7 @@ class DescribeContainerInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ContainerInstanceList: 容器实例列表
-        :type ContainerInstanceList: list of ContainerInstance
-        :param TotalCount: 容器实例总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param ContainerInstanceList: 容器实例列表\n        :type ContainerInstanceList: list of ContainerInstance\n        :param TotalCount: 容器实例总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.ContainerInstanceList = None
         self.TotalCount = None
         self.RequestId = None
@@ -541,15 +425,7 @@ class DescribeContainerLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceName: 容器实例名称
-        :type InstanceName: str
-        :param ContainerName: 容器名称
-        :type ContainerName: str
-        :param Tail: 日志显示尾部行数
-        :type Tail: int
-        :param SinceTime: 日志起始时间
-        :type SinceTime: str
-        """
+        :param InstanceName: 容器实例名称\n        :type InstanceName: str\n        :param ContainerName: 容器名称\n        :type ContainerName: str\n        :param Tail: 日志显示尾部行数\n        :type Tail: int\n        :param SinceTime: 日志起始时间\n        :type SinceTime: str\n        """
         self.InstanceName = None
         self.ContainerName = None
         self.Tail = None
@@ -577,11 +453,7 @@ class DescribeContainerLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ContainerLogList: 容器日志数组
-        :type ContainerLogList: list of ContainerLog
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param ContainerLogList: 容器日志数组\n        :type ContainerLogList: list of ContainerLog\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.ContainerLogList = None
         self.RequestId = None
 
@@ -603,11 +475,7 @@ class EnvironmentVar(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 环境变量名
-        :type Name: str
-        :param Value: 环境变量值
-        :type Value: str
-        """
+        :param Name: 环境变量名\n        :type Name: str\n        :param Value: 环境变量值\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -631,19 +499,7 @@ class Event(AbstractModel):
 
     def __init__(self):
         """
-        :param FirstSeen: 事件首次出现时间
-        :type FirstSeen: str
-        :param LastSeen: 事件上次出现时间
-        :type LastSeen: str
-        :param Level: 事件等级
-        :type Level: str
-        :param Count: 事件出现次数
-        :type Count: str
-        :param Reason: 事件出现原因
-        :type Reason: str
-        :param Message: 事件消息
-        :type Message: str
-        """
+        :param FirstSeen: 事件首次出现时间\n        :type FirstSeen: str\n        :param LastSeen: 事件上次出现时间\n        :type LastSeen: str\n        :param Level: 事件等级\n        :type Level: str\n        :param Count: 事件出现次数\n        :type Count: str\n        :param Reason: 事件出现原因\n        :type Reason: str\n        :param Message: 事件消息\n        :type Message: str\n        """
         self.FirstSeen = None
         self.LastSeen = None
         self.Level = None
@@ -675,11 +531,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 过滤字段，可选值 - Zone，VpcId，InstanceName
-        :type Name: str
-        :param ValueList: 过滤值列表
-        :type ValueList: list of str
-        """
+        :param Name: 过滤字段，可选值 - Zone，VpcId，InstanceName\n        :type Name: str\n        :param ValueList: 过滤值列表\n        :type ValueList: list of str\n        """
         self.Name = None
         self.ValueList = None
 
@@ -703,13 +555,7 @@ class InquiryPriceCreateCisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区
-        :type Zone: str
-        :param Cpu: CPU，单位：核
-        :type Cpu: float
-        :param Memory: 内存，单位：Gi
-        :type Memory: float
-        """
+        :param Zone: 可用区\n        :type Zone: str\n        :param Cpu: CPU，单位：核\n        :type Cpu: float\n        :param Memory: 内存，单位：Gi\n        :type Memory: float\n        """
         self.Zone = None
         self.Cpu = None
         self.Memory = None
@@ -735,11 +581,7 @@ class InquiryPriceCreateCisResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Price: 价格
-        :type Price: :class:`tencentcloud.cis.v20180408.models.Price`
-        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-        :type RequestId: str
-        """
+        :param Price: 价格\n        :type Price: :class:`tencentcloud.cis.v20180408.models.Price`\n        :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。\n        :type RequestId: str\n        """
         self.Price = None
         self.RequestId = None
 
@@ -758,11 +600,7 @@ class Price(AbstractModel):
 
     def __init__(self):
         """
-        :param DiscountPrice: 原价，单位：元
-        :type DiscountPrice: float
-        :param OriginalPrice: 折扣价，单位：元
-        :type OriginalPrice: float
-        """
+        :param DiscountPrice: 原价，单位：元\n        :type DiscountPrice: float\n        :param OriginalPrice: 折扣价，单位：元\n        :type OriginalPrice: float\n        """
         self.DiscountPrice = None
         self.OriginalPrice = None
 

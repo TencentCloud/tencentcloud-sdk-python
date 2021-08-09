@@ -25,16 +25,8 @@ class DevInfoQ(AbstractModel):
 
     def __init__(self):
         """
-        :param OpenId: devid
-        :type OpenId: str
-        :param RiskScore: 风险值
-        :type RiskScore: int
-        :param RiskInfo: 风险详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RiskInfo: list of RiskDetail
-        :param Probability: 概率值
-        :type Probability: float
-        """
+        :param OpenId: devid\n        :type OpenId: str\n        :param RiskScore: 风险值\n        :type RiskScore: int\n        :param RiskInfo: 风险详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskInfo: list of RiskDetail\n        :param Probability: 概率值\n        :type Probability: float\n        """
         self.OpenId = None
         self.RiskScore = None
         self.RiskInfo = None
@@ -67,17 +59,7 @@ class GetOpenIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DeviceToken: dev临时token，通过sdk接口获取
-        :type DeviceToken: str
-        :param BusinessId: 业务ID
-        :type BusinessId: int
-        :param BusinessUserId: 业务侧账号体系下的用户ID
-        :type BusinessUserId: str
-        :param Platform: 平台：0-Android， 1-iOS， 2-web
-        :type Platform: int
-        :param Option: 选项
-        :type Option: str
-        """
+        :param DeviceToken: dev临时token，通过sdk接口获取\n        :type DeviceToken: str\n        :param BusinessId: 业务ID\n        :type BusinessId: int\n        :param BusinessUserId: 业务侧账号体系下的用户ID\n        :type BusinessUserId: str\n        :param Platform: 平台：0-Android， 1-iOS， 2-web\n        :type Platform: int\n        :param Option: 选项\n        :type Option: str\n        """
         self.DeviceToken = None
         self.BusinessId = None
         self.BusinessUserId = None
@@ -108,14 +90,8 @@ class GetOpenIdResponse(AbstractModel):
     def __init__(self):
         """
         :param OpenId: 设备ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OpenId: str
-        :param RiskInfo: 设备风险
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RiskInfo: list of RiskInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OpenId: str\n        :param RiskInfo: 设备风险
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskInfo: list of RiskInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OpenId = None
         self.RiskInfo = None
         self.RequestId = None
@@ -139,19 +115,7 @@ class GetTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BusinessId: 业务ID
-        :type BusinessId: int
-        :param Scene: 业务子场景
-        :type Scene: int
-        :param BusinessUserId: 业务侧账号体系下的用户ID
-        :type BusinessUserId: str
-        :param AppClientIp: 用户侧的IP
-        :type AppClientIp: str
-        :param ExpireTime: 过期时间
-        :type ExpireTime: int
-        :param OldToken: 上一个token
-        :type OldToken: str
-        """
+        :param BusinessId: 业务ID\n        :type BusinessId: int\n        :param Scene: 业务子场景\n        :type Scene: int\n        :param BusinessUserId: 业务侧账号体系下的用户ID\n        :type BusinessUserId: str\n        :param AppClientIp: 用户侧的IP\n        :type AppClientIp: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: int\n        :param OldToken: 上一个token\n        :type OldToken: str\n        """
         self.BusinessId = None
         self.Scene = None
         self.BusinessUserId = None
@@ -183,13 +147,7 @@ class GetTokenResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Token: 返回token
-        :type Token: str
-        :param ExpireTime: 过期时间
-        :type ExpireTime: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Token: 返回token\n        :type Token: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Token = None
         self.ExpireTime = None
         self.RequestId = None
@@ -208,55 +166,7 @@ class QueryDevAndRiskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DevType: 设备类型 0表示Android， 1表示IOS
-        :type DevType: int
-        :param Imei: Android Imei号
-        :type Imei: str
-        :param Mac: Mac地址
-        :type Mac: str
-        :param Aid: android  Aid
-        :type Aid: str
-        :param Cid: Android Cid
-        :type Cid: str
-        :param Imsi: 手机Imsi
-        :type Imsi: str
-        :param Df: Df 磁盘分区信息
-        :type Df: str
-        :param KernelVer: 内核版本
-        :type KernelVer: str
-        :param Storage: 存储大小
-        :type Storage: str
-        :param Dfp: 设备驱动指纹
-        :type Dfp: str
-        :param BootTime: 启动时间
-        :type BootTime: str
-        :param Resolution: 分辨率 水平*垂直 格式
-        :type Resolution: str
-        :param RingList: 铃声列表
-        :type RingList: str
-        :param FontList: 字体列表
-        :type FontList: str
-        :param SensorList: 传感器列表
-        :type SensorList: str
-        :param CpuType: CPU型号
-        :type CpuType: str
-        :param Battery: 电池容量
-        :type Battery: str
-        :param Oaid: 信通院广告ID
-        :type Oaid: str
-        :param Idfa: IOS 广告ID
-        :type Idfa: str
-        :param Idfv: IOS 应用ID
-        :type Idfv: str
-        :param DeviceName: 设备名称
-        :type DeviceName: str
-        :param IphoneModel: IOS手机型号
-        :type IphoneModel: str
-        :param Fingerprint: Android 指纹
-        :type Fingerprint: str
-        :param SerialId: Android序列号
-        :type SerialId: str
-        """
+        :param DevType: 设备类型 0表示Android， 1表示IOS\n        :type DevType: int\n        :param Imei: Android Imei号\n        :type Imei: str\n        :param Mac: Mac地址\n        :type Mac: str\n        :param Aid: android  Aid\n        :type Aid: str\n        :param Cid: Android Cid\n        :type Cid: str\n        :param Imsi: 手机Imsi\n        :type Imsi: str\n        :param Df: Df 磁盘分区信息\n        :type Df: str\n        :param KernelVer: 内核版本\n        :type KernelVer: str\n        :param Storage: 存储大小\n        :type Storage: str\n        :param Dfp: 设备驱动指纹\n        :type Dfp: str\n        :param BootTime: 启动时间\n        :type BootTime: str\n        :param Resolution: 分辨率 水平*垂直 格式\n        :type Resolution: str\n        :param RingList: 铃声列表\n        :type RingList: str\n        :param FontList: 字体列表\n        :type FontList: str\n        :param SensorList: 传感器列表\n        :type SensorList: str\n        :param CpuType: CPU型号\n        :type CpuType: str\n        :param Battery: 电池容量\n        :type Battery: str\n        :param Oaid: 信通院广告ID\n        :type Oaid: str\n        :param Idfa: IOS 广告ID\n        :type Idfa: str\n        :param Idfv: IOS 应用ID\n        :type Idfv: str\n        :param DeviceName: 设备名称\n        :type DeviceName: str\n        :param IphoneModel: IOS手机型号\n        :type IphoneModel: str\n        :param Fingerprint: Android 指纹\n        :type Fingerprint: str\n        :param SerialId: Android序列号\n        :type SerialId: str\n        """
         self.DevType = None
         self.Imei = None
         self.Mac = None
@@ -324,17 +234,9 @@ class QueryDevAndRiskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Found: 是否查得
-        :type Found: int
-        :param AllCnt: 匹配数量级别
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AllCnt: int
-        :param Matches: 匹配到的设备信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Matches: list of DevInfoQ
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Found: 是否查得\n        :type Found: int\n        :param AllCnt: 匹配数量级别
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AllCnt: int\n        :param Matches: 匹配到的设备信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Matches: list of DevInfoQ\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Found = None
         self.AllCnt = None
         self.Matches = None
@@ -360,12 +262,8 @@ class RiskDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param RiskCode: 风险码
-        :type RiskCode: int
-        :param RiskCodeValue: 风险详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RiskCodeValue: str
-        """
+        :param RiskCode: 风险码\n        :type RiskCode: int\n        :param RiskCodeValue: 风险详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskCodeValue: str\n        """
         self.RiskCode = None
         self.RiskCodeValue = None
 
@@ -389,12 +287,8 @@ class RiskInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 风险码
-        :type Key: int
-        :param Value: 风险详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
+        :param Key: 风险码\n        :type Key: int\n        :param Value: 风险详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 

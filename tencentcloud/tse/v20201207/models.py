@@ -25,9 +25,7 @@ class DescribeSREInstanceAccessAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 注册引擎实例Id
-        :type InstanceId: str
-        """
+        :param InstanceId: 注册引擎实例Id\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -49,15 +47,7 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IntranetAddress: 内网访问地址
-        :type IntranetAddress: str
-        :param InternetAddress: 公网访问地址
-        :type InternetAddress: str
-        :param EnvAddressInfos: apollo多环境公网ip
-        :type EnvAddressInfos: list of EnvAddressInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param IntranetAddress: 内网访问地址\n        :type IntranetAddress: str\n        :param InternetAddress: 公网访问地址\n        :type InternetAddress: str\n        :param EnvAddressInfos: apollo多环境公网ip\n        :type EnvAddressInfos: list of EnvAddressInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IntranetAddress = None
         self.InternetAddress = None
         self.EnvAddressInfos = None
@@ -83,15 +73,7 @@ class DescribeSREInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 请求过滤参数
-        :type Filters: list of Filter
-        :param Limit: 翻页单页查询限制数量[0,1000], 默认值0
-        :type Limit: int
-        :param Offset: 翻页单页偏移量，默认值0
-        :type Offset: int
-        :param QueryType: 查询类型
-        :type QueryType: str
-        """
+        :param Filters: 请求过滤参数\n        :type Filters: list of Filter\n        :param Limit: 翻页单页查询限制数量[0,1000], 默认值0\n        :type Limit: int\n        :param Offset: 翻页单页偏移量，默认值0\n        :type Offset: int\n        :param QueryType: 查询类型\n        :type QueryType: str\n        """
         self.Filters = None
         self.Limit = None
         self.Offset = None
@@ -124,13 +106,7 @@ class DescribeSREInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总数量
-        :type TotalCount: int
-        :param Content: 实例记录
-        :type Content: list of SREInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 总数量\n        :type TotalCount: int\n        :param Content: 实例记录\n        :type Content: list of SREInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Content = None
         self.RequestId = None
@@ -154,13 +130,7 @@ class EnvAddressInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvName: 环境名
-        :type EnvName: str
-        :param EnableConfigInternet: 是否开启config公网
-        :type EnableConfigInternet: bool
-        :param ConfigInternetServiceIp: config公网ip
-        :type ConfigInternetServiceIp: str
-        """
+        :param EnvName: 环境名\n        :type EnvName: str\n        :param EnableConfigInternet: 是否开启config公网\n        :type EnableConfigInternet: bool\n        :param ConfigInternetServiceIp: config公网ip\n        :type ConfigInternetServiceIp: str\n        """
         self.EnvName = None
         self.EnableConfigInternet = None
         self.ConfigInternetServiceIp = None
@@ -186,23 +156,7 @@ class EnvInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvName: 环境名称
-        :type EnvName: str
-        :param VpcInfos: 环境对应的网络信息
-        :type VpcInfos: list of VpcInfo
-        :param StorageCapacity: 云硬盘容量
-        :type StorageCapacity: int
-        :param Status: 运行状态
-        :type Status: str
-        :param AdminServiceIp: Admin service 访问地址
-        :type AdminServiceIp: str
-        :param ConfigServiceIp: Config service访问地址
-        :type ConfigServiceIp: str
-        :param EnableConfigInternet: 是否开启config-server公网
-        :type EnableConfigInternet: bool
-        :param ConfigInternetServiceIp: config-server公网访问地址
-        :type ConfigInternetServiceIp: str
-        """
+        :param EnvName: 环境名称\n        :type EnvName: str\n        :param VpcInfos: 环境对应的网络信息\n        :type VpcInfos: list of VpcInfo\n        :param StorageCapacity: 云硬盘容量\n        :type StorageCapacity: int\n        :param Status: 运行状态\n        :type Status: str\n        :param AdminServiceIp: Admin service 访问地址\n        :type AdminServiceIp: str\n        :param ConfigServiceIp: Config service访问地址\n        :type ConfigServiceIp: str\n        :param EnableConfigInternet: 是否开启config-server公网\n        :type EnableConfigInternet: bool\n        :param ConfigInternetServiceIp: config-server公网访问地址\n        :type ConfigInternetServiceIp: str\n        """
         self.EnvName = None
         self.VpcInfos = None
         self.StorageCapacity = None
@@ -243,11 +197,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 过滤参数名
-        :type Name: str
-        :param Values: 过滤参数值
-        :type Values: list of str
-        """
+        :param Name: 过滤参数名\n        :type Name: str\n        :param Values: 过滤参数值\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -271,53 +221,17 @@ class SREInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param Name: 名称
-        :type Name: str
-        :param Edition: 版本号
-        :type Edition: str
-        :param Status: 状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail
-        :type Status: str
-        :param SpecId: 规格ID
-        :type SpecId: str
-        :param Replica: 副本数
-        :type Replica: int
-        :param Type: 类型
-        :type Type: str
-        :param VpcId: Vpc iD
-        :type VpcId: str
-        :param SubnetIds: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetIds: list of str
-        :param EnableStorage: 是否开启持久化存储
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableStorage: bool
-        :param StorageType: 数据存储方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageType: str
-        :param StorageCapacity: 云硬盘容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageCapacity: int
-        :param Paymode: 计费方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Paymode: str
-        :param EKSClusterID: EKS集群的ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EKSClusterID: str
-        :param CreateTime: 集群创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: str
-        :param EnvInfos: 环境配置信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnvInfos: list of EnvInfo
-        :param EngineRegion: 引擎所在的区域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EngineRegion: str
-        :param EnableInternet: 注册引擎是否开启公网
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableInternet: bool
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param Name: 名称\n        :type Name: str\n        :param Edition: 版本号\n        :type Edition: str\n        :param Status: 状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail\n        :type Status: str\n        :param SpecId: 规格ID\n        :type SpecId: str\n        :param Replica: 副本数\n        :type Replica: int\n        :param Type: 类型\n        :type Type: str\n        :param VpcId: Vpc iD\n        :type VpcId: str\n        :param SubnetIds: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetIds: list of str\n        :param EnableStorage: 是否开启持久化存储
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EnableStorage: bool\n        :param StorageType: 数据存储方式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageType: str\n        :param StorageCapacity: 云硬盘容量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageCapacity: int\n        :param Paymode: 计费方式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Paymode: str\n        :param EKSClusterID: EKS集群的ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EKSClusterID: str\n        :param CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param EnvInfos: 环境配置信息列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvInfos: list of EnvInfo\n        :param EngineRegion: 引擎所在的区域
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EngineRegion: str\n        :param EnableInternet: 注册引擎是否开启公网
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EnableInternet: bool\n        """
         self.InstanceId = None
         self.Name = None
         self.Edition = None
@@ -378,11 +292,7 @@ class VpcInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: Vpc Id
-        :type VpcId: str
-        :param SubnetId: 子网ID
-        :type SubnetId: str
-        """
+        :param VpcId: Vpc Id\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        """
         self.VpcId = None
         self.SubnetId = None
 

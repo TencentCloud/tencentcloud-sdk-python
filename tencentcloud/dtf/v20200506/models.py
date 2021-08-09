@@ -25,23 +25,7 @@ class DescribeTransactionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 事务分组ID
-        :type GroupId: str
-        :param TransactionBeginFrom: 事务开始时间查询起始时间戳，UTC，精确到毫秒
-        :type TransactionBeginFrom: int
-        :param TransactionBeginTo: 事务开始时间查询截止时间戳，UTC，精确到毫秒
-        :type TransactionBeginTo: int
-        :param SearchError: 仅查询异常状态的事务，true：仅查询异常，false或不传入：查询所有
-        :type SearchError: bool
-        :param TransactionId: 主事务ID，不传入时查询全量，高优先级
-        :type TransactionId: int
-        :param TransactionIdList: 主事务ID列表，不传入时查询全量，低优先级
-        :type TransactionIdList: list of int
-        :param Limit: 每页数量
-        :type Limit: int
-        :param Offset: 起始偏移量
-        :type Offset: int
-        """
+        :param GroupId: 事务分组ID\n        :type GroupId: str\n        :param TransactionBeginFrom: 事务开始时间查询起始时间戳，UTC，精确到毫秒\n        :type TransactionBeginFrom: int\n        :param TransactionBeginTo: 事务开始时间查询截止时间戳，UTC，精确到毫秒\n        :type TransactionBeginTo: int\n        :param SearchError: 仅查询异常状态的事务，true：仅查询异常，false或不传入：查询所有\n        :type SearchError: bool\n        :param TransactionId: 主事务ID，不传入时查询全量，高优先级\n        :type TransactionId: int\n        :param TransactionIdList: 主事务ID列表，不传入时查询全量，低优先级\n        :type TransactionIdList: list of int\n        :param Limit: 每页数量\n        :type Limit: int\n        :param Offset: 起始偏移量\n        :type Offset: int\n        """
         self.GroupId = None
         self.TransactionBeginFrom = None
         self.TransactionBeginTo = None
@@ -77,11 +61,7 @@ class DescribeTransactionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 主事务分页列表
-        :type Result: :class:`tencentcloud.dtf.v20200506.models.PagedTransaction`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Result: 主事务分页列表\n        :type Result: :class:`tencentcloud.dtf.v20200506.models.PagedTransaction`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -101,11 +81,7 @@ class PagedTransaction(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 总条数，特定在该接口中总是会返回null
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param Content: 主事务分组列表
-        :type Content: list of Transaction
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param Content: 主事务分组列表\n        :type Content: list of Transaction\n        """
         self.TotalCount = None
         self.Content = None
 
@@ -135,51 +111,21 @@ class Transaction(AbstractModel):
     def __init__(self):
         """
         :param TransactionId: 主事务ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionId: int
-        :param TransactionBegin: 主事务开始时间戳，UTC，精确到毫秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionBegin: int
-        :param TransactionEnd: 主事务结束时间戳，UTC，精确到毫秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionEnd: int
-        :param TransactionCommit: 主事务提交时间戳，UTC，精确到毫秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionCommit: int
-        :param TransactionRollback: 主事务回滚时间戳，UTC，精确到毫秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionRollback: int
-        :param TransactionError: 主事务异常停止时间戳，UTC，精确到毫秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionError: int
-        :param Timeout: 主事务超时时长，单位毫秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Timeout: int
-        :param Status: 主事务状态：0:Trying, 1:Confirming, 2: Confirmed, 3:Canceling, 4: Canceled
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param EndFlag: 主事务结束标识：0:运行中, 1: 已结束
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndFlag: int
-        :param TimeoutFlag: 主事务超时标识：0:运行中, 1: 已超时
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeoutFlag: int
-        :param Comment: 异常信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Comment: str
-        :param GroupId: 事务分组ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GroupId: str
-        :param Server: 主事务来源服务标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Server: str
-        :param BranchQuantity: 分支事务数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BranchQuantity: int
-        :param RetryFlag: 重试标识：true：可以重试；false：不可重试
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RetryFlag: bool
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionId: int\n        :param TransactionBegin: 主事务开始时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionBegin: int\n        :param TransactionEnd: 主事务结束时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionEnd: int\n        :param TransactionCommit: 主事务提交时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionCommit: int\n        :param TransactionRollback: 主事务回滚时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionRollback: int\n        :param TransactionError: 主事务异常停止时间戳，UTC，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionError: int\n        :param Timeout: 主事务超时时长，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Timeout: int\n        :param Status: 主事务状态：0:Trying, 1:Confirming, 2: Confirmed, 3:Canceling, 4: Canceled
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param EndFlag: 主事务结束标识：0:运行中, 1: 已结束
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndFlag: int\n        :param TimeoutFlag: 主事务超时标识：0:运行中, 1: 已超时
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeoutFlag: int\n        :param Comment: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Comment: str\n        :param GroupId: 事务分组ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupId: str\n        :param Server: 主事务来源服务标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Server: str\n        :param BranchQuantity: 分支事务数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BranchQuantity: int\n        :param RetryFlag: 重试标识：true：可以重试；false：不可重试
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RetryFlag: bool\n        """
         self.TransactionId = None
         self.TransactionBegin = None
         self.TransactionEnd = None

@@ -25,11 +25,7 @@ class AddUserToUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserIds: 加入用户组的用户ID列表。
-        :type UserIds: list of str
-        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-        :type UserGroupId: str
-        """
+        :param UserIds: 加入用户组的用户ID列表。\n        :type UserIds: list of str\n        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。\n        :type UserGroupId: str\n        """
         self.UserIds = None
         self.UserGroupId = None
 
@@ -53,9 +49,7 @@ class AddUserToUserGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -71,15 +65,9 @@ class ApplicationAuthorizationInfo(AbstractModel):
     def __init__(self):
         """
         :param ApplicationAccounts: 用户在被授权应用下对应的账号列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationAccounts: list of str
-        :param ApplicationId: 应用ID，是应用的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationId: str
-        :param InheritedForm: 展示用户所在的用户组、机构节点拥有该应用的访问权限的ID信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InheritedForm: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationAccounts: list of str\n        :param ApplicationId: 应用ID，是应用的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationId: str\n        :param InheritedForm: 展示用户所在的用户组、机构节点拥有该应用的访问权限的ID信息列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InheritedForm: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`\n        """
         self.ApplicationAccounts = None
         self.ApplicationId = None
         self.InheritedForm = None
@@ -107,11 +95,7 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
     def __init__(self):
         """
-        :param Keyword: 应用匹配搜索关键字，匹配范围包括：应用名称、应用ID。
-        :type Keyword: str
-        :param ApplicationType: 应用类型。ApplicationType的取值范围有：OAUTH2、JWT、CAS、SAML2、FORM、OIDC、APIGW。
-        :type ApplicationType: str
-        """
+        :param Keyword: 应用匹配搜索关键字，匹配范围包括：应用名称、应用ID。\n        :type Keyword: str\n        :param ApplicationType: 应用类型。ApplicationType的取值范围有：OAUTH2、JWT、CAS、SAML2、FORM、OIDC、APIGW。\n        :type ApplicationType: str\n        """
         self.Keyword = None
         self.ApplicationType = None
 
@@ -135,30 +119,14 @@ class ApplicationInformation(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 应用ID，是应用的全局唯一标识。
-        :type ApplicationId: str
-        :param DisplayName: 应用展示名称，长度限制：64个字符。 默认与应用名字相同。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param CreatedDate: 应用创建时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedDate: str
-        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedDate: str
-        :param AppStatus: 应用状态。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppStatus: bool
-        :param Icon: 应用图标。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Icon: str
-        :param ApplicationType: 应用类型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationType: str
-        :param ClientId: 客户端id。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClientId: str
-        """
+        :param ApplicationId: 应用ID，是应用的全局唯一标识。\n        :type ApplicationId: str\n        :param DisplayName: 应用展示名称，长度限制：64个字符。 默认与应用名字相同。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param CreatedDate: 应用创建时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedDate: str\n        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedDate: str\n        :param AppStatus: 应用状态。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppStatus: bool\n        :param Icon: 应用图标。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Icon: str\n        :param ApplicationType: 应用类型。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationType: str\n        :param ClientId: 客户端id。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientId: str\n        """
         self.ApplicationId = None
         self.DisplayName = None
         self.CreatedDate = None
@@ -194,19 +162,7 @@ class AuthorizationInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AppId: 应用唯一ID。
-        :type AppId: str
-        :param AppName: 应用名称。
-        :type AppName: str
-        :param EntityName: 类型名称。
-        :type EntityName: str
-        :param EntityId: 类型唯一ID。
-        :type EntityId: str
-        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
-        :type LastModifiedDate: str
-        :param AuthorizationId: 授权类型唯一ID。
-        :type AuthorizationId: str
-        """
+        :param AppId: 应用唯一ID。\n        :type AppId: str\n        :param AppName: 应用名称。\n        :type AppName: str\n        :param EntityName: 类型名称。\n        :type EntityName: str\n        :param EntityId: 类型唯一ID。\n        :type EntityId: str\n        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。\n        :type LastModifiedDate: str\n        :param AuthorizationId: 授权类型唯一ID。\n        :type AuthorizationId: str\n        """
         self.AppId = None
         self.AppName = None
         self.EntityName = None
@@ -238,9 +194,7 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
 
     def __init__(self):
         """
-        :param Keyword: 名称匹配搜索，当查询类型为用户时，匹配范围包括：用户名称、应用名称；当查询类型为用户组时，匹配范围包括：用户组名称、应用名称；当查询类型为组织机构时，匹配范围包括：组织机构名称、应用名称。
-        :type Keyword: str
-        """
+        :param Keyword: 名称匹配搜索，当查询类型为用户时，匹配范围包括：用户名称、应用名称；当查询类型为用户组时，匹配范围包括：用户组名称、应用名称；当查询类型为组织机构时，匹配范围包括：组织机构名称、应用名称。\n        :type Keyword: str\n        """
         self.Keyword = None
 
 
@@ -262,15 +216,7 @@ class CreateOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DisplayName: 机构节点名称，长度限制：64个字符。
-        :type DisplayName: str
-        :param ParentOrgNodeId: 父机构节点ID，如果为空则默认创建在机构根节点下。
-        :type ParentOrgNodeId: str
-        :param Description: 机构节点描述。
-        :type Description: str
-        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID，如果非空则校验此ID的唯一性。
-        :type CustomizedOrgNodeId: str
-        """
+        :param DisplayName: 机构节点名称，长度限制：64个字符。\n        :type DisplayName: str\n        :param ParentOrgNodeId: 父机构节点ID，如果为空则默认创建在机构根节点下。\n        :type ParentOrgNodeId: str\n        :param Description: 机构节点描述。\n        :type Description: str\n        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID，如果非空则校验此ID的唯一性。\n        :type CustomizedOrgNodeId: str\n        """
         self.DisplayName = None
         self.ParentOrgNodeId = None
         self.Description = None
@@ -299,11 +245,7 @@ class CreateOrgNodeResponse(AbstractModel):
     def __init__(self):
         """
         :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OrgNodeId = None
         self.RequestId = None
 
@@ -320,11 +262,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DisplayName: 昵称，长度限制：64个字符。 DisplayName是唯一的。
-        :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
-        :type Description: str
-        """
+        :param DisplayName: 昵称，长度限制：64个字符。 DisplayName是唯一的。\n        :type DisplayName: str\n        :param Description: 用户备注，长度限制：512个字符。\n        :type Description: str\n        """
         self.DisplayName = None
         self.Description = None
 
@@ -349,11 +287,7 @@ class CreateUserGroupResponse(AbstractModel):
     def __init__(self):
         """
         :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserGroupId = None
         self.RequestId = None
 
@@ -370,27 +304,7 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 用户名，长度限制：64个字符。
-        :type UserName: str
-        :param Password: 用户密码， 需要符合密码策略的配置。
-        :type Password: str
-        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
-        :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
-        :type Description: str
-        :param UserGroupIds: 用户所属用户组ID列表。
-        :type UserGroupIds: list of str
-        :param Phone: 用户手机号。例如：+86-1xxxxxxxxxx。
-        :type Phone: str
-        :param OrgNodeId: 用户所属组织机构唯一ID。如果为空，默认为在根节点下创建用户。
-        :type OrgNodeId: str
-        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
-        :type ExpirationTime: str
-        :param Email: 用户邮箱。
-        :type Email: str
-        :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。
-        :type PwdNeedReset: bool
-        """
+        :param UserName: 用户名，长度限制：64个字符。\n        :type UserName: str\n        :param Password: 用户密码， 需要符合密码策略的配置。\n        :type Password: str\n        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。\n        :type DisplayName: str\n        :param Description: 用户备注，长度限制：512个字符。\n        :type Description: str\n        :param UserGroupIds: 用户所属用户组ID列表。\n        :type UserGroupIds: list of str\n        :param Phone: 用户手机号。例如：+86-1xxxxxxxxxx。\n        :type Phone: str\n        :param OrgNodeId: 用户所属组织机构唯一ID。如果为空，默认为在根节点下创建用户。\n        :type OrgNodeId: str\n        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。\n        :type ExpirationTime: str\n        :param Email: 用户邮箱。\n        :type Email: str\n        :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。\n        :type PwdNeedReset: bool\n        """
         self.UserName = None
         self.Password = None
         self.DisplayName = None
@@ -431,11 +345,7 @@ class CreateUserResponse(AbstractModel):
     def __init__(self):
         """
         :param UserId: 返回的新创建的用户ID，是该用户的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserId = None
         self.RequestId = None
 
@@ -452,9 +362,7 @@ class DeleteOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
-        :type OrgNodeId: str
-        """
+        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。\n        :type OrgNodeId: str\n        """
         self.OrgNodeId = None
 
 
@@ -476,9 +384,7 @@ class DeleteOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -493,9 +399,7 @@ class DeleteUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-        :type UserGroupId: str
-        """
+        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。\n        :type UserGroupId: str\n        """
         self.UserGroupId = None
 
 
@@ -517,9 +421,7 @@ class DeleteUserGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -534,11 +436,7 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
-        :type UserName: str
-        :param UserId: 用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
-        :type UserId: str
-        """
+        :param UserName: 用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。\n        :type UserName: str\n        :param UserId: 用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。\n        :type UserId: str\n        """
         self.UserName = None
         self.UserId = None
 
@@ -562,9 +460,7 @@ class DeleteUserResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -579,11 +475,7 @@ class DescribeApplicationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 应用id，是应用的全局唯一标识，与ClientId参数不能同时为空。
-        :type ApplicationId: str
-        :param ClientId: 客户端id，与ApplicationId参数不能同时为空。
-        :type ClientId: str
-        """
+        :param ApplicationId: 应用id，是应用的全局唯一标识，与ClientId参数不能同时为空。\n        :type ApplicationId: str\n        :param ClientId: 客户端id，与ApplicationId参数不能同时为空。\n        :type ClientId: str\n        """
         self.ApplicationId = None
         self.ClientId = None
 
@@ -608,41 +500,17 @@ class DescribeApplicationResponse(AbstractModel):
     def __init__(self):
         """
         :param KeyId: 密钥id。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyId: str
-        :param DisplayName: 应用展示名称，长度限制：64个字符。 默认与应用名字相同。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param LastModifiedDate: 应用最后修改时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedDate: str
-        :param ClientId: 客户端id。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClientId: str
-        :param ApplicationType: 应用类型，即创建应用时所选择的应用模版类型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationType: str
-        :param CreatedDate: 应用创建时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedDate: str
-        :param ApplicationId: 应用id，是应用的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationId: str
-        :param TokenExpired: 令牌有效时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TokenExpired: int
-        :param ClientSecret: 客户端secret。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClientSecret: str
-        :param PublicKey: 公钥信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicKey: str
-        :param AuthorizeUrl: 授权地址。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AuthorizeUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyId: str\n        :param DisplayName: 应用展示名称，长度限制：64个字符。 默认与应用名字相同。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param LastModifiedDate: 应用最后修改时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedDate: str\n        :param ClientId: 客户端id。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientId: str\n        :param ApplicationType: 应用类型，即创建应用时所选择的应用模版类型。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationType: str\n        :param CreatedDate: 应用创建时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedDate: str\n        :param ApplicationId: 应用id，是应用的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationId: str\n        :param TokenExpired: 令牌有效时间，单位为秒。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TokenExpired: int\n        :param ClientSecret: 客户端secret。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientSecret: str\n        :param PublicKey: 公钥信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicKey: str\n        :param AuthorizeUrl: 授权地址。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizeUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.KeyId = None
         self.DisplayName = None
         self.LastModifiedDate = None
@@ -679,11 +547,7 @@ class DescribeOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrgNodeId: 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点信息。
-        :type OrgNodeId: str
-        :param IncludeOrgNodeChildInfo: 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
-        :type IncludeOrgNodeChildInfo: bool
-        """
+        :param OrgNodeId: 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点信息。\n        :type OrgNodeId: str\n        :param IncludeOrgNodeChildInfo: 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。\n        :type IncludeOrgNodeChildInfo: bool\n        """
         self.OrgNodeId = None
         self.IncludeOrgNodeChildInfo = None
 
@@ -708,32 +572,14 @@ class DescribeOrgNodeResponse(AbstractModel):
     def __init__(self):
         """
         :param DisplayName: 机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param LastModifiedDate: 机构节点最后修改时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedDate: str
-        :param CustomizedOrgNodeId: 机构节点外部ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomizedOrgNodeId: str
-        :param ParentOrgNodeId: 当前机构节点的父节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ParentOrgNodeId: str
-        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeId: str
-        :param DataSource: 数据来源。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataSource: str
-        :param CreatedDate: 机构节点创建时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedDate: str
-        :param OrgNodeChildInfo: 当前机构节点下的子节点列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeChildInfo: list of OrgNodeChildInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param LastModifiedDate: 机构节点最后修改时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedDate: str\n        :param CustomizedOrgNodeId: 机构节点外部ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomizedOrgNodeId: str\n        :param ParentOrgNodeId: 当前机构节点的父节点ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ParentOrgNodeId: str\n        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param DataSource: 数据来源。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataSource: str\n        :param CreatedDate: 机构节点创建时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedDate: str\n        :param OrgNodeChildInfo: 当前机构节点下的子节点列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeChildInfo: list of OrgNodeChildInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DisplayName = None
         self.LastModifiedDate = None
         self.CustomizedOrgNodeId = None
@@ -769,9 +615,7 @@ class DescribePublicKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 应用ID，是应用的全局唯一标识。
-        :type ApplicationId: str
-        """
+        :param ApplicationId: 应用ID，是应用的全局唯一标识。\n        :type ApplicationId: str\n        """
         self.ApplicationId = None
 
 
@@ -794,17 +638,9 @@ class DescribePublicKeyResponse(AbstractModel):
     def __init__(self):
         """
         :param PublicKey: jwt验证签名所用的公钥信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicKey: str
-        :param KeyId: jwt的密钥id。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyId: str
-        :param ApplicationId: 应用ID，是应用的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicKey: str\n        :param KeyId: jwt的密钥id。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyId: str\n        :param ApplicationId: 应用ID，是应用的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PublicKey = None
         self.KeyId = None
         self.ApplicationId = None
@@ -825,9 +661,7 @@ class DescribeUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-        :type UserGroupId: str
-        """
+        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。\n        :type UserGroupId: str\n        """
         self.UserGroupId = None
 
 
@@ -850,17 +684,9 @@ class DescribeUserGroupResponse(AbstractModel):
     def __init__(self):
         """
         :param DisplayName: 昵称，长度限制：64个字符。 DisplayName不唯一。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Description: str
-        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param Description: 用户备注，长度限制：512个字符。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DisplayName = None
         self.Description = None
         self.UserGroupId = None
@@ -881,11 +707,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 用户名，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
-        :type UserName: str
-        :param UserId: 用户 id，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
-        :type UserId: str
-        """
+        :param UserName: 用户名，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。\n        :type UserName: str\n        :param UserId: 用户 id，长度限制：64个字符。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。\n        :type UserId: str\n        """
         self.UserName = None
         self.UserId = None
 
@@ -910,44 +732,18 @@ class DescribeUserInfoResponse(AbstractModel):
     def __init__(self):
         """
         :param UserName: 用户名。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserName: str
-        :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param DisplayName: 昵称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param Description: 用户备注。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Description: str
-        :param UserGroupIds: 用户所属用户组 id 列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupIds: list of str
-        :param UserId: 用户 id，长度限制：64个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserId: str
-        :param Email: 用户邮箱。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Email: str
-        :param Phone: 用户手机号。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Phone: str
-        :param OrgNodeId: 用户所属组织机构 Id。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeId: str
-        :param DataSource: 数据来源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataSource: str
-        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpirationTime: str
-        :param ActivationTime: 用户激活时间，遵循 ISO 8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActivationTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserName: str\n        :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param DisplayName: 昵称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param Description: 用户备注。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param UserGroupIds: 用户所属用户组 id 列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupIds: list of str\n        :param UserId: 用户 id，长度限制：64个字符。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param Email: 用户邮箱。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Email: str\n        :param Phone: 用户手机号。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        :param OrgNodeId: 用户所属组织机构 Id。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param DataSource: 数据来源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataSource: str\n        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpirationTime: str\n        :param ActivationTime: 用户激活时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivationTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserName = None
         self.Status = None
         self.DisplayName = None
@@ -987,12 +783,8 @@ class InheritedForm(AbstractModel):
     def __init__(self):
         """
         :param UserGroupIds: 用户所在的用户组ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupIds: list of str
-        :param OrgNodeIds: 用户所在的机构节点ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeIds: list of str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupIds: list of str\n        :param OrgNodeIds: 用户所在的机构节点ID列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeIds: list of str\n        """
         self.UserGroupIds = None
         self.OrgNodeIds = None
 
@@ -1016,17 +808,7 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EntityType: 查询类型，包含用户（User）、用户组（UserGroup）、组织机构（OrgNode）。
-        :type EntityType: str
-        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
-        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AuthorizationInfoSearchCriteria`
-        :param Sort: 排序条件集合。可排序的属性支持：上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名称正向排序。
-        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
-        :type Offset: int
-        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
-        :type Limit: int
-        """
+        :param EntityType: 查询类型，包含用户（User）、用户组（UserGroup）、组织机构（OrgNode）。\n        :type EntityType: str\n        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。\n        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AuthorizationInfoSearchCriteria`\n        :param Sort: 排序条件集合。可排序的属性支持：上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名称正向排序。\n        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`\n        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。\n        :type Offset: int\n        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。\n        :type Limit: int\n        """
         self.EntityType = None
         self.SearchCondition = None
         self.Sort = None
@@ -1061,14 +843,8 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
     def __init__(self):
         """
         :param AuthorizationInfoList: 返回的应用授权信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AuthorizationInfoList: list of AuthorizationInfo
-        :param TotalCount: 返回的应用信息总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizationInfoList: list of AuthorizationInfo\n        :param TotalCount: 返回的应用信息总数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AuthorizationInfoList = None
         self.TotalCount = None
         self.RequestId = None
@@ -1092,15 +868,7 @@ class ListApplicationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
-        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`
-        :param Sort: 排序条件集合。可排序的属性支持：应用名字（displayName）、创建时间（createdDate）、上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
-        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
-        :type Offset: int
-        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
-        :type Limit: int
-        """
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。\n        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`\n        :param Sort: 排序条件集合。可排序的属性支持：应用名字（displayName）、创建时间（createdDate）、上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。\n        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`\n        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。\n        :type Offset: int\n        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。\n        :type Limit: int\n        """
         self.SearchCondition = None
         self.Sort = None
         self.Offset = None
@@ -1133,14 +901,8 @@ class ListApplicationsResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 返回的应用信息总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param ApplicationInfoList: 返回的应用信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationInfoList: list of ApplicationInformation
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ApplicationInfoList: 返回的应用信息列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationInfoList: list of ApplicationInformation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ApplicationInfoList = None
         self.RequestId = None
@@ -1164,9 +926,7 @@ class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrgNodeId: 机构节点 Id 。
-        :type OrgNodeId: str
-        """
+        :param OrgNodeId: 机构节点 Id 。\n        :type OrgNodeId: str\n        """
         self.OrgNodeId = None
 
 
@@ -1189,11 +949,7 @@ class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
     def __init__(self):
         """
         :param ApplicationIds: 机构节点拥有访问权限的应用 id 列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ApplicationIds = None
         self.RequestId = None
 
@@ -1210,9 +966,7 @@ class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserGroupId: 用户组 Id 。
-        :type UserGroupId: str
-        """
+        :param UserGroupId: 用户组 Id 。\n        :type UserGroupId: str\n        """
         self.UserGroupId = None
 
 
@@ -1235,11 +989,7 @@ class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
     def __init__(self):
         """
         :param ApplicationIds: 用户组拥有访问权限的应用 id 列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ApplicationIds = None
         self.RequestId = None
 
@@ -1256,11 +1006,7 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户 ID。
-        :type UserId: str
-        :param IncludeInheritedAuthorizations: 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传false表示不查询该范围，传true表示应用查询该范围。
-        :type IncludeInheritedAuthorizations: bool
-        """
+        :param UserId: 用户 ID。\n        :type UserId: str\n        :param IncludeInheritedAuthorizations: 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传false表示不查询该范围，传true表示应用查询该范围。\n        :type IncludeInheritedAuthorizations: bool\n        """
         self.UserId = None
         self.IncludeInheritedAuthorizations = None
 
@@ -1285,11 +1031,7 @@ class ListAuthorizedApplicationsToUserResponse(AbstractModel):
     def __init__(self):
         """
         :param ApplicationAuthorizationInfo: 用户拥有访问权限的应用信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationAuthorizationInfo: list of ApplicationAuthorizationInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationAuthorizationInfo: list of ApplicationAuthorizationInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ApplicationAuthorizationInfo = None
         self.RequestId = None
 
@@ -1311,9 +1053,7 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户ID，是用户的全局唯一标识。
-        :type UserId: str
-        """
+        :param UserId: 用户ID，是用户的全局唯一标识。\n        :type UserId: str\n        """
         self.UserId = None
 
 
@@ -1336,14 +1076,8 @@ class ListUserGroupsOfUserResponse(AbstractModel):
     def __init__(self):
         """
         :param UserGroupIds: 用户所属的用户组ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupIds: list of str
-        :param UserId: 用户ID，是用户的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupIds: list of str\n        :param UserId: 用户ID，是用户的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserGroupIds = None
         self.UserId = None
         self.RequestId = None
@@ -1362,15 +1096,7 @@ class ListUserGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
-        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserGroupInfoSearchCriteria`
-        :param Sort: 排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、上次更新时间（LastModifiedDate）。如果该字段为空，则默认按照用户组名称正向排序。
-        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
-        :type Offset: int
-        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
-        :type Limit: int
-        """
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。\n        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserGroupInfoSearchCriteria`\n        :param Sort: 排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、上次更新时间（LastModifiedDate）。如果该字段为空，则默认按照用户组名称正向排序。\n        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`\n        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。\n        :type Offset: int\n        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。\n        :type Limit: int\n        """
         self.SearchCondition = None
         self.Sort = None
         self.Offset = None
@@ -1403,14 +1129,8 @@ class ListUserGroupsResponse(AbstractModel):
     def __init__(self):
         """
         :param UserGroupList: 返回的用户组列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupList: list of UserGroupInformation
-        :param TotalCount: 返回的用户组信息总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupList: list of UserGroupInformation\n        :param TotalCount: 返回的用户组信息总数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserGroupList = None
         self.TotalCount = None
         self.RequestId = None
@@ -1434,11 +1154,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrgNodeId: 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点下用户信息。
-        :type OrgNodeId: str
-        :param IncludeOrgNodeChildInfo: 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
-        :type IncludeOrgNodeChildInfo: bool
-        """
+        :param OrgNodeId: 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点下用户信息。\n        :type OrgNodeId: str\n        :param IncludeOrgNodeChildInfo: 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。\n        :type IncludeOrgNodeChildInfo: bool\n        """
         self.OrgNodeId = None
         self.IncludeOrgNodeChildInfo = None
 
@@ -1463,20 +1179,10 @@ class ListUsersInOrgNodeResponse(AbstractModel):
     def __init__(self):
         """
         :param OrgNodeChildUserInfo: 机构子节点下的用户信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeChildUserInfo: list of OrgNodeChildUserInfo
-        :param OrgNodeId: 机构ID，是机构节点全局唯一标识，长度限制：64个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeId: str
-        :param UserInfo: 用户信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserInfo: list of UserInfo
-        :param TotalUserNum: 当前机构节点下的用户总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalUserNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeChildUserInfo: list of OrgNodeChildUserInfo\n        :param OrgNodeId: 机构ID，是机构节点全局唯一标识，长度限制：64个字符。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param UserInfo: 用户信息列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserInfo: list of UserInfo\n        :param TotalUserNum: 当前机构节点下的用户总数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalUserNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OrgNodeChildUserInfo = None
         self.OrgNodeId = None
         self.UserInfo = None
@@ -1509,9 +1215,7 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-        :type UserGroupId: str
-        """
+        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。\n        :type UserGroupId: str\n        """
         self.UserGroupId = None
 
 
@@ -1534,17 +1238,9 @@ class ListUsersInUserGroupResponse(AbstractModel):
     def __init__(self):
         """
         :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserGroupId: str
-        :param UserInfo: 返回的用户信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserInfo: list of UserInfo
-        :param TotalNum: 返回的用户信息总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupId: str\n        :param UserInfo: 返回的用户信息列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserInfo: list of UserInfo\n        :param TotalNum: 返回的用户信息总数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserGroupId = None
         self.UserInfo = None
         self.TotalNum = None
@@ -1570,19 +1266,7 @@ class ListUsersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SearchCondition: 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
-        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
-        :param ExpectedFields: 指定期望返回的用户属性，默认返回所有用户内置属性。内置用户属性包括：用户UUID（UserId）、用户昵称（DisplayName）、用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、用户组（SubjectGroups）机构路径（OrgPath）、备注（Description）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
-        :type ExpectedFields: list of str
-        :param Sort: 排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
-        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
-        :type Offset: int
-        :param Limit: 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
-        :type Limit: int
-        :param IncludeTotal: 是否查看搜索结果的总数，默认该选项为false不查看。
-        :type IncludeTotal: bool
-        """
+        :param SearchCondition: 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。\n        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`\n        :param ExpectedFields: 指定期望返回的用户属性，默认返回所有用户内置属性。内置用户属性包括：用户UUID（UserId）、用户昵称（DisplayName）、用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、用户组（SubjectGroups）机构路径（OrgPath）、备注（Description）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。\n        :type ExpectedFields: list of str\n        :param Sort: 排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。\n        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`\n        :param Offset: 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。\n        :type Offset: int\n        :param Limit: 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。\n        :type Limit: int\n        :param IncludeTotal: 是否查看搜索结果的总数，默认该选项为false不查看。\n        :type IncludeTotal: bool\n        """
         self.SearchCondition = None
         self.ExpectedFields = None
         self.Sort = None
@@ -1619,14 +1303,8 @@ class ListUsersResponse(AbstractModel):
     def __init__(self):
         """
         :param UserList: 查询返回的相关用户列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserList: list of UserInformation
-        :param TotalCount: 返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserList: list of UserInformation\n        :param TotalCount: 返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserList = None
         self.TotalCount = None
         self.RequestId = None
@@ -1650,27 +1328,7 @@ class ModifyUserInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
-        :type UserName: str
-        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
-        :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
-        :type Description: str
-        :param UserGroupIds: 用户所属用户组ID列表。
-        :type UserGroupIds: list of str
-        :param UserId: 用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
-        :type UserId: str
-        :param Phone: 用户手机号。
-        :type Phone: str
-        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
-        :type ExpirationTime: str
-        :param Password: 用户密码， 需要符合密码策略的配置。
-        :type Password: str
-        :param Email: 用户邮箱。
-        :type Email: str
-        :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。
-        :type PwdNeedReset: bool
-        """
+        :param UserName: 用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。\n        :type UserName: str\n        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。\n        :type DisplayName: str\n        :param Description: 用户备注，长度限制：512个字符。\n        :type Description: str\n        :param UserGroupIds: 用户所属用户组ID列表。\n        :type UserGroupIds: list of str\n        :param UserId: 用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。\n        :type UserId: str\n        :param Phone: 用户手机号。\n        :type Phone: str\n        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。\n        :type ExpirationTime: str\n        :param Password: 用户密码， 需要符合密码策略的配置。\n        :type Password: str\n        :param Email: 用户邮箱。\n        :type Email: str\n        :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。\n        :type PwdNeedReset: bool\n        """
         self.UserName = None
         self.DisplayName = None
         self.Description = None
@@ -1710,9 +1368,7 @@ class ModifyUserInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1728,27 +1384,13 @@ class OrgNodeChildInfo(AbstractModel):
     def __init__(self):
         """
         :param DisplayName: 机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param LastModifiedDate: 机构节点最后修改时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedDate: str
-        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomizedOrgNodeId: str
-        :param ParentOrgNodeId: 当前机构节点的父节点ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ParentOrgNodeId: str
-        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeId: str
-        :param DataSource: 数据来源。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataSource: str
-        :param CreatedDate: 机构节点创建时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedDate: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param LastModifiedDate: 机构节点最后修改时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedDate: str\n        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomizedOrgNodeId: str\n        :param ParentOrgNodeId: 当前机构节点的父节点ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ParentOrgNodeId: str\n        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param DataSource: 数据来源。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataSource: str\n        :param CreatedDate: 机构节点创建时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedDate: str\n        """
         self.DisplayName = None
         self.LastModifiedDate = None
         self.CustomizedOrgNodeId = None
@@ -1783,15 +1425,9 @@ class OrgNodeChildUserInfo(AbstractModel):
     def __init__(self):
         """
         :param OrgNodeId: 机构ID，是机构节点全局唯一标识，长度限制：64个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgNodeId: str
-        :param UserInfo: 用户信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserInfo: list of UserInfo
-        :param TotalUserNum: 当前机构节点下的用户总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalUserNum: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param UserInfo: 用户信息列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserInfo: list of UserInfo\n        :param TotalUserNum: 当前机构节点下的用户总数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalUserNum: int\n        """
         self.OrgNodeId = None
         self.UserInfo = None
         self.TotalUserNum = None
@@ -1822,11 +1458,7 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserIds: 要加入用户组的用户ID列表。
-        :type UserIds: list of str
-        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
-        :type UserGroupId: str
-        """
+        :param UserIds: 要加入用户组的用户ID列表。\n        :type UserIds: list of str\n        :param UserGroupId: 用户组ID，是用户组的全局唯一标识。\n        :type UserGroupId: str\n        """
         self.UserIds = None
         self.UserGroupId = None
 
@@ -1850,9 +1482,7 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1867,11 +1497,7 @@ class SortCondition(AbstractModel):
 
     def __init__(self):
         """
-        :param SortKey: 排序属性。
-        :type SortKey: str
-        :param SortOrder: 排序顺序，ASC为正向排序，DESC为反向排序。
-        :type SortOrder: str
-        """
+        :param SortKey: 排序属性。\n        :type SortKey: str\n        :param SortOrder: 排序顺序，ASC为正向排序，DESC为反向排序。\n        :type SortOrder: str\n        """
         self.SortKey = None
         self.SortOrder = None
 
@@ -1895,15 +1521,7 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
-        :type OrgNodeId: str
-        :param DisplayName: 机构节点名称，长度限制：64个字符。
-        :type DisplayName: str
-        :param Description: 机构节点描述。
-        :type Description: str
-        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID，如果非空则校验此ID的唯一性。
-        :type CustomizedOrgNodeId: str
-        """
+        :param OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。\n        :type OrgNodeId: str\n        :param DisplayName: 机构节点名称，长度限制：64个字符。\n        :type DisplayName: str\n        :param Description: 机构节点描述。\n        :type Description: str\n        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID，如果非空则校验此ID的唯一性。\n        :type CustomizedOrgNodeId: str\n        """
         self.OrgNodeId = None
         self.DisplayName = None
         self.Description = None
@@ -1931,9 +1549,7 @@ class UpdateOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1948,9 +1564,7 @@ class UserGroupInfoSearchCriteria(AbstractModel):
 
     def __init__(self):
         """
-        :param Keyword: 名称匹配搜索，匹配范围包括：用户组名称、用户组ID。
-        :type Keyword: str
-        """
+        :param Keyword: 名称匹配搜索，匹配范围包括：用户组名称、用户组ID。\n        :type Keyword: str\n        """
         self.Keyword = None
 
 
@@ -1972,14 +1586,8 @@ class UserGroupInformation(AbstractModel):
 
     def __init__(self):
         """
-        :param UserGroupId: 用户组ID。
-        :type UserGroupId: str
-        :param UserGroupName: 用户组名称。
-        :type UserGroupName: str
-        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedDate: str
-        """
+        :param UserGroupId: 用户组ID。\n        :type UserGroupId: str\n        :param UserGroupName: 用户组名称。\n        :type UserGroupName: str\n        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedDate: str\n        """
         self.UserGroupId = None
         self.UserGroupName = None
         self.LastModifiedDate = None
@@ -2006,12 +1614,8 @@ class UserInfo(AbstractModel):
     def __init__(self):
         """
         :param UserId: 用户ID，是用户全局唯一标识，长度限制：64个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserId: str
-        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        """
         self.UserId = None
         self.DisplayName = None
 
@@ -2036,42 +1640,18 @@ class UserInformation(AbstractModel):
     def __init__(self):
         """
         :param UserName: 用户名，长度限制：32个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserName: str
-        :param Status: 用户状态。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Description: str
-        :param LastUpdateTime: 用户上次更新时间，遵循 ISO 8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastUpdateTime: str
-        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreationTime: str
-        :param OrgPath: 用户所属组织机构路径。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgPath: str
-        :param Phone: 带国家号的用户手机号，例如+86-00000000000。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Phone: str
-        :param SubjectGroups: 用户所属用户组ID列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubjectGroups: list of str
-        :param Email: 用户邮箱。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Email: str
-        :param LastLoginTime: 用户上次登录时间，遵循 ISO 8601 标准。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastLoginTime: str
-        :param UserId: 用户ID，是用户全局唯一标识，长度限制：64个字符。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserName: str\n        :param Status: 用户状态。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DisplayName: str\n        :param Description: 用户备注，长度限制：512个字符。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param LastUpdateTime: 用户上次更新时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastUpdateTime: str\n        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreationTime: str\n        :param OrgPath: 用户所属组织机构路径。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgPath: str\n        :param Phone: 带国家号的用户手机号，例如+86-00000000000。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        :param SubjectGroups: 用户所属用户组ID列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubjectGroups: list of str\n        :param Email: 用户邮箱。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Email: str\n        :param LastLoginTime: 用户上次登录时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastLoginTime: str\n        :param UserId: 用户ID，是用户全局唯一标识，长度限制：64个字符。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        """
         self.UserName = None
         self.Status = None
         self.DisplayName = None
@@ -2115,21 +1695,7 @@ class UserSearchCriteria(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 用户名，长度限制：64个字符。
-        :type UserName: str
-        :param Phone: 用户手机号。
-        :type Phone: str
-        :param Email: 用户邮箱。
-        :type Email: str
-        :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
-        :type Status: str
-        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
-        :type CreationTime: str
-        :param LastUpdateTime: 用户上次更新时间区间。
-        :type LastUpdateTime: str
-        :param Keyword: 名称匹配搜索，匹配范围包括：用户名称、用户ID。
-        :type Keyword: str
-        """
+        :param UserName: 用户名，长度限制：64个字符。\n        :type UserName: str\n        :param Phone: 用户手机号。\n        :type Phone: str\n        :param Email: 用户邮箱。\n        :type Email: str\n        :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。\n        :type Status: str\n        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。\n        :type CreationTime: str\n        :param LastUpdateTime: 用户上次更新时间区间。\n        :type LastUpdateTime: str\n        :param Keyword: 名称匹配搜索，匹配范围包括：用户名称、用户ID。\n        :type Keyword: str\n        """
         self.UserName = None
         self.Phone = None
         self.Email = None

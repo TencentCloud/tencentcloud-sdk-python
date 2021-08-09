@@ -25,11 +25,7 @@ class DescribeEisConnectorConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ConnectorName: 连接器名称
-        :type ConnectorName: str
-        :param ConnectorVersion: 连接器版本
-        :type ConnectorVersion: str
-        """
+        :param ConnectorName: 连接器名称\n        :type ConnectorName: str\n        :param ConnectorVersion: 连接器版本\n        :type ConnectorVersion: str\n        """
         self.ConnectorName = None
         self.ConnectorVersion = None
 
@@ -227,11 +223,7 @@ class DescribeEisConnectorConfigResponse(AbstractModel):
             ]
         }
     ]
-}
-        :type ConnectorParameter: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+}\n        :type ConnectorParameter: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ConnectorParameter = None
         self.RequestId = None
 
@@ -248,13 +240,7 @@ class EisConnectionOperation(AbstractModel):
 
     def __init__(self):
         """
-        :param OperationName: 连接器操作名称
-        :type OperationName: str
-        :param DisplayName: 连接器展示名称
-        :type DisplayName: str
-        :param IsTrigger: 操作是否为触发器
-        :type IsTrigger: bool
-        """
+        :param OperationName: 连接器操作名称\n        :type OperationName: str\n        :param DisplayName: 连接器展示名称\n        :type DisplayName: str\n        :param IsTrigger: 操作是否为触发器\n        :type IsTrigger: bool\n        """
         self.OperationName = None
         self.DisplayName = None
         self.IsTrigger = None
@@ -280,19 +266,7 @@ class EisConnectorSummary(AbstractModel):
 
     def __init__(self):
         """
-        :param ConnectorName: 连接器名称
-        :type ConnectorName: str
-        :param DisplayName: 连接器展示名称
-        :type DisplayName: str
-        :param Company: 连接器对应企业
-        :type Company: str
-        :param Product: 连接器对应产品
-        :type Product: str
-        :param ConnectorVersion: 连接器版本
-        :type ConnectorVersion: str
-        :param CreateTime: 连接器创建时间
-        :type CreateTime: int
-        """
+        :param ConnectorName: 连接器名称\n        :type ConnectorName: str\n        :param DisplayName: 连接器展示名称\n        :type DisplayName: str\n        :param Company: 连接器对应企业\n        :type Company: str\n        :param Product: 连接器对应产品\n        :type Product: str\n        :param ConnectorVersion: 连接器版本\n        :type ConnectorVersion: str\n        :param CreateTime: 连接器创建时间\n        :type CreateTime: int\n        """
         self.ConnectorName = None
         self.DisplayName = None
         self.Company = None
@@ -324,11 +298,7 @@ class ListEisConnectorOperationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ConnectorName: 连接器名称
-        :type ConnectorName: str
-        :param ConnectorVersion: 连接器版本
-        :type ConnectorVersion: str
-        """
+        :param ConnectorName: 连接器名称\n        :type ConnectorName: str\n        :param ConnectorVersion: 连接器版本\n        :type ConnectorVersion: str\n        """
         self.ConnectorName = None
         self.ConnectorVersion = None
 
@@ -352,11 +322,7 @@ class ListEisConnectorOperationsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Operations: 连接器列表
-        :type Operations: list of EisConnectionOperation
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Operations: 连接器列表\n        :type Operations: list of EisConnectionOperation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Operations = None
         self.RequestId = None
 
@@ -378,13 +344,7 @@ class ListEisConnectorsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ConnectorName: 连接器名称,非必输，如输入则按照输入值模糊匹配
-        :type ConnectorName: str
-        :param Offset: 分页参数,数据偏移量
-        :type Offset: int
-        :param Limit: 分页参数,每页显示的条数
-        :type Limit: int
-        """
+        :param ConnectorName: 连接器名称,非必输，如输入则按照输入值模糊匹配\n        :type ConnectorName: str\n        :param Offset: 分页参数,数据偏移量\n        :type Offset: int\n        :param Limit: 分页参数,每页显示的条数\n        :type Limit: int\n        """
         self.ConnectorName = None
         self.Offset = None
         self.Limit = None
@@ -410,13 +370,7 @@ class ListEisConnectorsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 连接器总数
-        :type TotalCount: int
-        :param Connectors: 连接器列表
-        :type Connectors: list of EisConnectorSummary
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 连接器总数\n        :type TotalCount: int\n        :param Connectors: 连接器列表\n        :type Connectors: list of EisConnectorSummary\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Connectors = None
         self.RequestId = None

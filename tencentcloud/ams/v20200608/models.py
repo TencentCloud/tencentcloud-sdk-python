@@ -25,37 +25,7 @@ class AmsDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 标签
-        :type Label: list of str
-        :param Duration: 时长(秒/s)
-        :type Duration: int
-        :param Name: 任务名
-        :type Name: str
-        :param TaskID: 任务ID，创建任务后返回的TaskId字段
-        :type TaskID: str
-        :param InsertTime: 插入时间
-        :type InsertTime: str
-        :param DataForm: 数据来源 0机审，其他为自主审核
-        :type DataForm: int
-        :param Operator: 操作人
-        :type Operator: str
-        :param OriginalLabel: 原始命中标签
-        :type OriginalLabel: list of str
-        :param OperateTime: 操作时间
-        :type OperateTime: str
-        :param Url: 视频原始地址
-        :type Url: str
-        :param Thumbnail: 封面图地址
-        :type Thumbnail: str
-        :param Content: 短音频内容
-        :type Content: str
-        :param DetailCount: 短音频个数
-        :type DetailCount: int
-        :param RequestId: 音频审核的请求 id
-        :type RequestId: str
-        :param Status: 音频机审状态
-        :type Status: str
-        """
+        :param Label: 标签\n        :type Label: list of str\n        :param Duration: 时长(秒/s)\n        :type Duration: int\n        :param Name: 任务名\n        :type Name: str\n        :param TaskID: 任务ID，创建任务后返回的TaskId字段\n        :type TaskID: str\n        :param InsertTime: 插入时间\n        :type InsertTime: str\n        :param DataForm: 数据来源 0机审，其他为自主审核\n        :type DataForm: int\n        :param Operator: 操作人\n        :type Operator: str\n        :param OriginalLabel: 原始命中标签\n        :type OriginalLabel: list of str\n        :param OperateTime: 操作时间\n        :type OperateTime: str\n        :param Url: 视频原始地址\n        :type Url: str\n        :param Thumbnail: 封面图地址\n        :type Thumbnail: str\n        :param Content: 短音频内容\n        :type Content: str\n        :param DetailCount: 短音频个数\n        :type DetailCount: int\n        :param RequestId: 音频审核的请求 id\n        :type RequestId: str\n        :param Status: 音频机审状态\n        :type Status: str\n        """
         self.Label = None
         self.Duration = None
         self.Name = None
@@ -108,36 +78,14 @@ class AudioResult(AbstractModel):
         :param HitFlag: 是否命中
 0 未命中
 1 命中
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HitFlag: int
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HitFlag: int\n        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param Score: 得分，0-100
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        :param Text: 音频ASR文本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Url: 音频片段存储URL，有效期为1天
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Url: str
-        :param Duration: 音频时长
-        :type Duration: str
-        :param Extra: 拓展字段
-        :type Extra: str
-        :param TextResults: 文本识别结果
-        :type TextResults: list of AudioResultDetailTextResult
-        :param MoanResults: 音频呻吟检测结果
-        :type MoanResults: list of AudioResultDetailMoanResult
-        :param LanguageResults: 音频语言检测结果
-        :type LanguageResults: list of AudioResultDetailLanguageResult
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param Score: 得分，0-100
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        :param Text: 音频ASR文本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Text: str\n        :param Url: 音频片段存储URL，有效期为1天
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Url: str\n        :param Duration: 音频时长\n        :type Duration: str\n        :param Extra: 拓展字段\n        :type Extra: str\n        :param TextResults: 文本识别结果\n        :type TextResults: list of AudioResultDetailTextResult\n        :param MoanResults: 音频呻吟检测结果\n        :type MoanResults: list of AudioResultDetailMoanResult\n        :param LanguageResults: 音频语言检测结果\n        :type LanguageResults: list of AudioResultDetailLanguageResult\n        """
         self.HitFlag = None
         self.Label = None
         self.Suggestion = None
@@ -195,21 +143,11 @@ class AudioResultDetailLanguageResult(AbstractModel):
     def __init__(self):
         """
         :param Label: 语言信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param Score: 得分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        :param StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartTime: float
-        :param EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndTime: float
-        :param SubLabelCode: 子标签码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubLabelCode: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param Score: 得分
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: float\n        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: float\n        :param SubLabelCode: 子标签码
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubLabelCode: str\n        """
         self.Label = None
         self.Score = None
         self.StartTime = None
@@ -240,17 +178,7 @@ class AudioResultDetailMoanResult(AbstractModel):
     def __init__(self):
         """
         :param Label: 固定为Moan（呻吟）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param Score: 分数
-        :type Score: int
-        :param StartTime: 开始时间
-        :type StartTime: float
-        :param EndTime: 结束时间
-        :type EndTime: float
-        :param SubLabelCode: 子标签码
-        :type SubLabelCode: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param Score: 分数\n        :type Score: int\n        :param StartTime: 开始时间\n        :type StartTime: float\n        :param EndTime: 结束时间\n        :type EndTime: float\n        :param SubLabelCode: 子标签码\n        :type SubLabelCode: str\n        """
         self.Label = None
         self.Score = None
         self.StartTime = None
@@ -281,26 +209,12 @@ class AudioResultDetailTextResult(AbstractModel):
     def __init__(self):
         """
         :param Label: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param Keywords: 命中的关键词
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Keywords: list of str
-        :param LibId: 命中的LibId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibId: str
-        :param LibName: 命中的LibName
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibName: str
-        :param Score: 得分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        :param Suggestion: 审核建议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param LibType: 词库类型 1 黑白库 2 自定义库
-        :type LibType: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param Keywords: 命中的关键词
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Keywords: list of str\n        :param LibId: 命中的LibId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibId: str\n        :param LibName: 命中的LibName
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibName: str\n        :param Score: 得分
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        :param Suggestion: 审核建议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param LibType: 词库类型 1 黑白库 2 自定义库\n        :type LibType: int\n        """
         self.Label = None
         self.Keywords = None
         self.LibId = None
@@ -337,12 +251,8 @@ class AudioSegments(AbstractModel):
         :param OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OffsetTime: str
-        :param Result: 结果集
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.ams.v20200608.models.AudioResult`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OffsetTime: str\n        :param Result: 结果集
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.ams.v20200608.models.AudioResult`\n        """
         self.OffsetTime = None
         self.Result = None
 
@@ -369,13 +279,7 @@ class BucketInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Bucket: 腾讯云对象存储，存储桶名称
-        :type Bucket: str
-        :param Region: 地域
-        :type Region: str
-        :param Object: 对象Key
-        :type Object: str
-        """
+        :param Bucket: 腾讯云对象存储，存储桶名称\n        :type Bucket: str\n        :param Region: 地域\n        :type Region: str\n        :param Object: 对象Key\n        :type Object: str\n        """
         self.Bucket = None
         self.Region = None
         self.Object = None
@@ -401,9 +305,7 @@ class CancelTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID
-        :type TaskId: str
-        """
+        :param TaskId: 任务ID\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -425,9 +327,7 @@ class CancelTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -442,17 +342,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
-        :type BizType: str
-        :param Type: 审核类型，这里可选：AUDIO (点播音频)和 LIVE_AUDIO（直播音频）
-        :type Type: str
-        :param Seed: 回调签名key，具体可以查看签名文档。
-        :type Seed: str
-        :param CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
-        :type CallbackUrl: str
-        :param Tasks: 输入的任务信息，最多可以同时创建10个任务
-        :type Tasks: list of TaskInput
-        """
+        :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建\n        :type BizType: str\n        :param Type: 审核类型，这里可选：AUDIO (点播音频)和 LIVE_AUDIO（直播音频）\n        :type Type: str\n        :param Seed: 回调签名key，具体可以查看签名文档。\n        :type Seed: str\n        :param CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口\n        :type CallbackUrl: str\n        :param Tasks: 输入的任务信息，最多可以同时创建10个任务\n        :type Tasks: list of TaskInput\n        """
         self.BizType = None
         self.Type = None
         self.Seed = None
@@ -488,11 +378,7 @@ class CreateAudioModerationTaskResponse(AbstractModel):
     def __init__(self):
         """
         :param Results: 任务创建结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Results: list of TaskResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Results: list of TaskResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Results = None
         self.RequestId = None
 
@@ -514,15 +400,7 @@ class CreateBizConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 业务类型，仅限英文字母、数字和下划线（_）组成，长度不超过8位
-        :type BizType: str
-        :param MediaModeration: 配置信息，
-        :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`
-        :param BizName: 业务名称，用于标识业务场景，长度不超过32位
-        :type BizName: str
-        :param ModerationCategories: 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);
-        :type ModerationCategories: list of str
-        """
+        :param BizType: 业务类型，仅限英文字母、数字和下划线（_）组成，长度不超过8位\n        :type BizType: str\n        :param MediaModeration: 配置信息，\n        :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`\n        :param BizName: 业务名称，用于标识业务场景，长度不超过32位\n        :type BizName: str\n        :param ModerationCategories: 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);\n        :type ModerationCategories: list of str\n        """
         self.BizType = None
         self.MediaModeration = None
         self.BizName = None
@@ -552,9 +430,7 @@ class CreateBizConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -569,15 +445,7 @@ class DescribeAmsListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PageToken: 页码
-        :type PageToken: str
-        :param Limit: 过滤条件
-        :type Limit: int
-        :param PageDirection: 查询方向
-        :type PageDirection: str
-        :param Filters: 过滤条件
-        :type Filters: list of Filter
-        """
+        :param PageToken: 页码\n        :type PageToken: str\n        :param Limit: 过滤条件\n        :type Limit: int\n        :param PageDirection: 查询方向\n        :type PageDirection: str\n        :param Filters: 过滤条件\n        :type Filters: list of Filter\n        """
         self.PageToken = None
         self.Limit = None
         self.PageDirection = None
@@ -610,15 +478,7 @@ class DescribeAmsListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AmsDetailSet: 返回列表数据----非必选，该参数暂未对外开放
-        :type AmsDetailSet: list of AmsDetailInfo
-        :param Total: 总条数
-        :type Total: int
-        :param PageToken: 分页 token
-        :type PageToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AmsDetailSet: 返回列表数据----非必选，该参数暂未对外开放\n        :type AmsDetailSet: list of AmsDetailInfo\n        :param Total: 总条数\n        :type Total: int\n        :param PageToken: 分页 token\n        :type PageToken: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AmsDetailSet = None
         self.Total = None
         self.PageToken = None
@@ -644,11 +504,7 @@ class DescribeAudioStatRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
-        :type AuditType: int
-        :param Filters: 查询条件
-        :type Filters: list of Filters
-        """
+        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核\n        :type AuditType: int\n        :param Filters: 查询条件\n        :type Filters: list of Filters\n        """
         self.AuditType = None
         self.Filters = None
 
@@ -677,15 +533,7 @@ class DescribeAudioStatResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Overview: 识别结果统计
-        :type Overview: :class:`tencentcloud.ams.v20200608.models.Overview`
-        :param TrendCount: 识别量统计
-        :type TrendCount: list of TrendCount
-        :param EvilCount: 违规数据分布
-        :type EvilCount: list of EvilCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Overview: 识别结果统计\n        :type Overview: :class:`tencentcloud.ams.v20200608.models.Overview`\n        :param TrendCount: 识别量统计\n        :type TrendCount: list of TrendCount\n        :param EvilCount: 违规数据分布\n        :type EvilCount: list of EvilCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Overview = None
         self.TrendCount = None
         self.EvilCount = None
@@ -718,9 +566,7 @@ class DescribeBizConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 审核业务类类型
-        :type BizType: str
-        """
+        :param BizType: 审核业务类类型\n        :type BizType: str\n        """
         self.BizType = None
 
 
@@ -742,23 +588,9 @@ class DescribeBizConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 业务类型
-        :type BizType: str
-        :param BizName: 业务名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BizName: str
-        :param ModerationCategories: 审核范围
-        :type ModerationCategories: list of str
-        :param MediaModeration: 多媒体审核配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`
-        :param CreatedAt: 创建时间
-        :type CreatedAt: str
-        :param UpdatedAt: 更新时间
-        :type UpdatedAt: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param BizType: 业务类型\n        :type BizType: str\n        :param BizName: 业务名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BizName: str\n        :param ModerationCategories: 审核范围\n        :type ModerationCategories: list of str\n        :param MediaModeration: 多媒体审核配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`\n        :param CreatedAt: 创建时间\n        :type CreatedAt: str\n        :param UpdatedAt: 更新时间\n        :type UpdatedAt: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BizType = None
         self.BizName = None
         self.ModerationCategories = None
@@ -787,11 +619,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID，创建任务后返回的TaskId字段
-        :type TaskId: str
-        :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
-        :type ShowAllSegments: bool
-        """
+        :param TaskId: 任务ID，创建任务后返回的TaskId字段\n        :type TaskId: str\n        :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片\n        :type ShowAllSegments: bool\n        """
         self.TaskId = None
         self.ShowAllSegments = None
 
@@ -816,66 +644,32 @@ class DescribeTaskDetailResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskId: 任务ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskId: str
-        :param DataId: 审核时传入的数据Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataId: str
-        :param BizType: 业务类型，用于调用识别策略模板；
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskId: str\n        :param DataId: 审核时传入的数据Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataId: str\n        :param BizType: 业务类型，用于调用识别策略模板；
 （暂未发布功能，敬请期待）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BizType: str
-        :param Name: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Status: 查询内容审核任务的状态，可选值：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BizType: str\n        :param Name: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Status: 查询内容审核任务的状态，可选值：
 FINISH 已完成
 PENDING 等待中
 RUNNING 进行中
 ERROR 出错
 CANCELLED 已取消
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param Type: 任务类型：可选AUDIO（点播音频），LIVE_AUDIO（直播音频）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: str
-        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Type: 任务类型：可选AUDIO（点播音频），LIVE_AUDIO（直播音频）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
 Pass 建议通过；
 Reveiw 建议复审；
 Block 建议屏蔽；
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param Labels: 智能审核服务对于内容违规类型的判断，详见返回值列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param Labels: 智能审核服务对于内容违规类型的判断，详见返回值列表
 如：Label：Porn（色情）；
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Labels: list of TaskLabel
-        :param MediaInfo: 传入媒体的解码信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MediaInfo: :class:`tencentcloud.ams.v20200608.models.MediaInfo`
-        :param InputInfo: 审核任务的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InputInfo: :class:`tencentcloud.ams.v20200608.models.InputInfo`
-        :param CreatedAt: 审核任务的创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedAt: str
-        :param UpdatedAt: 审核任务的更新时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UpdatedAt: str
-        :param TryInSeconds: 在N秒后重试
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TryInSeconds: int
-        :param AudioSegments: 视频/音频审核中的音频结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioSegments: list of AudioSegments
-        :param ImageSegments: 视频审核中的图片结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageSegments: list of ImageSegments
-        :param AudioText: 音频识别总文本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioText: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Labels: list of TaskLabel\n        :param MediaInfo: 传入媒体的解码信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MediaInfo: :class:`tencentcloud.ams.v20200608.models.MediaInfo`\n        :param InputInfo: 审核任务的信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InputInfo: :class:`tencentcloud.ams.v20200608.models.InputInfo`\n        :param CreatedAt: 审核任务的创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedAt: str\n        :param UpdatedAt: 审核任务的更新时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdatedAt: str\n        :param TryInSeconds: 在N秒后重试
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TryInSeconds: int\n        :param AudioSegments: 视频/音频审核中的音频结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioSegments: list of AudioSegments\n        :param ImageSegments: 视频审核中的图片结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageSegments: list of ImageSegments\n        :param AudioText: 音频识别总文本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioText: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.DataId = None
         self.BizType = None
@@ -941,11 +735,7 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         """
-        :param EvilType: ----非必选，该参数功能暂未对外开放
-        :type EvilType: str
-        :param Count: 分布类型总量
-        :type Count: int
-        """
+        :param EvilType: ----非必选，该参数功能暂未对外开放\n        :type EvilType: str\n        :param Count: 分布类型总量\n        :type Count: int\n        """
         self.EvilType = None
         self.Count = None
 
@@ -969,13 +759,7 @@ class FileOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Bucket: 存储的Bucket
-        :type Bucket: str
-        :param Region: Cos Region
-        :type Region: str
-        :param ObjectPrefix: 对象前缀
-        :type ObjectPrefix: str
-        """
+        :param Bucket: 存储的Bucket\n        :type Bucket: str\n        :param Region: Cos Region\n        :type Region: str\n        :param ObjectPrefix: 对象前缀\n        :type ObjectPrefix: str\n        """
         self.Bucket = None
         self.Region = None
         self.ObjectPrefix = None
@@ -1001,11 +785,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 过滤键的名称。
-        :type Name: str
-        :param Values: 一个或者多个过滤值。
-        :type Values: list of str
-        """
+        :param Name: 过滤键的名称。\n        :type Name: str\n        :param Values: 一个或者多个过滤值。\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1032,11 +812,7 @@ class Filters(AbstractModel):
         :param Name: 查询字段：
 策略BizType
 子账号SubUin
-日期区间DateRange
-        :type Name: str
-        :param Values: 查询值
-        :type Values: list of str
-        """
+日期区间DateRange\n        :type Name: str\n        :param Values: 查询值\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1063,24 +839,10 @@ class ImageResult(AbstractModel):
         :param HitFlag: 违规标志
 0 未命中
 1 命中
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HitFlag: int
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
-建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-        :type Suggestion: str
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HitFlag: int\n        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过\n        :type Suggestion: str\n        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param Score: 得分
-        :type Score: int
-        :param Results: 画面截帧图片结果集
-        :type Results: list of ImageResultResult
-        :param Url: 图片URL地址
-        :type Url: str
-        :param Extra: 附加字段
-        :type Extra: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param Score: 得分\n        :type Score: int\n        :param Results: 画面截帧图片结果集\n        :type Results: list of ImageResultResult\n        :param Url: 图片URL地址\n        :type Url: str\n        :param Extra: 附加字段\n        :type Extra: str\n        """
         self.HitFlag = None
         self.Suggestion = None
         self.Label = None
@@ -1125,34 +887,16 @@ Sexy 性感
 Abuse 谩骂
 Ad 广告
 等多个识别场景
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Scene: str
-        :param HitFlag: 是否命中
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Scene: str\n        :param HitFlag: 是否命中
 0 未命中
 1 命中
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HitFlag: int
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HitFlag: int\n        :param Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param Label: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param SubLabel: 子标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubLabel: str
-        :param Score: 分数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        :param Names: 如果命中场景为涉政，则该数据为人物姓名列表，否则null
-        :type Names: list of str
-        :param Text: 图片OCR文本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Details: 其他详情
-        :type Details: list of ImageResultsResultDetail
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param Label: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param SubLabel: 子标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubLabel: str\n        :param Score: 分数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        :param Names: 如果命中场景为涉政，则该数据为人物姓名列表，否则null\n        :type Names: list of str\n        :param Text: 图片OCR文本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Text: str\n        :param Details: 其他详情\n        :type Details: list of ImageResultsResultDetail\n        """
         self.Scene = None
         self.HitFlag = None
         self.Suggestion = None
@@ -1196,35 +940,15 @@ class ImageResultsResultDetail(AbstractModel):
     def __init__(self):
         """
         :param Location: 位置信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Location: list of ImageResultsResultDetailLocation
-        :param Name: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Text: OCR识别文本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Label: 标签
-        :type Label: str
-        :param LibId: 库ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibId: str
-        :param LibName: 库名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibName: str
-        :param Keywords: 命中的关键词
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Keywords: list of str
-        :param Suggestion: 建议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param Score: 得分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        :param SubLabelCode: 子标签码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubLabelCode: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Location: list of ImageResultsResultDetailLocation\n        :param Name: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Text: OCR识别文本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Text: str\n        :param Label: 标签\n        :type Label: str\n        :param LibId: 库ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibId: str\n        :param LibName: 库名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibName: str\n        :param Keywords: 命中的关键词
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Keywords: list of str\n        :param Suggestion: 建议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param Score: 得分
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        :param SubLabelCode: 子标签码
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubLabelCode: str\n        """
         self.Location = None
         self.Name = None
         self.Text = None
@@ -1270,21 +994,11 @@ class ImageResultsResultDetailLocation(AbstractModel):
     def __init__(self):
         """
         :param X: x坐标
-注意：此字段可能返回 null，表示取不到有效值。
-        :type X: float
-        :param Y: y坐标
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Y: float
-        :param Width: 宽度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Width: int
-        :param Height: 高度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Height: int
-        :param Rotate: 旋转角度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Rotate: float
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type X: float\n        :param Y: y坐标
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Y: float\n        :param Width: 宽度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Width: int\n        :param Height: 高度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Height: int\n        :param Rotate: 旋转角度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Rotate: float\n        """
         self.X = None
         self.Y = None
         self.Width = None
@@ -1314,13 +1028,9 @@ class ImageSegments(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 画面截帧结果详情
-        :type Result: :class:`tencentcloud.ams.v20200608.models.ImageResult`
-        :param OffsetTime: 截帧时间。
+        :param Result: 画面截帧结果详情\n        :type Result: :class:`tencentcloud.ams.v20200608.models.ImageResult`\n        :param OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
-直播流：该值为时间戳，例如：1594650717
-        :type OffsetTime: str
-        """
+直播流：该值为时间戳，例如：1594650717\n        :type OffsetTime: str\n        """
         self.Result = None
         self.OffsetTime = None
 
@@ -1347,15 +1057,9 @@ class InputInfo(AbstractModel):
     def __init__(self):
         """
         :param Type: 传入的类型可选：URL，COS
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: str
-        :param Url: Url地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Url: str
-        :param BucketInfo: 桶信息。当输入当时COS时，该字段不为空
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BucketInfo: :class:`tencentcloud.ams.v20200608.models.BucketInfo`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param Url: Url地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Url: str\n        :param BucketInfo: 桶信息。当输入当时COS时，该字段不为空
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BucketInfo: :class:`tencentcloud.ams.v20200608.models.BucketInfo`\n        """
         self.Type = None
         self.Url = None
         self.BucketInfo = None
@@ -1383,18 +1087,8 @@ class MediaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Codecs: 编码格式
-        :type Codecs: str
-        :param Duration: 流检测时分片时长
-注意：此字段可能返回 0，表示取不到有效值。
-        :type Duration: int
-        :param Width: 宽，单位为像素
-        :type Width: int
-        :param Height: 高，单位为像素
-        :type Height: int
-        :param Thumbnail: 缩略图
-        :type Thumbnail: str
-        """
+        :param Codecs: 编码格式\n        :type Codecs: str\n        :param Duration: 流检测时分片时长
+注意：此字段可能返回 0，表示取不到有效值。\n        :type Duration: int\n        :param Width: 宽，单位为像素\n        :type Width: int\n        :param Height: 高，单位为像素\n        :type Height: int\n        :param Thumbnail: 缩略图\n        :type Thumbnail: str\n        """
         self.Codecs = None
         self.Duration = None
         self.Width = None
@@ -1424,19 +1118,7 @@ class MediaModerationConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param AudioFrequency: 音频截帧频率。默认一分钟
-        :type AudioFrequency: int
-        :param ImageFrequency: 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
-        :type ImageFrequency: int
-        :param CallbackUrl: 异步回调地址。
-        :type CallbackUrl: str
-        :param SegmentOutput: 临时文件存储位置
-        :type SegmentOutput: :class:`tencentcloud.ams.v20200608.models.FileOutput`
-        :param UseOCR: 是否使用OCR，默认为true
-        :type UseOCR: bool
-        :param UseAudio: 是否使用音频。（音频场景下，该值永远为true）
-        :type UseAudio: bool
-        """
+        :param AudioFrequency: 音频截帧频率。默认一分钟\n        :type AudioFrequency: int\n        :param ImageFrequency: 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300\n        :type ImageFrequency: int\n        :param CallbackUrl: 异步回调地址。\n        :type CallbackUrl: str\n        :param SegmentOutput: 临时文件存储位置\n        :type SegmentOutput: :class:`tencentcloud.ams.v20200608.models.FileOutput`\n        :param UseOCR: 是否使用OCR，默认为true\n        :type UseOCR: bool\n        :param UseAudio: 是否使用音频。（音频场景下，该值永远为true）\n        :type UseAudio: bool\n        """
         self.AudioFrequency = None
         self.ImageFrequency = None
         self.CallbackUrl = None
@@ -1470,23 +1152,7 @@ class Overview(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总调用量
-        :type TotalCount: int
-        :param TotalHour: 总调用时长
-        :type TotalHour: int
-        :param PassCount: 通过量
-        :type PassCount: int
-        :param PassHour: 通过时长
-        :type PassHour: int
-        :param EvilCount: 违规量
-        :type EvilCount: int
-        :param EvilHour: 违规时长
-        :type EvilHour: int
-        :param SuspectCount: 疑似违规量
-        :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
-        :type SuspectHour: int
-        """
+        :param TotalCount: 总调用量\n        :type TotalCount: int\n        :param TotalHour: 总调用时长\n        :type TotalHour: int\n        :param PassCount: 通过量\n        :type PassCount: int\n        :param PassHour: 通过时长\n        :type PassHour: int\n        :param EvilCount: 违规量\n        :type EvilCount: int\n        :param EvilHour: 违规时长\n        :type EvilHour: int\n        :param SuspectCount: 疑似违规量\n        :type SuspectCount: int\n        :param SuspectHour: 疑似违规时长\n        :type SuspectHour: int\n        """
         self.TotalCount = None
         self.TotalHour = None
         self.PassCount = None
@@ -1524,13 +1190,7 @@ class StorageInfo(AbstractModel):
         """
         :param Type: 类型 可选：
 URL 资源链接类型
-COS 腾讯云对象存储类型
-        :type Type: str
-        :param Url: 资源链接
-        :type Url: str
-        :param BucketInfo: 腾讯云存储桶信息
-        :type BucketInfo: :class:`tencentcloud.ams.v20200608.models.BucketInfo`
-        """
+COS 腾讯云对象存储类型\n        :type Type: str\n        :param Url: 资源链接\n        :type Url: str\n        :param BucketInfo: 腾讯云存储桶信息\n        :type BucketInfo: :class:`tencentcloud.ams.v20200608.models.BucketInfo`\n        """
         self.Type = None
         self.Url = None
         self.BucketInfo = None
@@ -1558,13 +1218,7 @@ class TaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param DataId: 数据ID
-        :type DataId: str
-        :param Name: 任务名
-        :type Name: str
-        :param Input: 任务输入
-        :type Input: :class:`tencentcloud.ams.v20200608.models.StorageInfo`
-        """
+        :param DataId: 数据ID\n        :type DataId: str\n        :param Name: 任务名\n        :type Name: str\n        :param Input: 任务输入\n        :type Input: :class:`tencentcloud.ams.v20200608.models.StorageInfo`\n        """
         self.DataId = None
         self.Name = None
         self.Input = None
@@ -1594,16 +1248,10 @@ class TaskLabel(AbstractModel):
         """
         :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param Score: 得分，分数是 0 ～ 100
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param Score: 得分，分数是 0 ～ 100
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        """
         self.Label = None
         self.Suggestion = None
         self.Score = None
@@ -1630,18 +1278,10 @@ class TaskResult(AbstractModel):
     def __init__(self):
         """
         :param DataId: 请求时传入的DataId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataId: str
-        :param TaskId: TaskId，任务ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskId: str
-        :param Code: 错误码。如果code为OK，则表示创建成功，其他则参考公共错误码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Code: str
-        :param Message: 如果错误，该字段表示错误详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Message: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataId: str\n        :param TaskId: TaskId，任务ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskId: str\n        :param Code: 错误码。如果code为OK，则表示创建成功，其他则参考公共错误码
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Code: str\n        :param Message: 如果错误，该字段表示错误详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Message: str\n        """
         self.DataId = None
         self.TaskId = None
         self.Code = None
@@ -1669,25 +1309,7 @@ class TrendCount(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总调用量
-        :type TotalCount: int
-        :param TotalHour: 总调用时长
-        :type TotalHour: int
-        :param PassCount: 通过量
-        :type PassCount: int
-        :param PassHour: 通过时长
-        :type PassHour: int
-        :param EvilCount: 违规量
-        :type EvilCount: int
-        :param EvilHour: 违规时长
-        :type EvilHour: int
-        :param SuspectCount: 疑似违规量
-        :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
-        :type SuspectHour: int
-        :param Date: 日期
-        :type Date: str
-        """
+        :param TotalCount: 总调用量\n        :type TotalCount: int\n        :param TotalHour: 总调用时长\n        :type TotalHour: int\n        :param PassCount: 通过量\n        :type PassCount: int\n        :param PassHour: 通过时长\n        :type PassHour: int\n        :param EvilCount: 违规量\n        :type EvilCount: int\n        :param EvilHour: 违规时长\n        :type EvilHour: int\n        :param SuspectCount: 疑似违规量\n        :type SuspectCount: int\n        :param SuspectHour: 疑似违规时长\n        :type SuspectHour: int\n        :param Date: 日期\n        :type Date: str\n        """
         self.TotalCount = None
         self.TotalHour = None
         self.PassCount = None

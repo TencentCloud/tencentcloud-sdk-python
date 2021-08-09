@@ -25,11 +25,7 @@ class Attachment(AbstractModel):
 
     def __init__(self):
         """
-        :param FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
-        :type FileName: str
-        :param Content: base64之后的附件内容，您可以发送的附件大小上限为5 MB。 注意：腾讯云api目前要求请求包大小不得超过10 MB。如果您要发送多个附件，那么这些附件的总大小不能超过10 MB。
-        :type Content: str
-        """
+        :param FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。\n        :type FileName: str\n        :param Content: base64之后的附件内容，您可以发送的附件大小上限为5 MB。 注意：腾讯云api目前要求请求包大小不得超过10 MB。如果您要发送多个附件，那么这些附件的总大小不能超过10 MB。\n        :type Content: str\n        """
         self.FileName = None
         self.Content = None
 
@@ -53,11 +49,7 @@ class BlackEmailAddress(AbstractModel):
 
     def __init__(self):
         """
-        :param BounceTime: 邮箱被拉黑时间
-        :type BounceTime: str
-        :param EmailAddress: 被拉黑的邮箱地址
-        :type EmailAddress: str
-        """
+        :param BounceTime: 邮箱被拉黑时间\n        :type BounceTime: str\n        :param EmailAddress: 被拉黑的邮箱地址\n        :type EmailAddress: str\n        """
         self.BounceTime = None
         self.EmailAddress = None
 
@@ -81,11 +73,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailAddress: 您的发信地址（发信地址总数上限为10个）
-        :type EmailAddress: str
-        :param EmailSenderName: 发件人别名
-        :type EmailSenderName: str
-        """
+        :param EmailAddress: 您的发信地址（发信地址总数上限为10个）\n        :type EmailAddress: str\n        :param EmailSenderName: 发件人别名\n        :type EmailSenderName: str\n        """
         self.EmailAddress = None
         self.EmailSenderName = None
 
@@ -109,9 +97,7 @@ class CreateEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -126,9 +112,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
-        :type EmailIdentity: str
-        """
+        :param EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -150,15 +134,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IdentityType: 验证类型。固定值：DOMAIN
-        :type IdentityType: str
-        :param VerifiedForSendingStatus: 是否已通过验证
-        :type VerifiedForSendingStatus: bool
-        :param Attributes: 需要配置的DNS信息
-        :type Attributes: list of DNSAttributes
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param IdentityType: 验证类型。固定值：DOMAIN\n        :type IdentityType: str\n        :param VerifiedForSendingStatus: 是否已通过验证\n        :type VerifiedForSendingStatus: bool\n        :param Attributes: 需要配置的DNS信息\n        :type Attributes: list of DNSAttributes\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IdentityType = None
         self.VerifiedForSendingStatus = None
         self.Attributes = None
@@ -184,11 +160,7 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateName: 模板名称
-        :type TemplateName: str
-        :param TemplateContent: 模板内容
-        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
-        """
+        :param TemplateName: 模板名称\n        :type TemplateName: str\n        :param TemplateContent: 模板内容\n        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`\n        """
         self.TemplateName = None
         self.TemplateContent = None
 
@@ -214,9 +186,7 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -231,17 +201,7 @@ class DNSAttributes(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 记录类型 CNAME | A | TXT | MX
-        :type Type: str
-        :param SendDomain: 域名
-        :type SendDomain: str
-        :param ExpectedValue: 需要配置的值
-        :type ExpectedValue: str
-        :param CurrentValue: 腾讯云目前检测到的值
-        :type CurrentValue: str
-        :param Status: 检测是否通过，创建时默认为false
-        :type Status: bool
-        """
+        :param Type: 记录类型 CNAME | A | TXT | MX\n        :type Type: str\n        :param SendDomain: 域名\n        :type SendDomain: str\n        :param ExpectedValue: 需要配置的值\n        :type ExpectedValue: str\n        :param CurrentValue: 腾讯云目前检测到的值\n        :type CurrentValue: str\n        :param Status: 检测是否通过，创建时默认为false\n        :type Status: bool\n        """
         self.Type = None
         self.SendDomain = None
         self.ExpectedValue = None
@@ -271,9 +231,7 @@ class DeleteBlackListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailAddressList: 需要清除的黑名单邮箱列表，数组长度至少为1
-        :type EmailAddressList: list of str
-        """
+        :param EmailAddressList: 需要清除的黑名单邮箱列表，数组长度至少为1\n        :type EmailAddressList: list of str\n        """
         self.EmailAddressList = None
 
 
@@ -295,9 +253,7 @@ class DeleteBlackListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -312,9 +268,7 @@ class DeleteEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailAddress: 发信地址
-        :type EmailAddress: str
-        """
+        :param EmailAddress: 发信地址\n        :type EmailAddress: str\n        """
         self.EmailAddress = None
 
 
@@ -336,9 +290,7 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -353,9 +305,7 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailIdentity: 发信域名
-        :type EmailIdentity: str
-        """
+        :param EmailIdentity: 发信域名\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -377,9 +327,7 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -394,9 +342,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateID: 模版ID
-        :type TemplateID: int
-        """
+        :param TemplateID: 模版ID\n        :type TemplateID: int\n        """
         self.TemplateID = None
 
 
@@ -418,9 +364,7 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -435,13 +379,7 @@ class EmailIdentity(AbstractModel):
 
     def __init__(self):
         """
-        :param IdentityName: 发信域名
-        :type IdentityName: str
-        :param IdentityType: 验证类型，固定为DOMAIN
-        :type IdentityType: str
-        :param SendingEnabled: 是否已通过验证
-        :type SendingEnabled: bool
-        """
+        :param IdentityName: 发信域名\n        :type IdentityName: str\n        :param IdentityType: 验证类型，固定为DOMAIN\n        :type IdentityType: str\n        :param SendingEnabled: 是否已通过验证\n        :type SendingEnabled: bool\n        """
         self.IdentityName = None
         self.IdentityType = None
         self.SendingEnabled = None
@@ -467,15 +405,9 @@ class EmailSender(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailAddress: 发信地址
-        :type EmailAddress: str
-        :param EmailSenderName: 发信人别名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EmailSenderName: str
-        :param CreatedTimestamp: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedTimestamp: int
-        """
+        :param EmailAddress: 发信地址\n        :type EmailAddress: str\n        :param EmailSenderName: 发信人别名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EmailSenderName: str\n        :param CreatedTimestamp: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTimestamp: int\n        """
         self.EmailAddress = None
         self.EmailSenderName = None
         self.CreatedTimestamp = None
@@ -501,9 +433,7 @@ class GetEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailIdentity: 发信域名
-        :type EmailIdentity: str
-        """
+        :param EmailIdentity: 发信域名\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -525,15 +455,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IdentityType: 验证类型。固定值：DOMAIN
-        :type IdentityType: str
-        :param VerifiedForSendingStatus: 是否已通过验证
-        :type VerifiedForSendingStatus: bool
-        :param Attributes: DNS配置详情
-        :type Attributes: list of DNSAttributes
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param IdentityType: 验证类型。固定值：DOMAIN\n        :type IdentityType: str\n        :param VerifiedForSendingStatus: 是否已通过验证\n        :type VerifiedForSendingStatus: bool\n        :param Attributes: DNS配置详情\n        :type Attributes: list of DNSAttributes\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IdentityType = None
         self.VerifiedForSendingStatus = None
         self.Attributes = None
@@ -559,9 +481,7 @@ class GetEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateID: 模板ID
-        :type TemplateID: int
-        """
+        :param TemplateID: 模板ID\n        :type TemplateID: int\n        """
         self.TemplateID = None
 
 
@@ -583,11 +503,7 @@ class GetEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateContent: 模板内容数据
-        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TemplateContent: 模板内容数据\n        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TemplateContent = None
         self.RequestId = None
 
@@ -606,17 +522,7 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestDate: 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
-        :type RequestDate: str
-        :param Offset: 偏移量。默认为0
-        :type Offset: int
-        :param Limit: 拉取最大条数，最多 100。
-        :type Limit: int
-        :param MessageId: SendMail接口返回的MessageId字段。
-        :type MessageId: str
-        :param ToEmailAddress: 收件人邮箱。
-        :type ToEmailAddress: str
-        """
+        :param RequestDate: 发送的日期，必填。仅支持查询某个日期，不支持范围查询。\n        :type RequestDate: str\n        :param Offset: 偏移量。默认为0\n        :type Offset: int\n        :param Limit: 拉取最大条数，最多 100。\n        :type Limit: int\n        :param MessageId: SendMail接口返回的MessageId字段。\n        :type MessageId: str\n        :param ToEmailAddress: 收件人邮箱。\n        :type ToEmailAddress: str\n        """
         self.RequestDate = None
         self.Offset = None
         self.Limit = None
@@ -646,11 +552,7 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailStatusList: 邮件发送状态列表
-        :type EmailStatusList: list of SendEmailStatus
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param EmailStatusList: 邮件发送状态列表\n        :type EmailStatusList: list of SendEmailStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EmailStatusList = None
         self.RequestId = None
 
@@ -672,15 +574,7 @@ class GetStatisticsReportRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartDate: 开始日期
-        :type StartDate: str
-        :param EndDate: 结束日期
-        :type EndDate: str
-        :param Domain: 发信域名
-        :type Domain: str
-        :param ReceivingMailboxType: 收件方邮箱类型，例如gmail.com
-        :type ReceivingMailboxType: str
-        """
+        :param StartDate: 开始日期\n        :type StartDate: str\n        :param EndDate: 结束日期\n        :type EndDate: str\n        :param Domain: 发信域名\n        :type Domain: str\n        :param ReceivingMailboxType: 收件方邮箱类型，例如gmail.com\n        :type ReceivingMailboxType: str\n        """
         self.StartDate = None
         self.EndDate = None
         self.Domain = None
@@ -708,13 +602,7 @@ class GetStatisticsReportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyVolumes: 发信统计报告，按天
-        :type DailyVolumes: list of Volume
-        :param OverallVolume: 发信统计报告，总览
-        :type OverallVolume: :class:`tencentcloud.ses.v20201002.models.Volume`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DailyVolumes: 发信统计报告，按天\n        :type DailyVolumes: list of Volume\n        :param OverallVolume: 发信统计报告，总览\n        :type OverallVolume: :class:`tencentcloud.ses.v20201002.models.Volume`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DailyVolumes = None
         self.OverallVolume = None
         self.RequestId = None
@@ -740,19 +628,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartDate: 开始日期，格式为YYYY-MM-DD
-        :type StartDate: str
-        :param EndDate: 结束日期，格式为YYYY-MM-DD
-        :type EndDate: str
-        :param Limit: 规范，配合Offset使用
-        :type Limit: int
-        :param Offset: 规范，配合Limit使用，Limit最大取值为100
-        :type Offset: int
-        :param EmailAddress: 可以指定邮箱进行查询
-        :type EmailAddress: str
-        :param TaskID: 可以指定任务ID进行查询
-        :type TaskID: str
-        """
+        :param StartDate: 开始日期，格式为YYYY-MM-DD\n        :type StartDate: str\n        :param EndDate: 结束日期，格式为YYYY-MM-DD\n        :type EndDate: str\n        :param Limit: 规范，配合Offset使用\n        :type Limit: int\n        :param Offset: 规范，配合Limit使用，Limit最大取值为100\n        :type Offset: int\n        :param EmailAddress: 可以指定邮箱进行查询\n        :type EmailAddress: str\n        :param TaskID: 可以指定任务ID进行查询\n        :type TaskID: str\n        """
         self.StartDate = None
         self.EndDate = None
         self.Limit = None
@@ -784,13 +660,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BlackList: 黑名单列表
-        :type BlackList: list of BlackEmailAddress
-        :param TotalCount: 黑名单总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param BlackList: 黑名单列表\n        :type BlackList: list of BlackEmailAddress\n        :param TotalCount: 黑名单总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BlackList = None
         self.TotalCount = None
         self.RequestId = None
@@ -821,11 +691,7 @@ class ListEmailAddressResponse(AbstractModel):
     def __init__(self):
         """
         :param EmailSenders: 发信地址列表详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EmailSenders: list of EmailSender
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EmailSenders: list of EmailSender\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EmailSenders = None
         self.RequestId = None
 
@@ -853,11 +719,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailIdentities: 发信域名列表
-        :type EmailIdentities: list of EmailIdentity
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param EmailIdentities: 发信域名列表\n        :type EmailIdentities: list of EmailIdentity\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EmailIdentities = None
         self.RequestId = None
 
@@ -879,11 +741,7 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 获取模版数据量，用于分页
-        :type Limit: int
-        :param Offset: 获取模版偏移值，用于分页
-        :type Offset: int
-        """
+        :param Limit: 获取模版数据量，用于分页\n        :type Limit: int\n        :param Offset: 获取模版偏移值，用于分页\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -907,13 +765,7 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplatesMetadata: 邮件模板列表
-        :type TemplatesMetadata: list of TemplatesMetadata
-        :param TotalCount: 模版总数量
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TemplatesMetadata: 邮件模板列表\n        :type TemplatesMetadata: list of TemplatesMetadata\n        :param TotalCount: 模版总数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TemplatesMetadata = None
         self.TotalCount = None
         self.RequestId = None
@@ -939,21 +791,7 @@ class SendEmailRequest(AbstractModel):
         """
         :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照 
 发信人 &lt;邮件地址&gt; 的方式填写，例如：
-腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
-        :type FromEmailAddress: str
-        :param Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-        :type Destination: list of str
-        :param Subject: 邮件主题
-        :type Subject: str
-        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
-        :type ReplyToAddresses: str
-        :param Template: 使用模板发送时，填写的模板相关参数
-        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: 使用API直接发送内容时，填写的邮件内容
-        :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: 需要发送附件时，填写附件相关参数。
-        :type Attachments: list of Attachment
-        """
+腾讯云团队 &lt;noreply@mail.qcloud.com&gt;\n        :type FromEmailAddress: str\n        :param Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。\n        :type Destination: list of str\n        :param Subject: 邮件主题\n        :type Subject: str\n        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。\n        :type ReplyToAddresses: str\n        :param Template: 使用模板发送时，填写的模板相关参数\n        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`\n        :param Simple: 使用API直接发送内容时，填写的邮件内容\n        :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`\n        :param Attachments: 需要发送附件时，填写附件相关参数。\n        :type Attachments: list of Attachment\n        """
         self.FromEmailAddress = None
         self.Destination = None
         self.Subject = None
@@ -996,11 +834,7 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MessageId: 接受消息生成的唯一消息标识符。
-        :type MessageId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MessageId: 接受消息生成的唯一消息标识符。\n        :type MessageId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MessageId = None
         self.RequestId = None
 
@@ -1017,13 +851,7 @@ class SendEmailStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param MessageId: SendEmail返回的MessageId
-        :type MessageId: str
-        :param ToEmailAddress: 收件人邮箱
-        :type ToEmailAddress: str
-        :param FromEmailAddress: 发件人邮箱
-        :type FromEmailAddress: str
-        :param SendStatus: 腾讯云处理状态
+        :param MessageId: SendEmail返回的MessageId\n        :type MessageId: str\n        :param ToEmailAddress: 收件人邮箱\n        :type ToEmailAddress: str\n        :param FromEmailAddress: 发件人邮箱\n        :type FromEmailAddress: str\n        :param SendStatus: 腾讯云处理状态
 0: 处理成功
 1001: 内部系统异常
 1002: 内部系统异常
@@ -1045,30 +873,12 @@ class SendEmailStatus(AbstractModel):
 3020: 收件方邮箱类型在黑名单
 3024: 邮箱地址格式预检查失败
 3030: 退信率过高，临时限制发送
-3033: 余额不足，账号欠费等
-        :type SendStatus: int
-        :param DeliverStatus: 收件方处理状态
+3033: 余额不足，账号欠费等\n        :type SendStatus: int\n        :param DeliverStatus: 收件方处理状态
 0: 请求成功被腾讯云接受，进入发送队列
 1: 邮件递送成功，DeliverTime表示递送成功的时间
 2: 邮件因某种原因被丢弃，DeliverMessage表示丢弃原因
 3: 收件方ESP拒信，一般原因为邮箱地址不存在，或其它原因
-8: 邮件被ESP因某些原因延迟递送，DeliverMessage表示延迟原因
-        :type DeliverStatus: int
-        :param DeliverMessage: 收件方处理状态描述
-        :type DeliverMessage: str
-        :param RequestTime: 请求到达腾讯云时间戳
-        :type RequestTime: int
-        :param DeliverTime: 腾讯云执行递送时间戳
-        :type DeliverTime: int
-        :param UserOpened: 用户是否打开该邮件
-        :type UserOpened: bool
-        :param UserClicked: 用户是否点击该邮件中的链接
-        :type UserClicked: bool
-        :param UserUnsubscribed: 用户是否取消该发送者的订阅
-        :type UserUnsubscribed: bool
-        :param UserComplainted: 用户是否举报该发送者
-        :type UserComplainted: bool
-        """
+8: 邮件被ESP因某些原因延迟递送，DeliverMessage表示延迟原因\n        :type DeliverStatus: int\n        :param DeliverMessage: 收件方处理状态描述\n        :type DeliverMessage: str\n        :param RequestTime: 请求到达腾讯云时间戳\n        :type RequestTime: int\n        :param DeliverTime: 腾讯云执行递送时间戳\n        :type DeliverTime: int\n        :param UserOpened: 用户是否打开该邮件\n        :type UserOpened: bool\n        :param UserClicked: 用户是否点击该邮件中的链接\n        :type UserClicked: bool\n        :param UserUnsubscribed: 用户是否取消该发送者的订阅\n        :type UserUnsubscribed: bool\n        :param UserComplainted: 用户是否举报该发送者\n        :type UserComplainted: bool\n        """
         self.MessageId = None
         self.ToEmailAddress = None
         self.FromEmailAddress = None
@@ -1112,11 +922,7 @@ class Simple(AbstractModel):
 
     def __init__(self):
         """
-        :param Html: base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
-        :type Html: str
-        :param Text: base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
-        :type Text: str
-        """
+        :param Html: base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱\n        :type Html: str\n        :param Text: base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式\n        :type Text: str\n        """
         self.Html = None
         self.Text = None
 
@@ -1140,11 +946,7 @@ class Template(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateID: 模板ID。如果没有模板，请先新建一个
-        :type TemplateID: int
-        :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
-        :type TemplateData: str
-        """
+        :param TemplateID: 模板ID。如果没有模板，请先新建一个\n        :type TemplateID: int\n        :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。\n        :type TemplateData: str\n        """
         self.TemplateID = None
         self.TemplateData = None
 
@@ -1168,11 +970,7 @@ class TemplateContent(AbstractModel):
 
     def __init__(self):
         """
-        :param Html: base64之后的Html代码
-        :type Html: str
-        :param Text: base64之后的文本内容
-        :type Text: str
-        """
+        :param Html: base64之后的Html代码\n        :type Html: str\n        :param Text: base64之后的文本内容\n        :type Text: str\n        """
         self.Html = None
         self.Text = None
 
@@ -1196,17 +994,7 @@ class TemplatesMetadata(AbstractModel):
 
     def __init__(self):
         """
-        :param CreatedTimestamp: 创建时间
-        :type CreatedTimestamp: int
-        :param TemplateName: 模板名称
-        :type TemplateName: str
-        :param TemplateStatus: 模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
-        :type TemplateStatus: int
-        :param TemplateID: 模板ID
-        :type TemplateID: int
-        :param ReviewReason: 审核原因
-        :type ReviewReason: str
-        """
+        :param CreatedTimestamp: 创建时间\n        :type CreatedTimestamp: int\n        :param TemplateName: 模板名称\n        :type TemplateName: str\n        :param TemplateStatus: 模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用\n        :type TemplateStatus: int\n        :param TemplateID: 模板ID\n        :type TemplateID: int\n        :param ReviewReason: 审核原因\n        :type ReviewReason: str\n        """
         self.CreatedTimestamp = None
         self.TemplateName = None
         self.TemplateStatus = None
@@ -1236,9 +1024,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailIdentity: 请求验证的域名
-        :type EmailIdentity: str
-        """
+        :param EmailIdentity: 请求验证的域名\n        :type EmailIdentity: str\n        """
         self.EmailIdentity = None
 
 
@@ -1260,15 +1046,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IdentityType: 验证类型。固定值：DOMAIN
-        :type IdentityType: str
-        :param VerifiedForSendingStatus: 是否已通过验证
-        :type VerifiedForSendingStatus: bool
-        :param Attributes: 需要配置的DNS信息
-        :type Attributes: list of DNSAttributes
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param IdentityType: 验证类型。固定值：DOMAIN\n        :type IdentityType: str\n        :param VerifiedForSendingStatus: 是否已通过验证\n        :type VerifiedForSendingStatus: bool\n        :param Attributes: 需要配置的DNS信息\n        :type Attributes: list of DNSAttributes\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IdentityType = None
         self.VerifiedForSendingStatus = None
         self.Attributes = None
@@ -1294,13 +1072,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateContent: 模板内容
-        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
-        :param TemplateID: 模板ID
-        :type TemplateID: int
-        :param TemplateName: 模版名字
-        :type TemplateName: str
-        """
+        :param TemplateContent: 模板内容\n        :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`\n        :param TemplateID: 模板ID\n        :type TemplateID: int\n        :param TemplateName: 模版名字\n        :type TemplateName: str\n        """
         self.TemplateContent = None
         self.TemplateID = None
         self.TemplateName = None
@@ -1328,9 +1100,7 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1346,24 +1116,8 @@ class Volume(AbstractModel):
     def __init__(self):
         """
         :param SendDate: 日期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SendDate: str
-        :param RequestCount: 邮件请求数量
-        :type RequestCount: int
-        :param AcceptedCount: 腾讯云通过数量
-        :type AcceptedCount: int
-        :param DeliveredCount: 送达数量
-        :type DeliveredCount: int
-        :param OpenedCount: 打开邮件的用户数量，根据收件人去重
-        :type OpenedCount: int
-        :param ClickedCount: 点击了邮件中的链接数量用户数量
-        :type ClickedCount: int
-        :param BounceCount: 退信数量
-        :type BounceCount: int
-        :param UnsubscribeCount: 取消订阅的用户数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnsubscribeCount: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SendDate: str\n        :param RequestCount: 邮件请求数量\n        :type RequestCount: int\n        :param AcceptedCount: 腾讯云通过数量\n        :type AcceptedCount: int\n        :param DeliveredCount: 送达数量\n        :type DeliveredCount: int\n        :param OpenedCount: 打开邮件的用户数量，根据收件人去重\n        :type OpenedCount: int\n        :param ClickedCount: 点击了邮件中的链接数量用户数量\n        :type ClickedCount: int\n        :param BounceCount: 退信数量\n        :type BounceCount: int\n        :param UnsubscribeCount: 取消订阅的用户数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UnsubscribeCount: int\n        """
         self.SendDate = None
         self.RequestCount = None
         self.AcceptedCount = None

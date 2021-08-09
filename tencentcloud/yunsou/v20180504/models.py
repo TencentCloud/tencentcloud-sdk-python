@@ -25,15 +25,7 @@ class DataManipulationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OpType: 操作类型，add或del
-        :type OpType: str
-        :param Encoding: 数据编码类型
-        :type Encoding: str
-        :param Contents: 数据
-        :type Contents: str
-        :param ResourceId: 应用Id
-        :type ResourceId: int
-        """
+        :param OpType: 操作类型，add或del\n        :type OpType: str\n        :param Encoding: 数据编码类型\n        :type Encoding: str\n        :param Contents: 数据\n        :type Contents: str\n        :param ResourceId: 应用Id\n        :type ResourceId: int\n        """
         self.OpType = None
         self.Encoding = None
         self.Contents = None
@@ -61,11 +53,7 @@ class DataManipulationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RetMsg: 返回信息
-        :type RetMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RetMsg: 返回信息\n        :type RetMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RetMsg = None
         self.RequestId = None
 
@@ -82,53 +70,7 @@ class DataSearchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务
-        :type ResourceId: int
-        :param SearchQuery: 检索串
-        :type SearchQuery: str
-        :param PageId: 当前页，从第0页开始计算
-        :type PageId: int
-        :param NumPerPage: 每页结果数
-        :type NumPerPage: int
-        :param SearchId: 当前检索号，用于定位问题，建议指定并且全局唯一
-        :type SearchId: str
-        :param QueryEncode: 请求编码，0表示utf8，1表示gbk，建议指定
-        :type QueryEncode: int
-        :param RankType: 排序类型
-        :type RankType: int
-        :param NumFilter: 数值过滤，结果中按属性过滤
-        :type NumFilter: str
-        :param ClFilter: 分类过滤，导航类检索请求
-        :type ClFilter: str
-        :param Extra: 检索用户相关字段
-        :type Extra: str
-        :param SourceId: 检索来源
-        :type SourceId: int
-        :param SecondSearch: 是否进行二次检索，0关闭，1打开
-        :type SecondSearch: int
-        :param MaxDocReturn: 指定返回最大篇数，无特殊原因不建议指定
-        :type MaxDocReturn: int
-        :param IsSmartbox: 是否smartbox检索，0关闭，1打开
-        :type IsSmartbox: int
-        :param EnableAbsHighlight: 是否打开高红标亮，0关闭，1打开
-        :type EnableAbsHighlight: int
-        :param QcBid: 指定访问QC纠错业务ID
-        :type QcBid: int
-        :param GroupBy: 按指定字段进行group by，只能对数值字段进行操作
-        :type GroupBy: str
-        :param Distinct: 按指定字段进行distinct，只能对数值字段进行操作
-        :type Distinct: str
-        :param L4RankExpression: 高级排序参数，具体参见高级排序说明
-        :type L4RankExpression: str
-        :param MatchValue: 高级排序参数，具体参见高级排序说明
-        :type MatchValue: str
-        :param Longitude: 经度信息
-        :type Longitude: float
-        :param Latitude: 纬度信息
-        :type Latitude: float
-        :param MultiFilter: 分类过滤并集
-        :type MultiFilter: list of str
-        """
+        :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务\n        :type ResourceId: int\n        :param SearchQuery: 检索串\n        :type SearchQuery: str\n        :param PageId: 当前页，从第0页开始计算\n        :type PageId: int\n        :param NumPerPage: 每页结果数\n        :type NumPerPage: int\n        :param SearchId: 当前检索号，用于定位问题，建议指定并且全局唯一\n        :type SearchId: str\n        :param QueryEncode: 请求编码，0表示utf8，1表示gbk，建议指定\n        :type QueryEncode: int\n        :param RankType: 排序类型\n        :type RankType: int\n        :param NumFilter: 数值过滤，结果中按属性过滤\n        :type NumFilter: str\n        :param ClFilter: 分类过滤，导航类检索请求\n        :type ClFilter: str\n        :param Extra: 检索用户相关字段\n        :type Extra: str\n        :param SourceId: 检索来源\n        :type SourceId: int\n        :param SecondSearch: 是否进行二次检索，0关闭，1打开\n        :type SecondSearch: int\n        :param MaxDocReturn: 指定返回最大篇数，无特殊原因不建议指定\n        :type MaxDocReturn: int\n        :param IsSmartbox: 是否smartbox检索，0关闭，1打开\n        :type IsSmartbox: int\n        :param EnableAbsHighlight: 是否打开高红标亮，0关闭，1打开\n        :type EnableAbsHighlight: int\n        :param QcBid: 指定访问QC纠错业务ID\n        :type QcBid: int\n        :param GroupBy: 按指定字段进行group by，只能对数值字段进行操作\n        :type GroupBy: str\n        :param Distinct: 按指定字段进行distinct，只能对数值字段进行操作\n        :type Distinct: str\n        :param L4RankExpression: 高级排序参数，具体参见高级排序说明\n        :type L4RankExpression: str\n        :param MatchValue: 高级排序参数，具体参见高级排序说明\n        :type MatchValue: str\n        :param Longitude: 经度信息\n        :type Longitude: float\n        :param Latitude: 纬度信息\n        :type Latitude: float\n        :param MultiFilter: 分类过滤并集\n        :type MultiFilter: list of str\n        """
         self.ResourceId = None
         self.SearchQuery = None
         self.PageId = None
@@ -194,11 +136,7 @@ class DataSearchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RetMsg: 数据返回信息
-        :type RetMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RetMsg: 数据返回信息\n        :type RetMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RetMsg = None
         self.RequestId = None
 

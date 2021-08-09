@@ -32,13 +32,7 @@ intraffic表示入流量；
 outtraffic表示出流量；
 alltraffic表示出流量和入流量之和；
 inpkg表示入包速率；
-outpkg表示出包速率；）
-        :type MetricName: str
-        :param Data: 值数组
-        :type Data: list of float
-        :param Count: 值数组的大小
-        :type Count: int
-        """
+outpkg表示出包速率；）\n        :type MetricName: str\n        :param Data: 值数组\n        :type Data: list of float\n        :param Count: 值数组的大小\n        :type Count: int\n        """
         self.MetricName = None
         self.Data = None
         self.Count = None
@@ -64,17 +58,7 @@ class BoundIpInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP地址
-        :type Ip: str
-        :param BizType: 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
-        :type BizType: str
-        :param DeviceType: 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
-        :type DeviceType: str
-        :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
-        :type InstanceId: str
-        :param IspCode: 运营商，0：电信；1：联通；2：移动；5：BGP
-        :type IspCode: int
-        """
+        :param Ip: IP地址\n        :type Ip: str\n        :param BizType: 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]\n        :type BizType: str\n        :param DeviceType: 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]\n        :type DeviceType: str\n        :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";\n        :type InstanceId: str\n        :param IspCode: 运营商，0：电信；1：联通；2：移动；5：BGP\n        :type IspCode: int\n        """
         self.Ip = None
         self.BizType = None
         self.DeviceType = None
@@ -104,9 +88,7 @@ class CCAlarmThreshold(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmThreshold: CC告警阈值
-        :type AlarmThreshold: int
-        """
+        :param AlarmThreshold: CC告警阈值\n        :type AlarmThreshold: int\n        """
         self.AlarmThreshold = None
 
 
@@ -128,35 +110,11 @@ class CCEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Vip: 资源的IP
-        :type Vip: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        :param ReqQps: 总请求QPS峰值
-        :type ReqQps: int
-        :param DropQps: 攻击QPS峰值
-        :type DropQps: int
-        :param AttackStatus: 攻击状态，取值[0（攻击中）, 1（攻击结束）]
-        :type AttackStatus: int
-        :param ResourceName: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceName: str
-        :param DomainList: 域名列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainList: str
-        :param UriList: uri列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UriList: str
-        :param AttackipList: 攻击源列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttackipList: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Vip: 资源的IP\n        :type Vip: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        :param ReqQps: 总请求QPS峰值\n        :type ReqQps: int\n        :param DropQps: 攻击QPS峰值\n        :type DropQps: int\n        :param AttackStatus: 攻击状态，取值[0（攻击中）, 1（攻击结束）]\n        :type AttackStatus: int\n        :param ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceName: str\n        :param DomainList: 域名列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainList: str\n        :param UriList: uri列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UriList: str\n        :param AttackipList: 攻击源列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AttackipList: str\n        """
         self.Business = None
         self.Id = None
         self.Vip = None
@@ -200,25 +158,7 @@ class CCFrequencyRule(AbstractModel):
 
     def __init__(self):
         """
-        :param CCFrequencyRuleId: CC的访问频率控制规则ID
-        :type CCFrequencyRuleId: str
-        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；
-        :type Uri: str
-        :param UserAgent: User-Agent字符串，长度不超过80
-        :type UserAgent: str
-        :param Cookie: Cookie字符串，长度不超过40
-        :type Cookie: str
-        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]
-        :type Mode: str
-        :param Period: 统计周期，单位秒，取值[10, 30, 60]
-        :type Period: int
-        :param ReqNumber: 访问次数，取值[1-10000]
-        :type ReqNumber: int
-        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
-        :type Act: str
-        :param ExeDuration: 执行时间，单位秒，取值[1-900]
-        :type ExeDuration: int
-        """
+        :param CCFrequencyRuleId: CC的访问频率控制规则ID\n        :type CCFrequencyRuleId: str\n        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；\n        :type Uri: str\n        :param UserAgent: User-Agent字符串，长度不超过80\n        :type UserAgent: str\n        :param Cookie: Cookie字符串，长度不超过40\n        :type Cookie: str\n        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]\n        :type Mode: str\n        :param Period: 统计周期，单位秒，取值[10, 30, 60]\n        :type Period: int\n        :param ReqNumber: 访问次数，取值[1-10000]\n        :type ReqNumber: int\n        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]\n        :type Act: str\n        :param ExeDuration: 执行时间，单位秒，取值[1-900]\n        :type ExeDuration: int\n        """
         self.CCFrequencyRuleId = None
         self.Uri = None
         self.UserAgent = None
@@ -256,31 +196,7 @@ class CCPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 策略名称
-        :type Name: str
-        :param Smode: 匹配模式，取值[matching(匹配模式), speedlimit(限速模式)]
-        :type Smode: str
-        :param SetId: 策略id
-        :type SetId: str
-        :param Frequency: 每分钟限制的次数
-        :type Frequency: int
-        :param ExeMode: 执行策略模式，拦截或者验证码，取值[alg（验证码）, drop（拦截）]
-        :type ExeMode: str
-        :param Switch: 生效开关
-        :type Switch: int
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param RuleList: 规则列表
-        :type RuleList: list of CCRule
-        :param IpList: IP列表，如果不填时，请传空数组但不能为null；
-        :type IpList: list of str
-        :param Protocol: cc防护类型，取值[http，https]
-        :type Protocol: str
-        :param RuleId: 可选字段，表示HTTPS的CC防护域名对应的转发规则ID;
-        :type RuleId: str
-        :param Domain: HTTPS的CC防护域名
-        :type Domain: str
-        """
+        :param Name: 策略名称\n        :type Name: str\n        :param Smode: 匹配模式，取值[matching(匹配模式), speedlimit(限速模式)]\n        :type Smode: str\n        :param SetId: 策略id\n        :type SetId: str\n        :param Frequency: 每分钟限制的次数\n        :type Frequency: int\n        :param ExeMode: 执行策略模式，拦截或者验证码，取值[alg（验证码）, drop（拦截）]\n        :type ExeMode: str\n        :param Switch: 生效开关\n        :type Switch: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param RuleList: 规则列表\n        :type RuleList: list of CCRule\n        :param IpList: IP列表，如果不填时，请传空数组但不能为null；\n        :type IpList: list of str\n        :param Protocol: cc防护类型，取值[http，https]\n        :type Protocol: str\n        :param RuleId: 可选字段，表示HTTPS的CC防护域名对应的转发规则ID;\n        :type RuleId: str\n        :param Domain: HTTPS的CC防护域名\n        :type Domain: str\n        """
         self.Name = None
         self.Smode = None
         self.SetId = None
@@ -329,13 +245,7 @@ class CCRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Skey: 规则的key, 可以为host、cgi、ua、referer
-        :type Skey: str
-        :param Operator: 规则的条件，可以为include、not_include、equal
-        :type Operator: str
-        :param Value: 规则的值，长度小于31字节
-        :type Value: str
-        """
+        :param Skey: 规则的key, 可以为host、cgi、ua、referer\n        :type Skey: str\n        :param Operator: 规则的条件，可以为include、not_include、equal\n        :type Operator: str\n        :param Value: 规则的值，长度小于31字节\n        :type Value: str\n        """
         self.Skey = None
         self.Operator = None
         self.Value = None
@@ -361,15 +271,7 @@ class CCRuleConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Period: 统计周期，单位秒，取值[10, 30, 60]
-        :type Period: int
-        :param ReqNumber: 访问次数，取值[1-10000]
-        :type ReqNumber: int
-        :param Action: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
-        :type Action: str
-        :param ExeDuration: 执行时间，单位秒，取值[1-900]
-        :type ExeDuration: int
-        """
+        :param Period: 统计周期，单位秒，取值[10, 30, 60]\n        :type Period: int\n        :param ReqNumber: 访问次数，取值[1-10000]\n        :type ReqNumber: int\n        :param Action: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]\n        :type Action: str\n        :param ExeDuration: 执行时间，单位秒，取值[1-900]\n        :type ExeDuration: int\n        """
         self.Period = None
         self.ReqNumber = None
         self.Action = None
@@ -397,15 +299,7 @@ class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（basic表示DDoS基础防护）
-        :type Business: str
-        :param Method: =get表示读取告警阈值；=set表示设置告警阈值；
-        :type Method: str
-        :param AlarmType: 可选，告警阈值类型，1-入流量，2-清洗流量；当Method为set时必须填写；
-        :type AlarmType: int
-        :param AlarmThreshold: 可选，告警阈值，当Method为set时必须填写；当设置阈值为0时表示清除告警阈值配置；
-        :type AlarmThreshold: int
-        """
+        :param Business: 大禹子产品代号（basic表示DDoS基础防护）\n        :type Business: str\n        :param Method: =get表示读取告警阈值；=set表示设置告警阈值；\n        :type Method: str\n        :param AlarmType: 可选，告警阈值类型，1-入流量，2-清洗流量；当Method为set时必须填写；\n        :type AlarmType: int\n        :param AlarmThreshold: 可选，告警阈值，当Method为set时必须填写；当设置阈值为0时表示清除告警阈值配置；\n        :type AlarmThreshold: int\n        """
         self.Business = None
         self.Method = None
         self.AlarmType = None
@@ -433,13 +327,7 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmThreshold: 当存在告警阈值配置时，返回告警阈值大于0，当不存在告警配置时，返回告警阈值为0；
-        :type AlarmThreshold: int
-        :param AlarmType: 告警阈值类型，1-入流量，2-清洗流量；当AlarmThreshold大于0时有效；
-        :type AlarmType: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AlarmThreshold: 当存在告警阈值配置时，返回告警阈值大于0，当不存在告警配置时，返回告警阈值为0；\n        :type AlarmThreshold: int\n        :param AlarmType: 告警阈值类型，1-入流量，2-清洗流量；当AlarmThreshold大于0时有效；\n        :type AlarmType: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AlarmThreshold = None
         self.AlarmType = None
         self.RequestId = None
@@ -458,17 +346,7 @@ class CreateBoundIPRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param BoundDevList: 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
-        :type BoundDevList: list of BoundIpInfo
-        :param UnBoundDevList: 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
-        :type UnBoundDevList: list of BoundIpInfo
-        :param CopyPolicy: 已弃用，不填
-        :type CopyPolicy: str
-        """
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param BoundDevList: 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；\n        :type BoundDevList: list of BoundIpInfo\n        :param UnBoundDevList: 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；\n        :type UnBoundDevList: list of BoundIpInfo\n        :param CopyPolicy: 已弃用，不填\n        :type CopyPolicy: str\n        """
         self.Business = None
         self.Id = None
         self.BoundDevList = None
@@ -508,11 +386,7 @@ class CreateBoundIPResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -531,29 +405,7 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）
-        :type RuleId: str
-        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]
-        :type Mode: str
-        :param Period: 统计周期，单位秒，取值[10, 30, 60]
-        :type Period: int
-        :param ReqNumber: 访问次数，取值[1-10000]
-        :type ReqNumber: int
-        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
-        :type Act: str
-        :param ExeDuration: 执行时间，单位秒，取值[1-900]
-        :type ExeDuration: int
-        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；
-        :type Uri: str
-        :param UserAgent: User-Agent字符串，长度不超过80
-        :type UserAgent: str
-        :param Cookie: Cookie字符串，长度不超过40
-        :type Cookie: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）\n        :type RuleId: str\n        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]\n        :type Mode: str\n        :param Period: 统计周期，单位秒，取值[10, 30, 60]\n        :type Period: int\n        :param ReqNumber: 访问次数，取值[1-10000]\n        :type ReqNumber: int\n        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]\n        :type Act: str\n        :param ExeDuration: 执行时间，单位秒，取值[1-900]\n        :type ExeDuration: int\n        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；\n        :type Uri: str\n        :param UserAgent: User-Agent字符串，长度不超过80\n        :type UserAgent: str\n        :param Cookie: Cookie字符串，长度不超过40\n        :type Cookie: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -595,11 +447,7 @@ class CreateCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCFrequencyRuleId: CC防护的访问频率控制规则ID
-        :type CCFrequencyRuleId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CCFrequencyRuleId: CC防护的访问频率控制规则ID\n        :type CCFrequencyRuleId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CCFrequencyRuleId = None
         self.RequestId = None
 
@@ -616,13 +464,7 @@ class CreateCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Policy: CC策略描述
-        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Policy: CC策略描述\n        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`\n        """
         self.Business = None
         self.Id = None
         self.Policy = None
@@ -650,11 +492,7 @@ class CreateCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -673,55 +511,7 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param CaseName: 策略场景名，字符串长度小于64
-        :type CaseName: str
-        :param PlatformTypes: 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]
-        :type PlatformTypes: list of str
-        :param AppType: 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]
-        :type AppType: str
-        :param AppProtocols: 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]
-        :type AppProtocols: list of str
-        :param TcpSportStart: TCP业务起始端口，取值(0, 65535]
-        :type TcpSportStart: str
-        :param TcpSportEnd: TCP业务结束端口，取值(0, 65535]，必须大于等于TCP业务起始端口
-        :type TcpSportEnd: str
-        :param UdpSportStart: UDP业务起始端口，取值范围(0, 65535]
-        :type UdpSportStart: str
-        :param UdpSportEnd: UDP业务结束端口，取值范围(0, 65535)，必须大于等于UDP业务起始端口
-        :type UdpSportEnd: str
-        :param HasAbroad: 是否有海外客户，取值[no（没有）, yes（有）]
-        :type HasAbroad: str
-        :param HasInitiateTcp: 是否会主动对外发起TCP请求，取值[no（不会）, yes（会）]
-        :type HasInitiateTcp: str
-        :param HasInitiateUdp: 是否会主动对外发起UDP业务请求，取值[no（不会）, yes（会）]
-        :type HasInitiateUdp: str
-        :param PeerTcpPort: 主动发起TCP请求的端口，取值范围(0, 65535]
-        :type PeerTcpPort: str
-        :param PeerUdpPort: 主动发起UDP请求的端口，取值范围(0, 65535]
-        :type PeerUdpPort: str
-        :param TcpFootprint: TCP载荷的固定特征码，字符串长度小于512
-        :type TcpFootprint: str
-        :param UdpFootprint: UDP载荷的固定特征码，字符串长度小于512
-        :type UdpFootprint: str
-        :param WebApiUrl: Web业务的API的URL
-        :type WebApiUrl: list of str
-        :param MinTcpPackageLen: TCP业务报文长度最小值，取值范围(0, 1500)
-        :type MinTcpPackageLen: str
-        :param MaxTcpPackageLen: TCP业务报文长度最大值，取值范围(0, 1500)，必须大于等于TCP业务报文长度最小值
-        :type MaxTcpPackageLen: str
-        :param MinUdpPackageLen: UDP业务报文长度最小值，取值范围(0, 1500)
-        :type MinUdpPackageLen: str
-        :param MaxUdpPackageLen: UDP业务报文长度最大值，取值范围(0, 1500)，必须大于等于UDP业务报文长度最小值
-        :type MaxUdpPackageLen: str
-        :param HasVPN: 是否有VPN业务，取值[no（没有）, yes（有）]
-        :type HasVPN: str
-        :param TcpPortList: TCP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
-        :type TcpPortList: str
-        :param UdpPortList: UDP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
-        :type UdpPortList: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param CaseName: 策略场景名，字符串长度小于64\n        :type CaseName: str\n        :param PlatformTypes: 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]\n        :type PlatformTypes: list of str\n        :param AppType: 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]\n        :type AppType: str\n        :param AppProtocols: 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]\n        :type AppProtocols: list of str\n        :param TcpSportStart: TCP业务起始端口，取值(0, 65535]\n        :type TcpSportStart: str\n        :param TcpSportEnd: TCP业务结束端口，取值(0, 65535]，必须大于等于TCP业务起始端口\n        :type TcpSportEnd: str\n        :param UdpSportStart: UDP业务起始端口，取值范围(0, 65535]\n        :type UdpSportStart: str\n        :param UdpSportEnd: UDP业务结束端口，取值范围(0, 65535)，必须大于等于UDP业务起始端口\n        :type UdpSportEnd: str\n        :param HasAbroad: 是否有海外客户，取值[no（没有）, yes（有）]\n        :type HasAbroad: str\n        :param HasInitiateTcp: 是否会主动对外发起TCP请求，取值[no（不会）, yes（会）]\n        :type HasInitiateTcp: str\n        :param HasInitiateUdp: 是否会主动对外发起UDP业务请求，取值[no（不会）, yes（会）]\n        :type HasInitiateUdp: str\n        :param PeerTcpPort: 主动发起TCP请求的端口，取值范围(0, 65535]\n        :type PeerTcpPort: str\n        :param PeerUdpPort: 主动发起UDP请求的端口，取值范围(0, 65535]\n        :type PeerUdpPort: str\n        :param TcpFootprint: TCP载荷的固定特征码，字符串长度小于512\n        :type TcpFootprint: str\n        :param UdpFootprint: UDP载荷的固定特征码，字符串长度小于512\n        :type UdpFootprint: str\n        :param WebApiUrl: Web业务的API的URL\n        :type WebApiUrl: list of str\n        :param MinTcpPackageLen: TCP业务报文长度最小值，取值范围(0, 1500)\n        :type MinTcpPackageLen: str\n        :param MaxTcpPackageLen: TCP业务报文长度最大值，取值范围(0, 1500)，必须大于等于TCP业务报文长度最小值\n        :type MaxTcpPackageLen: str\n        :param MinUdpPackageLen: UDP业务报文长度最小值，取值范围(0, 1500)\n        :type MinUdpPackageLen: str\n        :param MaxUdpPackageLen: UDP业务报文长度最大值，取值范围(0, 1500)，必须大于等于UDP业务报文长度最小值\n        :type MaxUdpPackageLen: str\n        :param HasVPN: 是否有VPN业务，取值[no（没有）, yes（有）]\n        :type HasVPN: str\n        :param TcpPortList: TCP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000\n        :type TcpPortList: str\n        :param UdpPortList: UDP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000\n        :type UdpPortList: str\n        """
         self.Business = None
         self.CaseName = None
         self.PlatformTypes = None
@@ -789,11 +579,7 @@ class CreateDDoSPolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SceneId: 策略场景ID
-        :type SceneId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SceneId: 策略场景ID\n        :type SceneId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SceneId = None
         self.RequestId = None
 
@@ -810,21 +596,7 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param DropOptions: 协议禁用，必须填写且数组长度必须为1
-        :type DropOptions: list of DDoSPolicyDropOption
-        :param Name: 策略名称
-        :type Name: str
-        :param PortLimits: 端口禁用，当没有禁用端口时填空数组
-        :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: 请求源IP黑白名单，当没有IP黑白名单时填空数组
-        :type IpAllowDenys: list of IpBlackWhite
-        :param PacketFilters: 报文过滤，当没有报文过滤时填空数组
-        :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param WaterPrint: 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）
-        :type WaterPrint: list of WaterPrintPolicy
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param DropOptions: 协议禁用，必须填写且数组长度必须为1\n        :type DropOptions: list of DDoSPolicyDropOption\n        :param Name: 策略名称\n        :type Name: str\n        :param PortLimits: 端口禁用，当没有禁用端口时填空数组\n        :type PortLimits: list of DDoSPolicyPortLimit\n        :param IpAllowDenys: 请求源IP黑白名单，当没有IP黑白名单时填空数组\n        :type IpAllowDenys: list of IpBlackWhite\n        :param PacketFilters: 报文过滤，当没有报文过滤时填空数组\n        :type PacketFilters: list of DDoSPolicyPacketFilter\n        :param WaterPrint: 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）\n        :type WaterPrint: list of WaterPrintPolicy\n        """
         self.Business = None
         self.DropOptions = None
         self.Name = None
@@ -883,11 +655,7 @@ class CreateDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PolicyId: 策略ID\n        :type PolicyId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PolicyId = None
         self.RequestId = None
 
@@ -904,13 +672,7 @@ class CreateInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Name: 资源实例名称，长度不超过32个字符
-        :type Name: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Name: 资源实例名称，长度不超过32个字符\n        :type Name: str\n        """
         self.Business = None
         self.Id = None
         self.Name = None
@@ -936,11 +698,7 @@ class CreateInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -959,13 +717,7 @@ class CreateL4HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param HealthConfig: 四层健康检查配置数组
-        :type HealthConfig: list of L4HealthConfig
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param HealthConfig: 四层健康检查配置数组\n        :type HealthConfig: list of L4HealthConfig\n        """
         self.Business = None
         self.Id = None
         self.HealthConfig = None
@@ -996,11 +748,7 @@ class CreateL4HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1019,13 +767,7 @@ class CreateL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rules: 规则列表
-        :type Rules: list of L4RuleEntry
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rules: 规则列表\n        :type Rules: list of L4RuleEntry\n        """
         self.Business = None
         self.Id = None
         self.Rules = None
@@ -1056,11 +798,7 @@ class CreateL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1079,17 +817,7 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Method: 操作码，取值[query(表示查询)，add(表示添加)，del(表示删除)]
-        :type Method: str
-        :param RuleId: 7层转发规则ID，例如：rule-0000001
-        :type RuleId: str
-        :param RuleConfig: 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写，且数组长度只能为1；
-        :type RuleConfig: list of CCRuleConfig
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Method: 操作码，取值[query(表示查询)，add(表示添加)，del(表示删除)]\n        :type Method: str\n        :param RuleId: 7层转发规则ID，例如：rule-0000001\n        :type RuleId: str\n        :param RuleConfig: 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写，且数组长度只能为1；\n        :type RuleConfig: list of CCRuleConfig\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -1124,11 +852,7 @@ class CreateL7CCRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleConfig: 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组
-        :type RuleConfig: list of CCRuleConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RuleConfig: 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组\n        :type RuleConfig: list of CCRuleConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleConfig = None
         self.RequestId = None
 
@@ -1150,13 +874,7 @@ class CreateL7HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param HealthConfig: 七层健康检查配置数组
-        :type HealthConfig: list of L7HealthConfig
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param HealthConfig: 七层健康检查配置数组\n        :type HealthConfig: list of L7HealthConfig\n        """
         self.Business = None
         self.Id = None
         self.HealthConfig = None
@@ -1187,11 +905,7 @@ class CreateL7HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1210,21 +924,7 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源实例ID，例如高防IP实例的ID，高防IP专业版实例的ID
-        :type Id: str
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param CertType: 证书类型，当为协议为HTTPS协议时必须填，取值[2(腾讯云托管证书)]
-        :type CertType: int
-        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
-        :type SSLId: str
-        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type Cert: str
-        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type PrivateKey: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源实例ID，例如高防IP实例的ID，高防IP专业版实例的ID\n        :type Id: str\n        :param RuleId: 规则ID\n        :type RuleId: str\n        :param CertType: 证书类型，当为协议为HTTPS协议时必须填，取值[2(腾讯云托管证书)]\n        :type CertType: int\n        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID\n        :type SSLId: str\n        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type Cert: str\n        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type PrivateKey: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -1258,11 +958,7 @@ class CreateL7RuleCertResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1281,13 +977,7 @@ class CreateL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rules: 规则列表
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rules: 规则列表\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.Id = None
         self.Rules = None
@@ -1318,11 +1008,7 @@ class CreateL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1341,13 +1027,7 @@ class CreateL7RulesUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rules: 规则列表
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rules: 规则列表\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.Id = None
         self.Rules = None
@@ -1378,11 +1058,7 @@ class CreateL7RulesUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1401,11 +1077,7 @@ class CreateNetReturnRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -1429,9 +1101,7 @@ class CreateNetReturnResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1446,15 +1116,7 @@ class CreateNewL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 高防产品代号：bgpip
-        :type Business: str
-        :param IdList: 添加规则资源列表
-        :type IdList: list of str
-        :param VipList: 添加规则IP列表
-        :type VipList: list of str
-        :param Rules: 规则列表
-        :type Rules: list of L4RuleEntry
-        """
+        :param Business: 高防产品代号：bgpip\n        :type Business: str\n        :param IdList: 添加规则资源列表\n        :type IdList: list of str\n        :param VipList: 添加规则IP列表\n        :type VipList: list of str\n        :param Rules: 规则列表\n        :type Rules: list of L4RuleEntry\n        """
         self.Business = None
         self.IdList = None
         self.VipList = None
@@ -1487,11 +1149,7 @@ class CreateNewL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1510,15 +1168,7 @@ class CreateNewL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param IdList: 资源ID列表
-        :type IdList: list of str
-        :param VipList: 资源IP列表
-        :type VipList: list of str
-        :param Rules: 规则列表
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param IdList: 资源ID列表\n        :type IdList: list of str\n        :param VipList: 资源IP列表\n        :type VipList: list of str\n        :param Rules: 规则列表\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.IdList = None
         self.VipList = None
@@ -1551,11 +1201,7 @@ class CreateNewL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1574,15 +1220,7 @@ class CreateNewL7RulesUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param IdList: 资源ID列表
-        :type IdList: list of str
-        :param VipList: 资源IP列表
-        :type VipList: list of str
-        :param Rules: 规则列表
-        :type Rules: list of L7RuleEntry
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param IdList: 资源ID列表\n        :type IdList: list of str\n        :param VipList: 资源IP列表\n        :type VipList: list of str\n        :param Rules: 规则列表\n        :type Rules: list of L7RuleEntry\n        """
         self.Business = None
         self.IdList = None
         self.VipList = None
@@ -1615,11 +1253,7 @@ class CreateNewL7RulesUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1638,11 +1272,7 @@ class CreateUnblockIpRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
-        :type ActionType: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）\n        :type ActionType: str\n        """
         self.Ip = None
         self.ActionType = None
 
@@ -1666,15 +1296,7 @@ class CreateUnblockIpResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
-        :type ActionType: str
-        :param UnblockTime: 解封时间（预计解封时间）
-        :type UnblockTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）\n        :type ActionType: str\n        :param UnblockTime: 解封时间（预计解封时间）\n        :type UnblockTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Ip = None
         self.ActionType = None
         self.UnblockTime = None
@@ -1695,11 +1317,7 @@ class DDoSAlarmThreshold(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmType: 告警阈值类型，1-入流量，2-清洗流量
-        :type AlarmType: int
-        :param AlarmThreshold: 告警阈值，大于0（目前排定的值）
-        :type AlarmThreshold: int
-        """
+        :param AlarmType: 告警阈值类型，1-入流量，2-清洗流量\n        :type AlarmType: int\n        :param AlarmThreshold: 告警阈值，大于0（目前排定的值）\n        :type AlarmThreshold: int\n        """
         self.AlarmType = None
         self.AlarmThreshold = None
 
@@ -1723,17 +1341,7 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param SrcIp: 攻击源ip
-        :type SrcIp: str
-        :param Province: 省份（国内有效，不包含港澳台）
-        :type Province: str
-        :param Nation: 国家
-        :type Nation: str
-        :param PacketSum: 累计攻击包量
-        :type PacketSum: int
-        :param PacketLen: 累计攻击流量
-        :type PacketLen: int
-        """
+        :param SrcIp: 攻击源ip\n        :type SrcIp: str\n        :param Province: 省份（国内有效，不包含港澳台）\n        :type Province: str\n        :param Nation: 国家\n        :type Nation: str\n        :param PacketSum: 累计攻击包量\n        :type PacketSum: int\n        :param PacketLen: 累计攻击流量\n        :type PacketLen: int\n        """
         self.SrcIp = None
         self.Province = None
         self.Nation = None
@@ -1763,35 +1371,9 @@ class DDoSEventRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Vip: 资源的IP
-        :type Vip: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        :param Mbps: 攻击最大带宽
-        :type Mbps: int
-        :param Pps: 攻击最大包速率
-        :type Pps: int
-        :param AttackType: 攻击类型
-        :type AttackType: str
-        :param BlockFlag: 是否被封堵，取值[1（是），0（否），2（无效值）]
-        :type BlockFlag: int
-        :param OverLoad: 是否超过弹性防护峰值，取值取值[yes(是)，no(否)，空字符串（未知值）]
-        :type OverLoad: str
-        :param AttackStatus: 攻击状态，取值[0（攻击中）, 1（攻击结束）]
-        :type AttackStatus: int
-        :param ResourceName: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceName: str
-        :param EventId: 攻击事件Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EventId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Vip: 资源的IP\n        :type Vip: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        :param Mbps: 攻击最大带宽\n        :type Mbps: int\n        :param Pps: 攻击最大包速率\n        :type Pps: int\n        :param AttackType: 攻击类型\n        :type AttackType: str\n        :param BlockFlag: 是否被封堵，取值[1（是），0（否），2（无效值）]\n        :type BlockFlag: int\n        :param OverLoad: 是否超过弹性防护峰值，取值取值[yes(是)，no(否)，空字符串（未知值）]\n        :type OverLoad: str\n        :param AttackStatus: 攻击状态，取值[0（攻击中）, 1（攻击结束）]\n        :type AttackStatus: int\n        :param ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceName: str\n        :param EventId: 攻击事件Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EventId: str\n        """
         self.Business = None
         self.Id = None
         self.Vip = None
@@ -1837,45 +1419,7 @@ class DDoSPolicyDropOption(AbstractModel):
 
     def __init__(self):
         """
-        :param DropTcp: 禁用TCP协议，取值范围[0,1]
-        :type DropTcp: int
-        :param DropUdp: 禁用UDP协议，取值范围[0,1]
-        :type DropUdp: int
-        :param DropIcmp: 禁用ICMP协议，取值范围[0,1]
-        :type DropIcmp: int
-        :param DropOther: 禁用其他协议，取值范围[0,1]
-        :type DropOther: int
-        :param DropAbroad: 拒绝海外流量，取值范围[0,1]
-        :type DropAbroad: int
-        :param CheckSyncConn: 空连接防护，取值范围[0,1]
-        :type CheckSyncConn: int
-        :param SdNewLimit: 基于来源IP及目的IP的新建连接抑制，取值范围[0,4294967295]
-        :type SdNewLimit: int
-        :param DstNewLimit: 基于目的IP的新建连接抑制，取值范围[0,4294967295]
-        :type DstNewLimit: int
-        :param SdConnLimit: 基于来源IP及目的IP的并发连接抑制，取值范围[0,4294967295]
-        :type SdConnLimit: int
-        :param DstConnLimit: 基于目的IP的并发连接抑制，取值范围[0,4294967295]
-        :type DstConnLimit: int
-        :param BadConnThreshold: 基于连接抑制触发阈值，取值范围[0,4294967295]
-        :type BadConnThreshold: int
-        :param NullConnEnable: 异常连接检测条件，空连接防护开关，，取值范围[0,1]
-        :type NullConnEnable: int
-        :param ConnTimeout: 异常连接检测条件，连接超时，，取值范围[0,65535]
-        :type ConnTimeout: int
-        :param SynRate: 异常连接检测条件，syn占比ack百分比，，取值范围[0,100]
-        :type SynRate: int
-        :param SynLimit: 异常连接检测条件，syn阈值，取值范围[0,100]
-        :type SynLimit: int
-        :param DTcpMbpsLimit: tcp限速，取值范围[0,4294967295]
-        :type DTcpMbpsLimit: int
-        :param DUdpMbpsLimit: udp限速，取值范围[0,4294967295]
-        :type DUdpMbpsLimit: int
-        :param DIcmpMbpsLimit: icmp限速，取值范围[0,4294967295]
-        :type DIcmpMbpsLimit: int
-        :param DOtherMbpsLimit: other协议限速，取值范围[0,4294967295]
-        :type DOtherMbpsLimit: int
-        """
+        :param DropTcp: 禁用TCP协议，取值范围[0,1]\n        :type DropTcp: int\n        :param DropUdp: 禁用UDP协议，取值范围[0,1]\n        :type DropUdp: int\n        :param DropIcmp: 禁用ICMP协议，取值范围[0,1]\n        :type DropIcmp: int\n        :param DropOther: 禁用其他协议，取值范围[0,1]\n        :type DropOther: int\n        :param DropAbroad: 拒绝海外流量，取值范围[0,1]\n        :type DropAbroad: int\n        :param CheckSyncConn: 空连接防护，取值范围[0,1]\n        :type CheckSyncConn: int\n        :param SdNewLimit: 基于来源IP及目的IP的新建连接抑制，取值范围[0,4294967295]\n        :type SdNewLimit: int\n        :param DstNewLimit: 基于目的IP的新建连接抑制，取值范围[0,4294967295]\n        :type DstNewLimit: int\n        :param SdConnLimit: 基于来源IP及目的IP的并发连接抑制，取值范围[0,4294967295]\n        :type SdConnLimit: int\n        :param DstConnLimit: 基于目的IP的并发连接抑制，取值范围[0,4294967295]\n        :type DstConnLimit: int\n        :param BadConnThreshold: 基于连接抑制触发阈值，取值范围[0,4294967295]\n        :type BadConnThreshold: int\n        :param NullConnEnable: 异常连接检测条件，空连接防护开关，，取值范围[0,1]\n        :type NullConnEnable: int\n        :param ConnTimeout: 异常连接检测条件，连接超时，，取值范围[0,65535]\n        :type ConnTimeout: int\n        :param SynRate: 异常连接检测条件，syn占比ack百分比，，取值范围[0,100]\n        :type SynRate: int\n        :param SynLimit: 异常连接检测条件，syn阈值，取值范围[0,100]\n        :type SynLimit: int\n        :param DTcpMbpsLimit: tcp限速，取值范围[0,4294967295]\n        :type DTcpMbpsLimit: int\n        :param DUdpMbpsLimit: udp限速，取值范围[0,4294967295]\n        :type DUdpMbpsLimit: int\n        :param DIcmpMbpsLimit: icmp限速，取值范围[0,4294967295]\n        :type DIcmpMbpsLimit: int\n        :param DOtherMbpsLimit: other协议限速，取值范围[0,4294967295]\n        :type DOtherMbpsLimit: int\n        """
         self.DropTcp = None
         self.DropUdp = None
         self.DropIcmp = None
@@ -1933,40 +1477,12 @@ class DDoSPolicyPacketFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 协议，取值范围[tcp,udp,icmp,all]
-        :type Protocol: str
-        :param SportStart: 开始源端口，取值范围[0,65535]
-        :type SportStart: int
-        :param SportEnd: 结束源端口，取值范围[0,65535]
-        :type SportEnd: int
-        :param DportStart: 开始目的端口，取值范围[0,65535]
-        :type DportStart: int
-        :param DportEnd: 结束目的端口，取值范围[0,65535]
-        :type DportEnd: int
-        :param PktlenMin: 最小包长，取值范围[0,1500]
-        :type PktlenMin: int
-        :param PktlenMax: 最大包长，取值范围[0,1500]
-        :type PktlenMax: int
-        :param MatchBegin: 是否检测载荷，取值范围[
+        :param Protocol: 协议，取值范围[tcp,udp,icmp,all]\n        :type Protocol: str\n        :param SportStart: 开始源端口，取值范围[0,65535]\n        :type SportStart: int\n        :param SportEnd: 结束源端口，取值范围[0,65535]\n        :type SportEnd: int\n        :param DportStart: 开始目的端口，取值范围[0,65535]\n        :type DportStart: int\n        :param DportEnd: 结束目的端口，取值范围[0,65535]\n        :type DportEnd: int\n        :param PktlenMin: 最小包长，取值范围[0,1500]\n        :type PktlenMin: int\n        :param PktlenMax: 最大包长，取值范围[0,1500]\n        :type PktlenMax: int\n        :param MatchBegin: 是否检测载荷，取值范围[
 begin_l3(IP头)
 begin_l4(TCP头)
 begin_l5(载荷)
 no_match(不检测)
-]
-        :type MatchBegin: str
-        :param MatchType: 是否是正则表达式，取值范围[sunday(表示关键字),pcre(表示正则表达式)]
-        :type MatchType: str
-        :param Str: 关键字或正则表达式
-        :type Str: str
-        :param Depth: 检测深度，取值范围[0,1500]
-        :type Depth: int
-        :param Offset: 检测偏移量，取值范围[0,1500]
-        :type Offset: int
-        :param IsNot: 是否包括，取值范围[0(表示不包含),1(表示包含)]
-        :type IsNot: int
-        :param Action: 策略动作，取值范围[drop，drop_black，drop_rst，drop_black_rst，transmit]
-        :type Action: str
-        """
+]\n        :type MatchBegin: str\n        :param MatchType: 是否是正则表达式，取值范围[sunday(表示关键字),pcre(表示正则表达式)]\n        :type MatchType: str\n        :param Str: 关键字或正则表达式\n        :type Str: str\n        :param Depth: 检测深度，取值范围[0,1500]\n        :type Depth: int\n        :param Offset: 检测偏移量，取值范围[0,1500]\n        :type Offset: int\n        :param IsNot: 是否包括，取值范围[0(表示不包含),1(表示包含)]\n        :type IsNot: int\n        :param Action: 策略动作，取值范围[drop，drop_black，drop_rst，drop_black_rst，transmit]\n        :type Action: str\n        """
         self.Protocol = None
         self.SportStart = None
         self.SportEnd = None
@@ -2014,25 +1530,11 @@ class DDoSPolicyPortLimit(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 协议，取值范围[tcp,udp,all]
-        :type Protocol: str
-        :param DPortStart: 开始目的端口，取值范围[0,65535]
-        :type DPortStart: int
-        :param DPortEnd: 结束目的端口，取值范围[0,65535]，要求大于等于开始目的端口
-        :type DPortEnd: int
-        :param SPortStart: 开始源端口，取值范围[0,65535]
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SPortStart: int
-        :param SPortEnd: 结束源端口，取值范围[0,65535]，要求大于等于开始源端口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SPortEnd: int
-        :param Action: 执行动作，取值[drop(丢弃) ，transmit(转发)]
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Action: str
-        :param Kind: 禁用端口类型，取值[0（目的端口范围禁用）， 1（源端口范围禁用）， 2（目的和源端口范围同时禁用）]
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Kind: int
-        """
+        :param Protocol: 协议，取值范围[tcp,udp,all]\n        :type Protocol: str\n        :param DPortStart: 开始目的端口，取值范围[0,65535]\n        :type DPortStart: int\n        :param DPortEnd: 结束目的端口，取值范围[0,65535]，要求大于等于开始目的端口\n        :type DPortEnd: int\n        :param SPortStart: 开始源端口，取值范围[0,65535]
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SPortStart: int\n        :param SPortEnd: 结束源端口，取值范围[0,65535]，要求大于等于开始源端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SPortEnd: int\n        :param Action: 执行动作，取值[drop(丢弃) ，transmit(转发)]
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Action: str\n        :param Kind: 禁用端口类型，取值[0（目的端口范围禁用）， 1（源端口范围禁用）， 2（目的和源端口范围同时禁用）]
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Kind: int\n        """
         self.Protocol = None
         self.DPortStart = None
         self.DPortEnd = None
@@ -2066,33 +1568,9 @@ class DDosPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param Resources: 策略绑定的资源
-        :type Resources: list of ResourceIp
-        :param DropOptions: 禁用协议
-        :type DropOptions: :class:`tencentcloud.dayu.v20180709.models.DDoSPolicyDropOption`
-        :param PortLimits: 禁用端口
-        :type PortLimits: list of DDoSPolicyPortLimit
-        :param PacketFilters: 报文过滤
-        :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param IpBlackWhiteLists: 黑白IP名单
-        :type IpBlackWhiteLists: list of IpBlackWhite
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        :param PolicyName: 策略名称
-        :type PolicyName: str
-        :param CreateTime: 策略创建时间
-        :type CreateTime: str
-        :param WaterPrint: 水印策略参数，最多只有一个，当没有水印策略时数组为空
-        :type WaterPrint: list of WaterPrintPolicy
-        :param WaterKey: 水印密钥，最多只有2个，当没有水印策略时数组为空
-        :type WaterKey: list of WaterPrintKey
-        :param BoundResources: 策略绑定的资源实例
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BoundResources: list of str
-        :param SceneId: 策略所属的策略场景
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SceneId: str
-        """
+        :param Resources: 策略绑定的资源\n        :type Resources: list of ResourceIp\n        :param DropOptions: 禁用协议\n        :type DropOptions: :class:`tencentcloud.dayu.v20180709.models.DDoSPolicyDropOption`\n        :param PortLimits: 禁用端口\n        :type PortLimits: list of DDoSPolicyPortLimit\n        :param PacketFilters: 报文过滤\n        :type PacketFilters: list of DDoSPolicyPacketFilter\n        :param IpBlackWhiteLists: 黑白IP名单\n        :type IpBlackWhiteLists: list of IpBlackWhite\n        :param PolicyId: 策略ID\n        :type PolicyId: str\n        :param PolicyName: 策略名称\n        :type PolicyName: str\n        :param CreateTime: 策略创建时间\n        :type CreateTime: str\n        :param WaterPrint: 水印策略参数，最多只有一个，当没有水印策略时数组为空\n        :type WaterPrint: list of WaterPrintPolicy\n        :param WaterKey: 水印密钥，最多只有2个，当没有水印策略时数组为空\n        :type WaterKey: list of WaterPrintKey\n        :param BoundResources: 策略绑定的资源实例
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BoundResources: list of str\n        :param SceneId: 策略所属的策略场景
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SceneId: str\n        """
         self.Resources = None
         self.DropOptions = None
         self.PortLimits = None
@@ -2168,11 +1646,7 @@ class DeleteCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param CCFrequencyRuleId: CC防护的访问频率控制规则ID
-        :type CCFrequencyRuleId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param CCFrequencyRuleId: CC防护的访问频率控制规则ID\n        :type CCFrequencyRuleId: str\n        """
         self.Business = None
         self.CCFrequencyRuleId = None
 
@@ -2196,11 +1670,7 @@ class DeleteCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2219,13 +1689,7 @@ class DeleteCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param SetId: 策略ID
-        :type SetId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param SetId: 策略ID\n        :type SetId: str\n        """
         self.Business = None
         self.Id = None
         self.SetId = None
@@ -2251,11 +1715,7 @@ class DeleteCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2274,11 +1734,7 @@ class DeleteDDoSPolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param SceneId: 策略场景ID
-        :type SceneId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param SceneId: 策略场景ID\n        :type SceneId: str\n        """
         self.Business = None
         self.SceneId = None
 
@@ -2302,11 +1758,7 @@ class DeleteDDoSPolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2325,11 +1777,7 @@ class DeleteDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param PolicyId: 策略ID\n        :type PolicyId: str\n        """
         self.Business = None
         self.PolicyId = None
 
@@ -2353,11 +1801,7 @@ class DeleteDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2376,13 +1820,7 @@ class DeleteL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleIdList: 规则ID列表
-        :type RuleIdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleIdList: 规则ID列表\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -2408,11 +1846,7 @@ class DeleteL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2431,13 +1865,7 @@ class DeleteL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleIdList: 规则ID列表
-        :type RuleIdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleIdList: 规则ID列表\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -2463,11 +1891,7 @@ class DeleteL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2486,11 +1910,7 @@ class DeleteNewL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Rule: 删除接口结构体
-        :type Rule: list of L4DelRule
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Rule: 删除接口结构体\n        :type Rule: list of L4DelRule\n        """
         self.Business = None
         self.Rule = None
 
@@ -2519,11 +1939,7 @@ class DeleteNewL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2542,11 +1958,7 @@ class DeleteNewL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP)
-        :type Business: str
-        :param Rule: 删除规则列表
-        :type Rule: list of L4DelRule
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP)\n        :type Business: str\n        :param Rule: 删除规则列表\n        :type Rule: list of L4DelRule\n        """
         self.Business = None
         self.Rule = None
 
@@ -2575,11 +1987,7 @@ class DeleteNewL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -2598,19 +2006,7 @@ class DescribeActionLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Filter: 搜索值，只支持资源ID或用户UIN
-        :type Filter: str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Filter: 搜索值，只支持资源ID或用户UIN\n        :type Filter: str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.Business = None
@@ -2642,13 +2038,7 @@ class DescribeActionLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总记录数
-        :type TotalCount: int
-        :param Data: 记录数组
-        :type Data: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param Data: 记录数组\n        :type Data: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Data = None
         self.RequestId = None
@@ -2672,11 +2062,7 @@ class DescribeBGPIPL7RuleMaxCntRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -2700,11 +2086,7 @@ class DescribeBGPIPL7RuleMaxCntResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Count: 高防IP最多可添加的7层规则数量
-        :type Count: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Count: 高防IP最多可添加的7层规则数量\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -2721,11 +2103,7 @@ class DescribeBaradDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param MetricName: 指标名，取值：
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param MetricName: 指标名，取值：
 connum表示TCP活跃连接数；
 new_conn表示新建TCP连接数；
 inactive_conn表示非活跃连接数;
@@ -2733,24 +2111,10 @@ intraffic表示入流量；
 outtraffic表示出流量；
 alltraffic表示出流量和入流量之和；
 inpkg表示入包速率；
-outpkg表示出包速率；
-        :type MetricName: str
-        :param Period: 统计时间粒度，单位秒（300表示5分钟；3600表示小时；86400表示天）
-        :type Period: int
-        :param StartTime: 统计开始时间，秒部分保持为0，分钟部分为5的倍数
-        :type StartTime: str
-        :param EndTime: 统计结束时间，秒部分保持为0，分钟部分为5的倍数
-        :type EndTime: str
-        :param Statistics: 统计方式，取值：
+outpkg表示出包速率；\n        :type MetricName: str\n        :param Period: 统计时间粒度，单位秒（300表示5分钟；3600表示小时；86400表示天）\n        :type Period: int\n        :param StartTime: 统计开始时间，秒部分保持为0，分钟部分为5的倍数\n        :type StartTime: str\n        :param EndTime: 统计结束时间，秒部分保持为0，分钟部分为5的倍数\n        :type EndTime: str\n        :param Statistics: 统计方式，取值：
 max表示最大值；
 min表示最小值；
-avg表示均值；
-        :type Statistics: str
-        :param ProtocolPort: 协议端口数组
-        :type ProtocolPort: list of ProtocolPort
-        :param Ip: 资源实例下的IP，只有当Business=net(高防IP专业版)时才必须填写资源的一个IP（因为高防IP专业版资源实例有多个IP，才需要指定）；
-        :type Ip: str
-        """
+avg表示均值；\n        :type Statistics: str\n        :param ProtocolPort: 协议端口数组\n        :type ProtocolPort: list of ProtocolPort\n        :param Ip: 资源实例下的IP，只有当Business=net(高防IP专业版)时才必须填写资源的一个IP（因为高防IP专业版资源实例有多个IP，才需要指定）；\n        :type Ip: str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -2793,11 +2157,7 @@ class DescribeBaradDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataList: 返回指标的值
-        :type DataList: list of BaradData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DataList: 返回指标的值\n        :type DataList: list of BaradData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataList = None
         self.RequestId = None
 
@@ -2819,19 +2179,7 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicIp: 查询的IP地址，取值如：1.1.1.1
-        :type BasicIp: str
-        :param BasicRegion: 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写
-        :type BasicRegion: str
-        :param BasicBizType: 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
-        :type BasicBizType: str
-        :param BasicDeviceType: 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
-        :type BasicDeviceType: str
-        :param BasicIpInstance: 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
-        :type BasicIpInstance: str
-        :param BasicIspCode: 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
-        :type BasicIspCode: int
-        """
+        :param BasicIp: 查询的IP地址，取值如：1.1.1.1\n        :type BasicIp: str\n        :param BasicRegion: 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写\n        :type BasicRegion: str\n        :param BasicBizType: 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。\n        :type BasicBizType: str\n        :param BasicDeviceType: 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.\n        :type BasicDeviceType: str\n        :param BasicIpInstance: 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）\n        :type BasicIpInstance: str\n        :param BasicIspCode: 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）\n        :type BasicIspCode: int\n        """
         self.BasicIp = None
         self.BasicRegion = None
         self.BasicBizType = None
@@ -2863,13 +2211,7 @@ class DescribeBasicCCThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCEnable: CC启动开关（0:关闭；1:开启）
-        :type CCEnable: int
-        :param CCThreshold: CC防护阈值
-        :type CCThreshold: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CCEnable: CC启动开关（0:关闭；1:开启）\n        :type CCEnable: int\n        :param CCThreshold: CC防护阈值\n        :type CCThreshold: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CCEnable = None
         self.CCThreshold = None
         self.RequestId = None
@@ -2888,21 +2230,7 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicIp: 查询的IP地址，取值如：1.1.1.1
-        :type BasicIp: str
-        :param BasicRegion: 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写
-        :type BasicRegion: str
-        :param BasicBizType: 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
-        :type BasicBizType: str
-        :param BasicDeviceType: 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
-        :type BasicDeviceType: str
-        :param BasicCheckFlag: 有效性检查，取值为1
-        :type BasicCheckFlag: int
-        :param BasicIpInstance: 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
-        :type BasicIpInstance: str
-        :param BasicIspCode: 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
-        :type BasicIspCode: int
-        """
+        :param BasicIp: 查询的IP地址，取值如：1.1.1.1\n        :type BasicIp: str\n        :param BasicRegion: 查询IP所属地域，取值如：gz、bj、sh、hk等地域缩写\n        :type BasicRegion: str\n        :param BasicBizType: 专区类型，取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。\n        :type BasicBizType: str\n        :param BasicDeviceType: 设备类型，取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.\n        :type BasicDeviceType: str\n        :param BasicCheckFlag: 有效性检查，取值为1\n        :type BasicCheckFlag: int\n        :param BasicIpInstance: 可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）\n        :type BasicIpInstance: str\n        :param BasicIspCode: 可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）\n        :type BasicIspCode: int\n        """
         self.BasicIp = None
         self.BasicRegion = None
         self.BasicBizType = None
@@ -2936,11 +2264,7 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Threshold: 返回黑洞封堵值
-        :type Threshold: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Threshold: 返回黑洞封堵值\n        :type Threshold: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Threshold = None
         self.RequestId = None
 
@@ -2957,23 +2281,7 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Id: 资源Id
-        :type Id: str
-        :param Period: 统计周期，可取值300，1800，3600， 21600，86400，单位秒
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Statistics: 统计方式，仅支持sum
-        :type Statistics: str
-        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
-        :type ProtoInfo: list of ProtocolPort
-        :param Domain: 特定域名查询
-        :type Domain: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Id: 资源Id\n        :type Id: str\n        :param Period: 统计周期，可取值300，1800，3600， 21600，86400，单位秒\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Statistics: 统计方式，仅支持sum\n        :type Statistics: str\n        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效\n        :type ProtoInfo: list of ProtocolPort\n        :param Domain: 特定域名查询\n        :type Domain: str\n        """
         self.Business = None
         self.Id = None
         self.Period = None
@@ -3014,11 +2322,7 @@ class DescribeBizHttpStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HttpStatusMap: 业务流量http状态码统计数据
-        :type HttpStatusMap: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param HttpStatusMap: 业务流量http状态码统计数据\n        :type HttpStatusMap: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.HttpStatusMap = None
         self.RequestId = None
 
@@ -3037,25 +2341,7 @@ class DescribeBizTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
-        :type Statistics: str
-        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps
-        :type MetricName: str
-        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
-        :type ProtoInfo: list of ProtocolPort
-        :param Domain: 统计纬度为qps时，可选特定域名查询
-        :type Domain: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max\n        :type Statistics: str\n        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps\n        :type MetricName: str\n        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效\n        :type ProtoInfo: list of ProtocolPort\n        :param Domain: 统计纬度为qps时，可选特定域名查询\n        :type Domain: str\n        """
         self.Business = None
         self.Id = None
         self.Period = None
@@ -3098,13 +2384,7 @@ class DescribeBizTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataList: 曲线图各个时间点的值
-        :type DataList: list of float
-        :param MetricName: 统计纬度
-        :type MetricName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DataList: 曲线图各个时间点的值\n        :type DataList: list of float\n        :param MetricName: 统计纬度\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataList = None
         self.MetricName = None
         self.RequestId = None
@@ -3123,11 +2403,7 @@ class DescribeCCAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
-        :type Business: str
-        :param RsId: 资源ID,字符串类型
-        :type RsId: str
-        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）\n        :type Business: str\n        :param RsId: 资源ID,字符串类型\n        :type RsId: str\n        """
         self.Business = None
         self.RsId = None
 
@@ -3151,11 +2427,7 @@ class DescribeCCAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCAlarmThreshold: CC告警阈值
-        :type CCAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.CCAlarmThreshold`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CCAlarmThreshold: CC告警阈值\n        :type CCAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.CCAlarmThreshold`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CCAlarmThreshold = None
         self.RequestId = None
 
@@ -3174,21 +2446,7 @@ class DescribeCCEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param IpList: 资源实例的IP，当business不为basic时，如果IpList不为空则Id也必须不能为空；
-        :type IpList: list of str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param IpList: 资源实例的IP，当business不为basic时，如果IpList不为空则Id也必须不能为空；\n        :type IpList: list of str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.Business = None
         self.StartTime = None
         self.EndTime = None
@@ -3222,24 +2480,8 @@ class DescribeCCEvListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌盾；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param IpList: 资源实例的IP列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IpList: list of str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Data: CC攻击事件列表
-        :type Data: list of CCEventRecord
-        :param Total: 总记录数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（shield表示棋牌盾；bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param IpList: 资源实例的IP列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IpList: list of str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Data: CC攻击事件列表\n        :type Data: list of CCEventRecord\n        :param Total: 总记录数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.IpList = None
@@ -3273,13 +2515,7 @@ class DescribeCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；当填写时表示获取转发规则的访问频率控制规则；
-        :type RuleId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；当填写时表示获取转发规则的访问频率控制规则；\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -3305,13 +2541,7 @@ class DescribeCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CCFrequencyRuleList: 访问频率控制规则列表
-        :type CCFrequencyRuleList: list of CCFrequencyRule
-        :param CCFrequencyRuleStatus: 访问频率控制规则开关状态，取值[on(开启)，off(关闭)]
-        :type CCFrequencyRuleStatus: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CCFrequencyRuleList: 访问频率控制规则列表\n        :type CCFrequencyRuleList: list of CCFrequencyRule\n        :param CCFrequencyRuleStatus: 访问频率控制规则开关状态，取值[on(开启)，off(关闭)]\n        :type CCFrequencyRuleStatus: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CCFrequencyRuleList = None
         self.CCFrequencyRuleStatus = None
         self.RequestId = None
@@ -3335,20 +2565,8 @@ class DescribeCCIpAllowDenyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Type: 黑或白名单，取值[white(白名单)，black(黑名单)]
-注意：此数组只能有一个值，不能同时获取黑名单和白名单
-        :type Type: list of str
-        :param Limit: 分页参数
-        :type Limit: int
-        :param Offset: 分页参数
-        :type Offset: int
-        :param Protocol: 可选，代表HTTP协议或HTTPS协议的CC防护，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；
-        :type Protocol: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Type: 黑或白名单，取值[white(白名单)，black(黑名单)]
+注意：此数组只能有一个值，不能同时获取黑名单和白名单\n        :type Type: list of str\n        :param Limit: 分页参数\n        :type Limit: int\n        :param Offset: 分页参数\n        :type Offset: int\n        :param Protocol: 可选，代表HTTP协议或HTTPS协议的CC防护，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；\n        :type Protocol: str\n        """
         self.Business = None
         self.Id = None
         self.Type = None
@@ -3380,19 +2598,11 @@ class DescribeCCIpAllowDenyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 该字段被RecordList字段替代了，请不要使用
-        :type Data: list of KeyValue
-        :param Total: 记录数
-        :type Total: int
-        :param RecordList: 返回黑/白名单的记录，
+        :param Data: 该字段被RecordList字段替代了，请不要使用\n        :type Data: list of KeyValue\n        :param Total: 记录数\n        :type Total: int\n        :param RecordList: 返回黑/白名单的记录，
 "Key":"ip"时，"Value":值表示ip;
 "Key":"domain"时， "Value":值表示域名;
 "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
-"Key":"protocol"时，"Value":值表示CC防护的协议(http或https);
-        :type RecordList: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+"Key":"protocol"时，"Value":值表示CC防护的协议(http或https);\n        :type RecordList: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.Total = None
         self.RecordList = None
@@ -3423,15 +2633,7 @@ class DescribeCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgp高防包；bgp-multip共享包）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Limit: 拉取的条数
-        :type Limit: int
-        :param Offset: 偏移量
-        :type Offset: int
-        """
+        :param Business: 大禹子产品代号（bgp高防包；bgp-multip共享包）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Limit: 拉取的条数\n        :type Limit: int\n        :param Offset: 偏移量\n        :type Offset: int\n        """
         self.Business = None
         self.Id = None
         self.Limit = None
@@ -3459,13 +2661,7 @@ class DescribeCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 自定义规则总数
-        :type Total: int
-        :param Policys: 策略列表
-        :type Policys: list of CCPolicy
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 自定义规则总数\n        :type Total: int\n        :param Policys: 策略列表\n        :type Policys: list of CCPolicy\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Policys = None
         self.RequestId = None
@@ -3489,23 +2685,7 @@ class DescribeCCTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
-        :type MetricName: str
-        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
-        :type Id: str
-        :param Domain: 域名，可选
-        :type Domain: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]\n        :type MetricName: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        :param Domain: 域名，可选\n        :type Domain: str\n        """
         self.Business = None
         self.Ip = None
         self.MetricName = None
@@ -3541,28 +2721,8 @@ class DescribeCCTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Id: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
-        :type MetricName: str
-        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Data: 值数组
-        :type Data: list of int non-negative
-        :param Count: 值个数
-        :type Count: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]\n        :type MetricName: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组\n        :type Data: list of int non-negative\n        :param Count: 值个数\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3595,20 +2755,8 @@ class DescribeCCUrlAllowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Type: 黑或白名单，取值[white(白名单)]，目前只支持白名单
-注意：此数组只能有一个值，且只能为white
-        :type Type: list of str
-        :param Limit: 分页参数
-        :type Limit: int
-        :param Offset: 分页参数
-        :type Offset: int
-        :param Protocol: 可选，代表HTTP协议或HTTPS协议的CC防护，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；
-        :type Protocol: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Type: 黑或白名单，取值[white(白名单)]，目前只支持白名单
+注意：此数组只能有一个值，且只能为white\n        :type Type: list of str\n        :param Limit: 分页参数\n        :type Limit: int\n        :param Offset: 分页参数\n        :type Offset: int\n        :param Protocol: 可选，代表HTTP协议或HTTPS协议的CC防护，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；\n        :type Protocol: str\n        """
         self.Business = None
         self.Id = None
         self.Type = None
@@ -3640,19 +2788,11 @@ class DescribeCCUrlAllowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 该字段被RecordList字段替代了，请不要使用
-        :type Data: list of KeyValue
-        :param Total: 记录总数
-        :type Total: int
-        :param RecordList: 返回黑/白名单的记录，
+        :param Data: 该字段被RecordList字段替代了，请不要使用\n        :type Data: list of KeyValue\n        :param Total: 记录总数\n        :type Total: int\n        :param RecordList: 返回黑/白名单的记录，
 "Key":"url"时，"Value":值表示URL;
 "Key":"domain"时， "Value":值表示域名;
 "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
-"Key":"protocol"时，"Value":值表示CC的防护类型(HTTP防护或HTTPS域名防护);
-        :type RecordList: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+"Key":"protocol"时，"Value":值表示CC的防护类型(HTTP防护或HTTPS域名防护);\n        :type RecordList: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.Total = None
         self.RecordList = None
@@ -3683,11 +2823,7 @@ class DescribeDDoSAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
-        :type Business: str
-        :param RsId: 资源ID,字符串类型
-        :type RsId: str
-        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）\n        :type Business: str\n        :param RsId: 资源ID,字符串类型\n        :type RsId: str\n        """
         self.Business = None
         self.RsId = None
 
@@ -3711,11 +2847,7 @@ class DescribeDDoSAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DDoSAlarmThreshold: DDoS告警阈值
-        :type DDoSAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.DDoSAlarmThreshold`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DDoSAlarmThreshold: DDoS告警阈值\n        :type DDoSAlarmThreshold: :class:`tencentcloud.dayu.v20180709.models.DDoSAlarmThreshold`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DDoSAlarmThreshold = None
         self.RequestId = None
 
@@ -3734,17 +2866,7 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间，最大可统计的时间范围是半年；
-        :type EndTime: str
-        :param IpList: 指定资源的特定IP的攻击源，可选
-        :type IpList: list of str
-        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间，最大可统计的时间范围是半年；\n        :type EndTime: str\n        :param IpList: 指定资源的特定IP的攻击源，可选\n        :type IpList: list of str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -3774,13 +2896,7 @@ class DescribeDDoSAttackIPRegionMapResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NationCount: 全球地域分布数据
-        :type NationCount: list of KeyValueRecord
-        :param ProvinceCount: 国内省份地域分布数据
-        :type ProvinceCount: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NationCount: 全球地域分布数据\n        :type NationCount: list of KeyValueRecord\n        :param ProvinceCount: 国内省份地域分布数据\n        :type ProvinceCount: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NationCount = None
         self.ProvinceCount = None
         self.RequestId = None
@@ -3809,21 +2925,7 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 起始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        :param IpList: 获取指定资源的特定ip的攻击源，可选
-        :type IpList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 起始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param IpList: 获取指定资源的特定ip的攻击源，可选\n        :type IpList: list of str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -3857,13 +2959,7 @@ class DescribeDDoSAttackSourceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总攻击源条数
-        :type Total: int
-        :param AttackSourceList: 攻击源列表
-        :type AttackSourceList: list of DDoSAttackSourceRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 总攻击源条数\n        :type Total: int\n        :param AttackSourceList: 攻击源列表\n        :type AttackSourceList: list of DDoSAttackSourceRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.AttackSourceList = None
         self.RequestId = None
@@ -3887,19 +2983,7 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
-        :type MetricName: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]\n        :type MetricName: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3931,19 +3015,7 @@ class DescribeDDoSCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
-        :type MetricName: str
-        :param Data: Key-Value值数组，Key说明如下，
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]\n        :type MetricName: str\n        :param Data: Key-Value值数组，Key说明如下，
 当MetricName为traffic时：
 key为"TcpKBSum"，表示TCP报文流量，单位KB
 key为"UdpKBSum"，表示UDP报文流量，单位KB
@@ -3957,11 +3029,7 @@ key为"IcmpPacketSum"，表示ICMP报文个数，单位个
 key为"OtherPacketSum"，表示其他报文个数，单位个
 
 当MetricName为classnum时：
-key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件
-        :type Data: list of KeyValue
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件\n        :type Data: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -3995,19 +3063,7 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（basic表示基础防护；bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源实例ID，只有当Business不是基础防护时才需要填写此字段；
-        :type Id: str
-        :param Ip: 基础防护的IP，只有当Business为基础防护时才需要填写此字段；
-        :type Ip: str
-        :param BizType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
-        :type BizType: str
-        :param DeviceType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
-        :type DeviceType: str
-        :param InstanceId: 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);
-        :type InstanceId: str
-        :param IPRegion: 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
+        :param Business: 大禹子产品代号（basic表示基础防护；bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源实例ID，只有当Business不是基础防护时才需要填写此字段；\n        :type Id: str\n        :param Ip: 基础防护的IP，只有当Business为基础防护时才需要填写此字段；\n        :type Ip: str\n        :param BizType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]\n        :type BizType: str\n        :param DeviceType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]\n        :type DeviceType: str\n        :param InstanceId: 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);\n        :type InstanceId: str\n        :param IPRegion: 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
 "bj":     华北地区(北京)
 "cd":     西南地区(成都)
 "cq":     西南地区(重庆)
@@ -4029,9 +3085,7 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 "use":    美东地区（弗吉尼亚）
 "ru":     俄罗斯
 "tpe":    中国台湾
-"nj":     南京
-        :type IPRegion: str
-        """
+"nj":     南京\n        :type IPRegion: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4066,17 +3120,9 @@ class DescribeDDoSDefendStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param DefendStatus: 防护状态，为0表示防护处于关闭状态，为1表示防护处于开启状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DefendStatus: int
-        :param UndefendExpire: 防护临时关闭的过期时间，当防护状态为开启时此字段为空；
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UndefendExpire: str
-        :param ShowFlag: 控制台功能展示字段，为1表示控制台功能展示，为0表示控制台功能隐藏
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ShowFlag: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DefendStatus: int\n        :param UndefendExpire: 防护临时关闭的过期时间，当防护状态为开启时此字段为空；
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UndefendExpire: str\n        :param ShowFlag: 控制台功能展示字段，为1表示控制台功能展示，为0表示控制台功能隐藏
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ShowFlag: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DefendStatus = None
         self.UndefendExpire = None
         self.ShowFlag = None
@@ -4097,17 +3143,7 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4137,43 +3173,7 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        :param TcpPacketSum: TCP报文攻击包数
-        :type TcpPacketSum: int
-        :param TcpKBSum: TCP报文攻击流量，单位KB
-        :type TcpKBSum: int
-        :param UdpPacketSum: UDP报文攻击包数
-        :type UdpPacketSum: int
-        :param UdpKBSum: UDP报文攻击流量，单位KB
-        :type UdpKBSum: int
-        :param IcmpPacketSum: ICMP报文攻击包数
-        :type IcmpPacketSum: int
-        :param IcmpKBSum: ICMP报文攻击流量，单位KB
-        :type IcmpKBSum: int
-        :param OtherPacketSum: 其他报文攻击包数
-        :type OtherPacketSum: int
-        :param OtherKBSum: 其他报文攻击流量，单位KB
-        :type OtherKBSum: int
-        :param TotalTraffic: 累计攻击流量，单位KB
-        :type TotalTraffic: int
-        :param Mbps: 攻击流量带宽峰值
-        :type Mbps: int
-        :param Pps: 攻击包速率峰值
-        :type Pps: int
-        :param PcapUrl: PCAP文件下载链接
-        :type PcapUrl: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        :param TcpPacketSum: TCP报文攻击包数\n        :type TcpPacketSum: int\n        :param TcpKBSum: TCP报文攻击流量，单位KB\n        :type TcpKBSum: int\n        :param UdpPacketSum: UDP报文攻击包数\n        :type UdpPacketSum: int\n        :param UdpKBSum: UDP报文攻击流量，单位KB\n        :type UdpKBSum: int\n        :param IcmpPacketSum: ICMP报文攻击包数\n        :type IcmpPacketSum: int\n        :param IcmpKBSum: ICMP报文攻击流量，单位KB\n        :type IcmpKBSum: int\n        :param OtherPacketSum: 其他报文攻击包数\n        :type OtherPacketSum: int\n        :param OtherKBSum: 其他报文攻击流量，单位KB\n        :type OtherKBSum: int\n        :param TotalTraffic: 累计攻击流量，单位KB\n        :type TotalTraffic: int\n        :param Mbps: 攻击流量带宽峰值\n        :type Mbps: int\n        :param Pps: 攻击包速率峰值\n        :type Pps: int\n        :param PcapUrl: PCAP文件下载链接\n        :type PcapUrl: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4222,23 +3222,7 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
-        :type Id: str
-        :param IpList: 资源的IP
-        :type IpList: list of str
-        :param OverLoad: 是否超过弹性防护峰值，取值[yes(是)，no(否)]，填写空字符串时表示不进行过滤
-        :type OverLoad: str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        :param IpList: 资源的IP\n        :type IpList: list of str\n        :param OverLoad: 是否超过弹性防护峰值，取值[yes(是)，no(否)]，填写空字符串时表示不进行过滤\n        :type OverLoad: str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.Business = None
         self.StartTime = None
         self.EndTime = None
@@ -4274,24 +3258,8 @@ class DescribeDDoSEvListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param IpList: 资源的IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IpList: list of str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Data: DDoS攻击事件列表
-        :type Data: list of DDoSEventRecord
-        :param Total: 总记录数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param IpList: 资源的IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IpList: list of str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Data: DDoS攻击事件列表\n        :type Data: list of DDoSEventRecord\n        :param Total: 总记录数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.IpList = None
@@ -4325,17 +3293,7 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4365,23 +3323,9 @@ class DescribeDDoSIpLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        :param Data: IP攻击日志，KeyValue数组，Key-Value取值说明：
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        :param Data: IP攻击日志，KeyValue数组，Key-Value取值说明：
 Key为"LogTime"时，Value值为IP日志时间
-Key为"LogMessage"时，Value值为Ip日志内容
-        :type Data: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+Key为"LogMessage"时，Value值为Ip日志内容\n        :type Data: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -4413,17 +3357,7 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
-        :type MetricName: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]\n        :type MetricName: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4453,17 +3387,7 @@ class DescribeDDoSNetCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]
-        :type MetricName: str
-        :param Data: Key-Value值数组，Key说明如下，
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[traffic（攻击协议流量, 单位KB）, pkg（攻击协议报文数）, classnum（攻击事件次数）]\n        :type MetricName: str\n        :param Data: Key-Value值数组，Key说明如下，
 当MetricName为traffic时：
 key为"TcpKBSum"，表示TCP报文流量，单位KB
 key为"UdpKBSum"，表示UDP报文流量，单位KB
@@ -4477,11 +3401,7 @@ key为"IcmpPacketSum"，表示ICMP报文个数，单位个
 key为"OtherPacketSum"，表示其他报文个数，单位个
 
 当MetricName为classnum时：
-key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件
-        :type Data: list of KeyValue
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件\n        :type Data: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4513,15 +3433,7 @@ class DescribeDDoSNetEvInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4549,41 +3461,7 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        :param TcpPacketSum: TCP报文攻击包数
-        :type TcpPacketSum: int
-        :param TcpKBSum: TCP报文攻击流量，单位KB
-        :type TcpKBSum: int
-        :param UdpPacketSum: UDP报文攻击包数
-        :type UdpPacketSum: int
-        :param UdpKBSum: UDP报文攻击流量，单位KB
-        :type UdpKBSum: int
-        :param IcmpPacketSum: ICMP报文攻击包数
-        :type IcmpPacketSum: int
-        :param IcmpKBSum: ICMP报文攻击流量，单位KB
-        :type IcmpKBSum: int
-        :param OtherPacketSum: 其他报文攻击包数
-        :type OtherPacketSum: int
-        :param OtherKBSum: 其他报文攻击流量，单位KB
-        :type OtherKBSum: int
-        :param TotalTraffic: 累计攻击流量，单位KB
-        :type TotalTraffic: int
-        :param Mbps: 攻击流量带宽峰值
-        :type Mbps: int
-        :param Pps: 攻击包速率峰值
-        :type Pps: int
-        :param PcapUrl: PCAP文件下载链接
-        :type PcapUrl: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        :param TcpPacketSum: TCP报文攻击包数\n        :type TcpPacketSum: int\n        :param TcpKBSum: TCP报文攻击流量，单位KB\n        :type TcpKBSum: int\n        :param UdpPacketSum: UDP报文攻击包数\n        :type UdpPacketSum: int\n        :param UdpKBSum: UDP报文攻击流量，单位KB\n        :type UdpKBSum: int\n        :param IcmpPacketSum: ICMP报文攻击包数\n        :type IcmpPacketSum: int\n        :param IcmpKBSum: ICMP报文攻击流量，单位KB\n        :type IcmpKBSum: int\n        :param OtherPacketSum: 其他报文攻击包数\n        :type OtherPacketSum: int\n        :param OtherKBSum: 其他报文攻击流量，单位KB\n        :type OtherKBSum: int\n        :param TotalTraffic: 累计攻击流量，单位KB\n        :type TotalTraffic: int\n        :param Mbps: 攻击流量带宽峰值\n        :type Mbps: int\n        :param Pps: 攻击包速率峰值\n        :type Pps: int\n        :param PcapUrl: PCAP文件下载链接\n        :type PcapUrl: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4630,19 +3508,7 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4674,21 +3540,7 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Data: DDoS攻击事件列表
-        :type Data: list of DDoSEventRecord
-        :param Total: 总记录数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Data: DDoS攻击事件列表\n        :type Data: list of DDoSEventRecord\n        :param Total: 总记录数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4720,15 +3572,7 @@ class DescribeDDoSNetIpLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4756,21 +3600,9 @@ class DescribeDDoSNetIpLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param StartTime: 攻击开始时间
-        :type StartTime: str
-        :param EndTime: 攻击结束时间
-        :type EndTime: str
-        :param Data: IP攻击日志，KeyValue数组，Key-Value取值说明：
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param StartTime: 攻击开始时间\n        :type StartTime: str\n        :param EndTime: 攻击结束时间\n        :type EndTime: str\n        :param Data: IP攻击日志，KeyValue数组，Key-Value取值说明：
 Key为"LogTime"时，Value值为IP日志时间
-Key为"LogMessage"时，Value值为Ip日志内容
-        :type Data: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+Key为"LogMessage"时，Value值为Ip日志内容\n        :type Data: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -4800,19 +3632,7 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
-        :type MetricName: str
-        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -4844,25 +3664,7 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
-        :type MetricName: str
-        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Data: 值数组
-        :type Data: list of int non-negative
-        :param Count: 值个数
-        :type Count: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组\n        :type Data: list of int non-negative\n        :param Count: 值个数\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -4893,11 +3695,7 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 可选字段，资源ID，如果填写则表示该资源绑定的DDoS高级策略
-        :type Id: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 可选字段，资源ID，如果填写则表示该资源绑定的DDoS高级策略\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -4921,11 +3719,7 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DDosPolicyList: DDoS高级策略列表
-        :type DDosPolicyList: list of DDosPolicy
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DDosPolicyList: DDoS高级策略列表\n        :type DDosPolicyList: list of DDosPolicy\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DDosPolicyList = None
         self.RequestId = None
 
@@ -4947,21 +3741,7 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Ip: 资源实例的IP
-        :type Ip: str
-        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
-        :type MetricName: str
-        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
-        :type Id: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源实例的IP\n        :type Ip: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        """
         self.Business = None
         self.Ip = None
         self.MetricName = None
@@ -4995,28 +3775,8 @@ class DescribeDDoSTrendResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
-        :type Business: str
-        :param Id: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Id: str
-        :param Ip: 资源的IP
-        :type Ip: str
-        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
-        :type MetricName: str
-        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
-        :type Period: int
-        :param StartTime: 统计开始时间
-        :type StartTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
-        :type Data: list of int non-negative
-        :param Count: 值个数
-        :type Count: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps\n        :type Data: list of int non-negative\n        :param Count: 值个数\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Business = None
         self.Id = None
         self.Ip = None
@@ -5049,9 +3809,7 @@ class DescribeDDoSUsedStatisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        """
         self.Business = None
 
 
@@ -5075,11 +3833,7 @@ class DescribeDDoSUsedStatisResponse(AbstractModel):
         """
         :param Data: 字段值，如下：
 Days：高防资源使用天数
-Attacks：DDoS防护次数
-        :type Data: list of KeyValue
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+Attacks：DDoS防护次数\n        :type Data: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5101,11 +3855,7 @@ class DescribeIPProductInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
-        :type Business: str
-        :param IpList: IP列表
-        :type IpList: list of str
-        """
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）\n        :type Business: str\n        :param IpList: IP列表\n        :type IpList: list of str\n        """
         self.Business = None
         self.IpList = None
 
@@ -5133,11 +3883,7 @@ class DescribeIPProductInfoResponse(AbstractModel):
 Key为ProductName时，value表示云产品实例的名称；
 Key为ProductInstanceId时，value表示云产品实例的ID；
 Key为ProductType时，value表示的是云产品的类型（cvm表示云主机、clb表示负载均衡）;
-Key为IP时，value表示云产品实例的IP；
-        :type Data: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+Key为IP时，value表示云产品实例的IP；\n        :type Data: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5159,9 +3905,7 @@ class DescribeInsurePacksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param IdList: 可选字段，保险包套餐ID，当要获取指定ID（例如insure-000000xe）的保险包套餐时请填写此字段；
-        :type IdList: list of str
-        """
+        :param IdList: 可选字段，保险包套餐ID，当要获取指定ID（例如insure-000000xe）的保险包套餐时请填写此字段；\n        :type IdList: list of str\n        """
         self.IdList = None
 
 
@@ -5183,11 +3927,7 @@ class DescribeInsurePacksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InsurePacks: 保险包套餐列表
-        :type InsurePacks: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InsurePacks: 保险包套餐列表\n        :type InsurePacks: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InsurePacks = None
         self.RequestId = None
 
@@ -5215,11 +3955,7 @@ class DescribeIpBlockListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param List: IP封堵列表
-        :type List: list of IpBlockData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param List: IP封堵列表\n        :type List: list of IpBlockData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.List = None
         self.RequestId = None
 
@@ -5241,19 +3977,7 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BeginTime: 开始时间
-        :type BeginTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Ip: IP（不为空时，进行IP过滤）
-        :type Ip: str
-        :param Paging: 分页参数（不为空时，进行分页查询），此字段后面会弃用，请用Limit和Offset字段代替；
-        :type Paging: :class:`tencentcloud.dayu.v20180709.models.Paging`
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param BeginTime: 开始时间\n        :type BeginTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Ip: IP（不为空时，进行IP过滤）\n        :type Ip: str\n        :param Paging: 分页参数（不为空时，进行分页查询），此字段后面会弃用，请用Limit和Offset字段代替；\n        :type Paging: :class:`tencentcloud.dayu.v20180709.models.Paging`\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.BeginTime = None
         self.EndTime = None
         self.Ip = None
@@ -5287,17 +4011,7 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BeginTime: 开始时间
-        :type BeginTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param List: IP解封记录
-        :type List: list of IpUnBlockData
-        :param Total: 总记录数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param BeginTime: 开始时间\n        :type BeginTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param List: IP解封记录\n        :type List: list of IpUnBlockData\n        :param Total: 总记录数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BeginTime = None
         self.EndTime = None
         self.List = None
@@ -5325,13 +4039,7 @@ class DescribeL4HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleIdList: 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；
-        :type RuleIdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleIdList: 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -5357,11 +4065,7 @@ class DescribeL4HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HealthConfig: 四层健康检查配置数组
-        :type HealthConfig: list of L4HealthConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param HealthConfig: 四层健康检查配置数组\n        :type HealthConfig: list of L4HealthConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.HealthConfig = None
         self.RequestId = None
 
@@ -5383,11 +4087,7 @@ class DescribeL4RulesErrHealthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -5411,21 +4111,13 @@ class DescribeL4RulesErrHealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 异常规则的总数
-        :type Total: int
-        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割
-        :type ErrHealths: list of KeyValue
-        :param ExtErrHealths: 异常规则列表(提供更多的错误相关信息)，返回值说明:
+        :param Total: 异常规则的总数\n        :type Total: int\n        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割\n        :type ErrHealths: list of KeyValue\n        :param ExtErrHealths: 异常规则列表(提供更多的错误相关信息)，返回值说明:
 Key值为RuleId时，Value值为规则ID；
 Key值为Protocol时，Value值为规则的转发协议；
 Key值为VirtualPort时，Value值为规则的转发端口；
 Key值为ErrMessage时，Value值为健康检查异常信息；
 健康检查异常信息的格式为"SourceIp:1.1.1.1|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6" 多个源IP的错误信息用，分割,
-SourceIp表示源站IP，SourcePort表示源站端口，AbnormalStatTime表示异常时间，AbnormalReason表示异常原因，Interval表示检查周期，CheckNum表示检查次数，FailNum表示失败次数；
-        :type ExtErrHealths: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+SourceIp表示源站IP，SourcePort表示源站端口，AbnormalStatTime表示异常时间，AbnormalReason表示异常原因，Interval表示检查周期，CheckNum表示检查次数，FailNum表示失败次数；\n        :type ExtErrHealths: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ErrHealths = None
         self.ExtErrHealths = None
@@ -5456,13 +4148,7 @@ class DescribeL7HealthConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleIdList: 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；
-        :type RuleIdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleIdList: 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -5488,11 +4174,7 @@ class DescribeL7HealthConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HealthConfig: 七层健康检查配置数组
-        :type HealthConfig: list of L7HealthConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param HealthConfig: 七层健康检查配置数组\n        :type HealthConfig: list of L7HealthConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.HealthConfig = None
         self.RequestId = None
 
@@ -5514,11 +4196,7 @@ class DescribeNewL4RulesErrHealthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param RuleIdList: 规则ID列表
-        :type RuleIdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param RuleIdList: 规则ID列表\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.RuleIdList = None
 
@@ -5542,13 +4220,7 @@ class DescribeNewL4RulesErrHealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 异常规则的总数
-        :type Total: int
-        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割
-        :type ErrHealths: list of KeyValue
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 异常规则的总数\n        :type Total: int\n        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割\n        :type ErrHealths: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ErrHealths = None
         self.RequestId = None
@@ -5572,17 +4244,7 @@ class DescribeNewL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Ip: 指定IP查询
-        :type Ip: str
-        :param VirtualPort: 指定高防IP端口查询
-        :type VirtualPort: int
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Ip: 指定IP查询\n        :type Ip: str\n        :param VirtualPort: 指定高防IP端口查询\n        :type VirtualPort: int\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.Business = None
         self.Ip = None
         self.VirtualPort = None
@@ -5612,15 +4274,7 @@ class DescribeNewL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: 转发规则列表
-        :type Rules: list of NewL4RuleEntry
-        :param Total: 总规则数
-        :type Total: int
-        :param Healths: 四层健康检查配置列表
-        :type Healths: list of L4RuleHealth
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Rules: 转发规则列表\n        :type Rules: list of NewL4RuleEntry\n        :param Total: 总规则数\n        :type Total: int\n        :param Healths: 四层健康检查配置列表\n        :type Healths: list of L4RuleHealth\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Rules = None
         self.Total = None
         self.Healths = None
@@ -5651,11 +4305,7 @@ class DescribeNewL7RulesErrHealthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP)
-        :type Business: str
-        :param RuleIdList: 规则Id列表
-        :type RuleIdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP)\n        :type Business: str\n        :param RuleIdList: 规则Id列表\n        :type RuleIdList: list of str\n        """
         self.Business = None
         self.RuleIdList = None
 
@@ -5679,13 +4329,7 @@ class DescribeNewL7RulesErrHealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 异常规则的总数
-        :type Total: int
-        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP及错误信息，多个IP用","分割
-        :type ErrHealths: list of KeyValue
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 异常规则的总数\n        :type Total: int\n        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP及错误信息，多个IP用","分割\n        :type ErrHealths: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ErrHealths = None
         self.RequestId = None
@@ -5709,9 +4353,7 @@ class DescribePackIndexRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示高防包；net表示高防IP专业版）
-        :type Business: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示高防包；net表示高防IP专业版）\n        :type Business: str\n        """
         self.Business = None
 
 
@@ -5739,11 +4381,7 @@ AttackPackCount：清洗中的资源数
 BlockPackCount：封堵中的资源数
 ExpiredPackCount：过期的资源数
 ExpireingPackCount：即将过期的资源数
-IsolatePackCount：隔离中的资源数
-        :type Data: list of KeyValue
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+IsolatePackCount：隔离中的资源数\n        :type Data: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5765,17 +4403,7 @@ class DescribePcapRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param StartTime: 攻击事件的开始时间，格式为"2018-08-28 07:00:00"
-        :type StartTime: str
-        :param EndTime: 攻击事件的结束时间，格式为"2018-08-28 07:02:00"
-        :type EndTime: str
-        :param Ip: 资源的IP，只有当Business为net时才需要填写资源实例下的IP；
-        :type Ip: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param StartTime: 攻击事件的开始时间，格式为"2018-08-28 07:00:00"\n        :type StartTime: str\n        :param EndTime: 攻击事件的结束时间，格式为"2018-08-28 07:02:00"\n        :type EndTime: str\n        :param Ip: 资源的IP，只有当Business为net时才需要填写资源实例下的IP；\n        :type Ip: str\n        """
         self.Business = None
         self.Id = None
         self.StartTime = None
@@ -5805,11 +4433,7 @@ class DescribePcapResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PcapUrlList: pcap包的下载链接列表，无pcap包时为空数组；
-        :type PcapUrlList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PcapUrlList: pcap包的下载链接列表，无pcap包时为空数组；\n        :type PcapUrlList: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PcapUrlList = None
         self.RequestId = None
 
@@ -5826,11 +4450,7 @@ class DescribePolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param SceneId: 策略场景ID
-        :type SceneId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param SceneId: 策略场景ID\n        :type SceneId: str\n        """
         self.Business = None
         self.SceneId = None
 
@@ -5854,11 +4474,7 @@ class DescribePolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CaseList: 策略场景列表
-        :type CaseList: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CaseList: 策略场景列表\n        :type CaseList: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CaseList = None
         self.RequestId = None
 
@@ -5880,11 +4496,7 @@ class DescribeResIpListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param IdList: 资源ID, 如果不填，则获取用户所有资源的IP
-        :type IdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param IdList: 资源ID, 如果不填，则获取用户所有资源的IP\n        :type IdList: list of str\n        """
         self.Business = None
         self.IdList = None
 
@@ -5908,11 +4520,7 @@ class DescribeResIpListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Resource: 资源的IP列表
-        :type Resource: list of ResourceIp
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Resource: 资源的IP列表\n        :type Resource: list of ResourceIp\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Resource = None
         self.RequestId = None
 
@@ -5934,33 +4542,7 @@ class DescribeResourceListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param RegionList: 地域码搜索，可选，当不指定地域时空数组，当指定地域时，填地域码。例如：["gz", "sh"]
-        :type RegionList: list of str
-        :param Line: 线路搜索，可选，只有当获取高防IP资源列表是可以选填，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]，当获取其他产品时请填空数组；
-        :type Line: list of int non-negative
-        :param IdList: 资源ID搜索，可选，当不为空数组时表示获取指定资源的资源列表；
-        :type IdList: list of str
-        :param Name: 资源名称搜索，可选，当不为空字符串时表示按名称搜索资源；
-        :type Name: str
-        :param IpList: IP搜索列表，可选，当不为空时表示按照IP搜索资源；
-        :type IpList: list of str
-        :param Status: 资源状态搜索列表，可选，取值为[0（运行中）, 1（清洗中）, 2（封堵中）]，当填空数组时不进行状态搜索；
-        :type Status: list of int non-negative
-        :param Expire: 即将到期搜索；可选，取值为[0（不搜索），1（搜索即将到期的资源）]
-        :type Expire: int
-        :param OderBy: 排序字段，可选
-        :type OderBy: list of OrderBy
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        :param CName: 高防IP专业版资源的CNAME，可选，只对高防IP专业版资源列表有效；
-        :type CName: str
-        :param Domain: 高防IP专业版资源的域名，可选，只对高防IP专业版资源列表有效；
-        :type Domain: str
-        """
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param RegionList: 地域码搜索，可选，当不指定地域时空数组，当指定地域时，填地域码。例如：["gz", "sh"]\n        :type RegionList: list of str\n        :param Line: 线路搜索，可选，只有当获取高防IP资源列表是可以选填，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]，当获取其他产品时请填空数组；\n        :type Line: list of int non-negative\n        :param IdList: 资源ID搜索，可选，当不为空数组时表示获取指定资源的资源列表；\n        :type IdList: list of str\n        :param Name: 资源名称搜索，可选，当不为空字符串时表示按名称搜索资源；\n        :type Name: str\n        :param IpList: IP搜索列表，可选，当不为空时表示按照IP搜索资源；\n        :type IpList: list of str\n        :param Status: 资源状态搜索列表，可选，取值为[0（运行中）, 1（清洗中）, 2（封堵中）]，当填空数组时不进行状态搜索；\n        :type Status: list of int non-negative\n        :param Expire: 即将到期搜索；可选，取值为[0（不搜索），1（搜索即将到期的资源）]\n        :type Expire: int\n        :param OderBy: 排序字段，可选\n        :type OderBy: list of OrderBy\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param CName: 高防IP专业版资源的CNAME，可选，只对高防IP专业版资源列表有效；\n        :type CName: str\n        :param Domain: 高防IP专业版资源的域名，可选，只对高防IP专业版资源列表有效；\n        :type Domain: str\n        """
         self.Business = None
         self.RegionList = None
         self.Line = None
@@ -6011,9 +4593,7 @@ class DescribeResourceListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总记录数
-        :type Total: int
-        :param ServicePacks: 资源记录列表，返回Key值说明：
+        :param Total: 总记录数\n        :type Total: int\n        :param ServicePacks: 资源记录列表，返回Key值说明：
 "Key": "CreateTime" 表示资源实例购买时间
 "Key": "Region" 表示资源实例的地域
 "Key": "BoundIP" 表示独享包实例绑定的IP
@@ -6043,13 +4623,7 @@ class DescribeResourceListResponse(AbstractModel):
 "Key": "Bandwidth" 表示资源实例的保底防护值，只针对高防包和高防IP
 "Key": "DdosMax" 表示资源实例的保底防护值，只针对高防IP专业版
 "Key": "GFBandwidth" 表示资源实例的保底业务带宽，只针对高防IP
-"Key": "ServiceBandwidth" 表示资源实例的保底业务带宽，只针对高防IP专业版
-        :type ServicePacks: list of KeyValueRecord
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+"Key": "ServiceBandwidth" 表示资源实例的保底业务带宽，只针对高防IP专业版\n        :type ServicePacks: list of KeyValueRecord\n        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ServicePacks = None
         self.Business = None
@@ -6075,11 +4649,7 @@ class DescribeRuleSetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param IdList: 资源ID列表
-        :type IdList: list of str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param IdList: 资源ID列表\n        :type IdList: list of str\n        """
         self.Business = None
         self.IdList = None
 
@@ -6107,17 +4677,11 @@ class DescribeRuleSetsResponse(AbstractModel):
 Key值为"Id"时，Value表示资源ID
 Key值为"RuleIdList"时，Value值表示资源的规则ID，多个规则ID用","分割
 Key值为"RuleNameList"时，Value值表示资源的规则名，多个规则名用","分割
-Key值为"RuleNum"时，Value值表示资源的规则数
-        :type L4RuleSets: list of KeyValueRecord
-        :param L7RuleSets: 规则记录数数组，取值说明:
+Key值为"RuleNum"时，Value值表示资源的规则数\n        :type L4RuleSets: list of KeyValueRecord\n        :param L7RuleSets: 规则记录数数组，取值说明:
 Key值为"Id"时，Value表示资源ID
 Key值为"RuleIdList"时，Value值表示资源的规则ID，多个规则ID用","分割
 Key值为"RuleNameList"时，Value值表示资源的规则名，多个规则名用","分割
-Key值为"RuleNum"时，Value值表示资源的规则数
-        :type L7RuleSets: list of KeyValueRecord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+Key值为"RuleNum"时，Value值表示资源的规则数\n        :type L7RuleSets: list of KeyValueRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.L4RuleSets = None
         self.L7RuleSets = None
         self.RequestId = None
@@ -6146,13 +4710,7 @@ class DescribeSchedulingDomainListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        :param Domain: 可选，筛选特定的域名
-        :type Domain: str
-        """
+        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Domain: 可选，筛选特定的域名\n        :type Domain: str\n        """
         self.Limit = None
         self.Offset = None
         self.Domain = None
@@ -6178,13 +4736,7 @@ class DescribeSchedulingDomainListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 调度域名总数
-        :type Total: int
-        :param DomainList: 调度域名列表信息
-        :type DomainList: list of SchedulingDomain
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 调度域名总数\n        :type Total: int\n        :param DomainList: 调度域名列表信息\n        :type DomainList: list of SchedulingDomain\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.DomainList = None
         self.RequestId = None
@@ -6219,15 +4771,7 @@ AttackIpCount：受攻击的IP数
 AttackCount：攻击次数
 BlockCount：封堵次数
 MaxMbps：攻击峰值Mbps
-IpNum：统计的IP数据
-        :type Data: list of KeyValue
-        :param BeginDate: 本月开始时间
-        :type BeginDate: str
-        :param EndDate: 本月结束时间
-        :type EndDate: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+IpNum：统计的IP数据\n        :type Data: list of KeyValue\n        :param BeginDate: 本月开始时间\n        :type BeginDate: str\n        :param EndDate: 本月结束时间\n        :type EndDate: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.BeginDate = None
         self.EndDate = None
@@ -6253,11 +4797,7 @@ class DescribeSourceIpSegmentRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        """
         self.Business = None
         self.Id = None
 
@@ -6281,11 +4821,7 @@ class DescribeSourceIpSegmentResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 回源IP段，多个用"；"分隔
-        :type Data: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 回源IP段，多个用"；"分隔\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -6302,23 +4838,9 @@ class DescribeTransmitStatisRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；bgp表示独享包；bgp-multip表示共享包）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param MetricName: 指标名，取值：
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；bgp表示独享包；bgp-multip表示共享包）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param MetricName: 指标名，取值：
 traffic表示流量带宽；
-pkg表示包速率；
-        :type MetricName: str
-        :param Period: 统计时间粒度（300表示5分钟；3600表示小时；86400表示天）
-        :type Period: int
-        :param StartTime: 统计开始时间，秒部分保持为0，分钟部分为5的倍数
-        :type StartTime: str
-        :param EndTime: 统计结束时间，秒部分保持为0，分钟部分为5的倍数
-        :type EndTime: str
-        :param IpList: 资源的IP（当Business为bgp-multip时必填，且仅支持一个IP）；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
-        :type IpList: list of str
-        """
+pkg表示包速率；\n        :type MetricName: str\n        :param Period: 统计时间粒度（300表示5分钟；3600表示小时；86400表示天）\n        :type Period: int\n        :param StartTime: 统计开始时间，秒部分保持为0，分钟部分为5的倍数\n        :type StartTime: str\n        :param EndTime: 统计结束时间，秒部分保持为0，分钟部分为5的倍数\n        :type EndTime: str\n        :param IpList: 资源的IP（当Business为bgp-multip时必填，且仅支持一个IP）；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；\n        :type IpList: list of str\n        """
         self.Business = None
         self.Id = None
         self.MetricName = None
@@ -6353,18 +4875,10 @@ class DescribeTransmitStatisResponse(AbstractModel):
     def __init__(self):
         """
         :param InDataList: 当MetricName=traffic时，表示入流量带宽，单位bps；
-当MetricName=pkg时，表示入包速率，单位pps；
-        :type InDataList: list of float
-        :param OutDataList: 当MetricName=traffic时，表示出流量带宽，单位bps；
-当MetricName=pkg时，表示出包速率，单位pps；
-        :type OutDataList: list of float
-        :param MetricName: 指标名：
+当MetricName=pkg时，表示入包速率，单位pps；\n        :type InDataList: list of float\n        :param OutDataList: 当MetricName=traffic时，表示出流量带宽，单位bps；
+当MetricName=pkg时，表示出包速率，单位pps；\n        :type OutDataList: list of float\n        :param MetricName: 指标名：
 traffic表示流量带宽；
-pkg表示包速率；
-        :type MetricName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+pkg表示包速率；\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InDataList = None
         self.OutDataList = None
         self.MetricName = None
@@ -6391,17 +4905,7 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 解封总配额数
-        :type Total: int
-        :param Used: 已使用次数
-        :type Used: int
-        :param BeginTime: 统计起始时间
-        :type BeginTime: str
-        :param EndTime: 统计结束时间
-        :type EndTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 解封总配额数\n        :type Total: int\n        :param Used: 已使用次数\n        :type Used: int\n        :param BeginTime: 统计起始时间\n        :type BeginTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Used = None
         self.BeginTime = None
@@ -6424,17 +4928,7 @@ class DescribleL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleIdList: 规则ID，可选参数，填写后获取指定的规则
-        :type RuleIdList: list of str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleIdList: 规则ID，可选参数，填写后获取指定的规则\n        :type RuleIdList: list of str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -6464,15 +4958,7 @@ class DescribleL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: 转发规则列表
-        :type Rules: list of L4RuleEntry
-        :param Total: 总规则数
-        :type Total: int
-        :param Healths: 健康检查配置列表
-        :type Healths: list of L4RuleHealth
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Rules: 转发规则列表\n        :type Rules: list of L4RuleEntry\n        :param Total: 总规则数\n        :type Total: int\n        :param Healths: 健康检查配置列表\n        :type Healths: list of L4RuleHealth\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Rules = None
         self.Total = None
         self.Healths = None
@@ -6503,23 +4989,7 @@ class DescribleL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleIdList: 规则ID，可选参数，填写后获取指定的规则
-        :type RuleIdList: list of str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        :param Domain: 域名搜索，选填，当需要搜索域名请填写
-        :type Domain: str
-        :param ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]
-        :type ProtocolList: list of str
-        :param StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
-        :type StatusList: list of int non-negative
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleIdList: 规则ID，可选参数，填写后获取指定的规则\n        :type RuleIdList: list of str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Domain: 域名搜索，选填，当需要搜索域名请填写\n        :type Domain: str\n        :param ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]\n        :type ProtocolList: list of str\n        :param StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]\n        :type StatusList: list of int non-negative\n        """
         self.Business = None
         self.Id = None
         self.RuleIdList = None
@@ -6555,15 +5025,7 @@ class DescribleL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: 转发规则列表
-        :type Rules: list of L7RuleEntry
-        :param Total: 总规则数
-        :type Total: int
-        :param Healths: 健康检查配置列表
-        :type Healths: list of L7RuleHealth
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Rules: 转发规则列表\n        :type Rules: list of L7RuleEntry\n        :param Total: 总规则数\n        :type Total: int\n        :param Healths: 健康检查配置列表\n        :type Healths: list of L7RuleHealth\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Rules = None
         self.Total = None
         self.Healths = None
@@ -6594,21 +5056,7 @@ class DescribleNewL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Limit: 一页条数，填0表示不分页
-        :type Limit: int
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
-        :type Offset: int
-        :param Domain: 域名搜索，选填，当需要搜索域名请填写
-        :type Domain: str
-        :param ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]
-        :type ProtocolList: list of str
-        :param StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
-        :type StatusList: list of int non-negative
-        :param Ip: IP搜索，选填，当需要搜索IP请填写
-        :type Ip: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Limit: 一页条数，填0表示不分页\n        :type Limit: int\n        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Domain: 域名搜索，选填，当需要搜索域名请填写\n        :type Domain: str\n        :param ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]\n        :type ProtocolList: list of str\n        :param StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]\n        :type StatusList: list of int non-negative\n        :param Ip: IP搜索，选填，当需要搜索IP请填写\n        :type Ip: str\n        """
         self.Business = None
         self.Limit = None
         self.Offset = None
@@ -6642,15 +5090,7 @@ class DescribleNewL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Rules: 转发规则列表
-        :type Rules: list of NewL7RuleEntry
-        :param Total: 总规则数
-        :type Total: int
-        :param Healths: 健康检查配置列表
-        :type Healths: list of L7RuleHealth
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Rules: 转发规则列表\n        :type Rules: list of NewL7RuleEntry\n        :param Total: 总规则数\n        :type Total: int\n        :param Healths: 健康检查配置列表\n        :type Healths: list of L7RuleHealth\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Rules = None
         self.Total = None
         self.Healths = None
@@ -6681,11 +5121,7 @@ class DescribleRegionCountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；）
-        :type Business: str
-        :param LineList: 根据线路统计，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]；只对高防IP产品有效，其他产品此字段忽略
-        :type LineList: list of int non-negative
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；）\n        :type Business: str\n        :param LineList: 根据线路统计，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]；只对高防IP产品有效，其他产品此字段忽略\n        :type LineList: list of int non-negative\n        """
         self.Business = None
         self.LineList = None
 
@@ -6709,11 +5145,7 @@ class DescribleRegionCountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionList: 地域资源实例数
-        :type RegionList: list of RegionInstanceCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RegionList: 地域资源实例数\n        :type RegionList: list of RegionInstanceCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionList = None
         self.RequestId = None
 
@@ -6735,27 +5167,7 @@ class HttpStatusMap(AbstractModel):
 
     def __init__(self):
         """
-        :param Http2xx: http2xx状态码
-        :type Http2xx: list of float
-        :param Http3xx: http3xx状态码
-        :type Http3xx: list of float
-        :param Http404: http404状态码
-        :type Http404: list of float
-        :param Http4xx: http4xx状态码
-        :type Http4xx: list of float
-        :param Http5xx: http5xx状态码
-        :type Http5xx: list of float
-        :param SourceHttp2xx: http2xx回源状态码
-        :type SourceHttp2xx: list of float
-        :param SourceHttp3xx: http3xx回源状态码
-        :type SourceHttp3xx: list of float
-        :param SourceHttp404: http404回源状态码
-        :type SourceHttp404: list of float
-        :param SourceHttp4xx: http4xx回源状态码
-        :type SourceHttp4xx: list of float
-        :param SourceHttp5xx: http5xx回源状态码
-        :type SourceHttp5xx: list of float
-        """
+        :param Http2xx: http2xx状态码\n        :type Http2xx: list of float\n        :param Http3xx: http3xx状态码\n        :type Http3xx: list of float\n        :param Http404: http404状态码\n        :type Http404: list of float\n        :param Http4xx: http4xx状态码\n        :type Http4xx: list of float\n        :param Http5xx: http5xx状态码\n        :type Http5xx: list of float\n        :param SourceHttp2xx: http2xx回源状态码\n        :type SourceHttp2xx: list of float\n        :param SourceHttp3xx: http3xx回源状态码\n        :type SourceHttp3xx: list of float\n        :param SourceHttp404: http404回源状态码\n        :type SourceHttp404: list of float\n        :param SourceHttp4xx: http4xx回源状态码\n        :type SourceHttp4xx: list of float\n        :param SourceHttp5xx: http5xx回源状态码\n        :type SourceHttp5xx: list of float\n        """
         self.Http2xx = None
         self.Http3xx = None
         self.Http404 = None
@@ -6795,11 +5207,7 @@ class IpBlackWhite(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP地址
-        :type Ip: str
-        :param Type: 黑白类型，取值范围[black，white]
-        :type Type: str
-        """
+        :param Ip: IP地址\n        :type Ip: str\n        :param Type: 黑白类型，取值范围[black，white]\n        :type Type: str\n        """
         self.Ip = None
         self.Type = None
 
@@ -6823,17 +5231,7 @@ class IpBlockData(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param Status: 状态（Blocked：被封堵；UnBlocking：解封中；UnBlockFailed：解封失败）
-        :type Status: str
-        :param BlockTime: 封堵时间
-        :type BlockTime: str
-        :param UnBlockTime: 解封时间（预计解封时间）
-        :type UnBlockTime: str
-        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
-        :type ActionType: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param Status: 状态（Blocked：被封堵；UnBlocking：解封中；UnBlockFailed：解封失败）\n        :type Status: str\n        :param BlockTime: 封堵时间\n        :type BlockTime: str\n        :param UnBlockTime: 解封时间（预计解封时间）\n        :type UnBlockTime: str\n        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）\n        :type ActionType: str\n        """
         self.Ip = None
         self.Status = None
         self.BlockTime = None
@@ -6863,15 +5261,7 @@ class IpUnBlockData(AbstractModel):
 
     def __init__(self):
         """
-        :param Ip: IP
-        :type Ip: str
-        :param BlockTime: 封堵时间
-        :type BlockTime: str
-        :param UnBlockTime: 解封时间（实际解封时间）
-        :type UnBlockTime: str
-        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
-        :type ActionType: str
-        """
+        :param Ip: IP\n        :type Ip: str\n        :param BlockTime: 封堵时间\n        :type BlockTime: str\n        :param UnBlockTime: 解封时间（实际解封时间）\n        :type UnBlockTime: str\n        :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）\n        :type ActionType: str\n        """
         self.Ip = None
         self.BlockTime = None
         self.UnBlockTime = None
@@ -6899,11 +5289,7 @@ class KeyValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 字段名称
-        :type Key: str
-        :param Value: 字段取值
-        :type Value: str
-        """
+        :param Key: 字段名称\n        :type Key: str\n        :param Value: 字段取值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -6927,9 +5313,7 @@ class KeyValueRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param Record: 一条记录的Key-Value数组
-        :type Record: list of KeyValue
-        """
+        :param Record: 一条记录的Key-Value数组\n        :type Record: list of KeyValue\n        """
         self.Record = None
 
 
@@ -6956,13 +5340,7 @@ class L4DelRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 资源Id
-        :type Id: str
-        :param Ip: 资源IP
-        :type Ip: str
-        :param RuleIdList: 规则Id
-        :type RuleIdList: list of str
-        """
+        :param Id: 资源Id\n        :type Id: str\n        :param Ip: 资源IP\n        :type Ip: str\n        :param RuleIdList: 规则Id\n        :type RuleIdList: list of str\n        """
         self.Id = None
         self.Ip = None
         self.RuleIdList = None
@@ -6988,23 +5366,7 @@ class L4HealthConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 转发协议，取值[TCP, UDP]
-        :type Protocol: str
-        :param VirtualPort: 转发端口
-        :type VirtualPort: int
-        :param Enable: =1表示开启；=0表示关闭
-        :type Enable: int
-        :param TimeOut: 响应超时时间，单位秒
-        :type TimeOut: int
-        :param Interval: 检测间隔时间，单位秒
-        :type Interval: int
-        :param KickNum: 不健康阈值，单位次
-        :type KickNum: int
-        :param AliveNum: 健康阈值，单位次
-        :type AliveNum: int
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        """
+        :param Protocol: 转发协议，取值[TCP, UDP]\n        :type Protocol: str\n        :param VirtualPort: 转发端口\n        :type VirtualPort: int\n        :param Enable: =1表示开启；=0表示关闭\n        :type Enable: int\n        :param TimeOut: 响应超时时间，单位秒\n        :type TimeOut: int\n        :param Interval: 检测间隔时间，单位秒\n        :type Interval: int\n        :param KickNum: 不健康阈值，单位次\n        :type KickNum: int\n        :param AliveNum: 健康阈值，单位次\n        :type AliveNum: int\n        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        """
         self.Protocol = None
         self.VirtualPort = None
         self.Enable = None
@@ -7040,29 +5402,7 @@ class L4RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 转发协议，取值[TCP, UDP]
-        :type Protocol: str
-        :param VirtualPort: 转发端口
-        :type VirtualPort: int
-        :param SourcePort: 源站端口
-        :type SourcePort: int
-        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
-        :type SourceType: int
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        :param SourceList: 回源列表
-        :type SourceList: list of L4RuleSource
-        :param LbType: 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
-        :type LbType: int
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]；
-        :type KeepEnable: int
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param RuleName: 规则描述
-        :type RuleName: str
-        :param RemoveSwitch: 移除水印状态，取值[0(关闭)，1(开启)]
-        :type RemoveSwitch: int
-        """
+        :param Protocol: 转发协议，取值[TCP, UDP]\n        :type Protocol: str\n        :param VirtualPort: 转发端口\n        :type VirtualPort: int\n        :param SourcePort: 源站端口\n        :type SourcePort: int\n        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]\n        :type SourceType: int\n        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        :param SourceList: 回源列表\n        :type SourceList: list of L4RuleSource\n        :param LbType: 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]\n        :type LbType: int\n        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]；\n        :type KeepEnable: int\n        :param RuleId: 规则ID\n        :type RuleId: str\n        :param RuleName: 规则描述\n        :type RuleName: str\n        :param RemoveSwitch: 移除水印状态，取值[0(关闭)，1(开启)]\n        :type RemoveSwitch: int\n        """
         self.Protocol = None
         self.VirtualPort = None
         self.SourcePort = None
@@ -7109,19 +5449,7 @@ class L4RuleHealth(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param Enable: =1表示开启；=0表示关闭
-        :type Enable: int
-        :param TimeOut: 响应超时时间，单位秒
-        :type TimeOut: int
-        :param Interval: 检测间隔时间，单位秒，必须要大于响应超时时间
-        :type Interval: int
-        :param KickNum: 不健康阈值，单位次
-        :type KickNum: int
-        :param AliveNum: 健康阈值，单位次
-        :type AliveNum: int
-        """
+        :param RuleId: 规则ID\n        :type RuleId: str\n        :param Enable: =1表示开启；=0表示关闭\n        :type Enable: int\n        :param TimeOut: 响应超时时间，单位秒\n        :type TimeOut: int\n        :param Interval: 检测间隔时间，单位秒，必须要大于响应超时时间\n        :type Interval: int\n        :param KickNum: 不健康阈值，单位次\n        :type KickNum: int\n        :param AliveNum: 健康阈值，单位次\n        :type AliveNum: int\n        """
         self.RuleId = None
         self.Enable = None
         self.TimeOut = None
@@ -7153,11 +5481,7 @@ class L4RuleSource(AbstractModel):
 
     def __init__(self):
         """
-        :param Source: 回源IP或域名
-        :type Source: str
-        :param Weight: 权重值，取值[0,100]
-        :type Weight: int
-        """
+        :param Source: 回源IP或域名\n        :type Source: str\n        :param Weight: 权重值，取值[0,100]\n        :type Weight: int\n        """
         self.Source = None
         self.Weight = None
 
@@ -7181,25 +5505,7 @@ class L7HealthConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 转发协议，取值[http, https, http/https]
-        :type Protocol: str
-        :param Domain: 转发域名
-        :type Domain: str
-        :param Enable: =1表示开启；=0表示关闭
-        :type Enable: int
-        :param Interval: 检测间隔时间，单位秒
-        :type Interval: int
-        :param KickNum: 异常判定次数，单位次
-        :type KickNum: int
-        :param AliveNum: 健康判定次数，单位次
-        :type AliveNum: int
-        :param Method: 健康检查探测方法，可选HEAD或GET，默认为HEAD
-        :type Method: str
-        :param StatusCode: 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
-        :type StatusCode: int
-        :param Url: 检查目录的URL，默认为/
-        :type Url: str
-        """
+        :param Protocol: 转发协议，取值[http, https, http/https]\n        :type Protocol: str\n        :param Domain: 转发域名\n        :type Domain: str\n        :param Enable: =1表示开启；=0表示关闭\n        :type Enable: int\n        :param Interval: 检测间隔时间，单位秒\n        :type Interval: int\n        :param KickNum: 异常判定次数，单位次\n        :type KickNum: int\n        :param AliveNum: 健康判定次数，单位次\n        :type AliveNum: int\n        :param Method: 健康检查探测方法，可选HEAD或GET，默认为HEAD\n        :type Method: str\n        :param StatusCode: 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和\n        :type StatusCode: int\n        :param Url: 检查目录的URL，默认为/\n        :type Url: str\n        """
         self.Protocol = None
         self.Domain = None
         self.Enable = None
@@ -7237,49 +5543,9 @@ class L7RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 转发协议，取值[http, https]
-        :type Protocol: str
-        :param Domain: 转发域名
-        :type Domain: str
-        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
-        :type SourceType: int
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        :param SourceList: 回源列表
-        :type SourceList: list of L4RuleSource
-        :param LbType: 负载均衡方式，取值[1(加权轮询)]
-        :type LbType: int
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
-        :type KeepEnable: int
-        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
-        :type RuleId: str
-        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
-        :type CertType: int
-        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
-        :type SSLId: str
-        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type Cert: str
-        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type PrivateKey: str
-        :param RuleName: 规则描述
-        :type RuleName: str
-        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
-        :type Status: int
-        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
-        :type CCStatus: int
-        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
-        :type CCEnable: int
-        :param CCThreshold: HTTPS协议的CC防护阈值
-        :type CCThreshold: int
-        :param CCLevel: HTTPS协议的CC防护等级
-        :type CCLevel: str
-        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HttpsToHttpEnable: int
-        :param VirtualPort: 接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VirtualPort: int
-        """
+        :param Protocol: 转发协议，取值[http, https]\n        :type Protocol: str\n        :param Domain: 转发域名\n        :type Domain: str\n        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]\n        :type SourceType: int\n        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        :param SourceList: 回源列表\n        :type SourceList: list of L4RuleSource\n        :param LbType: 负载均衡方式，取值[1(加权轮询)]\n        :type LbType: int\n        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]\n        :type KeepEnable: int\n        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；\n        :type RuleId: str\n        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0\n        :type CertType: int\n        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID\n        :type SSLId: str\n        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type Cert: str\n        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type PrivateKey: str\n        :param RuleName: 规则描述\n        :type RuleName: str\n        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]\n        :type Status: int\n        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]\n        :type CCStatus: int\n        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]\n        :type CCEnable: int\n        :param CCThreshold: HTTPS协议的CC防护阈值\n        :type CCThreshold: int\n        :param CCLevel: HTTPS协议的CC防护等级\n        :type CCLevel: str\n        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HttpsToHttpEnable: int\n        :param VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VirtualPort: int\n        """
         self.Protocol = None
         self.Domain = None
         self.SourceType = None
@@ -7344,25 +5610,7 @@ class L7RuleHealth(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param Enable: =1表示开启；=0表示关闭
-        :type Enable: int
-        :param Interval: 检测间隔时间，单位秒
-        :type Interval: int
-        :param KickNum: 不健康阈值，单位次
-        :type KickNum: int
-        :param AliveNum: 健康阈值，单位次
-        :type AliveNum: int
-        :param Method: HTTP请求方式，取值[HEAD,GET]
-        :type Method: str
-        :param StatusCode: 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
-        :type StatusCode: int
-        :param Url: 检查目录的URL，默认为/
-        :type Url: str
-        :param Status: 配置状态，0： 正常，1：配置中，2：配置失败
-        :type Status: int
-        """
+        :param RuleId: 规则ID\n        :type RuleId: str\n        :param Enable: =1表示开启；=0表示关闭\n        :type Enable: int\n        :param Interval: 检测间隔时间，单位秒\n        :type Interval: int\n        :param KickNum: 不健康阈值，单位次\n        :type KickNum: int\n        :param AliveNum: 健康阈值，单位次\n        :type AliveNum: int\n        :param Method: HTTP请求方式，取值[HEAD,GET]\n        :type Method: str\n        :param StatusCode: 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和\n        :type StatusCode: int\n        :param Url: 检查目录的URL，默认为/\n        :type Url: str\n        :param Status: 配置状态，0： 正常，1：配置中，2：配置失败\n        :type Status: int\n        """
         self.RuleId = None
         self.Enable = None
         self.Interval = None
@@ -7400,15 +5648,7 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
-        :type Business: str
-        :param RsId: 资源ID,字符串类型
-        :type RsId: str
-        :param AlarmThreshold: 告警阈值，大于0（目前排定的值），后台设置默认值为1000
-        :type AlarmThreshold: int
-        :param IpList: 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据
-        :type IpList: list of str
-        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）\n        :type Business: str\n        :param RsId: 资源ID,字符串类型\n        :type RsId: str\n        :param AlarmThreshold: 告警阈值，大于0（目前排定的值），后台设置默认值为1000\n        :type AlarmThreshold: int\n        :param IpList: 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据\n        :type IpList: list of str\n        """
         self.Business = None
         self.RsId = None
         self.AlarmThreshold = None
@@ -7436,11 +5676,7 @@ class ModifyCCAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7459,27 +5695,7 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param CCFrequencyRuleId: CC的访问频率控制规则ID
-        :type CCFrequencyRuleId: str
-        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]
-        :type Mode: str
-        :param Period: 统计周期，单位秒，取值[10, 30, 60]
-        :type Period: int
-        :param ReqNumber: 访问次数，取值[1-10000]
-        :type ReqNumber: int
-        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]
-        :type Act: str
-        :param ExeDuration: 执行时间，单位秒，取值[1-900]
-        :type ExeDuration: int
-        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；
-        :type Uri: str
-        :param UserAgent: User-Agent字符串，长度不超过80
-        :type UserAgent: str
-        :param Cookie: Cookie字符串，长度不超过40
-        :type Cookie: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param CCFrequencyRuleId: CC的访问频率控制规则ID\n        :type CCFrequencyRuleId: str\n        :param Mode: 匹配规则，取值["include"(前缀匹配)，"equal"(完全匹配)]\n        :type Mode: str\n        :param Period: 统计周期，单位秒，取值[10, 30, 60]\n        :type Period: int\n        :param ReqNumber: 访问次数，取值[1-10000]\n        :type ReqNumber: int\n        :param Act: 执行动作，取值["alg"（人机识别）, "drop"（拦截）]\n        :type Act: str\n        :param ExeDuration: 执行时间，单位秒，取值[1-900]\n        :type ExeDuration: int\n        :param Uri: URI字符串，必须以/开头，例如/abc/a.php，长度不超过31；当URI=/时，匹配模式只能选择前缀匹配；\n        :type Uri: str\n        :param UserAgent: User-Agent字符串，长度不超过80\n        :type UserAgent: str\n        :param Cookie: Cookie字符串，长度不超过40\n        :type Cookie: str\n        """
         self.Business = None
         self.CCFrequencyRuleId = None
         self.Mode = None
@@ -7519,11 +5735,7 @@ class ModifyCCFrequencyRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7542,15 +5754,7 @@ class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）
-        :type RuleId: str
-        :param Method: 开启或关闭，取值["on"(开启)，"off"(关闭)]
-        :type Method: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleId: 7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）\n        :type RuleId: str\n        :param Method: 开启或关闭，取值["on"(开启)，"off"(关闭)]\n        :type Method: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -7578,11 +5782,7 @@ class ModifyCCFrequencyRulesStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7601,15 +5801,7 @@ class ModifyCCHostProtectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param Method: 开启/关闭CC域名防护，取值[open(表示开启)，close(表示关闭)]
-        :type Method: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleId: 规则ID\n        :type RuleId: str\n        :param Method: 开启/关闭CC域名防护，取值[open(表示开启)，close(表示关闭)]\n        :type Method: str\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -7637,11 +5829,7 @@ class ModifyCCHostProtectionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7660,24 +5848,8 @@ class ModifyCCIpAllowDenyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Method: add表示添加，delete表示删除
-        :type Method: str
-        :param Type: 黑/白名单类型；取值[white(白名单)，black(黑名单)]
-        :type Type: str
-        :param IpList: 黑/白名单的IP数组
-        :type IpList: list of str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
-        :type Protocol: str
-        :param Domain: 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
-        :type Domain: str
-        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
-当Method为delete时，不用填写此字段；
-        :type RuleId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Method: add表示添加，delete表示删除\n        :type Method: str\n        :param Type: 黑/白名单类型；取值[white(白名单)，black(黑名单)]\n        :type Type: str\n        :param IpList: 黑/白名单的IP数组\n        :type IpList: list of str\n        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；\n        :type Protocol: str\n        :param Domain: 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；\n        :type Domain: str\n        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），
+当Method为delete时，不用填写此字段；\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -7713,11 +5885,7 @@ class ModifyCCIpAllowDenyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7736,17 +5904,7 @@ class ModifyCCLevelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Level: CC防护等级，取值[default(正常), loose(宽松), strict(严格)];
-        :type Level: str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
-        :type Protocol: str
-        :param RuleId: 表示7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
-        :type RuleId: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Level: CC防护等级，取值[default(正常), loose(宽松), strict(严格)];\n        :type Level: str\n        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；\n        :type Protocol: str\n        :param RuleId: 表示7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.Level = None
@@ -7776,11 +5934,7 @@ class ModifyCCLevelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7799,15 +5953,7 @@ class ModifyCCPolicySwitchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param SetId: 策略ID
-        :type SetId: str
-        :param Switch: 开关状态
-        :type Switch: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param SetId: 策略ID\n        :type SetId: str\n        :param Switch: 开关状态\n        :type Switch: int\n        """
         self.Business = None
         self.Id = None
         self.SetId = None
@@ -7835,11 +5981,7 @@ class ModifyCCPolicySwitchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7858,15 +6000,7 @@ class ModifyCCSelfDefinePolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param SetId: 策略ID
-        :type SetId: str
-        :param Policy: CC策略描述
-        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param SetId: 策略ID\n        :type SetId: str\n        :param Policy: CC策略描述\n        :type Policy: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`\n        """
         self.Business = None
         self.Id = None
         self.SetId = None
@@ -7896,11 +6030,7 @@ class ModifyCCSelfDefinePolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -7919,9 +6049,7 @@ class ModifyCCThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示基础防护）
-        :type Business: str
-        :param Threshold: CC防护阈值，取值(0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示基础防护）\n        :type Business: str\n        :param Threshold: CC防护阈值，取值(0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
 当Business为高防IP、高防IP专业版时，其CC防护最大阈值跟资源的保底防护带宽有关，对应关系如下：
   保底带宽: 最大C防护阈值
   10:  20000,
@@ -7931,30 +6059,8 @@ class ModifyCCThresholdRequest(AbstractModel):
   50:  150000,
   60:  200000,
   80:  250000,
-  100: 300000,
-        :type Threshold: int
-        :param Id: 资源ID
-        :type Id: str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；
-        :type Protocol: str
-        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
-当Protocol=https时必须填写；
-        :type RuleId: str
-        :param BasicIp: 查询的IP地址（仅基础防护提供），取值如：1.1.1.1
-        :type BasicIp: str
-        :param BasicRegion: 查询IP所属地域（仅基础防护提供），取值如：gz、bj、sh、hk等地域缩写
-        :type BasicRegion: str
-        :param BasicBizType: 专区类型（仅基础防护提供），取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。
-        :type BasicBizType: str
-        :param BasicDeviceType: 设备类型（仅基础防护提供），取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.
-        :type BasicDeviceType: str
-        :param BasicIpInstance: 仅基础防护提供。可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）
-        :type BasicIpInstance: str
-        :param BasicIspCode: 仅基础防护提供。可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）
-        :type BasicIspCode: int
-        :param Domain: 可选字段，当协议取值HTTPS时，必填
-        :type Domain: str
-        """
+  100: 300000,\n        :type Threshold: int\n        :param Id: 资源ID\n        :type Id: str\n        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写RuleId字段；\n        :type Protocol: str\n        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID）；
+当Protocol=https时必须填写；\n        :type RuleId: str\n        :param BasicIp: 查询的IP地址（仅基础防护提供），取值如：1.1.1.1\n        :type BasicIp: str\n        :param BasicRegion: 查询IP所属地域（仅基础防护提供），取值如：gz、bj、sh、hk等地域缩写\n        :type BasicRegion: str\n        :param BasicBizType: 专区类型（仅基础防护提供），取值如：公有云专区：public，黑石专区：bm, NAT服务器专区：nat，互联网通道：channel。\n        :type BasicBizType: str\n        :param BasicDeviceType: 设备类型（仅基础防护提供），取值如：服务器：cvm，公有云负载均衡：clb，黑石负载均衡：lb，NAT服务器：nat，互联网通道：channel.\n        :type BasicDeviceType: str\n        :param BasicIpInstance: 仅基础防护提供。可选，IPInstance Nat 网关（如果查询的设备类型是NAT服务器，需要传此参数，通过nat资源查询接口获取）\n        :type BasicIpInstance: str\n        :param BasicIspCode: 仅基础防护提供。可选，运营商线路（如果查询的设备类型是NAT服务器，需要传此参数为5）\n        :type BasicIspCode: int\n        :param Domain: 可选字段，当协议取值HTTPS时，必填\n        :type Domain: str\n        """
         self.Business = None
         self.Threshold = None
         self.Id = None
@@ -7998,11 +6104,7 @@ class ModifyCCThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8021,26 +6123,10 @@ class ModifyCCUrlAllowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Method: =add表示添加，=delete表示删除
-        :type Method: str
-        :param Type: 黑/白名单类型；取值[white(白名单)]
-        :type Type: str
-        :param UrlList: URL数组，URL格式如下：
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Method: =add表示添加，=delete表示删除\n        :type Method: str\n        :param Type: 黑/白名单类型；取值[white(白名单)]\n        :type Type: str\n        :param UrlList: URL数组，URL格式如下：
 http://域名/cgi
-https://域名/cgi
-        :type UrlList: list of str
-        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
-        :type Protocol: str
-        :param Domain: 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；
-        :type Domain: str
-        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
-当Method为delete时，可以不用填写此字段；
-        :type RuleId: str
-        """
+https://域名/cgi\n        :type UrlList: list of str\n        :param Protocol: 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；\n        :type Protocol: str\n        :param Domain: 可选字段，表示HTTPS协议的7层转发规则域名（通过获取7层转发规则接口可以获取域名），只有当Protocol字段为https时才必须填写此字段；\n        :type Domain: str\n        :param RuleId: 可选字段，表示HTTPS协议的7层转发规则ID（通过获取7层转发规则接口可以获取规则ID），当添加并且Protocol=https时必须填写；
+当Method为delete时，可以不用填写此字段；\n        :type RuleId: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -8076,11 +6162,7 @@ class ModifyCCUrlAllowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8099,15 +6181,7 @@ class ModifyDDoSAIStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Method: =get表示读取AI防护状态；=set表示修改AI防护状态；
-        :type Method: str
-        :param DDoSAI: AI防护状态，取值[on，off]；当Method=set时必填；
-        :type DDoSAI: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Method: =get表示读取AI防护状态；=set表示修改AI防护状态；\n        :type Method: str\n        :param DDoSAI: AI防护状态，取值[on，off]；当Method=set时必填；\n        :type DDoSAI: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -8135,13 +6209,7 @@ class ModifyDDoSAIStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DDoSAI: AI防护状态，取值[on，off]
-        :type DDoSAI: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DDoSAI: AI防护状态，取值[on，off]\n        :type DDoSAI: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DDoSAI = None
         self.Id = None
         self.RequestId = None
@@ -8160,17 +6228,7 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）
-        :type Business: str
-        :param RsId: 资源ID,字符串类型
-        :type RsId: str
-        :param AlarmType: 告警阈值类型，0-未设置，1-入流量，2-清洗流量
-        :type AlarmType: int
-        :param AlarmThreshold: 告警阈值，大于0（目前暂定的值）
-        :type AlarmThreshold: int
-        :param IpList: 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据
-        :type IpList: list of str
-        """
+        :param Business: 大禹子产品代号（shield表示棋牌；bgpip表示高防IP；bgp表示高防包；bgp-multip表示多ip高防包；net表示高防IP专业版）\n        :type Business: str\n        :param RsId: 资源ID,字符串类型\n        :type RsId: str\n        :param AlarmType: 告警阈值类型，0-未设置，1-入流量，2-清洗流量\n        :type AlarmType: int\n        :param AlarmThreshold: 告警阈值，大于0（目前暂定的值）\n        :type AlarmThreshold: int\n        :param IpList: 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据\n        :type IpList: list of str\n        """
         self.Business = None
         self.RsId = None
         self.AlarmType = None
@@ -8200,11 +6258,7 @@ class ModifyDDoSAlarmThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8223,23 +6277,7 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版；basic表示基础防护）
-        :type Business: str
-        :param Status: 防护状态值，取值[0（关闭），1（开启）]
-        :type Status: int
-        :param Hour: 关闭时长，单位小时，取值[0，1，2，3，4，5，6]；当Status=0表示关闭时，Hour必须大于0；
-        :type Hour: int
-        :param Id: 资源ID；当Business不是基础防护时必须填写此字段；
-        :type Id: str
-        :param Ip: 基础防护的IP，只有当Business为基础防护时才需要填写此字段；
-        :type Ip: str
-        :param BizType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
-        :type BizType: str
-        :param DeviceType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
-        :type DeviceType: str
-        :param InstanceId: 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);
-        :type InstanceId: str
-        :param IPRegion: 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版；basic表示基础防护）\n        :type Business: str\n        :param Status: 防护状态值，取值[0（关闭），1（开启）]\n        :type Status: int\n        :param Hour: 关闭时长，单位小时，取值[0，1，2，3，4，5，6]；当Status=0表示关闭时，Hour必须大于0；\n        :type Hour: int\n        :param Id: 资源ID；当Business不是基础防护时必须填写此字段；\n        :type Id: str\n        :param Ip: 基础防护的IP，只有当Business为基础防护时才需要填写此字段；\n        :type Ip: str\n        :param BizType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]\n        :type BizType: str\n        :param DeviceType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]\n        :type DeviceType: str\n        :param InstanceId: 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);\n        :type InstanceId: str\n        :param IPRegion: 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
 "bj":     华北地区(北京)
 "cd":     西南地区(成都)
 "cq":     西南地区(重庆)
@@ -8261,9 +6299,7 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 "use":    美东地区（弗吉尼亚）
 "ru":     俄罗斯
 "tpe":    中国台湾
-"nj":     南京
-        :type IPRegion: str
-        """
+"nj":     南京\n        :type IPRegion: str\n        """
         self.Business = None
         self.Status = None
         self.Hour = None
@@ -8301,11 +6337,7 @@ class ModifyDDoSDefendStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8324,15 +6356,7 @@ class ModifyDDoSLevelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Method: =get表示读取防护等级；=set表示修改防护等级
-        :type Method: str
-        :param DDoSLevel: 防护等级，取值[low,middle,high]；当Method=set时必填
-        :type DDoSLevel: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Method: =get表示读取防护等级；=set表示修改防护等级\n        :type Method: str\n        :param DDoSLevel: 防护等级，取值[low,middle,high]；当Method=set时必填\n        :type DDoSLevel: str\n        """
         self.Business = None
         self.Id = None
         self.Method = None
@@ -8360,13 +6384,7 @@ class ModifyDDoSLevelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 资源ID
-        :type Id: str
-        :param DDoSLevel: 防护等级，取值[low,middle,high]
-        :type DDoSLevel: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Id: 资源ID\n        :type Id: str\n        :param DDoSLevel: 防护等级，取值[low,middle,high]\n        :type DDoSLevel: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Id = None
         self.DDoSLevel = None
         self.RequestId = None
@@ -8385,55 +6403,7 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param SceneId: 策略场景ID
-        :type SceneId: str
-        :param PlatformTypes: 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]
-        :type PlatformTypes: list of str
-        :param AppType: 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]
-        :type AppType: str
-        :param AppProtocols: 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]
-        :type AppProtocols: list of str
-        :param TcpSportStart: TCP业务起始端口，取值(0, 65535]
-        :type TcpSportStart: str
-        :param TcpSportEnd: TCP业务结束端口，取值(0, 65535]，必须大于等于TCP业务起始端口
-        :type TcpSportEnd: str
-        :param UdpSportStart: UDP业务起始端口，取值范围(0, 65535]
-        :type UdpSportStart: str
-        :param UdpSportEnd: UDP业务结束端口，取值范围(0, 65535)，必须大于等于UDP业务起始端口
-        :type UdpSportEnd: str
-        :param HasAbroad: 是否有海外客户，取值[no（没有）, yes（有）]
-        :type HasAbroad: str
-        :param HasInitiateTcp: 是否会主动对外发起TCP请求，取值[no（不会）, yes（会）]
-        :type HasInitiateTcp: str
-        :param HasInitiateUdp: 是否会主动对外发起UDP业务请求，取值[no（不会）, yes（会）]
-        :type HasInitiateUdp: str
-        :param PeerTcpPort: 主动发起TCP请求的端口，取值范围(0, 65535]
-        :type PeerTcpPort: str
-        :param PeerUdpPort: 主动发起UDP请求的端口，取值范围(0, 65535]
-        :type PeerUdpPort: str
-        :param TcpFootprint: TCP载荷的固定特征码，字符串长度小于512
-        :type TcpFootprint: str
-        :param UdpFootprint: UDP载荷的固定特征码，字符串长度小于512
-        :type UdpFootprint: str
-        :param WebApiUrl: Web业务的API的URL
-        :type WebApiUrl: list of str
-        :param MinTcpPackageLen: TCP业务报文长度最小值，取值范围(0, 1500)
-        :type MinTcpPackageLen: str
-        :param MaxTcpPackageLen: TCP业务报文长度最大值，取值范围(0, 1500)，必须大于等于TCP业务报文长度最小值
-        :type MaxTcpPackageLen: str
-        :param MinUdpPackageLen: UDP业务报文长度最小值，取值范围(0, 1500)
-        :type MinUdpPackageLen: str
-        :param MaxUdpPackageLen: UDP业务报文长度最大值，取值范围(0, 1500)，必须大于等于UDP业务报文长度最小值
-        :type MaxUdpPackageLen: str
-        :param HasVPN: 是否有VPN业务，取值[no（没有）, yes（有）]
-        :type HasVPN: str
-        :param TcpPortList: TCP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
-        :type TcpPortList: str
-        :param UdpPortList: UDP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000
-        :type UdpPortList: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param SceneId: 策略场景ID\n        :type SceneId: str\n        :param PlatformTypes: 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]\n        :type PlatformTypes: list of str\n        :param AppType: 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]\n        :type AppType: str\n        :param AppProtocols: 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]\n        :type AppProtocols: list of str\n        :param TcpSportStart: TCP业务起始端口，取值(0, 65535]\n        :type TcpSportStart: str\n        :param TcpSportEnd: TCP业务结束端口，取值(0, 65535]，必须大于等于TCP业务起始端口\n        :type TcpSportEnd: str\n        :param UdpSportStart: UDP业务起始端口，取值范围(0, 65535]\n        :type UdpSportStart: str\n        :param UdpSportEnd: UDP业务结束端口，取值范围(0, 65535)，必须大于等于UDP业务起始端口\n        :type UdpSportEnd: str\n        :param HasAbroad: 是否有海外客户，取值[no（没有）, yes（有）]\n        :type HasAbroad: str\n        :param HasInitiateTcp: 是否会主动对外发起TCP请求，取值[no（不会）, yes（会）]\n        :type HasInitiateTcp: str\n        :param HasInitiateUdp: 是否会主动对外发起UDP业务请求，取值[no（不会）, yes（会）]\n        :type HasInitiateUdp: str\n        :param PeerTcpPort: 主动发起TCP请求的端口，取值范围(0, 65535]\n        :type PeerTcpPort: str\n        :param PeerUdpPort: 主动发起UDP请求的端口，取值范围(0, 65535]\n        :type PeerUdpPort: str\n        :param TcpFootprint: TCP载荷的固定特征码，字符串长度小于512\n        :type TcpFootprint: str\n        :param UdpFootprint: UDP载荷的固定特征码，字符串长度小于512\n        :type UdpFootprint: str\n        :param WebApiUrl: Web业务的API的URL\n        :type WebApiUrl: list of str\n        :param MinTcpPackageLen: TCP业务报文长度最小值，取值范围(0, 1500)\n        :type MinTcpPackageLen: str\n        :param MaxTcpPackageLen: TCP业务报文长度最大值，取值范围(0, 1500)，必须大于等于TCP业务报文长度最小值\n        :type MaxTcpPackageLen: str\n        :param MinUdpPackageLen: UDP业务报文长度最小值，取值范围(0, 1500)\n        :type MinUdpPackageLen: str\n        :param MaxUdpPackageLen: UDP业务报文长度最大值，取值范围(0, 1500)，必须大于等于UDP业务报文长度最小值\n        :type MaxUdpPackageLen: str\n        :param HasVPN: 是否有VPN业务，取值[no（没有）, yes（有）]\n        :type HasVPN: str\n        :param TcpPortList: TCP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000\n        :type TcpPortList: str\n        :param UdpPortList: UDP业务端口列表，同时支持单个端口和端口段，字符串格式，例如：80,443,700-800,53,1000-3000\n        :type UdpPortList: str\n        """
         self.Business = None
         self.SceneId = None
         self.PlatformTypes = None
@@ -8501,11 +6471,7 @@ class ModifyDDoSPolicyCaseResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8524,13 +6490,7 @@ class ModifyDDoSPolicyNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        :param Name: 策略名称
-        :type Name: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param PolicyId: 策略ID\n        :type PolicyId: str\n        :param Name: 策略名称\n        :type Name: str\n        """
         self.Business = None
         self.PolicyId = None
         self.Name = None
@@ -8556,11 +6516,7 @@ class ModifyDDoSPolicyNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8579,21 +6535,7 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        :param DropOptions: 协议禁用，必须填写且数组长度必须为1
-        :type DropOptions: list of DDoSPolicyDropOption
-        :param PortLimits: 端口禁用，当没有禁用端口时填空数组
-        :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: IP黑白名单，当没有IP黑白名单时填空数组
-        :type IpAllowDenys: list of IpBlackWhite
-        :param PacketFilters: 报文过滤，当没有报文过滤时填空数组
-        :type PacketFilters: list of DDoSPolicyPacketFilter
-        :param WaterPrint: 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）
-        :type WaterPrint: list of WaterPrintPolicy
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param PolicyId: 策略ID\n        :type PolicyId: str\n        :param DropOptions: 协议禁用，必须填写且数组长度必须为1\n        :type DropOptions: list of DDoSPolicyDropOption\n        :param PortLimits: 端口禁用，当没有禁用端口时填空数组\n        :type PortLimits: list of DDoSPolicyPortLimit\n        :param IpAllowDenys: IP黑白名单，当没有IP黑白名单时填空数组\n        :type IpAllowDenys: list of IpBlackWhite\n        :param PacketFilters: 报文过滤，当没有报文过滤时填空数组\n        :type PacketFilters: list of DDoSPolicyPacketFilter\n        :param WaterPrint: 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）\n        :type WaterPrint: list of WaterPrintPolicy\n        """
         self.Business = None
         self.PolicyId = None
         self.DropOptions = None
@@ -8652,11 +6594,7 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8675,19 +6613,7 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（basic表示基础防护）
-        :type Business: str
-        :param Method: =get表示读取DDoS防护状态；=set表示修改DDoS防护状态；
-        :type Method: str
-        :param Ip: 基础防护的IP，只有当Business为基础防护时才需要填写此字段；
-        :type Ip: str
-        :param BizType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
-        :type BizType: str
-        :param DeviceType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
-        :type DeviceType: str
-        :param InstanceId: 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);
-        :type InstanceId: str
-        :param IPRegion: 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
+        :param Business: 大禹子产品代号（basic表示基础防护）\n        :type Business: str\n        :param Method: =get表示读取DDoS防护状态；=set表示修改DDoS防护状态；\n        :type Method: str\n        :param Ip: 基础防护的IP，只有当Business为基础防护时才需要填写此字段；\n        :type Ip: str\n        :param BizType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品类型，取值[public（CVM产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]\n        :type BizType: str\n        :param DeviceType: 只有当Business为基础防护时才需要填写此字段，IP所属的产品子类，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]\n        :type DeviceType: str\n        :param InstanceId: 只有当Business为基础防护时才需要填写此字段，IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*);\n        :type InstanceId: str\n        :param IPRegion: 只有当Business为基础防护时才需要填写此字段，表示IP所属的地域，取值：
 "bj":     华北地区(北京)
 "cd":     西南地区(成都)
 "cq":     西南地区(重庆)
@@ -8709,11 +6635,7 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 "use":    美东地区（弗吉尼亚）
 "ru":     俄罗斯
 "tpe":    中国台湾
-"nj":     南京
-        :type IPRegion: str
-        :param Status: 可选字段，防护状态值，取值[0（关闭），1（开启）]；当Method为get时可以不填写此字段；
-        :type Status: int
-        """
+"nj":     南京\n        :type IPRegion: str\n        :param Status: 可选字段，防护状态值，取值[0（关闭），1（开启）]；当Method为get时可以不填写此字段；\n        :type Status: int\n        """
         self.Business = None
         self.Method = None
         self.Ip = None
@@ -8749,11 +6671,7 @@ class ModifyDDoSSwitchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 当前防护状态值，取值[0（关闭），1（开启）]
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 当前防护状态值，取值[0（关闭），1（开启）]\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -8770,14 +6688,8 @@ class ModifyDDoSThresholdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Threshold: DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
-当设置值为0时，表示采用默认值；
-        :type Threshold: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Threshold: DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+当设置值为0时，表示采用默认值；\n        :type Threshold: int\n        """
         self.Business = None
         self.Id = None
         self.Threshold = None
@@ -8803,11 +6715,7 @@ class ModifyDDoSThresholdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8826,15 +6734,7 @@ class ModifyDDoSWaterKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        :param Method: 密钥操作，取值：[add（添加），delete（删除），open（开启），close（关闭），get（获取密钥）]
-        :type Method: str
-        :param KeyId: 密钥ID，当添加密钥操作时可以不填或填0，其他操作时必须填写；
-        :type KeyId: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param PolicyId: 策略ID\n        :type PolicyId: str\n        :param Method: 密钥操作，取值：[add（添加），delete（删除），open（开启），close（关闭），get（获取密钥）]\n        :type Method: str\n        :param KeyId: 密钥ID，当添加密钥操作时可以不填或填0，其他操作时必须填写；\n        :type KeyId: int\n        """
         self.Business = None
         self.PolicyId = None
         self.Method = None
@@ -8862,11 +6762,7 @@ class ModifyDDoSWaterKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyList: 水印密钥列表
-        :type KeyList: list of WaterPrintKey
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param KeyList: 水印密钥列表\n        :type KeyList: list of WaterPrintKey\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.KeyList = None
         self.RequestId = None
 
@@ -8888,13 +6784,7 @@ class ModifyElasticLimitRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Limit: 弹性防护阈值，取值[0 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000 120000 150000 200000 250000 300000 400000 600000 800000 220000 310000 110000 270000 610000]
-        :type Limit: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Limit: 弹性防护阈值，取值[0 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000 120000 150000 200000 250000 300000 400000 600000 800000 220000 310000 110000 270000 610000]\n        :type Limit: int\n        """
         self.Business = None
         self.Id = None
         self.Limit = None
@@ -8920,11 +6810,7 @@ class ModifyElasticLimitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -8943,13 +6829,7 @@ class ModifyL4HealthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Healths: 健康检查参数数组
-        :type Healths: list of L4RuleHealth
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Healths: 健康检查参数数组\n        :type Healths: list of L4RuleHealth\n        """
         self.Business = None
         self.Id = None
         self.Healths = None
@@ -8980,11 +6860,7 @@ class ModifyL4HealthResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9003,17 +6879,7 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
-        :type KeepEnable: int
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param RuleId: 规则ID\n        :type RuleId: str\n        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]\n        :type KeepEnable: int\n        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        """
         self.Business = None
         self.Id = None
         self.RuleId = None
@@ -9043,11 +6909,7 @@ class ModifyL4KeepTimeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9066,13 +6928,7 @@ class ModifyL4RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rule: 规则
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rule: 规则\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -9100,11 +6956,7 @@ class ModifyL4RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9123,13 +6975,7 @@ class ModifyL7RulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rule: 规则
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L7RuleEntry`
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rule: 规则\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L7RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -9157,11 +7003,7 @@ class ModifyL7RulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9180,15 +7022,7 @@ class ModifyNetReturnSwitchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源实例ID
-        :type Id: str
-        :param Status: Status 表示回切开关，0: 关闭， 1:打开
-        :type Status: int
-        :param Hour: 回切时长，单位：小时，取值[0,1,2,3,4,5,6;]当status=1时必选填写Hour>0
-        :type Hour: int
-        """
+        :param Business: 大禹子产品代号（net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param Status: Status 表示回切开关，0: 关闭， 1:打开\n        :type Status: int\n        :param Hour: 回切时长，单位：小时，取值[0,1,2,3,4,5,6;]当status=1时必选填写Hour>0\n        :type Hour: int\n        """
         self.Business = None
         self.Id = None
         self.Status = None
@@ -9216,9 +7050,7 @@ class ModifyNetReturnSwitchResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -9233,13 +7065,7 @@ class ModifyNewDomainRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rule: 域名转发规则
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rule: 域名转发规则\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -9267,11 +7093,7 @@ class ModifyNewDomainRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9290,13 +7112,7 @@ class ModifyNewL4RuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rule: 转发规则
-        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rule: 转发规则\n        :type Rule: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -9324,11 +7140,7 @@ class ModifyNewL4RuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9347,15 +7159,7 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param PolicyId: 策略ID
-        :type PolicyId: str
-        :param Method: 绑定或解绑，bind表示绑定策略，unbind表示解绑策略
-        :type Method: str
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param PolicyId: 策略ID\n        :type PolicyId: str\n        :param Method: 绑定或解绑，bind表示绑定策略，unbind表示解绑策略\n        :type Method: str\n        """
         self.Business = None
         self.Id = None
         self.PolicyId = None
@@ -9383,11 +7187,7 @@ class ModifyResBindDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9406,13 +7206,7 @@ class ModifyResourceRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包；insurance表示保险包；staticpack表示三网套餐包）
-        :type Business: str
-        :param Id: 资源Id
-        :type Id: str
-        :param RenewFlag: 自动续费标记（0手动续费；1自动续费；2到期不续费）
-        :type RenewFlag: int
-        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；net表示高防IP专业版；shield表示棋牌盾；bgp表示独享包；bgp-multip表示共享包；insurance表示保险包；staticpack表示三网套餐包）\n        :type Business: str\n        :param Id: 资源Id\n        :type Id: str\n        :param RenewFlag: 自动续费标记（0手动续费；1自动续费；2到期不续费）\n        :type RenewFlag: int\n        """
         self.Business = None
         self.Id = None
         self.RenewFlag = None
@@ -9438,11 +7232,7 @@ class ModifyResourceRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Success: 成功码\n        :type Success: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -9461,37 +7251,7 @@ class NewL4RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 转发协议，取值[TCP, UDP]
-        :type Protocol: str
-        :param VirtualPort: 转发端口
-        :type VirtualPort: int
-        :param SourcePort: 源站端口
-        :type SourcePort: int
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        :param SourceList: 回源列表
-        :type SourceList: list of L4RuleSource
-        :param LbType: 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
-        :type LbType: int
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]；
-        :type KeepEnable: int
-        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
-        :type SourceType: int
-        :param RuleId: 规则ID
-        :type RuleId: str
-        :param RuleName: 规则描述
-        :type RuleName: str
-        :param RemoveSwitch: 移除水印状态，取值[0(关闭)，1(开启)]
-        :type RemoveSwitch: int
-        :param ModifyTime: 规则修改时间
-        :type ModifyTime: str
-        :param Region: 对应地区信息
-        :type Region: int
-        :param Ip: 绑定资源IP信息
-        :type Ip: str
-        :param Id: 绑定资源Id信息
-        :type Id: str
-        """
+        :param Protocol: 转发协议，取值[TCP, UDP]\n        :type Protocol: str\n        :param VirtualPort: 转发端口\n        :type VirtualPort: int\n        :param SourcePort: 源站端口\n        :type SourcePort: int\n        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        :param SourceList: 回源列表\n        :type SourceList: list of L4RuleSource\n        :param LbType: 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]\n        :type LbType: int\n        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]；\n        :type KeepEnable: int\n        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]\n        :type SourceType: int\n        :param RuleId: 规则ID\n        :type RuleId: str\n        :param RuleName: 规则描述\n        :type RuleName: str\n        :param RemoveSwitch: 移除水印状态，取值[0(关闭)，1(开启)]\n        :type RemoveSwitch: int\n        :param ModifyTime: 规则修改时间\n        :type ModifyTime: str\n        :param Region: 对应地区信息\n        :type Region: int\n        :param Ip: 绑定资源IP信息\n        :type Ip: str\n        :param Id: 绑定资源Id信息\n        :type Id: str\n        """
         self.Protocol = None
         self.VirtualPort = None
         self.SourcePort = None
@@ -9546,56 +7306,8 @@ class NewL7RuleEntry(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 转发协议，取值[http, https]
-        :type Protocol: str
-        :param Domain: 转发域名
-        :type Domain: str
-        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
-        :type SourceType: int
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        :param SourceList: 回源列表
-        :type SourceList: list of L4RuleSource
-        :param LbType: 负载均衡方式，取值[1(加权轮询)]
-        :type LbType: int
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
-        :type KeepEnable: int
-        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
-        :type RuleId: str
-        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
-        :type CertType: int
-        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
-        :type SSLId: str
-        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type Cert: str
-        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type PrivateKey: str
-        :param RuleName: 规则描述
-        :type RuleName: str
-        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
-        :type Status: int
-        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
-        :type CCStatus: int
-        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
-        :type CCEnable: int
-        :param CCThreshold: HTTPS协议的CC防护阈值
-        :type CCThreshold: int
-        :param CCLevel: HTTPS协议的CC防护等级
-        :type CCLevel: str
-        :param Region: 区域码
-        :type Region: int
-        :param Id: 资源Id
-        :type Id: str
-        :param Ip: 资源Ip
-        :type Ip: str
-        :param ModifyTime: 修改时间
-        :type ModifyTime: str
-        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-        :type HttpsToHttpEnable: int
-        :param VirtualPort: 接入端口值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VirtualPort: int
-        """
+        :param Protocol: 转发协议，取值[http, https]\n        :type Protocol: str\n        :param Domain: 转发域名\n        :type Domain: str\n        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]\n        :type SourceType: int\n        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        :param SourceList: 回源列表\n        :type SourceList: list of L4RuleSource\n        :param LbType: 负载均衡方式，取值[1(加权轮询)]\n        :type LbType: int\n        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]\n        :type KeepEnable: int\n        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；\n        :type RuleId: str\n        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0\n        :type CertType: int\n        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID\n        :type SSLId: str\n        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type Cert: str\n        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type PrivateKey: str\n        :param RuleName: 规则描述\n        :type RuleName: str\n        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]\n        :type Status: int\n        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]\n        :type CCStatus: int\n        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]\n        :type CCEnable: int\n        :param CCThreshold: HTTPS协议的CC防护阈值\n        :type CCThreshold: int\n        :param CCLevel: HTTPS协议的CC防护等级\n        :type CCLevel: str\n        :param Region: 区域码\n        :type Region: int\n        :param Id: 资源Id\n        :type Id: str\n        :param Ip: 资源Ip\n        :type Ip: str\n        :param ModifyTime: 修改时间\n        :type ModifyTime: str\n        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭\n        :type HttpsToHttpEnable: int\n        :param VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VirtualPort: int\n        """
         self.Protocol = None
         self.Domain = None
         self.SourceType = None
@@ -9671,11 +7383,7 @@ class OrderBy(AbstractModel):
         :param Field: 排序字段名称，取值[
 bandwidth（带宽），
 overloadCount（超峰值次数）
-]
-        :type Field: str
-        :param Order: 升降序，取值为[asc（升序），（升序），desc（降序）， DESC（降序）]
-        :type Order: str
-        """
+]\n        :type Field: str\n        :param Order: 升降序，取值为[asc（升序），（升序），desc（降序）， DESC（降序）]\n        :type Order: str\n        """
         self.Field = None
         self.Order = None
 
@@ -9699,11 +7407,7 @@ class Paging(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 起始位置
-        :type Offset: int
-        :param Limit: 数量
-        :type Limit: int
-        """
+        :param Offset: 起始位置\n        :type Offset: int\n        :param Limit: 数量\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -9727,11 +7431,7 @@ class ProtocolPort(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 协议（tcp；udp）
-        :type Protocol: str
-        :param Port: 端口
-        :type Port: int
-        """
+        :param Protocol: 协议（tcp；udp）\n        :type Protocol: str\n        :param Port: 端口\n        :type Port: int\n        """
         self.Protocol = None
         self.Port = None
 
@@ -9755,13 +7455,7 @@ class RegionInstanceCount(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: 地域码
-        :type Region: str
-        :param RegionV3: 地域码（新规范）
-        :type RegionV3: str
-        :param Count: 资源实例数
-        :type Count: int
-        """
+        :param Region: 地域码\n        :type Region: str\n        :param RegionV3: 地域码（新规范）\n        :type RegionV3: str\n        :param Count: 资源实例数\n        :type Count: int\n        """
         self.Region = None
         self.RegionV3 = None
         self.Count = None
@@ -9787,11 +7481,7 @@ class ResourceIp(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 资源ID
-        :type Id: str
-        :param IpList: 资源的IP数组
-        :type IpList: list of str
-        """
+        :param Id: 资源ID\n        :type Id: str\n        :param IpList: 资源的IP数组\n        :type IpList: list of str\n        """
         self.Id = None
         self.IpList = None
 
@@ -9815,31 +7505,9 @@ class SchedulingDomain(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 调度域名
-        :type Domain: str
-        :param BGPIpList: BGP线路IP列表
-        :type BGPIpList: list of str
-        :param CTCCIpList: 电信线路IP列表
-        :type CTCCIpList: list of str
-        :param CUCCIpList: 联通线路IP列表
-        :type CUCCIpList: list of str
-        :param CMCCIpList: 移动线路IP列表
-        :type CMCCIpList: list of str
-        :param OverseaIpList: 海外线路IP列表
-        :type OverseaIpList: list of str
-        :param Method: 调度方式，当前仅支持优先级, 取值为priority
-        :type Method: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param TTL: ttl
-        :type TTL: int
-        :param Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ModifyTime: str
-        """
+        :param Domain: 调度域名\n        :type Domain: str\n        :param BGPIpList: BGP线路IP列表\n        :type BGPIpList: list of str\n        :param CTCCIpList: 电信线路IP列表\n        :type CTCCIpList: list of str\n        :param CUCCIpList: 联通线路IP列表\n        :type CUCCIpList: list of str\n        :param CMCCIpList: 移动线路IP列表\n        :type CMCCIpList: list of str\n        :param OverseaIpList: 海外线路IP列表\n        :type OverseaIpList: list of str\n        :param Method: 调度方式，当前仅支持优先级, 取值为priority\n        :type Method: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param TTL: ttl\n        :type TTL: int\n        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifyTime: str\n        """
         self.Domain = None
         self.BGPIpList = None
         self.CTCCIpList = None
@@ -9881,11 +7549,7 @@ class SuccessCode(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: 成功/错误码
-        :type Code: str
-        :param Message: 描述
-        :type Message: str
-        """
+        :param Code: 成功/错误码\n        :type Code: str\n        :param Message: 描述\n        :type Message: str\n        """
         self.Code = None
         self.Message = None
 
@@ -9909,17 +7573,7 @@ class WaterPrintKey(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyId: 水印KeyID
-        :type KeyId: str
-        :param KeyContent: 水印Key值
-        :type KeyContent: str
-        :param KeyVersion: 水印Key的版本号
-        :type KeyVersion: str
-        :param OpenStatus: 是否开启，取值[0（没有开启），1（已开启）]
-        :type OpenStatus: int
-        :param CreateTime: 密钥生成时间
-        :type CreateTime: str
-        """
+        :param KeyId: 水印KeyID\n        :type KeyId: str\n        :param KeyContent: 水印Key值\n        :type KeyContent: str\n        :param KeyVersion: 水印Key的版本号\n        :type KeyVersion: str\n        :param OpenStatus: 是否开启，取值[0（没有开启），1（已开启）]\n        :type OpenStatus: int\n        :param CreateTime: 密钥生成时间\n        :type CreateTime: str\n        """
         self.KeyId = None
         self.KeyContent = None
         self.KeyVersion = None
@@ -9949,17 +7603,7 @@ class WaterPrintPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param TcpPortList: TCP端口段，例如["2000-3000","3500-4000"]
-        :type TcpPortList: list of str
-        :param UdpPortList: UDP端口段，例如["2000-3000","3500-4000"]
-        :type UdpPortList: list of str
-        :param Offset: 水印偏移量，取值范围[0, 100)
-        :type Offset: int
-        :param RemoveSwitch: 是否自动剥离，取值[0（不自动剥离），1（自动剥离）]
-        :type RemoveSwitch: int
-        :param OpenStatus: 是否开启，取值[0（没有开启），1（已开启）]
-        :type OpenStatus: int
-        """
+        :param TcpPortList: TCP端口段，例如["2000-3000","3500-4000"]\n        :type TcpPortList: list of str\n        :param UdpPortList: UDP端口段，例如["2000-3000","3500-4000"]\n        :type UdpPortList: list of str\n        :param Offset: 水印偏移量，取值范围[0, 100)\n        :type Offset: int\n        :param RemoveSwitch: 是否自动剥离，取值[0（不自动剥离），1（自动剥离）]\n        :type RemoveSwitch: int\n        :param OpenStatus: 是否开启，取值[0（没有开启），1（已开启）]\n        :type OpenStatus: int\n        """
         self.TcpPortList = None
         self.UdpPortList = None
         self.Offset = None

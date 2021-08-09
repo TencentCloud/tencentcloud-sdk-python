@@ -25,15 +25,7 @@ class DescribeMaterialListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ActivityId: 活动Id
-        :type ActivityId: int
-        :param MaterialId: 素材Id
-        :type MaterialId: str
-        :param Limit: 每次拉取条数
-        :type Limit: int
-        :param Offset: 偏移量
-        :type Offset: int
-        """
+        :param ActivityId: 活动Id\n        :type ActivityId: int\n        :param MaterialId: 素材Id\n        :type MaterialId: str\n        :param Limit: 每次拉取条数\n        :type Limit: int\n        :param Offset: 偏移量\n        :type Offset: int\n        """
         self.ActivityId = None
         self.MaterialId = None
         self.Limit = None
@@ -61,13 +53,7 @@ class DescribeMaterialListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialInfos: 素材列表数据
-        :type MaterialInfos: list of PublicMaterialInfos
-        :param Count: 素材条数
-        :type Count: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaterialInfos: 素材列表数据\n        :type MaterialInfos: list of PublicMaterialInfos\n        :param Count: 素材条数\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaterialInfos = None
         self.Count = None
         self.RequestId = None
@@ -91,19 +77,7 @@ class FaceFusionLiteRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 活动 ID，请在人脸融合控制台查看。
-        :type ProjectId: str
-        :param ModelId: 素材 ID，请在人脸融合控制台查看。
-        :type ModelId: str
-        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
-        :type MergeInfos: list of MergeInfo
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。
-        :type RspImgType: str
-        :param CelebrityIdentify: 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
-        :type CelebrityIdentify: int
-        :param Engine: 算法引擎参数:  1）选脸版 - youturecreat; 2）优享版 - youtu1vN； 3）畅享版 - ptu； 4）随机 - ALL;  默认为活动选择的算法
-        :type Engine: str
-        """
+        :param ProjectId: 活动 ID，请在人脸融合控制台查看。\n        :type ProjectId: str\n        :param ModelId: 素材 ID，请在人脸融合控制台查看。\n        :type ModelId: str\n        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。\n        :type MergeInfos: list of MergeInfo\n        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。\n        :type RspImgType: str\n        :param CelebrityIdentify: 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。\n        :type CelebrityIdentify: int\n        :param Engine: 算法引擎参数:  1）选脸版 - youturecreat; 2）优享版 - youtu1vN； 3）畅享版 - ptu； 4）随机 - ALL;  默认为活动选择的算法\n        :type Engine: str\n        """
         self.ProjectId = None
         self.ModelId = None
         self.MergeInfos = None
@@ -140,14 +114,8 @@ class FaceFusionLiteResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
-        :type Image: str
-        :param ReviewResultSet: 鉴政结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReviewResultSet: list of FuseFaceReviewResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。\n        :type Image: str\n        :param ReviewResultSet: 鉴政结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReviewResultSet: list of FuseFaceReviewResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Image = None
         self.ReviewResultSet = None
         self.RequestId = None
@@ -171,22 +139,8 @@ class FaceFusionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 活动 ID，请在人脸融合控制台查看。
-        :type ProjectId: str
-        :param ModelId: 素材 ID，请在人脸融合控制台查看。
-        :type ModelId: str
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
-        :type RspImgType: str
-        :param Image: 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
-        :type Image: str
-        :param PornDetect: 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
-        :type PornDetect: int
-        :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
-请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
-        :type CelebrityIdentify: int
-        :param Url: 图片Url地址
-        :type Url: str
-        """
+        :param ProjectId: 活动 ID，请在人脸融合控制台查看。\n        :type ProjectId: str\n        :param ModelId: 素材 ID，请在人脸融合控制台查看。\n        :type ModelId: str\n        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。\n        :type RspImgType: str\n        :param Image: 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。\n        :type Image: str\n        :param PornDetect: 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。\n        :type PornDetect: int\n        :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。\n        :type CelebrityIdentify: int\n        :param Url: 图片Url地址\n        :type Url: str\n        """
         self.ProjectId = None
         self.ModelId = None
         self.RspImgType = None
@@ -220,13 +174,7 @@ class FaceFusionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
-        :type Image: str
-        :param ReviewResultSet: 不适宜内容识别结果
-        :type ReviewResultSet: list of FuseFaceReviewResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。\n        :type Image: str\n        :param ReviewResultSet: 不适宜内容识别结果\n        :type ReviewResultSet: list of FuseFaceReviewResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Image = None
         self.ReviewResultSet = None
         self.RequestId = None
@@ -250,15 +198,7 @@ class FaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸框的横坐标
-        :type X: int
-        :param Y: 人脸框的纵坐标
-        :type Y: int
-        :param Width: 人脸框的宽度
-        :type Width: int
-        :param Height: 人脸框的高度
-        :type Height: int
-        """
+        :param X: 人脸框的横坐标\n        :type X: int\n        :param Y: 人脸框的纵坐标\n        :type Y: int\n        :param Width: 人脸框的宽度\n        :type Width: int\n        :param Height: 人脸框的高度\n        :type Height: int\n        """
         self.X = None
         self.Y = None
         self.Width = None
@@ -286,15 +226,7 @@ class FaceRect(AbstractModel):
 
     def __init__(self):
         """
-        :param X: 人脸框左上角横坐标。
-        :type X: int
-        :param Y: 人脸框左上角纵坐标。
-        :type Y: int
-        :param Width: 人脸框宽度。
-        :type Width: int
-        :param Height: 人脸框高度。
-        :type Height: int
-        """
+        :param X: 人脸框左上角横坐标。\n        :type X: int\n        :param Y: 人脸框左上角纵坐标。\n        :type Y: int\n        :param Width: 人脸框宽度。\n        :type Width: int\n        :param Height: 人脸框高度。\n        :type Height: int\n        """
         self.X = None
         self.Y = None
         self.Width = None
@@ -322,24 +254,10 @@ class FuseFaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 活动 ID，请在人脸融合控制台查看。
-        :type ProjectId: str
-        :param ModelId: 素材 ID，请在人脸融合控制台查看。
-        :type ModelId: str
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
-        :type RspImgType: str
-        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
-        :type MergeInfos: list of MergeInfo
-        :param FuseProfileDegree: 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
-若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
-        :type FuseProfileDegree: int
-        :param FuseFaceDegree: 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
-若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）
-        :type FuseFaceDegree: int
-        :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
-请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
-        :type CelebrityIdentify: int
-        """
+        :param ProjectId: 活动 ID，请在人脸融合控制台查看。\n        :type ProjectId: str\n        :param ModelId: 素材 ID，请在人脸融合控制台查看。\n        :type ModelId: str\n        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。\n        :type RspImgType: str\n        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。\n        :type MergeInfos: list of MergeInfo\n        :param FuseProfileDegree: 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
+若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）\n        :type FuseProfileDegree: int\n        :param FuseFaceDegree: 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
+若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）\n        :type FuseFaceDegree: int\n        :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。\n        :type CelebrityIdentify: int\n        """
         self.ProjectId = None
         self.ModelId = None
         self.RspImgType = None
@@ -378,14 +296,8 @@ class FuseFaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
-        :type FusedImage: str
-        :param ReviewResultSet: 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReviewResultSet: list of FuseFaceReviewResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。\n        :type FusedImage: str\n        :param ReviewResultSet: 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReviewResultSet: list of FuseFaceReviewResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FusedImage = None
         self.ReviewResultSet = None
         self.RequestId = None
@@ -409,21 +321,13 @@ class FuseFaceReviewDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Field: 保留字段
-        :type Field: str
-        :param Label: 人员名称
-        :type Label: str
-        :param Confidence: 对应识别label的置信度，分数越高意味涉政可能性越大。 
+        :param Field: 保留字段\n        :type Field: str\n        :param Label: 人员名称\n        :type Label: str\n        :param Confidence: 对应识别label的置信度，分数越高意味涉政可能性越大。 
 0到70，Suggestion建议为PASS； 
 70到80，Suggestion建议为REVIEW； 
-80到100，Suggestion建议为BLOCK。
-        :type Confidence: float
-        :param Suggestion: 识别场景的审核结论：  
+80到100，Suggestion建议为BLOCK。\n        :type Confidence: float\n        :param Suggestion: 识别场景的审核结论：  
 PASS：正常 
 REVIEW：疑似  
-BLOCK：违规
-        :type Suggestion: str
-        """
+BLOCK：违规\n        :type Suggestion: str\n        """
         self.Field = None
         self.Label = None
         self.Confidence = None
@@ -451,19 +355,7 @@ class FuseFaceReviewResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Category: 保留字段
-        :type Category: str
-        :param Code: 状态码， 0为处理成功，其他值为处理失败
-        :type Code: str
-        :param CodeDescription: 对应状态码信息描述
-        :type CodeDescription: str
-        :param Confidence: 保留字段
-        :type Confidence: float
-        :param Suggestion: 保留字段
-        :type Suggestion: str
-        :param DetailSet: 审核详细内容
-        :type DetailSet: list of FuseFaceReviewDetail
-        """
+        :param Category: 保留字段\n        :type Category: str\n        :param Code: 状态码， 0为处理成功，其他值为处理失败\n        :type Code: str\n        :param CodeDescription: 对应状态码信息描述\n        :type CodeDescription: str\n        :param Confidence: 保留字段\n        :type Confidence: float\n        :param Suggestion: 保留字段\n        :type Suggestion: str\n        :param DetailSet: 审核详细内容\n        :type DetailSet: list of FuseFaceReviewDetail\n        """
         self.Category = None
         self.Code = None
         self.CodeDescription = None
@@ -500,11 +392,7 @@ class MaterialFaceList(AbstractModel):
 
     def __init__(self):
         """
-        :param FaceId: 人脸序号
-        :type FaceId: str
-        :param FaceInfo: 人脸框信息
-        :type FaceInfo: :class:`tencentcloud.facefusion.v20181201.models.FaceInfo`
-        """
+        :param FaceId: 人脸序号\n        :type FaceId: str\n        :param FaceInfo: 人脸框信息\n        :type FaceInfo: :class:`tencentcloud.facefusion.v20181201.models.FaceInfo`\n        """
         self.FaceId = None
         self.FaceInfo = None
 
@@ -530,15 +418,7 @@ class MergeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Image: 输入图片base64
-        :type Image: str
-        :param Url: 输入图片url
-        :type Url: str
-        :param InputImageFaceRect: 上传的图片人脸位置信息（人脸框）
-        :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20181201.models.FaceRect`
-        :param TemplateFaceID: 控制台上传的素材人脸ID
-        :type TemplateFaceID: str
-        """
+        :param Image: 输入图片base64\n        :type Image: str\n        :param Url: 输入图片url\n        :type Url: str\n        :param InputImageFaceRect: 上传的图片人脸位置信息（人脸框）\n        :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20181201.models.FaceRect`\n        :param TemplateFaceID: 控制台上传的素材人脸ID\n        :type TemplateFaceID: str\n        """
         self.Image = None
         self.Url = None
         self.InputImageFaceRect = None
@@ -568,27 +448,7 @@ class PublicMaterialInfos(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 素材Id
-        :type MaterialId: str
-        :param MaterialStatus: 素材状态
-        :type MaterialStatus: int
-        :param BlendParamPtu: 脸型参数P图
-        :type BlendParamPtu: int
-        :param PositionParamPtu: 五官参数P图
-        :type PositionParamPtu: int
-        :param BlendParamYoutu: 脸型参数优图
-        :type BlendParamYoutu: int
-        :param PositionParamYoutu: 五官参数优图
-        :type PositionParamYoutu: int
-        :param Url: 素材COS地址
-        :type Url: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param UpdateTime: 修改时间
-        :type UpdateTime: str
-        :param MaterialFaceList: 人脸信息
-        :type MaterialFaceList: list of MaterialFaceList
-        """
+        :param MaterialId: 素材Id\n        :type MaterialId: str\n        :param MaterialStatus: 素材状态\n        :type MaterialStatus: int\n        :param BlendParamPtu: 脸型参数P图\n        :type BlendParamPtu: int\n        :param PositionParamPtu: 五官参数P图\n        :type PositionParamPtu: int\n        :param BlendParamYoutu: 脸型参数优图\n        :type BlendParamYoutu: int\n        :param PositionParamYoutu: 五官参数优图\n        :type PositionParamYoutu: int\n        :param Url: 素材COS地址\n        :type Url: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param UpdateTime: 修改时间\n        :type UpdateTime: str\n        :param MaterialFaceList: 人脸信息\n        :type MaterialFaceList: list of MaterialFaceList\n        """
         self.MaterialId = None
         self.MaterialStatus = None
         self.BlendParamPtu = None

@@ -25,36 +25,8 @@ class BRIRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Service: 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
-        :type Service: str
-        :param QQ: QQ号 (业务名为bri_social时必填, 除非已填Wechat)
-        :type QQ: str
-        :param QQTag: QQ号的可疑标签
-        :type QQTag: str
-        :param Url: 网址 (业务名为bri_url时必填)
-        :type Url: str
-        :param CertMd5: Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)
-        :type CertMd5: str
-        :param PackageName: Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)
-        :type PackageName: str
-        :param FileMd5: Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)
-        :type FileMd5: str
-        :param Scene: 业务场景 (1-注册, 2-登录, 3-发消息)
-        :type Scene: str
-        :param PhoneNumber: 电话号码 (业务名为bri_num时必填)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneNumber: str
-        :param FileSize: Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
-        :type FileSize: int
-        :param Ip: 点分格式的IP (业务名为bri_ip时必填)
-        :type Ip: str
-        :param Imei: 安卓设备的Imei (业务名为bri_dev时必填)
-        :type Imei: str
-        :param Wechat: 微信号 (业务名为bri_social时必填, 除非已填QQ)
-        :type Wechat: str
-        :param WechatTag: 微信号的可疑标签
-        :type WechatTag: str
-        """
+        :param Service: 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)\n        :type Service: str\n        :param QQ: QQ号 (业务名为bri_social时必填, 除非已填Wechat)\n        :type QQ: str\n        :param QQTag: QQ号的可疑标签\n        :type QQTag: str\n        :param Url: 网址 (业务名为bri_url时必填)\n        :type Url: str\n        :param CertMd5: Apk证书Md5  (业务名为bri_apk时必填，除非已填FileMd5)\n        :type CertMd5: str\n        :param PackageName: Apk安装包名 (业务名为bri_apk时必填，除非已填FileMd5)\n        :type PackageName: str\n        :param FileMd5: Apk文件Md5 (业务名为bri_apk时必填，除非已填PackageName,CertMd5,FileSize)\n        :type FileMd5: str\n        :param Scene: 业务场景 (1-注册, 2-登录, 3-发消息)\n        :type Scene: str\n        :param PhoneNumber: 电话号码 (业务名为bri_num时必填)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneNumber: str\n        :param FileSize: Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)\n        :type FileSize: int\n        :param Ip: 点分格式的IP (业务名为bri_ip时必填)\n        :type Ip: str\n        :param Imei: 安卓设备的Imei (业务名为bri_dev时必填)\n        :type Imei: str\n        :param Wechat: 微信号 (业务名为bri_social时必填, 除非已填QQ)\n        :type Wechat: str\n        :param WechatTag: 微信号的可疑标签\n        :type WechatTag: str\n        """
         self.Service = None
         self.QQ = None
         self.QQTag = None
@@ -102,9 +74,7 @@ class BRIResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Score: 风险分值，取值[0,100], 分值越高风险越高
-        :type Score: float
-        :param Tags: 当Service为bri_num时,返回的风险标签有:
+        :param Score: 风险分值，取值[0,100], 分值越高风险越高\n        :type Score: float\n        :param Tags: 当Service为bri_num时,返回的风险标签有:
 1) 疑似垃圾流量     说明: 结合号码的历史数据表现，判断该号码历史用互联网业务作恶行为，其产生的互联网行为对于其他业务来说属于作弊或垃圾流量。 
 2) 疑似新客户       说明: 通过号码互联网行为（社交，浏览等）是否异常判断为小号或接码平台帐号。 
 
@@ -128,9 +98,7 @@ class BRIResponse(AbstractModel):
 1) 安全   说明: APK为正规应用
 2) 一般   说明: APK为未发现问题的正常应用
 3) 风险   说明: APK为外挂或色情等风险应用
-4) 病毒   说明: APK为包含恶意代码的恶意软件,可能破坏系统或者其他app正常使用
-        :type Tags: list of str
-        """
+4) 病毒   说明: APK为包含恶意代码的恶意软件,可能破坏系统或者其他app正常使用\n        :type Tags: list of str\n        """
         self.Score = None
         self.Tags = None
 
@@ -154,11 +122,7 @@ class DescribeBRIRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestData: 业务风险情报请求体
-        :type RequestData: :class:`tencentcloud.bri.v20190328.models.BRIRequest`
-        :param ResourceId: 客户用于计费的资源ID
-        :type ResourceId: str
-        """
+        :param RequestData: 业务风险情报请求体\n        :type RequestData: :class:`tencentcloud.bri.v20190328.models.BRIRequest`\n        :param ResourceId: 客户用于计费的资源ID\n        :type ResourceId: str\n        """
         self.RequestData = None
         self.ResourceId = None
 
@@ -184,11 +148,7 @@ class DescribeBRIResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResponseData: 业务风险情报响应体
-        :type ResponseData: :class:`tencentcloud.bri.v20190328.models.BRIResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ResponseData: 业务风险情报响应体\n        :type ResponseData: :class:`tencentcloud.bri.v20190328.models.BRIResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResponseData = None
         self.RequestId = None
 

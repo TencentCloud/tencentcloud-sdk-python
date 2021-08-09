@@ -26,21 +26,11 @@ class DeployServiceBatchDetail(AbstractModel):
     def __init__(self):
         """
         :param OldPodList: 旧实例列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OldPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`
-        :param NewPodList: 新实例列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NewPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`
-        :param BatchStatus: 当前批次状态："WaitForTimeExceed", "WaitForResume", "Deploying", "Finish", "NotStart"
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BatchStatus: str
-        :param PodNum: 该批次预计旧实例数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodNum: int
-        :param BatchIndex: 批次id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BatchIndex: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OldPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`\n        :param NewPodList: 新实例列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NewPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`\n        :param BatchStatus: 当前批次状态："WaitForTimeExceed", "WaitForResume", "Deploying", "Finish", "NotStart"
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BatchStatus: str\n        :param PodNum: 该批次预计旧实例数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodNum: int\n        :param BatchIndex: 批次id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BatchIndex: int\n        """
         self.OldPodList = None
         self.NewPodList = None
         self.BatchStatus = None
@@ -75,21 +65,11 @@ class DeployServicePodDetail(AbstractModel):
     def __init__(self):
         """
         :param PodId: pod Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodId: str
-        :param PodStatus: pod状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodStatus: list of str
-        :param PodVersion: pod版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodVersion: str
-        :param CreateTime: pod创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: str
-        :param Zone: pod所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Zone: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodId: str\n        :param PodStatus: pod状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodStatus: list of str\n        :param PodVersion: pod版本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodVersion: str\n        :param CreateTime: pod创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param Zone: pod所在可用区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        """
         self.PodId = None
         self.PodStatus = None
         self.PodVersion = None
@@ -119,15 +99,7 @@ class DeployStrategyConf(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalBatchCount: 总分批数
-        :type TotalBatchCount: int
-        :param BetaBatchNum: beta分批实例数
-        :type BetaBatchNum: int
-        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的
-        :type DeployStrategyType: int
-        :param BatchInterval: 每批暂停间隔
-        :type BatchInterval: int
-        """
+        :param TotalBatchCount: 总分批数\n        :type TotalBatchCount: int\n        :param BetaBatchNum: beta分批实例数\n        :type BetaBatchNum: int\n        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的\n        :type DeployStrategyType: int\n        :param BatchInterval: 每批暂停间隔\n        :type BatchInterval: int\n        """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
@@ -155,11 +127,7 @@ class DescribeDeployApplicationDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 服务id
-        :type ApplicationId: str
-        :param EnvironmentId: 环境id
-        :type EnvironmentId: str
-        """
+        :param ApplicationId: 服务id\n        :type ApplicationId: str\n        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        """
         self.ApplicationId = None
         self.EnvironmentId = None
 
@@ -183,11 +151,7 @@ class DescribeDeployApplicationDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 分批发布结果详情
-        :type Result: :class:`tencentcloud.tem.v20210701.models.TemDeployApplicationDetailInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Result: 分批发布结果详情\n        :type Result: :class:`tencentcloud.tem.v20210701.models.TemDeployApplicationDetailInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -206,17 +170,7 @@ class DescribeRunPodPage(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页下标
-        :type Offset: int
-        :param Limit: 单页条数
-        :type Limit: int
-        :param TotalCount: 总数
-        :type TotalCount: int
-        :param RequestId: 请求id
-        :type RequestId: str
-        :param PodList: 条目
-        :type PodList: list of RunVersionPod
-        """
+        :param Offset: 分页下标\n        :type Offset: int\n        :param Limit: 单页条数\n        :type Limit: int\n        :param TotalCount: 总数\n        :type TotalCount: int\n        :param RequestId: 请求id\n        :type RequestId: str\n        :param PodList: 条目\n        :type PodList: list of RunVersionPod\n        """
         self.Offset = None
         self.Limit = None
         self.TotalCount = None
@@ -251,11 +205,7 @@ class ResumeDeployApplicationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 需要开始下一批次的服务id
-        :type ApplicationId: str
-        :param EnvironmentId: 环境id
-        :type EnvironmentId: str
-        """
+        :param ApplicationId: 需要开始下一批次的服务id\n        :type ApplicationId: str\n        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        """
         self.ApplicationId = None
         self.EnvironmentId = None
 
@@ -279,11 +229,7 @@ class ResumeDeployApplicationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 是否成功
-        :type Result: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Result: 是否成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -300,11 +246,7 @@ class RevertDeployApplicationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ApplicationId: 需要回滚的服务id
-        :type ApplicationId: str
-        :param EnvironmentId: 需要回滚的服务所在环境id
-        :type EnvironmentId: str
-        """
+        :param ApplicationId: 需要回滚的服务id\n        :type ApplicationId: str\n        :param EnvironmentId: 需要回滚的服务所在环境id\n        :type EnvironmentId: str\n        """
         self.ApplicationId = None
         self.EnvironmentId = None
 
@@ -328,11 +270,7 @@ class RevertDeployApplicationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 是否成功
-        :type Result: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Result: 是否成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -349,26 +287,10 @@ class RunVersionPod(AbstractModel):
 
     def __init__(self):
         """
-        :param Webshell: shell地址
-        :type Webshell: str
-        :param PodId: pod的id
-        :type PodId: str
-        :param Status: 状态
-        :type Status: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param PodIp: 实例的ip
-        :type PodIp: str
-        :param Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Zone: str
-        :param DeployVersion: 部署版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeployVersion: str
-        :param RestartCount: 重启次数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RestartCount: int
-        """
+        :param Webshell: shell地址\n        :type Webshell: str\n        :param PodId: pod的id\n        :type PodId: str\n        :param Status: 状态\n        :type Status: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param PodIp: 实例的ip\n        :type PodIp: str\n        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param DeployVersion: 部署版本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DeployVersion: str\n        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RestartCount: int\n        """
         self.Webshell = None
         self.PodId = None
         self.Status = None
@@ -405,36 +327,16 @@ class TemDeployApplicationDetailInfo(AbstractModel):
     def __init__(self):
         """
         :param DeployStrategyConf: 分批发布策略
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`
-        :param StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartTime: str
-        :param EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndTime: str
-        :param Status: 当前状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param BetaBatchDetail: beta分批详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BetaBatchDetail: :class:`tencentcloud.tem.v20210701.models.DeployServiceBatchDetail`
-        :param OtherBatchDetail: 其他分批详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OtherBatchDetail: list of DeployServiceBatchDetail
-        :param OldVersionPodList: 老版本pod列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OldVersionPodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
-        :param CurrentBatchIndex: 当前批次id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CurrentBatchIndex: int
-        :param ErrorMessage: 错误原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrorMessage: str
-        :param CurrentBatchStatus: 当前批次状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CurrentBatchStatus: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`\n        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: str\n        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: str\n        :param Status: 当前状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param BetaBatchDetail: beta分批详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BetaBatchDetail: :class:`tencentcloud.tem.v20210701.models.DeployServiceBatchDetail`\n        :param OtherBatchDetail: 其他分批详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OtherBatchDetail: list of DeployServiceBatchDetail\n        :param OldVersionPodList: 老版本pod列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OldVersionPodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`\n        :param CurrentBatchIndex: 当前批次id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CurrentBatchIndex: int\n        :param ErrorMessage: 错误原因
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param CurrentBatchStatus: 当前批次状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CurrentBatchStatus: str\n        """
         self.DeployStrategyConf = None
         self.StartTime = None
         self.EndTime = None

@@ -25,19 +25,7 @@ class ActivateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 订阅实例ID。
-        :type SubscribeId: str
-        :param InstanceId: 数据库实例ID
-        :type InstanceId: str
-        :param SubscribeObjectType: 数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅
-        :type SubscribeObjectType: int
-        :param Objects: 订阅对象
-        :type Objects: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`
-        :param UniqSubnetId: 数据订阅服务所在子网。默认为数据库实例所在的子网内。
-        :type UniqSubnetId: str
-        :param Vport: 订阅服务端口；默认为7507
-        :type Vport: int
-        """
+        :param SubscribeId: 订阅实例ID。\n        :type SubscribeId: str\n        :param InstanceId: 数据库实例ID\n        :type InstanceId: str\n        :param SubscribeObjectType: 数据订阅类型0-全实例订阅，1数据订阅，2结构订阅，3数据订阅与结构订阅\n        :type SubscribeObjectType: int\n        :param Objects: 订阅对象\n        :type Objects: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`\n        :param UniqSubnetId: 数据订阅服务所在子网。默认为数据库实例所在的子网内。\n        :type UniqSubnetId: str\n        :param Vport: 订阅服务端口；默认为7507\n        :type Vport: int\n        """
         self.SubscribeId = None
         self.InstanceId = None
         self.SubscribeObjectType = None
@@ -71,11 +59,7 @@ class ActivateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 配置数据订阅任务ID。
-        :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AsyncRequestId: 配置数据订阅任务ID。\n        :type AsyncRequestId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -92,11 +76,7 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        :param CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
-        :type CompleteMode: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        :param CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync\n        :type CompleteMode: str\n        """
         self.JobId = None
         self.CompleteMode = None
 
@@ -120,9 +100,7 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -137,13 +115,7 @@ class ConsistencyParams(AbstractModel):
 
     def __init__(self):
         """
-        :param SelectRowsPerTable: 数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]
-        :type SelectRowsPerTable: int
-        :param TablesSelectAll: 数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]
-        :type TablesSelectAll: int
-        :param TablesSelectCount: 数据数量检测，检测表行数是否一致。迁移库表中，要进行数据数量检测的表，占所有表的百分比。取值范围是整数[1-100]
-        :type TablesSelectCount: int
-        """
+        :param SelectRowsPerTable: 数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]\n        :type SelectRowsPerTable: int\n        :param TablesSelectAll: 数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]\n        :type TablesSelectAll: int\n        :param TablesSelectCount: 数据数量检测，检测表行数是否一致。迁移库表中，要进行数据数量检测的表，占所有表的百分比。取值范围是整数[1-100]\n        :type TablesSelectCount: int\n        """
         self.SelectRowsPerTable = None
         self.TablesSelectAll = None
         self.TablesSelectCount = None
@@ -169,9 +141,7 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -193,9 +163,7 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -210,23 +178,7 @@ class CreateMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobName: 数据迁移任务名称
-        :type JobName: str
-        :param MigrateOption: 迁移任务配置选项
-        :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
-        :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
-        :type SrcAccessType: str
-        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
-        :type DstDatabaseType: str
-        :param DstAccessType: 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
-        :type DstAccessType: str
-        :param DstInfo: 目标实例信息
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
+        :param JobName: 数据迁移任务名称\n        :type JobName: str\n        :param MigrateOption: 迁移任务配置选项\n        :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`\n        :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。\n        :type SrcDatabaseType: str\n        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)\n        :type SrcAccessType: str\n        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关\n        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`\n        :param DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。\n        :type DstDatabaseType: str\n        :param DstAccessType: 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）\n        :type DstAccessType: str\n        :param DstInfo: 目标实例信息\n        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`\n        :param DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
 对于database-table两级结构的数据库：
 [{Database:db1,Table:[table1,table2]},{Database:db2}]
 对于database-schema-table三级结构：
@@ -234,9 +186,7 @@ class CreateMigrateJobRequest(AbstractModel):
 Table:[table1,table2]},{Database:db1,Schema:s2
 Table:[table1,table2]},{Database:db2,Schema:s1
 Table:[table1,table2]},{Database:db3},{Database:db4
-Schema:s1}]
-        :type DatabaseInfo: str
-        """
+Schema:s1}]\n        :type DatabaseInfo: str\n        """
         self.JobName = None
         self.MigrateOption = None
         self.SrcDatabaseType = None
@@ -280,11 +230,7 @@ class CreateMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.JobId = None
         self.RequestId = None
 
@@ -301,19 +247,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 订阅的数据库类型，目前支持的有 mysql
-        :type Product: str
-        :param PayType: 实例付费类型，1小时计费，0包年包月
-        :type PayType: int
-        :param Duration: 购买时长。PayType为0时必填。单位为月，最大支持120
-        :type Duration: int
-        :param Count: 购买数量,默认为1，最大为10
-        :type Count: int
-        :param AutoRenew: 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
-        :type AutoRenew: int
-        :param Tags: 实例资源标签
-        :type Tags: list of TagItem
-        """
+        :param Product: 订阅的数据库类型，目前支持的有 mysql\n        :type Product: str\n        :param PayType: 实例付费类型，1小时计费，0包年包月\n        :type PayType: int\n        :param Duration: 购买时长。PayType为0时必填。单位为月，最大支持120\n        :type Duration: int\n        :param Count: 购买数量,默认为1，最大为10\n        :type Count: int\n        :param AutoRenew: 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。\n        :type AutoRenew: int\n        :param Tags: 实例资源标签\n        :type Tags: list of TagItem\n        """
         self.Product = None
         self.PayType = None
         self.Duration = None
@@ -351,11 +285,7 @@ class CreateSubscribeResponse(AbstractModel):
     def __init__(self):
         """
         :param SubscribeIds: 数据订阅实例的ID数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubscribeIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubscribeIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubscribeIds = None
         self.RequestId = None
 
@@ -372,9 +302,7 @@ class CreateSyncCheckJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 灾备同步任务ID
-        :type JobId: str
-        """
+        :param JobId: 灾备同步任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -396,9 +324,7 @@ class CreateSyncCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -413,27 +339,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobName: 灾备同步任务名
-        :type JobName: str
-        :param SyncOption: 灾备同步任务配置选项
-        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
-        :param SrcDatabaseType: 源实例数据库类型，目前仅包括：mysql
-        :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，目前仅包括：cdb(云上cdb实例)
-        :type SrcAccessType: str
-        :param SrcInfo: 源实例信息
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DstDatabaseType: 目标实例数据库类型，目前仅包括：mysql
-        :type DstDatabaseType: str
-        :param DstAccessType: 目标实例接入类型，目前仅包括：cdb(云上cdb实例)
-        :type DstAccessType: str
-        :param DstInfo: 目标实例信息
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DatabaseInfo: 需要同步的源数据库表信息，用json格式的字符串描述。
+        :param JobName: 灾备同步任务名\n        :type JobName: str\n        :param SyncOption: 灾备同步任务配置选项\n        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`\n        :param SrcDatabaseType: 源实例数据库类型，目前仅包括：mysql\n        :type SrcDatabaseType: str\n        :param SrcAccessType: 源实例接入类型，目前仅包括：cdb(云上cdb实例)\n        :type SrcAccessType: str\n        :param SrcInfo: 源实例信息\n        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`\n        :param DstDatabaseType: 目标实例数据库类型，目前仅包括：mysql\n        :type DstDatabaseType: str\n        :param DstAccessType: 目标实例接入类型，目前仅包括：cdb(云上cdb实例)\n        :type DstAccessType: str\n        :param DstInfo: 目标实例信息\n        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`\n        :param DatabaseInfo: 需要同步的源数据库表信息，用json格式的字符串描述。
 对于database-table两级结构的数据库：
-[{Database:db1,Table:[table1,table2]},{Database:db2}]
-        :type DatabaseInfo: str
-        """
+[{Database:db1,Table:[table1,table2]},{Database:db2}]\n        :type DatabaseInfo: str\n        """
         self.JobName = None
         self.SyncOption = None
         self.SrcDatabaseType = None
@@ -477,11 +385,7 @@ class CreateSyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 灾备同步任务ID
-        :type JobId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param JobId: 灾备同步任务ID\n        :type JobId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.JobId = None
         self.RequestId = None
 
@@ -498,9 +402,7 @@ class DeleteMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -522,9 +424,7 @@ class DeleteMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -539,9 +439,7 @@ class DeleteSyncJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 待删除的灾备同步任务ID
-        :type JobId: str
-        """
+        :param JobId: 待删除的灾备同步任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -563,9 +461,7 @@ class DeleteSyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -580,9 +476,7 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 任务 ID
-        :type AsyncRequestId: str
-        """
+        :param AsyncRequestId: 任务 ID\n        :type AsyncRequestId: str\n        """
         self.AsyncRequestId = None
 
 
@@ -604,13 +498,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Info: 任务执行结果信息
-        :type Info: str
-        :param Status: 任务执行状态，可能的值有：success，failed，running
-        :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Info: 任务执行结果信息\n        :type Info: str\n        :param Status: 任务执行状态，可能的值有：success，failed，running\n        :type Status: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Info = None
         self.Status = None
         self.RequestId = None
@@ -629,9 +517,7 @@ class DescribeMigrateCheckJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -653,19 +539,7 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 校验任务状态：unavailable(当前不可用), starting(开始中)，running(校验中)，finished(校验完成)
-        :type Status: str
-        :param ErrorCode: 任务的错误码
-        :type ErrorCode: int
-        :param ErrorMessage: 任务的错误信息
-        :type ErrorMessage: str
-        :param Progress: Check任务总进度,如："30"表示30%
-        :type Progress: str
-        :param CheckFlag: 校验是否通过,0-未通过，1-校验通过, 3-未校验
-        :type CheckFlag: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 校验任务状态：unavailable(当前不可用), starting(开始中)，running(校验中)，finished(校验完成)\n        :type Status: str\n        :param ErrorCode: 任务的错误码\n        :type ErrorCode: int\n        :param ErrorMessage: 任务的错误信息\n        :type ErrorMessage: str\n        :param Progress: Check任务总进度,如："30"表示30%\n        :type Progress: str\n        :param CheckFlag: 校验是否通过,0-未通过，1-校验通过, 3-未校验\n        :type CheckFlag: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorCode = None
         self.ErrorMessage = None
@@ -690,19 +564,7 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        :param JobName: 数据迁移任务名称
-        :type JobName: str
-        :param Order: 排序字段，可以取值为JobId、Status、JobName、MigrateType、RunMode、CreateTime
-        :type Order: str
-        :param OrderSeq: 排序方式，升序为ASC，降序为DESC
-        :type OrderSeq: str
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回实例数量，默认20，有效区间[1,100]
-        :type Limit: int
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        :param JobName: 数据迁移任务名称\n        :type JobName: str\n        :param Order: 排序字段，可以取值为JobId、Status、JobName、MigrateType、RunMode、CreateTime\n        :type Order: str\n        :param OrderSeq: 排序方式，升序为ASC，降序为DESC\n        :type OrderSeq: str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回实例数量，默认20，有效区间[1,100]\n        :type Limit: int\n        """
         self.JobId = None
         self.JobName = None
         self.Order = None
@@ -734,13 +596,7 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 任务数目
-        :type TotalCount: int
-        :param JobList: 任务详情数组
-        :type JobList: list of MigrateJobInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 任务数目\n        :type TotalCount: int\n        :param JobList: 任务详情数组\n        :type JobList: list of MigrateJobInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.JobList = None
         self.RequestId = None
@@ -770,13 +626,7 @@ class DescribeRegionConfResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 可售卖地域的数量
-        :type TotalCount: int
-        :param Items: 可售卖地域详情
-        :type Items: list of SubscribeRegionConf
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 可售卖地域的数量\n        :type TotalCount: int\n        :param Items: 可售卖地域详情\n        :type Items: list of SubscribeRegionConf\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Items = None
         self.RequestId = None
@@ -800,9 +650,7 @@ class DescribeSubscribeConfRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 订阅实例ID
-        :type SubscribeId: str
-        """
+        :param SubscribeId: 订阅实例ID\n        :type SubscribeId: str\n        """
         self.SubscribeId = None
 
 
@@ -824,63 +672,9 @@ class DescribeSubscribeConfResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 订阅实例ID
-        :type SubscribeId: str
-        :param SubscribeName: 订阅实例名称
-        :type SubscribeName: str
-        :param ChannelId: 订阅通道
-        :type ChannelId: str
-        :param Product: 订阅数据库类型
-        :type Product: str
-        :param InstanceId: 被订阅的实例
-        :type InstanceId: str
-        :param InstanceStatus: 被订阅的实例的状态，可能的值有running,offline,isolate
-        :type InstanceStatus: str
-        :param SubsStatus: 订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置
-        :type SubsStatus: str
-        :param Status: 订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中
-        :type Status: str
-        :param CreateTime: 订阅实例创建时间
-        :type CreateTime: str
-        :param IsolateTime: 订阅实例被隔离时间
-        :type IsolateTime: str
-        :param ExpireTime: 订阅实例到期时间
-        :type ExpireTime: str
-        :param OfflineTime: 订阅实例下线时间
-        :type OfflineTime: str
-        :param ConsumeStartTime: 订阅实例消费时间起点。
-        :type ConsumeStartTime: str
-        :param PayType: 订阅实例计费类型，1-小时计费，0-包年包月
-        :type PayType: int
-        :param Vip: 订阅通道Vip
-        :type Vip: str
-        :param Vport: 订阅通道Port
-        :type Vport: int
-        :param UniqVpcId: 订阅通道所在VpcId
-        :type UniqVpcId: str
-        :param UniqSubnetId: 订阅通道所在SubnetId
-        :type UniqSubnetId: str
-        :param SdkConsumedTime: 当前SDK消费时间位点
-        :type SdkConsumedTime: str
-        :param SdkHost: 订阅SDK IP地址
-        :type SdkHost: str
-        :param SubscribeObjectType: 订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅
-        :type SubscribeObjectType: int
-        :param SubscribeObjects: 订阅对象，当SubscribeObjectType 为0时，此字段为空数组
-        :type SubscribeObjects: list of SubscribeObject
-        :param ModifyTime: 修改时间
-        :type ModifyTime: str
-        :param Region: 地域
-        :type Region: str
-        :param Tags: 订阅实例的标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of TagItem
-        :param AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoRenewFlag: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SubscribeId: 订阅实例ID\n        :type SubscribeId: str\n        :param SubscribeName: 订阅实例名称\n        :type SubscribeName: str\n        :param ChannelId: 订阅通道\n        :type ChannelId: str\n        :param Product: 订阅数据库类型\n        :type Product: str\n        :param InstanceId: 被订阅的实例\n        :type InstanceId: str\n        :param InstanceStatus: 被订阅的实例的状态，可能的值有running,offline,isolate\n        :type InstanceStatus: str\n        :param SubsStatus: 订阅实例状态，可能的值有unconfigure-未配置，configuring-配置中，configured-已配置\n        :type SubsStatus: str\n        :param Status: 订阅实例生命周期状态，可能的值有：normal-正常，isolating-隔离中，isolated-已隔离，offlining-下线中\n        :type Status: str\n        :param CreateTime: 订阅实例创建时间\n        :type CreateTime: str\n        :param IsolateTime: 订阅实例被隔离时间\n        :type IsolateTime: str\n        :param ExpireTime: 订阅实例到期时间\n        :type ExpireTime: str\n        :param OfflineTime: 订阅实例下线时间\n        :type OfflineTime: str\n        :param ConsumeStartTime: 订阅实例消费时间起点。\n        :type ConsumeStartTime: str\n        :param PayType: 订阅实例计费类型，1-小时计费，0-包年包月\n        :type PayType: int\n        :param Vip: 订阅通道Vip\n        :type Vip: str\n        :param Vport: 订阅通道Port\n        :type Vport: int\n        :param UniqVpcId: 订阅通道所在VpcId\n        :type UniqVpcId: str\n        :param UniqSubnetId: 订阅通道所在SubnetId\n        :type UniqSubnetId: str\n        :param SdkConsumedTime: 当前SDK消费时间位点\n        :type SdkConsumedTime: str\n        :param SdkHost: 订阅SDK IP地址\n        :type SdkHost: str\n        :param SubscribeObjectType: 订阅对象类型0-全实例订阅，1-DDL数据订阅，2-DML结构订阅，3-DDL数据订阅+DML结构订阅\n        :type SubscribeObjectType: int\n        :param SubscribeObjects: 订阅对象，当SubscribeObjectType 为0时，此字段为空数组\n        :type SubscribeObjects: list of SubscribeObject\n        :param ModifyTime: 修改时间\n        :type ModifyTime: str\n        :param Region: 地域\n        :type Region: str\n        :param Tags: 订阅实例的标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of TagItem\n        :param AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoRenewFlag: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubscribeId = None
         self.SubscribeName = None
         self.ChannelId = None
@@ -957,33 +751,7 @@ class DescribeSubscribesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅的实例ID
-        :type SubscribeId: str
-        :param SubscribeName: 数据订阅的实例名称
-        :type SubscribeName: str
-        :param InstanceId: 绑定数据库实例的ID
-        :type InstanceId: str
-        :param ChannelId: 数据订阅实例的通道ID
-        :type ChannelId: str
-        :param PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费
-        :type PayType: str
-        :param Product: 订阅的数据库产品，如mysql
-        :type Product: str
-        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
-        :type Status: list of str
-        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
-        :type SubsStatus: list of str
-        :param Offset: 返回记录的起始偏移量
-        :type Offset: int
-        :param Limit: 单次返回的记录数量
-        :type Limit: int
-        :param OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
-        :type OrderDirection: str
-        :param TagFilters: 标签过滤条件
-        :type TagFilters: list of TagFilter
-        :param SubscribeVersion: 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
-        :type SubscribeVersion: str
-        """
+        :param SubscribeId: 数据订阅的实例ID\n        :type SubscribeId: str\n        :param SubscribeName: 数据订阅的实例名称\n        :type SubscribeName: str\n        :param InstanceId: 绑定数据库实例的ID\n        :type InstanceId: str\n        :param ChannelId: 数据订阅实例的通道ID\n        :type ChannelId: str\n        :param PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费\n        :type PayType: str\n        :param Product: 订阅的数据库产品，如mysql\n        :type Product: str\n        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中\n        :type Status: list of str\n        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置\n        :type SubsStatus: list of str\n        :param Offset: 返回记录的起始偏移量\n        :type Offset: int\n        :param Limit: 单次返回的记录数量\n        :type Limit: int\n        :param OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序\n        :type OrderDirection: str\n        :param TagFilters: 标签过滤条件\n        :type TagFilters: list of TagFilter\n        :param SubscribeVersion: 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅\n        :type SubscribeVersion: str\n        """
         self.SubscribeId = None
         self.SubscribeName = None
         self.InstanceId = None
@@ -1034,13 +802,7 @@ class DescribeSubscribesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合查询条件的实例总数
-        :type TotalCount: int
-        :param Items: 数据订阅实例的信息列表
-        :type Items: list of SubscribeInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合查询条件的实例总数\n        :type TotalCount: int\n        :param Items: 数据订阅实例的信息列表\n        :type Items: list of SubscribeInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Items = None
         self.RequestId = None
@@ -1064,9 +826,7 @@ class DescribeSyncCheckJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 要查询的灾备同步任务ID
-        :type JobId: str
-        """
+        :param JobId: 要查询的灾备同步任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -1088,19 +848,7 @@ class DescribeSyncCheckJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务校验状态： starting(开始中)，running(校验中)，finished(校验完成)
-        :type Status: str
-        :param ErrorCode: 任务校验结果代码
-        :type ErrorCode: int
-        :param ErrorMessage: 提示信息
-        :type ErrorMessage: str
-        :param StepInfo: 任务执行步骤描述
-        :type StepInfo: list of SyncCheckStepInfo
-        :param CheckFlag: 校验标志：0（尚未校验成功） ， 1（校验成功）
-        :type CheckFlag: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 任务校验状态： starting(开始中)，running(校验中)，finished(校验完成)\n        :type Status: str\n        :param ErrorCode: 任务校验结果代码\n        :type ErrorCode: int\n        :param ErrorMessage: 提示信息\n        :type ErrorMessage: str\n        :param StepInfo: 任务执行步骤描述\n        :type StepInfo: list of SyncCheckStepInfo\n        :param CheckFlag: 校验标志：0（尚未校验成功） ， 1（校验成功）\n        :type CheckFlag: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorCode = None
         self.ErrorMessage = None
@@ -1130,19 +878,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 灾备同步任务ID
-        :type JobId: str
-        :param JobName: 灾备同步任务名
-        :type JobName: str
-        :param Order: 排序字段，可以取值为JobId、Status、JobName、CreateTime
-        :type Order: str
-        :param OrderSeq: 排序方式，升序为ASC，降序为DESC
-        :type OrderSeq: str
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回实例数量，默认20，有效区间[1,100]
-        :type Limit: int
-        """
+        :param JobId: 灾备同步任务ID\n        :type JobId: str\n        :param JobName: 灾备同步任务名\n        :type JobName: str\n        :param Order: 排序字段，可以取值为JobId、Status、JobName、CreateTime\n        :type Order: str\n        :param OrderSeq: 排序方式，升序为ASC，降序为DESC\n        :type OrderSeq: str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回实例数量，默认20，有效区间[1,100]\n        :type Limit: int\n        """
         self.JobId = None
         self.JobName = None
         self.Order = None
@@ -1174,13 +910,7 @@ class DescribeSyncJobsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 任务数目
-        :type TotalCount: int
-        :param JobList: 任务详情数组
-        :type JobList: list of SyncJobInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 任务数目\n        :type TotalCount: int\n        :param JobList: 任务详情数组\n        :type JobList: list of SyncJobInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.JobList = None
         self.RequestId = None
@@ -1204,21 +934,7 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 目标实例ID，如cdb-jd92ijd8
-        :type InstanceId: str
-        :param Region: 目标实例地域，如ap-guangzhou
-        :type Region: str
-        :param Ip: 目标实例vip。已废弃，无需填写
-        :type Ip: str
-        :param Port: 目标实例vport。已废弃，无需填写
-        :type Port: int
-        :param ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。
-        :type ReadOnly: int
-        :param User: 目标数据库账号
-        :type User: str
-        :param Password: 目标数据库密码
-        :type Password: str
-        """
+        :param InstanceId: 目标实例ID，如cdb-jd92ijd8\n        :type InstanceId: str\n        :param Region: 目标实例地域，如ap-guangzhou\n        :type Region: str\n        :param Ip: 目标实例vip。已废弃，无需填写\n        :type Ip: str\n        :param Port: 目标实例vport。已废弃，无需填写\n        :type Port: int\n        :param ReadOnly: 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。\n        :type ReadOnly: int\n        :param User: 目标数据库账号\n        :type User: str\n        :param Password: 目标数据库密码\n        :type Password: str\n        """
         self.InstanceId = None
         self.Region = None
         self.Ip = None
@@ -1252,11 +968,7 @@ class ErrorInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ErrorLog: 具体的报错日志, 包含错误码和错误信息
-        :type ErrorLog: str
-        :param HelpDoc: 报错对应的帮助文档Ur
-        :type HelpDoc: str
-        """
+        :param ErrorLog: 具体的报错日志, 包含错误码和错误信息\n        :type ErrorLog: str\n        :param HelpDoc: 报错对应的帮助文档Ur\n        :type HelpDoc: str\n        """
         self.ErrorLog = None
         self.HelpDoc = None
 
@@ -1280,9 +992,7 @@ class IsolateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 订阅实例ID
-        :type SubscribeId: str
-        """
+        :param SubscribeId: 订阅实例ID\n        :type SubscribeId: str\n        """
         self.SubscribeId = None
 
 
@@ -1304,9 +1014,7 @@ class IsolateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1321,21 +1029,7 @@ class MigrateDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StepAll: 总步骤数
-        :type StepAll: int
-        :param StepNow: 当前步骤
-        :type StepNow: int
-        :param Progress: 总进度,如："10"
-        :type Progress: str
-        :param CurrentStepProgress: 当前步骤进度,如:"1"
-        :type CurrentStepProgress: str
-        :param MasterSlaveDistance: 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql
-        :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: 主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql
-        :type SecondsBehindMaster: int
-        :param StepInfo: 步骤信息
-        :type StepInfo: list of MigrateStepDetailInfo
-        """
+        :param StepAll: 总步骤数\n        :type StepAll: int\n        :param StepNow: 当前步骤\n        :type StepNow: int\n        :param Progress: 总进度,如："10"\n        :type Progress: str\n        :param CurrentStepProgress: 当前步骤进度,如:"1"\n        :type CurrentStepProgress: str\n        :param MasterSlaveDistance: 主从差距，MB；在增量同步阶段有效，目前支持产品为：redis和mysql\n        :type MasterSlaveDistance: int\n        :param SecondsBehindMaster: 主从差距，秒；在增量同步阶段有效，目前支持产品为：mysql\n        :type SecondsBehindMaster: int\n        :param StepInfo: 步骤信息\n        :type StepInfo: list of MigrateStepDetailInfo\n        """
         self.StepAll = None
         self.StepNow = None
         self.Progress = None
@@ -1374,39 +1068,7 @@ class MigrateJobInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        :param JobName: 数据迁移任务名称
-        :type JobName: str
-        :param MigrateOption: 迁移任务配置选项
-        :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
-        :type SrcDatabaseType: str
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
-        :type SrcAccessType: str
-        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona
-        :type DstDatabaseType: str
-        :param DstAccessType: 目标实例接入类型，目前支持：cdb(腾讯云数据库实例)
-        :type DstAccessType: str
-        :param DstInfo: 目标实例信息
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 需要迁移的源数据库表信息，如果需要迁移的是整个实例，该字段为[]
-        :type DatabaseInfo: str
-        :param CreateTime: 任务创建(提交)时间
-        :type CreateTime: str
-        :param StartTime: 任务开始执行时间
-        :type StartTime: str
-        :param EndTime: 任务执行结束时间
-        :type EndTime: str
-        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
-        :type Status: int
-        :param Detail: 任务详情
-        :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
-        :param ErrorInfo: 任务错误信息提示，当任务发生错误时，不为null或者空值
-        :type ErrorInfo: list of ErrorInfo
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        :param JobName: 数据迁移任务名称\n        :type JobName: str\n        :param MigrateOption: 迁移任务配置选项\n        :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`\n        :param SrcDatabaseType: 源实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona\n        :type SrcDatabaseType: str\n        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)\n        :type SrcAccessType: str\n        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关\n        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`\n        :param DstDatabaseType: 目标实例数据库类型:mysql，redis，mongodb，postgresql，mariadb，percona\n        :type DstDatabaseType: str\n        :param DstAccessType: 目标实例接入类型，目前支持：cdb(腾讯云数据库实例)\n        :type DstAccessType: str\n        :param DstInfo: 目标实例信息\n        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`\n        :param DatabaseInfo: 需要迁移的源数据库表信息，如果需要迁移的是整个实例，该字段为[]\n        :type DatabaseInfo: str\n        :param CreateTime: 任务创建(提交)时间\n        :type CreateTime: str\n        :param StartTime: 任务开始执行时间\n        :type StartTime: str\n        :param EndTime: 任务执行结束时间\n        :type EndTime: str\n        :param Status: 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）\n        :type Status: int\n        :param Detail: 任务详情\n        :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`\n        :param ErrorInfo: 任务错误信息提示，当任务发生错误时，不为null或者空值\n        :type ErrorInfo: list of ErrorInfo\n        """
         self.JobId = None
         self.JobName = None
         self.MigrateOption = None
@@ -1471,19 +1133,7 @@ class MigrateOption(AbstractModel):
 
     def __init__(self):
         """
-        :param RunMode: 任务运行模式，值包括：1-立即执行，2-定时执行
-        :type RunMode: int
-        :param ExpectTime: 期望执行时间，当runMode=2时，该字段必填，时间格式：yyyy-mm-dd hh:mm:ss
-        :type ExpectTime: str
-        :param MigrateType: 数据迁移类型，值包括：1-结构迁移,2-全量迁移,3-全量+增量迁移
-        :type MigrateType: int
-        :param MigrateObject: 迁移对象，1-整个实例，2-指定库表
-        :type MigrateObject: int
-        :param ConsistencyType: 抽样数据一致性检测参数，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测
-        :type ConsistencyType: int
-        :param IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：0-不覆盖，1-覆盖，选择库表或者结构迁移时应该为0
-        :type IsOverrideRoot: int
-        :param ExternParams: 不同数据库用到的额外参数.以JSON格式描述. 
+        :param RunMode: 任务运行模式，值包括：1-立即执行，2-定时执行\n        :type RunMode: int\n        :param ExpectTime: 期望执行时间，当runMode=2时，该字段必填，时间格式：yyyy-mm-dd hh:mm:ss\n        :type ExpectTime: str\n        :param MigrateType: 数据迁移类型，值包括：1-结构迁移,2-全量迁移,3-全量+增量迁移\n        :type MigrateType: int\n        :param MigrateObject: 迁移对象，1-整个实例，2-指定库表\n        :type MigrateObject: int\n        :param ConsistencyType: 抽样数据一致性检测参数，1-未配置,2-全量检测,3-抽样检测, 4-仅校验不一致表,5-不检测\n        :type ConsistencyType: int\n        :param IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：0-不覆盖，1-覆盖，选择库表或者结构迁移时应该为0\n        :type IsOverrideRoot: int\n        :param ExternParams: 不同数据库用到的额外参数.以JSON格式描述. 
 Redis可定义如下的参数: 
 { 
 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 
@@ -1498,11 +1148,7 @@ MongoDB可定义如下的参数:
 	'SrcAuthFlag': "1", 
 	'SrcAuthMechanism':"SCRAM-SHA-1"
 }
-MySQL暂不支持额外参数设置。
-        :type ExternParams: str
-        :param ConsistencyParams: 仅用于“抽样数据一致性检测”，ConsistencyType配置为抽样检测时，必选
-        :type ConsistencyParams: :class:`tencentcloud.dts.v20180330.models.ConsistencyParams`
-        """
+MySQL暂不支持额外参数设置。\n        :type ExternParams: str\n        :param ConsistencyParams: 仅用于“抽样数据一致性检测”，ConsistencyType配置为抽样检测时，必选\n        :type ConsistencyParams: :class:`tencentcloud.dts.v20180330.models.ConsistencyParams`\n        """
         self.RunMode = None
         self.ExpectTime = None
         self.MigrateType = None
@@ -1540,18 +1186,8 @@ class MigrateStepDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StepNo: 步骤序列
-        :type StepNo: int
-        :param StepName: 步骤展现名称
-        :type StepName: str
-        :param StepId: 步骤英文标识
-        :type StepId: str
-        :param Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
-        :type Status: int
-        :param StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartTime: str
-        """
+        :param StepNo: 步骤序列\n        :type StepNo: int\n        :param StepName: 步骤展现名称\n        :type StepName: str\n        :param StepId: 步骤英文标识\n        :type StepId: str\n        :param Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行\n        :type Status: int\n        :param StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: str\n        """
         self.StepNo = None
         self.StepName = None
         self.StepId = None
@@ -1581,30 +1217,14 @@ class ModifyMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 待修改的数据迁移任务ID
-        :type JobId: str
-        :param JobName: 数据迁移任务名称
-        :type JobName: str
-        :param MigrateOption: 迁移任务配置选项
-        :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)
-        :type SrcAccessType: str
-        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.
-        :type DstAccessType: str
-        :param DstInfo: 目标实例信息, 其中目标实例地域不允许修改.
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
-        :param DatabaseInfo: 当选择'指定库表'迁移的时候, 需要设置待迁移的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
+        :param JobId: 待修改的数据迁移任务ID\n        :type JobId: str\n        :param JobName: 数据迁移任务名称\n        :type JobName: str\n        :param MigrateOption: 迁移任务配置选项\n        :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`\n        :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(云上CDB实例)\n        :type SrcAccessType: str\n        :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关\n        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`\n        :param DstAccessType: 目标实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例)，cdb(云上CDB实例). 目前只支持cdb.\n        :type DstAccessType: str\n        :param DstInfo: 目标实例信息, 其中目标实例地域不允许修改.\n        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`\n        :param DatabaseInfo: 当选择'指定库表'迁移的时候, 需要设置待迁移的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
 
 对于database-table两级结构的数据库：
 [{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
 对于database-schema-table三级结构：
 [{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
 
-如果是'整个实例'的迁移模式,不需设置该字段
-        :type DatabaseInfo: str
-        """
+如果是'整个实例'的迁移模式,不需设置该字段\n        :type DatabaseInfo: str\n        """
         self.JobId = None
         self.JobName = None
         self.MigrateOption = None
@@ -1646,9 +1266,7 @@ class ModifyMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1663,11 +1281,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 订阅实例ID，例如：subs-8uey736k
-        :type SubscribeId: str
-        :param AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费
-        :type AutoRenewFlag: int
-        """
+        :param SubscribeId: 订阅实例ID，例如：subs-8uey736k\n        :type SubscribeId: str\n        :param AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费\n        :type AutoRenewFlag: int\n        """
         self.SubscribeId = None
         self.AutoRenewFlag = None
 
@@ -1691,9 +1305,7 @@ class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1708,11 +1320,7 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅实例的ID
-        :type SubscribeId: str
-        :param ConsumeStartTime: 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
-        :type ConsumeStartTime: str
-        """
+        :param SubscribeId: 数据订阅实例的ID\n        :type SubscribeId: str\n        :param ConsumeStartTime: 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内\n        :type ConsumeStartTime: str\n        """
         self.SubscribeId = None
         self.ConsumeStartTime = None
 
@@ -1736,9 +1344,7 @@ class ModifySubscribeConsumeTimeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1753,11 +1359,7 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅实例的ID
-        :type SubscribeId: str
-        :param SubscribeName: 数据订阅实例的名称，长度限制为[1,60]
-        :type SubscribeName: str
-        """
+        :param SubscribeId: 数据订阅实例的ID\n        :type SubscribeId: str\n        :param SubscribeName: 数据订阅实例的名称，长度限制为[1,60]\n        :type SubscribeName: str\n        """
         self.SubscribeId = None
         self.SubscribeName = None
 
@@ -1781,9 +1383,7 @@ class ModifySubscribeNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1798,13 +1398,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅实例的ID
-        :type SubscribeId: str
-        :param SubscribeObjectType: 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
-        :type SubscribeObjectType: int
-        :param Objects: 订阅的数据库表信息
-        :type Objects: list of SubscribeObject
-        """
+        :param SubscribeId: 数据订阅实例的ID\n        :type SubscribeId: str\n        :param SubscribeObjectType: 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅\n        :type SubscribeObjectType: int\n        :param Objects: 订阅的数据库表信息\n        :type Objects: list of SubscribeObject\n        """
         self.SubscribeId = None
         self.SubscribeObjectType = None
         self.Objects = None
@@ -1835,11 +1429,7 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 异步任务的ID
-        :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AsyncRequestId: 异步任务的ID\n        :type AsyncRequestId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -1856,15 +1446,7 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅实例的ID
-        :type SubscribeId: str
-        :param DstUniqSubnetId: 指定目的子网，如果传此参数，DstIp必须在目的子网内
-        :type DstUniqSubnetId: str
-        :param DstIp: 目标IP，与DstPort至少传一个
-        :type DstIp: str
-        :param DstPort: 目标PORT，支持范围为：[1025-65535]
-        :type DstPort: int
-        """
+        :param SubscribeId: 数据订阅实例的ID\n        :type SubscribeId: str\n        :param DstUniqSubnetId: 指定目的子网，如果传此参数，DstIp必须在目的子网内\n        :type DstUniqSubnetId: str\n        :param DstIp: 目标IP，与DstPort至少传一个\n        :type DstIp: str\n        :param DstPort: 目标PORT，支持范围为：[1025-65535]\n        :type DstPort: int\n        """
         self.SubscribeId = None
         self.DstUniqSubnetId = None
         self.DstIp = None
@@ -1892,9 +1474,7 @@ class ModifySubscribeVipVportResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1909,17 +1489,9 @@ class ModifySyncJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 待修改的灾备同步任务ID
-        :type JobId: str
-        :param JobName: 灾备同步任务名称
-        :type JobName: str
-        :param SyncOption: 灾备同步任务配置选项
-        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
-        :param DatabaseInfo: 当选择'指定库表'灾备同步的时候, 需要设置待同步的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
+        :param JobId: 待修改的灾备同步任务ID\n        :type JobId: str\n        :param JobName: 灾备同步任务名称\n        :type JobName: str\n        :param SyncOption: 灾备同步任务配置选项\n        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`\n        :param DatabaseInfo: 当选择'指定库表'灾备同步的时候, 需要设置待同步的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
 对于database-table两级结构的数据库：
-[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
-        :type DatabaseInfo: str
-        """
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]\n        :type DatabaseInfo: str\n        """
         self.JobId = None
         self.JobName = None
         self.SyncOption = None
@@ -1949,9 +1521,7 @@ class ModifySyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1966,9 +1536,7 @@ class OfflineIsolatedSubscribeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅实例的ID
-        :type SubscribeId: str
-        """
+        :param SubscribeId: 数据订阅实例的ID\n        :type SubscribeId: str\n        """
         self.SubscribeId = None
 
 
@@ -1990,9 +1558,7 @@ class OfflineIsolatedSubscribeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2007,9 +1573,7 @@ class ResetSubscribeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅实例的ID
-        :type SubscribeId: str
-        """
+        :param SubscribeId: 数据订阅实例的ID\n        :type SubscribeId: str\n        """
         self.SubscribeId = None
 
 
@@ -2031,9 +1595,7 @@ class ResetSubscribeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2048,40 +1610,8 @@ class SrcInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessKey: 阿里云AccessKey。源库是阿里云RDS5.6适用
-        :type AccessKey: str
-        :param Ip: 实例的IP地址
-        :type Ip: str
-        :param Port: 实例的端口
-        :type Port: int
-        :param User: 实例的用户名
-        :type User: str
-        :param Password: 实例的密码
-        :type Password: str
-        :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用
-        :type RdsInstanceId: str
-        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
-        :type CvmInstanceId: str
-        :param UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb
-        :type UniqDcgId: str
-        :param VpcId: 私有网络ID，格式如：vpc-92jblxto
-        :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz
-        :type SubnetId: str
-        :param UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q
-        :type UniqVpnGwId: str
-        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q
-        :type InstanceId: str
-        :param Region: 地域英文名，如：ap-guangzhou
-        :type Region: str
-        :param Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others
-        :type Supplier: str
-        :param CcnId: 云联网ID，如：ccn-afp6kltc
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CcnId: str
-        :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
-        :type EngineVersion: str
-        """
+        :param AccessKey: 阿里云AccessKey。源库是阿里云RDS5.6适用\n        :type AccessKey: str\n        :param Ip: 实例的IP地址\n        :type Ip: str\n        :param Port: 实例的端口\n        :type Port: int\n        :param User: 实例的用户名\n        :type User: str\n        :param Password: 实例的密码\n        :type Password: str\n        :param RdsInstanceId: 阿里云RDS实例ID。源库是阿里云RDS5.6/5.6适用\n        :type RdsInstanceId: str\n        :param CvmInstanceId: CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段\n        :type CvmInstanceId: str\n        :param UniqDcgId: 专线网关ID，格式如：dcg-0rxtqqxb\n        :type UniqDcgId: str\n        :param VpcId: 私有网络ID，格式如：vpc-92jblxto\n        :type VpcId: str\n        :param SubnetId: 私有网络下的子网ID，格式如：subnet-3paxmkdz\n        :type SubnetId: str\n        :param UniqVpnGwId: VPN网关ID，格式如：vpngw-9ghexg7q\n        :type UniqVpnGwId: str\n        :param InstanceId: 数据库实例ID，格式如：cdb-powiqx8q\n        :type InstanceId: str\n        :param Region: 地域英文名，如：ap-guangzhou\n        :type Region: str\n        :param Supplier: 当实例为RDS实例时，填写为aliyun, 其他情况均填写others\n        :type Supplier: str\n        :param CcnId: 云联网ID，如：ccn-afp6kltc
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CcnId: str\n        :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6\n        :type EngineVersion: str\n        """
         self.AccessKey = None
         self.Ip = None
         self.Port = None
@@ -2133,9 +1663,7 @@ class StartMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -2157,9 +1685,7 @@ class StartMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2174,9 +1700,7 @@ class StartSyncJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 灾备同步任务ID
-        :type JobId: str
-        """
+        :param JobId: 灾备同步任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -2198,9 +1722,7 @@ class StartSyncJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2215,9 +1737,7 @@ class StopMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 数据迁移任务ID
-        :type JobId: str
-        """
+        :param JobId: 数据迁移任务ID\n        :type JobId: str\n        """
         self.JobId = None
 
 
@@ -2239,9 +1759,7 @@ class StopMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2256,58 +1774,10 @@ class SubscribeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SubscribeId: 数据订阅的实例ID
-        :type SubscribeId: str
-        :param SubscribeName: 数据订阅实例的名称
-        :type SubscribeName: str
-        :param ChannelId: 数据订阅实例绑定的通道ID
-        :type ChannelId: str
-        :param Product: 数据订阅绑定实例对应的产品名称
-        :type Product: str
-        :param InstanceId: 数据订阅实例绑定的数据库实例ID
-        :type InstanceId: str
-        :param InstanceStatus: 数据订阅实例绑定的数据库实例状态
-        :type InstanceStatus: str
-        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
-        :type SubsStatus: str
-        :param ModifyTime: 上次修改时间
-        :type ModifyTime: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param IsolateTime: 隔离时间
-        :type IsolateTime: str
-        :param ExpireTime: 到期时间
-        :type ExpireTime: str
-        :param OfflineTime: 下线时间
-        :type OfflineTime: str
-        :param ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值
-        :type ConsumeStartTime: str
-        :param Region: 数据订阅实例所属地域
-        :type Region: str
-        :param PayType: 计费方式，0 - 包年包月，1 - 按量计费
-        :type PayType: int
-        :param Vip: 数据订阅实例的Vip
-        :type Vip: str
-        :param Vport: 数据订阅实例的Vport
-        :type Vport: int
-        :param UniqVpcId: 数据订阅实例Vip所在VPC的唯一ID
-        :type UniqVpcId: str
-        :param UniqSubnetId: 数据订阅实例Vip所在子网的唯一ID
-        :type UniqSubnetId: str
-        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线
-        :type Status: str
-        :param SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
-        :type SdkConsumedTime: str
-        :param Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of TagItem
-        :param AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoRenewFlag: int
-        :param SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubscribeVersion: str
-        """
+        :param SubscribeId: 数据订阅的实例ID\n        :type SubscribeId: str\n        :param SubscribeName: 数据订阅实例的名称\n        :type SubscribeName: str\n        :param ChannelId: 数据订阅实例绑定的通道ID\n        :type ChannelId: str\n        :param Product: 数据订阅绑定实例对应的产品名称\n        :type Product: str\n        :param InstanceId: 数据订阅实例绑定的数据库实例ID\n        :type InstanceId: str\n        :param InstanceStatus: 数据订阅实例绑定的数据库实例状态\n        :type InstanceStatus: str\n        :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置\n        :type SubsStatus: str\n        :param ModifyTime: 上次修改时间\n        :type ModifyTime: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param IsolateTime: 隔离时间\n        :type IsolateTime: str\n        :param ExpireTime: 到期时间\n        :type ExpireTime: str\n        :param OfflineTime: 下线时间\n        :type OfflineTime: str\n        :param ConsumeStartTime: 最近一次修改的消费时间起点，如果从未修改则为零值\n        :type ConsumeStartTime: str\n        :param Region: 数据订阅实例所属地域\n        :type Region: str\n        :param PayType: 计费方式，0 - 包年包月，1 - 按量计费\n        :type PayType: int\n        :param Vip: 数据订阅实例的Vip\n        :type Vip: str\n        :param Vport: 数据订阅实例的Vport\n        :type Vport: int\n        :param UniqVpcId: 数据订阅实例Vip所在VPC的唯一ID\n        :type UniqVpcId: str\n        :param UniqSubnetId: 数据订阅实例Vip所在子网的唯一ID\n        :type UniqSubnetId: str\n        :param Status: 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中，offline - 已下线\n        :type Status: str\n        :param SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点\n        :type SdkConsumedTime: str\n        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of TagItem\n        :param AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoRenewFlag: int\n        :param SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubscribeVersion: str\n        """
         self.SubscribeId = None
         self.SubscribeName = None
         self.ChannelId = None
@@ -2381,15 +1851,9 @@ class SubscribeObject(AbstractModel):
     def __init__(self):
         """
         :param ObjectsType: 数据订阅对象的类型，0-数据库，1-数据库内的表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ObjectsType: int
-        :param DatabaseName: 订阅数据库的名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DatabaseName: str
-        :param TableNames: 订阅数据库中表名称数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TableNames: list of str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ObjectsType: int\n        :param DatabaseName: 订阅数据库的名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DatabaseName: str\n        :param TableNames: 订阅数据库中表名称数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TableNames: list of str\n        """
         self.ObjectsType = None
         self.DatabaseName = None
         self.TableNames = None
@@ -2416,21 +1880,11 @@ class SubscribeRegionConf(AbstractModel):
     def __init__(self):
         """
         :param RegionName: 地域名称，如广州
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionName: str
-        :param Region: 地区标识，如ap-guangzhou
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Region: str
-        :param Area: 地域名称，如华南地区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Area: str
-        :param IsDefaultRegion: 是否为默认地域，0 - 不是，1 - 是的
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsDefaultRegion: int
-        :param Status: 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionName: str\n        :param Region: 地区标识，如ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param Area: 地域名称，如华南地区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Area: str\n        :param IsDefaultRegion: 是否为默认地域，0 - 不是，1 - 是的
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDefaultRegion: int\n        :param Status: 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
         self.RegionName = None
         self.Region = None
         self.Area = None
@@ -2460,11 +1914,7 @@ class SwitchDrToMasterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DstInfo: 灾备实例的信息
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DatabaseType: 数据库的类型  （如 mysql）
-        :type DatabaseType: str
-        """
+        :param DstInfo: 灾备实例的信息\n        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`\n        :param DatabaseType: 数据库的类型  （如 mysql）\n        :type DatabaseType: str\n        """
         self.DstInfo = None
         self.DatabaseType = None
 
@@ -2490,11 +1940,7 @@ class SwitchDrToMasterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AsyncRequestId: 后台异步任务请求id
-        :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AsyncRequestId: 后台异步任务请求id\n        :type AsyncRequestId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -2511,15 +1957,7 @@ class SyncCheckStepInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StepNo: 步骤序列
-        :type StepNo: int
-        :param StepName: 步骤展现名称
-        :type StepName: str
-        :param StepCode: 步骤执行结果代码
-        :type StepCode: int
-        :param StepMessage: 步骤执行结果提示
-        :type StepMessage: str
-        """
+        :param StepNo: 步骤序列\n        :type StepNo: int\n        :param StepName: 步骤展现名称\n        :type StepName: str\n        :param StepCode: 步骤执行结果代码\n        :type StepCode: int\n        :param StepMessage: 步骤执行结果提示\n        :type StepMessage: str\n        """
         self.StepNo = None
         self.StepName = None
         self.StepCode = None
@@ -2547,21 +1985,7 @@ class SyncDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StepAll: 总步骤数
-        :type StepAll: int
-        :param StepNow: 当前步骤
-        :type StepNow: int
-        :param Progress: 总进度
-        :type Progress: str
-        :param CurrentStepProgress: 当前步骤进度
-        :type CurrentStepProgress: str
-        :param MasterSlaveDistance: 主从差距，MB
-        :type MasterSlaveDistance: int
-        :param SecondsBehindMaster: 主从差距，秒
-        :type SecondsBehindMaster: int
-        :param StepInfo: 步骤信息
-        :type StepInfo: list of SyncStepDetailInfo
-        """
+        :param StepAll: 总步骤数\n        :type StepAll: int\n        :param StepNow: 当前步骤\n        :type StepNow: int\n        :param Progress: 总进度\n        :type Progress: str\n        :param CurrentStepProgress: 当前步骤进度\n        :type CurrentStepProgress: str\n        :param MasterSlaveDistance: 主从差距，MB\n        :type MasterSlaveDistance: int\n        :param SecondsBehindMaster: 主从差距，秒\n        :type SecondsBehindMaster: int\n        :param StepInfo: 步骤信息\n        :type StepInfo: list of SyncStepDetailInfo\n        """
         self.StepAll = None
         self.StepNow = None
         self.Progress = None
@@ -2600,11 +2024,7 @@ class SyncInstanceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: 地域英文名，如：ap-guangzhou
-        :type Region: str
-        :param InstanceId: 实例短ID
-        :type InstanceId: str
-        """
+        :param Region: 地域英文名，如：ap-guangzhou\n        :type Region: str\n        :param InstanceId: 实例短ID\n        :type InstanceId: str\n        """
         self.Region = None
         self.InstanceId = None
 
@@ -2628,37 +2048,7 @@ class SyncJobInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param JobId: 灾备任务id
-        :type JobId: str
-        :param JobName: 灾备任务名
-        :type JobName: str
-        :param SyncOption: 任务同步
-        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`
-        :param SrcAccessType: 源接入类型
-        :type SrcAccessType: str
-        :param SrcDatabaseType: 源数据类型
-        :type SrcDatabaseType: str
-        :param SrcInfo: 源实例信息
-        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param DstAccessType: 灾备接入类型
-        :type DstAccessType: str
-        :param DstDatabaseType: 灾备数据类型
-        :type DstDatabaseType: str
-        :param DstInfo: 灾备实例信息
-        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
-        :param Detail: 任务信息
-        :type Detail: :class:`tencentcloud.dts.v20180330.models.SyncDetailInfo`
-        :param Status: 任务状态
-        :type Status: int
-        :param DatabaseInfo: 迁移库表
-        :type DatabaseInfo: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        """
+        :param JobId: 灾备任务id\n        :type JobId: str\n        :param JobName: 灾备任务名\n        :type JobName: str\n        :param SyncOption: 任务同步\n        :type SyncOption: :class:`tencentcloud.dts.v20180330.models.SyncOption`\n        :param SrcAccessType: 源接入类型\n        :type SrcAccessType: str\n        :param SrcDatabaseType: 源数据类型\n        :type SrcDatabaseType: str\n        :param SrcInfo: 源实例信息\n        :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`\n        :param DstAccessType: 灾备接入类型\n        :type DstAccessType: str\n        :param DstDatabaseType: 灾备数据类型\n        :type DstDatabaseType: str\n        :param DstInfo: 灾备实例信息\n        :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`\n        :param Detail: 任务信息\n        :type Detail: :class:`tencentcloud.dts.v20180330.models.SyncDetailInfo`\n        :param Status: 任务状态\n        :type Status: int\n        :param DatabaseInfo: 迁移库表\n        :type DatabaseInfo: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        """
         self.JobId = None
         self.JobName = None
         self.SyncOption = None
@@ -2716,15 +2106,7 @@ class SyncOption(AbstractModel):
 
     def __init__(self):
         """
-        :param SyncObject: 同步对象，1-整个实例，2-指定库表
-        :type SyncObject: int
-        :param RunMode: 同步开始设置，1-立即开始
-        :type RunMode: int
-        :param SyncType: 同步模式， 3-全量且增量同步
-        :type SyncType: int
-        :param ConsistencyType: 数据一致性检测， 1-无需配置
-        :type ConsistencyType: int
-        """
+        :param SyncObject: 同步对象，1-整个实例，2-指定库表\n        :type SyncObject: int\n        :param RunMode: 同步开始设置，1-立即开始\n        :type RunMode: int\n        :param SyncType: 同步模式， 3-全量且增量同步\n        :type SyncType: int\n        :param ConsistencyType: 数据一致性检测， 1-无需配置\n        :type ConsistencyType: int\n        """
         self.SyncObject = None
         self.RunMode = None
         self.SyncType = None
@@ -2752,15 +2134,7 @@ class SyncStepDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StepNo: 步骤编号
-        :type StepNo: int
-        :param StepName: 步骤名
-        :type StepName: str
-        :param CanStop: 能否中止
-        :type CanStop: int
-        :param StepId: 步骤号
-        :type StepId: int
-        """
+        :param StepNo: 步骤编号\n        :type StepNo: int\n        :param StepName: 步骤名\n        :type StepName: str\n        :param CanStop: 能否中止\n        :type CanStop: int\n        :param StepId: 步骤号\n        :type StepId: int\n        """
         self.StepNo = None
         self.StepName = None
         self.CanStop = None
@@ -2788,11 +2162,7 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键值
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: list of str
-        """
+        :param TagKey: 标签键值\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: list of str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -2816,12 +2186,8 @@ class TagItem(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键值
-        :type TagKey: str
-        :param TagValue: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagValue: str
-        """
+        :param TagKey: 标签键值\n        :type TagKey: str\n        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 

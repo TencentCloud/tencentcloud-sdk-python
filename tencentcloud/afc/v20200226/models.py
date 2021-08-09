@@ -25,65 +25,21 @@ class QueryAntiFraudVipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PhoneNumber: 电话号码(五选二)
-        :type PhoneNumber: str
-        :param IdNumber: Id号(五选二)
-        :type IdNumber: str
-        :param BankCardNumber: 银行卡号(五选二)
-        :type BankCardNumber: str
-        :param UserIp: 用户请求来源 IP(五选二)
-        :type UserIp: str
-        :param Imei: 国际移动设备识别码(五选二)
-        :type Imei: str
-        :param Idfa: ios 系统广告标示符(五选二)
-        :type Idfa: str
-        :param Scene: 业务场景 ID，需要找技术对接
-        :type Scene: str
-        :param Name: 姓名
-        :type Name: str
-        :param EmailAddress: 用户邮箱地址
-        :type EmailAddress: str
-        :param Address: 用户住址
-        :type Address: str
-        :param AccountType: 关联的腾讯帐号 QQ：1；
-开放帐号微信： 2；
-        :type AccountType: str
-        :param Uid: 可选的 QQ 或微信 openid
-        :type Uid: str
-        :param AppIdU: qq 或微信分配给网站或应用的 appid，用来
-唯一标识网站或应用
-        :type AppIdU: str
-        :param WifiMac: WIFI MAC
-        :type WifiMac: str
-        :param WifiSSID: WIFI 服务集标识
-        :type WifiSSID: str
-        :param WifiBSSID: WIFI-BSSID
-        :type WifiBSSID: str
-        :param BusinessId: 业务 ID，在多个业务中使用此服务，通过此
-ID 区分统计数据
-        :type BusinessId: str
-        :param IdCryptoType: Id加密类型
+        :param PhoneNumber: 电话号码(五选二)\n        :type PhoneNumber: str\n        :param IdNumber: Id号(五选二)\n        :type IdNumber: str\n        :param BankCardNumber: 银行卡号(五选二)\n        :type BankCardNumber: str\n        :param UserIp: 用户请求来源 IP(五选二)\n        :type UserIp: str\n        :param Imei: 国际移动设备识别码(五选二)\n        :type Imei: str\n        :param Idfa: ios 系统广告标示符(五选二)\n        :type Idfa: str\n        :param Scene: 业务场景 ID，需要找技术对接\n        :type Scene: str\n        :param Name: 姓名\n        :type Name: str\n        :param EmailAddress: 用户邮箱地址\n        :type EmailAddress: str\n        :param Address: 用户住址\n        :type Address: str\n        :param AccountType: 关联的腾讯帐号 QQ：1；
+开放帐号微信： 2；\n        :type AccountType: str\n        :param Uid: 可选的 QQ 或微信 openid\n        :type Uid: str\n        :param AppIdU: qq 或微信分配给网站或应用的 appid，用来
+唯一标识网站或应用\n        :type AppIdU: str\n        :param WifiMac: WIFI MAC\n        :type WifiMac: str\n        :param WifiSSID: WIFI 服务集标识\n        :type WifiSSID: str\n        :param WifiBSSID: WIFI-BSSID\n        :type WifiBSSID: str\n        :param BusinessId: 业务 ID，在多个业务中使用此服务，通过此
+ID 区分统计数据\n        :type BusinessId: str\n        :param IdCryptoType: Id加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
-3：SM3
-        :type IdCryptoType: str
-        :param PhoneCryptoType: 手机号加密类型
+3：SM3\n        :type IdCryptoType: str\n        :param PhoneCryptoType: 手机号加密类型
 0：不加密（默认值）
 1：md5, 2：sha256
-3：SM3
-        :type PhoneCryptoType: str
-        :param Mac: MAC 地址
-        :type Mac: str
-        :param Imsi: 国际移动用户识别码
-        :type Imsi: str
-        :param NameCryptoType: 姓名加密类型
+3：SM3\n        :type PhoneCryptoType: str\n        :param Mac: MAC 地址\n        :type Mac: str\n        :param Imsi: 国际移动用户识别码\n        :type Imsi: str\n        :param NameCryptoType: 姓名加密类型
 0：不加密（默认值）
 1：md5
 2：sha256
-3：SM3
-        :type NameCryptoType: str
-        """
+3：SM3\n        :type NameCryptoType: str\n        """
         self.PhoneNumber = None
         self.IdNumber = None
         self.BankCardNumber = None
@@ -147,21 +103,9 @@ class QueryAntiFraudVipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Found: 表示该条记录能否查到：1为能查到，-1为查不到
-        :type Found: int
-        :param IdFound: 表示该条Id能否查到：1为能查到，-1为查不到
-        :type IdFound: int
-        :param RiskScore: 0~100;值越高 欺诈可能性越大
-        :type RiskScore: int
-        :param RiskInfo: 扩展字段，对风险类型的说明
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RiskInfo: list of RiskDetail
-        :param CodeDesc: 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CodeDesc: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Found: 表示该条记录能否查到：1为能查到，-1为查不到\n        :type Found: int\n        :param IdFound: 表示该条Id能否查到：1为能查到，-1为查不到\n        :type IdFound: int\n        :param RiskScore: 0~100;值越高 欺诈可能性越大\n        :type RiskScore: int\n        :param RiskInfo: 扩展字段，对风险类型的说明
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskInfo: list of RiskDetail\n        :param CodeDesc: 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CodeDesc: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Found = None
         self.IdFound = None
         self.RiskScore = None
@@ -191,9 +135,7 @@ class RiskDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param RiskCode: 风险码
-        :type RiskCode: int
-        """
+        :param RiskCode: 风险码\n        :type RiskCode: int\n        """
         self.RiskCode = None
 
 

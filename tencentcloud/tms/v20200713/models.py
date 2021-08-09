@@ -25,21 +25,7 @@ class AccountTipoffAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ReportedAccount: 被举报账号，长度低于 128 个字符
-        :type ReportedAccount: str
-        :param ReportedAccountType: 被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
-        :type ReportedAccountType: int
-        :param EvilType: 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
-        :type EvilType: int
-        :param SenderAccount: 举报者账号，长度低于 128 个字符
-        :type SenderAccount: str
-        :param SenderAccountType: 举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
-        :type SenderAccountType: int
-        :param SenderIP: 举报者IP地址
-        :type SenderIP: str
-        :param EvilContent: 包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
-        :type EvilContent: str
-        """
+        :param ReportedAccount: 被举报账号，长度低于 128 个字符\n        :type ReportedAccount: str\n        :param ReportedAccountType: 被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)\n        :type ReportedAccountType: int\n        :param EvilType: 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)\n        :type EvilType: int\n        :param SenderAccount: 举报者账号，长度低于 128 个字符\n        :type SenderAccount: str\n        :param SenderAccountType: 举报者账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)\n        :type SenderAccountType: int\n        :param SenderIP: 举报者IP地址\n        :type SenderIP: str\n        :param EvilContent: 包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）\n        :type EvilContent: str\n        """
         self.ReportedAccount = None
         self.ReportedAccountType = None
         self.EvilType = None
@@ -74,11 +60,7 @@ class AccountTipoffAccessResponse(AbstractModel):
     def __init__(self):
         """
         :param Data: 举报接口响应数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.tms.v20200713.models.TipoffResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: :class:`tencentcloud.tms.v20200713.models.TipoffResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -97,9 +79,7 @@ class DescribeTextLibRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StrategyType: 内容类型 text: 1; image: 2; audio: 3; video: 4
-        :type StrategyType: int
-        """
+        :param StrategyType: 内容类型 text: 1; image: 2; audio: 3; video: 4\n        :type StrategyType: int\n        """
         self.StrategyType = None
 
 
@@ -121,11 +101,7 @@ class DescribeTextLibResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextLib: 文本库id和name列表
-        :type TextLib: list of TextLib
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TextLib: 文本库id和name列表\n        :type TextLib: list of TextLib\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TextLib = None
         self.RequestId = None
 
@@ -147,11 +123,7 @@ class DescribeTextStatRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
-        :type AuditType: int
-        :param Filters: 查询条件
-        :type Filters: list of Filters
-        """
+        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核\n        :type AuditType: int\n        :param Filters: 查询条件\n        :type Filters: list of Filters\n        """
         self.AuditType = None
         self.Filters = None
 
@@ -180,16 +152,8 @@ class DescribeTextStatResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Overview: 识别结果统计
-        :type Overview: :class:`tencentcloud.tms.v20200713.models.Overview`
-        :param TrendCount: 识别量统计
-        :type TrendCount: list of TrendCount
-        :param EvilCount: 违规数据分布
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EvilCount: list of EvilCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Overview: 识别结果统计\n        :type Overview: :class:`tencentcloud.tms.v20200713.models.Overview`\n        :param TrendCount: 识别量统计\n        :type TrendCount: list of TrendCount\n        :param EvilCount: 违规数据分布
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EvilCount: list of EvilCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Overview = None
         self.TrendCount = None
         self.EvilCount = None
@@ -223,28 +187,14 @@ class DetailResults(AbstractModel):
     def __init__(self):
         """
         :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
-        :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+以及令人反感、不安全或不适宜的内容类型。\n        :type Label: str\n        :param Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Suggestion: str
-        :param Keywords: 该标签下命中的关键词
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Keywords: list of str
-        :param Score: 该标签模型命中的分值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: int
-        :param LibType: 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibType: int
-        :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibId: str
-        :param LibName: 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LibName: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param Keywords: 该标签下命中的关键词
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Keywords: list of str\n        :param Score: 该标签模型命中的分值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Score: int\n        :param LibType: 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibType: int\n        :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibId: str\n        :param LibName: 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LibName: str\n        """
         self.Label = None
         self.Suggestion = None
         self.Keywords = None
@@ -278,21 +228,7 @@ class Device(AbstractModel):
 
     def __init__(self):
         """
-        :param IP: 用户IP
-        :type IP: str
-        :param Mac: Mac地址
-        :type Mac: str
-        :param TokenId: 设备指纹Token
-        :type TokenId: str
-        :param DeviceId: 设备指纹ID
-        :type DeviceId: str
-        :param IMEI: 设备序列号
-        :type IMEI: str
-        :param IDFA: IOS设备，Identifier For Advertising（广告标识符）
-        :type IDFA: str
-        :param IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
-        :type IDFV: str
-        """
+        :param IP: 用户IP\n        :type IP: str\n        :param Mac: Mac地址\n        :type Mac: str\n        :param TokenId: 设备指纹Token\n        :type TokenId: str\n        :param DeviceId: 设备指纹ID\n        :type DeviceId: str\n        :param IMEI: 设备序列号\n        :type IMEI: str\n        :param IDFA: IOS设备，Identifier For Advertising（广告标识符）\n        :type IDFA: str\n        :param IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）\n        :type IDFV: str\n        """
         self.IP = None
         self.Mac = None
         self.TokenId = None
@@ -326,11 +262,7 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         """
-        :param EvilType: ----非必选，该参数功能暂未对外开放
-        :type EvilType: str
-        :param Count: 分布类型总量
-        :type Count: int
-        """
+        :param EvilType: ----非必选，该参数功能暂未对外开放\n        :type EvilType: str\n        :param Count: 分布类型总量\n        :type Count: int\n        """
         self.EvilType = None
         self.Count = None
 
@@ -357,11 +289,7 @@ class Filters(AbstractModel):
         :param Name: 查询字段：
 策略BizType
 子账号SubUin
-日期区间DateRange
-        :type Name: str
-        :param Values: 查询值
-        :type Values: list of str
-        """
+日期区间DateRange\n        :type Name: str\n        :param Values: 查询值\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -385,23 +313,7 @@ class Overview(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总调用量
-        :type TotalCount: int
-        :param TotalHour: 总调用时长
-        :type TotalHour: int
-        :param PassCount: 通过量
-        :type PassCount: int
-        :param PassHour: 通过时长
-        :type PassHour: int
-        :param EvilCount: 违规量
-        :type EvilCount: int
-        :param EvilHour: 违规时长
-        :type EvilHour: int
-        :param SuspectCount: 疑似违规量
-        :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
-        :type SuspectHour: int
-        """
+        :param TotalCount: 总调用量\n        :type TotalCount: int\n        :param TotalHour: 总调用时长\n        :type TotalHour: int\n        :param PassCount: 通过量\n        :type PassCount: int\n        :param PassHour: 通过时长\n        :type PassHour: int\n        :param EvilCount: 违规量\n        :type EvilCount: int\n        :param EvilHour: 违规时长\n        :type EvilHour: int\n        :param SuspectCount: 疑似违规量\n        :type SuspectCount: int\n        :param SuspectHour: 疑似违规时长\n        :type SuspectHour: int\n        """
         self.TotalCount = None
         self.TotalHour = None
         self.PassCount = None
@@ -437,11 +349,7 @@ class RiskDetails(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
-        :type Label: str
-        :param Level: 风险等级，1:疑似，2：恶意
-        :type Level: int
-        """
+        :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI\n        :type Label: str\n        :param Level: 风险等级，1:疑似，2：恶意\n        :type Level: int\n        """
         self.Label = None
         self.Level = None
 
@@ -465,11 +373,7 @@ class TextLib(AbstractModel):
 
     def __init__(self):
         """
-        :param LibId: 库id
-        :type LibId: int
-        :param LibName: 库名
-        :type LibName: str
-        """
+        :param LibId: 库id\n        :type LibId: int\n        :param LibName: 库名\n        :type LibName: str\n        """
         self.LibId = None
         self.LibName = None
 
@@ -493,17 +397,7 @@ class TextModerationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
-        :type Content: str
-        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
-        :type BizType: str
-        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
-        :type DataId: str
-        :param User: 账号相关信息字段，填入后可识别违规风险账号
-        :type User: :class:`tencentcloud.tms.v20200713.models.User`
-        :param Device: 设备相关信息字段，填入后可识别违规风险设备
-        :type Device: :class:`tencentcloud.tms.v20200713.models.Device`
-        """
+        :param Content: 文本内容Base64编码。限制原文长度不能超过10000个unicode字符\n        :type Content: str\n        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略\n        :type BizType: str\n        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符\n        :type DataId: str\n        :param User: 账号相关信息字段，填入后可识别违规风险账号\n        :type User: :class:`tencentcloud.tms.v20200713.models.User`\n        :param Device: 设备相关信息字段，填入后可识别违规风险设备\n        :type Device: :class:`tencentcloud.tms.v20200713.models.Device`\n        """
         self.Content = None
         self.BizType = None
         self.DataId = None
@@ -537,37 +431,15 @@ class TextModerationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 您在入参时所填入的Biztype参数
-        :type BizType: str
-        :param EvilFlag: 数据是否属于恶意类型，0：正常 1：可疑
-        :type EvilFlag: int
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
-        :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作
-建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-        :type Suggestion: str
-        :param Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
+        :param BizType: 您在入参时所填入的Biztype参数\n        :type BizType: str\n        :param EvilFlag: 数据是否属于恶意类型，0：正常 1：可疑\n        :type EvilFlag: int\n        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型\n        :type Label: str\n        :param Suggestion: 建议您拿到判断结果后的执行操作
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过\n        :type Suggestion: str\n        :param Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Keywords: list of str
-        :param Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
-（如：色情 99.99，则该样本属于色情的置信度非常高。）
-        :type Score: int
-        :param DetailResults: 接口识别样本后返回的详细结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DetailResults: list of DetailResults
-        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RiskDetails: list of RiskDetails
-        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Extra: str
-        :param DataId: 请求参数中的DataId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Keywords: list of str\n        :param Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
+（如：色情 99.99，则该样本属于色情的置信度非常高。）\n        :type Score: int\n        :param DetailResults: 接口识别样本后返回的详细结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DetailResults: list of DetailResults\n        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskDetails: list of RiskDetails\n        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Extra: str\n        :param DataId: 请求参数中的DataId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BizType = None
         self.EvilFlag = None
         self.Label = None
@@ -612,11 +484,7 @@ class TipoffResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ResultCode: 举报结果， "0-举报数据提交成功  99-举报数据提交失败"
-        :type ResultCode: int
-        :param ResultMsg: 结果描述
-        :type ResultMsg: str
-        """
+        :param ResultCode: 举报结果， "0-举报数据提交成功  99-举报数据提交失败"\n        :type ResultCode: int\n        :param ResultMsg: 结果描述\n        :type ResultMsg: str\n        """
         self.ResultCode = None
         self.ResultMsg = None
 
@@ -641,33 +509,15 @@ class TrendCount(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 总调用量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param TotalHour: 总调用时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalHour: int
-        :param PassCount: 通过量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PassCount: int
-        :param PassHour: 通过时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PassHour: int
-        :param EvilCount: 违规量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EvilCount: int
-        :param EvilHour: 违规时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EvilHour: int
-        :param SuspectCount: 疑似违规量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SuspectHour: int
-        :param Date: 日期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Date: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param TotalHour: 总调用时长
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalHour: int\n        :param PassCount: 通过量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PassCount: int\n        :param PassHour: 通过时长
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PassHour: int\n        :param EvilCount: 违规量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EvilCount: int\n        :param EvilHour: 违规时长
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EvilHour: int\n        :param SuspectCount: 疑似违规量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SuspectCount: int\n        :param SuspectHour: 疑似违规时长
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SuspectHour: int\n        :param Date: 日期
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Date: str\n        """
         self.TotalCount = None
         self.TotalHour = None
         self.PassCount = None
@@ -705,21 +555,7 @@ class User(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
-        :type UserId: str
-        :param Nickname: 用户昵称
-        :type Nickname: str
-        :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
-        :type AccountType: int
-        :param Gender: 性别 默认0 未知 1 男性 2 女性
-        :type Gender: int
-        :param Age: 年龄 默认0 未知
-        :type Age: int
-        :param Level: 用户等级，默认0 未知 1 低 2 中 3 高
-        :type Level: int
-        :param Phone: 手机号
-        :type Phone: str
-        """
+        :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。\n        :type UserId: str\n        :param Nickname: 用户昵称\n        :type Nickname: str\n        :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"\n        :type AccountType: int\n        :param Gender: 性别 默认0 未知 1 男性 2 女性\n        :type Gender: int\n        :param Age: 年龄 默认0 未知\n        :type Age: int\n        :param Level: 用户等级，默认0 未知 1 低 2 中 3 高\n        :type Level: int\n        :param Phone: 手机号\n        :type Phone: str\n        """
         self.UserId = None
         self.Nickname = None
         self.AccountType = None

@@ -25,34 +25,14 @@ class AcListsData(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 规则id
-        :type Id: int
-        :param SourceIp: 访问源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SourceIp: str
-        :param TargetIp: 访问目的
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TargetIp: str
-        :param Protocol: 协议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Protocol: str
-        :param Port: 端口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Port: str
-        :param Strategy: 策略
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Strategy: int
-        :param Detail: 描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Detail: str
-        :param Count: 命中次数
-        :type Count: int
-        :param OrderIndex: 执行顺序
-        :type OrderIndex: int
-        :param LogId: 告警规则id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogId: str
-        """
+        :param Id: 规则id\n        :type Id: int\n        :param SourceIp: 访问源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SourceIp: str\n        :param TargetIp: 访问目的
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TargetIp: str\n        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Port: str\n        :param Strategy: 策略
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Strategy: int\n        :param Detail: 描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Detail: str\n        :param Count: 命中次数\n        :type Count: int\n        :param OrderIndex: 执行顺序\n        :type OrderIndex: int\n        :param LogId: 告警规则id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogId: str\n        """
         self.Id = None
         self.SourceIp = None
         self.TargetIp = None
@@ -93,30 +73,14 @@ class AssociatedInstanceInfo(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceName: str
-        :param Type: 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: int
-        :param VpcId: 私有网络ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcId: str
-        :param VpcName: 私有网络名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcName: str
-        :param PublicIp: 公网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicIp: str
-        :param Ip: 内网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ip: str
-        :param SecurityGroupCount: 关联安全组数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityGroupCount: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param Type: 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: int\n        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param VpcName: 私有网络名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcName: str\n        :param PublicIp: 公网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIp: str\n        :param Ip: 内网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ip: str\n        :param SecurityGroupCount: 关联安全组数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityGroupCount: int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Type = None
@@ -152,19 +116,7 @@ class CfwNatDnatRule(AbstractModel):
 
     def __init__(self):
         """
-        :param IpProtocol: 网络协议，可选值：TCP、UDP。
-        :type IpProtocol: str
-        :param PublicIpAddress: 弹性IP。
-        :type PublicIpAddress: str
-        :param PublicPort: 公网端口。
-        :type PublicPort: int
-        :param PrivateIpAddress: 内网地址。
-        :type PrivateIpAddress: str
-        :param PrivatePort: 内网端口。
-        :type PrivatePort: int
-        :param Description: NAT防火墙转发规则描述。
-        :type Description: str
-        """
+        :param IpProtocol: 网络协议，可选值：TCP、UDP。\n        :type IpProtocol: str\n        :param PublicIpAddress: 弹性IP。\n        :type PublicIpAddress: str\n        :param PublicPort: 公网端口。\n        :type PublicPort: int\n        :param PrivateIpAddress: 内网地址。\n        :type PrivateIpAddress: str\n        :param PrivatePort: 内网端口。\n        :type PrivatePort: int\n        :param Description: NAT防火墙转发规则描述。\n        :type Description: str\n        """
         self.IpProtocol = None
         self.PublicIpAddress = None
         self.PublicPort = None
@@ -196,23 +148,7 @@ class CreateAcRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 创建规则数据
-        :type Data: list of RuleInfoData
-        :param Type: 0：添加（默认），1：插入
-        :type Type: int
-        :param EdgeId: 边id
-        :type EdgeId: str
-        :param Enable: 访问控制规则状态
-        :type Enable: int
-        :param Overwrite: 0：添加，1：覆盖
-        :type Overwrite: int
-        :param InstanceId: NAT实例ID, 参数Area存在的时候这个必传
-        :type InstanceId: str
-        :param From: portScan: 来自于端口扫描, patchImport: 来自于批量导入
-        :type From: str
-        :param Area: NAT地域
-        :type Area: str
-        """
+        :param Data: 创建规则数据\n        :type Data: list of RuleInfoData\n        :param Type: 0：添加（默认），1：插入\n        :type Type: int\n        :param EdgeId: 边id\n        :type EdgeId: str\n        :param Enable: 访问控制规则状态\n        :type Enable: int\n        :param Overwrite: 0：添加，1：覆盖\n        :type Overwrite: int\n        :param InstanceId: NAT实例ID, 参数Area存在的时候这个必传\n        :type InstanceId: str\n        :param From: portScan: 来自于端口扫描, patchImport: 来自于批量导入\n        :type From: str\n        :param Area: NAT地域\n        :type Area: str\n        """
         self.Data = None
         self.Type = None
         self.EdgeId = None
@@ -253,14 +189,8 @@ class CreateAcRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值，0:操作成功
-        :type Status: int
-        :param Info: 返回多余的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 状态值，0:操作成功\n        :type Status: int\n        :param Info: 返回多余的信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Info = None
         self.RequestId = None
@@ -279,15 +209,7 @@ class CreateSecurityGroupApiRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 创建规则数据
-        :type Data: list of SecurityGroupApiRuleData
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param Type: 插入类型，0：后插，1：前插，2：中插
-        :type Type: int
-        :param Area: 腾讯云地域的英文简写
-        :type Area: str
-        """
+        :param Data: 创建规则数据\n        :type Data: list of SecurityGroupApiRuleData\n        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param Type: 插入类型，0：后插，1：前插，2：中插\n        :type Type: int\n        :param Area: 腾讯云地域的英文简写\n        :type Area: str\n        """
         self.Data = None
         self.Direction = None
         self.Type = None
@@ -320,11 +242,7 @@ class CreateSecurityGroupApiRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值，0:添加成功，非0：添加失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 状态值，0:添加成功，非0：添加失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -341,15 +259,7 @@ class DeleteAcRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 删除规则对应的id值, 对应获取规则列表接口的Id 值
-        :type Id: int
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param EdgeId: EdgeId值两个vpc间的边id
-        :type EdgeId: str
-        :param Area: NAT地域， 如ap-shanghai/ap-guangzhou/ap-chongqing等
-        :type Area: str
-        """
+        :param Id: 删除规则对应的id值, 对应获取规则列表接口的Id 值\n        :type Id: int\n        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param EdgeId: EdgeId值两个vpc间的边id\n        :type EdgeId: str\n        :param Area: NAT地域， 如ap-shanghai/ap-guangzhou/ap-chongqing等\n        :type Area: str\n        """
         self.Id = None
         self.Direction = None
         self.EdgeId = None
@@ -377,14 +287,8 @@ class DeleteAcRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值 0: 删除成功, !0: 删除失败
-        :type Status: int
-        :param Info: 返回多余的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 状态值 0: 删除成功, !0: 删除失败\n        :type Status: int\n        :param Info: 返回多余的信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Info = None
         self.RequestId = None
@@ -403,13 +307,7 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 方向，0：出站，1：入站  默认值是 0
-        :type Direction: int
-        :param EdgeId: VPC间防火墙开关ID  全部删除 EdgeId和Area只填写一个，不填写则不删除vpc间防火墙开关 ，默认值为‘’
-        :type EdgeId: str
-        :param Area: nat地域 全部删除 EdgeId和Area只填写一个，不填写则不删除nat防火墙开关 默认值为‘’
-        :type Area: str
-        """
+        :param Direction: 方向，0：出站，1：入站  默认值是 0\n        :type Direction: int\n        :param EdgeId: VPC间防火墙开关ID  全部删除 EdgeId和Area只填写一个，不填写则不删除vpc间防火墙开关 ，默认值为‘’\n        :type EdgeId: str\n        :param Area: nat地域 全部删除 EdgeId和Area只填写一个，不填写则不删除nat防火墙开关 默认值为‘’\n        :type Area: str\n        """
         self.Direction = None
         self.EdgeId = None
         self.Area = None
@@ -435,14 +333,8 @@ class DeleteAllAccessControlRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值 0: 修改成功, !0: 修改失败
-        :type Status: int
-        :param Info: 删除了几条访问控制规则
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 状态值 0: 修改成功, !0: 修改失败\n        :type Status: int\n        :param Info: 删除了几条访问控制规则
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Info = None
         self.RequestId = None
@@ -461,11 +353,7 @@ class DeleteSecurityGroupAllRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param Area: 腾讯云地域的英文简写
-        :type Area: str
-        """
+        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param Area: 腾讯云地域的英文简写\n        :type Area: str\n        """
         self.Direction = None
         self.Area = None
 
@@ -489,14 +377,8 @@ class DeleteSecurityGroupAllRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 0: 操作成功，非0：操作失败
-        :type Status: int
-        :param Info: 返回数据的json字符串
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 0: 操作成功，非0：操作失败\n        :type Status: int\n        :param Info: 返回数据的json字符串
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Info = None
         self.RequestId = None
@@ -515,15 +397,7 @@ class DeleteSecurityGroupRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 所需要删除规则的ID
-        :type Id: int
-        :param Area: 腾讯云地域的英文简写
-        :type Area: str
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param IsDelReverse: 是否删除反向规则，0：否，1：是
-        :type IsDelReverse: int
-        """
+        :param Id: 所需要删除规则的ID\n        :type Id: int\n        :param Area: 腾讯云地域的英文简写\n        :type Area: str\n        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param IsDelReverse: 是否删除反向规则，0：否，1：是\n        :type IsDelReverse: int\n        """
         self.Id = None
         self.Area = None
         self.Direction = None
@@ -551,14 +425,8 @@ class DeleteSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值，0：成功，非0：失败
-        :type Status: int
-        :param Info: 返回多余的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 状态值，0：成功，非0：失败\n        :type Status: int\n        :param Info: 返回多余的信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Info = None
         self.RequestId = None
@@ -577,27 +445,7 @@ class DescribeAcListsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 协议
-        :type Protocol: str
-        :param Strategy: 策略
-        :type Strategy: str
-        :param SearchValue: 搜索值
-        :type SearchValue: str
-        :param Limit: 每页条数
-        :type Limit: int
-        :param Offset: 偏移值
-        :type Offset: int
-        :param Direction: 出站还是入站，0：入站，1：出站
-        :type Direction: int
-        :param EdgeId: EdgeId值
-        :type EdgeId: str
-        :param Status: 规则是否开启，'0': 未开启，'1': 开启, 默认为'0'
-        :type Status: str
-        :param Area: 地域
-        :type Area: str
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        """
+        :param Protocol: 协议\n        :type Protocol: str\n        :param Strategy: 策略\n        :type Strategy: str\n        :param SearchValue: 搜索值\n        :type SearchValue: str\n        :param Limit: 每页条数\n        :type Limit: int\n        :param Offset: 偏移值\n        :type Offset: int\n        :param Direction: 出站还是入站，0：入站，1：出站\n        :type Direction: int\n        :param EdgeId: EdgeId值\n        :type EdgeId: str\n        :param Status: 规则是否开启，'0': 未开启，'1': 开启, 默认为'0'\n        :type Status: str\n        :param Area: 地域\n        :type Area: str\n        :param InstanceId: 实例ID\n        :type InstanceId: str\n        """
         self.Protocol = None
         self.Strategy = None
         self.SearchValue = None
@@ -637,18 +485,8 @@ class DescribeAcListsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总条数
-        :type Total: int
-        :param Data: 访问控制列表数据
-        :type Data: list of AcListsData
-        :param AllTotal: 不算筛选条数的总条数
-        :type AllTotal: int
-        :param Enable: 访问控制规则全部启用/全部停用
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Enable: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 总条数\n        :type Total: int\n        :param Data: 访问控制列表数据\n        :type Data: list of AcListsData\n        :param AllTotal: 不算筛选条数的总条数\n        :type AllTotal: int\n        :param Enable: 访问控制规则全部启用/全部停用
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Enable: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Data = None
         self.AllTotal = None
@@ -676,23 +514,7 @@ class DescribeAssociatedInstanceListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 列表偏移量
-        :type Offset: int
-        :param Limit: 每页记录条数
-        :type Limit: int
-        :param Area: 地域代码（例：ap-guangzhou）,支持腾讯云全地域
-        :type Area: str
-        :param SearchValue: 额外检索条件（JSON字符串）
-        :type SearchValue: str
-        :param By: 排序字段
-        :type By: str
-        :param Order: 排序方式（asc:升序,desc:降序）
-        :type Order: str
-        :param SecurityGroupId: 安全组ID
-        :type SecurityGroupId: str
-        :param Type: 实例类型,'3'是cvm实例,'4'是clb实例,'5'是eni实例,'6'是云数据库
-        :type Type: str
-        """
+        :param Offset: 列表偏移量\n        :type Offset: int\n        :param Limit: 每页记录条数\n        :type Limit: int\n        :param Area: 地域代码（例：ap-guangzhou）,支持腾讯云全地域\n        :type Area: str\n        :param SearchValue: 额外检索条件（JSON字符串）\n        :type SearchValue: str\n        :param By: 排序字段\n        :type By: str\n        :param Order: 排序方式（asc:升序,desc:降序）\n        :type Order: str\n        :param SecurityGroupId: 安全组ID\n        :type SecurityGroupId: str\n        :param Type: 实例类型,'3'是cvm实例,'4'是clb实例,'5'是eni实例,'6'是云数据库\n        :type Type: str\n        """
         self.Offset = None
         self.Limit = None
         self.Area = None
@@ -729,14 +551,8 @@ class DescribeAssociatedInstanceListResponse(AbstractModel):
     def __init__(self):
         """
         :param Total: 实例数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: int
-        :param Data: 实例列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: list of AssociatedInstanceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param Data: 实例列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: list of AssociatedInstanceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Data = None
         self.RequestId = None
@@ -760,19 +576,7 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Ip: ip查询条件
-        :type Ip: str
-        :param Zone: 地域
-        :type Zone: str
-        :param Direction: 方向
-        :type Direction: str
-        :param Source: 来源
-        :type Source: str
-        """
+        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Ip: ip查询条件\n        :type Ip: str\n        :param Zone: 地域\n        :type Zone: str\n        :param Direction: 方向\n        :type Direction: str\n        :param Source: 来源\n        :type Source: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Ip = None
@@ -804,11 +608,7 @@ class DescribeBlockByIpTimesListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 返回数据
-        :type Data: list of IpStatic
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 返回数据\n        :type Data: list of IpStatic\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -830,17 +630,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param QueryType: 类型
-        :type QueryType: str
-        :param Top: top数
-        :type Top: int
-        :param SearchValue: 查询条件
-        :type SearchValue: str
-        """
+        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param QueryType: 类型\n        :type QueryType: str\n        :param Top: top数\n        :type Top: int\n        :param SearchValue: 查询条件\n        :type SearchValue: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.QueryType = None
@@ -870,11 +660,7 @@ class DescribeBlockStaticListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 无
-        :type Data: list of StaticInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 无\n        :type Data: list of StaticInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -896,13 +682,7 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Mode: 0：cfw新增模式，1：cfw接入模式
-        :type Mode: int
-        :param NatGatewayId: ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
-        :type NatGatewayId: str
-        :param CfwInstance: 防火墙实例id
-        :type CfwInstance: str
-        """
+        :param Mode: 0：cfw新增模式，1：cfw接入模式\n        :type Mode: int\n        :param NatGatewayId: ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip\n        :type NatGatewayId: str\n        :param CfwInstance: 防火墙实例id\n        :type CfwInstance: str\n        """
         self.Mode = None
         self.NatGatewayId = None
         self.CfwInstance = None
@@ -928,11 +708,7 @@ class DescribeCfwEipsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NatFwEipList: 返回值信息
-        :type NatFwEipList: list of NatFwEipsInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NatFwEipList: 返回值信息\n        :type NatFwEipList: list of NatFwEipsInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NatFwEipList = None
         self.RequestId = None
 
@@ -960,11 +736,7 @@ class DescribeGuideScanInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 扫描信息
-        :type Data: :class:`tencentcloud.cfw.v20190904.models.ScanInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 扫描信息\n        :type Data: :class:`tencentcloud.cfw.v20190904.models.ScanInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -983,9 +755,7 @@ class DescribeNatRuleOverviewRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 方向，0：出站，1：入站 默认值：0
-        :type Direction: int
-        :param Area: NAT地域  这个是必填项，填入相关的英文，'ap-beijing-fsi': '北京金融',
+        :param Direction: 方向，0：出站，1：入站 默认值：0\n        :type Direction: int\n        :param Area: NAT地域  这个是必填项，填入相关的英文，'ap-beijing-fsi': '北京金融',
         'ap-beijing': '北京',
         'ap-changsha-ec': '长沙EC',
         'ap-chengdu': '成都',
@@ -1000,9 +770,7 @@ class DescribeNatRuleOverviewRequest(AbstractModel):
         'ap-shanghai': '上海',
         'ap-shenzhen-fsi': '深圳金融',
         'ap-shenzhen': '深圳',
-        'ap-wuhan-ec': '武汉EC'
-        :type Area: str
-        """
+        'ap-wuhan-ec': '武汉EC'\n        :type Area: str\n        """
         self.Direction = None
         self.Area = None
 
@@ -1026,25 +794,7 @@ class DescribeNatRuleOverviewResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param InstanceName: 实例名称
-        :type InstanceName: str
-        :param EipList: 弹性IP列表
-        :type EipList: list of str
-        :param DnatNum: 端口转发规则数量
-        :type DnatNum: int
-        :param TotalNum: 访问控制规则总数
-        :type TotalNum: int
-        :param RemainNum: 访问控制规则剩余配额
-        :type RemainNum: int
-        :param BlockNum: 阻断规则条数
-        :type BlockNum: int
-        :param EnableNum: 启用规则条数
-        :type EnableNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param InstanceName: 实例名称\n        :type InstanceName: str\n        :param EipList: 弹性IP列表\n        :type EipList: list of str\n        :param DnatNum: 端口转发规则数量\n        :type DnatNum: int\n        :param TotalNum: 访问控制规则总数\n        :type TotalNum: int\n        :param RemainNum: 访问控制规则剩余配额\n        :type RemainNum: int\n        :param BlockNum: 阻断规则条数\n        :type BlockNum: int\n        :param EnableNum: 启用规则条数\n        :type EnableNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.EipList = None
@@ -1075,9 +825,7 @@ class DescribeRuleOverviewRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        """
+        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        """
         self.Direction = None
 
 
@@ -1100,23 +848,11 @@ class DescribeRuleOverviewResponse(AbstractModel):
     def __init__(self):
         """
         :param AllTotal: 规则总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AllTotal: int
-        :param StrategyNum: 阻断策略规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StrategyNum: int
-        :param StartRuleNum: 启用规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartRuleNum: int
-        :param StopRuleNum: 停用规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StopRuleNum: int
-        :param RemainingNum: 剩余配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RemainingNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AllTotal: int\n        :param StrategyNum: 阻断策略规则数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyNum: int\n        :param StartRuleNum: 启用规则数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartRuleNum: int\n        :param StopRuleNum: 停用规则数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StopRuleNum: int\n        :param RemainingNum: 剩余配额
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RemainingNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AllTotal = None
         self.StrategyNum = None
         self.StartRuleNum = None
@@ -1141,21 +877,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 0: 出站规则，1：入站规则
-        :type Direction: int
-        :param Area: 地域代码（例: ap-guangzhou),支持腾讯云全部地域
-        :type Area: str
-        :param SearchValue: 搜索值
-        :type SearchValue: str
-        :param Limit: 每页条数，默认为10
-        :type Limit: int
-        :param Offset: 偏移值，默认为0
-        :type Offset: int
-        :param Status: 状态，'': 全部，'0'：筛选停用规则，'1'：筛选启用规则
-        :type Status: str
-        :param Filter: 0: 不过滤，1：过滤掉正常规则，保留下发异常规则
-        :type Filter: int
-        """
+        :param Direction: 0: 出站规则，1：入站规则\n        :type Direction: int\n        :param Area: 地域代码（例: ap-guangzhou),支持腾讯云全部地域\n        :type Area: str\n        :param SearchValue: 搜索值\n        :type SearchValue: str\n        :param Limit: 每页条数，默认为10\n        :type Limit: int\n        :param Offset: 偏移值，默认为0\n        :type Offset: int\n        :param Status: 状态，'': 全部，'0'：筛选停用规则，'1'：筛选启用规则\n        :type Status: str\n        :param Filter: 0: 不过滤，1：过滤掉正常规则，保留下发异常规则\n        :type Filter: int\n        """
         self.Direction = None
         self.Area = None
         self.SearchValue = None
@@ -1189,18 +911,8 @@ class DescribeSecurityGroupListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 列表当前规则总条数
-        :type Total: int
-        :param Data: 安全组规则列表数据
-        :type Data: list of SecurityGroupListData
-        :param AllTotal: 不算筛选条数的总条数
-        :type AllTotal: int
-        :param Enable: 访问控制规则全部启用/全部停用
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Enable: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 列表当前规则总条数\n        :type Total: int\n        :param Data: 安全组规则列表数据\n        :type Data: list of SecurityGroupListData\n        :param AllTotal: 不算筛选条数的总条数\n        :type AllTotal: int\n        :param Enable: 访问控制规则全部启用/全部停用
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Enable: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Data = None
         self.AllTotal = None
@@ -1228,23 +940,7 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 防火墙状态  0: 关闭，1：开启
-        :type Status: int
-        :param Type: 资产类型 CVM/NAT/VPN/CLB/其它
-        :type Type: str
-        :param Area: 地域 上海/重庆/广州，等等
-        :type Area: str
-        :param SearchValue: 搜索值  例子："{"common":"106.54.189.45"}"
-        :type SearchValue: str
-        :param Limit: 条数  默认值:10
-        :type Limit: int
-        :param Offset: 偏移值 默认值: 0
-        :type Offset: int
-        :param Order: 排序，desc：降序，asc：升序
-        :type Order: str
-        :param By: 排序字段 PortTimes(风险端口数)
-        :type By: str
-        """
+        :param Status: 防火墙状态  0: 关闭，1：开启\n        :type Status: int\n        :param Type: 资产类型 CVM/NAT/VPN/CLB/其它\n        :type Type: str\n        :param Area: 地域 上海/重庆/广州，等等\n        :type Area: str\n        :param SearchValue: 搜索值  例子："{"common":"106.54.189.45"}"\n        :type SearchValue: str\n        :param Limit: 条数  默认值:10\n        :type Limit: int\n        :param Offset: 偏移值 默认值: 0\n        :type Offset: int\n        :param Order: 排序，desc：降序，asc：升序\n        :type Order: str\n        :param By: 排序字段 PortTimes(风险端口数)\n        :type By: str\n        """
         self.Status = None
         self.Type = None
         self.Area = None
@@ -1280,21 +976,9 @@ class DescribeSwitchListsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总条数
-        :type Total: int
-        :param Data: 列表数据
-        :type Data: list of SwitchListsData
-        :param AreaLists: 区域列表
-        :type AreaLists: list of str
-        :param OnNum: 打开个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OnNum: int
-        :param OffNum: 关闭个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OffNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 总条数\n        :type Total: int\n        :param Data: 列表数据\n        :type Data: list of SwitchListsData\n        :param AreaLists: 区域列表\n        :type AreaLists: list of str\n        :param OnNum: 打开个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OnNum: int\n        :param OffNum: 关闭个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OffNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Data = None
         self.AreaLists = None
@@ -1324,9 +1008,7 @@ class DescribeSyncAssetStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 0: 互联网防火墙开关，1：vpc 防火墙开关
-        :type Type: int
-        """
+        :param Type: 0: 互联网防火墙开关，1：vpc 防火墙开关\n        :type Type: int\n        """
         self.Type = None
 
 
@@ -1348,11 +1030,7 @@ class DescribeSyncAssetStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 1-更新中 2-更新完成 3、4-更新失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 1-更新中 2-更新完成 3、4-更新失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -1369,15 +1047,7 @@ class DescribeTLogInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param QueryType: 类型 1 告警 2阻断
-        :type QueryType: str
-        :param SearchValue: 查询条件
-        :type SearchValue: str
-        """
+        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param QueryType: 类型 1 告警 2阻断\n        :type QueryType: str\n        :param SearchValue: 查询条件\n        :type SearchValue: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.QueryType = None
@@ -1405,11 +1075,7 @@ class DescribeTLogInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 无
-        :type Data: :class:`tencentcloud.cfw.v20190904.models.TLogInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 无\n        :type Data: :class:`tencentcloud.cfw.v20190904.models.TLogInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1428,17 +1094,7 @@ class DescribeTLogIpListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param QueryType: 类型 1 告警 2阻断
-        :type QueryType: str
-        :param Top: top数
-        :type Top: int
-        :param SearchValue: 查询条件
-        :type SearchValue: str
-        """
+        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param QueryType: 类型 1 告警 2阻断\n        :type QueryType: str\n        :param Top: top数\n        :type Top: int\n        :param SearchValue: 查询条件\n        :type SearchValue: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.QueryType = None
@@ -1468,11 +1124,7 @@ class DescribeTLogIpListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 数据集合
-        :type Data: list of StaticInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 数据集合\n        :type Data: list of StaticInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1494,15 +1146,7 @@ class DescribeTableStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: EdgeId值两个vpc间的边id vpc填Edgeid，不要填Area；
-        :type EdgeId: str
-        :param Status: 状态值，0：检查表的状态 确实只有一个默认值
-        :type Status: int
-        :param Area: Nat所在地域 NAT填Area，不要填Edgeid；
-        :type Area: str
-        :param Direction: 方向，0：出站，1：入站 默认值为 0
-        :type Direction: int
-        """
+        :param EdgeId: EdgeId值两个vpc间的边id vpc填Edgeid，不要填Area；\n        :type EdgeId: str\n        :param Status: 状态值，0：检查表的状态 确实只有一个默认值\n        :type Status: int\n        :param Area: Nat所在地域 NAT填Area，不要填Edgeid；\n        :type Area: str\n        :param Direction: 方向，0：出站，1：入站 默认值为 0\n        :type Direction: int\n        """
         self.EdgeId = None
         self.Status = None
         self.Area = None
@@ -1531,11 +1175,7 @@ class DescribeTableStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 0：正常，其它：不正常
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -1552,13 +1192,7 @@ class DescribeUnHandleEventTabListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param AssetID: 查询示例ID
-        :type AssetID: str
-        """
+        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param AssetID: 查询示例ID\n        :type AssetID: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.AssetID = None
@@ -1585,15 +1219,7 @@ class DescribeUnHandleEventTabListResponse(AbstractModel):
     def __init__(self):
         """
         :param Data: 租户伪攻击链未处置事件
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.cfw.v20190904.models.UnHandleEvent`
-        :param ReturnCode: 错误码，0成功 非0错误
-        :type ReturnCode: int
-        :param ReturnMsg: 返回信息 success成功
-        :type ReturnMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: :class:`tencentcloud.cfw.v20190904.models.UnHandleEvent`\n        :param ReturnCode: 错误码，0成功 非0错误\n        :type ReturnCode: int\n        :param ReturnMsg: 返回信息 success成功\n        :type ReturnMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.ReturnCode = None
         self.ReturnMsg = None
@@ -1616,9 +1242,7 @@ class DescribeVpcRuleOverviewRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: EdgeId值两个vpc间的边id  不是必填项可以为空，就是所有vpc间的访问控制规则
-        :type EdgeId: str
-        """
+        :param EdgeId: EdgeId值两个vpc间的边id  不是必填项可以为空，就是所有vpc间的访问控制规则\n        :type EdgeId: str\n        """
         self.EdgeId = None
 
 
@@ -1641,14 +1265,8 @@ class DescribeVpcRuleOverviewResponse(AbstractModel):
     def __init__(self):
         """
         :param StrategyNum: 阻断策略规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StrategyNum: int
-        :param StartRuleNum: 启用规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartRuleNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyNum: int\n        :param StartRuleNum: 启用规则数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartRuleNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.StrategyNum = None
         self.StartRuleNum = None
         self.RequestId = None
@@ -1667,13 +1285,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FwType: nat：nat防火墙，ew：东西向防火墙
-        :type FwType: str
-        :param Width: 带宽值
-        :type Width: int
-        :param CfwInstance: 防火墙实例id
-        :type CfwInstance: str
-        """
+        :param FwType: nat：nat防火墙，ew：东西向防火墙\n        :type FwType: str\n        :param Width: 带宽值\n        :type Width: int\n        :param CfwInstance: 防火墙实例id\n        :type CfwInstance: str\n        """
         self.FwType = None
         self.Width = None
         self.CfwInstance = None
@@ -1699,9 +1311,7 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1716,13 +1326,7 @@ class IocListData(AbstractModel):
 
     def __init__(self):
         """
-        :param IP: 待处置IP地址，IP/Domain字段二选一
-        :type IP: str
-        :param Direction: 只能为0或者1   0代表出站 1代表入站
-        :type Direction: int
-        :param Domain: 待处置域名，IP/Domain字段二选一
-        :type Domain: str
-        """
+        :param IP: 待处置IP地址，IP/Domain字段二选一\n        :type IP: str\n        :param Direction: 只能为0或者1   0代表出站 1代表入站\n        :type Direction: int\n        :param Domain: 待处置域名，IP/Domain字段二选一\n        :type Domain: str\n        """
         self.IP = None
         self.Direction = None
         self.Domain = None
@@ -1748,11 +1352,7 @@ class IpStatic(AbstractModel):
 
     def __init__(self):
         """
-        :param Num: 值
-        :type Num: int
-        :param StatTime: 折线图横坐标时间
-        :type StatTime: str
-        """
+        :param Num: 值\n        :type Num: int\n        :param StatTime: 折线图横坐标时间\n        :type StatTime: str\n        """
         self.Num = None
         self.StatTime = None
 
@@ -1776,15 +1376,7 @@ class ModifyAcRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 规则数组
-        :type Data: list of RuleInfoData
-        :param EdgeId: EdgeId值
-        :type EdgeId: str
-        :param Enable: 访问规则状态
-        :type Enable: int
-        :param Area: NAT地域
-        :type Area: str
-        """
+        :param Data: 规则数组\n        :type Data: list of RuleInfoData\n        :param EdgeId: EdgeId值\n        :type EdgeId: str\n        :param Enable: 访问规则状态\n        :type Enable: int\n        :param Area: NAT地域\n        :type Area: str\n        """
         self.Data = None
         self.EdgeId = None
         self.Enable = None
@@ -1817,14 +1409,8 @@ class ModifyAcRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值，0:操作成功，非0：操作失败
-        :type Status: int
-        :param Info: 返回多余的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Info: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 状态值，0:操作成功，非0：操作失败\n        :type Status: int\n        :param Info: 返回多余的信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Info: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Info = None
         self.RequestId = None
@@ -1843,15 +1429,7 @@ class ModifyAllRuleStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态，0：全部停用，1：全部启用
-        :type Status: int
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param EdgeId: Edge ID值
-        :type EdgeId: str
-        :param Area: NAT地域
-        :type Area: str
-        """
+        :param Status: 状态，0：全部停用，1：全部启用\n        :type Status: int\n        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param EdgeId: Edge ID值\n        :type EdgeId: str\n        :param Area: NAT地域\n        :type Area: str\n        """
         self.Status = None
         self.Direction = None
         self.EdgeId = None
@@ -1880,11 +1458,7 @@ class ModifyAllRuleStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 0: 修改成功, 其他: 修改失败
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -1901,17 +1475,7 @@ class ModifyAllSwitchStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态，0：关闭，1：开启
-        :type Status: int
-        :param Type: 0: 互联网边界防火墙开关，1：vpc防火墙开关
-        :type Type: int
-        :param Ids: 选中的防火墙开关Id
-        :type Ids: list of str
-        :param ChangeType: NAT开关切换类型，1,单个子网，2，同开同关，3，全部
-        :type ChangeType: int
-        :param Area: NAT实例所在地域
-        :type Area: str
-        """
+        :param Status: 状态，0：关闭，1：开启\n        :type Status: int\n        :param Type: 0: 互联网边界防火墙开关，1：vpc防火墙开关\n        :type Type: int\n        :param Ids: 选中的防火墙开关Id\n        :type Ids: list of str\n        :param ChangeType: NAT开关切换类型，1,单个子网，2，同开同关，3，全部\n        :type ChangeType: int\n        :param Area: NAT实例所在地域\n        :type Area: str\n        """
         self.Status = None
         self.Type = None
         self.Ids = None
@@ -1941,11 +1505,7 @@ class ModifyAllSwitchStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 修改成功与否的状态值 0：修改成功，非 0：修改失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 修改成功与否的状态值 0：修改成功，非 0：修改失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -1962,17 +1522,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleType: 1拦截列表 2 忽略列表
-        :type RuleType: int
-        :param IOC: IP、Domain二选一，不能同时为空
-        :type IOC: list of IocListData
-        :param IocAction: 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
-        :type IocAction: str
-        :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss
-        :type StartTime: str
-        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss
-        :type EndTime: str
-        """
+        :param RuleType: 1拦截列表 2 忽略列表\n        :type RuleType: int\n        :param IOC: IP、Domain二选一，不能同时为空\n        :type IOC: list of IocListData\n        :param IocAction: 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效\n        :type IocAction: str\n        :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss\n        :type StartTime: str\n        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss\n        :type EndTime: str\n        """
         self.RuleType = None
         self.IOC = None
         self.IocAction = None
@@ -2007,13 +1557,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ReturnMsg: 接口返回信息
-        :type ReturnMsg: str
-        :param ReturnCode: 接口返回错误码，0请求成功  非0失败
-        :type ReturnCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ReturnMsg: 接口返回信息\n        :type ReturnMsg: str\n        :param ReturnCode: 接口返回错误码，0请求成功  非0失败\n        :type ReturnCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ReturnMsg = None
         self.ReturnCode = None
         self.RequestId = None
@@ -2032,11 +1576,7 @@ class ModifyBlockTopRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UniqueId: 记录id
-        :type UniqueId: str
-        :param OpeType: 操作类型 1 置顶 0取消
-        :type OpeType: str
-        """
+        :param UniqueId: 记录id\n        :type UniqueId: str\n        :param OpeType: 操作类型 1 置顶 0取消\n        :type OpeType: str\n        """
         self.UniqueId = None
         self.OpeType = None
 
@@ -2060,9 +1600,7 @@ class ModifyBlockTopResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2077,13 +1615,7 @@ class ModifyItemSwitchStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: id值
-        :type Id: int
-        :param Status: 状态值，0: 关闭 ,1:开启
-        :type Status: int
-        :param Type: 0: 互联网边界边界防火墙开关，1：vpc防火墙开关
-        :type Type: int
-        """
+        :param Id: id值\n        :type Id: int\n        :param Status: 状态值，0: 关闭 ,1:开启\n        :type Status: int\n        :param Type: 0: 互联网边界边界防火墙开关，1：vpc防火墙开关\n        :type Type: int\n        """
         self.Id = None
         self.Status = None
         self.Type = None
@@ -2109,11 +1641,7 @@ class ModifyItemSwitchStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 修改成功与否状态值 0：修改成功，非 0：修改失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 修改成功与否状态值 0：修改成功，非 0：修改失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2130,15 +1658,7 @@ class ModifySecurityGroupAllRuleStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 列表规则状态，0：全部停用，1：全部启用
-        :type Status: int
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param EdgeId: Edge ID值
-        :type EdgeId: str
-        :param Area: NAT地域, 腾讯云地域的英文简写
-        :type Area: str
-        """
+        :param Status: 列表规则状态，0：全部停用，1：全部启用\n        :type Status: int\n        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param EdgeId: Edge ID值\n        :type EdgeId: str\n        :param Area: NAT地域, 腾讯云地域的英文简写\n        :type Area: str\n        """
         self.Status = None
         self.Direction = None
         self.EdgeId = None
@@ -2167,11 +1687,7 @@ class ModifySecurityGroupAllRuleStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 0: 修改成功, 其他: 修改失败
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2188,15 +1704,7 @@ class ModifySequenceRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: 边Id值
-        :type EdgeId: str
-        :param Data: 修改数据
-        :type Data: list of SequenceData
-        :param Area: NAT地域
-        :type Area: str
-        :param Direction: 方向，0：出向，1：入向
-        :type Direction: int
-        """
+        :param EdgeId: 边Id值\n        :type EdgeId: str\n        :param Data: 修改数据\n        :type Data: list of SequenceData\n        :param Area: NAT地域\n        :type Area: str\n        :param Direction: 方向，0：出向，1：入向\n        :type Direction: int\n        """
         self.EdgeId = None
         self.Data = None
         self.Area = None
@@ -2230,11 +1738,7 @@ class ModifySequenceRulesResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 0: 修改成功, 非0: 修改失败
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2251,15 +1755,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: EdgeId值两个vpc间的边id
-        :type EdgeId: str
-        :param Status: 状态值，1：锁表，2：解锁表
-        :type Status: int
-        :param Area: Nat所在地域
-        :type Area: str
-        :param Direction: 0： 出向，1：入向
-        :type Direction: int
-        """
+        :param EdgeId: EdgeId值两个vpc间的边id\n        :type EdgeId: str\n        :param Status: 状态值，1：锁表，2：解锁表\n        :type Status: int\n        :param Area: Nat所在地域\n        :type Area: str\n        :param Direction: 0： 出向，1：入向\n        :type Direction: int\n        """
         self.EdgeId = None
         self.Status = None
         self.Area = None
@@ -2288,11 +1784,7 @@ class ModifyTableStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 0：正常，-1：不正常
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2309,15 +1801,9 @@ class NatFwEipsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Eip: 弹性公网ip
-        :type Eip: str
-        :param NatGatewayId: 所属的Nat网关Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatGatewayId: str
-        :param NatGatewayName: Nat网关名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatGatewayName: str
-        """
+        :param Eip: 弹性公网ip\n        :type Eip: str\n        :param NatGatewayId: 所属的Nat网关Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatGatewayId: str\n        :param NatGatewayName: Nat网关名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatGatewayName: str\n        """
         self.Eip = None
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -2343,43 +1829,7 @@ class RuleInfoData(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderIndex: 执行顺序
-        :type OrderIndex: int
-        :param SourceIp: 访问源
-        :type SourceIp: str
-        :param TargetIp: 访问目的
-        :type TargetIp: str
-        :param Protocol: 协议
-        :type Protocol: str
-        :param Strategy: 策略
-        :type Strategy: str
-        :param SourceType: 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
-        :type SourceType: int
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param Detail: 描述
-        :type Detail: str
-        :param TargetType: 访问目的类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
-        :type TargetType: int
-        :param Port: 端口
-        :type Port: str
-        :param Id: id值
-        :type Id: int
-        :param LogId: 日志id，从告警处创建必传，其它为空
-        :type LogId: str
-        :param City: 城市Code
-        :type City: int
-        :param Country: 国家Code
-        :type Country: int
-        :param CloudCode: 云厂商，支持多个，以逗号分隔， 1:腾讯云（仅中国香港及海外）,2:阿里云,3:亚马逊云,4:华为云,5:微软云
-        :type CloudCode: str
-        :param IsRegion: 是否为地域
-        :type IsRegion: int
-        :param CityName: 城市名
-        :type CityName: str
-        :param CountryName: 国家名
-        :type CountryName: str
-        """
+        :param OrderIndex: 执行顺序\n        :type OrderIndex: int\n        :param SourceIp: 访问源\n        :type SourceIp: str\n        :param TargetIp: 访问目的\n        :type TargetIp: str\n        :param Protocol: 协议\n        :type Protocol: str\n        :param Strategy: 策略\n        :type Strategy: str\n        :param SourceType: 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版\n        :type SourceType: int\n        :param Direction: 方向，0：出站，1：入站\n        :type Direction: int\n        :param Detail: 描述\n        :type Detail: str\n        :param TargetType: 访问目的类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版\n        :type TargetType: int\n        :param Port: 端口\n        :type Port: str\n        :param Id: id值\n        :type Id: int\n        :param LogId: 日志id，从告警处创建必传，其它为空\n        :type LogId: str\n        :param City: 城市Code\n        :type City: int\n        :param Country: 国家Code\n        :type Country: int\n        :param CloudCode: 云厂商，支持多个，以逗号分隔， 1:腾讯云（仅中国香港及海外）,2:阿里云,3:亚马逊云,4:华为云,5:微软云\n        :type CloudCode: str\n        :param IsRegion: 是否为地域\n        :type IsRegion: int\n        :param CityName: 城市名\n        :type CityName: str\n        :param CountryName: 国家名\n        :type CountryName: str\n        """
         self.OrderIndex = None
         self.SourceIp = None
         self.TargetIp = None
@@ -2435,9 +1885,7 @@ class RunSyncAssetRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 0: 互联网防火墙开关，1：vpc 防火墙开关
-        :type Type: int
-        """
+        :param Type: 0: 互联网防火墙开关，1：vpc 防火墙开关\n        :type Type: int\n        """
         self.Type = None
 
 
@@ -2459,11 +1907,7 @@ class RunSyncAssetResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 0：同步成功，1：资产更新中，2：后台同步调用失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 0：同步成功，1：资产更新中，2：后台同步调用失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2480,15 +1924,7 @@ class ScanInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ScanResultInfo: 扫描结果信息
-        :type ScanResultInfo: :class:`tencentcloud.cfw.v20190904.models.ScanResultInfo`
-        :param ScanStatus: 扫描状态 0扫描中 1完成   2没赠送过扫描显示开启界面
-        :type ScanStatus: int
-        :param ScanPercent: 进度
-        :type ScanPercent: float
-        :param ScanTime: 预计完成时间
-        :type ScanTime: str
-        """
+        :param ScanResultInfo: 扫描结果信息\n        :type ScanResultInfo: :class:`tencentcloud.cfw.v20190904.models.ScanResultInfo`\n        :param ScanStatus: 扫描状态 0扫描中 1完成   2没赠送过扫描显示开启界面\n        :type ScanStatus: int\n        :param ScanPercent: 进度\n        :type ScanPercent: float\n        :param ScanTime: 预计完成时间\n        :type ScanTime: str\n        """
         self.ScanResultInfo = None
         self.ScanStatus = None
         self.ScanPercent = None
@@ -2523,19 +1959,7 @@ class ScanResultInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param LeakNum: 暴漏漏洞数量
-        :type LeakNum: int
-        :param IPNum: 防护ip数量
-        :type IPNum: int
-        :param PortNum: 暴漏端口数量
-        :type PortNum: int
-        :param IPStatus: 是否开启防护
-        :type IPStatus: bool
-        :param IdpStatus: 是否拦截攻击
-        :type IdpStatus: bool
-        :param BanStatus: 是否禁封端口
-        :type BanStatus: bool
-        """
+        :param LeakNum: 暴漏漏洞数量\n        :type LeakNum: int\n        :param IPNum: 防护ip数量\n        :type IPNum: int\n        :param PortNum: 暴漏端口数量\n        :type PortNum: int\n        :param IPStatus: 是否开启防护\n        :type IPStatus: bool\n        :param IdpStatus: 是否拦截攻击\n        :type IdpStatus: bool\n        :param BanStatus: 是否禁封端口\n        :type BanStatus: bool\n        """
         self.LeakNum = None
         self.IPNum = None
         self.PortNum = None
@@ -2567,25 +1991,7 @@ class SecurityGroupApiRuleData(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceId: 访问源，入站时为Ip/Cidr，默认为0.0.0.0/0； 出站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
-        :type SourceId: str
-        :param TargetId: 访问目的，出站时为Ip/Cidr，默认为0.0.0.0/0；入站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
-        :type TargetId: str
-        :param Protocol: 协议，支持ANY/TCP/UDP/ICMP
-        :type Protocol: str
-        :param Port: 端口, 当Protocol为ANY或ICMP时，Port为-1/-1
-        :type Port: str
-        :param Strategy: 策略, 1：阻断，2：放行
-        :type Strategy: str
-        :param Detail: 描述
-        :type Detail: str
-        :param RuleType: 规则类型，1：VpcId+Ip/Cidr, 2: 实例ID，入站时为访问目的类型，出站时为访问源类型
-        :type RuleType: int
-        :param OrderIndex: 执行顺序，中间插入必传，前插、后插非必传
-        :type OrderIndex: int
-        :param VpcId: 私有网络ID，当RuleType为1时必传
-        :type VpcId: str
-        """
+        :param SourceId: 访问源，入站时为Ip/Cidr，默认为0.0.0.0/0； 出站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID\n        :type SourceId: str\n        :param TargetId: 访问目的，出站时为Ip/Cidr，默认为0.0.0.0/0；入站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID\n        :type TargetId: str\n        :param Protocol: 协议，支持ANY/TCP/UDP/ICMP\n        :type Protocol: str\n        :param Port: 端口, 当Protocol为ANY或ICMP时，Port为-1/-1\n        :type Port: str\n        :param Strategy: 策略, 1：阻断，2：放行\n        :type Strategy: str\n        :param Detail: 描述\n        :type Detail: str\n        :param RuleType: 规则类型，1：VpcId+Ip/Cidr, 2: 实例ID，入站时为访问目的类型，出站时为访问源类型\n        :type RuleType: int\n        :param OrderIndex: 执行顺序，中间插入必传，前插、后插非必传\n        :type OrderIndex: int\n        :param VpcId: 私有网络ID，当RuleType为1时必传\n        :type VpcId: str\n        """
         self.SourceId = None
         self.TargetId = None
         self.Protocol = None
@@ -2623,51 +2029,13 @@ class SecurityGroupListData(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 规则ID
-        :type Id: int
-        :param OrderIndex: 执行顺序
-        :type OrderIndex: int
-        :param SourceId: 访问源
-        :type SourceId: str
-        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB
-        :type SourceType: int
-        :param TargetId: 访问目的
-        :type TargetId: str
-        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB
-        :type TargetType: int
-        :param Protocol: 协议
-        :type Protocol: str
-        :param Port: 目的端口
-        :type Port: str
-        :param Strategy: 策略, 1：阻断，2：放行
-        :type Strategy: int
-        :param Detail: 描述
-        :type Detail: str
-        :param Status: 是否开关开启，0：未开启，1：开启
-        :type Status: int
-        :param IsNew: 是否是正常规则，0：正常，1：异常
-        :type IsNew: int
-        :param BothWay: 单/双向下发，0:单向下发，1：双向下发
-        :type BothWay: int
-        :param VpcId: 私有网络ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcId: str
-        :param SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetId: str
-        :param InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceName: str
-        :param PublicIp: 公网IP，多个以英文逗号分隔
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicIp: str
-        :param PrivateIp: 内网IP，多个以英文逗号分隔
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrivateIp: str
-        :param Cidr: 掩码地址，多个以英文逗号分隔
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cidr: str
-        """
+        :param Id: 规则ID\n        :type Id: int\n        :param OrderIndex: 执行顺序\n        :type OrderIndex: int\n        :param SourceId: 访问源\n        :type SourceId: str\n        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB\n        :type SourceType: int\n        :param TargetId: 访问目的\n        :type TargetId: str\n        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB\n        :type TargetType: int\n        :param Protocol: 协议\n        :type Protocol: str\n        :param Port: 目的端口\n        :type Port: str\n        :param Strategy: 策略, 1：阻断，2：放行\n        :type Strategy: int\n        :param Detail: 描述\n        :type Detail: str\n        :param Status: 是否开关开启，0：未开启，1：开启\n        :type Status: int\n        :param IsNew: 是否是正常规则，0：正常，1：异常\n        :type IsNew: int\n        :param BothWay: 单/双向下发，0:单向下发，1：双向下发\n        :type BothWay: int\n        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param PublicIp: 公网IP，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIp: str\n        :param PrivateIp: 内网IP，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivateIp: str\n        :param Cidr: 掩码地址，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cidr: str\n        """
         self.Id = None
         self.OrderIndex = None
         self.SourceId = None
@@ -2725,13 +2093,7 @@ class SequenceData(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 规则Id值
-        :type Id: int
-        :param OrderIndex: 修改前执行顺序
-        :type OrderIndex: int
-        :param NewOrderIndex: 修改后执行顺序
-        :type NewOrderIndex: int
-        """
+        :param Id: 规则Id值\n        :type Id: int\n        :param OrderIndex: 修改前执行顺序\n        :type OrderIndex: int\n        :param NewOrderIndex: 修改后执行顺序\n        :type NewOrderIndex: int\n        """
         self.Id = None
         self.OrderIndex = None
         self.NewOrderIndex = None
@@ -2757,19 +2119,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Mode: 0：cfw新增模式，1：cfw接入模式。
-        :type Mode: int
-        :param OperationType: 操作类型，可选值：add，del，modify。
-        :type OperationType: str
-        :param CfwInstance: 防火墙实例id。
-        :type CfwInstance: str
-        :param AddOrDelDnatRules: 添加或删除操作的Dnat规则列表。
-        :type AddOrDelDnatRules: list of CfwNatDnatRule
-        :param OriginDnat: 修改操作的原始Dnat规则
-        :type OriginDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`
-        :param NewDnat: 修改操作的新的Dnat规则
-        :type NewDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`
-        """
+        :param Mode: 0：cfw新增模式，1：cfw接入模式。\n        :type Mode: int\n        :param OperationType: 操作类型，可选值：add，del，modify。\n        :type OperationType: str\n        :param CfwInstance: 防火墙实例id。\n        :type CfwInstance: str\n        :param AddOrDelDnatRules: 添加或删除操作的Dnat规则列表。\n        :type AddOrDelDnatRules: list of CfwNatDnatRule\n        :param OriginDnat: 修改操作的原始Dnat规则\n        :type OriginDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`\n        :param NewDnat: 修改操作的新的Dnat规则\n        :type NewDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`\n        """
         self.Mode = None
         self.OperationType = None
         self.CfwInstance = None
@@ -2810,9 +2160,7 @@ class SetNatFwDnatRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2828,19 +2176,7 @@ class StaticInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Num: 数
-        :type Num: int
-        :param Port: 端口
-        :type Port: str
-        :param Ip: ip信息
-        :type Ip: str
-        :param Address: 地址
-        :type Address: str
-        :param InsID: 资产id
-        :type InsID: str
-        :param InsName: 资产名称
-        :type InsName: str
-        """
+        :param Num: 数\n        :type Num: int\n        :param Port: 端口\n        :type Port: str\n        :param Ip: ip信息\n        :type Ip: str\n        :param Address: 地址\n        :type Address: str\n        :param InsID: 资产id\n        :type InsID: str\n        :param InsName: 资产名称\n        :type InsName: str\n        """
         self.Num = None
         self.Port = None
         self.Ip = None
@@ -2873,42 +2209,16 @@ class SwitchListsData(AbstractModel):
     def __init__(self):
         """
         :param PublicIp: 公网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicIp: str
-        :param IntranetIp: 内网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IntranetIp: str
-        :param InstanceName: 实例名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceName: str
-        :param InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param AssetType: 资产类型
-        :type AssetType: str
-        :param Area: 地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Area: str
-        :param Switch: 防火墙开关
-        :type Switch: int
-        :param Id: id值
-        :type Id: int
-        :param PublicIpType: 公网 IP 类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicIpType: int
-        :param PortTimes: 风险端口数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PortTimes: int
-        :param LastTime: 最近扫描时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastTime: str
-        :param ScanMode: 扫描深度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScanMode: str
-        :param ScanStatus: 扫描状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScanStatus: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIp: str\n        :param IntranetIp: 内网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IntranetIp: str\n        :param InstanceName: 实例名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param AssetType: 资产类型\n        :type AssetType: str\n        :param Area: 地域
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Area: str\n        :param Switch: 防火墙开关\n        :type Switch: int\n        :param Id: id值\n        :type Id: int\n        :param PublicIpType: 公网 IP 类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIpType: int\n        :param PortTimes: 风险端口数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PortTimes: int\n        :param LastTime: 最近扫描时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastTime: str\n        :param ScanMode: 扫描深度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ScanMode: str\n        :param ScanStatus: 扫描状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ScanStatus: int\n        """
         self.PublicIp = None
         self.IntranetIp = None
         self.InstanceName = None
@@ -2954,19 +2264,7 @@ class TLogInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param OutNum: 失陷主机
-        :type OutNum: int
-        :param HandleNum: 待处置告警
-        :type HandleNum: int
-        :param VulNum: 漏洞攻击
-        :type VulNum: int
-        :param NetworkNum: 网络探测
-        :type NetworkNum: int
-        :param BanNum: 封禁列表
-        :type BanNum: int
-        :param BruteForceNum: 暴力破解
-        :type BruteForceNum: int
-        """
+        :param OutNum: 失陷主机\n        :type OutNum: int\n        :param HandleNum: 待处置告警\n        :type HandleNum: int\n        :param VulNum: 漏洞攻击\n        :type VulNum: int\n        :param NetworkNum: 网络探测\n        :type NetworkNum: int\n        :param BanNum: 封禁列表\n        :type BanNum: int\n        :param BruteForceNum: 暴力破解\n        :type BruteForceNum: int\n        """
         self.OutNum = None
         self.HandleNum = None
         self.VulNum = None
@@ -2998,15 +2296,7 @@ class UnHandleEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param EventTableListStruct: 伪攻击链类型
-        :type EventTableListStruct: list of UnHandleEventDetail
-        :param BaseLineUser: 1 是  0否
-        :type BaseLineUser: int
-        :param BaseLineInSwitch: 1 打开 0 关闭
-        :type BaseLineInSwitch: int
-        :param BaseLineOutSwitch: 1 打开 0 关闭
-        :type BaseLineOutSwitch: int
-        """
+        :param EventTableListStruct: 伪攻击链类型\n        :type EventTableListStruct: list of UnHandleEventDetail\n        :param BaseLineUser: 1 是  0否\n        :type BaseLineUser: int\n        :param BaseLineInSwitch: 1 打开 0 关闭\n        :type BaseLineInSwitch: int\n        :param BaseLineOutSwitch: 1 打开 0 关闭\n        :type BaseLineOutSwitch: int\n        """
         self.EventTableListStruct = None
         self.BaseLineUser = None
         self.BaseLineInSwitch = None
@@ -3039,11 +2329,7 @@ class UnHandleEventDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param EventName: 安全事件名称
-        :type EventName: str
-        :param Total: 未处置事件数量
-        :type Total: int
-        """
+        :param EventName: 安全事件名称\n        :type EventName: str\n        :param Total: 未处置事件数量\n        :type Total: int\n        """
         self.EventName = None
         self.Total = None
 

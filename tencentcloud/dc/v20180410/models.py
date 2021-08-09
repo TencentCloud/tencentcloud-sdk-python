@@ -25,9 +25,7 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 物理专线拥有者接受共享专用通道申请
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: 物理专线拥有者接受共享专用通道申请\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -49,9 +47,7 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -66,31 +62,11 @@ class AccessPoint(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessPointName: 接入点的名称。
-        :type AccessPointName: str
-        :param AccessPointId: 接入点唯一ID。
-        :type AccessPointId: str
-        :param State: 接入点的状态。可用，不可用。
-        :type State: str
-        :param Location: 接入点的位置。
-        :type Location: str
-        :param LineOperator: 接入点支持的运营商列表。
-        :type LineOperator: list of str
-        :param RegionId: 接入点管理的大区ID。
-        :type RegionId: str
-        :param AvailablePortType: 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AvailablePortType: list of str
-        :param Coordinate: 接入点经纬度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`
-        :param City: 接入点所在城市
-注意：此字段可能返回 null，表示取不到有效值。
-        :type City: str
-        :param Area: 接入点地域名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Area: str
-        """
+        :param AccessPointName: 接入点的名称。\n        :type AccessPointName: str\n        :param AccessPointId: 接入点唯一ID。\n        :type AccessPointId: str\n        :param State: 接入点的状态。可用，不可用。\n        :type State: str\n        :param Location: 接入点的位置。\n        :type Location: str\n        :param LineOperator: 接入点支持的运营商列表。\n        :type LineOperator: list of str\n        :param RegionId: 接入点管理的大区ID。\n        :type RegionId: str\n        :param AvailablePortType: 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AvailablePortType: list of str\n        :param Coordinate: 接入点经纬度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`\n        :param City: 接入点所在城市
+注意：此字段可能返回 null，表示取不到有效值。\n        :type City: str\n        :param Area: 接入点地域名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Area: str\n        """
         self.AccessPointName = None
         self.AccessPointId = None
         self.State = None
@@ -132,17 +108,11 @@ class ApplyInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MaskLen: CIDR地址掩码长度
-        :type MaskLen: int
-        :param AddrType: 0:BGP类型地址
+        :param MaskLen: CIDR地址掩码长度\n        :type MaskLen: int\n        :param AddrType: 0:BGP类型地址
 1：中国电信
 2：中国移动
-3：中国联通
-        :type AddrType: int
-        :param AddrProto: 0：IPv4
-1:IPv6
-        :type AddrProto: int
-        """
+3：中国联通\n        :type AddrType: int\n        :param AddrProto: 0：IPv4
+1:IPv6\n        :type AddrProto: int\n        """
         self.MaskLen = None
         self.AddrType = None
         self.AddrProto = None
@@ -169,11 +139,7 @@ class ApplyInternetAddressResponse(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: 互联网公网地址ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -190,11 +156,7 @@ class BFDInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ProbeFailedTimes: 健康检查次数
-        :type ProbeFailedTimes: int
-        :param Interval: 健康检查间隔
-        :type Interval: int
-        """
+        :param ProbeFailedTimes: 健康检查次数\n        :type ProbeFailedTimes: int\n        :param Interval: 健康检查间隔\n        :type Interval: int\n        """
         self.ProbeFailedTimes = None
         self.Interval = None
 
@@ -218,11 +180,7 @@ class BGPStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param TencentAddressBgpState: 腾讯侧主互联IP BGP状态
-        :type TencentAddressBgpState: str
-        :param TencentBackupAddressBgpState: 腾讯侧备互联IP BGP状态
-        :type TencentBackupAddressBgpState: str
-        """
+        :param TencentAddressBgpState: 腾讯侧主互联IP BGP状态\n        :type TencentAddressBgpState: str\n        :param TencentBackupAddressBgpState: 腾讯侧备互联IP BGP状态\n        :type TencentBackupAddressBgpState: str\n        """
         self.TencentAddressBgpState = None
         self.TencentBackupAddressBgpState = None
 
@@ -246,11 +204,7 @@ class BgpPeer(AbstractModel):
 
     def __init__(self):
         """
-        :param Asn: 用户侧，BGP Asn
-        :type Asn: int
-        :param AuthKey: 用户侧BGP密钥
-        :type AuthKey: str
-        """
+        :param Asn: 用户侧，BGP Asn\n        :type Asn: int\n        :param AuthKey: 用户侧BGP密钥\n        :type AuthKey: str\n        """
         self.Asn = None
         self.AuthKey = None
 
@@ -274,11 +228,7 @@ class Coordinate(AbstractModel):
 
     def __init__(self):
         """
-        :param Lat: 纬度
-        :type Lat: float
-        :param Lng: 经度
-        :type Lng: float
-        """
+        :param Lat: 纬度\n        :type Lat: float\n        :param Lng: 经度\n        :type Lng: float\n        """
         self.Lat = None
         self.Lng = None
 
@@ -302,42 +252,8 @@ class CreateDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectName: 物理专线的名称。
-        :type DirectConnectName: str
-        :param AccessPointId: 物理专线所在的接入点。
-您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。
-        :type AccessPointId: str
-        :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。
-        :type LineOperator: str
-        :param PortType: 物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）。
-        :type PortType: str
-        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
-        :type CircuitCode: str
-        :param Location: 本地数据中心的地理位置。
-        :type Location: str
-        :param Bandwidth: 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
-        :type Bandwidth: int
-        :param RedundantDirectConnectId: 冗余物理专线的ID。
-        :type RedundantDirectConnectId: str
-        :param Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
-        :type Vlan: int
-        :param TencentAddress: 物理专线调试腾讯侧互联 IP。默认自动分配。
-        :type TencentAddress: str
-        :param CustomerAddress: 物理专线调试用户侧互联 IP。默认自动分配。
-        :type CustomerAddress: str
-        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
-        :type CustomerName: str
-        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
-        :type CustomerContactMail: str
-        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
-        :type CustomerContactNumber: str
-        :param FaultReportContactPerson: 报障联系人。
-        :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: 报障联系电话。
-        :type FaultReportContactNumber: str
-        :param SignLaw: 物理专线申请者是否签署了用户使用协议。默认已签署
-        :type SignLaw: bool
-        """
+        :param DirectConnectName: 物理专线的名称。\n        :type DirectConnectName: str\n        :param AccessPointId: 物理专线所在的接入点。
+您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。\n        :type AccessPointId: str\n        :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。\n        :type LineOperator: str\n        :param PortType: 物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）。\n        :type PortType: str\n        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。\n        :type CircuitCode: str\n        :param Location: 本地数据中心的地理位置。\n        :type Location: str\n        :param Bandwidth: 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。\n        :type Bandwidth: int\n        :param RedundantDirectConnectId: 冗余物理专线的ID。\n        :type RedundantDirectConnectId: str\n        :param Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。\n        :type Vlan: int\n        :param TencentAddress: 物理专线调试腾讯侧互联 IP。默认自动分配。\n        :type TencentAddress: str\n        :param CustomerAddress: 物理专线调试用户侧互联 IP。默认自动分配。\n        :type CustomerAddress: str\n        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。\n        :type CustomerName: str\n        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。\n        :type CustomerContactMail: str\n        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。\n        :type CustomerContactNumber: str\n        :param FaultReportContactPerson: 报障联系人。\n        :type FaultReportContactPerson: str\n        :param FaultReportContactNumber: 报障联系电话。\n        :type FaultReportContactNumber: str\n        :param SignLaw: 物理专线申请者是否签署了用户使用协议。默认已签署\n        :type SignLaw: bool\n        """
         self.DirectConnectName = None
         self.AccessPointId = None
         self.LineOperator = None
@@ -391,11 +307,7 @@ class CreateDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectIdSet: 物理专线的ID。
-        :type DirectConnectIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DirectConnectIdSet: 物理专线的ID。\n        :type DirectConnectIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DirectConnectIdSet = None
         self.RequestId = None
 
@@ -412,48 +324,16 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: 专线 ID，例如：dc-kd7d06of
-        :type DirectConnectId: str
-        :param DirectConnectTunnelName: 专用通道名称
-        :type DirectConnectTunnelName: str
-        :param DirectConnectOwnerAccount: 物理专线 owner，缺省为当前客户（物理专线 owner）
-共享专线时这里需要填写共享专线的开发商账号 ID
-        :type DirectConnectOwnerAccount: str
-        :param NetworkType: 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
+        :param DirectConnectId: 专线 ID，例如：dc-kd7d06of\n        :type DirectConnectId: str\n        :param DirectConnectTunnelName: 专用通道名称\n        :type DirectConnectTunnelName: str\n        :param DirectConnectOwnerAccount: 物理专线 owner，缺省为当前客户（物理专线 owner）
+共享专线时这里需要填写共享专线的开发商账号 ID\n        :type DirectConnectOwnerAccount: str\n        :param NetworkType: 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
 VPC：私有网络
 BMVPC：黑石网络
-CCN：云联网
-        :type NetworkType: str
-        :param NetworkRegion: 网络地域
-        :type NetworkRegion: str
-        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID
-        :type VpcId: str
-        :param DirectConnectGatewayId: 专线网关 ID，例如 dcg-d545ddf
-        :type DirectConnectGatewayId: str
-        :param Bandwidth: 专线带宽，单位：Mbps
-默认是物理专线带宽值
-        :type Bandwidth: int
-        :param RouteType: BGP ：BGP路由
+CCN：云联网\n        :type NetworkType: str\n        :param NetworkRegion: 网络地域\n        :type NetworkRegion: str\n        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID\n        :type VpcId: str\n        :param DirectConnectGatewayId: 专线网关 ID，例如 dcg-d545ddf\n        :type DirectConnectGatewayId: str\n        :param Bandwidth: 专线带宽，单位：Mbps
+默认是物理专线带宽值\n        :type Bandwidth: int\n        :param RouteType: BGP ：BGP路由
 STATIC：静态
-默认为 BGP 路由
-        :type RouteType: str
-        :param BgpPeer: BgpPeer，用户侧bgp信息，包括Asn和AuthKey
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: 静态路由，用户IDC的网段地址
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: vlan，范围：0 ~ 3000
+默认为 BGP 路由\n        :type RouteType: str\n        :param BgpPeer: BgpPeer，用户侧bgp信息，包括Asn和AuthKey\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: 静态路由，用户IDC的网段地址\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param Vlan: vlan，范围：0 ~ 3000
 0：不开启子接口
-默认值是非0
-        :type Vlan: int
-        :param TencentAddress: TencentAddress，腾讯侧互联 IP
-        :type TencentAddress: str
-        :param CustomerAddress: CustomerAddress，用户侧互联 IP
-        :type CustomerAddress: str
-        :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
-        :type TencentBackupAddress: str
-        :param CloudAttachId: 高速上云服务ID
-        :type CloudAttachId: str
-        """
+默认值是非0\n        :type Vlan: int\n        :param TencentAddress: TencentAddress，腾讯侧互联 IP\n        :type TencentAddress: str\n        :param CustomerAddress: CustomerAddress，用户侧互联 IP\n        :type CustomerAddress: str\n        :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP\n        :type TencentBackupAddress: str\n        :param CloudAttachId: 高速上云服务ID\n        :type CloudAttachId: str\n        """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
         self.DirectConnectOwnerAccount = None
@@ -512,11 +392,7 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelIdSet: 专用通道ID
-        :type DirectConnectTunnelIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DirectConnectTunnelIdSet: 专用通道ID\n        :type DirectConnectTunnelIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DirectConnectTunnelIdSet = None
         self.RequestId = None
 
@@ -533,9 +409,7 @@ class DeleteDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: 物理专线的ID。
-        :type DirectConnectId: str
-        """
+        :param DirectConnectId: 物理专线的ID。\n        :type DirectConnectId: str\n        """
         self.DirectConnectId = None
 
 
@@ -557,9 +431,7 @@ class DeleteDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -574,9 +446,7 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -598,9 +468,7 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -617,13 +485,7 @@ class DescribeAccessPointsRequest(AbstractModel):
         """
         :param RegionId: 接入点所在的地域。使用DescribeRegions查询
 
-您可以通过调用 DescribeRegions接口获取地域ID。
-        :type RegionId: str
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
-        :type Limit: int
-        """
+您可以通过调用 DescribeRegions接口获取地域ID。\n        :type RegionId: str\n        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。\n        :type Limit: int\n        """
         self.RegionId = None
         self.Offset = None
         self.Limit = None
@@ -649,13 +511,7 @@ class DescribeAccessPointsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessPointSet: 接入点信息。
-        :type AccessPointSet: list of AccessPoint
-        :param TotalCount: 符合接入点数量。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AccessPointSet: 接入点信息。\n        :type AccessPointSet: list of AccessPoint\n        :param TotalCount: 符合接入点数量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AccessPointSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -679,9 +535,7 @@ class DescribeDirectConnectTunnelExtraRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -703,11 +557,7 @@ class DescribeDirectConnectTunnelExtraResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelExtra: 专用通道扩展信息
-        :type DirectConnectTunnelExtra: :class:`tencentcloud.dc.v20180410.models.DirectConnectTunnelExtra`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DirectConnectTunnelExtra: 专用通道扩展信息\n        :type DirectConnectTunnelExtra: :class:`tencentcloud.dc.v20180410.models.DirectConnectTunnelExtra`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DirectConnectTunnelExtra = None
         self.RequestId = None
 
@@ -730,15 +580,7 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
 参数不支持同时指定DirectConnectTunnelIds和Filters。
 <li> direct-connect-tunnel-name, 专用通道名称。</li>
 <li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
-<li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
-        :type Filters: list of Filter
-        :param DirectConnectTunnelIds: 专用通道 ID数组
-        :type DirectConnectTunnelIds: list of str
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100
-        :type Limit: int
-        """
+<li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>\n        :type Filters: list of Filter\n        :param DirectConnectTunnelIds: 专用通道 ID数组\n        :type DirectConnectTunnelIds: list of str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100\n        :type Limit: int\n        """
         self.Filters = None
         self.DirectConnectTunnelIds = None
         self.Offset = None
@@ -771,13 +613,7 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelSet: 专用通道列表
-        :type DirectConnectTunnelSet: list of DirectConnectTunnel
-        :param TotalCount: 符合专用通道数量。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DirectConnectTunnelSet: 专用通道列表\n        :type DirectConnectTunnelSet: list of DirectConnectTunnel\n        :param TotalCount: 符合专用通道数量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DirectConnectTunnelSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -801,15 +637,7 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 过滤条件:
-        :type Filters: list of Filter
-        :param DirectConnectIds: 物理专线 ID数组
-        :type DirectConnectIds: list of str
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100
-        :type Limit: int
-        """
+        :param Filters: 过滤条件:\n        :type Filters: list of Filter\n        :param DirectConnectIds: 物理专线 ID数组\n        :type DirectConnectIds: list of str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100\n        :type Limit: int\n        """
         self.Filters = None
         self.DirectConnectIds = None
         self.Offset = None
@@ -842,16 +670,8 @@ class DescribeDirectConnectsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectSet: 物理专线列表。
-        :type DirectConnectSet: list of DirectConnect
-        :param TotalCount: 符合物理专线列表数量。
-        :type TotalCount: int
-        :param AllSignLaw: 用户名下物理专线是否都签署了用户协议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AllSignLaw: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DirectConnectSet: 物理专线列表。\n        :type DirectConnectSet: list of DirectConnect\n        :param TotalCount: 符合物理专线列表数量。\n        :type TotalCount: int\n        :param AllSignLaw: 用户名下物理专线是否都签署了用户协议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AllSignLaw: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DirectConnectSet = None
         self.TotalCount = None
         self.AllSignLaw = None
@@ -884,23 +704,11 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     def __init__(self):
         """
         :param Ipv6PrefixLen: IPv6互联网公网允许的最小前缀长度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv6PrefixLen: int
-        :param Ipv4BgpQuota: BGP类型IPv4互联网地址配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv4BgpQuota: int
-        :param Ipv4OtherQuota: 非BGP类型IPv4互联网地址配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv4OtherQuota: int
-        :param Ipv4BgpNum: BGP类型IPv4互联网地址已使用数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv4BgpNum: int
-        :param Ipv4OtherNum: 非BGP类型互联网地址已使用数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv4OtherNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ipv6PrefixLen: int\n        :param Ipv4BgpQuota: BGP类型IPv4互联网地址配额
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ipv4BgpQuota: int\n        :param Ipv4OtherQuota: 非BGP类型IPv4互联网地址配额
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ipv4OtherQuota: int\n        :param Ipv4BgpNum: BGP类型IPv4互联网地址已使用数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ipv4BgpNum: int\n        :param Ipv4OtherNum: 非BGP类型互联网地址已使用数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ipv4OtherNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Ipv6PrefixLen = None
         self.Ipv4BgpQuota = None
         self.Ipv4OtherQuota = None
@@ -925,18 +733,12 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值100
-        :type Limit: int
-        :param Filters: 过滤条件：
+        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值100\n        :type Limit: int\n        :param Filters: 过滤条件：
 <li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
 <li>AddrProto地址类型。0：IPv4 1:IPv6</li>
 <li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
 <li>Subnet 互联网公网地址，数组</li>
-<InstanceIds>互联网公网地址ID，数组</li>
-        :type Filters: list of Filter
-        """
+<InstanceIds>互联网公网地址ID，数组</li>\n        :type Filters: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -967,14 +769,8 @@ class DescribeInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 互联网公网地址数量
-        :type TotalCount: int
-        :param Subnets: 互联网公网地址列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Subnets: list of InternetAddressDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 互联网公网地址数量\n        :type TotalCount: int\n        :param Subnets: 互联网公网地址列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Subnets: list of InternetAddressDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Subnets = None
         self.RequestId = None
@@ -1004,14 +800,8 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 互联网公网地址统计信息数量
-        :type TotalCount: int
-        :param InternetAddressStatistics: 互联网公网地址统计信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InternetAddressStatistics: list of InternetAddressStatistics
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 互联网公网地址统计信息数量\n        :type TotalCount: int\n        :param InternetAddressStatistics: 互联网公网地址统计信息列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InternetAddressStatistics: list of InternetAddressStatistics\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InternetAddressStatistics = None
         self.RequestId = None
@@ -1035,17 +825,9 @@ class DescribePublicDirectConnectTunnelRoutesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        :param Filters: 过滤条件：
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        :param Filters: 过滤条件：
 route-type：路由类型，取值：BGP/STATIC
-route-subnet：路由cidr，取值如：192.68.1.0/24
-        :type Filters: list of Filter
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100
-        :type Limit: int
-        """
+route-subnet：路由cidr，取值如：192.68.1.0/24\n        :type Filters: list of Filter\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100\n        :type Limit: int\n        """
         self.DirectConnectTunnelId = None
         self.Filters = None
         self.Offset = None
@@ -1078,13 +860,7 @@ class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Routes: 互联网通道路由列表
-        :type Routes: list of DirectConnectTunnelRoute
-        :param TotalCount: 记录总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Routes: 互联网通道路由列表\n        :type Routes: list of DirectConnectTunnelRoute\n        :param TotalCount: 记录总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Routes = None
         self.TotalCount = None
         self.RequestId = None
@@ -1108,13 +884,7 @@ class DirectConnect(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: 物理专线ID。
-        :type DirectConnectId: str
-        :param DirectConnectName: 物理专线的名称。
-        :type DirectConnectName: str
-        :param AccessPointId: 物理专线的接入点ID。
-        :type AccessPointId: str
-        :param State: 物理专线的状态。
+        :param DirectConnectId: 物理专线ID。\n        :type DirectConnectId: str\n        :param DirectConnectName: 物理专线的名称。\n        :type DirectConnectName: str\n        :param AccessPointId: 物理专线的接入点ID。\n        :type AccessPointId: str\n        :param State: 物理专线的状态。
 申请中：PENDING 
 申请驳回：REJECTED   
 待付款：TOPAY 
@@ -1122,85 +892,27 @@ class DirectConnect(AbstractModel):
 建设中：ALLOCATED   
 已开通：AVAILABLE  
 删除中 ：DELETING
-已删除：DELETED 。
-        :type State: str
-        :param CreatedTime: 物理专线创建时间。
-        :type CreatedTime: str
-        :param EnabledTime: 物理专线的开通时间。
-        :type EnabledTime: str
-        :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。
-        :type LineOperator: str
-        :param Location: 本地数据中心的地理位置。
-        :type Location: str
-        :param Bandwidth: 物理专线接入接口带宽，单位为Mbps。
-        :type Bandwidth: int
-        :param PortType: 用户侧物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）
-        :type PortType: str
-        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CircuitCode: str
-        :param RedundantDirectConnectId: 冗余物理专线的ID。
-        :type RedundantDirectConnectId: str
-        :param Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Vlan: int
-        :param TencentAddress: 物理专线调试腾讯侧互联IP。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TencentAddress: str
-        :param CustomerAddress: 物理专线调试用户侧互联IP。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomerAddress: str
-        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomerName: str
-        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomerContactMail: str
-        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomerContactNumber: str
-        :param ExpiredTime: 物理专线的过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpiredTime: str
-        :param ChargeType: 物理专线计费类型。 NON_RECURRING_CHARGE：一次性接入费用；PREPAID_BY_YEAR：按年预付费。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChargeType: str
-        :param FaultReportContactPerson: 报障联系人。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: 报障联系电话。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaultReportContactNumber: str
-        :param TagSet: 标签键值对
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagSet: list of Tag
-        :param AccessPointType: 物理专线的接入点类型。
-        :type AccessPointType: str
-        :param IdcCity: IDC所在城市
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IdcCity: str
-        :param ChargeState: 计费状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChargeState: str
-        :param StartTime: 物理专线开通时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartTime: str
-        :param SignLaw: 物理专线是否已签署用户协议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SignLaw: bool
-        :param LocalZone: 物理专线是否为LocalZone
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LocalZone: bool
-        :param VlanZeroDirectConnectTunnelCount: 该物理专线下vlan 0的专用通道数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VlanZeroDirectConnectTunnelCount: int
-        :param OtherVlanDirectConnectTunnelCount: 该物理专线下非vlan 0的专用通道数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OtherVlanDirectConnectTunnelCount: int
-        :param MinBandwidth: 物理专线最小带宽
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MinBandwidth: int
-        """
+已删除：DELETED 。\n        :type State: str\n        :param CreatedTime: 物理专线创建时间。\n        :type CreatedTime: str\n        :param EnabledTime: 物理专线的开通时间。\n        :type EnabledTime: str\n        :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。\n        :type LineOperator: str\n        :param Location: 本地数据中心的地理位置。\n        :type Location: str\n        :param Bandwidth: 物理专线接入接口带宽，单位为Mbps。\n        :type Bandwidth: int\n        :param PortType: 用户侧物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）\n        :type PortType: str\n        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CircuitCode: str\n        :param RedundantDirectConnectId: 冗余物理专线的ID。\n        :type RedundantDirectConnectId: str\n        :param Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Vlan: int\n        :param TencentAddress: 物理专线调试腾讯侧互联IP。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TencentAddress: str\n        :param CustomerAddress: 物理专线调试用户侧互联IP。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomerAddress: str\n        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomerName: str\n        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomerContactMail: str\n        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomerContactNumber: str\n        :param ExpiredTime: 物理专线的过期时间。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpiredTime: str\n        :param ChargeType: 物理专线计费类型。 NON_RECURRING_CHARGE：一次性接入费用；PREPAID_BY_YEAR：按年预付费。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ChargeType: str\n        :param FaultReportContactPerson: 报障联系人。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FaultReportContactPerson: str\n        :param FaultReportContactNumber: 报障联系电话。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FaultReportContactNumber: str\n        :param TagSet: 标签键值对
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagSet: list of Tag\n        :param AccessPointType: 物理专线的接入点类型。\n        :type AccessPointType: str\n        :param IdcCity: IDC所在城市
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IdcCity: str\n        :param ChargeState: 计费状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ChargeState: str\n        :param StartTime: 物理专线开通时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: str\n        :param SignLaw: 物理专线是否已签署用户协议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SignLaw: bool\n        :param LocalZone: 物理专线是否为LocalZone
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LocalZone: bool\n        :param VlanZeroDirectConnectTunnelCount: 该物理专线下vlan 0的专用通道数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VlanZeroDirectConnectTunnelCount: int\n        :param OtherVlanDirectConnectTunnelCount: 该物理专线下非vlan 0的专用通道数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OtherVlanDirectConnectTunnelCount: int\n        :param MinBandwidth: 物理专线最小带宽
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MinBandwidth: int\n        """
         self.DirectConnectId = None
         self.DirectConnectName = None
         self.AccessPointId = None
@@ -1289,11 +1001,7 @@ class DirectConnectTunnel(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        :param DirectConnectId: 物理专线ID
-        :type DirectConnectId: str
-        :param State: 专用通道状态
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        :param DirectConnectId: 物理专线ID\n        :type DirectConnectId: str\n        :param State: 专用通道状态
 AVAILABLE:就绪或者已连接
 PENDING:申请中
 ALLOCATING:配置中
@@ -1302,75 +1010,19 @@ ALTERING:修改中
 DELETING:删除中
 DELETED:删除完成
 COMFIRMING:待接受
-REJECTED:拒绝
-        :type State: str
-        :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID
-        :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: 专用通道的拥有者，开发商账号 ID
-        :type OwnerAccount: str
-        :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
- VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
-        :type NetworkType: str
-        :param NetworkRegion: VPC地域对应的网络名，如ap-guangzhou
-        :type NetworkRegion: str
-        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID
-        :type VpcId: str
-        :param DirectConnectGatewayId: 专线网关 ID
-        :type DirectConnectGatewayId: str
-        :param RouteType: BGP ：BGP路由 STATIC：静态 默认为 BGP 路由
-        :type RouteType: str
-        :param BgpPeer: 用户侧BGP，Asn，AuthKey
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: 用户侧网段地址
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: 专用通道的Vlan
-        :type Vlan: int
-        :param TencentAddress: TencentAddress，腾讯侧互联 IP
-        :type TencentAddress: str
-        :param CustomerAddress: CustomerAddress，用户侧互联 IP
-        :type CustomerAddress: str
-        :param DirectConnectTunnelName: 专用通道名称
-        :type DirectConnectTunnelName: str
-        :param CreatedTime: 专用通道创建时间
-        :type CreatedTime: str
-        :param Bandwidth: 专用通道带宽值
-        :type Bandwidth: int
-        :param TagSet: 专用通道标签值
-        :type TagSet: list of Tag
-        :param NetDetectId: 关联的网络自定义探测ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NetDetectId: str
-        :param EnableBGPCommunity: BGP community开关
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableBGPCommunity: bool
-        :param NatType: 是否为Nat通道
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NatType: int
-        :param VpcRegion: VPC地域简码，如gz、cd
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcRegion: str
-        :param BfdEnable: 是否开启BFD
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BfdEnable: int
-        :param AccessPointType: 专用通道接入点类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AccessPointType: str
-        :param DirectConnectGatewayName: 专线网关名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DirectConnectGatewayName: str
-        :param VpcName: VPC名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcName: str
-        :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TencentBackupAddress: str
-        :param SignLaw: 专用通道关联的物理专线是否签署了用户协议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SignLaw: bool
-        :param CloudAttachId: 高速上云服务ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CloudAttachId: str
-        """
+REJECTED:拒绝\n        :type State: str\n        :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID\n        :type DirectConnectOwnerAccount: str\n        :param OwnerAccount: 专用通道的拥有者，开发商账号 ID\n        :type OwnerAccount: str\n        :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
+ VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网\n        :type NetworkType: str\n        :param NetworkRegion: VPC地域对应的网络名，如ap-guangzhou\n        :type NetworkRegion: str\n        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID\n        :type VpcId: str\n        :param DirectConnectGatewayId: 专线网关 ID\n        :type DirectConnectGatewayId: str\n        :param RouteType: BGP ：BGP路由 STATIC：静态 默认为 BGP 路由\n        :type RouteType: str\n        :param BgpPeer: 用户侧BGP，Asn，AuthKey\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: 用户侧网段地址\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param Vlan: 专用通道的Vlan\n        :type Vlan: int\n        :param TencentAddress: TencentAddress，腾讯侧互联 IP\n        :type TencentAddress: str\n        :param CustomerAddress: CustomerAddress，用户侧互联 IP\n        :type CustomerAddress: str\n        :param DirectConnectTunnelName: 专用通道名称\n        :type DirectConnectTunnelName: str\n        :param CreatedTime: 专用通道创建时间\n        :type CreatedTime: str\n        :param Bandwidth: 专用通道带宽值\n        :type Bandwidth: int\n        :param TagSet: 专用通道标签值\n        :type TagSet: list of Tag\n        :param NetDetectId: 关联的网络自定义探测ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NetDetectId: str\n        :param EnableBGPCommunity: BGP community开关
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EnableBGPCommunity: bool\n        :param NatType: 是否为Nat通道
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatType: int\n        :param VpcRegion: VPC地域简码，如gz、cd
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcRegion: str\n        :param BfdEnable: 是否开启BFD
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BfdEnable: int\n        :param AccessPointType: 专用通道接入点类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AccessPointType: str\n        :param DirectConnectGatewayName: 专线网关名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DirectConnectGatewayName: str\n        :param VpcName: VPC名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcName: str\n        :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TencentBackupAddress: str\n        :param SignLaw: 专用通道关联的物理专线是否签署了用户协议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SignLaw: bool\n        :param CloudAttachId: 高速上云服务ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CloudAttachId: str\n        """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
         self.State = None
@@ -1462,11 +1114,7 @@ class DirectConnectTunnelExtra(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        :param DirectConnectId: 物理专线ID
-        :type DirectConnectId: str
-        :param State: 专用通道状态
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        :param DirectConnectId: 物理专线ID\n        :type DirectConnectId: str\n        :param State: 专用通道状态
 AVAILABLE:就绪或者已连接
 PENDING:申请中
 ALLOCATING:配置中
@@ -1475,88 +1123,14 @@ ALTERING:修改中
 DELETING:删除中
 DELETED:删除完成
 COMFIRMING:待接受
-REJECTED:拒绝
-        :type State: str
-        :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID
-        :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: 专用通道的拥有者，开发商账号 ID
-        :type OwnerAccount: str
-        :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
- VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
-        :type NetworkType: str
-        :param NetworkRegion: VPC地域对应的网络名，如ap-guangzhou
-        :type NetworkRegion: str
-        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID
-        :type VpcId: str
-        :param DirectConnectGatewayId: 专线网关 ID
-        :type DirectConnectGatewayId: str
-        :param RouteType: BGP ：BGP路由 STATIC：静态 默认为 BGP 路由
-        :type RouteType: str
-        :param BgpPeer: 用户侧BGP，Asn，AuthKey
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: 用户侧网段地址
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param PublicAddresses: 互联网通道公网网段地址
-        :type PublicAddresses: list of RouteFilterPrefix
-        :param Vlan: 专用通道的Vlan
-        :type Vlan: int
-        :param TencentAddress: 腾讯侧互联 IP
-        :type TencentAddress: str
-        :param TencentBackupAddress: 腾讯侧备用互联IP
-        :type TencentBackupAddress: str
-        :param CustomerAddress: 用户侧互联 IP
-        :type CustomerAddress: str
-        :param DirectConnectTunnelName: 专用通道名称
-        :type DirectConnectTunnelName: str
-        :param CreatedTime: 专用通道创建时间
-        :type CreatedTime: str
-        :param Bandwidth: 专用通道带宽值
-        :type Bandwidth: int
-        :param NetDetectId: 关联的网络自定义探测ID
-        :type NetDetectId: str
-        :param EnableBGPCommunity: BGP community开关
-        :type EnableBGPCommunity: bool
-        :param NatType: 是否为Nat通道
-        :type NatType: int
-        :param VpcRegion: VPC地域简码，如gz、cd
-        :type VpcRegion: str
-        :param BfdEnable: 是否开启BFD
-        :type BfdEnable: int
-        :param NqaEnable: 是否开启NQA
-        :type NqaEnable: int
-        :param AccessPointType: 专用通道接入点类型
-        :type AccessPointType: str
-        :param DirectConnectGatewayName: 专线网关名称
-        :type DirectConnectGatewayName: str
-        :param VpcName: VPC名称
-        :type VpcName: str
-        :param SignLaw: 专用通道关联的物理专线是否签署了用户协议
-        :type SignLaw: bool
-        :param BfdInfo: BFD配置信息
-        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
-        :param NqaInfo: NQA配置信息
-        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
-        :param BgpStatus: BGP状态
-        :type BgpStatus: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
-        :param IPv6Enable: 是否开启IPv6
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IPv6Enable: int
-        :param TencentIPv6Address: 腾讯侧互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TencentIPv6Address: str
-        :param TencentBackupIPv6Address: 腾讯侧备用互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TencentBackupIPv6Address: str
-        :param BgpIPv6Status: BGPv6状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BgpIPv6Status: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
-        :param CustomerIPv6Address: 用户侧互联IPv6地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomerIPv6Address: str
-        :param JumboEnable: 专用通道是否支持巨帧。1 支持，0 不支持
-注意：此字段可能返回 null，表示取不到有效值。
-        :type JumboEnable: int
-        """
+REJECTED:拒绝\n        :type State: str\n        :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID\n        :type DirectConnectOwnerAccount: str\n        :param OwnerAccount: 专用通道的拥有者，开发商账号 ID\n        :type OwnerAccount: str\n        :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
+ VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网\n        :type NetworkType: str\n        :param NetworkRegion: VPC地域对应的网络名，如ap-guangzhou\n        :type NetworkRegion: str\n        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID\n        :type VpcId: str\n        :param DirectConnectGatewayId: 专线网关 ID\n        :type DirectConnectGatewayId: str\n        :param RouteType: BGP ：BGP路由 STATIC：静态 默认为 BGP 路由\n        :type RouteType: str\n        :param BgpPeer: 用户侧BGP，Asn，AuthKey\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: 用户侧网段地址\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param PublicAddresses: 互联网通道公网网段地址\n        :type PublicAddresses: list of RouteFilterPrefix\n        :param Vlan: 专用通道的Vlan\n        :type Vlan: int\n        :param TencentAddress: 腾讯侧互联 IP\n        :type TencentAddress: str\n        :param TencentBackupAddress: 腾讯侧备用互联IP\n        :type TencentBackupAddress: str\n        :param CustomerAddress: 用户侧互联 IP\n        :type CustomerAddress: str\n        :param DirectConnectTunnelName: 专用通道名称\n        :type DirectConnectTunnelName: str\n        :param CreatedTime: 专用通道创建时间\n        :type CreatedTime: str\n        :param Bandwidth: 专用通道带宽值\n        :type Bandwidth: int\n        :param NetDetectId: 关联的网络自定义探测ID\n        :type NetDetectId: str\n        :param EnableBGPCommunity: BGP community开关\n        :type EnableBGPCommunity: bool\n        :param NatType: 是否为Nat通道\n        :type NatType: int\n        :param VpcRegion: VPC地域简码，如gz、cd\n        :type VpcRegion: str\n        :param BfdEnable: 是否开启BFD\n        :type BfdEnable: int\n        :param NqaEnable: 是否开启NQA\n        :type NqaEnable: int\n        :param AccessPointType: 专用通道接入点类型\n        :type AccessPointType: str\n        :param DirectConnectGatewayName: 专线网关名称\n        :type DirectConnectGatewayName: str\n        :param VpcName: VPC名称\n        :type VpcName: str\n        :param SignLaw: 专用通道关联的物理专线是否签署了用户协议\n        :type SignLaw: bool\n        :param BfdInfo: BFD配置信息\n        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`\n        :param NqaInfo: NQA配置信息\n        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`\n        :param BgpStatus: BGP状态\n        :type BgpStatus: :class:`tencentcloud.dc.v20180410.models.BGPStatus`\n        :param IPv6Enable: 是否开启IPv6
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IPv6Enable: int\n        :param TencentIPv6Address: 腾讯侧互联IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TencentIPv6Address: str\n        :param TencentBackupIPv6Address: 腾讯侧备用互联IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TencentBackupIPv6Address: str\n        :param BgpIPv6Status: BGPv6状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BgpIPv6Status: :class:`tencentcloud.dc.v20180410.models.BGPStatus`\n        :param CustomerIPv6Address: 用户侧互联IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CustomerIPv6Address: str\n        :param JumboEnable: 专用通道是否支持巨帧。1 支持，0 不支持
+注意：此字段可能返回 null，表示取不到有效值。\n        :type JumboEnable: int\n        """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
         self.State = None
@@ -1674,19 +1248,7 @@ class DirectConnectTunnelRoute(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteId: 专用通道路由ID
-        :type RouteId: str
-        :param DestinationCidrBlock: 网段CIDR
-        :type DestinationCidrBlock: str
-        :param RouteType: 路由类型：BGP/STATIC路由
-        :type RouteType: str
-        :param Status: ENABLE：路由启用，DISABLE：路由禁用
-        :type Status: str
-        :param ASPath: ASPath信息
-        :type ASPath: list of str
-        :param NextHop: 路由下一跳IP
-        :type NextHop: str
-        """
+        :param RouteId: 专用通道路由ID\n        :type RouteId: str\n        :param DestinationCidrBlock: 网段CIDR\n        :type DestinationCidrBlock: str\n        :param RouteType: 路由类型：BGP/STATIC路由\n        :type RouteType: str\n        :param Status: ENABLE：路由启用，DISABLE：路由禁用\n        :type Status: str\n        :param ASPath: ASPath信息\n        :type ASPath: list of str\n        :param NextHop: 路由下一跳IP\n        :type NextHop: str\n        """
         self.RouteId = None
         self.DestinationCidrBlock = None
         self.RouteType = None
@@ -1718,9 +1280,7 @@ class DisableInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 公网互联网地址ID
-        :type InstanceId: str
-        """
+        :param InstanceId: 公网互联网地址ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1742,9 +1302,7 @@ class DisableInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1759,9 +1317,7 @@ class EnableInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 互联网公网地址ID
-        :type InstanceId: str
-        """
+        :param InstanceId: 互联网公网地址ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1783,9 +1339,7 @@ class EnableInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1800,11 +1354,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 需要过滤的字段。
-        :type Name: str
-        :param Values: 字段的过滤值。
-        :type Values: list of str
-        """
+        :param Name: 需要过滤的字段。\n        :type Name: str\n        :param Values: 字段的过滤值。\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1829,46 +1379,22 @@ class InternetAddressDetail(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: 互联网地址ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param Subnet: 互联网网络地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Subnet: str
-        :param MaskLen: 网络地址掩码长度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaskLen: int
-        :param AddrType: 0:BGP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param Subnet: 互联网网络地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Subnet: str\n        :param MaskLen: 网络地址掩码长度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaskLen: int\n        :param AddrType: 0:BGP
 1:电信
 2:移动
 3:联通
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AddrType: int
-        :param Status: 0:使用中
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AddrType: int\n        :param Status: 0:使用中
 1:已停用
-2:已退还
-        :type Status: int
-        :param ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplyTime: str
-        :param StopTime: 停用时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StopTime: str
-        :param ReleaseTime: 退还时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReleaseTime: str
-        :param Region: 地域信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Region: str
-        :param AppId: 用户ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppId: int
-        :param AddrProto: 0:IPv4 1:IPv6
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AddrProto: int
-        :param ReserveTime: 释放状态的IP地址保留的天数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReserveTime: int
-        """
+2:已退还\n        :type Status: int\n        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplyTime: str\n        :param StopTime: 停用时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StopTime: str\n        :param ReleaseTime: 退还时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReleaseTime: str\n        :param Region: 地域信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param AppId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: int\n        :param AddrProto: 0:IPv4 1:IPv6
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AddrProto: int\n        :param ReserveTime: 释放状态的IP地址保留的天数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReserveTime: int\n        """
         self.InstanceId = None
         self.Subnet = None
         self.MaskLen = None
@@ -1913,12 +1439,8 @@ class InternetAddressStatistics(AbstractModel):
     def __init__(self):
         """
         :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Region: str
-        :param SubnetNum: 互联网公网地址数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetNum: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param SubnetNum: 互联网公网地址数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetNum: int\n        """
         self.Region = None
         self.SubnetNum = None
 
@@ -1942,33 +1464,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectId: 物理专线的ID。
-        :type DirectConnectId: str
-        :param DirectConnectName: 物理专线名称。
-        :type DirectConnectName: str
-        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
-        :type CircuitCode: str
-        :param Vlan: 物理专线调试VLAN。
-        :type Vlan: int
-        :param TencentAddress: 物理专线调试腾讯侧互联 IP。
-        :type TencentAddress: str
-        :param CustomerAddress: 物理专线调试用户侧互联 IP。
-        :type CustomerAddress: str
-        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。
-        :type CustomerName: str
-        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
-        :type CustomerContactMail: str
-        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
-        :type CustomerContactNumber: str
-        :param FaultReportContactPerson: 报障联系人。
-        :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: 报障联系电话。
-        :type FaultReportContactNumber: str
-        :param SignLaw: 物理专线申请者补签用户使用协议
-        :type SignLaw: bool
-        :param Bandwidth: 物理专线带宽
-        :type Bandwidth: int
-        """
+        :param DirectConnectId: 物理专线的ID。\n        :type DirectConnectId: str\n        :param DirectConnectName: 物理专线名称。\n        :type DirectConnectName: str\n        :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。\n        :type CircuitCode: str\n        :param Vlan: 物理专线调试VLAN。\n        :type Vlan: int\n        :param TencentAddress: 物理专线调试腾讯侧互联 IP。\n        :type TencentAddress: str\n        :param CustomerAddress: 物理专线调试用户侧互联 IP。\n        :type CustomerAddress: str\n        :param CustomerName: 物理专线申请者姓名。默认从账户体系获取。\n        :type CustomerName: str\n        :param CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。\n        :type CustomerContactMail: str\n        :param CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。\n        :type CustomerContactNumber: str\n        :param FaultReportContactPerson: 报障联系人。\n        :type FaultReportContactPerson: str\n        :param FaultReportContactNumber: 报障联系电话。\n        :type FaultReportContactNumber: str\n        :param SignLaw: 物理专线申请者补签用户使用协议\n        :type SignLaw: bool\n        :param Bandwidth: 物理专线带宽\n        :type Bandwidth: int\n        """
         self.DirectConnectId = None
         self.DirectConnectName = None
         self.CircuitCode = None
@@ -2014,9 +1510,7 @@ class ModifyDirectConnectAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2031,23 +1525,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        :param DirectConnectTunnelName: 专用通道名称
-        :type DirectConnectTunnelName: str
-        :param BgpPeer: 用户侧BGP，包括Asn，AuthKey
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: 用户侧网段地址
-        :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param TencentAddress: 腾讯侧互联IP
-        :type TencentAddress: str
-        :param CustomerAddress: 用户侧互联IP
-        :type CustomerAddress: str
-        :param Bandwidth: 专用通道带宽值，单位为M。
-        :type Bandwidth: int
-        :param TencentBackupAddress: 腾讯侧备用互联IP
-        :type TencentBackupAddress: str
-        """
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        :param DirectConnectTunnelName: 专用通道名称\n        :type DirectConnectTunnelName: str\n        :param BgpPeer: 用户侧BGP，包括Asn，AuthKey\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: 用户侧网段地址\n        :type RouteFilterPrefixes: list of RouteFilterPrefix\n        :param TencentAddress: 腾讯侧互联IP\n        :type TencentAddress: str\n        :param CustomerAddress: 用户侧互联IP\n        :type CustomerAddress: str\n        :param Bandwidth: 专用通道带宽值，单位为M。\n        :type Bandwidth: int\n        :param TencentBackupAddress: 腾讯侧备用互联IP\n        :type TencentBackupAddress: str\n        """
         self.DirectConnectTunnelId = None
         self.DirectConnectTunnelName = None
         self.BgpPeer = None
@@ -2090,9 +1568,7 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2107,42 +1583,10 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 专用通道ID
-        :type DirectConnectTunnelId: str
-        :param Vlan: 专用通道的Vlan
-        :type Vlan: int
-        :param BgpPeer: 用户侧BGP，Asn，AuthKey
-        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: 用户侧过滤网段地址
-        :type RouteFilterPrefixes: :class:`tencentcloud.dc.v20180410.models.RouteFilterPrefix`
-        :param TencentAddress: 腾讯侧互联IP
-        :type TencentAddress: str
-        :param TencentBackupAddress: 腾讯侧备用互联IP
-        :type TencentBackupAddress: str
-        :param CustomerAddress: 用户侧互联IP
-        :type CustomerAddress: str
-        :param Bandwidth: 专用通道带宽值
-        :type Bandwidth: int
-        :param EnableBGPCommunity: BGP community开关
-        :type EnableBGPCommunity: bool
-        :param BfdEnable: 是否开启BFD
-        :type BfdEnable: int
-        :param NqaEnable: 是否开启NQA
-        :type NqaEnable: int
-        :param BfdInfo: BFD配置信息
-        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
-        :param NqaInfo: NQA配置信息
-        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
-        :param IPv6Enable: 0：停用IPv6
-1: 启用IPv6
-        :type IPv6Enable: int
-        :param CustomerIDCRoutes: 去往用户侧的路由信息
-        :type CustomerIDCRoutes: list of RouteFilterPrefix
-        :param JumboEnable: 是否开启巨帧
+        :param DirectConnectTunnelId: 专用通道ID\n        :type DirectConnectTunnelId: str\n        :param Vlan: 专用通道的Vlan\n        :type Vlan: int\n        :param BgpPeer: 用户侧BGP，Asn，AuthKey\n        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`\n        :param RouteFilterPrefixes: 用户侧过滤网段地址\n        :type RouteFilterPrefixes: :class:`tencentcloud.dc.v20180410.models.RouteFilterPrefix`\n        :param TencentAddress: 腾讯侧互联IP\n        :type TencentAddress: str\n        :param TencentBackupAddress: 腾讯侧备用互联IP\n        :type TencentBackupAddress: str\n        :param CustomerAddress: 用户侧互联IP\n        :type CustomerAddress: str\n        :param Bandwidth: 专用通道带宽值\n        :type Bandwidth: int\n        :param EnableBGPCommunity: BGP community开关\n        :type EnableBGPCommunity: bool\n        :param BfdEnable: 是否开启BFD\n        :type BfdEnable: int\n        :param NqaEnable: 是否开启NQA\n        :type NqaEnable: int\n        :param BfdInfo: BFD配置信息\n        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`\n        :param NqaInfo: NQA配置信息\n        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`\n        :param IPv6Enable: 0：停用IPv6
+1: 启用IPv6\n        :type IPv6Enable: int\n        :param CustomerIDCRoutes: 去往用户侧的路由信息\n        :type CustomerIDCRoutes: list of RouteFilterPrefix\n        :param JumboEnable: 是否开启巨帧
 1：开启
-0：不开启
-        :type JumboEnable: int
-        """
+0：不开启\n        :type JumboEnable: int\n        """
         self.DirectConnectTunnelId = None
         self.Vlan = None
         self.BgpPeer = None
@@ -2207,9 +1651,7 @@ class ModifyDirectConnectTunnelExtraResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2224,13 +1666,7 @@ class NQAInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ProbeFailedTimes: 健康检查次数
-        :type ProbeFailedTimes: int
-        :param Interval: 健康检查间隔
-        :type Interval: int
-        :param DestinationIp: 健康检查地址
-        :type DestinationIp: str
-        """
+        :param ProbeFailedTimes: 健康检查次数\n        :type ProbeFailedTimes: int\n        :param Interval: 健康检查间隔\n        :type Interval: int\n        :param DestinationIp: 健康检查地址\n        :type DestinationIp: str\n        """
         self.ProbeFailedTimes = None
         self.Interval = None
         self.DestinationIp = None
@@ -2256,9 +1692,7 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DirectConnectTunnelId: 无
-        :type DirectConnectTunnelId: str
-        """
+        :param DirectConnectTunnelId: 无\n        :type DirectConnectTunnelId: str\n        """
         self.DirectConnectTunnelId = None
 
 
@@ -2280,9 +1714,7 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2297,9 +1729,7 @@ class ReleaseInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 公网互联网地址ID
-        :type InstanceId: str
-        """
+        :param InstanceId: 公网互联网地址ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2321,9 +1751,7 @@ class ReleaseInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2338,9 +1766,7 @@ class RouteFilterPrefix(AbstractModel):
 
     def __init__(self):
         """
-        :param Cidr: 用户侧网段地址
-        :type Cidr: str
-        """
+        :param Cidr: 用户侧网段地址\n        :type Cidr: str\n        """
         self.Cidr = None
 
 
@@ -2363,12 +1789,8 @@ class Tag(AbstractModel):
     def __init__(self):
         """
         :param Key: 标签键
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Key: str
-        :param Value: 标签值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 

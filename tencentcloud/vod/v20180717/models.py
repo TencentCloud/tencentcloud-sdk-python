@@ -25,31 +25,11 @@ class AIAnalysisTemplateItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 智能分析模板唯一标识。
-        :type Definition: int
-        :param Name: 智能分析模板名称。
-        :type Name: str
-        :param Comment: 智能分析模板描述信息。
-        :type Comment: str
-        :param ClassificationConfigure: 智能分类任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
-        :param TagConfigure: 智能标签任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`
-        :param CoverConfigure: 智能封面任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
-        :param FrameTagConfigure: 智能按帧标签任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
-        :param HighlightConfigure: 智能精彩集锦任务控制参数。
-        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+        :param Definition: 智能分析模板唯一标识。\n        :type Definition: int\n        :param Name: 智能分析模板名称。\n        :type Name: str\n        :param Comment: 智能分析模板描述信息。\n        :type Comment: str\n        :param ClassificationConfigure: 智能分类任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`\n        :param TagConfigure: 智能标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`\n        :param CoverConfigure: 智能封面任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`\n        :param FrameTagConfigure: 智能按帧标签任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`\n        :param HighlightConfigure: 智能精彩集锦任务控制参数。\n        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -99,43 +79,15 @@ class AIRecognitionTemplateItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容识别模板唯一标识。
-        :type Definition: int
-        :param Name: 视频内容识别模板名称。
-        :type Name: str
-        :param Comment: 视频内容识别模板描述信息。
-        :type Comment: str
-        :param HeadTailConfigure: 头尾识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
-        :param SegmentConfigure: 拆条识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
-        :param FaceConfigure: 人脸识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
-        :param OcrFullTextConfigure: 文本全文识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
-        :param OcrWordsConfigure: 文本关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
-        :param AsrFullTextConfigure: 语音全文识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
-        :param AsrWordsConfigure: 语音关键词识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
-        :param ObjectConfigure: 物体识别控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
-        :param ScreenshotInterval: 截图时间间隔，单位：秒。
-        :type ScreenshotInterval: float
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+        :param Definition: 视频内容识别模板唯一标识。\n        :type Definition: int\n        :param Name: 视频内容识别模板名称。\n        :type Name: str\n        :param Comment: 视频内容识别模板描述信息。\n        :type Comment: str\n        :param HeadTailConfigure: 头尾识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`\n        :param SegmentConfigure: 拆条识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`\n        :param FaceConfigure: 人脸识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`\n        :param OcrFullTextConfigure: 文本全文识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`\n        :param OcrWordsConfigure: 文本关键词识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`\n        :param AsrFullTextConfigure: 语音全文识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`\n        :param AsrWordsConfigure: 语音关键词识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`\n        :param ObjectConfigure: 物体识别控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`\n        :param ScreenshotInterval: 截图时间间隔，单位：秒。\n        :type ScreenshotInterval: float\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -201,15 +153,9 @@ class AccelerateAreaInfo(AbstractModel):
         """
         :param Area: 加速地区，可选值：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-<li>Outside Chinese Mainland：中国境外。</li>
-        :type Area: str
-        :param TencentDisableReason: 腾讯禁用原因，可选值：
+<li>Outside Chinese Mainland：中国境外。</li>\n        :type Area: str\n        :param TencentDisableReason: 腾讯禁用原因，可选值：
 <li>ForLegalReasons：因法律原因导致关闭加速；</li>
-<li>ForOverdueBills：因欠费停服导致关闭加速。</li>
-        :type TencentDisableReason: str
-        :param TencentEdgeDomain: 加速域名对应的 CNAME 域名。
-        :type TencentEdgeDomain: str
-        """
+<li>ForOverdueBills：因欠费停服导致关闭加速。</li>\n        :type TencentDisableReason: str\n        :param TencentEdgeDomain: 加速域名对应的 CNAME 域名。\n        :type TencentEdgeDomain: str\n        """
         self.Area = None
         self.TencentDisableReason = None
         self.TencentEdgeDomain = None
@@ -235,15 +181,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转自适应码流规格。
-        :type Definition: int
-        :param Package: 打包格式，只能为 HLS。
-        :type Package: str
-        :param DrmType: 加密类型。
-        :type DrmType: str
-        :param Url: 播放地址。
-        :type Url: str
-        """
+        :param Definition: 转自适应码流规格。\n        :type Definition: int\n        :param Package: 打包格式，只能为 HLS。\n        :type Package: str\n        :param DrmType: 加密类型。\n        :type DrmType: str\n        :param Url: 播放地址。\n        :type Url: str\n        """
         self.Definition = None
         self.Package = None
         self.DrmType = None
@@ -271,13 +209,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转自适应码流模板 ID。
-        :type Definition: int
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-        :type WatermarkSet: list of WatermarkInput
-        :param SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
-        :type SubtitleSet: list of str
-        """
+        :param Definition: 转自适应码流模板 ID。\n        :type Definition: int\n        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。\n        :type WatermarkSet: list of WatermarkInput\n        :param SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。\n        :type SubtitleSet: list of str\n        """
         self.Definition = None
         self.WatermarkSet = None
         self.SubtitleSet = None
@@ -308,40 +240,18 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转自适应码流模板唯一标识。
-        :type Definition: int
-        :param Type: 模板类型，取值范围：
+        :param Definition: 转自适应码流模板唯一标识。\n        :type Definition: int\n        :param Type: 模板类型，取值范围：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 转自适应码流模板名称。
-        :type Name: str
-        :param Comment: 转自适应码流模板描述信息。
-        :type Comment: str
-        :param Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
-        :type Format: str
-        :param DrmType: DRM 类型，取值范围：
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Name: 转自适应码流模板名称。\n        :type Name: str\n        :param Comment: 转自适应码流模板描述信息。\n        :type Comment: str\n        :param Format: 自适应转码格式，取值范围：
+<li>HLS。</li>\n        :type Format: str\n        :param DrmType: DRM 类型，取值范围：
 <li>FairPlay；</li>
 <li>SimpleAES；</li>
 <li>Widevine。</li>
-如果取值为空字符串，代表不对视频做 DRM 保护。
-        :type DrmType: str
-        :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
-        :type StreamInfos: list of AdaptiveStreamTemplate
-        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+如果取值为空字符串，代表不对视频做 DRM 保护。\n        :type DrmType: str\n        :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。\n        :type StreamInfos: list of AdaptiveStreamTemplate\n        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
 <li>0：否，</li>
-<li>1：是。</li>
-        :type DisableHigherVideoBitrate: int
-        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>1：是。</li>\n        :type DisableHigherVideoBitrate: int\n        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
 <li>0：否，</li>
-<li>1：是。</li>
-        :type DisableHigherVideoResolution: int
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+<li>1：是。</li>\n        :type DisableHigherVideoResolution: int\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -388,19 +298,11 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Video: 视频参数信息。
-        :type Video: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
-        :param Audio: 音频参数信息。
-        :type Audio: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
-        :param RemoveAudio: 是否移除音频流，取值范围：
+        :param Video: 视频参数信息。\n        :type Video: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`\n        :param Audio: 音频参数信息。\n        :type Audio: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`\n        :param RemoveAudio: 是否移除音频流，取值范围：
 <li>0：否，</li>
-<li>1：是。</li>
-        :type RemoveAudio: int
-        :param RemoveVideo: 是否移除视频流，取值范围：
+<li>1：是。</li>\n        :type RemoveAudio: int\n        :param RemoveVideo: 是否移除视频流，取值范围：
 <li>0：否，</li>
-<li>1：是。</li>
-        :type RemoveVideo: int
-        """
+<li>1：是。</li>\n        :type RemoveVideo: int\n        """
         self.Video = None
         self.Audio = None
         self.RemoveAudio = None
@@ -437,24 +339,12 @@ class AiAnalysisResult(AbstractModel):
 <li>Cover：智能封面</li>
 <li>Tag：智能标签</li>
 <li>FrameTag：智能按帧标签</li>
-<li>Highlight：智能精彩集锦</li>
-        :type Type: str
-        :param ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClassificationTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationResult`
-        :param CoverTask: 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CoverTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverResult`
-        :param TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagResult`
-        :param FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FrameTagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`
-        :param HighlightTask: 视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HighlightTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightResult`
-        """
+<li>Highlight：智能精彩集锦</li>\n        :type Type: str\n        :param ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClassificationTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationResult`\n        :param CoverTask: 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CoverTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverResult`\n        :param TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagResult`\n        :param FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FrameTagTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagResult`\n        :param HighlightTask: 视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HighlightTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightResult`\n        """
         self.Type = None
         self.ClassificationTask = None
         self.CoverTask = None
@@ -496,9 +386,7 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能分类模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频智能分类模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -520,9 +408,7 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param ClassificationSet: 视频智能分类列表。
-        :type ClassificationSet: list of MediaAiAnalysisClassificationItem
-        """
+        :param ClassificationSet: 视频智能分类列表。\n        :type ClassificationSet: list of MediaAiAnalysisClassificationItem\n        """
         self.ClassificationSet = None
 
 
@@ -549,20 +435,8 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 智能分类任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationInput`
-        :param Output: 智能分类任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 智能分类任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationInput`\n        :param Output: 智能分类任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -598,9 +472,7 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能封面模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频智能封面模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -622,9 +494,7 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param CoverSet: 智能封面列表。
-        :type CoverSet: list of MediaAiAnalysisCoverItem
-        """
+        :param CoverSet: 智能封面列表。\n        :type CoverSet: list of MediaAiAnalysisCoverItem\n        """
         self.CoverSet = None
 
 
@@ -651,20 +521,8 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 智能封面任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverInput`
-        :param Output: 智能封面任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 智能封面任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverInput`\n        :param Output: 智能封面任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -700,9 +558,7 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能按帧标签模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频智能按帧标签模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -724,9 +580,7 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param SegmentSet: 视频按帧标签列表。
-        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
-        """
+        :param SegmentSet: 视频按帧标签列表。\n        :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem\n        """
         self.SegmentSet = None
 
 
@@ -753,20 +607,8 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 智能按帧标签任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagInput`
-        :param Output: 智能按帧标签任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 智能按帧标签任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagInput`\n        :param Output: 智能按帧标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -802,9 +644,7 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能精彩片段模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频智能精彩片段模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -826,9 +666,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param HighlightSet: 视频智能精彩片段列表。
-        :type HighlightSet: list of MediaAiAnalysisHighlightItem
-        """
+        :param HighlightSet: 视频智能精彩片段列表。\n        :type HighlightSet: list of MediaAiAnalysisHighlightItem\n        """
         self.HighlightSet = None
 
 
@@ -855,20 +693,8 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 智能精彩片段任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightInput`
-        :param Output: 智能精彩片段任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 智能精彩片段任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightInput`\n        :param Output: 智能精彩片段任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -904,9 +730,7 @@ class AiAnalysisTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容分析模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频内容分析模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -928,9 +752,7 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能标签模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频智能标签模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -952,9 +774,7 @@ class AiAnalysisTaskTagOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param TagSet: 视频智能标签列表。
-        :type TagSet: list of MediaAiAnalysisTagItem
-        """
+        :param TagSet: 视频智能标签列表。\n        :type TagSet: list of MediaAiAnalysisTagItem\n        """
         self.TagSet = None
 
 
@@ -981,20 +801,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 智能标签任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagInput`
-        :param Output: 智能标签任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 智能标签任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagInput`\n        :param Output: 智能标签任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1040,39 +848,17 @@ class AiContentReviewResult(AbstractModel):
 <li>Political.Ocr：Ocr 文字鉴政</li>
 <li>Terrorism.Ocr：Ocr 文字鉴恐</li>
 <li>Prohibited.Asr：Asr 文字（ 音频中的文字）鉴违禁</li>
-<li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
-        :type Type: str
-        :param PornTask: 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PornTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornResult`
-        :param TerrorismTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TerrorismTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismResult`
-        :param PoliticalTask: 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PoliticalTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalResult`
-        :param PornAsrTask: 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PornAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornAsrResult`
-        :param PornOcrTask: 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PornOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornOcrResult`
-        :param PoliticalAsrTask: 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PoliticalAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalAsrResult`
-        :param PoliticalOcrTask: 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PoliticalOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalOcrResult`
-        :param TerrorismOcrTask: 视频内容审核 Ocr 文字鉴恐任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TerrorismOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismOcrResult`
-        :param ProhibitedAsrTask: 视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProhibitedAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedAsrResult`
-        :param ProhibitedOcrTask: 视频内容审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProhibitedOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedOcrResult`
-        """
+<li>Prohibited.Ocr：Ocr 文字鉴违禁</li>\n        :type Type: str\n        :param PornTask: 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PornTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornResult`\n        :param TerrorismTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TerrorismTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismResult`\n        :param PoliticalTask: 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PoliticalTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalResult`\n        :param PornAsrTask: 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PornAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornAsrResult`\n        :param PornOcrTask: 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PornOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornOcrResult`\n        :param PoliticalAsrTask: 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PoliticalAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalAsrResult`\n        :param PoliticalOcrTask: 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PoliticalOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalOcrResult`\n        :param TerrorismOcrTask: 视频内容审核 Ocr 文字鉴恐任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TerrorismOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismOcrResult`\n        :param ProhibitedAsrTask: 视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProhibitedAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedAsrResult`\n        :param ProhibitedOcrTask: 视频内容审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProhibitedOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedOcrResult`\n        """
         self.Type = None
         self.PornTask = None
         self.TerrorismTask = None
@@ -1134,9 +920,7 @@ class AiContentReviewTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容审核模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频内容审核模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1165,41 +949,23 @@ class AiRecognitionResult(AbstractModel):
 <li>AsrFullTextRecognition：语音全文识别，</li>
 <li>OcrFullTextRecognition：文本全文识别，</li>
 <li>HeadTailRecognition：视频片头片尾识别，</li>
-<li>ObjectRecognition：物体识别。</li>
-        :type Type: str
-        :param HeadTailTask: 视频片头片尾识别结果，当 Type 为
+<li>ObjectRecognition：物体识别。</li>\n        :type Type: str\n        :param HeadTailTask: 视频片头片尾识别结果，当 Type 为
  HeadTailRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HeadTailTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`
-        :param SegmentTask: 视频拆条识别结果，当 Type 为
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HeadTailTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResult`\n        :param SegmentTask: 视频拆条识别结果，当 Type 为
  SegmentRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SegmentTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResult`
-        :param FaceTask: 人脸识别结果，当 Type 为 
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SegmentTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResult`\n        :param FaceTask: 人脸识别结果，当 Type 为 
  FaceRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaceTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`
-        :param AsrWordsTask: 语音关键词识别结果，当 Type 为
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FaceTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResult`\n        :param AsrWordsTask: 语音关键词识别结果，当 Type 为
  AsrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`
-        :param AsrFullTextTask: 语音全文识别结果，当 Type 为
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResult`\n        :param AsrFullTextTask: 语音全文识别结果，当 Type 为
  AsrFullTextRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
-        :param OcrWordsTask: 文本关键词识别结果，当 Type 为
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`\n        :param OcrWordsTask: 文本关键词识别结果，当 Type 为
  OcrWordsRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`
-        :param OcrFullTextTask: 文本全文识别结果，当 Type 为
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrWordsTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResult`\n        :param OcrFullTextTask: 文本全文识别结果，当 Type 为
  OcrFullTextRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`
-        :param ObjectTask: 物体识别结果，当 Type 为
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResult`\n        :param ObjectTask: 物体识别结果，当 Type 为
  ObjectRecognition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ObjectTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ObjectTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResult`\n        """
         self.Type = None
         self.HeadTailTask = None
         self.SegmentTask = None
@@ -1253,20 +1019,8 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 语音全文识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultInput`
-        :param Output: 语音全文识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 语音全文识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultInput`\n        :param Output: 语音全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1302,9 +1056,7 @@ class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 语音全文识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 语音全文识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1327,15 +1079,7 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
     def __init__(self):
         """
         :param SegmentSet: 语音全文识别片段列表。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
-        :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
-        :param SegmentSetFileUrl: 语音全文识别片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。。
-        :type SegmentSetFileUrlExpireTime: str
-        :param SubtitleUrl: 字幕文件 Url。
-        :type SubtitleUrl: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。\n        :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem\n        :param SegmentSetFileUrl: 语音全文识别片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type SegmentSetFileUrl: str\n        :param SegmentSetFileUrlExpireTime: 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。。\n        :type SegmentSetFileUrlExpireTime: str\n        :param SubtitleUrl: 字幕文件 Url。\n        :type SubtitleUrl: str\n        """
         self.SegmentSet = None
         self.SegmentSetFileUrl = None
         self.SegmentSetFileUrlExpireTime = None
@@ -1368,15 +1112,7 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 识别片段置信度。取值：0~100。
-        :type Confidence: float
-        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Text: 识别文本。
-        :type Text: str
-        """
+        :param Confidence: 识别片段置信度。取值：0~100。\n        :type Confidence: float\n        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Text: 识别文本。\n        :type Text: str\n        """
         self.Confidence = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -1404,20 +1140,8 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 语音关键词识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultInput`
-        :param Output: 语音关键词识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 语音关键词识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultInput`\n        :param Output: 语音关键词识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1453,9 +1177,7 @@ class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 语音关键词识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 语音关键词识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1477,11 +1199,7 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Word: 语音关键词。
-        :type Word: str
-        :param SegmentSet: 语音关键词出现的时间片段列表。
-        :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem
-        """
+        :param Word: 语音关键词。\n        :type Word: str\n        :param SegmentSet: 语音关键词出现的时间片段列表。\n        :type SegmentSet: list of AiRecognitionTaskAsrWordsSegmentItem\n        """
         self.Word = None
         self.SegmentSet = None
 
@@ -1511,13 +1229,7 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 语音关键词识别结果集。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
-        :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
-        :param ResultSetFileUrl: 语音关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type ResultSetFileUrl: str
-        :param ResultSetFileUrlExpireTime: 语音关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ResultSetFileUrlExpireTime: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。\n        :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem\n        :param ResultSetFileUrl: 语音关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type ResultSetFileUrl: str\n        :param ResultSetFileUrlExpireTime: 语音关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ResultSetFileUrlExpireTime: str\n        """
         self.ResultSet = None
         self.ResultSetFileUrl = None
         self.ResultSetFileUrlExpireTime = None
@@ -1548,13 +1260,7 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 识别片段置信度。取值：0~100。
-        :type Confidence: float
-        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 识别片段置信度。取值：0~100。\n        :type Confidence: float\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -1580,20 +1286,8 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 人脸识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultInput`
-        :param Output: 人脸识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 人脸识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultInput`\n        :param Output: 人脸识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1629,9 +1323,7 @@ class AiRecognitionTaskFaceResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 人脸识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 人脸识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1653,17 +1345,9 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 人物唯一标识 ID。
-        :type Id: str
-        :param Type: 人物库类型，表示识别出的人物来自哪个人物库：
+        :param Id: 人物唯一标识 ID。\n        :type Id: str\n        :param Type: 人物库类型，表示识别出的人物来自哪个人物库：
 <li>Default：默认人物库；</li>
-<li>UserDefine：用户自定义人物库。</li>
-        :type Type: str
-        :param Name: 人物名称。
-        :type Name: str
-        :param SegmentSet: 人物出现的片段结果集。
-        :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
-        """
+<li>UserDefine：用户自定义人物库。</li>\n        :type Type: str\n        :param Name: 人物名称。\n        :type Name: str\n        :param SegmentSet: 人物出现的片段结果集。\n        :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem\n        """
         self.Id = None
         self.Type = None
         self.Name = None
@@ -1697,13 +1381,7 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 智能人脸识别结果集。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
-        :type ResultSet: list of AiRecognitionTaskFaceResultItem
-        :param ResultSetFileUrl: 智能人脸识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type ResultSetFileUrl: str
-        :param ResultSetFileUrlExpireTime: 智能人脸识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ResultSetFileUrlExpireTime: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。\n        :type ResultSet: list of AiRecognitionTaskFaceResultItem\n        :param ResultSetFileUrl: 智能人脸识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type ResultSetFileUrl: str\n        :param ResultSetFileUrlExpireTime: 智能人脸识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ResultSetFileUrlExpireTime: str\n        """
         self.ResultSet = None
         self.ResultSetFileUrl = None
         self.ResultSetFileUrlExpireTime = None
@@ -1734,15 +1412,7 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 识别片段置信度。取值：0~100。
-        :type Confidence: float
-        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-        :type AreaCoordSet: list of int
-        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 识别片段置信度。取值：0~100。\n        :type Confidence: float\n        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。\n        :type AreaCoordSet: list of int\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -1770,20 +1440,8 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 视频片头片尾识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultInput`
-        :param Output: 视频片头片尾识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 视频片头片尾识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultInput`\n        :param Output: 视频片头片尾识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1819,9 +1477,7 @@ class AiRecognitionTaskHeadTailResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频片头片尾识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频片头片尾识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1843,15 +1499,7 @@ class AiRecognitionTaskHeadTailResultOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param HeadConfidence: 片头识别置信度。取值：0~100。
-        :type HeadConfidence: float
-        :param HeadTimeOffset: 视频片头的结束时间点，单位：秒。
-        :type HeadTimeOffset: float
-        :param TailConfidence: 片尾识别置信度。取值：0~100。
-        :type TailConfidence: float
-        :param TailTimeOffset: 视频片尾的开始时间点，单位：秒。
-        :type TailTimeOffset: float
-        """
+        :param HeadConfidence: 片头识别置信度。取值：0~100。\n        :type HeadConfidence: float\n        :param HeadTimeOffset: 视频片头的结束时间点，单位：秒。\n        :type HeadTimeOffset: float\n        :param TailConfidence: 片尾识别置信度。取值：0~100。\n        :type TailConfidence: float\n        :param TailTimeOffset: 视频片尾的开始时间点，单位：秒。\n        :type TailTimeOffset: float\n        """
         self.HeadConfidence = None
         self.HeadTimeOffset = None
         self.TailConfidence = None
@@ -1879,9 +1527,7 @@ class AiRecognitionTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频智能识别模板 ID 。
-        :type Definition: int
-        """
+        :param Definition: 视频智能识别模板 ID 。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1903,20 +1549,8 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 物体识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultInput`
-        :param Output: 物体识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 物体识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultInput`\n        :param Output: 物体识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -1952,9 +1586,7 @@ class AiRecognitionTaskObjectResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 物体识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 物体识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -1976,11 +1608,7 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 识别的物体名称。
-        :type Name: str
-        :param SegmentSet: 物体出现的片段列表。
-        :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem
-        """
+        :param Name: 识别的物体名称。\n        :type Name: str\n        :param SegmentSet: 物体出现的片段列表。\n        :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem\n        """
         self.Name = None
         self.SegmentSet = None
 
@@ -2010,13 +1638,7 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 智能物体识别结果集。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
-        :type ResultSet: list of AiRecognitionTaskObjectResultItem
-        :param ResultSetFileUrl: 智能物体识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type ResultSetFileUrl: str
-        :param ResultSetFileUrlExpireTime: 智能物体识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ResultSetFileUrlExpireTime: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。\n        :type ResultSet: list of AiRecognitionTaskObjectResultItem\n        :param ResultSetFileUrl: 智能物体识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type ResultSetFileUrl: str\n        :param ResultSetFileUrlExpireTime: 智能物体识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ResultSetFileUrlExpireTime: str\n        """
         self.ResultSet = None
         self.ResultSetFileUrl = None
         self.ResultSetFileUrlExpireTime = None
@@ -2047,15 +1669,7 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 识别片段置信度。取值：0~100。
-        :type Confidence: float
-        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-        :type AreaCoordSet: list of int
-        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 识别片段置信度。取值：0~100。\n        :type Confidence: float\n        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。\n        :type AreaCoordSet: list of int\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -2083,20 +1697,8 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 文本全文识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultInput`
-        :param Output: 文本全文识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 文本全文识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultInput`\n        :param Output: 文本全文识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2132,9 +1734,7 @@ class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 文本全文识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 文本全文识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2157,13 +1757,7 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
     def __init__(self):
         """
         :param SegmentSet: 文本全文识别结果集。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
-        :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem
-        :param SegmentSetFileUrl: 文本全文识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: 文本全文识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type SegmentSetFileUrlExpireTime: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。\n        :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem\n        :param SegmentSetFileUrl: 文本全文识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type SegmentSetFileUrl: str\n        :param SegmentSetFileUrlExpireTime: 文本全文识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type SegmentSetFileUrlExpireTime: str\n        """
         self.SegmentSet = None
         self.SegmentSetFileUrl = None
         self.SegmentSetFileUrlExpireTime = None
@@ -2194,13 +1788,7 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param TextSet: 识别片段结果集。
-        :type TextSet: list of AiRecognitionTaskOcrFullTextSegmentTextItem
-        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param TextSet: 识别片段结果集。\n        :type TextSet: list of AiRecognitionTaskOcrFullTextSegmentTextItem\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.TextSet = None
@@ -2231,13 +1819,7 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 识别片段置信度。取值：0~100。
-        :type Confidence: float
-        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-        :type AreaCoordSet: list of int
-        :param Text: 识别文本。
-        :type Text: str
-        """
+        :param Confidence: 识别片段置信度。取值：0~100。\n        :type Confidence: float\n        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。\n        :type AreaCoordSet: list of int\n        :param Text: 识别文本。\n        :type Text: str\n        """
         self.Confidence = None
         self.AreaCoordSet = None
         self.Text = None
@@ -2263,20 +1845,8 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 文本关键词识别任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultInput`
-        :param Output: 文本关键词识别任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 文本关键词识别任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultInput`\n        :param Output: 文本关键词识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2312,9 +1882,7 @@ class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 文本关键词识别模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 文本关键词识别模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2336,11 +1904,7 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Word: 文本关键词。
-        :type Word: str
-        :param SegmentSet: 文本关键出现的片段列表。
-        :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem
-        """
+        :param Word: 文本关键词。\n        :type Word: str\n        :param SegmentSet: 文本关键出现的片段列表。\n        :type SegmentSet: list of AiRecognitionTaskOcrWordsSegmentItem\n        """
         self.Word = None
         self.SegmentSet = None
 
@@ -2370,13 +1934,7 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 文本关键词识别结果集。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
-        :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
-        :param ResultSetFileUrl: 文本关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type ResultSetFileUrl: str
-        :param ResultSetFileUrlExpireTime: 文本关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ResultSetFileUrlExpireTime: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。\n        :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem\n        :param ResultSetFileUrl: 文本关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type ResultSetFileUrl: str\n        :param ResultSetFileUrlExpireTime: 文本关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ResultSetFileUrlExpireTime: str\n        """
         self.ResultSet = None
         self.ResultSetFileUrl = None
         self.ResultSetFileUrlExpireTime = None
@@ -2407,15 +1965,7 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 识别片段置信度。取值：0~100。
-        :type Confidence: float
-        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-        :type AreaCoordSet: list of int
-        """
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 识别片段置信度。取值：0~100。\n        :type Confidence: float\n        :param AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。\n        :type AreaCoordSet: list of int\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -2443,21 +1993,9 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 视频拆条任务输入信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultInput`
-        :param Output: 视频拆条任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 视频拆条任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultInput`\n        :param Output: 视频拆条任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -2493,9 +2031,7 @@ class AiRecognitionTaskSegmentResultInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频拆条模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 视频拆条模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2518,13 +2054,7 @@ class AiRecognitionTaskSegmentResultOutput(AbstractModel):
     def __init__(self):
         """
         :param SegmentSet: 视频拆条片段列表。
-<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
-        :type SegmentSet: list of AiRecognitionTaskSegmentSegmentItem
-        :param SegmentSetFileUrl: 视频拆条片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
-        :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: 视频拆条片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type SegmentSetFileUrlExpireTime: str
-        """
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。\n        :type SegmentSet: list of AiRecognitionTaskSegmentSegmentItem\n        :param SegmentSetFileUrl: 视频拆条片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。\n        :type SegmentSetFileUrl: str\n        :param SegmentSetFileUrlExpireTime: 视频拆条片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type SegmentSetFileUrlExpireTime: str\n        """
         self.SegmentSet = None
         self.SegmentSetFileUrl = None
         self.SegmentSetFileUrlExpireTime = None
@@ -2555,21 +2085,7 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 文件 ID。仅当处理的是点播文件并且拆条生成的子片段为点播文件时有效。
-        :type FileId: str
-        :param SegmentUrl: 视频拆条片段 Url。
-        :type SegmentUrl: str
-        :param Confidence: 拆条片段置信度。取值：0~100。
-        :type Confidence: float
-        :param StartTimeOffset: 拆条片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 拆条片段终止的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param CovImgUrl: 拆条封面图片 Url。
-        :type CovImgUrl: str
-        :param SpecialInfo: 特殊字段，请忽略。
-        :type SpecialInfo: str
-        """
+        :param FileId: 文件 ID。仅当处理的是点播文件并且拆条生成的子片段为点播文件时有效。\n        :type FileId: str\n        :param SegmentUrl: 视频拆条片段 Url。\n        :type SegmentUrl: str\n        :param Confidence: 拆条片段置信度。取值：0~100。\n        :type Confidence: float\n        :param StartTimeOffset: 拆条片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 拆条片段终止的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param CovImgUrl: 拆条封面图片 Url。\n        :type CovImgUrl: str\n        :param SpecialInfo: 特殊字段，请忽略。\n        :type SpecialInfo: str\n        """
         self.FileId = None
         self.SegmentUrl = None
         self.Confidence = None
@@ -2603,9 +2119,7 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴政模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴政模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2627,16 +2141,10 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Asr 文字涉政、敏感评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Asr 文字涉政、敏感结果建议，取值范围：
+        :param Confidence: Asr 文字涉政、敏感评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Asr 文字涉政、敏感结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Asr 文字有涉政、敏感嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Asr 文字有涉政、敏感嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -2667,9 +2175,7 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴政模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴政模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2691,16 +2197,10 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Ocr 文字涉政、敏感评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Ocr 文字涉政、敏感结果建议，取值范围：
+        :param Confidence: Ocr 文字涉政、敏感评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Ocr 文字涉政、敏感结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Ocr 文字有涉政、敏感嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Ocr 文字有涉政、敏感嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -2731,9 +2231,7 @@ class AiReviewPoliticalTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴政模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴政模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2755,22 +2253,14 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 视频涉政评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: 涉政结果建议，取值范围：
+        :param Confidence: 视频涉政评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: 涉政结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param Label: 视频鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+<li>block。</li>\n        :type Suggestion: str\n        :param Label: 视频鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 violation_photo：
 <li>violation_photo：违规图标。</li>
 其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
-<li>politician：政治人物。</li>
-        :type Label: str
-        :param SegmentSet: 有涉政嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
-        """
+<li>politician：政治人物。</li>\n        :type Label: str\n        :param SegmentSet: 有涉政嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
@@ -2803,9 +2293,7 @@ class AiReviewPornAsrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴黄模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴黄模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2827,16 +2315,10 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Asr 文字涉黄评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Asr 文字涉黄结果建议，取值范围：
+        :param Confidence: Asr 文字涉黄评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Asr 文字涉黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Asr 文字有涉黄嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Asr 文字有涉黄嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -2867,9 +2349,7 @@ class AiReviewPornOcrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴黄模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴黄模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2891,16 +2371,10 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Ocr 文字涉黄评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Ocr 文字涉黄结果建议，取值范围：
+        :param Confidence: Ocr 文字涉黄评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Ocr 文字涉黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Ocr 文字有涉黄嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Ocr 文字有涉黄嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -2931,9 +2405,7 @@ class AiReviewPornTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴黄模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴黄模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -2955,22 +2427,14 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 视频鉴黄评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: 鉴黄结果建议，取值范围：
+        :param Confidence: 视频鉴黄评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: 鉴黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param Label: 视频鉴黄结果标签，取值范围：
+<li>block。</li>\n        :type Suggestion: str\n        :param Label: 视频鉴黄结果标签，取值范围：
 <li>porn：色情。</li>
 <li>sexy：性感。</li>
 <li>vulgar：低俗。</li>
-<li>intimacy：亲密行为。</li>
-        :type Label: str
-        :param SegmentSet: 有涉黄嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewSegmentItem
-        """
+<li>intimacy：亲密行为。</li>\n        :type Label: str\n        :param SegmentSet: 有涉黄嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
@@ -3003,9 +2467,7 @@ class AiReviewProhibitedAsrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴违禁模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴违禁模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -3027,16 +2489,10 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Asr 文字涉违禁评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Asr 文字涉违禁结果建议，取值范围：
+        :param Confidence: Asr 文字涉违禁评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Asr 文字涉违禁结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Asr 文字有涉违禁嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Asr 文字有涉违禁嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -3067,9 +2523,7 @@ class AiReviewProhibitedOcrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴违禁模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴违禁模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -3091,16 +2545,10 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Ocr 文字涉违禁评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Ocr 文字涉违禁结果建议，取值范围：
+        :param Confidence: Ocr 文字涉违禁评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Ocr 文字涉违禁结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Ocr 文字有涉违禁嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Ocr 文字有涉违禁嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -3131,19 +2579,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Asr 文字鉴政任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`
-        :param Output: 内容审核 Asr 文字鉴政任务输出。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Asr 文字鉴政任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`\n        :param Output: 内容审核 Asr 文字鉴政任务输出。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3179,20 +2615,8 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Ocr 文字鉴政任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskInput`
-        :param Output: 内容审核 Ocr 文字鉴政任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Ocr 文字鉴政任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskInput`\n        :param Output: 内容审核 Ocr 文字鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3228,20 +2652,8 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核鉴政任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskInput`
-        :param Output: 内容审核鉴政任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核鉴政任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskInput`\n        :param Output: 内容审核鉴政任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3277,20 +2689,8 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Asr 文字鉴黄任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskInput`
-        :param Output: 内容审核 Asr 文字鉴黄任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Asr 文字鉴黄任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskInput`\n        :param Output: 内容审核 Asr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3326,20 +2726,8 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Ocr 文字鉴黄任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskInput`
-        :param Output: 内容审核 Ocr 文字鉴黄任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Ocr 文字鉴黄任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskInput`\n        :param Output: 内容审核 Ocr 文字鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3375,20 +2763,8 @@ class AiReviewTaskPornResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核鉴黄任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskInput`
-        :param Output: 内容审核鉴黄任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核鉴黄任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskInput`\n        :param Output: 内容审核鉴黄任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3424,20 +2800,8 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Asr 文字鉴违禁任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskInput`
-        :param Output: 内容审核 Asr 文字鉴违禁任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Asr 文字鉴违禁任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskInput`\n        :param Output: 内容审核 Asr 文字鉴违禁任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3473,20 +2837,8 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Ocr 文字鉴违禁任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskInput`
-        :param Output: 内容审核 Ocr 文字鉴违禁任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Ocr 文字鉴违禁任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskInput`\n        :param Output: 内容审核 Ocr 文字鉴违禁任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3522,20 +2874,8 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核 Ocr 文字鉴恐任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskInput`
-        :param Output: 内容审核 Ocr 文字鉴恐任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核 Ocr 文字鉴恐任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskInput`\n        :param Output: 内容审核 Ocr 文字鉴恐任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3571,20 +2911,8 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 内容审核鉴恐任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskInput`
-        :param Output: 内容审核鉴恐任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 内容审核鉴恐任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskInput`\n        :param Output: 内容审核鉴恐任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -3620,9 +2948,7 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴恐模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴恐模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -3644,16 +2970,10 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: Ocr 文字涉恐评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: Ocr 文字涉恐结果建议，取值范围：
+        :param Confidence: Ocr 文字涉恐评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: Ocr 文字涉恐结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param SegmentSet: Ocr 文字有涉恐嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param SegmentSet: Ocr 文字有涉恐嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
@@ -3684,9 +3004,7 @@ class AiReviewTerrorismTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 鉴恐模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 鉴恐模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -3708,14 +3026,10 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 视频暴恐评分，分值为0到100。
-        :type Confidence: float
-        :param Suggestion: 暴恐结果建议，取值范围：
+        :param Confidence: 视频暴恐评分，分值为0到100。\n        :type Confidence: float\n        :param Suggestion: 暴恐结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param Label: 视频暴恐结果标签，取值范围：
+<li>block。</li>\n        :type Suggestion: str\n        :param Label: 视频暴恐结果标签，取值范围：
 <li>guns：武器枪支。</li>
 <li>crowd：人群聚集。</li>
 <li>police：警察部队。</li>
@@ -3724,11 +3038,7 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 <li>militant：武装分子。</li>
 <li>explosion：爆炸火灾。</li>
 <li>terrorists：暴恐人物。</li>
-<li>scenario：暴恐画面。</li>
-        :type Label: str
-        :param SegmentSet: 有暴恐嫌疑的视频片段列表。
-        :type SegmentSet: list of MediaContentReviewSegmentItem
-        """
+<li>scenario：暴恐画面。</li>\n        :type Label: str\n        :param SegmentSet: 有暴恐嫌疑的视频片段列表。\n        :type SegmentSet: list of MediaContentReviewSegmentItem\n        """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
@@ -3761,11 +3071,7 @@ class AiSampleFaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param FaceId: 人脸图片 ID。
-        :type FaceId: str
-        :param Url: 人脸图片地址。
-        :type Url: str
-        """
+        :param FaceId: 人脸图片 ID。\n        :type FaceId: str\n        :param Url: 人脸图片地址。\n        :type Url: str\n        """
         self.FaceId = None
         self.Url = None
 
@@ -3789,16 +3095,10 @@ class AiSampleFaceOperation(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。
-        :type Type: str
-        :param FaceIds: 人脸 ID 集合，当 Type为delete 时，该字段必填。
-        :type FaceIds: list of str
-        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
+        :param Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。\n        :type Type: str\n        :param FaceIds: 人脸 ID 集合，当 Type为delete 时，该字段必填。\n        :type FaceIds: list of str\n        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
 <li>当 Type为add 或 reset 时，该字段必填；</li>
 <li>数组长度限制：5 张图片。</li>
-注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
-        :type FaceContents: list of str
-        """
+注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。\n        :type FaceContents: list of str\n        """
         self.Type = None
         self.FaceIds = None
         self.FaceContents = None
@@ -3824,15 +3124,9 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Index: 对应入参 FaceContents 中错误图片下标，从 0 开始。
-        :type Index: int
-        :param ErrCode: 错误码，取值：
+        :param Index: 对应入参 FaceContents 中错误图片下标，从 0 开始。\n        :type Index: int\n        :param ErrCode: 错误码，取值：
 <li>0：成功；</li>
-<li>其他：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误描述。
-        :type Message: str
-        """
+<li>其他：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误描述。\n        :type Message: str\n        """
         self.Index = None
         self.ErrCode = None
         self.Message = None
@@ -3858,23 +3152,7 @@ class AiSamplePerson(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人物 ID。
-        :type PersonId: str
-        :param Name: 人物名称。
-        :type Name: str
-        :param Description: 人物描述。
-        :type Description: str
-        :param FaceInfoSet: 人脸信息。
-        :type FaceInfoSet: list of AiSampleFaceInfo
-        :param TagSet: 人物标签。
-        :type TagSet: list of str
-        :param UsageSet: 应用场景。
-        :type UsageSet: list of str
-        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+        :param PersonId: 人物 ID。\n        :type PersonId: str\n        :param Name: 人物名称。\n        :type Name: str\n        :param Description: 人物描述。\n        :type Description: str\n        :param FaceInfoSet: 人脸信息。\n        :type FaceInfoSet: list of AiSampleFaceInfo\n        :param TagSet: 人物标签。\n        :type TagSet: list of str\n        :param UsageSet: 应用场景。\n        :type UsageSet: list of str\n        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.PersonId = None
         self.Name = None
         self.Description = None
@@ -3915,11 +3193,7 @@ class AiSampleTagOperation(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
-        :type Type: str
-        :param Tags: 标签，长度限制：128 个字符。
-        :type Tags: list of str
-        """
+        :param Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。\n        :type Type: str\n        :param Tags: 标签，长度限制：128 个字符。\n        :type Tags: list of str\n        """
         self.Type = None
         self.Tags = None
 
@@ -3943,17 +3217,7 @@ class AiSampleWord(AbstractModel):
 
     def __init__(self):
         """
-        :param Keyword: 关键词。
-        :type Keyword: str
-        :param TagSet: 关键词标签。
-        :type TagSet: list of str
-        :param UsageSet: 关键词应用场景。
-        :type UsageSet: list of str
-        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+        :param Keyword: 关键词。\n        :type Keyword: str\n        :param TagSet: 关键词标签。\n        :type TagSet: list of str\n        :param UsageSet: 关键词应用场景。\n        :type UsageSet: list of str\n        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Keyword = None
         self.TagSet = None
         self.UsageSet = None
@@ -3983,13 +3247,9 @@ class AiSampleWordInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Keyword: 关键词，长度限制：20 个字符。
-        :type Keyword: str
-        :param Tags: 关键词标签
+        :param Keyword: 关键词，长度限制：20 个字符。\n        :type Keyword: str\n        :param Tags: 关键词标签
 <li>数组长度限制：20 个标签；</li>
-<li>单个标签长度限制：128 个字符。</li>
-        :type Tags: list of str
-        """
+<li>单个标签长度限制：128 个字符。</li>\n        :type Tags: list of str\n        """
         self.Keyword = None
         self.Tags = None
 
@@ -4013,19 +3273,13 @@ class AnimatedGraphicTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频转动图模板 ID
-        :type Definition: int
-        :param StartTimeOffset: 动图在视频中的起始时间偏移，单位为秒。
+        :param Definition: 视频转动图模板 ID\n        :type Definition: int\n        :param StartTimeOffset: 动图在视频中的起始时间偏移，单位为秒。
 <li>不填或填0，表示从视频的起始位置开始；</li>
 <li>当数值大于0时（假设为 n），表示从视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示从视频结束 n 秒前的位置开始。</li>
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 动图在视频中的终止时间偏移，单位为秒。
+<li>当数值小于0时（假设为 -n），表示从视频结束 n 秒前的位置开始。</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 动图在视频中的终止时间偏移，单位为秒。
 <li>不填或填0，表示持续到视频的末尾终止；</li>
 <li>当数值大于0时（假设为 n），表示持续到视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示持续到视频结束 n 秒前终止。</li>
-        :type EndTimeOffset: float
-        """
+<li>当数值小于0时（假设为 -n），表示持续到视频结束 n 秒前终止。</li>\n        :type EndTimeOffset: float\n        """
         self.Definition = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -4051,46 +3305,22 @@ class AnimatedGraphicsTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转动图模板唯一标识。
-        :type Definition: int
-        :param Type: 模板类型，取值范围：
+        :param Definition: 转动图模板唯一标识。\n        :type Definition: int\n        :param Type: 模板类型，取值范围：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 转动图模板名称。
-        :type Name: str
-        :param Comment: 转动图模板描述信息。
-        :type Comment: str
-        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Name: 转动图模板名称。\n        :type Name: str\n        :param Comment: 转动图模板描述信息。\n        :type Comment: str\n        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 动图格式。
-        :type Format: str
-        :param Fps: 帧率。
-        :type Fps: int
-        :param Quality: 图片质量。
-        :type Quality: float
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 动图格式。\n        :type Format: str\n        :param Fps: 帧率。\n        :type Fps: int\n        :param Quality: 图片质量。\n        :type Quality: float\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -4134,30 +3364,8 @@ class ApplyUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaType: 媒体类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
-        :type MediaType: str
-        :param MediaName: 媒体名称。
-        :type MediaName: str
-        :param CoverType: 封面类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
-        :type CoverType: str
-        :param Procedure: 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 [创建任务流模板](/document/product/266/33819) 并为模板命名。
-        :type Procedure: str
-        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type ExpireTime: str
-        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户。
-        :type StorageRegion: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-        :type ClassId: int
-        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
-        :type SourceContext: str
-        :param SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param MediaType: 媒体类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。\n        :type MediaType: str\n        :param MediaName: 媒体名称。\n        :type MediaName: str\n        :param CoverType: 封面类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。\n        :type CoverType: str\n        :param Procedure: 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 [创建任务流模板](/document/product/266/33819) 并为模板命名。\n        :type Procedure: str\n        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type ExpireTime: str\n        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户。\n        :type StorageRegion: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>\n        :type ClassId: int\n        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。\n        :type SourceContext: str\n        :param SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.MediaType = None
         self.MediaName = None
         self.CoverType = None
@@ -4199,21 +3407,7 @@ class ApplyUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StorageBucket: 存储桶，用于上传接口 URL 的 bucket_name。
-        :type StorageBucket: str
-        :param StorageRegion: 存储园区，用于上传接口 Host 的 Region。
-        :type StorageRegion: str
-        :param VodSessionKey: 点播会话，用于确认上传接口的参数 VodSessionKey。
-        :type VodSessionKey: str
-        :param MediaStoragePath: 媒体存储路径，用于上传接口存储媒体的对象键（Key）。
-        :type MediaStoragePath: str
-        :param CoverStoragePath: 封面存储路径，用于上传接口存储封面的对象键（Key）。
-        :type CoverStoragePath: str
-        :param TempCertificate: 临时凭证，用于上传接口的权限验证。
-        :type TempCertificate: :class:`tencentcloud.vod.v20180717.models.TempCertificate`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param StorageBucket: 存储桶，用于上传接口 URL 的 bucket_name。\n        :type StorageBucket: str\n        :param StorageRegion: 存储园区，用于上传接口 Host 的 Region。\n        :type StorageRegion: str\n        :param VodSessionKey: 点播会话，用于确认上传接口的参数 VodSessionKey。\n        :type VodSessionKey: str\n        :param MediaStoragePath: 媒体存储路径，用于上传接口存储媒体的对象键（Key）。\n        :type MediaStoragePath: str\n        :param CoverStoragePath: 封面存储路径，用于上传接口存储封面的对象键（Key）。\n        :type CoverStoragePath: str\n        :param TempCertificate: 临时凭证，用于上传接口的权限验证。\n        :type TempCertificate: :class:`tencentcloud.vod.v20180717.models.TempCertificate`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.StorageBucket = None
         self.StorageRegion = None
         self.VodSessionKey = None
@@ -4244,12 +3438,8 @@ class AsrFullTextConfigureInfo(AbstractModel):
         """
         :param Switch: 语音全文识别任务开关，可选值：
 <li>ON：开启智能语音全文识别任务；</li>
-<li>OFF：关闭智能语音全文识别任务。</li>
-        :type Switch: str
-        :param SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件。</li>
-        :type SubtitleFormat: str
-        """
+<li>OFF：关闭智能语音全文识别任务。</li>\n        :type Switch: str\n        :param SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>\n        :type SubtitleFormat: str\n        """
         self.Switch = None
         self.SubtitleFormat = None
 
@@ -4275,12 +3465,8 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 语音全文识别任务开关，可选值：
 <li>ON：开启智能语音全文识别任务；</li>
-<li>OFF：关闭智能语音全文识别任务。</li>
-        :type Switch: str
-        :param SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件。</li>
-        :type SubtitleFormat: str
-        """
+<li>OFF：关闭智能语音全文识别任务。</li>\n        :type Switch: str\n        :param SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件。</li>\n        :type SubtitleFormat: str\n        """
         self.Switch = None
         self.SubtitleFormat = None
 
@@ -4306,12 +3492,8 @@ class AsrWordsConfigureInfo(AbstractModel):
         """
         :param Switch: 语音关键词识别任务开关，可选值：
 <li>ON：开启语音关键词识别任务；</li>
-<li>OFF：关闭语音关键词识别任务。</li>
-        :type Switch: str
-        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        """
+<li>OFF：关闭语音关键词识别任务。</li>\n        :type Switch: str\n        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        """
         self.Switch = None
         self.LabelSet = None
 
@@ -4337,12 +3519,8 @@ class AsrWordsConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 语音关键词识别任务开关，可选值：
 <li>ON：开启语音关键词识别任务；</li>
-<li>OFF：关闭语音关键词识别任务。</li>
-        :type Switch: str
-        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        """
+<li>OFF：关闭语音关键词识别任务。</li>\n        :type Switch: str\n        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        """
         self.Switch = None
         self.LabelSet = None
 
@@ -4366,19 +3544,9 @@ class AttachMediaSubtitlesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件唯一标识。
-        :type FileId: str
-        :param Operation: 操作。取值如下：
+        :param FileId: 媒体文件唯一标识。\n        :type FileId: str\n        :param Operation: 操作。取值如下：
 <li>Attach：关联字幕。</li>
-<li>Detach：解除关联字幕。</li>
-        :type Operation: str
-        :param AdaptiveDynamicStreamingDefinition: [转自适应码流模板号](https://cloud.tencent.com/document/product/266/34071#zsy)。
-        :type AdaptiveDynamicStreamingDefinition: int
-        :param SubtitleIds: 字幕的唯一标识。
-        :type SubtitleIds: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Detach：解除关联字幕。</li>\n        :type Operation: str\n        :param AdaptiveDynamicStreamingDefinition: [转自适应码流模板号](https://cloud.tencent.com/document/product/266/34071#zsy)。\n        :type AdaptiveDynamicStreamingDefinition: int\n        :param SubtitleIds: 字幕的唯一标识。\n        :type SubtitleIds: list of str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.Operation = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -4408,9 +3576,7 @@ class AttachMediaSubtitlesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4440,25 +3606,17 @@ class AudioTemplateInfo(AbstractModel):
 <li>mp2。</li>
 当外层参数 Container 为 hls 时，可选值为：
 <li>libfdk_aac；</li>
-<li>libmp3lame。</li>
-        :type Codec: str
-        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
-当取值为 0，表示音频码率和原始音频保持一致。
-        :type Bitrate: int
-        :param SampleRate: 音频流的采样率，可选值：
+<li>libmp3lame。</li>\n        :type Codec: str\n        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+当取值为 0，表示音频码率和原始音频保持一致。\n        :type Bitrate: int\n        :param SampleRate: 音频流的采样率，可选值：
 <li>32000</li>
 <li>44100</li>
 <li>48000</li>
-单位：Hz。
-        :type SampleRate: int
-        :param AudioChannel: 音频通道方式，可选值：
+单位：Hz。\n        :type SampleRate: int\n        :param AudioChannel: 音频通道方式，可选值：
 <li>1：单通道</li>
 <li>2：双通道</li>
 <li>6：立体声</li>
 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
-默认值：2。
-        :type AudioChannel: int
-        """
+默认值：2。\n        :type AudioChannel: int\n        """
         self.Codec = None
         self.Bitrate = None
         self.SampleRate = None
@@ -4501,23 +3659,15 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>mp2。</li>
 当外层参数 Container 为 hls 时，可选值为：
 <li>libfdk_aac；</li>
-<li>libmp3lame。</li>
-        :type Codec: str
-        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
-        :type Bitrate: int
-        :param SampleRate: 音频流的采样率，可选值：
+<li>libmp3lame。</li>\n        :type Codec: str\n        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。\n        :type Bitrate: int\n        :param SampleRate: 音频流的采样率，可选值：
 <li>32000</li>
 <li>44100</li>
 <li>48000</li>
-单位：Hz。
-        :type SampleRate: int
-        :param AudioChannel: 音频通道方式，可选值：
+单位：Hz。\n        :type SampleRate: int\n        :param AudioChannel: 音频通道方式，可选值：
 <li>1：单通道</li>
 <li>2：双通道</li>
 <li>6：立体声</li>
-当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
-        :type AudioChannel: int
-        """
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。\n        :type AudioChannel: int\n        """
         self.Codec = None
         self.Bitrate = None
         self.SampleRate = None
@@ -4548,15 +3698,7 @@ class AudioTrackItem(AbstractModel):
         :param SourceMedia: 音频片段的媒体素材来源，可以是：
 <li>点播的媒体文件 ID；</li>
 <li>其他媒体文件的下载 URL。</li>
-注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
-        :type SourceMedia: str
-        :param SourceMediaStartTime: 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
-        :type SourceMediaStartTime: float
-        :param Duration: 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
-        :type Duration: float
-        :param AudioOperations: 对音频片段进行的操作，如音量调节等。
-        :type AudioOperations: list of AudioTransform
-        """
+注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。\n        :type Duration: float\n        :param AudioOperations: 对音频片段进行的操作，如音量调节等。\n        :type AudioOperations: list of AudioTransform\n        """
         self.SourceMedia = None
         self.SourceMediaStartTime = None
         self.Duration = None
@@ -4590,12 +3732,8 @@ class AudioTransform(AbstractModel):
     def __init__(self):
         """
         :param Type: 音频操作类型，取值有：
-<li>Volume：音量调节。</li>
-        :type Type: str
-        :param VolumeParam: 音量调节参数， 当 Type = Volume 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VolumeParam: :class:`tencentcloud.vod.v20180717.models.AudioVolumeParam`
-        """
+<li>Volume：音量调节。</li>\n        :type Type: str\n        :param VolumeParam: 音量调节参数， 当 Type = Volume 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VolumeParam: :class:`tencentcloud.vod.v20180717.models.AudioVolumeParam`\n        """
         self.Type = None
         self.VolumeParam = None
 
@@ -4624,15 +3762,11 @@ class AudioVolumeParam(AbstractModel):
         :param Mute: 是否静音，取值范围0或1。
 <li>0表示不静音。</li>
 <li>1表示静音。</li>
-默认是0。
-        :type Mute: int
-        :param Gain: 音频增益，取值范围0~10。
+默认是0。\n        :type Mute: int\n        :param Gain: 音频增益，取值范围0~10。
 <li>大于1表示增加音量。</li>
 <li>小于1表示降低音量。</li>
 <li>0和1：表示不改变。</li>
-默认是0。
-        :type Gain: float
-        """
+默认是0。\n        :type Gain: float\n        """
         self.Mute = None
         self.Gain = None
 
@@ -4659,15 +3793,9 @@ class Canvas(AbstractModel):
         :param Color: 背景颜色，取值有：
 <li>Black：黑色背景</li>
 <li>White：白色背景</li>
-默认值：Black。
-        :type Color: str
-        :param Width: 画布宽度，即输出视频的宽度，取值范围：0~ 4096，单位：px。
-默认值：0，表示和第一个视频轨的第一个视频片段的视频宽度一致。
-        :type Width: int
-        :param Height: 画布高度，即输出视频的高度（或长边），取值范围：0~ 4096，单位：px。
-默认值：0，表示和第一个视频轨的第一个视频片段的视频高度一致。
-        :type Height: int
-        """
+默认值：Black。\n        :type Color: str\n        :param Width: 画布宽度，即输出视频的宽度，取值范围：0~ 4096，单位：px。
+默认值：0，表示和第一个视频轨的第一个视频片段的视频宽度一致。\n        :type Width: int\n        :param Height: 画布高度，即输出视频的高度（或长边），取值范围：0~ 4096，单位：px。
+默认值：0，表示和第一个视频轨的第一个视频片段的视频高度一致。\n        :type Height: int\n        """
         self.Color = None
         self.Width = None
         self.Height = None
@@ -4693,18 +3821,8 @@ class CdnLogInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Date: 日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。
-        :type Date: str
-        :param Name: 日志名称，格式为：日期小时-域名
-如 2018120101-test.vod2.mqcloud.com。
-        :type Name: str
-        :param Url: 日志下载链接，24小时内下载有效。
-        :type Url: str
-        :param StartTime: 日志起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type StartTime: str
-        :param EndTime: 日志结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type EndTime: str
-        """
+        :param Date: 日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。\n        :type Date: str\n        :param Name: 日志名称，格式为：日期小时-域名
+如 2018120101-test.vod2.mqcloud.com。\n        :type Name: str\n        :param Url: 日志下载链接，24小时内下载有效。\n        :type Url: str\n        :param StartTime: 日志起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type StartTime: str\n        :param EndTime: 日志结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type EndTime: str\n        """
         self.Date = None
         self.Name = None
         self.Url = None
@@ -4736,9 +3854,7 @@ class ClassificationConfigureInfo(AbstractModel):
         """
         :param Switch: 智能分类任务开关，可选值：
 <li>ON：开启智能分类任务；</li>
-<li>OFF：关闭智能分类任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能分类任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -4762,9 +3878,7 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 智能分类任务开关，可选值：
 <li>ON：开启智能分类任务；</li>
-<li>OFF：关闭智能分类任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能分类任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -4788,17 +3902,7 @@ class ClipFileInfo2017(AbstractModel):
         """
         :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误描述。
-        :type Message: str
-        :param FileId: 输出目标文件的文件 ID。
-        :type FileId: str
-        :param FileUrl: 输出目标文件的文件地址。
-        :type FileUrl: str
-        :param FileType: 输出目标文件的文件类型。
-        :type FileType: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误描述。\n        :type Message: str\n        :param FileId: 输出目标文件的文件 ID。\n        :type FileId: str\n        :param FileUrl: 输出目标文件的文件地址。\n        :type FileUrl: str\n        :param FileType: 输出目标文件的文件类型。\n        :type FileType: str\n        """
         self.ErrCode = None
         self.Message = None
         self.FileId = None
@@ -4828,13 +3932,7 @@ class ClipTask2017(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频剪辑任务 ID。
-        :type TaskId: str
-        :param SrcFileId: 视频剪辑任务源文件 ID。
-        :type SrcFileId: str
-        :param FileInfo: 视频剪辑输出的文件信息。
-        :type FileInfo: :class:`tencentcloud.vod.v20180717.models.ClipFileInfo2017`
-        """
+        :param TaskId: 视频剪辑任务 ID。\n        :type TaskId: str\n        :param SrcFileId: 视频剪辑任务源文件 ID。\n        :type SrcFileId: str\n        :param FileInfo: 视频剪辑输出的文件信息。\n        :type FileInfo: :class:`tencentcloud.vod.v20180717.models.ClipFileInfo2017`\n        """
         self.TaskId = None
         self.SrcFileId = None
         self.FileInfo = None
@@ -4862,11 +3960,7 @@ class CommitUploadRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VodSessionKey: 点播会话，取申请上传接口的返回值 VodSessionKey。
-        :type VodSessionKey: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param VodSessionKey: 点播会话，取申请上传接口的返回值 VodSessionKey。\n        :type VodSessionKey: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.VodSessionKey = None
         self.SubAppId = None
 
@@ -4890,17 +3984,9 @@ class CommitUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件的唯一标识。
-        :type FileId: str
-        :param MediaUrl: 媒体播放地址。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MediaUrl: str
-        :param CoverUrl: 媒体封面地址。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CoverUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FileId: 媒体文件的唯一标识。\n        :type FileId: str\n        :param MediaUrl: 媒体播放地址。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MediaUrl: str\n        :param CoverUrl: 媒体封面地址。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CoverUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FileId = None
         self.MediaUrl = None
         self.CoverUrl = None
@@ -4921,34 +4007,16 @@ class ComposeMediaOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param FileName: 文件名称，最长 64 个字符。
-        :type FileName: str
-        :param Description: 描述信息，最长 128 个字符。
-        :type Description: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-        :type ClassId: int
-        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ExpireTime: str
-        :param Container: 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。
-        :type Container: str
-        :param VideoStream: 输出的视频信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.OutputVideoStream`
-        :param AudioStream: 输出的音频信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioStream: :class:`tencentcloud.vod.v20180717.models.OutputAudioStream`
-        :param RemoveVideo: 是否去除视频数据，可选值：
+        :param FileName: 文件名称，最长 64 个字符。\n        :type FileName: str\n        :param Description: 描述信息，最长 128 个字符。\n        :type Description: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>\n        :type ClassId: int\n        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ExpireTime: str\n        :param Container: 封装格式，可选值：mp4、mp3。其中，mp3 为纯音频文件。\n        :type Container: str\n        :param VideoStream: 输出的视频信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.OutputVideoStream`\n        :param AudioStream: 输出的音频信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioStream: :class:`tencentcloud.vod.v20180717.models.OutputAudioStream`\n        :param RemoveVideo: 是否去除视频数据，可选值：
 <li>0：保留</li>
 <li>1：去除</li>
-默认值：0。
-        :type RemoveVideo: int
-        :param RemoveAudio: 是否去除音频数据，可选值：
+默认值：0。\n        :type RemoveVideo: int\n        :param RemoveAudio: 是否去除音频数据，可选值：
 <li>0：保留</li>
 <li>1：去除</li>
-默认值：0。
-        :type RemoveAudio: int
-        """
+默认值：0。\n        :type RemoveAudio: int\n        """
         self.FileName = None
         self.Description = None
         self.ClassId = None
@@ -4990,19 +4058,7 @@ class ComposeMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Tracks: 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频、图片，每一种类型的轨道最多支持10个。</li>
-        :type Tracks: list of MediaTrack
-        :param Output: 输出的媒体文件信息。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
-        :param Canvas: 制作视频文件时使用的画布。
-        :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
-        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在ComposeMediaComplete回调将返回该字段值，最长 1000个字符。
-        :type SessionContext: str
-        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Tracks: 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频、图片，每一种类型的轨道最多支持10个。</li>\n        :type Tracks: list of MediaTrack\n        :param Output: 输出的媒体文件信息。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`\n        :param Canvas: 制作视频文件时使用的画布。\n        :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`\n        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在ComposeMediaComplete回调将返回该字段值，最长 1000个字符。\n        :type SessionContext: str\n        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Tracks = None
         self.Output = None
         self.Canvas = None
@@ -5043,11 +4099,7 @@ class ComposeMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 制作媒体文件的任务 ID，可以通过该 ID 查询制作任务（任务类型为 MakeMedia）的状态。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 制作媒体文件的任务 ID，可以通过该 ID 查询制作任务（任务类型为 MakeMedia）的状态。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -5064,32 +4116,14 @@ class ComposeMediaTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务流状态，取值：
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
-        :type Status: str
-        :param ErrCode: 错误码
+<li>FINISH：已完成。</li>\n        :type Status: str\n        :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 制作媒体文件任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`
-        :param Output: 制作媒体文件任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
-        :param MetaData: 原始视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 制作媒体文件任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`\n        :param Output: 制作媒体文件任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`\n        :param MetaData: 原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -5133,14 +4167,8 @@ class ComposeMediaTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Tracks: 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。
-        :type Tracks: list of MediaTrack
-        :param Canvas: 制作视频文件时使用的画布。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
-        :param Output: 输出的媒体文件信息。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
-        """
+        :param Tracks: 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。\n        :type Tracks: list of MediaTrack\n        :param Canvas: 制作视频文件时使用的画布。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`\n        :param Output: 输出的媒体文件信息。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`\n        """
         self.Tracks = None
         self.Canvas = None
         self.Output = None
@@ -5175,20 +4203,8 @@ class ComposeMediaTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param FileType: 文件类型，例如 mp4、mp3 等。
-        :type FileType: str
-        :param FileId: 媒体文件 ID。
-        :type FileId: str
-        :param FileUrl: 媒体文件播放地址。
-        :type FileUrl: str
-        :param MediaName: 文件名称，最长 64 个字符。
-        :type MediaName: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-        :type ClassId: int
-        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ExpireTime: str
-        """
+        :param FileType: 文件类型，例如 mp4、mp3 等。\n        :type FileType: str\n        :param FileId: 媒体文件 ID。\n        :type FileId: str\n        :param FileUrl: 媒体文件播放地址。\n        :type FileUrl: str\n        :param MediaName: 文件名称，最长 64 个字符。\n        :type MediaName: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>\n        :type ClassId: int\n        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ExpireTime: str\n        """
         self.FileType = None
         self.FileId = None
         self.FileUrl = None
@@ -5222,17 +4238,7 @@ class ConcatFileInfo2017(AbstractModel):
         """
         :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 视频拼接源文件的 ID。
-        :type FileId: str
-        :param FileUrl: 视频拼接源文件的地址。
-        :type FileUrl: str
-        :param FileType: 视频拼接源文件的格式。
-        :type FileType: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileId: 视频拼接源文件的 ID。\n        :type FileId: str\n        :param FileUrl: 视频拼接源文件的地址。\n        :type FileUrl: str\n        :param FileType: 视频拼接源文件的格式。\n        :type FileType: str\n        """
         self.ErrCode = None
         self.Message = None
         self.FileId = None
@@ -5262,11 +4268,7 @@ class ConcatTask2017(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频拼接任务 ID。
-        :type TaskId: str
-        :param FileInfoSet: 视频拼接源文件信息。
-        :type FileInfoSet: list of ConcatFileInfo2017
-        """
+        :param TaskId: 视频拼接任务 ID。\n        :type TaskId: str\n        :param FileInfoSet: 视频拼接源文件信息。\n        :type FileInfoSet: list of ConcatFileInfo2017\n        """
         self.TaskId = None
         self.FileInfoSet = None
 
@@ -5296,13 +4298,7 @@ class ConfirmEventsRequest(AbstractModel):
     def __init__(self):
         """
         :param EventHandles: 事件句柄，即 [拉取事件通知](/document/product/266/33433) 接口输出参数中的 EventSet. EventHandle 字段。
-数组长度限制：16。
-        :type EventHandles: list of str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+数组长度限制：16。\n        :type EventHandles: list of str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.EventHandles = None
         self.ExtInfo = None
         self.SubAppId = None
@@ -5328,9 +4324,7 @@ class ConfirmEventsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5345,40 +4339,16 @@ class ContentReviewTemplateItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容审核模板唯一标识。
-        :type Definition: int
-        :param Name: 内容审核模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param PornConfigure: 鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
-        :param TerrorismConfigure: 鉴恐控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: 鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
-        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+        :param Definition: 内容审核模板唯一标识。\n        :type Definition: int\n        :param Name: 内容审核模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param PornConfigure: 鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`\n        :param TerrorismConfigure: 鉴恐控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`\n        :param PoliticalConfigure: 鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`\n        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: 用户自定义内容审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
-        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`\n        :param UserDefineConfigure: 用户自定义内容审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`\n        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
 <li>ON：是；</li>
-<li>OFF：否。</li>
-        :type ReviewWallSwitch: str
-        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+<li>OFF：否。</li>\n        :type ReviewWallSwitch: str\n        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -5432,19 +4402,11 @@ class CoverBySnapshotTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图模板 ID。
-        :type Definition: int
-        :param PositionType: 截图方式。包含：
+        :param Definition: 指定时间点截图模板 ID。\n        :type Definition: int\n        :param PositionType: 截图方式。包含：
 <li>Time：依照时间点截图</li>
-<li>Percent：依照百分比截图</li>
-        :type PositionType: str
-        :param PositionValue: 截图位置：
+<li>Percent：依照百分比截图</li>\n        :type PositionType: str\n        :param PositionValue: 截图位置：
 <li>对于依照时间点截图，该值表示指定视频第几秒的截图作为封面</li>
-<li>对于依照百分比截图，该值表示使用视频百分之多少的截图作为封面</li>
-        :type PositionValue: float
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-        :type WatermarkSet: list of WatermarkInput
-        """
+<li>对于依照百分比截图，该值表示使用视频百分之多少的截图作为封面</li>\n        :type PositionValue: float\n        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。\n        :type WatermarkSet: list of WatermarkInput\n        """
         self.Definition = None
         self.PositionType = None
         self.PositionValue = None
@@ -5477,9 +4439,7 @@ class CoverBySnapshotTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param CoverUrl: 封面 URL。
-        :type CoverUrl: str
-        """
+        :param CoverUrl: 封面 URL。\n        :type CoverUrl: str\n        """
         self.CoverUrl = None
 
 
@@ -5503,9 +4463,7 @@ class CoverConfigureInfo(AbstractModel):
         """
         :param Switch: 智能封面任务开关，可选值：
 <li>ON：开启智能封面任务；</li>
-<li>OFF：关闭智能封面任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能封面任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -5529,9 +4487,7 @@ class CoverConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 智能封面任务开关，可选值：
 <li>ON：开启智能封面任务；</li>
-<li>OFF：关闭智能封面任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能封面任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -5553,23 +4509,7 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param ClassificationConfigure: 智能分类任务控制参数。
-        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
-        :param TagConfigure: 智能标签任务控制参数。
-        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`
-        :param CoverConfigure: 智能封面任务控制参数。
-        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`
-        :param FrameTagConfigure: 智能按帧标签任务控制参数。
-        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
-        :param HighlightConfigure: 智能精彩集锦任务控制参数。
-        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Name: 视频内容分析模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param ClassificationConfigure: 智能分类任务控制参数。\n        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`\n        :param TagConfigure: 智能标签任务控制参数。\n        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfo`\n        :param CoverConfigure: 智能封面任务控制参数。\n        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfo`\n        :param FrameTagConfigure: 智能按帧标签任务控制参数。\n        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`\n        :param HighlightConfigure: 智能精彩集锦任务控制参数。\n        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.Comment = None
         self.ClassificationConfigure = None
@@ -5615,11 +4555,7 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容分析模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 视频内容分析模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -5636,31 +4572,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 视频内容识别模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param HeadTailConfigure: 视频片头片尾识别控制参数。
-        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
-        :param SegmentConfigure: 视频拆条识别控制参数。
-        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`
-        :param FaceConfigure: 人脸识别控制参数。
-        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`
-        :param OcrFullTextConfigure: 文本全文识别控制参数。
-        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`
-        :param OcrWordsConfigure: 文本关键词识别控制参数。
-        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`
-        :param AsrFullTextConfigure: 语音全文识别控制参数。
-        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
-        :param AsrWordsConfigure: 语音关键词识别控制参数。
-        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
-        :param ObjectConfigure: 物体识别控制参数。
-        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
-        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Name: 视频内容识别模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param HeadTailConfigure: 视频片头片尾识别控制参数。\n        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`\n        :param SegmentConfigure: 视频拆条识别控制参数。\n        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfo`\n        :param FaceConfigure: 人脸识别控制参数。\n        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfo`\n        :param OcrFullTextConfigure: 文本全文识别控制参数。\n        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfo`\n        :param OcrWordsConfigure: 文本关键词识别控制参数。\n        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfo`\n        :param AsrFullTextConfigure: 语音全文识别控制参数。\n        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`\n        :param AsrWordsConfigure: 语音关键词识别控制参数。\n        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`\n        :param ObjectConfigure: 物体识别控制参数。\n        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`\n        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
@@ -5720,11 +4632,7 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容识别模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 视频内容识别模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -5742,32 +4650,16 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
-        :type Format: str
-        :param StreamInfos: 自适应转码输出子流参数信息，最多输出10路子流。
-注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
-        :type StreamInfos: list of AdaptiveStreamTemplate
-        :param Name: 模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param DrmType: DRM方案类型，取值范围：
+<li>HLS。</li>\n        :type Format: str\n        :param StreamInfos: 自适应转码输出子流参数信息，最多输出10路子流。
+注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。\n        :type StreamInfos: list of AdaptiveStreamTemplate\n        :param Name: 模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param DrmType: DRM方案类型，取值范围：
 <li>SimpleAES。</li>
-如果取值为空字符串，代表不对视频做 DRM 保护。
-        :type DrmType: str
-        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+如果取值为空字符串，代表不对视频做 DRM 保护。\n        :type DrmType: str\n        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
 <li>0：否，</li>
 <li>1：是。</li>
-默认为否。
-        :type DisableHigherVideoBitrate: int
-        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+默认为否。\n        :type DisableHigherVideoBitrate: int\n        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
 <li>0：否，</li>
 <li>1：是。</li>
-默认为否。
-        :type DisableHigherVideoResolution: int
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认为否。\n        :type DisableHigherVideoResolution: int\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Format = None
         self.StreamInfos = None
         self.Name = None
@@ -5808,11 +4700,7 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 自适应转码模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 自适应转码模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -5829,38 +4717,20 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
-        :type Fps: int
-        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。\n        :type Fps: int\n        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 动图格式，取值为 gif 和 webp。默认为 gif。
-        :type Format: str
-        :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。
-        :type Quality: float
-        :param Name: 转动图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 动图格式，取值为 gif 和 webp。默认为 gif。\n        :type Format: str\n        :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。\n        :type Quality: float\n        :param Name: 转动图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Fps = None
         self.Width = None
         self.Height = None
@@ -5898,11 +4768,7 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转动图模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 转动图模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -5919,13 +4785,7 @@ class CreateClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ParentId: 父类 ID，一级分类填写 -1。
-        :type ParentId: int
-        :param ClassName: 分类名称，长度限制：1-64 个字符。
-        :type ClassName: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param ParentId: 父类 ID，一级分类填写 -1。\n        :type ParentId: int\n        :param ClassName: 分类名称，长度限制：1-64 个字符。\n        :type ClassName: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.ParentId = None
         self.ClassName = None
         self.SubAppId = None
@@ -5951,11 +4811,7 @@ class CreateClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClassId: 分类 ID
-        :type ClassId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ClassId: 分类 ID\n        :type ClassId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClassId = None
         self.RequestId = None
 
@@ -5974,29 +4830,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         """
         :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对识别结果进行人工复核）的开关。
 <li>ON：是；</li>
-<li>OFF：否。</li>
-        :type ReviewWallSwitch: str
-        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param PornConfigure: 令人反感的信息的控制参数。
-        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
-        :param TerrorismConfigure: 令人不安全的信息的控制参数。
-        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: 令人不适宜的控制参数。
-        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
-        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+<li>OFF：否。</li>\n        :type ReviewWallSwitch: str\n        :param Name: 内容智能识别模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param PornConfigure: 令人反感的信息的控制参数。\n        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`\n        :param TerrorismConfigure: 令人不安全的信息的控制参数。\n        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`\n        :param PoliticalConfigure: 令人不适宜的控制参数。\n        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`\n        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
-<li>涉毒违法。</li>
-        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
-        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
-        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>涉毒违法。</li>\n        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`\n        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。\n        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`\n        :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.ReviewWallSwitch = None
         self.Name = None
         self.Comment = None
@@ -6046,11 +4882,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容智能识别模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 内容智能识别模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6067,24 +4899,12 @@ class CreateHeadTailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 模板名，长度限制 64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制 256 个字符。
-        :type Comment: str
-        :param HeadCandidateSet: 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。
-        :type HeadCandidateSet: list of str
-        :param TailCandidateSet: 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片尾。
-        :type TailCandidateSet: list of str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param Name: 模板名，长度限制 64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制 256 个字符。\n        :type Comment: str\n        :param HeadCandidateSet: 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。\n        :type HeadCandidateSet: list of str\n        :param TailCandidateSet: 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片尾。\n        :type TailCandidateSet: list of str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
 <li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
 <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：stretch 。
-        :type FillType: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：stretch 。\n        :type FillType: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.Comment = None
         self.HeadCandidateSet = None
@@ -6116,11 +4936,7 @@ class CreateHeadTailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 片头片尾模板号。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 片头片尾模板号。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6138,15 +4954,7 @@ class CreateImageProcessingTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param Operations: 图片处理操作数组，操作将以其在数组中的顺序执行。
-<li>长度限制：3。</li>
-        :type Operations: list of ImageOperation
-        :param Name: 图片处理模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>长度限制：3。</li>\n        :type Operations: list of ImageOperation\n        :param Name: 图片处理模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Operations = None
         self.Name = None
         self.Comment = None
@@ -6179,11 +4987,7 @@ class CreateImageProcessingTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 图片处理模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 图片处理模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6200,25 +5004,9 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 截图雪碧图任务 ID。
-        :type TaskId: str
-        :param ErrCode: 错误码
+        :param TaskId: 截图雪碧图任务 ID。\n        :type TaskId: str\n        :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 截取雪碧图文件 ID。
-        :type FileId: str
-        :param Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-        :type Definition: int
-        :param TotalCount: 雪碧图小图总数量。
-        :type TotalCount: int
-        :param ImageSpriteUrlSet: 截取雪碧图输出的地址。
-        :type ImageSpriteUrlSet: list of str
-        :param WebVttUrl: 雪碧图子图位置与时间关系 WebVtt 文件地址。
-        :type WebVttUrl: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileId: 截取雪碧图文件 ID。\n        :type FileId: str\n        :param Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。\n        :type Definition: int\n        :param TotalCount: 雪碧图小图总数量。\n        :type TotalCount: int\n        :param ImageSpriteUrlSet: 截取雪碧图输出的地址。\n        :type ImageSpriteUrlSet: list of str\n        :param WebVttUrl: 雪碧图子图位置与时间关系 WebVtt 文件地址。\n        :type WebVttUrl: str\n        """
         self.TaskId = None
         self.ErrCode = None
         self.Message = None
@@ -6256,47 +5044,25 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         """
         :param SampleType: 采样类型，取值：
 <li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
-        :type SampleType: str
-        :param SampleInterval: 采样间隔。
+<li>Time：按时间间隔。</li>\n        :type SampleType: str\n        :param SampleInterval: 采样间隔。
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
-        :type SampleInterval: int
-        :param RowCount: 雪碧图中小图的行数。
-        :type RowCount: int
-        :param ColumnCount: 雪碧图中小图的列数。
-        :type ColumnCount: int
-        :param Name: 雪碧图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>\n        :type SampleInterval: int\n        :param RowCount: 雪碧图中小图的行数。\n        :type RowCount: int\n        :param ColumnCount: 雪碧图中小图的列数。\n        :type ColumnCount: int\n        :param Name: 雪碧图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
-        :type FillType: str
-        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：black 。\n        :type FillType: str\n        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
@@ -6338,11 +5104,7 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 雪碧图模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6359,25 +5121,13 @@ class CreatePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 素材名称，长度限制：20 个字符。
-        :type Name: str
-        :param Usages: 素材应用场景，可选值：
+        :param Name: 素材名称，长度限制：20 个字符。\n        :type Name: str\n        :param Usages: 素材应用场景，可选值：
 1. Recognition：用于内容识别，等价于 Recognition.Face。
 2. Review：用于内容不适宜，等价于 Review.Face。
-3. All：包含以上全部，等价于 1+2。
-        :type Usages: list of str
-        :param Description: 素材描述，长度限制：1024 个字符。
-        :type Description: str
-        :param FaceContents: 素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
-注意：图片必须是单人像五官较清晰的照片，像素不低于 200*200。
-        :type FaceContents: list of str
-        :param Tags: 素材标签
+3. All：包含以上全部，等价于 1+2。\n        :type Usages: list of str\n        :param Description: 素材描述，长度限制：1024 个字符。\n        :type Description: str\n        :param FaceContents: 素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+注意：图片必须是单人像五官较清晰的照片，像素不低于 200*200。\n        :type FaceContents: list of str\n        :param Tags: 素材标签
 <li>数组长度限制：20 个标签；</li>
-<li>单个标签长度限制：128 个字符。</li>
-        :type Tags: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>单个标签长度限制：128 个字符。</li>\n        :type Tags: list of str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.Usages = None
         self.Description = None
@@ -6409,13 +5159,7 @@ class CreatePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: 素材信息。
-        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
-        :param FailFaceInfoSet: 处理失败的五官定位信息。
-        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Person: 素材信息。\n        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`\n        :param FailFaceInfoSet: 处理失败的五官定位信息。\n        :type FailFaceInfoSet: list of AiSampleFailFaceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Person = None
         self.FailFaceInfoSet = None
         self.RequestId = None
@@ -6441,21 +5185,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 任务流名字（支持中文，不超过20个字）。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param MediaProcessTask: 视频处理类型任务参数。
-        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
-        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
-        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: AI 内容识别类型任务参数。
-        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Name: 任务流名字（支持中文，不超过20个字）。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param MediaProcessTask: 视频处理类型任务参数。\n        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: AI 智能内容审核类型任务参数。\n        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: AI 智能内容分析类型任务参数。\n        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: AI 内容识别类型任务参数。\n        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.Comment = None
         self.MediaProcessTask = None
@@ -6497,9 +5227,7 @@ class CreateProcedureTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6516,47 +5244,27 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
         """
         :param SampleType: 采样截图类型，取值：
 <li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
-        :type SampleType: str
-        :param SampleInterval: 采样间隔。
+<li>Time：按时间间隔。</li>\n        :type SampleType: str\n        :param SampleInterval: 采样间隔。
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
-        :type SampleInterval: int
-        :param Name: 采样截图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>\n        :type SampleInterval: int\n        :param Name: 采样截图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 图片格式，取值为 jpg 和 png。默认为 jpg。
-        :type Format: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 图片格式，取值为 jpg 和 png。默认为 jpg。\n        :type Format: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
-        :type FillType: str
-        """
+默认值：black 。\n        :type FillType: str\n        """
         self.SampleType = None
         self.SampleInterval = None
         self.Name = None
@@ -6596,11 +5304,7 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 采样截图模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6617,41 +5321,25 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Name: 指定时间点截图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 图片格式，取值可以为 jpg 和 png。默认为 jpg。
-        :type Format: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 图片格式，取值可以为 jpg 和 png。默认为 jpg。\n        :type Format: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
-        :type FillType: str
-        """
+默认值：black 。\n        :type FillType: str\n        """
         self.Name = None
         self.Width = None
         self.Height = None
@@ -6687,11 +5375,7 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 时间点截图模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 时间点截图模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6708,11 +5392,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 子应用名称，长度限制：40个字符。
-        :type Name: str
-        :param Description: 子应用简介，长度限制： 300个字符。
-        :type Description: str
-        """
+        :param Name: 子应用名称，长度限制：40个字符。\n        :type Name: str\n        :param Description: 子应用简介，长度限制： 300个字符。\n        :type Description: str\n        """
         self.Name = None
         self.Description = None
 
@@ -6736,11 +5416,7 @@ class CreateSubAppIdResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 新创建的子应用 ID。
-        :type SubAppId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SubAppId: 新创建的子应用 ID。\n        :type SubAppId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubAppId = None
         self.RequestId = None
 
@@ -6757,39 +5433,19 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
-        :type Name: str
-        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
+        :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。\n        :type Name: str\n        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
-默认为 OFF。
-        :type DrmSwitch: str
-        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID，当 DrmSwitch 为 OFF 时必填。
-        :type AdaptiveDynamicStreamingDefinition: int
-        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容，当 DrmSwitch 为 ON 时必填。
-        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
-        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
-        :type ImageSpriteDefinition: int
-        :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
+默认为 OFF。\n        :type DrmSwitch: str\n        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID，当 DrmSwitch 为 OFF 时必填。\n        :type AdaptiveDynamicStreamingDefinition: int\n        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容，当 DrmSwitch 为 ON 时必填。\n        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`\n        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。\n        :type ImageSpriteDefinition: int\n        :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
 <li>MinEdgeLength：240，Name：流畅；</li>
 <li>MinEdgeLength：480，Name：标清；</li>
 <li>MinEdgeLength：720，Name：高清；</li>
 <li>MinEdgeLength：1080，Name：全高清；</li>
 <li>MinEdgeLength：1440，Name：2K；</li>
 <li>MinEdgeLength：2160，Name：4K；</li>
-<li>MinEdgeLength：4320，Name：8K。</li>
-        :type ResolutionNames: list of ResolutionNameInfo
-        :param Domain: 播放时使用的域名。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
-        :type Domain: str
-        :param Scheme: 播放时使用的 Scheme。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme。其他可选值：
+<li>MinEdgeLength：4320，Name：8K。</li>\n        :type ResolutionNames: list of ResolutionNameInfo\n        :param Domain: 播放时使用的域名。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。\n        :type Domain: str\n        :param Scheme: 播放时使用的 Scheme。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme。其他可选值：
 <li>HTTP；</li>
-<li>HTTPS。</li>
-        :type Scheme: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>HTTPS。</li>\n        :type Scheme: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -6836,9 +5492,7 @@ class CreateSuperPlayerConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6853,31 +5507,13 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
-        :type Container: str
-        :param Name: 转码模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param RemoveVideo: 是否去除视频数据，可选值：
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。\n        :type Container: str\n        :param Name: 转码模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param RemoveVideo: 是否去除视频数据，可选值：
 <li>0：保留</li>
 <li>1：去除</li>
-默认值：0。
-        :type RemoveVideo: int
-        :param RemoveAudio: 是否去除音频数据，可选值：
+默认值：0。\n        :type RemoveVideo: int\n        :param RemoveAudio: 是否去除音频数据，可选值：
 <li>0：保留</li>
 <li>1：去除</li>
-默认值：0。
-        :type RemoveAudio: int
-        :param VideoTemplate: 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
-        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
-        :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
-        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
-        :param TEHDConfig: 极速高清转码参数。
-        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：0。\n        :type RemoveAudio: int\n        :param VideoTemplate: 视频流配置参数，当 RemoveVideo 为 0，该字段必填。\n        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`\n        :param AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。\n        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`\n        :param TEHDConfig: 极速高清转码参数。\n        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Container = None
         self.Name = None
         self.Comment = None
@@ -6921,11 +5557,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转码模板唯一标识。
-        :type Definition: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 转码模板唯一标识。\n        :type Definition: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.RequestId = None
 
@@ -6945,38 +5577,18 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         :param Type: 水印类型，可选值：
 <li>image：图片水印；</li>
 <li>text：文字水印；</li>
-<li>svg：SVG 水印。</li>
-        :type Type: str
-        :param Name: 水印模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param CoordinateOrigin: 原点位置，可选值：
+<li>svg：SVG 水印。</li>\n        :type Type: str\n        :param Name: 水印模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param CoordinateOrigin: 原点位置，可选值：
 <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
 <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
 <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-默认值：TopLeft。
-        :type CoordinateOrigin: str
-        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+默认值：TopLeft。\n        :type CoordinateOrigin: str\n        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
-默认值：0px。
-        :type XPos: str
-        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+默认值：0px。\n        :type XPos: str\n        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
-默认值：0px。
-        :type YPos: str
-        :param ImageTemplate: 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
-        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInput`
-        :param TextTemplate: 文字水印模板，当 Type 为 text，该字段必填。当 Type 为 image，该字段无效。
-        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
-        :param SvgTemplate: SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
-        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：0px。\n        :type YPos: str\n        :param ImageTemplate: 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。\n        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInput`\n        :param TextTemplate: 文字水印模板，当 Type 为 text，该字段必填。当 Type 为 image，该字段无效。\n        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`\n        :param SvgTemplate: SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。\n        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Type = None
         self.Name = None
         self.Comment = None
@@ -7022,13 +5634,7 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 水印模板唯一标识。
-        :type Definition: int
-        :param ImageUrl: 水印图片地址，仅当 Type 为 image，该字段有效。
-        :type ImageUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Definition: 水印模板唯一标识。\n        :type Definition: int\n        :param ImageUrl: 水印图片地址，仅当 Type 为 image，该字段有效。\n        :type ImageUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Definition = None
         self.ImageUrl = None
         self.RequestId = None
@@ -7055,13 +5661,7 @@ class CreateWordSamplesRequest(AbstractModel):
 <b>可合并简写为：</b>
 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容识别，等价于 3+4；
-7. All：通过光学字符识别技术、音频识别技术，进行内容识别、不适宜内容识别，等价于 1+2+3+4。
-        :type Usages: list of str
-        :param Words: 关键词，数组长度限制：100。
-        :type Words: list of AiSampleWordInfo
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+7. All：通过光学字符识别技术、音频识别技术，进行内容识别、不适宜内容识别，等价于 1+2+3+4。\n        :type Usages: list of str\n        :param Words: 关键词，数组长度限制：100。\n        :type Words: list of AiSampleWordInfo\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Usages = None
         self.Words = None
         self.SubAppId = None
@@ -7092,9 +5692,7 @@ class CreateWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7109,15 +5707,7 @@ class DailyPlayStatInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Date: 播放媒体文件的日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type Date: str
-        :param FileId: 媒体文件ID。
-        :type FileId: str
-        :param PlayTimes: 播放次数。
-        :type PlayTimes: int
-        :param Traffic: 播放流量，单位：字节。
-        :type Traffic: int
-        """
+        :param Date: 播放媒体文件的日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type Date: str\n        :param FileId: 媒体文件ID。\n        :type FileId: str\n        :param PlayTimes: 播放次数。\n        :type PlayTimes: int\n        :param Traffic: 播放流量，单位：字节。\n        :type Traffic: int\n        """
         self.Date = None
         self.FileId = None
         self.PlayTimes = None
@@ -7145,11 +5735,7 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容分析模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 视频内容分析模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7173,9 +5759,7 @@ class DeleteAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7190,11 +5774,7 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容识别模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 视频内容识别模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7218,9 +5798,7 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7235,11 +5813,7 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 自适应转码模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 自适应转码模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7263,9 +5837,7 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7280,11 +5852,7 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转动图模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 转动图模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7308,9 +5876,7 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7325,11 +5891,7 @@ class DeleteClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClassId: 分类 ID
-        :type ClassId: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param ClassId: 分类 ID\n        :type ClassId: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.ClassId = None
         self.SubAppId = None
 
@@ -7353,9 +5915,7 @@ class DeleteClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7370,11 +5930,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容智能识别模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 内容智能识别模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7398,9 +5954,7 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7415,11 +5969,7 @@ class DeleteHeadTailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 片头片尾模板号。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 片头片尾模板号。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7443,9 +5993,7 @@ class DeleteHeadTailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7460,11 +6008,7 @@ class DeleteImageProcessingTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 图片处理模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 图片处理模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7488,9 +6032,7 @@ class DeleteImageProcessingTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7505,11 +6047,7 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 雪碧图模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7533,9 +6071,7 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7550,13 +6086,7 @@ class DeleteMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件的唯一标识。
-        :type FileId: str
-        :param DeleteParts: 指定本次需要删除的部分。默认值为 "[]", 表示删除媒体及其对应的全部视频处理文件。
-        :type DeleteParts: list of MediaDeleteItem
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 媒体文件的唯一标识。\n        :type FileId: str\n        :param DeleteParts: 指定本次需要删除的部分。默认值为 "[]", 表示删除媒体及其对应的全部视频处理文件。\n        :type DeleteParts: list of MediaDeleteItem\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.DeleteParts = None
         self.SubAppId = None
@@ -7587,9 +6117,7 @@ class DeleteMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7604,11 +6132,7 @@ class DeletePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 素材 ID。
-        :type PersonId: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param PersonId: 素材 ID。\n        :type PersonId: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.PersonId = None
         self.SubAppId = None
 
@@ -7632,9 +6156,7 @@ class DeletePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7649,11 +6171,7 @@ class DeleteProcedureTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 任务流名字。
-        :type Name: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Name: 任务流名字。\n        :type Name: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.SubAppId = None
 
@@ -7677,9 +6195,7 @@ class DeleteProcedureTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7694,11 +6210,7 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 采样截图模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7722,9 +6234,7 @@ class DeleteSampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7739,11 +6249,7 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 指定时间点截图模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7767,9 +6273,7 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7784,11 +6288,7 @@ class DeleteSuperPlayerConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 播放器配置名称。
-        :type Name: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Name: 播放器配置名称。\n        :type Name: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.SubAppId = None
 
@@ -7812,9 +6312,7 @@ class DeleteSuperPlayerConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7829,11 +6327,7 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转码模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 转码模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7857,9 +6351,7 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7874,11 +6366,7 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 水印模板唯一标识。
-        :type Definition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 水印模板唯一标识。\n        :type Definition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.SubAppId = None
 
@@ -7902,9 +6390,7 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7919,11 +6405,7 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Keywords: 关键词，数组长度限制：100 个词。
-        :type Keywords: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Keywords: 关键词，数组长度限制：100 个词。\n        :type Keywords: list of str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Keywords = None
         self.SubAppId = None
 
@@ -7947,9 +6429,7 @@ class DeleteWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7964,15 +6444,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
-        :type Definitions: list of int
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。\n        :type Definitions: list of int\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -8000,13 +6472,7 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param AIAnalysisTemplateSet: 视频内容分析模板详情列表。
-        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param AIAnalysisTemplateSet: 视频内容分析模板详情列表。\n        :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AIAnalysisTemplateSet = None
         self.RequestId = None
@@ -8030,15 +6496,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -8066,13 +6524,7 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param AIRecognitionTemplateSet: 视频内容识别模板详情列表。
-        :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param AIRecognitionTemplateSet: 视频内容识别模板详情列表。\n        :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AIRecognitionTemplateSet = None
         self.RequestId = None
@@ -8096,19 +6548,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 转自适应码流模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 转自适应码流模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int non-negative\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -8138,13 +6580,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param AdaptiveDynamicStreamingTemplateSet: 转自适应码流模板详情列表。
-        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param AdaptiveDynamicStreamingTemplateSet: 转自适应码流模板详情列表。\n        :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AdaptiveDynamicStreamingTemplateSet = None
         self.RequestId = None
@@ -8168,9 +6604,7 @@ class DescribeAllClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.SubAppId = None
 
 
@@ -8193,11 +6627,7 @@ class DescribeAllClassResponse(AbstractModel):
     def __init__(self):
         """
         :param ClassInfoSet: 分类信息集合
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClassInfoSet: list of MediaClassInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClassInfoSet: list of MediaClassInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClassInfoSet = None
         self.RequestId = None
 
@@ -8219,19 +6649,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 转动图模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 转动图模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int non-negative\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -8261,13 +6681,7 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param AnimatedGraphicsTemplateSet: 转动图模板详情列表。
-        :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param AnimatedGraphicsTemplateSet: 转动图模板详情列表。\n        :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AnimatedGraphicsTemplateSet = None
         self.RequestId = None
@@ -8294,15 +6708,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
         :param Metric: 查询指标，取值有：
 <li>Traffic：流量，单位为 Byte。</li>
 <li>Bandwidth：带宽，单位为 Bps。</li>
-<li>Requests：请求数。</li>
-        :type Metric: str
-        :param StartTime: 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        :param DomainNames: 域名列表。一次最多查询20个域名的数据。默认返回所有域名叠加的用量数据。
-        :type DomainNames: list of str
-        :param Area: 服务区域，取值有：
+<li>Requests：请求数。</li>\n        :type Metric: str\n        :param StartTime: 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        :param DomainNames: 域名列表。一次最多查询20个域名的数据。默认返回所有域名叠加的用量数据。\n        :type DomainNames: list of str\n        :param Area: 服务区域，取值有：
 <li>Chinese Mainland：中国大陆。 </li>
 <li>Asia Pacific Region 1：亚太一区，包括中国香港、中国澳门、新加坡、越南、泰国。 </li>
 <li>Asia Pacific Region 2：亚太二区，包括中国台湾、日本、马来西亚、印度尼西亚、韩国。 </li>
@@ -8312,9 +6718,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 <li>North America：北美。</li>
 <li>South America：南美。</li>
 <li>Africa：非洲。</li>
-默认为中国大陆。
-        :type Area: str
-        :param Districts: 用户所在地区，Area 为 Chinese Mainland 时，取值为以下地区信息，当 Area 为其它值时， 忽略 Districts 参数。
+默认为中国大陆。\n        :type Area: str\n        :param Districts: 用户所在地区，Area 为 Chinese Mainland 时，取值为以下地区信息，当 Area 为其它值时， 忽略 Districts 参数。
 <li>Beijing：北京。</li>
 <li>Inner Mongolia：内蒙古。</li>
 <li>Shanxi：山西。</li>
@@ -8348,9 +6752,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 <li>Hainan：海南。</li>
 <li>Hong Kong, Macao and Taiwan：港澳台。</li>
 <li>Outside Chinese Mainland：海外。</li>
-<li>Other：其他 。</li>
-        :type Districts: list of str
-        :param Isps: 用户所属运营商信息，Area 为 Chinese Mainland 时，取值为以下运营商信息。当 Area 为其它值时忽略 Isps 参数。
+<li>Other：其他 。</li>\n        :type Districts: list of str\n        :param Isps: 用户所属运营商信息，Area 为 Chinese Mainland 时，取值为以下运营商信息。当 Area 为其它值时忽略 Isps 参数。
 <li>China Telecom：中国电信。 </li>
 <li>China Unicom：中国联通。 </li>
 <li>CERNET：教育网。</li>
@@ -8358,16 +6760,10 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 <li>China Mobile：中国移动。</li>
 <li>China Mobile Tietong：中国铁通。</li>
 <li>ISPs outside Chinese Mainland：海外运营商。</li>
-<li>Other ISPs：其他运营商。</li>
-        :type Isps: list of str
-        :param DataInterval: 每条数据的时间粒度，单位：分钟，取值有：
+<li>Other ISPs：其他运营商。</li>\n        :type Isps: list of str\n        :param DataInterval: 每条数据的时间粒度，单位：分钟，取值有：
 <li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
 <li>1440：天粒度，返回指定查询时间内1天粒度的数据。起始时间和结束时间跨度大于24小时，只支持天粒度的数据。</li>
-当 StartTime 和 EndTime 时间跨度大于24小时时，DataInterval 默认为 1440。
-        :type DataInterval: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+当 StartTime 和 EndTime 时间跨度大于24小时时，DataInterval 默认为 1440。\n        :type DataInterval: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Metric = None
         self.StartTime = None
         self.EndTime = None
@@ -8405,13 +6801,7 @@ class DescribeCDNStatDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInterval: 每条数据的时间粒度，单位：分钟。
-        :type DataInterval: int
-        :param Data: CDN 用量数据。
-        :type Data: list of StatDataItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DataInterval: 每条数据的时间粒度，单位：分钟。\n        :type DataInterval: int\n        :param Data: CDN 用量数据。\n        :type Data: list of StatDataItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataInterval = None
         self.Data = None
         self.RequestId = None
@@ -8435,26 +6825,14 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 结束日期，需大于开始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        :param DataType: CDN 统计数据类型，有效值：
+        :param StartTime: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 结束日期，需大于开始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        :param DataType: CDN 统计数据类型，有效值：
 <li>Flux：流量，单位为 byte。</li>
-<li>Bandwidth：带宽，单位为 bps。</li>
-        :type DataType: str
-        :param DataInterval: 用量数据的时间粒度，单位：分钟，取值有：
+<li>Bandwidth：带宽，单位为 bps。</li>\n        :type DataType: str\n        :param DataInterval: 用量数据的时间粒度，单位：分钟，取值有：
 <li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
 <li>60：小时粒度，返回指定查询时间内1小时粒度的数据。</li>
 <li>1440：天粒度，返回指定查询时间内1天粒度的数据。</li>
-默认值为1440，返回天粒度的数据。
-        :type DataInterval: int
-        :param DomainNames: 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。
-        :type DomainNames: list of str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。
-        :type SubAppId: int
-        """
+默认值为1440，返回天粒度的数据。\n        :type DataInterval: int\n        :param DomainNames: 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。\n        :type DomainNames: list of str\n        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。\n        :type SubAppId: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.DataType = None
@@ -8486,13 +6864,7 @@ class DescribeCDNUsageDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DataInterval: 时间粒度，单位：分钟。
-        :type DataInterval: int
-        :param Data: CDN 统计数据。
-        :type Data: list of StatDataItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DataInterval: 时间粒度，单位：分钟。\n        :type DataInterval: int\n        :param Data: CDN 统计数据。\n        :type Data: list of StatDataItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataInterval = None
         self.Data = None
         self.RequestId = None
@@ -8516,19 +6888,7 @@ class DescribeCdnLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainName: 域名。
-        :type DomainName: str
-        :param StartTime: 获取日志起始时间点，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type StartTime: str
-        :param EndTime: 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type EndTime: str
-        :param Limit: 分页拉取的最大返回结果数。默认值：100；最大值：1000。
-        :type Limit: int
-        :param Offset: 分页拉取的起始偏移量。默认值：0。
-        :type Offset: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param DomainName: 域名。\n        :type DomainName: str\n        :param StartTime: 获取日志起始时间点，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type StartTime: str\n        :param EndTime: 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type EndTime: str\n        :param Limit: 分页拉取的最大返回结果数。默认值：100；最大值：1000。\n        :type Limit: int\n        :param Offset: 分页拉取的起始偏移量。默认值：0。\n        :type Offset: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.DomainName = None
         self.StartTime = None
         self.EndTime = None
@@ -8561,17 +6921,9 @@ class DescribeCdnLogsResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 日志下载链接总数量。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param OverseaCdnLogs: 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OverseaCdnLogs: list of CdnLogInfo
-        :param DomesticCdnLogs: 国内CDN节点的日志下载列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomesticCdnLogs: list of CdnLogInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param OverseaCdnLogs: 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OverseaCdnLogs: list of CdnLogInfo\n        :param DomesticCdnLogs: 国内CDN节点的日志下载列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DomesticCdnLogs: list of CdnLogInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.OverseaCdnLogs = None
         self.DomesticCdnLogs = None
@@ -8602,15 +6954,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 内容智能识别模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definitions: 内容智能识别模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -8638,13 +6982,7 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param ContentReviewTemplateSet: 内容智能识别模板详情列表。
-        :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param ContentReviewTemplateSet: 内容智能识别模板详情列表。\n        :type ContentReviewTemplateSet: list of ContentReviewTemplateItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ContentReviewTemplateSet = None
         self.RequestId = None
@@ -8668,15 +7006,7 @@ class DescribeDailyMediaPlayStatRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件 ID 。
-        :type FileId: str
-        :param StartDate: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
-        :type StartDate: str
-        :param EndDate: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
-        :type EndDate: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 媒体文件 ID 。\n        :type FileId: str\n        :param StartDate: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。\n        :type StartDate: str\n        :param EndDate: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。\n        :type EndDate: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.StartDate = None
         self.EndDate = None
@@ -8704,11 +7034,7 @@ class DescribeDailyMediaPlayStatResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyPlayStatInfoSet: 播放统计数据。
-        :type DailyPlayStatInfoSet: list of DailyPlayStatInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DailyPlayStatInfoSet: 播放统计数据。\n        :type DailyPlayStatInfoSet: list of DailyPlayStatInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DailyPlayStatInfoSet = None
         self.RequestId = None
 
@@ -8730,17 +7056,9 @@ class DescribeDailyMostPlayedStatRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Date: 查询日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
-        :type Date: str
-        :param DomainName: 域名。查询该域名播放 Top100 的媒体文件的统计数据。默认查询所有域名的播放统计数据。
-        :type DomainName: str
-        :param Metric: Top 数据的统计指标，取值有：
+        :param Date: 查询日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。\n        :type Date: str\n        :param DomainName: 域名。查询该域名播放 Top100 的媒体文件的统计数据。默认查询所有域名的播放统计数据。\n        :type DomainName: str\n        :param Metric: Top 数据的统计指标，取值有：
 <li>Traffic：播放流量，按播放流量统计 Top100 的数据。</li>
-<li>PlayTimes：播放次数，按播放次数统计播放 Top100 的数据。</li>
-        :type Metric: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>PlayTimes：播放次数，按播放次数统计播放 Top100 的数据。</li>\n        :type Metric: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Date = None
         self.DomainName = None
         self.Metric = None
@@ -8768,11 +7086,7 @@ class DescribeDailyMostPlayedStatResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DailyPlayStatInfoSet: 媒体文件播放统计信息。
-        :type DailyPlayStatInfoSet: list of DailyPlayStatInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DailyPlayStatInfoSet: 媒体文件播放统计信息。\n        :type DailyPlayStatInfoSet: list of DailyPlayStatInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DailyPlayStatInfoSet = None
         self.RequestId = None
 
@@ -8794,13 +7108,7 @@ class DescribeDailyPlayStatFileListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param StartTime: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.SubAppId = None
@@ -8826,11 +7134,7 @@ class DescribeDailyPlayStatFileListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PlayStatFileSet: 播放统计文件列表。
-        :type PlayStatFileSet: list of PlayStatFileInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param PlayStatFileSet: 播放统计文件列表。\n        :type PlayStatFileSet: list of PlayStatFileInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PlayStatFileSet = None
         self.RequestId = None
 
@@ -8852,9 +7156,7 @@ class DescribeDrmDataKeyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdkList: 加密后的数据密钥列表，最大支持10个。
-        :type EdkList: list of str
-        """
+        :param EdkList: 加密后的数据密钥列表，最大支持10个。\n        :type EdkList: list of str\n        """
         self.EdkList = None
 
 
@@ -8876,11 +7178,7 @@ class DescribeDrmDataKeyResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyList: 密钥列表，包含加密的数据密钥。
-        :type KeyList: list of SimpleAesEdkPair
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param KeyList: 密钥列表，包含加密的数据密钥。\n        :type KeyList: list of SimpleAesEdkPair\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.KeyList = None
         self.RequestId = None
 
@@ -8902,9 +7200,7 @@ class DescribeEventConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.SubAppId = None
 
 
@@ -8926,17 +7222,7 @@ class DescribeEventConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Mode: 接收事件通知的方式。"PUSH" 为 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)，"PULL" 为 [基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/7829#.E5.9F.BA.E4.BA.8E.E6.B6.88.E6.81.AF.E9.98.9F.E5.88.97.E7.9A.84.E5.8F.AF.E9.9D.A0.E9.80.9A.E7.9F.A5)。
-        :type Mode: str
-        :param NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83) 接收方式时，用于接收 V3 版本事件通知的地址。
-        :type NotificationUrl: str
-        :param UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type UploadMediaCompleteEventSwitch: str
-        :param DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type DeleteMediaCompleteEventSwitch: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Mode: 接收事件通知的方式。"PUSH" 为 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)，"PULL" 为 [基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/7829#.E5.9F.BA.E4.BA.8E.E6.B6.88.E6.81.AF.E9.98.9F.E5.88.97.E7.9A.84.E5.8F.AF.E9.9D.A0.E9.80.9A.E7.9F.A5)。\n        :type Mode: str\n        :param NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83) 接收方式时，用于接收 V3 版本事件通知的地址。\n        :type NotificationUrl: str\n        :param UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。\n        :type UploadMediaCompleteEventSwitch: str\n        :param DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。\n        :type DeleteMediaCompleteEventSwitch: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Mode = None
         self.NotificationUrl = None
         self.UploadMediaCompleteEventSwitch = None
@@ -8959,9 +7245,7 @@ class DescribeEventsStateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.SubAppId = None
 
 
@@ -8983,11 +7267,7 @@ class DescribeEventsStateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CountOfEventsToPull: 待进行拉取的事件通知数，为近似值，约5秒延迟。
-        :type CountOfEventsToPull: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CountOfEventsToPull: 待进行拉取的事件通知数，为近似值，约5秒延迟。\n        :type CountOfEventsToPull: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CountOfEventsToPull = None
         self.RequestId = None
 
@@ -9004,15 +7284,7 @@ class DescribeHeadTailTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 片头片尾模板号，数组长度限制：100。
-        :type Definitions: list of int
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definitions: 片头片尾模板号，数组长度限制：100。\n        :type Definitions: list of int\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -9040,13 +7312,7 @@ class DescribeHeadTailTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param HeadTailTemplateSet: 片头片尾模板详情列表。
-        :type HeadTailTemplateSet: list of HeadTailTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param HeadTailTemplateSet: 片头片尾模板详情列表。\n        :type HeadTailTemplateSet: list of HeadTailTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.HeadTailTemplateSet = None
         self.RequestId = None
@@ -9070,19 +7336,9 @@ class DescribeImageProcessingTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 图片处理模板标识列表。长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 图片处理模板标识列表。长度限制：100。\n        :type Definitions: list of int non-negative\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Type = None
         self.Offset = None
@@ -9112,13 +7368,7 @@ class DescribeImageProcessingTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param ImageProcessingTemplateSet: 图片处理模板详情列表。
-        :type ImageProcessingTemplateSet: list of ImageProcessingTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param ImageProcessingTemplateSet: 图片处理模板详情列表。\n        :type ImageProcessingTemplateSet: list of ImageProcessingTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ImageProcessingTemplateSet = None
         self.RequestId = None
@@ -9142,19 +7392,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 雪碧图模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 雪碧图模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int non-negative\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -9184,13 +7424,7 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param ImageSpriteTemplateSet: 雪碧图模板详情列表。
-        :type ImageSpriteTemplateSet: list of ImageSpriteTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param ImageSpriteTemplateSet: 雪碧图模板详情列表。\n        :type ImageSpriteTemplateSet: list of ImageSpriteTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ImageSpriteTemplateSet = None
         self.RequestId = None
@@ -9214,9 +7448,7 @@ class DescribeMediaInfosRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileIds: 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
-        :type FileIds: list of str
-        :param Filters: 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
+        :param FileIds: 媒体文件 ID 列表，N 从 0 开始取值，最大 19。\n        :type FileIds: list of str\n        :param Filters: 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
 <li>basicInfo（视频基础信息）。</li>
 <li>metaData（视频元信息）。</li>
 <li>transcodeInfo（视频转码结果信息）。</li>
@@ -9226,11 +7458,7 @@ class DescribeMediaInfosRequest(AbstractModel):
 <li>sampleSnapshotInfo（采样截图信息）。</li>
 <li>keyFrameDescInfo（打点信息）。</li>
 <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
-<li>miniProgramReviewInfo（小程序审核信息）。</li>
-        :type Filters: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>miniProgramReviewInfo（小程序审核信息）。</li>\n        :type Filters: list of str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileIds = None
         self.Filters = None
         self.SubAppId = None
@@ -9256,13 +7484,7 @@ class DescribeMediaInfosResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaInfoSet: 媒体文件信息列表。
-        :type MediaInfoSet: list of MediaInfo
-        :param NotExistFileIdSet: 不存在的文件 ID 列表。
-        :type NotExistFileIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MediaInfoSet: 媒体文件信息列表。\n        :type MediaInfoSet: list of MediaInfo\n        :param NotExistFileIdSet: 不存在的文件 ID 列表。\n        :type NotExistFileIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MediaInfoSet = None
         self.NotExistFileIdSet = None
         self.RequestId = None
@@ -9286,21 +7508,13 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
-        :type StartTime: str
-        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
-        :type EndTime: str
-        :param Type: 查询视频处理任务类型，目前支持的任务类型包括：
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。\n        :type StartTime: str\n        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。\n        :type EndTime: str\n        :param Type: 查询视频处理任务类型，目前支持的任务类型包括：
 <li> Transcoding: 普通转码</li>
 <li> Transcoding-TESHD: 极速高清转码</li>
 <li> Editing: 视频编辑</li>
 <li> AdaptiveBitrateStreaming: 自适应码流</li>
 <li> ContentAudit: 内容审核</li>
-<li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
-        :type Type: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>\n        :type Type: str\n        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.Type = None
@@ -9328,11 +7542,7 @@ class DescribeMediaProcessUsageDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaProcessDataSet: 视频处理统计数据概览，展示所查询任务的概览以及详细数据。
-        :type MediaProcessDataSet: list of TaskStatData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MediaProcessDataSet: 视频处理统计数据概览，展示所查询任务的概览以及详细数据。\n        :type MediaProcessDataSet: list of TaskStatData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MediaProcessDataSet = None
         self.RequestId = None
 
@@ -9359,21 +7569,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 <li>Default：系统默认素材库。</li>
 
 默认值：UserDefine，拉取用户自定义素材库素材。
-说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。
-        :type Type: str
-        :param PersonIds: 素材 ID，数组长度限制：100。
-        :type PersonIds: list of str
-        :param Names: 素材名称，数组长度限制：20。
-        :type Names: list of str
-        :param Tags: 素材标签，数组长度限制：20。
-        :type Tags: list of str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：100，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。\n        :type Type: str\n        :param PersonIds: 素材 ID，数组长度限制：100。\n        :type PersonIds: list of str\n        :param Names: 素材名称，数组长度限制：20。\n        :type Names: list of str\n        :param Tags: 素材标签，数组长度限制：20。\n        :type Tags: list of str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：100，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Type = None
         self.PersonIds = None
         self.Names = None
@@ -9407,13 +7603,7 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param PersonSet: 人物信息。
-        :type PersonSet: list of AiSamplePerson
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param PersonSet: 人物信息。\n        :type PersonSet: list of AiSamplePerson\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.PersonSet = None
         self.RequestId = None
@@ -9443,11 +7633,7 @@ class DescribePrepaidProductsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductInstanceSet: 购买的预付费商品实例列表。
-        :type ProductInstanceSet: list of ProductInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProductInstanceSet: 购买的预付费商品实例列表。\n        :type ProductInstanceSet: list of ProductInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProductInstanceSet = None
         self.RequestId = None
 
@@ -9469,19 +7655,9 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Names: 任务流模板名字过滤条件，数组长度限制：100。
-        :type Names: list of str
-        :param Type: 任务流模板类型过滤条件，可选值：
+        :param Names: 任务流模板名字过滤条件，数组长度限制：100。\n        :type Names: list of str\n        :param Type: 任务流模板类型过滤条件，可选值：
 <li>Preset：系统预置任务流模板；</li>
-<li>Custom：用户自定义任务流模板。</li>
-        :type Type: str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义任务流模板。</li>\n        :type Type: str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Names = None
         self.Type = None
         self.Offset = None
@@ -9511,13 +7687,7 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param ProcedureTemplateSet: 任务流模板详情列表。
-        :type ProcedureTemplateSet: list of ProcedureTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param ProcedureTemplateSet: 任务流模板详情列表。\n        :type ProcedureTemplateSet: list of ProcedureTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ProcedureTemplateSet = None
         self.RequestId = None
@@ -9541,13 +7711,7 @@ class DescribeReviewDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.StartTime = None
         self.EndTime = None
         self.SubAppId = None
@@ -9573,15 +7737,7 @@ class DescribeReviewDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 发起内容智能识别次数。
-        :type TotalCount: int
-        :param TotalDuration: 内容智能识别总时长。
-        :type TotalDuration: int
-        :param Data: 内容智能识别时长统计数据，每天一个数据。
-        :type Data: list of StatDataItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 发起内容智能识别次数。\n        :type TotalCount: int\n        :param TotalDuration: 内容智能识别总时长。\n        :type TotalDuration: int\n        :param Data: 内容智能识别时长统计数据，每天一个数据。\n        :type Data: list of StatDataItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TotalDuration = None
         self.Data = None
@@ -9607,19 +7763,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 采样截图模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 采样截图模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int non-negative\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -9649,13 +7795,7 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param SampleSnapshotTemplateSet: 采样截图模板详情列表。
-        :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param SampleSnapshotTemplateSet: 采样截图模板详情列表。\n        :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SampleSnapshotTemplateSet = None
         self.RequestId = None
@@ -9679,19 +7819,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int non-negative
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int non-negative\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
@@ -9721,13 +7851,7 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param SnapshotByTimeOffsetTemplateSet: 指定时间点截图模板详情列表。
-        :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param SnapshotByTimeOffsetTemplateSet: 指定时间点截图模板详情列表。\n        :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SnapshotByTimeOffsetTemplateSet = None
         self.RequestId = None
@@ -9751,9 +7875,7 @@ class DescribeStorageDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.SubAppId = None
 
 
@@ -9775,19 +7897,7 @@ class DescribeStorageDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaCount: 当前媒体总量。
-        :type MediaCount: int
-        :param TotalStorage: 当前总存储量，单位是字节。
-        :type TotalStorage: int
-        :param InfrequentStorage: 当前低频存储量，单位是字节。
-        :type InfrequentStorage: int
-        :param StandardStorage: 当前标准存储量，单位是字节。
-        :type StandardStorage: int
-        :param StorageStat: 各计费区域的存储用量。
-        :type StorageStat: list of StorageStatData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MediaCount: 当前媒体总量。\n        :type MediaCount: int\n        :param TotalStorage: 当前总存储量，单位是字节。\n        :type TotalStorage: int\n        :param InfrequentStorage: 当前低频存储量，单位是字节。\n        :type InfrequentStorage: int\n        :param StandardStorage: 当前标准存储量，单位是字节。\n        :type StandardStorage: int\n        :param StorageStat: 各计费区域的存储用量。\n        :type StorageStat: list of StorageStatData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MediaCount = None
         self.TotalStorage = None
         self.InfrequentStorage = None
@@ -9817,16 +7927,10 @@ class DescribeStorageDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-        :type StartTime: str
-        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-        :type EndTime: str
-        :param Interval: 统计时间粒度，有效值：
+        :param StartTime: 起始时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。\n        :type StartTime: str\n        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。\n        :type EndTime: str\n        :param Interval: 统计时间粒度，有效值：
 <li>Minute：以5分钟为粒度。</li>
 <li>Day：以天为粒度。</li>
-默认按时间跨度决定，小于等于1天以5分钟为粒度，大于1天则以天为粒度。
-        :type Interval: str
-        :param StorageType: 查询的存储类型，有效值：
+默认按时间跨度决定，小于等于1天以5分钟为粒度，大于1天则以天为粒度。\n        :type Interval: str\n        :param StorageType: 查询的存储类型，有效值：
 <li>TotalStorage：存储总量，标准、低频、归档和深度归档存储量之和，不含提前删除量。</li>
 <li>StandardStorage：标准存储。</li>
 <li>InfrequentStorage：低频存储。</li>
@@ -9840,17 +7944,11 @@ class DescribeStorageDetailsRequest(AbstractModel):
 <li>ArchiveBulkRetrieval：归档批量取回量。</li>
 <li>DeepArchiveStandardRetrieval：深度归档标准取回量。</li>
 <li>DeepArchiveBulkRetrieval：深度归档批量取回量。</li>
-默认值为 TotalStorage。
-        :type StorageType: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
-        :type SubAppId: int
-        :param Area: 查询的存储区域，有效值：
+默认值为 TotalStorage。\n        :type StorageType: str\n        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。\n        :type SubAppId: int\n        :param Area: 查询的存储区域，有效值：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 <li>Outside Chinese Mainland：中国境外。</li>
-默认值为 Chinese Mainland。
-        :type Area: str
-        """
+默认值为 Chinese Mainland。\n        :type Area: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Interval = None
@@ -9882,11 +7980,7 @@ class DescribeStorageDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 存储统计数据，每5分钟或每天一条数据。
-        :type Data: list of StatDataItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 存储统计数据，每5分钟或每天一条数据。\n        :type Data: list of StatDataItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -9908,15 +8002,7 @@ class DescribeSubAppIdsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 子应用名称。
-        :type Name: str
-        :param Tags: 标签信息，查询指定标签的子应用列表。
-        :type Tags: list of ResourceTag
-        :param Offset: 分页拉取的起始偏移量。默认值：0。
-        :type Offset: int
-        :param Limit: 分页拉取的最大返回结果数。默认值：200；最大值：200。
-        :type Limit: int
-        """
+        :param Name: 子应用名称。\n        :type Name: str\n        :param Tags: 标签信息，查询指定标签的子应用列表。\n        :type Tags: list of ResourceTag\n        :param Offset: 分页拉取的起始偏移量。默认值：0。\n        :type Offset: int\n        :param Limit: 分页拉取的最大返回结果数。默认值：200；最大值：200。\n        :type Limit: int\n        """
         self.Name = None
         self.Tags = None
         self.Offset = None
@@ -9949,13 +8035,7 @@ class DescribeSubAppIdsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppIdInfoSet: 子应用信息集合。
-        :type SubAppIdInfoSet: list of SubAppIdInfo
-        :param TotalCount: 子应用总数量。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SubAppIdInfoSet: 子应用信息集合。\n        :type SubAppIdInfoSet: list of SubAppIdInfo\n        :param TotalCount: 子应用总数量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubAppIdInfoSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -9979,19 +8059,9 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Names: 播放器配置名字过滤条件，数组长度限制：100。
-        :type Names: list of str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param Type: 播放器配置类型过滤条件，可选值：
+        :param Names: 播放器配置名字过滤条件，数组长度限制：100。\n        :type Names: list of str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param Type: 播放器配置类型过滤条件，可选值：
 <li>Preset：系统预置配置；</li>
-<li>Custom：用户自定义配置。</li>
-        :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>Custom：用户自定义配置。</li>\n        :type Type: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Names = None
         self.Offset = None
         self.Limit = None
@@ -10021,13 +8091,7 @@ class DescribeSuperPlayerConfigsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param PlayerConfigSet: 播放器配置数组。
-        :type PlayerConfigSet: list of PlayerConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param PlayerConfigSet: 播放器配置数组。\n        :type PlayerConfigSet: list of PlayerConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.PlayerConfigSet = None
         self.RequestId = None
@@ -10051,11 +8115,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频处理任务的任务 ID。
-        :type TaskId: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param TaskId: 视频处理任务的任务 ID。\n        :type TaskId: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.TaskId = None
         self.SubAppId = None
 
@@ -10093,58 +8153,22 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>SnapshotByTimeOffset：视频截图任务；</li>
 <li>Concat：视频拼接任务；</li>
 <li>Clip：视频剪辑任务；</li>
-<li>ImageSprites：截取雪碧图任务。</li>
-        :type TaskType: str
-        :param Status: 任务状态，取值：
+<li>ImageSprites：截取雪碧图任务。</li>\n        :type TaskType: str\n        :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
-        :type Status: str
-        :param CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type BeginProcessTime: str
-        :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type FinishTime: str
-        :param ProcedureTask: 视频处理任务信息，仅当 TaskType 为 Procedure，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProcedureTask: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
-        :param EditMediaTask: 视频编辑任务信息，仅当 TaskType 为 EditMedia，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EditMediaTask: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param WechatPublishTask: 微信发布任务信息，仅当 TaskType 为 WechatPublish，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
-        :param ComposeMediaTask: 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
-        :param SplitMediaTask: 视频拆条任务信息，仅当 TaskType 为 SplitMedia，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SplitMediaTask: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
-        :param WechatMiniProgramPublishTask: 微信小程序发布任务信息，仅当 TaskType 为 WechatMiniProgramPublish，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
-        :param PullUploadTask: 拉取上传媒体文件任务信息，仅当 TaskType 为 PullUpload，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PullUploadTask: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
-        :param TranscodeTask: 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param ConcatTask: 视频拼接任务信息，仅当 TaskType 为 Concat，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ConcatTask: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
-        :param ClipTask: 视频剪辑任务信息，仅当 TaskType 为 Clip，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClipTask: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
-        :param CreateImageSpriteTask: 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param SnapshotByTimeOffsetTask: 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+<li>FINISH：已完成。</li>\n        :type Status: str\n        :param CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type BeginProcessTime: str\n        :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type FinishTime: str\n        :param ProcedureTask: 视频处理任务信息，仅当 TaskType 为 Procedure，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProcedureTask: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`\n        :param EditMediaTask: 视频编辑任务信息，仅当 TaskType 为 EditMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EditMediaTask: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`\n        :param WechatPublishTask: 微信发布任务信息，仅当 TaskType 为 WechatPublish，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WechatPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`\n        :param ComposeMediaTask: 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`\n        :param SplitMediaTask: 视频拆条任务信息，仅当 TaskType 为 SplitMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SplitMediaTask: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`\n        :param WechatMiniProgramPublishTask: 微信小程序发布任务信息，仅当 TaskType 为 WechatMiniProgramPublish，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`\n        :param PullUploadTask: 拉取上传媒体文件任务信息，仅当 TaskType 为 PullUpload，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PullUploadTask: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`\n        :param TranscodeTask: 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`\n        :param ConcatTask: 视频拼接任务信息，仅当 TaskType 为 Concat，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ConcatTask: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`\n        :param ClipTask: 视频剪辑任务信息，仅当 TaskType 为 Clip，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClipTask: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`\n        :param CreateImageSpriteTask: 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`\n        :param SnapshotByTimeOffsetTask: 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskType = None
         self.Status = None
         self.CreateTime = None
@@ -10217,25 +8241,9 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
-        :type Status: str
-        :param FileId: 过滤条件：文件 ID。
-        :type FileId: str
-        :param CreateTime: 过滤条件：任务创建时间。
-        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param FinishTime: 过滤条件：任务结束时间。
-        :type FinishTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param Sort: 排序方式。Sort.Field 可选：
+        :param Status: 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。\n        :type Status: str\n        :param FileId: 过滤条件：文件 ID。\n        :type FileId: str\n        :param CreateTime: 过滤条件：任务创建时间。\n        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`\n        :param FinishTime: 过滤条件：任务结束时间。\n        :type FinishTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`\n        :param Sort: 排序方式。Sort.Field 可选：
 <li> CreateTime 任务创建时间。</li>
-<li>FinishTime 任务结束时间。</li>
-        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
-        :type ScrollToken: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>FinishTime 任务结束时间。</li>\n        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。\n        :type ScrollToken: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Status = None
         self.FileId = None
         self.CreateTime = None
@@ -10277,13 +8285,7 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskSet: 任务概要列表。
-        :type TaskSet: list of TaskSimpleInfo
-        :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
-        :type ScrollToken: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskSet: 任务概要列表。\n        :type TaskSet: list of TaskSimpleInfo\n        :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。\n        :type ScrollToken: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskSet = None
         self.ScrollToken = None
         self.RequestId = None
@@ -10307,27 +8309,13 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 转码模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int
-        :param Type: 模板类型过滤条件，可选值：
+        :param Definitions: 转码模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int\n        :param Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param ContainerType: 封装格式过滤条件，可选值：
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param ContainerType: 封装格式过滤条件，可选值：
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
-<li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
-        :type ContainerType: str
-        :param TEHDType: 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+<li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>\n        :type ContainerType: str\n        :param TEHDType: 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
 <li>Common：普通转码模板；</li>
-<li>TEHD：极速高清模板。</li>
-        :type TEHDType: str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>TEHD：极速高清模板。</li>\n        :type TEHDType: str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Type = None
         self.ContainerType = None
@@ -10361,14 +8349,8 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param TranscodeTemplateSet: 转码模板详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TranscodeTemplateSet: list of TranscodeTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param TranscodeTemplateSet: 转码模板详情列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TranscodeTemplateSet: list of TranscodeTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TranscodeTemplateSet = None
         self.RequestId = None
@@ -10393,15 +8375,7 @@ class DescribeVodDomainsRequest(AbstractModel):
     def __init__(self):
         """
         :param Domains: 域名列表。当该字段不填时，则默认列出所有域名信息。本字段字段限制如下：
-<li>域名个数度最大为 20。</li>
-        :type Domains: list of str
-        :param Limit: 分页拉取的最大返回结果数。默认值：20。
-        :type Limit: int
-        :param Offset: 分页拉取的起始偏移量。默认值：0。
-        :type Offset: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>域名个数度最大为 20。</li>\n        :type Domains: list of str\n        :param Limit: 分页拉取的最大返回结果数。默认值：20。\n        :type Limit: int\n        :param Offset: 分页拉取的起始偏移量。默认值：0。\n        :type Offset: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Domains = None
         self.Limit = None
         self.Offset = None
@@ -10429,13 +8403,7 @@ class DescribeVodDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 域名总数量。
-        :type TotalCount: int
-        :param DomainSet: 域名信息列表。
-        :type DomainSet: list of DomainDetailInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 域名总数量。\n        :type TotalCount: int\n        :param DomainSet: 域名信息列表。\n        :type DomainSet: list of DomainDetailInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DomainSet = None
         self.RequestId = None
@@ -10459,22 +8427,12 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 水印模板唯一标识过滤条件，数组长度限制：100。
-        :type Definitions: list of int
-        :param Type: 水印类型过滤条件，可选值：
+        :param Definitions: 水印模板唯一标识过滤条件，数组长度限制：100。\n        :type Definitions: list of int\n        :param Type: 水印类型过滤条件，可选值：
 <li>image：图片水印；</li>
 <li>text：文字水印；</li>
-<li>svg：SVG 水印。</li>
-        :type Type: str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数
+<li>svg：SVG 水印。</li>\n        :type Type: str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数
 <li>默认值：10；</li>
-<li>最大值：100。</li>
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>最大值：100。</li>\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definitions = None
         self.Type = None
         self.Offset = None
@@ -10504,14 +8462,8 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合过滤条件的记录总数。
-        :type TotalCount: int
-        :param WatermarkTemplateSet: 水印模板详情列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WatermarkTemplateSet: list of WatermarkTemplate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合过滤条件的记录总数。\n        :type TotalCount: int\n        :param WatermarkTemplateSet: 水印模板详情列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WatermarkTemplateSet: list of WatermarkTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.WatermarkTemplateSet = None
         self.RequestId = None
@@ -10543,19 +8495,7 @@ class DescribeWordSamplesRequest(AbstractModel):
 <b>可合并简写为：</b>
 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
-可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
-        :type Usages: list of str
-        :param Keywords: 关键词过滤条件，数组长度限制：100 个词。
-        :type Keywords: list of str
-        :param Tags: 标签过滤条件，数组长度限制：20 个词。
-        :type Tags: list of str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：100，最大值：100。
-        :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。\n        :type Usages: list of str\n        :param Keywords: 关键词过滤条件，数组长度限制：100 个词。\n        :type Keywords: list of str\n        :param Tags: 标签过滤条件，数组长度限制：20 个词。\n        :type Tags: list of str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：100，最大值：100。\n        :type Limit: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Usages = None
         self.Keywords = None
         self.Tags = None
@@ -10587,13 +8527,7 @@ class DescribeWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param WordSet: 关键词信息。
-        :type WordSet: list of AiSampleWord
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param WordSet: 关键词信息。\n        :type WordSet: list of AiSampleWord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.WordSet = None
         self.RequestId = None
@@ -10617,29 +8551,15 @@ class DomainDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名名称。
-        :type Domain: str
-        :param AccelerateAreaInfos: 加速地区信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AccelerateAreaInfos: list of AccelerateAreaInfo
-        :param DeployStatus: 部署状态，取值有：
+        :param Domain: 域名名称。\n        :type Domain: str\n        :param AccelerateAreaInfos: 加速地区信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AccelerateAreaInfos: list of AccelerateAreaInfo\n        :param DeployStatus: 部署状态，取值有：
 <li>Online：上线；</li>
 <li>Deploying：部署中；</li>
-<li>Locked: 锁定中，出现该状态时，无法对该域名进行部署变更。</li>
-        :type DeployStatus: str
-        :param HTTPSConfig: HTTPS 配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HTTPSConfig: :class:`tencentcloud.vod.v20180717.models.DomainHTTPSConfig`
-        :param UrlSignatureAuthPolicy: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
-        :param RefererAuthPolicy: [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
-        :param CreateTime: 域名添加到腾讯云点播系统中的时间。
-<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
-        :type CreateTime: str
-        """
+<li>Locked: 锁定中，出现该状态时，无法对该域名进行部署变更。</li>\n        :type DeployStatus: str\n        :param HTTPSConfig: HTTPS 配置信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HTTPSConfig: :class:`tencentcloud.vod.v20180717.models.DomainHTTPSConfig`\n        :param UrlSignatureAuthPolicy: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`\n        :param RefererAuthPolicy: [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`\n        :param CreateTime: 域名添加到腾讯云点播系统中的时间。
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>\n        :type CreateTime: str\n        """
         self.Domain = None
         self.AccelerateAreaInfos = None
         self.DeployStatus = None
@@ -10685,9 +8605,7 @@ class DomainHTTPSConfig(AbstractModel):
     def __init__(self):
         """
         :param CertExpireTime: 证书过期时间。
-<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
-        :type CertExpireTime: str
-        """
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>\n        :type CertExpireTime: str\n        """
         self.CertExpireTime = None
 
 
@@ -10709,9 +8627,7 @@ class DrmStreamingsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。
-        :type SimpleAesDefinition: int
-        """
+        :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。\n        :type SimpleAesDefinition: int\n        """
         self.SimpleAesDefinition = None
 
 
@@ -10733,9 +8649,7 @@ class DrmStreamingsInfoForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。
-        :type SimpleAesDefinition: int
-        """
+        :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。\n        :type SimpleAesDefinition: int\n        """
         self.SimpleAesDefinition = None
 
 
@@ -10757,13 +8671,7 @@ class EditMediaFileInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 视频的 ID。
-        :type FileId: str
-        :param StartTimeOffset: 视频剪辑的起始偏移时间偏移，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 视频剪辑的起始结束时间偏移，单位：秒。
-        :type EndTimeOffset: float
-        """
+        :param FileId: 视频的 ID。\n        :type FileId: str\n        :param StartTimeOffset: 视频剪辑的起始偏移时间偏移，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 视频剪辑的起始结束时间偏移，单位：秒。\n        :type EndTimeOffset: float\n        """
         self.FileId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -10789,16 +8697,8 @@ class EditMediaOutputConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
-        :type MediaName: str
-        :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。
-        :type Type: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-        :type ClassId: int
-        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ExpireTime: str
-        """
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。\n        :type MediaName: str\n        :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。\n        :type Type: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>\n        :type ClassId: int\n        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ExpireTime: str\n        """
         self.MediaName = None
         self.Type = None
         self.ClassId = None
@@ -10826,31 +8726,9 @@ class EditMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InputType: 输入视频的类型，可以取的值为  File，Stream 两种。
-        :type InputType: str
-        :param FileInfos: 输入的视频文件信息，当 InputType 为 File 时必填。
-        :type FileInfos: list of EditMediaFileInfo
-        :param StreamInfos: 输入的流信息，当 InputType 为 Stream 时必填。
-        :type StreamInfos: list of EditMediaStreamInfo
-        :param Definition: 编辑模板 ID，取值有 10，20，不填代表使用 10 模板。
+        :param InputType: 输入视频的类型，可以取的值为  File，Stream 两种。\n        :type InputType: str\n        :param FileInfos: 输入的视频文件信息，当 InputType 为 File 时必填。\n        :type FileInfos: list of EditMediaFileInfo\n        :param StreamInfos: 输入的流信息，当 InputType 为 Stream 时必填。\n        :type StreamInfos: list of EditMediaStreamInfo\n        :param Definition: 编辑模板 ID，取值有 10，20，不填代表使用 10 模板。
 <li>10：拼接时，以分辨率最高的输入为基准；</li>
-<li>20：拼接时，以码率最高的输入为基准；</li>
-        :type Definition: int
-        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
-        :type ProcedureName: str
-        :param OutputConfig: 编辑后生成的文件配置。
-        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
-        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在EditMediaComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
-        :type SessionContext: str
-        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
-        :type TasksPriority: int
-        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>20：拼接时，以码率最高的输入为基准；</li>\n        :type Definition: int\n        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。\n        :type ProcedureName: str\n        :param OutputConfig: 编辑后生成的文件配置。\n        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`\n        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在EditMediaComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。\n        :type SessionContext: str\n        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。\n        :type TasksPriority: int\n        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.InputType = None
         self.FileInfos = None
         self.StreamInfos = None
@@ -10904,11 +8782,7 @@ class EditMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 编辑视频的任务 ID，可以通过该 ID 查询编辑任务（任务类型为 EditMedia）的状态。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 编辑视频的任务 ID，可以通过该 ID 查询编辑任务（任务类型为 EditMedia）的状态。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -10925,13 +8799,7 @@ class EditMediaStreamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: 录制的流 ID
-        :type StreamId: str
-        :param StartTime: 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        """
+        :param StreamId: 录制的流 ID\n        :type StreamId: str\n        :param StartTime: 流剪辑的起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 流剪辑的结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        """
         self.StreamId = None
         self.StartTime = None
         self.EndTime = None
@@ -10957,36 +8825,14 @@ class EditMediaTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务流状态，取值：
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
-        :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>FINISH：已完成。</li>\n        :type Status: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
 <li>40000：输入参数不合法，请检查输入参数；</li>
 <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
-        :type ErrCode: int
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 视频编辑任务的输入。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`
-        :param Output: 视频编辑任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
-        :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
-        :type ProcedureTaskId: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param MetaData: 原始视频的元信息。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        """
+<li>70000：内部服务错误，建议重试。</li>\n        :type ErrCode: int\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 视频编辑任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`\n        :param Output: 视频编辑任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`\n        :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。\n        :type ProcedureTaskId: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param MetaData: 原始视频的元信息。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -11034,13 +8880,7 @@ class EditMediaTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param InputType: 输入视频的来源类型，可以取的值为 File，Stream 两种。
-        :type InputType: str
-        :param FileInfoSet: 输入的视频文件信息，当 InputType 为 File 时，该字段有值。
-        :type FileInfoSet: list of EditMediaFileInfo
-        :param StreamInfoSet: 输入的流信息，当 InputType 为 Stream 时，该字段有值。
-        :type StreamInfoSet: list of EditMediaStreamInfo
-        """
+        :param InputType: 输入视频的来源类型，可以取的值为 File，Stream 两种。\n        :type InputType: str\n        :param FileInfoSet: 输入的视频文件信息，当 InputType 为 File 时，该字段有值。\n        :type FileInfoSet: list of EditMediaFileInfo\n        :param StreamInfoSet: 输入的流信息，当 InputType 为 Stream 时，该字段有值。\n        :type StreamInfoSet: list of EditMediaStreamInfo\n        """
         self.InputType = None
         self.FileInfoSet = None
         self.StreamInfoSet = None
@@ -11076,20 +8916,8 @@ class EditMediaTaskOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param FileType: 文件类型，例如 mp4、flv 等。
-        :type FileType: str
-        :param FileUrl: 媒体文件播放地址。
-        :type FileUrl: str
-        :param FileId: 媒体文件 ID。
-        :type FileId: str
-        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
-        :type MediaName: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-        :type ClassId: int
-        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ExpireTime: str
-        """
+        :param FileType: 文件类型，例如 mp4、flv 等。\n        :type FileType: str\n        :param FileUrl: 媒体文件播放地址。\n        :type FileUrl: str\n        :param FileId: 媒体文件 ID。\n        :type FileId: str\n        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。\n        :type MediaName: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>\n        :type ClassId: int\n        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ExpireTime: str\n        """
         self.FileType = None
         self.FileUrl = None
         self.FileId = None
@@ -11121,9 +8949,7 @@ class EmptyTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Duration: 持续时间，单位为秒。
-        :type Duration: float
-        """
+        :param Duration: 持续时间，单位为秒。\n        :type Duration: float\n        """
         self.Duration = None
 
 
@@ -11145,9 +8971,7 @@ class EventContent(AbstractModel):
 
     def __init__(self):
         """
-        :param EventHandle: 事件句柄，调用方必须调用 ConfirmEvents 来确认消息已经收到，确认有效时间 30 秒。失效后，事件可重新被获取。
-        :type EventHandle: str
-        :param EventType: <b>支持事件类型：</b>
+        :param EventHandle: 事件句柄，调用方必须调用 ConfirmEvents 来确认消息已经收到，确认有效时间 30 秒。失效后，事件可重新被获取。\n        :type EventHandle: str\n        :param EventType: <b>支持事件类型：</b>
 <li>NewFileUpload：视频上传完成；</li>
 <li>ProcedureStateChanged：任务流状态变更；</li>
 <li>FileDeleted：视频删除完成；</li>
@@ -11162,51 +8986,21 @@ class EventContent(AbstractModel):
 <li>ConcatComplete：视频拼接完成；</li>
 <li>ClipComplete：视频剪辑完成；</li>
 <li>CreateImageSpriteComplete：视频截取雪碧图完成；</li>
-<li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
-        :type EventType: str
-        :param FileUploadEvent: 视频上传完成事件，当事件类型为 NewFileUpload 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileUploadEvent: :class:`tencentcloud.vod.v20180717.models.FileUploadTask`
-        :param ProcedureStateChangeEvent: 任务流状态变更事件，当事件类型为 ProcedureStateChanged 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProcedureStateChangeEvent: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
-        :param FileDeleteEvent: 文件删除事件，当事件类型为 FileDeleted 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileDeleteEvent: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`
-        :param PullCompleteEvent: 视频转拉完成事件，当事件类型为 PullComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
-        :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param SplitMediaCompleteEvent: 视频拆条完成事件，当事件类型为 SplitMediaComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
-        :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
-        :param ClipCompleteEvent: 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
-        :param TranscodeCompleteEvent: 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param CreateImageSpriteCompleteEvent: 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param ConcatCompleteEvent: 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
-        :param SnapshotByTimeOffsetCompleteEvent: 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
-        :param WechatPublishCompleteEvent: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
-        :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
-        """
+<li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>\n        :type EventType: str\n        :param FileUploadEvent: 视频上传完成事件，当事件类型为 NewFileUpload 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileUploadEvent: :class:`tencentcloud.vod.v20180717.models.FileUploadTask`\n        :param ProcedureStateChangeEvent: 任务流状态变更事件，当事件类型为 ProcedureStateChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProcedureStateChangeEvent: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`\n        :param FileDeleteEvent: 文件删除事件，当事件类型为 FileDeleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileDeleteEvent: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`\n        :param PullCompleteEvent: 视频转拉完成事件，当事件类型为 PullComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`\n        :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`\n        :param SplitMediaCompleteEvent: 视频拆条完成事件，当事件类型为 SplitMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`\n        :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`\n        :param ClipCompleteEvent: 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`\n        :param TranscodeCompleteEvent: 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`\n        :param CreateImageSpriteCompleteEvent: 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`\n        :param ConcatCompleteEvent: 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`\n        :param SnapshotByTimeOffsetCompleteEvent: 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`\n        :param WechatPublishCompleteEvent: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`\n        :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`\n        """
         self.EventHandle = None
         self.EventType = None
         self.FileUploadEvent = None
@@ -11286,19 +9080,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FunctionName: 调用后端接口名称。
-        :type FunctionName: str
-        :param FunctionArg: 接口参数，具体参数格式调用时与后端协调。
-        :type FunctionArg: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FunctionName: 调用后端接口名称。\n        :type FunctionName: str\n        :param FunctionArg: 接口参数，具体参数格式调用时与后端协调。\n        :type FunctionArg: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FunctionName = None
         self.FunctionArg = None
         self.SessionContext = None
@@ -11330,11 +9112,7 @@ class ExecuteFunctionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: 处理结果打包后的字符串，具体与后台一同协调。
-        :type Result: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Result: 处理结果打包后的字符串，具体与后台一同协调。\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -11353,25 +9131,15 @@ class FaceConfigureInfo(AbstractModel):
         """
         :param Switch: 人脸识别任务开关，可选值：
 <li>ON：开启智能人脸识别任务；</li>
-<li>OFF：关闭智能人脸识别任务。</li>
-        :type Switch: str
-        :param Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。
-        :type Score: float
-        :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+<li>OFF：关闭智能人脸识别任务。</li>\n        :type Switch: str\n        :param Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。\n        :type Score: float\n        :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
 <li>entertainment：娱乐明星；</li>
 <li>sport：体育明星；</li>
-<li>politician：政治人物。</li>
-        :type DefaultLibraryLabelSet: list of str
-        :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-标签个数最多 100 个，每个标签长度最多 16 个字符。
-        :type UserDefineLibraryLabelSet: list of str
-        :param FaceLibrary: 人物库选择，可选值：
+<li>politician：政治人物。</li>\n        :type DefaultLibraryLabelSet: list of str\n        :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+标签个数最多 100 个，每个标签长度最多 16 个字符。\n        :type UserDefineLibraryLabelSet: list of str\n        :param FaceLibrary: 人物库选择，可选值：
 <li>Default：使用默认人物库；</li>
 <li>UserDefine：使用用户自定义人物库。</li>
 <li>All：同时使用默认人物库和用户自定义人物库。</li>
-默认值：All，使用系统默认人物库及用户自定义人物库。
-        :type FaceLibrary: str
-        """
+默认值：All，使用系统默认人物库及用户自定义人物库。\n        :type FaceLibrary: str\n        """
         self.Switch = None
         self.Score = None
         self.DefaultLibraryLabelSet = None
@@ -11403,24 +9171,14 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 人脸识别任务开关，可选值：
 <li>ON：开启智能人脸识别任务；</li>
-<li>OFF：关闭智能人脸识别任务。</li>
-        :type Switch: str
-        :param Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。
-        :type Score: float
-        :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
+<li>OFF：关闭智能人脸识别任务。</li>\n        :type Switch: str\n        :param Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。\n        :type Score: float\n        :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
 <li>entertainment：娱乐明星；</li>
 <li>sport：体育明星；</li>
-<li>politician：政治人物。</li>
-        :type DefaultLibraryLabelSet: list of str
-        :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-标签个数最多 100 个，每个标签长度最多 16 个字符。
-        :type UserDefineLibraryLabelSet: list of str
-        :param FaceLibrary: 人物库选择，可选值：
+<li>politician：政治人物。</li>\n        :type DefaultLibraryLabelSet: list of str\n        :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
+标签个数最多 100 个，每个标签长度最多 16 个字符。\n        :type UserDefineLibraryLabelSet: list of str\n        :param FaceLibrary: 人物库选择，可选值：
 <li>Default：使用默认人物库；</li>
 <li>UserDefine：使用用户自定义人物库。</li>
-<li>All：同时使用默认人物库和用户自定义人物库。</li>
-        :type FaceLibrary: str
-        """
+<li>All：同时使用默认人物库和用户自定义人物库。</li>\n        :type FaceLibrary: str\n        """
         self.Switch = None
         self.Score = None
         self.DefaultLibraryLabelSet = None
@@ -11450,9 +9208,7 @@ class FileDeleteTask(AbstractModel):
 
     def __init__(self):
         """
-        :param FileIdSet: 删除文件 ID 列表。
-        :type FileIdSet: list of str
-        """
+        :param FileIdSet: 删除文件 ID 列表。\n        :type FileIdSet: list of str\n        """
         self.FileIdSet = None
 
 
@@ -11474,16 +9230,8 @@ class FileUploadTask(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 文件唯一 ID。
-        :type FileId: str
-        :param MediaBasicInfo: 上传完成后生成的媒体文件基础信息。
-        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param ProcedureTaskId: 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
-        :type ProcedureTaskId: str
-        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        """
+        :param FileId: 文件唯一 ID。\n        :type FileId: str\n        :param MediaBasicInfo: 上传完成后生成的媒体文件基础信息。\n        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`\n        :param ProcedureTaskId: 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。\n        :type ProcedureTaskId: str\n        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        """
         self.FileId = None
         self.MediaBasicInfo = None
         self.ProcedureTaskId = None
@@ -11515,13 +9263,7 @@ class ForbidMediaDistributionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileIds: 媒体文件列表，每次最多可提交 20 条。
-        :type FileIds: list of str
-        :param Operation: forbid：禁播，recover：解禁。
-        :type Operation: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileIds: 媒体文件列表，每次最多可提交 20 条。\n        :type FileIds: list of str\n        :param Operation: forbid：禁播，recover：解禁。\n        :type Operation: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileIds = None
         self.Operation = None
         self.SubAppId = None
@@ -11547,11 +9289,7 @@ class ForbidMediaDistributionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotExistFileIdSet: 不存在的文件 ID 列表。
-        :type NotExistFileIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NotExistFileIdSet: 不存在的文件 ID 列表。\n        :type NotExistFileIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotExistFileIdSet = None
         self.RequestId = None
 
@@ -11570,11 +9308,7 @@ class FrameTagConfigureInfo(AbstractModel):
         """
         :param Switch: 智能按帧标签任务开关，可选值：
 <li>ON：开启智能按帧标签任务；</li>
-<li>OFF：关闭智能按帧标签任务。</li>
-        :type Switch: str
-        :param ScreenshotInterval: 截帧间隔，单位为秒，当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        """
+<li>OFF：关闭智能按帧标签任务。</li>\n        :type Switch: str\n        :param ScreenshotInterval: 截帧间隔，单位为秒，当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        """
         self.Switch = None
         self.ScreenshotInterval = None
 
@@ -11600,11 +9334,7 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 智能按帧标签任务开关，可选值：
 <li>ON：开启智能按帧标签任务；</li>
-<li>OFF：关闭智能按帧标签任务。</li>
-        :type Switch: str
-        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        """
+<li>OFF：关闭智能按帧标签任务。</li>\n        :type Switch: str\n        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        """
         self.Switch = None
         self.ScreenshotInterval = None
 
@@ -11630,9 +9360,7 @@ class HeadTailConfigureInfo(AbstractModel):
         """
         :param Switch: 视频片头片尾识别任务开关，可选值：
 <li>ON：开启智能视频片头片尾识别任务；</li>
-<li>OFF：关闭智能视频片头片尾识别任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能视频片头片尾识别任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -11656,9 +9384,7 @@ class HeadTailConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 视频片头片尾识别任务开关，可选值：
 <li>ON：开启智能视频片头片尾识别任务；</li>
-<li>OFF：关闭智能视频片头片尾识别任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能视频片头片尾识别任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -11680,9 +9406,7 @@ class HeadTailTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 片头片尾模板号。
-        :type Definition: int
-        """
+        :param Definition: 片头片尾模板号。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -11704,24 +9428,12 @@ class HeadTailTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 片头片尾模板号。
-        :type Definition: int
-        :param Name: 模板名，最大支持 64 个字符。
-        :type Name: str
-        :param Comment: 模板描述，最大支持 256 个字符。
-        :type Comment: str
-        :param HeadCandidateSet: 片头候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
-        :type HeadCandidateSet: list of str
-        :param TailCandidateSet: 片尾候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
-        :type TailCandidateSet: list of str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param Definition: 片头片尾模板号。\n        :type Definition: int\n        :param Name: 模板名，最大支持 64 个字符。\n        :type Name: str\n        :param Comment: 模板描述，最大支持 256 个字符。\n        :type Comment: str\n        :param HeadCandidateSet: 片头候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。\n        :type HeadCandidateSet: list of str\n        :param TailCandidateSet: 片尾候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。\n        :type TailCandidateSet: list of str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
 <li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
 <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：stretch 。
-        :type FillType: str
-        """
+默认值：stretch 。\n        :type FillType: str\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -11753,13 +9465,7 @@ class HighlightSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 置信度。
-        :type Confidence: float
-        :param StartTimeOffset: 片段起始时间偏移。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 片段结束时间偏移。
-        :type EndTimeOffset: float
-        """
+        :param Confidence: 置信度。\n        :type Confidence: float\n        :param StartTimeOffset: 片段起始时间偏移。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 片段结束时间偏移。\n        :type EndTimeOffset: float\n        """
         self.Confidence = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -11787,9 +9493,7 @@ class HighlightsConfigureInfo(AbstractModel):
         """
         :param Switch: 智能精彩片段任务开关，可选值：
 <li>ON：开启智能精彩片段任务；</li>
-<li>OFF：关闭智能精彩片段任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能精彩片段任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -11813,9 +9517,7 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 智能精彩片段任务开关，可选值：
 <li>ON：开启智能精彩片段任务；</li>
-<li>OFF：关闭智能精彩片段任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能精彩片段任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -11839,15 +9541,7 @@ class ImageCenterCut(AbstractModel):
         """
         :param Type: 图片的裁剪模式，可选 Circle 和 Rectangle。
 <li>Circle ： 内切圆裁剪，输出图片半径为 Radius。</li>
-<li>Rectangle ： 矩形裁剪，输出图片宽为 Width ， 高为 Height。</li>
-        :type Type: str
-        :param Width: 输出图片的宽度，单位为像素，当 Type 取值为 Rectangle 时有效。
-        :type Width: int
-        :param Height: 输出图片的高度，单位为像素，当 Type 取值为 Rectangle 时有效。
-        :type Height: int
-        :param Radius: 输出图片的半径，单位为像素，当 Type 取值为 Circle 时有效。
-        :type Radius: int
-        """
+<li>Rectangle ： 矩形裁剪，输出图片宽为 Width ， 高为 Height。</li>\n        :type Type: str\n        :param Width: 输出图片的宽度，单位为像素，当 Type 取值为 Rectangle 时有效。\n        :type Width: int\n        :param Height: 输出图片的高度，单位为像素，当 Type 取值为 Rectangle 时有效。\n        :type Height: int\n        :param Radius: 输出图片的半径，单位为像素，当 Type 取值为 Circle 时有效。\n        :type Radius: int\n        """
         self.Type = None
         self.Width = None
         self.Height = None
@@ -11877,13 +9571,7 @@ class ImageOperation(AbstractModel):
         """
         :param Type: 图片处理类型。可选类型有：
 <li>Scale : 图片缩略处理。</li>
-<li>CenterCut : 图片裁剪处理。</li>
-        :type Type: str
-        :param Scale: 图片缩略处理，仅当 Type 为 Scale 时有效。
-        :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`
-        :param CenterCut: 图片裁剪处理，仅当 Type 为 CenterCut 时有效。
-        :type CenterCut: :class:`tencentcloud.vod.v20180717.models.ImageCenterCut`
-        """
+<li>CenterCut : 图片裁剪处理。</li>\n        :type Type: str\n        :param Scale: 图片缩略处理，仅当 Type 为 Scale 时有效。\n        :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`\n        :param CenterCut: 图片裁剪处理，仅当 Type 为 CenterCut 时有效。\n        :type CenterCut: :class:`tencentcloud.vod.v20180717.models.ImageCenterCut`\n        """
         self.Type = None
         self.Scale = None
         self.CenterCut = None
@@ -11913,22 +9601,10 @@ class ImageProcessingTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 图片处理模板唯一标识。
-        :type Definition: int
-        :param Type: 模板类型，取值范围：
+        :param Definition: 图片处理模板唯一标识。\n        :type Definition: int\n        :param Type: 模板类型，取值范围：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 图片处理模板名称。
-        :type Name: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        :param Operations: 图片处理操作数组，操作将以数组顺序执行。
-<li>长度限制：3。</li>
-        :type Operations: list of ImageOperation
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        """
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Name: 图片处理模板名称。\n        :type Name: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        :param Operations: 图片处理操作数组，操作将以数组顺序执行。
+<li>长度限制：3。</li>\n        :type Operations: list of ImageOperation\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -11970,17 +9646,7 @@ class ImageScale(AbstractModel):
 <li>HeightFirst : 指定图片的高为 Height ，宽度等比缩放。</li>
 <li>LongEdgeFirst : 指定图片的长边为 LongEdge ，短边等比缩放。</li>
 <li>ShortEdgeFirst : 指定图片的短边为 ShortEdge ，长边等比缩放。</li>
-<li>Force : 忽略原图宽高比例，指定图片宽度为 Width，高度为 Height ，强行缩放图片，可能导致目标图片变形。</li>
-        :type Type: str
-        :param Height: 输出图片的高度，单位为像素。当 Type 取值为 HeightFirst 或 Force 时此字段有效。
-        :type Height: int
-        :param Width: 输出图片的宽度，单位为像素。当 Type 取值为 WidthFirst 或 Force 时此字段有效。
-        :type Width: int
-        :param LongEdge: 输出图片的长边长度，单位为像素。当 Type 取值为 LongEdgeFirst 时此字段有效。
-        :type LongEdge: int
-        :param ShortEdge: 输出图片的短边长度，单位为像素。当 Type 取值为 ShortEdgeFirst 时此字段有效。
-        :type ShortEdge: int
-        """
+<li>Force : 忽略原图宽高比例，指定图片宽度为 Width，高度为 Height ，强行缩放图片，可能导致目标图片变形。</li>\n        :type Type: str\n        :param Height: 输出图片的高度，单位为像素。当 Type 取值为 HeightFirst 或 Force 时此字段有效。\n        :type Height: int\n        :param Width: 输出图片的宽度，单位为像素。当 Type 取值为 WidthFirst 或 Force 时此字段有效。\n        :type Width: int\n        :param LongEdge: 输出图片的长边长度，单位为像素。当 Type 取值为 LongEdgeFirst 时此字段有效。\n        :type LongEdge: int\n        :param ShortEdge: 输出图片的短边长度，单位为像素。当 Type 取值为 ShortEdgeFirst 时此字段有效。\n        :type ShortEdge: int\n        """
         self.Type = None
         self.Height = None
         self.Width = None
@@ -12010,9 +9676,7 @@ class ImageSpriteTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图模板 ID。
-        :type Definition: int
-        """
+        :param Definition: 雪碧图模板 ID。\n        :type Definition: int\n        """
         self.Definition = None
 
 
@@ -12034,53 +9698,25 @@ class ImageSpriteTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图模板唯一标识。
-        :type Definition: int
-        :param Type: 模板类型，取值范围：
+        :param Definition: 雪碧图模板唯一标识。\n        :type Definition: int\n        :param Type: 模板类型，取值范围：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 雪碧图模板名称。
-        :type Name: str
-        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Name: 雪碧图模板名称。\n        :type Name: str\n        :param Width: 雪碧图中小图的宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param SampleType: 采样类型。
-        :type SampleType: str
-        :param SampleInterval: 采样间隔。
-        :type SampleInterval: int
-        :param RowCount: 雪碧图中小图的行数。
-        :type RowCount: int
-        :param ColumnCount: 雪碧图中小图的列数。
-        :type ColumnCount: int
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param SampleType: 采样类型。\n        :type SampleType: str\n        :param SampleInterval: 采样间隔。\n        :type SampleInterval: int\n        :param RowCount: 雪碧图中小图的行数。\n        :type RowCount: int\n        :param ColumnCount: 雪碧图中小图的列数。\n        :type ColumnCount: int\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
-        :type FillType: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        """
+默认值：black 。\n        :type FillType: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -12130,16 +9766,10 @@ class ImageTransform(AbstractModel):
         """
         :param Type: 类型，取值有：
 <li> Rotate：图像旋转。</li>
-<li> Flip：图像翻转。</li>
-        :type Type: str
-        :param RotateAngle: 图像以中心点为原点进行旋转的角度，取值范围0~360。当 Type = Rotate 时有效。
-        :type RotateAngle: float
-        :param Flip: 图像翻转动作，取值有：
+<li> Flip：图像翻转。</li>\n        :type Type: str\n        :param RotateAngle: 图像以中心点为原点进行旋转的角度，取值范围0~360。当 Type = Rotate 时有效。\n        :type RotateAngle: float\n        :param Flip: 图像翻转动作，取值有：
 <li>Horizental：水平翻转，即左右镜像。</li>
 <li>Vertical：垂直翻转，即上下镜像。</li>
-当 Type = Flip 时有效。
-        :type Flip: str
-        """
+当 Type = Flip 时有效。\n        :type Flip: str\n        """
         self.Type = None
         self.RotateAngle = None
         self.Flip = None
@@ -12165,24 +9795,16 @@ class ImageWatermarkInput(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageContent: 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png、gif 图片格式。
-        :type ImageContent: str
-        :param Width: 水印的宽度。支持 %、px 两种格式：
+        :param ImageContent: 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png、gif 图片格式。\n        :type ImageContent: str\n        :param Width: 水印的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>
-默认值：10%。
-        :type Width: str
-        :param Height: 水印的高度。支持 %、px 两种格式：
+默认值：10%。\n        :type Width: str\n        :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
-默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
-        :type Height: str
-        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
+默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。\n        :type Height: str\n        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
 <li>once：动态水印播放完后，不再出现；</li>
 <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
-<li>repeat：水印循环播放，直到视频结束（默认值）。</li>
-        :type RepeatType: str
-        """
+<li>repeat：水印循环播放，直到视频结束（默认值）。</li>\n        :type RepeatType: str\n        """
         self.ImageContent = None
         self.Width = None
         self.Height = None
@@ -12210,22 +9832,14 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageContent: 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
-        :type ImageContent: str
-        :param Width: 水印的宽度。支持 %、px 两种格式：
+        :param ImageContent: 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。\n        :type ImageContent: str\n        :param Width: 水印的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>
-        :type Width: str
-        :param Height: 水印的高度。支持 %、px 两种格式：
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为[8, 4096]。</li>\n        :type Width: str\n        :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
-        :type Height: str
-        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>\n        :type Height: str\n        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
 <li>once：动态水印播放完后，不再出现；</li>
 <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
-<li>repeat：水印循环播放，直到视频结束。</li>
-        :type RepeatType: str
-        """
+<li>repeat：水印循环播放，直到视频结束。</li>\n        :type RepeatType: str\n        """
         self.ImageContent = None
         self.Width = None
         self.Height = None
@@ -12253,23 +9867,15 @@ class ImageWatermarkTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageUrl: 水印图片地址。
-        :type ImageUrl: str
-        :param Width: 水印的宽度。支持 %、px 两种格式：
+        :param ImageUrl: 水印图片地址。\n        :type ImageUrl: str\n        :param Width: 水印的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
-        :type Width: str
-        :param Height: 水印的高度。支持 %、px 两种格式：
+<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>\n        :type Width: str\n        :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；</li>
-0px：表示 Height 按照 Width 对视频宽度的比例缩放。
-        :type Height: str
-        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
+0px：表示 Height 按照 Width 对视频宽度的比例缩放。\n        :type Height: str\n        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
 <li>once：动态水印播放完后，不再出现；</li>
 <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
-<li>repeat：水印循环播放，直到视频结束。</li>
-        :type RepeatType: str
-        """
+<li>repeat：水印循环播放，直到视频结束。</li>\n        :type RepeatType: str\n        """
         self.ImageUrl = None
         self.Width = None
         self.Height = None
@@ -12297,11 +9903,7 @@ class LiveRealTimeClipMediaSegmentInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 片段的起始时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 片段的结束时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        """
+        :param StartTime: 片段的起始时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 片段的结束时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        """
         self.StartTime = None
         self.EndTime = None
 
@@ -12325,27 +9927,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
-        :type StreamId: str
-        :param StartTime: 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type StartTime: str
-        :param EndTime: 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type EndTime: str
-        :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
-        :type IsPersistence: int
-        :param ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
-        :type ExpireTime: str
-        :param Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
-        :type Procedure: str
-        :param MetaDataRequired: 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
-        :type MetaDataRequired: int
-        :param Host: 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
-        :type Host: str
-        :param ExtInfo: 系统保留字段，请勿填写。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。\n        :type StreamId: str\n        :param StartTime: 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type StartTime: str\n        :param EndTime: 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type EndTime: str\n        :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。\n        :type IsPersistence: int\n        :param ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。\n        :type ExpireTime: str\n        :param Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。\n        :type Procedure: str\n        :param MetaDataRequired: 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。\n        :type MetaDataRequired: int\n        :param Host: 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**\n        :type Host: str\n        :param ExtInfo: 系统保留字段，请勿填写。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.StreamId = None
         self.StartTime = None
         self.EndTime = None
@@ -12385,20 +9967,8 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 剪辑后的视频播放 URL。
-        :type Url: str
-        :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。
-        :type FileId: str
-        :param VodTaskId: 剪辑固化后的视频任务流 ID。
-        :type VodTaskId: str
-        :param MetaData: 剪辑后的视频元信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param SegmentSet: <span id="p_segmentset">剪辑后的视频片段信息。</span>
-        :type SegmentSet: list of LiveRealTimeClipMediaSegmentInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Url: 剪辑后的视频播放 URL。\n        :type Url: str\n        :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。\n        :type FileId: str\n        :param VodTaskId: 剪辑固化后的视频任务流 ID。\n        :type VodTaskId: str\n        :param MetaData: 剪辑后的视频元信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param SegmentSet: <span id="p_segmentset">剪辑后的视频片段信息。</span>\n        :type SegmentSet: list of LiveRealTimeClipMediaSegmentInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Url = None
         self.FileId = None
         self.VodTaskId = None
@@ -12430,14 +10000,8 @@ class ManageTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频处理的任务 ID。
-        :type TaskId: str
-        :param OperationType: 操作类型，取值范围：
-<li>Abort：终止任务。只能终止已发起且状态为等待中（WAITING）的任务。</li>
-        :type OperationType: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param TaskId: 视频处理的任务 ID。\n        :type TaskId: str\n        :param OperationType: 操作类型，取值范围：
+<li>Abort：终止任务。只能终止已发起且状态为等待中（WAITING）的任务。</li>\n        :type OperationType: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.TaskId = None
         self.OperationType = None
         self.SubAppId = None
@@ -12463,9 +10027,7 @@ class ManageTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -12480,9 +10042,7 @@ class MediaAdaptiveDynamicStreamingInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AdaptiveDynamicStreamingSet: 转自适应码流信息数组。
-        :type AdaptiveDynamicStreamingSet: list of AdaptiveDynamicStreamingInfoItem
-        """
+        :param AdaptiveDynamicStreamingSet: 转自适应码流信息数组。\n        :type AdaptiveDynamicStreamingSet: list of AdaptiveDynamicStreamingInfoItem\n        """
         self.AdaptiveDynamicStreamingSet = None
 
 
@@ -12509,11 +10069,7 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Classification: 智能分类的类别名称。
-        :type Classification: str
-        :param Confidence: 智能分类的可信度，取值范围是 0 到 100。
-        :type Confidence: float
-        """
+        :param Classification: 智能分类的类别名称。\n        :type Classification: str\n        :param Confidence: 智能分类的可信度，取值范围是 0 到 100。\n        :type Confidence: float\n        """
         self.Classification = None
         self.Confidence = None
 
@@ -12537,11 +10093,7 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
     def __init__(self):
         """
-        :param CoverUrl: 智能封面地址。
-        :type CoverUrl: str
-        :param Confidence: 智能封面的可信度，取值范围是 0 到 100。
-        :type Confidence: float
-        """
+        :param CoverUrl: 智能封面地址。\n        :type CoverUrl: str\n        :param Confidence: 智能封面的可信度，取值范围是 0 到 100。\n        :type Confidence: float\n        """
         self.CoverUrl = None
         self.Confidence = None
 
@@ -12565,14 +10117,8 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Tag: 按帧标签名称。
-        :type Tag: str
-        :param CategorySet: 按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
-比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。
-        :type CategorySet: list of str
-        :param Confidence: 按帧标签的可信度，取值范围是 0 到 100。
-        :type Confidence: float
-        """
+        :param Tag: 按帧标签名称。\n        :type Tag: str\n        :param CategorySet: 按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
+比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。\n        :type CategorySet: list of str\n        :param Confidence: 按帧标签的可信度，取值范围是 0 到 100。\n        :type Confidence: float\n        """
         self.Tag = None
         self.CategorySet = None
         self.Confidence = None
@@ -12598,13 +10144,7 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 按帧标签起始的偏移时间。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 按帧标签结束的偏移时间。
-        :type EndTimeOffset: float
-        :param TagSet: 时间片段内的标签列表。
-        :type TagSet: list of MediaAiAnalysisFrameTagItem
-        """
+        :param StartTimeOffset: 按帧标签起始的偏移时间。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 按帧标签结束的偏移时间。\n        :type EndTimeOffset: float\n        :param TagSet: 时间片段内的标签列表。\n        :type TagSet: list of MediaAiAnalysisFrameTagItem\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.TagSet = None
@@ -12635,17 +10175,7 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     def __init__(self):
         """
-        :param HighlightUrl: 智能精彩集锦地址。
-        :type HighlightUrl: str
-        :param CovImgUrl: 智能精彩集锦封面地址。
-        :type CovImgUrl: str
-        :param Confidence: 智能精彩集锦的可信度，取值范围是 0 到 100。
-        :type Confidence: float
-        :param Duration: 智能精彩集锦持续时间。
-        :type Duration: float
-        :param SegmentSet: 智能精彩集锦子片段列表，精彩集锦片段由这些子片段拼接生成。
-        :type SegmentSet: list of HighlightSegmentItem
-        """
+        :param HighlightUrl: 智能精彩集锦地址。\n        :type HighlightUrl: str\n        :param CovImgUrl: 智能精彩集锦封面地址。\n        :type CovImgUrl: str\n        :param Confidence: 智能精彩集锦的可信度，取值范围是 0 到 100。\n        :type Confidence: float\n        :param Duration: 智能精彩集锦持续时间。\n        :type Duration: float\n        :param SegmentSet: 智能精彩集锦子片段列表，精彩集锦片段由这些子片段拼接生成。\n        :type SegmentSet: list of HighlightSegmentItem\n        """
         self.HighlightUrl = None
         self.CovImgUrl = None
         self.Confidence = None
@@ -12680,11 +10210,7 @@ class MediaAiAnalysisTagItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Tag: 标签名称。
-        :type Tag: str
-        :param Confidence: 标签的可信度，取值范围是 0 到 100。
-        :type Confidence: float
-        """
+        :param Tag: 标签名称。\n        :type Tag: str\n        :param Confidence: 标签的可信度，取值范围是 0 到 100。\n        :type Confidence: float\n        """
         self.Tag = None
         self.Confidence = None
 
@@ -12708,9 +10234,7 @@ class MediaAnimatedGraphicsInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AnimatedGraphicsSet: 视频转动图结果信息
-        :type AnimatedGraphicsSet: list of MediaAnimatedGraphicsItem
-        """
+        :param AnimatedGraphicsSet: 视频转动图结果信息\n        :type AnimatedGraphicsSet: list of MediaAnimatedGraphicsItem\n        """
         self.AnimatedGraphicsSet = None
 
 
@@ -12737,27 +10261,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 转动图的文件地址。
-        :type Url: str
-        :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-        :type Definition: int
-        :param Container: 动图格式，如 gif。
-        :type Container: str
-        :param Height: 动图的高度，单位：px。
-        :type Height: int
-        :param Width: 动图的宽度，单位：px。
-        :type Width: int
-        :param Bitrate: 动图码率，单位：bps。
-        :type Bitrate: int
-        :param Size: 动图大小，单位：字节。
-        :type Size: int
-        :param Md5: 动图的md5值。
-        :type Md5: str
-        :param StartTimeOffset: 动图在视频中的起始时间偏移，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 动图在视频中的结束时间偏移，单位：秒。
-        :type EndTimeOffset: float
-        """
+        :param Url: 转动图的文件地址。\n        :type Url: str\n        :param Definition: 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/266/33481#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。\n        :type Definition: int\n        :param Container: 动图格式，如 gif。\n        :type Container: str\n        :param Height: 动图的高度，单位：px。\n        :type Height: int\n        :param Width: 动图的宽度，单位：px。\n        :type Width: int\n        :param Bitrate: 动图码率，单位：bps。\n        :type Bitrate: int\n        :param Size: 动图大小，单位：字节。\n        :type Size: int\n        :param Md5: 动图的md5值。\n        :type Md5: str\n        :param StartTimeOffset: 动图在视频中的起始时间偏移，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 动图在视频中的结束时间偏移，单位：秒。\n        :type EndTimeOffset: float\n        """
         self.Url = None
         self.Definition = None
         self.Container = None
@@ -12797,13 +10301,7 @@ class MediaAudioStreamItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Bitrate: 音频流的码率，单位：bps。
-        :type Bitrate: int
-        :param SamplingRate: 音频流的采样率，单位：hz。
-        :type SamplingRate: int
-        :param Codec: 音频流的编码格式，例如 aac。
-        :type Codec: str
-        """
+        :param Bitrate: 音频流的码率，单位：bps。\n        :type Bitrate: int\n        :param SamplingRate: 音频流的采样率，单位：hz。\n        :type SamplingRate: int\n        :param Codec: 音频流的编码格式，例如 aac。\n        :type Codec: str\n        """
         self.Bitrate = None
         self.SamplingRate = None
         self.Codec = None
@@ -12829,53 +10327,17 @@ class MediaBasicInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 媒体文件名称。
-        :type Name: str
-        :param Description: 媒体文件描述。
-        :type Description: str
-        :param CreateTime: 媒体文件的创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        :param ExpireTime: 媒体文件的过期时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。“9999-12-31T23:59:59Z”表示永不过期。
-        :type ExpireTime: str
-        :param ClassId: 媒体文件的分类 ID。
-        :type ClassId: int
-        :param ClassName: 媒体文件的分类名称。
-        :type ClassName: str
-        :param ClassPath: 媒体文件的分类路径，分类间以“-”分隔，如“新的一级分类 - 新的二级分类”。
-        :type ClassPath: str
-        :param CoverUrl: 媒体文件的封面图片地址。
-        :type CoverUrl: str
-        :param Type: 媒体文件的封装格式，例如 mp4、flv 等。
-        :type Type: str
-        :param MediaUrl: 原始媒体文件的 URL 地址。
-        :type MediaUrl: str
-        :param SourceInfo: 该媒体文件的来源信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
-        :param StorageRegion: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
-        :type StorageRegion: str
-        :param TagSet: 媒体文件的标签信息。
-        :type TagSet: list of str
-        :param Vid: 直播录制文件的唯一标识。
-        :type Vid: str
-        :param Category: 文件类型：
+        :param Name: 媒体文件名称。\n        :type Name: str\n        :param Description: 媒体文件描述。\n        :type Description: str\n        :param CreateTime: 媒体文件的创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        :param ExpireTime: 媒体文件的过期时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。“9999-12-31T23:59:59Z”表示永不过期。\n        :type ExpireTime: str\n        :param ClassId: 媒体文件的分类 ID。\n        :type ClassId: int\n        :param ClassName: 媒体文件的分类名称。\n        :type ClassName: str\n        :param ClassPath: 媒体文件的分类路径，分类间以“-”分隔，如“新的一级分类 - 新的二级分类”。\n        :type ClassPath: str\n        :param CoverUrl: 媒体文件的封面图片地址。\n        :type CoverUrl: str\n        :param Type: 媒体文件的封装格式，例如 mp4、flv 等。\n        :type Type: str\n        :param MediaUrl: 原始媒体文件的 URL 地址。\n        :type MediaUrl: str\n        :param SourceInfo: 该媒体文件的来源信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`\n        :param StorageRegion: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。\n        :type StorageRegion: str\n        :param TagSet: 媒体文件的标签信息。\n        :type TagSet: list of str\n        :param Vid: 直播录制文件的唯一标识。\n        :type Vid: str\n        :param Category: 文件类型：
 <li>Video: 视频文件</li>
 <li>Audio: 音频文件</li>
-<li>Image: 图片文件</li>
-        :type Category: str
-        :param Status: 文件状态：Normal：正常，Forbidden：封禁。
+<li>Image: 图片文件</li>\n        :type Category: str\n        :param Status: 文件状态：Normal：正常，Forbidden：封禁。
 
-*注意：此字段暂不支持。
-        :type Status: str
-        :param StorageClass: 媒体文件的存储类别：
+*注意：此字段暂不支持。\n        :type Status: str\n        :param StorageClass: 媒体文件的存储类别：
 <li> STANDARD：标准存储。</li>
 <li> STANDARD_IA：低频存储。</li>
 <li> ARCHIVE：归档存储。</li>
-<li> DEEP_ARCHIVE：深度归档存储。</li>
-        :type StorageClass: str
-        """
+<li> DEEP_ARCHIVE：深度归档存储。</li>\n        :type StorageClass: str\n        """
         self.Name = None
         self.Description = None
         self.CreateTime = None
@@ -12933,17 +10395,7 @@ class MediaClassInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ClassId: 分类 ID
-        :type ClassId: int
-        :param ParentId: 父类 ID，一级分类的父类 ID 为 -1。
-        :type ParentId: int
-        :param ClassName: 分类名称
-        :type ClassName: str
-        :param Level: 分类级别，一级分类为 0，最大值为 3，即最多允许 4 级分类层次。
-        :type Level: int
-        :param SubClassIdSet: 当前分类的第一级子类 ID 集合
-        :type SubClassIdSet: list of int
-        """
+        :param ClassId: 分类 ID\n        :type ClassId: int\n        :param ParentId: 父类 ID，一级分类的父类 ID 为 -1。\n        :type ParentId: int\n        :param ClassName: 分类名称\n        :type ClassName: str\n        :param Level: 分类级别，一级分类为 0，最大值为 3，即最多允许 4 级分类层次。\n        :type Level: int\n        :param SubClassIdSet: 当前分类的第一级子类 ID 集合\n        :type SubClassIdSet: list of int\n        """
         self.ClassId = None
         self.ParentId = None
         self.ClassName = None
@@ -12973,20 +10425,10 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 嫌疑片段置信度。
-        :type Confidence: float
-        :param Suggestion: 嫌疑片段审核结果建议，取值范围：
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 嫌疑片段置信度。\n        :type Confidence: float\n        :param Suggestion: 嫌疑片段审核结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param KeywordSet: 嫌疑关键词列表。
-        :type KeywordSet: list of str
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param KeywordSet: 嫌疑关键词列表。\n        :type KeywordSet: list of str\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -13016,27 +10458,11 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 嫌疑片段置信度。
-        :type Confidence: float
-        :param Suggestion: 嫌疑片段审核结果建议，取值范围：
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 嫌疑片段置信度。\n        :type Confidence: float\n        :param Suggestion: 嫌疑片段审核结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param KeywordSet: 嫌疑关键词列表。
-        :type KeywordSet: list of str
-        :param AreaCoordSet: 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-        :type AreaCoordSet: list of int
-        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
-PicUrlExpireTime 时间点后图片将被删除）。
-        :type Url: str
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type PicUrlExpireTime: str
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param KeywordSet: 嫌疑关键词列表。\n        :type KeywordSet: list of str\n        :param AreaCoordSet: 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。\n        :type AreaCoordSet: list of int\n        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+PicUrlExpireTime 时间点后图片将被删除）。\n        :type Url: str\n        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type PicUrlExpireTime: str\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -13072,20 +10498,10 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 嫌疑片段涉政分数。
-        :type Confidence: float
-        :param Suggestion: 嫌疑片段鉴政结果建议，取值范围：
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 嫌疑片段涉政分数。\n        :type Confidence: float\n        :param Suggestion: 嫌疑片段鉴政结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param Name: 涉政人物、违规图标名字。
-        :type Name: str
-        :param Label: 嫌疑片段鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+<li>block。</li>\n        :type Suggestion: str\n        :param Name: 涉政人物、违规图标名字。\n        :type Name: str\n        :param Label: 嫌疑片段鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 violation_photo：
 <li>violation_photo：违规图标。</li>
 politician：
@@ -13108,18 +10524,8 @@ celebrity：
 <li>sensitive_celebrity：敏感知名人物；</li>
 <li>historical_celebrity：历史知名人物。</li>
 military：
-<li>sensitive_military：敏感军事人物。</li>
-        :type Label: str
-        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
- PicUrlExpireTime 时间点后图片将被删除）。
-        :type Url: str
-        :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-        :type AreaCoordSet: list of int
-        :param PicUrlExpireTimeStamp: 该字段已废弃，请使用 PicUrlExpireTime。
-        :type PicUrlExpireTimeStamp: int
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type PicUrlExpireTime: str
-        """
+<li>sensitive_military：敏感军事人物。</li>\n        :type Label: str\n        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。\n        :type Url: str\n        :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。\n        :type AreaCoordSet: list of int\n        :param PicUrlExpireTimeStamp: 该字段已废弃，请使用 PicUrlExpireTime。\n        :type PicUrlExpireTimeStamp: int\n        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type PicUrlExpireTime: str\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -13159,27 +10565,11 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
-        :type EndTimeOffset: float
-        :param Confidence: 嫌疑片段涉黄分数。
-        :type Confidence: float
-        :param Label: 嫌疑片段鉴黄结果标签。
-        :type Label: str
-        :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。\n        :type EndTimeOffset: float\n        :param Confidence: 嫌疑片段涉黄分数。\n        :type Confidence: float\n        :param Label: 嫌疑片段鉴黄结果标签。\n        :type Label: str\n        :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
-<li>block。</li>
-        :type Suggestion: str
-        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
- PicUrlExpireTime 时间点后图片将被删除）。
-        :type Url: str
-        :param PicUrlExpireTimeStamp: 该字段已废弃，请使用 PicUrlExpireTime。
-        :type PicUrlExpireTimeStamp: int
-        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type PicUrlExpireTime: str
-        """
+<li>block。</li>\n        :type Suggestion: str\n        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。\n        :type Url: str\n        :param PicUrlExpireTimeStamp: 该字段已废弃，请使用 PicUrlExpireTime。\n        :type PicUrlExpireTimeStamp: int\n        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type PicUrlExpireTime: str\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.Confidence = None
@@ -13217,12 +10607,8 @@ class MediaDeleteItem(AbstractModel):
         """
         :param Type: 所指定的删除部分。如果未填写该字段则参数无效。可选值有：
 <li>TranscodeFiles（删除转码文件）。</li>
-<li>WechatPublishFiles（删除微信发布文件）。</li>
-        :type Type: str
-        :param Definition: 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
-默认值为0，表示删除参数Type指定种类下所有的视频。
-        :type Definition: int
-        """
+<li>WechatPublishFiles（删除微信发布文件）。</li>\n        :type Type: str\n        :param Definition: 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+默认值为0，表示删除参数Type指定种类下所有的视频。\n        :type Definition: int\n        """
         self.Type = None
         self.Definition = None
 
@@ -13246,9 +10632,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageSpriteSet: 特定规格的雪碧图信息集合，每个元素代表一套相同规格的雪碧图。
-        :type ImageSpriteSet: list of MediaImageSpriteItem
-        """
+        :param ImageSpriteSet: 特定规格的雪碧图信息集合，每个元素代表一套相同规格的雪碧图。\n        :type ImageSpriteSet: list of MediaImageSpriteItem\n        """
         self.ImageSpriteSet = None
 
 
@@ -13275,19 +10659,7 @@ class MediaImageSpriteItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-        :type Definition: int
-        :param Height: 雪碧图小图的高度。
-        :type Height: int
-        :param Width: 雪碧图小图的宽度。
-        :type Width: int
-        :param TotalCount: 每一张雪碧图大图里小图的数量。
-        :type TotalCount: int
-        :param ImageUrlSet: 每一张雪碧图大图的地址。
-        :type ImageUrlSet: list of str
-        :param WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
-        :type WebVttUrl: str
-        """
+        :param Definition: 雪碧图规格，参见[雪碧图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。\n        :type Definition: int\n        :param Height: 雪碧图小图的高度。\n        :type Height: int\n        :param Width: 雪碧图小图的宽度。\n        :type Width: int\n        :param TotalCount: 每一张雪碧图大图里小图的数量。\n        :type TotalCount: int\n        :param ImageUrlSet: 每一张雪碧图大图的地址。\n        :type ImageUrlSet: list of str\n        :param WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。\n        :type WebVttUrl: str\n        """
         self.Definition = None
         self.Height = None
         self.Width = None
@@ -13320,41 +10692,17 @@ class MediaInfo(AbstractModel):
     def __init__(self):
         """
         :param BasicInfo: 基础信息。包括视频名称、分类、播放地址、封面图片等。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param TranscodeInfo: 转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TranscodeInfo: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeInfo`
-        :param AnimatedGraphicsInfo: 转动图结果信息。对视频转动图（如 gif）后，动图相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AnimatedGraphicsInfo: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsInfo`
-        :param SampleSnapshotInfo: 采样截图信息。对视频采样截图后，相关截图信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SampleSnapshotInfo: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotInfo`
-        :param ImageSpriteInfo: 雪碧图信息。对视频截取雪碧图之后，雪碧的相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageSpriteInfo: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteInfo`
-        :param SnapshotByTimeOffsetInfo: 指定时间点截图信息。对视频依照指定时间点截图后，各个截图的信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetInfo: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetInfo`
-        :param KeyFrameDescInfo: 视频打点信息。对视频设置的各个打点信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyFrameDescInfo: :class:`tencentcloud.vod.v20180717.models.MediaKeyFrameDescInfo`
-        :param AdaptiveDynamicStreamingInfo: 转自适应码流信息。包括规格、加密类型、打包格式等相关信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AdaptiveDynamicStreamingInfo: :class:`tencentcloud.vod.v20180717.models.MediaAdaptiveDynamicStreamingInfo`
-        :param MiniProgramReviewInfo: 小程序审核信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MiniProgramReviewInfo: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`
-        :param SubtitleInfo: 字幕信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
-        :param FileId: 媒体文件唯一标识 ID。
-        :type FileId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`\n        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param TranscodeInfo: 转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TranscodeInfo: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeInfo`\n        :param AnimatedGraphicsInfo: 转动图结果信息。对视频转动图（如 gif）后，动图相关信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AnimatedGraphicsInfo: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsInfo`\n        :param SampleSnapshotInfo: 采样截图信息。对视频采样截图后，相关截图信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SampleSnapshotInfo: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotInfo`\n        :param ImageSpriteInfo: 雪碧图信息。对视频截取雪碧图之后，雪碧的相关信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageSpriteInfo: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteInfo`\n        :param SnapshotByTimeOffsetInfo: 指定时间点截图信息。对视频依照指定时间点截图后，各个截图的信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SnapshotByTimeOffsetInfo: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetInfo`\n        :param KeyFrameDescInfo: 视频打点信息。对视频设置的各个打点信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyFrameDescInfo: :class:`tencentcloud.vod.v20180717.models.MediaKeyFrameDescInfo`\n        :param AdaptiveDynamicStreamingInfo: 转自适应码流信息。包括规格、加密类型、打包格式等相关信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AdaptiveDynamicStreamingInfo: :class:`tencentcloud.vod.v20180717.models.MediaAdaptiveDynamicStreamingInfo`\n        :param MiniProgramReviewInfo: 小程序审核信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MiniProgramReviewInfo: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`\n        :param SubtitleInfo: 字幕信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`\n        :param FileId: 媒体文件唯一标识 ID。\n        :type FileId: str\n        """
         self.BasicInfo = None
         self.MetaData = None
         self.TranscodeInfo = None
@@ -13420,13 +10768,7 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 视频 URL。
-        :type Url: str
-        :param Name: 视频名称。
-        :type Name: str
-        :param Id: 视频自定义 ID。
-        :type Id: str
-        """
+        :param Url: 视频 URL。\n        :type Url: str\n        :param Name: 视频名称。\n        :type Name: str\n        :param Id: 视频自定义 ID。\n        :type Id: str\n        """
         self.Url = None
         self.Name = None
         self.Id = None
@@ -13452,9 +10794,7 @@ class MediaKeyFrameDescInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyFrameDescSet: 视频打点信息数组。
-        :type KeyFrameDescSet: list of MediaKeyFrameDescItem
-        """
+        :param KeyFrameDescSet: 视频打点信息数组。\n        :type KeyFrameDescSet: list of MediaKeyFrameDescItem\n        """
         self.KeyFrameDescSet = None
 
 
@@ -13481,11 +10821,7 @@ class MediaKeyFrameDescItem(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeOffset: 打点的视频偏移时间，单位：秒。
-        :type TimeOffset: float
-        :param Content: 打点的内容字符串，限制 1-128 个字符。
-        :type Content: str
-        """
+        :param TimeOffset: 打点的视频偏移时间，单位：秒。\n        :type TimeOffset: float\n        :param Content: 打点的内容字符串，限制 1-128 个字符。\n        :type Content: str\n        """
         self.TimeOffset = None
         self.Content = None
 
@@ -13509,29 +10845,7 @@ class MediaMetaData(AbstractModel):
 
     def __init__(self):
         """
-        :param Size: 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
-        :type Size: int
-        :param Container: 容器类型，例如 m4a，mp4 等。
-        :type Container: str
-        :param Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。
-        :type Bitrate: int
-        :param Height: 视频流高度的最大值，单位：px。
-        :type Height: int
-        :param Width: 视频流宽度的最大值，单位：px。
-        :type Width: int
-        :param Duration: 视频时长，单位：秒。
-        :type Duration: float
-        :param Rotate: 视频拍摄时的选择角度，单位：度。
-        :type Rotate: int
-        :param VideoStreamSet: 视频流信息。
-        :type VideoStreamSet: list of MediaVideoStreamItem
-        :param AudioStreamSet: 音频流信息。
-        :type AudioStreamSet: list of MediaAudioStreamItem
-        :param VideoDuration: 视频时长，单位：秒。
-        :type VideoDuration: float
-        :param AudioDuration: 音频时长，单位：秒。
-        :type AudioDuration: float
-        """
+        :param Size: 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。\n        :type Size: int\n        :param Container: 容器类型，例如 m4a，mp4 等。\n        :type Container: str\n        :param Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流高度的最大值，单位：px。\n        :type Height: int\n        :param Width: 视频流宽度的最大值，单位：px。\n        :type Width: int\n        :param Duration: 视频时长，单位：秒。\n        :type Duration: float\n        :param Rotate: 视频拍摄时的选择角度，单位：度。\n        :type Rotate: int\n        :param VideoStreamSet: 视频流信息。\n        :type VideoStreamSet: list of MediaVideoStreamItem\n        :param AudioStreamSet: 音频流信息。\n        :type AudioStreamSet: list of MediaAudioStreamItem\n        :param VideoDuration: 视频时长，单位：秒。\n        :type VideoDuration: float\n        :param AudioDuration: 音频时长，单位：秒。\n        :type AudioDuration: float\n        """
         self.Size = None
         self.Container = None
         self.Bitrate = None
@@ -13590,16 +10904,10 @@ class MediaMiniProgramReviewElem(AbstractModel):
 <li>Terrorism：画面涉暴恐，</li>
 <li>Political：画面涉政，</li>
 <li>Political.Ocr：文字涉政，</li>
-<li>Political.Asr：声音涉政。</li>
-        :type Type: str
-        :param Suggestion: 审核意见。
+<li>Political.Asr：声音涉政。</li>\n        :type Type: str\n        :param Suggestion: 审核意见。
 <li>pass：确认正常，</li>
 <li>block：确认违规，</li>
-<li>review：疑似违规。</li>
-        :type Suggestion: str
-        :param Confidence: 审核结果置信度。取值 0~100。
-        :type Confidence: float
-        """
+<li>review：疑似违规。</li>\n        :type Suggestion: str\n        :param Confidence: 审核结果置信度。取值 0~100。\n        :type Confidence: float\n        """
         self.Type = None
         self.Suggestion = None
         self.Confidence = None
@@ -13625,9 +10933,7 @@ class MediaMiniProgramReviewInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MiniProgramReviewList: 审核信息列表。
-        :type MiniProgramReviewList: list of MediaMiniProgramReviewInfoItem
-        """
+        :param MiniProgramReviewList: 审核信息列表。\n        :type MiniProgramReviewList: list of MediaMiniProgramReviewInfoItem\n        """
         self.MiniProgramReviewList = None
 
 
@@ -13654,19 +10960,9 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 模板id。小程序视频发布的视频所对应的转码模板ID，为0代表原始视频。
-        :type Definition: int
-        :param MetaData: 视频元信息。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param Url: 小程序审核视频播放地址。
-        :type Url: str
-        :param ReviewResult: 小程序视频发布状态：
+        :param Definition: 模板id。小程序视频发布的视频所对应的转码模板ID，为0代表原始视频。\n        :type Definition: int\n        :param MetaData: 视频元信息。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param Url: 小程序审核视频播放地址。\n        :type Url: str\n        :param ReviewResult: 小程序视频发布状态：
 <li>Pass：成功。</li>
-<li>Rejected：未通过。</li>
-        :type ReviewResult: str
-        :param ReviewSummary: 小程序审核元素。
-        :type ReviewSummary: list of MediaMiniProgramReviewElem
-        """
+<li>Rejected：未通过。</li>\n        :type ReviewResult: str\n        :param ReviewSummary: 小程序审核元素。\n        :type ReviewSummary: list of MediaMiniProgramReviewElem\n        """
         self.Definition = None
         self.MetaData = None
         self.Url = None
@@ -13703,13 +10999,7 @@ class MediaOutputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: 输出文件 Bucket 所属地域，如 ap-guangzhou  。
-        :type Region: str
-        :param Bucket: 输出文件 Bucket 。
-        :type Bucket: str
-        :param Dir: 输出文件目录，目录名必须以 "/" 结尾。
-        :type Dir: str
-        """
+        :param Region: 输出文件 Bucket 所属地域，如 ap-guangzhou  。\n        :type Region: str\n        :param Bucket: 输出文件 Bucket 。\n        :type Bucket: str\n        :param Dir: 输出文件目录，目录名必须以 "/" 结尾。\n        :type Dir: str\n        """
         self.Region = None
         self.Bucket = None
         self.Dir = None
@@ -13735,19 +11025,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 对视频转自适应码流任务的输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
-        :param Output: 对视频转自适应码流任务的输出。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 对视频转自适应码流任务的输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`\n        :param Output: 对视频转自适应码流任务的输出。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -13783,20 +11061,8 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 转动图任务的输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.AnimatedGraphicTaskInput`
-        :param Output: 转动图任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 转动图任务的输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.AnimatedGraphicTaskInput`\n        :param Output: 转动图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -13832,19 +11098,7 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 对视频截图做封面任务的输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskInput`
-        :param Output: 对视频截图做封面任务的输出。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 对视频截图做封面任务的输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskInput`\n        :param Output: 对视频截图做封面任务的输出。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -13880,20 +11134,8 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 对视频截雪碧图任务的输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.ImageSpriteTaskInput`
-        :param Output: 对视频截雪碧图任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 对视频截雪碧图任务的输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.ImageSpriteTaskInput`\n        :param Output: 对视频截雪碧图任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -13929,21 +11171,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param TranscodeTaskSet: 视频转码任务列表。
-        :type TranscodeTaskSet: list of TranscodeTaskInput
-        :param AnimatedGraphicTaskSet: 视频转动图任务列表。
-        :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
-        :param SnapshotByTimeOffsetTaskSet: 对视频按时间点截图任务列表。
-        :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
-        :param SampleSnapshotTaskSet: 对视频采样截图任务列表。
-        :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
-        :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。
-        :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
-        :param CoverBySnapshotTaskSet: 对视频截图做封面任务列表。
-        :type CoverBySnapshotTaskSet: list of CoverBySnapshotTaskInput
-        :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。
-        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
-        """
+        :param TranscodeTaskSet: 视频转码任务列表。\n        :type TranscodeTaskSet: list of TranscodeTaskInput\n        :param AnimatedGraphicTaskSet: 视频转动图任务列表。\n        :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput\n        :param SnapshotByTimeOffsetTaskSet: 对视频按时间点截图任务列表。\n        :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput\n        :param SampleSnapshotTaskSet: 对视频采样截图任务列表。\n        :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput\n        :param ImageSpriteTaskSet: 对视频截雪碧图任务列表。\n        :type ImageSpriteTaskSet: list of ImageSpriteTaskInput\n        :param CoverBySnapshotTaskSet: 对视频截图做封面任务列表。\n        :type CoverBySnapshotTaskSet: list of CoverBySnapshotTaskInput\n        :param AdaptiveDynamicStreamingTaskSet: 对视频转自适应码流任务列表。\n        :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput\n        """
         self.TranscodeTaskSet = None
         self.AnimatedGraphicTaskSet = None
         self.SnapshotByTimeOffsetTaskSet = None
@@ -14019,30 +11247,14 @@ class MediaProcessTaskResult(AbstractModel):
 <li>SampleSnapshot：采样截图</li>
 <li>ImageSprites：雪碧图</li>
 <li>CoverBySnapshot：截图做封面</li>
-<li>AdaptiveDynamicStreaming：自适应码流</li>
-        :type Type: str
-        :param TranscodeTask: 视频转码任务的查询结果，当任务类型为 Transcode 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskTranscodeResult`
-        :param AnimatedGraphicTask: 视频转动图任务的查询结果，当任务类型为 AnimatedGraphics 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AnimatedGraphicTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskAnimatedGraphicResult`
-        :param SnapshotByTimeOffsetTask: 对视频按时间点截图任务的查询结果，当任务类型为 SnapshotByTimeOffset 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskSnapshotByTimeOffsetResult`
-        :param SampleSnapshotTask: 对视频采样截图任务的查询结果，当任务类型为 SampleSnapshot 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SampleSnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskSampleSnapshotResult`
-        :param ImageSpriteTask: 对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskImageSpriteResult`
-        :param CoverBySnapshotTask: 对视频截图做封面任务的查询结果，当任务类型为 CoverBySnapshot 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CoverBySnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskCoverBySnapshotResult`
-        :param AdaptiveDynamicStreamingTask: 对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
-        """
+<li>AdaptiveDynamicStreaming：自适应码流</li>\n        :type Type: str\n        :param TranscodeTask: 视频转码任务的查询结果，当任务类型为 Transcode 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskTranscodeResult`\n        :param AnimatedGraphicTask: 视频转动图任务的查询结果，当任务类型为 AnimatedGraphics 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AnimatedGraphicTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskAnimatedGraphicResult`\n        :param SnapshotByTimeOffsetTask: 对视频按时间点截图任务的查询结果，当任务类型为 SnapshotByTimeOffset 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskSnapshotByTimeOffsetResult`\n        :param SampleSnapshotTask: 对视频采样截图任务的查询结果，当任务类型为 SampleSnapshot 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SampleSnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskSampleSnapshotResult`\n        :param ImageSpriteTask: 对视频截雪碧图任务的查询结果，当任务类型为 ImageSprite 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskImageSpriteResult`\n        :param CoverBySnapshotTask: 对视频截图做封面任务的查询结果，当任务类型为 CoverBySnapshot 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CoverBySnapshotTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskCoverBySnapshotResult`\n        :param AdaptiveDynamicStreamingTask: 对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskAdaptiveDynamicStreamingResult`\n        """
         self.Type = None
         self.TranscodeTask = None
         self.AnimatedGraphicTask = None
@@ -14092,20 +11304,8 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 对视频做采样截图任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.SampleSnapshotTaskInput`
-        :param Output: 对视频做采样截图任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 对视频做采样截图任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.SampleSnapshotTaskInput`\n        :param Output: 对视频做采样截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -14141,20 +11341,8 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 对视频按指定时间点截图任务输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTaskInput`
-        :param Output: 对视频按指定时间点截图任务输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 对视频按指定时间点截图任务输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTaskInput`\n        :param Output: 对视频按指定时间点截图任务输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -14190,26 +11378,8 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param Input: 转码任务的输入。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`
-        :param Output: 转码任务的输出。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
-        :param Progress: 转码进度，取值范围 [0-100] 。
-        :type Progress: int
-        :param BeginProcessTime: 转码任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type BeginProcessTime: str
-        :param FinishTime: 转码任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type FinishTime: str
-        """
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param Input: 转码任务的输入。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`\n        :param Output: 转码任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`\n        :param Progress: 转码进度，取值范围 [0-100] 。\n        :type Progress: int\n        :param BeginProcessTime: 转码任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type BeginProcessTime: str\n        :param FinishTime: 转码任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type FinishTime: str\n        """
         self.Status = None
         self.ErrCodeExt = None
         self.ErrCode = None
@@ -14251,9 +11421,7 @@ class MediaSampleSnapshotInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SampleSnapshotSet: 特定规格的采样截图信息集合，每个元素代表一套相同规格的采样截图。
-        :type SampleSnapshotSet: list of MediaSampleSnapshotItem
-        """
+        :param SampleSnapshotSet: 特定规格的采样截图信息集合，每个元素代表一套相同规格的采样截图。\n        :type SampleSnapshotSet: list of MediaSampleSnapshotItem\n        """
         self.SampleSnapshotSet = None
 
 
@@ -14280,21 +11448,11 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-        :type Definition: int
-        :param SampleType: 采样方式，取值范围：
+        :param Definition: 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。\n        :type Definition: int\n        :param SampleType: 采样方式，取值范围：
 <li>Percent：根据百分比间隔采样。</li>
-<li>Time：根据时间间隔采样。</li>
-        :type SampleType: str
-        :param Interval: 采样间隔
+<li>Time：根据时间间隔采样。</li>\n        :type SampleType: str\n        :param Interval: 采样间隔
 <li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li>
-<li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
-        :type Interval: int
-        :param ImageUrlSet: 生成的截图 url 列表。
-        :type ImageUrlSet: list of str
-        :param WaterMarkDefinition: 截图如果被打上了水印，被打水印的模板 ID 列表。
-        :type WaterMarkDefinition: list of int
-        """
+<li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>\n        :type Interval: int\n        :param ImageUrlSet: 生成的截图 url 列表。\n        :type ImageUrlSet: list of str\n        :param WaterMarkDefinition: 截图如果被打上了水印，被打水印的模板 ID 列表。\n        :type WaterMarkDefinition: list of int\n        """
         self.Definition = None
         self.SampleType = None
         self.Interval = None
@@ -14324,9 +11482,7 @@ class MediaSnapshotByTimeOffsetInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SnapshotByTimeOffsetSet: 特定规格的指定时间点截图信息集合。目前每种规格只能有一套截图。
-        :type SnapshotByTimeOffsetSet: list of MediaSnapshotByTimeOffsetItem
-        """
+        :param SnapshotByTimeOffsetSet: 特定规格的指定时间点截图信息集合。目前每种规格只能有一套截图。\n        :type SnapshotByTimeOffsetSet: list of MediaSnapshotByTimeOffsetItem\n        """
         self.SnapshotByTimeOffsetSet = None
 
 
@@ -14353,11 +11509,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-        :type Definition: int
-        :param PicInfoSet: 同一规格的截图信息集合，每个元素代表一张截图。
-        :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem
-        """
+        :param Definition: 指定时间点截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。\n        :type Definition: int\n        :param PicInfoSet: 同一规格的截图信息集合，每个元素代表一张截图。\n        :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem\n        """
         self.Definition = None
         self.PicInfoSet = None
 
@@ -14386,13 +11538,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。
-        :type TimeOffset: float
-        :param Url: 该张截图的 URL 地址。
-        :type Url: str
-        :param WaterMarkDefinition: 截图如果被打上了水印，被打水印的模板 ID 列表。
-        :type WaterMarkDefinition: list of int
-        """
+        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。\n        :type TimeOffset: float\n        :param Url: 该张截图的 URL 地址。\n        :type Url: str\n        :param WaterMarkDefinition: 截图如果被打上了水印，被打水印的模板 ID 列表。\n        :type WaterMarkDefinition: list of int\n        """
         self.TimeOffset = None
         self.Url = None
         self.WaterMarkDefinition = None
@@ -14422,11 +11568,7 @@ class MediaSourceData(AbstractModel):
 <li>Record：来自录制。如直播录制、直播时移录制等。</li>
 <li>Upload：来自上传。如拉取上传、服务端上传、客户端 UGC 上传等。</li>
 <li>VideoProcessing：来自视频处理。如视频拼接、视频剪辑等。</li>
-<li>Unknown：未知来源。</li>
-        :type SourceType: str
-        :param SourceContext: 用户创建文件时透传的字段
-        :type SourceContext: str
-        """
+<li>Unknown：未知来源。</li>\n        :type SourceType: str\n        :param SourceContext: 用户创建文件时透传的字段\n        :type SourceContext: str\n        """
         self.SourceType = None
         self.SourceContext = None
 
@@ -14450,9 +11592,7 @@ class MediaSubtitleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SubtitleSet: 字幕信息列表。
-        :type SubtitleSet: list of MediaSubtitleItem
-        """
+        :param SubtitleSet: 字幕信息列表。\n        :type SubtitleSet: list of MediaSubtitleItem\n        """
         self.SubtitleSet = None
 
 
@@ -14479,22 +11619,12 @@ class MediaSubtitleInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 字幕名字，长度限制：64 个字符。
-        :type Name: str
-        :param Language: 字幕语言。常见的取值如下：
+        :param Name: 字幕名字，长度限制：64 个字符。\n        :type Name: str\n        :param Language: 字幕语言。常见的取值如下：
 <li>cn：中文</li>
 <li>ja：日文</li>
 <li>en-US：英文</li>
-其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
-        :type Language: str
-        :param Format: 字幕格式。取值范围如下：
-<li>vtt</li>
-        :type Format: str
-        :param Content: 字幕内容，进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。
-        :type Content: str
-        :param Id: 字幕的唯一标识。长度不能超过16个字符，可以使用大小写字母、数字、下划线（_）或横杠（-）。不能与媒资文件中现有字幕的唯一标识重复。
-        :type Id: str
-        """
+其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)\n        :type Language: str\n        :param Format: 字幕格式。取值范围如下：
+<li>vtt</li>\n        :type Format: str\n        :param Content: 字幕内容，进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。\n        :type Content: str\n        :param Id: 字幕的唯一标识。长度不能超过16个字符，可以使用大小写字母、数字、下划线（_）或横杠（-）。不能与媒资文件中现有字幕的唯一标识重复。\n        :type Id: str\n        """
         self.Name = None
         self.Language = None
         self.Format = None
@@ -14524,22 +11654,12 @@ class MediaSubtitleItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 字幕的唯一标识。
-        :type Id: str
-        :param Name: 字幕名字。
-        :type Name: str
-        :param Language: 字幕语言。常见的取值如下：
+        :param Id: 字幕的唯一标识。\n        :type Id: str\n        :param Name: 字幕名字。\n        :type Name: str\n        :param Language: 字幕语言。常见的取值如下：
 <li>cn：中文</li>
 <li>ja：日文</li>
 <li>en-US：英文</li>
-其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
-        :type Language: str
-        :param Format: 字幕格式。取值范围如下：
-<li>vtt</li>
-        :type Format: str
-        :param Url: 字幕 URL。
-        :type Url: str
-        """
+其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)\n        :type Language: str\n        :param Format: 字幕格式。取值范围如下：
+<li>vtt</li>\n        :type Format: str\n        :param Url: 字幕 URL。\n        :type Url: str\n        """
         self.Id = None
         self.Name = None
         self.Language = None
@@ -14574,11 +11694,7 @@ class MediaTrack(AbstractModel):
 <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>MediaTransitionItem</li> <li>EmptyTrackItem</li></ul> </li>
 <li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>MediaTransitionItem</li><li>EmptyTrackItem</li></ul></li>
 <li>Sticker ：贴图轨道。贴图轨道以下 Item 组成：<ul><li> StickerTrackItem</li><li>EmptyTrackItem</li></ul></li>	
-</ul>
-        :type Type: str
-        :param TrackItems: 轨道上的媒体片段列表。
-        :type TrackItems: list of MediaTrackItem
-        """
+</ul>\n        :type Type: str\n        :param TrackItems: 轨道上的媒体片段列表。\n        :type TrackItems: list of MediaTrackItem\n        """
         self.Type = None
         self.TrackItems = None
 
@@ -14612,25 +11728,13 @@ class MediaTrackItem(AbstractModel):
 <li>Audio：音频片段。</li>
 <li>Sticker：贴图片段。</li>
 <li>Transition：转场。</li>
-<li>Empty：空白片段。</li>
-        :type Type: str
-        :param VideoItem: 视频片段，当 Type = Video 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoItem: :class:`tencentcloud.vod.v20180717.models.VideoTrackItem`
-        :param AudioItem: 音频片段，当 Type = Audio 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioItem: :class:`tencentcloud.vod.v20180717.models.AudioTrackItem`
-        :param StickerItem: 贴图片段，当 Type = Sticker 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StickerItem: :class:`tencentcloud.vod.v20180717.models.StickerTrackItem`
-        :param TransitionItem: 转场，当 Type = Transition 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransitionItem: :class:`tencentcloud.vod.v20180717.models.MediaTransitionItem`
-        :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+<li>Empty：空白片段。</li>\n        :type Type: str\n        :param VideoItem: 视频片段，当 Type = Video 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoItem: :class:`tencentcloud.vod.v20180717.models.VideoTrackItem`\n        :param AudioItem: 音频片段，当 Type = Audio 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioItem: :class:`tencentcloud.vod.v20180717.models.AudioTrackItem`\n        :param StickerItem: 贴图片段，当 Type = Sticker 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StickerItem: :class:`tencentcloud.vod.v20180717.models.StickerTrackItem`\n        :param TransitionItem: 转场，当 Type = Transition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TransitionItem: :class:`tencentcloud.vod.v20180717.models.MediaTransitionItem`\n        :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
 <li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EmptyItem: :class:`tencentcloud.vod.v20180717.models.EmptyTrackItem`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EmptyItem: :class:`tencentcloud.vod.v20180717.models.EmptyTrackItem`\n        """
         self.Type = None
         self.VideoItem = None
         self.AudioItem = None
@@ -14672,9 +11776,7 @@ class MediaTranscodeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TranscodeSet: 各规格的转码信息集合，每个元素代表一个规格的转码结果。
-        :type TranscodeSet: list of MediaTranscodeItem
-        """
+        :param TranscodeSet: 各规格的转码信息集合，每个元素代表一个规格的转码结果。\n        :type TranscodeSet: list of MediaTranscodeItem\n        """
         self.TranscodeSet = None
 
 
@@ -14701,29 +11803,7 @@ class MediaTranscodeItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 转码后的视频文件地址。
-        :type Url: str
-        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
-        :type Definition: int
-        :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
-        :type Bitrate: int
-        :param Height: 视频流高度的最大值，单位：px。
-        :type Height: int
-        :param Width: 视频流宽度的最大值，单位：px。
-        :type Width: int
-        :param Size: 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
-        :type Size: int
-        :param Duration: 视频时长，单位：秒。
-        :type Duration: float
-        :param Container: 容器类型，例如 m4a，mp4 等。
-        :type Container: str
-        :param Md5: 视频的 md5 值。
-        :type Md5: str
-        :param AudioStreamSet: 音频流信息。
-        :type AudioStreamSet: list of MediaAudioStreamItem
-        :param VideoStreamSet: 视频流信息。
-        :type VideoStreamSet: list of MediaVideoStreamItem
-        """
+        :param Url: 转码后的视频文件地址。\n        :type Url: str\n        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。\n        :type Definition: int\n        :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流高度的最大值，单位：px。\n        :type Height: int\n        :param Width: 视频流宽度的最大值，单位：px。\n        :type Width: int\n        :param Size: 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。\n        :type Size: int\n        :param Duration: 视频时长，单位：秒。\n        :type Duration: float\n        :param Container: 容器类型，例如 m4a，mp4 等。\n        :type Container: str\n        :param Md5: 视频的 md5 值。\n        :type Md5: str\n        :param AudioStreamSet: 音频流信息。\n        :type AudioStreamSet: list of MediaAudioStreamItem\n        :param VideoStreamSet: 视频流信息。\n        :type VideoStreamSet: list of MediaVideoStreamItem\n        """
         self.Url = None
         self.Definition = None
         self.Bitrate = None
@@ -14775,11 +11855,7 @@ class MediaTransitionItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Duration: 转场持续时间，单位为秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
-        :type Duration: float
-        :param Transitions: 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
-        :type Transitions: list of TransitionOpertion
-        """
+        :param Duration: 转场持续时间，单位为秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。\n        :type Duration: float\n        :param Transitions: 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。\n        :type Transitions: list of TransitionOpertion\n        """
         self.Duration = None
         self.Transitions = None
 
@@ -14808,17 +11884,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Bitrate: 视频流的码率，单位：bps。
-        :type Bitrate: int
-        :param Height: 视频流的高度，单位：px。
-        :type Height: int
-        :param Width: 视频流的宽度，单位：px。
-        :type Width: int
-        :param Codec: 视频流的编码格式，例如 h264。
-        :type Codec: str
-        :param Fps: 帧率，单位：hz。
-        :type Fps: int
-        """
+        :param Bitrate: 视频流的码率，单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流的高度，单位：px。\n        :type Height: int\n        :param Width: 视频流的宽度，单位：px。\n        :type Width: int\n        :param Codec: 视频流的编码格式，例如 h264。\n        :type Codec: str\n        :param Fps: 帧率，单位：hz。\n        :type Fps: int\n        """
         self.Bitrate = None
         self.Height = None
         self.Width = None
@@ -14848,25 +11914,7 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容分析模板唯一标识。
-        :type Definition: int
-        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param ClassificationConfigure: 智能分类任务控制参数。
-        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfoForUpdate`
-        :param TagConfigure: 智能标签任务控制参数。
-        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfoForUpdate`
-        :param CoverConfigure: 智能封面任务控制参数。
-        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfoForUpdate`
-        :param FrameTagConfigure: 智能按帧标签任务控制参数。
-        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfoForUpdate`
-        :param HighlightConfigure: 智能精彩集锦任务控制参数。
-        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfoForUpdate`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 视频内容分析模板唯一标识。\n        :type Definition: int\n        :param Name: 视频内容分析模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param ClassificationConfigure: 智能分类任务控制参数。\n        :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfoForUpdate`\n        :param TagConfigure: 智能标签任务控制参数。\n        :type TagConfigure: :class:`tencentcloud.vod.v20180717.models.TagConfigureInfoForUpdate`\n        :param CoverConfigure: 智能封面任务控制参数。\n        :type CoverConfigure: :class:`tencentcloud.vod.v20180717.models.CoverConfigureInfoForUpdate`\n        :param FrameTagConfigure: 智能按帧标签任务控制参数。\n        :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfoForUpdate`\n        :param HighlightConfigure: 智能精彩集锦任务控制参数。\n        :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfoForUpdate`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -14914,9 +11962,7 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -14931,33 +11977,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频内容识别模板唯一标识。
-        :type Definition: int
-        :param Name: 视频内容识别模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param HeadTailConfigure: 视频片头片尾识别控制参数。
-        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfoForUpdate`
-        :param SegmentConfigure: 视频拆条识别控制参数。
-        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfoForUpdate`
-        :param FaceConfigure: 人脸识别控制参数。
-        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfoForUpdate`
-        :param OcrFullTextConfigure: 文本全文识别控制参数。
-        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfoForUpdate`
-        :param OcrWordsConfigure: 文本关键词识别控制参数。
-        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfoForUpdate`
-        :param AsrFullTextConfigure: 语音全文识别控制参数。
-        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
-        :param AsrWordsConfigure: 语音关键词识别控制参数。
-        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`
-        :param ObjectConfigure: 物体识别控制参数。
-        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
-        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Definition: 视频内容识别模板唯一标识。\n        :type Definition: int\n        :param Name: 视频内容识别模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param HeadTailConfigure: 视频片头片尾识别控制参数。\n        :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfoForUpdate`\n        :param SegmentConfigure: 视频拆条识别控制参数。\n        :type SegmentConfigure: :class:`tencentcloud.vod.v20180717.models.SegmentConfigureInfoForUpdate`\n        :param FaceConfigure: 人脸识别控制参数。\n        :type FaceConfigure: :class:`tencentcloud.vod.v20180717.models.FaceConfigureInfoForUpdate`\n        :param OcrFullTextConfigure: 文本全文识别控制参数。\n        :type OcrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.OcrFullTextConfigureInfoForUpdate`\n        :param OcrWordsConfigure: 文本关键词识别控制参数。\n        :type OcrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.OcrWordsConfigureInfoForUpdate`\n        :param AsrFullTextConfigure: 语音全文识别控制参数。\n        :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`\n        :param AsrWordsConfigure: 语音关键词识别控制参数。\n        :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`\n        :param ObjectConfigure: 物体识别控制参数。\n        :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`\n        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -15019,9 +12039,7 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15036,29 +12054,13 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 自适应转码模板唯一标识。
-        :type Definition: int
-        :param Name: 模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
-        :type Format: str
-        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
+        :param Definition: 自适应转码模板唯一标识。\n        :type Definition: int\n        :param Name: 模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Format: 自适应转码格式，取值范围：
+<li>HLS。</li>\n        :type Format: str\n        :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
 <li>0：否，</li>
-<li>1：是。</li>
-        :type DisableHigherVideoBitrate: int
-        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
+<li>1：是。</li>\n        :type DisableHigherVideoBitrate: int\n        :param DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
 <li>0：否，</li>
-<li>1：是。</li>
-        :type DisableHigherVideoResolution: int
-        :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
-注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
-        :type StreamInfos: list of AdaptiveStreamTemplate
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>1：是。</li>\n        :type DisableHigherVideoResolution: int\n        :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
+注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。\n        :type StreamInfos: list of AdaptiveStreamTemplate\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Format = None
@@ -15099,9 +12101,7 @@ class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15116,40 +12116,20 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转动图模板唯一标识。
-        :type Definition: int
-        :param Name: 转动图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Definition: 转动图模板唯一标识。\n        :type Definition: int\n        :param Name: 转动图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 动图格式，取值为 gif 和 webp。
-        :type Format: str
-        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
-        :type Fps: int
-        :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。
-        :type Quality: float
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 动图格式，取值为 gif 和 webp。\n        :type Format: str\n        :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。\n        :type Fps: int\n        :param Quality: 图片质量，取值范围：[1, 100]，默认值为 75。\n        :type Quality: float\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -15189,9 +12169,7 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15206,13 +12184,7 @@ class ModifyClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClassId: 分类 ID
-        :type ClassId: int
-        :param ClassName: 分类名称。长度限制：1-64 个字符。
-        :type ClassName: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param ClassId: 分类 ID\n        :type ClassId: int\n        :param ClassName: 分类名称。长度限制：1-64 个字符。\n        :type ClassName: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.ClassId = None
         self.ClassName = None
         self.SubAppId = None
@@ -15238,9 +12210,7 @@ class ModifyClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15255,33 +12225,11 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容智能识别模板唯一标识。
-        :type Definition: int
-        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param TerrorismConfigure: 令人不安全的信息的控制参数。
-        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
-        :param PornConfigure: 令人反感的信息的控制参数。
-        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
-        :param PoliticalConfigure: 令人不适宜的信息控制参数。
-        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`
-        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
+        :param Definition: 内容智能识别模板唯一标识。\n        :type Definition: int\n        :param Name: 内容智能识别模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param TerrorismConfigure: 令人不安全的信息的控制参数。\n        :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`\n        :param PornConfigure: 令人反感的信息的控制参数。\n        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`\n        :param PoliticalConfigure: 令人不适宜的信息控制参数。\n        :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`\n        :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
-<li>涉毒违法。</li>
-        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
-        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
-        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
-        :type ScreenshotInterval: float
-        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对智能识别结果进行人工识别）的开关。
+<li>涉毒违法。</li>\n        :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`\n        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。\n        :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`\n        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。\n        :type ScreenshotInterval: float\n        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对智能识别结果进行人工识别）的开关。
 <li>ON：是；</li>
-<li>OFF：否。</li>
-        :type ReviewWallSwitch: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>OFF：否。</li>\n        :type ReviewWallSwitch: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -15333,9 +12281,7 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15352,18 +12298,8 @@ class ModifyEventConfigRequest(AbstractModel):
         """
         :param Mode: 接收事件通知的方式。
 <li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
-<li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
-        :type Mode: str
-        :param NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779) 接收方式时，用于接收 3.0 格式回调的地址。
-注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。
-        :type NotificationUrl: str
-        :param UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type UploadMediaCompleteEventSwitch: str
-        :param DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
-        :type DeleteMediaCompleteEventSwitch: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>\n        :type Mode: str\n        :param NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779) 接收方式时，用于接收 3.0 格式回调的地址。
+注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。\n        :type NotificationUrl: str\n        :param UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。\n        :type UploadMediaCompleteEventSwitch: str\n        :param DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。\n        :type DeleteMediaCompleteEventSwitch: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Mode = None
         self.NotificationUrl = None
         self.UploadMediaCompleteEventSwitch = None
@@ -15393,9 +12329,7 @@ class ModifyEventConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15410,26 +12344,12 @@ class ModifyHeadTailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 片头片尾模板号。
-        :type Definition: int
-        :param Name: 模板名，长度限制 64 个字符。不传代表不修改。
-        :type Name: str
-        :param Comment: 模板描述，长度限制 256 个字符。不传代表不修改，传空代表清空。
-        :type Comment: str
-        :param HeadCandidateSet: 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
-        :type HeadCandidateSet: list of str
-        :param TailCandidateSet: 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
-        :type TailCandidateSet: list of str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param Definition: 片头片尾模板号。\n        :type Definition: int\n        :param Name: 模板名，长度限制 64 个字符。不传代表不修改。\n        :type Name: str\n        :param Comment: 模板描述，长度限制 256 个字符。不传代表不修改，传空代表清空。\n        :type Comment: str\n        :param HeadCandidateSet: 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。\n        :type HeadCandidateSet: list of str\n        :param TailCandidateSet: 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。\n        :type TailCandidateSet: list of str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
 <li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
 <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值为不修改。
-        :type FillType: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值为不修改。\n        :type FillType: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -15463,9 +12383,7 @@ class ModifyHeadTailTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15480,41 +12398,17 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 雪碧图模板唯一标识。
-        :type Definition: int
-        :param Name: 雪碧图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Width: 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
-        :type Width: int
-        :param Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+        :param Definition: 雪碧图模板唯一标识。\n        :type Definition: int\n        :param Name: 雪碧图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Width: 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。\n        :type Width: int\n        :param Height: 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param SampleType: 采样类型，取值：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param SampleType: 采样类型，取值：
 <li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
-        :type SampleType: str
-        :param SampleInterval: 采样间隔。
+<li>Time：按时间间隔。</li>\n        :type SampleType: str\n        :param SampleInterval: 采样间隔。
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
-        :type SampleInterval: int
-        :param RowCount: 雪碧图中小图的行数。
-        :type RowCount: int
-        :param ColumnCount: 雪碧图中小图的列数。
-        :type ColumnCount: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>\n        :type SampleInterval: int\n        :param RowCount: 雪碧图中小图的行数。\n        :type RowCount: int\n        :param ColumnCount: 雪碧图中小图的列数。\n        :type ColumnCount: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-默认值：black 。
-        :type FillType: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+默认值：black 。\n        :type FillType: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -15558,9 +12452,7 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15575,42 +12467,10 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件唯一标识。
-        :type FileId: str
-        :param Name: 媒体文件名称，最长 64 个字符。
-        :type Name: str
-        :param Description: 媒体文件描述，最长 128 个字符。
-        :type Description: str
-        :param ClassId: 媒体文件分类 ID。
-        :type ClassId: int
-        :param ExpireTime: 媒体文件过期时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。
-        :type ExpireTime: str
-        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。
-        :type CoverData: str
-        :param AddKeyFrameDescs: 新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
-        :type AddKeyFrameDescs: list of MediaKeyFrameDescItem
-        :param DeleteKeyFrameDescs: 要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
-        :type DeleteKeyFrameDescs: list of float
-        :param ClearKeyFrameDescs: 取值 1 表示清空视频打点信息，其他值无意义。
-同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。
-        :type ClearKeyFrameDescs: int
-        :param AddTags: 新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 16 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
-        :type AddTags: list of str
-        :param DeleteTags: 要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
-        :type DeleteTags: list of str
-        :param ClearTags: 取值 1 表示清空媒体文件所有标签，其他值无意义。
-同一个请求里，ClearTags 与 AddTags 不能同时出现。
-        :type ClearTags: int
-        :param AddSubtitles: 新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
-        :type AddSubtitles: list of MediaSubtitleInput
-        :param DeleteSubtitleIds: 待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
-        :type DeleteSubtitleIds: list of str
-        :param ClearSubtitles: 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
-同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
-        :type ClearSubtitles: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 媒体文件唯一标识。\n        :type FileId: str\n        :param Name: 媒体文件名称，最长 64 个字符。\n        :type Name: str\n        :param Description: 媒体文件描述，最长 128 个字符。\n        :type Description: str\n        :param ClassId: 媒体文件分类 ID。\n        :type ClassId: int\n        :param ExpireTime: 媒体文件过期时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。\n        :type ExpireTime: str\n        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。\n        :type CoverData: str\n        :param AddKeyFrameDescs: 新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。\n        :type AddKeyFrameDescs: list of MediaKeyFrameDescItem\n        :param DeleteKeyFrameDescs: 要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。\n        :type DeleteKeyFrameDescs: list of float\n        :param ClearKeyFrameDescs: 取值 1 表示清空视频打点信息，其他值无意义。
+同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。\n        :type ClearKeyFrameDescs: int\n        :param AddTags: 新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 16 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。\n        :type AddTags: list of str\n        :param DeleteTags: 要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。\n        :type DeleteTags: list of str\n        :param ClearTags: 取值 1 表示清空媒体文件所有标签，其他值无意义。
+同一个请求里，ClearTags 与 AddTags 不能同时出现。\n        :type ClearTags: int\n        :param AddSubtitles: 新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。\n        :type AddSubtitles: list of MediaSubtitleInput\n        :param DeleteSubtitleIds: 待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。\n        :type DeleteSubtitleIds: list of str\n        :param ClearSubtitles: 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
+同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。\n        :type ClearSubtitles: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.Name = None
         self.Description = None
@@ -15673,13 +12533,7 @@ class ModifyMediaInfoResponse(AbstractModel):
     def __init__(self):
         """
         :param CoverUrl: 新的视频封面 URL。
-* 注意：仅当请求携带 CoverData 时此返回值有效。 *
-        :type CoverUrl: str
-        :param AddedSubtitleSet: 新增的字幕信息。
-        :type AddedSubtitleSet: list of MediaSubtitleItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+* 注意：仅当请求携带 CoverData 时此返回值有效。 *\n        :type CoverUrl: str\n        :param AddedSubtitleSet: 新增的字幕信息。\n        :type AddedSubtitleSet: list of MediaSubtitleItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CoverUrl = None
         self.AddedSubtitleSet = None
         self.RequestId = None
@@ -15703,24 +12557,10 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 素材 ID。
-        :type PersonId: str
-        :param Name: 名称，长度限制：128 个字符。
-        :type Name: str
-        :param Description: 描述，长度限制：1024 个字符。
-        :type Description: str
-        :param Usages: 素材应用场景，可选值：
+        :param PersonId: 素材 ID。\n        :type PersonId: str\n        :param Name: 名称，长度限制：128 个字符。\n        :type Name: str\n        :param Description: 描述，长度限制：1024 个字符。\n        :type Description: str\n        :param Usages: 素材应用场景，可选值：
 1. Recognition：用于内容识别，等价于 Recognition.Face。
 2. Review：用于不适宜的内容识别，等价于 Review.Face。
-3. All：用于内容识别、不适宜的内容识别，等价于 1+2。
-        :type Usages: list of str
-        :param FaceOperationInfo: 五官操作信息。
-        :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
-        :param TagOperationInfo: 标签操作信息。
-        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+3. All：用于内容识别、不适宜的内容识别，等价于 1+2。\n        :type Usages: list of str\n        :param FaceOperationInfo: 五官操作信息。\n        :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`\n        :param TagOperationInfo: 标签操作信息。\n        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.PersonId = None
         self.Name = None
         self.Description = None
@@ -15758,14 +12598,8 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: 素材信息。
-        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
-        :param FailFaceInfoSet: 处理失败的五官信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailFaceInfoSet: list of AiSampleFailFaceInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Person: 素材信息。\n        :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`\n        :param FailFaceInfoSet: 处理失败的五官信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailFaceInfoSet: list of AiSampleFailFaceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Person = None
         self.FailFaceInfoSet = None
         self.RequestId = None
@@ -15791,51 +12625,29 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图模板唯一标识。
-        :type Definition: int
-        :param Name: 采样截图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Definition: 采样截图模板唯一标识。\n        :type Definition: int\n        :param Name: 采样截图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param SampleType: 采样截图类型，取值：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param SampleType: 采样截图类型，取值：
 <li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
-        :type SampleType: str
-        :param SampleInterval: 采样间隔。
+<li>Time：按时间间隔。</li>\n        :type SampleType: str\n        :param SampleInterval: 采样间隔。
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
-        :type SampleInterval: int
-        :param Format: 图片格式，取值为 jpg 和 png。
-        :type Format: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>\n        :type SampleInterval: int\n        :param Format: 图片格式，取值为 jpg 和 png。\n        :type Format: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
-        :type FillType: str
-        """
+默认值：black 。\n        :type FillType: str\n        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -15877,9 +12689,7 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15894,43 +12704,25 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图模板唯一标识。
-        :type Definition: int
-        :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+        :param Definition: 指定时间点截图模板唯一标识。\n        :type Definition: int\n        :param Name: 指定时间点截图模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 图片格式，取值可以为 jpg 和 png。
-        :type Format: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 图片格式，取值可以为 jpg 和 png。\n        :type Format: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
-        :type FillType: str
-        """
+默认值：black 。\n        :type FillType: str\n        """
         self.Definition = None
         self.Name = None
         self.Width = None
@@ -15968,9 +12760,7 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -15985,13 +12775,7 @@ class ModifySubAppIdInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 子应用 ID。
-        :type SubAppId: int
-        :param Name: 子应用名称，长度限制：40个字符。
-        :type Name: str
-        :param Description: 子应用简介，长度限制： 300个字符。
-        :type Description: str
-        """
+        :param SubAppId: 子应用 ID。\n        :type SubAppId: int\n        :param Name: 子应用名称，长度限制：40个字符。\n        :type Name: str\n        :param Description: 子应用简介，长度限制： 300个字符。\n        :type Description: str\n        """
         self.SubAppId = None
         self.Name = None
         self.Description = None
@@ -16017,9 +12801,7 @@ class ModifySubAppIdInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -16034,15 +12816,11 @@ class ModifySubAppIdStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 子应用 ID。
-        :type SubAppId: int
-        :param Status: 子应用状态，取值范围：
+        :param SubAppId: 子应用 ID。\n        :type SubAppId: int\n        :param Status: 子应用状态，取值范围：
 <li>On：启用。</li>
 <li>Off：停用。</li>
 <li>Destroyed：销毁。</li>
-当前状态如果是 Destoying ，不能进行启用操作，需要等待销毁完成后才能重新启用。
-        :type Status: str
-        """
+当前状态如果是 Destoying ，不能进行启用操作，需要等待销毁完成后才能重新启用。\n        :type Status: str\n        """
         self.SubAppId = None
         self.Status = None
 
@@ -16066,9 +12844,7 @@ class ModifySubAppIdStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -16083,32 +12859,12 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 播放器配置名称。
-        :type Name: str
-        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
+        :param Name: 播放器配置名称。\n        :type Name: str\n        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
-<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
-        :type DrmSwitch: str
-        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。
-        :type AdaptiveDynamicStreamingDefinition: int
-        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
-        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfoForUpdate`
-        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
-        :type ImageSpriteDefinition: int
-        :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字。
-        :type ResolutionNames: list of ResolutionNameInfo
-        :param Domain: 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
-        :type Domain: str
-        :param Scheme: 播放时使用的 Scheme。取值范围：
+<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>\n        :type DrmSwitch: str\n        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。\n        :type AdaptiveDynamicStreamingDefinition: int\n        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。\n        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfoForUpdate`\n        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。\n        :type ImageSpriteDefinition: int\n        :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字。\n        :type ResolutionNames: list of ResolutionNameInfo\n        :param Domain: 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。\n        :type Domain: str\n        :param Scheme: 播放时使用的 Scheme。取值范围：
 <li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
 <li>HTTP；</li>
-<li>HTTPS。</li>
-        :type Scheme: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>HTTPS。</li>\n        :type Scheme: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -16155,9 +12911,7 @@ class ModifySuperPlayerConfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -16172,31 +12926,11 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转码模板唯一标识。
-        :type Definition: int
-        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
-        :type Container: str
-        :param Name: 转码模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param RemoveVideo: 是否去除视频数据，可选值：
+        :param Definition: 转码模板唯一标识。\n        :type Definition: int\n        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。\n        :type Container: str\n        :param Name: 转码模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param RemoveVideo: 是否去除视频数据，可选值：
 <li>0：保留</li>
-<li>1：去除</li>
-        :type RemoveVideo: int
-        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>1：去除</li>\n        :type RemoveVideo: int\n        :param RemoveAudio: 是否去除音频数据，可选值：
 <li>0：保留</li>
-<li>1：去除</li>
-        :type RemoveAudio: int
-        :param VideoTemplate: 视频流配置参数。
-        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
-        :param AudioTemplate: 音频流配置参数。
-        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
-        :param TEHDConfig: 极速高清转码参数。
-        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>1：去除</li>\n        :type RemoveAudio: int\n        :param VideoTemplate: 视频流配置参数。\n        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`\n        :param AudioTemplate: 音频流配置参数。\n        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`\n        :param TEHDConfig: 极速高清转码参数。\n        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Container = None
         self.Name = None
@@ -16242,9 +12976,7 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -16259,35 +12991,15 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 水印模板唯一标识。
-        :type Definition: int
-        :param Name: 水印模板名称，长度限制：64 个字符。
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param CoordinateOrigin: 原点位置，可选值：
+        :param Definition: 水印模板唯一标识。\n        :type Definition: int\n        :param Name: 水印模板名称，长度限制：64 个字符。\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param CoordinateOrigin: 原点位置，可选值：
 <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
 <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
-        :type CoordinateOrigin: str
-        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+<li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>\n        :type CoordinateOrigin: str\n        :param XPos: 水印原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
-        :type XPos: str
-        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 px 结尾，表示水印 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>\n        :type XPos: str\n        :param YPos: 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
-        :type YPos: str
-        :param ImageTemplate: 图片水印模板，该字段仅对图片水印模板有效。
-        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInputForUpdate`
-        :param TextTemplate: 文字水印模板，该字段仅对文字水印模板有效。
-        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInputForUpdate`
-        :param SvgTemplate: SVG 水印模板，该字段仅对 SVG 水印模板有效。
-        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInputForUpdate`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+<li>当字符串以 px 结尾，表示水印 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>\n        :type YPos: str\n        :param ImageTemplate: 图片水印模板，该字段仅对图片水印模板有效。\n        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkInputForUpdate`\n        :param TextTemplate: 文字水印模板，该字段仅对文字水印模板有效。\n        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInputForUpdate`\n        :param SvgTemplate: SVG 水印模板，该字段仅对 SVG 水印模板有效。\n        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInputForUpdate`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Definition = None
         self.Name = None
         self.Comment = None
@@ -16333,11 +13045,7 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageUrl: 图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有值。
-        :type ImageUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ImageUrl: 图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有值。\n        :type ImageUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ImageUrl = None
         self.RequestId = None
 
@@ -16354,9 +13062,7 @@ class ModifyWordSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Keyword: 关键词，长度限制：128 个字符。
-        :type Keyword: str
-        :param Usages: <b>关键词应用场景，可选值：</b>
+        :param Keyword: 关键词，长度限制：128 个字符。\n        :type Keyword: str\n        :param Usages: <b>关键词应用场景，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
 2. Recognition.Asr：通过音频识别技术，进行内容识别；
 3. Review.Ocr：通过光学字符识别技术，进行不适宜的内容识别；
@@ -16364,13 +13070,7 @@ class ModifyWordSampleRequest(AbstractModel):
 <b>可合并简写为：</b>
 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
-7. All：包含以上全部，等价于 1+2+3+4。
-        :type Usages: list of str
-        :param TagOperationInfo: 标签操作信息。
-        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+7. All：包含以上全部，等价于 1+2+3+4。\n        :type Usages: list of str\n        :param TagOperationInfo: 标签操作信息。\n        :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Keyword = None
         self.Usages = None
         self.TagOperationInfo = None
@@ -16400,9 +13100,7 @@ class ModifyWordSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -16419,39 +13117,25 @@ class MosaicInput(AbstractModel):
         """
         :param CoordinateOrigin: 原点位置，目前仅支持：
 <li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
-默认值：TopLeft。
-        :type CoordinateOrigin: str
-        :param XPos: 马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
+默认值：TopLeft。\n        :type CoordinateOrigin: str\n        :param XPos: 马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
 <li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
-默认值：0px。
-        :type XPos: str
-        :param YPos: 马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
+默认值：0px。\n        :type XPos: str\n        :param YPos: 马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
-默认值：0px。
-        :type YPos: str
-        :param Width: 马赛克的宽度。支持 %、px 两种格式：
+默认值：0px。\n        :type YPos: str\n        :param Width: 马赛克的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
 <li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
-默认值：10%。
-        :type Width: str
-        :param Height: 马赛克的高度。支持 %、px 两种格式：
+默认值：10%。\n        :type Width: str\n        :param Height: 马赛克的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
 <li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
-默认值：10%。
-        :type Height: str
-        :param StartTimeOffset: 马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
+默认值：10%。\n        :type Height: str\n        :param StartTimeOffset: 马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
 <li>不填或填0，表示马赛克从画面开始就出现；</li>
 <li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li>
-<li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 马赛克的结束时间偏移，单位：秒。
+<li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 马赛克的结束时间偏移，单位：秒。
 <li>不填或填0，表示马赛克持续到画面结束；</li>
 <li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
-<li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
-        :type EndTimeOffset: float
-        """
+<li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>\n        :type EndTimeOffset: float\n        """
         self.CoordinateOrigin = None
         self.XPos = None
         self.YPos = None
@@ -16487,15 +13171,11 @@ class ObjectConfigureInfo(AbstractModel):
         """
         :param Switch: 物体识别任务开关，可选值：
 <li>ON：开启智能物体识别任务；</li>
-<li>OFF：关闭智能物体识别任务。</li>
-        :type Switch: str
-        :param ObjectLibrary: 物体库选择，可选值：
+<li>OFF：关闭智能物体识别任务。</li>\n        :type Switch: str\n        :param ObjectLibrary: 物体库选择，可选值：
 <li>Default：使用默认物体库；</li>
 <li>UserDefine：使用用户自定义物体库。</li>
 <li>All：同时使用默认物体库和用户自定义物体库。</li>
-默认值： All，同时使用默认物体库和用户自定义物体库。
-        :type ObjectLibrary: str
-        """
+默认值： All，同时使用默认物体库和用户自定义物体库。\n        :type ObjectLibrary: str\n        """
         self.Switch = None
         self.ObjectLibrary = None
 
@@ -16521,14 +13201,10 @@ class ObjectConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 物体识别任务开关，可选值：
 <li>ON：开启智能物体识别任务；</li>
-<li>OFF：关闭智能物体识别任务。</li>
-        :type Switch: str
-        :param ObjectLibrary: 物体库选择，可选值：
+<li>OFF：关闭智能物体识别任务。</li>\n        :type Switch: str\n        :param ObjectLibrary: 物体库选择，可选值：
 <li>Default：使用默认物体库；</li>
 <li>UserDefine：使用用户自定义物体库。</li>
-<li>All：同时使用默认物体库和用户自定义物体库。</li>
-        :type ObjectLibrary: str
-        """
+<li>All：同时使用默认物体库和用户自定义物体库。</li>\n        :type ObjectLibrary: str\n        """
         self.Switch = None
         self.ObjectLibrary = None
 
@@ -16554,9 +13230,7 @@ class OcrFullTextConfigureInfo(AbstractModel):
         """
         :param Switch: 文本全文识别任务开关，可选值：
 <li>ON：开启智能文本全文识别任务；</li>
-<li>OFF：关闭智能文本全文识别任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能文本全文识别任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -16580,9 +13254,7 @@ class OcrFullTextConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 文本全文识别任务开关，可选值：
 <li>ON：开启智能文本全文识别任务；</li>
-<li>OFF：关闭智能文本全文识别任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能文本全文识别任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -16606,12 +13278,8 @@ class OcrWordsConfigureInfo(AbstractModel):
         """
         :param Switch: 文本关键词识别任务开关，可选值：
 <li>ON：开启文本关键词识别任务；</li>
-<li>OFF：关闭文本关键词识别任务。</li>
-        :type Switch: str
-        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        """
+<li>OFF：关闭文本关键词识别任务。</li>\n        :type Switch: str\n        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        """
         self.Switch = None
         self.LabelSet = None
 
@@ -16637,12 +13305,8 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 文本关键词识别任务开关，可选值：
 <li>ON：开启文本关键词识别任务；</li>
-<li>OFF：关闭文本关键词识别任务。</li>
-        :type Switch: str
-        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        """
+<li>OFF：关闭文本关键词识别任务。</li>\n        :type Switch: str\n        :param LabelSet: 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        """
         self.Switch = None
         self.LabelSet = None
 
@@ -16668,22 +13332,16 @@ class OutputAudioStream(AbstractModel):
         """
         :param Codec: 音频流的编码格式，可选值：
 <li>libfdk_aac：适合 mp4 文件。</li>
-默认值：libfdk_aac。
-        :type Codec: str
-        :param SampleRate: 音频流的采样率，可选值：
+默认值：libfdk_aac。\n        :type Codec: str\n        :param SampleRate: 音频流的采样率，可选值：
 <li>16000</li>
 <li>32000</li>
 <li>44100</li>
 <li>48000</li>
 单位：Hz。
-默认值：16000。
-        :type SampleRate: int
-        :param AudioChannel: 音频声道数，可选值：
+默认值：16000。\n        :type SampleRate: int\n        :param AudioChannel: 音频声道数，可选值：
 <li>1：单声道 。</li>
 <li>2：双声道</li>
-默认值：2。
-        :type AudioChannel: int
-        """
+默认值：2。\n        :type AudioChannel: int\n        """
         self.Codec = None
         self.SampleRate = None
         self.AudioChannel = None
@@ -16711,12 +13369,8 @@ class OutputVideoStream(AbstractModel):
         """
         :param Codec: 视频流的编码格式，可选值：
 <li>libx264：H.264 编码 </li>
-默认值：libx264。
-        :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
-默认值：0，表示和第一个视频轨的第一个视频片段的视频帧率一致。
-        :type Fps: int
-        """
+默认值：libx264。\n        :type Codec: str\n        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
+默认值：0，表示和第一个视频轨的第一个视频片段的视频帧率一致。\n        :type Fps: int\n        """
         self.Codec = None
         self.Fps = None
 
@@ -16740,13 +13394,9 @@ class ParseStreamingManifestRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaManifestContent: 待解析的索引文件内容。
-        :type MediaManifestContent: str
-        :param ManifestType: 视频索引文件格式。默认 m3u8 格式。
+        :param MediaManifestContent: 待解析的索引文件内容。\n        :type MediaManifestContent: str\n        :param ManifestType: 视频索引文件格式。默认 m3u8 格式。
 <li>m3u8</li>
-<li>mpd</li>
-        :type ManifestType: str
-        """
+<li>mpd</li>\n        :type ManifestType: str\n        """
         self.MediaManifestContent = None
         self.ManifestType = None
 
@@ -16770,11 +13420,7 @@ class ParseStreamingManifestResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaSegmentSet: 分片文件列表。
-        :type MediaSegmentSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MediaSegmentSet: 分片文件列表。\n        :type MediaSegmentSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MediaSegmentSet = None
         self.RequestId = None
 
@@ -16791,9 +13437,7 @@ class PlayStatFileInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Date: 播放统计数据所属日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type Date: str
-        :param Url: 播放统计文件的 URL 地址。播放统计文件内容为：
+        :param Date: 播放统计数据所属日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type Date: str\n        :param Url: 播放统计文件的 URL 地址。播放统计文件内容为：
 <li> date：播放日期。</li>
 <li> file_id：视频文件 ID。</li>
 <li> ip_count：去重后的客户端 IP 数。</li>
@@ -16803,9 +13447,7 @@ class PlayStatFileInfo(AbstractModel):
 <li> mobile_play_times：移动端播放次数。</li>
 <li> iphone_play_times：iPhone 端播放次数。</li>
 <li> android_play_times：Android 端播放次数。</li>
-<li> host_name	域名。</li>
-        :type Url: str
-        """
+<li> host_name	域名。</li>\n        :type Url: str\n        """
         self.Date = None
         self.Url = None
 
@@ -16829,39 +13471,15 @@ class PlayerConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 播放器配置名字。
-        :type Name: str
-        :param Type: 播放器配置类型，取值范围：
+        :param Name: 播放器配置名字。\n        :type Name: str\n        :param Type: 播放器配置类型，取值范围：
 <li>Preset：系统预置配置；</li>
-<li>Custom：用户自定义配置。</li>
-        :type Type: str
-        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
+<li>Custom：用户自定义配置。</li>\n        :type Type: str\n        :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
-<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
-        :type DrmSwitch: str
-        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。
-        :type AdaptiveDynamicStreamingDefinition: int
-        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
-        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
-        :type ImageSpriteDefinition: int
-        :param ResolutionNameSet: 播放器对不于不同分辨率的子流展示名字。
-        :type ResolutionNameSet: list of ResolutionNameInfo
-        :param CreateTime: 播放器配置创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type CreateTime: str
-        :param UpdateTime: 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type UpdateTime: str
-        :param Domain: 播放时使用的域名。值为 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
-        :type Domain: str
-        :param Scheme: 播放时使用的 Scheme。取值范围：
+<li>OFF：关闭，表示播放未加密的自适应码流输出。</li>\n        :type DrmSwitch: str\n        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。\n        :type AdaptiveDynamicStreamingDefinition: int\n        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`\n        :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。\n        :type ImageSpriteDefinition: int\n        :param ResolutionNameSet: 播放器对不于不同分辨率的子流展示名字。\n        :type ResolutionNameSet: list of ResolutionNameInfo\n        :param CreateTime: 播放器配置创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type CreateTime: str\n        :param UpdateTime: 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type UpdateTime: str\n        :param Domain: 播放时使用的域名。值为 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。\n        :type Domain: str\n        :param Scheme: 播放时使用的 Scheme。取值范围：
 <li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
 <li>HTTP；</li>
-<li>HTTPS。</li>
-        :type Scheme: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        """
+<li>HTTPS。</li>\n        :type Scheme: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        """
         self.Name = None
         self.Type = None
         self.DrmSwitch = None
@@ -16914,13 +13532,7 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 语音鉴政任务开关，可选值：
 <li>ON：开启语音鉴政任务；</li>
-<li>OFF：关闭语音鉴政任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭语音鉴政任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -16948,13 +13560,7 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 语音鉴政任务开关，可选值：
 <li>ON：开启语音鉴政任务；</li>
-<li>OFF：关闭语音鉴政任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭语音鉴政任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -16981,15 +13587,9 @@ class PoliticalConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param ImgReviewInfo: 画面鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfo`
-        :param AsrReviewInfo: 语音鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfo`
-        :param OcrReviewInfo: 文本鉴政控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfo`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfo`\n        :param AsrReviewInfo: 语音鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfo`\n        :param OcrReviewInfo: 文本鉴政控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfo`\n        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -17021,13 +13621,7 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param ImgReviewInfo: 画面鉴政控制参数。
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: 语音鉴政控制参数。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 文本鉴政控制参数。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfoForUpdate`
-        """
+        :param ImgReviewInfo: 画面鉴政控制参数。\n        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalImgReviewTemplateInfoForUpdate`\n        :param AsrReviewInfo: 语音鉴政控制参数。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalAsrReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: 文本鉴政控制参数。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PoliticalOcrReviewTemplateInfoForUpdate`\n        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -17061,9 +13655,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 画面鉴政任务开关，可选值：
 <li>ON：开启画面鉴政任务；</li>
-<li>OFF：关闭画面鉴政任务。</li>
-        :type Switch: str
-        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>OFF：关闭画面鉴政任务。</li>\n        :type Switch: str\n        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
 <li>politician：政治人物；</li>
 <li>entertainment：娱乐人物；</li>
@@ -17071,13 +13663,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 <li>entrepreneur：商业人物；</li>
 <li>scholar：教育学者；</li>
 <li>celebrity：知名人物；</li>
-<li>military：军事人物。</li>
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>military：军事人物。</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -17107,9 +13693,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 画面鉴政任务开关，可选值：
 <li>ON：开启画面鉴政任务；</li>
-<li>OFF：关闭画面鉴政任务。</li>
-        :type Switch: str
-        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>OFF：关闭画面鉴政任务。</li>\n        :type Switch: str\n        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
 <li>politician：政治人物；</li>
 <li>entertainment：娱乐人物；</li>
@@ -17117,13 +13701,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>entrepreneur：商业人物；</li>
 <li>scholar：教育学者；</li>
 <li>celebrity：知名人物；</li>
-<li>military：军事人物。</li>
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>military：军事人物。</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -17153,13 +13731,7 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 文本鉴政任务开关，可选值：
 <li>ON：开启文本鉴政任务；</li>
-<li>OFF：关闭文本鉴政任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本鉴政任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -17187,13 +13759,7 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 文本鉴政任务开关，可选值：
 <li>ON：开启文本鉴政任务；</li>
-<li>OFF：关闭文本鉴政任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本鉴政任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -17221,13 +13787,7 @@ class PornAsrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 语音鉴黄任务开关，可选值：
 <li>ON：开启语音鉴黄任务；</li>
-<li>OFF：关闭语音鉴黄任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭语音鉴黄任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -17255,13 +13815,7 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 语音鉴黄任务开关，可选值：
 <li>ON：开启语音鉴黄任务；</li>
-<li>OFF：关闭语音鉴黄任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭语音鉴黄任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -17288,15 +13842,9 @@ class PornConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param ImgReviewInfo: 画面鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfo`
-        :param AsrReviewInfo: 语音鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfo`
-        :param OcrReviewInfo: 文本鉴黄控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfo`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfo`\n        :param AsrReviewInfo: 语音鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfo`\n        :param OcrReviewInfo: 文本鉴黄控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfo`\n        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -17328,13 +13876,7 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param ImgReviewInfo: 画面鉴黄控制参数。
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: 语音鉴黄控制参数。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 文本鉴黄控制参数。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfoForUpdate`
-        """
+        :param ImgReviewInfo: 画面鉴黄控制参数。\n        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornImgReviewTemplateInfoForUpdate`\n        :param AsrReviewInfo: 语音鉴黄控制参数。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornAsrReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: 文本鉴黄控制参数。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.PornOcrReviewTemplateInfoForUpdate`\n        """
         self.ImgReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -17368,19 +13910,11 @@ class PornImgReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 画面鉴黄任务开关，可选值：
 <li>ON：开启画面鉴黄任务；</li>
-<li>OFF：关闭画面鉴黄任务。</li>
-        :type Switch: str
-        :param LabelSet: 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>OFF：关闭画面鉴黄任务。</li>\n        :type Switch: str\n        :param LabelSet: 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>porn：色情；</li>
 <li>vulgar：低俗；</li>
 <li>intimacy：亲密行为；</li>
-<li>sexy：性感。</li>
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>sexy：性感。</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -17410,19 +13944,11 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 画面鉴黄任务开关，可选值：
 <li>ON：开启画面鉴黄任务；</li>
-<li>OFF：关闭画面鉴黄任务。</li>
-        :type Switch: str
-        :param LabelSet: 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>OFF：关闭画面鉴黄任务。</li>\n        :type Switch: str\n        :param LabelSet: 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>porn：色情；</li>
 <li>vulgar：低俗；</li>
 <li>intimacy：亲密行为；</li>
-<li>sexy：性感。</li>
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>sexy：性感。</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -17452,13 +13978,7 @@ class PornOcrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 文本鉴黄任务开关，可选值：
 <li>ON：开启文本鉴黄任务；</li>
-<li>OFF：关闭文本鉴黄任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本鉴黄任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -17486,13 +14006,7 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 文本鉴黄任务开关，可选值：
 <li>ON：开启文本鉴黄任务；</li>
-<li>OFF：关闭文本鉴黄任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本鉴黄任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -17518,51 +14032,19 @@ class ProcedureTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频处理任务 ID。
-        :type TaskId: str
-        :param Status: 任务流状态，取值：
+        :param TaskId: 视频处理任务 ID。\n        :type TaskId: str\n        :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
-        :type Status: str
-        :param ErrCode: 已弃用，请使用各个具体任务的 ErrCode。
-        :type ErrCode: int
-        :param Message: 已弃用，请使用各个具体任务的 Message。
-        :type Message: str
-        :param FileId: 媒体文件 ID
+<li>FINISH：已完成。</li>\n        :type Status: str\n        :param ErrCode: 已弃用，请使用各个具体任务的 ErrCode。\n        :type ErrCode: int\n        :param Message: 已弃用，请使用各个具体任务的 Message。\n        :type Message: str\n        :param FileId: 媒体文件 ID
 <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 FileId；</li>
-<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Id。</li>
-        :type FileId: str
-        :param FileName: 媒体文件名称
+<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Id。</li>\n        :type FileId: str\n        :param FileName: 媒体文件名称
 <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.Name；</li>
-<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Name。</li>
-        :type FileName: str
-        :param FileUrl: 媒体文件地址
+<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Name。</li>\n        :type FileName: str\n        :param FileUrl: 媒体文件地址
 <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.MediaUrl；</li>
-<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Url。</li>
-        :type FileUrl: str
-        :param MetaData: 原始视频的元信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param MediaProcessResultSet: 视频处理任务的执行状态与结果。
-        :type MediaProcessResultSet: list of MediaProcessTaskResult
-        :param AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。
-        :type AiContentReviewResultSet: list of AiContentReviewResult
-        :param AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。
-        :type AiAnalysisResultSet: list of AiAnalysisResult
-        :param AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
-        :type AiRecognitionResultSet: list of AiRecognitionResult
-        :param TasksPriority: 任务流的优先级，取值范围为 [-10, 10]。
-        :type TasksPriority: int
-        :param TasksNotifyMode: 任务流状态变更通知模式。
+<li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Url。</li>\n        :type FileUrl: str\n        :param MetaData: 原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param MediaProcessResultSet: 视频处理任务的执行状态与结果。\n        :type MediaProcessResultSet: list of MediaProcessTaskResult\n        :param AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。\n        :type AiContentReviewResultSet: list of AiContentReviewResult\n        :param AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。\n        :type AiAnalysisResultSet: list of AiAnalysisResult\n        :param AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。\n        :type AiRecognitionResultSet: list of AiRecognitionResult\n        :param TasksPriority: 任务流的优先级，取值范围为 [-10, 10]。\n        :type TasksPriority: int\n        :param TasksNotifyMode: 任务流状态变更通知模式。
 <li>Finish：只有当任务流全部执行完毕时，才发起一次事件通知；</li>
 <li>Change：只要任务流中每个子任务的状态发生变化，都进行事件通知；</li>
-<li>None：不接受该任务流回调。</li>
-        :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        """
+<li>None：不接受该任务流回调。</li>\n        :type TasksNotifyMode: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -17636,34 +14118,14 @@ class ProcedureTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 任务流名字。
-        :type Name: str
-        :param Type: 任务流模板类型，取值范围：
+        :param Name: 任务流名字。\n        :type Name: str\n        :param Type: 任务流模板类型，取值范围：
 <li>Preset：系统预置任务流模板；</li>
-<li>Custom：用户自定义任务流模板。</li>
-        :type Type: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param MediaProcessTask: 视频处理类型任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: AI 内容识别类型任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param MiniProgramPublishTask: 微信小程序发布任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+<li>Custom：用户自定义任务流模板。</li>\n        :type Type: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param MediaProcessTask: 视频处理类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: AI 内容识别类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`\n        :param MiniProgramPublishTask: 微信小程序发布任务参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Name = None
         self.Type = None
         self.Comment = None
@@ -17713,23 +14175,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件 ID。
-        :type FileId: str
-        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。
-        :type ProcedureName: str
-        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
-        :type TasksPriority: int
-        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
-        :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 媒体文件 ID。\n        :type FileId: str\n        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。\n        :type ProcedureName: str\n        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。\n        :type TasksPriority: int\n        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。\n        :type TasksNotifyMode: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.ProcedureName = None
         self.TasksPriority = None
@@ -17765,11 +14211,7 @@ class ProcessMediaByProcedureResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -17786,27 +14228,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InputInfo: API 已经<font color='red'>不再维护</font>。推荐使用的替代 API 请参考接口描述。
-        :type InputInfo: :class:`tencentcloud.vod.v20180717.models.MediaInputInfo`
-        :param OutputInfo: 输出文件 COS 路径信息。
-        :type OutputInfo: :class:`tencentcloud.vod.v20180717.models.MediaOutputInfo`
-        :param AiContentReviewTask: 视频内容审核类型任务参数。
-        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: 视频内容分析类型任务参数。
-        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: 视频内容识别类型任务参数。
-        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
-        :type TasksPriority: int
-        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
-        :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param InputInfo: API 已经<font color='red'>不再维护</font>。推荐使用的替代 API 请参考接口描述。\n        :type InputInfo: :class:`tencentcloud.vod.v20180717.models.MediaInputInfo`\n        :param OutputInfo: 输出文件 COS 路径信息。\n        :type OutputInfo: :class:`tencentcloud.vod.v20180717.models.MediaOutputInfo`\n        :param AiContentReviewTask: 视频内容审核类型任务参数。\n        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: 视频内容分析类型任务参数。\n        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: 视频内容识别类型任务参数。\n        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`\n        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。\n        :type TasksPriority: int\n        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。\n        :type TasksNotifyMode: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.InputInfo = None
         self.OutputInfo = None
         self.AiContentReviewTask = None
@@ -17856,11 +14278,7 @@ class ProcessMediaByUrlResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 ID\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -17877,29 +14295,7 @@ class ProcessMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
-        :type FileId: str
-        :param MediaProcessTask: 视频处理类型任务参数。
-        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: 视频内容审核类型任务参数。
-        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: 视频内容分析类型任务参数。
-        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: 视频内容识别类型任务参数。
-        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
-        :type TasksPriority: int
-        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
-        :type TasksNotifyMode: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。\n        :type FileId: str\n        :param MediaProcessTask: 视频处理类型任务参数。\n        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: 视频内容审核类型任务参数。\n        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: 视频内容分析类型任务参数。\n        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: 视频内容识别类型任务参数。\n        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`\n        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。\n        :type TasksPriority: int\n        :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。\n        :type TasksNotifyMode: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
@@ -17949,11 +14345,7 @@ class ProcessMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 ID\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -17973,31 +14365,13 @@ class ProductInstance(AbstractModel):
         :param ProductType: 预付费商品实例类型，取值有：
 <li>StarterPackage：点播新手包。</li>
 <li>MiniProgramPlugin：点播小程序插件。</li>
-<li>ResourcePackage：点播资源包。</li>
-        :type ProductType: str
-        :param StartTime: 资源包实例起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type StartTime: str
-        :param ExpireTime: 资源包实例过期日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type ExpireTime: str
-        :param ProductInstanceId: 资源包实例ID。对应每个资源包，系统会分配相应的资源。续费或者升级资源包时，需要带上这个资源ID。
-        :type ProductInstanceId: str
-        :param LastConsumeDate: 系统最近一次扣除资源包的日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
-        :type LastConsumeDate: str
-        :param BindStatus: 资源包绑定 License 状态，取值有：
+<li>ResourcePackage：点播资源包。</li>\n        :type ProductType: str\n        :param StartTime: 资源包实例起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type StartTime: str\n        :param ExpireTime: 资源包实例过期日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type ExpireTime: str\n        :param ProductInstanceId: 资源包实例ID。对应每个资源包，系统会分配相应的资源。续费或者升级资源包时，需要带上这个资源ID。\n        :type ProductInstanceId: str\n        :param LastConsumeDate: 系统最近一次扣除资源包的日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。\n        :type LastConsumeDate: str\n        :param BindStatus: 资源包绑定 License 状态，取值有：
 <li>0：未绑定。</li>
-<li>1：已绑定。</li>
-        :type BindStatus: int
-        :param ProductInstanceResourceSet: 预付费资源包实例中包含的资源包列表。
-        :type ProductInstanceResourceSet: list of ProductInstanceRecource
-        :param ProductInstanceStatus: 资源包实例的状态，取值有：
+<li>1：已绑定。</li>\n        :type BindStatus: int\n        :param ProductInstanceResourceSet: 预付费资源包实例中包含的资源包列表。\n        :type ProductInstanceResourceSet: list of ProductInstanceRecource\n        :param ProductInstanceStatus: 资源包实例的状态，取值有：
 <li>Effective：生效，可用于计费抵扣。</li>
-<li>Isolated：隔离，不可用于计费抵扣。</li>
-        :type ProductInstanceStatus: str
-        :param RefundStatus: 资源包实例的可退还状态，取值有：
+<li>Isolated：隔离，不可用于计费抵扣。</li>\n        :type ProductInstanceStatus: str\n        :param RefundStatus: 资源包实例的可退还状态，取值有：
 <li>FullRefund：可全额退款。</li>
-<li>Denied：不可退款。</li>
-        :type RefundStatus: str
-        """
+<li>Denied：不可退款。</li>\n        :type RefundStatus: str\n        """
         self.ProductType = None
         self.StartTime = None
         self.ExpireTime = None
@@ -18045,23 +14419,17 @@ class ProductInstanceRecource(AbstractModel):
 <li>Traffic：流量资源包。</li>
 <li>Transcode：普通转码资源包。</li>
 <li>TESHD：极速高清转码资源包。</li>
-<li>Review：视频审核转码资源包。</li>
-        :type ResourceType: str
-        :param Amount: 资源包额度。
+<li>Review：视频审核转码资源包。</li>\n        :type ResourceType: str\n        :param Amount: 资源包额度。
 <li>视频存储资源包，单位为字节。</li>
 <li>视频转码资源包，单位为秒。</li>
 <li>视频审核资源包，单位为秒。</li>
 <li>视频极速高清资源包，单位为秒。</li>
-<li>视频加速资源包，单位为字节。</li>
-        :type Amount: int
-        :param Left: 资源包余量。
+<li>视频加速资源包，单位为字节。</li>\n        :type Amount: int\n        :param Left: 资源包余量。
 <li>视频存储资源包，单位为字节。</li>
 <li>视频转码资源包，单位为秒。</li>
 <li>视频审核资源包，单位为秒。</li>
 <li>视频极速高清资源包，单位为秒。</li>
-<li>视频加速资源包，单位为字节。</li>
-        :type Left: int
-        """
+<li>视频加速资源包，单位为字节。</li>\n        :type Left: int\n        """
         self.ResourceType = None
         self.Amount = None
         self.Left = None
@@ -18089,13 +14457,7 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 语音违禁任务开关，可选值：
 <li>ON：开启语音违禁任务；</li>
-<li>OFF：关闭语音违禁任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭语音违禁任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -18123,13 +14485,7 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 语音违禁任务开关，可选值：
 <li>ON：开启语音违禁任务；</li>
-<li>OFF：关闭语音违禁任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭语音违禁任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -18156,12 +14512,8 @@ class ProhibitedConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param AsrReviewInfo: 语音违禁控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfo`
-        :param OcrReviewInfo: 文本违禁控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfo`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfo`\n        :param OcrReviewInfo: 文本违禁控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfo`\n        """
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -18189,11 +14541,7 @@ class ProhibitedConfigureInfoForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param AsrReviewInfo: 语音违禁控制参数。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 文本违禁控制参数。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfoForUpdate`
-        """
+        :param AsrReviewInfo: 语音违禁控制参数。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedAsrReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: 文本违禁控制参数。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.ProhibitedOcrReviewTemplateInfoForUpdate`\n        """
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -18223,13 +14571,7 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 文本违禁任务开关，可选值：
 <li>ON：开启文本违禁任务；</li>
-<li>OFF：关闭文本违禁任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本违禁任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -18257,13 +14599,7 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 文本违禁任务开关，可选值：
 <li>ON：开启文本违禁任务；</li>
-<li>OFF：关闭文本违禁任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本违禁任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -18289,11 +14625,7 @@ class PullEventsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.ExtInfo = None
         self.SubAppId = None
 
@@ -18318,11 +14650,7 @@ class PullEventsResponse(AbstractModel):
     def __init__(self):
         """
         :param EventSet: 事件列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EventSet: list of EventContent
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EventSet: list of EventContent\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EventSet = None
         self.RequestId = None
 
@@ -18345,33 +14673,9 @@ class PullUploadRequest(AbstractModel):
     def __init__(self):
         """
         :param MediaUrl: 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
-        :type MediaUrl: str
-        :param MediaName: 媒体名称。
-        :type MediaName: str
-        :param CoverUrl: 要拉取的视频封面 URL。仅支持 gif、jpeg、png 三种图片格式。
-        :type CoverUrl: str
-        :param Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
-        :type Procedure: str
-        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ExpireTime: str
-        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户：
+支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。\n        :type MediaUrl: str\n        :param MediaName: 媒体名称。\n        :type MediaName: str\n        :param CoverUrl: 要拉取的视频封面 URL。仅支持 gif、jpeg、png 三种图片格式。\n        :type CoverUrl: str\n        :param Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。\n        :type Procedure: str\n        :param ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ExpireTime: str\n        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户：
 <li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
-<li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
-        :type StorageRegion: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
-        :type ClassId: int
-        :param SessionContext: 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param ExtInfo: 保留字段，特殊用途时使用。
-        :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
-        :type SourceContext: str
-        """
+<li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>\n        :type StorageRegion: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。\n        :type ClassId: int\n        :param SessionContext: 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param ExtInfo: 保留字段，特殊用途时使用。\n        :type ExtInfo: str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。\n        :type SourceContext: str\n        """
         self.MediaUrl = None
         self.MediaName = None
         self.CoverUrl = None
@@ -18415,11 +14719,7 @@ class PullUploadResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -18436,35 +14736,13 @@ class PullUploadTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 转拉上传任务 ID。
-        :type TaskId: str
-        :param Status: 任务流状态，取值：
+        :param TaskId: 转拉上传任务 ID。\n        :type TaskId: str\n        :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
-        :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>FINISH：已完成。</li>\n        :type Status: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
 <li>40000：输入参数不合法，请检查输入参数；</li>
 <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 转拉上传完成后生成的视频 ID。
-        :type FileId: str
-        :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param MetaData: 原始视频的元信息。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param FileUrl: 转拉上传完成后生成的播放地址。
-        :type FileUrl: str
-        :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
-        :type ProcedureTaskId: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        """
+<li>70000：内部服务错误，建议重试。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileId: 转拉上传完成后生成的视频 ID。\n        :type FileId: str\n        :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`\n        :param MetaData: 原始视频的元信息。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param FileUrl: 转拉上传完成后生成的播放地址。\n        :type FileUrl: str\n        :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。\n        :type ProcedureTaskId: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -18510,11 +14788,7 @@ class PushUrlCacheRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Urls: 预热的 URL 列表，单次最多指定20个 URL。
-        :type Urls: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Urls: 预热的 URL 列表，单次最多指定20个 URL。\n        :type Urls: list of str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Urls = None
         self.SubAppId = None
 
@@ -18538,9 +14812,7 @@ class PushUrlCacheResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -18557,19 +14829,11 @@ class RefererAuthPolicy(AbstractModel):
         """
         :param Status: [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)设置状态，可选值：
 <li>Enabled: 启用；</li>
-<li>Disabled: 禁用。</li>
-        :type Status: str
-        :param AuthType: Referer 校验类型，可选值：
+<li>Disabled: 禁用。</li>\n        :type Status: str\n        :param AuthType: Referer 校验类型，可选值：
 <li>Black: 黑名单方式校验；</li>
-<li>White:白名单方式校验。</li>
-        :type AuthType: str
-        :param Referers: 用于校验的 Referer 名单。
-        :type Referers: list of str
-        :param BlankRefererAllowed: 是否允许空 Referer 访问本域名，可选值：
+<li>White:白名单方式校验。</li>\n        :type AuthType: str\n        :param Referers: 用于校验的 Referer 名单。\n        :type Referers: list of str\n        :param BlankRefererAllowed: 是否允许空 Referer 访问本域名，可选值：
 <li>Yes: 是；</li>
-<li>No: 否。</li>
-        :type BlankRefererAllowed: str
-        """
+<li>No: 否。</li>\n        :type BlankRefererAllowed: str\n        """
         self.Status = None
         self.AuthType = None
         self.Referers = None
@@ -18597,21 +14861,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 任务流名字
-        :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字符。
-        :type Comment: str
-        :param MediaProcessTask: 视频处理类型任务参数。
-        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
-        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
-        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: AI 内容识别类型任务参数。
-        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Name: 任务流名字\n        :type Name: str\n        :param Comment: 模板描述信息，长度限制：256 个字符。\n        :type Comment: str\n        :param MediaProcessTask: 视频处理类型任务参数。\n        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`\n        :param AiContentReviewTask: AI 智能内容审核类型任务参数。\n        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`\n        :param AiAnalysisTask: AI 智能内容分析类型任务参数。\n        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`\n        :param AiRecognitionTask: AI 内容识别类型任务参数。\n        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Name = None
         self.Comment = None
         self.MediaProcessTask = None
@@ -18653,9 +14903,7 @@ class ResetProcedureTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -18670,11 +14918,7 @@ class ResolutionNameInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MinEdgeLength: 视频短边长度，单位：像素。
-        :type MinEdgeLength: int
-        :param Name: 展示名字。
-        :type Name: str
-        """
+        :param MinEdgeLength: 视频短边长度，单位：像素。\n        :type MinEdgeLength: int\n        :param Name: 展示名字。\n        :type Name: str\n        """
         self.MinEdgeLength = None
         self.Name = None
 
@@ -18698,11 +14942,7 @@ class ResourceTag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键。
-        :type TagKey: str
-        :param TagValue: 标签值。
-        :type TagValue: str
-        """
+        :param TagKey: 标签键。\n        :type TagKey: str\n        :param TagValue: 标签值。\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -18726,11 +14966,7 @@ class SampleSnapshotTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图模板 ID。
-        :type Definition: int
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-        :type WatermarkSet: list of WatermarkInput
-        """
+        :param Definition: 采样截图模板 ID。\n        :type Definition: int\n        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。\n        :type WatermarkSet: list of WatermarkInput\n        """
         self.Definition = None
         self.WatermarkSet = None
 
@@ -18759,53 +14995,27 @@ class SampleSnapshotTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 采样截图模板唯一标识。
-        :type Definition: int
-        :param Type: 模板类型，取值范围：
+        :param Definition: 采样截图模板唯一标识。\n        :type Definition: int\n        :param Type: 模板类型，取值范围：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 采样截图模板名称。
-        :type Name: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Name: 采样截图模板名称。\n        :type Name: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 图片格式。
-        :type Format: str
-        :param SampleType: 采样截图类型。
-        :type SampleType: str
-        :param SampleInterval: 采样间隔。
-        :type SampleInterval: int
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 图片格式。\n        :type Format: str\n        :param SampleType: 采样截图类型。\n        :type SampleType: str\n        :param SampleInterval: 采样间隔。\n        :type SampleInterval: int\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
-        :type FillType: str
-        """
+默认值：black 。\n        :type FillType: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -18853,58 +15063,28 @@ class SearchMediaRequest(AbstractModel):
         """
         :param FileIds: 文件 ID 集合，匹配集合中的任意元素。
 <li>数组长度限制：10。</li>
-<li>单个 ID 长度限制：40个字符。</li>
-        :type FileIds: list of str
-        :param Names: 文件名集合，模糊匹配媒体文件的文件名，匹配度越高，排序越优先。
+<li>单个 ID 长度限制：40个字符。</li>\n        :type FileIds: list of str\n        :param Names: 文件名集合，模糊匹配媒体文件的文件名，匹配度越高，排序越优先。
 <li>单个文件名长度限制：40个字符。</li>
-<li>数组长度限制：10。</li>
-        :type Names: list of str
-        :param NamePrefixes: 文件名前缀，前缀匹配媒体文件的文件名。
+<li>数组长度限制：10。</li>\n        :type Names: list of str\n        :param NamePrefixes: 文件名前缀，前缀匹配媒体文件的文件名。
 <li>单个文件名前缀长度限制：20个字符。</li>
-<li>数组长度限制：10。</li>
-        :type NamePrefixes: list of str
-        :param Descriptions: 文件描述集合，模糊匹配媒体文件的描述，匹配度越高，排序越优先。
+<li>数组长度限制：10。</li>\n        :type NamePrefixes: list of str\n        :param Descriptions: 文件描述集合，模糊匹配媒体文件的描述，匹配度越高，排序越优先。
 <li>单个描述长度限制：100个字符。</li>
-<li>数组长度限制：10。</li>
-        :type Descriptions: list of str
-        :param ClassIds: 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。
-<li>数组长度限制：10。</li>
-        :type ClassIds: list of int
-        :param Tags: 标签集合，匹配集合中任意元素。
+<li>数组长度限制：10。</li>\n        :type Descriptions: list of str\n        :param ClassIds: 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。
+<li>数组长度限制：10。</li>\n        :type ClassIds: list of int\n        :param Tags: 标签集合，匹配集合中任意元素。
 <li>单个标签长度限制：8个字符。</li>
-<li>数组长度限制：10。</li>
-        :type Tags: list of str
-        :param Categories: 文件类型。匹配集合中的任意元素：
+<li>数组长度限制：10。</li>\n        :type Tags: list of str\n        :param Categories: 文件类型。匹配集合中的任意元素：
 <li>Video: 视频文件</li>
 <li>Audio: 音频文件</li>
-<li>Image: 图片文件</li>
-        :type Categories: list of str
-        :param SourceTypes: 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
-<li>数组长度限制：10。</li>
-        :type SourceTypes: list of str
-        :param StreamIds: 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
-<li>数组长度限制：10。</li>
-        :type StreamIds: list of str
-        :param Vids: 直播录制文件的唯一标识。匹配集合中的任意元素。
-<li>数组长度限制：10。</li>
-        :type Vids: list of str
-        :param CreateTime: 匹配创建时间在此时间段内的文件。
-<li>包含所指定的头尾时间点。</li>
-        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param ExpireTime: 匹配过期时间在此时间段内的文件，无法检索到已过期文件。
-<li>包含所指定的头尾时间点。</li>
-        :type ExpireTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param Sort: 排序方式。
+<li>Image: 图片文件</li>\n        :type Categories: list of str\n        :param SourceTypes: 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
+<li>数组长度限制：10。</li>\n        :type SourceTypes: list of str\n        :param StreamIds: 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
+<li>数组长度限制：10。</li>\n        :type StreamIds: list of str\n        :param Vids: 直播录制文件的唯一标识。匹配集合中的任意元素。
+<li>数组长度限制：10。</li>\n        :type Vids: list of str\n        :param CreateTime: 匹配创建时间在此时间段内的文件。
+<li>包含所指定的头尾时间点。</li>\n        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`\n        :param ExpireTime: 匹配过期时间在此时间段内的文件，无法检索到已过期文件。
+<li>包含所指定的头尾时间点。</li>\n        :type ExpireTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`\n        :param Sort: 排序方式。
 <li>Sort.Field 可选 CreateTime 。</li>
-<li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
-        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param Offset: <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-<li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
-        :type Offset: int
-        :param Limit: <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
-<li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
-        :type Limit: int
-        :param Filters: 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
+<li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>\n        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`\n        :param Offset: <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+<li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>\n        :type Offset: int\n        :param Limit: <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+<li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>\n        :type Limit: int\n        :param Filters: 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
 <li>basicInfo（视频基础信息）。</li>
 <li>metaData（视频元信息）。</li>
 <li>transcodeInfo（视频转码结果信息）。</li>
@@ -18914,45 +15094,25 @@ class SearchMediaRequest(AbstractModel):
 <li>sampleSnapshotInfo（采样截图信息）。</li>
 <li>keyFrameDescInfo（打点信息）。</li>
 <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
-<li>miniProgramReviewInfo（小程序审核信息）。</li>
-        :type Filters: list of str
-        :param StorageRegions: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
+<li>miniProgramReviewInfo（小程序审核信息）。</li>\n        :type Filters: list of str\n        :param StorageRegions: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
 <li>单个存储地区长度限制：20个字符。</li>
-<li>数组长度限制：20。</li>
-        :type StorageRegions: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        :param StorageClasses: 存储类型数组。可选值有：
+<li>数组长度限制：20。</li>\n        :type StorageRegions: list of str\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        :param StorageClasses: 存储类型数组。可选值有：
 <li> STANDARD：标准存储。</li>
 <li> STANDARD_IA：低频存储。</li>
 <li> ARCHIVE：归档存储。</li>
-<li> DEEP_ARCHIVE：深度归档存储。</li>
-        :type StorageClasses: list of str
-        :param Text: （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
-搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
-        :type Text: str
-        :param SourceType: （不推荐：应使用 SourceTypes 替代）
-媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
-        :type SourceType: str
-        :param StreamId: （不推荐：应使用 StreamIds 替代）
-推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
-        :type StreamId: str
-        :param Vid: （不推荐：应使用 Vids 替代）
-直播录制文件的唯一标识。
-        :type Vid: str
-        :param StartTime: （不推荐：应使用 CreateTime 替代）
+<li> DEEP_ARCHIVE：深度归档存储。</li>\n        :type StorageClasses: list of str\n        :param Text: （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
+搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。\n        :type Text: str\n        :param SourceType: （不推荐：应使用 SourceTypes 替代）
+媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。\n        :type SourceType: str\n        :param StreamId: （不推荐：应使用 StreamIds 替代）
+推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。\n        :type StreamId: str\n        :param Vid: （不推荐：应使用 Vids 替代）
+直播录制文件的唯一标识。\n        :type Vid: str\n        :param StartTime: （不推荐：应使用 CreateTime 替代）
 创建时间的开始时间。
 <li>大于等于开始时间。</li>
 <li>当 CreateTime.After 也存在时，将优先使用 CreateTime.After。</li>
-<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
-        :type StartTime: str
-        :param EndTime: （不推荐：应使用 CreateTime 替代）
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>\n        :type StartTime: str\n        :param EndTime: （不推荐：应使用 CreateTime 替代）
 创建时间的结束时间。
 <li>小于结束时间。</li>
 <li>当 CreateTime.Before 也存在时，将优先使用 CreateTime.Before。</li>
-<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
-        :type EndTime: str
-        """
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>\n        :type EndTime: str\n        """
         self.FileIds = None
         self.Names = None
         self.NamePrefixes = None
@@ -19029,13 +15189,7 @@ class SearchMediaResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 符合搜索条件的记录总数。
-<li>最大值：5000。当命中记录数超过5000时，该字段将返回 5000，而非实际命中总数。</li>
-        :type TotalCount: int
-        :param MediaInfoSet: 媒体文件信息列表。
-        :type MediaInfoSet: list of MediaInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+<li>最大值：5000。当命中记录数超过5000时，该字段将返回 5000，而非实际命中总数。</li>\n        :type TotalCount: int\n        :param MediaInfoSet: 媒体文件信息列表。\n        :type MediaInfoSet: list of MediaInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.MediaInfoSet = None
         self.RequestId = None
@@ -19061,9 +15215,7 @@ class SegmentConfigureInfo(AbstractModel):
         """
         :param Switch: 视频拆条识别任务开关，可选值：
 <li>ON：开启智能视频拆条识别任务；</li>
-<li>OFF：关闭智能视频拆条识别任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能视频拆条识别任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -19087,9 +15239,7 @@ class SegmentConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 视频拆条识别任务开关，可选值：
 <li>ON：开启智能视频拆条识别任务；</li>
-<li>OFF：关闭智能视频拆条识别任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能视频拆条识别任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -19111,11 +15261,7 @@ class SimpleAesEdkPair(AbstractModel):
 
     def __init__(self):
         """
-        :param Edk: 加密后的数据密钥。
-        :type Edk: str
-        :param Dk: 数据密钥。返回的数据密钥 DK 为 Base64 编码字符串。
-        :type Dk: str
-        """
+        :param Edk: 加密后的数据密钥。\n        :type Edk: str\n        :param Dk: 数据密钥。返回的数据密钥 DK 为 Base64 编码字符串。\n        :type Dk: str\n        """
         self.Edk = None
         self.Dk = None
 
@@ -19139,17 +15285,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 需要裁剪的腾讯云点播 HLS 视频 URL。
-        :type Url: str
-        :param StartTimeOffset: 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
-        :type EndTimeOffset: float
-        :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
-        :type IsPersistence: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param Url: 需要裁剪的腾讯云点播 HLS 视频 URL。\n        :type Url: str\n        :param StartTimeOffset: 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。\n        :type EndTimeOffset: float\n        :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。\n        :type IsPersistence: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.Url = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -19179,15 +15315,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 裁剪后的视频地址。
-        :type Url: str
-        :param MetaData: 裁剪后的视频元信息。目前`Size`，`Rotate`，`VideoDuration`，`AudioDuration` 几个字段暂时缺省，没有真实数据。
-        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。
-        :type FileId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Url: 裁剪后的视频地址。\n        :type Url: str\n        :param MetaData: 裁剪后的视频元信息。目前`Size`，`Rotate`，`VideoDuration`，`AudioDuration` 几个字段暂时缺省，没有真实数据。\n        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`\n        :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。\n        :type FileId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Url = None
         self.MetaData = None
         self.FileId = None
@@ -19212,13 +15340,7 @@ class SnapshotByTimeOffset2017(AbstractModel):
         """
         :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param TimeOffset: 截图的具体时间点，单位：毫秒。
-        :type TimeOffset: int
-        :param Url: 截图输出文件地址。
-        :type Url: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param TimeOffset: 截图的具体时间点，单位：毫秒。\n        :type TimeOffset: int\n        :param Url: 截图输出文件地址。\n        :type Url: str\n        """
         self.ErrCode = None
         self.TimeOffset = None
         self.Url = None
@@ -19244,15 +15366,7 @@ class SnapshotByTimeOffsetTask2017(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 截图任务 ID。
-        :type TaskId: str
-        :param FileId: 截图文件 ID。
-        :type FileId: str
-        :param Definition: 截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
-        :type Definition: int
-        :param SnapshotInfoSet: 截图结果信息。
-        :type SnapshotInfoSet: list of SnapshotByTimeOffset2017
-        """
+        :param TaskId: 截图任务 ID。\n        :type TaskId: str\n        :param FileId: 截图文件 ID。\n        :type FileId: str\n        :param Definition: 截图规格，参见[指定时间点截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。\n        :type Definition: int\n        :param SnapshotInfoSet: 截图结果信息。\n        :type SnapshotInfoSet: list of SnapshotByTimeOffset2017\n        """
         self.TaskId = None
         self.FileId = None
         self.Definition = None
@@ -19285,17 +15399,9 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图模板 ID。
-        :type Definition: int
-        :param ExtTimeOffsetSet: 截图时间点列表，时间点支持 s、% 两种格式：
+        :param Definition: 指定时间点截图模板 ID。\n        :type Definition: int\n        :param ExtTimeOffsetSet: 截图时间点列表，时间点支持 s、% 两种格式：
 <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
-<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
-        :type ExtTimeOffsetSet: list of str
-        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
-        :type TimeOffsetSet: list of float
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-        :type WatermarkSet: list of WatermarkInput
-        """
+<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>\n        :type ExtTimeOffsetSet: list of str\n        :param TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。\n        :type TimeOffsetSet: list of float\n        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。\n        :type WatermarkSet: list of WatermarkInput\n        """
         self.Definition = None
         self.ExtTimeOffsetSet = None
         self.TimeOffsetSet = None
@@ -19328,49 +15434,27 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 指定时间点截图模板唯一标识。
-        :type Definition: int
-        :param Type: 模板类型，取值范围：
+        :param Definition: 指定时间点截图模板唯一标识。\n        :type Definition: int\n        :param Type: 模板类型，取值范围：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param Name: 指定时间点截图模板名称。
-        :type Name: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param Name: 指定时间点截图模板名称。\n        :type Name: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+默认值：0。\n        :type Height: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Format: 图片格式。
-        :type Format: str
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Format: 图片格式。\n        :type Format: str\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
-        :type FillType: str
-        """
+默认值：black 。\n        :type FillType: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -19412,11 +15496,7 @@ class SortBy(AbstractModel):
 
     def __init__(self):
         """
-        :param Field: 排序字段
-        :type Field: str
-        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序）
-        :type Order: str
-        """
+        :param Field: 排序字段\n        :type Field: str\n        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序）\n        :type Order: str\n        """
         self.Field = None
         self.Order = None
 
@@ -19440,11 +15520,7 @@ class SpecificationDataItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Specification: 任务规格。
-        :type Specification: str
-        :param Data: 统计数据。
-        :type Data: list of TaskStatDataItem
-        """
+        :param Specification: 任务规格。\n        :type Specification: str\n        :param Data: 统计数据。\n        :type Data: list of TaskStatDataItem\n        """
         self.Specification = None
         self.Data = None
 
@@ -19473,16 +15549,8 @@ class SplitMediaOutputConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
-        :type MediaName: str
-        :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。
-        :type Type: str
-        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-        :type ClassId: int
-        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type ExpireTime: str
-        """
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。\n        :type MediaName: str\n        :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。\n        :type Type: str\n        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>\n        :type ClassId: int\n        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type ExpireTime: str\n        """
         self.MediaName = None
         self.Type = None
         self.ClassId = None
@@ -19510,19 +15578,7 @@ class SplitMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 视频的 ID。
-        :type FileId: str
-        :param Segments: 视频拆条任务信息列表，最多同时支持100个拆条信息。
-        :type Segments: list of SplitMediaTaskConfig
-        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在 SplitMediaComplete 回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
-        :type SessionContext: str
-        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
-        :type TasksPriority: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 视频的 ID。\n        :type FileId: str\n        :param Segments: 视频拆条任务信息列表，最多同时支持100个拆条信息。\n        :type Segments: list of SplitMediaTaskConfig\n        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在 SplitMediaComplete 回调和任务流状态变更回调将返回该字段值，最长 1000个字符。\n        :type SessionContext: str\n        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。\n        :type TasksPriority: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.Segments = None
         self.SessionContext = None
@@ -19559,11 +15615,7 @@ class SplitMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频拆条的任务 ID，可以通过该 ID 查询拆条任务（任务类型为 SplitMedia）的状态。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 视频拆条的任务 ID，可以通过该 ID 查询拆条任务（任务类型为 SplitMedia）的状态。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -19580,25 +15632,9 @@ class SplitMediaTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务流状态，取值：
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
-        :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
-        :type ErrCodeExt: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileInfoSet: 视频拆条任务详细信息列表。
-        :type FileInfoSet: list of SplitMediaTaskSegmentInfo
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
-        """
+<li>FINISH：已完成。</li>\n        :type Status: str\n        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。\n        :type ErrCodeExt: str\n        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileInfoSet: 视频拆条任务详细信息列表。\n        :type FileInfoSet: list of SplitMediaTaskSegmentInfo\n        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。\n        :type SessionContext: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。\n        :type SessionId: str\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCodeExt = None
@@ -19642,18 +15678,10 @@ class SplitMediaTaskConfig(AbstractModel):
         :param StartTimeOffset: 视频拆条起始的偏移时间，单位：秒。
 <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 视频拆条结束的偏移时间，单位：秒。
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 视频拆条结束的偏移时间，单位：秒。
 <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
-        :type EndTimeOffset: float
-        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
-        :type ProcedureName: str
-        :param OutputConfig: 视频拆条输出信息。
-        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`
-        """
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>\n        :type EndTimeOffset: float\n        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。\n        :type ProcedureName: str\n        :param OutputConfig: 视频拆条输出信息。\n        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`\n        """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.ProcedureName = None
@@ -19683,23 +15711,13 @@ class SplitMediaTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 视频的 ID。
-        :type FileId: str
-        :param StartTimeOffset: 视频拆条起始的偏移时间，单位：秒。
+        :param FileId: 视频的 ID。\n        :type FileId: str\n        :param StartTimeOffset: 视频拆条起始的偏移时间，单位：秒。
 <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 视频拆条结束的偏移时间，单位：秒。
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 视频拆条结束的偏移时间，单位：秒。
 <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
-        :type EndTimeOffset: float
-        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
-        :type ProcedureName: str
-        :param OutputConfig: 视频拆条输出信息。
-        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`
-        """
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>\n        :type EndTimeOffset: float\n        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。\n        :type ProcedureName: str\n        :param OutputConfig: 视频拆条输出信息。\n        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`\n        """
         self.FileId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -19731,14 +15749,8 @@ class SplitMediaTaskSegmentInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Input: 视频拆条任务输入信息。
-        :type Input: :class:`tencentcloud.vod.v20180717.models.SplitMediaTaskInput`
-        :param Output: 视频拆条任务输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
-        :param ProcedureTaskId: 若发起视频拆条任务时指定了视频处理流程，则该字段为流程任务 ID。
-        :type ProcedureTaskId: str
-        """
+        :param Input: 视频拆条任务输入信息。\n        :type Input: :class:`tencentcloud.vod.v20180717.models.SplitMediaTaskInput`\n        :param Output: 视频拆条任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`\n        :param ProcedureTaskId: 若发起视频拆条任务时指定了视频处理流程，则该字段为流程任务 ID。\n        :type ProcedureTaskId: str\n        """
         self.Input = None
         self.Output = None
         self.ProcedureTaskId = None
@@ -19770,15 +15782,11 @@ class StatDataItem(AbstractModel):
         """
         :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
 <li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
-<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
-        :type Time: str
-        :param Value: 数据大小。
+<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>\n        :type Time: str\n        :param Value: 数据大小。
 <li>存储空间的数据，单位是字节。</li>
 <li>转码时长的数据，单位是秒。</li>
 <li>流量数据，单位是字节。</li>
-<li>带宽数据，单位是比特每秒。</li>
-        :type Value: int
-        """
+<li>带宽数据，单位是比特每秒。</li>\n        :type Value: int\n        """
         self.Time = None
         self.Value = None
 
@@ -19805,42 +15813,24 @@ class StickerTrackItem(AbstractModel):
         :param SourceMedia: 贴图片段的媒体素材来源，可以是：
 <li>点播的媒体文件 ID；</li>
 <li>其他媒体文件的下载 URL。</li>
-注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
-        :type SourceMedia: str
-        :param Duration: 贴图的持续时间，单位为秒。
-        :type Duration: float
-        :param StartTime: 贴图在轨道上的起始时间，单位为秒。
-        :type StartTime: float
-        :param CoordinateOrigin: 原点位置，取值有：
+注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。\n        :type SourceMedia: str\n        :param Duration: 贴图的持续时间，单位为秒。\n        :type Duration: float\n        :param StartTime: 贴图在轨道上的起始时间，单位为秒。\n        :type StartTime: float\n        :param CoordinateOrigin: 原点位置，取值有：
 <li>Center：坐标原点为中心位置，如画布中心。</li>
-默认值：Center。
-        :type CoordinateOrigin: str
-        :param XPos: 贴图原点距离画布原点的水平位置。支持 %、px 两种格式：
+默认值：Center。\n        :type CoordinateOrigin: str\n        :param XPos: 贴图原点距离画布原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示贴图 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li><li>当字符串以 px 结尾，表示贴图 XPos 单位为像素，如 100px 表示 XPos 为 100 像素。</li>
-默认值：0px。
-        :type XPos: str
-        :param YPos: 贴图原点距离画布原点的垂直位置。支持 %、px 两种格式：
+默认值：0px。\n        :type XPos: str\n        :param YPos: 贴图原点距离画布原点的垂直位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示贴图 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
 <li>当字符串以 px 结尾，表示贴图 YPos 单位为像素，如 100px 表示 YPos 为 100 像素。</li>
-默认值：0px。
-        :type YPos: str
-        :param Width: 贴图的宽度。支持 %、px 两种格式：
+默认值：0px。\n        :type YPos: str\n        :param Width: 贴图的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示贴图 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
 <li>当字符串以 px 结尾，表示贴图 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
 <li>当 Width、Height 均为空，则 Width 和 Height 取贴图素材本身的 Width、Height。</li>
 <li>当 Width 为空0，Height 非空，则 Width 按比例缩放</li>
-<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
-        :type Width: str
-        :param Height: 贴图的高度。支持 %、px 两种格式：
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>\n        :type Width: str\n        :param Height: 贴图的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示贴图 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
 <li>当字符串以 px 结尾，表示贴图 Height 单位为像素，如 100px 表示 Hieght 为 100 像素。</li>
 <li>当 Width、Height 均为空，则 Width 和 Height 取贴图素材本身的 Width、Height。</li>
 <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
-<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
-        :type Height: str
-        :param ImageOperations: 对贴图进行的操作，如图像旋转等。
-        :type ImageOperations: list of ImageTransform
-        """
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>\n        :type Height: str\n        :param ImageOperations: 对贴图进行的操作，如图像旋转等。\n        :type ImageOperations: list of ImageTransform\n        """
         self.SourceMedia = None
         self.Duration = None
         self.StartTime = None
@@ -19885,19 +15875,7 @@ class StorageStatData(AbstractModel):
         """
         :param Area: 点播存储的计费区域，可能值：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-<li>Outside Chinese Mainland：中国境外。</li>
-        :type Area: str
-        :param TotalStorage: 当前总存储量，单位是字节。
-        :type TotalStorage: int
-        :param InfrequentStorage: 当前低频存储量，单位是字节。
-        :type InfrequentStorage: int
-        :param StandardStorage: 当前标准存储量，单位是字节。
-        :type StandardStorage: int
-        :param ArchiveStorage: 当前归档存储量，单位是字节。
-        :type ArchiveStorage: int
-        :param DeepArchiveStorage: 当前深度归档存储量，单位是字节。
-        :type DeepArchiveStorage: int
-        """
+<li>Outside Chinese Mainland：中国境外。</li>\n        :type Area: str\n        :param TotalStorage: 当前总存储量，单位是字节。\n        :type TotalStorage: int\n        :param InfrequentStorage: 当前低频存储量，单位是字节。\n        :type InfrequentStorage: int\n        :param StandardStorage: 当前标准存储量，单位是字节。\n        :type StandardStorage: int\n        :param ArchiveStorage: 当前归档存储量，单位是字节。\n        :type ArchiveStorage: int\n        :param DeepArchiveStorage: 当前深度归档存储量，单位是字节。\n        :type DeepArchiveStorage: int\n        """
         self.Area = None
         self.TotalStorage = None
         self.InfrequentStorage = None
@@ -19929,21 +15907,11 @@ class SubAppIdInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param SubAppId: 子应用 ID。
-        :type SubAppId: int
-        :param Name: 子应用名称。
-        :type Name: str
-        :param Description: 子应用简介。
-        :type Description: str
-        :param CreateTime: 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param Status: 子应用状态，有效值：
+        :param SubAppId: 子应用 ID。\n        :type SubAppId: int\n        :param Name: 子应用名称。\n        :type Name: str\n        :param Description: 子应用简介。\n        :type Description: str\n        :param CreateTime: 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param Status: 子应用状态，有效值：
 <li>On：启用；</li>
 <li>Off：停用。</li>
 <li>Destroying：销毁中。</li>
-<li>Destroyed：销毁完成。</li>
-        :type Status: str
-        """
+<li>Destroyed：销毁完成。</li>\n        :type Status: str\n        """
         self.SubAppId = None
         self.Name = None
         self.Description = None
@@ -19981,9 +15949,7 @@ class SvgWatermarkInput(AbstractModel):
 <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 W%。</li>
-默认值为 10W%。
-        :type Width: str
-        :param Height: 水印的高度，支持 px，W%，H%，S%，L% 六种格式：
+默认值为 10W%。\n        :type Width: str\n        :param Height: 水印的高度，支持 px，W%，H%，S%，L% 六种格式：
 <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
@@ -19991,9 +15957,7 @@ class SvgWatermarkInput(AbstractModel):
 <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 H%。</li>
-默认值为 0px。
-        :type Height: str
-        """
+默认值为 0px。\n        :type Height: str\n        """
         self.Width = None
         self.Height = None
 
@@ -20025,9 +15989,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>当字符串以 S% 结尾，表示水印 Width 为视频短边的百分比大小，如 10S% 表示 Width 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Width 为视频长边的百分比大小，如 10L% 表示 Width 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 W%。</li>
-默认值为 10W%。
-        :type Width: str
-        :param Height: 水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
+默认值为 10W%。\n        :type Width: str\n        :param Height: 水印的高度，支持 px，%，W%，H%，S%，L% 六种格式：
 <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；当填 0px 且
  Width 不为 0px 时，表示水印的高度按原始 SVG 图像等比缩放；当 Width、Height 都填 0px 时，表示水印的高度取原始 SVG 图像的高度；</li>
 <li>当字符串以 W% 结尾，表示水印 Height 为视频宽度的百分比大小，如 10W% 表示 Height 为视频宽度的 10%；</li>
@@ -20035,16 +15997,12 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 <li>当字符串以 % 结尾时，含义同 H%。
-默认值为 0px。
-        :type Height: str
-        :param CycleConfig: 水印周期配置，用于配置水印周期性地显示与隐藏。
+默认值为 0px。\n        :type Height: str\n        :param CycleConfig: 水印周期配置，用于配置水印周期性地显示与隐藏。
 主要使用场景是：为了视频防遮标，在视频多个地方设置水印，这些水印按固定顺序周期性地显示与隐藏。
 例如，设置 A、B、C、D 4 个水印分别位于视频的左上角、右上角、右下角、左下角处，视频开始时，{ A 显示 5 秒 -> B 显示 5 秒 -> C 显示 5 秒 -> D 显示 5 秒 } -> A 显示 5 秒 -> B 显示 5 秒 -> ...，任何时刻只显示一处水印。
 花括号 {} 表示由 A、B、C、D 4 个水印组成的大周期，可以看出每个大周期持续 20 秒。
 可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
-此配置项即用来描述单个水印的周期配置。
-        :type CycleConfig: :class:`tencentcloud.vod.v20180717.models.WatermarkCycleConfigForUpdate`
-        """
+此配置项即用来描述单个水印的周期配置。\n        :type CycleConfig: :class:`tencentcloud.vod.v20180717.models.WatermarkCycleConfigForUpdate`\n        """
         self.Width = None
         self.Height = None
         self.CycleConfig = None
@@ -20074,12 +16032,8 @@ class TEHDConfig(AbstractModel):
         """
         :param Type: 极速高清类型，可选值：
 <li>TEHD-100：极速高清-100。</li>
-不填代表不启用极速高清。
-        :type Type: str
-        :param MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
-不填或填0表示不设视频码率上限。
-        :type MaxVideoBitrate: int
-        """
+不填代表不启用极速高清。\n        :type Type: str\n        :param MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
+不填或填0表示不设视频码率上限。\n        :type MaxVideoBitrate: int\n        """
         self.Type = None
         self.MaxVideoBitrate = None
 
@@ -20105,11 +16059,7 @@ class TEHDConfigForUpdate(AbstractModel):
         """
         :param Type: 极速高清类型，可选值：
 <li>TEHD-100：极速高清-100。</li>
-不填代表不修改。
-        :type Type: str
-        :param MaxVideoBitrate: 视频码率上限，不填代表不修改。
-        :type MaxVideoBitrate: int
-        """
+不填代表不修改。\n        :type Type: str\n        :param MaxVideoBitrate: 视频码率上限，不填代表不修改。\n        :type MaxVideoBitrate: int\n        """
         self.Type = None
         self.MaxVideoBitrate = None
 
@@ -20135,9 +16085,7 @@ class TagConfigureInfo(AbstractModel):
         """
         :param Switch: 智能标签任务开关，可选值：
 <li>ON：开启智能标签任务；</li>
-<li>OFF：关闭智能标签任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能标签任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -20161,9 +16109,7 @@ class TagConfigureInfoForUpdate(AbstractModel):
         """
         :param Switch: 智能标签任务开关，可选值：
 <li>ON：开启智能标签任务；</li>
-<li>OFF：关闭智能标签任务。</li>
-        :type Switch: str
-        """
+<li>OFF：关闭智能标签任务。</li>\n        :type Switch: str\n        """
         self.Switch = None
 
 
@@ -20185,11 +16131,7 @@ class TaskOutputMediaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件 ID。
-        :type FileId: str
-        :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
-        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        """
+        :param FileId: 媒体文件 ID。\n        :type FileId: str\n        :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。\n        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`\n        """
         self.FileId = None
         self.MediaBasicInfo = None
 
@@ -20215,13 +16157,7 @@ class TaskSimpleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务状态。取值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
-        :type Status: str
-        :param FileId: 视频 ID。
-        :type FileId: str
-        :param TaskType: 任务类型，取值：
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param Status: 任务状态。取值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。\n        :type Status: str\n        :param FileId: 视频 ID。\n        :type FileId: str\n        :param TaskType: 任务类型，取值：
 <li>Procedure：视频处理任务；</li>
 <li>EditMedia：视频编辑任务</li>
 <li>WechatDistribute：微信发布任务。</li>
@@ -20230,19 +16166,7 @@ class TaskSimpleInfo(AbstractModel):
 <li>SnapshotByTimeOffset：视频截图任务；</li>
 <li>Concat：视频拼接任务；</li>
 <li>Clip：视频剪辑任务；</li>
-<li>ImageSprites：截取雪碧图任务。</li>
-        :type TaskType: str
-        :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param BeginProcessTime: 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。若任务尚未开始，该字段为空。
-        :type BeginProcessTime: str
-        :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。若任务尚未完成，该字段为空。
-        :type FinishTime: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求。
-        :type SessionId: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息。
-        :type SessionContext: str
-        """
+<li>ImageSprites：截取雪碧图任务。</li>\n        :type TaskType: str\n        :param CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param BeginProcessTime: 任务开始执行时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。若任务尚未开始，该字段为空。\n        :type BeginProcessTime: str\n        :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。若任务尚未完成，该字段为空。\n        :type FinishTime: str\n        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求。\n        :type SessionId: str\n        :param SessionContext: 来源上下文，用于透传用户请求信息。\n        :type SessionContext: str\n        """
         self.TaskId = None
         self.Status = None
         self.FileId = None
@@ -20286,11 +16210,7 @@ class TaskStatData(AbstractModel):
 <li> Editing: 视频编辑</li>
 <li> AdaptiveBitrateStreaming: 自适应码流</li>
 <li> ContentAudit: 内容审核</li>
-<li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
-        :type TaskType: str
-        :param Summary: 任务数统计数据概览，用量单位为秒。
-        :type Summary: list of TaskStatDataItem
-        :param Details: 不同规格任务统计数据详情。
+<li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>\n        :type TaskType: str\n        :param Summary: 任务数统计数据概览，用量单位为秒。\n        :type Summary: list of TaskStatDataItem\n        :param Details: 不同规格任务统计数据详情。
 转码规格：
 <li>Remuxing: 转封装</li>
 <li>Audio: 音频转码</li>
@@ -20324,9 +16244,7 @@ class TaskStatData(AbstractModel):
 <li>Edit.H265.HD: H.265编码方式高清视频编辑</li>
 <li>Edit.H265.FHD: H.265编码方式全高清视频编辑</li>
 <li>Edit.H265.2K: H.265编码方式2K视频编辑</li>
-<li>Edit.H265.4K: H.265编码方式4K视频编辑</li>
-        :type Details: list of SpecificationDataItem
-        """
+<li>Edit.H265.4K: H.265编码方式4K视频编辑</li>\n        :type Details: list of SpecificationDataItem\n        """
         self.TaskType = None
         self.Summary = None
         self.Details = None
@@ -20362,13 +16280,7 @@ class TaskStatDataItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
-        :type Time: str
-        :param Count: 任务数。
-        :type Count: int
-        :param Usage: 任务用量。
-        :type Usage: int
-        """
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。\n        :type Time: str\n        :param Count: 任务数。\n        :type Count: int\n        :param Usage: 任务用量。\n        :type Usage: int\n        """
         self.Time = None
         self.Count = None
         self.Usage = None
@@ -20394,15 +16306,7 @@ class TempCertificate(AbstractModel):
 
     def __init__(self):
         """
-        :param SecretId: 临时安全证书 Id。
-        :type SecretId: str
-        :param SecretKey: 临时安全证书 Key。
-        :type SecretKey: str
-        :param Token: Token 值。
-        :type Token: str
-        :param ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒。
-        :type ExpiredTime: int
-        """
+        :param SecretId: 临时安全证书 Id。\n        :type SecretId: str\n        :param SecretKey: 临时安全证书 Key。\n        :type SecretKey: str\n        :param Token: Token 值。\n        :type Token: str\n        :param ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒。\n        :type ExpiredTime: int\n        """
         self.SecretId = None
         self.SecretKey = None
         self.Token = None
@@ -20431,12 +16335,8 @@ class TerrorismConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param ImgReviewInfo: 画面鉴恐任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
-        :param OcrReviewInfo: 文字鉴恐任务控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfo`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`\n        :param OcrReviewInfo: 文字鉴恐任务控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfo`\n        """
         self.ImgReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -20464,11 +16364,7 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param ImgReviewInfo: 画面鉴恐任务控制参数。
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 文本鉴恐任务控制参数。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfoForUpdate`
-        """
+        :param ImgReviewInfo: 画面鉴恐任务控制参数。\n        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: 文本鉴恐任务控制参数。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfoForUpdate`\n        """
         self.ImgReviewInfo = None
         self.OcrReviewInfo = None
 
@@ -20498,9 +16394,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 画面鉴恐任务开关，可选值：
 <li>ON：开启画面鉴恐任务；</li>
-<li>OFF：关闭画面鉴恐任务。</li>
-        :type Switch: str
-        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>OFF：关闭画面鉴恐任务。</li>\n        :type Switch: str\n        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>guns：武器枪支；</li>
 <li>crowd：人群聚集；</li>
 <li>bloody：血腥画面；</li>
@@ -20509,13 +16403,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
 <li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>scenario：暴恐画面。</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -20545,9 +16433,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 画面鉴恐任务开关，可选值：
 <li>ON：开启画面鉴恐任务；</li>
-<li>OFF：关闭画面鉴恐任务。</li>
-        :type Switch: str
-        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+<li>OFF：关闭画面鉴恐任务。</li>\n        :type Switch: str\n        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>guns：武器枪支；</li>
 <li>crowd：人群聚集；</li>
 <li>bloody：血腥画面；</li>
@@ -20556,13 +16442,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
 <li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>scenario：暴恐画面。</li>\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -20592,13 +16472,7 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 文本鉴恐任务开关，可选值：
 <li>ON：开启文本鉴恐任务；</li>
-<li>OFF：关闭文本鉴恐任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本鉴恐任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -20626,13 +16500,7 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 文本鉴恐任务开关，可选值：
 <li>ON：开启文本鉴恐任务；</li>
-<li>OFF：关闭文本鉴恐任务。</li>
-        :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭文本鉴恐任务。</li>\n        :type Switch: str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.BlockConfidence = None
         self.ReviewConfidence = None
@@ -20660,18 +16528,10 @@ class TextWatermarkTemplateInput(AbstractModel):
         """
         :param FontType: 字体类型，目前可以支持两种：
 <li>simkai.ttf：可以支持中文和英文；</li>
-<li>arial.ttf：仅支持英文。</li>
-        :type FontType: str
-        :param FontSize: 字体大小，格式：Npx，N 为数值。
-        :type FontSize: str
-        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
-        :type FontColor: str
-        :param FontAlpha: 文字透明度，取值范围：(0, 1]
+<li>arial.ttf：仅支持英文。</li>\n        :type FontType: str\n        :param FontSize: 字体大小，格式：Npx，N 为数值。\n        :type FontSize: str\n        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。\n        :type FontColor: str\n        :param FontAlpha: 文字透明度，取值范围：(0, 1]
 <li>0：完全透明</li>
 <li>1：完全不透明</li>
-默认值：1。
-        :type FontAlpha: float
-        """
+默认值：1。\n        :type FontAlpha: float\n        """
         self.FontType = None
         self.FontSize = None
         self.FontColor = None
@@ -20701,17 +16561,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         """
         :param FontType: 字体类型，目前可以支持两种：
 <li>simkai.ttf：可以支持中文和英文；</li>
-<li>arial.ttf：仅支持英文。</li>
-        :type FontType: str
-        :param FontSize: 字体大小，格式：Npx，N 为数值。
-        :type FontSize: str
-        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。
-        :type FontColor: str
-        :param FontAlpha: 文字透明度，取值范围：(0, 1]
+<li>arial.ttf：仅支持英文。</li>\n        :type FontType: str\n        :param FontSize: 字体大小，格式：Npx，N 为数值。\n        :type FontSize: str\n        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。\n        :type FontColor: str\n        :param FontAlpha: 文字透明度，取值范围：(0, 1]
 <li>0：完全透明</li>
-<li>1：完全不透明</li>
-        :type FontAlpha: float
-        """
+<li>1：完全不透明</li>\n        :type FontAlpha: float\n        """
         self.FontType = None
         self.FontSize = None
         self.FontColor = None
@@ -20740,12 +16592,8 @@ class TimeRange(AbstractModel):
     def __init__(self):
         """
         :param After: <li>大于等于此时间（起始时间）。</li>
-<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
-        :type After: str
-        :param Before: <li>小于此时间（结束时间）。</li>
-<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
-        :type Before: str
-        """
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>\n        :type After: str\n        :param Before: <li>小于此时间（结束时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>\n        :type Before: str\n        """
         self.After = None
         self.Before = None
 
@@ -20769,17 +16617,7 @@ class TranscodePlayInfo2017(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 播放地址。
-        :type Url: str
-        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
-        :type Definition: int
-        :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
-        :type Bitrate: int
-        :param Height: 视频流高度的最大值，单位：px。
-        :type Height: int
-        :param Width: 视频流宽度的最大值，单位：px。
-        :type Width: int
-        """
+        :param Url: 播放地址。\n        :type Url: str\n        :param Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。\n        :type Definition: int\n        :param Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流高度的最大值，单位：px。\n        :type Height: int\n        :param Width: 视频流宽度的最大值，单位：px。\n        :type Width: int\n        """
         self.Url = None
         self.Definition = None
         self.Bitrate = None
@@ -20809,25 +16647,9 @@ class TranscodeTask2017(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 转码任务 ID。
-        :type TaskId: str
-        :param ErrCode: 错误码
+        :param TaskId: 转码任务 ID。\n        :type TaskId: str\n        :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 被转码文件 ID。
-        :type FileId: str
-        :param FileName: 被转码文件名称。
-        :type FileName: str
-        :param Duration: 视频时长，单位：秒。
-        :type Duration: int
-        :param CoverUrl: 封面地址。
-        :type CoverUrl: str
-        :param PlayInfoSet: 视频转码后生成的播放信息。
-        :type PlayInfoSet: list of TranscodePlayInfo2017
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileId: 被转码文件 ID。\n        :type FileId: str\n        :param FileName: 被转码文件名称。\n        :type FileName: str\n        :param Duration: 视频时长，单位：秒。\n        :type Duration: int\n        :param CoverUrl: 封面地址。\n        :type CoverUrl: str\n        :param PlayInfoSet: 视频转码后生成的播放信息。\n        :type PlayInfoSet: list of TranscodePlayInfo2017\n        """
         self.TaskId = None
         self.ErrCode = None
         self.Message = None
@@ -20868,25 +16690,13 @@ class TranscodeTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 视频转码模板 ID。
-        :type Definition: int
-        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-        :type WatermarkSet: list of WatermarkInput
-        :param MosaicSet: 马赛克列表，最大可支持 10 张。
-        :type MosaicSet: list of MosaicInput
-        :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
-        :type HeadTailSet: list of HeadTailTaskInput
-        :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
+        :param Definition: 视频转码模板 ID。\n        :type Definition: int\n        :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。\n        :type WatermarkSet: list of WatermarkInput\n        :param MosaicSet: 马赛克列表，最大可支持 10 张。\n        :type MosaicSet: list of MosaicInput\n        :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。\n        :type HeadTailSet: list of HeadTailTaskInput\n        :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
 <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
 <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
-        :type EndTimeOffset: float
-        """
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>\n        :type EndTimeOffset: float\n        """
         self.Definition = None
         self.WatermarkSet = None
         self.MosaicSet = None
@@ -20933,44 +16743,18 @@ class TranscodeTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 转码模板唯一标识。
-        :type Definition: str
-        :param Container: 封装格式，取值：mp4、flv、hls、mp3、flac、ogg。
-        :type Container: str
-        :param Name: 转码模板名称。
-        :type Name: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        :param Type: 模板类型，取值：
+        :param Definition: 转码模板唯一标识。\n        :type Definition: str\n        :param Container: 封装格式，取值：mp4、flv、hls、mp3、flac、ogg。\n        :type Container: str\n        :param Name: 转码模板名称。\n        :type Name: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        :param Type: 模板类型，取值：
 <li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
-        :type Type: str
-        :param RemoveVideo: 是否去除视频数据，取值：
+<li>Custom：用户自定义模板。</li>\n        :type Type: str\n        :param RemoveVideo: 是否去除视频数据，取值：
 <li>0：保留；</li>
-<li>1：去除。</li>
-        :type RemoveVideo: int
-        :param RemoveAudio: 是否去除音频数据，取值：
+<li>1：去除。</li>\n        :type RemoveVideo: int\n        :param RemoveAudio: 是否去除音频数据，取值：
 <li>0：保留；</li>
-<li>1：去除。</li>
-        :type RemoveAudio: int
-        :param VideoTemplate: 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`
-        :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
-        :param TEHDConfig: 极速高清转码参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
-        :param ContainerType: 封装格式过滤条件，可选值：
+<li>1：去除。</li>\n        :type RemoveAudio: int\n        :param VideoTemplate: 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfo`\n        :param AudioTemplate: 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`\n        :param TEHDConfig: 极速高清转码参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`\n        :param ContainerType: 封装格式过滤条件，可选值：
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
-<li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
-        :type ContainerType: str
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        """
+<li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>\n        :type ContainerType: str\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        """
         self.Definition = None
         self.Container = None
         self.Name = None
@@ -21068,9 +16852,7 @@ class TransitionOpertion(AbstractModel):
 <li>AudioFadeInFadeOut：声音淡入淡出。 </li>
 </ul>
 </li>
-</ul>
-        :type Type: str
-        """
+</ul>\n        :type Type: str\n        """
         self.Type = None
 
 
@@ -21094,11 +16876,7 @@ class UrlSignatureAuthPolicy(AbstractModel):
         """
         :param Status: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)设置状态，可选值：
 <li>Enabled: 启用；</li>
-<li>Disabled: 禁用。</li>
-        :type Status: str
-        :param EncryptedKey: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)中用于生成签名的密钥。
-        :type EncryptedKey: str
-        """
+<li>Disabled: 禁用。</li>\n        :type Status: str\n        :param EncryptedKey: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)中用于生成签名的密钥。\n        :type EncryptedKey: str\n        """
         self.Status = None
         self.EncryptedKey = None
 
@@ -21124,16 +16902,8 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 用户自定语音审核任务开关，可选值：
 <li>ON：开启自定义语音审核任务；</li>
-<li>OFF：关闭自定义语音审核任务。</li>
-        :type Switch: str
-        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭自定义语音审核任务。</li>\n        :type Switch: str\n        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -21163,16 +16933,8 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 用户自定语音审核任务开关，可选值：
 <li>ON：开启自定义语音审核任务；</li>
-<li>OFF：关闭自定义语音审核任务。</li>
-        :type Switch: str
-        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭自定义语音审核任务。</li>\n        :type Switch: str\n        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -21201,15 +16963,9 @@ class UserDefineConfigureInfo(AbstractModel):
     def __init__(self):
         """
         :param FaceReviewInfo: 用户自定义人物审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`
-        :param AsrReviewInfo: 用户自定义语音审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`
-        :param OcrReviewInfo: 用户自定义文本审核控制参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`\n        :param AsrReviewInfo: 用户自定义语音审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`\n        :param OcrReviewInfo: 用户自定义文本审核控制参数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`\n        """
         self.FaceReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -21241,13 +16997,7 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param FaceReviewInfo: 用户自定义人物审核控制参数。
-        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: 用户自定义语音审核控制参数。
-        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 用户自定义文本审核控制参数。
-        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
-        """
+        :param FaceReviewInfo: 用户自定义人物审核控制参数。\n        :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfoForUpdate`\n        :param AsrReviewInfo: 用户自定义语音审核控制参数。\n        :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfoForUpdate`\n        :param OcrReviewInfo: 用户自定义文本审核控制参数。\n        :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfoForUpdate`\n        """
         self.FaceReviewInfo = None
         self.AsrReviewInfo = None
         self.OcrReviewInfo = None
@@ -21281,16 +17031,8 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 用户自定义人物审核任务开关，可选值：
 <li>ON：开启自定义人物审核任务；</li>
-<li>OFF：关闭自定义人物审核任务。</li>
-        :type Switch: str
-        :param LabelSet: 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭自定义人物审核任务。</li>\n        :type Switch: str\n        :param LabelSet: 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -21320,16 +17062,8 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 用户自定义人物审核任务开关，可选值：
 <li>ON：开启自定义人物审核任务；</li>
-<li>OFF：关闭自定义人物审核任务。</li>
-        :type Switch: str
-        :param LabelSet: 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭自定义人物审核任务。</li>\n        :type Switch: str\n        :param LabelSet: 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -21359,16 +17093,8 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
         """
         :param Switch: 用户自定文本审核任务开关，可选值：
 <li>ON：开启自定义文本审核任务；</li>
-<li>OFF：关闭自定义文本审核任务。</li>
-        :type Switch: str
-        :param LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭自定义文本审核任务。</li>\n        :type Switch: str\n        :param LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -21398,16 +17124,8 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         """
         :param Switch: 用户自定文本审核任务开关，可选值：
 <li>ON：开启自定义文本审核任务；</li>
-<li>OFF：关闭自定义文本审核任务。</li>
-        :type Switch: str
-        :param LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
-标签个数最多 10 个，每个标签长度最多 16 个字符。
-        :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
-        :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
-        :type ReviewConfidence: int
-        """
+<li>OFF：关闭自定义文本审核任务。</li>\n        :type Switch: str\n        :param LabelSet: 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+标签个数最多 10 个，每个标签长度最多 16 个字符。\n        :type LabelSet: list of str\n        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。\n        :type BlockConfidence: int\n        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。\n        :type ReviewConfidence: int\n        """
         self.Switch = None
         self.LabelSet = None
         self.BlockConfidence = None
@@ -21439,48 +17157,30 @@ class VideoTemplateInfo(AbstractModel):
 <li>libx264：H.264 编码</li>
 <li>libx265：H.265 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
-目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
-        :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
-        :type Fps: int
-        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
-当取值为 0，表示视频码率和原始视频保持一致。
-        :type Bitrate: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。\n        :type Codec: str\n        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
+当取值为 0，表示帧率和原始视频保持一致。\n        :type Fps: int\n        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。\n        :type Bitrate: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
-        :type ResolutionAdaptive: str
-        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：open。\n        :type ResolutionAdaptive: str\n        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Width: int
-        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+默认值：0。\n        :type Width: int\n        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
-        :type Height: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+默认值：0。\n        :type Height: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
-默认值：black 。
-        :type FillType: str
-        :param Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
+默认值：black 。\n        :type FillType: str\n        :param Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
-如果没有特殊需求，不建议指定该参数。
-        :type Vcrf: int
-        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-当填 0 或不填时，系统将自动设置 gop 长度。
-        :type Gop: int
-        """
+如果没有特殊需求，不建议指定该参数。\n        :type Vcrf: int\n        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
+当填 0 或不填时，系统将自动设置 gop 长度。\n        :type Gop: int\n        """
         self.Codec = None
         self.Fps = None
         self.Bitrate = None
@@ -21522,39 +17222,21 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>libx264：H.264 编码</li>
 <li>libx265：H.265 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
-目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
-        :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
-        :type Fps: int
-        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
-当取值为 0，表示视频码率和原始视频保持一致。
-        :type Bitrate: int
-        :param ResolutionAdaptive: 分辨率自适应，可选值：
+目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。\n        :type Codec: str\n        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
+当取值为 0，表示帧率和原始视频保持一致。\n        :type Fps: int\n        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。\n        :type Bitrate: int\n        :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-        :type ResolutionAdaptive: str
-        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>\n        :type ResolutionAdaptive: str\n        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-        :type Width: int
-        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-        :type Height: int
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>\n        :type Width: int\n        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。\n        :type Height: int\n        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
-        :type FillType: str
-        :param Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
-如果没有特殊需求，不建议指定该参数。
-        :type Vcrf: int
-        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-当填 0 或不填时，系统将自动设置 gop 长度。
-        :type Gop: int
-        """
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>\n        :type FillType: str\n        :param Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
+如果没有特殊需求，不建议指定该参数。\n        :type Vcrf: int\n        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
+当填 0 或不填时，系统将自动设置 gop 长度。\n        :type Gop: int\n        """
         self.Codec = None
         self.Fps = None
         self.Bitrate = None
@@ -21595,45 +17277,25 @@ class VideoTrackItem(AbstractModel):
         :param SourceMedia: 视频片段的媒体素材来源，可以是：
 <li>点播的媒体文件 ID；</li>
 <li>其他媒体文件的下载 URL。</li>
-注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
-        :type SourceMedia: str
-        :param SourceMediaStartTime: 视频片段取自素材文件的起始时间，单位为秒。默认为0。
-        :type SourceMediaStartTime: float
-        :param Duration: 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
-        :type Duration: float
-        :param CoordinateOrigin: 视频原点位置，取值有：
+注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 视频片段取自素材文件的起始时间，单位为秒。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。\n        :type Duration: float\n        :param CoordinateOrigin: 视频原点位置，取值有：
 <li>Center：坐标原点为中心位置，如画布中心。</li>
-默认值 ：Center。
-        :type CoordinateOrigin: str
-        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+默认值 ：Center。\n        :type CoordinateOrigin: str\n        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
 <li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
-默认值：0px。
-        :type XPos: str
-        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+默认值：0px。\n        :type XPos: str\n        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
 <li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
-默认值：0px。
-        :type YPos: str
-        :param Width: 视频片段的宽度。支持 %、px 两种格式：
+默认值：0px。\n        :type YPos: str\n        :param Width: 视频片段的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
 <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
 <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
 <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
-<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
-        :type Width: str
-        :param Height: 视频片段的高度。支持 %、px 两种格式：
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>\n        :type Width: str\n        :param Height: 视频片段的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；
 </li><li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
 <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
 <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
-<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
-        :type Height: str
-        :param ImageOperations: 对图像进行的操作，如图像旋转等。
-        :type ImageOperations: list of ImageTransform
-        :param AudioOperations: 对音频进行操作，如静音等。
-        :type AudioOperations: list of AudioTransform
-        """
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>\n        :type Height: str\n        :param ImageOperations: 对图像进行的操作，如图像旋转等。\n        :type ImageOperations: list of ImageTransform\n        :param AudioOperations: 对音频进行操作，如静音等。\n        :type AudioOperations: list of AudioTransform\n        """
         self.SourceMedia = None
         self.SourceMediaStartTime = None
         self.Duration = None
@@ -21683,14 +17345,8 @@ class WatermarkCycleConfigForUpdate(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 水印在视频里第一次出现的播放时间点，单位：秒。
-        :type StartTime: float
-        :param DisplayDuration: 在一个水印周期内，水印显示的持续时间，单位：秒。
-        :type DisplayDuration: float
-        :param CycleDuration: 一个水印周期的持续时间，单位：秒。
-填 0 表示水印只持续一个水印周期（即在整个视频里只显示 DisplayDuration 秒）。
-        :type CycleDuration: float
-        """
+        :param StartTime: 水印在视频里第一次出现的播放时间点，单位：秒。\n        :type StartTime: float\n        :param DisplayDuration: 在一个水印周期内，水印显示的持续时间，单位：秒。\n        :type DisplayDuration: float\n        :param CycleDuration: 一个水印周期的持续时间，单位：秒。
+填 0 表示水印只持续一个水印周期（即在整个视频里只显示 DisplayDuration 秒）。\n        :type CycleDuration: float\n        """
         self.StartTime = None
         self.DisplayDuration = None
         self.CycleDuration = None
@@ -21716,25 +17372,15 @@ class WatermarkInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 水印模板 ID。
-        :type Definition: int
-        :param TextContent: 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
-文字水印不支持截图打水印。
-        :type TextContent: str
-        :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
-SVG 水印不支持截图打水印。
-        :type SvgContent: str
-        :param StartTimeOffset: 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
+        :param Definition: 水印模板 ID。\n        :type Definition: int\n        :param TextContent: 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+文字水印不支持截图打水印。\n        :type TextContent: str\n        :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+SVG 水印不支持截图打水印。\n        :type SvgContent: str\n        :param StartTimeOffset: 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
 <li>不填或填0，表示水印从画面开始就出现；</li>
 <li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
-<li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
-        :type StartTimeOffset: float
-        :param EndTimeOffset: 水印的结束时间偏移，单位：秒。
+<li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>\n        :type StartTimeOffset: float\n        :param EndTimeOffset: 水印的结束时间偏移，单位：秒。
 <li>不填或填0，表示水印持续到画面结束；</li>
 <li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
-<li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
-        :type EndTimeOffset: float
-        """
+<li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>\n        :type EndTimeOffset: float\n        """
         self.Definition = None
         self.TextContent = None
         self.SvgContent = None
@@ -21764,44 +17410,20 @@ class WatermarkTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 水印模板唯一标识。
-        :type Definition: int
-        :param Type: 水印类型，取值：
+        :param Definition: 水印模板唯一标识。\n        :type Definition: int\n        :param Type: 水印类型，取值：
 <li>image：图片水印；</li>
-<li>text：文字水印。</li>
-        :type Type: str
-        :param Name: 水印模板名称。
-        :type Name: str
-        :param Comment: 模板描述信息。
-        :type Comment: str
-        :param XPos: 水印图片原点距离视频图像原点的水平位置。
+<li>text：文字水印。</li>\n        :type Type: str\n        :param Name: 水印模板名称。\n        :type Name: str\n        :param Comment: 模板描述信息。\n        :type Comment: str\n        :param XPos: 水印图片原点距离视频图像原点的水平位置。
 <li>当字符串以 % 结尾，表示水印 Left 为视频宽度指定百分比的位置，如 10% 表示 Left 为视频宽度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>
-        :type XPos: str
-        :param YPos: 水印图片原点距离视频图像原点的垂直位置。
+<li>当字符串以 px 结尾，表示水印 Left 为视频宽度指定像素的位置，如 100px 表示 Left 为 100 像素。</li>\n        :type XPos: str\n        :param YPos: 水印图片原点距离视频图像原点的垂直位置。
 <li>当字符串以 % 结尾，表示水印 Top 为视频高度指定百分比的位置，如 10% 表示 Top 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>
-        :type YPos: str
-        :param ImageTemplate: 图片水印模板，仅当 Type 为 image，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkTemplate`
-        :param TextTemplate: 文字水印模板，仅当 Type 为 text，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
-        :param SvgTemplate: SVG 水印模板，当 Type 为 svg，该字段有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
-        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type CreateTime: str
-        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-        :type UpdateTime: str
-        :param CoordinateOrigin: 原点位置，可选值：
+<li>当字符串以 px 结尾，表示水印 Top 为视频高度指定像素的位置，如 100px 表示 Top 为 100 像素。</li>\n        :type YPos: str\n        :param ImageTemplate: 图片水印模板，仅当 Type 为 image，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageTemplate: :class:`tencentcloud.vod.v20180717.models.ImageWatermarkTemplate`\n        :param TextTemplate: 文字水印模板，仅当 Type 为 text，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`\n        :param SvgTemplate: SVG 水印模板，当 Type 为 svg，该字段有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`\n        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type CreateTime: str\n        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。\n        :type UpdateTime: str\n        :param CoordinateOrigin: 原点位置，可选值：
 <li>topLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角；</li>
 <li>topRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
 <li>bottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
-<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>
-        :type CoordinateOrigin: str
-        """
+<li>bottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下。；</li>\n        :type CoordinateOrigin: str\n        """
         self.Definition = None
         self.Type = None
         self.Name = None
@@ -21851,13 +17473,7 @@ class WeChatMiniProgramPublishRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 媒体文件 ID。
-        :type FileId: str
-        :param SourceDefinition: 发布视频所对应的转码模板 ID，为0代表原始视频。
-        :type SourceDefinition: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
-        """
+        :param FileId: 媒体文件 ID。\n        :type FileId: str\n        :param SourceDefinition: 发布视频所对应的转码模板 ID，为0代表原始视频。\n        :type SourceDefinition: int\n        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。\n        :type SubAppId: int\n        """
         self.FileId = None
         self.SourceDefinition = None
         self.SubAppId = None
@@ -21883,11 +17499,7 @@ class WeChatMiniProgramPublishResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -21904,29 +17516,15 @@ class WechatMiniProgramPublishTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务状态，取值：
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param Status: 任务状态，取值：
 WAITING：等待中；
 PROCESSING：处理中；
-FINISH：已完成。
-        :type Status: str
-        :param ErrCode: 错误码
+FINISH：已完成。\n        :type Status: str\n        :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 发布视频文件 ID。
-        :type FileId: str
-        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
-        :type SourceDefinition: int
-        :param PublishResult: 微信小程序视频发布状态，取值：
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileId: 发布视频文件 ID。\n        :type FileId: str\n        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。\n        :type SourceDefinition: int\n        :param PublishResult: 微信小程序视频发布状态，取值：
 <li>Pass：发布成功；</li>
 <li>Failed：发布失败；</li>
-<li>Rejected：审核未通过。</li>
-        :type PublishResult: str
-        """
+<li>Rejected：审核未通过。</li>\n        :type PublishResult: str\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
@@ -21960,9 +17558,7 @@ class WechatMiniProgramPublishTaskInput(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
-        :type SourceDefinition: int
-        """
+        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。\n        :type SourceDefinition: int\n        """
         self.SourceDefinition = None
 
 
@@ -21984,36 +17580,16 @@ class WechatPublishTask(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 ID。
-        :type TaskId: str
-        :param Status: 任务状态，取值：
+        :param TaskId: 任务 ID。\n        :type TaskId: str\n        :param Status: 任务状态，取值：
 WAITING：等待中；
 PROCESSING：处理中；
-FINISH：已完成。
-        :type Status: str
-        :param ErrCode: 错误码
+FINISH：已完成。\n        :type Status: str\n        :param ErrCode: 错误码
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param Message: 错误信息。
-        :type Message: str
-        :param FileId: 发布视频文件 ID。
-        :type FileId: str
-        :param Definition: 微信发布模板 ID。
-        :type Definition: int
-        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。
-        :type SourceDefinition: int
-        :param WechatStatus: 微信发布状态，取值：
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param Message: 错误信息。\n        :type Message: str\n        :param FileId: 发布视频文件 ID。\n        :type FileId: str\n        :param Definition: 微信发布模板 ID。\n        :type Definition: int\n        :param SourceDefinition: 发布视频所对应的转码模板 ID，为 0 代表原始视频。\n        :type SourceDefinition: int\n        :param WechatStatus: 微信发布状态，取值：
 <li>FAIL：失败；</li>
 <li>SUCCESS：成功；</li>
 <li>AUDITNOTPASS：审核未通过；</li>
-<li>NOTTRIGGERED：尚未发起微信发布。</li>
-        :type WechatStatus: str
-        :param WechatVid: 微信 Vid。
-        :type WechatVid: str
-        :param WechatUrl: 微信地址。
-        :type WechatUrl: str
-        """
+<li>NOTTRIGGERED：尚未发起微信发布。</li>\n        :type WechatStatus: str\n        :param WechatVid: 微信 Vid。\n        :type WechatVid: str\n        :param WechatUrl: 微信地址。\n        :type WechatUrl: str\n        """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None

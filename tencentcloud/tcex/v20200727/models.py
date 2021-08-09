@@ -25,12 +25,8 @@ class AlgorithmResult(AbstractModel):
 
     def __init__(self):
         """
-        :param AlgoId: 算法ID
-        :type AlgoId: str
-        :param AlgoName: 算法名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlgoName: str
-        :param Result: 算法返回的结果。
+        :param AlgoId: 算法ID\n        :type AlgoId: str\n        :param AlgoName: 算法名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlgoName: str\n        :param Result: 算法返回的结果。
 - 当算法类型为“OCR（1）”时，结果为文本字符串
 - 当算法类型为“文本分类（2）”时，结果字符串为json对象数组：
   Class：分类结果
@@ -46,20 +42,14 @@ class AlgorithmResult(AbstractModel):
 - 当算法类型为“实体识别（5）”时，结果字符串为json对象数组：
   - Entity：实体类型
   - Content：实体文本内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: str
-        :param Error: 算法调用错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Error: str
-        :param AlgoType: 算法类型：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: str\n        :param Error: 算法调用错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Error: str\n        :param AlgoType: 算法类型：
 1：OCR算法
 2：文本分类算法
 3：情感分析算法
 4：合同要素抽取算法
 5、实体识别算法
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlgoType: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlgoType: int\n        """
         self.AlgoId = None
         self.AlgoName = None
         self.Result = None
@@ -89,9 +79,7 @@ class DescribeInvocationResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InvokeId: 调用id，为调用InvokeService接口返回的RequestId
-        :type InvokeId: str
-        """
+        :param InvokeId: 调用id，为调用InvokeService接口返回的RequestId\n        :type InvokeId: str\n        """
         self.InvokeId = None
 
 
@@ -113,15 +101,9 @@ class DescribeInvocationResultResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Results: 服务的调用结果
-        :type Results: list of AlgorithmResult
-        :param Status: 0:获取结果失败
+        :param Results: 服务的调用结果\n        :type Results: list of AlgorithmResult\n        :param Status: 0:获取结果失败
 1：结果还没有生成，继续轮询
-2：获取结果成功
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+2：获取结果成功\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Results = None
         self.Status = None
         self.RequestId = None
@@ -145,15 +127,7 @@ class InvokeServiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceId: 待调用的服务ID。
-        :type ServiceId: str
-        :param ServiceStatus: 要调用服务的状态：0表示调试版本，1表示上线版本
-        :type ServiceStatus: int
-        :param FileUrl: 用于测试的文档的URL。
-        :type FileUrl: str
-        :param Input: 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。
-        :type Input: str
-        """
+        :param ServiceId: 待调用的服务ID。\n        :type ServiceId: str\n        :param ServiceStatus: 要调用服务的状态：0表示调试版本，1表示上线版本\n        :type ServiceStatus: int\n        :param FileUrl: 用于测试的文档的URL。\n        :type FileUrl: str\n        :param Input: 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。\n        :type Input: str\n        """
         self.ServiceId = None
         self.ServiceStatus = None
         self.FileUrl = None
@@ -181,9 +155,7 @@ class InvokeServiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

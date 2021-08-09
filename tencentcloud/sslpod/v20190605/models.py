@@ -25,30 +25,8 @@ class CertInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Hash: 证书sha1
-        :type Hash: str
-        :param CN: 证书通用名称
-        :type CN: str
-        :param SANs: 备用名称
-        :type SANs: str
-        :param KeyAlgo: 公钥算法
-        :type KeyAlgo: str
-        :param Issuer: 颁发者
-        :type Issuer: str
-        :param BeginTime: 有效期开始
-        :type BeginTime: str
-        :param EndTime: 有效期结束
-        :type EndTime: str
-        :param Days: 剩余天数
-        :type Days: int
-        :param Brand: 品牌
-        :type Brand: str
-        :param TrustStatus: 信任状态
-        :type TrustStatus: str
-        :param CertType: 证书类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CertType: str
-        """
+        :param Hash: 证书sha1\n        :type Hash: str\n        :param CN: 证书通用名称\n        :type CN: str\n        :param SANs: 备用名称\n        :type SANs: str\n        :param KeyAlgo: 公钥算法\n        :type KeyAlgo: str\n        :param Issuer: 颁发者\n        :type Issuer: str\n        :param BeginTime: 有效期开始\n        :type BeginTime: str\n        :param EndTime: 有效期结束\n        :type EndTime: str\n        :param Days: 剩余天数\n        :type Days: int\n        :param Brand: 品牌\n        :type Brand: str\n        :param TrustStatus: 信任状态\n        :type TrustStatus: str\n        :param CertType: 证书类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CertType: str\n        """
         self.Hash = None
         self.CN = None
         self.SANs = None
@@ -90,11 +68,7 @@ class ChartHistogram(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 项目名
-        :type Name: str
-        :param Children: 项目值
-        :type Children: list of ChartNameValue
-        """
+        :param Name: 项目名\n        :type Name: str\n        :param Children: 项目值\n        :type Children: list of ChartNameValue\n        """
         self.Name = None
         self.Children = None
 
@@ -123,11 +97,7 @@ class ChartNameValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 图表项名称
-        :type Name: str
-        :param Value: 图表项值
-        :type Value: int
-        """
+        :param Name: 图表项名称\n        :type Name: str\n        :param Value: 图表项值\n        :type Value: int\n        """
         self.Name = None
         self.Value = None
 
@@ -151,19 +121,7 @@ class CreateDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServerType: 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
-        :type ServerType: int
-        :param Domain: 添加的域名
-        :type Domain: str
-        :param Port: 添加的端口
-        :type Port: str
-        :param IP: 指定域名的IP
-        :type IP: str
-        :param Notice: 是否开启通知告警
-        :type Notice: bool
-        :param Tags: 给域名添加标签，多个以逗号隔开
-        :type Tags: str
-        """
+        :param ServerType: 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）\n        :type ServerType: int\n        :param Domain: 添加的域名\n        :type Domain: str\n        :param Port: 添加的端口\n        :type Port: str\n        :param IP: 指定域名的IP\n        :type IP: str\n        :param Notice: 是否开启通知告警\n        :type Notice: bool\n        :param Tags: 给域名添加标签，多个以逗号隔开\n        :type Tags: str\n        """
         self.ServerType = None
         self.Domain = None
         self.Port = None
@@ -195,9 +153,7 @@ class CreateDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -212,19 +168,7 @@ class DashboardResult(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityLevelPie: 安全等级图表
-        :type SecurityLevelPie: list of ChartNameValue
-        :param CertBrandsPie: 证书品牌图表
-        :type CertBrandsPie: list of ChartNameValue
-        :param CertValidTimePie: 证书有效时间图表
-        :type CertValidTimePie: list of ChartNameValue
-        :param CertTypePie: 证书类型图表
-        :type CertTypePie: list of ChartNameValue
-        :param SSLBugsLoopholeHistogram: ssl bugs图表
-        :type SSLBugsLoopholeHistogram: list of ChartHistogram
-        :param ComplianceHistogram: 合规图表
-        :type ComplianceHistogram: list of ChartHistogram
-        """
+        :param SecurityLevelPie: 安全等级图表\n        :type SecurityLevelPie: list of ChartNameValue\n        :param CertBrandsPie: 证书品牌图表\n        :type CertBrandsPie: list of ChartNameValue\n        :param CertValidTimePie: 证书有效时间图表\n        :type CertValidTimePie: list of ChartNameValue\n        :param CertTypePie: 证书类型图表\n        :type CertTypePie: list of ChartNameValue\n        :param SSLBugsLoopholeHistogram: ssl bugs图表\n        :type SSLBugsLoopholeHistogram: list of ChartHistogram\n        :param ComplianceHistogram: 合规图表\n        :type ComplianceHistogram: list of ChartHistogram\n        """
         self.SecurityLevelPie = None
         self.CertBrandsPie = None
         self.CertValidTimePie = None
@@ -286,9 +230,7 @@ class DeleteDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名ID，可通过搜索域名接口获得
-        :type DomainId: int
-        """
+        :param DomainId: 域名ID，可通过搜索域名接口获得\n        :type DomainId: int\n        """
         self.DomainId = None
 
 
@@ -310,9 +252,7 @@ class DeleteDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -334,11 +274,7 @@ class DescribeDashboardResponse(AbstractModel):
     def __init__(self):
         """
         :param Data: dashboard面板数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.sslpod.v20190605.models.DashboardResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: :class:`tencentcloud.sslpod.v20190605.models.DashboardResult`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -357,9 +293,7 @@ class DescribeDomainCertsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名ID，可通过搜索域名接口获得
-        :type DomainId: int
-        """
+        :param DomainId: 域名ID，可通过搜索域名接口获得\n        :type DomainId: int\n        """
         self.DomainId = None
 
 
@@ -381,11 +315,7 @@ class DescribeDomainCertsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 证书信息
-        :type Data: list of CertInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 证书信息\n        :type Data: list of CertInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -413,11 +343,7 @@ class DescribeDomainTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: Tag数组
-        :type Data: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: Tag数组\n        :type Data: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -435,19 +361,7 @@ class DescribeDomains(AbstractModel):
     def __init__(self):
         """
         :param Result: 列表数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: list of DomainSiteInfo
-        :param SearchTotal: 搜索出来的数量
-        :type SearchTotal: int
-        :param Total: 总数
-        :type Total: int
-        :param AllowMonitoringCount: 允许的监控数量
-        :type AllowMonitoringCount: int
-        :param CurrentMonitoringCount: 当前监控的数量
-        :type CurrentMonitoringCount: int
-        :param AllowMaxAddDomain: 允许添加域名总数
-        :type AllowMaxAddDomain: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: list of DomainSiteInfo\n        :param SearchTotal: 搜索出来的数量\n        :type SearchTotal: int\n        :param Total: 总数\n        :type Total: int\n        :param AllowMonitoringCount: 允许的监控数量\n        :type AllowMonitoringCount: int\n        :param CurrentMonitoringCount: 当前监控的数量\n        :type CurrentMonitoringCount: int\n        :param AllowMaxAddDomain: 允许添加域名总数\n        :type AllowMaxAddDomain: int\n        """
         self.Result = None
         self.SearchTotal = None
         self.Total = None
@@ -484,27 +398,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量
-        :type Offset: int
-        :param Limit: 获取数量
-        :type Limit: int
-        :param SearchType: 搜索的类型 Enums(none,tags,grade,brand,code,hash,limit)
-        :type SearchType: str
-        :param Tag: 标签，多个标签用逗号分隔
-        :type Tag: str
-        :param Grade: 等级
-        :type Grade: str
-        :param Brand: 品牌
-        :type Brand: str
-        :param Code: 混合搜索
-        :type Code: str
-        :param Hash: 证书指纹
-        :type Hash: str
-        :param Item: 搜索图标类型
-        :type Item: str
-        :param Status: 搜索图标值
-        :type Status: str
-        """
+        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 获取数量\n        :type Limit: int\n        :param SearchType: 搜索的类型 Enums(none,tags,grade,brand,code,hash,limit)\n        :type SearchType: str\n        :param Tag: 标签，多个标签用逗号分隔\n        :type Tag: str\n        :param Grade: 等级\n        :type Grade: str\n        :param Brand: 品牌\n        :type Brand: str\n        :param Code: 混合搜索\n        :type Code: str\n        :param Hash: 证书指纹\n        :type Hash: str\n        :param Item: 搜索图标类型\n        :type Item: str\n        :param Status: 搜索图标值\n        :type Status: str\n        """
         self.Offset = None
         self.Limit = None
         self.SearchType = None
@@ -544,11 +438,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 列表数据
-        :type Data: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomains`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 列表数据\n        :type Data: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomains`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -573,11 +463,7 @@ class DescribeNoticeInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 通知信息结果
-        :type Data: :class:`tencentcloud.sslpod.v20190605.models.NoticeInfoResult`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 通知信息结果\n        :type Data: :class:`tencentcloud.sslpod.v20190605.models.NoticeInfoResult`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -596,34 +482,8 @@ class DomainSiteInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: ID
-        :type Id: int
-        :param Domain: 域名
-        :type Domain: str
-        :param Ip: IP地址
-        :type Ip: str
-        :param AutoIP: 是否自动获取IP
-        :type AutoIP: bool
-        :param ServerType: 监控服务类型
-        :type ServerType: int
-        :param Brand: 证书品牌
-        :type Brand: str
-        :param Grade: 评级
-        :type Grade: str
-        :param GradeCode: 评级Code
-        :type GradeCode: int
-        :param Notice: 是否监控告警
-        :type Notice: bool
-        :param AccountDomainId: 账号域名关系ID
-        :type AccountDomainId: int
-        :param Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of str
-        :param Status: 域名状态
-        :type Status: str
-        :param Port: 域名端口
-        :type Port: str
-        """
+        :param Id: ID\n        :type Id: int\n        :param Domain: 域名\n        :type Domain: str\n        :param Ip: IP地址\n        :type Ip: str\n        :param AutoIP: 是否自动获取IP\n        :type AutoIP: bool\n        :param ServerType: 监控服务类型\n        :type ServerType: int\n        :param Brand: 证书品牌\n        :type Brand: str\n        :param Grade: 评级\n        :type Grade: str\n        :param GradeCode: 评级Code\n        :type GradeCode: int\n        :param Notice: 是否监控告警\n        :type Notice: bool\n        :param AccountDomainId: 账号域名关系ID\n        :type AccountDomainId: int\n        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of str\n        :param Status: 域名状态\n        :type Status: str\n        :param Port: 域名端口\n        :type Port: str\n        """
         self.Id = None
         self.Domain = None
         self.Ip = None
@@ -669,13 +529,7 @@ class LimitInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 通知类型
-        :type Type: str
-        :param Total: 总量
-        :type Total: int
-        :param Sent: 已发送
-        :type Sent: int
-        """
+        :param Type: 通知类型\n        :type Type: str\n        :param Total: 总量\n        :type Total: int\n        :param Sent: 已发送\n        :type Sent: int\n        """
         self.Type = None
         self.Total = None
         self.Sent = None
@@ -701,11 +555,7 @@ class ModifyDomainTagsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountDomainId: 账号下域名ID
-        :type AccountDomainId: int
-        :param Tags: 更新后的tag，多个以逗号隔开
-        :type Tags: str
-        """
+        :param AccountDomainId: 账号下域名ID\n        :type AccountDomainId: int\n        :param Tags: 更新后的tag，多个以逗号隔开\n        :type Tags: str\n        """
         self.AccountDomainId = None
         self.Tags = None
 
@@ -729,9 +579,7 @@ class ModifyDomainTagsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -746,13 +594,7 @@ class NoticeInfoResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 通知ID
-        :type Id: int
-        :param NoticeType: 通知开关信息
-        :type NoticeType: int
-        :param LimitInfos: 额度信息
-        :type LimitInfos: list of LimitInfo
-        """
+        :param Id: 通知ID\n        :type Id: int\n        :param NoticeType: 通知开关信息\n        :type NoticeType: int\n        :param LimitInfos: 额度信息\n        :type LimitInfos: list of LimitInfo\n        """
         self.Id = None
         self.NoticeType = None
         self.LimitInfos = None
@@ -783,9 +625,7 @@ class RefreshDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名列表中的ID，可通过搜索域名接口获得
-        :type DomainId: int
-        """
+        :param DomainId: 域名列表中的ID，可通过搜索域名接口获得\n        :type DomainId: int\n        """
         self.DomainId = None
 
 
@@ -807,9 +647,7 @@ class RefreshDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -824,9 +662,7 @@ class ResolveDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名
-        :type Domain: str
-        """
+        :param Domain: 域名\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -848,11 +684,7 @@ class ResolveDomainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 响应数据
-        :type Data: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 响应数据\n        :type Data: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 

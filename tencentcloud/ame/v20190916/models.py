@@ -25,12 +25,8 @@ class Album(AbstractModel):
 
     def __init__(self):
         """
-        :param AlbumName: 专辑名
-        :type AlbumName: str
-        :param ImagePathMap: 专辑图片大小及类别
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImagePathMap: list of ImagePath
-        """
+        :param AlbumName: 专辑名\n        :type AlbumName: str\n        :param ImagePathMap: 专辑图片大小及类别
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImagePathMap: list of ImagePath\n        """
         self.AlbumName = None
         self.ImagePathMap = None
 
@@ -59,9 +55,7 @@ class Artist(AbstractModel):
 
     def __init__(self):
         """
-        :param ArtistName: 歌手名
-        :type ArtistName: str
-        """
+        :param ArtistName: 歌手名\n        :type ArtistName: str\n        """
         self.ArtistName = None
 
 
@@ -84,24 +78,8 @@ class AuthInfo(AbstractModel):
     def __init__(self):
         """
         :param SubjectName: 主体名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubjectName: str
-        :param ProjectName: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProjectName: str
-        :param AppScene: 应用场景
-        :type AppScene: int
-        :param AppRegion: 应用地域
-        :type AppRegion: int
-        :param AuthPeriod: 授权时间
-        :type AuthPeriod: int
-        :param Commercialization: 是否可商业化
-        :type Commercialization: int
-        :param Platform: 是否可跨平台
-        :type Platform: int
-        :param Id: 加密后Id
-        :type Id: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubjectName: str\n        :param ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectName: str\n        :param AppScene: 应用场景\n        :type AppScene: int\n        :param AppRegion: 应用地域\n        :type AppRegion: int\n        :param AuthPeriod: 授权时间\n        :type AuthPeriod: int\n        :param Commercialization: 是否可商业化\n        :type Commercialization: int\n        :param Platform: 是否可跨平台\n        :type Platform: int\n        :param Id: 加密后Id\n        :type Id: str\n        """
         self.SubjectName = None
         self.ProjectName = None
         self.AppScene = None
@@ -137,17 +115,7 @@ class DataInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: Song Name
-        :type Name: str
-        :param Version: 歌曲版本
-        :type Version: str
-        :param Duration: 歌曲总时长（非试听时长）
-        :type Duration: str
-        :param AuditionBegin: 试听开始时间
-        :type AuditionBegin: int
-        :param AuditionEnd: 试听结束时间
-        :type AuditionEnd: int
-        """
+        :param Name: Song Name\n        :type Name: str\n        :param Version: 歌曲版本\n        :type Version: str\n        :param Duration: 歌曲总时长（非试听时长）\n        :type Duration: str\n        :param AuditionBegin: 试听开始时间\n        :type AuditionBegin: int\n        :param AuditionEnd: 试听结束时间\n        :type AuditionEnd: int\n        """
         self.Name = None
         self.Version = None
         self.Duration = None
@@ -177,13 +145,7 @@ class DescribeAuthInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量：Offset=Offset+Limit
-        :type Offset: int
-        :param Limit: 数据条数
-        :type Limit: int
-        :param Key: 搜索关键字
-        :type Key: str
-        """
+        :param Offset: 偏移量：Offset=Offset+Limit\n        :type Offset: int\n        :param Limit: 数据条数\n        :type Limit: int\n        :param Key: 搜索关键字\n        :type Key: str\n        """
         self.Offset = None
         self.Limit = None
         self.Key = None
@@ -209,13 +171,7 @@ class DescribeAuthInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AuthInfo: 授权项目列表
-        :type AuthInfo: list of AuthInfo
-        :param TotalCount: 总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AuthInfo: 授权项目列表\n        :type AuthInfo: list of AuthInfo\n        :param TotalCount: 总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AuthInfo = None
         self.TotalCount = None
         self.RequestId = None
@@ -239,9 +195,7 @@ class DescribeCloudMusicPurchasedRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AuthInfoId: 授权项目Id
-        :type AuthInfoId: str
-        """
+        :param AuthInfoId: 授权项目Id\n        :type AuthInfoId: str\n        """
         self.AuthInfoId = None
 
 
@@ -264,11 +218,7 @@ class DescribeCloudMusicPurchasedResponse(AbstractModel):
     def __init__(self):
         """
         :param MusicOpenDetail: 云音乐列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MusicOpenDetail: list of MusicOpenDetail
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MusicOpenDetail: list of MusicOpenDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MusicOpenDetail = None
         self.RequestId = None
 
@@ -290,15 +240,11 @@ class DescribeCloudMusicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicId: 歌曲Id
-        :type MusicId: str
-        :param MusicType: 歌曲类型，可选值有：
+        :param MusicId: 歌曲Id\n        :type MusicId: str\n        :param MusicType: 歌曲类型，可选值有：
 <li>MP3-128K-FTW：含有水印的试听资源；</li>
 <li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
 <li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
-默认为：MP3-128K-FTW
-        :type MusicType: str
-        """
+默认为：MP3-128K-FTW\n        :type MusicType: str\n        """
         self.MusicId = None
         self.MusicType = None
 
@@ -322,24 +268,10 @@ class DescribeCloudMusicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicId: 歌曲Id
-        :type MusicId: str
-        :param MusicName: 歌曲名称
-        :type MusicName: str
-        :param Duration: 歌曲时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Duration: int
-        :param MusicUrl: 歌曲链接
-        :type MusicUrl: str
-        :param MusicImageUrl: 歌曲图片
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MusicImageUrl: str
-        :param Singers: 歌手列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Singers: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MusicId: 歌曲Id\n        :type MusicId: str\n        :param MusicName: 歌曲名称\n        :type MusicName: str\n        :param Duration: 歌曲时长
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Duration: int\n        :param MusicUrl: 歌曲链接\n        :type MusicUrl: str\n        :param MusicImageUrl: 歌曲图片
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MusicImageUrl: str\n        :param Singers: 歌手列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Singers: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MusicId = None
         self.MusicName = None
         self.Duration = None
@@ -366,9 +298,7 @@ class DescribeItemByIdRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ItemIDs: 歌曲ID，目前暂不支持批量查询
-        :type ItemIDs: str
-        """
+        :param ItemIDs: 歌曲ID，目前暂不支持批量查询\n        :type ItemIDs: str\n        """
         self.ItemIDs = None
 
 
@@ -391,11 +321,7 @@ class DescribeItemByIdResponse(AbstractModel):
     def __init__(self):
         """
         :param Items: 歌曲信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Items: list of Item
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Items: list of Item\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Items = None
         self.RequestId = None
 
@@ -417,15 +343,7 @@ class DescribeItemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: offset (Default = 0)，(当前页-1) * Limit
-        :type Offset: int
-        :param Limit: 条数，必须大于0，最大值为30
-        :type Limit: int
-        :param CategoryId: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
-        :type CategoryId: str
-        :param CategoryCode: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
-        :type CategoryCode: str
-        """
+        :param Offset: offset (Default = 0)，(当前页-1) * Limit\n        :type Offset: int\n        :param Limit: 条数，必须大于0，最大值为30\n        :type Limit: int\n        :param CategoryId: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。\n        :type CategoryId: str\n        :param CategoryCode: （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。\n        :type CategoryCode: str\n        """
         self.Offset = None
         self.Limit = None
         self.CategoryId = None
@@ -453,21 +371,9 @@ class DescribeItemsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页偏移量
-        :type Offset: int
-        :param Size: 当前页歌曲数量
-        :type Size: int
-        :param Total: 总数据条数
-        :type Total: int
-        :param HaveMore: 剩余数量（total-offset-size），通过这个值判断是否
-还有下一页
-        :type HaveMore: int
-        :param Items: Items 歌曲列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Items: list of Item
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Offset: 分页偏移量\n        :type Offset: int\n        :param Size: 当前页歌曲数量\n        :type Size: int\n        :param Total: 总数据条数\n        :type Total: int\n        :param HaveMore: 剩余数量（total-offset-size），通过这个值判断是否
+还有下一页\n        :type HaveMore: int\n        :param Items: Items 歌曲列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Items: list of Item\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Offset = None
         self.Size = None
         self.Total = None
@@ -497,9 +403,7 @@ class DescribeKTVMusicDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicId: 曲目 Id
-        :type MusicId: str
-        """
+        :param MusicId: 曲目 Id\n        :type MusicId: str\n        """
         self.MusicId = None
 
 
@@ -521,15 +425,7 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param KTVMusicBaseInfo: 歌曲基础信息
-        :type KTVMusicBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
-        :param PlayToken: 播放凭证
-        :type PlayToken: str
-        :param LyricsUrl: 歌词下载地址
-        :type LyricsUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param KTVMusicBaseInfo: 歌曲基础信息\n        :type KTVMusicBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`\n        :param PlayToken: 播放凭证\n        :type PlayToken: str\n        :param LyricsUrl: 歌词下载地址\n        :type LyricsUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.KTVMusicBaseInfo = None
         self.PlayToken = None
         self.LyricsUrl = None
@@ -552,11 +448,7 @@ class DescribeLyricRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ItemId: 歌曲ID
-        :type ItemId: str
-        :param SubItemType: 歌词格式，可选项，可不填写，目前填写只能填LRC-LRC。该字段为预留的扩展字段。后续如果不填，会返回歌曲的所有格式的歌词。如果填写某个正确的格式，则只返回该格式的歌词。
-        :type SubItemType: str
-        """
+        :param ItemId: 歌曲ID\n        :type ItemId: str\n        :param SubItemType: 歌词格式，可选项，可不填写，目前填写只能填LRC-LRC。该字段为预留的扩展字段。后续如果不填，会返回歌曲的所有格式的歌词。如果填写某个正确的格式，则只返回该格式的歌词。\n        :type SubItemType: str\n        """
         self.ItemId = None
         self.SubItemType = None
 
@@ -581,11 +473,7 @@ class DescribeLyricResponse(AbstractModel):
     def __init__(self):
         """
         :param Lyric: 歌词详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Lyric: :class:`tencentcloud.ame.v20190916.models.Lyric`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Lyric: :class:`tencentcloud.ame.v20190916.models.Lyric`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Lyric = None
         self.RequestId = None
 
@@ -604,17 +492,9 @@ class DescribeMusicRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ItemId: 歌曲ID
-        :type ItemId: str
-        :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
-        :type IdentityId: str
-        :param SubItemType: MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
-MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
-        :type SubItemType: str
-        :param Ssl: CDN URL Protocol:HTTP or HTTPS/SSL
-Values:Y , N(default)
-        :type Ssl: str
-        """
+        :param ItemId: 歌曲ID\n        :type ItemId: str\n        :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。\n        :type IdentityId: str\n        :param SubItemType: MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
+MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。\n        :type SubItemType: str\n        :param Ssl: CDN URL Protocol:HTTP or HTTPS/SSL
+Values:Y , N(default)\n        :type Ssl: str\n        """
         self.ItemId = None
         self.IdentityId = None
         self.SubItemType = None
@@ -643,11 +523,7 @@ class DescribeMusicResponse(AbstractModel):
     def __init__(self):
         """
         :param Music: 音乐相关信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Music: :class:`tencentcloud.ame.v20190916.models.Music`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Music: :class:`tencentcloud.ame.v20190916.models.Music`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Music = None
         self.RequestId = None
 
@@ -666,13 +542,7 @@ class DescribePackageItemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: 订单id，从获取已购曲库包列表中获取
-        :type OrderId: str
-        :param Offset: 默认0，Offset=Offset+Length
-        :type Offset: int
-        :param Length: 默认20
-        :type Length: int
-        """
+        :param OrderId: 订单id，从获取已购曲库包列表中获取\n        :type OrderId: str\n        :param Offset: 默认0，Offset=Offset+Length\n        :type Offset: int\n        :param Length: 默认20\n        :type Length: int\n        """
         self.OrderId = None
         self.Offset = None
         self.Length = None
@@ -699,11 +569,7 @@ class DescribePackageItemsResponse(AbstractModel):
     def __init__(self):
         """
         :param PackageItems: 已核销歌曲信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PackageItems: list of PackageItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PackageItems: list of PackageItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PackageItems = None
         self.RequestId = None
 
@@ -725,11 +591,7 @@ class DescribePackagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 默认0，Offset=Offset+Length
-        :type Offset: int
-        :param Length: 默认20
-        :type Length: int
-        """
+        :param Offset: 默认0，Offset=Offset+Length\n        :type Offset: int\n        :param Length: 默认20\n        :type Length: int\n        """
         self.Offset = None
         self.Length = None
 
@@ -754,11 +616,7 @@ class DescribePackagesResponse(AbstractModel):
     def __init__(self):
         """
         :param Packages: 已购曲库包列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Packages: list of Package
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Packages: list of Package\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Packages = None
         self.RequestId = None
 
@@ -780,11 +638,7 @@ class DescribeStationsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 条数，必须大于0
-        :type Limit: int
-        :param Offset: offset (Default = 0)，Offset=Offset+Limit
-        :type Offset: int
-        """
+        :param Limit: 条数，必须大于0\n        :type Limit: int\n        :param Offset: offset (Default = 0)，Offset=Offset+Limit\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -808,20 +662,8 @@ class DescribeStationsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总数量
-        :type Total: int
-        :param Offset: 分页偏移量
-        :type Offset: int
-        :param Size: 当前页station数量
-        :type Size: int
-        :param HaveMore: 剩余数量（total-offset-size），通过这个值判断是否还有下一页
-        :type HaveMore: int
-        :param Stations: Stations 素材库列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Stations: list of Station
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Total: 总数量\n        :type Total: int\n        :param Offset: 分页偏移量\n        :type Offset: int\n        :param Size: 当前页station数量\n        :type Size: int\n        :param HaveMore: 剩余数量（total-offset-size），通过这个值判断是否还有下一页\n        :type HaveMore: int\n        :param Stations: Stations 素材库列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Stations: list of Station\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Offset = None
         self.Size = None
@@ -852,12 +694,8 @@ class ImagePath(AbstractModel):
     def __init__(self):
         """
         :param Key: station图片大小及类别
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Key: str
-        :param Value: station图片地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Value: station图片地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -881,21 +719,11 @@ class Item(AbstractModel):
 
     def __init__(self):
         """
-        :param ItemID: Song ID
-        :type ItemID: str
-        :param DataInfo: Song info
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataInfo: :class:`tencentcloud.ame.v20190916.models.DataInfo`
-        :param Album: 专辑信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Album: :class:`tencentcloud.ame.v20190916.models.Album`
-        :param Artists: 多个歌手集合
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Artists: list of Artist
-        :param Status: 歌曲状态，1:添加进购物车；2:核销进曲库包
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        """
+        :param ItemID: Song ID\n        :type ItemID: str\n        :param DataInfo: Song info
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataInfo: :class:`tencentcloud.ame.v20190916.models.DataInfo`\n        :param Album: 专辑信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Album: :class:`tencentcloud.ame.v20190916.models.Album`\n        :param Artists: 多个歌手集合
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Artists: list of Artist\n        :param Status: 歌曲状态，1:添加进购物车；2:核销进曲库包
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
         self.ItemID = None
         self.DataInfo = None
         self.Album = None
@@ -934,21 +762,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicId: 歌曲 Id
-        :type MusicId: str
-        :param Name: 歌曲名称
-        :type Name: str
-        :param SingerSet: 演唱者列表
-        :type SingerSet: list of str
-        :param LyricistSet: 作词者列表
-        :type LyricistSet: list of str
-        :param ComposerSet: 作曲者列表
-        :type ComposerSet: list of str
-        :param TagSet: 标签列表
-        :type TagSet: list of str
-        :param Duration: 歌曲时长
-        :type Duration: int
-        """
+        :param MusicId: 歌曲 Id\n        :type MusicId: str\n        :param Name: 歌曲名称\n        :type Name: str\n        :param SingerSet: 演唱者列表\n        :type SingerSet: list of str\n        :param LyricistSet: 作词者列表\n        :type LyricistSet: list of str\n        :param ComposerSet: 作曲者列表\n        :type ComposerSet: list of str\n        :param TagSet: 标签列表\n        :type TagSet: list of str\n        :param Duration: 歌曲时长\n        :type Duration: int\n        """
         self.MusicId = None
         self.Name = None
         self.SingerSet = None
@@ -982,13 +796,7 @@ class Lyric(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 歌词cdn地址
-        :type Url: str
-        :param FileNameExt: 歌词后缀名
-        :type FileNameExt: str
-        :param SubItemType: 歌词类型
-        :type SubItemType: str
-        """
+        :param Url: 歌词cdn地址\n        :type Url: str\n        :param FileNameExt: 歌词后缀名\n        :type FileNameExt: str\n        :param SubItemType: 歌词类型\n        :type SubItemType: str\n        """
         self.Url = None
         self.FileNameExt = None
         self.SubItemType = None
@@ -1014,11 +822,7 @@ class ModifyMusicOnShelvesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicDetailInfos: 歌曲变更信息
-        :type MusicDetailInfos: :class:`tencentcloud.ame.v20190916.models.MusicDetailInfo`
-        :param AmeKey: ame对接资源方密钥
-        :type AmeKey: str
-        """
+        :param MusicDetailInfos: 歌曲变更信息\n        :type MusicDetailInfos: :class:`tencentcloud.ame.v20190916.models.MusicDetailInfo`\n        :param AmeKey: ame对接资源方密钥\n        :type AmeKey: str\n        """
         self.MusicDetailInfos = None
         self.AmeKey = None
 
@@ -1044,9 +848,7 @@ class ModifyMusicOnShelvesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1061,22 +863,10 @@ class Music(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
-        :type Url: str
-        :param FileSize: 音频文件大小
-        :type FileSize: int
-        :param FileExtension: 音频文件类型
-        :type FileExtension: str
-        :param AuditionBegin: Song fragment start.试听片段开始时间，试听时长为auditionEnd-auditionBegin
-Unit :ms
-        :type AuditionBegin: int
-        :param AuditionEnd: Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
-Unit :ms
-        :type AuditionEnd: int
-        :param FullUrl: 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
-如果添加过多个域名只返回第一个添加域名的播放全路径。
-        :type FullUrl: str
-        """
+        :param Url: 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。\n        :type Url: str\n        :param FileSize: 音频文件大小\n        :type FileSize: int\n        :param FileExtension: 音频文件类型\n        :type FileExtension: str\n        :param AuditionBegin: Song fragment start.试听片段开始时间，试听时长为auditionEnd-auditionBegin
+Unit :ms\n        :type AuditionBegin: int\n        :param AuditionEnd: Song fragment end.试听片段结束时间, 试听时长为auditionEnd-auditionBegin
+Unit :ms\n        :type AuditionEnd: int\n        :param FullUrl: 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
+如果添加过多个域名只返回第一个添加域名的播放全路径。\n        :type FullUrl: str\n        """
         self.Url = None
         self.FileSize = None
         self.FileExtension = None
@@ -1108,31 +898,7 @@ class MusicDetailInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicId: 资源方音乐Id
-        :type MusicId: str
-        :param AmeId: 资源方识别信息
-        :type AmeId: str
-        :param Tags: 分类标签
-        :type Tags: list of str
-        :param HitWords: 关键词
-        :type HitWords: list of str
-        :param Bpm: 节奏信息
-        :type Bpm: int
-        :param Score: 商业化权益
-        :type Score: float
-        :param Scene: 应用歌曲信息,1.图文/短视频,2.网络直播,3.网络电台FM,4.免费游戏,5.商业游戏,6.网店网站设计,7.广告营销,8.网络长视频
-        :type Scene: list of str
-        :param Region: 应用地域,1. 中国大陆,2. 中国含港澳台,3. 全球
-        :type Region: list of str
-        :param AuthPeriod: 授权时间,1. 1年, 5. 随片永久
-        :type AuthPeriod: str
-        :param Commercialization: 商业化授权，1. 支持商业化 ,2. 不支持商业化
-        :type Commercialization: str
-        :param Platform: 跨平台传播，1. 支持跨平台传播 ,2. 不支持跨平台传播
-        :type Platform: str
-        :param Channel: 传播渠道
-        :type Channel: str
-        """
+        :param MusicId: 资源方音乐Id\n        :type MusicId: str\n        :param AmeId: 资源方识别信息\n        :type AmeId: str\n        :param Tags: 分类标签\n        :type Tags: list of str\n        :param HitWords: 关键词\n        :type HitWords: list of str\n        :param Bpm: 节奏信息\n        :type Bpm: int\n        :param Score: 商业化权益\n        :type Score: float\n        :param Scene: 应用歌曲信息,1.图文/短视频,2.网络直播,3.网络电台FM,4.免费游戏,5.商业游戏,6.网店网站设计,7.广告营销,8.网络长视频\n        :type Scene: list of str\n        :param Region: 应用地域,1. 中国大陆,2. 中国含港澳台,3. 全球\n        :type Region: list of str\n        :param AuthPeriod: 授权时间,1. 1年, 5. 随片永久\n        :type AuthPeriod: str\n        :param Commercialization: 商业化授权，1. 支持商业化 ,2. 不支持商业化\n        :type Commercialization: str\n        :param Platform: 跨平台传播，1. 支持跨平台传播 ,2. 不支持跨平台传播\n        :type Platform: str\n        :param Channel: 传播渠道\n        :type Channel: str\n        """
         self.MusicId = None
         self.AmeId = None
         self.Tags = None
@@ -1177,33 +943,15 @@ class MusicOpenDetail(AbstractModel):
     def __init__(self):
         """
         :param MusicId: 音乐Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MusicId: str
-        :param AlbumName: 专辑名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlbumName: str
-        :param AlbumImageUrl: 专辑图片路径
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlbumImageUrl: str
-        :param MusicName: 音乐名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MusicName: str
-        :param MusicImageUrl: 音乐图片路径
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MusicImageUrl: str
-        :param Singers: 歌手
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Singers: list of str
-        :param Duration: 播放时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Duration: int
-        :param Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of str
-        :param LyricUrl: 歌词url
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LyricUrl: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MusicId: str\n        :param AlbumName: 专辑名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlbumName: str\n        :param AlbumImageUrl: 专辑图片路径
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlbumImageUrl: str\n        :param MusicName: 音乐名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MusicName: str\n        :param MusicImageUrl: 音乐图片路径
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MusicImageUrl: str\n        :param Singers: 歌手
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Singers: list of str\n        :param Duration: 播放时长
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Duration: int\n        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of str\n        :param LyricUrl: 歌词url
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LyricUrl: str\n        """
         self.MusicId = None
         self.AlbumName = None
         self.AlbumImageUrl = None
@@ -1241,29 +989,7 @@ class Package(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: 订单id
-        :type OrderId: str
-        :param Name: 曲库包名称
-        :type Name: str
-        :param AuthorizedArea: 授权地区-global: 全球  CN: 中国
-        :type AuthorizedArea: str
-        :param AuthorizedLimit: 授权次数
-        :type AuthorizedLimit: int
-        :param TermOfValidity: 套餐有效期，单位:天
-        :type TermOfValidity: int
-        :param Commercial: 0:不可商业化；1:可商业化
-        :type Commercial: int
-        :param PackagePrice: 套餐价格，单位：元
-        :type PackagePrice: float
-        :param EffectTime: 生效开始时间,格式yyyy-MM-dd HH:mm:ss
-        :type EffectTime: str
-        :param ExpireTime: 生效结束时间,格式yyyy-MM-dd HH:mm:ss
-        :type ExpireTime: str
-        :param UsedCount: 剩余授权次数
-        :type UsedCount: int
-        :param UseRanges: 曲库包用途信息
-        :type UseRanges: list of UseRange
-        """
+        :param OrderId: 订单id\n        :type OrderId: str\n        :param Name: 曲库包名称\n        :type Name: str\n        :param AuthorizedArea: 授权地区-global: 全球  CN: 中国\n        :type AuthorizedArea: str\n        :param AuthorizedLimit: 授权次数\n        :type AuthorizedLimit: int\n        :param TermOfValidity: 套餐有效期，单位:天\n        :type TermOfValidity: int\n        :param Commercial: 0:不可商业化；1:可商业化\n        :type Commercial: int\n        :param PackagePrice: 套餐价格，单位：元\n        :type PackagePrice: float\n        :param EffectTime: 生效开始时间,格式yyyy-MM-dd HH:mm:ss\n        :type EffectTime: str\n        :param ExpireTime: 生效结束时间,格式yyyy-MM-dd HH:mm:ss\n        :type ExpireTime: str\n        :param UsedCount: 剩余授权次数\n        :type UsedCount: int\n        :param UseRanges: 曲库包用途信息\n        :type UseRanges: list of UseRange\n        """
         self.OrderId = None
         self.Name = None
         self.AuthorizedArea = None
@@ -1310,21 +1036,7 @@ class PackageItem(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: 订单id
-        :type OrderId: str
-        :param TrackName: 歌曲名
-        :type TrackName: str
-        :param ItemID: 歌曲ID
-        :type ItemID: str
-        :param Img: 专辑图片
-        :type Img: str
-        :param ArtistName: 歌手名
-        :type ArtistName: str
-        :param Duration: 歌曲时长
-        :type Duration: str
-        :param AuthorizedArea: 授权区域，global: 全球 CN: 中国
-        :type AuthorizedArea: str
-        """
+        :param OrderId: 订单id\n        :type OrderId: str\n        :param TrackName: 歌曲名\n        :type TrackName: str\n        :param ItemID: 歌曲ID\n        :type ItemID: str\n        :param Img: 专辑图片\n        :type Img: str\n        :param ArtistName: 歌手名\n        :type ArtistName: str\n        :param Duration: 歌曲时长\n        :type Duration: str\n        :param AuthorizedArea: 授权区域，global: 全球 CN: 中国\n        :type AuthorizedArea: str\n        """
         self.OrderId = None
         self.TrackName = None
         self.ItemID = None
@@ -1358,9 +1070,7 @@ class PutMusicOnTheShelvesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicIds: 资源方歌曲Id
-        :type MusicIds: list of str
-        """
+        :param MusicIds: 资源方歌曲Id\n        :type MusicIds: list of str\n        """
         self.MusicIds = None
 
 
@@ -1382,16 +1092,8 @@ class PutMusicOnTheShelvesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SuccessNum: 操作成功数量
-        :type SuccessNum: int
-        :param FailedNum: 操作失败数量
-        :type FailedNum: int
-        :param FailedMusicIds: 失败歌曲Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedMusicIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SuccessNum: 操作成功数量\n        :type SuccessNum: int\n        :param FailedNum: 操作失败数量\n        :type FailedNum: int\n        :param FailedMusicIds: 失败歌曲Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedMusicIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SuccessNum = None
         self.FailedNum = None
         self.FailedMusicIds = None
@@ -1424,9 +1126,7 @@ reportData由两部分数据组成：
 不同的report_type对应的data数据结构不一样。
 
 详细说明请参考文档reportdata.docx：
-https://github.com/tencentyun/ame-documents
-        :type ReportData: str
-        """
+https://github.com/tencentyun/ame-documents\n        :type ReportData: str\n        """
         self.ReportData = None
 
 
@@ -1448,9 +1148,7 @@ class ReportDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1465,13 +1163,7 @@ class SearchKTVMusicsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyWord: 搜索关键词
-        :type KeyWord: str
-        :param Offset: 分页游标
-        :type Offset: int
-        :param Limit: 分页页长
-        :type Limit: int
-        """
+        :param KeyWord: 搜索关键词\n        :type KeyWord: str\n        :param Offset: 分页游标\n        :type Offset: int\n        :param Limit: 分页页长\n        :type Limit: int\n        """
         self.KeyWord = None
         self.Offset = None
         self.Limit = None
@@ -1497,13 +1189,7 @@ class SearchKTVMusicsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 总记录数
-        :type TotalCount: int
-        :param KTVMusicInfoSet: KTV 曲目列表
-        :type KTVMusicInfoSet: list of KTVMusicBaseInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param KTVMusicInfoSet: KTV 曲目列表\n        :type KTVMusicInfoSet: list of KTVMusicBaseInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.KTVMusicInfoSet = None
         self.RequestId = None
@@ -1527,21 +1213,11 @@ class Station(AbstractModel):
 
     def __init__(self):
         """
-        :param CategoryID: StationID
-        :type CategoryID: str
-        :param CategoryCode: Station MCCode
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CategoryCode: str
-        :param Name: Category Name
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Rank: Station的排序值，供参考（返回结果已按其升序）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Rank: int
-        :param ImagePathMap: station图片集合
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImagePathMap: list of ImagePath
-        """
+        :param CategoryID: StationID\n        :type CategoryID: str\n        :param CategoryCode: Station MCCode
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CategoryCode: str\n        :param Name: Category Name
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Rank: Station的排序值，供参考（返回结果已按其升序）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Rank: int\n        :param ImagePathMap: station图片集合
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImagePathMap: list of ImagePath\n        """
         self.CategoryID = None
         self.CategoryCode = None
         self.Name = None
@@ -1576,12 +1252,8 @@ class TakeMusicOffShelves(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicIds: 资源方对应音乐Id
-        :type MusicIds: str
-        :param SaleStatus: 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
-在售状态，0在售，1临时下架，2永久下架
-        :type SaleStatus: str
-        """
+        :param MusicIds: 资源方对应音乐Id\n        :type MusicIds: str\n        :param SaleStatus: 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
+在售状态，0在售，1临时下架，2永久下架\n        :type SaleStatus: str\n        """
         self.MusicIds = None
         self.SaleStatus = None
 
@@ -1605,9 +1277,7 @@ class TakeMusicOffShelvesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TakeMusicOffShelves: 资源方下架必传结构
-        :type TakeMusicOffShelves: list of TakeMusicOffShelves
-        """
+        :param TakeMusicOffShelves: 资源方下架必传结构\n        :type TakeMusicOffShelves: list of TakeMusicOffShelves\n        """
         self.TakeMusicOffShelves = None
 
 
@@ -1634,16 +1304,8 @@ class TakeMusicOffShelvesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param SuccessNum: 返回成功数量
-        :type SuccessNum: int
-        :param FailedNum: 返回失败数量
-        :type FailedNum: int
-        :param FailedMusicIds: 返回失败歌曲musicId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedMusicIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param SuccessNum: 返回成功数量\n        :type SuccessNum: int\n        :param FailedNum: 返回失败数量\n        :type FailedNum: int\n        :param FailedMusicIds: 返回失败歌曲musicId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedMusicIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SuccessNum = None
         self.FailedNum = None
         self.FailedMusicIds = None
@@ -1664,11 +1326,7 @@ class UseRange(AbstractModel):
 
     def __init__(self):
         """
-        :param UseRangeId: 用途id
-        :type UseRangeId: int
-        :param Name: 用途范围名称
-        :type Name: str
-        """
+        :param UseRangeId: 用途id\n        :type UseRangeId: int\n        :param Name: 用途范围名称\n        :type Name: str\n        """
         self.UseRangeId = None
         self.Name = None
 

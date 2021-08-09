@@ -25,16 +25,10 @@ class BootstrapAction(AbstractModel):
 
     def __init__(self):
         """
-        :param Path: 脚本位置，支持cos上的文件，且只支持https协议。
-        :type Path: str
-        :param WhenRun: 执行时间。
+        :param Path: 脚本位置，支持cos上的文件，且只支持https协议。\n        :type Path: str\n        :param WhenRun: 执行时间。
 resourceAfter 表示在机器资源申请成功后执行。
 clusterBefore 表示在集群初始化前执行。
-clusterAfter 表示在集群初始化后执行。
-        :type WhenRun: str
-        :param Args: 脚本参数
-        :type Args: list of str
-        """
+clusterAfter 表示在集群初始化后执行。\n        :type WhenRun: str\n        :param Args: 脚本参数\n        :type Args: list of str\n        """
         self.Path = None
         self.WhenRun = None
         self.Args = None
@@ -60,13 +54,7 @@ class COSSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param CosSecretId: COS SecretId
-        :type CosSecretId: str
-        :param CosSecretKey: COS SecrectKey
-        :type CosSecretKey: str
-        :param LogOnCosPath: 日志存储在COS上的路径
-        :type LogOnCosPath: str
-        """
+        :param CosSecretId: COS SecretId\n        :type CosSecretId: str\n        :param CosSecretKey: COS SecrectKey\n        :type CosSecretKey: str\n        :param LogOnCosPath: 日志存储在COS上的路径\n        :type LogOnCosPath: str\n        """
         self.CosSecretId = None
         self.CosSecretKey = None
         self.LogOnCosPath = None
@@ -93,51 +81,21 @@ class CdbInfo(AbstractModel):
     def __init__(self):
         """
         :param InstanceName: 数据库实例
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceName: str
-        :param Ip: 数据库IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ip: str
-        :param Port: 数据库端口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Port: int
-        :param MemSize: 数据库内存规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MemSize: int
-        :param Volume: 数据库磁盘规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Volume: int
-        :param Service: 服务标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Service: str
-        :param ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpireTime: str
-        :param ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplyTime: str
-        :param PayType: 付费类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PayType: int
-        :param ExpireFlag: 过期标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpireFlag: bool
-        :param Status: 数据库状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param IsAutoRenew: 续费标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsAutoRenew: int
-        :param SerialNo: 数据库字符串
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SerialNo: str
-        :param ZoneId: ZoneId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ZoneId: int
-        :param RegionId: RegionId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param Ip: 数据库IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ip: str\n        :param Port: 数据库端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Port: int\n        :param MemSize: 数据库内存规格
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MemSize: int\n        :param Volume: 数据库磁盘规格
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Volume: int\n        :param Service: 服务标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Service: str\n        :param ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpireTime: str\n        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplyTime: str\n        :param PayType: 付费类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PayType: int\n        :param ExpireFlag: 过期标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpireFlag: bool\n        :param Status: 数据库状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param IsAutoRenew: 续费标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAutoRenew: int\n        :param SerialNo: 数据库字符串
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SerialNo: str\n        :param ZoneId: ZoneId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ZoneId: int\n        :param RegionId: RegionId
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionId: int\n        """
         self.InstanceName = None
         self.Ip = None
         self.Port = None
@@ -188,39 +146,17 @@ class ClusterInstancesInfo(AbstractModel):
     def __init__(self):
         """
         :param Id: ID号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Id: int
-        :param ClusterId: 集群ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterId: str
-        :param Ftitle: 标题
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ftitle: str
-        :param ClusterName: 集群名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterName: str
-        :param RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: int
-        :param ZoneId: 地区ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ZoneId: int
-        :param AppId: 用户APPID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppId: int
-        :param Uin: 用户UIN
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Uin: str
-        :param ProjectId: 项目Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProjectId: int
-        :param VpcId: 集群VPCID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcId: int
-        :param SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetId: int
-        :param Status: 实例的状态码。取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: int\n        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterId: str\n        :param Ftitle: 标题
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ftitle: str\n        :param ClusterName: 集群名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterName: str\n        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionId: int\n        :param ZoneId: 地区ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ZoneId: int\n        :param AppId: 用户APPID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: int\n        :param Uin: 用户UIN
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Uin: str\n        :param ProjectId: 项目Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: int\n        :param VpcId: 集群VPCID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: int\n        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: int\n        :param Status: 实例的状态码。取值范围：
 <li>2：表示集群运行中。</li>
 <li>3：表示集群创建中。</li>
 <li>4：表示集群扩容中。</li>
@@ -248,63 +184,25 @@ class ClusterInstancesInfo(AbstractModel):
 <li>34：表示集群已退费。</li>
 <li>301：表示创建失败。</li>
 <li>302：表示扩容失败。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param AddTime: 添加时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AddTime: str
-        :param RunTime: 已经运行时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RunTime: str
-        :param Config: 集群产品配置信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
-        :param MasterIp: 主节点外网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MasterIp: str
-        :param EmrVersion: EMR版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EmrVersion: str
-        :param ChargeType: 收费类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChargeType: int
-        :param TradeVersion: 交易版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TradeVersion: int
-        :param ResourceOrderId: 资源订单ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceOrderId: int
-        :param IsTradeCluster: 是否计费集群
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsTradeCluster: int
-        :param AlarmInfo: 集群错误状态告警信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlarmInfo: str
-        :param IsWoodpeckerCluster: 是否采用新架构
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsWoodpeckerCluster: int
-        :param MetaDb: 元数据库信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaDb: str
-        :param Tags: 标签信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param HiveMetaDb: Hive元数据信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HiveMetaDb: str
-        :param ServiceClass: 集群类型:EMR,CLICKHOUSE,DRUID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceClass: str
-        :param AliasInfo: 集群所有节点的别名序列化
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AliasInfo: str
-        :param ProductId: 集群版本Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductId: int
-        :param Zone: 地区ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Zone: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param AddTime: 添加时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AddTime: str\n        :param RunTime: 已经运行时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RunTime: str\n        :param Config: 集群产品配置信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`\n        :param MasterIp: 主节点外网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MasterIp: str\n        :param EmrVersion: EMR版本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EmrVersion: str\n        :param ChargeType: 收费类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ChargeType: int\n        :param TradeVersion: 交易版本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TradeVersion: int\n        :param ResourceOrderId: 资源订单ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceOrderId: int\n        :param IsTradeCluster: 是否计费集群
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsTradeCluster: int\n        :param AlarmInfo: 集群错误状态告警信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlarmInfo: str\n        :param IsWoodpeckerCluster: 是否采用新架构
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsWoodpeckerCluster: int\n        :param MetaDb: 元数据库信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaDb: str\n        :param Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param HiveMetaDb: Hive元数据信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HiveMetaDb: str\n        :param ServiceClass: 集群类型:EMR,CLICKHOUSE,DRUID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceClass: str\n        :param AliasInfo: 集群所有节点的别名序列化
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AliasInfo: str\n        :param ProductId: 集群版本Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductId: int\n        :param Zone: 地区ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        """
         self.Id = None
         self.ClusterId = None
         self.Ftitle = None
@@ -393,35 +291,7 @@ class ClusterSetting(AbstractModel):
         """
         :param InstanceChargeType: 付费方式。
 PREPAID 包年包月。
-POSTPAID_BY_HOUR 按量计费，默认方式。
-        :type InstanceChargeType: str
-        :param SupportHA: 是否为HA集群。
-        :type SupportHA: bool
-        :param SecurityGroupIds: 集群所使用的安全组，目前仅支持一个。
-        :type SecurityGroupIds: list of str
-        :param Placement: 实例位置。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param VPCSettings: 实例所在VPC。
-        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param LoginSettings: 实例登录配置。
-        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
-        :param TagSpecification: 实例标签。
-        :type TagSpecification: list of str
-        :param MetaDB: 元数据库配置。
-        :type MetaDB: :class:`tencentcloud.emr.v20190103.models.MetaDbInfo`
-        :param ResourceSpec: 实例硬件配置。
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResourceSpec`
-        :param PublicIpAssigned: 是否申请公网IP，默认为false。
-        :type PublicIpAssigned: bool
-        :param InstanceChargePrepaid: 包年包月配置，只对包年包月集群生效。
-        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
-        :param DisasterRecoverGroupIds: 集群置放群组。
-        :type DisasterRecoverGroupIds: str
-        :param CbsEncryptFlag: 是否使用cbs加密。
-        :type CbsEncryptFlag: bool
-        :param RemoteTcpDefaultPort: 是否使用远程登录，默认为false。
-        :type RemoteTcpDefaultPort: bool
-        """
+POSTPAID_BY_HOUR 按量计费，默认方式。\n        :type InstanceChargeType: str\n        :param SupportHA: 是否为HA集群。\n        :type SupportHA: bool\n        :param SecurityGroupIds: 集群所使用的安全组，目前仅支持一个。\n        :type SecurityGroupIds: list of str\n        :param Placement: 实例位置。\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param VPCSettings: 实例所在VPC。\n        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`\n        :param LoginSettings: 实例登录配置。\n        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`\n        :param TagSpecification: 实例标签。\n        :type TagSpecification: list of str\n        :param MetaDB: 元数据库配置。\n        :type MetaDB: :class:`tencentcloud.emr.v20190103.models.MetaDbInfo`\n        :param ResourceSpec: 实例硬件配置。\n        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResourceSpec`\n        :param PublicIpAssigned: 是否申请公网IP，默认为false。\n        :type PublicIpAssigned: bool\n        :param InstanceChargePrepaid: 包年包月配置，只对包年包月集群生效。\n        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`\n        :param DisasterRecoverGroupIds: 集群置放群组。\n        :type DisasterRecoverGroupIds: str\n        :param CbsEncryptFlag: 是否使用cbs加密。\n        :type CbsEncryptFlag: bool\n        :param RemoteTcpDefaultPort: 是否使用远程登录，默认为false。\n        :type RemoteTcpDefaultPort: bool\n        """
         self.InstanceChargeType = None
         self.SupportHA = None
         self.SecurityGroupIds = None
@@ -481,11 +351,7 @@ class Configuration(AbstractModel):
 
     def __init__(self):
         """
-        :param Classification: 配置文件名，支持SPARK、HIVE、HDFS、YARN的部分配置文件自定义。
-        :type Classification: str
-        :param Properties: 配置参数通过KV的形式传入，部分文件支持自定义，可以通过特殊的键"content"传入所有内容。
-        :type Properties: str
-        """
+        :param Classification: 配置文件名，支持SPARK、HIVE、HDFS、YARN的部分配置文件自定义。\n        :type Classification: str\n        :param Properties: 配置参数通过KV的形式传入，部分文件支持自定义，可以通过特殊的键"content"传入所有内容。\n        :type Properties: str\n        """
         self.Classification = None
         self.Properties = None
 
@@ -529,82 +395,28 @@ class CreateInstanceRequest(AbstractModel):
 <li>27：表示KAFKA-V1.0.0。</li>
 <li>28：表示EMR-V3.2.0。</li>
 <li>29：表示EMR-V2.5.1。</li>
-<li>30：表示EMR-V2.6.0。</li>
-        :type ProductId: int
-        :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
-        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
-填写实例值：hive、flink。
-        :type Software: list of str
-        :param ResourceSpec: 节点资源的规格。
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
-        :param SupportHA: 是否开启节点高可用。取值范围：
+<li>30：表示EMR-V2.6.0。</li>\n        :type ProductId: int\n        :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。\n        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`\n        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+填写实例值：hive、flink。\n        :type Software: list of str\n        :param ResourceSpec: 节点资源的规格。\n        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`\n        :param SupportHA: 是否开启节点高可用。取值范围：
 <li>0：表示不开启节点高可用。</li>
-<li>1：表示开启节点高可用。</li>
-        :type SupportHA: int
-        :param InstanceName: 实例名称。
+<li>1：表示开启节点高可用。</li>\n        :type SupportHA: int\n        :param InstanceName: 实例名称。
 <li>长度限制为6-36个字符。</li>
-<li>只允许包含中文、字母、数字、-、_。</li>
-        :type InstanceName: str
-        :param PayMode: 实例计费模式。取值范围：
+<li>只允许包含中文、字母、数字、-、_。</li>\n        :type InstanceName: str\n        :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
-        :type PayMode: int
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
+<li>1：表示包年包月。</li>\n        :type PayMode: int\n        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
-        :type TimeSpan: int
-        :param TimeUnit: 购买实例的时间单位。取值范围：
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>\n        :type TimeSpan: int\n        :param TimeUnit: 购买实例的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
-        :type TimeUnit: str
-        :param LoginSettings: 实例登录设置。通过该参数可以设置所购买节点的登录方式密码或者密钥。
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>\n        :type TimeUnit: str\n        :param LoginSettings: 实例登录设置。通过该参数可以设置所购买节点的登录方式密码或者密钥。
 <li>设置密钥时，密码仅用于组件原生WebUI快捷入口登录。</li>
-<li>未设置密钥时，密码用于登录所购节点以及组件原生WebUI快捷入口登录。</li>
-        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
-        :param COSSettings: 开启COS访问需要设置的参数。
-        :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
-        :param SgId: 实例所属安全组的ID，形如sg-xxxxxxxx。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的SecurityGroupId字段来获取。
-        :type SgId: str
-        :param PreExecutedFileSettings: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
-        :type PreExecutedFileSettings: list of PreExecuteFileSettings
-        :param AutoRenew: 包年包月实例是否自动续费。取值范围：
+<li>未设置密钥时，密码用于登录所购节点以及组件原生WebUI快捷入口登录。</li>\n        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`\n        :param COSSettings: 开启COS访问需要设置的参数。\n        :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`\n        :param SgId: 实例所属安全组的ID，形如sg-xxxxxxxx。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的SecurityGroupId字段来获取。\n        :type SgId: str\n        :param PreExecutedFileSettings: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。\n        :type PreExecutedFileSettings: list of PreExecuteFileSettings\n        :param AutoRenew: 包年包月实例是否自动续费。取值范围：
 <li>0：表示不自动续费。</li>
-<li>1：表示自动续费。</li>
-        :type AutoRenew: int
-        :param ClientToken: 客户端Token。
-        :type ClientToken: str
-        :param NeedMasterWan: 是否开启集群Master节点公网。取值范围：
+<li>1：表示自动续费。</li>\n        :type AutoRenew: int\n        :param ClientToken: 客户端Token。\n        :type ClientToken: str\n        :param NeedMasterWan: 是否开启集群Master节点公网。取值范围：
 <li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
-<li>NOT_NEED_MASTER_WAN：表示不开启。</li>默认开启集群Master节点公网。
-        :type NeedMasterWan: str
-        :param RemoteLoginAtCreate: 是否需要开启外网远程登录，即22号端口。在SgId不为空时，该参数无效。
-        :type RemoteLoginAtCreate: int
-        :param CheckSecurity: 是否开启安全集群。0表示不开启，非0表示开启。
-        :type CheckSecurity: int
-        :param ExtendFsField: 访问外部文件系统。
-        :type ExtendFsField: str
-        :param Tags: 标签描述列表。通过指定该参数可以同时绑定标签到相应的实例。
-        :type Tags: list of Tag
-        :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前只支持指定一个。
-该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/213/15486 ) 的返回值中的SecurityGroupId字段来获取。
-        :type DisasterRecoverGroupIds: list of str
-        :param CbsEncrypt: 集群维度CBS加密盘，默认0表示不加密，1表示加密
-        :type CbsEncrypt: int
-        :param MetaType: hive共享元数据库类型。取值范围：
+<li>NOT_NEED_MASTER_WAN：表示不开启。</li>默认开启集群Master节点公网。\n        :type NeedMasterWan: str\n        :param RemoteLoginAtCreate: 是否需要开启外网远程登录，即22号端口。在SgId不为空时，该参数无效。\n        :type RemoteLoginAtCreate: int\n        :param CheckSecurity: 是否开启安全集群。0表示不开启，非0表示开启。\n        :type CheckSecurity: int\n        :param ExtendFsField: 访问外部文件系统。\n        :type ExtendFsField: str\n        :param Tags: 标签描述列表。通过指定该参数可以同时绑定标签到相应的实例。\n        :type Tags: list of Tag\n        :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前只支持指定一个。
+该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/213/15486 ) 的返回值中的SecurityGroupId字段来获取。\n        :type DisasterRecoverGroupIds: list of str\n        :param CbsEncrypt: 集群维度CBS加密盘，默认0表示不加密，1表示加密\n        :type CbsEncrypt: int\n        :param MetaType: hive共享元数据库类型。取值范围：
 <li>EMR_NEW_META：表示集群默认创建</li>
 <li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
-<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
-        :type MetaType: str
-        :param UnifyMetaInstanceId: EMR-MetaDB实例
-        :type UnifyMetaInstanceId: str
-        :param MetaDBInfo: 自定义MetaDB信息
-        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
-        :param ApplicationRole: 自定义应用角色。
-        :type ApplicationRole: str
-        """
+<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>\n        :type MetaType: str\n        :param UnifyMetaInstanceId: EMR-MetaDB实例\n        :type UnifyMetaInstanceId: str\n        :param MetaDBInfo: 自定义MetaDB信息\n        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`\n        :param ApplicationRole: 自定义应用角色。\n        :type ApplicationRole: str\n        """
         self.ProductId = None
         self.VPCSettings = None
         self.Software = None
@@ -701,11 +513,7 @@ class CreateInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -722,13 +530,7 @@ class CustomMetaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MetaDataJdbcUrl: 自定义MetaDB的JDBC连接，请以 jdbc:mysql:// 开头
-        :type MetaDataJdbcUrl: str
-        :param MetaDataUser: 自定义MetaDB用户名
-        :type MetaDataUser: str
-        :param MetaDataPass: 自定义MetaDB密码
-        :type MetaDataPass: str
-        """
+        :param MetaDataJdbcUrl: 自定义MetaDB的JDBC连接，请以 jdbc:mysql:// 开头\n        :type MetaDataJdbcUrl: str\n        :param MetaDataUser: 自定义MetaDB用户名\n        :type MetaDataUser: str\n        :param MetaDataPass: 自定义MetaDB密码\n        :type MetaDataPass: str\n        """
         self.MetaDataJdbcUrl = None
         self.MetaDataUser = None
         self.MetaDataPass = None
@@ -754,9 +556,7 @@ class DescribeClusterNodesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 集群实例ID,实例ID形如: emr-xxxxxxxx
-        :type InstanceId: str
-        :param NodeFlag: 节点标识，取值为：
+        :param InstanceId: 集群实例ID,实例ID形如: emr-xxxxxxxx\n        :type InstanceId: str\n        :param NodeFlag: 节点标识，取值为：
 <li>all：表示获取全部类型节点，cdb信息除外。</li>
 <li>master：表示获取master节点信息。</li>
 <li>core：表示获取core节点信息。</li>
@@ -766,17 +566,7 @@ class DescribeClusterNodesRequest(AbstractModel):
 <li>db：表示获取正常状态的cdb信息。</li>
 <li>recyle：表示获取回收站隔离中的节点信息，包括cdb信息。</li>
 <li>renew：表示获取所有待续费的节点信息，包括cdb信息，自动续费节点不会返回。</li>
-注意：现在只支持以上取值，输入其他值会导致错误。
-        :type NodeFlag: str
-        :param Offset: 页编号，默认值为0，表示第一页。
-        :type Offset: int
-        :param Limit: 每页返回数量，默认值为100，最大值为100。
-        :type Limit: int
-        :param HardwareResourceType: 资源类型:支持all/host/pod，默认为all
-        :type HardwareResourceType: str
-        :param SearchFields: 支持搜索的字段
-        :type SearchFields: list of SearchItem
-        """
+注意：现在只支持以上取值，输入其他值会导致错误。\n        :type NodeFlag: str\n        :param Offset: 页编号，默认值为0，表示第一页。\n        :type Offset: int\n        :param Limit: 每页返回数量，默认值为100，最大值为100。\n        :type Limit: int\n        :param HardwareResourceType: 资源类型:支持all/host/pod，默认为all\n        :type HardwareResourceType: str\n        :param SearchFields: 支持搜索的字段\n        :type SearchFields: list of SearchItem\n        """
         self.InstanceId = None
         self.NodeFlag = None
         self.Offset = None
@@ -813,20 +603,10 @@ class DescribeClusterNodesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCnt: 查询到的节点总数
-        :type TotalCnt: int
-        :param NodeList: 节点详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NodeList: list of NodeHardwareInfo
-        :param TagKeys: 用户所有的标签键列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagKeys: list of str
-        :param HardwareResourceTypeList: 资源类型列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HardwareResourceTypeList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCnt: 查询到的节点总数\n        :type TotalCnt: int\n        :param NodeList: 节点详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NodeList: list of NodeHardwareInfo\n        :param TagKeys: 用户所有的标签键列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagKeys: list of str\n        :param HardwareResourceTypeList: 资源类型列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HardwareResourceTypeList: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCnt = None
         self.NodeList = None
         self.TagKeys = None
@@ -854,11 +634,7 @@ class DescribeCvmQuotaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: EMR集群ID
-        :type ClusterId: str
-        :param ZoneId: 区ID
-        :type ZoneId: int
-        """
+        :param ClusterId: EMR集群ID\n        :type ClusterId: str\n        :param ZoneId: 区ID\n        :type ZoneId: int\n        """
         self.ClusterId = None
         self.ZoneId = None
 
@@ -883,17 +659,9 @@ class DescribeCvmQuotaResponse(AbstractModel):
     def __init__(self):
         """
         :param PostPaidQuotaSet: 后付费配额列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PostPaidQuotaSet: list of QuotaEntity
-        :param SpotPaidQuotaSet: 竞价实例配额列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SpotPaidQuotaSet: list of QuotaEntity
-        :param EksQuotaSet: eks配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EksQuotaSet: list of PodSaleSpec
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PostPaidQuotaSet: list of QuotaEntity\n        :param SpotPaidQuotaSet: 竞价实例配额列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SpotPaidQuotaSet: list of QuotaEntity\n        :param EksQuotaSet: eks配额
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EksQuotaSet: list of PodSaleSpec\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PostPaidQuotaSet = None
         self.SpotPaidQuotaSet = None
         self.EksQuotaSet = None
@@ -929,9 +697,7 @@ class DescribeInstanceRenewNodesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 集群实例ID,实例ID形如: emr-xxxxxxxx
-        :type InstanceId: str
-        """
+        :param InstanceId: 集群实例ID,实例ID形如: emr-xxxxxxxx\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -953,17 +719,9 @@ class DescribeInstanceRenewNodesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCnt: 查询到的节点总数
-        :type TotalCnt: int
-        :param NodeList: 节点详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NodeList: list of RenewInstancesInfo
-        :param MetaInfo: 用户所有的标签键列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaInfo: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCnt: 查询到的节点总数\n        :type TotalCnt: int\n        :param NodeList: 节点详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NodeList: list of RenewInstancesInfo\n        :param MetaInfo: 用户所有的标签键列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaInfo: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCnt = None
         self.NodeList = None
         self.MetaInfo = None
@@ -992,28 +750,14 @@ class DescribeInstancesRequest(AbstractModel):
         :param DisplayStrategy: 集群筛选策略。取值范围：
 <li>clusterList：表示查询除了已销毁集群之外的集群列表。</li>
 <li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li>
-<li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
-        :type DisplayStrategy: str
-        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如: emr-xxxxxxxx 。(此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的 Ids.N 一节)。如果不填写实例ID，返回该APPID下所有实例列表。
-        :type InstanceIds: list of str
-        :param Offset: 页编号，默认值为0，表示第一页。
-        :type Offset: int
-        :param Limit: 每页返回数量，默认值为10，最大值为100。
-        :type Limit: int
-        :param ProjectId: 建议必填-1，表示拉取所有项目下的集群。
+<li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>\n        :type DisplayStrategy: str\n        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如: emr-xxxxxxxx 。(此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的 Ids.N 一节)。如果不填写实例ID，返回该APPID下所有实例列表。\n        :type InstanceIds: list of str\n        :param Offset: 页编号，默认值为0，表示第一页。\n        :type Offset: int\n        :param Limit: 每页返回数量，默认值为10，最大值为100。\n        :type Limit: int\n        :param ProjectId: 建议必填-1，表示拉取所有项目下的集群。
 不填默认值为0，表示拉取默认项目下的集群。
-实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的 projectId 字段来获取。
-        :type ProjectId: int
-        :param OrderField: 排序字段。取值范围：
+实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的 projectId 字段来获取。\n        :type ProjectId: int\n        :param OrderField: 排序字段。取值范围：
 <li>clusterId：表示按照实例ID排序。</li>
 <li>addTime：表示按照实例创建时间排序。</li>
-<li>status：表示按照实例的状态码排序。</li>
-        :type OrderField: str
-        :param Asc: 按照OrderField升序或者降序进行排序。取值范围：
+<li>status：表示按照实例的状态码排序。</li>\n        :type OrderField: str\n        :param Asc: 按照OrderField升序或者降序进行排序。取值范围：
 <li>0：表示降序。</li>
-<li>1：表示升序。</li>默认值为0。
-        :type Asc: int
-        """
+<li>1：表示升序。</li>默认值为0。\n        :type Asc: int\n        """
         self.DisplayStrategy = None
         self.InstanceIds = None
         self.Offset = None
@@ -1047,17 +791,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCnt: 符合条件的实例总数。
-        :type TotalCnt: int
-        :param ClusterList: EMR实例详细信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterList: list of ClusterInstancesInfo
-        :param TagKeys: 实例关联的标签键列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagKeys: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCnt: 符合条件的实例总数。\n        :type TotalCnt: int\n        :param ClusterList: EMR实例详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterList: list of ClusterInstancesInfo\n        :param TagKeys: 实例关联的标签键列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagKeys: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCnt = None
         self.ClusterList = None
         self.TagKeys = None
@@ -1083,9 +819,7 @@ class DescribeJobFlowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param JobFlowId: 流程任务Id，RunJobFlow接口返回的值。
-        :type JobFlowId: int
-        """
+        :param JobFlowId: 流程任务Id，RunJobFlow接口返回的值。\n        :type JobFlowId: int\n        """
         self.JobFlowId = None
 
 
@@ -1114,13 +848,7 @@ JobFlowResourceReady，执行流程任务的资源就绪。
 JobFlowStepsRunning，流程任务步骤已提交。
 JobFlowStepsComplete，流程任务步骤已完成。
 JobFlowTerminating，流程任务所需资源销毁中。
-JobFlowFinish，流程任务已完成。
-        :type State: str
-        :param Details: 流程任务步骤结果。
-        :type Details: list of JobResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+JobFlowFinish，流程任务已完成。\n        :type State: str\n        :param Details: 流程任务步骤结果。\n        :type Details: list of JobResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.State = None
         self.Details = None
         self.RequestId = None
@@ -1144,11 +872,7 @@ class DiskGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param Spec: 磁盘规格。
-        :type Spec: :class:`tencentcloud.emr.v20190103.models.DiskSpec`
-        :param Count: 同类型磁盘数量。
-        :type Count: int
-        """
+        :param Spec: 磁盘规格。\n        :type Spec: :class:`tencentcloud.emr.v20190103.models.DiskSpec`\n        :param Count: 同类型磁盘数量。\n        :type Count: int\n        """
         self.Spec = None
         self.Count = None
 
@@ -1180,11 +904,7 @@ CLOUD_BASIC 云硬盘。
 LOCAL_SSD 本地SSD。
 CLOUD_SSD 云SSD。
 CLOUD_PREMIUM 高效云盘。
-CLOUD_HSSD 增强型云SSD。
-        :type DiskType: str
-        :param DiskSize: 磁盘大小，单位GB。
-        :type DiskSize: int
-        """
+CLOUD_HSSD 增强型云SSD。\n        :type DiskType: str\n        :param DiskSize: 磁盘大小，单位GB。\n        :type DiskSize: int\n        """
         self.DiskType = None
         self.DiskSize = None
 
@@ -1208,15 +928,7 @@ class DynamicPodSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestCpu: 需求最小cpu核数
-        :type RequestCpu: float
-        :param LimitCpu: 需求最大cpu核数
-        :type LimitCpu: float
-        :param RequestMemory: 需求最小memory，单位MB
-        :type RequestMemory: float
-        :param LimitMemory: 需求最大memory，单位MB
-        :type LimitMemory: float
-        """
+        :param RequestCpu: 需求最小cpu核数\n        :type RequestCpu: float\n        :param LimitCpu: 需求最大cpu核数\n        :type LimitCpu: float\n        :param RequestMemory: 需求最小memory，单位MB\n        :type RequestMemory: float\n        :param LimitMemory: 需求最大memory，单位MB\n        :type LimitMemory: float\n        """
         self.RequestCpu = None
         self.LimitCpu = None
         self.RequestMemory = None
@@ -1245,60 +957,24 @@ class EmrProductConfigOutter(AbstractModel):
     def __init__(self):
         """
         :param SoftInfo: 软件信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SoftInfo: list of str
-        :param MasterNodeSize: Master节点个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MasterNodeSize: int
-        :param CoreNodeSize: Core节点个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CoreNodeSize: int
-        :param TaskNodeSize: Task节点个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskNodeSize: int
-        :param ComNodeSize: Common节点个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ComNodeSize: int
-        :param MasterResource: Master节点资源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param CoreResource: Core节点资源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param TaskResource: Task节点资源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param ComResource: Common节点资源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ComResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param OnCos: 是否使用COS
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OnCos: bool
-        :param ChargeType: 收费类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChargeType: int
-        :param RouterNodeSize: Router节点个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouterNodeSize: int
-        :param SupportHA: 是否支持HA
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SupportHA: bool
-        :param SecurityOn: 是否支持安全模式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityOn: bool
-        :param SecurityGroup: 安全组名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityGroup: str
-        :param CbsEncrypt: 是否开启Cbs加密
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CbsEncrypt: int
-        :param ApplicationRole: 自定义应用角色。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationRole: str
-        :param SecurityGroups: 安全组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityGroups: list of str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SoftInfo: list of str\n        :param MasterNodeSize: Master节点个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MasterNodeSize: int\n        :param CoreNodeSize: Core节点个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CoreNodeSize: int\n        :param TaskNodeSize: Task节点个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskNodeSize: int\n        :param ComNodeSize: Common节点个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ComNodeSize: int\n        :param MasterResource: Master节点资源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param CoreResource: Core节点资源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param TaskResource: Task节点资源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param ComResource: Common节点资源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ComResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`\n        :param OnCos: 是否使用COS
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OnCos: bool\n        :param ChargeType: 收费类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ChargeType: int\n        :param RouterNodeSize: Router节点个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RouterNodeSize: int\n        :param SupportHA: 是否支持HA
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SupportHA: bool\n        :param SecurityOn: 是否支持安全模式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityOn: bool\n        :param SecurityGroup: 安全组名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityGroup: str\n        :param CbsEncrypt: 是否开启Cbs加密
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CbsEncrypt: int\n        :param ApplicationRole: 自定义应用角色。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationRole: str\n        :param SecurityGroups: 安全组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityGroups: list of str\n        """
         self.SoftInfo = None
         self.MasterNodeSize = None
         self.CoreNodeSize = None
@@ -1365,11 +1041,7 @@ class Execution(AbstractModel):
         :param JobType: 任务类型，目前支持以下类型。
 1. “MR”，将通过hadoop jar的方式提交。
 2. "HIVE"，将通过hive -f的方式提交。
-3. "SPARK"，将通过spark-submit的方式提交。
-        :type JobType: str
-        :param Args: 任务参数，提供除提交指令以外的参数。
-        :type Args: list of str
-        """
+3. "SPARK"，将通过spark-submit的方式提交。\n        :type JobType: str\n        :param Args: 任务参数，提供除提交指令以外的参数。\n        :type Args: list of str\n        """
         self.JobType = None
         self.Args = None
 
@@ -1394,9 +1066,7 @@ class HostVolumeContext(AbstractModel):
     def __init__(self):
         """
         :param VolumePath: Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VolumePath: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VolumePath: str\n        """
         self.VolumePath = None
 
 
@@ -1418,21 +1088,9 @@ class InquirePriceRenewEmrRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
-        :type TimeSpan: int
-        :param InstanceId: 待续费集群ID列表。
-        :type InstanceId: str
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。
-        :type PayMode: int
-        :param TimeUnit: 实例续费的时间单位。取值范围：
-<li>m：表示月份。</li>
-        :type TimeUnit: str
-        :param Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
-        :type Currency: str
-        """
+        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月\n        :type TimeSpan: int\n        :param InstanceId: 待续费集群ID列表。\n        :type InstanceId: str\n        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。\n        :type PayMode: int\n        :param TimeUnit: 实例续费的时间单位。取值范围：
+<li>m：表示月份。</li>\n        :type TimeUnit: str\n        :param Currency: 货币种类。取值范围：
+<li>CNY：表示人民币。</li>\n        :type Currency: str\n        """
         self.TimeSpan = None
         self.InstanceId = None
         self.Placement = None
@@ -1467,21 +1125,11 @@ class InquirePriceRenewEmrResponse(AbstractModel):
     def __init__(self):
         """
         :param OriginalCost: 原价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalCost: float
-        :param DiscountCost: 折扣价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountCost: float
-        :param TimeUnit: 实例续费的时间单位。取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginalCost: float\n        :param DiscountCost: 折扣价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountCost: float\n        :param TimeUnit: 实例续费的时间单位。取值范围：
 <li>m：表示月份。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeUnit: str
-        :param TimeSpan: 实例续费的时长。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeSpan: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeUnit: str\n        :param TimeSpan: 实例续费的时长。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeSpan: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -1506,51 +1154,25 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         """
         :param TimeUnit: 购买实例的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
-        :type TimeUnit: str
-        :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>\n        :type TimeUnit: str\n        :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
-        :type TimeSpan: int
-        :param ResourceSpec: 询价的节点规格。
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
-        :param Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
-        :type Currency: str
-        :param PayMode: 实例计费模式。取值范围：
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>\n        :type TimeSpan: int\n        :param ResourceSpec: 询价的节点规格。\n        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`\n        :param Currency: 货币种类。取值范围：
+<li>CNY：表示人民币。</li>\n        :type Currency: str\n        :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
-        :type PayMode: int
-        :param SupportHA: 是否开启节点高可用。取值范围：
+<li>1：表示包年包月。</li>\n        :type PayMode: int\n        :param SupportHA: 是否开启节点高可用。取值范围：
 <li>0：表示不开启节点高可用。</li>
-<li>1：表示开启节点高可用。</li>
-        :type SupportHA: int
-        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
+<li>1：表示开启节点高可用。</li>\n        :type SupportHA: int\n        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
 <li>ProductId为1的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
 <li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
 <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
-<li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
-        :type Software: list of str
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
-        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param MetaType: hive共享元数据库类型。取值范围：
+<li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>\n        :type Software: list of str\n        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。\n        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`\n        :param MetaType: hive共享元数据库类型。取值范围：
 <li>EMR_NEW_META：表示集群默认创建</li>
 <li>EMR_EXIT_METE：表示集群使用指定EMR-MetaDB。</li>
-<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
-        :type MetaType: str
-        :param UnifyMetaInstanceId: EMR-MetaDB实例
-        :type UnifyMetaInstanceId: str
-        :param MetaDBInfo: 自定义MetaDB信息
-        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
-        :param ProductId: 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：
+<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>\n        :type MetaType: str\n        :param UnifyMetaInstanceId: EMR-MetaDB实例\n        :type UnifyMetaInstanceId: str\n        :param MetaDBInfo: 自定义MetaDB信息\n        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`\n        :param ProductId: 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：
 <li>1：表示EMR-V1.3.1。</li>
 <li>2：表示EMR-V2.0.1。</li>
 <li>4：表示EMR-V2.1.0。</li>
-<li>7：表示EMR-V3.0.0。</li>
-        :type ProductId: int
-        """
+<li>7：表示EMR-V3.0.0。</li>\n        :type ProductId: int\n        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.ResourceSpec = None
@@ -1605,22 +1227,12 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param OriginalCost: 原价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalCost: float
-        :param DiscountCost: 折扣价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountCost: float
-        :param TimeUnit: 购买实例的时间单位。取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginalCost: float\n        :param DiscountCost: 折扣价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountCost: float\n        :param TimeUnit: 购买实例的时间单位。取值范围：
 <li>s：表示秒。</li>
 <li>m：表示月份。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeUnit: str
-        :param TimeSpan: 购买实例的时长。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeSpan: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeUnit: str\n        :param TimeSpan: 购买实例的时长。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeSpan: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -1643,23 +1255,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
-        :type TimeSpan: int
-        :param ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
-        :type ResourceIds: list of str
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。
-        :type PayMode: int
-        :param TimeUnit: 实例续费的时间单位。取值范围：
-<li>m：表示月份。</li>
-        :type TimeUnit: str
-        :param Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
-        :type Currency: str
-        :param ModifyPayMode: 是否按量转包年包月。0：否，1：是。
-        :type ModifyPayMode: int
-        """
+        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月\n        :type TimeSpan: int\n        :param ResourceIds: 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。\n        :type ResourceIds: list of str\n        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。\n        :type PayMode: int\n        :param TimeUnit: 实例续费的时间单位。取值范围：
+<li>m：表示月份。</li>\n        :type TimeUnit: str\n        :param Currency: 货币种类。取值范围：
+<li>CNY：表示人民币。</li>\n        :type Currency: str\n        :param ModifyPayMode: 是否按量转包年包月。0：否，1：是。\n        :type ModifyPayMode: int\n        """
         self.TimeSpan = None
         self.ResourceIds = None
         self.Placement = None
@@ -1696,21 +1294,11 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param OriginalCost: 原价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalCost: float
-        :param DiscountCost: 折扣价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountCost: float
-        :param TimeUnit: 实例续费的时间单位。取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginalCost: float\n        :param DiscountCost: 折扣价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountCost: float\n        :param TimeUnit: 实例续费的时间单位。取值范围：
 <li>m：表示月份。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeUnit: str
-        :param TimeSpan: 实例续费的时长。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeSpan: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeUnit: str\n        :param TimeSpan: 实例续费的时长。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeSpan: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -1735,32 +1323,12 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         """
         :param TimeUnit: 扩容的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
-        :type TimeUnit: str
-        :param TimeSpan: 扩容的时长。结合TimeUnit一起使用。
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>\n        :type TimeUnit: str\n        :param TimeSpan: 扩容的时长。结合TimeUnit一起使用。
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
-        :type TimeSpan: int
-        :param ZoneId: 实例所属的可用区ID，例如100003。该参数可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的ZoneId字段来获取。
-        :type ZoneId: int
-        :param PayMode: 实例计费模式。取值范围：
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>\n        :type TimeSpan: int\n        :param ZoneId: 实例所属的可用区ID，例如100003。该参数可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的ZoneId字段来获取。\n        :type ZoneId: int\n        :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
-        :type PayMode: int
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        :param CoreCount: 扩容的Core节点数量。
-        :type CoreCount: int
-        :param TaskCount: 扩容的Task节点数量。
-        :type TaskCount: int
-        :param Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
-        :type Currency: str
-        :param RouterCount: 扩容的Router节点数量。
-        :type RouterCount: int
-        :param MasterCount: 扩容的Master节点数量。
-        :type MasterCount: int
-        """
+<li>1：表示包年包月。</li>\n        :type PayMode: int\n        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param CoreCount: 扩容的Core节点数量。\n        :type CoreCount: int\n        :param TaskCount: 扩容的Task节点数量。\n        :type TaskCount: int\n        :param Currency: 货币种类。取值范围：
+<li>CNY：表示人民币。</li>\n        :type Currency: str\n        :param RouterCount: 扩容的Router节点数量。\n        :type RouterCount: int\n        :param MasterCount: 扩容的Master节点数量。\n        :type MasterCount: int\n        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.ZoneId = None
@@ -1801,22 +1369,12 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param OriginalCost: 原价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalCost: str
-        :param DiscountCost: 折扣价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountCost: str
-        :param Unit: 扩容的时间单位。取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginalCost: str\n        :param DiscountCost: 折扣价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountCost: str\n        :param Unit: 扩容的时间单位。取值范围：
 <li>s：表示秒。</li>
 <li>m：表示月份。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Unit: str
-        :param PriceSpec: 询价的节点规格。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Unit: str\n        :param PriceSpec: 询价的节点规格。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.Unit = None
@@ -1843,24 +1401,12 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         """
         :param TimeUnit: 变配的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
-        :type TimeUnit: str
-        :param TimeSpan: 变配的时长。结合TimeUnit一起使用。
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>\n        :type TimeUnit: str\n        :param TimeSpan: 变配的时长。结合TimeUnit一起使用。
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
-        :type TimeSpan: int
-        :param UpdateSpec: 节点变配的目标配置。
-        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
-        :param PayMode: 实例计费模式。取值范围：
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>\n        :type TimeSpan: int\n        :param UpdateSpec: 节点变配的目标配置。\n        :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`\n        :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
-        :type PayMode: int
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
-        :type Currency: str
-        """
+<li>1：表示包年包月。</li>\n        :type PayMode: int\n        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。\n        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`\n        :param Currency: 货币种类。取值范围：
+<li>CNY：表示人民币。</li>\n        :type Currency: str\n        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.UpdateSpec = None
@@ -1897,22 +1443,12 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param OriginalCost: 原价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalCost: float
-        :param DiscountCost: 折扣价，单位为元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountCost: float
-        :param TimeUnit: 变配的时间单位。取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginalCost: float\n        :param DiscountCost: 折扣价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountCost: float\n        :param TimeUnit: 变配的时间单位。取值范围：
 <li>s：表示秒。</li>
 <li>m：表示月份。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeUnit: str
-        :param TimeSpan: 变配的时长。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeSpan: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeUnit: str\n        :param TimeSpan: 变配的时长。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeSpan: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalCost = None
         self.DiscountCost = None
         self.TimeUnit = None
@@ -1936,11 +1472,7 @@ class InstanceChargePrepaid(AbstractModel):
     def __init__(self):
         """
         :param Period: 包年包月时间，默认为1，单位：月。
-取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 24, 36, 48, 60。
-        :type Period: int
-        :param RenewFlag: 是否自动续费，默认为否。
-        :type RenewFlag: bool
-        """
+取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 24, 36, 48, 60。\n        :type Period: int\n        :param RenewFlag: 是否自动续费，默认为否。\n        :type RenewFlag: bool\n        """
         self.Period = None
         self.RenewFlag = None
 
@@ -1964,15 +1496,7 @@ class JobFlowResource(AbstractModel):
 
     def __init__(self):
         """
-        :param Spec: 机器类型描述。
-        :type Spec: str
-        :param InstanceType: 机器类型描述，可参考CVM的该含义。
-        :type InstanceType: str
-        :param Tags: 标签KV对。
-        :type Tags: list of Tag
-        :param DiskGroups: 磁盘描述列表。
-        :type DiskGroups: list of DiskGroup
-        """
+        :param Spec: 机器类型描述。\n        :type Spec: str\n        :param InstanceType: 机器类型描述，可参考CVM的该含义。\n        :type InstanceType: str\n        :param Tags: 标签KV对。\n        :type Tags: list of Tag\n        :param DiskGroups: 磁盘描述列表。\n        :type DiskGroups: list of DiskGroup\n        """
         self.Spec = None
         self.InstanceType = None
         self.Tags = None
@@ -2010,23 +1534,7 @@ class JobFlowResourceSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param MasterCount: 主节点数量。
-        :type MasterCount: int
-        :param MasterResourceSpec: 主节点配置。
-        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
-        :param CoreCount: Core节点数量
-        :type CoreCount: int
-        :param CoreResourceSpec: Core节点配置。
-        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
-        :param TaskCount: Task节点数量。
-        :type TaskCount: int
-        :param CommonCount: Common节点数量。
-        :type CommonCount: int
-        :param TaskResourceSpec: Task节点配置。
-        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
-        :param CommonResourceSpec: Common节点配置。
-        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
-        """
+        :param MasterCount: 主节点数量。\n        :type MasterCount: int\n        :param MasterResourceSpec: 主节点配置。\n        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`\n        :param CoreCount: Core节点数量\n        :type CoreCount: int\n        :param CoreResourceSpec: Core节点配置。\n        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`\n        :param TaskCount: Task节点数量。\n        :type TaskCount: int\n        :param CommonCount: Common节点数量。\n        :type CommonCount: int\n        :param TaskResourceSpec: Task节点配置。\n        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`\n        :param CommonResourceSpec: Common节点配置。\n        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`\n        """
         self.MasterCount = None
         self.MasterResourceSpec = None
         self.CoreCount = None
@@ -2071,22 +1579,16 @@ class JobResult(AbstractModel):
     def __init__(self):
         """
         :param Name: 任务步骤名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param ActionOnFailure: 任务步骤失败时的处理策略，可以为以下值：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param ActionOnFailure: 任务步骤失败时的处理策略，可以为以下值：
 "CONTINUE"，跳过当前失败步骤，继续后续步骤。
 “TERMINATE_CLUSTER”，终止当前及后续步骤，并销毁集群。
 “CANCEL_AND_WAIT”，取消当前步骤并阻塞等待处理。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActionOnFailure: str
-        :param JobState: 当前步骤的状态，可以为以下值：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ActionOnFailure: str\n        :param JobState: 当前步骤的状态，可以为以下值：
 “JobFlowStepStatusInit”，初始化状态，等待执行。
 “JobFlowStepStatusRunning”，任务步骤正在执行。
 “JobFlowStepStatusFailed”，任务步骤执行失败。
 “JobFlowStepStatusSucceed”，任务步骤执行成功。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type JobState: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type JobState: str\n        """
         self.Name = None
         self.ActionOnFailure = None
         self.JobState = None
@@ -2112,11 +1614,7 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Password: Password
-        :type Password: str
-        :param PublicKeyId: Public Key
-        :type PublicKeyId: str
-        """
+        :param Password: Password\n        :type Password: str\n        :param PublicKeyId: Public Key\n        :type PublicKeyId: str\n        """
         self.Password = None
         self.PublicKeyId = None
 
@@ -2140,13 +1638,7 @@ class MetaDbInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MetaType: 元数据类型。
-        :type MetaType: str
-        :param UnifyMetaInstanceId: 统一元数据库实例ID。
-        :type UnifyMetaInstanceId: str
-        :param MetaDBInfo: 自建元数据库信息。
-        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
-        """
+        :param MetaType: 元数据类型。\n        :type MetaType: str\n        :param UnifyMetaInstanceId: 统一元数据库实例ID。\n        :type UnifyMetaInstanceId: str\n        :param MetaDBInfo: 自建元数据库信息。\n        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`\n        """
         self.MetaType = None
         self.UnifyMetaInstanceId = None
         self.MetaDBInfo = None
@@ -2177,13 +1669,7 @@ class MultiDisk(AbstractModel):
         :param DiskType: 云盘类型
 <li>CLOUD_SSD：表示云SSD。</li>
 <li>CLOUD_PREMIUM：表示高效云盘。</li>
-<li>CLOUD_HSSD：表示增强型SSD云硬盘。</li>
-        :type DiskType: str
-        :param Volume: 云盘大小
-        :type Volume: int
-        :param Count: 该类型云盘个数
-        :type Count: int
-        """
+<li>CLOUD_HSSD：表示增强型SSD云硬盘。</li>\n        :type DiskType: str\n        :param Volume: 云盘大小\n        :type Volume: int\n        :param Count: 该类型云盘个数\n        :type Count: int\n        """
         self.DiskType = None
         self.Volume = None
         self.Count = None
@@ -2210,15 +1696,9 @@ class MultiDiskMC(AbstractModel):
     def __init__(self):
         """
         :param Count: 该类型云盘个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Count: int
-        :param Type: 磁盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: int
-        :param Volume: 云盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Volume: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Count: int\n        :param Type: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: int\n        :param Volume: 云盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Volume: int\n        """
         self.Count = None
         self.Type = None
         self.Volume = None
@@ -2244,23 +1724,7 @@ class NewResourceSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param MasterResourceSpec: 描述Master节点资源
-        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param CoreResourceSpec: 描述Core节点资源
-        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param TaskResourceSpec: 描述Task节点资源
-        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param MasterCount: Master节点数量
-        :type MasterCount: int
-        :param CoreCount: Core节点数量
-        :type CoreCount: int
-        :param TaskCount: Task节点数量
-        :type TaskCount: int
-        :param CommonResourceSpec: 描述Common节点资源
-        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param CommonCount: Common节点数量
-        :type CommonCount: int
-        """
+        :param MasterResourceSpec: 描述Master节点资源\n        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param CoreResourceSpec: 描述Core节点资源\n        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param TaskResourceSpec: 描述Task节点资源\n        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param MasterCount: Master节点数量\n        :type MasterCount: int\n        :param CoreCount: Core节点数量\n        :type CoreCount: int\n        :param TaskCount: Task节点数量\n        :type TaskCount: int\n        :param CommonResourceSpec: 描述Common节点资源\n        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`\n        :param CommonCount: Common节点数量\n        :type CommonCount: int\n        """
         self.MasterResourceSpec = None
         self.CoreResourceSpec = None
         self.TaskResourceSpec = None
@@ -2305,127 +1769,47 @@ class NodeHardwareInfo(AbstractModel):
     def __init__(self):
         """
         :param AppId: 用户APPID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AppId: int
-        :param SerialNo: 序列号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SerialNo: str
-        :param OrderNo: 机器实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OrderNo: str
-        :param WanIp: master节点绑定外网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WanIp: str
-        :param Flag: 节点类型。0:common节点；1:master节点
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: int\n        :param SerialNo: 序列号
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SerialNo: str\n        :param OrderNo: 机器实例ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrderNo: str\n        :param WanIp: master节点绑定外网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WanIp: str\n        :param Flag: 节点类型。0:common节点；1:master节点
 ；2:core节点；3:task节点
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Flag: int
-        :param Spec: 节点规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Spec: str
-        :param CpuNum: 节点核数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CpuNum: int
-        :param MemSize: 节点内存
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MemSize: int
-        :param MemDesc: 节点内存描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MemDesc: str
-        :param RegionId: 节点所在region
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: int
-        :param ZoneId: 节点所在Zone
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ZoneId: int
-        :param ApplyTime: 申请时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplyTime: str
-        :param FreeTime: 释放时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FreeTime: str
-        :param DiskSize: 硬盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSize: str
-        :param NameTag: 节点描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NameTag: str
-        :param Services: 节点部署服务
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Services: str
-        :param StorageType: 磁盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageType: int
-        :param RootSize: 系统盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RootSize: int
-        :param ChargeType: 付费类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChargeType: int
-        :param CdbIp: 数据库IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CdbIp: str
-        :param CdbPort: 数据库端口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CdbPort: int
-        :param HwDiskSize: 硬盘容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HwDiskSize: int
-        :param HwDiskSizeDesc: 硬盘容量描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HwDiskSizeDesc: str
-        :param HwMemSize: 内存容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HwMemSize: int
-        :param HwMemSizeDesc: 内存容量描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HwMemSizeDesc: str
-        :param ExpireTime: 过期时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpireTime: str
-        :param EmrResourceId: 节点资源ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EmrResourceId: str
-        :param IsAutoRenew: 续费标志
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsAutoRenew: int
-        :param DeviceClass: 设备标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeviceClass: str
-        :param Mutable: 支持变配
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Mutable: int
-        :param MCMultiDisk: 多云盘
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MCMultiDisk: list of MultiDiskMC
-        :param CdbNodeInfo: 数据库信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
-        :param Ip: 内网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ip: str
-        :param Destroyable: 此节点是否可销毁，1可销毁，0不可销毁
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Destroyable: int
-        :param Tags: 节点绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param AutoFlag: 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoFlag: int
-        :param HardwareResourceType: 资源类型, host/pod
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HardwareResourceType: str
-        :param IsDynamicSpec: 是否浮动规格，1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsDynamicSpec: int
-        :param DynamicPodSpec: 浮动规格值json字符串
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DynamicPodSpec: str
-        :param SupportModifyPayMode: 是否支持变更计费类型 1是，0否
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SupportModifyPayMode: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Flag: int\n        :param Spec: 节点规格
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Spec: str\n        :param CpuNum: 节点核数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CpuNum: int\n        :param MemSize: 节点内存
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MemSize: int\n        :param MemDesc: 节点内存描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MemDesc: str\n        :param RegionId: 节点所在region
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionId: int\n        :param ZoneId: 节点所在Zone
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ZoneId: int\n        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplyTime: str\n        :param FreeTime: 释放时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FreeTime: str\n        :param DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: str\n        :param NameTag: 节点描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NameTag: str\n        :param Services: 节点部署服务
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Services: str\n        :param StorageType: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageType: int\n        :param RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RootSize: int\n        :param ChargeType: 付费类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ChargeType: int\n        :param CdbIp: 数据库IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CdbIp: str\n        :param CdbPort: 数据库端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CdbPort: int\n        :param HwDiskSize: 硬盘容量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HwDiskSize: int\n        :param HwDiskSizeDesc: 硬盘容量描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HwDiskSizeDesc: str\n        :param HwMemSize: 内存容量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HwMemSize: int\n        :param HwMemSizeDesc: 内存容量描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HwMemSizeDesc: str\n        :param ExpireTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpireTime: str\n        :param EmrResourceId: 节点资源ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EmrResourceId: str\n        :param IsAutoRenew: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAutoRenew: int\n        :param DeviceClass: 设备标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DeviceClass: str\n        :param Mutable: 支持变配
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Mutable: int\n        :param MCMultiDisk: 多云盘
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MCMultiDisk: list of MultiDiskMC\n        :param CdbNodeInfo: 数据库信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`\n        :param Ip: 内网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ip: str\n        :param Destroyable: 此节点是否可销毁，1可销毁，0不可销毁
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Destroyable: int\n        :param Tags: 节点绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param AutoFlag: 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoFlag: int\n        :param HardwareResourceType: 资源类型, host/pod
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HardwareResourceType: str\n        :param IsDynamicSpec: 是否浮动规格，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDynamicSpec: int\n        :param DynamicPodSpec: 浮动规格值json字符串
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DynamicPodSpec: str\n        :param SupportModifyPayMode: 是否支持变更计费类型 1是，0否
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SupportModifyPayMode: int\n        """
         self.AppId = None
         self.SerialNo = None
         self.OrderNo = None
@@ -2538,33 +1922,15 @@ class OutterResource(AbstractModel):
     def __init__(self):
         """
         :param Spec: 规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Spec: str
-        :param SpecName: 规格名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SpecName: str
-        :param StorageType: 硬盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageType: int
-        :param DiskType: 硬盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskType: str
-        :param RootSize: 系统盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RootSize: int
-        :param MemSize: 内存大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MemSize: int
-        :param Cpu: CPU个数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cpu: int
-        :param DiskSize: 硬盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSize: int
-        :param InstanceType: 规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Spec: str\n        :param SpecName: 规格名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SpecName: str\n        :param StorageType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageType: int\n        :param DiskType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskType: str\n        :param RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RootSize: int\n        :param MemSize: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MemSize: int\n        :param Cpu: CPU个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cpu: int\n        :param DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: int\n        :param InstanceType: 规格
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        """
         self.Spec = None
         self.SpecName = None
         self.StorageType = None
@@ -2603,15 +1969,9 @@ class PersistentVolumeContext(AbstractModel):
     def __init__(self):
         """
         :param DiskSize: 磁盘大小，单位为GB。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSize: int
-        :param DiskType: 磁盘类型。CLOUD_PREMIUM;CLOUD_SSD
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskType: str
-        :param DiskNum: 磁盘数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskNum: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: int\n        :param DiskType: 磁盘类型。CLOUD_PREMIUM;CLOUD_SSD
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskType: str\n        :param DiskNum: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskNum: int\n        """
         self.DiskSize = None
         self.DiskType = None
         self.DiskNum = None
@@ -2637,11 +1997,7 @@ class Placement(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。
-        :type ProjectId: int
-        :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
-        :type Zone: str
-        """
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。\n        :type ProjectId: int\n        :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。\n        :type Zone: str\n        """
         self.ProjectId = None
         self.Zone = None
 
@@ -2665,9 +2021,7 @@ class PodParameter(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: TKE或EKS集群ID
-        :type ClusterId: str
-        :param Config: 自定义权限
+        :param ClusterId: TKE或EKS集群ID\n        :type ClusterId: str\n        :param Config: 自定义权限
 如：
 {
   "apiVersion": "v1",
@@ -2701,9 +2055,7 @@ class PodParameter(AbstractModel):
       }
     }
   ]
-}
-        :type Config: str
-        :param Parameter: 自定义参数
+}\n        :type Config: str\n        :param Parameter: 自定义参数
 如：
 {
     "apiVersion": "apps/v1",
@@ -2777,9 +2129,7 @@ class PodParameter(AbstractModel):
         }
       }
     }
-  }
-        :type Parameter: str
-        """
+  }\n        :type Parameter: str\n        """
         self.ClusterId = None
         self.Config = None
         self.Parameter = None
@@ -2805,15 +2155,7 @@ class PodSaleSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeType: 可售卖的资源规格，仅为以下值:"TASK","CORE","MASTER","ROUTER"。
-        :type NodeType: str
-        :param Cpu: Cpu核数。
-        :type Cpu: int
-        :param Memory: 内存数量，单位为GB。
-        :type Memory: int
-        :param Number: 该规格资源可申请的最大数量。
-        :type Number: int
-        """
+        :param NodeType: 可售卖的资源规格，仅为以下值:"TASK","CORE","MASTER","ROUTER"。\n        :type NodeType: str\n        :param Cpu: Cpu核数。\n        :type Cpu: int\n        :param Memory: 内存数量，单位为GB。\n        :type Memory: int\n        :param Number: 该规格资源可申请的最大数量。\n        :type Number: int\n        """
         self.NodeType = None
         self.Cpu = None
         self.Memory = None
@@ -2841,34 +2183,10 @@ class PodSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceProviderIdentifier: 外部资源提供者的标识符，例如"cls-a1cd23fa"。
-        :type ResourceProviderIdentifier: str
-        :param ResourceProviderType: 外部资源提供者类型，例如"tke",当前仅支持"tke"。
-        :type ResourceProviderType: str
-        :param NodeType: 资源的用途，即节点类型，当前仅支持"TASK"。
-        :type NodeType: str
-        :param Cpu: CPU核数。
-        :type Cpu: int
-        :param Memory: 内存大小，单位为GB。
-        :type Memory: int
-        :param DataVolumes: 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。弃用
-        :type DataVolumes: list of str
-        :param CpuType: Eks集群-CPU类型，当前支持"intel"和"amd"
-        :type CpuType: str
-        :param PodVolumes: Pod节点数据目录挂载信息。
-        :type PodVolumes: list of PodVolume
-        :param IsDynamicSpec: 是否浮动规格，1是，0否
-        :type IsDynamicSpec: int
-        :param DynamicPodSpec: 浮动规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
-        :param VpcId: 代表vpc网络唯一id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcId: str
-        :param SubnetId: 代表vpc子网唯一id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetId: str
-        """
+        :param ResourceProviderIdentifier: 外部资源提供者的标识符，例如"cls-a1cd23fa"。\n        :type ResourceProviderIdentifier: str\n        :param ResourceProviderType: 外部资源提供者类型，例如"tke",当前仅支持"tke"。\n        :type ResourceProviderType: str\n        :param NodeType: 资源的用途，即节点类型，当前仅支持"TASK"。\n        :type NodeType: str\n        :param Cpu: CPU核数。\n        :type Cpu: int\n        :param Memory: 内存大小，单位为GB。\n        :type Memory: int\n        :param DataVolumes: 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。弃用\n        :type DataVolumes: list of str\n        :param CpuType: Eks集群-CPU类型，当前支持"intel"和"amd"\n        :type CpuType: str\n        :param PodVolumes: Pod节点数据目录挂载信息。\n        :type PodVolumes: list of PodVolume\n        :param IsDynamicSpec: 是否浮动规格，1是，0否\n        :type IsDynamicSpec: int\n        :param DynamicPodSpec: 浮动规格
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`\n        :param VpcId: 代表vpc网络唯一id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param SubnetId: 代表vpc子网唯一id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
         self.NodeType = None
@@ -2919,19 +2237,7 @@ class PodState(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: pod的名称
-        :type Name: str
-        :param Uuid: pod uuid
-        :type Uuid: str
-        :param State: pod的状态
-        :type State: str
-        :param Reason: pod处于该状态原因
-        :type Reason: str
-        :param OwnerCluster: pod所属集群
-        :type OwnerCluster: str
-        :param Memory: pod内存大小
-        :type Memory: int
-        """
+        :param Name: pod的名称\n        :type Name: str\n        :param Uuid: pod uuid\n        :type Uuid: str\n        :param State: pod的状态\n        :type State: str\n        :param Reason: pod处于该状态原因\n        :type Reason: str\n        :param OwnerCluster: pod所属集群\n        :type OwnerCluster: str\n        :param Memory: pod内存大小\n        :type Memory: int\n        """
         self.Name = None
         self.Uuid = None
         self.State = None
@@ -2964,15 +2270,9 @@ class PodVolume(AbstractModel):
     def __init__(self):
         """
         :param VolumeType: 存储类型，可为"pvc"，"hostpath"。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VolumeType: str
-        :param PVCVolume: 当VolumeType为"pvc"时，该字段生效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
-        :param HostVolume: 当VolumeType为"hostpath"时，该字段生效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VolumeType: str\n        :param PVCVolume: 当VolumeType为"pvc"时，该字段生效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`\n        :param HostVolume: 当VolumeType为"hostpath"时，该字段生效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`\n        """
         self.VolumeType = None
         self.PVCVolume = None
         self.HostVolume = None
@@ -3002,31 +2302,7 @@ class PreExecuteFileSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Path: 脚本在COS上路径，已废弃
-        :type Path: str
-        :param Args: 执行脚本参数
-        :type Args: list of str
-        :param Bucket: COS的Bucket名称，已废弃
-        :type Bucket: str
-        :param Region: COS的Region名称，已废弃
-        :type Region: str
-        :param Domain: COS的Domain数据，已废弃
-        :type Domain: str
-        :param RunOrder: 执行顺序
-        :type RunOrder: int
-        :param WhenRun: resourceAfter 或 clusterAfter
-        :type WhenRun: str
-        :param CosFileName: 脚本文件名，已废弃
-        :type CosFileName: str
-        :param CosFileURI: 脚本的cos地址
-        :type CosFileURI: str
-        :param CosSecretId: cos的SecretId
-        :type CosSecretId: str
-        :param CosSecretKey: Cos的SecretKey
-        :type CosSecretKey: str
-        :param AppId: cos的appid，已废弃
-        :type AppId: str
-        """
+        :param Path: 脚本在COS上路径，已废弃\n        :type Path: str\n        :param Args: 执行脚本参数\n        :type Args: list of str\n        :param Bucket: COS的Bucket名称，已废弃\n        :type Bucket: str\n        :param Region: COS的Region名称，已废弃\n        :type Region: str\n        :param Domain: COS的Domain数据，已废弃\n        :type Domain: str\n        :param RunOrder: 执行顺序\n        :type RunOrder: int\n        :param WhenRun: resourceAfter 或 clusterAfter\n        :type WhenRun: str\n        :param CosFileName: 脚本文件名，已废弃\n        :type CosFileName: str\n        :param CosFileURI: 脚本的cos地址\n        :type CosFileURI: str\n        :param CosSecretId: cos的SecretId\n        :type CosSecretId: str\n        :param CosSecretKey: Cos的SecretKey\n        :type CosSecretKey: str\n        :param AppId: cos的appid，已废弃\n        :type AppId: str\n        """
         self.Path = None
         self.Args = None
         self.Bucket = None
@@ -3071,45 +2347,19 @@ class PriceResource(AbstractModel):
     def __init__(self):
         """
         :param Spec: 需要的规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Spec: str
-        :param StorageType: 硬盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageType: int
-        :param DiskType: 硬盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskType: str
-        :param RootSize: 系统盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RootSize: int
-        :param MemSize: 内存大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MemSize: int
-        :param Cpu: 核心数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cpu: int
-        :param DiskSize: 硬盘大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSize: int
-        :param MultiDisks: 云盘列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MultiDisks: list of MultiDisk
-        :param DiskCnt: 磁盘数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskCnt: int
-        :param InstanceType: 规格
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param Tags: 标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param DiskNum: 磁盘数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskNum: int
-        :param LocalDiskNum: 本地盘的数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LocalDiskNum: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Spec: str\n        :param StorageType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageType: int\n        :param DiskType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskType: str\n        :param RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RootSize: int\n        :param MemSize: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MemSize: int\n        :param Cpu: 核心数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cpu: int\n        :param DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: int\n        :param MultiDisks: 云盘列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MultiDisks: list of MultiDisk\n        :param DiskCnt: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskCnt: int\n        :param InstanceType: 规格
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param DiskNum: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskNum: int\n        :param LocalDiskNum: 本地盘的数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LocalDiskNum: int\n        """
         self.Spec = None
         self.StorageType = None
         self.DiskType = None
@@ -3166,18 +2416,10 @@ class QuotaEntity(AbstractModel):
     def __init__(self):
         """
         :param UsedQuota: 已使用配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UsedQuota: int
-        :param RemainingQuota: 剩余配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RemainingQuota: int
-        :param TotalQuota: 总配额
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalQuota: int
-        :param Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Zone: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UsedQuota: int\n        :param RemainingQuota: 剩余配额
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RemainingQuota: int\n        :param TotalQuota: 总配额
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalQuota: int\n        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        """
         self.UsedQuota = None
         self.RemainingQuota = None
         self.TotalQuota = None
@@ -3205,26 +2447,8 @@ class RenewInstancesInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param EmrResourceId: 节点资源ID
-        :type EmrResourceId: str
-        :param Flag: 节点类型。0:common节点；1:master节点
-；2:core节点；3:task节点
-        :type Flag: int
-        :param Ip: 内网IP
-        :type Ip: str
-        :param MemDesc: 节点内存描述
-        :type MemDesc: str
-        :param CpuNum: 节点核数
-        :type CpuNum: int
-        :param DiskSize: 硬盘大小
-        :type DiskSize: str
-        :param ExpireTime: 过期时间
-        :type ExpireTime: str
-        :param Spec: 节点规格
-        :type Spec: str
-        :param StorageType: 磁盘类型
-        :type StorageType: int
-        """
+        :param EmrResourceId: 节点资源ID\n        :type EmrResourceId: str\n        :param Flag: 节点类型。0:common节点；1:master节点
+；2:core节点；3:task节点\n        :type Flag: int\n        :param Ip: 内网IP\n        :type Ip: str\n        :param MemDesc: 节点内存描述\n        :type MemDesc: str\n        :param CpuNum: 节点核数\n        :type CpuNum: int\n        :param DiskSize: 硬盘大小\n        :type DiskSize: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: str\n        :param Spec: 节点规格\n        :type Spec: str\n        :param StorageType: 磁盘类型\n        :type StorageType: int\n        """
         self.EmrResourceId = None
         self.Flag = None
         self.Ip = None
@@ -3263,52 +2487,28 @@ class Resource(AbstractModel):
     def __init__(self):
         """
         :param Spec: 节点规格描述，如CVM.SA2。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Spec: str
-        :param StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Spec: str\n        :param StorageType: 存储类型
 取值范围：
 <li>4：表示云SSD。</li>
 <li>5：表示高效云盘。</li>
 <li>6：表示增强型SSD云硬盘。</li>
 <li>11：表示吞吐型云硬盘。</li>
 <li>12：表示极速型SSD云硬盘。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StorageType: int
-        :param DiskType: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageType: int\n        :param DiskType: 磁盘类型
 取值范围：
 <li>CLOUD_SSD：表示云SSD。</li>
 <li>CLOUD_PREMIUM：表示高效云盘。</li>
 <li>CLOUD_BASIC：表示云硬盘。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskType: str
-        :param MemSize: 内存容量,单位为M
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MemSize: int
-        :param Cpu: CPU核数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cpu: int
-        :param DiskSize: 数据盘容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSize: int
-        :param RootSize: 系统盘容量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RootSize: int
-        :param MultiDisks: 云盘列表，当数据盘为一块云盘时，直接使用DiskType和DiskSize参数，超出部分使用MultiDisks
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MultiDisks: list of MultiDisk
-        :param Tags: 需要绑定的标签列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param InstanceType: 规格类型，如S2.MEDIUM8
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param LocalDiskNum: 本地盘数量，该字段已废弃
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LocalDiskNum: int
-        :param DiskNum: 本地盘数量，如2
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskNum: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskType: str\n        :param MemSize: 内存容量,单位为M
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MemSize: int\n        :param Cpu: CPU核数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cpu: int\n        :param DiskSize: 数据盘容量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: int\n        :param RootSize: 系统盘容量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RootSize: int\n        :param MultiDisks: 云盘列表，当数据盘为一块云盘时，直接使用DiskType和DiskSize参数，超出部分使用MultiDisks
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MultiDisks: list of MultiDisk\n        :param Tags: 需要绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param InstanceType: 规格类型，如S2.MEDIUM8
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param LocalDiskNum: 本地盘数量，该字段已废弃
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LocalDiskNum: int\n        :param DiskNum: 本地盘数量，如2
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskNum: int\n        """
         self.Spec = None
         self.StorageType = None
         self.DiskType = None
@@ -3362,41 +2562,13 @@ class RunJobFlowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 作业名称。
-        :type Name: str
-        :param CreateCluster: 是否新创建集群。
+        :param Name: 作业名称。\n        :type Name: str\n        :param CreateCluster: 是否新创建集群。
 true，新创建集群，则使用Instance中的参数进行集群创建。
-false，使用已有集群，则通过InstanceId传入。
-        :type CreateCluster: bool
-        :param Steps: 作业流程执行步骤。
-        :type Steps: list of Step
-        :param InstancePolicy: 作业流程正常完成时，集群的处理方式，可选择:
+false，使用已有集群，则通过InstanceId传入。\n        :type CreateCluster: bool\n        :param Steps: 作业流程执行步骤。\n        :type Steps: list of Step\n        :param InstancePolicy: 作业流程正常完成时，集群的处理方式，可选择:
 Terminate 销毁集群。
-Reserve 保留集群。
-        :type InstancePolicy: str
-        :param ProductVersion: 只有CreateCluster为true时生效，目前只支持EMR版本，例如EMR-2.2.0，不支持ClickHouse和Druid版本。
-        :type ProductVersion: str
-        :param SecurityClusterFlag: 只在CreateCluster为true时生效。
-true 表示安装kerberos，false表示不安装kerberos。
-        :type SecurityClusterFlag: bool
-        :param Software: 只在CreateCluster为true时生效。
-新建集群时，要安装的软件列表。
-        :type Software: list of str
-        :param BootstrapActions: 引导脚本。
-        :type BootstrapActions: list of BootstrapAction
-        :param Configurations: 指定配置创建集群。
-        :type Configurations: list of Configuration
-        :param LogUri: 作业日志保存地址。
-        :type LogUri: str
-        :param InstanceId: 只在CreateCluster为false时生效。
-        :type InstanceId: str
-        :param ApplicationRole: 自定义应用角色，大数据应用访问外部服务时使用的角色，默认为"EME_QCSRole"。
-        :type ApplicationRole: str
-        :param ClientToken: 重入标签，用来可重入检查，防止在一段时间内，创建相同的流程作业。
-        :type ClientToken: str
-        :param Instance: 只在CreateCluster为true时生效，使用该配置创建集群。
-        :type Instance: :class:`tencentcloud.emr.v20190103.models.ClusterSetting`
-        """
+Reserve 保留集群。\n        :type InstancePolicy: str\n        :param ProductVersion: 只有CreateCluster为true时生效，目前只支持EMR版本，例如EMR-2.2.0，不支持ClickHouse和Druid版本。\n        :type ProductVersion: str\n        :param SecurityClusterFlag: 只在CreateCluster为true时生效。
+true 表示安装kerberos，false表示不安装kerberos。\n        :type SecurityClusterFlag: bool\n        :param Software: 只在CreateCluster为true时生效。
+新建集群时，要安装的软件列表。\n        :type Software: list of str\n        :param BootstrapActions: 引导脚本。\n        :type BootstrapActions: list of BootstrapAction\n        :param Configurations: 指定配置创建集群。\n        :type Configurations: list of Configuration\n        :param LogUri: 作业日志保存地址。\n        :type LogUri: str\n        :param InstanceId: 只在CreateCluster为false时生效。\n        :type InstanceId: str\n        :param ApplicationRole: 自定义应用角色，大数据应用访问外部服务时使用的角色，默认为"EME_QCSRole"。\n        :type ApplicationRole: str\n        :param ClientToken: 重入标签，用来可重入检查，防止在一段时间内，创建相同的流程作业。\n        :type ClientToken: str\n        :param Instance: 只在CreateCluster为true时生效，使用该配置创建集群。\n        :type Instance: :class:`tencentcloud.emr.v20190103.models.ClusterSetting`\n        """
         self.Name = None
         self.CreateCluster = None
         self.Steps = None
@@ -3461,11 +2633,7 @@ class RunJobFlowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param JobFlowId: 作业流程ID。
-        :type JobFlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param JobFlowId: 作业流程ID。\n        :type JobFlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.JobFlowId = None
         self.RequestId = None
 
@@ -3484,60 +2652,16 @@ class ScaleOutInstanceRequest(AbstractModel):
         """
         :param TimeUnit: 扩容的时间单位。取值范围：
 <li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
-        :type TimeUnit: str
-        :param TimeSpan: 扩容的时长。结合TimeUnit一起使用。
+<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>\n        :type TimeUnit: str\n        :param TimeSpan: 扩容的时长。结合TimeUnit一起使用。
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
-        :type TimeSpan: int
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        :param PayMode: 实例计费模式。取值范围：
+<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>\n        :type TimeSpan: int\n        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param PayMode: 实例计费模式。取值范围：
 <li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
-        :type PayMode: int
-        :param ClientToken: 客户端Token。
-        :type ClientToken: str
-        :param PreExecutedFileSettings: 引导操作脚本设置。
-        :type PreExecutedFileSettings: list of PreExecuteFileSettings
-        :param TaskCount: 扩容的Task节点数量。
-        :type TaskCount: int
-        :param CoreCount: 扩容的Core节点数量。
-        :type CoreCount: int
-        :param UnNecessaryNodeList: 扩容时不需要安装的进程。
-        :type UnNecessaryNodeList: list of int non-negative
-        :param RouterCount: 扩容的Router节点数量。
-        :type RouterCount: int
-        :param SoftDeployInfo: 部署的服务。
+<li>1：表示包年包月。</li>\n        :type PayMode: int\n        :param ClientToken: 客户端Token。\n        :type ClientToken: str\n        :param PreExecutedFileSettings: 引导操作脚本设置。\n        :type PreExecutedFileSettings: list of PreExecuteFileSettings\n        :param TaskCount: 扩容的Task节点数量。\n        :type TaskCount: int\n        :param CoreCount: 扩容的Core节点数量。\n        :type CoreCount: int\n        :param UnNecessaryNodeList: 扩容时不需要安装的进程。\n        :type UnNecessaryNodeList: list of int non-negative\n        :param RouterCount: 扩容的Router节点数量。\n        :type RouterCount: int\n        :param SoftDeployInfo: 部署的服务。
 <li>SoftDeployInfo和ServiceNodeInfo是同组参数，和UnNecessaryNodeList参数互斥。</li>
-<li>建议使用SoftDeployInfo和ServiceNodeInfo组合。</li>
-        :type SoftDeployInfo: list of int non-negative
-        :param ServiceNodeInfo: 启动的进程。
-        :type ServiceNodeInfo: list of int non-negative
-        :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前仅支持指定一个。
-        :type DisasterRecoverGroupIds: list of str
-        :param Tags: 扩容节点绑定标签列表。
-        :type Tags: list of Tag
-        :param HardwareResourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
-        :type HardwareResourceType: str
-        :param PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息
-        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
-        :param ClickHouseClusterName: 使用clickhouse集群扩容时，选择的机器分组名称
-        :type ClickHouseClusterName: str
-        :param ClickHouseClusterType: 使用clickhouse集群扩容时，选择的机器分组类型。new为新增，old为选择旧分组
-        :type ClickHouseClusterType: str
-        :param YarnNodeLabel: 规则扩容指定 yarn node label
-        :type YarnNodeLabel: str
-        :param PodParameter: POD自定义权限和自定义参数
-        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
-        :param MasterCount: 扩容的Master节点的数量。
+<li>建议使用SoftDeployInfo和ServiceNodeInfo组合。</li>\n        :type SoftDeployInfo: list of int non-negative\n        :param ServiceNodeInfo: 启动的进程。\n        :type ServiceNodeInfo: list of int non-negative\n        :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前仅支持指定一个。\n        :type DisasterRecoverGroupIds: list of str\n        :param Tags: 扩容节点绑定标签列表。\n        :type Tags: list of Tag\n        :param HardwareResourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源\n        :type HardwareResourceType: str\n        :param PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息\n        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`\n        :param ClickHouseClusterName: 使用clickhouse集群扩容时，选择的机器分组名称\n        :type ClickHouseClusterName: str\n        :param ClickHouseClusterType: 使用clickhouse集群扩容时，选择的机器分组类型。new为新增，old为选择旧分组\n        :type ClickHouseClusterType: str\n        :param YarnNodeLabel: 规则扩容指定 yarn node label\n        :type YarnNodeLabel: str\n        :param PodParameter: POD自定义权限和自定义参数\n        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`\n        :param MasterCount: 扩容的Master节点的数量。
 使用clickhouse集群扩容时，该参数不生效。
 使用kafka集群扩容时，该参数不生效。
-当HardwareResourceType=POD时，该参数不生效。
-        :type MasterCount: int
-        :param StartServiceAfterScaleOut: 扩容后是否启动服务，true：启动，false：不启动
-        :type StartServiceAfterScaleOut: str
-        """
+当HardwareResourceType=POD时，该参数不生效。\n        :type MasterCount: int\n        :param StartServiceAfterScaleOut: 扩容后是否启动服务，true：启动，false：不启动\n        :type StartServiceAfterScaleOut: str\n        """
         self.TimeUnit = None
         self.TimeSpan = None
         self.InstanceId = None
@@ -3615,23 +2739,11 @@ class ScaleOutInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        :param DealNames: 订单号。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DealNames: list of str
-        :param ClientToken: 客户端Token。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClientToken: str
-        :param FlowId: 扩容流程ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FlowId: int
-        :param BillId: 大订单号。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BillId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param DealNames: 订单号。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DealNames: list of str\n        :param ClientToken: 客户端Token。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientToken: str\n        :param FlowId: 扩容流程ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FlowId: int\n        :param BillId: 大订单号。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BillId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.DealNames = None
         self.ClientToken = None
@@ -3656,11 +2768,7 @@ class SearchItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SearchType: 支持搜索的类型
-        :type SearchType: str
-        :param SearchValue: 支持搜索的值
-        :type SearchValue: str
-        """
+        :param SearchType: 支持搜索的类型\n        :type SearchType: str\n        :param SearchValue: 支持搜索的值\n        :type SearchValue: str\n        """
         self.SearchType = None
         self.SearchValue = None
 
@@ -3684,18 +2792,10 @@ class Step(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 执行步骤名称。
-        :type Name: str
-        :param ExecutionStep: 执行动作。
-        :type ExecutionStep: :class:`tencentcloud.emr.v20190103.models.Execution`
-        :param ActionOnFailure: 执行失败策略。
+        :param Name: 执行步骤名称。\n        :type Name: str\n        :param ExecutionStep: 执行动作。\n        :type ExecutionStep: :class:`tencentcloud.emr.v20190103.models.Execution`\n        :param ActionOnFailure: 执行失败策略。
 1. TERMINATE_CLUSTER 执行失败时退出并销毁集群。
 2. CANCEL_AND_WAIT 执行失败时阻塞等待。
-3. CONTINUE 执行失败时跳过并执行后续步骤。
-        :type ActionOnFailure: str
-        :param User: 指定执行Step时的用户名，非必须，默认为hadoop。
-        :type User: str
-        """
+3. CONTINUE 执行失败时跳过并执行后续步骤。\n        :type ActionOnFailure: str\n        :param User: 指定执行Step时的用户名，非必须，默认为hadoop。\n        :type User: str\n        """
         self.Name = None
         self.ExecutionStep = None
         self.ActionOnFailure = None
@@ -3725,9 +2825,7 @@ class SyncPodStateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Message: EmrService中pod状态信息
-        :type Message: :class:`tencentcloud.emr.v20190103.models.PodState`
-        """
+        :param Message: EmrService中pod状态信息\n        :type Message: :class:`tencentcloud.emr.v20190103.models.PodState`\n        """
         self.Message = None
 
 
@@ -3751,9 +2849,7 @@ class SyncPodStateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3768,11 +2864,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键
-        :type TagKey: str
-        :param TagValue: 标签值
-        :type TagValue: str
-        """
+        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -3796,11 +2888,7 @@ class TerminateInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        :param ResourceIds: 销毁节点ID。该参数为预留参数，用户无需配置。
-        :type ResourceIds: list of str
-        """
+        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param ResourceIds: 销毁节点ID。该参数为预留参数，用户无需配置。\n        :type ResourceIds: list of str\n        """
         self.InstanceId = None
         self.ResourceIds = None
 
@@ -3824,9 +2912,7 @@ class TerminateInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3841,11 +2927,7 @@ class TerminateTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        :param ResourceIds: 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
-        :type ResourceIds: list of str
-        """
+        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param ResourceIds: 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。\n        :type ResourceIds: list of str\n        """
         self.InstanceId = None
         self.ResourceIds = None
 
@@ -3869,9 +2951,7 @@ class TerminateTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3886,15 +2966,7 @@ class UpdateInstanceSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param Memory: 内存容量，单位为G
-        :type Memory: int
-        :param CPUCores: CPU核数
-        :type CPUCores: int
-        :param ResourceId: 机器资源ID（EMR测资源标识）
-        :type ResourceId: str
-        :param InstanceType: 变配机器规格
-        :type InstanceType: str
-        """
+        :param Memory: 内存容量，单位为G\n        :type Memory: int\n        :param CPUCores: CPU核数\n        :type CPUCores: int\n        :param ResourceId: 机器资源ID（EMR测资源标识）\n        :type ResourceId: str\n        :param InstanceType: 变配机器规格\n        :type InstanceType: str\n        """
         self.Memory = None
         self.CPUCores = None
         self.ResourceId = None
@@ -3922,11 +2994,7 @@ class VPCSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: VPC ID
-        :type VpcId: str
-        :param SubnetId: Subnet ID
-        :type SubnetId: str
-        """
+        :param VpcId: VPC ID\n        :type VpcId: str\n        :param SubnetId: Subnet ID\n        :type SubnetId: str\n        """
         self.VpcId = None
         self.SubnetId = None
 

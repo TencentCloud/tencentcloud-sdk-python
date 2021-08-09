@@ -25,19 +25,7 @@ class AddCrowdPackInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param Name: 人群包名称
-        :type Name: str
-        :param FileName: 人群包文件名称,人群包文件必须为utf8编码，动态参数只能是汉字、数字、英文字母的组合，不能包含其他字符
-        :type FileName: str
-        :param Desc: 人群包描述
-        :type Desc: str
-        :param CosUrl: 已经上传好的人群包cos地址
-        :type CosUrl: str
-        :param PhoneNum: 人群包手机号数量
-        :type PhoneNum: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param Name: 人群包名称\n        :type Name: str\n        :param FileName: 人群包文件名称,人群包文件必须为utf8编码，动态参数只能是汉字、数字、英文字母的组合，不能包含其他字符\n        :type FileName: str\n        :param Desc: 人群包描述\n        :type Desc: str\n        :param CosUrl: 已经上传好的人群包cos地址\n        :type CosUrl: str\n        :param PhoneNum: 人群包手机号数量\n        :type PhoneNum: int\n        """
         self.License = None
         self.Name = None
         self.FileName = None
@@ -69,11 +57,7 @@ class AddCrowdPackInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 接口返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsAddCrowdPackInfoResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 接口返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsAddCrowdPackInfoResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -92,18 +76,14 @@ class AddSmsSignRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+        :param License: 商户证书\n        :type License: str\n        :param SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
 0：公司（0，1，2，3）。
 1：APP（0，1，2，3，4） 。
 2：网站（0，1，2，3，5）。
 3：公众号或者小程序（0，1，2，3，6）。
 4：商标（7）。
 5：政府/机关事业单位/其他机构（2，3）。
-注：必须按照对应关系选择证明类型，否则会审核失败。
-        :type SignType: int
-        :param DocumentType: 证明类型：
+注：必须按照对应关系选择证明类型，否则会审核失败。\n        :type SignType: int\n        :param DocumentType: 证明类型：
 0：三证合一。
 1：企业营业执照。
 2：组织机构代码证书。
@@ -111,19 +91,9 @@ class AddSmsSignRequest(AbstractModel):
 4：应用后台管理截图（个人开发APP）。
 5：网站备案后台截图（个人开发网站）。
 6：小程序设置页面截图（个人认证小程序）。
-7：商标注册书
-        :type DocumentType: int
-        :param International: 是否国际/港澳台短信：
+7：商标注册书\n        :type DocumentType: int\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        :param ProofImage: 资质图片url
-        :type ProofImage: str
-        :param SignName: 签名内容
-        :type SignName: str
-        :param Remark: 签名备注，比如申请原因，使用场景等,可以填空
-        :type Remark: str
-        """
+1：表示国际/港澳台短信。\n        :type International: int\n        :param ProofImage: 资质图片url\n        :type ProofImage: str\n        :param SignName: 签名内容\n        :type SignName: str\n        :param Remark: 签名备注，比如申请原因，使用场景等,可以填空\n        :type Remark: str\n        """
         self.License = None
         self.SignType = None
         self.DocumentType = None
@@ -157,11 +127,7 @@ class AddSmsSignResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 签名id数组
-        :type Data: :class:`tencentcloud.zj.v20190121.models.PaasCreateSignResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 签名id数组\n        :type Data: :class:`tencentcloud.zj.v20190121.models.PaasCreateSignResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -180,9 +146,7 @@ class AddSmsTemplateDataStruct(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 短信模板ID
-        :type TemplateId: int
-        """
+        :param TemplateId: 短信模板ID\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -204,29 +168,9 @@ class AddSmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param SignID: 短信签名，创建签名时返回
-        :type SignID: int
-        :param TemplateName: 模板名称
-        :type TemplateName: str
-        :param TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示
-        :type TemplateContent: str
-        :param SmsType: 短信类型：{0:普通短信，1:营销短信}
-        :type SmsType: int
-        :param International: 是否国际/港澳台短信：
+        :param License: 商户证书\n        :type License: str\n        :param SignID: 短信签名，创建签名时返回\n        :type SignID: int\n        :param TemplateName: 模板名称\n        :type TemplateName: str\n        :param TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示\n        :type TemplateContent: str\n        :param SmsType: 短信类型：{0:普通短信，1:营销短信}\n        :type SmsType: int\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        :param Remark: 短信模板标签
-        :type Remark: str
-        :param Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动
-        :type Urls: list of str
-        :param CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-        :type CommonParams: list of int
-        :param UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-        :type UrlParams: list of int
-        """
+1：表示国际/港澳台短信。\n        :type International: int\n        :param Remark: 短信模板标签\n        :type Remark: str\n        :param Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动\n        :type Urls: list of str\n        :param CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号\n        :type CommonParams: list of int\n        :param UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动\n        :type UrlParams: list of int\n        """
         self.License = None
         self.SignID = None
         self.TemplateName = None
@@ -266,11 +210,7 @@ class AddSmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 短信模板创建接口返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.AddSmsTemplateDataStruct`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 短信模板创建接口返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.AddSmsTemplateDataStruct`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -289,9 +229,7 @@ class CancelActivityData(AbstractModel):
 
     def __init__(self):
         """
-        :param Message: 成功返回时的文字描述
-        :type Message: str
-        """
+        :param Message: 成功返回时的文字描述\n        :type Message: str\n        """
         self.Message = None
 
 
@@ -313,11 +251,7 @@ class CancelCampaignRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param CampaignId: 短信活动id
-        :type CampaignId: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param CampaignId: 短信活动id\n        :type CampaignId: int\n        """
         self.License = None
         self.CampaignId = None
 
@@ -341,11 +275,7 @@ class CancelCampaignResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 处理结果
-        :type Data: :class:`tencentcloud.zj.v20190121.models.CancelActivityData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 处理结果\n        :type Data: :class:`tencentcloud.zj.v20190121.models.CancelActivityData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -364,21 +294,7 @@ class CreateCampaignRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param SendTime: 短信活动发送时间
-        :type SendTime: int
-        :param Name: 短信活动名称
-        :type Name: str
-        :param Strategies: 发送策略
-        :type Strategies: list of PaasStrategy
-        :param TemplateId: 废弃
-        :type TemplateId: int
-        :param CrowdID: 废弃
-        :type CrowdID: int
-        :param SmsType: 活动类型(0-短信,1-超短,不填默认为超短)
-        :type SmsType: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param SendTime: 短信活动发送时间\n        :type SendTime: int\n        :param Name: 短信活动名称\n        :type Name: str\n        :param Strategies: 发送策略\n        :type Strategies: list of PaasStrategy\n        :param TemplateId: 废弃\n        :type TemplateId: int\n        :param CrowdID: 废弃\n        :type CrowdID: int\n        :param SmsType: 活动类型(0-短信,1-超短,不填默认为超短)\n        :type SmsType: int\n        """
         self.License = None
         self.SendTime = None
         self.Name = None
@@ -417,11 +333,7 @@ class CreateCampaignResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 活动信息
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsCreateCampaignResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 活动信息\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsCreateCampaignResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -440,11 +352,7 @@ class CreateMmsInstanceItem(AbstractModel):
 
     def __init__(self):
         """
-        :param ContentType: 素材类型：1-文本 2-图片 3-视频 4-音频
-        :type ContentType: int
-        :param Content: 素材内容：如果素材是文本类型，直接填写文本内容，否则填写素材文件上传到cos后的url地址
-        :type Content: str
-        """
+        :param ContentType: 素材类型：1-文本 2-图片 3-视频 4-音频\n        :type ContentType: int\n        :param Content: 素材内容：如果素材是文本类型，直接填写文本内容，否则填写素材文件上传到cos后的url地址\n        :type Content: str\n        """
         self.ContentType = None
         self.Content = None
 
@@ -468,25 +376,7 @@ class CreateMmsInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param InstanceName: 样例名称
-        :type InstanceName: str
-        :param Title: 标题
-        :type Title: str
-        :param Sign: 签名
-        :type Sign: str
-        :param Contents: 素材内容
-        :type Contents: list of CreateMmsInstanceItem
-        :param Urls: 样例中链接动态变量对应的链接，和占位符顺序一致
-        :type Urls: list of str
-        :param PhoneType: 机型列表
-        :type PhoneType: list of int non-negative
-        :param CommonParams: 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-        :type CommonParams: list of int non-negative
-        :param UrlParams: 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动
-        :type UrlParams: list of int non-negative
-        """
+        :param License: 商户证书\n        :type License: str\n        :param InstanceName: 样例名称\n        :type InstanceName: str\n        :param Title: 标题\n        :type Title: str\n        :param Sign: 签名\n        :type Sign: str\n        :param Contents: 素材内容\n        :type Contents: list of CreateMmsInstanceItem\n        :param Urls: 样例中链接动态变量对应的链接，和占位符顺序一致\n        :type Urls: list of str\n        :param PhoneType: 机型列表\n        :type PhoneType: list of int non-negative\n        :param CommonParams: 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号\n        :type CommonParams: list of int non-negative\n        :param UrlParams: 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动\n        :type UrlParams: list of int non-negative\n        """
         self.License = None
         self.InstanceName = None
         self.Title = None
@@ -529,13 +419,7 @@ class CreateMmsInstanceResp(AbstractModel):
 
     def __init__(self):
         """
-        :param ReturnCode: 返回码：0-成功 其它-失败
-        :type ReturnCode: int
-        :param ReturnMsg: 返回信息
-        :type ReturnMsg: str
-        :param InstanceId: 样例id
-        :type InstanceId: int
-        """
+        :param ReturnCode: 返回码：0-成功 其它-失败\n        :type ReturnCode: int\n        :param ReturnMsg: 返回信息\n        :type ReturnMsg: str\n        :param InstanceId: 样例id\n        :type InstanceId: int\n        """
         self.ReturnCode = None
         self.ReturnMsg = None
         self.InstanceId = None
@@ -561,11 +445,7 @@ class CreateMmsInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 创建样例返回信息
-        :type Data: :class:`tencentcloud.zj.v20190121.models.CreateMmsInstanceResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 创建样例返回信息\n        :type Data: :class:`tencentcloud.zj.v20190121.models.CreateMmsInstanceResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -584,11 +464,7 @@ class DelCrowdPackRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param ID: 人群包id
-        :type ID: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param ID: 人群包id\n        :type ID: int\n        """
         self.License = None
         self.ID = None
 
@@ -612,11 +488,7 @@ class DelCrowdPackResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 接口返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsSuccessResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 接口返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsSuccessResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -635,9 +507,7 @@ class DelMmsInstanceData(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 样例id
-        :type InstanceId: int
-        """
+        :param InstanceId: 样例id\n        :type InstanceId: int\n        """
         self.InstanceId = None
 
 
@@ -659,11 +529,7 @@ class DelTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param TemplateID: 短信模板ID
-        :type TemplateID: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param TemplateID: 短信模板ID\n        :type TemplateID: int\n        """
         self.License = None
         self.TemplateID = None
 
@@ -687,11 +553,7 @@ class DelTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 接口返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsSuccessResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 接口返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsSuccessResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -710,11 +572,7 @@ class DeleteMmsInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param InstanceId: 超级短信样例id
-        :type InstanceId: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param InstanceId: 超级短信样例id\n        :type InstanceId: int\n        """
         self.License = None
         self.InstanceId = None
 
@@ -738,11 +596,7 @@ class DeleteMmsInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 删除信息返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.DelMmsInstanceData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 删除信息返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.DelMmsInstanceData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -761,11 +615,7 @@ class DescribeMmsInstanceInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param InstanceId: 彩信实例id
-        :type InstanceId: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param InstanceId: 彩信实例id\n        :type InstanceId: int\n        """
         self.License = None
         self.InstanceId = None
 
@@ -789,11 +639,7 @@ class DescribeMmsInstanceInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 彩信实例信息
-        :type Data: :class:`tencentcloud.zj.v20190121.models.MmsInstanceInfo`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 彩信实例信息\n        :type Data: :class:`tencentcloud.zj.v20190121.models.MmsInstanceInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -812,17 +658,7 @@ class DescribeMmsInstanceListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param Offset: 偏移量
-        :type Offset: int
-        :param Limit: 返回数量
-        :type Limit: int
-        :param AppSubId: 业务代码
-        :type AppSubId: str
-        :param Title: 实例标题
-        :type Title: str
-        """
+        :param License: 商户证书\n        :type License: str\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 返回数量\n        :type Limit: int\n        :param AppSubId: 业务代码\n        :type AppSubId: str\n        :param Title: 实例标题\n        :type Title: str\n        """
         self.License = None
         self.Offset = None
         self.Limit = None
@@ -852,11 +688,7 @@ class DescribeMmsInstanceListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 彩信实例信息列表返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.MmsInstanceInfoList`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 彩信实例信息列表返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.MmsInstanceInfoList`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -875,11 +707,7 @@ class DescribeSmsCampaignStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CampaignId: 活动id
-        :type CampaignId: int
-        :param License: 商户证书
-        :type License: str
-        """
+        :param CampaignId: 活动id\n        :type CampaignId: int\n        :param License: 商户证书\n        :type License: str\n        """
         self.CampaignId = None
         self.License = None
 
@@ -903,11 +731,7 @@ class DescribeSmsCampaignStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 响应数据
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsCampaignStatisticsData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 响应数据\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsCampaignStatisticsData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -926,23 +750,11 @@ class DescribeSmsSignListDataStruct(AbstractModel):
 
     def __init__(self):
         """
-        :param SignId: 签名Id
-        :type SignId: int
-        :param International: 是否国际/港澳台短信：
+        :param SignId: 签名Id\n        :type SignId: int\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        :param StatusCode: 申请签名状态。其中：
+1：表示国际/港澳台短信。\n        :type International: int\n        :param StatusCode: 申请签名状态。其中：
 0：表示审核通过。
--1：表示审核未通过或审核失败。
-        :type StatusCode: int
-        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
-        :type ReviewReply: str
-        :param SignName: 签名名称。
-        :type SignName: str
-        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
-        :type CreateTime: int
-        """
+-1：表示审核未通过或审核失败。\n        :type StatusCode: int\n        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。\n        :type ReviewReply: str\n        :param SignName: 签名名称。\n        :type SignName: str\n        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。\n        :type CreateTime: int\n        """
         self.SignId = None
         self.International = None
         self.StatusCode = None
@@ -974,15 +786,9 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param SignIdSet: 签名ID数组
-        :type SignIdSet: list of int non-negative
-        :param International: 是否国际/港澳台短信：
+        :param License: 商户证书\n        :type License: str\n        :param SignIdSet: 签名ID数组\n        :type SignIdSet: list of int non-negative\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        """
+1：表示国际/港澳台短信。\n        :type International: int\n        """
         self.License = None
         self.SignIdSet = None
         self.International = None
@@ -1008,11 +814,7 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 返回数据
-        :type Data: list of DescribeSmsSignListDataStruct
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 返回数据\n        :type Data: list of DescribeSmsSignListDataStruct\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1034,23 +836,11 @@ class DescribeSmsTemplateListDataStruct(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id
-        :type TemplateId: int
-        :param International: 是否国际/港澳台短信：
+        :param TemplateId: 模板Id\n        :type TemplateId: int\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        :param StatusCode: 申请签名状态。其中：
+1：表示国际/港澳台短信。\n        :type International: int\n        :param StatusCode: 申请签名状态。其中：
 0：表示审核通过。
--1：表示审核未通过或审核失败。
-        :type StatusCode: int
-        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
-        :type ReviewReply: str
-        :param TemplateName: 模板名称。
-        :type TemplateName: str
-        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。
-        :type CreateTime: int
-        """
+-1：表示审核未通过或审核失败。\n        :type StatusCode: int\n        :param ReviewReply: 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。\n        :type ReviewReply: str\n        :param TemplateName: 模板名称。\n        :type TemplateName: str\n        :param CreateTime: 提交审核时间，UNIX 时间戳（单位：秒）。\n        :type CreateTime: int\n        """
         self.TemplateId = None
         self.International = None
         self.StatusCode = None
@@ -1082,15 +872,9 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param TemplateIdSet: 短信模板id数组
-        :type TemplateIdSet: list of int non-negative
-        :param International: 是否国际/港澳台短信：
+        :param License: 商户证书\n        :type License: str\n        :param TemplateIdSet: 短信模板id数组\n        :type TemplateIdSet: list of int non-negative\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        """
+1：表示国际/港澳台短信。\n        :type International: int\n        """
         self.License = None
         self.TemplateIdSet = None
         self.International = None
@@ -1116,11 +900,7 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 返回数据信息
-        :type Data: list of DescribeSmsTemplateListDataStruct
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 返回数据信息\n        :type Data: list of DescribeSmsTemplateListDataStruct\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1142,17 +922,7 @@ class GetCrowdPackListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param Offset: 偏移量
-        :type Offset: int
-        :param Limit: 限制返回数量
-        :type Limit: int
-        :param Name: 人群包名称，用于过滤人群包
-        :type Name: str
-        :param Status: 人群包状态，默认-1，用于过滤人群包
-        :type Status: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 限制返回数量\n        :type Limit: int\n        :param Name: 人群包名称，用于过滤人群包\n        :type Name: str\n        :param Status: 人群包状态，默认-1，用于过滤人群包\n        :type Status: int\n        """
         self.License = None
         self.Offset = None
         self.Limit = None
@@ -1182,11 +952,7 @@ class GetCrowdPackListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 人群包信息列表
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsGetCrowdPackListResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 人群包信息列表\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsGetCrowdPackListResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1205,11 +971,7 @@ class GetCrowdUploadInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param FileName: 上传文件名称
-        :type FileName: str
-        """
+        :param License: 商户证书\n        :type License: str\n        :param FileName: 上传文件名称\n        :type FileName: str\n        """
         self.License = None
         self.FileName = None
 
@@ -1233,11 +995,7 @@ class GetCrowdUploadInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 返回信息
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsGetCrowdUploadInfoResponse`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 返回信息\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsGetCrowdUploadInfoResponse`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1256,9 +1014,7 @@ class GetSmsAmountInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        """
+        :param License: 商户证书\n        :type License: str\n        """
         self.License = None
 
 
@@ -1280,11 +1036,7 @@ class GetSmsAmountInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 短信账号额度接口
-        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsAmountDataStruct`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 短信账号额度接口\n        :type Data: :class:`tencentcloud.zj.v20190121.models.SmsAmountDataStruct`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1303,11 +1055,7 @@ class GetSmsCampaignStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param CampaignId: 活动ID
-        :type CampaignId: int
-        """
+        :param License: 商户证书\n        :type License: str\n        :param CampaignId: 活动ID\n        :type CampaignId: int\n        """
         self.License = None
         self.CampaignId = None
 
@@ -1331,11 +1079,7 @@ class GetSmsCampaignStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 活动状态
-        :type Data: :class:`tencentcloud.zj.v20190121.models.PaasSmsCampaignStatusResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 活动状态\n        :type Data: :class:`tencentcloud.zj.v20190121.models.PaasSmsCampaignStatusResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1363,38 +1107,12 @@ class MmsInstanceInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 彩信实例id
-        :type InstanceId: int
-        :param InstanceName: 彩信实例名称
-        :type InstanceName: str
-        :param Status: 状态是否通知
-        :type Status: int
-        :param StatusInfo: 实例审核状态信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusInfo: list of MmsInstanceStateInfo
-        :param AppSubId: 业务码
-        :type AppSubId: str
-        :param Title: 彩信标题
-        :type Title: str
-        :param Sign: 签名
-        :type Sign: str
-        :param Contents: 彩信内容
-        :type Contents: str
-        :param CreatedAt: 创建时间
-        :type CreatedAt: str
-        :param Urls: 样例配置的链接地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Urls: list of str
-        :param PhoneType: 机型列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneType: list of int non-negative
-        :param CommonParams: 普通参数序号数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CommonParams: list of int non-negative
-        :param UrlParams: 链接参数序号数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UrlParams: list of int non-negative
-        """
+        :param InstanceId: 彩信实例id\n        :type InstanceId: int\n        :param InstanceName: 彩信实例名称\n        :type InstanceName: str\n        :param Status: 状态是否通知\n        :type Status: int\n        :param StatusInfo: 实例审核状态信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusInfo: list of MmsInstanceStateInfo\n        :param AppSubId: 业务码\n        :type AppSubId: str\n        :param Title: 彩信标题\n        :type Title: str\n        :param Sign: 签名\n        :type Sign: str\n        :param Contents: 彩信内容\n        :type Contents: str\n        :param CreatedAt: 创建时间\n        :type CreatedAt: str\n        :param Urls: 样例配置的链接地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Urls: list of str\n        :param PhoneType: 机型列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneType: list of int non-negative\n        :param CommonParams: 普通参数序号数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CommonParams: list of int non-negative\n        :param UrlParams: 链接参数序号数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UrlParams: list of int non-negative\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Status = None
@@ -1445,11 +1163,7 @@ class MmsInstanceInfoList(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总数据量
-        :type Total: int
-        :param List: 彩信实例状态信息列表
-        :type List: list of MmsInstanceInfo
-        """
+        :param Total: 总数据量\n        :type Total: int\n        :param List: 彩信实例状态信息列表\n        :type List: list of MmsInstanceInfo\n        """
         self.Total = None
         self.List = None
 
@@ -1478,11 +1192,7 @@ class MmsInstanceStateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Operator: 运营商
-        :type Operator: str
-        :param State: 审核状态：0未审核，1审核通过，2审核拒绝
-        :type State: int
-        """
+        :param Operator: 运营商\n        :type Operator: str\n        :param State: 审核状态：0未审核，1审核通过，2审核拒绝\n        :type State: int\n        """
         self.Operator = None
         self.State = None
 
@@ -1507,9 +1217,7 @@ class ModifySmsTemplateDataStruct(AbstractModel):
     def __init__(self):
         """
         :param TemplateId: 短信模板id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplateId: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateId: int\n        """
         self.TemplateId = None
 
 
@@ -1531,31 +1239,9 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param TemplateId: 短信模板id
-        :type TemplateId: int
-        :param SignID: 短信签名，创建签名时返回
-        :type SignID: int
-        :param TemplateName: 模板名称
-        :type TemplateName: str
-        :param TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示
-        :type TemplateContent: str
-        :param SmsType: 短信类型：{0:普通短信，1:营销短信}
-        :type SmsType: int
-        :param International: 是否国际/港澳台短信：
+        :param License: 商户证书\n        :type License: str\n        :param TemplateId: 短信模板id\n        :type TemplateId: int\n        :param SignID: 短信签名，创建签名时返回\n        :type SignID: int\n        :param TemplateName: 模板名称\n        :type TemplateName: str\n        :param TemplateContent: 短信内容，动态内容使用占位符{1}，{2}等表示\n        :type TemplateContent: str\n        :param SmsType: 短信类型：{0:普通短信，1:营销短信}\n        :type SmsType: int\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。
-        :type International: int
-        :param Remark: 短信模板标签
-        :type Remark: str
-        :param Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动
-        :type Urls: list of str
-        :param CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动
-        :type CommonParams: list of int
-        :param UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-        :type UrlParams: list of int
-        """
+1：表示国际/港澳台短信。\n        :type International: int\n        :param Remark: 短信模板标签\n        :type Remark: str\n        :param Urls: 发送短信活动时配置的落地链接地址,仅用作短信活动\n        :type Urls: list of str\n        :param CommonParams: 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动\n        :type CommonParams: list of int\n        :param UrlParams: 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动\n        :type UrlParams: list of int\n        """
         self.License = None
         self.TemplateId = None
         self.SignID = None
@@ -1597,11 +1283,7 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 返回
-        :type Data: :class:`tencentcloud.zj.v20190121.models.ModifySmsTemplateDataStruct`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 返回\n        :type Data: :class:`tencentcloud.zj.v20190121.models.ModifySmsTemplateDataStruct`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1620,9 +1302,7 @@ class PaasCreateSignResp(AbstractModel):
 
     def __init__(self):
         """
-        :param SignId: 签名id
-        :type SignId: int
-        """
+        :param SignId: 签名id\n        :type SignId: int\n        """
         self.SignId = None
 
 
@@ -1644,9 +1324,7 @@ class PaasSmsCampaignStatusResp(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 0-未发送 1-发送中 2-发送结束 3-发送取消
-        :type Status: int
-        """
+        :param Status: 0-未发送 1-发送中 2-发送结束 3-发送取消\n        :type Status: int\n        """
         self.Status = None
 
 
@@ -1668,11 +1346,7 @@ class PaasStrategy(AbstractModel):
 
     def __init__(self):
         """
-        :param CrowdID: 人群包id
-        :type CrowdID: int
-        :param Items: 待选素材数组
-        :type Items: list of PaasStrategyItem
-        """
+        :param CrowdID: 人群包id\n        :type CrowdID: int\n        :param Items: 待选素材数组\n        :type Items: list of PaasStrategyItem\n        """
         self.CrowdID = None
         self.Items = None
 
@@ -1701,11 +1375,7 @@ class PaasStrategyItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 短信模板id或超级短信样例id
-        :type Id: int
-        :param ContentType: 素材类型 0-普短 1-超短
-        :type ContentType: int
-        """
+        :param Id: 短信模板id或超级短信样例id\n        :type Id: int\n        :param ContentType: 素材类型 0-普短 1-超短\n        :type ContentType: int\n        """
         self.Id = None
         self.ContentType = None
 
@@ -1729,19 +1399,7 @@ class PushMmsContentRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param InstanceId: 素材样例id
-        :type InstanceId: int
-        :param Tel: 手机号
-        :type Tel: str
-        :param Session: 附带数据字段
-        :type Session: str
-        :param DynamicParaKey: 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)
-        :type DynamicParaKey: list of str
-        :param DynamicParaValue: 动态参数值,和DynamicParaKey对应
-        :type DynamicParaValue: list of str
-        """
+        :param License: 商户证书\n        :type License: str\n        :param InstanceId: 素材样例id\n        :type InstanceId: int\n        :param Tel: 手机号\n        :type Tel: str\n        :param Session: 附带数据字段\n        :type Session: str\n        :param DynamicParaKey: 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)\n        :type DynamicParaKey: list of str\n        :param DynamicParaValue: 动态参数值,和DynamicParaKey对应\n        :type DynamicParaValue: list of str\n        """
         self.License = None
         self.InstanceId = None
         self.Tel = None
@@ -1773,13 +1431,7 @@ class PushMmsContentResp(AbstractModel):
 
     def __init__(self):
         """
-        :param ReturnCode: 返回码：0-成功 其它-失败
-        :type ReturnCode: int
-        :param ReturnMsg: 返回信息
-        :type ReturnMsg: str
-        :param MessageId: 消息回执id
-        :type MessageId: int
-        """
+        :param ReturnCode: 返回码：0-成功 其它-失败\n        :type ReturnCode: int\n        :param ReturnMsg: 返回信息\n        :type ReturnMsg: str\n        :param MessageId: 消息回执id\n        :type MessageId: int\n        """
         self.ReturnCode = None
         self.ReturnMsg = None
         self.MessageId = None
@@ -1805,11 +1457,7 @@ class PushMmsContentResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 推送短信返回信息
-        :type Data: :class:`tencentcloud.zj.v20190121.models.PushMmsContentResp`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 推送短信返回信息\n        :type Data: :class:`tencentcloud.zj.v20190121.models.PushMmsContentResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1828,17 +1476,7 @@ class SendSmsPaasDataStruct(AbstractModel):
 
     def __init__(self):
         """
-        :param SerialNo: 发送流水号
-        :type SerialNo: str
-        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-        :type PhoneNumber: str
-        :param Fee: 计费条数
-        :type Fee: int
-        :param Code: OK为成功
-        :type Code: str
-        :param Message: 短信请求错误码描述
-        :type Message: str
-        """
+        :param SerialNo: 发送流水号\n        :type SerialNo: str\n        :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。\n        :type PhoneNumber: str\n        :param Fee: 计费条数\n        :type Fee: int\n        :param Code: OK为成功\n        :type Code: str\n        :param Message: 短信请求错误码描述\n        :type Message: str\n        """
         self.SerialNo = None
         self.PhoneNumber = None
         self.Fee = None
@@ -1868,27 +1506,9 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param License: 商户证书
-        :type License: str
-        :param Phone: 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000
-        :type Phone: list of str
-        :param TemplateId: 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)
-        :type TemplateId: str
-        :param Params: 模板参数，若无模板参数，则设置为空。
-        :type Params: list of str
-        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。
-        :type Sign: str
-        :param SenderId: 国际/港澳台短信 senderid，国内短信填空
-        :type SenderId: str
-        :param SmsType: 短信类型：{0:普通短信，1:营销短信}，使用内容发送时必填
-        :type SmsType: int
-        :param International: 是否国际/港澳台短信：
+        :param License: 商户证书\n        :type License: str\n        :param Phone: 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000\n        :type Phone: list of str\n        :param TemplateId: 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)\n        :type TemplateId: str\n        :param Params: 模板参数，若无模板参数，则设置为空。\n        :type Params: list of str\n        :param Sign: 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。\n        :type Sign: str\n        :param SenderId: 国际/港澳台短信 senderid，国内短信填空\n        :type SenderId: str\n        :param SmsType: 短信类型：{0:普通短信，1:营销短信}，使用内容发送时必填\n        :type SmsType: int\n        :param International: 是否国际/港澳台短信：
 0：表示国内短信。
-1：表示国际/港澳台短信。使用内容发送时必填
-        :type International: int
-        :param Content: 发送使用的模板内容,如果有占位符,此处也包括占位符,占位符的实际内容通过Params参数传递,使用模板id发送时此字段为空
-        :type Content: str
-        """
+1：表示国际/港澳台短信。使用内容发送时必填\n        :type International: int\n        :param Content: 发送使用的模板内容,如果有占位符,此处也包括占位符,占位符的实际内容通过Params参数传递,使用模板id发送时此字段为空\n        :type Content: str\n        """
         self.License = None
         self.Phone = None
         self.TemplateId = None
@@ -1926,11 +1546,7 @@ class SendSmsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 出参数据
-        :type Data: list of SendSmsPaasDataStruct
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 出参数据\n        :type Data: list of SendSmsPaasDataStruct\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1952,9 +1568,7 @@ class SmsAddCrowdPackInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ID: 人群包id
-        :type ID: int
-        """
+        :param ID: 人群包id\n        :type ID: int\n        """
         self.ID = None
 
 
@@ -1976,23 +1590,7 @@ class SmsAmountDataStruct(AbstractModel):
 
     def __init__(self):
         """
-        :param SmsCampaignAmount: 短信活动配额
-        :type SmsCampaignAmount: int
-        :param SmsCampaignConsume: 短信活动消耗配额
-        :type SmsCampaignConsume: int
-        :param SmsSendAmount: 短信发送额度
-        :type SmsSendAmount: int
-        :param SmsSendConsume: 短信发送消耗额度
-        :type SmsSendConsume: int
-        :param MmsCampaignAmount: 超短活动额度
-        :type MmsCampaignAmount: int
-        :param MmsCampaignConsume: 超短活动消耗额度
-        :type MmsCampaignConsume: int
-        :param MmsSendAmount: 超短短信额度
-        :type MmsSendAmount: int
-        :param MmsSendConsume: 超短短信消耗额度
-        :type MmsSendConsume: int
-        """
+        :param SmsCampaignAmount: 短信活动配额\n        :type SmsCampaignAmount: int\n        :param SmsCampaignConsume: 短信活动消耗配额\n        :type SmsCampaignConsume: int\n        :param SmsSendAmount: 短信发送额度\n        :type SmsSendAmount: int\n        :param SmsSendConsume: 短信发送消耗额度\n        :type SmsSendConsume: int\n        :param MmsCampaignAmount: 超短活动额度\n        :type MmsCampaignAmount: int\n        :param MmsCampaignConsume: 超短活动消耗额度\n        :type MmsCampaignConsume: int\n        :param MmsSendAmount: 超短短信额度\n        :type MmsSendAmount: int\n        :param MmsSendConsume: 超短短信消耗额度\n        :type MmsSendConsume: int\n        """
         self.SmsCampaignAmount = None
         self.SmsCampaignConsume = None
         self.SmsSendAmount = None
@@ -2028,15 +1626,7 @@ class SmsCampaignStatisticsCrowdData(AbstractModel):
 
     def __init__(self):
         """
-        :param CrowdId: 人群包id
-        :type CrowdId: int
-        :param CrowdName: 人群包名称
-        :type CrowdName: str
-        :param CrowdCount: 人群包目标触达总数
-        :type CrowdCount: int
-        :param TemplateList: 模板列表
-        :type TemplateList: list of SmsCampaignStatisticsTemplateData
-        """
+        :param CrowdId: 人群包id\n        :type CrowdId: int\n        :param CrowdName: 人群包名称\n        :type CrowdName: str\n        :param CrowdCount: 人群包目标触达总数\n        :type CrowdCount: int\n        :param TemplateList: 模板列表\n        :type TemplateList: list of SmsCampaignStatisticsTemplateData\n        """
         self.CrowdId = None
         self.CrowdName = None
         self.CrowdCount = None
@@ -2069,11 +1659,7 @@ class SmsCampaignStatisticsData(AbstractModel):
 
     def __init__(self):
         """
-        :param CampaignId: 活动Id
-        :type CampaignId: int
-        :param Statistics: 统计数据
-        :type Statistics: list of SmsCampaignStatisticsCrowdData
-        """
+        :param CampaignId: 活动Id\n        :type CampaignId: int\n        :param Statistics: 统计数据\n        :type Statistics: list of SmsCampaignStatisticsCrowdData\n        """
         self.CampaignId = None
         self.Statistics = None
 
@@ -2102,15 +1688,7 @@ class SmsCampaignStatisticsTemplateData(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板或样例id
-        :type TemplateId: str
-        :param TemplateContent: 模板内容
-        :type TemplateContent: str
-        :param SendCount: 触达成功数
-        :type SendCount: int
-        :param ClickCount: 短链点击数
-        :type ClickCount: int
-        """
+        :param TemplateId: 模板或样例id\n        :type TemplateId: str\n        :param TemplateContent: 模板内容\n        :type TemplateContent: str\n        :param SendCount: 触达成功数\n        :type SendCount: int\n        :param ClickCount: 短链点击数\n        :type ClickCount: int\n        """
         self.TemplateId = None
         self.TemplateContent = None
         self.SendCount = None
@@ -2138,9 +1716,7 @@ class SmsCreateCampaignResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CampaignId: 活动id
-        :type CampaignId: int
-        """
+        :param CampaignId: 活动id\n        :type CampaignId: int\n        """
         self.CampaignId = None
 
 
@@ -2162,25 +1738,7 @@ class SmsGetCrowdPackList(AbstractModel):
 
     def __init__(self):
         """
-        :param CreatedAt: 创建时间
-        :type CreatedAt: str
-        :param ID: 人群包id
-        :type ID: int
-        :param Name: 人群包名称
-        :type Name: str
-        :param Status: 人群包状态
-        :type Status: int
-        :param PhoneNum: 人群包手机号数量
-        :type PhoneNum: int
-        :param Tag: 人群包标签信息
-        :type Tag: str
-        :param MD5: 人群包md5
-        :type MD5: str
-        :param FileName: 人群包文件名称
-        :type FileName: str
-        :param Desc: 人群包描述
-        :type Desc: str
-        """
+        :param CreatedAt: 创建时间\n        :type CreatedAt: str\n        :param ID: 人群包id\n        :type ID: int\n        :param Name: 人群包名称\n        :type Name: str\n        :param Status: 人群包状态\n        :type Status: int\n        :param PhoneNum: 人群包手机号数量\n        :type PhoneNum: int\n        :param Tag: 人群包标签信息\n        :type Tag: str\n        :param MD5: 人群包md5\n        :type MD5: str\n        :param FileName: 人群包文件名称\n        :type FileName: str\n        :param Desc: 人群包描述\n        :type Desc: str\n        """
         self.CreatedAt = None
         self.ID = None
         self.Name = None
@@ -2218,12 +1776,8 @@ class SmsGetCrowdPackListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 人群包总数
-        :type Total: int
-        :param List: 人群包返回数据列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type List: list of SmsGetCrowdPackList
-        """
+        :param Total: 人群包总数\n        :type Total: int\n        :param List: 人群包返回数据列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type List: list of SmsGetCrowdPackList\n        """
         self.Total = None
         self.List = None
 
@@ -2252,17 +1806,7 @@ class SmsGetCrowdUploadInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ExpiredTime: 过期时间
-        :type ExpiredTime: int
-        :param SessionToken: 会话token
-        :type SessionToken: str
-        :param TmpSecretId: 临时密钥id
-        :type TmpSecretId: str
-        :param TmpSecretKey: 临时密钥
-        :type TmpSecretKey: str
-        :param CosInfo: cos信息
-        :type CosInfo: :class:`tencentcloud.zj.v20190121.models.UploadFansInfoCosInfo`
-        """
+        :param ExpiredTime: 过期时间\n        :type ExpiredTime: int\n        :param SessionToken: 会话token\n        :type SessionToken: str\n        :param TmpSecretId: 临时密钥id\n        :type TmpSecretId: str\n        :param TmpSecretKey: 临时密钥\n        :type TmpSecretKey: str\n        :param CosInfo: cos信息\n        :type CosInfo: :class:`tencentcloud.zj.v20190121.models.UploadFansInfoCosInfo`\n        """
         self.ExpiredTime = None
         self.SessionToken = None
         self.TmpSecretId = None
@@ -2294,9 +1838,7 @@ class SmsSuccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Message: 成功返回信息
-        :type Message: str
-        """
+        :param Message: 成功返回信息\n        :type Message: str\n        """
         self.Message = None
 
 
@@ -2318,13 +1860,7 @@ class UploadFansInfoCosInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Bucket: COS bucket
-        :type Bucket: str
-        :param Key: COS路径
-        :type Key: str
-        :param Region: COS区域
-        :type Region: str
-        """
+        :param Bucket: COS bucket\n        :type Bucket: str\n        :param Key: COS路径\n        :type Key: str\n        :param Region: COS区域\n        :type Region: str\n        """
         self.Bucket = None
         self.Key = None
         self.Region = None

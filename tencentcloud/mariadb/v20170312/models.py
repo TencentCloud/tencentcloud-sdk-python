@@ -25,11 +25,7 @@ class Account(AbstractModel):
 
     def __init__(self):
         """
-        :param User: 账户的名称
-        :type User: str
-        :param Host: 账户的域名
-        :type Host: str
-        """
+        :param User: 账户的名称\n        :type User: str\n        :param Host: 账户的域名\n        :type Host: str\n        """
         self.User = None
         self.Host = None
 
@@ -53,13 +49,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 数据库引擎名称，本接口取值：mariadb。
-        :type Product: str
-        :param SecurityGroupId: 要绑定的安全组ID，类似sg-efil73jd。
-        :type SecurityGroupId: str
-        :param InstanceIds: 被绑定的实例ID，类似tdsql-lesecurk，支持指定多个实例。
-        :type InstanceIds: list of str
-        """
+        :param Product: 数据库引擎名称，本接口取值：mariadb。\n        :type Product: str\n        :param SecurityGroupId: 要绑定的安全组ID，类似sg-efil73jd。\n        :type SecurityGroupId: str\n        :param InstanceIds: 被绑定的实例ID，类似tdsql-lesecurk，支持指定多个实例。\n        :type InstanceIds: list of str\n        """
         self.Product = None
         self.SecurityGroupId = None
         self.InstanceIds = None
@@ -85,9 +75,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -102,9 +90,7 @@ class CancelDcnJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 灾备实例ID
-        :type InstanceId: str
-        """
+        :param InstanceId: 灾备实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -126,11 +112,7 @@ class CancelDcnJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 流程ID
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -147,19 +129,7 @@ class CloneAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param SrcUser: 源用户账户名
-        :type SrcUser: str
-        :param SrcHost: 源用户HOST
-        :type SrcHost: str
-        :param DstUser: 目的用户账户名
-        :type DstUser: str
-        :param DstHost: 目的用户HOST
-        :type DstHost: str
-        :param DstDesc: 目的用户账户描述
-        :type DstDesc: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param SrcUser: 源用户账户名\n        :type SrcUser: str\n        :param SrcHost: 源用户HOST\n        :type SrcHost: str\n        :param DstUser: 目的用户账户名\n        :type DstUser: str\n        :param DstHost: 目的用户HOST\n        :type DstHost: str\n        :param DstDesc: 目的用户账户描述\n        :type DstDesc: str\n        """
         self.InstanceId = None
         self.SrcUser = None
         self.SrcHost = None
@@ -191,11 +161,7 @@ class CloneAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务流程ID。
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务流程ID。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -212,11 +178,7 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待关闭外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Ipv6Flag: 是否IPv6，默认0
-        :type Ipv6Flag: int
-        """
+        :param InstanceId: 待关闭外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Ipv6Flag: 是否IPv6，默认0\n        :type Ipv6Flag: int\n        """
         self.InstanceId = None
         self.Ipv6Flag = None
 
@@ -240,11 +202,7 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -261,15 +219,7 @@ class ColumnPrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param Database: 数据库名
-        :type Database: str
-        :param Table: 数据库表名
-        :type Table: str
-        :param Column: 数据库列名
-        :type Column: str
-        :param Privileges: 权限信息
-        :type Privileges: list of str
-        """
+        :param Database: 数据库名\n        :type Database: str\n        :param Table: 数据库表名\n        :type Table: str\n        :param Column: 数据库列名\n        :type Column: str\n        :param Privileges: 权限信息\n        :type Privileges: list of str\n        """
         self.Database = None
         self.Table = None
         self.Column = None
@@ -297,11 +247,7 @@ class ConstraintRange(AbstractModel):
 
     def __init__(self):
         """
-        :param Min: 约束类型为section时的最小值
-        :type Min: str
-        :param Max: 约束类型为section时的最大值
-        :type Max: str
-        """
+        :param Min: 约束类型为section时的最小值\n        :type Min: str\n        :param Max: 约束类型为section时的最大值\n        :type Max: str\n        """
         self.Min = None
         self.Max = None
 
@@ -325,21 +271,7 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param SrcUserName: 源用户名
-        :type SrcUserName: str
-        :param SrcHost: 源用户允许的访问 host
-        :type SrcHost: str
-        :param DstUserName: 目的用户名
-        :type DstUserName: str
-        :param DstHost: 目的用户允许的访问 host
-        :type DstHost: str
-        :param SrcReadOnly: 源账号的 ReadOnly 属性
-        :type SrcReadOnly: str
-        :param DstReadOnly: 目的账号的 ReadOnly 属性
-        :type DstReadOnly: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param SrcUserName: 源用户名\n        :type SrcUserName: str\n        :param SrcHost: 源用户允许的访问 host\n        :type SrcHost: str\n        :param DstUserName: 目的用户名\n        :type DstUserName: str\n        :param DstHost: 目的用户允许的访问 host\n        :type DstHost: str\n        :param SrcReadOnly: 源账号的 ReadOnly 属性\n        :type SrcReadOnly: str\n        :param DstReadOnly: 目的账号的 ReadOnly 属性\n        :type DstReadOnly: str\n        """
         self.InstanceId = None
         self.SrcUserName = None
         self.SrcHost = None
@@ -373,9 +305,7 @@ class CopyAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -390,21 +320,7 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param UserName: 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
-        :type UserName: str
-        :param Host: 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。
-        :type Host: str
-        :param Password: 账号密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
-        :type Password: str
-        :param ReadOnly: 是否创建为只读账号，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
-        :type ReadOnly: int
-        :param Description: 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
-        :type Description: str
-        :param DelayThresh: 根据传入时间判断备机不可用
-        :type DelayThresh: int
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param UserName: 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。\n        :type UserName: str\n        :param Host: 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。\n        :type Host: str\n        :param Password: 账号密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。\n        :type Password: str\n        :param ReadOnly: 是否创建为只读账号，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。\n        :type ReadOnly: int\n        :param Description: 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符\n        :type Description: str\n        :param DelayThresh: 根据传入时间判断备机不可用\n        :type DelayThresh: int\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -438,17 +354,7 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID，透传入参。
-        :type InstanceId: str
-        :param UserName: 用户名，透传入参。
-        :type UserName: str
-        :param Host: 允许访问的 host，透传入参。
-        :type Host: str
-        :param ReadOnly: 透传入参。
-        :type ReadOnly: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例ID，透传入参。\n        :type InstanceId: str\n        :param UserName: 用户名，透传入参。\n        :type UserName: str\n        :param Host: 允许访问的 host，透传入参。\n        :type Host: str\n        :param ReadOnly: 透传入参。\n        :type ReadOnly: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -471,50 +377,10 @@ class CreateDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zones: 实例节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
-        :type Zones: list of str
-        :param NodeCount: 节点个数大小，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得。
-        :type NodeCount: int
-        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得。
-        :type Memory: int
-        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
-        :type Storage: int
-        :param Period: 欲购买的时长，单位：月。
-        :type Period: int
-        :param Count: 欲购买的数量，默认查询购买1个实例的价格。
-        :type Count: int
-        :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。
-        :type AutoVoucher: bool
-        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
-        :type VoucherIds: list of str
-        :param VpcId: 虚拟私有网络 ID，不传表示创建为基础网络
-        :type VpcId: str
-        :param SubnetId: 虚拟私有网络子网 ID，VpcId 不为空时必填
-        :type SubnetId: str
-        :param ProjectId: 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
-        :type ProjectId: int
-        :param DbVersionId: 数据库引擎版本，当前可选：8.0.18，10.1.9，5.7.17。如果不传的话，默认为 Percona 5.7.17。
-        :type DbVersionId: str
-        :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字
-        :type InstanceName: str
-        :param SecurityGroupIds: 安全组ID列表
-        :type SecurityGroupIds: list of str
-        :param AutoRenewFlag: 自动续费标志，1:自动续费，2:不自动续费
-        :type AutoRenewFlag: int
-        :param Ipv6Flag: 是否支持IPv6
-        :type Ipv6Flag: int
-        :param ResourceTags: 标签键值对数组
-        :type ResourceTags: list of ResourceTag
-        :param InitParams: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
-        :type InitParams: list of DBParamValue
-        :param DcnRegion: DCN源地域
-        :type DcnRegion: str
-        :param DcnInstanceId: DCN源实例ID
-        :type DcnInstanceId: str
-        """
+        :param Zones: 实例节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。\n        :type Zones: list of str\n        :param NodeCount: 节点个数大小，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得。\n        :type NodeCount: int\n        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得。\n        :type Memory: int\n        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。\n        :type Storage: int\n        :param Period: 欲购买的时长，单位：月。\n        :type Period: int\n        :param Count: 欲购买的数量，默认查询购买1个实例的价格。\n        :type Count: int\n        :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。\n        :type AutoVoucher: bool\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。\n        :type VoucherIds: list of str\n        :param VpcId: 虚拟私有网络 ID，不传表示创建为基础网络\n        :type VpcId: str\n        :param SubnetId: 虚拟私有网络子网 ID，VpcId 不为空时必填\n        :type SubnetId: str\n        :param ProjectId: 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目\n        :type ProjectId: int\n        :param DbVersionId: 数据库引擎版本，当前可选：8.0.18，10.1.9，5.7.17。如果不传的话，默认为 Percona 5.7.17。\n        :type DbVersionId: str\n        :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字\n        :type InstanceName: str\n        :param SecurityGroupIds: 安全组ID列表\n        :type SecurityGroupIds: list of str\n        :param AutoRenewFlag: 自动续费标志，1:自动续费，2:不自动续费\n        :type AutoRenewFlag: int\n        :param Ipv6Flag: 是否支持IPv6\n        :type Ipv6Flag: int\n        :param ResourceTags: 标签键值对数组\n        :type ResourceTags: list of ResourceTag\n        :param InitParams: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。\n        :type InitParams: list of DBParamValue\n        :param DcnRegion: DCN源地域\n        :type DcnRegion: str\n        :param DcnInstanceId: DCN源实例ID\n        :type DcnInstanceId: str\n        """
         self.Zones = None
         self.NodeCount = None
         self.Memory = None
@@ -585,14 +451,8 @@ class CreateDBInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param DealName: 长订单号。可以据此调用 DescribeOrders
- 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
-        :type DealName: str
-        :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+ 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。\n        :type DealName: str\n        :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealName = None
         self.InstanceIds = None
         self.RequestId = None
@@ -611,11 +471,7 @@ class CreateTmpInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 回档实例的ID列表，形如：tdsql-ow728lmc。
-        :type InstanceIds: list of str
-        :param RollbackTime: 回档时间点
-        :type RollbackTime: str
-        """
+        :param InstanceIds: 回档实例的ID列表，形如：tdsql-ow728lmc。\n        :type InstanceIds: list of str\n        :param RollbackTime: 回档时间点\n        :type RollbackTime: str\n        """
         self.InstanceIds = None
         self.RollbackTime = None
 
@@ -639,11 +495,7 @@ class CreateTmpInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务流程ID。
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务流程ID。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -660,22 +512,8 @@ class DBAccount(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 用户名
-        :type UserName: str
-        :param Host: 用户可以从哪台主机登录（对应 MySQL 用户的 host 字段，UserName + Host 唯一标识一个用户，IP形式，IP段以%结尾；支持填入%；为空默认等于%）
-        :type Host: str
-        :param Description: 用户备注信息
-        :type Description: str
-        :param CreateTime: 创建时间
-        :type CreateTime: str
-        :param UpdateTime: 最后更新时间
-        :type UpdateTime: str
-        :param ReadOnly: 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。
-        :type ReadOnly: int
-        :param DelayThresh: 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DelayThresh: int
-        """
+        :param UserName: 用户名\n        :type UserName: str\n        :param Host: 用户可以从哪台主机登录（对应 MySQL 用户的 host 字段，UserName + Host 唯一标识一个用户，IP形式，IP段以%结尾；支持填入%；为空默认等于%）\n        :type Host: str\n        :param Description: 用户备注信息\n        :type Description: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param UpdateTime: 最后更新时间\n        :type UpdateTime: str\n        :param ReadOnly: 只读标记，0：否， 1：该账号的sql请求优先选择备机执行，备机不可用时选择主机执行，2：优先选择备机执行，备机不可用时操作失败。\n        :type ReadOnly: int\n        :param DelayThresh: 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DelayThresh: int\n        """
         self.UserName = None
         self.Host = None
         self.Description = None
@@ -709,13 +547,7 @@ class DBBackupTimeConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID
-        :type InstanceId: str
-        :param StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00
-        :type StartBackupTime: str
-        :param EndBackupTime: 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:00
-        :type EndBackupTime: str
-        """
+        :param InstanceId: 实例 ID\n        :type InstanceId: str\n        :param StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00\n        :type StartBackupTime: str\n        :param EndBackupTime: 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:00\n        :type EndBackupTime: str\n        """
         self.InstanceId = None
         self.StartBackupTime = None
         self.EndBackupTime = None
@@ -741,121 +573,21 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，唯一标识一个 TDSQL 实例
-        :type InstanceId: str
-        :param InstanceName: 实例名称，用户可修改
-        :type InstanceName: str
-        :param AppId: 实例所属应用 ID
-        :type AppId: int
-        :param ProjectId: 实例所属项目 ID
-        :type ProjectId: int
-        :param Region: 实例所在地域名称，如 ap-shanghai
-        :type Region: str
-        :param Zone: 实例所在可用区名称，如 ap-shanghai-1
-        :type Zone: str
-        :param VpcId: 私有网络 ID，基础网络时为 0
-        :type VpcId: int
-        :param SubnetId: 子网 ID，基础网络时为 0
-        :type SubnetId: int
-        :param Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
-        :type Status: int
-        :param Vip: 内网 IP 地址
-        :type Vip: str
-        :param Vport: 内网端口
-        :type Vport: int
-        :param WanDomain: 外网访问的域名，公网可解析
-        :type WanDomain: str
-        :param WanVip: 外网 IP 地址，公网可访问
-        :type WanVip: str
-        :param WanPort: 外网端口
-        :type WanPort: int
-        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
-        :type CreateTime: str
-        :param UpdateTime: 实例最后更新时间，格式为 2006-01-02 15:04:05
-        :type UpdateTime: str
-        :param AutoRenewFlag: 自动续费标志：0 否，1 是
-        :type AutoRenewFlag: int
-        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
-        :type PeriodEndTime: str
-        :param Uin: 实例所属账号
-        :type Uin: str
-        :param TdsqlVersion: TDSQL 版本信息
-        :type TdsqlVersion: str
-        :param Memory: 实例内存大小，单位 GB
-        :type Memory: int
-        :param Storage: 实例存储大小，单位 GB
-        :type Storage: int
-        :param UniqueVpcId: 字符串型的私有网络ID
-        :type UniqueVpcId: str
-        :param UniqueSubnetId: 字符串型的私有网络子网ID
-        :type UniqueSubnetId: str
-        :param OriginSerialId: 原始实例ID（过时字段，请勿依赖该值）
-        :type OriginSerialId: str
-        :param NodeCount: 节点数，2为一主一从，3为一主二从
-        :type NodeCount: int
-        :param IsTmp: 是否临时实例，0为否，非0为是
-        :type IsTmp: int
-        :param ExclusterId: 独享集群ID，为空表示为普通实例
-        :type ExclusterId: str
-        :param Id: 数字实例ID（过时字段，请勿依赖该值）
-        :type Id: int
-        :param Pid: 产品类型 ID
-        :type Pid: int
-        :param Qps: 最大 Qps 值
-        :type Qps: int
-        :param Paymode: 付费模式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Paymode: str
-        :param Locker: 实例处于异步任务时的异步任务流程ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Locker: int
-        :param StatusDesc: 实例目前运行状态描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusDesc: str
-        :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
-        :type WanStatus: int
-        :param IsAuditSupported: 该实例是否支持审计。1-支持；0-不支持
-        :type IsAuditSupported: int
-        :param Machine: 机器型号
-        :type Machine: str
-        :param IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持
-        :type IsEncryptSupported: int
-        :param Cpu: 实例CPU核数
-        :type Cpu: int
-        :param Ipv6Flag: 实例IPv6标志
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ipv6Flag: int
-        :param Vipv6: 内网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Vipv6: str
-        :param WanVipv6: 外网IPv6
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WanVipv6: str
-        :param WanPortIpv6: 外网IPv6端口
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WanPortIpv6: int
-        :param WanStatusIpv6: 外网IPv6状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WanStatusIpv6: int
-        :param DbEngine: 数据库引擎
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DbEngine: str
-        :param DbVersion: 数据库版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DbVersion: str
-        :param DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DcnFlag: int
-        :param DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DcnStatus: int
-        :param DcnDstNum: DCN灾备实例数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DcnDstNum: int
-        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: int
-        """
+        :param InstanceId: 实例 ID，唯一标识一个 TDSQL 实例\n        :type InstanceId: str\n        :param InstanceName: 实例名称，用户可修改\n        :type InstanceName: str\n        :param AppId: 实例所属应用 ID\n        :type AppId: int\n        :param ProjectId: 实例所属项目 ID\n        :type ProjectId: int\n        :param Region: 实例所在地域名称，如 ap-shanghai\n        :type Region: str\n        :param Zone: 实例所在可用区名称，如 ap-shanghai-1\n        :type Zone: str\n        :param VpcId: 私有网络 ID，基础网络时为 0\n        :type VpcId: int\n        :param SubnetId: 子网 ID，基础网络时为 0\n        :type SubnetId: int\n        :param Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中\n        :type Status: int\n        :param Vip: 内网 IP 地址\n        :type Vip: str\n        :param Vport: 内网端口\n        :type Vport: int\n        :param WanDomain: 外网访问的域名，公网可解析\n        :type WanDomain: str\n        :param WanVip: 外网 IP 地址，公网可访问\n        :type WanVip: str\n        :param WanPort: 外网端口\n        :type WanPort: int\n        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05\n        :type CreateTime: str\n        :param UpdateTime: 实例最后更新时间，格式为 2006-01-02 15:04:05\n        :type UpdateTime: str\n        :param AutoRenewFlag: 自动续费标志：0 否，1 是\n        :type AutoRenewFlag: int\n        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05\n        :type PeriodEndTime: str\n        :param Uin: 实例所属账号\n        :type Uin: str\n        :param TdsqlVersion: TDSQL 版本信息\n        :type TdsqlVersion: str\n        :param Memory: 实例内存大小，单位 GB\n        :type Memory: int\n        :param Storage: 实例存储大小，单位 GB\n        :type Storage: int\n        :param UniqueVpcId: 字符串型的私有网络ID\n        :type UniqueVpcId: str\n        :param UniqueSubnetId: 字符串型的私有网络子网ID\n        :type UniqueSubnetId: str\n        :param OriginSerialId: 原始实例ID（过时字段，请勿依赖该值）\n        :type OriginSerialId: str\n        :param NodeCount: 节点数，2为一主一从，3为一主二从\n        :type NodeCount: int\n        :param IsTmp: 是否临时实例，0为否，非0为是\n        :type IsTmp: int\n        :param ExclusterId: 独享集群ID，为空表示为普通实例\n        :type ExclusterId: str\n        :param Id: 数字实例ID（过时字段，请勿依赖该值）\n        :type Id: int\n        :param Pid: 产品类型 ID\n        :type Pid: int\n        :param Qps: 最大 Qps 值\n        :type Qps: int\n        :param Paymode: 付费模式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Paymode: str\n        :param Locker: 实例处于异步任务时的异步任务流程ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Locker: int\n        :param StatusDesc: 实例目前运行状态描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusDesc: str\n        :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中\n        :type WanStatus: int\n        :param IsAuditSupported: 该实例是否支持审计。1-支持；0-不支持\n        :type IsAuditSupported: int\n        :param Machine: 机器型号\n        :type Machine: str\n        :param IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持\n        :type IsEncryptSupported: int\n        :param Cpu: 实例CPU核数\n        :type Cpu: int\n        :param Ipv6Flag: 实例IPv6标志
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Ipv6Flag: int\n        :param Vipv6: 内网IPv6
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Vipv6: str\n        :param WanVipv6: 外网IPv6
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WanVipv6: str\n        :param WanPortIpv6: 外网IPv6端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WanPortIpv6: int\n        :param WanStatusIpv6: 外网IPv6状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WanStatusIpv6: int\n        :param DbEngine: 数据库引擎
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DbEngine: str\n        :param DbVersion: 数据库版本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DbVersion: str\n        :param DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DcnFlag: int\n        :param DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DcnStatus: int\n        :param DcnDstNum: DCN灾备实例数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DcnDstNum: int\n        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.AppId = None
@@ -975,11 +707,7 @@ class DBParamValue(AbstractModel):
 
     def __init__(self):
         """
-        :param Param: 参数名称
-        :type Param: str
-        :param Value: 参数值
-        :type Value: str
-        """
+        :param Param: 参数名称\n        :type Param: str\n        :param Value: 参数值\n        :type Value: str\n        """
         self.Param = None
         self.Value = None
 
@@ -1003,9 +731,7 @@ class Database(AbstractModel):
 
     def __init__(self):
         """
-        :param DbName: 数据库名称
-        :type DbName: str
-        """
+        :param DbName: 数据库名称\n        :type DbName: str\n        """
         self.DbName = None
 
 
@@ -1027,11 +753,7 @@ class DatabasePrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param Privileges: 权限信息
-        :type Privileges: list of str
-        :param Database: 数据库名
-        :type Database: str
-        """
+        :param Privileges: 权限信息\n        :type Privileges: list of str\n        :param Database: 数据库名\n        :type Database: str\n        """
         self.Privileges = None
         self.Database = None
 
@@ -1055,43 +777,7 @@ class DcnDetailItem(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param InstanceName: 实例名称
-        :type InstanceName: str
-        :param Region: 实例地域
-        :type Region: str
-        :param Zone: 实例可用区
-        :type Zone: str
-        :param Vip: 实例IP地址
-        :type Vip: str
-        :param Vipv6: 实例IPv6地址
-        :type Vipv6: str
-        :param Vport: 实例端口
-        :type Vport: int
-        :param Status: 实例状态
-        :type Status: int
-        :param StatusDesc: 实例状态描述
-        :type StatusDesc: str
-        :param DcnFlag: 实例DCN标志，1-主，2-备
-        :type DcnFlag: int
-        :param DcnStatus: 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开
-        :type DcnStatus: int
-        :param Cpu: 实例CPU核数
-        :type Cpu: int
-        :param Memory: 实例内存大小，单位 GB
-        :type Memory: int
-        :param Storage: 实例存储大小，单位 GB
-        :type Storage: int
-        :param PayMode: 付费模式
-        :type PayMode: int
-        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
-        :type CreateTime: str
-        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
-        :type PeriodEndTime: str
-        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-        :type InstanceType: int
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param InstanceName: 实例名称\n        :type InstanceName: str\n        :param Region: 实例地域\n        :type Region: str\n        :param Zone: 实例可用区\n        :type Zone: str\n        :param Vip: 实例IP地址\n        :type Vip: str\n        :param Vipv6: 实例IPv6地址\n        :type Vipv6: str\n        :param Vport: 实例端口\n        :type Vport: int\n        :param Status: 实例状态\n        :type Status: int\n        :param StatusDesc: 实例状态描述\n        :type StatusDesc: str\n        :param DcnFlag: 实例DCN标志，1-主，2-备\n        :type DcnFlag: int\n        :param DcnStatus: 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开\n        :type DcnStatus: int\n        :param Cpu: 实例CPU核数\n        :type Cpu: int\n        :param Memory: 实例内存大小，单位 GB\n        :type Memory: int\n        :param Storage: 实例存储大小，单位 GB\n        :type Storage: int\n        :param PayMode: 付费模式\n        :type PayMode: int\n        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05\n        :type CreateTime: str\n        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05\n        :type PeriodEndTime: str\n        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）\n        :type InstanceType: int\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Region = None
@@ -1147,20 +833,8 @@ class Deal(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: 订单号
-        :type DealName: str
-        :param OwnerUin: 所属账号
-        :type OwnerUin: str
-        :param Count: 商品数量
-        :type Count: int
-        :param FlowId: 关联的流程 Id，可用于查询流程执行状态
-        :type FlowId: int
-        :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceIds: list of str
-        :param PayMode: 付费模式，0后付费/1预付费
-        :type PayMode: int
-        """
+        :param DealName: 订单号\n        :type DealName: str\n        :param OwnerUin: 所属账号\n        :type OwnerUin: str\n        :param Count: 商品数量\n        :type Count: int\n        :param FlowId: 关联的流程 Id，可用于查询流程执行状态\n        :type FlowId: int\n        :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceIds: list of str\n        :param PayMode: 付费模式，0后付费/1预付费\n        :type PayMode: int\n        """
         self.DealName = None
         self.OwnerUin = None
         self.Count = None
@@ -1192,13 +866,7 @@ class DeleteAccountRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param UserName: 用户名
-        :type UserName: str
-        :param Host: 用户允许的访问 host
-        :type Host: str
-        """
+        :param InstanceId: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param UserName: 用户名\n        :type UserName: str\n        :param Host: 用户允许的访问 host\n        :type Host: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -1224,9 +892,7 @@ class DeleteAccountResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1241,21 +907,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param UserName: 登录用户名。
-        :type UserName: str
-        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。
-        :type Host: str
-        :param DbName: 数据库名。如果为 \*，表示查询全局权限（即 \*.\*），此时忽略 Type 和 Object 参数
-        :type DbName: str
-        :param Type: 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示查询该数据库权限（即db.\*），此时忽略 Object 参数
-        :type Type: str
-        :param Object: 具体的 Type 的名称，例如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空
-        :type Object: str
-        :param ColName: 当 Type=table 时，ColName 为 \* 表示查询表的权限，如果为具体字段名，表示查询对应字段的权限
-        :type ColName: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param UserName: 登录用户名。\n        :type UserName: str\n        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。\n        :type Host: str\n        :param DbName: 数据库名。如果为 \*，表示查询全局权限（即 \*.\*），此时忽略 Type 和 Object 参数\n        :type DbName: str\n        :param Type: 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示查询该数据库权限（即db.\*），此时忽略 Object 参数\n        :type Type: str\n        :param Object: 具体的 Type 的名称，例如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空\n        :type Object: str\n        :param ColName: 当 Type=table 时，ColName 为 \* 表示查询表的权限，如果为具体字段名，表示查询对应字段的权限\n        :type ColName: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -1289,17 +941,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param Privileges: 权限列表。
-        :type Privileges: list of str
-        :param UserName: 数据库账号用户名
-        :type UserName: str
-        :param Host: 数据库账号Host
-        :type Host: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param Privileges: 权限列表。\n        :type Privileges: list of str\n        :param UserName: 数据库账号用户名\n        :type UserName: str\n        :param Host: 数据库账号Host\n        :type Host: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Privileges = None
         self.UserName = None
@@ -1322,9 +964,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1346,13 +986,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID，透传入参。
-        :type InstanceId: str
-        :param Users: 实例用户列表。
-        :type Users: list of DBAccount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例ID，透传入参。\n        :type InstanceId: str\n        :param Users: 实例用户列表。\n        :type Users: list of DBAccount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Users = None
         self.RequestId = None
@@ -1376,9 +1010,7 @@ class DescribeBackupTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceIds: list of str
-        """
+        :param InstanceIds: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -1400,14 +1032,8 @@ class DescribeBackupTimeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 返回的配置数量
-        :type TotalCount: int
-        :param Items: 实例备份时间配置信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Items: list of DBBackupTimeConfig
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 返回的配置数量\n        :type TotalCount: int\n        :param Items: 实例备份时间配置信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Items: list of DBBackupTimeConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Items = None
         self.RequestId = None
@@ -1437,11 +1063,7 @@ class DescribeDBInstanceSpecsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Specs: 按机型分类的可售卖规格列表
-        :type Specs: list of InstanceSpec
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Specs: 按机型分类的可售卖规格列表\n        :type Specs: list of InstanceSpec\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Specs = None
         self.RequestId = None
 
@@ -1463,45 +1085,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 按照一个或者多个实例 ID 查询。实例 ID 形如：tdsql-ow728lmc。每次请求的实例的上限为100。
-        :type InstanceIds: list of str
-        :param SearchName: 搜索的字段名，当前支持的值有：instancename、vip、all。传 instancename 表示按实例名进行搜索；传 vip 表示按内网IP进行搜索；传 all 将会按实例ID、实例名和内网IP进行搜索。
-        :type SearchName: str
-        :param SearchKey: 搜索的关键字，支持模糊搜索。多个关键字使用换行符（'\n'）分割。
-        :type SearchKey: str
-        :param ProjectIds: 按项目 ID 查询
-        :type ProjectIds: list of int
-        :param IsFilterVpc: 是否根据 VPC 网络来搜索
-        :type IsFilterVpc: bool
-        :param VpcId: 私有网络 ID， IsFilterVpc 为 1 时有效
-        :type VpcId: str
-        :param SubnetId: 私有网络的子网 ID， IsFilterVpc 为 1 时有效
-        :type SubnetId: str
-        :param OrderBy: 排序字段， projectId， createtime， instancename 三者之一
-        :type OrderBy: str
-        :param OrderByType: 排序类型， desc 或者 asc
-        :type OrderByType: str
-        :param Offset: 偏移量，默认为 0
-        :type Offset: int
-        :param Limit: 返回数量，默认为 20，最大值为 100。
-        :type Limit: int
-        :param OriginSerialIds: 按 OriginSerialId 查询
-        :type OriginSerialIds: list of str
-        :param IsFilterExcluster: 标识是否使用ExclusterType字段, false不使用，true使用
-        :type IsFilterExcluster: bool
-        :param ExclusterType: 实例所属独享集群类型。取值范围：1-非独享集群，2-独享集群， 0-全部
-        :type ExclusterType: int
-        :param ExclusterIds: 按独享集群ID过滤实例，独享集群ID形如dbdc-4ih6uct9
-        :type ExclusterIds: list of str
-        :param TagKeys: 按标签key查询
-        :type TagKeys: list of str
-        :param FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
-        :type FilterInstanceType: str
-        :param Status: 按照实例状态进行筛选
-        :type Status: list of int
-        :param ExcludeStatus: 排除实例状态
-        :type ExcludeStatus: list of int
-        """
+        :param InstanceIds: 按照一个或者多个实例 ID 查询。实例 ID 形如：tdsql-ow728lmc。每次请求的实例的上限为100。\n        :type InstanceIds: list of str\n        :param SearchName: 搜索的字段名，当前支持的值有：instancename、vip、all。传 instancename 表示按实例名进行搜索；传 vip 表示按内网IP进行搜索；传 all 将会按实例ID、实例名和内网IP进行搜索。\n        :type SearchName: str\n        :param SearchKey: 搜索的关键字，支持模糊搜索。多个关键字使用换行符（'\n'）分割。\n        :type SearchKey: str\n        :param ProjectIds: 按项目 ID 查询\n        :type ProjectIds: list of int\n        :param IsFilterVpc: 是否根据 VPC 网络来搜索\n        :type IsFilterVpc: bool\n        :param VpcId: 私有网络 ID， IsFilterVpc 为 1 时有效\n        :type VpcId: str\n        :param SubnetId: 私有网络的子网 ID， IsFilterVpc 为 1 时有效\n        :type SubnetId: str\n        :param OrderBy: 排序字段， projectId， createtime， instancename 三者之一\n        :type OrderBy: str\n        :param OrderByType: 排序类型， desc 或者 asc\n        :type OrderByType: str\n        :param Offset: 偏移量，默认为 0\n        :type Offset: int\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param OriginSerialIds: 按 OriginSerialId 查询\n        :type OriginSerialIds: list of str\n        :param IsFilterExcluster: 标识是否使用ExclusterType字段, false不使用，true使用\n        :type IsFilterExcluster: bool\n        :param ExclusterType: 实例所属独享集群类型。取值范围：1-非独享集群，2-独享集群， 0-全部\n        :type ExclusterType: int\n        :param ExclusterIds: 按独享集群ID过滤实例，独享集群ID形如dbdc-4ih6uct9\n        :type ExclusterIds: list of str\n        :param TagKeys: 按标签key查询\n        :type TagKeys: list of str\n        :param FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔\n        :type FilterInstanceType: str\n        :param Status: 按照实例状态进行筛选\n        :type Status: list of int\n        :param ExcludeStatus: 排除实例状态\n        :type ExcludeStatus: list of int\n        """
         self.InstanceIds = None
         self.SearchName = None
         self.SearchKey = None
@@ -1559,13 +1143,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的实例数量
-        :type TotalCount: int
-        :param Instances: 实例详细信息列表
-        :type Instances: list of DBInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的实例数量\n        :type TotalCount: int\n        :param Instances: 实例详细信息列表\n        :type Instances: list of DBInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Instances = None
         self.RequestId = None
@@ -1589,11 +1167,7 @@ class DescribeDBLogFilesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Type: 请求日志类型，取值只能为1、2、3或者4。1-binlog，2-冷备，3-errlog，4-slowlog。
-        :type Type: int
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Type: 请求日志类型，取值只能为1、2、3或者4。1-binlog，2-冷备，3-errlog，4-slowlog。\n        :type Type: int\n        """
         self.InstanceId = None
         self.Type = None
 
@@ -1617,21 +1191,7 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Type: 请求日志类型，取值只能为1、2、3或者4。1-binlog，2-冷备，3-errlog，4-slowlog。
-        :type Type: int
-        :param Total: 请求日志总数
-        :type Total: int
-        :param Files: 包含uri、length、mtime（修改时间）等信息
-        :type Files: list of LogFileInfo
-        :param VpcPrefix: 如果是VPC网络的实例，做用本前缀加上URI为下载地址
-        :type VpcPrefix: str
-        :param NormalPrefix: 如果是普通网络的实例，做用本前缀加上URI为下载地址
-        :type NormalPrefix: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Type: 请求日志类型，取值只能为1、2、3或者4。1-binlog，2-冷备，3-errlog，4-slowlog。\n        :type Type: int\n        :param Total: 请求日志总数\n        :type Total: int\n        :param Files: 包含uri、length、mtime（修改时间）等信息\n        :type Files: list of LogFileInfo\n        :param VpcPrefix: 如果是VPC网络的实例，做用本前缀加上URI为下载地址\n        :type VpcPrefix: str\n        :param NormalPrefix: 如果是普通网络的实例，做用本前缀加上URI为下载地址\n        :type NormalPrefix: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Type = None
         self.Total = None
@@ -1663,9 +1223,7 @@ class DescribeDBParametersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1687,13 +1245,7 @@ class DescribeDBParametersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Params: 请求DB的当前参数值
-        :type Params: list of ParamDesc
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Params: 请求DB的当前参数值\n        :type Params: list of ParamDesc\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Params = None
         self.RequestId = None
@@ -1717,15 +1269,7 @@ class DescribeDBPerformanceDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param StartTime: 开始日期，格式yyyy-mm-dd
-        :type StartTime: str
-        :param EndTime: 结束日期，格式yyyy-mm-dd
-        :type EndTime: str
-        :param MetricName: 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay
-        :type MetricName: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param StartTime: 开始日期，格式yyyy-mm-dd\n        :type StartTime: str\n        :param EndTime: 结束日期，格式yyyy-mm-dd\n        :type EndTime: str\n        :param MetricName: 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1753,17 +1297,9 @@ class DescribeDBPerformanceDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Master: 主节点性能监控数据
-        :type Master: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
-        :param Slave1: 备机1性能监控数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
-        :param Slave2: 备机2性能监控数据，如果实例是一主一从，则没有该字段
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Master: 主节点性能监控数据\n        :type Master: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`\n        :param Slave1: 备机1性能监控数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`\n        :param Slave2: 备机2性能监控数据，如果实例是一主一从，则没有该字段
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.PerformanceMonitorSet`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Master = None
         self.Slave1 = None
         self.Slave2 = None
@@ -1790,15 +1326,7 @@ class DescribeDBPerformanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param StartTime: 开始日期，格式yyyy-mm-dd
-        :type StartTime: str
-        :param EndTime: 结束日期，格式yyyy-mm-dd
-        :type EndTime: str
-        :param MetricName: 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay
-        :type MetricName: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param StartTime: 开始日期，格式yyyy-mm-dd\n        :type StartTime: str\n        :param EndTime: 结束日期，格式yyyy-mm-dd\n        :type EndTime: str\n        :param MetricName: 拉取的指标名，支持的值为：long_query,select_total,update_total,insert_total,delete_total,mem_hit_rate,disk_iops,conn_active,is_master_switched,slave_delay\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1826,29 +1354,7 @@ class DescribeDBPerformanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LongQuery: 慢查询数
-        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SelectTotal: 查询操作数SELECT
-        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param UpdateTotal: 更新操作数UPDATE
-        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param InsertTotal: 插入操作数INSERT
-        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param DeleteTotal: 删除操作数DELETE
-        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param MemHitRate: 缓存命中率
-        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param DiskIops: 磁盘每秒IO次数
-        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param ConnActive: 活跃连接数
-        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param IsMasterSwitched: 是否发生主备切换，1为发生，0否
-        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SlaveDelay: 主备延迟
-        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param LongQuery: 慢查询数\n        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SelectTotal: 查询操作数SELECT\n        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param UpdateTotal: 更新操作数UPDATE\n        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param InsertTotal: 插入操作数INSERT\n        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DeleteTotal: 删除操作数DELETE\n        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemHitRate: 缓存命中率\n        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DiskIops: 磁盘每秒IO次数\n        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param ConnActive: 活跃连接数\n        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param IsMasterSwitched: 是否发生主备切换，1为发生，0否\n        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SlaveDelay: 主备延迟\n        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LongQuery = None
         self.SelectTotal = None
         self.UpdateTotal = None
@@ -1903,15 +1409,7 @@ class DescribeDBResourceUsageDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param StartTime: 开始日期，格式yyyy-mm-dd
-        :type StartTime: str
-        :param EndTime: 结束日期，格式yyyy-mm-dd
-        :type EndTime: str
-        :param MetricName: 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate
-        :type MetricName: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param StartTime: 开始日期，格式yyyy-mm-dd\n        :type StartTime: str\n        :param EndTime: 结束日期，格式yyyy-mm-dd\n        :type EndTime: str\n        :param MetricName: 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1939,17 +1437,9 @@ class DescribeDBResourceUsageDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Master: 主节点资源使用情况监控数据
-        :type Master: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
-        :param Slave1: 备机1资源使用情况监控数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
-        :param Slave2: 备机2资源使用情况监控数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Master: 主节点资源使用情况监控数据\n        :type Master: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`\n        :param Slave1: 备机1资源使用情况监控数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Slave1: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`\n        :param Slave2: 备机2资源使用情况监控数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Slave2: :class:`tencentcloud.mariadb.v20170312.models.ResourceUsageMonitorSet`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Master = None
         self.Slave1 = None
         self.Slave2 = None
@@ -1976,15 +1466,7 @@ class DescribeDBResourceUsageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param StartTime: 开始日期，格式yyyy-mm-dd
-        :type StartTime: str
-        :param EndTime: 结束日期，格式yyyy-mm-dd
-        :type EndTime: str
-        :param MetricName: 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate
-        :type MetricName: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param StartTime: 开始日期，格式yyyy-mm-dd\n        :type StartTime: str\n        :param EndTime: 结束日期，格式yyyy-mm-dd\n        :type EndTime: str\n        :param MetricName: 拉取的指标名称，支持的值为：data_disk_available,binlog_disk_available,mem_available,cpu_usage_rate\n        :type MetricName: str\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -2012,17 +1494,7 @@ class DescribeDBResourceUsageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BinlogDiskAvailable: binlog日志磁盘可用空间,单位GB
-        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param DataDiskAvailable: 磁盘可用空间,单位GB
-        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param CpuUsageRate: CPU利用率
-        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param MemAvailable: 内存可用空间,单位GB
-        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param BinlogDiskAvailable: binlog日志磁盘可用空间,单位GB\n        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DataDiskAvailable: 磁盘可用空间,单位GB\n        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param CpuUsageRate: CPU利用率\n        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemAvailable: 内存可用空间,单位GB\n        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BinlogDiskAvailable = None
         self.DataDiskAvailable = None
         self.CpuUsageRate = None
@@ -2053,11 +1525,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 数据库引擎名称，本接口取值：mariadb。
-        :type Product: str
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        """
+        :param Product: 数据库引擎名称，本接口取值：mariadb。\n        :type Product: str\n        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        """
         self.Product = None
         self.InstanceId = None
 
@@ -2081,17 +1549,9 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Groups: 安全组详情。
-        :type Groups: list of SecurityGroup
-        :param VIP: 实例VIP。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VIP: str
-        :param VPort: 实例端口。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VPort: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Groups: 安全组详情。\n        :type Groups: list of SecurityGroup\n        :param VIP: 实例VIP。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VIP: str\n        :param VPort: 实例端口。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VPort: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Groups = None
         self.VIP = None
         self.VPort = None
@@ -2117,25 +1577,7 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Offset: 从结果的第几条数据开始返回
-        :type Offset: int
-        :param Limit: 返回的结果条数
-        :type Limit: int
-        :param StartTime: 查询的起始时间，形如2016-07-23 14:55:20
-        :type StartTime: str
-        :param EndTime: 查询的结束时间，形如2016-08-22 14:55:20
-        :type EndTime: str
-        :param Db: 要查询的具体数据库名称
-        :type Db: str
-        :param OrderBy: 排序指标，取值为query_time_sum或者query_count
-        :type OrderBy: str
-        :param OrderByType: 排序类型，desc或者asc
-        :type OrderByType: str
-        :param Slave: 是否查询从机的慢查询，0-主机; 1-从机
-        :type Slave: int
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Offset: 从结果的第几条数据开始返回\n        :type Offset: int\n        :param Limit: 返回的结果条数\n        :type Limit: int\n        :param StartTime: 查询的起始时间，形如2016-07-23 14:55:20\n        :type StartTime: str\n        :param EndTime: 查询的结束时间，形如2016-08-22 14:55:20\n        :type EndTime: str\n        :param Db: 要查询的具体数据库名称\n        :type Db: str\n        :param OrderBy: 排序指标，取值为query_time_sum或者query_count\n        :type OrderBy: str\n        :param OrderByType: 排序类型，desc或者asc\n        :type OrderByType: str\n        :param Slave: 是否查询从机的慢查询，0-主机; 1-从机\n        :type Slave: int\n        """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
@@ -2173,19 +1615,7 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 慢查询日志数据
-        :type Data: list of SlowLogData
-        :param LockTimeSum: 所有语句锁时间总和
-        :type LockTimeSum: float
-        :param QueryCount: 所有语句查询总次数
-        :type QueryCount: int
-        :param Total: 总记录数
-        :type Total: int
-        :param QueryTimeSum: 所有语句查询时间总和
-        :type QueryTimeSum: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 慢查询日志数据\n        :type Data: list of SlowLogData\n        :param LockTimeSum: 所有语句锁时间总和\n        :type LockTimeSum: float\n        :param QueryCount: 所有语句查询总次数\n        :type QueryCount: int\n        :param Total: 总记录数\n        :type Total: int\n        :param QueryTimeSum: 所有语句查询时间总和\n        :type QueryTimeSum: float\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.LockTimeSum = None
         self.QueryCount = None
@@ -2215,9 +1645,7 @@ class DescribeDatabasesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：dcdbt-ow7t8lmc。
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例 ID，形如：dcdbt-ow7t8lmc。\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2239,13 +1667,7 @@ class DescribeDatabasesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Databases: 该实例上的数据库列表。
-        :type Databases: list of Database
-        :param InstanceId: 透传入参。
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Databases: 该实例上的数据库列表。\n        :type Databases: list of Database\n        :param InstanceId: 透传入参。\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Databases = None
         self.InstanceId = None
         self.RequestId = None
@@ -2269,9 +1691,7 @@ class DescribeDcnDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2293,11 +1713,7 @@ class DescribeDcnDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DcnDetails: DCN同步详情
-        :type DcnDetails: list of DcnDetailItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param DcnDetails: DCN同步详情\n        :type DcnDetails: list of DcnDetailItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DcnDetails = None
         self.RequestId = None
 
@@ -2319,9 +1735,7 @@ class DescribeFlowRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步请求接口返回的任务流程号。
-        :type FlowId: int
-        """
+        :param FlowId: 异步请求接口返回的任务流程号。\n        :type FlowId: int\n        """
         self.FlowId = None
 
 
@@ -2343,11 +1757,7 @@ class DescribeFlowResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 流程状态，0：成功，1：失败，2：运行中
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 流程状态，0：成功，1：失败，2：运行中\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -2364,13 +1774,7 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID，形如tdsql-6ltok4u9
-        :type InstanceId: str
-        :param Limit: 一次最多返回多少条数据。默认为无穷大，返回符合要求的所有数据
-        :type Limit: int
-        :param Offset: 返回数据的偏移量，默认为0
-        :type Offset: int
-        """
+        :param InstanceId: 实例ID，形如tdsql-6ltok4u9\n        :type InstanceId: str\n        :param Limit: 一次最多返回多少条数据。默认为无穷大，返回符合要求的所有数据\n        :type Limit: int\n        :param Offset: 返回数据的偏移量，默认为0\n        :type Offset: int\n        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -2396,13 +1800,7 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 节点总个数
-        :type TotalCount: int
-        :param NodesInfo: 节点信息
-        :type NodesInfo: list of NodeInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 节点总个数\n        :type TotalCount: int\n        :param NodesInfo: 节点信息\n        :type NodesInfo: list of NodeInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.NodesInfo = None
         self.RequestId = None
@@ -2426,9 +1824,7 @@ class DescribeLogFileRetentionPeriodRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2450,13 +1846,7 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Days: 日志备份天数
-        :type Days: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Days: 日志备份天数\n        :type Days: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Days = None
         self.RequestId = None
@@ -2475,9 +1865,7 @@ class DescribeOrdersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealNames: 待查询的长订单号列表，创建实例、续费实例、扩容实例接口返回。
-        :type DealNames: list of str
-        """
+        :param DealNames: 待查询的长订单号列表，创建实例、续费实例、扩容实例接口返回。\n        :type DealNames: list of str\n        """
         self.DealNames = None
 
 
@@ -2499,13 +1887,7 @@ class DescribeOrdersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 返回的订单数量。
-        :type TotalCount: list of int
-        :param Deals: 订单信息列表。
-        :type Deals: list of Deal
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 返回的订单数量。\n        :type TotalCount: list of int\n        :param Deals: 订单信息列表。\n        :type Deals: list of Deal\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Deals = None
         self.RequestId = None
@@ -2529,24 +1911,10 @@ class DescribePriceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 欲新购实例的可用区ID。
-        :type Zone: str
-        :param NodeCount: 实例节点个数，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得。
-        :type NodeCount: int
-        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得。
-        :type Memory: int
-        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
-        :type Storage: int
-        :param Period: 欲购买的时长，单位：月。
-        :type Period: int
-        :param Count: 欲购买的数量，默认查询购买1个实例的价格。
-        :type Count: int
-        :param Paymode: 付费类型。postpaid：按量付费   prepaid：预付费
-        :type Paymode: str
-        """
+        :param Zone: 欲新购实例的可用区ID。\n        :type Zone: str\n        :param NodeCount: 实例节点个数，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得。\n        :type NodeCount: int\n        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得。\n        :type Memory: int\n        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。\n        :type Storage: int\n        :param Period: 欲购买的时长，单位：月。\n        :type Period: int\n        :param Count: 欲购买的数量，默认查询购买1个实例的价格。\n        :type Count: int\n        :param Paymode: 付费类型。postpaid：按量付费   prepaid：预付费\n        :type Paymode: str\n        """
         self.Zone = None
         self.NodeCount = None
         self.Memory = None
@@ -2580,13 +1948,7 @@ class DescribePriceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: 原价，单位：分
-        :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
-        :type Price: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param OriginalPrice: 原价，单位：分\n        :type OriginalPrice: int\n        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。\n        :type Price: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2605,11 +1967,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 数据库引擎名称，本接口取值：mariadb。
-        :type Product: str
-        :param ProjectId: 项目ID。
-        :type ProjectId: int
-        """
+        :param Product: 数据库引擎名称，本接口取值：mariadb。\n        :type Product: str\n        :param ProjectId: 项目ID。\n        :type ProjectId: int\n        """
         self.Product = None
         self.ProjectId = None
 
@@ -2633,11 +1991,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Groups: 安全组详情。
-        :type Groups: list of SecurityGroup
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Groups: 安全组详情。\n        :type Groups: list of SecurityGroup\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Groups = None
         self.RequestId = None
 
@@ -2659,11 +2013,7 @@ class DescribeRenewalPriceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待续费的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Period: 续费时长，单位：月。不传则默认为1个月。
-        :type Period: int
-        """
+        :param InstanceId: 待续费的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Period: 续费时长，单位：月。不传则默认为1个月。\n        :type Period: int\n        """
         self.InstanceId = None
         self.Period = None
 
@@ -2687,13 +2037,7 @@ class DescribeRenewalPriceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: 原价，单位：分
-        :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
-        :type Price: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param OriginalPrice: 原价，单位：分\n        :type OriginalPrice: int\n        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。\n        :type Price: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -2718,11 +2062,7 @@ class DescribeSaleInfoResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RegionList: 可售卖地域信息列表
-        :type RegionList: list of RegionInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RegionList: 可售卖地域信息列表\n        :type RegionList: list of RegionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionList = None
         self.RequestId = None
 
@@ -2744,13 +2084,7 @@ class DescribeSqlLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Offset: SQL日志偏移。
-        :type Offset: int
-        :param Limit: 拉取数量（0-10000，为0时拉取总数信息）。
-        :type Limit: int
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Offset: SQL日志偏移。\n        :type Offset: int\n        :param Limit: 拉取数量（0-10000，为0时拉取总数信息）。\n        :type Limit: int\n        """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
@@ -2776,21 +2110,7 @@ class DescribeSqlLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 当前消息队列中的sql日志条目数。
-        :type TotalCount: int
-        :param StartOffset: 消息队列中的sql日志起始偏移。
-        :type StartOffset: int
-        :param EndOffset: 消息队列中的sql日志结束偏移。
-        :type EndOffset: int
-        :param Offset: 返回的第一条sql日志的偏移。
-        :type Offset: int
-        :param Count: 返回的sql日志数量。
-        :type Count: int
-        :param SqlItems: Sql日志列表。
-        :type SqlItems: list of SqlLogItem
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 当前消息队列中的sql日志条目数。\n        :type TotalCount: int\n        :param StartOffset: 消息队列中的sql日志起始偏移。\n        :type StartOffset: int\n        :param EndOffset: 消息队列中的sql日志结束偏移。\n        :type EndOffset: int\n        :param Offset: 返回的第一条sql日志的偏移。\n        :type Offset: int\n        :param Count: 返回的sql日志数量。\n        :type Count: int\n        :param SqlItems: Sql日志列表。\n        :type SqlItems: list of SqlLogItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.StartOffset = None
         self.EndOffset = None
@@ -2822,15 +2142,9 @@ class DescribeUpgradePriceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得。
-        :type Memory: int
-        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
-        :type Storage: int
-        """
+        :param InstanceId: 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得。\n        :type Memory: int\n        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。\n        :type Storage: int\n        """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
@@ -2856,15 +2170,7 @@ class DescribeUpgradePriceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param OriginalPrice: 原价，单位：分
-        :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
-        :type Price: int
-        :param Formula: 变配明细计算公式
-        :type Formula: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param OriginalPrice: 原价，单位：分\n        :type OriginalPrice: int\n        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。\n        :type Price: int\n        :param Formula: 变配明细计算公式\n        :type Formula: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.Formula = None
@@ -2885,9 +2191,7 @@ class DestroyHourDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，格式如：tdsql-avw0207d，与云数据库控制台页面中显示的实例 ID 相同。
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例 ID，格式如：tdsql-avw0207d，与云数据库控制台页面中显示的实例 ID 相同。\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2909,13 +2213,7 @@ class DestroyHourDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
-        :type FlowId: int
-        :param InstanceId: 实例 ID，与入参InstanceId一致。
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。\n        :type FlowId: int\n        :param InstanceId: 实例 ID，与入参InstanceId一致。\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.InstanceId = None
         self.RequestId = None
@@ -2934,13 +2232,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 数据库引擎名称，本接口取值：mariadb。
-        :type Product: str
-        :param SecurityGroupId: 安全组Id。
-        :type SecurityGroupId: str
-        :param InstanceIds: 实例ID列表，一个或者多个实例Id组成的数组。
-        :type InstanceIds: list of str
-        """
+        :param Product: 数据库引擎名称，本接口取值：mariadb。\n        :type Product: str\n        :param SecurityGroupId: 安全组Id。\n        :type SecurityGroupId: str\n        :param InstanceIds: 实例ID列表，一个或者多个实例Id组成的数组。\n        :type InstanceIds: list of str\n        """
         self.Product = None
         self.SecurityGroupId = None
         self.InstanceIds = None
@@ -2966,9 +2258,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2983,9 +2273,7 @@ class FlushBinlogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -3007,9 +2295,7 @@ class FlushBinlogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3024,13 +2310,7 @@ class FunctionPrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param Database: 数据库名
-        :type Database: str
-        :param FunctionName: 数据库函数名
-        :type FunctionName: str
-        :param Privileges: 权限信息
-        :type Privileges: list of str
-        """
+        :param Database: 数据库名\n        :type Database: str\n        :param FunctionName: 数据库函数名\n        :type FunctionName: str\n        :param Privileges: 权限信息\n        :type Privileges: list of str\n        """
         self.Database = None
         self.FunctionName = None
         self.Privileges = None
@@ -3056,27 +2336,11 @@ class GrantAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param UserName: 登录用户名。
-        :type UserName: str
-        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。
-        :type Host: str
-        :param DbName: 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数。当DbName不为\*时，需要传入参 Type。
-        :type DbName: str
-        :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param UserName: 登录用户名。\n        :type UserName: str\n        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。\n        :type Host: str\n        :param DbName: 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数。当DbName不为\*时，需要传入参 Type。\n        :type DbName: str\n        :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
 库权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER 
 表/视图权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER 
 存储过程/函数权限： ALTER ROUTINE，EXECUTE 
-字段权限： INSERT，REFERENCES，SELECT，UPDATE
-        :type Privileges: list of str
-        :param Type: 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
-        :type Type: str
-        :param Object: 具体的 Type 的名称，例如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空
-        :type Object: str
-        :param ColName: 当 Type=table 时，ColName 为 \* 表示对表授权，如果为具体字段名，表示对字段授权
-        :type ColName: str
-        """
+字段权限： INSERT，REFERENCES，SELECT，UPDATE\n        :type Privileges: list of str\n        :param Type: 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数\n        :type Type: str\n        :param Object: 具体的 Type 的名称，例如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空\n        :type Object: str\n        :param ColName: 当 Type=table 时，ColName 为 \* 表示对表授权，如果为具体字段名，表示对字段授权\n        :type ColName: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -3112,9 +2376,7 @@ class GrantAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3129,11 +2391,7 @@ class InitDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 待初始化的实例ID列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceIds: list of str
-        :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
-        :type Params: list of DBParamValue
-        """
+        :param InstanceIds: 待初始化的实例ID列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceIds: list of str\n        :param Params: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。\n        :type Params: list of DBParamValue\n        """
         self.InstanceIds = None
         self.Params = None
 
@@ -3162,13 +2420,7 @@ class InitDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
-        :type FlowId: int
-        :param InstanceIds: 透传入参。
-        :type InstanceIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。\n        :type FlowId: int\n        :param InstanceIds: 透传入参。\n        :type InstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -3187,11 +2439,7 @@ class InstanceSpec(AbstractModel):
 
     def __init__(self):
         """
-        :param Machine: 设备型号
-        :type Machine: str
-        :param SpecInfos: 该机型对应的可售卖规格列表
-        :type SpecInfos: list of SpecConfigInfo
-        """
+        :param Machine: 设备型号\n        :type Machine: str\n        :param SpecInfos: 该机型对应的可售卖规格列表\n        :type SpecInfos: list of SpecConfigInfo\n        """
         self.Machine = None
         self.SpecInfos = None
 
@@ -3220,11 +2468,7 @@ class KillSessionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param SessionId: 会话ID列表
-        :type SessionId: list of int
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param SessionId: 会话ID列表\n        :type SessionId: list of int\n        """
         self.InstanceId = None
         self.SessionId = None
 
@@ -3248,11 +2492,7 @@ class KillSessionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID
-        :type TaskId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3269,15 +2509,7 @@ class LogFileInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Mtime: Log最后修改时间
-        :type Mtime: int
-        :param Length: 文件长度
-        :type Length: int
-        :param Uri: 下载Log时用到的统一资源标识符
-        :type Uri: str
-        :param FileName: 文件名
-        :type FileName: str
-        """
+        :param Mtime: Log最后修改时间\n        :type Mtime: int\n        :param Length: 文件长度\n        :type Length: int\n        :param Uri: 下载Log时用到的统一资源标识符\n        :type Uri: str\n        :param FileName: 文件名\n        :type FileName: str\n        """
         self.Mtime = None
         self.Length = None
         self.Uri = None
@@ -3305,15 +2537,7 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param UserName: 登录用户名。
-        :type UserName: str
-        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。
-        :type Host: str
-        :param Description: 新的账号备注，长度 0~256。
-        :type Description: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param UserName: 登录用户名。\n        :type UserName: str\n        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。\n        :type Host: str\n        :param Description: 新的账号备注，长度 0~256。\n        :type Description: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -3341,9 +2565,7 @@ class ModifyAccountDescriptionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3358,32 +2580,14 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
-        :type InstanceId: str
-        :param Accounts: 数据库的账号，包括用户名和域名。
-        :type Accounts: list of Account
-        :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
-注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。
-        :type GlobalPrivileges: list of str
-        :param DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
-注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-        :type DatabasePrivileges: list of DatabasePrivilege
-        :param TablePrivileges: 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
-注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-        :type TablePrivileges: list of TablePrivilege
-        :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
-注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-        :type ColumnPrivileges: list of ColumnPrivilege
-        :param ViewPrivileges: 数据库视图的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
-注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-        :type ViewPrivileges: list of ViewPrivileges
-        :param FunctionPrivileges: 数据库函数的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
-注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-        :type FunctionPrivileges: list of FunctionPrivilege
-        :param ProcedurePrivileges: 数据库存储过程的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
-注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-        :type ProcedurePrivileges: list of ProcedurePrivilege
-        """
+        :param InstanceId: 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。\n        :type InstanceId: str\n        :param Accounts: 数据库的账号，包括用户名和域名。\n        :type Accounts: list of Account\n        :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。\n        :type GlobalPrivileges: list of str\n        :param DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。\n        :type DatabasePrivileges: list of DatabasePrivilege\n        :param TablePrivileges: 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。\n        :type TablePrivileges: list of TablePrivilege\n        :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。\n        :type ColumnPrivileges: list of ColumnPrivilege\n        :param ViewPrivileges: 数据库视图的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。\n        :type ViewPrivileges: list of ViewPrivileges\n        :param FunctionPrivileges: 数据库函数的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。\n        :type FunctionPrivileges: list of FunctionPrivilege\n        :param ProcedurePrivileges: 数据库存储过程的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。\n        :type ProcedurePrivileges: list of ProcedurePrivilege\n        """
         self.InstanceId = None
         self.Accounts = None
         self.GlobalPrivileges = None
@@ -3456,11 +2660,7 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3477,13 +2677,7 @@ class ModifyBackupTimeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00
-        :type StartBackupTime: str
-        :param EndBackupTime: 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59
-        :type EndBackupTime: str
-        """
+        :param InstanceId: 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param StartBackupTime: 每天备份执行的区间的开始时间，格式 mm:ss，形如 22:00\n        :type StartBackupTime: str\n        :param EndBackupTime: 每天备份执行的区间的结束时间，格式 mm:ss，形如 23:59\n        :type EndBackupTime: str\n        """
         self.InstanceId = None
         self.StartBackupTime = None
         self.EndBackupTime = None
@@ -3509,11 +2703,7 @@ class ModifyBackupTimeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 设置的状态，0 表示成功
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 设置的状态，0 表示成功\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -3530,11 +2720,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待修改的实例 ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param InstanceName: 新的实例名称。允许的字符为字母、数字、下划线、连字符和中文。
-        :type InstanceName: str
-        """
+        :param InstanceId: 待修改的实例 ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param InstanceName: 新的实例名称。允许的字符为字母、数字、下划线、连字符和中文。\n        :type InstanceName: str\n        """
         self.InstanceId = None
         self.InstanceName = None
 
@@ -3558,11 +2744,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -3579,13 +2761,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 数据库引擎名称，本接口取值：mariadb。
-        :type Product: str
-        :param InstanceId: 实例ID。
-        :type InstanceId: str
-        :param SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组
-        :type SecurityGroupIds: list of str
-        """
+        :param Product: 数据库引擎名称，本接口取值：mariadb。\n        :type Product: str\n        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组\n        :type SecurityGroupIds: list of str\n        """
         self.Product = None
         self.InstanceId = None
         self.SecurityGroupIds = None
@@ -3611,9 +2787,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3628,11 +2802,7 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 待修改的实例ID列表。实例 ID 形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceIds: list of str
-        :param ProjectId: 要分配的项目 ID，可以通过 DescribeProjects 查询项目列表接口获取。
-        :type ProjectId: int
-        """
+        :param InstanceIds: 待修改的实例ID列表。实例 ID 形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceIds: list of str\n        :param ProjectId: 要分配的项目 ID，可以通过 DescribeProjects 查询项目列表接口获取。\n        :type ProjectId: int\n        """
         self.InstanceIds = None
         self.ProjectId = None
 
@@ -3656,9 +2826,7 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3673,11 +2841,7 @@ class ModifyDBParametersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Params: 参数列表，每一个元素是Param和Value的组合
-        :type Params: list of DBParamValue
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Params: 参数列表，每一个元素是Param和Value的组合\n        :type Params: list of DBParamValue\n        """
         self.InstanceId = None
         self.Params = None
 
@@ -3706,13 +2870,7 @@ class ModifyDBParametersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Result: 参数修改结果
-        :type Result: list of ParamModifyResult
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Result: 参数修改结果\n        :type Result: list of ParamModifyResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Result = None
         self.RequestId = None
@@ -3736,11 +2894,7 @@ class ModifyLogFileRetentionPeriodRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param Days: 保存的天数,不能超过30
-        :type Days: int
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param Days: 保存的天数,不能超过30\n        :type Days: int\n        """
         self.InstanceId = None
         self.Days = None
 
@@ -3764,11 +2918,7 @@ class ModifyLogFileRetentionPeriodResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.RequestId = None
 
@@ -3785,13 +2935,7 @@ class MonitorData(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始时间，形如 2018-03-24 23:59:59
-        :type StartTime: str
-        :param EndTime: 结束时间，形如 2018-03-24 23:59:59
-        :type EndTime: str
-        :param Data: 监控数据
-        :type Data: list of float
-        """
+        :param StartTime: 起始时间，形如 2018-03-24 23:59:59\n        :type StartTime: str\n        :param EndTime: 结束时间，形如 2018-03-24 23:59:59\n        :type EndTime: str\n        :param Data: 监控数据\n        :type Data: list of float\n        """
         self.StartTime = None
         self.EndTime = None
         self.Data = None
@@ -3817,11 +2961,7 @@ class NodeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeId: DB节点ID
-        :type NodeId: str
-        :param Role: DB节点角色，取值为master或者slave
-        :type Role: str
-        """
+        :param NodeId: DB节点ID\n        :type NodeId: str\n        :param Role: DB节点角色，取值为master或者slave\n        :type Role: str\n        """
         self.NodeId = None
         self.Role = None
 
@@ -3845,11 +2985,7 @@ class OpenDBExtranetAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Ipv6Flag: 是否IPv6，默认0
-        :type Ipv6Flag: int
-        """
+        :param InstanceId: 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Ipv6Flag: 是否IPv6，默认0\n        :type Ipv6Flag: int\n        """
         self.InstanceId = None
         self.Ipv6Flag = None
 
@@ -3873,11 +3009,7 @@ class OpenDBExtranetAccessResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务ID，可通过 DescribeFlow 查询任务状态。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -3894,16 +3026,8 @@ class ParamConstraint(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 约束类型,如枚举enum，区间section
-        :type Type: str
-        :param Enum: 约束类型为enum时的可选值列表
-        :type Enum: str
-        :param Range: 约束类型为section时的范围
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`
-        :param String: 约束类型为string时的可选值列表
-        :type String: str
-        """
+        :param Type: 约束类型,如枚举enum，区间section\n        :type Type: str\n        :param Enum: 约束类型为enum时的可选值列表\n        :type Enum: str\n        :param Range: 约束类型为section时的范围
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Range: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`\n        :param String: 约束类型为string时的可选值列表\n        :type String: str\n        """
         self.Type = None
         self.Enum = None
         self.Range = None
@@ -3933,20 +3057,8 @@ class ParamDesc(AbstractModel):
 
     def __init__(self):
         """
-        :param Param: 参数名字
-        :type Param: str
-        :param Value: 当前参数值
-        :type Value: str
-        :param SetValue: 设置过的值，参数生效后，该值和value一样。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SetValue: str
-        :param Default: 系统默认值
-        :type Default: str
-        :param Constraint: 参数限制
-        :type Constraint: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`
-        :param HaveSetValue: 是否有设置过值，false:没有设置过值，true:有设置过值。
-        :type HaveSetValue: bool
-        """
+        :param Param: 参数名字\n        :type Param: str\n        :param Value: 当前参数值\n        :type Value: str\n        :param SetValue: 设置过的值，参数生效后，该值和value一样。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SetValue: str\n        :param Default: 系统默认值\n        :type Default: str\n        :param Constraint: 参数限制\n        :type Constraint: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`\n        :param HaveSetValue: 是否有设置过值，false:没有设置过值，true:有设置过值。\n        :type HaveSetValue: bool\n        """
         self.Param = None
         self.Value = None
         self.SetValue = None
@@ -3980,11 +3092,7 @@ class ParamModifyResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Param: 修改参数名字
-        :type Param: str
-        :param Code: 参数修改结果。0表示修改成功；-1表示修改失败；-2表示该参数值非法
-        :type Code: int
-        """
+        :param Param: 修改参数名字\n        :type Param: str\n        :param Code: 参数修改结果。0表示修改成功；-1表示修改失败；-2表示该参数值非法\n        :type Code: int\n        """
         self.Param = None
         self.Code = None
 
@@ -4008,27 +3116,7 @@ class PerformanceMonitorSet(AbstractModel):
 
     def __init__(self):
         """
-        :param UpdateTotal: 更新操作数UPDATE
-        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param DiskIops: 磁盘每秒IO次数
-        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param ConnActive: 活跃连接数
-        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param MemHitRate: 缓存命中率
-        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SlaveDelay: 主备延迟
-        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param SelectTotal: 查询操作数SELECT
-        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param LongQuery: 慢查询数
-        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param DeleteTotal: 删除操作数DELETE
-        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param InsertTotal: 插入操作数INSERT
-        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param IsMasterSwitched: 是否发生主备切换，1为发生，0否
-        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        """
+        :param UpdateTotal: 更新操作数UPDATE\n        :type UpdateTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DiskIops: 磁盘每秒IO次数\n        :type DiskIops: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param ConnActive: 活跃连接数\n        :type ConnActive: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemHitRate: 缓存命中率\n        :type MemHitRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SlaveDelay: 主备延迟\n        :type SlaveDelay: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param SelectTotal: 查询操作数SELECT\n        :type SelectTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param LongQuery: 慢查询数\n        :type LongQuery: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DeleteTotal: 删除操作数DELETE\n        :type DeleteTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param InsertTotal: 插入操作数INSERT\n        :type InsertTotal: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param IsMasterSwitched: 是否发生主备切换，1为发生，0否\n        :type IsMasterSwitched: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        """
         self.UpdateTotal = None
         self.DiskIops = None
         self.ConnActive = None
@@ -4088,13 +3176,7 @@ class ProcedurePrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param Database: 数据库名
-        :type Database: str
-        :param Procedure: 数据库存储过程名
-        :type Procedure: str
-        :param Privileges: 权限信息
-        :type Privileges: list of str
-        """
+        :param Database: 数据库名\n        :type Database: str\n        :param Procedure: 数据库存储过程名\n        :type Procedure: str\n        :param Privileges: 权限信息\n        :type Privileges: list of str\n        """
         self.Database = None
         self.Procedure = None
         self.Privileges = None
@@ -4120,17 +3202,7 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: 地域英文ID
-        :type Region: str
-        :param RegionId: 地域数字ID
-        :type RegionId: int
-        :param RegionName: 地域中文名
-        :type RegionName: str
-        :param ZoneList: 可用区列表
-        :type ZoneList: list of ZonesInfo
-        :param AvailableChoice: 可选择的主可用区和从可用区
-        :type AvailableChoice: list of ZoneChooseInfo
-        """
+        :param Region: 地域英文ID\n        :type Region: str\n        :param RegionId: 地域数字ID\n        :type RegionId: int\n        :param RegionName: 地域中文名\n        :type RegionName: str\n        :param ZoneList: 可用区列表\n        :type ZoneList: list of ZonesInfo\n        :param AvailableChoice: 可选择的主可用区和从可用区\n        :type AvailableChoice: list of ZoneChooseInfo\n        """
         self.Region = None
         self.RegionId = None
         self.RegionName = None
@@ -4170,15 +3242,7 @@ class RenewDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待续费的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Period: 续费时长，单位：月。
-        :type Period: int
-        :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。
-        :type AutoVoucher: bool
-        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
-        :type VoucherIds: list of str
-        """
+        :param InstanceId: 待续费的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Period: 续费时长，单位：月。\n        :type Period: int\n        :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。\n        :type AutoVoucher: bool\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。\n        :type VoucherIds: list of str\n        """
         self.InstanceId = None
         self.Period = None
         self.AutoVoucher = None
@@ -4207,11 +3271,7 @@ class RenewDBInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param DealName: 长订单号。可以据此调用 DescribeOrders
- 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
-        :type DealName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+ 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。\n        :type DealName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealName = None
         self.RequestId = None
 
@@ -4228,15 +3288,7 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param UserName: 登录用户名。
-        :type UserName: str
-        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。
-        :type Host: str
-        :param Password: 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
-        :type Password: str
-        """
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param UserName: 登录用户名。\n        :type UserName: str\n        :param Host: 用户允许的访问 host，用户名+host唯一确定一个账号。\n        :type Host: str\n        :param Password: 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。\n        :type Password: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Host = None
@@ -4264,9 +3316,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4281,11 +3331,7 @@ class ResourceTag(AbstractModel):
 
     def __init__(self):
         """
-        :param TagKey: 标签键key
-        :type TagKey: str
-        :param TagValue: 标签值value
-        :type TagValue: str
-        """
+        :param TagKey: 标签键key\n        :type TagKey: str\n        :param TagValue: 标签值value\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -4309,15 +3355,7 @@ class ResourceUsageMonitorSet(AbstractModel):
 
     def __init__(self):
         """
-        :param BinlogDiskAvailable: binlog日志磁盘可用空间,单位GB
-        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param CpuUsageRate: CPU利用率
-        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param MemAvailable: 内存可用空间,单位GB
-        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        :param DataDiskAvailable: 磁盘可用空间,单位GB
-        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`
-        """
+        :param BinlogDiskAvailable: binlog日志磁盘可用空间,单位GB\n        :type BinlogDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param CpuUsageRate: CPU利用率\n        :type CpuUsageRate: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param MemAvailable: 内存可用空间,单位GB\n        :type MemAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        :param DataDiskAvailable: 磁盘可用空间,单位GB\n        :type DataDiskAvailable: :class:`tencentcloud.mariadb.v20170312.models.MonitorData`\n        """
         self.BinlogDiskAvailable = None
         self.CpuUsageRate = None
         self.MemAvailable = None
@@ -4353,11 +3391,7 @@ class RestartDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 实例ID的数组
-        :type InstanceIds: list of str
-        :param RestartTime: 重启时间
-        :type RestartTime: str
-        """
+        :param InstanceIds: 实例ID的数组\n        :type InstanceIds: list of str\n        :param RestartTime: 重启时间\n        :type RestartTime: str\n        """
         self.InstanceIds = None
         self.RestartTime = None
 
@@ -4381,11 +3415,7 @@ class RestartDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowId: 异步任务ID
-        :type FlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowId: 异步任务ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -4402,21 +3432,7 @@ class SecurityGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID
-        :type ProjectId: int
-        :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
-        :type CreateTime: str
-        :param SecurityGroupId: 安全组ID
-        :type SecurityGroupId: str
-        :param SecurityGroupName: 安全组名称
-        :type SecurityGroupName: str
-        :param SecurityGroupRemark: 安全组备注
-        :type SecurityGroupRemark: str
-        :param Inbound: 入站规则
-        :type Inbound: list of SecurityGroupBound
-        :param Outbound: 出站规则
-        :type Outbound: list of SecurityGroupBound
-        """
+        :param ProjectId: 项目ID\n        :type ProjectId: int\n        :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss\n        :type CreateTime: str\n        :param SecurityGroupId: 安全组ID\n        :type SecurityGroupId: str\n        :param SecurityGroupName: 安全组名称\n        :type SecurityGroupName: str\n        :param SecurityGroupRemark: 安全组备注\n        :type SecurityGroupRemark: str\n        :param Inbound: 入站规则\n        :type Inbound: list of SecurityGroupBound\n        :param Outbound: 出站规则\n        :type Outbound: list of SecurityGroupBound\n        """
         self.ProjectId = None
         self.CreateTime = None
         self.SecurityGroupId = None
@@ -4460,15 +3476,7 @@ class SecurityGroupBound(AbstractModel):
 
     def __init__(self):
         """
-        :param Action: 策略，ACCEPT 或者 DROP
-        :type Action: str
-        :param CidrIp: 来源 IP 或 IP 段，例如192.168.0.0/16
-        :type CidrIp: str
-        :param PortRange: 端口
-        :type PortRange: str
-        :param IpProtocol: 网络协议，支持 UDP、TCP 等
-        :type IpProtocol: str
-        """
+        :param Action: 策略，ACCEPT 或者 DROP\n        :type Action: str\n        :param CidrIp: 来源 IP 或 IP 段，例如192.168.0.0/16\n        :type CidrIp: str\n        :param PortRange: 端口\n        :type PortRange: str\n        :param IpProtocol: 网络协议，支持 UDP、TCP 等\n        :type IpProtocol: str\n        """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
@@ -4496,44 +3504,8 @@ class SlowLogData(AbstractModel):
 
     def __init__(self):
         """
-        :param CheckSum: 语句校验和，用于查询详情
-        :type CheckSum: str
-        :param Db: 数据库名称
-        :type Db: str
-        :param FingerPrint: 抽象的SQL语句
-        :type FingerPrint: str
-        :param LockTimeAvg: 平均的锁时间
-        :type LockTimeAvg: str
-        :param LockTimeMax: 最大锁时间
-        :type LockTimeMax: str
-        :param LockTimeMin: 最小锁时间
-        :type LockTimeMin: str
-        :param LockTimeSum: 锁时间总和
-        :type LockTimeSum: str
-        :param QueryCount: 查询次数
-        :type QueryCount: str
-        :param QueryTimeAvg: 平均查询时间
-        :type QueryTimeAvg: str
-        :param QueryTimeMax: 最大查询时间
-        :type QueryTimeMax: str
-        :param QueryTimeMin: 最小查询时间
-        :type QueryTimeMin: str
-        :param QueryTimeSum: 查询时间总和
-        :type QueryTimeSum: str
-        :param RowsExaminedSum: 扫描行数
-        :type RowsExaminedSum: str
-        :param RowsSentSum: 发送行数
-        :type RowsSentSum: str
-        :param TsMax: 最后执行时间
-        :type TsMax: str
-        :param TsMin: 首次执行时间
-        :type TsMin: str
-        :param User: 帐号
-        :type User: str
-        :param ExampleSql: 样例Sql
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExampleSql: str
-        """
+        :param CheckSum: 语句校验和，用于查询详情\n        :type CheckSum: str\n        :param Db: 数据库名称\n        :type Db: str\n        :param FingerPrint: 抽象的SQL语句\n        :type FingerPrint: str\n        :param LockTimeAvg: 平均的锁时间\n        :type LockTimeAvg: str\n        :param LockTimeMax: 最大锁时间\n        :type LockTimeMax: str\n        :param LockTimeMin: 最小锁时间\n        :type LockTimeMin: str\n        :param LockTimeSum: 锁时间总和\n        :type LockTimeSum: str\n        :param QueryCount: 查询次数\n        :type QueryCount: str\n        :param QueryTimeAvg: 平均查询时间\n        :type QueryTimeAvg: str\n        :param QueryTimeMax: 最大查询时间\n        :type QueryTimeMax: str\n        :param QueryTimeMin: 最小查询时间\n        :type QueryTimeMin: str\n        :param QueryTimeSum: 查询时间总和\n        :type QueryTimeSum: str\n        :param RowsExaminedSum: 扫描行数\n        :type RowsExaminedSum: str\n        :param RowsSentSum: 发送行数\n        :type RowsSentSum: str\n        :param TsMax: 最后执行时间\n        :type TsMax: str\n        :param TsMin: 首次执行时间\n        :type TsMin: str\n        :param User: 帐号\n        :type User: str\n        :param ExampleSql: 样例Sql
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExampleSql: str\n        """
         self.CheckSum = None
         self.Db = None
         self.FingerPrint = None
@@ -4589,25 +3561,7 @@ class SpecConfigInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Machine: 设备型号
-        :type Machine: str
-        :param Memory: 内存大小，单位 GB
-        :type Memory: int
-        :param MinStorage: 数据盘规格最小值，单位 GB
-        :type MinStorage: int
-        :param MaxStorage: 数据盘规格最大值，单位 GB
-        :type MaxStorage: int
-        :param SuitInfo: 推荐的使用场景
-        :type SuitInfo: str
-        :param Qps: 最大 Qps 值
-        :type Qps: int
-        :param Pid: 产品类型 Id
-        :type Pid: int
-        :param NodeCount: 节点个数，2 表示一主一从，3 表示一主二从
-        :type NodeCount: int
-        :param Cpu: Cpu核数
-        :type Cpu: int
-        """
+        :param Machine: 设备型号\n        :type Machine: str\n        :param Memory: 内存大小，单位 GB\n        :type Memory: int\n        :param MinStorage: 数据盘规格最小值，单位 GB\n        :type MinStorage: int\n        :param MaxStorage: 数据盘规格最大值，单位 GB\n        :type MaxStorage: int\n        :param SuitInfo: 推荐的使用场景\n        :type SuitInfo: str\n        :param Qps: 最大 Qps 值\n        :type Qps: int\n        :param Pid: 产品类型 Id\n        :type Pid: int\n        :param NodeCount: 节点个数，2 表示一主一从，3 表示一主二从\n        :type NodeCount: int\n        :param Cpu: Cpu核数\n        :type Cpu: int\n        """
         self.Machine = None
         self.Memory = None
         self.MinStorage = None
@@ -4645,27 +3599,7 @@ class SqlLogItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 本条日志在消息队列中的偏移量。
-        :type Offset: int
-        :param User: 执行本条sql的用户。
-        :type User: str
-        :param Client: 执行本条sql的客户端IP+端口。
-        :type Client: str
-        :param DbName: 数据库名称。
-        :type DbName: str
-        :param Sql: 执行的sql语句。
-        :type Sql: str
-        :param SelectRowNum: 返回的数据行数。
-        :type SelectRowNum: int
-        :param AffectRowNum: 影响行数。
-        :type AffectRowNum: int
-        :param Timestamp: Sql执行时间戳。
-        :type Timestamp: int
-        :param TimeCostMs: Sql耗时，单位为毫秒。
-        :type TimeCostMs: int
-        :param ResultCode: Sql返回码，0为成功。
-        :type ResultCode: int
-        """
+        :param Offset: 本条日志在消息队列中的偏移量。\n        :type Offset: int\n        :param User: 执行本条sql的用户。\n        :type User: str\n        :param Client: 执行本条sql的客户端IP+端口。\n        :type Client: str\n        :param DbName: 数据库名称。\n        :type DbName: str\n        :param Sql: 执行的sql语句。\n        :type Sql: str\n        :param SelectRowNum: 返回的数据行数。\n        :type SelectRowNum: int\n        :param AffectRowNum: 影响行数。\n        :type AffectRowNum: int\n        :param Timestamp: Sql执行时间戳。\n        :type Timestamp: int\n        :param TimeCostMs: Sql耗时，单位为毫秒。\n        :type TimeCostMs: int\n        :param ResultCode: Sql返回码，0为成功。\n        :type ResultCode: int\n        """
         self.Offset = None
         self.User = None
         self.Client = None
@@ -4705,13 +3639,7 @@ class TablePrivilege(AbstractModel):
 
     def __init__(self):
         """
-        :param Database: 数据库名
-        :type Database: str
-        :param Table: 数据库表名
-        :type Table: str
-        :param Privileges: 权限信息
-        :type Privileges: list of str
-        """
+        :param Database: 数据库名\n        :type Database: str\n        :param Table: 数据库表名\n        :type Table: str\n        :param Privileges: 权限信息\n        :type Privileges: list of str\n        """
         self.Database = None
         self.Table = None
         self.Privileges = None
@@ -4737,19 +3665,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-        :type InstanceId: str
-        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得。
-        :type Memory: int
-        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
- 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
-        :type Storage: int
-        :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。
-        :type AutoVoucher: bool
-        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
-        :type VoucherIds: list of str
-        """
+        :param InstanceId: 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。\n        :type InstanceId: str\n        :param Memory: 内存大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得。\n        :type Memory: int\n        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
+ 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。\n        :type Storage: int\n        :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。\n        :type AutoVoucher: bool\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。\n        :type VoucherIds: list of str\n        """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
@@ -4780,11 +3698,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
     def __init__(self):
         """
         :param DealName: 长订单号。可以据此调用 DescribeOrders
- 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
-        :type DealName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+ 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。\n        :type DealName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealName = None
         self.RequestId = None
 
@@ -4801,13 +3715,7 @@ class ViewPrivileges(AbstractModel):
 
     def __init__(self):
         """
-        :param Database: 数据库名
-        :type Database: str
-        :param View: 数据库视图名
-        :type View: str
-        :param Privileges: 权限信息
-        :type Privileges: list of str
-        """
+        :param Database: 数据库名\n        :type Database: str\n        :param View: 数据库视图名\n        :type View: str\n        :param Privileges: 权限信息\n        :type Privileges: list of str\n        """
         self.Database = None
         self.View = None
         self.Privileges = None
@@ -4833,11 +3741,7 @@ class ZoneChooseInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MasterZone: 主可用区
-        :type MasterZone: :class:`tencentcloud.mariadb.v20170312.models.ZonesInfo`
-        :param SlaveZones: 可选的从可用区
-        :type SlaveZones: list of ZonesInfo
-        """
+        :param MasterZone: 主可用区\n        :type MasterZone: :class:`tencentcloud.mariadb.v20170312.models.ZonesInfo`\n        :param SlaveZones: 可选的从可用区\n        :type SlaveZones: list of ZonesInfo\n        """
         self.MasterZone = None
         self.SlaveZones = None
 
@@ -4868,13 +3772,7 @@ class ZonesInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区英文ID
-        :type Zone: str
-        :param ZoneId: 可用区数字ID
-        :type ZoneId: int
-        :param ZoneName: 可用区中文名
-        :type ZoneName: str
-        """
+        :param Zone: 可用区英文ID\n        :type Zone: str\n        :param ZoneId: 可用区数字ID\n        :type ZoneId: int\n        :param ZoneName: 可用区中文名\n        :type ZoneName: str\n        """
         self.Zone = None
         self.ZoneId = None
         self.ZoneName = None

@@ -25,9 +25,7 @@ class AcquireClusterAdminRoleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -49,9 +47,7 @@ class AcquireClusterAdminRoleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -66,13 +62,7 @@ class AddClusterCIDRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param ClusterCIDRs: 增加的ClusterCIDR
-        :type ClusterCIDRs: list of str
-        :param IgnoreClusterCIDRConflict: 是否忽略ClusterCIDR与VPC路由表的冲突
-        :type IgnoreClusterCIDRConflict: bool
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param ClusterCIDRs: 增加的ClusterCIDR\n        :type ClusterCIDRs: list of str\n        :param IgnoreClusterCIDRConflict: 是否忽略ClusterCIDR与VPC路由表的冲突\n        :type IgnoreClusterCIDRConflict: bool\n        """
         self.ClusterId = None
         self.ClusterCIDRs = None
         self.IgnoreClusterCIDRConflict = None
@@ -98,9 +88,7 @@ class AddClusterCIDRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -115,29 +103,9 @@ class AddExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param InstanceIds: 实例列表，不支持竞价实例
-        :type InstanceIds: list of str
-        :param InstanceAdvancedSettings: 实例额外需要设置参数信息(默认值)
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
-        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
-        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
-        :type HostName: str
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
-        :type SecurityGroupIds: list of str
-        :param NodePool: 节点池选项
-        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
-        :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
-        :type SkipValidateOptions: list of str
-        :param InstanceAdvancedSettingsOverrides: 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param InstanceIds: 实例列表，不支持竞价实例\n        :type InstanceIds: list of str\n        :param InstanceAdvancedSettings: 实例额外需要设置参数信息(默认值)\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。\n        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`\n        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）\n        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`\n        :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)\n        :type HostName: str\n        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）\n        :type SecurityGroupIds: list of str\n        :param NodePool: 节点池选项\n        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`\n        :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）\n        :type SkipValidateOptions: list of str\n        :param InstanceAdvancedSettingsOverrides: 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。
 
-参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
-        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
-        """
+参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。\n        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
@@ -191,20 +159,10 @@ class AddExistedInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param FailedInstanceIds: 失败的节点ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedInstanceIds: list of str
-        :param SuccInstanceIds: 成功的节点ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SuccInstanceIds: list of str
-        :param TimeoutInstanceIds: 超时未返回出来节点的ID(可能失败，也可能成功)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TimeoutInstanceIds: list of str
-        :param FailedReasons: 失败的节点的失败原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedReasons: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedInstanceIds: list of str\n        :param SuccInstanceIds: 成功的节点ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SuccInstanceIds: list of str\n        :param TimeoutInstanceIds: 超时未返回出来节点的ID(可能失败，也可能成功)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeoutInstanceIds: list of str\n        :param FailedReasons: 失败的节点的失败原因
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedReasons: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FailedInstanceIds = None
         self.SuccInstanceIds = None
         self.TimeoutInstanceIds = None
@@ -227,13 +185,7 @@ class AddNodeToNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        :param InstanceIds: 节点id
-        :type InstanceIds: list of str
-        """
+        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        :param InstanceIds: 节点id\n        :type InstanceIds: list of str\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.InstanceIds = None
@@ -259,9 +211,7 @@ class AddNodeToNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -276,13 +226,7 @@ class AddVpcCniSubnetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param SubnetIds: 为集群容器网络增加的子网列表
-        :type SubnetIds: list of str
-        :param VpcId: 集群所属的VPC的ID
-        :type VpcId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param SubnetIds: 为集群容器网络增加的子网列表\n        :type SubnetIds: list of str\n        :param VpcId: 集群所属的VPC的ID\n        :type VpcId: str\n        """
         self.ClusterId = None
         self.SubnetIds = None
         self.VpcId = None
@@ -308,9 +252,7 @@ class AddVpcCniSubnetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -325,11 +267,7 @@ class AutoScalingGroupRange(AbstractModel):
 
     def __init__(self):
         """
-        :param MinSize: 伸缩组最小实例数
-        :type MinSize: int
-        :param MaxSize: 伸缩组最大实例数
-        :type MaxSize: int
-        """
+        :param MinSize: 伸缩组最小实例数\n        :type MinSize: int\n        :param MaxSize: 伸缩组最大实例数\n        :type MaxSize: int\n        """
         self.MinSize = None
         self.MaxSize = None
 
@@ -353,15 +291,7 @@ class AutoscalingAdded(AbstractModel):
 
     def __init__(self):
         """
-        :param Joining: 正在加入中的节点数量
-        :type Joining: int
-        :param Initializing: 初始化中的节点数量
-        :type Initializing: int
-        :param Normal: 正常的节点数量
-        :type Normal: int
-        :param Total: 节点总数
-        :type Total: int
-        """
+        :param Joining: 正在加入中的节点数量\n        :type Joining: int\n        :param Initializing: 初始化中的节点数量\n        :type Initializing: int\n        :param Normal: 正常的节点数量\n        :type Normal: int\n        :param Total: 节点总数\n        :type Total: int\n        """
         self.Joining = None
         self.Initializing = None
         self.Normal = None
@@ -389,19 +319,7 @@ class CheckInstancesUpgradeAbleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param InstanceIds: 节点列表，空为全部节点
-        :type InstanceIds: list of str
-        :param UpgradeType: 升级类型
-        :type UpgradeType: str
-        :param Offset: 分页Offset
-        :type Offset: int
-        :param Limit: 分页Limit
-        :type Limit: int
-        :param Filter: 过滤
-        :type Filter: list of Filter
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param InstanceIds: 节点列表，空为全部节点\n        :type InstanceIds: list of str\n        :param UpgradeType: 升级类型\n        :type UpgradeType: str\n        :param Offset: 分页Offset\n        :type Offset: int\n        :param Limit: 分页Limit\n        :type Limit: int\n        :param Filter: 过滤\n        :type Filter: list of Filter\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.UpgradeType = None
@@ -438,19 +356,9 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterVersion: 集群master当前小版本
-        :type ClusterVersion: str
-        :param LatestVersion: 集群master对应的大版本目前最新小版本
-        :type LatestVersion: str
-        :param UpgradeAbleInstances: 可升级节点列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem
-        :param Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ClusterVersion: 集群master当前小版本\n        :type ClusterVersion: str\n        :param LatestVersion: 集群master对应的大版本目前最新小版本\n        :type LatestVersion: str\n        :param UpgradeAbleInstances: 可升级节点列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem\n        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterVersion = None
         self.LatestVersion = None
         self.UpgradeAbleInstances = None
@@ -478,53 +386,15 @@ class Cluster(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param ClusterName: 集群名称
-        :type ClusterName: str
-        :param ClusterDescription: 集群描述
-        :type ClusterDescription: str
-        :param ClusterVersion: 集群版本（默认值为1.10.5）
-        :type ClusterVersion: str
-        :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
-        :type ClusterOs: str
-        :param ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
-        :type ClusterType: str
-        :param ClusterNetworkSettings: 集群网络相关参数
-        :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`
-        :param ClusterNodeNum: 集群当前node数量
-        :type ClusterNodeNum: int
-        :param ProjectId: 集群所属的项目ID
-        :type ProjectId: int
-        :param TagSpecification: 标签描述列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagSpecification: list of TagSpecification
-        :param ClusterStatus: 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )
-        :type ClusterStatus: str
-        :param Property: 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Property: str
-        :param ClusterMaterNodeNum: 集群当前master数量
-        :type ClusterMaterNodeNum: int
-        :param ImageId: 集群使用镜像id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageId: str
-        :param OsCustomizeType: OsCustomizeType 系统定制类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OsCustomizeType: str
-        :param ContainerRuntime: 集群运行环境docker或container
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ContainerRuntime: str
-        :param CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedTime: str
-        :param DeletionProtection: 删除保护开关
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeletionProtection: bool
-        :param EnableExternalNode: 集群是否开启第三方节点支持
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableExternalNode: bool
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param ClusterName: 集群名称\n        :type ClusterName: str\n        :param ClusterDescription: 集群描述\n        :type ClusterDescription: str\n        :param ClusterVersion: 集群版本（默认值为1.10.5）\n        :type ClusterVersion: str\n        :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64\n        :type ClusterOs: str\n        :param ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。\n        :type ClusterType: str\n        :param ClusterNetworkSettings: 集群网络相关参数\n        :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`\n        :param ClusterNodeNum: 集群当前node数量\n        :type ClusterNodeNum: int\n        :param ProjectId: 集群所属的项目ID\n        :type ProjectId: int\n        :param TagSpecification: 标签描述列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagSpecification: list of TagSpecification\n        :param ClusterStatus: 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )\n        :type ClusterStatus: str\n        :param Property: 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Property: str\n        :param ClusterMaterNodeNum: 集群当前master数量\n        :type ClusterMaterNodeNum: int\n        :param ImageId: 集群使用镜像id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageId: str\n        :param OsCustomizeType: OsCustomizeType 系统定制类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OsCustomizeType: str\n        :param ContainerRuntime: 集群运行环境docker或container
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainerRuntime: str\n        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param DeletionProtection: 删除保护开关
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DeletionProtection: bool\n        :param EnableExternalNode: 集群是否开启第三方节点支持
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EnableExternalNode: bool\n        """
         self.ClusterId = None
         self.ClusterName = None
         self.ClusterDescription = None
@@ -589,47 +459,13 @@ class ClusterAdvancedSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param IPVS: 是否启用IPVS
-        :type IPVS: bool
-        :param AsEnabled: 是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)
-        :type AsEnabled: bool
-        :param ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
-        :type ContainerRuntime: str
-        :param NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
-        :type NodeNameType: str
-        :param ExtraArgs: 集群自定义参数
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。
-        :type NetworkType: str
-        :param IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
-        :type IsNonStaticIpMode: bool
-        :param DeletionProtection: 是否启用集群删除保护
-        :type DeletionProtection: bool
-        :param KubeProxyMode: 集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
+        :param IPVS: 是否启用IPVS\n        :type IPVS: bool\n        :param AsEnabled: 是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)\n        :type AsEnabled: bool\n        :param ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"\n        :type ContainerRuntime: str\n        :param NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）\n        :type NodeNameType: str\n        :param ExtraArgs: 集群自定义参数\n        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`\n        :param NetworkType: 集群网络类型（包括GR(全局路由)和VPC-CNI两种模式，默认为GR。\n        :type NetworkType: str\n        :param IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。\n        :type IsNonStaticIpMode: bool\n        :param DeletionProtection: 是否启用集群删除保护\n        :type DeletionProtection: bool\n        :param KubeProxyMode: 集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
 iptables模式：IPVS和KubeProxyMode都不设置
 ipvs模式: 设置IPVS为true, KubeProxyMode不设置
 ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 使用ipvs-bpf的网络模式需要满足以下条件：
 1. 集群版本必须为1.14及以上；
-2. 系统镜像必须是: Tencent Linux 2.4；
-        :type KubeProxyMode: str
-        :param AuditEnabled: 是否开启审计开关
-        :type AuditEnabled: bool
-        :param AuditLogsetId: 审计日志上传到的logset日志集
-        :type AuditLogsetId: str
-        :param AuditLogTopicId: 审计日志上传到的topic
-        :type AuditLogTopicId: str
-        :param VpcCniType: 区分单网卡多IP模式和独立网卡模式
-        :type VpcCniType: str
-        :param RuntimeVersion: 运行时版本
-        :type RuntimeVersion: str
-        :param EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
-        :type EnableCustomizedPodCIDR: bool
-        :param BasePodNumber: 自定义模式下的基础pod数量
-        :type BasePodNumber: int
-        :param CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
-        :type CiliumMode: str
-        """
+2. 系统镜像必须是: Tencent Linux 2.4；\n        :type KubeProxyMode: str\n        :param AuditEnabled: 是否开启审计开关\n        :type AuditEnabled: bool\n        :param AuditLogsetId: 审计日志上传到的logset日志集\n        :type AuditLogsetId: str\n        :param AuditLogTopicId: 审计日志上传到的topic\n        :type AuditLogTopicId: str\n        :param VpcCniType: 区分单网卡多IP模式和独立网卡模式\n        :type VpcCniType: str\n        :param RuntimeVersion: 运行时版本\n        :type RuntimeVersion: str\n        :param EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式\n        :type EnableCustomizedPodCIDR: bool\n        :param BasePodNumber: 自定义模式下的基础pod数量\n        :type BasePodNumber: int\n        :param CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP\n        :type CiliumMode: str\n        """
         self.IPVS = None
         self.AsEnabled = None
         self.ContainerRuntime = None
@@ -685,19 +521,9 @@ class ClusterAsGroup(AbstractModel):
 
     def __init__(self):
         """
-        :param AutoScalingGroupId: 伸缩组ID
-        :type AutoScalingGroupId: str
-        :param Status: 伸缩组状态(开启 enabled 开启中 enabling 关闭 disabled 关闭中 disabling 更新中 updating 删除中 deleting 开启缩容中 scaleDownEnabling 关闭缩容中 scaleDownDisabling)
-        :type Status: str
-        :param IsUnschedulable: 节点是否设置成不可调度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsUnschedulable: bool
-        :param Labels: 伸缩组的label列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Labels: list of Label
-        :param CreatedTime: 创建时间
-        :type CreatedTime: str
-        """
+        :param AutoScalingGroupId: 伸缩组ID\n        :type AutoScalingGroupId: str\n        :param Status: 伸缩组状态(开启 enabled 开启中 enabling 关闭 disabled 关闭中 disabling 更新中 updating 删除中 deleting 开启缩容中 scaleDownEnabling 关闭缩容中 scaleDownDisabling)\n        :type Status: str\n        :param IsUnschedulable: 节点是否设置成不可调度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsUnschedulable: bool\n        :param Labels: 伸缩组的label列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Labels: list of Label\n        :param CreatedTime: 创建时间\n        :type CreatedTime: str\n        """
         self.AutoScalingGroupId = None
         self.Status = None
         self.IsUnschedulable = None
@@ -732,13 +558,7 @@ class ClusterAsGroupAttribute(AbstractModel):
 
     def __init__(self):
         """
-        :param AutoScalingGroupId: 伸缩组ID
-        :type AutoScalingGroupId: str
-        :param AutoScalingGroupEnabled: 是否开启
-        :type AutoScalingGroupEnabled: bool
-        :param AutoScalingGroupRange: 伸缩组最大最小实例数
-        :type AutoScalingGroupRange: :class:`tencentcloud.tke.v20180525.models.AutoScalingGroupRange`
-        """
+        :param AutoScalingGroupId: 伸缩组ID\n        :type AutoScalingGroupId: str\n        :param AutoScalingGroupEnabled: 是否开启\n        :type AutoScalingGroupEnabled: bool\n        :param AutoScalingGroupRange: 伸缩组最大最小实例数\n        :type AutoScalingGroupRange: :class:`tencentcloud.tke.v20180525.models.AutoScalingGroupRange`\n        """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupEnabled = None
         self.AutoScalingGroupRange = None
@@ -767,45 +587,19 @@ class ClusterAsGroupOption(AbstractModel):
     def __init__(self):
         """
         :param IsScaleDownEnabled: 是否开启缩容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsScaleDownEnabled: bool
-        :param Expander: 多伸缩组情况下扩容选择算法(random 随机选择，most-pods 最多类型的Pod least-waste 最少的资源浪费，默认为random)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Expander: str
-        :param MaxEmptyBulkDelete: 最大并发缩容数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxEmptyBulkDelete: int
-        :param ScaleDownDelay: 集群扩容后多少分钟开始判断缩容（默认为10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleDownDelay: int
-        :param ScaleDownUnneededTime: 节点连续空闲多少分钟后被缩容（默认为 10分钟）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleDownUnneededTime: int
-        :param ScaleDownUtilizationThreshold: 节点资源使用量低于多少(百分比)时认为空闲(默认: 50(百分比))
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleDownUtilizationThreshold: int
-        :param SkipNodesWithLocalStorage: 含有本地存储Pod的节点是否不缩容(默认： FALSE)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SkipNodesWithLocalStorage: bool
-        :param SkipNodesWithSystemPods: 含有kube-system namespace下非DaemonSet管理的Pod的节点是否不缩容 (默认： FALSE)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SkipNodesWithSystemPods: bool
-        :param IgnoreDaemonSetsUtilization: 计算资源使用量时是否默认忽略DaemonSet的实例(默认值: False，不忽略)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IgnoreDaemonSetsUtilization: bool
-        :param OkTotalUnreadyCount: CA做健康性判断的个数，默认3，即超过OkTotalUnreadyCount个数后，CA会进行健康性判断。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OkTotalUnreadyCount: int
-        :param MaxTotalUnreadyPercentage: 未就绪节点的最大百分比，此后CA会停止操作
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxTotalUnreadyPercentage: int
-        :param ScaleDownUnreadyTime: 表示未准备就绪的节点在有资格进行缩减之前应该停留多长时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleDownUnreadyTime: int
-        :param UnregisteredNodeRemovalTime: CA删除未在Kubernetes中注册的节点之前等待的时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnregisteredNodeRemovalTime: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsScaleDownEnabled: bool\n        :param Expander: 多伸缩组情况下扩容选择算法(random 随机选择，most-pods 最多类型的Pod least-waste 最少的资源浪费，默认为random)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Expander: str\n        :param MaxEmptyBulkDelete: 最大并发缩容数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxEmptyBulkDelete: int\n        :param ScaleDownDelay: 集群扩容后多少分钟开始判断缩容（默认为10分钟）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ScaleDownDelay: int\n        :param ScaleDownUnneededTime: 节点连续空闲多少分钟后被缩容（默认为 10分钟）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ScaleDownUnneededTime: int\n        :param ScaleDownUtilizationThreshold: 节点资源使用量低于多少(百分比)时认为空闲(默认: 50(百分比))
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ScaleDownUtilizationThreshold: int\n        :param SkipNodesWithLocalStorage: 含有本地存储Pod的节点是否不缩容(默认： FALSE)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SkipNodesWithLocalStorage: bool\n        :param SkipNodesWithSystemPods: 含有kube-system namespace下非DaemonSet管理的Pod的节点是否不缩容 (默认： FALSE)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SkipNodesWithSystemPods: bool\n        :param IgnoreDaemonSetsUtilization: 计算资源使用量时是否默认忽略DaemonSet的实例(默认值: False，不忽略)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IgnoreDaemonSetsUtilization: bool\n        :param OkTotalUnreadyCount: CA做健康性判断的个数，默认3，即超过OkTotalUnreadyCount个数后，CA会进行健康性判断。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OkTotalUnreadyCount: int\n        :param MaxTotalUnreadyPercentage: 未就绪节点的最大百分比，此后CA会停止操作
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxTotalUnreadyPercentage: int\n        :param ScaleDownUnreadyTime: 表示未准备就绪的节点在有资格进行缩减之前应该停留多长时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ScaleDownUnreadyTime: int\n        :param UnregisteredNodeRemovalTime: CA删除未在Kubernetes中注册的节点之前等待的时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UnregisteredNodeRemovalTime: int\n        """
         self.IsScaleDownEnabled = None
         self.Expander = None
         self.MaxEmptyBulkDelete = None
@@ -851,25 +645,7 @@ class ClusterBasicSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
-        :type ClusterOs: str
-        :param ClusterVersion: 集群版本,默认值为1.10.5
-        :type ClusterVersion: str
-        :param ClusterName: 集群名称
-        :type ClusterName: str
-        :param ClusterDescription: 集群描述
-        :type ClusterDescription: str
-        :param VpcId: 私有网络ID，形如vpc-xxx。创建托管空集群时必传。
-        :type VpcId: str
-        :param ProjectId: 集群内新增资源所属项目ID。
-        :type ProjectId: int
-        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
-        :type TagSpecification: list of TagSpecification
-        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-        :type OsCustomizeType: str
-        :param NeedWorkSecurityGroup: 是否开启节点的默认安全组(默认: 否，Aphla特性)
-        :type NeedWorkSecurityGroup: bool
-        """
+        :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64\n        :type ClusterOs: str\n        :param ClusterVersion: 集群版本,默认值为1.10.5\n        :type ClusterVersion: str\n        :param ClusterName: 集群名称\n        :type ClusterName: str\n        :param ClusterDescription: 集群描述\n        :type ClusterDescription: str\n        :param VpcId: 私有网络ID，形如vpc-xxx。创建托管空集群时必传。\n        :type VpcId: str\n        :param ProjectId: 集群内新增资源所属项目ID。\n        :type ProjectId: int\n        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。\n        :type TagSpecification: list of TagSpecification\n        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)\n        :type OsCustomizeType: str\n        :param NeedWorkSecurityGroup: 是否开启节点的默认安全组(默认: 否，Aphla特性)\n        :type NeedWorkSecurityGroup: bool\n        """
         self.ClusterOs = None
         self.ClusterVersion = None
         self.ClusterName = None
@@ -912,21 +688,7 @@ class ClusterCIDRSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
-        :type ClusterCIDR: str
-        :param IgnoreClusterCIDRConflict: 是否忽略 ClusterCIDR 冲突错误, 默认不忽略
-        :type IgnoreClusterCIDRConflict: bool
-        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量。取值范围4～256。不为2的幂值时会向上取最接近的2的幂值。
-        :type MaxNodePodNum: int
-        :param MaxClusterServiceNum: 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
-        :type MaxClusterServiceNum: int
-        :param ServiceCIDR: 用于分配集群服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
-        :type ServiceCIDR: str
-        :param EniSubnetIds: VPC-CNI网络模式下，弹性网卡的子网Id。
-        :type EniSubnetIds: list of str
-        :param ClaimExpiredSeconds: VPC-CNI网络模式下，弹性网卡IP的回收时间，取值范围[300,15768000)
-        :type ClaimExpiredSeconds: int
-        """
+        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。\n        :type ClusterCIDR: str\n        :param IgnoreClusterCIDRConflict: 是否忽略 ClusterCIDR 冲突错误, 默认不忽略\n        :type IgnoreClusterCIDRConflict: bool\n        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量。取值范围4～256。不为2的幂值时会向上取最接近的2的幂值。\n        :type MaxNodePodNum: int\n        :param MaxClusterServiceNum: 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。\n        :type MaxClusterServiceNum: int\n        :param ServiceCIDR: 用于分配集群服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。\n        :type ServiceCIDR: str\n        :param EniSubnetIds: VPC-CNI网络模式下，弹性网卡的子网Id。\n        :type EniSubnetIds: list of str\n        :param ClaimExpiredSeconds: VPC-CNI网络模式下，弹性网卡IP的回收时间，取值范围[300,15768000)\n        :type ClaimExpiredSeconds: int\n        """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
@@ -960,11 +722,7 @@ class ClusterCredential(AbstractModel):
 
     def __init__(self):
         """
-        :param CACert: CA 根证书
-        :type CACert: str
-        :param Token: 认证用的Token
-        :type Token: str
-        """
+        :param CACert: CA 根证书\n        :type CACert: str\n        :param Token: 认证用的Token\n        :type Token: str\n        """
         self.CACert = None
         self.Token = None
 
@@ -989,18 +747,10 @@ class ClusterExtraArgs(AbstractModel):
     def __init__(self):
         """
         :param KubeAPIServer: kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KubeAPIServer: list of str
-        :param KubeControllerManager: kube-controller-manager自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KubeControllerManager: list of str
-        :param KubeScheduler: kube-scheduler自定义参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KubeScheduler: list of str
-        :param Etcd: etcd自定义参数，只支持独立集群
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Etcd: list of str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KubeAPIServer: list of str\n        :param KubeControllerManager: kube-controller-manager自定义参数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KubeControllerManager: list of str\n        :param KubeScheduler: kube-scheduler自定义参数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KubeScheduler: list of str\n        :param Etcd: etcd自定义参数，只支持独立集群
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Etcd: list of str\n        """
         self.KubeAPIServer = None
         self.KubeControllerManager = None
         self.KubeScheduler = None
@@ -1028,11 +778,7 @@ class ClusterInternalLB(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: 是否开启内网访问LB
-        :type Enabled: bool
-        :param SubnetId: 内网访问LB关联的子网Id
-        :type SubnetId: str
-        """
+        :param Enabled: 是否开启内网访问LB\n        :type Enabled: bool\n        :param SubnetId: 内网访问LB关联的子网Id\n        :type SubnetId: str\n        """
         self.Enabled = None
         self.SubnetId = None
 
@@ -1056,30 +802,10 @@ class ClusterNetworkSettings(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
-        :type ClusterCIDR: str
-        :param IgnoreClusterCIDRConflict: 是否忽略 ClusterCIDR 冲突错误, 默认不忽略
-        :type IgnoreClusterCIDRConflict: bool
-        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量(默认为256)
-        :type MaxNodePodNum: int
-        :param MaxClusterServiceNum: 集群最大的service数量(默认为256)
-        :type MaxClusterServiceNum: int
-        :param Ipvs: 是否启用IPVS(默认不开启)
-        :type Ipvs: bool
-        :param VpcId: 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）
-        :type VpcId: str
-        :param Cni: 网络插件是否启用CNI(默认开启)
-        :type Cni: bool
-        :param KubeProxyMode: service的网络模式，当前参数只适用于ipvs+bpf模式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KubeProxyMode: str
-        :param ServiceCIDR: 用于分配service的IP range，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceCIDR: str
-        :param Subnets: 集群关联的容器子网
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Subnets: list of str
-        """
+        :param ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突\n        :type ClusterCIDR: str\n        :param IgnoreClusterCIDRConflict: 是否忽略 ClusterCIDR 冲突错误, 默认不忽略\n        :type IgnoreClusterCIDRConflict: bool\n        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量(默认为256)\n        :type MaxNodePodNum: int\n        :param MaxClusterServiceNum: 集群最大的service数量(默认为256)\n        :type MaxClusterServiceNum: int\n        :param Ipvs: 是否启用IPVS(默认不开启)\n        :type Ipvs: bool\n        :param VpcId: 集群的VPCID（如果创建空集群，为必传值，否则自动设置为和集群的节点保持一致）\n        :type VpcId: str\n        :param Cni: 网络插件是否启用CNI(默认开启)\n        :type Cni: bool\n        :param KubeProxyMode: service的网络模式，当前参数只适用于ipvs+bpf模式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KubeProxyMode: str\n        :param ServiceCIDR: 用于分配service的IP range，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceCIDR: str\n        :param Subnets: 集群关联的容器子网
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Subnets: list of str\n        """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
         self.MaxNodePodNum = None
@@ -1119,15 +845,7 @@ class ClusterPublicLB(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: 是否开启公网访问LB
-        :type Enabled: bool
-        :param AllowFromCidrs: 允许访问的来源CIDR列表
-        :type AllowFromCidrs: list of str
-        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
-        :type SecurityPolicies: list of str
-        :param ExtraParam: 外网访问相关的扩展参数，格式为json
-        :type ExtraParam: str
-        """
+        :param Enabled: 是否开启公网访问LB\n        :type Enabled: bool\n        :param AllowFromCidrs: 允许访问的来源CIDR列表\n        :type AllowFromCidrs: list of str\n        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)\n        :type SecurityPolicies: list of str\n        :param ExtraParam: 外网访问相关的扩展参数，格式为json\n        :type ExtraParam: str\n        """
         self.Enabled = None
         self.AllowFromCidrs = None
         self.SecurityPolicies = None
@@ -1155,11 +873,7 @@ class ClusterVersion(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param Versions: 集群主版本号列表，例如1.18.4
-        :type Versions: list of str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param Versions: 集群主版本号列表，例如1.18.4\n        :type Versions: list of str\n        """
         self.ClusterId = None
         self.Versions = None
 
@@ -1183,11 +897,7 @@ class CommonName(AbstractModel):
 
     def __init__(self):
         """
-        :param SubaccountUin: 子账户UIN
-        :type SubaccountUin: str
-        :param CN: 子账户客户端证书中的CommonName字段
-        :type CN: str
-        """
+        :param SubaccountUin: 子账户UIN\n        :type SubaccountUin: str\n        :param CN: 子账户客户端证书中的CommonName字段\n        :type CN: str\n        """
         self.SubaccountUin = None
         self.CN = None
 
@@ -1211,11 +921,7 @@ class ControllerStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 控制器的名字
-        :type Name: str
-        :param Enabled: 控制器是否开启
-        :type Enabled: bool
-        """
+        :param Name: 控制器的名字\n        :type Name: str\n        :param Enabled: 控制器是否开启\n        :type Enabled: bool\n        """
         self.Name = None
         self.Enabled = None
 
@@ -1239,17 +945,7 @@ class CreateClusterAsGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param AutoScalingGroupPara: 伸缩组创建透传参数，json化字符串格式，详见[伸缩组创建实例](https://cloud.tencent.com/document/api/377/20440)接口。LaunchConfigurationId由LaunchConfigurePara参数创建，不支持填写
-        :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: 启动配置创建透传参数，json化字符串格式，详见[创建启动配置](https://cloud.tencent.com/document/api/377/20447)接口。另外ImageId参数由于集群维度已经有的ImageId信息，这个字段不需要填写。UserData字段设置通过UserScript设置，这个字段不需要填写。
-        :type LaunchConfigurePara: str
-        :param InstanceAdvancedSettings: 节点高级配置信息
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param Labels: 节点Label数组
-        :type Labels: list of Label
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param AutoScalingGroupPara: 伸缩组创建透传参数，json化字符串格式，详见[伸缩组创建实例](https://cloud.tencent.com/document/api/377/20440)接口。LaunchConfigurationId由LaunchConfigurePara参数创建，不支持填写\n        :type AutoScalingGroupPara: str\n        :param LaunchConfigurePara: 启动配置创建透传参数，json化字符串格式，详见[创建启动配置](https://cloud.tencent.com/document/api/377/20447)接口。另外ImageId参数由于集群维度已经有的ImageId信息，这个字段不需要填写。UserData字段设置通过UserScript设置，这个字段不需要填写。\n        :type LaunchConfigurePara: str\n        :param InstanceAdvancedSettings: 节点高级配置信息\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param Labels: 节点Label数组\n        :type Labels: list of Label\n        """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
         self.LaunchConfigurePara = None
@@ -1286,13 +982,7 @@ class CreateClusterAsGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LaunchConfigurationId: 启动配置ID
-        :type LaunchConfigurationId: str
-        :param AutoScalingGroupId: 伸缩组ID
-        :type AutoScalingGroupId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param LaunchConfigurationId: 启动配置ID\n        :type LaunchConfigurationId: str\n        :param AutoScalingGroupId: 伸缩组ID\n        :type AutoScalingGroupId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LaunchConfigurationId = None
         self.AutoScalingGroupId = None
         self.RequestId = None
@@ -1311,13 +1001,7 @@ class CreateClusterEndpointRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param SubnetId: 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)
-        :type SubnetId: str
-        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
-        :type IsExtranet: bool
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param SubnetId: 集群端口所在的子网ID  (仅在开启非外网访问时需要填，必须为集群所在VPC内的子网)\n        :type SubnetId: str\n        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）\n        :type IsExtranet: bool\n        """
         self.ClusterId = None
         self.SubnetId = None
         self.IsExtranet = None
@@ -1343,9 +1027,7 @@ class CreateClusterEndpointResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1360,11 +1042,7 @@ class CreateClusterEndpointVipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
-        :type SecurityPolicies: list of str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)\n        :type SecurityPolicies: list of str\n        """
         self.ClusterId = None
         self.SecurityPolicies = None
 
@@ -1388,11 +1066,7 @@ class CreateClusterEndpointVipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestFlowId: 请求任务的FlowId
-        :type RequestFlowId: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestFlowId: 请求任务的FlowId\n        :type RequestFlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestFlowId = None
         self.RequestId = None
 
@@ -1409,15 +1083,7 @@ class CreateClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
-        :type ClusterId: str
-        :param RunInstancePara: CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
-        :type RunInstancePara: str
-        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
-        :type SkipValidateOptions: list of str
-        """
+        :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段\n        :type ClusterId: str\n        :param RunInstancePara: CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。\n        :type RunInstancePara: str\n        :param InstanceAdvancedSettings: 实例额外需要设置参数信息\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）\n        :type SkipValidateOptions: list of str\n        """
         self.ClusterId = None
         self.RunInstancePara = None
         self.InstanceAdvancedSettings = None
@@ -1447,11 +1113,7 @@ class CreateClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIdSet: 节点实例ID
-        :type InstanceIdSet: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceIdSet: 节点实例ID\n        :type InstanceIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceIdSet = None
         self.RequestId = None
 
@@ -1468,11 +1130,7 @@ class CreateClusterNodePoolFromExistingAsgRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param AutoscalingGroupId: 伸缩组ID
-        :type AutoscalingGroupId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param AutoscalingGroupId: 伸缩组ID\n        :type AutoscalingGroupId: str\n        """
         self.ClusterId = None
         self.AutoscalingGroupId = None
 
@@ -1496,11 +1154,7 @@ class CreateClusterNodePoolFromExistingAsgResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePoolId: 节点池ID
-        :type NodePoolId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NodePoolId: 节点池ID\n        :type NodePoolId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NodePoolId = None
         self.RequestId = None
 
@@ -1517,27 +1171,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: cluster id
-        :type ClusterId: str
-        :param AutoScalingGroupPara: AutoScalingGroupPara AS组参数
-        :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: LaunchConfigurePara 运行参数
-        :type LaunchConfigurePara: str
-        :param InstanceAdvancedSettings: InstanceAdvancedSettings 示例参数
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnableAutoscale: 是否启用自动伸缩
-        :type EnableAutoscale: bool
-        :param Name: 节点池名称
-        :type Name: str
-        :param Labels: Labels标签
-        :type Labels: list of Label
-        :param Taints: Taints互斥
-        :type Taints: list of Taint
-        :param NodePoolOs: 节点池os
-        :type NodePoolOs: str
-        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-        :type OsCustomizeType: str
-        """
+        :param ClusterId: cluster id\n        :type ClusterId: str\n        :param AutoScalingGroupPara: AutoScalingGroupPara AS组参数\n        :type AutoScalingGroupPara: str\n        :param LaunchConfigurePara: LaunchConfigurePara 运行参数\n        :type LaunchConfigurePara: str\n        :param InstanceAdvancedSettings: InstanceAdvancedSettings 示例参数\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnableAutoscale: 是否启用自动伸缩\n        :type EnableAutoscale: bool\n        :param Name: 节点池名称\n        :type Name: str\n        :param Labels: Labels标签\n        :type Labels: list of Label\n        :param Taints: Taints互斥\n        :type Taints: list of Taint\n        :param NodePoolOs: 节点池os\n        :type NodePoolOs: str\n        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)\n        :type OsCustomizeType: str\n        """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
         self.LaunchConfigurePara = None
@@ -1589,11 +1223,7 @@ class CreateClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NodePoolId = None
         self.RequestId = None
 
@@ -1610,25 +1240,7 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterCIDRSettings: 集群容器网络配置信息
-        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
-        :param ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
-        :type ClusterType: str
-        :param RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
-        :type RunInstancesForNode: list of RunInstancesForNode
-        :param ClusterBasicSettings: 集群的基本配置信息
-        :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
-        :param ClusterAdvancedSettings: 集群高级配置信息
-        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
-        :param InstanceAdvancedSettings: 节点高级配置信息
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
-        :type ExistedInstancesForNode: list of ExistedInstancesForNode
-        :param InstanceDataDiskMountSettings: CVM类型和其对应的数据盘挂载配置信息
-        :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
-        :param ExtensionAddons: 需要安装的扩展组件信息
-        :type ExtensionAddons: list of ExtensionAddon
-        """
+        :param ClusterCIDRSettings: 集群容器网络配置信息\n        :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`\n        :param ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。\n        :type ClusterType: str\n        :param RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。\n        :type RunInstancesForNode: list of RunInstancesForNode\n        :param ClusterBasicSettings: 集群的基本配置信息\n        :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`\n        :param ClusterAdvancedSettings: 集群高级配置信息\n        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`\n        :param InstanceAdvancedSettings: 节点高级配置信息\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。\n        :type ExistedInstancesForNode: list of ExistedInstancesForNode\n        :param InstanceDataDiskMountSettings: CVM类型和其对应的数据盘挂载配置信息\n        :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting\n        :param ExtensionAddons: 需要安装的扩展组件信息\n        :type ExtensionAddons: list of ExtensionAddon\n        """
         self.ClusterCIDRSettings = None
         self.ClusterType = None
         self.RunInstancesForNode = None
@@ -1694,11 +1306,7 @@ class CreateClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -1715,13 +1323,7 @@ class CreateClusterRouteRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称。
-        :type RouteTableName: str
-        :param DestinationCidrBlock: 目的端CIDR。
-        :type DestinationCidrBlock: str
-        :param GatewayIp: 下一跳地址。
-        :type GatewayIp: str
-        """
+        :param RouteTableName: 路由表名称。\n        :type RouteTableName: str\n        :param DestinationCidrBlock: 目的端CIDR。\n        :type DestinationCidrBlock: str\n        :param GatewayIp: 下一跳地址。\n        :type GatewayIp: str\n        """
         self.RouteTableName = None
         self.DestinationCidrBlock = None
         self.GatewayIp = None
@@ -1747,9 +1349,7 @@ class CreateClusterRouteResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1764,15 +1364,7 @@ class CreateClusterRouteTableRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称
-        :type RouteTableName: str
-        :param RouteTableCidrBlock: 路由表CIDR
-        :type RouteTableCidrBlock: str
-        :param VpcId: 路由表绑定的VPC
-        :type VpcId: str
-        :param IgnoreClusterCidrConflict: 是否忽略CIDR冲突
-        :type IgnoreClusterCidrConflict: int
-        """
+        :param RouteTableName: 路由表名称\n        :type RouteTableName: str\n        :param RouteTableCidrBlock: 路由表CIDR\n        :type RouteTableCidrBlock: str\n        :param VpcId: 路由表绑定的VPC\n        :type VpcId: str\n        :param IgnoreClusterCidrConflict: 是否忽略CIDR冲突\n        :type IgnoreClusterCidrConflict: int\n        """
         self.RouteTableName = None
         self.RouteTableCidrBlock = None
         self.VpcId = None
@@ -1800,9 +1392,7 @@ class CreateClusterRouteTableResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1817,27 +1407,7 @@ class CreateEKSClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param K8SVersion: k8s版本号。可为1.14.4, 1.12.8。
-        :type K8SVersion: str
-        :param VpcId: vpc 的Id
-        :type VpcId: str
-        :param ClusterName: 集群名称
-        :type ClusterName: str
-        :param SubnetIds: 子网Id 列表
-        :type SubnetIds: list of str
-        :param ClusterDesc: 集群描述信息
-        :type ClusterDesc: str
-        :param ServiceSubnetId: Serivce 所在子网Id
-        :type ServiceSubnetId: str
-        :param DnsServers: 集群自定义的Dns服务器信息
-        :type DnsServers: list of DnsServerConf
-        :param ExtraParam: 扩展参数。须是map[string]string 的json 格式。
-        :type ExtraParam: str
-        :param EnableVpcCoreDNS: 是否在用户集群内开启Dns。默认为true
-        :type EnableVpcCoreDNS: bool
-        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
-        :type TagSpecification: list of TagSpecification
-        """
+        :param K8SVersion: k8s版本号。可为1.14.4, 1.12.8。\n        :type K8SVersion: str\n        :param VpcId: vpc 的Id\n        :type VpcId: str\n        :param ClusterName: 集群名称\n        :type ClusterName: str\n        :param SubnetIds: 子网Id 列表\n        :type SubnetIds: list of str\n        :param ClusterDesc: 集群描述信息\n        :type ClusterDesc: str\n        :param ServiceSubnetId: Serivce 所在子网Id\n        :type ServiceSubnetId: str\n        :param DnsServers: 集群自定义的Dns服务器信息\n        :type DnsServers: list of DnsServerConf\n        :param ExtraParam: 扩展参数。须是map[string]string 的json 格式。\n        :type ExtraParam: str\n        :param EnableVpcCoreDNS: 是否在用户集群内开启Dns。默认为true\n        :type EnableVpcCoreDNS: bool\n        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。\n        :type TagSpecification: list of TagSpecification\n        """
         self.K8SVersion = None
         self.VpcId = None
         self.ClusterName = None
@@ -1887,11 +1457,7 @@ class CreateEKSClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 弹性集群Id
-        :type ClusterId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ClusterId: 弹性集群Id\n        :type ClusterId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -1908,11 +1474,7 @@ class CreatePrometheusAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param AlertRule: 告警配置
-        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertRuleDetail`
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param AlertRule: 告警配置\n        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertRuleDetail`\n        """
         self.InstanceId = None
         self.AlertRule = None
 
@@ -1938,11 +1500,7 @@ class CreatePrometheusAlertRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 告警id
-        :type Id: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Id: 告警id\n        :type Id: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Id = None
         self.RequestId = None
 
@@ -1959,14 +1517,8 @@ class CreatePrometheusDashboardRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param DashboardName: 面板组名称
-        :type DashboardName: str
-        :param Contents: 面板列表
-每一项是一个grafana dashboard的json定义
-        :type Contents: list of str
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param DashboardName: 面板组名称\n        :type DashboardName: str\n        :param Contents: 面板列表
+每一项是一个grafana dashboard的json定义\n        :type Contents: list of str\n        """
         self.InstanceId = None
         self.DashboardName = None
         self.Contents = None
@@ -1992,9 +1544,7 @@ class CreatePrometheusDashboardResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2009,9 +1559,7 @@ class CreatePrometheusTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: 模板设置
-        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemplate`
-        """
+        :param Template: 模板设置\n        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemplate`\n        """
         self.Template = None
 
 
@@ -2035,11 +1583,7 @@ class CreatePrometheusTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板Id
-        :type TemplateId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TemplateId: 模板Id\n        :type TemplateId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TemplateId = None
         self.RequestId = None
 
@@ -2057,24 +1601,12 @@ class DataDisk(AbstractModel):
     def __init__(self):
         """
         :param DiskType: 云盘类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskType: str
-        :param FileSystem: 文件系统(ext3/ext4/xfs)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSystem: str
-        :param DiskSize: 云盘大小(G）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskSize: int
-        :param AutoFormatAndMount: 是否自动化格式盘并挂载
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoFormatAndMount: bool
-        :param MountTarget: 挂载目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MountTarget: str
-        :param DiskPartition: 挂载设备名或分区名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiskPartition: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskType: str\n        :param FileSystem: 文件系统(ext3/ext4/xfs)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSystem: str\n        :param DiskSize: 云盘大小(G）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: int\n        :param AutoFormatAndMount: 是否自动化格式盘并挂载
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoFormatAndMount: bool\n        :param MountTarget: 挂载目录
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MountTarget: str\n        :param DiskPartition: 挂载设备名或分区名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskPartition: str\n        """
         self.DiskType = None
         self.FileSystem = None
         self.DiskSize = None
@@ -2106,13 +1638,7 @@ class DeleteClusterAsGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID，通过[DescribeClusters](https://cloud.tencent.com/document/api/457/31862)接口获取。
-        :type ClusterId: str
-        :param AutoScalingGroupIds: 集群伸缩组ID的列表
-        :type AutoScalingGroupIds: list of str
-        :param KeepInstance: 是否保留伸缩组中的节点(默认值： false(不保留))
-        :type KeepInstance: bool
-        """
+        :param ClusterId: 集群ID，通过[DescribeClusters](https://cloud.tencent.com/document/api/457/31862)接口获取。\n        :type ClusterId: str\n        :param AutoScalingGroupIds: 集群伸缩组ID的列表\n        :type AutoScalingGroupIds: list of str\n        :param KeepInstance: 是否保留伸缩组中的节点(默认值： false(不保留))\n        :type KeepInstance: bool\n        """
         self.ClusterId = None
         self.AutoScalingGroupIds = None
         self.KeepInstance = None
@@ -2138,9 +1664,7 @@ class DeleteClusterAsGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2155,11 +1679,7 @@ class DeleteClusterEndpointRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
-        :type IsExtranet: bool
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）\n        :type IsExtranet: bool\n        """
         self.ClusterId = None
         self.IsExtranet = None
 
@@ -2183,9 +1703,7 @@ class DeleteClusterEndpointResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2200,9 +1718,7 @@ class DeleteClusterEndpointVipRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2224,9 +1740,7 @@ class DeleteClusterEndpointVipResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2241,15 +1755,7 @@ class DeleteClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param InstanceIds: 主机InstanceId列表
-        :type InstanceIds: list of str
-        :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
-        :type InstanceDeleteMode: str
-        :param ForceDelete: 是否强制删除(当节点在初始化时，可以指定参数为TRUE)
-        :type ForceDelete: bool
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param InstanceIds: 主机InstanceId列表\n        :type InstanceIds: list of str\n        :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）\n        :type InstanceDeleteMode: str\n        :param ForceDelete: 是否强制删除(当节点在初始化时，可以指定参数为TRUE)\n        :type ForceDelete: bool\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceDeleteMode = None
@@ -2278,17 +1784,9 @@ class DeleteClusterInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param SuccInstanceIds: 删除成功的实例ID列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SuccInstanceIds: list of str
-        :param FailedInstanceIds: 删除失败的实例ID列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedInstanceIds: list of str
-        :param NotFoundInstanceIds: 未匹配到的实例ID列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NotFoundInstanceIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SuccInstanceIds: list of str\n        :param FailedInstanceIds: 删除失败的实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedInstanceIds: list of str\n        :param NotFoundInstanceIds: 未匹配到的实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NotFoundInstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SuccInstanceIds = None
         self.FailedInstanceIds = None
         self.NotFoundInstanceIds = None
@@ -2309,13 +1807,7 @@ class DeleteClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 节点池对应的 ClusterId
-        :type ClusterId: str
-        :param NodePoolIds: 需要删除的节点池 Id 列表
-        :type NodePoolIds: list of str
-        :param KeepInstance: 删除节点池时是否保留节点池内节点(节点仍然会被移出集群，但对应的实例不会被销毁)
-        :type KeepInstance: bool
-        """
+        :param ClusterId: 节点池对应的 ClusterId\n        :type ClusterId: str\n        :param NodePoolIds: 需要删除的节点池 Id 列表\n        :type NodePoolIds: list of str\n        :param KeepInstance: 删除节点池时是否保留节点池内节点(节点仍然会被移出集群，但对应的实例不会被销毁)\n        :type KeepInstance: bool\n        """
         self.ClusterId = None
         self.NodePoolIds = None
         self.KeepInstance = None
@@ -2341,9 +1833,7 @@ class DeleteClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2358,13 +1848,7 @@ class DeleteClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）
-        :type InstanceDeleteMode: str
-        :param ResourceDeleteOptions: 集群删除时资源的删除策略，目前支持CBS（默认保留CBS）
-        :type ResourceDeleteOptions: list of ResourceDeleteOption
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param InstanceDeleteMode: 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例） retain （仅移除，保留实例）\n        :type InstanceDeleteMode: str\n        :param ResourceDeleteOptions: 集群删除时资源的删除策略，目前支持CBS（默认保留CBS）\n        :type ResourceDeleteOptions: list of ResourceDeleteOption\n        """
         self.ClusterId = None
         self.InstanceDeleteMode = None
         self.ResourceDeleteOptions = None
@@ -2395,9 +1879,7 @@ class DeleteClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2412,13 +1894,7 @@ class DeleteClusterRouteRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称。
-        :type RouteTableName: str
-        :param GatewayIp: 下一跳地址。
-        :type GatewayIp: str
-        :param DestinationCidrBlock: 目的端CIDR。
-        :type DestinationCidrBlock: str
-        """
+        :param RouteTableName: 路由表名称。\n        :type RouteTableName: str\n        :param GatewayIp: 下一跳地址。\n        :type GatewayIp: str\n        :param DestinationCidrBlock: 目的端CIDR。\n        :type DestinationCidrBlock: str\n        """
         self.RouteTableName = None
         self.GatewayIp = None
         self.DestinationCidrBlock = None
@@ -2444,9 +1920,7 @@ class DeleteClusterRouteResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2461,9 +1935,7 @@ class DeleteClusterRouteTableRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称
-        :type RouteTableName: str
-        """
+        :param RouteTableName: 路由表名称\n        :type RouteTableName: str\n        """
         self.RouteTableName = None
 
 
@@ -2485,9 +1957,7 @@ class DeleteClusterRouteTableResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2502,9 +1972,7 @@ class DeleteEKSClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 弹性集群Id
-        :type ClusterId: str
-        """
+        :param ClusterId: 弹性集群Id\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2526,9 +1994,7 @@ class DeleteEKSClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2543,11 +2009,7 @@ class DeletePrometheusAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param AlertIds: 告警规则id列表
-        :type AlertIds: list of str
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param AlertIds: 告警规则id列表\n        :type AlertIds: list of str\n        """
         self.InstanceId = None
         self.AlertIds = None
 
@@ -2571,9 +2033,7 @@ class DeletePrometheusAlertRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2588,9 +2048,7 @@ class DeletePrometheusTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板id
-        :type TemplateId: str
-        """
+        :param TemplateId: 模板id\n        :type TemplateId: str\n        """
         self.TemplateId = None
 
 
@@ -2612,9 +2070,7 @@ class DeletePrometheusTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2629,11 +2085,7 @@ class DeletePrometheusTemplateSyncRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板id
-        :type TemplateId: str
-        :param Targets: 取消同步的对象列表
-        :type Targets: list of PrometheusTemplateSyncTarget
-        """
+        :param TemplateId: 模板id\n        :type TemplateId: str\n        :param Targets: 取消同步的对象列表\n        :type Targets: list of PrometheusTemplateSyncTarget\n        """
         self.TemplateId = None
         self.Targets = None
 
@@ -2662,9 +2114,7 @@ class DeletePrometheusTemplateSyncResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2679,11 +2129,7 @@ class DescribeAvailableClusterVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群 Id
-        :type ClusterId: str
-        :param ClusterIds: 集群 Id 列表
-        :type ClusterIds: list of str
-        """
+        :param ClusterId: 集群 Id\n        :type ClusterId: str\n        :param ClusterIds: 集群 Id 列表\n        :type ClusterIds: list of str\n        """
         self.ClusterId = None
         self.ClusterIds = None
 
@@ -2708,14 +2154,8 @@ class DescribeAvailableClusterVersionResponse(AbstractModel):
     def __init__(self):
         """
         :param Versions: 可升级的集群版本号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Versions: list of str
-        :param Clusters: 集群信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Clusters: list of ClusterVersion
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Versions: list of str\n        :param Clusters: 集群信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Clusters: list of ClusterVersion\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Versions = None
         self.Clusters = None
         self.RequestId = None
@@ -2739,9 +2179,7 @@ class DescribeClusterAsGroupOptionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2764,11 +2202,7 @@ class DescribeClusterAsGroupOptionResponse(AbstractModel):
     def __init__(self):
         """
         :param ClusterAsGroupOption: 集群弹性伸缩属性
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterAsGroupOption = None
         self.RequestId = None
 
@@ -2787,15 +2221,7 @@ class DescribeClusterAsGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param AutoScalingGroupIds: 伸缩组ID列表，如果为空，表示拉取集群关联的所有伸缩组。
-        :type AutoScalingGroupIds: list of str
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-        :type Limit: int
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param AutoScalingGroupIds: 伸缩组ID列表，如果为空，表示拉取集群关联的所有伸缩组。\n        :type AutoScalingGroupIds: list of str\n        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Limit: int\n        """
         self.ClusterId = None
         self.AutoScalingGroupIds = None
         self.Offset = None
@@ -2823,13 +2249,7 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 集群关联的伸缩组总数
-        :type TotalCount: int
-        :param ClusterAsGroupSet: 集群关联的伸缩组列表
-        :type ClusterAsGroupSet: list of ClusterAsGroup
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 集群关联的伸缩组总数\n        :type TotalCount: int\n        :param ClusterAsGroupSet: 集群关联的伸缩组列表\n        :type ClusterAsGroupSet: list of ClusterAsGroup\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ClusterAsGroupSet = None
         self.RequestId = None
@@ -2853,13 +2273,7 @@ class DescribeClusterCommonNamesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param SubaccountUins: 子账户列表，不可超出最大值50
-        :type SubaccountUins: list of str
-        :param RoleIds: 角色ID列表，不可超出最大值50
-        :type RoleIds: list of str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param SubaccountUins: 子账户列表，不可超出最大值50\n        :type SubaccountUins: list of str\n        :param RoleIds: 角色ID列表，不可超出最大值50\n        :type RoleIds: list of str\n        """
         self.ClusterId = None
         self.SubaccountUins = None
         self.RoleIds = None
@@ -2885,11 +2299,7 @@ class DescribeClusterCommonNamesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CommonNames: 子账户Uin与其客户端证书的CN字段映射
-        :type CommonNames: list of CommonName
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CommonNames: 子账户Uin与其客户端证书的CN字段映射\n        :type CommonNames: list of CommonName\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CommonNames = None
         self.RequestId = None
 
@@ -2911,9 +2321,7 @@ class DescribeClusterControllersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -2935,11 +2343,7 @@ class DescribeClusterControllersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ControllerStatusSet: 描述集群中各个控制器的状态
-        :type ControllerStatusSet: list of ControllerStatus
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ControllerStatusSet: 描述集群中各个控制器的状态\n        :type ControllerStatusSet: list of ControllerStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ControllerStatusSet = None
         self.RequestId = None
 
@@ -2961,11 +2365,7 @@ class DescribeClusterEndpointStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
-        :type IsExtranet: bool
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）\n        :type IsExtranet: bool\n        """
         self.ClusterId = None
         self.IsExtranet = None
 
@@ -2990,14 +2390,8 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param ErrorMsg: 开启访问入口失败信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrorMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param ErrorMsg: 开启访问入口失败信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorMsg = None
         self.RequestId = None
@@ -3016,9 +2410,7 @@ class DescribeClusterEndpointVipStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3040,14 +2432,8 @@ class DescribeClusterEndpointVipStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 端口操作状态 (Creating 创建中  CreateFailed 创建失败 Created 创建完成 Deleting 删除中 DeletedFailed 删除失败 Deleted 已删除 NotFound 未发现操作 )
-        :type Status: str
-        :param ErrorMsg: 操作失败的原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrorMsg: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 端口操作状态 (Creating 创建中  CreateFailed 创建失败 Created 创建完成 Deleting 删除中 DeletedFailed 删除失败 Deleted 已删除 NotFound 未发现操作 )\n        :type Status: str\n        :param ErrorMsg: 操作失败的原因
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorMsg = None
         self.RequestId = None
@@ -3066,19 +2452,7 @@ class DescribeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-        :type Limit: int
-        :param InstanceIds: 需要获取的节点实例Id列表。如果为空，表示拉取集群下所有节点实例。
-        :type InstanceIds: list of str
-        :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。
-        :type InstanceRole: str
-        :param Filters: 过滤条件列表；Name的可选值为nodepool-id、nodepool-instance-type；Name为nodepool-id表示根据节点池id过滤机器，Value的值为具体的节点池id，Name为nodepool-instance-type表示节点加入节点池的方式，Value的值为MANUALLY_ADDED（手动加入节点池）、AUTOSCALING_ADDED（伸缩组扩容方式加入节点池）、ALL（手动加入节点池 和 伸缩组扩容方式加入节点池）
-        :type Filters: list of Filter
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Limit: int\n        :param InstanceIds: 需要获取的节点实例Id列表。如果为空，表示拉取集群下所有节点实例。\n        :type InstanceIds: list of str\n        :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。\n        :type InstanceRole: str\n        :param Filters: 过滤条件列表；Name的可选值为nodepool-id、nodepool-instance-type；Name为nodepool-id表示根据节点池id过滤机器，Value的值为具体的节点池id，Name为nodepool-instance-type表示节点加入节点池的方式，Value的值为MANUALLY_ADDED（手动加入节点池）、AUTOSCALING_ADDED（伸缩组扩容方式加入节点池）、ALL（手动加入节点池 和 伸缩组扩容方式加入节点池）\n        :type Filters: list of Filter\n        """
         self.ClusterId = None
         self.Offset = None
         self.Limit = None
@@ -3115,13 +2489,7 @@ class DescribeClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 集群中实例总数
-        :type TotalCount: int
-        :param InstanceSet: 集群中实例列表
-        :type InstanceSet: list of Instance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 集群中实例总数\n        :type TotalCount: int\n        :param InstanceSet: 集群中实例列表\n        :type InstanceSet: list of Instance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceSet = None
         self.RequestId = None
@@ -3145,9 +2513,7 @@ class DescribeClusterKubeconfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3169,11 +2535,7 @@ class DescribeClusterKubeconfigResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Kubeconfig: 子账户kubeconfig文件，可用于直接访问集群kube-apiserver
-        :type Kubeconfig: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Kubeconfig: 子账户kubeconfig文件，可用于直接访问集群kube-apiserver\n        :type Kubeconfig: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Kubeconfig = None
         self.RequestId = None
 
@@ -3190,11 +2552,7 @@ class DescribeClusterNodePoolDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        """
+        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        """
         self.ClusterId = None
         self.NodePoolId = None
 
@@ -3218,11 +2576,7 @@ class DescribeClusterNodePoolDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePool: 节点池详情
-        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePool`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NodePool: 节点池详情\n        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePool`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NodePool = None
         self.RequestId = None
 
@@ -3241,9 +2595,7 @@ class DescribeClusterNodePoolsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: ClusterId（集群id）
-        :type ClusterId: str
-        """
+        :param ClusterId: ClusterId（集群id）\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3266,13 +2618,7 @@ class DescribeClusterNodePoolsResponse(AbstractModel):
     def __init__(self):
         """
         :param NodePoolSet: NodePools（节点池列表）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NodePoolSet: list of NodePool
-        :param TotalCount: 资源总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NodePoolSet: list of NodePool\n        :param TotalCount: 资源总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NodePoolSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -3302,13 +2648,7 @@ class DescribeClusterRouteTablesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的实例数量。
-        :type TotalCount: int
-        :param RouteTableSet: 集群路由表对象。
-        :type RouteTableSet: list of RouteTableInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的实例数量。\n        :type TotalCount: int\n        :param RouteTableSet: 集群路由表对象。\n        :type RouteTableSet: list of RouteTableInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RouteTableSet = None
         self.RequestId = None
@@ -3332,11 +2672,7 @@ class DescribeClusterRoutesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称。
-        :type RouteTableName: str
-        :param Filters: 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）
-        :type Filters: list of Filter
-        """
+        :param RouteTableName: 路由表名称。\n        :type RouteTableName: str\n        :param Filters: 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）\n        :type Filters: list of Filter\n        """
         self.RouteTableName = None
         self.Filters = None
 
@@ -3365,13 +2701,7 @@ class DescribeClusterRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的实例数量。
-        :type TotalCount: int
-        :param RouteSet: 集群路由对象。
-        :type RouteSet: list of RouteInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的实例数量。\n        :type TotalCount: int\n        :param RouteSet: 集群路由对象。\n        :type RouteSet: list of RouteInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RouteSet = None
         self.RequestId = None
@@ -3395,9 +2725,7 @@ class DescribeClusterSecurityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3419,30 +2747,10 @@ class DescribeClusterSecurityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param UserName: 集群的账号名称
-        :type UserName: str
-        :param Password: 集群的访问密码
-        :type Password: str
-        :param CertificationAuthority: 集群访问CA证书
-        :type CertificationAuthority: str
-        :param ClusterExternalEndpoint: 集群访问的地址
-        :type ClusterExternalEndpoint: str
-        :param Domain: 集群访问的域名
-        :type Domain: str
-        :param PgwEndpoint: 集群Endpoint地址
-        :type PgwEndpoint: str
-        :param SecurityPolicy: 集群访问策略组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityPolicy: list of str
-        :param Kubeconfig: 集群Kubeconfig文件
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Kubeconfig: str
-        :param JnsGwEndpoint: 集群JnsGw的访问地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type JnsGwEndpoint: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param UserName: 集群的账号名称\n        :type UserName: str\n        :param Password: 集群的访问密码\n        :type Password: str\n        :param CertificationAuthority: 集群访问CA证书\n        :type CertificationAuthority: str\n        :param ClusterExternalEndpoint: 集群访问的地址\n        :type ClusterExternalEndpoint: str\n        :param Domain: 集群访问的域名\n        :type Domain: str\n        :param PgwEndpoint: 集群Endpoint地址\n        :type PgwEndpoint: str\n        :param SecurityPolicy: 集群访问策略组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityPolicy: list of str\n        :param Kubeconfig: 集群Kubeconfig文件
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Kubeconfig: str\n        :param JnsGwEndpoint: 集群JnsGw的访问地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type JnsGwEndpoint: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserName = None
         self.Password = None
         self.CertificationAuthority = None
@@ -3476,15 +2784,7 @@ class DescribeClustersRequest(AbstractModel):
     def __init__(self):
         """
         :param ClusterIds: 集群ID列表(为空时，
-表示获取账号下所有集群)
-        :type ClusterIds: list of str
-        :param Offset: 偏移量,默认0
-        :type Offset: int
-        :param Limit: 最大输出条数，默认20，最大为100
-        :type Limit: int
-        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤
-        :type Filters: list of Filter
-        """
+表示获取账号下所有集群)\n        :type ClusterIds: list of str\n        :param Offset: 偏移量,默认0\n        :type Offset: int\n        :param Limit: 最大输出条数，默认20，最大为100\n        :type Limit: int\n        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤\n        :type Filters: list of Filter\n        """
         self.ClusterIds = None
         self.Offset = None
         self.Limit = None
@@ -3517,13 +2817,7 @@ class DescribeClustersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 集群总个数
-        :type TotalCount: int
-        :param Clusters: 集群信息列表
-        :type Clusters: list of Cluster
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 集群总个数\n        :type TotalCount: int\n        :param Clusters: 集群信息列表\n        :type Clusters: list of Cluster\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Clusters = None
         self.RequestId = None
@@ -3547,9 +2841,7 @@ class DescribeEKSClusterCredentialRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群Id
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群Id\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3571,17 +2863,7 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Addresses: 集群的接入地址信息
-        :type Addresses: list of IPAddress
-        :param Credential: 集群的认证信息
-        :type Credential: :class:`tencentcloud.tke.v20180525.models.ClusterCredential`
-        :param PublicLB: 集群的公网访问信息
-        :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`
-        :param InternalLB: 集群的内网访问信息
-        :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Addresses: 集群的接入地址信息\n        :type Addresses: list of IPAddress\n        :param Credential: 集群的认证信息\n        :type Credential: :class:`tencentcloud.tke.v20180525.models.ClusterCredential`\n        :param PublicLB: 集群的公网访问信息\n        :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`\n        :param InternalLB: 集群的内网访问信息\n        :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Addresses = None
         self.Credential = None
         self.PublicLB = None
@@ -3616,15 +2898,7 @@ class DescribeEKSClustersRequest(AbstractModel):
     def __init__(self):
         """
         :param ClusterIds: 集群ID列表(为空时，
-表示获取账号下所有集群)
-        :type ClusterIds: list of str
-        :param Offset: 偏移量,默认0
-        :type Offset: int
-        :param Limit: 最大输出条数，默认20
-        :type Limit: int
-        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤
-        :type Filters: list of Filter
-        """
+表示获取账号下所有集群)\n        :type ClusterIds: list of str\n        :param Offset: 偏移量,默认0\n        :type Offset: int\n        :param Limit: 最大输出条数，默认20\n        :type Limit: int\n        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤\n        :type Filters: list of Filter\n        """
         self.ClusterIds = None
         self.Offset = None
         self.Limit = None
@@ -3657,13 +2931,7 @@ class DescribeEKSClustersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 集群总个数
-        :type TotalCount: int
-        :param Clusters: 集群信息列表
-        :type Clusters: list of EksCluster
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 集群总个数\n        :type TotalCount: int\n        :param Clusters: 集群信息列表\n        :type Clusters: list of EksCluster\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Clusters = None
         self.RequestId = None
@@ -3687,9 +2955,7 @@ class DescribeEnableVpcCniProgressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 开启vpc-cni的集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 开启vpc-cni的集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3711,14 +2977,8 @@ class DescribeEnableVpcCniProgressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务进度的描述：Running/Succeed/Failed
-        :type Status: str
-        :param ErrorMessage: 当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ErrorMessage: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Status: 任务进度的描述：Running/Succeed/Failed\n        :type Status: str\n        :param ErrorMessage: 当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.ErrorMessage = None
         self.RequestId = None
@@ -3737,23 +2997,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID。节点状态比较时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
-        :type ClusterId: str
-        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
-        :type InstanceIds: list of str
-        :param Filters: 过滤条件,字段和详见[CVM查询实例](https://cloud.tencent.com/document/api/213/15728)如果设置了ClusterId，会附加集群的VPCID作为查询字段，在此情况下如果在Filter中指定了"vpc-id"作为过滤字段，指定的VPCID必须与集群的VPCID相同。
-        :type Filters: list of Filter
-        :param VagueIpAddress: 实例IP进行过滤(同时支持内网IP和外网IP)
-        :type VagueIpAddress: str
-        :param VagueInstanceName: 实例名称进行过滤
-        :type VagueInstanceName: str
-        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
-        :type Limit: int
-        :param IpAddresses: 根据多个实例IP进行过滤
-        :type IpAddresses: list of str
-        """
+        :param ClusterId: 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID。节点状态比较时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。\n        :type ClusterId: str\n        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：ins-xxxxxxxx。（此参数的具体格式可参考API简介的id.N一节）。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。\n        :type InstanceIds: list of str\n        :param Filters: 过滤条件,字段和详见[CVM查询实例](https://cloud.tencent.com/document/api/213/15728)如果设置了ClusterId，会附加集群的VPCID作为查询字段，在此情况下如果在Filter中指定了"vpc-id"作为过滤字段，指定的VPCID必须与集群的VPCID相同。\n        :type Filters: list of Filter\n        :param VagueIpAddress: 实例IP进行过滤(同时支持内网IP和外网IP)\n        :type VagueIpAddress: str\n        :param VagueInstanceName: 实例名称进行过滤\n        :type VagueInstanceName: str\n        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Limit: int\n        :param IpAddresses: 根据多个实例IP进行过滤\n        :type IpAddresses: list of str\n        """
         self.ClusterId = None
         self.InstanceIds = None
         self.Filters = None
@@ -3795,13 +3039,7 @@ class DescribeExistedInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param ExistedInstanceSet: 已经存在的实例信息数组。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExistedInstanceSet: list of ExistedInstance
-        :param TotalCount: 符合条件的实例数量。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExistedInstanceSet: list of ExistedInstance\n        :param TotalCount: 符合条件的实例数量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ExistedInstanceSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -3832,14 +3070,8 @@ class DescribeImagesResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 镜像数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param ImageInstanceSet: 镜像信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageInstanceSet: list of ImageInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ImageInstanceSet: 镜像信息列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageInstanceSet: list of ImageInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ImageInstanceSet = None
         self.RequestId = None
@@ -3864,9 +3096,7 @@ class DescribePrometheusAgentInstancesRequest(AbstractModel):
     def __init__(self):
         """
         :param ClusterId: 集群id
-可以是tke, eks, edge的集群id
-        :type ClusterId: str
-        """
+可以是tke, eks, edge的集群id\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -3889,11 +3119,7 @@ class DescribePrometheusAgentInstancesResponse(AbstractModel):
     def __init__(self):
         """
         :param Instances: 关联该集群的实例列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Instances: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Instances: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Instances = None
         self.RequestId = None
 
@@ -3910,13 +3136,7 @@ class DescribePrometheusAgentsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param Offset: 用于分页
-        :type Offset: int
-        :param Limit: 用于分页
-        :type Limit: int
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param Offset: 用于分页\n        :type Offset: int\n        :param Limit: 用于分页\n        :type Limit: int\n        """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
@@ -3942,13 +3162,7 @@ class DescribePrometheusAgentsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Agents: 被关联集群信息
-        :type Agents: list of PrometheusAgentOverview
-        :param Total: 被关联集群总量
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Agents: 被关联集群信息\n        :type Agents: list of PrometheusAgentOverview\n        :param Total: 被关联集群总量\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Agents = None
         self.Total = None
         self.RequestId = None
@@ -3972,21 +3186,7 @@ class DescribePrometheusAlertHistoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param RuleName: 告警名称
-        :type RuleName: str
-        :param StartTime: 开始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        :param Labels: label集合
-        :type Labels: str
-        :param Offset: 分片
-        :type Offset: int
-        :param Limit: 分片
-        :type Limit: int
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param RuleName: 告警名称\n        :type RuleName: str\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Labels: label集合\n        :type Labels: str\n        :param Offset: 分片\n        :type Offset: int\n        :param Limit: 分片\n        :type Limit: int\n        """
         self.InstanceId = None
         self.RuleName = None
         self.StartTime = None
@@ -4020,13 +3220,7 @@ class DescribePrometheusAlertHistoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Items: 告警历史
-        :type Items: list of PrometheusAlertHistoryItem
-        :param Total: 总数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Items: 告警历史\n        :type Items: list of PrometheusAlertHistoryItem\n        :param Total: 总数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Items = None
         self.Total = None
         self.RequestId = None
@@ -4050,16 +3244,8 @@ class DescribePrometheusAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param Offset: 分页
-        :type Offset: int
-        :param Limit: 分页
-        :type Limit: int
-        :param Filters: 过滤
-支持ID，Name
-        :type Filters: list of Filter
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param Offset: 分页\n        :type Offset: int\n        :param Limit: 分页\n        :type Limit: int\n        :param Filters: 过滤
+支持ID，Name\n        :type Filters: list of Filter\n        """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
@@ -4092,13 +3278,7 @@ class DescribePrometheusAlertRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AlertRules: 告警详情
-        :type AlertRules: list of PrometheusAlertRuleDetail
-        :param Total: 总数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AlertRules: 告警详情\n        :type AlertRules: list of PrometheusAlertRuleDetail\n        :param Total: 总数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AlertRules = None
         self.Total = None
         self.RequestId = None
@@ -4122,9 +3302,7 @@ class DescribePrometheusInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -4146,27 +3324,9 @@ class DescribePrometheusInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param Name: 实例名称
-        :type Name: str
-        :param VpcId: 私有网络id
-        :type VpcId: str
-        :param SubnetId: 子网id
-        :type SubnetId: str
-        :param COSBucket: cos桶名称
-        :type COSBucket: str
-        :param QueryAddress: 数据查询地址
-        :type QueryAddress: str
-        :param Grafana: 实例中grafana相关的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Grafana: :class:`tencentcloud.tke.v20180525.models.PrometheusGrafanaInfo`
-        :param AlertManagerUrl: 用户自定义alertmanager
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlertManagerUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param Name: 实例名称\n        :type Name: str\n        :param VpcId: 私有网络id\n        :type VpcId: str\n        :param SubnetId: 子网id\n        :type SubnetId: str\n        :param COSBucket: cos桶名称\n        :type COSBucket: str\n        :param QueryAddress: 数据查询地址\n        :type QueryAddress: str\n        :param Grafana: 实例中grafana相关的信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Grafana: :class:`tencentcloud.tke.v20180525.models.PrometheusGrafanaInfo`\n        :param AlertManagerUrl: 用户自定义alertmanager
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlertManagerUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceId = None
         self.Name = None
         self.VpcId = None
@@ -4199,15 +3359,9 @@ class DescribePrometheusOverviewsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 用于分页
-        :type Offset: int
-        :param Limit: 用于分页
-        :type Limit: int
-        :param Filters: 过滤实例，目前支持：
+        :param Offset: 用于分页\n        :type Offset: int\n        :param Limit: 用于分页\n        :type Limit: int\n        :param Filters: 过滤实例，目前支持：
 ID: 通过实例ID来过滤 
-Name: 通过实例名称来过滤
-        :type Filters: list of Filter
-        """
+Name: 通过实例名称来过滤\n        :type Filters: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -4238,14 +3392,8 @@ class DescribePrometheusOverviewsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Instances: 实例列表
-        :type Instances: list of PrometheusInstanceOverview
-        :param Total: 实例总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Instances: 实例列表\n        :type Instances: list of PrometheusInstanceOverview\n        :param Total: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Instances = None
         self.Total = None
         self.RequestId = None
@@ -4269,17 +3417,9 @@ class DescribePrometheusTargetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param ClusterType: 集群类型
-        :type ClusterType: str
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param Filters: 过滤条件，当前支持
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param ClusterType: 集群类型\n        :type ClusterType: str\n        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param Filters: 过滤条件，当前支持
 Name=state
-Value=up, down, unknown
-        :type Filters: list of Filter
-        """
+Value=up, down, unknown\n        :type Filters: list of Filter\n        """
         self.InstanceId = None
         self.ClusterType = None
         self.ClusterId = None
@@ -4312,11 +3452,7 @@ class DescribePrometheusTargetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Jobs: 所有Job的targets信息
-        :type Jobs: list of PrometheusJobTargets
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Jobs: 所有Job的targets信息\n        :type Jobs: list of PrometheusJobTargets\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Jobs = None
         self.RequestId = None
 
@@ -4338,9 +3474,7 @@ class DescribePrometheusTemplateSyncRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板ID
-        :type TemplateId: str
-        """
+        :param TemplateId: 模板ID\n        :type TemplateId: str\n        """
         self.TemplateId = None
 
 
@@ -4362,11 +3496,7 @@ class DescribePrometheusTemplateSyncResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Targets: 同步目标详情
-        :type Targets: list of PrometheusTemplateSyncTarget
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Targets: 同步目标详情\n        :type Targets: list of PrometheusTemplateSyncTarget\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Targets = None
         self.RequestId = None
 
@@ -4392,13 +3522,7 @@ class DescribePrometheusTemplatesRequest(AbstractModel):
 Level 按模板级别过滤
 Name 按名称过滤
 Describe 按描述过滤
-ID 按templateId过滤
-        :type Filters: list of Filter
-        :param Offset: 分页偏移
-        :type Offset: int
-        :param Limit: 总数限制
-        :type Limit: int
-        """
+ID 按templateId过滤\n        :type Filters: list of Filter\n        :param Offset: 分页偏移\n        :type Offset: int\n        :param Limit: 总数限制\n        :type Limit: int\n        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -4429,13 +3553,7 @@ class DescribePrometheusTemplatesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Templates: 模板列表
-        :type Templates: list of PrometheusTemplate
-        :param Total: 总数
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Templates: 模板列表\n        :type Templates: list of PrometheusTemplate\n        :param Total: 总数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Templates = None
         self.Total = None
         self.RequestId = None
@@ -4466,14 +3584,8 @@ class DescribeRegionsResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 地域的数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param RegionInstanceSet: 地域列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionInstanceSet: list of RegionInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RegionInstanceSet: 地域列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionInstanceSet: list of RegionInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionInstanceSet = None
         self.RequestId = None
@@ -4497,11 +3609,7 @@ class DescribeRouteTableConflictsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableCidrBlock: 路由表CIDR
-        :type RouteTableCidrBlock: str
-        :param VpcId: 路由表绑定的VPC
-        :type VpcId: str
-        """
+        :param RouteTableCidrBlock: 路由表CIDR\n        :type RouteTableCidrBlock: str\n        :param VpcId: 路由表绑定的VPC\n        :type VpcId: str\n        """
         self.RouteTableCidrBlock = None
         self.VpcId = None
 
@@ -4525,14 +3633,8 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param HasConflict: 路由表是否冲突。
-        :type HasConflict: bool
-        :param RouteTableConflictSet: 路由表冲突列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouteTableConflictSet: list of RouteTableConflict
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param HasConflict: 路由表是否冲突。\n        :type HasConflict: bool\n        :param RouteTableConflictSet: 路由表冲突列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RouteTableConflictSet: list of RouteTableConflict\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.HasConflict = None
         self.RouteTableConflictSet = None
         self.RequestId = None
@@ -4563,14 +3665,8 @@ class DescribeVersionsResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 版本数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param VersionInstanceSet: 版本列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VersionInstanceSet: list of VersionInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param VersionInstanceSet: 版本列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionInstanceSet: list of VersionInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.VersionInstanceSet = None
         self.RequestId = None
@@ -4594,13 +3690,7 @@ class DescribeVpcCniPodLimitsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 查询的机型所在可用区，如：ap-guangzhou-3，默认为空，即不按可用区过滤信息
-        :type Zone: str
-        :param InstanceFamily: 查询的实例机型系列信息，如：S5，默认为空，即不按机型系列过滤信息
-        :type InstanceFamily: str
-        :param InstanceType: 查询的实例机型信息，如：S5.LARGE8，默认为空，即不按机型过滤信息
-        :type InstanceType: str
-        """
+        :param Zone: 查询的机型所在可用区，如：ap-guangzhou-3，默认为空，即不按可用区过滤信息\n        :type Zone: str\n        :param InstanceFamily: 查询的实例机型系列信息，如：S5，默认为空，即不按机型系列过滤信息\n        :type InstanceFamily: str\n        :param InstanceType: 查询的实例机型信息，如：S5.LARGE8，默认为空，即不按机型过滤信息\n        :type InstanceType: str\n        """
         self.Zone = None
         self.InstanceFamily = None
         self.InstanceType = None
@@ -4627,14 +3717,8 @@ class DescribeVpcCniPodLimitsResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 机型数据数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param PodLimitsInstanceSet: 机型信息及其可支持的最大VPC-CNI模式Pod数量信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodLimitsInstanceSet: list of PodLimitsInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param PodLimitsInstanceSet: 机型信息及其可支持的最大VPC-CNI模式Pod数量信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodLimitsInstanceSet: list of PodLimitsInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.PodLimitsInstanceSet = None
         self.RequestId = None
@@ -4658,9 +3742,7 @@ class DisableVpcCniNetworkTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -4682,9 +3764,7 @@ class DisableVpcCniNetworkTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4699,11 +3779,7 @@ class DnsServerConf(AbstractModel):
 
     def __init__(self):
         """
-        :param Domain: 域名。空字符串表示所有域名。
-        :type Domain: str
-        :param DnsServers: dns 服务器地址列表。地址格式 ip:port
-        :type DnsServers: list of str
-        """
+        :param Domain: 域名。空字符串表示所有域名。\n        :type Domain: str\n        :param DnsServers: dns 服务器地址列表。地址格式 ip:port\n        :type DnsServers: list of str\n        """
         self.Domain = None
         self.DnsServers = None
 
@@ -4727,34 +3803,8 @@ class EksCluster(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群Id
-        :type ClusterId: str
-        :param ClusterName: 集群名称
-        :type ClusterName: str
-        :param VpcId: Vpc Id
-        :type VpcId: str
-        :param SubnetIds: 子网列表
-        :type SubnetIds: list of str
-        :param K8SVersion: k8s 版本号
-        :type K8SVersion: str
-        :param Status: 集群状态(running运行中，initializing 初始化中，failed异常)
-        :type Status: str
-        :param ClusterDesc: 集群描述信息
-        :type ClusterDesc: str
-        :param CreatedTime: 集群创建时间
-        :type CreatedTime: str
-        :param ServiceSubnetId: Service 子网Id
-        :type ServiceSubnetId: str
-        :param DnsServers: 集群的自定义dns 服务器信息
-        :type DnsServers: list of DnsServerConf
-        :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE
-        :type NeedDeleteCbs: bool
-        :param EnableVpcCoreDNS: 是否在用户集群内开启Dns。默认为TRUE
-        :type EnableVpcCoreDNS: bool
-        :param TagSpecification: 标签描述列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagSpecification: list of TagSpecification
-        """
+        :param ClusterId: 集群Id\n        :type ClusterId: str\n        :param ClusterName: 集群名称\n        :type ClusterName: str\n        :param VpcId: Vpc Id\n        :type VpcId: str\n        :param SubnetIds: 子网列表\n        :type SubnetIds: list of str\n        :param K8SVersion: k8s 版本号\n        :type K8SVersion: str\n        :param Status: 集群状态(running运行中，initializing 初始化中，failed异常)\n        :type Status: str\n        :param ClusterDesc: 集群描述信息\n        :type ClusterDesc: str\n        :param CreatedTime: 集群创建时间\n        :type CreatedTime: str\n        :param ServiceSubnetId: Service 子网Id\n        :type ServiceSubnetId: str\n        :param DnsServers: 集群的自定义dns 服务器信息\n        :type DnsServers: list of DnsServerConf\n        :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE\n        :type NeedDeleteCbs: bool\n        :param EnableVpcCoreDNS: 是否在用户集群内开启Dns。默认为TRUE\n        :type EnableVpcCoreDNS: bool\n        :param TagSpecification: 标签描述列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagSpecification: list of TagSpecification\n        """
         self.ClusterId = None
         self.ClusterName = None
         self.VpcId = None
@@ -4810,17 +3860,7 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param VpcCniType: 开启vpc-cni的模式，tke-route-eni开启的是策略路由模式，tke-direct-eni开启的是独立网卡模式
-        :type VpcCniType: str
-        :param EnableStaticIp: 是否开启固定IP模式
-        :type EnableStaticIp: bool
-        :param Subnets: 使用的容器子网
-        :type Subnets: list of str
-        :param ExpiredSeconds: 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。
-        :type ExpiredSeconds: int
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param VpcCniType: 开启vpc-cni的模式，tke-route-eni开启的是策略路由模式，tke-direct-eni开启的是独立网卡模式\n        :type VpcCniType: str\n        :param EnableStaticIp: 是否开启固定IP模式\n        :type EnableStaticIp: bool\n        :param Subnets: 使用的容器子网\n        :type Subnets: list of str\n        :param ExpiredSeconds: 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。\n        :type ExpiredSeconds: int\n        """
         self.ClusterId = None
         self.VpcCniType = None
         self.EnableStaticIp = None
@@ -4850,9 +3890,7 @@ class EnableVpcCniNetworkTypeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4867,11 +3905,7 @@ class EnhancedService(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
-        :type SecurityService: :class:`tencentcloud.tke.v20180525.models.RunSecurityServiceEnabled`
-        :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
-        :type MonitorService: :class:`tencentcloud.tke.v20180525.models.RunMonitorServiceEnabled`
-        """
+        :param SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。\n        :type SecurityService: :class:`tencentcloud.tke.v20180525.models.RunSecurityServiceEnabled`\n        :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。\n        :type MonitorService: :class:`tencentcloud.tke.v20180525.models.RunMonitorServiceEnabled`\n        """
         self.SecurityService = None
         self.MonitorService = None
 
@@ -4900,48 +3934,20 @@ class ExistedInstance(AbstractModel):
     def __init__(self):
         """
         :param Usable: 实例是否支持加入集群(TRUE 可以加入 FALSE 不能加入)。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Usable: bool\n        :param UnusableReason: 实例不支持加入的原因。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UnusableReason: str\n        :param AlreadyInCluster: 实例已经所在的集群ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlreadyInCluster: str\n        :param InstanceId: 实例ID形如：ins-xxxxxxxx。\n        :type InstanceId: str\n        :param InstanceName: 实例名称。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param PrivateIpAddresses: 实例主网卡的内网IP列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivateIpAddresses: list of str\n        :param PublicIpAddresses: 实例主网卡的公网IP列表。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Usable: bool
-        :param UnusableReason: 实例不支持加入的原因。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnusableReason: str
-        :param AlreadyInCluster: 实例已经所在的集群ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlreadyInCluster: str
-        :param InstanceId: 实例ID形如：ins-xxxxxxxx。
-        :type InstanceId: str
-        :param InstanceName: 实例名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceName: str
-        :param PrivateIpAddresses: 实例主网卡的内网IP列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrivateIpAddresses: list of str
-        :param PublicIpAddresses: 实例主网卡的公网IP列表。
-注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicIpAddresses: list of str
-        :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreatedTime: str
-        :param CPU: 实例的CPU核数，单位：核。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CPU: int
-        :param Memory: 实例内存容量，单位：GB。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Memory: int
-        :param OsName: 操作系统名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OsName: str
-        :param InstanceType: 实例机型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param AutoscalingGroupId: 伸缩组ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoscalingGroupId: str
-        :param InstanceChargeType: 实例计费模式。取值范围： PREPAID：表示预付费，即包年包月 POSTPAID_BY_HOUR：表示后付费，即按量计费 CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceChargeType: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIpAddresses: list of str\n        :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param CPU: 实例的CPU核数，单位：核。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CPU: int\n        :param Memory: 实例内存容量，单位：GB。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Memory: int\n        :param OsName: 操作系统名称。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OsName: str\n        :param InstanceType: 实例机型。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param AutoscalingGroupId: 伸缩组ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoscalingGroupId: str\n        :param InstanceChargeType: 实例计费模式。取值范围： PREPAID：表示预付费，即包年包月 POSTPAID_BY_HOUR：表示后付费，即按量计费 CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceChargeType: str\n        """
         self.Usable = None
         self.UnusableReason = None
         self.AlreadyInCluster = None
@@ -4989,15 +3995,7 @@ class ExistedInstancesForNode(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD最小配置为4C8G。
-        :type NodeRole: str
-        :param ExistedInstancesPara: 已存在实例的重装参数
-        :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
-        :param InstanceAdvancedSettingsOverride: 节点高级设置，会覆盖集群级别设置的InstanceAdvancedSettings（当前只对节点自定义参数ExtraArgs生效）
-        :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param DesiredPodNumbers: 自定义模式集群，可指定每个节点的pod数量
-        :type DesiredPodNumbers: list of int
-        """
+        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD最小配置为4C8G。\n        :type NodeRole: str\n        :param ExistedInstancesPara: 已存在实例的重装参数\n        :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`\n        :param InstanceAdvancedSettingsOverride: 节点高级设置，会覆盖集群级别设置的InstanceAdvancedSettings（当前只对节点自定义参数ExtraArgs生效）\n        :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param DesiredPodNumbers: 自定义模式集群，可指定每个节点的pod数量\n        :type DesiredPodNumbers: list of int\n        """
         self.NodeRole = None
         self.ExistedInstancesPara = None
         self.InstanceAdvancedSettingsOverride = None
@@ -5029,19 +4027,7 @@ class ExistedInstancesPara(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 集群ID
-        :type InstanceIds: list of str
-        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
-        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
-        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
-        :type SecurityGroupIds: list of str
-        :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
-        :type HostName: str
-        """
+        :param InstanceIds: 集群ID\n        :type InstanceIds: list of str\n        :param InstanceAdvancedSettings: 实例额外需要设置参数信息\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。\n        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`\n        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）\n        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`\n        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。\n        :type SecurityGroupIds: list of str\n        :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)\n        :type HostName: str\n        """
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
@@ -5079,11 +4065,7 @@ class ExtensionAddon(AbstractModel):
 
     def __init__(self):
         """
-        :param AddonName: 扩展组件名称
-        :type AddonName: str
-        :param AddonParam: 扩展组件信息(扩展组件资源对象的json字符串描述)
-        :type AddonParam: str
-        """
+        :param AddonName: 扩展组件名称\n        :type AddonName: str\n        :param AddonParam: 扩展组件信息(扩展组件资源对象的json字符串描述)\n        :type AddonParam: str\n        """
         self.AddonName = None
         self.AddonParam = None
 
@@ -5118,11 +4100,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 需要过滤的字段。
-        :type Name: str
-        :param Values: 字段的过滤值。
-        :type Values: list of str
-        """
+        :param Name: 需要过滤的字段。\n        :type Name: str\n        :param Values: 字段的过滤值。\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -5146,13 +4124,7 @@ class GetUpgradeInstanceProgressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param Limit: 最多获取多少个节点的进度
-        :type Limit: int
-        :param Offset: 从第几个节点开始获取进度
-        :type Offset: int
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param Limit: 最多获取多少个节点的进度\n        :type Limit: int\n        :param Offset: 从第几个节点开始获取进度\n        :type Offset: int\n        """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
@@ -5178,25 +4150,13 @@ class GetUpgradeInstanceProgressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 升级节点总数
-        :type Total: int
-        :param Done: 已升级节点总数
-        :type Done: int
-        :param LifeState: 升级任务生命周期
+        :param Total: 升级节点总数\n        :type Total: int\n        :param Done: 已升级节点总数\n        :type Done: int\n        :param LifeState: 升级任务生命周期
 process 运行中
 paused 已停止
 pauing 正在停止
 done  已完成
 timeout 已超时
-aborted 已取消
-        :type LifeState: str
-        :param Instances: 各节点升级进度详情
-        :type Instances: list of InstanceUpgradeProgressItem
-        :param ClusterStatus: 集群当前状态
-        :type ClusterStatus: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradeClusterStatus`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+aborted 已取消\n        :type LifeState: str\n        :param Instances: 各节点升级进度详情\n        :type Instances: list of InstanceUpgradeProgressItem\n        :param ClusterStatus: 集群当前状态\n        :type ClusterStatus: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradeClusterStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Done = None
         self.LifeState = None
@@ -5228,13 +4188,7 @@ class IPAddress(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: Ip 地址的类型。可为 advertise, public 等
-        :type Type: str
-        :param Ip: Ip 地址
-        :type Ip: str
-        :param Port: 网络端口
-        :type Port: int
-        """
+        :param Type: Ip 地址的类型。可为 advertise, public 等\n        :type Type: str\n        :param Ip: Ip 地址\n        :type Ip: str\n        :param Port: 网络端口\n        :type Port: int\n        """
         self.Type = None
         self.Ip = None
         self.Port = None
@@ -5261,18 +4215,10 @@ class ImageInstance(AbstractModel):
     def __init__(self):
         """
         :param Alias: 镜像别名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Alias: str
-        :param OsName: 操作系统名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OsName: str
-        :param ImageId: 镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageId: str
-        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OsCustomizeType: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Alias: str\n        :param OsName: 操作系统名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OsName: str\n        :param ImageId: 镜像ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageId: str\n        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OsCustomizeType: str\n        """
         self.Alias = None
         self.OsName = None
         self.ImageId = None
@@ -5300,32 +4246,12 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER
-        :type InstanceRole: str
-        :param FailedReason: 实例异常(或者处于初始化中)的原因
-        :type FailedReason: str
-        :param InstanceState: 实例的状态（running 运行中，initializing 初始化中，failed 异常）
-        :type InstanceState: str
-        :param DrainStatus: 实例是否封锁状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DrainStatus: str
-        :param InstanceAdvancedSettings: 节点配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param CreatedTime: 添加时间
-        :type CreatedTime: str
-        :param LanIP: 节点内网IP
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LanIP: str
-        :param NodePoolId: 资源池ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NodePoolId: str
-        :param AutoscalingGroupId: 自动伸缩组ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoscalingGroupId: str
-        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER\n        :type InstanceRole: str\n        :param FailedReason: 实例异常(或者处于初始化中)的原因\n        :type FailedReason: str\n        :param InstanceState: 实例的状态（running 运行中，initializing 初始化中，failed 异常）\n        :type InstanceState: str\n        :param DrainStatus: 实例是否封锁状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DrainStatus: str\n        :param InstanceAdvancedSettings: 节点配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param CreatedTime: 添加时间\n        :type CreatedTime: str\n        :param LanIP: 节点内网IP
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LanIP: str\n        :param NodePoolId: 资源池ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NodePoolId: str\n        :param AutoscalingGroupId: 自动伸缩组ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoscalingGroupId: str\n        """
         self.InstanceId = None
         self.InstanceRole = None
         self.FailedReason = None
@@ -5369,29 +4295,13 @@ class InstanceAdvancedSettings(AbstractModel):
         """
         :param MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
 注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MountTarget: str
-        :param DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DockerGraphPath: str
-        :param UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserScript: str
-        :param Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
-        :type Unschedulable: int
-        :param Labels: 节点Label数组
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Labels: list of Label
-        :param DataDisks: 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataDisks: list of DataDisk
-        :param ExtraArgs: 节点相关的自定义参数信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
-        :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DesiredPodNumber: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MountTarget: str\n        :param DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DockerGraphPath: str\n        :param UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserScript: str\n        :param Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.\n        :type Unschedulable: int\n        :param Labels: 节点Label数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Labels: list of Label\n        :param DataDisks: 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataDisks: list of DataDisk\n        :param ExtraArgs: 节点相关的自定义参数信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`\n        :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DesiredPodNumber: int\n        """
         self.MountTarget = None
         self.DockerGraphPath = None
         self.UserScript = None
@@ -5439,13 +4349,7 @@ class InstanceDataDiskMountSetting(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceType: CVM实例类型
-        :type InstanceType: str
-        :param DataDisks: 数据盘挂载信息
-        :type DataDisks: list of DataDisk
-        :param Zone: CVM实例所属可用区
-        :type Zone: str
-        """
+        :param InstanceType: CVM实例类型\n        :type InstanceType: str\n        :param DataDisks: 数据盘挂载信息\n        :type DataDisks: list of DataDisk\n        :param Zone: CVM实例所属可用区\n        :type Zone: str\n        """
         self.InstanceType = None
         self.DataDisks = None
         self.Zone = None
@@ -5477,9 +4381,7 @@ class InstanceExtraArgs(AbstractModel):
     def __init__(self):
         """
         :param Kubelet: kubelet自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Kubelet: list of str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Kubelet: list of str\n        """
         self.Kubelet = None
 
 
@@ -5501,11 +4403,7 @@ class InstanceUpgradeClusterStatus(AbstractModel):
 
     def __init__(self):
         """
-        :param PodTotal: pod总数
-        :type PodTotal: int
-        :param NotReadyPod: NotReady pod总数
-        :type NotReadyPod: int
-        """
+        :param PodTotal: pod总数\n        :type PodTotal: int\n        :param NotReadyPod: NotReady pod总数\n        :type NotReadyPod: int\n        """
         self.PodTotal = None
         self.NotReadyPod = None
 
@@ -5529,13 +4427,7 @@ class InstanceUpgradePreCheckResult(AbstractModel):
 
     def __init__(self):
         """
-        :param CheckPass: 检查是否通过
-        :type CheckPass: bool
-        :param Items: 检查项数组
-        :type Items: list of InstanceUpgradePreCheckResultItem
-        :param SinglePods: 本节点独立pod列表
-        :type SinglePods: list of str
-        """
+        :param CheckPass: 检查是否通过\n        :type CheckPass: bool\n        :param Items: 检查项数组\n        :type Items: list of InstanceUpgradePreCheckResultItem\n        :param SinglePods: 本节点独立pod列表\n        :type SinglePods: list of str\n        """
         self.CheckPass = None
         self.Items = None
         self.SinglePods = None
@@ -5566,19 +4458,7 @@ class InstanceUpgradePreCheckResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Namespace: 工作负载的命名空间
-        :type Namespace: str
-        :param WorkLoadKind: 工作负载类型
-        :type WorkLoadKind: str
-        :param WorkLoadName: 工作负载名称
-        :type WorkLoadName: str
-        :param Before: 驱逐节点前工作负载running的pod数目
-        :type Before: int
-        :param After: 驱逐节点后工作负载running的pod数目
-        :type After: int
-        :param Pods: 工作负载在本节点上的pod列表
-        :type Pods: list of str
-        """
+        :param Namespace: 工作负载的命名空间\n        :type Namespace: str\n        :param WorkLoadKind: 工作负载类型\n        :type WorkLoadKind: str\n        :param WorkLoadName: 工作负载名称\n        :type WorkLoadName: str\n        :param Before: 驱逐节点前工作负载running的pod数目\n        :type Before: int\n        :param After: 驱逐节点后工作负载running的pod数目\n        :type After: int\n        :param Pods: 工作负载在本节点上的pod列表\n        :type Pods: list of str\n        """
         self.Namespace = None
         self.WorkLoadKind = None
         self.WorkLoadName = None
@@ -5610,28 +4490,16 @@ class InstanceUpgradeProgressItem(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceID: 节点instanceID
-        :type InstanceID: str
-        :param LifeState: 任务生命周期
+        :param InstanceID: 节点instanceID\n        :type InstanceID: str\n        :param LifeState: 任务生命周期
 process 运行中
 paused 已停止
 pauing 正在停止
 done  已完成
 timeout 已超时
 aborted 已取消
-pending 还未开始
-        :type LifeState: str
-        :param StartAt: 升级开始时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartAt: str
-        :param EndAt: 升级结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndAt: str
-        :param CheckResult: 升级前检查结果
-        :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`
-        :param Detail: 升级步骤详情
-        :type Detail: list of TaskStepInfo
-        """
+pending 还未开始\n        :type LifeState: str\n        :param StartAt: 升级开始时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartAt: str\n        :param EndAt: 升级结束时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndAt: str\n        :param CheckResult: 升级前检查结果\n        :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`\n        :param Detail: 升级步骤详情\n        :type Detail: list of TaskStepInfo\n        """
         self.InstanceID = None
         self.LifeState = None
         self.StartAt = None
@@ -5670,11 +4538,7 @@ class Label(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: map表中的Name
-        :type Name: str
-        :param Value: map表中的Value
-        :type Value: str
-        """
+        :param Name: map表中的Name\n        :type Name: str\n        :param Value: map表中的Value\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -5699,15 +4563,9 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         """
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Password: str
-        :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口[DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699)获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyIds: list of str
-        :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeepImageLogin: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Password: str\n        :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口[DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699)获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyIds: list of str\n        :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：<br><li>TRUE：表示保持镜像的登录设置<br><li>FALSE：表示不保持镜像的登录设置<br><br>默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeepImageLogin: str\n        """
         self.Password = None
         self.KeyIds = None
         self.KeepImageLogin = None
@@ -5733,15 +4591,7 @@ class ManuallyAdded(AbstractModel):
 
     def __init__(self):
         """
-        :param Joining: 加入中的节点数量
-        :type Joining: int
-        :param Initializing: 初始化中的节点数量
-        :type Initializing: int
-        :param Normal: 正常的节点数量
-        :type Normal: int
-        :param Total: 节点总数
-        :type Total: int
-        """
+        :param Joining: 加入中的节点数量\n        :type Joining: int\n        :param Initializing: 初始化中的节点数量\n        :type Initializing: int\n        :param Normal: 正常的节点数量\n        :type Normal: int\n        :param Total: 节点总数\n        :type Total: int\n        """
         self.Joining = None
         self.Initializing = None
         self.Normal = None
@@ -5769,11 +4619,7 @@ class ModifyClusterAsGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param ClusterAsGroupAttribute: 集群关联的伸缩组属性
-        :type ClusterAsGroupAttribute: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupAttribute`
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param ClusterAsGroupAttribute: 集群关联的伸缩组属性\n        :type ClusterAsGroupAttribute: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupAttribute`\n        """
         self.ClusterId = None
         self.ClusterAsGroupAttribute = None
 
@@ -5799,9 +4645,7 @@ class ModifyClusterAsGroupAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5816,11 +4660,7 @@ class ModifyClusterAsGroupOptionAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param ClusterAsGroupOption: 集群弹性伸缩属性
-        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param ClusterAsGroupOption: 集群弹性伸缩属性\n        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`\n        """
         self.ClusterId = None
         self.ClusterAsGroupOption = None
 
@@ -5846,9 +4686,7 @@ class ModifyClusterAsGroupOptionAttributeResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5863,15 +4701,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param ProjectId: 集群所属项目
-        :type ProjectId: int
-        :param ClusterName: 集群名称
-        :type ClusterName: str
-        :param ClusterDesc: 集群描述
-        :type ClusterDesc: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param ProjectId: 集群所属项目\n        :type ProjectId: int\n        :param ClusterName: 集群名称\n        :type ClusterName: str\n        :param ClusterDesc: 集群描述\n        :type ClusterDesc: str\n        """
         self.ClusterId = None
         self.ProjectId = None
         self.ClusterName = None
@@ -5900,17 +4730,9 @@ class ModifyClusterAttributeResponse(AbstractModel):
     def __init__(self):
         """
         :param ProjectId: 集群所属项目
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProjectId: int
-        :param ClusterName: 集群名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterName: str
-        :param ClusterDesc: 集群描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterDesc: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: int\n        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterName: str\n        :param ClusterDesc: 集群描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterDesc: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectId = None
         self.ClusterName = None
         self.ClusterDesc = None
@@ -5931,11 +4753,7 @@ class ModifyClusterEndpointSPRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
-        :type SecurityPolicies: list of str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)\n        :type SecurityPolicies: list of str\n        """
         self.ClusterId = None
         self.SecurityPolicies = None
 
@@ -5959,9 +4777,7 @@ class ModifyClusterEndpointSPResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5976,27 +4792,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param NodePoolId: 节点池ID
-        :type NodePoolId: str
-        :param Name: 名称
-        :type Name: str
-        :param MaxNodesNum: 最大节点数
-        :type MaxNodesNum: int
-        :param MinNodesNum: 最小节点数
-        :type MinNodesNum: int
-        :param Labels: 标签
-        :type Labels: list of Label
-        :param Taints: 污点
-        :type Taints: list of Taint
-        :param EnableAutoscale: 是否开启伸缩
-        :type EnableAutoscale: bool
-        :param OsName: 操作系统名称
-        :type OsName: str
-        :param OsCustomizeType: 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-        :type OsCustomizeType: str
-        """
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param NodePoolId: 节点池ID\n        :type NodePoolId: str\n        :param Name: 名称\n        :type Name: str\n        :param MaxNodesNum: 最大节点数\n        :type MaxNodesNum: int\n        :param MinNodesNum: 最小节点数\n        :type MinNodesNum: int\n        :param Labels: 标签\n        :type Labels: list of Label\n        :param Taints: 污点\n        :type Taints: list of Taint\n        :param EnableAutoscale: 是否开启伸缩\n        :type EnableAutoscale: bool\n        :param OsName: 操作系统名称\n        :type OsName: str\n        :param OsCustomizeType: 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)\n        :type OsCustomizeType: str\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.Name = None
@@ -6046,9 +4842,7 @@ class ModifyClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6063,13 +4857,7 @@ class ModifyNodePoolDesiredCapacityAboutAsgRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        :param DesiredCapacity: 节点池所关联的伸缩组的期望实例数
-        :type DesiredCapacity: int
-        """
+        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        :param DesiredCapacity: 节点池所关联的伸缩组的期望实例数\n        :type DesiredCapacity: int\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.DesiredCapacity = None
@@ -6095,9 +4883,7 @@ class ModifyNodePoolDesiredCapacityAboutAsgResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6112,11 +4898,7 @@ class ModifyPrometheusAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param AlertRule: 告警配置
-        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertRuleDetail`
-        """
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param AlertRule: 告警配置\n        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertRuleDetail`\n        """
         self.InstanceId = None
         self.AlertRule = None
 
@@ -6142,9 +4924,7 @@ class ModifyPrometheusAlertRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6159,11 +4939,7 @@ class ModifyPrometheusTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板ID
-        :type TemplateId: str
-        :param Template: 修改内容
-        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemplateModify`
-        """
+        :param TemplateId: 模板ID\n        :type TemplateId: str\n        :param Template: 修改内容\n        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemplateModify`\n        """
         self.TemplateId = None
         self.Template = None
 
@@ -6189,9 +4965,7 @@ class ModifyPrometheusTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -6207,12 +4981,8 @@ class NodeCountSummary(AbstractModel):
     def __init__(self):
         """
         :param ManuallyAdded: 手动管理的节点
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`
-        :param AutoscalingAdded: 自动管理的节点
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`\n        :param AutoscalingAdded: 自动管理的节点
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`\n        """
         self.ManuallyAdded = None
         self.AutoscalingAdded = None
 
@@ -6240,52 +5010,16 @@ class NodePool(AbstractModel):
 
     def __init__(self):
         """
-        :param NodePoolId: NodePoolId 资源池id
-        :type NodePoolId: str
-        :param Name: Name 资源池名称
-        :type Name: str
-        :param ClusterInstanceId: ClusterInstanceId 集群实例id
-        :type ClusterInstanceId: str
-        :param LifeState: LifeState 状态，当前节点池生命周期状态包括：creating，normal，updating，deleting，deleted
-        :type LifeState: str
-        :param LaunchConfigurationId: LaunchConfigurationId 配置
-        :type LaunchConfigurationId: str
-        :param AutoscalingGroupId: AutoscalingGroupId 分组id
-        :type AutoscalingGroupId: str
-        :param Labels: Labels 标签
-        :type Labels: list of Label
-        :param Taints: Taints 污点标记
-        :type Taints: list of Taint
-        :param NodeCountSummary: NodeCountSummary 节点列表
-        :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`
-        :param AutoscalingGroupStatus: 状态信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AutoscalingGroupStatus: str
-        :param MaxNodesNum: 最大节点数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxNodesNum: int
-        :param MinNodesNum: 最小节点数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MinNodesNum: int
-        :param DesiredNodesNum: 期望的节点数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DesiredNodesNum: int
-        :param NodePoolOs: 节点池osName
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NodePoolOs: str
-        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OsCustomizeType: str
-        :param ImageId: 镜像id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageId: str
-        :param DesiredPodNum: 集群属于节点podCIDR大小自定义模式时，节点池需要带上pod数量属性
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DesiredPodNum: int
-        :param UserScript: 用户自定义脚本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserScript: str
-        """
+        :param NodePoolId: NodePoolId 资源池id\n        :type NodePoolId: str\n        :param Name: Name 资源池名称\n        :type Name: str\n        :param ClusterInstanceId: ClusterInstanceId 集群实例id\n        :type ClusterInstanceId: str\n        :param LifeState: LifeState 状态，当前节点池生命周期状态包括：creating，normal，updating，deleting，deleted\n        :type LifeState: str\n        :param LaunchConfigurationId: LaunchConfigurationId 配置\n        :type LaunchConfigurationId: str\n        :param AutoscalingGroupId: AutoscalingGroupId 分组id\n        :type AutoscalingGroupId: str\n        :param Labels: Labels 标签\n        :type Labels: list of Label\n        :param Taints: Taints 污点标记\n        :type Taints: list of Taint\n        :param NodeCountSummary: NodeCountSummary 节点列表\n        :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`\n        :param AutoscalingGroupStatus: 状态信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoscalingGroupStatus: str\n        :param MaxNodesNum: 最大节点数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxNodesNum: int\n        :param MinNodesNum: 最小节点数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MinNodesNum: int\n        :param DesiredNodesNum: 期望的节点数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DesiredNodesNum: int\n        :param NodePoolOs: 节点池osName
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NodePoolOs: str\n        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OsCustomizeType: str\n        :param ImageId: 镜像id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageId: str\n        :param DesiredPodNum: 集群属于节点podCIDR大小自定义模式时，节点池需要带上pod数量属性
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DesiredPodNum: int\n        :param UserScript: 用户自定义脚本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserScript: str\n        """
         self.NodePoolId = None
         self.Name = None
         self.ClusterInstanceId = None
@@ -6353,13 +5087,7 @@ class NodePoolOption(AbstractModel):
 
     def __init__(self):
         """
-        :param AddToNodePool: 是否加入节点池
-        :type AddToNodePool: bool
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        :param InheritConfigurationFromNodePool: 是否继承节点池相关配置
-        :type InheritConfigurationFromNodePool: bool
-        """
+        :param AddToNodePool: 是否加入节点池\n        :type AddToNodePool: bool\n        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        :param InheritConfigurationFromNodePool: 是否继承节点池相关配置\n        :type InheritConfigurationFromNodePool: bool\n        """
         self.AddToNodePool = None
         self.NodePoolId = None
         self.InheritConfigurationFromNodePool = None
@@ -6386,15 +5114,9 @@ class PodLimitsByType(AbstractModel):
     def __init__(self):
         """
         :param TKERouteENINonStaticIP: TKE共享网卡非固定IP模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TKERouteENINonStaticIP: int
-        :param TKERouteENIStaticIP: TKE共享网卡固定IP模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TKERouteENIStaticIP: int
-        :param TKEDirectENI: TKE独立网卡模式可支持的Pod数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TKEDirectENI: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TKERouteENINonStaticIP: int\n        :param TKERouteENIStaticIP: TKE共享网卡固定IP模式可支持的Pod数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TKERouteENIStaticIP: int\n        :param TKEDirectENI: TKE独立网卡模式可支持的Pod数量
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TKEDirectENI: int\n        """
         self.TKERouteENINonStaticIP = None
         self.TKERouteENIStaticIP = None
         self.TKEDirectENI = None
@@ -6421,18 +5143,10 @@ class PodLimitsInstance(AbstractModel):
     def __init__(self):
         """
         :param Zone: 机型所在可用区
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Zone: str
-        :param InstanceFamily: 机型所属机型族
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceFamily: str
-        :param InstanceType: 实例机型名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param PodLimits: 机型可支持的最大VPC-CNI模式Pod数量信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodLimits: :class:`tencentcloud.tke.v20180525.models.PodLimitsByType`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param InstanceFamily: 机型所属机型族
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceFamily: str\n        :param InstanceType: 实例机型名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param PodLimits: 机型可支持的最大VPC-CNI模式Pod数量信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodLimits: :class:`tencentcloud.tke.v20180525.models.PodLimitsByType`\n        """
         self.Zone = None
         self.InstanceFamily = None
         self.InstanceType = None
@@ -6462,17 +5176,9 @@ class PrometheusAgentOverview(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterType: 集群类型
-        :type ClusterType: str
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param Status: agent状态
+        :param ClusterType: 集群类型\n        :type ClusterType: str\n        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param Status: agent状态
 normal = 正常
-abnormal = 异常
-        :type Status: str
-        :param ClusterName: 集群名称
-        :type ClusterName: str
-        """
+abnormal = 异常\n        :type Status: str\n        :param ClusterName: 集群名称\n        :type ClusterName: str\n        """
         self.ClusterType = None
         self.ClusterId = None
         self.Status = None
@@ -6500,25 +5206,11 @@ class PrometheusAlertHistoryItem(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: 告警名称
-        :type RuleName: str
-        :param StartTime: 告警开始时间
-        :type StartTime: str
-        :param Content: 告警内容
-        :type Content: str
-        :param State: 告警状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type State: str
-        :param RuleItem: 触发的规则名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleItem: str
-        :param TopicId: 告警渠道的id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TopicId: str
-        :param TopicName: 告警渠道的名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TopicName: str
-        """
+        :param RuleName: 告警名称\n        :type RuleName: str\n        :param StartTime: 告警开始时间\n        :type StartTime: str\n        :param Content: 告警内容\n        :type Content: str\n        :param State: 告警状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type State: str\n        :param RuleItem: 触发的规则名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleItem: str\n        :param TopicId: 告警渠道的id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicId: str\n        :param TopicName: 告警渠道的名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicName: str\n        """
         self.RuleName = None
         self.StartTime = None
         self.Content = None
@@ -6552,23 +5244,9 @@ class PrometheusAlertRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 规则名称
-        :type Name: str
-        :param Rule: prometheus语句
-        :type Rule: str
-        :param Labels: 额外标签
-        :type Labels: list of Label
-        :param Template: 告警发送模板
-        :type Template: str
-        :param For: 持续时间
-        :type For: str
-        :param Describe: 该条规则的描述信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Describe: str
-        :param Annotations: 参考prometheus rule中的annotations
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Annotations: list of Label
-        """
+        :param Name: 规则名称\n        :type Name: str\n        :param Rule: prometheus语句\n        :type Rule: str\n        :param Labels: 额外标签\n        :type Labels: list of Label\n        :param Template: 告警发送模板\n        :type Template: str\n        :param For: 持续时间\n        :type For: str\n        :param Describe: 该条规则的描述信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Describe: str\n        :param Annotations: 参考prometheus rule中的annotations
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Annotations: list of Label\n        """
         self.Name = None
         self.Rule = None
         self.Labels = None
@@ -6612,23 +5290,9 @@ class PrometheusAlertRuleDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 规则名称
-        :type Name: str
-        :param Rules: 规则列表
-        :type Rules: list of PrometheusAlertRule
-        :param UpdatedAt: 最后修改时间
-        :type UpdatedAt: str
-        :param Notification: 告警渠道
-        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotification`
-        :param Id: 告警 id
-        :type Id: str
-        :param TemplateId: 如果该告警来至模板下发，则TemplateId为模板id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplateId: str
-        :param Interval: 计算周期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Interval: str
-        """
+        :param Name: 规则名称\n        :type Name: str\n        :param Rules: 规则列表\n        :type Rules: list of PrometheusAlertRule\n        :param UpdatedAt: 最后修改时间\n        :type UpdatedAt: str\n        :param Notification: 告警渠道\n        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotification`\n        :param Id: 告警 id\n        :type Id: str\n        :param TemplateId: 如果该告警来至模板下发，则TemplateId为模板id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateId: str\n        :param Interval: 计算周期
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Interval: str\n        """
         self.Name = None
         self.Rules = None
         self.UpdatedAt = None
@@ -6669,14 +5333,8 @@ class PrometheusConfigItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 名称
-        :type Name: str
-        :param Config: 配置内容
-        :type Config: str
-        :param TemplateId: 用于出参，如果该配置来至模板，则为模板id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplateId: str
-        """
+        :param Name: 名称\n        :type Name: str\n        :param Config: 配置内容\n        :type Config: str\n        :param TemplateId: 用于出参，如果该配置来至模板，则为模板id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateId: str\n        """
         self.Name = None
         self.Config = None
         self.TemplateId = None
@@ -6702,20 +5360,10 @@ class PrometheusGrafanaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: 是否启用
-        :type Enabled: bool
-        :param Domain: 域名，只有开启外网访问才有效果
-        :type Domain: str
-        :param Address: 内网地址，或者外网地址
-        :type Address: str
-        :param Internet: 是否开启了外网访问
+        :param Enabled: 是否启用\n        :type Enabled: bool\n        :param Domain: 域名，只有开启外网访问才有效果\n        :type Domain: str\n        :param Address: 内网地址，或者外网地址\n        :type Address: str\n        :param Internet: 是否开启了外网访问
 close = 未开启外网访问
 opening = 正在开启外网访问
-open  = 已开启外网访问
-        :type Internet: str
-        :param AdminUser: grafana管理员用户名
-        :type AdminUser: str
-        """
+open  = 已开启外网访问\n        :type Internet: str\n        :param AdminUser: grafana管理员用户名\n        :type AdminUser: str\n        """
         self.Enabled = None
         self.Domain = None
         self.Address = None
@@ -6745,31 +5393,13 @@ class PrometheusInstanceOverview(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例id
-        :type InstanceId: str
-        :param Name: 实例名称
-        :type Name: str
-        :param VpcId: 实例vpcId
-        :type VpcId: str
-        :param SubnetId: 实例子网Id
-        :type SubnetId: str
-        :param Status: 实例当前的状态
+        :param InstanceId: 实例id\n        :type InstanceId: str\n        :param Name: 实例名称\n        :type Name: str\n        :param VpcId: 实例vpcId\n        :type VpcId: str\n        :param SubnetId: 实例子网Id\n        :type SubnetId: str\n        :param Status: 实例当前的状态
 prepare_env = 初始化环境
 install_suit = 安装组件
-running = 运行中
-        :type Status: str
-        :param COSBucket: COS桶存储
-        :type COSBucket: str
-        :param GrafanaURL: grafana默认地址，如果开启外网访问得为域名，否则为内网地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GrafanaURL: str
-        :param BoundTotal: 关联集群总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BoundTotal: int
-        :param BoundNormal: 运行正常的集群数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BoundNormal: int
-        """
+running = 运行中\n        :type Status: str\n        :param COSBucket: COS桶存储\n        :type COSBucket: str\n        :param GrafanaURL: grafana默认地址，如果开启外网访问得为域名，否则为内网地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type GrafanaURL: str\n        :param BoundTotal: 关联集群总数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BoundTotal: int\n        :param BoundNormal: 运行正常的集群数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BoundNormal: int\n        """
         self.InstanceId = None
         self.Name = None
         self.VpcId = None
@@ -6807,15 +5437,7 @@ class PrometheusJobTargets(AbstractModel):
 
     def __init__(self):
         """
-        :param Targets: 该Job的targets列表
-        :type Targets: list of PrometheusTarget
-        :param JobName: job的名称
-        :type JobName: str
-        :param Total: targets总数
-        :type Total: int
-        :param Up: 健康的target总数
-        :type Up: int
-        """
+        :param Targets: 该Job的targets列表\n        :type Targets: list of PrometheusTarget\n        :param JobName: job的名称\n        :type JobName: str\n        :param Total: targets总数\n        :type Total: int\n        :param Up: 健康的target总数\n        :type Up: int\n        """
         self.Targets = None
         self.JobName = None
         self.Total = None
@@ -6848,50 +5470,24 @@ class PrometheusNotification(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: 是否启用
-        :type Enabled: bool
-        :param RepeatInterval: 收敛时间
-        :type RepeatInterval: str
-        :param TimeRangeStart: 生效起始时间
-        :type TimeRangeStart: str
-        :param TimeRangeEnd: 生效结束时间
-        :type TimeRangeEnd: str
-        :param NotifyWay: 告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
+        :param Enabled: 是否启用\n        :type Enabled: bool\n        :param RepeatInterval: 收敛时间\n        :type RepeatInterval: str\n        :param TimeRangeStart: 生效起始时间\n        :type TimeRangeStart: str\n        :param TimeRangeEnd: 生效结束时间\n        :type TimeRangeEnd: str\n        :param NotifyWay: 告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
 分别代表：短信、邮件、电话、微信
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NotifyWay: list of str
-        :param ReceiverGroups: 告警接收组（用户组）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReceiverGroups: list of int non-negative
-        :param PhoneNotifyOrder: 电话告警顺序。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NotifyWay: list of str\n        :param ReceiverGroups: 告警接收组（用户组）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReceiverGroups: list of int non-negative\n        :param PhoneNotifyOrder: 电话告警顺序。
 注：NotifyWay选择CALL，采用该参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneNotifyOrder: list of int non-negative
-        :param PhoneCircleTimes: 电话告警次数。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneNotifyOrder: list of int non-negative\n        :param PhoneCircleTimes: 电话告警次数。
 注：NotifyWay选择CALL，采用该参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneCircleTimes: int
-        :param PhoneInnerInterval: 电话告警轮内间隔。单位：秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneCircleTimes: int\n        :param PhoneInnerInterval: 电话告警轮内间隔。单位：秒
 注：NotifyWay选择CALL，采用该参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneInnerInterval: int
-        :param PhoneCircleInterval: 电话告警轮外间隔。单位：秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneInnerInterval: int\n        :param PhoneCircleInterval: 电话告警轮外间隔。单位：秒
 注：NotifyWay选择CALL，采用该参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneCircleInterval: int
-        :param PhoneArriveNotice: 电话告警触达通知
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneCircleInterval: int\n        :param PhoneArriveNotice: 电话告警触达通知
 注：NotifyWay选择CALL，采用该参数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PhoneArriveNotice: bool
-        :param Type: 通道类型，默认为amp，支持以下
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneArriveNotice: bool\n        :param Type: 通道类型，默认为amp，支持以下
 amp
 webhook
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: str
-        :param WebHook: 如果Type为webhook, 则该字段为必填项
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WebHook: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param WebHook: 如果Type为webhook, 则该字段为必填项
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WebHook: str\n        """
         self.Enabled = None
         self.RepeatInterval = None
         self.TimeRangeStart = None
@@ -6937,22 +5533,10 @@ class PrometheusTarget(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 抓取目标的URL
-        :type Url: str
-        :param State: target当前状态,当前支持
+        :param Url: 抓取目标的URL\n        :type Url: str\n        :param State: target当前状态,当前支持
 up = 健康
 down = 不健康
-unknown = 未知
-        :type State: str
-        :param Labels: target的元label
-        :type Labels: list of Label
-        :param LastScrape: 上一次抓取的时间
-        :type LastScrape: str
-        :param ScrapeDuration: 上一次抓取的耗时，单位是s
-        :type ScrapeDuration: float
-        :param Error: 上一次抓取如果错误，该字段存储错误信息
-        :type Error: str
-        """
+unknown = 未知\n        :type State: str\n        :param Labels: target的元label\n        :type Labels: list of Label\n        :param LastScrape: 上一次抓取的时间\n        :type LastScrape: str\n        :param ScrapeDuration: 上一次抓取的耗时，单位是s\n        :type ScrapeDuration: float\n        :param Error: 上一次抓取如果错误，该字段存储错误信息\n        :type Error: str\n        """
         self.Url = None
         self.State = None
         self.Labels = None
@@ -6989,52 +5573,26 @@ class PrometheusTemplate(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 模板名称
-        :type Name: str
-        :param Level: 模板维度，支持以下类型
+        :param Name: 模板名称\n        :type Name: str\n        :param Level: 模板维度，支持以下类型
 instance 实例级别
-cluster 集群级别
-        :type Level: str
-        :param Describe: 模板描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Describe: str
-        :param AlertRules: 当Level为instance时有效，
+cluster 集群级别\n        :type Level: str\n        :param Describe: 模板描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Describe: str\n        :param AlertRules: 当Level为instance时有效，
 模板中的告警配置列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlertRules: list of PrometheusAlertRule
-        :param RecordRules: 当Level为instance时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlertRules: list of PrometheusAlertRule\n        :param RecordRules: 当Level为instance时有效，
 模板中的聚合规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordRules: list of PrometheusConfigItem
-        :param ServiceMonitors: 当Level为cluster时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordRules: list of PrometheusConfigItem\n        :param ServiceMonitors: 当Level为cluster时有效，
 模板中的ServiceMonitor规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceMonitors: list of PrometheusConfigItem
-        :param PodMonitors: 当Level为cluster时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceMonitors: list of PrometheusConfigItem\n        :param PodMonitors: 当Level为cluster时有效，
 模板中的PodMonitors规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodMonitors: list of PrometheusConfigItem
-        :param RawJobs: 当Level为cluster时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodMonitors: list of PrometheusConfigItem\n        :param RawJobs: 当Level为cluster时有效，
 模板中的RawJobs规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RawJobs: list of PrometheusConfigItem
-        :param TemplateId: 模板的ID, 用于出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplateId: str
-        :param UpdateTime: 最近更新时间，用于出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UpdateTime: str
-        :param Version: 当前版本，用于出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Version: str
-        :param IsDefault: 是否系统提供的默认模板，用于出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsDefault: bool
-        :param AlertDetailRules: 当Level为instance时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RawJobs: list of PrometheusConfigItem\n        :param TemplateId: 模板的ID, 用于出参
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateId: str\n        :param UpdateTime: 最近更新时间，用于出参
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param Version: 当前版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Version: str\n        :param IsDefault: 是否系统提供的默认模板，用于出参
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDefault: bool\n        :param AlertDetailRules: 当Level为instance时有效，
 模板中的告警配置列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlertDetailRules: list of PrometheusAlertRuleDetail
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlertDetailRules: list of PrometheusAlertRuleDetail\n        """
         self.Name = None
         self.Level = None
         self.Describe = None
@@ -7110,34 +5668,18 @@ class PrometheusTemplateModify(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 修改名称
-        :type Name: str
-        :param Describe: 修改描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Describe: str
-        :param AlertRules: 修改内容，只有当模板类型是Alert时生效
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlertRules: list of PrometheusAlertRule
-        :param RecordRules: 当Level为instance时有效，
+        :param Name: 修改名称\n        :type Name: str\n        :param Describe: 修改描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Describe: str\n        :param AlertRules: 修改内容，只有当模板类型是Alert时生效
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlertRules: list of PrometheusAlertRule\n        :param RecordRules: 当Level为instance时有效，
 模板中的聚合规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RecordRules: list of PrometheusConfigItem
-        :param ServiceMonitors: 当Level为cluster时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordRules: list of PrometheusConfigItem\n        :param ServiceMonitors: 当Level为cluster时有效，
 模板中的ServiceMonitor规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceMonitors: list of PrometheusConfigItem
-        :param PodMonitors: 当Level为cluster时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceMonitors: list of PrometheusConfigItem\n        :param PodMonitors: 当Level为cluster时有效，
 模板中的PodMonitors规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodMonitors: list of PrometheusConfigItem
-        :param RawJobs: 当Level为cluster时有效，
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PodMonitors: list of PrometheusConfigItem\n        :param RawJobs: 当Level为cluster时有效，
 模板中的RawJobs规则列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RawJobs: list of PrometheusConfigItem
-        :param AlertDetailRules: 修改内容，只有当模板类型是Alert时生效
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlertDetailRules: list of PrometheusAlertRuleDetail
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RawJobs: list of PrometheusConfigItem\n        :param AlertDetailRules: 修改内容，只有当模板类型是Alert时生效
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlertDetailRules: list of PrometheusAlertRuleDetail\n        """
         self.Name = None
         self.Describe = None
         self.AlertRules = None
@@ -7203,29 +5745,13 @@ class PrometheusTemplateSyncTarget(AbstractModel):
 
     def __init__(self):
         """
-        :param Region: 目标所在地域
-        :type Region: str
-        :param InstanceId: 目标实例
-        :type InstanceId: str
-        :param ClusterId: 集群id，只有当采集模板的Level为cluster的时候需要
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterId: str
-        :param SyncTime: 最后一次同步时间， 用于出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SyncTime: str
-        :param Version: 当前使用的模板版本，用于出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Version: str
-        :param ClusterType: 集群类型，只有当采集模板的Level为cluster的时候需要
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterType: str
-        :param InstanceName: 用于出参，实例名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceName: str
-        :param ClusterName: 用于出参，集群名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClusterName: str
-        """
+        :param Region: 目标所在地域\n        :type Region: str\n        :param InstanceId: 目标实例\n        :type InstanceId: str\n        :param ClusterId: 集群id，只有当采集模板的Level为cluster的时候需要
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterId: str\n        :param SyncTime: 最后一次同步时间， 用于出参
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SyncTime: str\n        :param Version: 当前使用的模板版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Version: str\n        :param ClusterType: 集群类型，只有当采集模板的Level为cluster的时候需要
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterType: str\n        :param InstanceName: 用于出参，实例名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param ClusterName: 用于出参，集群名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterName: str\n        """
         self.Region = None
         self.InstanceId = None
         self.ClusterId = None
@@ -7262,24 +5788,12 @@ class RegionInstance(AbstractModel):
     def __init__(self):
         """
         :param RegionName: 地域名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionName: str
-        :param RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: int
-        :param Status: 地域状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param FeatureGates: 地域特性开关(按照JSON的形式返回所有属性)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FeatureGates: str
-        :param Alias: 地域简称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Alias: str
-        :param Remark: 地域白名单
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Remark: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionName: str\n        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionId: int\n        :param Status: 地域状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param FeatureGates: 地域特性开关(按照JSON的形式返回所有属性)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FeatureGates: str\n        :param Alias: 地域简称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Alias: str\n        :param Remark: 地域白名单
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        """
         self.RegionName = None
         self.RegionId = None
         self.Status = None
@@ -7311,13 +5825,7 @@ class RemoveNodeFromNodePoolRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        :param InstanceIds: 节点id列表，一次最多支持100台
-        :type InstanceIds: list of str
-        """
+        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        :param InstanceIds: 节点id列表，一次最多支持100台\n        :type InstanceIds: list of str\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.InstanceIds = None
@@ -7343,9 +5851,7 @@ class RemoveNodeFromNodePoolResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7360,11 +5866,7 @@ class ResourceDeleteOption(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: 资源类型，例如CBS
-        :type ResourceType: str
-        :param DeleteMode: 集群删除时资源的删除模式：terminate（销毁），retain （保留）
-        :type DeleteMode: str
-        """
+        :param ResourceType: 资源类型，例如CBS\n        :type ResourceType: str\n        :param DeleteMode: 集群删除时资源的删除模式：terminate（销毁），retain （保留）\n        :type DeleteMode: str\n        """
         self.ResourceType = None
         self.DeleteMode = None
 
@@ -7388,13 +5890,7 @@ class RouteInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称。
-        :type RouteTableName: str
-        :param DestinationCidrBlock: 目的端CIDR。
-        :type DestinationCidrBlock: str
-        :param GatewayIp: 下一跳地址。
-        :type GatewayIp: str
-        """
+        :param RouteTableName: 路由表名称。\n        :type RouteTableName: str\n        :param DestinationCidrBlock: 目的端CIDR。\n        :type DestinationCidrBlock: str\n        :param GatewayIp: 下一跳地址。\n        :type GatewayIp: str\n        """
         self.RouteTableName = None
         self.DestinationCidrBlock = None
         self.GatewayIp = None
@@ -7420,18 +5916,10 @@ class RouteTableConflict(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableType: 路由表类型。
-        :type RouteTableType: str
-        :param RouteTableCidrBlock: 路由表CIDR。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouteTableCidrBlock: str
-        :param RouteTableName: 路由表名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouteTableName: str
-        :param RouteTableId: 路由表ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RouteTableId: str
-        """
+        :param RouteTableType: 路由表类型。\n        :type RouteTableType: str\n        :param RouteTableCidrBlock: 路由表CIDR。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RouteTableCidrBlock: str\n        :param RouteTableName: 路由表名称。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RouteTableName: str\n        :param RouteTableId: 路由表ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RouteTableId: str\n        """
         self.RouteTableType = None
         self.RouteTableCidrBlock = None
         self.RouteTableName = None
@@ -7459,13 +5947,7 @@ class RouteTableInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RouteTableName: 路由表名称。
-        :type RouteTableName: str
-        :param RouteTableCidrBlock: 路由表CIDR。
-        :type RouteTableCidrBlock: str
-        :param VpcId: VPC实例ID。
-        :type VpcId: str
-        """
+        :param RouteTableName: 路由表名称。\n        :type RouteTableName: str\n        :param RouteTableCidrBlock: 路由表CIDR。\n        :type RouteTableCidrBlock: str\n        :param VpcId: VPC实例ID。\n        :type VpcId: str\n        """
         self.RouteTableName = None
         self.RouteTableCidrBlock = None
         self.VpcId = None
@@ -7491,13 +5973,7 @@ class RunInstancesForNode(AbstractModel):
 
     def __init__(self):
         """
-        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD节点最小配置为4C8G。
-        :type NodeRole: str
-        :param RunInstancesPara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。
-        :type RunInstancesPara: list of str
-        :param InstanceAdvancedSettingsOverrides: 节点高级设置，该参数会覆盖集群级别设置的InstanceAdvancedSettings，和上边的RunInstancesPara按照顺序一一对应（当前只对节点自定义参数ExtraArgs生效）。
-        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
-        """
+        :param NodeRole: 节点角色，取值:MASTER_ETCD, WORKER。MASTER_ETCD只有在创建 INDEPENDENT_CLUSTER 独立集群时需要指定。MASTER_ETCD节点数量为3～7，建议为奇数。MASTER_ETCD节点最小配置为4C8G。\n        :type NodeRole: str\n        :param RunInstancesPara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口，传入公共参数外的其他参数即可，其中ImageId会替换为TKE集群OS对应的镜像。\n        :type RunInstancesPara: list of str\n        :param InstanceAdvancedSettingsOverrides: 节点高级设置，该参数会覆盖集群级别设置的InstanceAdvancedSettings，和上边的RunInstancesPara按照顺序一一对应（当前只对节点自定义参数ExtraArgs生效）。\n        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings\n        """
         self.NodeRole = None
         self.RunInstancesPara = None
         self.InstanceAdvancedSettingsOverrides = None
@@ -7528,9 +6004,7 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
-        :type Enabled: bool
-        """
+        :param Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。\n        :type Enabled: bool\n        """
         self.Enabled = None
 
 
@@ -7552,9 +6026,7 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         """
-        :param Enabled: 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
-        :type Enabled: bool
-        """
+        :param Enabled: 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。\n        :type Enabled: bool\n        """
         self.Enabled = None
 
 
@@ -7576,15 +6048,7 @@ class SetNodePoolNodeProtectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群id
-        :type ClusterId: str
-        :param NodePoolId: 节点池id
-        :type NodePoolId: str
-        :param InstanceIds: 节点id
-        :type InstanceIds: list of str
-        :param ProtectedFromScaleIn: 节点是否需要移出保护
-        :type ProtectedFromScaleIn: bool
-        """
+        :param ClusterId: 集群id\n        :type ClusterId: str\n        :param NodePoolId: 节点池id\n        :type NodePoolId: str\n        :param InstanceIds: 节点id\n        :type InstanceIds: list of str\n        :param ProtectedFromScaleIn: 节点是否需要移出保护\n        :type ProtectedFromScaleIn: bool\n        """
         self.ClusterId = None
         self.NodePoolId = None
         self.InstanceIds = None
@@ -7613,14 +6077,8 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
     def __init__(self):
         """
         :param SucceedInstanceIds: 成功设置的节点id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SucceedInstanceIds: list of str
-        :param FailedInstanceIds: 没有成功设置的节点id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedInstanceIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SucceedInstanceIds: list of str\n        :param FailedInstanceIds: 没有成功设置的节点id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedInstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SucceedInstanceIds = None
         self.FailedInstanceIds = None
         self.RequestId = None
@@ -7639,11 +6097,7 @@ class SyncPrometheusTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 实例id
-        :type TemplateId: str
-        :param Targets: 同步目标
-        :type Targets: list of PrometheusTemplateSyncTarget
-        """
+        :param TemplateId: 实例id\n        :type TemplateId: str\n        :param Targets: 同步目标\n        :type Targets: list of PrometheusTemplateSyncTarget\n        """
         self.TemplateId = None
         self.Targets = None
 
@@ -7672,9 +6126,7 @@ class SyncPrometheusTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7689,11 +6141,7 @@ class Tag(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 标签键
-        :type Key: str
-        :param Value: 标签值
-        :type Value: str
-        """
+        :param Key: 标签键\n        :type Key: str\n        :param Value: 标签值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -7718,12 +6166,8 @@ class TagSpecification(AbstractModel):
     def __init__(self):
         """
         :param ResourceType: 标签绑定的资源类型，当前支持类型："cluster"
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceType: str
-        :param Tags: 标签对列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceType: str\n        :param Tags: 标签对列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        """
         self.ResourceType = None
         self.Tags = None
 
@@ -7752,13 +6196,7 @@ class Taint(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: Key
-        :type Key: str
-        :param Value: Value
-        :type Value: str
-        :param Effect: Effect
-        :type Effect: str
-        """
+        :param Key: Key\n        :type Key: str\n        :param Value: Value\n        :type Value: str\n        :param Effect: Effect\n        :type Effect: str\n        """
         self.Key = None
         self.Value = None
         self.Effect = None
@@ -7784,24 +6222,14 @@ class TaskStepInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Step: 步骤名称
-        :type Step: str
-        :param LifeState: 生命周期
+        :param Step: 步骤名称\n        :type Step: str\n        :param LifeState: 生命周期
 pending : 步骤未开始
 running: 步骤执行中
 success: 步骤成功完成
-failed: 步骤失败
-        :type LifeState: str
-        :param StartAt: 步骤开始时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartAt: str
-        :param EndAt: 步骤结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndAt: str
-        :param FailedMsg: 若步骤生命周期为failed,则此字段显示错误信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailedMsg: str
-        """
+failed: 步骤失败\n        :type LifeState: str\n        :param StartAt: 步骤开始时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartAt: str\n        :param EndAt: 步骤结束时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndAt: str\n        :param FailedMsg: 若步骤生命周期为failed,则此字段显示错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailedMsg: str\n        """
         self.Step = None
         self.LifeState = None
         self.StartAt = None
@@ -7831,17 +6259,7 @@ class UpdateClusterVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群 Id
-        :type ClusterId: str
-        :param DstVersion: 需要升级到的版本
-        :type DstVersion: str
-        :param ExtraArgs: 集群自定义参数
-        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param MaxNotReadyPercent: 可容忍的最大不可用pod数目
-        :type MaxNotReadyPercent: float
-        :param SkipPreCheck: 是否跳过预检查阶段
-        :type SkipPreCheck: bool
-        """
+        :param ClusterId: 集群 Id\n        :type ClusterId: str\n        :param DstVersion: 需要升级到的版本\n        :type DstVersion: str\n        :param ExtraArgs: 集群自定义参数\n        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`\n        :param MaxNotReadyPercent: 可容忍的最大不可用pod数目\n        :type MaxNotReadyPercent: float\n        :param SkipPreCheck: 是否跳过预检查阶段\n        :type SkipPreCheck: bool\n        """
         self.ClusterId = None
         self.DstVersion = None
         self.ExtraArgs = None
@@ -7873,9 +6291,7 @@ class UpdateClusterVersionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7890,27 +6306,7 @@ class UpdateEKSClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 弹性集群Id
-        :type ClusterId: str
-        :param ClusterName: 弹性集群名称
-        :type ClusterName: str
-        :param ClusterDesc: 弹性集群描述信息
-        :type ClusterDesc: str
-        :param SubnetIds: 子网Id 列表
-        :type SubnetIds: list of str
-        :param PublicLB: 弹性容器集群公网访问LB信息
-        :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`
-        :param InternalLB: 弹性容器集群内网访问LB信息
-        :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`
-        :param ServiceSubnetId: Service 子网Id
-        :type ServiceSubnetId: str
-        :param DnsServers: 集群自定义的dns 服务器信息
-        :type DnsServers: list of DnsServerConf
-        :param ClearDnsServer: 是否清空自定义dns 服务器设置。为1 表示 是。其他表示 否。
-        :type ClearDnsServer: str
-        :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE
-        :type NeedDeleteCbs: bool
-        """
+        :param ClusterId: 弹性集群Id\n        :type ClusterId: str\n        :param ClusterName: 弹性集群名称\n        :type ClusterName: str\n        :param ClusterDesc: 弹性集群描述信息\n        :type ClusterDesc: str\n        :param SubnetIds: 子网Id 列表\n        :type SubnetIds: list of str\n        :param PublicLB: 弹性容器集群公网访问LB信息\n        :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`\n        :param InternalLB: 弹性容器集群内网访问LB信息\n        :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`\n        :param ServiceSubnetId: Service 子网Id\n        :type ServiceSubnetId: str\n        :param DnsServers: 集群自定义的dns 服务器信息\n        :type DnsServers: list of DnsServerConf\n        :param ClearDnsServer: 是否清空自定义dns 服务器设置。为1 表示 是。其他表示 否。\n        :type ClearDnsServer: str\n        :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE\n        :type NeedDeleteCbs: bool\n        """
         self.ClusterId = None
         self.ClusterName = None
         self.ClusterDesc = None
@@ -7959,9 +6355,7 @@ class UpdateEKSClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -7976,14 +6370,8 @@ class UpgradeAbleInstancesItem(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 节点Id
-        :type InstanceId: str
-        :param Version: 节点的当前版本
-        :type Version: str
-        :param LatestVersion: 当前版本的最新小版本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LatestVersion: str
-        """
+        :param InstanceId: 节点Id\n        :type InstanceId: str\n        :param Version: 节点的当前版本\n        :type Version: str\n        :param LatestVersion: 当前版本的最新小版本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LatestVersion: str\n        """
         self.InstanceId = None
         self.Version = None
         self.LatestVersion = None
@@ -8009,27 +6397,13 @@ class UpgradeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param Operation: create 表示开始一次升级任务
+        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param Operation: create 表示开始一次升级任务
 pause 表示停止任务
 resume表示继续任务
-abort表示终止任务
-        :type Operation: str
-        :param UpgradeType: 升级类型，只有Operation是create需要设置
+abort表示终止任务\n        :type Operation: str\n        :param UpgradeType: 升级类型，只有Operation是create需要设置
 reset 大版本重装升级
 hot 小版本热升级
-major 大版本原地升级
-        :type UpgradeType: str
-        :param InstanceIds: 需要升级的节点列表
-        :type InstanceIds: list of str
-        :param ResetParam: 当节点重新加入集群时候所使用的参数，参考添加已有节点接口
-        :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
-        :param SkipPreCheck: 是否忽略节点升级前检查
-        :type SkipPreCheck: bool
-        :param MaxNotReadyPercent: 最大可容忍的不可用Pod比例
-        :type MaxNotReadyPercent: float
-        """
+major 大版本原地升级\n        :type UpgradeType: str\n        :param InstanceIds: 需要升级的节点列表\n        :type InstanceIds: list of str\n        :param ResetParam: 当节点重新加入集群时候所使用的参数，参考添加已有节点接口\n        :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`\n        :param SkipPreCheck: 是否忽略节点升级前检查\n        :type SkipPreCheck: bool\n        :param MaxNotReadyPercent: 最大可容忍的不可用Pod比例\n        :type MaxNotReadyPercent: float\n        """
         self.ClusterId = None
         self.Operation = None
         self.UpgradeType = None
@@ -8065,9 +6439,7 @@ class UpgradeClusterInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -8082,15 +6454,7 @@ class UpgradeNodeResetParam(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
-        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
-        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
-        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
-        :type SecurityGroupIds: list of str
-        """
+        :param InstanceAdvancedSettings: 实例额外需要设置参数信息\n        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`\n        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。\n        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`\n        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）\n        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`\n        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）\n        :type SecurityGroupIds: list of str\n        """
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
         self.LoginSettings = None
@@ -8125,15 +6489,9 @@ class VersionInstance(AbstractModel):
     def __init__(self):
         """
         :param Name: 版本名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Version: 版本信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Version: str
-        :param Remark: Remark
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Remark: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Version: 版本信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Version: str\n        :param Remark: Remark
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        """
         self.Name = None
         self.Version = None
         self.Remark = None

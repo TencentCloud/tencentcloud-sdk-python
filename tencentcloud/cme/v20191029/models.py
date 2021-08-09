@@ -25,17 +25,9 @@ class AccountInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户 Id。
-        :type UserId: str
-        :param Phone: 用户手机号码。
-        :type Phone: str
-        :param Nick: 用户昵称。
-        :type Nick: str
-        :param Status: 账号状态，取值：
+        :param UserId: 用户 Id。\n        :type UserId: str\n        :param Phone: 用户手机号码。\n        :type Phone: str\n        :param Nick: 用户昵称。\n        :type Nick: str\n        :param Status: 账号状态，取值：
 <li>Normal：有效；</li>
-<li>Stopped：无效。</li>
-        :type Status: str
-        """
+<li>Stopped：无效。</li>\n        :type Status: str\n        """
         self.UserId = None
         self.Phone = None
         self.Nick = None
@@ -63,15 +55,9 @@ class AddMemberInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MemberId: 团队成员 ID。
-        :type MemberId: str
-        :param Remark: 团队成员备注。
-        :type Remark: str
-        :param Role: 团队成员角色，不填则默认添加普通成员。可选值：
+        :param MemberId: 团队成员 ID。\n        :type MemberId: str\n        :param Remark: 团队成员备注。\n        :type Remark: str\n        :param Role: 团队成员角色，不填则默认添加普通成员。可选值：
 <li>Admin：团队管理员；</li>
-<li>Member：普通成员。</li>
-        :type Role: str
-        """
+<li>Member：普通成员。</li>\n        :type Role: str\n        """
         self.MemberId = None
         self.Remark = None
         self.Role = None
@@ -97,15 +83,7 @@ class AddTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param TeamMembers: 要添加的成员列表，一次最多添加30个成员。
-        :type TeamMembers: list of AddMemberInfo
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param TeamMembers: 要添加的成员列表，一次最多添加30个成员。\n        :type TeamMembers: list of AddMemberInfo\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TeamId = None
         self.TeamMembers = None
@@ -138,9 +116,7 @@ class AddTeamMemberResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -155,20 +131,8 @@ class AudioMaterial(AbstractModel):
 
     def __init__(self):
         """
-        :param MetaData: 素材元信息。
-        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
-        :param MaterialUrl: 素材媒体文件的播放 URL 地址。
-        :type MaterialUrl: str
-        :param CoverUrl: 素材媒体文件的封面图片地址。
-        :type CoverUrl: str
-        :param MaterialStatus: 素材状态。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
-        :param OriginalUrl: 素材媒体文件的原始 URL 地址。
-        :type OriginalUrl: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        """
+        :param MetaData: 素材元信息。\n        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`\n        :param MaterialUrl: 素材媒体文件的播放 URL 地址。\n        :type MaterialUrl: str\n        :param CoverUrl: 素材媒体文件的封面图片地址。\n        :type CoverUrl: str\n        :param MaterialStatus: 素材状态。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`\n        :param OriginalUrl: 素材媒体文件的原始 URL 地址。\n        :type OriginalUrl: str\n        :param VodFileId: 云点播媒资 FileId。\n        :type VodFileId: str\n        """
         self.MetaData = None
         self.MaterialUrl = None
         self.CoverUrl = None
@@ -204,13 +168,7 @@ class AudioStreamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Bitrate: 码率，单位：bps。
-        :type Bitrate: int
-        :param SamplingRate: 采样率，单位：hz。
-        :type SamplingRate: int
-        :param Codec: 编码格式。
-        :type Codec: str
-        """
+        :param Bitrate: 码率，单位：bps。\n        :type Bitrate: int\n        :param SamplingRate: 采样率，单位：hz。\n        :type SamplingRate: int\n        :param Codec: 编码格式。\n        :type Codec: str\n        """
         self.Bitrate = None
         self.SamplingRate = None
         self.Codec = None
@@ -241,15 +199,7 @@ class AudioTrackItem(AbstractModel):
 <li>VOD ：素材来源于云点播文件 ；</li>
 <li>CME ：视频来源于制作云媒体文件 ；</li>
 <li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
-</ul>
-        :type SourceType: str
-        :param SourceMedia: 注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉<code> 'https://' </code>；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉<code> 'http://'</code>。
-        :type SourceMedia: str
-        :param SourceMediaStartTime: 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。
-        :type SourceMediaStartTime: float
-        :param Duration: 音频片段的时长，单位为秒。默认和媒体本身长度一致，表示截取全部媒体。
-        :type Duration: float
-        """
+</ul>\n        :type SourceType: str\n        :param SourceMedia: 注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉<code> 'https://' </code>；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉<code> 'http://'</code>。\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 音频片段的时长，单位为秒。默认和媒体本身长度一致，表示截取全部媒体。\n        :type Duration: float\n        """
         self.SourceType = None
         self.SourceMedia = None
         self.SourceMediaStartTime = None
@@ -277,15 +227,11 @@ class AuthorizationInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Authorizee: 被授权者实体。
-        :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param PermissionSet: 详细授权值。 取值有：
+        :param Authorizee: 被授权者实体。\n        :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param PermissionSet: 详细授权值。 取值有：
 <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
 <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
-<li>W：可修改、删除媒资。</li>
-        :type PermissionSet: list of str
-        """
+<li>W：可修改、删除媒资。</li>\n        :type PermissionSet: list of str\n        """
         self.Authorizee = None
         self.PermissionSet = None
 
@@ -313,11 +259,7 @@ class Authorizer(AbstractModel):
         """
         :param Type: 授权者类型，取值有：
 <li>PERSON：个人。</li>
-<li>TEAM：团队。</li>
-        :type Type: str
-        :param Id: Id，当 Type=PERSON，取值为用户 Id。当Type=TEAM，取值为团队 ID。
-        :type Id: str
-        """
+<li>TEAM：团队。</li>\n        :type Type: str\n        :param Id: Id，当 Type=PERSON，取值为用户 Id。当Type=TEAM，取值为团队 ID。\n        :type Id: str\n        """
         self.Type = None
         self.Id = None
 
@@ -341,19 +283,7 @@ class CMEExportInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Owner: 导出媒体归属，个人或团队。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 导出的媒体名称，不得超过30个字符。
-        :type Name: str
-        :param Description: 导出的媒体信息，不得超过50个字符。
-        :type Description: str
-        :param ClassPath: 导出的媒体分类路径，长度不能超过15字符。
-        :type ClassPath: str
-        :param TagSet: 导出的媒体标签，单个标签不得超过10个字符。
-        :type TagSet: list of str
-        :param ThirdPartyPublishInfos: 第三方平台发布信息列表。暂未正式对外，请勿使用。
-        :type ThirdPartyPublishInfos: list of ThirdPartyPublishInfo
-        """
+        :param Owner: 导出媒体归属，个人或团队。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Name: 导出的媒体名称，不得超过30个字符。\n        :type Name: str\n        :param Description: 导出的媒体信息，不得超过50个字符。\n        :type Description: str\n        :param ClassPath: 导出的媒体分类路径，长度不能超过15字符。\n        :type ClassPath: str\n        :param TagSet: 导出的媒体标签，单个标签不得超过10个字符。\n        :type TagSet: list of str\n        :param ThirdPartyPublishInfos: 第三方平台发布信息列表。暂未正式对外，请勿使用。\n        :type ThirdPartyPublishInfos: list of ThirdPartyPublishInfo\n        """
         self.Owner = None
         self.Name = None
         self.Description = None
@@ -392,11 +322,7 @@ class ClassInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param ClassPath: 分类路径。
-        :type ClassPath: str
-        """
+        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param ClassPath: 分类路径。\n        :type ClassPath: str\n        """
         self.Owner = None
         self.ClassPath = None
 
@@ -422,17 +348,7 @@ class CopyProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 被复制的项目 ID。
-        :type ProjectId: str
-        :param Name: 复制后的项目名称，不填为原项目名称+"(副本)"。
-        :type Name: str
-        :param Owner: 复制后的项目归属者，不填为原项目归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 被复制的项目 ID。\n        :type ProjectId: str\n        :param Name: 复制后的项目名称，不填为原项目名称+"(副本)"。\n        :type Name: str\n        :param Owner: 复制后的项目归属者，不填为原项目归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.Name = None
@@ -464,11 +380,7 @@ class CopyProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 复制后的项目 ID。
-        :type ProjectId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProjectId: 复制后的项目 ID。\n        :type ProjectId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectId = None
         self.RequestId = None
 
@@ -485,15 +397,7 @@ class CosPublishInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Bucket: 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
-        :type Bucket: str
-        :param Region: 发布生成的对象存储文件所在的 COS Bucket 所属园区，如 ap-chongqing。
-        :type Region: str
-        :param VideoKey: 发布生成的视频在 COS 存储的对象键。对象键（ObjectKey）是对象（Object）在存储桶（Bucket）中的唯一标识。
-        :type VideoKey: str
-        :param CoverKey: 发布生成的封面在 COS 存储的对象键。
-        :type CoverKey: str
-        """
+        :param Bucket: 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。\n        :type Bucket: str\n        :param Region: 发布生成的对象存储文件所在的 COS Bucket 所属园区，如 ap-chongqing。\n        :type Region: str\n        :param VideoKey: 发布生成的视频在 COS 存储的对象键。对象键（ObjectKey）是对象（Object）在存储桶（Bucket）中的唯一标识。\n        :type VideoKey: str\n        :param CoverKey: 发布生成的封面在 COS 存储的对象键。\n        :type CoverKey: str\n        """
         self.Bucket = None
         self.Region = None
         self.VideoKey = None
@@ -521,15 +425,7 @@ class CreateClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param ClassPath: 分类路径。
-        :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验分类创建权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param ClassPath: 分类路径。\n        :type ClassPath: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验分类创建权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.ClassPath = None
@@ -559,9 +455,7 @@ class CreateClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -576,27 +470,11 @@ class CreateLinkRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Type: 链接类型，取值有:
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Type: 链接类型，取值有:
 <li>CLASS: 分类链接；</li>
-<li> MATERIAL：媒体文件链接。</li>
-        :type Type: str
-        :param Name: 链接名称，不能超过30个字符。
-        :type Name: str
-        :param Owner: 链接归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param DestinationId: 目标资源Id。取值：
+<li> MATERIAL：媒体文件链接。</li>\n        :type Type: str\n        :param Name: 链接名称，不能超过30个字符。\n        :type Name: str\n        :param Owner: 链接归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param DestinationId: 目标资源Id。取值：
 <li>当 Type 为 MATERIAL 时填媒体 ID；</li>
-<li>当 Type 为 CLASS 时填写分类路径。</li>
-        :type DestinationId: str
-        :param DestinationOwner: 目标资源归属者。
-        :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param ClassPath: 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
-        :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+<li>当 Type 为 CLASS 时填写分类路径。</li>\n        :type DestinationId: str\n        :param DestinationOwner: 目标资源归属者。\n        :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param ClassPath: 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。\n        :type ClassPath: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Type = None
         self.Name = None
@@ -636,11 +514,7 @@ class CreateLinkResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 新建链接的媒体 Id。
-        :type MaterialId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaterialId: 新建链接的媒体 Id。\n        :type MaterialId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaterialId = None
         self.RequestId = None
 
@@ -657,42 +531,16 @@ class CreateProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Name: 项目名称，不可超过30个字符。
-        :type Name: str
-        :param Owner: 项目归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Category: 项目类别，取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Name: 项目名称，不可超过30个字符。\n        :type Name: str\n        :param Owner: 项目归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Category: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
-<li>RECORD_REPLAY：录制回放。</li>
-        :type Category: str
-        :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
+<li>RECORD_REPLAY：录制回放。</li>\n        :type Category: str\n        :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
 <li>Default：默认模式。</li>
-<li>VideoEditTemplate：视频编辑模板制作模式。</li>
-        :type Mode: str
-        :param AspectRatio: 画布宽高比。
-该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
-        :type AspectRatio: str
-        :param Description: 项目描述信息。
-        :type Description: str
-        :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时必填。
-        :type SwitcherProjectInput: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`
-        :param LiveStreamClipProjectInput: 直播剪辑信息，暂未开放，请勿使用。
-        :type LiveStreamClipProjectInput: :class:`tencentcloud.cme.v20191029.models.LiveStreamClipProjectInput`
-        :param VideoEditProjectInput: 视频编辑信息，仅当项目类型为 VIDEO_EDIT 时必填。
-        :type VideoEditProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`
-        :param VideoSegmentationProjectInput: 视频拆条信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
-        :type VideoSegmentationProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoSegmentationProjectInput`
-        :param StreamConnectProjectInput: 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。
-        :type StreamConnectProjectInput: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`
-        :param RecordReplayProjectInput: 录制回放项目信息，仅当项目类型为 RECORD_REPLAY 时必填。
-        :type RecordReplayProjectInput: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`
-        """
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>\n        :type Mode: str\n        :param AspectRatio: 画布宽高比。
+该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。\n        :type AspectRatio: str\n        :param Description: 项目描述信息。\n        :type Description: str\n        :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时必填。\n        :type SwitcherProjectInput: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`\n        :param LiveStreamClipProjectInput: 直播剪辑信息，暂未开放，请勿使用。\n        :type LiveStreamClipProjectInput: :class:`tencentcloud.cme.v20191029.models.LiveStreamClipProjectInput`\n        :param VideoEditProjectInput: 视频编辑信息，仅当项目类型为 VIDEO_EDIT 时必填。\n        :type VideoEditProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`\n        :param VideoSegmentationProjectInput: 视频拆条信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。\n        :type VideoSegmentationProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoSegmentationProjectInput`\n        :param StreamConnectProjectInput: 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。\n        :type StreamConnectProjectInput: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`\n        :param RecordReplayProjectInput: 录制回放项目信息，仅当项目类型为 RECORD_REPLAY 时必填。\n        :type RecordReplayProjectInput: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`\n        """
         self.Platform = None
         self.Name = None
         self.Owner = None
@@ -752,14 +600,8 @@ class CreateProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param RtmpPushInputInfoSet: 输入源推流信息。
- <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为 2 ，第 0 个代表主输入源，第 1 个代表备输入源。只有当各自输入源类型为推流时才有有效内容。</li>
-        :type RtmpPushInputInfoSet: list of RtmpPushInputInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param RtmpPushInputInfoSet: 输入源推流信息。
+ <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为 2 ，第 0 个代表主输入源，第 1 个代表备输入源。只有当各自输入源类型为推流时才有有效内容。</li>\n        :type RtmpPushInputInfoSet: list of RtmpPushInputInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProjectId = None
         self.RtmpPushInputInfoSet = None
         self.RequestId = None
@@ -783,17 +625,7 @@ class CreateTeamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Name: 团队名称，限30个字符。
-        :type Name: str
-        :param OwnerId: 团队所有者，指定用户 ID。
-        :type OwnerId: str
-        :param OwnerRemark: 团队所有者的备注，限30个字符。
-        :type OwnerRemark: str
-        :param TeamId: 自定义团队 ID。创建后不可修改，限20个英文字符及"-"。同时不能以 cmetid_开头。不填会生成默认团队 ID。
-        :type TeamId: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Name: 团队名称，限30个字符。\n        :type Name: str\n        :param OwnerId: 团队所有者，指定用户 ID。\n        :type OwnerId: str\n        :param OwnerRemark: 团队所有者的备注，限30个字符。\n        :type OwnerRemark: str\n        :param TeamId: 自定义团队 ID。创建后不可修改，限20个英文字符及"-"。同时不能以 cmetid_开头。不填会生成默认团队 ID。\n        :type TeamId: str\n        """
         self.Platform = None
         self.Name = None
         self.OwnerId = None
@@ -823,11 +655,7 @@ class CreateTeamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TeamId: 创建的团队 ID。
-        :type TeamId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TeamId: 创建的团队 ID。\n        :type TeamId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TeamId = None
         self.RequestId = None
 
@@ -844,15 +672,7 @@ class DeleteClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param ClassPath: 分类路径。
-        :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param ClassPath: 分类路径。\n        :type ClassPath: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.ClassPath = None
@@ -882,9 +702,7 @@ class DeleteClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -899,11 +717,7 @@ class DeleteLoginStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。
-        :type UserIds: list of str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。\n        :type UserIds: list of str\n        """
         self.Platform = None
         self.UserIds = None
 
@@ -927,9 +741,7 @@ class DeleteLoginStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -944,13 +756,7 @@ class DeleteMaterialRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param MaterialId: 媒体 Id。
-        :type MaterialId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体删除权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param MaterialId: 媒体 Id。\n        :type MaterialId: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体删除权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.MaterialId = None
         self.Operator = None
@@ -976,9 +782,7 @@ class DeleteMaterialResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -993,13 +797,7 @@ class DeleteProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对项目删除操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对项目删除操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.Operator = None
@@ -1025,9 +823,7 @@ class DeleteProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1042,15 +838,7 @@ class DeleteTeamMembersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param MemberIds: 要删除的成员列表。
-        :type MemberIds: list of str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param MemberIds: 要删除的成员列表。\n        :type MemberIds: list of str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TeamId = None
         self.MemberIds = None
@@ -1078,9 +866,7 @@ class DeleteTeamMembersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1095,13 +881,7 @@ class DeleteTeamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问平台。
-        :type Platform: str
-        :param TeamId: 要删除的团队  ID。
-        :type TeamId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问平台。\n        :type Platform: str\n        :param TeamId: 要删除的团队  ID。\n        :type TeamId: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TeamId = None
         self.Operator = None
@@ -1127,9 +907,7 @@ class DeleteTeamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1144,15 +922,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台唯一标识。
-        :type Platform: str
-        :param Phone: 手机号码。
-        :type Phone: str
-        :param Offset: 分页返回的起始偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10，最大值：20。
-        :type Limit: int
-        """
+        :param Platform: 平台唯一标识。\n        :type Platform: str\n        :param Phone: 手机号码。\n        :type Phone: str\n        :param Offset: 分页返回的起始偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 分页返回的记录条数，默认值：10，最大值：20。\n        :type Limit: int\n        """
         self.Platform = None
         self.Phone = None
         self.Offset = None
@@ -1180,13 +950,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合搜索条件的记录总数。
-        :type TotalCount: int
-        :param AccountInfoSet: 账号信息列表。
-        :type AccountInfoSet: list of AccountInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合搜索条件的记录总数。\n        :type TotalCount: int\n        :param AccountInfoSet: 账号信息列表。\n        :type AccountInfoSet: list of AccountInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AccountInfoSet = None
         self.RequestId = None
@@ -1210,13 +974,7 @@ class DescribeClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.Operator = None
@@ -1244,11 +1002,7 @@ class DescribeClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClassInfoSet: 分类信息列表。
-        :type ClassInfoSet: list of ClassInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ClassInfoSet: 分类信息列表。\n        :type ClassInfoSet: list of ClassInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClassInfoSet = None
         self.RequestId = None
 
@@ -1270,15 +1024,7 @@ class DescribeJoinTeamsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param MemberId: 团队成员　ID。
-        :type MemberId: str
-        :param Offset: 分页偏移量，默认值：0
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：30，最大值：30。
-        :type Limit: int
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param MemberId: 团队成员　ID。\n        :type MemberId: str\n        :param Offset: 分页偏移量，默认值：0\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：30，最大值：30。\n        :type Limit: int\n        """
         self.Platform = None
         self.MemberId = None
         self.Offset = None
@@ -1306,13 +1052,7 @@ class DescribeJoinTeamsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param TeamSet: 团队列表
-        :type TeamSet: list of JoinTeamInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param TeamSet: 团队列表\n        :type TeamSet: list of JoinTeamInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TeamSet = None
         self.RequestId = None
@@ -1336,11 +1076,7 @@ class DescribeLoginStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。
-        :type UserIds: list of str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。\n        :type UserIds: list of str\n        """
         self.Platform = None
         self.UserIds = None
 
@@ -1364,11 +1100,7 @@ class DescribeLoginStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param LoginStatusInfoSet: 用户登录状态列表。
-        :type LoginStatusInfoSet: list of LoginStatusInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param LoginStatusInfoSet: 用户登录状态列表。\n        :type LoginStatusInfoSet: list of LoginStatusInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LoginStatusInfoSet = None
         self.RequestId = None
 
@@ -1390,17 +1122,9 @@ class DescribeMaterialsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param MaterialIds: 媒体 ID 列表，N 从 0 开始取值，最大 19。
-        :type MaterialIds: list of str
-        :param Sort: 列表排序，支持下列排序字段：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param MaterialIds: 媒体 ID 列表，N 从 0 开始取值，最大 19。\n        :type MaterialIds: list of str\n        :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
-<li>UpdateTime：更新时间。</li>
-        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体的访问权限。
-        :type Operator: str
-        """
+<li>UpdateTime：更新时间。</li>\n        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体的访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.MaterialIds = None
         self.Sort = None
@@ -1430,11 +1154,7 @@ class DescribeMaterialsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialInfoSet: 媒体列表信息。
-        :type MaterialInfoSet: list of MaterialInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaterialInfoSet: 媒体列表信息。\n        :type MaterialInfoSet: list of MaterialInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaterialInfoSet = None
         self.RequestId = None
 
@@ -1456,15 +1176,7 @@ class DescribePlatformsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platforms: 平台集合。
-        :type Platforms: list of str
-        :param LicenseIds: 平台绑定的 license Id 集合。
-        :type LicenseIds: list of str
-        :param Offset: 分页返回的起始偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10。
-        :type Limit: int
-        """
+        :param Platforms: 平台集合。\n        :type Platforms: list of str\n        :param LicenseIds: 平台绑定的 license Id 集合。\n        :type LicenseIds: list of str\n        :param Offset: 分页返回的起始偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 分页返回的记录条数，默认值：10。\n        :type Limit: int\n        """
         self.Platforms = None
         self.LicenseIds = None
         self.Offset = None
@@ -1492,13 +1204,7 @@ class DescribePlatformsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合搜索条件的记录总数。
-        :type TotalCount: int
-        :param PlatformInfoSet: 平台信息列表。
-        :type PlatformInfoSet: list of PlatformInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合搜索条件的记录总数。\n        :type TotalCount: int\n        :param PlatformInfoSet: 平台信息列表。\n        :type PlatformInfoSet: list of PlatformInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.PlatformInfoSet = None
         self.RequestId = None
@@ -1522,37 +1228,17 @@ class DescribeProjectsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectIds: 项目 Id 列表，N 从 0 开始取值，最大 19。
-        :type ProjectIds: list of str
-        :param AspectRatioSet: 画布宽高比集合。
-        :type AspectRatioSet: list of str
-        :param CategorySet: 项目类别，取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectIds: 项目 Id 列表，N 从 0 开始取值，最大 19。\n        :type ProjectIds: list of str\n        :param AspectRatioSet: 画布宽高比集合。\n        :type AspectRatioSet: list of str\n        :param CategorySet: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
-<li>RECORD_REPLAY：录制回放。</li>
-        :type CategorySet: list of str
-        :param Modes: 项目模式，一个项目可以有多种模式并相互切换。
+<li>RECORD_REPLAY：录制回放。</li>\n        :type CategorySet: list of str\n        :param Modes: 项目模式，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
 <li>Default：默认模式。</li>
-<li>VideoEditTemplate：视频编辑模板制作模式。</li>
-        :type Modes: list of str
-        :param Sort: 列表排序，支持下列排序字段：
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>\n        :type Modes: list of str\n        :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
-<li>UpdateTime：更新时间。</li>
-        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
-        :param Owner: 项目归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Offset: 分页返回的起始偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10。
-        :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目访问权限。
-        :type Operator: str
-        """
+<li>UpdateTime：更新时间。</li>\n        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`\n        :param Owner: 项目归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Offset: 分页返回的起始偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 分页返回的记录条数，默认值：10。\n        :type Limit: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectIds = None
         self.AspectRatioSet = None
@@ -1596,13 +1282,7 @@ class DescribeProjectsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param ProjectInfoSet: 项目信息列表。
-        :type ProjectInfoSet: list of ProjectInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param ProjectInfoSet: 项目信息列表。\n        :type ProjectInfoSet: list of ProjectInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ProjectInfoSet = None
         self.RequestId = None
@@ -1626,15 +1306,7 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Resource: 资源。
-        :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Resource: 资源。\n        :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.Resource = None
@@ -1667,13 +1339,7 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
     def __init__(self):
         """
         :param TotalCount: 符合条件的资源授权记录总数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param AuthorizationInfoSet: 授权信息列表。
-        :type AuthorizationInfoSet: list of AuthorizationInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param AuthorizationInfoSet: 授权信息列表。\n        :type AuthorizationInfoSet: list of AuthorizationInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AuthorizationInfoSet = None
         self.RequestId = None
@@ -1697,13 +1363,7 @@ class DescribeSharedSpaceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Authorizee: 被授权目标,，个人或团队。
-        :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Authorizee: 被授权目标,，个人或团队。\n        :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Authorizee = None
         self.Operator = None
@@ -1731,14 +1391,8 @@ class DescribeSharedSpaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 查询到的共享空间总数。
-        :type TotalCount: int
-        :param AuthorizerSet: 各个共享空间对应的授权者信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AuthorizerSet: list of Authorizer
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 查询到的共享空间总数。\n        :type TotalCount: int\n        :param AuthorizerSet: 各个共享空间对应的授权者信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizerSet: list of Authorizer\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AuthorizerSet = None
         self.RequestId = None
@@ -1762,13 +1416,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TaskId: 任务 Id。
-        :type TaskId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TaskId: 任务 Id。\n        :type TaskId: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TaskId = None
         self.Operator = None
@@ -1797,27 +1445,11 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param Status: 任务状态，取值有：
 <li>PROCESSING：处理中：</li>
 <li>SUCCESS：成功；</li>
-<li>FAIL：失败。</li>
-        :type Status: str
-        :param Progress: 任务进度，取值为：0~100。
-        :type Progress: int
-        :param ErrCode: 错误码。
+<li>FAIL：失败。</li>\n        :type Status: str\n        :param Progress: 任务进度，取值为：0~100。\n        :type Progress: int\n        :param ErrCode: 错误码。
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param ErrMsg: 错误信息。
-        :type ErrMsg: str
-        :param TaskType: 任务类型，取值有：
-<li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
-        :type TaskType: str
-        :param VideoEditProjectOutput: 导出项目输出信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoEditProjectOutput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectOutput`
-        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param ErrMsg: 错误信息。\n        :type ErrMsg: str\n        :param TaskType: 任务类型，取值有：
+<li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>\n        :type TaskType: str\n        :param VideoEditProjectOutput: 导出项目输出信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoEditProjectOutput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectOutput`\n        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。\n        :type CreateTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Progress = None
         self.ErrCode = None
@@ -1848,25 +1480,11 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param TaskTypeSet: 任务类型集合，取值有：
-<li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
-        :type TaskTypeSet: list of str
-        :param StatusSet: 任务状态集合，取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param TaskTypeSet: 任务类型集合，取值有：
+<li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>\n        :type TaskTypeSet: list of str\n        :param StatusSet: 任务状态集合，取值有：
 <li>PROCESSING：处理中；</li>
 <li>SUCCESS：成功；</li>
-<li>FAIL：失败。</li>
-        :type StatusSet: list of str
-        :param Offset: 分页返回的起始偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10。
-        :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
-        :type Operator: str
-        """
+<li>FAIL：失败。</li>\n        :type StatusSet: list of str\n        :param Offset: 分页返回的起始偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 分页返回的记录条数，默认值：10。\n        :type Limit: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.TaskTypeSet = None
@@ -1900,13 +1518,7 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合搜索条件的记录总数。
-        :type TotalCount: int
-        :param TaskBaseInfoSet: 任务基础信息列表。
-        :type TaskBaseInfoSet: list of TaskBaseInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合搜索条件的记录总数。\n        :type TotalCount: int\n        :param TaskBaseInfoSet: 任务基础信息列表。\n        :type TaskBaseInfoSet: list of TaskBaseInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TaskBaseInfoSet = None
         self.RequestId = None
@@ -1930,19 +1542,7 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param MemberIds: 成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。
-        :type MemberIds: list of str
-        :param Offset: 分页偏移量，默认值：0
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：30，最大值：30。
-        :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param MemberIds: 成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。\n        :type MemberIds: list of str\n        :param Offset: 分页偏移量，默认值：0\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：30，最大值：30。\n        :type Limit: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TeamId = None
         self.MemberIds = None
@@ -1974,13 +1574,7 @@ class DescribeTeamMembersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param MemberSet: 团队成员列表。
-        :type MemberSet: list of TeamMemberInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param MemberSet: 团队成员列表。\n        :type MemberSet: list of TeamMemberInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.MemberSet = None
         self.RequestId = None
@@ -2004,15 +1598,7 @@ class DescribeTeamsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TeamIds: 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
-        :type TeamIds: list of str
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：20，最大值：30。
-        :type Limit: int
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TeamIds: 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。\n        :type TeamIds: list of str\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：20，最大值：30。\n        :type Limit: int\n        """
         self.Platform = None
         self.TeamIds = None
         self.Offset = None
@@ -2040,13 +1626,7 @@ class DescribeTeamsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param TeamSet: 团队列表。
-        :type TeamSet: list of TeamInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param TeamSet: 团队列表。\n        :type TeamSet: list of TeamInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TeamSet = None
         self.RequestId = None
@@ -2070,9 +1650,7 @@ class EmptyTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Duration: 持续时间，单位为秒。
-        :type Duration: float
-        """
+        :param Duration: 持续时间，单位为秒。\n        :type Duration: float\n        """
         self.Duration = None
 
 
@@ -2096,11 +1674,7 @@ class Entity(AbstractModel):
         """
         :param Type: 类型，取值有：
 <li>PERSON：个人。</li>
-<li>TEAM：团队。</li>
-        :type Type: str
-        :param Id: Id，当 Type=PERSON，取值为用户 Id，当 Type=TEAM，取值为团队 Id。
-        :type Id: str
-        """
+<li>TEAM：团队。</li>\n        :type Type: str\n        :param Id: Id，当 Type=PERSON，取值为用户 Id，当 Type=TEAM，取值为团队 Id。\n        :type Id: str\n        """
         self.Type = None
         self.Id = None
 
@@ -2126,13 +1700,7 @@ class EventContent(AbstractModel):
         """
         :param EventType: 事件类型，可取值为：
 <li>Storage.NewFileCreated：新文件产生；</li>
-<li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>
-        :type EventType: str
-        :param StorageNewFileCreatedEvent: 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
-        :type StorageNewFileCreatedEvent: :class:`tencentcloud.cme.v20191029.models.StorageNewFileCreatedEvent`
-        :param ProjectStreamConnectStatusChangedEvent: 云转推项目状态变更事件信息。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
-        :type ProjectStreamConnectStatusChangedEvent: :class:`tencentcloud.cme.v20191029.models.ProjectStreamConnectStatusChangedEvent`
-        """
+<li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>\n        :type EventType: str\n        :param StorageNewFileCreatedEvent: 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。\n        :type StorageNewFileCreatedEvent: :class:`tencentcloud.cme.v20191029.models.StorageNewFileCreatedEvent`\n        :param ProjectStreamConnectStatusChangedEvent: 云转推项目状态变更事件信息。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。\n        :type ProjectStreamConnectStatusChangedEvent: :class:`tencentcloud.cme.v20191029.models.ProjectStreamConnectStatusChangedEvent`\n        """
         self.EventType = None
         self.StorageNewFileCreatedEvent = None
         self.ProjectStreamConnectStatusChangedEvent = None
@@ -2162,28 +1730,12 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
-<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
-        :type Definition: int
-        :param ExportDestination: 导出目标。
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>\n        :type Definition: int\n        :param ExportDestination: 导出目标。
 <li>CME：云剪，即导出为云剪素材；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
-        :type ExportDestination: str
-        :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
-        :type TrackData: str
-        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
-        :type CoverData: str
-        :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
-        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
-        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
-        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验导出操作权限。
-        :type Operator: str
-        """
+<li>VOD：云点播，即导出为云点播媒资。</li>\n        :type ExportDestination: str\n        :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。\n        :type TrackData: str\n        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。\n        :type CoverData: str\n        :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。\n        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`\n        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。\n        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验导出操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Definition = None
         self.ExportDestination = None
@@ -2223,11 +1775,7 @@ class ExportVideoByEditorTrackDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 Id。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 Id。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2244,28 +1792,12 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TemplateId: 视频编辑模板  Id。
-        :type TemplateId: str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TemplateId: 视频编辑模板  Id。\n        :type TemplateId: str\n        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
-<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
-        :type Definition: int
-        :param ExportDestination: 导出目标，可取值为：
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>\n        :type Definition: int\n        :param ExportDestination: 导出目标，可取值为：
 <li>CME：云剪，即导出为云剪媒体；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
-        :type ExportDestination: str
-        :param SlotReplacements: 需要替换的素材信息。
-        :type SlotReplacements: list of SlotReplacementInfo
-        :param CMEExportInfo: 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
-        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
-        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
-        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
-        :type Operator: str
-        """
+<li>VOD：云点播，即导出为云点播媒资。</li>\n        :type ExportDestination: str\n        :param SlotReplacements: 需要替换的素材信息。\n        :type SlotReplacements: list of SlotReplacementInfo\n        :param CMEExportInfo: 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。\n        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`\n        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。\n        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TemplateId = None
         self.Definition = None
@@ -2310,11 +1842,7 @@ class ExportVideoByTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 导出任务 Id。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 导出任务 Id。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2331,30 +1859,12 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 视频拆条项目 Id 。
-        :type ProjectId: str
-        :param SegmentGroupId: 指定需要导出的智能拆条片段的组 Id 。
-        :type SegmentGroupId: str
-        :param SegmentIds: 指定需要导出的智能拆条片段 Id  集合。
-        :type SegmentIds: list of str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 视频拆条项目 Id 。\n        :type ProjectId: str\n        :param SegmentGroupId: 指定需要导出的智能拆条片段的组 Id 。\n        :type SegmentGroupId: str\n        :param SegmentIds: 指定需要导出的智能拆条片段 Id  集合。\n        :type SegmentIds: list of str\n        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
-<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
-        :type Definition: int
-        :param ExportDestination: 导出目标。
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>\n        :type Definition: int\n        :param ExportDestination: 导出目标。
 <li>CME：云剪，即导出为云剪素材；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
-        :type ExportDestination: str
-        :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
-        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
-        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
-        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+<li>VOD：云点播，即导出为云点播媒资。</li>\n        :type ExportDestination: str\n        :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。\n        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`\n        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。\n        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.SegmentGroupId = None
@@ -2396,11 +1906,7 @@ class ExportVideoByVideoSegmentationDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 Id。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 Id。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2417,28 +1923,12 @@ class ExportVideoEditProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
-<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
-        :type Definition: int
-        :param ExportDestination: 导出目标。
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>\n        :type Definition: int\n        :param ExportDestination: 导出目标。
 <li>CME：云剪，即导出为云剪媒体；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
-        :type ExportDestination: str
-        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
-        :type CoverData: str
-        :param CMEExportInfo: 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
-        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
-        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
-        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
-        :type Operator: str
-        """
+<li>VOD：云点播，即导出为云点播媒资。</li>\n        :type ExportDestination: str\n        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。\n        :type CoverData: str\n        :param CMEExportInfo: 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。\n        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`\n        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。\n        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.Definition = None
@@ -2478,11 +1968,7 @@ class ExportVideoEditProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 Id。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 任务 Id。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2503,11 +1989,7 @@ class ExternalMediaInfo(AbstractModel):
 <li>1000000：媒体文件为 URL，且 URL Scheme 为 https；</li>
 <li>1000001：媒体文件为 URL，且 URL Scheme 为 http。</li>
 
-注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。
-        :type Definition: int
-        :param MediaKey: 媒资绑定媒体路径或文件 ID，如果要绑定 URL 类型的媒体，请将 URL 的 <code> 'https://' </code>或者<code> 'http://' </code>去掉。
-        :type MediaKey: str
-        """
+注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。\n        :type Definition: int\n        :param MediaKey: 媒资绑定媒体路径或文件 ID，如果要绑定 URL 类型的媒体，请将 URL 的 <code> 'https://' </code>或者<code> 'http://' </code>去掉。\n        :type MediaKey: str\n        """
         self.Definition = None
         self.MediaKey = None
 
@@ -2531,19 +2013,7 @@ class FlattenListMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
-        :type ClassPath: str
-        :param Owner: 媒体分类的归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：50。
-        :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。\n        :type ClassPath: str\n        :param Owner: 媒体分类的归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：50。\n        :type Limit: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ClassPath = None
         self.Owner = None
@@ -2577,13 +2047,7 @@ class FlattenListMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合条件的记录总数。
-        :type TotalCount: int
-        :param MaterialInfoSet: 该分类路径下及其子分类下的所有媒体基础信息列表。
-        :type MaterialInfoSet: list of MaterialInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合条件的记录总数。\n        :type TotalCount: int\n        :param MaterialInfoSet: 该分类路径下及其子分类下的所有媒体基础信息列表。\n        :type MaterialInfoSet: list of MaterialInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.MaterialInfoSet = None
         self.RequestId = None
@@ -2607,13 +2071,7 @@ class GenerateVideoSegmentationSchemeByAiRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 视频拆条项目 Id 。
-        :type ProjectId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 视频拆条项目 Id 。\n        :type ProjectId: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.Operator = None
@@ -2639,11 +2097,7 @@ class GenerateVideoSegmentationSchemeByAiResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 视频智能拆条任务 Id 。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TaskId: 视频智能拆条任务 Id 。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2660,23 +2114,11 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 资源归属者，个人或者团队。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Resources: 被授权资源。
-        :type Resources: list of Resource
-        :param Authorizees: 被授权目标，个人或者团队。
-        :type Authorizees: list of Entity
-        :param Permissions: 详细授权值。 取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 资源归属者，个人或者团队。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Resources: 被授权资源。\n        :type Resources: list of Resource\n        :param Authorizees: 被授权目标，个人或者团队。\n        :type Authorizees: list of Entity\n        :param Permissions: 详细授权值。 取值有：
 <li>R：可读，可以浏览媒体，但不能使用该媒体文件（将其添加到 Project），或复制到自己的媒资库中</li>
 <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
-<li>W：可修改、删除媒资。</li>
-        :type Permissions: list of str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+<li>W：可修改、删除媒资。</li>\n        :type Permissions: list of str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.Resources = None
@@ -2720,9 +2162,7 @@ class GrantResourceAuthorizationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2737,23 +2177,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 云转推项目Id 。
-        :type ProjectId: str
-        :param Operation: 请参考 [操作类型](#Operation)
-        :type Operation: str
-        :param InputInfo: 转推输入源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
-        :type InputInfo: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
-        :param InputEndpoint: 主备输入源标识，取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 云转推项目Id 。\n        :type ProjectId: str\n        :param Operation: 请参考 [操作类型](#Operation)\n        :type Operation: str\n        :param InputInfo: 转推输入源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。\n        :type InputInfo: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`\n        :param InputEndpoint: 主备输入源标识，取值有：
 <li> Main ：主源；</li>
-<li> Backup ：备源。</li>
-        :type InputEndpoint: str
-        :param OutputInfo: 转推输出源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
-        :type OutputInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
-        :param CurrentStopTime: 云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。
-        :type CurrentStopTime: str
-        """
+<li> Backup ：备源。</li>\n        :type InputEndpoint: str\n        :param OutputInfo: 转推输出源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。\n        :type OutputInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`\n        :param CurrentStopTime: 云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。\n        :type CurrentStopTime: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.Operation = None
@@ -2791,11 +2217,7 @@ class HandleStreamConnectProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StreamInputRtmpPushUrl: 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
-        :type StreamInputRtmpPushUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param StreamInputRtmpPushUrl: 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。\n        :type StreamInputRtmpPushUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.StreamInputRtmpPushUrl = None
         self.RequestId = None
 
@@ -2812,19 +2234,7 @@ class ImageMaterial(AbstractModel):
 
     def __init__(self):
         """
-        :param Height: 图片高度，单位：px。
-        :type Height: int
-        :param Width: 图片宽度，单位：px。
-        :type Width: int
-        :param MaterialUrl: 素材媒体文件的展示 URL 地址。
-        :type MaterialUrl: str
-        :param Size: 图片大小，单位：字节。
-        :type Size: int
-        :param OriginalUrl: 素材媒体文件的原始 URL 地址。
-        :type OriginalUrl: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        """
+        :param Height: 图片高度，单位：px。\n        :type Height: int\n        :param Width: 图片宽度，单位：px。\n        :type Width: int\n        :param MaterialUrl: 素材媒体文件的展示 URL 地址。\n        :type MaterialUrl: str\n        :param Size: 图片大小，单位：字节。\n        :type Size: int\n        :param OriginalUrl: 素材媒体文件的原始 URL 地址。\n        :type OriginalUrl: str\n        :param VodFileId: 云点播媒资 FileId。\n        :type VodFileId: str\n        """
         self.Height = None
         self.Width = None
         self.MaterialUrl = None
@@ -2856,30 +2266,12 @@ class ImportMaterialRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 媒体归属者，团队或个人。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 媒体名称，不能超过30个字符。
-        :type Name: str
-        :param SourceType: 导入媒资类型，取值：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 媒体归属者，团队或个人。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Name: 媒体名称，不能超过30个字符。\n        :type Name: str\n        :param SourceType: 导入媒资类型，取值：
 <li>VOD：云点播文件；</li>
 <li>EXTERNAL：媒资绑定。</li>
 
-注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
-        :type SourceType: str
-        :param VodFileId: 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
-        :type VodFileId: str
-        :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
-        :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
-        :param ClassPath: 媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
-        :type ClassPath: str
-        :param PreProcessDefinition: 媒体预处理任务模板 ID。取值：
-<li>10：进行编辑预处理。</li>
-        :type PreProcessDefinition: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。\n        :type SourceType: str\n        :param VodFileId: 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。\n        :type VodFileId: str\n        :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。\n        :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`\n        :param ClassPath: 媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。\n        :type ClassPath: str\n        :param PreProcessDefinition: 媒体预处理任务模板 ID。取值：
+<li>10：进行编辑预处理。</li>\n        :type PreProcessDefinition: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.Name = None
@@ -2921,13 +2313,7 @@ class ImportMaterialResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 媒体 Id。
-        :type MaterialId: str
-        :param PreProcessTaskId: 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
-        :type PreProcessTaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaterialId: 媒体 Id。\n        :type MaterialId: str\n        :param PreProcessTaskId: 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。\n        :type PreProcessTaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaterialId = None
         self.PreProcessTaskId = None
         self.RequestId = None
@@ -2946,29 +2332,13 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param SourceType: 导入媒资类型，取值：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param SourceType: 导入媒资类型，取值：
 <li>VOD：云点播文件；</li>
 <li>EXTERNAL：媒资绑定。</li>
 
-注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
-        :type SourceType: str
-        :param VodFileId: 云点播媒资文件 Id，当 SourceType 取值 VOD 或者缺省的时候必填。
-        :type VodFileId: str
-        :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
-        :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
-        :param Name: 媒体名称，不能超过30个字符。
-        :type Name: str
-        :param PreProcessDefinition: 媒体预处理任务模板 ID，取值：
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。\n        :type SourceType: str\n        :param VodFileId: 云点播媒资文件 Id，当 SourceType 取值 VOD 或者缺省的时候必填。\n        :type VodFileId: str\n        :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。\n        :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`\n        :param Name: 媒体名称，不能超过30个字符。\n        :type Name: str\n        :param PreProcessDefinition: 媒体预处理任务模板 ID，取值：
 <li>10：进行编辑预处理。</li>
-注意：如果填0则不进行处理。
-        :type PreProcessDefinition: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目和媒体文件访问权限。
-        :type Operator: str
-        """
+注意：如果填0则不进行处理。\n        :type PreProcessDefinition: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目和媒体文件访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.SourceType = None
@@ -3006,13 +2376,7 @@ class ImportMediaToProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 媒体 Id。
-        :type MaterialId: str
-        :param TaskId: 媒体预处理任务 ID，如果未指定发起预处理任务则为空。
-        :type TaskId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaterialId: 媒体 Id。\n        :type MaterialId: str\n        :param TaskId: 媒体预处理任务 ID，如果未指定发起预处理任务则为空。\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaterialId = None
         self.TaskId = None
         self.RequestId = None
@@ -3031,11 +2395,7 @@ class IntegerRange(AbstractModel):
 
     def __init__(self):
         """
-        :param LowerBound: 按整形代表值的下限检索。
-        :type LowerBound: int
-        :param UpperBound: 按整形代表值的上限检索。
-        :type UpperBound: int
-        """
+        :param LowerBound: 按整形代表值的下限检索。\n        :type LowerBound: int\n        :param UpperBound: 按整形代表值的上限检索。\n        :type UpperBound: int\n        """
         self.LowerBound = None
         self.UpperBound = None
 
@@ -3059,18 +2419,10 @@ class JoinTeamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param Name: 团队名称。
-        :type Name: str
-        :param MemberCount: 团队成员个数
-        :type MemberCount: int
-        :param Role: 成员在团队中的角色，取值有：
+        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param Name: 团队名称。\n        :type Name: str\n        :param MemberCount: 团队成员个数\n        :type MemberCount: int\n        :param Role: 成员在团队中的角色，取值有：
 <li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
 <li>Admin：团队管理员；</li>
-<li>Member：普通成员。</li>
-        :type Role: str
-        """
+<li>Member：普通成员。</li>\n        :type Role: str\n        """
         self.TeamId = None
         self.Name = None
         self.MemberCount = None
@@ -3098,9 +2450,7 @@ class KuaishouPublishInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Title: 视频发布标题，限30个字符。
-        :type Title: str
-        """
+        :param Title: 视频发布标题，限30个字符。\n        :type Title: str\n        """
         self.Title = None
 
 
@@ -3124,19 +2474,11 @@ class LinkMaterial(AbstractModel):
         """
         :param LinkType: 链接类型取值:
 <li>CLASS: 分类链接;</li>
-<li> MATERIAL：素材链接。</li>
-        :type LinkType: str
-        :param LinkStatus: 链接状态取值：
+<li> MATERIAL：素材链接。</li>\n        :type LinkType: str\n        :param LinkStatus: 链接状态取值：
 <li> Normal：正常 ；</li>
-<li>NotFound：链接目标不存在；</li> <li>Forbidden：无权限。</li>
-        :type LinkStatus: str
-        :param LinkMaterialInfo: 素材链接详细信息，当LinkType="MATERIAL"时有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LinkMaterialInfo: :class:`tencentcloud.cme.v20191029.models.LinkMaterialInfo`
-        :param LinkClassInfo: 分类链接目标信息，当LinkType=“CLASS”时有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LinkClassInfo: :class:`tencentcloud.cme.v20191029.models.ClassInfo`
-        """
+<li>NotFound：链接目标不存在；</li> <li>Forbidden：无权限。</li>\n        :type LinkStatus: str\n        :param LinkMaterialInfo: 素材链接详细信息，当LinkType="MATERIAL"时有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LinkMaterialInfo: :class:`tencentcloud.cme.v20191029.models.LinkMaterialInfo`\n        :param LinkClassInfo: 分类链接目标信息，当LinkType=“CLASS”时有值。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LinkClassInfo: :class:`tencentcloud.cme.v20191029.models.ClassInfo`\n        """
         self.LinkType = None
         self.LinkStatus = None
         self.LinkMaterialInfo = None
@@ -3168,18 +2510,10 @@ class LinkMaterialInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicInfo: 素材基本信息。
-        :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
-        :param VideoMaterial: 视频素材信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
-        :param AudioMaterial: 音频素材信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
-        :param ImageMaterial: 图片素材信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
-        """
+        :param BasicInfo: 素材基本信息。\n        :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`\n        :param VideoMaterial: 视频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`\n        :param AudioMaterial: 音频素材信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`\n        :param ImageMaterial: 图片素材信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`\n        """
         self.BasicInfo = None
         self.VideoMaterial = None
         self.AudioMaterial = None
@@ -3215,19 +2549,7 @@ class ListMediaRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
-        :type ClassPath: str
-        :param Owner: 媒体和分类的归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Offset: 分页偏移量，默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：10，最大值：50。
-        :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对媒体的访问权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。\n        :type ClassPath: str\n        :param Owner: 媒体和分类的归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Offset: 分页偏移量，默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：10，最大值：50。\n        :type Limit: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对媒体的访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.ClassPath = None
         self.Owner = None
@@ -3261,15 +2583,7 @@ class ListMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialTotalCount: 符合条件的媒体记录总数。
-        :type MaterialTotalCount: int
-        :param MaterialInfoSet: 浏览分类路径下的媒体列表信息。
-        :type MaterialInfoSet: list of MaterialInfo
-        :param ClassInfoSet: 浏览分类路径下的一级子类。
-        :type ClassInfoSet: list of ClassInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param MaterialTotalCount: 符合条件的媒体记录总数。\n        :type MaterialTotalCount: int\n        :param MaterialInfoSet: 浏览分类路径下的媒体列表信息。\n        :type MaterialInfoSet: list of MaterialInfo\n        :param ClassInfoSet: 浏览分类路径下的一级子类。\n        :type ClassInfoSet: list of ClassInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MaterialTotalCount = None
         self.MaterialInfoSet = None
         self.ClassInfoSet = None
@@ -3300,9 +2614,7 @@ class LivePullInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InputUrl: 直播拉流地址。
-        :type InputUrl: str
-        """
+        :param InputUrl: 直播拉流地址。\n        :type InputUrl: str\n        """
         self.InputUrl = None
 
 
@@ -3324,11 +2636,7 @@ class LiveStreamClipProjectInput(AbstractModel):
 
     def __init__(self):
         """
-        :param Url: 直播流播放地址，目前仅支持 HLS 和 FLV 格式。
-        :type Url: str
-        :param StreamRecordDuration: 直播流录制时长，单位为秒，最大值为 7200。
-        :type StreamRecordDuration: int
-        """
+        :param Url: 直播流播放地址，目前仅支持 HLS 和 FLV 格式。\n        :type Url: str\n        :param StreamRecordDuration: 直播流录制时长，单位为秒，最大值为 7200。\n        :type StreamRecordDuration: int\n        """
         self.Url = None
         self.StreamRecordDuration = None
 
@@ -3352,13 +2660,9 @@ class LoginStatusInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户 Id。
-        :type UserId: str
-        :param Status: 用户登录状态。
+        :param UserId: 用户 Id。\n        :type UserId: str\n        :param Status: 用户登录状态。
 <li>Online：在线；</li>
-<li>Offline：离线。</li>
-        :type Status: str
-        """
+<li>Offline：离线。</li>\n        :type Status: str\n        """
         self.UserId = None
         self.Status = None
 
@@ -3382,36 +2686,14 @@ class MaterialBasicInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 媒体 Id。
-        :type MaterialId: str
-        :param MaterialType: 媒体类型，取值为：
+        :param MaterialId: 媒体 Id。\n        :type MaterialId: str\n        :param MaterialType: 媒体类型，取值为：
 <li> AUDIO :音频;</li>
 <li> VIDEO :视频;</li>
 <li> IMAGE :图片;</li>
 <li> LINK  :链接.</li>
-<li> OTHER : 其他.</li>
-        :type MaterialType: str
-        :param Owner: 媒体归属实体。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 媒体名称。
-        :type Name: str
-        :param CreateTime: 媒体文件的创建时间，使用 ISO 日期格式。
-        :type CreateTime: str
-        :param UpdateTime: 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
-        :type UpdateTime: str
-        :param ClassPath: 媒体的分类路径。
-        :type ClassPath: str
-        :param PresetTagSet: 预置标签列表。
-        :type PresetTagSet: list of PresetTagInfo
-        :param TagSet: 人工标签列表。
-        :type TagSet: list of str
-        :param PreviewUrl: 媒体文件的预览图。
-        :type PreviewUrl: str
-        :param TagInfoSet: 媒体绑定的标签信息列表 。
+<li> OTHER : 其他.</li>\n        :type MaterialType: str\n        :param Owner: 媒体归属实体。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Name: 媒体名称。\n        :type Name: str\n        :param CreateTime: 媒体文件的创建时间，使用 ISO 日期格式。\n        :type CreateTime: str\n        :param UpdateTime: 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。\n        :type UpdateTime: str\n        :param ClassPath: 媒体的分类路径。\n        :type ClassPath: str\n        :param PresetTagSet: 预置标签列表。\n        :type PresetTagSet: list of PresetTagInfo\n        :param TagSet: 人工标签列表。\n        :type TagSet: list of str\n        :param PreviewUrl: 媒体文件的预览图。\n        :type PreviewUrl: str\n        :param TagInfoSet: 媒体绑定的标签信息列表 。
 该字段已废弃。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TagInfoSet: list of MaterialTagInfo
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TagInfoSet: list of MaterialTagInfo\n        """
         self.MaterialId = None
         self.MaterialType = None
         self.Owner = None
@@ -3465,27 +2747,13 @@ class MaterialInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param BasicInfo: 媒体基本信息。
-        :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
-        :param VideoMaterial: 视频媒体信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
-        :param AudioMaterial: 音频媒体信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
-        :param ImageMaterial: 图片媒体信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
-        :param LinkMaterial: 链接媒体信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LinkMaterial: :class:`tencentcloud.cme.v20191029.models.LinkMaterial`
-        :param VideoEditTemplateMaterial: 模板媒体信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VideoEditTemplateMaterial: :class:`tencentcloud.cme.v20191029.models.VideoEditTemplateMaterial`
-        :param OtherMaterial: 其他类型媒体信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OtherMaterial: :class:`tencentcloud.cme.v20191029.models.OtherMaterial`
-        """
+        :param BasicInfo: 媒体基本信息。\n        :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`\n        :param VideoMaterial: 视频媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`\n        :param AudioMaterial: 音频媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`\n        :param ImageMaterial: 图片媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`\n        :param LinkMaterial: 链接媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LinkMaterial: :class:`tencentcloud.cme.v20191029.models.LinkMaterial`\n        :param VideoEditTemplateMaterial: 模板媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VideoEditTemplateMaterial: :class:`tencentcloud.cme.v20191029.models.VideoEditTemplateMaterial`\n        :param OtherMaterial: 其他类型媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OtherMaterial: :class:`tencentcloud.cme.v20191029.models.OtherMaterial`\n        """
         self.BasicInfo = None
         self.VideoMaterial = None
         self.AudioMaterial = None
@@ -3536,9 +2804,7 @@ class MaterialStatus(AbstractModel):
         :param EditorUsableStatus: 素材编辑可用状态，取值有：
 <li>NORMAL：正常，可直接用于编辑；</li>
 <li>ABNORMAL : 异常，不可用于编辑；</li>
-<li>PROCESSING：处理中，暂不可用于编辑。</li>
-        :type EditorUsableStatus: str
-        """
+<li>PROCESSING：处理中，暂不可用于编辑。</li>\n        :type EditorUsableStatus: str\n        """
         self.EditorUsableStatus = None
 
 
@@ -3561,13 +2827,7 @@ class MaterialTagInfo(AbstractModel):
     def __init__(self):
         """
         :param Type: 标签类型，取值为：
-<li>PRESET：预置标签；</li>
-        :type Type: str
-        :param Id: 标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。
-        :type Id: str
-        :param Name: 标签名称。
-        :type Name: str
-        """
+<li>PRESET：预置标签；</li>\n        :type Type: str\n        :param Id: 标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。\n        :type Id: str\n        :param Name: 标签名称。\n        :type Name: str\n        """
         self.Type = None
         self.Id = None
         self.Name = None
@@ -3593,17 +2853,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Height: 雪碧图小图的高度。
-        :type Height: int
-        :param Width: 雪碧图小图的宽度。
-        :type Width: int
-        :param TotalCount: 雪碧图小图的总数量。
-        :type TotalCount: int
-        :param ImageUrlSet: 截取雪碧图输出的地址。
-        :type ImageUrlSet: list of str
-        :param WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
-        :type WebVttUrl: str
-        """
+        :param Height: 雪碧图小图的高度。\n        :type Height: int\n        :param Width: 雪碧图小图的宽度。\n        :type Width: int\n        :param TotalCount: 雪碧图小图的总数量。\n        :type TotalCount: int\n        :param ImageUrlSet: 截取雪碧图输出的地址。\n        :type ImageUrlSet: list of str\n        :param WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。\n        :type WebVttUrl: str\n        """
         self.Height = None
         self.Width = None
         self.TotalCount = None
@@ -3633,25 +2883,7 @@ class MediaMetaData(AbstractModel):
 
     def __init__(self):
         """
-        :param Size: 大小。
-        :type Size: int
-        :param Container: 容器类型。
-        :type Container: str
-        :param Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。
-        :type Bitrate: int
-        :param Height: 视频流高度的最大值，单位：px。
-        :type Height: int
-        :param Width: 视频流宽度的最大值，单位：px。
-        :type Width: int
-        :param Duration: 时长，单位：秒。
-        :type Duration: float
-        :param Rotate: 视频拍摄时的选择角度，单位：度
-        :type Rotate: int
-        :param VideoStreamInfoSet: 视频流信息。
-        :type VideoStreamInfoSet: list of VideoStreamInfo
-        :param AudioStreamInfoSet: 音频流信息。
-        :type AudioStreamInfoSet: list of AudioStreamInfo
-        """
+        :param Size: 大小。\n        :type Size: int\n        :param Container: 容器类型。\n        :type Container: str\n        :param Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流高度的最大值，单位：px。\n        :type Height: int\n        :param Width: 视频流宽度的最大值，单位：px。\n        :type Width: int\n        :param Duration: 时长，单位：秒。\n        :type Duration: float\n        :param Rotate: 视频拍摄时的选择角度，单位：度\n        :type Rotate: int\n        :param VideoStreamInfoSet: 视频流信息。\n        :type VideoStreamInfoSet: list of VideoStreamInfo\n        :param AudioStreamInfoSet: 音频流信息。\n        :type AudioStreamInfoSet: list of AudioStreamInfo\n        """
         self.Size = None
         self.Container = None
         self.Bitrate = None
@@ -3699,11 +2931,7 @@ class MediaReplacementInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 素材 ID。
-        :type MaterialId: str
-        :param StartTimeOffset: 替换媒体选取的开始时间，单位为秒，默认为 0。
-        :type StartTimeOffset: float
-        """
+        :param MaterialId: 素材 ID。\n        :type MaterialId: str\n        :param StartTimeOffset: 替换媒体选取的开始时间，单位为秒，默认为 0。\n        :type StartTimeOffset: float\n        """
         self.MaterialId = None
         self.StartTimeOffset = None
 
@@ -3731,11 +2959,7 @@ class MediaTrack(AbstractModel):
 <ul>
 <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li><li>MediaTransitionItem</li></ul> </li>
 <li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>EmptyTrackItem</li></ul> </li>
-</ul>
-        :type Type: str
-        :param TrackItems: 轨道上的媒体片段列表。
-        :type TrackItems: list of MediaTrackItem
-        """
+</ul>\n        :type Type: str\n        :param TrackItems: 轨道上的媒体片段列表。\n        :type TrackItems: list of MediaTrackItem\n        """
         self.Type = None
         self.TrackItems = None
 
@@ -3768,18 +2992,8 @@ class MediaTrackItem(AbstractModel):
 <li>Video：视频片段；</li>
 <li>Audio：音频片段；</li>
 <li>Empty：空白片段；</li>
-<li>Transition：转场。</li>
-        :type Type: str
-        :param VideoItem: 视频片段，当 Type = Video 时有效。
-        :type VideoItem: :class:`tencentcloud.cme.v20191029.models.VideoTrackItem`
-        :param AudioItem: 音频片段，当 Type = Audio 时有效。
-        :type AudioItem: :class:`tencentcloud.cme.v20191029.models.AudioTrackItem`
-        :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
-<li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
-        :type EmptyItem: :class:`tencentcloud.cme.v20191029.models.EmptyTrackItem`
-        :param TransitionItem: 转场，当 Type = Transition 时有效。
-        :type TransitionItem: :class:`tencentcloud.cme.v20191029.models.MediaTransitionItem`
-        """
+<li>Transition：转场。</li>\n        :type Type: str\n        :param VideoItem: 视频片段，当 Type = Video 时有效。\n        :type VideoItem: :class:`tencentcloud.cme.v20191029.models.VideoTrackItem`\n        :param AudioItem: 音频片段，当 Type = Audio 时有效。\n        :type AudioItem: :class:`tencentcloud.cme.v20191029.models.AudioTrackItem`\n        :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+<li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>\n        :type EmptyItem: :class:`tencentcloud.cme.v20191029.models.EmptyTrackItem`\n        :param TransitionItem: 转场，当 Type = Transition 时有效。\n        :type TransitionItem: :class:`tencentcloud.cme.v20191029.models.MediaTransitionItem`\n        """
         self.Type = None
         self.VideoItem = None
         self.AudioItem = None
@@ -3817,11 +3031,7 @@ class MediaTransitionItem(AbstractModel):
 
     def __init__(self):
         """
-        :param TransitionId: 转场 Id 。暂只支持一个转场。
-        :type TransitionId: str
-        :param Duration: 转场持续时间，单位为秒，默认为2秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
-        :type Duration: float
-        """
+        :param TransitionId: 转场 Id 。暂只支持一个转场。\n        :type TransitionId: str\n        :param Duration: 转场持续时间，单位为秒，默认为2秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。\n        :type Duration: float\n        """
         self.TransitionId = None
         self.Duration = None
 
@@ -3845,19 +3055,7 @@ class ModifyMaterialRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param MaterialId: 媒体 Id。
-        :type MaterialId: str
-        :param Owner: 媒体或分类路径归属。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 媒体名称，不能超过30个字符。
-        :type Name: str
-        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。
-        :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param MaterialId: 媒体 Id。\n        :type MaterialId: str\n        :param Owner: 媒体或分类路径归属。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Name: 媒体名称，不能超过30个字符。\n        :type Name: str\n        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。\n        :type ClassPath: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.MaterialId = None
         self.Owner = None
@@ -3891,9 +3089,7 @@ class ModifyMaterialResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3908,24 +3104,12 @@ class ModifyProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param Name: 项目名称，不可超过30个字符。
-        :type Name: str
-        :param AspectRatio: 画布宽高比，取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param Name: 项目名称，不可超过30个字符。\n        :type Name: str\n        :param AspectRatio: 画布宽高比，取值有：
 <li>16:9；</li>
-<li>9:16。</li>
-        :type AspectRatio: str
-        :param Owner: 项目归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
+<li>9:16。</li>\n        :type AspectRatio: str\n        :param Owner: 项目归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
 <li>Defualt：默认模式。</li>
-<li>VideoEditTemplate：视频编辑模板制作模式。</li>
-        :type Mode: str
-        """
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>\n        :type Mode: str\n        """
         self.Platform = None
         self.ProjectId = None
         self.Name = None
@@ -3959,9 +3143,7 @@ class ModifyProjectResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3976,21 +3158,9 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param MemberId: 团队成员 ID。
-        :type MemberId: str
-        :param Remark: 成员备注，允许设置备注为空，不为空时长度不能超过15个字符。
-        :type Remark: str
-        :param Role: 成员角色，取值：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param MemberId: 团队成员 ID。\n        :type MemberId: str\n        :param Remark: 成员备注，允许设置备注为空，不为空时长度不能超过15个字符。\n        :type Remark: str\n        :param Role: 成员角色，取值：
 <li>Admin：团队管理员；</li>
-<li>Member：普通成员。</li>
-        :type Role: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+<li>Member：普通成员。</li>\n        :type Role: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TeamId = None
         self.MemberId = None
@@ -4022,9 +3192,7 @@ class ModifyTeamMemberResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4039,15 +3207,7 @@ class ModifyTeamRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param Name: 团队名称，不能超过 30 个字符。
-        :type Name: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param Name: 团队名称，不能超过 30 个字符。\n        :type Name: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.TeamId = None
         self.Name = None
@@ -4075,9 +3235,7 @@ class ModifyTeamResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4092,17 +3250,7 @@ class MoveClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param SourceClassPath: 源分类路径。
-        :type SourceClassPath: str
-        :param DestinationClassPath: 目标分类路径。
-        :type DestinationClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param SourceClassPath: 源分类路径。\n        :type SourceClassPath: str\n        :param DestinationClassPath: 目标分类路径。\n        :type DestinationClassPath: str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.SourceClassPath = None
@@ -4134,9 +3282,7 @@ class MoveClassResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4151,15 +3297,7 @@ class MoveResourceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param SourceResource: 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
-        :type SourceResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
-        :param DestinationResource: 目标信息，包含分类及归属，仅支持移动资源到分类。
-        :type DestinationResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验资源访问以及写权限。
-        :type Operator: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param SourceResource: 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。\n        :type SourceResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`\n        :param DestinationResource: 目标信息，包含分类及归属，仅支持移动资源到分类。\n        :type DestinationResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验资源访问以及写权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.SourceResource = None
         self.DestinationResource = None
@@ -4191,9 +3329,7 @@ class MoveResourceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4208,11 +3344,7 @@ class OtherMaterial(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialUrl: 素材媒体文件的播放 URL 地址。
-        :type MaterialUrl: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        """
+        :param MaterialUrl: 素材媒体文件的播放 URL 地址。\n        :type MaterialUrl: str\n        :param VodFileId: 云点播媒资 FileId。\n        :type VodFileId: str\n        """
         self.MaterialUrl = None
         self.VodFileId = None
 
@@ -4236,11 +3368,7 @@ class ParseEventRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param EventContent: 回调事件内容。
-        :type EventContent: str
-        """
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param EventContent: 回调事件内容。\n        :type EventContent: str\n        """
         self.Platform = None
         self.EventContent = None
 
@@ -4264,11 +3392,7 @@ class ParseEventResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EventContent: 事件内容。
-        :type EventContent: :class:`tencentcloud.cme.v20191029.models.EventContent`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param EventContent: 事件内容。\n        :type EventContent: :class:`tencentcloud.cme.v20191029.models.EventContent`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EventContent = None
         self.RequestId = None
 
@@ -4287,15 +3411,7 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Title: 视频发布标题。
-        :type Title: str
-        :param Description: 视频发布描述信息。
-        :type Description: str
-        :param Tags: 视频标签。
-        :type Tags: list of str
-        :param Category: 视频分类，详见[企鹅号官网](https://open.om.qq.com/resources/resourcesCenter)视频分类。
-        :type Category: int
-        """
+        :param Title: 视频发布标题。\n        :type Title: str\n        :param Description: 视频发布描述信息。\n        :type Description: str\n        :param Tags: 视频标签。\n        :type Tags: list of str\n        :param Category: 视频分类，详见[企鹅号官网](https://open.om.qq.com/resources/resourcesCenter)视频分类。\n        :type Category: int\n        """
         self.Title = None
         self.Description = None
         self.Tags = None
@@ -4323,19 +3439,7 @@ class PlatformInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称。
-        :type Platform: str
-        :param Description: 平台描述。
-        :type Description: str
-        :param VodSubAppId: 云点播子应用 Id。
-        :type VodSubAppId: int
-        :param LicenseId: 平台绑定的 license Id。
-        :type LicenseId: str
-        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
-        :param UpdateTime: 更新时间，格式按照 ISO 8601 标准表示。
-        :type UpdateTime: str
-        """
+        :param Platform: 平台名称。\n        :type Platform: str\n        :param Description: 平台描述。\n        :type Description: str\n        :param VodSubAppId: 云点播子应用 Id。\n        :type VodSubAppId: int\n        :param LicenseId: 平台绑定的 license Id。\n        :type LicenseId: str\n        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。\n        :type CreateTime: str\n        :param UpdateTime: 更新时间，格式按照 ISO 8601 标准表示。\n        :type UpdateTime: str\n        """
         self.Platform = None
         self.Description = None
         self.VodSubAppId = None
@@ -4367,13 +3471,7 @@ class PresetTagInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 标签 Id 。
-        :type Id: str
-        :param Name: 标签名称。
-        :type Name: str
-        :param ParentTagId: 父级预设 Id。
-        :type ParentTagId: str
-        """
+        :param Id: 标签 Id 。\n        :type Id: str\n        :param Name: 标签名称。\n        :type Name: str\n        :param ParentTagId: 父级预设 Id。\n        :type ParentTagId: str\n        """
         self.Id = None
         self.Name = None
         self.ParentTagId = None
@@ -4399,31 +3497,13 @@ class ProjectInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param Name: 项目名称。
-        :type Name: str
-        :param AspectRatio: 画布宽高比。
-        :type AspectRatio: str
-        :param Category: 项目类别，取值有：
+        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param Name: 项目名称。\n        :type Name: str\n        :param AspectRatio: 画布宽高比。\n        :type AspectRatio: str\n        :param Category: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
-<li>RECORD_REPLAY：录制回放。</li>
-        :type Category: str
-        :param Owner: 归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param CoverUrl: 项目封面图片地址。
-        :type CoverUrl: str
-        :param StreamConnectProjectInfo: 云转推项目信息，仅当项目类别取值 STREAM_CONNECT 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StreamConnectProjectInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInfo`
-        :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
-        :param UpdateTime: 项目更新时间，格式按照 ISO 8601 标准表示。
-        :type UpdateTime: str
-        """
+<li>RECORD_REPLAY：录制回放。</li>\n        :type Category: str\n        :param Owner: 归属者。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param CoverUrl: 项目封面图片地址。\n        :type CoverUrl: str\n        :param StreamConnectProjectInfo: 云转推项目信息，仅当项目类别取值 STREAM_CONNECT 时有效。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StreamConnectProjectInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInfo`\n        :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。\n        :type CreateTime: str\n        :param UpdateTime: 项目更新时间，格式按照 ISO 8601 标准表示。\n        :type UpdateTime: str\n        """
         self.ProjectId = None
         self.Name = None
         self.AspectRatio = None
@@ -4465,13 +3545,9 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目 Id。
-        :type ProjectId: str
-        :param Status: 项目状态，取值有：
+        :param ProjectId: 项目 Id。\n        :type ProjectId: str\n        :param Status: 项目状态，取值有：
 <li>Working：云转推推流开始；</li>
-<li>Stopped：云转推推流结束。</li>
-        :type Status: str
-        """
+<li>Stopped：云转推推流结束。</li>\n        :type Status: str\n        """
         self.ProjectId = None
         self.Status = None
 
@@ -4495,15 +3571,7 @@ class RecordReplayProjectInput(AbstractModel):
 
     def __init__(self):
         """
-        :param PullStreamUrl: 录制拉流地址。
-        :type PullStreamUrl: str
-        :param MaterialOwner: 录制文件归属者。
-        :type MaterialOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param MaterialClassPath: 录制文件存储分类路径。
-        :type MaterialClassPath: str
-        :param PushStreamUrl: 回放推流地址。
-        :type PushStreamUrl: str
-        """
+        :param PullStreamUrl: 录制拉流地址。\n        :type PullStreamUrl: str\n        :param MaterialOwner: 录制文件归属者。\n        :type MaterialOwner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param MaterialClassPath: 录制文件存储分类路径。\n        :type MaterialClassPath: str\n        :param PushStreamUrl: 回放推流地址。\n        :type PushStreamUrl: str\n        """
         self.PullStreamUrl = None
         self.MaterialOwner = None
         self.MaterialClassPath = None
@@ -4535,11 +3603,7 @@ class Resource(AbstractModel):
         """
         :param Type: 类型，取值有：
 <li>MATERIAL：素材。</li>
-<li>CLASS：分类。</li>
-        :type Type: str
-        :param Id: 资源 Id，当 Type 为 MATERIAL 时，取值为素材 Id；当 Type 为 CLASS 时，取值为分类路径 ClassPath。
-        :type Id: str
-        """
+<li>CLASS：分类。</li>\n        :type Type: str\n        :param Id: 资源 Id，当 Type 为 MATERIAL 时，取值为素材 Id；当 Type 为 CLASS 时，取值为分类路径 ClassPath。\n        :type Id: str\n        """
         self.Type = None
         self.Id = None
 
@@ -4564,11 +3628,7 @@ class ResourceInfo(AbstractModel):
     def __init__(self):
         """
         :param Resource: 媒资和分类资源。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
-        :param Owner: 资源归属，个人或团队。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`\n        :param Owner: 资源归属，个人或团队。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        """
         self.Resource = None
         self.Owner = None
 
@@ -4596,23 +3656,11 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param Owner: 资源所属实体。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Resources: 被授权资源。
-        :type Resources: list of Resource
-        :param Authorizees: 被授权目标实体。
-        :type Authorizees: list of Entity
-        :param Permissions: 详细授权值。 取值有：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param Owner: 资源所属实体。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param Resources: 被授权资源。\n        :type Resources: list of Resource\n        :param Authorizees: 被授权目标实体。\n        :type Authorizees: list of Entity\n        :param Permissions: 详细授权值。 取值有：
 <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
 <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
-<li>W：可修改、删除媒资。</li>
-        :type Permissions: list of str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
-        :type Operator: str
-        """
+<li>W：可修改、删除媒资。</li>\n        :type Permissions: list of str\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.Owner = None
         self.Resources = None
@@ -4656,9 +3704,7 @@ class RevokeResourceAuthorizationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4673,11 +3719,7 @@ class RtmpPushInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ExpiredSecond: 直播推流地址有效期，单位：秒 。
-        :type ExpiredSecond: int
-        :param PushUrl: 直播推流地址，入参不填默认由云剪生成。
-        :type PushUrl: str
-        """
+        :param ExpiredSecond: 直播推流地址有效期，单位：秒 。\n        :type ExpiredSecond: int\n        :param PushUrl: 直播推流地址，入参不填默认由云剪生成。\n        :type PushUrl: str\n        """
         self.ExpiredSecond = None
         self.PushUrl = None
 
@@ -4701,34 +3743,10 @@ class SearchMaterialRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Platform: 平台名称，指定访问的平台。
-        :type Platform: str
-        :param SearchScopes: 指定搜索空间，数组长度不得超过5。
-        :type SearchScopes: list of SearchScope
-        :param MaterialTypes: 媒体类型，取值：
+        :param Platform: 平台名称，指定访问的平台。\n        :type Platform: str\n        :param SearchScopes: 指定搜索空间，数组长度不得超过5。\n        :type SearchScopes: list of SearchScope\n        :param MaterialTypes: 媒体类型，取值：
 <li>AUDIO：音频；</li>
 <li>VIDEO：视频 ；</li>
-<li>IMAGE：图片。</li>
-        :type MaterialTypes: list of str
-        :param Text: 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
-        :type Text: str
-        :param Resolution: 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
-        :type Resolution: str
-        :param DurationRange: 按媒体时长检索，单位s。
-        :type DurationRange: :class:`tencentcloud.cme.v20191029.models.IntegerRange`
-        :param CreateTimeRange: 按照媒体创建时间检索。
-        :type CreateTimeRange: :class:`tencentcloud.cme.v20191029.models.TimeRange`
-        :param Tags: 按标签检索，填入检索的标签名。
-        :type Tags: list of str
-        :param Sort: 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
-        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
-        :param Offset: 偏移量。默认值：0。
-        :type Offset: int
-        :param Limit: 返回记录条数，默认值：50。
-        :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
-        :type Operator: str
-        """
+<li>IMAGE：图片。</li>\n        :type MaterialTypes: list of str\n        :param Text: 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。\n        :type Text: str\n        :param Resolution: 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。\n        :type Resolution: str\n        :param DurationRange: 按媒体时长检索，单位s。\n        :type DurationRange: :class:`tencentcloud.cme.v20191029.models.IntegerRange`\n        :param CreateTimeRange: 按照媒体创建时间检索。\n        :type CreateTimeRange: :class:`tencentcloud.cme.v20191029.models.TimeRange`\n        :param Tags: 按标签检索，填入检索的标签名。\n        :type Tags: list of str\n        :param Sort: 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。\n        :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`\n        :param Offset: 偏移量。默认值：0。\n        :type Offset: int\n        :param Limit: 返回记录条数，默认值：50。\n        :type Limit: int\n        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。\n        :type Operator: str\n        """
         self.Platform = None
         self.SearchScopes = None
         self.MaterialTypes = None
@@ -4783,13 +3801,7 @@ class SearchMaterialResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 符合记录总条数。
-        :type TotalCount: int
-        :param MaterialInfoSet: 媒体信息，仅返回基础信息。
-        :type MaterialInfoSet: list of MaterialInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 符合记录总条数。\n        :type TotalCount: int\n        :param MaterialInfoSet: 媒体信息，仅返回基础信息。\n        :type MaterialInfoSet: list of MaterialInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.MaterialInfoSet = None
         self.RequestId = None
@@ -4813,11 +3825,7 @@ class SearchScope(AbstractModel):
 
     def __init__(self):
         """
-        :param Owner: 分类路径归属。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param ClassPath: 按分类路径检索。 不填则默认按根分类路径检索。
-        :type ClassPath: str
-        """
+        :param Owner: 分类路径归属。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param ClassPath: 按分类路径检索。 不填则默认按根分类路径检索。\n        :type ClassPath: str\n        """
         self.Owner = None
         self.ClassPath = None
 
@@ -4843,18 +3851,10 @@ class SlotInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 卡槽 Id。
-        :type Id: int
-        :param Type: 素材类型，同素材素材，可取值有：
+        :param Id: 卡槽 Id。\n        :type Id: int\n        :param Type: 素材类型，同素材素材，可取值有：
 <li> AUDIO :音频;</li>
 <li> VIDEO :视频;</li>
-<li> IMAGE :图片。</li>
-        :type Type: str
-        :param DefaultMaterialId: 默认素材 Id。
-        :type DefaultMaterialId: str
-        :param Duration: 素材时长，单位秒。
-        :type Duration: float
-        """
+<li> IMAGE :图片。</li>\n        :type Type: str\n        :param DefaultMaterialId: 默认素材 Id。\n        :type DefaultMaterialId: str\n        :param Duration: 素材时长，单位秒。\n        :type Duration: float\n        """
         self.Id = None
         self.Type = None
         self.DefaultMaterialId = None
@@ -4882,20 +3882,12 @@ class SlotReplacementInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 卡槽 Id。
-        :type Id: int
-        :param ReplacementType: 替换类型，可取值有：
+        :param Id: 卡槽 Id。\n        :type Id: int\n        :param ReplacementType: 替换类型，可取值有：
 <li> AUDIO ：音频；</li>
 <li> VIDEO ：视频；</li>
 <li> IMAGE ：图片；</li>
 <li> TEXT ：文本。</li>
-注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。如果替换的类型为Text,，则必须保证模板轨道数据中相应卡槽的位置标记的是文本。
-        :type ReplacementType: str
-        :param MediaReplacementInfo: 媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。
-        :type MediaReplacementInfo: :class:`tencentcloud.cme.v20191029.models.MediaReplacementInfo`
-        :param TextReplacementInfo: 文本替换信息，仅当要替换的卡槽类型为文本时有效。
-        :type TextReplacementInfo: :class:`tencentcloud.cme.v20191029.models.TextReplacementInfo`
-        """
+注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。如果替换的类型为Text,，则必须保证模板轨道数据中相应卡槽的位置标记的是文本。\n        :type ReplacementType: str\n        :param MediaReplacementInfo: 媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。\n        :type MediaReplacementInfo: :class:`tencentcloud.cme.v20191029.models.MediaReplacementInfo`\n        :param TextReplacementInfo: 文本替换信息，仅当要替换的卡槽类型为文本时有效。\n        :type TextReplacementInfo: :class:`tencentcloud.cme.v20191029.models.TextReplacementInfo`\n        """
         self.Id = None
         self.ReplacementType = None
         self.MediaReplacementInfo = None
@@ -4927,11 +3919,7 @@ class SortBy(AbstractModel):
 
     def __init__(self):
         """
-        :param Field: 排序字段。
-        :type Field: str
-        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
-        :type Order: str
-        """
+        :param Field: 排序字段。\n        :type Field: str\n        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。\n        :type Order: str\n        """
         self.Field = None
         self.Order = None
 
@@ -4955,22 +3943,10 @@ class StorageNewFileCreatedEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param FileId: 云点播文件  Id。
-        :type FileId: str
-        :param MaterialId: 媒体 Id。
-        :type MaterialId: str
-        :param Operator: 操作者 Id。
-        :type Operator: str
-        :param OperationType: 操作类型，可取值为：
+        :param FileId: 云点播文件  Id。\n        :type FileId: str\n        :param MaterialId: 媒体 Id。\n        :type MaterialId: str\n        :param Operator: 操作者 Id。\n        :type Operator: str\n        :param OperationType: 操作类型，可取值为：
 <li>Upload：上传；</li>
 <li>PullUpload：拉取上传；</li>
-<li>Record：直播录制。</li>
-        :type OperationType: str
-        :param Owner: 媒体归属。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param ClassPath: 媒体分类路径。
-        :type ClassPath: str
-        """
+<li>Record：直播录制。</li>\n        :type OperationType: str\n        :param Owner: 媒体归属。\n        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`\n        :param ClassPath: 媒体分类路径。\n        :type ClassPath: str\n        """
         self.FileId = None
         self.MaterialId = None
         self.Operator = None
@@ -5004,17 +3980,9 @@ class StreamConnectOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
-        :type Id: str
-        :param Name: 云转推输出源名称。
-        :type Name: str
-        :param Type: 云转推输出源类型，取值：
+        :param Id: 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。\n        :type Id: str\n        :param Name: 云转推输出源名称。\n        :type Name: str\n        :param Type: 云转推输出源类型，取值：
 <li>URL ：URL类型</li>
-不填默认为URL类型。
-        :type Type: str
-        :param PushUrl: 云转推推流地址。
-        :type PushUrl: str
-        """
+不填默认为URL类型。\n        :type Type: str\n        :param PushUrl: 云转推推流地址。\n        :type PushUrl: str\n        """
         self.Id = None
         self.Name = None
         self.Type = None
@@ -5043,13 +4011,9 @@ class StreamConnectOutputInfo(AbstractModel):
     def __init__(self):
         """
         :param StreamConnectOutput: 输出源。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StreamConnectOutput: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
-        :param PushSwitch: 输出流状态：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StreamConnectOutput: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`\n        :param PushSwitch: 输出流状态：
 <li>On ：开；</li>
-<li>Off ：关 。</li>
-        :type PushSwitch: str
-        """
+<li>Off ：关 。</li>\n        :type PushSwitch: str\n        """
         self.StreamConnectOutput = None
         self.PushSwitch = None
 
@@ -5077,27 +4041,11 @@ class StreamConnectProjectInfo(AbstractModel):
         """
         :param Status: 转推项目状态，取值有：
 <li>Working ：转推中；</li>
-<li>Idle ：空闲中。</li>
-        :type Status: str
-        :param CurrentInputEndpoint: 当前转推输入源，取值有：
+<li>Idle ：空闲中。</li>\n        :type Status: str\n        :param CurrentInputEndpoint: 当前转推输入源，取值有：
 <li>Main ：主输入源；</li>
-<li>Backup ：备输入源。</li>
-        :type CurrentInputEndpoint: str
-        :param CurrentStartTime: 当前转推开始时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
-        :type CurrentStartTime: str
-        :param CurrentStopTime: 当前转推计划结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
-        :type CurrentStopTime: str
-        :param LastStopTime: 上一次转推结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Idle 时有效。
-        :type LastStopTime: str
-        :param MainInput: 云转推主输入源。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
-        :param BackupInput: 云转推备输入源。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BackupInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
-        :param OutputSet: 云转推输出源。
-        :type OutputSet: list of StreamConnectOutputInfo
-        """
+<li>Backup ：备输入源。</li>\n        :type CurrentInputEndpoint: str\n        :param CurrentStartTime: 当前转推开始时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。\n        :type CurrentStartTime: str\n        :param CurrentStopTime: 当前转推计划结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。\n        :type CurrentStopTime: str\n        :param LastStopTime: 上一次转推结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Idle 时有效。\n        :type LastStopTime: str\n        :param MainInput: 云转推主输入源。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`\n        :param BackupInput: 云转推备输入源。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BackupInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`\n        :param OutputSet: 云转推输出源。\n        :type OutputSet: list of StreamConnectOutputInfo\n        """
         self.Status = None
         self.CurrentInputEndpoint = None
         self.CurrentStartTime = None
@@ -5142,13 +4090,7 @@ class StreamConnectProjectInput(AbstractModel):
 
     def __init__(self):
         """
-        :param MainInput: 云转推主输入源信息。
-        :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
-        :param BackupInput: 云转推备输入源信息。
-        :type BackupInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
-        :param Outputs: 云转推输出源信息。
-        :type Outputs: list of StreamConnectOutput
-        """
+        :param MainInput: 云转推主输入源信息。\n        :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`\n        :param BackupInput: 云转推备输入源信息。\n        :type BackupInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`\n        :param Outputs: 云转推输出源信息。\n        :type Outputs: list of StreamConnectOutput\n        """
         self.MainInput = None
         self.BackupInput = None
         self.Outputs = None
@@ -5186,18 +4128,10 @@ class StreamInputInfo(AbstractModel):
         :param InputType: 流输入类型，取值：
 <li>VodPull ： 点播拉流；</li>
 <li>LivePull ：直播拉流；</li>
-<li>RtmpPush ： 直播推流。</li>
-        :type InputType: str
-        :param VodPullInputInfo: 点播拉流信息，当 InputType = VodPull 时必填。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VodPullInputInfo: :class:`tencentcloud.cme.v20191029.models.VodPullInputInfo`
-        :param LivePullInputInfo: 直播拉流信息，当 InputType = LivePull  时必填。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LivePullInputInfo: :class:`tencentcloud.cme.v20191029.models.LivePullInputInfo`
-        :param RtmpPushInputInfo: 直播推流信息，当 InputType = RtmpPush 时必填。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RtmpPushInputInfo: :class:`tencentcloud.cme.v20191029.models.RtmpPushInputInfo`
-        """
+<li>RtmpPush ： 直播推流。</li>\n        :type InputType: str\n        :param VodPullInputInfo: 点播拉流信息，当 InputType = VodPull 时必填。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VodPullInputInfo: :class:`tencentcloud.cme.v20191029.models.VodPullInputInfo`\n        :param LivePullInputInfo: 直播拉流信息，当 InputType = LivePull  时必填。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LivePullInputInfo: :class:`tencentcloud.cme.v20191029.models.LivePullInputInfo`\n        :param RtmpPushInputInfo: 直播推流信息，当 InputType = RtmpPush 时必填。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RtmpPushInputInfo: :class:`tencentcloud.cme.v20191029.models.RtmpPushInputInfo`\n        """
         self.InputType = None
         self.VodPullInputInfo = None
         self.LivePullInputInfo = None
@@ -5234,17 +4168,7 @@ class SwitcherPgmOutputConfig(AbstractModel):
         :param TemplateId: 导播台输出模板 ID，可取值：
 <li>10001：分辨率为1080 P；</li>
 <li>10002：分辨率为720 P；</li>
-<li>10003：分辨率为480 P。</li>
-        :type TemplateId: int
-        :param Width: 导播台输出宽，单位：像素。
-        :type Width: int
-        :param Height: 导播台输出高，单位：像素。
-        :type Height: int
-        :param Fps: 导播台输出帧率，单位：帧/秒
-        :type Fps: int
-        :param BitRate: 导播台输出码率， 单位：bit/s。
-        :type BitRate: int
-        """
+<li>10003：分辨率为480 P。</li>\n        :type TemplateId: int\n        :param Width: 导播台输出宽，单位：像素。\n        :type Width: int\n        :param Height: 导播台输出高，单位：像素。\n        :type Height: int\n        :param Fps: 导播台输出帧率，单位：帧/秒\n        :type Fps: int\n        :param BitRate: 导播台输出码率， 单位：bit/s。\n        :type BitRate: int\n        """
         self.TemplateId = None
         self.Width = None
         self.Height = None
@@ -5274,11 +4198,7 @@ class SwitcherProjectInput(AbstractModel):
 
     def __init__(self):
         """
-        :param StopTime: 导播台停止时间，格式按照 ISO 8601 标准表示。若不填，该值默认为当前时间加七天。
-        :type StopTime: str
-        :param PgmOutputConfig: 导播台主监输出配置信息。若不填，默认输出 720P。
-        :type PgmOutputConfig: :class:`tencentcloud.cme.v20191029.models.SwitcherPgmOutputConfig`
-        """
+        :param StopTime: 导播台停止时间，格式按照 ISO 8601 标准表示。若不填，该值默认为当前时间加七天。\n        :type StopTime: str\n        :param PgmOutputConfig: 导播台主监输出配置信息。若不填，默认输出 720P。\n        :type PgmOutputConfig: :class:`tencentcloud.cme.v20191029.models.SwitcherPgmOutputConfig`\n        """
         self.StopTime = None
         self.PgmOutputConfig = None
 
@@ -5304,27 +4224,13 @@ class TaskBaseInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务 Id。
-        :type TaskId: str
-        :param TaskType: 任务类型，取值有：
-<li>VIDEO_EDIT_PROJECT_EXPORT：项目导出。</li>
-        :type TaskType: str
-        :param Status: 任务状态，取值有：
+        :param TaskId: 任务 Id。\n        :type TaskId: str\n        :param TaskType: 任务类型，取值有：
+<li>VIDEO_EDIT_PROJECT_EXPORT：项目导出。</li>\n        :type TaskType: str\n        :param Status: 任务状态，取值有：
 <li>PROCESSING：处理中：</li>
 <li>SUCCESS：成功；</li>
-<li>FAIL：失败。</li>
-        :type Status: str
-        :param Progress: 任务进度，取值为：0~100。
-        :type Progress: int
-        :param ErrCode: 错误码。
+<li>FAIL：失败。</li>\n        :type Status: str\n        :param Progress: 任务进度，取值为：0~100。\n        :type Progress: int\n        :param ErrCode: 错误码。
 <li>0：成功；</li>
-<li>其他值：失败。</li>
-        :type ErrCode: int
-        :param ErrMsg: 错误信息。
-        :type ErrMsg: str
-        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
-        """
+<li>其他值：失败。</li>\n        :type ErrCode: int\n        :param ErrMsg: 错误信息。\n        :type ErrMsg: str\n        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。\n        :type CreateTime: str\n        """
         self.TaskId = None
         self.TaskType = None
         self.Status = None
@@ -5358,17 +4264,7 @@ class TeamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TeamId: 团队 ID。
-        :type TeamId: str
-        :param Name: 团队名称。
-        :type Name: str
-        :param MemberCount: 团队成员个数
-        :type MemberCount: int
-        :param CreateTime: 团队创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
-        :param UpdateTime: 团队最后更新时间，格式按照 ISO 8601 标准表示。
-        :type UpdateTime: str
-        """
+        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param Name: 团队名称。\n        :type Name: str\n        :param MemberCount: 团队成员个数\n        :type MemberCount: int\n        :param CreateTime: 团队创建时间，格式按照 ISO 8601 标准表示。\n        :type CreateTime: str\n        :param UpdateTime: 团队最后更新时间，格式按照 ISO 8601 标准表示。\n        :type UpdateTime: str\n        """
         self.TeamId = None
         self.Name = None
         self.MemberCount = None
@@ -5398,16 +4294,10 @@ class TeamMemberInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MemberId: 团队成员 ID。
-        :type MemberId: str
-        :param Remark: 团队成员备注。
-        :type Remark: str
-        :param Role: 团队成员角色，取值：
+        :param MemberId: 团队成员 ID。\n        :type MemberId: str\n        :param Remark: 团队成员备注。\n        :type Remark: str\n        :param Role: 团队成员角色，取值：
 <li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
 <li>Admin：团队管理员；</li>
-<li>Member：普通成员。</li>
-        :type Role: str
-        """
+<li>Member：普通成员。</li>\n        :type Role: str\n        """
         self.MemberId = None
         self.Remark = None
         self.Role = None
@@ -5433,9 +4323,7 @@ class TextReplacementInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 替换的文本信息。
-        :type Text: str
-        """
+        :param Text: 替换的文本信息。\n        :type Text: str\n        """
         self.Text = None
 
 
@@ -5457,17 +4345,7 @@ class ThirdPartyPublishInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param ChannelMaterialId: 发布通道  ID。
-        :type ChannelMaterialId: str
-        :param PenguinMediaPlatformPublishInfo: 企鹅号发布信息，如果使用的发布通道为企鹅号时必填。
-        :type PenguinMediaPlatformPublishInfo: :class:`tencentcloud.cme.v20191029.models.PenguinMediaPlatformPublishInfo`
-        :param WeiboPublishInfo: 新浪微博发布信息，如果使用的发布通道为新浪微博时必填。
-        :type WeiboPublishInfo: :class:`tencentcloud.cme.v20191029.models.WeiboPublishInfo`
-        :param KuaishouPublishInfo: 快手发布信息，如果使用的发布通道为快手时必填。
-        :type KuaishouPublishInfo: :class:`tencentcloud.cme.v20191029.models.KuaishouPublishInfo`
-        :param CosPublishInfo: 腾讯云对象存储发布信息， 如果使用的发布通道为腾讯云对象存储时必填。
-        :type CosPublishInfo: :class:`tencentcloud.cme.v20191029.models.CosPublishInputInfo`
-        """
+        :param ChannelMaterialId: 发布通道  ID。\n        :type ChannelMaterialId: str\n        :param PenguinMediaPlatformPublishInfo: 企鹅号发布信息，如果使用的发布通道为企鹅号时必填。\n        :type PenguinMediaPlatformPublishInfo: :class:`tencentcloud.cme.v20191029.models.PenguinMediaPlatformPublishInfo`\n        :param WeiboPublishInfo: 新浪微博发布信息，如果使用的发布通道为新浪微博时必填。\n        :type WeiboPublishInfo: :class:`tencentcloud.cme.v20191029.models.WeiboPublishInfo`\n        :param KuaishouPublishInfo: 快手发布信息，如果使用的发布通道为快手时必填。\n        :type KuaishouPublishInfo: :class:`tencentcloud.cme.v20191029.models.KuaishouPublishInfo`\n        :param CosPublishInfo: 腾讯云对象存储发布信息， 如果使用的发布通道为腾讯云对象存储时必填。\n        :type CosPublishInfo: :class:`tencentcloud.cme.v20191029.models.CosPublishInputInfo`\n        """
         self.ChannelMaterialId = None
         self.PenguinMediaPlatformPublishInfo = None
         self.WeiboPublishInfo = None
@@ -5505,11 +4383,7 @@ class TimeRange(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间，使用 ISO 日期格式。
-        :type StartTime: str
-        :param EndTime: 结束时间，使用 ISO 日期格式。
-        :type EndTime: str
-        """
+        :param StartTime: 开始时间，使用 ISO 日期格式。\n        :type StartTime: str\n        :param EndTime: 结束时间，使用 ISO 日期格式。\n        :type EndTime: str\n        """
         self.StartTime = None
         self.EndTime = None
 
@@ -5533,13 +4407,7 @@ class VODExportInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 导出的媒资名称。
-        :type Name: str
-        :param ClassId: 导出的媒资分类 Id。
-        :type ClassId: int
-        :param ThirdPartyPublishInfos: 第三方平台发布信息列表。暂未正式对外，请勿使用。
-        :type ThirdPartyPublishInfos: list of ThirdPartyPublishInfo
-        """
+        :param Name: 导出的媒资名称。\n        :type Name: str\n        :param ClassId: 导出的媒资分类 Id。\n        :type ClassId: int\n        :param ThirdPartyPublishInfos: 第三方平台发布信息列表。暂未正式对外，请勿使用。\n        :type ThirdPartyPublishInfos: list of ThirdPartyPublishInfo\n        """
         self.Name = None
         self.ClassId = None
         self.ThirdPartyPublishInfos = None
@@ -5574,14 +4442,8 @@ class VideoEditProjectInput(AbstractModel):
 <li>16:9；</li>
 <li>9:16；</li>
 <li>2:1。</li>
-默认值 16:9 。
-        :type AspectRatio: str
-        :param VideoEditTemplateId: 视频编辑模板媒体 ID ，通过模板媒体导入项目轨道数据时填写。
-        :type VideoEditTemplateId: str
-        :param InitTracks: 输入的媒体轨道列表，包括视频、音频，等媒体组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
-注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
-        :type InitTracks: list of MediaTrack
-        """
+默认值 16:9 。\n        :type AspectRatio: str\n        :param VideoEditTemplateId: 视频编辑模板媒体 ID ，通过模板媒体导入项目轨道数据时填写。\n        :type VideoEditTemplateId: str\n        :param InitTracks: 输入的媒体轨道列表，包括视频、音频，等媒体组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。\n        :type InitTracks: list of MediaTrack\n        """
         self.AspectRatio = None
         self.VideoEditTemplateId = None
         self.InitTracks = None
@@ -5612,16 +4474,8 @@ class VideoEditProjectOutput(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。
-        :type MaterialId: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        :param URL: 导出的媒资 URL。
-        :type URL: str
-        :param MetaData: 元信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
-        """
+        :param MaterialId: 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。\n        :type MaterialId: str\n        :param VodFileId: 云点播媒资 FileId。\n        :type VodFileId: str\n        :param URL: 导出的媒资 URL。\n        :type URL: str\n        :param MetaData: 元信息。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`\n        """
         self.MaterialId = None
         self.VodFileId = None
         self.URL = None
@@ -5651,13 +4505,7 @@ class VideoEditTemplateMaterial(AbstractModel):
 
     def __init__(self):
         """
-        :param AspectRatio: 视频编辑模板宽高比。
-        :type AspectRatio: str
-        :param SlotSet: 卡槽信息。
-        :type SlotSet: list of SlotInfo
-        :param PreviewVideoUrl: 模板预览视频 URL 地址 。
-        :type PreviewVideoUrl: str
-        """
+        :param AspectRatio: 视频编辑模板宽高比。\n        :type AspectRatio: str\n        :param SlotSet: 卡槽信息。\n        :type SlotSet: list of SlotInfo\n        :param PreviewVideoUrl: 模板预览视频 URL 地址 。\n        :type PreviewVideoUrl: str\n        """
         self.AspectRatio = None
         self.SlotSet = None
         self.PreviewVideoUrl = None
@@ -5688,24 +4536,8 @@ class VideoMaterial(AbstractModel):
 
     def __init__(self):
         """
-        :param MetaData: 素材元信息。
-        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
-        :param ImageSpriteInfo: 雪碧图信息。
-        :type ImageSpriteInfo: :class:`tencentcloud.cme.v20191029.models.MediaImageSpriteInfo`
-        :param MaterialUrl: 素材媒体文件的播放 URL 地址。
-        :type MaterialUrl: str
-        :param CoverUrl: 素材媒体文件的封面图片地址。
-        :type CoverUrl: str
-        :param Resolution: 媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。
-        :type Resolution: str
-        :param MaterialStatus: 素材状态。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`
-        :param OriginalUrl: 素材媒体文件的原始 URL 地址。
-        :type OriginalUrl: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        """
+        :param MetaData: 素材元信息。\n        :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`\n        :param ImageSpriteInfo: 雪碧图信息。\n        :type ImageSpriteInfo: :class:`tencentcloud.cme.v20191029.models.MediaImageSpriteInfo`\n        :param MaterialUrl: 素材媒体文件的播放 URL 地址。\n        :type MaterialUrl: str\n        :param CoverUrl: 素材媒体文件的封面图片地址。\n        :type CoverUrl: str\n        :param Resolution: 媒体文件分辨率。取值为：LD/SD/HD/FHD/2K/4K。\n        :type Resolution: str\n        :param MaterialStatus: 素材状态。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaterialStatus: :class:`tencentcloud.cme.v20191029.models.MaterialStatus`\n        :param OriginalUrl: 素材媒体文件的原始 URL 地址。\n        :type OriginalUrl: str\n        :param VodFileId: 云点播媒资 FileId。\n        :type VodFileId: str\n        """
         self.MetaData = None
         self.ImageSpriteInfo = None
         self.MaterialUrl = None
@@ -5751,17 +4583,13 @@ class VideoSegmentationProjectInput(AbstractModel):
 <li>16:9；</li>
 <li>9:16；</li>
 <li>2:1。</li>
-默认值 16:9 。
-        :type AspectRatio: str
-        :param ProcessModel: 视频拆条处理模型，不填则默认为手工分割视频。取值 ：
+默认值 16:9 。\n        :type AspectRatio: str\n        :param ProcessModel: 视频拆条处理模型，不填则默认为手工分割视频。取值 ：
 <li>AI.GameHighlights.PUBG：和平精英集锦 ;</li>
 <li>AI.GameHighlights.Honor OfKings：王者荣耀集锦 ;</li>
 <li>AI.SportHighlights.Football：足球集锦 </li>
 <li>AI.SportHighlights.Basketball：篮球集锦 ；</li>
 <li>AI.PersonSegmentation：人物集锦  ;</li>
-<li>AI.NewsSegmentation：新闻拆条。</li>
-        :type ProcessModel: str
-        """
+<li>AI.NewsSegmentation：新闻拆条。</li>\n        :type ProcessModel: str\n        """
         self.AspectRatio = None
         self.ProcessModel = None
 
@@ -5785,17 +4613,7 @@ class VideoStreamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Bitrate: 码率，单位：bps。
-        :type Bitrate: int
-        :param Height: 高度，单位：px。
-        :type Height: int
-        :param Width: 宽度，单位：px。
-        :type Width: int
-        :param Codec: 编码格式。
-        :type Codec: str
-        :param Fps: 帧率，单位：hz。
-        :type Fps: int
-        """
+        :param Bitrate: 码率，单位：bps。\n        :type Bitrate: int\n        :param Height: 高度，单位：px。\n        :type Height: int\n        :param Width: 宽度，单位：px。\n        :type Width: int\n        :param Codec: 编码格式。\n        :type Codec: str\n        :param Fps: 帧率，单位：hz。\n        :type Fps: int\n        """
         self.Bitrate = None
         self.Height = None
         self.Width = None
@@ -5830,43 +4648,25 @@ class VideoTrackItem(AbstractModel):
 <li>VOD ：媒体来源于云点播文件 。</li>
 <li>CME ：视频来源制作云媒体文件。</li>
 <li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
-</ul>
-        :type SourceType: str
-        :param SourceMedia: 注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉<code> 'https://' </code>；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉<code> 'http://'</code>。
-        :type SourceMedia: str
-        :param SourceMediaStartTime: 视频片段取自媒体文件的起始时间，单位为秒。默认为0。
-        :type SourceMediaStartTime: float
-        :param Duration: 视频片段时长，单位为秒。默认取视频媒体文件本身长度，表示截取全部媒体文件。如果源文件是图片，Duration需要大于0。
-        :type Duration: float
-        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+</ul>\n        :type SourceType: str\n        :param SourceMedia: 注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉<code> 'https://' </code>；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉<code> 'http://'</code>。\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 视频片段取自媒体文件的起始时间，单位为秒。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 视频片段时长，单位为秒。默认取视频媒体文件本身长度，表示截取全部媒体文件。如果源文件是图片，Duration需要大于0。\n        :type Duration: float\n        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
 <li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
-默认值：0px。
-        :type XPos: str
-        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+默认值：0px。\n        :type XPos: str\n        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
 <li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
-默认值：0px。
-        :type YPos: str
-        :param CoordinateOrigin: 视频原点位置，取值有：
+默认值：0px。\n        :type YPos: str\n        :param CoordinateOrigin: 视频原点位置，取值有：
 <li>Center：坐标原点为中心位置，如画布中心。</li>
-默认值 ：Center。
-        :type CoordinateOrigin: str
-        :param Height: 视频片段的高度。支持 %、px 两种格式：
+默认值 ：Center。\n        :type CoordinateOrigin: str\n        :param Height: 视频片段的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；</li>
 <li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素；</li>
 <li>当 Width、Height 均为空，则 Width 和 Height 取视频媒体文件本身的 Width、Height；</li>
 <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
-<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
-        :type Height: str
-        :param Width: 视频片段的宽度。支持 %、px 两种格式：
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>\n        :type Height: str\n        :param Width: 视频片段的宽度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%；</li>
 <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素；</li>
 <li>当 Width、Height 均为空，则 Width 和 Height 取视频媒体文件本身的 Width、Height；</li>
 <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
-<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
-        :type Width: str
-        """
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>\n        :type Width: str\n        """
         self.SourceType = None
         self.SourceMedia = None
         self.SourceMediaStartTime = None
@@ -5904,15 +4704,11 @@ class VodPullInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param InputUrls: 点播输入拉流 URL 。
-        :type InputUrls: list of str
-        :param LoopTimes: 播放次数，取值有：
+        :param InputUrls: 点播输入拉流 URL 。\n        :type InputUrls: list of str\n        :param LoopTimes: 播放次数，取值有：
 <li>-1 : 循环播放，直到转推结束；</li>
 <li>0 : 不循环；</li>
 <li>大于0 : 具体循环次数，次数和时间以先结束的为准。</li>
-默认不循环。
-        :type LoopTimes: int
-        """
+默认不循环。\n        :type LoopTimes: int\n        """
         self.InputUrls = None
         self.LoopTimes = None
 
@@ -5936,17 +4732,11 @@ class WeiboPublishInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Title: 视频发布标题。
-        :type Title: str
-        :param Description: 视频发布描述信息。
-        :type Description: str
-        :param Visible: 微博可见性，可取值为：
+        :param Title: 视频发布标题。\n        :type Title: str\n        :param Description: 视频发布描述信息。\n        :type Description: str\n        :param Visible: 微博可见性，可取值为：
 <li>Public：公开，所有人可见；</li>
 <li>Private：私有，仅自己可见。</li>
 
-默认为 Public，所有人可见。
-        :type Visible: str
-        """
+默认为 Public，所有人可见。\n        :type Visible: str\n        """
         self.Title = None
         self.Description = None
         self.Visible = None

@@ -26,15 +26,9 @@ class AlgorithmSpecification(AbstractModel):
     def __init__(self):
         """
         :param TrainingImageName: 镜像名字
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingImageName: str
-        :param TrainingInputMode: 输入模式File|Pipe
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingInputMode: str
-        :param AlgorithmName: 算法名字
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlgorithmName: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingImageName: str\n        :param TrainingInputMode: 输入模式File|Pipe
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingInputMode: str\n        :param AlgorithmName: 算法名字
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AlgorithmName: str\n        """
         self.TrainingImageName = None
         self.TrainingInputMode = None
         self.AlgorithmName = None
@@ -61,16 +55,10 @@ class BillingLabel(AbstractModel):
     def __init__(self):
         """
         :param Label: 计费项标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Label: str
-        :param VolumeSize: 存储大小
-        :type VolumeSize: int
-        :param Status: 计费状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        :param VolumeSize: 存储大小\n        :type VolumeSize: int\n        :param Status: 计费状态
 None: 不计费
 StorageOnly: 仅存储计费
-Computing: 计算和存储都计费
-        :type Status: str
-        """
+Computing: 计算和存储都计费\n        :type Status: str\n        """
         self.Label = None
         self.VolumeSize = None
         self.Status = None
@@ -96,13 +84,7 @@ class ClsConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 接入类型，可选项为free、customer
-        :type Type: str
-        :param LogSetId: 自定义CLS的日志集ID，只有当Type为customer时生效
-        :type LogSetId: str
-        :param TopicId: 自定义CLS的日志主题ID，只有当Type为customer时生效
-        :type TopicId: str
-        """
+        :param Type: 接入类型，可选项为free、customer\n        :type Type: str\n        :param LogSetId: 自定义CLS的日志集ID，只有当Type为customer时生效\n        :type LogSetId: str\n        :param TopicId: 自定义CLS的日志主题ID，只有当Type为customer时生效\n        :type TopicId: str\n        """
         self.Type = None
         self.LogSetId = None
         self.TopicId = None
@@ -128,17 +110,7 @@ class CodeRepoSummary(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: 创建时间
-        :type CreationTime: str
-        :param LastModifiedTime: 更新时间
-        :type LastModifiedTime: str
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        :param GitConfig: Git配置
-        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
-        :param NoSecret: 是否有Git凭证
-        :type NoSecret: bool
-        """
+        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param LastModifiedTime: 更新时间\n        :type LastModifiedTime: str\n        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        :param GitConfig: Git配置\n        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`\n        :param NoSecret: 是否有Git凭证\n        :type NoSecret: bool\n        """
         self.CreationTime = None
         self.LastModifiedTime = None
         self.CodeRepositoryName = None
@@ -171,18 +143,10 @@ class CosDataSource(AbstractModel):
     def __init__(self):
         """
         :param Bucket: cos桶
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Bucket: str
-        :param KeyPrefix: cos文件key
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyPrefix: str
-        :param DataDistributionType: 分布式数据下载方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataDistributionType: str
-        :param DataType: 数据类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataType: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Bucket: str\n        :param KeyPrefix: cos文件key
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyPrefix: str\n        :param DataDistributionType: 分布式数据下载方式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataDistributionType: str\n        :param DataType: 数据类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataType: str\n        """
         self.Bucket = None
         self.KeyPrefix = None
         self.DataDistributionType = None
@@ -210,13 +174,7 @@ class CreateCodeRepositoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        :param GitConfig: Git相关配置
-        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
-        :param GitSecret: Git凭证
-        :type GitSecret: :class:`tencentcloud.tione.v20191022.models.GitSecret`
-        """
+        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        :param GitConfig: Git相关配置\n        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`\n        :param GitSecret: Git凭证\n        :type GitSecret: :class:`tencentcloud.tione.v20191022.models.GitSecret`\n        """
         self.CodeRepositoryName = None
         self.GitConfig = None
         self.GitSecret = None
@@ -246,11 +204,7 @@ class CreateCodeRepositoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CodeRepositoryName = None
         self.RequestId = None
 
@@ -268,48 +222,22 @@ class CreateNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称，不能超过63个字符
-规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
-        :type NotebookInstanceName: str
-        :param InstanceType: Notebook算力类型
-参考https://cloud.tencent.com/document/product/851/41239
-        :type InstanceType: str
-        :param VolumeSizeInGB: 数据卷大小(GB)
-用户持久化Notebook实例的数据
-        :type VolumeSizeInGB: int
-        :param DirectInternetAccess: 外网访问权限，可取值Enabled/Disabled
-开启后，Notebook实例可以具有访问外网80，443端口的权限
-        :type DirectInternetAccess: str
-        :param RootAccess: Root用户权限，可取值Enabled/Disabled
-开启后，Notebook实例可以切换至root用户执行命令
-        :type RootAccess: str
-        :param SubnetId: 子网ID
-如果需要Notebook实例访问VPC内的资源，则需要选择对应的子网
-        :type SubnetId: str
-        :param LifecycleScriptsName: 生命周期脚本名称
-必须是已存在的生命周期脚本，具体参考https://cloud.tencent.com/document/product/851/43140
-        :type LifecycleScriptsName: str
-        :param DefaultCodeRepository: 默认存储库名称
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”\n        :type NotebookInstanceName: str\n        :param InstanceType: Notebook算力类型
+参考https://cloud.tencent.com/document/product/851/41239\n        :type InstanceType: str\n        :param VolumeSizeInGB: 数据卷大小(GB)
+用户持久化Notebook实例的数据\n        :type VolumeSizeInGB: int\n        :param DirectInternetAccess: 外网访问权限，可取值Enabled/Disabled
+开启后，Notebook实例可以具有访问外网80，443端口的权限\n        :type DirectInternetAccess: str\n        :param RootAccess: Root用户权限，可取值Enabled/Disabled
+开启后，Notebook实例可以切换至root用户执行命令\n        :type RootAccess: str\n        :param SubnetId: 子网ID
+如果需要Notebook实例访问VPC内的资源，则需要选择对应的子网\n        :type SubnetId: str\n        :param LifecycleScriptsName: 生命周期脚本名称
+必须是已存在的生命周期脚本，具体参考https://cloud.tencent.com/document/product/851/43140\n        :type LifecycleScriptsName: str\n        :param DefaultCodeRepository: 默认存储库名称
 可以是已创建的存储库名称或者已https://开头的公共git库
-参考https://cloud.tencent.com/document/product/851/43139
-        :type DefaultCodeRepository: str
-        :param AdditionalCodeRepositories: 其他存储库列表
+参考https://cloud.tencent.com/document/product/851/43139\n        :type DefaultCodeRepository: str\n        :param AdditionalCodeRepositories: 其他存储库列表
 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
-参考https://cloud.tencent.com/document/product/851/43139
-        :type AdditionalCodeRepositories: list of str
-        :param ClsAccess: 已弃用，请使用ClsConfig配置。
+参考https://cloud.tencent.com/document/product/851/43139\n        :type AdditionalCodeRepositories: list of str\n        :param ClsAccess: 已弃用，请使用ClsConfig配置。
 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
-开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择
-        :type ClsAccess: str
-        :param StoppingCondition: 自动停止配置
-选择定时停止Notebook实例
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param AutoStopping: 自动停止，可取值Enabled/Disabled
+开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择\n        :type ClsAccess: str\n        :param StoppingCondition: 自动停止配置
+选择定时停止Notebook实例\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        :param AutoStopping: 自动停止，可取值Enabled/Disabled
 取值为Disabled的时候StoppingCondition将被忽略
-取值为Enabled的时候读取StoppingCondition作为自动停止的配置
-        :type AutoStopping: str
-        :param ClsConfig: 接入日志的配置，默认接入免费日志
-        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
-        """
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置\n        :type AutoStopping: str\n        :param ClsConfig: 接入日志的配置，默认接入免费日志\n        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`\n        """
         self.NotebookInstanceName = None
         self.InstanceType = None
         self.VolumeSizeInGB = None
@@ -359,11 +287,7 @@ class CreateNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceName: Notebook实例名字
-        :type NotebookInstanceName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NotebookInstanceName: Notebook实例名字\n        :type NotebookInstanceName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotebookInstanceName = None
         self.RequestId = None
 
@@ -380,15 +304,9 @@ class CreateNotebookLifecycleScriptRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: Notebook生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        :param CreateScript: 创建脚本，base64编码
-base64后的脚本长度不能超过16384个字符
-        :type CreateScript: str
-        :param StartScript: 启动脚本，base64编码
-base64后的脚本长度不能超过16384个字符
-        :type StartScript: str
-        """
+        :param NotebookLifecycleScriptsName: Notebook生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        :param CreateScript: 创建脚本，base64编码
+base64后的脚本长度不能超过16384个字符\n        :type CreateScript: str\n        :param StartScript: 启动脚本，base64编码
+base64后的脚本长度不能超过16384个字符\n        :type StartScript: str\n        """
         self.NotebookLifecycleScriptsName = None
         self.CreateScript = None
         self.StartScript = None
@@ -414,11 +332,7 @@ class CreateNotebookLifecycleScriptResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: 生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotebookLifecycleScriptsName = None
         self.RequestId = None
 
@@ -436,11 +350,7 @@ class CreatePresignedNotebookInstanceUrlRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
-        :type NotebookInstanceName: str
-        :param SessionExpirationDurationInSeconds: session有效时间，秒，取值范围[1800, 43200]
-        :type SessionExpirationDurationInSeconds: int
-        """
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”\n        :type NotebookInstanceName: str\n        :param SessionExpirationDurationInSeconds: session有效时间，秒，取值范围[1800, 43200]\n        :type SessionExpirationDurationInSeconds: int\n        """
         self.NotebookInstanceName = None
         self.SessionExpirationDurationInSeconds = None
 
@@ -464,11 +374,7 @@ class CreatePresignedNotebookInstanceUrlResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AuthorizedUrl: 授权url
-        :type AuthorizedUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AuthorizedUrl: 授权url\n        :type AuthorizedUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AuthorizedUrl = None
         self.RequestId = None
 
@@ -485,30 +391,8 @@ class CreateTrainingJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AlgorithmSpecification: 算法镜像配置
-        :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
-        :param OutputDataConfig: 输出数据配置
-        :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
-        :param ResourceConfig: 资源实例配置
-        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
-        :param TrainingJobName: 训练任务名称
-        :type TrainingJobName: str
-        :param InputDataConfig: 输入数据配置
-        :type InputDataConfig: list of InputDataConfig
-        :param StoppingCondition: 中止条件
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param VpcConfig: 私有网络配置
-        :type VpcConfig: :class:`tencentcloud.tione.v20191022.models.VpcConfig`
-        :param HyperParameters: 算法超级参数
-        :type HyperParameters: str
-        :param EnvConfig: 环境变量配置
-        :type EnvConfig: list of EnvConfig
-        :param RoleName: 角色名称
-        :type RoleName: str
-        :param RetryWhenResourceInsufficient: 在资源不足（ResourceInsufficient）时后台不定时尝试重新创建训练任务。可取值Enabled/Disabled
-默认值为Disabled即不重新尝试。设为Enabled时重新尝试有一定的时间期限，定义在 StoppingCondition 中 MaxWaitTimeInSecond中 ，默认值为1天，超过该期限创建失败。
-        :type RetryWhenResourceInsufficient: str
-        """
+        :param AlgorithmSpecification: 算法镜像配置\n        :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`\n        :param OutputDataConfig: 输出数据配置\n        :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`\n        :param ResourceConfig: 资源实例配置\n        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`\n        :param TrainingJobName: 训练任务名称\n        :type TrainingJobName: str\n        :param InputDataConfig: 输入数据配置\n        :type InputDataConfig: list of InputDataConfig\n        :param StoppingCondition: 中止条件\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        :param VpcConfig: 私有网络配置\n        :type VpcConfig: :class:`tencentcloud.tione.v20191022.models.VpcConfig`\n        :param HyperParameters: 算法超级参数\n        :type HyperParameters: str\n        :param EnvConfig: 环境变量配置\n        :type EnvConfig: list of EnvConfig\n        :param RoleName: 角色名称\n        :type RoleName: str\n        :param RetryWhenResourceInsufficient: 在资源不足（ResourceInsufficient）时后台不定时尝试重新创建训练任务。可取值Enabled/Disabled
+默认值为Disabled即不重新尝试。设为Enabled时重新尝试有一定的时间期限，定义在 StoppingCondition 中 MaxWaitTimeInSecond中 ，默认值为1天，超过该期限创建失败。\n        :type RetryWhenResourceInsufficient: str\n        """
         self.AlgorithmSpecification = None
         self.OutputDataConfig = None
         self.ResourceConfig = None
@@ -570,11 +454,7 @@ class CreateTrainingJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TrainingJobName: 训练任务名称
-        :type TrainingJobName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TrainingJobName: 训练任务名称\n        :type TrainingJobName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TrainingJobName = None
         self.RequestId = None
 
@@ -592,12 +472,8 @@ class DataSource(AbstractModel):
     def __init__(self):
         """
         :param CosDataSource: cos数据源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CosDataSource: :class:`tencentcloud.tione.v20191022.models.CosDataSource`
-        :param FileSystemDataSource: 文件系统输入源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSystemDataSource: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CosDataSource: :class:`tencentcloud.tione.v20191022.models.CosDataSource`\n        :param FileSystemDataSource: 文件系统输入源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSystemDataSource: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`\n        """
         self.CosDataSource = None
         self.FileSystemDataSource = None
 
@@ -625,9 +501,7 @@ class DeleteCodeRepositoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        """
+        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        """
         self.CodeRepositoryName = None
 
 
@@ -649,11 +523,7 @@ class DeleteCodeRepositoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CodeRepositoryName = None
         self.RequestId = None
 
@@ -670,9 +540,7 @@ class DeleteNotebookInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceName: Notebook实例名称
-        :type NotebookInstanceName: str
-        """
+        :param NotebookInstanceName: Notebook实例名称\n        :type NotebookInstanceName: str\n        """
         self.NotebookInstanceName = None
 
 
@@ -694,9 +562,7 @@ class DeleteNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -711,11 +577,7 @@ class DeleteNotebookLifecycleScriptRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: 生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        :param Forcible: 是否忽略已关联的 notebook 实例强行删除生命周期脚本，默认 false
-        :type Forcible: bool
-        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        :param Forcible: 是否忽略已关联的 notebook 实例强行删除生命周期脚本，默认 false\n        :type Forcible: bool\n        """
         self.NotebookLifecycleScriptsName = None
         self.Forcible = None
 
@@ -739,9 +601,7 @@ class DeleteNotebookLifecycleScriptResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -756,19 +616,11 @@ class DescribeCodeRepositoriesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为20
-        :type Limit: int
-        :param Filters: 过滤条件。
+        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20\n        :type Limit: int\n        :param Filters: 过滤条件。
 instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
-search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-        :type Filters: list of Filter
-        :param SortOrder: 排序规则。默认取Descending
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。\n        :type Filters: list of Filter\n        :param SortOrder: 排序规则。默认取Descending
 Descending 按更新时间降序
-Ascending 按更新时间升序
-        :type SortOrder: str
-        """
+Ascending 按更新时间升序\n        :type SortOrder: str\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -801,14 +653,8 @@ class DescribeCodeRepositoriesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 存储库总数目
-        :type TotalCount: int
-        :param CodeRepoSet: 存储库列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CodeRepoSet: list of CodeRepoSummary
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TotalCount: 存储库总数目\n        :type TotalCount: int\n        :param CodeRepoSet: 存储库列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CodeRepoSet: list of CodeRepoSummary\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.CodeRepoSet = None
         self.RequestId = None
@@ -832,9 +678,7 @@ class DescribeCodeRepositoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        """
+        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        """
         self.CodeRepositoryName = None
 
 
@@ -856,19 +700,7 @@ class DescribeCodeRepositoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: 创建时间
-        :type CreationTime: str
-        :param LastModifiedTime: 更新时间
-        :type LastModifiedTime: str
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        :param GitConfig: Git存储配置
-        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
-        :param NoSecret: 是否有Git凭证
-        :type NoSecret: bool
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param LastModifiedTime: 更新时间\n        :type LastModifiedTime: str\n        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        :param GitConfig: Git存储配置\n        :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`\n        :param NoSecret: 是否有Git凭证\n        :type NoSecret: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CreationTime = None
         self.LastModifiedTime = None
         self.CodeRepositoryName = None
@@ -896,9 +728,7 @@ class DescribeNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
-        :type NotebookInstanceName: str
-        """
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”\n        :type NotebookInstanceName: str\n        """
         self.NotebookInstanceName = None
 
 
@@ -920,79 +750,35 @@ class DescribeNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceName: Notebook实例名称
-        :type NotebookInstanceName: str
-        :param InstanceType: Notebook算力资源类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param RoleArn: 角色的资源描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RoleArn: str
-        :param DirectInternetAccess: 外网访问权限
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DirectInternetAccess: str
-        :param RootAccess: Root用户权限
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RootAccess: str
-        :param SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetId: str
-        :param VolumeSizeInGB: 数据卷大小(GB)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VolumeSizeInGB: int
-        :param FailureReason: 创建失败原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailureReason: str
-        :param CreationTime: Notebook实例创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreationTime: str
-        :param LastModifiedTime: Notebook实例最近修改时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedTime: str
-        :param LogUrl: Notebook实例日志链接
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogUrl: str
-        :param NotebookInstanceStatus: Notebook实例状态
+        :param NotebookInstanceName: Notebook实例名称\n        :type NotebookInstanceName: str\n        :param InstanceType: Notebook算力资源类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param RoleArn: 角色的资源描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RoleArn: str\n        :param DirectInternetAccess: 外网访问权限
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DirectInternetAccess: str\n        :param RootAccess: Root用户权限
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RootAccess: str\n        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param VolumeSizeInGB: 数据卷大小(GB)
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VolumeSizeInGB: int\n        :param FailureReason: 创建失败原因
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailureReason: str\n        :param CreationTime: Notebook实例创建时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreationTime: str\n        :param LastModifiedTime: Notebook实例最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedTime: str\n        :param LogUrl: Notebook实例日志链接
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogUrl: str\n        :param NotebookInstanceStatus: Notebook实例状态
 
 Pending: 创建中
 Inservice: 运行中
 Stopping: 停止中
 Stopped: 已停止
 Failed: 失败
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NotebookInstanceStatus: str
-        :param InstanceId: Notebook实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param LifecycleScriptsName: notebook生命周期脚本名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LifecycleScriptsName: str
-        :param DefaultCodeRepository: 默认存储库名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NotebookInstanceStatus: str\n        :param InstanceId: Notebook实例ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param LifecycleScriptsName: notebook生命周期脚本名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LifecycleScriptsName: str\n        :param DefaultCodeRepository: 默认存储库名称
 可以是已创建的存储库名称或者已https://开头的公共git库
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DefaultCodeRepository: str
-        :param AdditionalCodeRepositories: 其他存储库列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DefaultCodeRepository: str\n        :param AdditionalCodeRepositories: 其他存储库列表
 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AdditionalCodeRepositories: list of str
-        :param ClsAccess: 是否开启CLS日志服务
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClsAccess: str
-        :param Prepay: 是否预付费实例
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Prepay: bool
-        :param Deadline: 实例运行截止时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Deadline: str
-        :param StoppingCondition: 自动停止配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param ClsConfig: Cls配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AdditionalCodeRepositories: list of str\n        :param ClsAccess: 是否开启CLS日志服务
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClsAccess: str\n        :param Prepay: 是否预付费实例
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Prepay: bool\n        :param Deadline: 实例运行截止时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Deadline: str\n        :param StoppingCondition: 自动停止配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        :param ClsConfig: Cls配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotebookInstanceName = None
         self.InstanceType = None
         self.RoleArn = None
@@ -1053,15 +839,9 @@ class DescribeNotebookInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量
-        :type Offset: int
-        :param Limit: 限制数目
-        :type Limit: int
-        :param SortOrder: 排序规则。默认取Descending
+        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 限制数目\n        :type Limit: int\n        :param SortOrder: 排序规则。默认取Descending
 Descending 按更新时间降序
-Ascending 按更新时间升序
-        :type SortOrder: str
-        :param Filters: 过滤条件。
+Ascending 按更新时间升序\n        :type SortOrder: str\n        :param Filters: 过滤条件。
 instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
 lifecycle-name - String - 是否必填：否 -（过滤条件）按照生命周期脚本名称过滤。
@@ -1069,11 +849,7 @@ default-code-repo-name - String - 是否必填：否 -（过滤条件）按照�
 additional-code-repo-name - String - 是否必填：否 -（过滤条件）按照其他存储库名称过滤。
 billing-status - String - 是否必填：否 - （过滤条件）按照计费状态过滤，可取以下值
    StorageOnly：仅存储计费的实例
-   Computing：计算和存储都计费的实例
-        :type Filters: list of Filter
-        :param SortBy: 【废弃字段】排序字段
-        :type SortBy: str
-        """
+   Computing：计算和存储都计费的实例\n        :type Filters: list of Filter\n        :param SortBy: 【废弃字段】排序字段\n        :type SortBy: str\n        """
         self.Offset = None
         self.Limit = None
         self.SortOrder = None
@@ -1108,13 +884,7 @@ class DescribeNotebookInstancesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceSet: Notebook实例列表
-        :type NotebookInstanceSet: list of NotebookInstanceSummary
-        :param TotalCount: Notebook实例总数目
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NotebookInstanceSet: Notebook实例列表\n        :type NotebookInstanceSet: list of NotebookInstanceSummary\n        :param TotalCount: Notebook实例总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotebookInstanceSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1138,9 +908,7 @@ class DescribeNotebookLifecycleScriptRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: 生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        """
         self.NotebookLifecycleScriptsName = None
 
 
@@ -1162,21 +930,9 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: 生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        :param CreateScript: 创建脚本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateScript: str
-        :param StartScript: 启动脚本
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartScript: str
-        :param CreationTime: 创建时间
-        :type CreationTime: str
-        :param LastModifiedTime: 最后修改时间
-        :type LastModifiedTime: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NotebookLifecycleScriptsName: 生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        :param CreateScript: 创建脚本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateScript: str\n        :param StartScript: 启动脚本
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartScript: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param LastModifiedTime: 最后修改时间\n        :type LastModifiedTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotebookLifecycleScriptsName = None
         self.CreateScript = None
         self.StartScript = None
@@ -1201,19 +957,11 @@ class DescribeNotebookLifecycleScriptsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量，默认为0
-        :type Offset: int
-        :param Limit: 返回数量，默认为20
-        :type Limit: int
-        :param Filters: 过滤条件。
+        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20\n        :type Limit: int\n        :param Filters: 过滤条件。
 instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
-search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-        :type Filters: list of Filter
-        :param SortOrder: 排序规则。默认取Descending
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。\n        :type Filters: list of Filter\n        :param SortOrder: 排序规则。默认取Descending
 Descending 按更新时间降序
-Ascending 按更新时间升序
-        :type SortOrder: str
-        """
+Ascending 按更新时间升序\n        :type SortOrder: str\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -1246,13 +994,7 @@ class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsSet: Notebook生命周期脚本列表
-        :type NotebookLifecycleScriptsSet: list of NotebookLifecycleScriptsSummary
-        :param TotalCount: Notebook生命周期脚本总数量
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param NotebookLifecycleScriptsSet: Notebook生命周期脚本列表\n        :type NotebookLifecycleScriptsSet: list of NotebookLifecycleScriptsSummary\n        :param TotalCount: Notebook生命周期脚本总数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NotebookLifecycleScriptsSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1282,17 +1024,7 @@ class DescribeNotebookSummaryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AllInstanceCnt: 实例总数
-        :type AllInstanceCnt: int
-        :param BillingInstanceCnt: 计费实例总数
-        :type BillingInstanceCnt: int
-        :param StorageOnlyBillingInstanceCnt: 仅存储计费的实例总数
-        :type StorageOnlyBillingInstanceCnt: int
-        :param ComputingBillingInstanceCnt: 计算和存储都计费的实例总数
-        :type ComputingBillingInstanceCnt: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param AllInstanceCnt: 实例总数\n        :type AllInstanceCnt: int\n        :param BillingInstanceCnt: 计费实例总数\n        :type BillingInstanceCnt: int\n        :param StorageOnlyBillingInstanceCnt: 仅存储计费的实例总数\n        :type StorageOnlyBillingInstanceCnt: int\n        :param ComputingBillingInstanceCnt: 计算和存储都计费的实例总数\n        :type ComputingBillingInstanceCnt: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AllInstanceCnt = None
         self.BillingInstanceCnt = None
         self.StorageOnlyBillingInstanceCnt = None
@@ -1315,9 +1047,7 @@ class DescribeTrainingJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TrainingJobName: 训练任务名称
-        :type TrainingJobName: str
-        """
+        :param TrainingJobName: 训练任务名称\n        :type TrainingJobName: str\n        """
         self.TrainingJobName = None
 
 
@@ -1339,40 +1069,14 @@ class DescribeTrainingJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AlgorithmSpecification: 算法镜像配置
-        :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`
-        :param TrainingJobName: 任务名称
-        :type TrainingJobName: str
-        :param HyperParameters: 算法超级参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HyperParameters: str
-        :param InputDataConfig: 输入数据配置
-        :type InputDataConfig: list of InputDataConfig
-        :param OutputDataConfig: 输出数据配置
-        :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`
-        :param StoppingCondition: 中止条件
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param ResourceConfig: 计算实例配置
-        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
-        :param VpcConfig: 私有网络配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VpcConfig: :class:`tencentcloud.tione.v20191022.models.VpcConfig`
-        :param FailureReason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FailureReason: str
-        :param LastModifiedTime: 最近修改时间
-        :type LastModifiedTime: str
-        :param TrainingStartTime: 任务开始时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingStartTime: str
-        :param TrainingEndTime: 任务完成时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingEndTime: str
-        :param ModelArtifacts: 模型输出配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ModelArtifacts: :class:`tencentcloud.tione.v20191022.models.ModelArtifacts`
-        :param SecondaryStatus: 详细状态，取值范围
+        :param AlgorithmSpecification: 算法镜像配置\n        :type AlgorithmSpecification: :class:`tencentcloud.tione.v20191022.models.AlgorithmSpecification`\n        :param TrainingJobName: 任务名称\n        :type TrainingJobName: str\n        :param HyperParameters: 算法超级参数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type HyperParameters: str\n        :param InputDataConfig: 输入数据配置\n        :type InputDataConfig: list of InputDataConfig\n        :param OutputDataConfig: 输出数据配置\n        :type OutputDataConfig: :class:`tencentcloud.tione.v20191022.models.OutputDataConfig`\n        :param StoppingCondition: 中止条件
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        :param ResourceConfig: 计算实例配置\n        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`\n        :param VpcConfig: 私有网络配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcConfig: :class:`tencentcloud.tione.v20191022.models.VpcConfig`\n        :param FailureReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailureReason: str\n        :param LastModifiedTime: 最近修改时间\n        :type LastModifiedTime: str\n        :param TrainingStartTime: 任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingStartTime: str\n        :param TrainingEndTime: 任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingEndTime: str\n        :param ModelArtifacts: 模型输出配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ModelArtifacts: :class:`tencentcloud.tione.v20191022.models.ModelArtifacts`\n        :param SecondaryStatus: 详细状态，取值范围
 Starting：启动中
 Downloading: 准备训练数据
 Training: 正在训练
@@ -1381,29 +1085,15 @@ Completed：已完成
 Failed: 失败
 MaxRuntimeExceeded: 任务超过最大运行时间
 Stopping: 停止中
-Stopped：已停止
-        :type SecondaryStatus: str
-        :param SecondaryStatusTransitions: 详细状态事件记录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecondaryStatusTransitions: list of SecondaryStatusTransition
-        :param RoleName: 角色名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RoleName: str
-        :param TrainingJobStatus: 训练任务状态，取值范围
+Stopped：已停止\n        :type SecondaryStatus: str\n        :param SecondaryStatusTransitions: 详细状态事件记录
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecondaryStatusTransitions: list of SecondaryStatusTransition\n        :param RoleName: 角色名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RoleName: str\n        :param TrainingJobStatus: 训练任务状态，取值范围
 InProgress：运行中
 Completed: 已完成
 Failed: 失败
 Stopping: 停止中
-Stopped：已停止
-        :type TrainingJobStatus: str
-        :param LogUrl: 训练任务日志链接
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LogUrl: str
-        :param InstanceId: 训练任务实例ID
-        :type InstanceId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+Stopped：已停止\n        :type TrainingJobStatus: str\n        :param LogUrl: 训练任务日志链接
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogUrl: str\n        :param InstanceId: 训练任务实例ID\n        :type InstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AlgorithmSpecification = None
         self.TrainingJobName = None
         self.HyperParameters = None
@@ -1478,23 +1168,9 @@ class DescribeTrainingJobsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量
-        :type Offset: int
-        :param Limit: 限制数目
-        :type Limit: int
-        :param CreationTimeAfter: 创建时间晚于
-        :type CreationTimeAfter: str
-        :param CreationTimeBefore: 创建时间早于
-        :type CreationTimeBefore: str
-        :param NameContains: 根据名称过滤
-        :type NameContains: str
-        :param StatusEquals: 根据状态过滤
-        :type StatusEquals: str
-        :param Filters: 过滤条件。
+        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 限制数目\n        :type Limit: int\n        :param CreationTimeAfter: 创建时间晚于\n        :type CreationTimeAfter: str\n        :param CreationTimeBefore: 创建时间早于\n        :type CreationTimeBefore: str\n        :param NameContains: 根据名称过滤\n        :type NameContains: str\n        :param StatusEquals: 根据状态过滤\n        :type StatusEquals: str\n        :param Filters: 过滤条件。
 instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
-search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-        :type Filters: list of Filter
-        """
+search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。\n        :type Filters: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.CreationTimeAfter = None
@@ -1533,13 +1209,7 @@ class DescribeTrainingJobsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TrainingJobSet: 训练任务列表
-        :type TrainingJobSet: list of TrainingJobSummary
-        :param TotalCount: 训练任务总数目
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param TrainingJobSet: 训练任务列表\n        :type TrainingJobSet: list of TrainingJobSummary\n        :param TotalCount: 训练任务总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TrainingJobSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1563,11 +1233,7 @@ class EnvConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 名称
-        :type Name: str
-        :param Value: 值
-        :type Value: str
-        """
+        :param Name: 名称\n        :type Name: str\n        :param Value: 值\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -1592,18 +1258,10 @@ class FileSystemDataSource(AbstractModel):
     def __init__(self):
         """
         :param DirectoryPath: 文件系统目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DirectoryPath: str
-        :param FileSystemType: 文件系统类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSystemType: str
-        :param FileSystemAccessMode: 文件系统访问模式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSystemAccessMode: str
-        :param FileSystemId: 文件系统ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSystemId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DirectoryPath: str\n        :param FileSystemType: 文件系统类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSystemType: str\n        :param FileSystemAccessMode: 文件系统访问模式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSystemAccessMode: str\n        :param FileSystemId: 文件系统ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSystemId: str\n        """
         self.DirectoryPath = None
         self.FileSystemType = None
         self.FileSystemAccessMode = None
@@ -1631,11 +1289,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 过滤字段名称
-        :type Name: str
-        :param Values: 过滤字段取值
-        :type Values: list of str
-        """
+        :param Name: 过滤字段名称\n        :type Name: str\n        :param Values: 过滤字段取值\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1659,12 +1313,8 @@ class GitConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param RepositoryUrl: git地址
-        :type RepositoryUrl: str
-        :param Branch: 代码分支
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Branch: str
-        """
+        :param RepositoryUrl: git地址\n        :type RepositoryUrl: str\n        :param Branch: 代码分支
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Branch: str\n        """
         self.RepositoryUrl = None
         self.Branch = None
 
@@ -1688,13 +1338,9 @@ class GitSecret(AbstractModel):
 
     def __init__(self):
         """
-        :param NoSecret: 无秘钥，默认选项
-        :type NoSecret: bool
-        :param Secret: Git用户名密码base64编码后的字符串
+        :param NoSecret: 无秘钥，默认选项\n        :type NoSecret: bool\n        :param Secret: Git用户名密码base64编码后的字符串
 编码前的内容应为Json字符串，如
-{"UserName": "用户名", "Password":"密码"}
-        :type Secret: str
-        """
+{"UserName": "用户名", "Password":"密码"}\n        :type Secret: str\n        """
         self.NoSecret = None
         self.Secret = None
 
@@ -1719,18 +1365,10 @@ class InputDataConfig(AbstractModel):
     def __init__(self):
         """
         :param ChannelName: 通道名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChannelName: str
-        :param DataSource: 数据源配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DataSource: :class:`tencentcloud.tione.v20191022.models.DataSource`
-        :param InputMode: 输入类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InputMode: str
-        :param ContentType: 文件类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ContentType: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ChannelName: str\n        :param DataSource: 数据源配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DataSource: :class:`tencentcloud.tione.v20191022.models.DataSource`\n        :param InputMode: 输入类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InputMode: str\n        :param ContentType: 文件类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ContentType: str\n        """
         self.ChannelName = None
         self.DataSource = None
         self.InputMode = None
@@ -1761,9 +1399,7 @@ class ModelArtifacts(AbstractModel):
     def __init__(self):
         """
         :param CosModelArtifacts: cos输出路径
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CosModelArtifacts: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CosModelArtifacts: str\n        """
         self.CosModelArtifacts = None
 
 
@@ -1786,50 +1422,24 @@ class NotebookInstanceSummary(AbstractModel):
     def __init__(self):
         """
         :param CreationTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreationTime: str
-        :param LastModifiedTime: 最近修改时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedTime: str
-        :param NotebookInstanceName: notebook实例名字
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NotebookInstanceName: str
-        :param NotebookInstanceStatus: notebook实例状态，取值范围：
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreationTime: str\n        :param LastModifiedTime: 最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedTime: str\n        :param NotebookInstanceName: notebook实例名字
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NotebookInstanceName: str\n        :param NotebookInstanceStatus: notebook实例状态，取值范围：
 Pending: 创建中
 Inservice: 运行中
 Stopping: 停止中
 Stopped: 已停止
 Failed: 失败
-注意：此字段可能返回 null，表示取不到有效值。
-        :type NotebookInstanceStatus: str
-        :param InstanceType: 算力类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param StartupTime: 启动时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartupTime: str
-        :param Deadline: 运行截止时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Deadline: str
-        :param StoppingCondition: 自动停止配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param Prepay: 是否是预付费实例
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Prepay: bool
-        :param BillingLabel: 计费标识
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BillingLabel: :class:`tencentcloud.tione.v20191022.models.BillingLabel`
-        :param RuntimeInSeconds: 运行时长，秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuntimeInSeconds: int
-        :param RemainTimeInSeconds: 剩余时长，秒
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RemainTimeInSeconds: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NotebookInstanceStatus: str\n        :param InstanceType: 算力类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param StartupTime: 启动时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartupTime: str\n        :param Deadline: 运行截止时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Deadline: str\n        :param StoppingCondition: 自动停止配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        :param Prepay: 是否是预付费实例
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Prepay: bool\n        :param BillingLabel: 计费标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BillingLabel: :class:`tencentcloud.tione.v20191022.models.BillingLabel`\n        :param RuntimeInSeconds: 运行时长，秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RuntimeInSeconds: int\n        :param RemainTimeInSeconds: 剩余时长，秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RemainTimeInSeconds: int\n        """
         self.CreationTime = None
         self.LastModifiedTime = None
         self.NotebookInstanceName = None
@@ -1879,13 +1489,7 @@ class NotebookLifecycleScriptsSummary(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: notebook生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        :param CreationTime: 创建时间
-        :type CreationTime: str
-        :param LastModifiedTime: 修改时间
-        :type LastModifiedTime: str
-        """
+        :param NotebookLifecycleScriptsName: notebook生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param LastModifiedTime: 修改时间\n        :type LastModifiedTime: str\n        """
         self.NotebookLifecycleScriptsName = None
         self.CreationTime = None
         self.LastModifiedTime = None
@@ -1912,15 +1516,9 @@ class OutputDataConfig(AbstractModel):
     def __init__(self):
         """
         :param CosOutputBucket: cos输出桶
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CosOutputBucket: str
-        :param CosOutputKeyPrefix: cos输出key前缀
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CosOutputKeyPrefix: str
-        :param FileSystemDataSource: 文件系统输出，如果指定了文件系统，那么Cos输出会被忽略
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSystemDataSource: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CosOutputBucket: str\n        :param CosOutputKeyPrefix: cos输出key前缀
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CosOutputKeyPrefix: str\n        :param FileSystemDataSource: 文件系统输出，如果指定了文件系统，那么Cos输出会被忽略
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSystemDataSource: :class:`tencentcloud.tione.v20191022.models.FileSystemDataSource`\n        """
         self.CosOutputBucket = None
         self.CosOutputKeyPrefix = None
         self.FileSystemDataSource = None
@@ -1949,15 +1547,9 @@ class ResourceConfig(AbstractModel):
     def __init__(self):
         """
         :param InstanceCount: 计算实例数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceCount: int
-        :param InstanceType: 计算实例类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceType: str
-        :param VolumeSizeInGB: 挂载CBS大小（GB）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VolumeSizeInGB: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceCount: int\n        :param InstanceType: 计算实例类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceType: str\n        :param VolumeSizeInGB: 挂载CBS大小（GB）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VolumeSizeInGB: int\n        """
         self.InstanceCount = None
         self.InstanceType = None
         self.VolumeSizeInGB = None
@@ -1984,18 +1576,10 @@ class SecondaryStatusTransition(AbstractModel):
     def __init__(self):
         """
         :param StartTime: 状态开始时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartTime: str
-        :param EndTime: 状态结束时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EndTime: str
-        :param Status: 状态名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        :param StatusMessage: 状态详情
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatusMessage: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: str\n        :param EndTime: 状态结束时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: str\n        :param Status: 状态名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param StatusMessage: 状态详情
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusMessage: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.Status = None
@@ -2023,15 +1607,9 @@ class StartNotebookInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceName: Notebook实例名称
-        :type NotebookInstanceName: str
-        :param AutoStopping: 自动停止，可取值Enabled/Disabled
+        :param NotebookInstanceName: Notebook实例名称\n        :type NotebookInstanceName: str\n        :param AutoStopping: 自动停止，可取值Enabled/Disabled
 取值为Disabled的时候StoppingCondition将被忽略
-取值为Enabled的时候读取StoppingCondition作为自动停止的配置
-        :type AutoStopping: str
-        :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        """
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置\n        :type AutoStopping: str\n        :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        """
         self.NotebookInstanceName = None
         self.AutoStopping = None
         self.StoppingCondition = None
@@ -2059,9 +1637,7 @@ class StartNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2076,9 +1652,7 @@ class StopNotebookInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookInstanceName: Notebook实例名称
-        :type NotebookInstanceName: str
-        """
+        :param NotebookInstanceName: Notebook实例名称\n        :type NotebookInstanceName: str\n        """
         self.NotebookInstanceName = None
 
 
@@ -2100,9 +1674,7 @@ class StopNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2117,9 +1689,7 @@ class StopTrainingJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TrainingJobName: 训练任务名称
-        :type TrainingJobName: str
-        """
+        :param TrainingJobName: 训练任务名称\n        :type TrainingJobName: str\n        """
         self.TrainingJobName = None
 
 
@@ -2141,9 +1711,7 @@ class StopTrainingJobResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2159,12 +1727,8 @@ class StoppingCondition(AbstractModel):
     def __init__(self):
         """
         :param MaxRuntimeInSeconds: 最长运行运行时间（秒）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxRuntimeInSeconds: int
-        :param MaxWaitTimeInSeconds: 最长等待运行时间（秒）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxWaitTimeInSeconds: int
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRuntimeInSeconds: int\n        :param MaxWaitTimeInSeconds: 最长等待运行时间（秒）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxWaitTimeInSeconds: int\n        """
         self.MaxRuntimeInSeconds = None
         self.MaxWaitTimeInSeconds = None
 
@@ -2189,32 +1753,18 @@ class TrainingJobSummary(AbstractModel):
     def __init__(self):
         """
         :param CreationTime: 任务创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreationTime: str
-        :param LastModifiedTime: 最近修改时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifiedTime: str
-        :param TrainingJobName: 训练任务名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingJobName: str
-        :param TrainingJobStatus: 训练任务状态，取值范围
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CreationTime: str\n        :param LastModifiedTime: 最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifiedTime: str\n        :param TrainingJobName: 训练任务名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingJobName: str\n        :param TrainingJobStatus: 训练任务状态，取值范围
 InProgress：运行中
 Completed: 已完成
 Failed: 失败
 Stopping: 停止中
 Stopped：已停止
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingJobStatus: str
-        :param TrainingEndTime: 完成时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingEndTime: str
-        :param InstanceId: 算了实例Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InstanceId: str
-        :param ResourceConfig: 资源配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingJobStatus: str\n        :param TrainingEndTime: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TrainingEndTime: str\n        :param InstanceId: 算了实例Id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param ResourceConfig: 资源配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceConfig: :class:`tencentcloud.tione.v20191022.models.ResourceConfig`\n        """
         self.CreationTime = None
         self.LastModifiedTime = None
         self.TrainingJobName = None
@@ -2250,11 +1800,7 @@ class UpdateCodeRepositoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 查询存储库名称
-        :type CodeRepositoryName: str
-        :param GitSecret: Git凭证
-        :type GitSecret: :class:`tencentcloud.tione.v20191022.models.GitSecret`
-        """
+        :param CodeRepositoryName: 查询存储库名称\n        :type CodeRepositoryName: str\n        :param GitSecret: Git凭证\n        :type GitSecret: :class:`tencentcloud.tione.v20191022.models.GitSecret`\n        """
         self.CodeRepositoryName = None
         self.GitSecret = None
 
@@ -2280,11 +1826,7 @@ class UpdateCodeRepositoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeRepositoryName: 存储库名称
-        :type CodeRepositoryName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param CodeRepositoryName: 存储库名称\n        :type CodeRepositoryName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CodeRepositoryName = None
         self.RequestId = None
 
@@ -2302,44 +1844,14 @@ class UpdateNotebookInstanceRequest(AbstractModel):
     def __init__(self):
         """
         :param NotebookInstanceName: Notebook实例名称
-规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”
-        :type NotebookInstanceName: str
-        :param RoleArn: 角色的资源描述
-        :type RoleArn: str
-        :param RootAccess: Root访问权限
-        :type RootAccess: str
-        :param VolumeSizeInGB: 数据卷大小(GB)
-        :type VolumeSizeInGB: int
-        :param InstanceType: 算力资源类型
-        :type InstanceType: str
-        :param LifecycleScriptsName: notebook生命周期脚本名称
-        :type LifecycleScriptsName: str
-        :param DisassociateLifecycleScript: 是否解绑生命周期脚本，默认 false。
-该值为true时，LifecycleScriptsName将被忽略
-        :type DisassociateLifecycleScript: bool
-        :param DefaultCodeRepository: 默认存储库名称
-可以是已创建的存储库名称或者已https://开头的公共git库
-        :type DefaultCodeRepository: str
-        :param AdditionalCodeRepositories: 其他存储库列表
-每个元素可以是已创建的存储库名称或者已https://开头的公共git库
-        :type AdditionalCodeRepositories: list of str
-        :param DisassociateDefaultCodeRepository: 是否取消关联默认存储库，默认false
-该值为true时，DefaultCodeRepository将被忽略
-        :type DisassociateDefaultCodeRepository: bool
-        :param DisassociateAdditionalCodeRepositories: 是否取消关联其他存储库，默认false
-该值为true时，AdditionalCodeRepositories将被忽略
-        :type DisassociateAdditionalCodeRepositories: bool
-        :param ClsAccess: 已弃用，请使用ClsConfig配置。是否开启CLS日志服务，可取值Enabled/Disabled
-        :type ClsAccess: str
-        :param AutoStopping: 自动停止，可取值Enabled/Disabled
+规则：“^\[a-zA-Z0-9\](-\*\[a-zA-Z0-9\])\*$”\n        :type NotebookInstanceName: str\n        :param RoleArn: 角色的资源描述\n        :type RoleArn: str\n        :param RootAccess: Root访问权限\n        :type RootAccess: str\n        :param VolumeSizeInGB: 数据卷大小(GB)\n        :type VolumeSizeInGB: int\n        :param InstanceType: 算力资源类型\n        :type InstanceType: str\n        :param LifecycleScriptsName: notebook生命周期脚本名称\n        :type LifecycleScriptsName: str\n        :param DisassociateLifecycleScript: 是否解绑生命周期脚本，默认 false。
+该值为true时，LifecycleScriptsName将被忽略\n        :type DisassociateLifecycleScript: bool\n        :param DefaultCodeRepository: 默认存储库名称
+可以是已创建的存储库名称或者已https://开头的公共git库\n        :type DefaultCodeRepository: str\n        :param AdditionalCodeRepositories: 其他存储库列表
+每个元素可以是已创建的存储库名称或者已https://开头的公共git库\n        :type AdditionalCodeRepositories: list of str\n        :param DisassociateDefaultCodeRepository: 是否取消关联默认存储库，默认false
+该值为true时，DefaultCodeRepository将被忽略\n        :type DisassociateDefaultCodeRepository: bool\n        :param DisassociateAdditionalCodeRepositories: 是否取消关联其他存储库，默认false
+该值为true时，AdditionalCodeRepositories将被忽略\n        :type DisassociateAdditionalCodeRepositories: bool\n        :param ClsAccess: 已弃用，请使用ClsConfig配置。是否开启CLS日志服务，可取值Enabled/Disabled\n        :type ClsAccess: str\n        :param AutoStopping: 自动停止，可取值Enabled/Disabled
 取值为Disabled的时候StoppingCondition将被忽略
-取值为Enabled的时候读取StoppingCondition作为自动停止的配置
-        :type AutoStopping: str
-        :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效
-        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param ClsConfig: 接入日志的配置，默认使用免费日志服务。
-        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
-        """
+取值为Enabled的时候读取StoppingCondition作为自动停止的配置\n        :type AutoStopping: str\n        :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效\n        :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`\n        :param ClsConfig: 接入日志的配置，默认使用免费日志服务。\n        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`\n        """
         self.NotebookInstanceName = None
         self.RoleArn = None
         self.RootAccess = None
@@ -2393,9 +1905,7 @@ class UpdateNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2410,15 +1920,9 @@ class UpdateNotebookLifecycleScriptRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NotebookLifecycleScriptsName: notebook生命周期脚本名称
-        :type NotebookLifecycleScriptsName: str
-        :param CreateScript: 创建脚本，base64编码
-base64后的脚本长度不能超过16384个字符
-        :type CreateScript: str
-        :param StartScript: 启动脚本，base64编码
-base64后的脚本长度不能超过16384个字符
-        :type StartScript: str
-        """
+        :param NotebookLifecycleScriptsName: notebook生命周期脚本名称\n        :type NotebookLifecycleScriptsName: str\n        :param CreateScript: 创建脚本，base64编码
+base64后的脚本长度不能超过16384个字符\n        :type CreateScript: str\n        :param StartScript: 启动脚本，base64编码
+base64后的脚本长度不能超过16384个字符\n        :type StartScript: str\n        """
         self.NotebookLifecycleScriptsName = None
         self.CreateScript = None
         self.StartScript = None
@@ -2444,9 +1948,7 @@ class UpdateNotebookLifecycleScriptResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2462,12 +1964,8 @@ class VpcConfig(AbstractModel):
     def __init__(self):
         """
         :param SecurityGroupIds: 安全组id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecurityGroupIds: list of str
-        :param SubnetId: 子网id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SubnetId: str
-        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityGroupIds: list of str\n        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        """
         self.SecurityGroupIds = None
         self.SubnetId = None
 

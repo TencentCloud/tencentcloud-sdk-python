@@ -25,19 +25,11 @@ class Data(AbstractModel):
 
     def __init__(self):
         """
-        :param PostTime: 操作时间戳，单位秒
-        :type PostTime: int
-        :param Uid: 用户ID 
-accountType不同对应不同的用户ID。如果是QQ或微信用户则填入对应的openId
-        :type Uid: str
-        :param UserIp: 操作来源的外网IP
-        :type UserIp: str
-        :param ValueScore: 0~100：营销价值评分，分值越高，价值越大
+        :param PostTime: 操作时间戳，单位秒\n        :type PostTime: int\n        :param Uid: 用户ID 
+accountType不同对应不同的用户ID。如果是QQ或微信用户则填入对应的openId\n        :type Uid: str\n        :param UserIp: 操作来源的外网IP\n        :type UserIp: str\n        :param ValueScore: 0~100：营销价值评分，分值越高，价值越大
 [0,50]低价值
 [50,70]价值一般
-[70,100]高价值
-        :type ValueScore: int
-        """
+[70,100]高价值\n        :type ValueScore: int\n        """
         self.PostTime = None
         self.Uid = None
         self.UserIp = None
@@ -65,19 +57,7 @@ class MarketingValueJudgementRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountType: 手机账号类型填写4
-        :type AccountType: int
-        :param Uid: 填写手机号码，如15317537488
-        :type Uid: str
-        :param UserIp: 用户请求时的客户端外网IP
-        :type UserIp: str
-        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）
-        :type PostTime: int
-        :param Imei: 用户设备号imei/idfa(建议填写)
-        :type Imei: str
-        :param Referer: 活动链接(建议填写)
-        :type Referer: str
-        """
+        :param AccountType: 手机账号类型填写4\n        :type AccountType: int\n        :param Uid: 填写手机号码，如15317537488\n        :type Uid: str\n        :param UserIp: 用户请求时的客户端外网IP\n        :type UserIp: str\n        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）\n        :type PostTime: int\n        :param Imei: 用户设备号imei/idfa(建议填写)\n        :type Imei: str\n        :param Referer: 活动链接(建议填写)\n        :type Referer: str\n        """
         self.AccountType = None
         self.Uid = None
         self.UserIp = None
@@ -109,11 +89,7 @@ class MarketingValueJudgementResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 返回数据
-        :type Data: :class:`tencentcloud.mvj.v20190926.models.Data`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Data: 返回数据\n        :type Data: :class:`tencentcloud.mvj.v20190926.models.Data`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 

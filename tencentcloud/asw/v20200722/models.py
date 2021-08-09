@@ -25,25 +25,7 @@ class CreateFlowServiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 定义文本（JSON格式）
-        :type Definition: str
-        :param FlowServiceName: 状态机所属服务名
-        :type FlowServiceName: str
-        :param IsNewRole: 是不是新的角色
-        :type IsNewRole: bool
-        :param Type: 状态机类型（EXPRESS，STANDARD）
-        :type Type: str
-        :param FlowServiceChineseName: 状态机所属服务中文名
-        :type FlowServiceChineseName: str
-        :param RoleResource: 角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine
-        :type RoleResource: str
-        :param Description: 备注
-        :type Description: str
-        :param EnableCLS: 是否开启CLS日志投递功能
-        :type EnableCLS: bool
-        :param Input: 该状态机的默认输入
-        :type Input: str
-        """
+        :param Definition: 定义文本（JSON格式）\n        :type Definition: str\n        :param FlowServiceName: 状态机所属服务名\n        :type FlowServiceName: str\n        :param IsNewRole: 是不是新的角色\n        :type IsNewRole: bool\n        :param Type: 状态机类型（EXPRESS，STANDARD）\n        :type Type: str\n        :param FlowServiceChineseName: 状态机所属服务中文名\n        :type FlowServiceChineseName: str\n        :param RoleResource: 角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine\n        :type RoleResource: str\n        :param Description: 备注\n        :type Description: str\n        :param EnableCLS: 是否开启CLS日志投递功能\n        :type EnableCLS: bool\n        :param Input: 该状态机的默认输入\n        :type Input: str\n        """
         self.Definition = None
         self.FlowServiceName = None
         self.IsNewRole = None
@@ -81,13 +63,7 @@ class CreateFlowServiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceResource: 状态机所属服务资源
-        :type FlowServiceResource: str
-        :param CreateDate: 生成日期
-        :type CreateDate: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowServiceResource: 状态机所属服务资源\n        :type FlowServiceResource: str\n        :param CreateDate: 生成日期\n        :type CreateDate: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowServiceResource = None
         self.CreateDate = None
         self.RequestId = None
@@ -106,9 +82,7 @@ class DescribeExecutionHistoryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ExecutionResourceName: 执行资源名
-        :type ExecutionResourceName: str
-        """
+        :param ExecutionResourceName: 执行资源名\n        :type ExecutionResourceName: str\n        """
         self.ExecutionResourceName = None
 
 
@@ -130,11 +104,7 @@ class DescribeExecutionHistoryResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Events: 执行的事件列表
-        :type Events: list of ExecutionEvent
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param Events: 执行的事件列表\n        :type Events: list of ExecutionEvent\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Events = None
         self.RequestId = None
 
@@ -156,9 +126,7 @@ class DescribeExecutionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ExecutionResourceName: 执行资源名
-        :type ExecutionResourceName: str
-        """
+        :param ExecutionResourceName: 执行资源名\n        :type ExecutionResourceName: str\n        """
         self.ExecutionResourceName = None
 
 
@@ -180,29 +148,9 @@ class DescribeExecutionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ExecutionResourceName: 执行资源名
-        :type ExecutionResourceName: str
-        :param Name: 资源名称
-        :type Name: str
-        :param StartDate: 执行开始时间，毫秒
-        :type StartDate: str
-        :param StopDate: 执行结束时间，毫秒
-        :type StopDate: str
-        :param StateMachineResourceName: 状态机资源名
-        :type StateMachineResourceName: str
-        :param Status: 执行状态。INIT，RUNNING，SUCCEED，FAILED，TERMINATED
-        :type Status: str
-        :param Input: 执行的输入
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Input: str
-        :param Output: 执行的输出
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Output: str
-        :param ExecutionDefinition: 启动执行时，状态机的定义
-        :type ExecutionDefinition: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ExecutionResourceName: 执行资源名\n        :type ExecutionResourceName: str\n        :param Name: 资源名称\n        :type Name: str\n        :param StartDate: 执行开始时间，毫秒\n        :type StartDate: str\n        :param StopDate: 执行结束时间，毫秒\n        :type StopDate: str\n        :param StateMachineResourceName: 状态机资源名\n        :type StateMachineResourceName: str\n        :param Status: 执行状态。INIT，RUNNING，SUCCEED，FAILED，TERMINATED\n        :type Status: str\n        :param Input: 执行的输入
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Input: str\n        :param Output: 执行的输出
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Output: str\n        :param ExecutionDefinition: 启动执行时，状态机的定义\n        :type ExecutionDefinition: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ExecutionResourceName = None
         self.Name = None
         self.StartDate = None
@@ -235,17 +183,7 @@ class DescribeExecutionsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StateMachineResourceName: 状态机资源名
-        :type StateMachineResourceName: str
-        :param PageSize: 页大小，最大100
-        :type PageSize: int
-        :param PageIndex: 页序号，从1开始
-        :type PageIndex: int
-        :param FilterExecutionStatus: 按状态过滤条件，INIT，RUNNING，SUCCEED，FAILED，TERMINATED
-        :type FilterExecutionStatus: str
-        :param FilterExecutionResourceName: 按执行名过滤条件
-        :type FilterExecutionResourceName: str
-        """
+        :param StateMachineResourceName: 状态机资源名\n        :type StateMachineResourceName: str\n        :param PageSize: 页大小，最大100\n        :type PageSize: int\n        :param PageIndex: 页序号，从1开始\n        :type PageIndex: int\n        :param FilterExecutionStatus: 按状态过滤条件，INIT，RUNNING，SUCCEED，FAILED，TERMINATED\n        :type FilterExecutionStatus: str\n        :param FilterExecutionResourceName: 按执行名过滤条件\n        :type FilterExecutionResourceName: str\n        """
         self.StateMachineResourceName = None
         self.PageSize = None
         self.PageIndex = None
@@ -275,9 +213,7 @@ class DescribeExecutionsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -292,9 +228,7 @@ class DescribeFlowServiceDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceResource: 状态机所属服务资源名
-        :type FlowServiceResource: str
-        """
+        :param FlowServiceResource: 状态机所属服务资源名\n        :type FlowServiceResource: str\n        """
         self.FlowServiceResource = None
 
 
@@ -316,38 +250,14 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceName: 状态机所属服务名
-        :type FlowServiceName: str
-        :param Status: 状态机状态
-        :type Status: str
-        :param Definition: 定义文本（JSON格式）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Definition: str
-        :param RoleResource: 角色资源名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RoleResource: str
-        :param Type: 状态机的类型，可以为 （EXPRESS/STANDARD）
-        :type Type: str
-        :param CreateDate: 生成时间
-        :type CreateDate: str
-        :param Description: 备注
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Description: str
-        :param FlowServiceChineseName: 状态机所属服务中文名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FlowServiceChineseName: str
-        :param EnableCLS: 是否开启日志CLS服务
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableCLS: bool
-        :param CLSUrl: CLS日志查看地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CLSUrl: str
-        :param FlowInput: 工作流提示输入
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FlowInput: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowServiceName: 状态机所属服务名\n        :type FlowServiceName: str\n        :param Status: 状态机状态\n        :type Status: str\n        :param Definition: 定义文本（JSON格式）
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Definition: str\n        :param RoleResource: 角色资源名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RoleResource: str\n        :param Type: 状态机的类型，可以为 （EXPRESS/STANDARD）\n        :type Type: str\n        :param CreateDate: 生成时间\n        :type CreateDate: str\n        :param Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param FlowServiceChineseName: 状态机所属服务中文名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FlowServiceChineseName: str\n        :param EnableCLS: 是否开启日志CLS服务
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EnableCLS: bool\n        :param CLSUrl: CLS日志查看地址
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CLSUrl: str\n        :param FlowInput: 工作流提示输入
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FlowInput: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowServiceName = None
         self.Status = None
         self.Definition = None
@@ -384,13 +294,7 @@ class DescribeFlowServicesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Limit: 返回数量，默认为20，最大值为100。
-        :type Limit: int
-        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
-        :type Filters: list of Filter
-        """
+        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。\n        :type Limit: int\n        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况\n        :type Filters: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -421,13 +325,7 @@ class DescribeFlowServicesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceSet: 用户的状态机列表
-        :type FlowServiceSet: list of StateMachine
-        :param TotalCount: 用户的状态机总数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowServiceSet: 用户的状态机列表\n        :type FlowServiceSet: list of StateMachine\n        :param TotalCount: 用户的状态机总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowServiceSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -451,24 +349,8 @@ class ExecutionEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param ExecutionResourceName: 执行资源名
-        :type ExecutionResourceName: str
-        :param EventId: 自增序号
-        :type EventId: int
-        :param EventCategory: 事件类型
-        :type EventCategory: str
-        :param StepName: 步骤节点名称
-        :type StepName: str
-        :param ResourceName: 该步骤引用的资源名
-        :type ResourceName: str
-        :param Timestamp: 该事件发生时间，毫秒
-        :type Timestamp: str
-        :param Content: 事件内容
-        :type Content: str
-        :param Exception: 异常信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Exception: str
-        """
+        :param ExecutionResourceName: 执行资源名\n        :type ExecutionResourceName: str\n        :param EventId: 自增序号\n        :type EventId: int\n        :param EventCategory: 事件类型\n        :type EventCategory: str\n        :param StepName: 步骤节点名称\n        :type StepName: str\n        :param ResourceName: 该步骤引用的资源名\n        :type ResourceName: str\n        :param Timestamp: 该事件发生时间，毫秒\n        :type Timestamp: str\n        :param Content: 事件内容\n        :type Content: str\n        :param Exception: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Exception: str\n        """
         self.ExecutionResourceName = None
         self.EventId = None
         self.EventCategory = None
@@ -504,11 +386,7 @@ class Filter(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 过滤器名字
-        :type Name: str
-        :param Values: 过滤器值的数组
-        :type Values: list of str
-        """
+        :param Name: 过滤器名字\n        :type Name: str\n        :param Values: 过滤器值的数组\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -532,25 +410,7 @@ class ModifyFlowServiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceResource: 状态机资源名
-        :type FlowServiceResource: str
-        :param Definition: 定义JSON
-        :type Definition: str
-        :param FlowServiceName: 状态机所属服务名
-        :type FlowServiceName: str
-        :param FlowServiceChineseName: 状态机所属服务中文名
-        :type FlowServiceChineseName: str
-        :param IsNewRole: 是否是新角色
-        :type IsNewRole: bool
-        :param Type: 状态机类型
-        :type Type: str
-        :param RoleResource: 角色资源名
-        :type RoleResource: str
-        :param Description: 状态机备注
-        :type Description: str
-        :param EnableCLS: 是否允许日志投递
-        :type EnableCLS: bool
-        """
+        :param FlowServiceResource: 状态机资源名\n        :type FlowServiceResource: str\n        :param Definition: 定义JSON\n        :type Definition: str\n        :param FlowServiceName: 状态机所属服务名\n        :type FlowServiceName: str\n        :param FlowServiceChineseName: 状态机所属服务中文名\n        :type FlowServiceChineseName: str\n        :param IsNewRole: 是否是新角色\n        :type IsNewRole: bool\n        :param Type: 状态机类型\n        :type Type: str\n        :param RoleResource: 角色资源名\n        :type RoleResource: str\n        :param Description: 状态机备注\n        :type Description: str\n        :param EnableCLS: 是否允许日志投递\n        :type EnableCLS: bool\n        """
         self.FlowServiceResource = None
         self.Definition = None
         self.FlowServiceName = None
@@ -588,13 +448,7 @@ class ModifyFlowServiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceResource: 状态机资源名
-        :type FlowServiceResource: str
-        :param UpdateDate: 更新时间
-        :type UpdateDate: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param FlowServiceResource: 状态机资源名\n        :type FlowServiceResource: str\n        :param UpdateDate: 更新时间\n        :type UpdateDate: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowServiceResource = None
         self.UpdateDate = None
         self.RequestId = None
@@ -613,13 +467,7 @@ class StartExecutionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StateMachineResourceName: 状态机资源名
-        :type StateMachineResourceName: str
-        :param Input: 输入参数
-        :type Input: str
-        :param Name: 本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一
-        :type Name: str
-        """
+        :param StateMachineResourceName: 状态机资源名\n        :type StateMachineResourceName: str\n        :param Input: 输入参数\n        :type Input: str\n        :param Name: 本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一\n        :type Name: str\n        """
         self.StateMachineResourceName = None
         self.Input = None
         self.Name = None
@@ -645,13 +493,7 @@ class StartExecutionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ExecutionResourceName: 执行资源名
-        :type ExecutionResourceName: str
-        :param StartDate: 执行开始时间
-        :type StartDate: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param ExecutionResourceName: 执行资源名\n        :type ExecutionResourceName: str\n        :param StartDate: 执行开始时间\n        :type StartDate: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ExecutionResourceName = None
         self.StartDate = None
         self.RequestId = None
@@ -670,33 +512,9 @@ class StateMachine(AbstractModel):
 
     def __init__(self):
         """
-        :param FlowServiceResource: 状态机资源
-        :type FlowServiceResource: str
-        :param Type: 状态机类型。EXPRESS，STANDARD
-        :type Type: str
-        :param FlowServiceName: 状态机名称
-        :type FlowServiceName: str
-        :param FlowServiceChineseName: 状态机中文名
-        :type FlowServiceChineseName: str
-        :param CreateDate: 创建时间。timestamp
-        :type CreateDate: str
-        :param ModifyDate: 修改时间。timestamp
-        :type ModifyDate: str
-        :param Status: 状态机状态
-        :type Status: str
-        :param Creator: 创建者的subAccountUin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Creator: str
-        :param Modifier: 修改者的subAccountUin
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Modifier: str
-        :param FlowServiceId: 状态机id
-        :type FlowServiceId: str
-        :param TemplateId: 模板id
-        :type TemplateId: str
-        :param Description: 备注
-        :type Description: str
-        """
+        :param FlowServiceResource: 状态机资源\n        :type FlowServiceResource: str\n        :param Type: 状态机类型。EXPRESS，STANDARD\n        :type Type: str\n        :param FlowServiceName: 状态机名称\n        :type FlowServiceName: str\n        :param FlowServiceChineseName: 状态机中文名\n        :type FlowServiceChineseName: str\n        :param CreateDate: 创建时间。timestamp\n        :type CreateDate: str\n        :param ModifyDate: 修改时间。timestamp\n        :type ModifyDate: str\n        :param Status: 状态机状态\n        :type Status: str\n        :param Creator: 创建者的subAccountUin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Creator: str\n        :param Modifier: 修改者的subAccountUin
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Modifier: str\n        :param FlowServiceId: 状态机id\n        :type FlowServiceId: str\n        :param TemplateId: 模板id\n        :type TemplateId: str\n        :param Description: 备注\n        :type Description: str\n        """
         self.FlowServiceResource = None
         self.Type = None
         self.FlowServiceName = None
@@ -740,9 +558,7 @@ class StopExecutionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ExecutionQrn: 执行名称
-        :type ExecutionQrn: str
-        """
+        :param ExecutionQrn: 执行名称\n        :type ExecutionQrn: str\n        """
         self.ExecutionQrn = None
 
 
@@ -764,9 +580,7 @@ class StopExecutionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
