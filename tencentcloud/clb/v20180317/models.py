@@ -383,6 +383,52 @@ class BatchTarget(AbstractModel):
         
 
 
+class BindDetailItem(AbstractModel):
+    """绑定关系，包含监听器名字、协议、url、vport。
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 配置绑定的CLB ID\n        :type LoadBalancerId: str\n        :param ListenerId: 配置绑定的监听器ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ListenerId: str\n        :param Domain: 配置绑定的域名
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        :param LocationId: 配置绑定的规则
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LocationId: str\n        :param ListenerName: 监听器名字
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ListenerName: str\n        :param Protocol: 监听器协议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param Vport: 监听器端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Vport: int\n        :param Url: location的url
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Url: str\n        :param UconfigId: 配置ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UconfigId: str\n        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Domain = None
+        self.LocationId = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.Vport = None
+        self.Url = None
+        self.UconfigId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.LocationId = params.get("LocationId")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.Vport = params.get("Vport")
+        self.Url = params.get("Url")
+        self.UconfigId = params.get("UconfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockedIP(AbstractModel):
     """加入了12306黑名单的IP
 
@@ -838,6 +884,39 @@ class ClustersZone(AbstractModel):
     def _deserialize(self, params):
         self.MasterZone = params.get("MasterZone")
         self.SlaveZone = params.get("SlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigListItem(AbstractModel):
+    """配置内容
+
+    """
+
+    def __init__(self):
+        """
+        :param UconfigId: 配置ID\n        :type UconfigId: str\n        :param ConfigType: 配置类型\n        :type ConfigType: str\n        :param ConfigName: 配置名字
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ConfigName: str\n        :param ConfigContent: 配置内容\n        :type ConfigContent: str\n        :param CreateTimestamp: 增加配置时间\n        :type CreateTimestamp: str\n        :param UpdateTimestamp: 修改配置时间\n        :type UpdateTimestamp: str\n        """
+        self.UconfigId = None
+        self.ConfigType = None
+        self.ConfigName = None
+        self.ConfigContent = None
+        self.CreateTimestamp = None
+        self.UpdateTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.UconfigId = params.get("UconfigId")
+        self.ConfigType = params.get("ConfigType")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigContent = params.get("ConfigContent")
+        self.CreateTimestamp = params.get("CreateTimestamp")
+        self.UpdateTimestamp = params.get("UpdateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2028,6 +2107,121 @@ class DescribeClusterResourcesResponse(AbstractModel):
                 obj = ClusterResource()
                 obj._deserialize(item)
                 self.ClusterResourceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
+    """DescribeCustomizedConfigAssociateList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UconfigId: 配置ID\n        :type UconfigId: str\n        :param Offset: 拉取绑定关系列表开始位置，默认值 0\n        :type Offset: int\n        :param Limit: 拉取绑定关系列表数目，默认值 20\n        :type Limit: int\n        :param Domain: 搜索域名\n        :type Domain: str\n        """
+        self.UconfigId = None
+        self.Offset = None
+        self.Limit = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.UconfigId = params.get("UconfigId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomizedConfigAssociateListResponse(AbstractModel):
+    """DescribeCustomizedConfigAssociateList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BindList: 绑定关系列表\n        :type BindList: list of BindDetailItem\n        :param TotalCount: 绑定关系总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.BindList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BindList") is not None:
+            self.BindList = []
+            for item in params.get("BindList"):
+                obj = BindDetailItem()
+                obj._deserialize(item)
+                self.BindList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomizedConfigListRequest(AbstractModel):
+    """DescribeCustomizedConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigType: 配置类型:CLB 负载均衡维度。 SERVER 域名维度。 LOCATION 规则维度。\n        :type ConfigType: str\n        :param Offset: 拉取页偏移，默认值0\n        :type Offset: int\n        :param Limit: 拉取数目，默认值20\n        :type Limit: int\n        :param ConfigName: 拉取指定配置名字，模糊匹配。\n        :type ConfigName: str\n        :param UconfigIds: 配置ID\n        :type UconfigIds: list of str\n        :param Filters: 过滤条件如下：
+<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
+<li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>\n        :type Filters: list of Filter\n        """
+        self.ConfigType = None
+        self.Offset = None
+        self.Limit = None
+        self.ConfigName = None
+        self.UconfigIds = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ConfigType = params.get("ConfigType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ConfigName = params.get("ConfigName")
+        self.UconfigIds = params.get("UconfigIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomizedConfigListResponse(AbstractModel):
+    """DescribeCustomizedConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigList: 配置列表\n        :type ConfigList: list of ConfigListItem\n        :param TotalCount: 配置数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ConfigList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigList") is not None:
+            self.ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = ConfigListItem()
+                obj._deserialize(item)
+                self.ConfigList.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -4719,6 +4913,53 @@ class RuleTargets(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
+    """SetCustomizedConfigForLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OperationType: 操作类型：'ADD', 'DELETE', 'UPDATE', 'BIND', 'UNBIND'\n        :type OperationType: str\n        :param UconfigId: 除了创建个性化配置外，必传此字段，如：pz-1234abcd\n        :type UconfigId: str\n        :param ConfigContent: 创建个性化配置或修改个性化配置的内容时，必传此字段\n        :type ConfigContent: str\n        :param ConfigName: 创建个性化配置或修改个性化配置的名字时，必传此字段\n        :type ConfigName: str\n        :param LoadBalancerIds: 绑定解绑时，必传此字段\n        :type LoadBalancerIds: list of str\n        """
+        self.OperationType = None
+        self.UconfigId = None
+        self.ConfigContent = None
+        self.ConfigName = None
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.OperationType = params.get("OperationType")
+        self.UconfigId = params.get("UconfigId")
+        self.ConfigContent = params.get("ConfigContent")
+        self.ConfigName = params.get("ConfigName")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetCustomizedConfigForLoadBalancerResponse(AbstractModel):
+    """SetCustomizedConfigForLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 个性化配置ID，如：pz-1234abcd\n        :type ConfigId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ConfigId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
 
 
 class SetLoadBalancerClsLogRequest(AbstractModel):

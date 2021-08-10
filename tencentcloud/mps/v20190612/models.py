@@ -7046,16 +7046,19 @@ class MediaAudioStreamItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Bitrate: 音频流的码率，单位：bps。\n        :type Bitrate: int\n        :param SamplingRate: 音频流的采样率，单位：hz。\n        :type SamplingRate: int\n        :param Codec: 音频流的编码格式，例如 aac。\n        :type Codec: str\n        """
+        :param Bitrate: 音频流的码率，单位：bps。\n        :type Bitrate: int\n        :param SamplingRate: 音频流的采样率，单位：hz。\n        :type SamplingRate: int\n        :param Codec: 音频流的编码格式，例如 aac。\n        :type Codec: str\n        :param Channel: 音频声道数，例如 2。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Channel: int\n        """
         self.Bitrate = None
         self.SamplingRate = None
         self.Codec = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
         self.Bitrate = params.get("Bitrate")
         self.SamplingRate = params.get("SamplingRate")
         self.Codec = params.get("Codec")
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7863,12 +7866,18 @@ class MediaVideoStreamItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Bitrate: 视频流的码率，单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流的高度，单位：px。\n        :type Height: int\n        :param Width: 视频流的宽度，单位：px。\n        :type Width: int\n        :param Codec: 视频流的编码格式，例如 h264。\n        :type Codec: str\n        :param Fps: 帧率，单位：hz。\n        :type Fps: int\n        """
+        :param Bitrate: 视频流的码率，单位：bps。\n        :type Bitrate: int\n        :param Height: 视频流的高度，单位：px。\n        :type Height: int\n        :param Width: 视频流的宽度，单位：px。\n        :type Width: int\n        :param Codec: 视频流的编码格式，例如 h264。\n        :type Codec: str\n        :param Fps: 帧率，单位：hz。\n        :type Fps: int\n        :param ColorPrimaries: 色彩空间。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ColorPrimaries: str\n        :param ColorSpace: 色彩空间。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ColorSpace: str\n        :param ColorTransfer: 色彩空间。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ColorTransfer: str\n        """
         self.Bitrate = None
         self.Height = None
         self.Width = None
         self.Codec = None
         self.Fps = None
+        self.ColorPrimaries = None
+        self.ColorSpace = None
+        self.ColorTransfer = None
 
 
     def _deserialize(self, params):
@@ -7877,6 +7886,9 @@ class MediaVideoStreamItem(AbstractModel):
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+        self.ColorPrimaries = params.get("ColorPrimaries")
+        self.ColorSpace = params.get("ColorSpace")
+        self.ColorTransfer = params.get("ColorTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

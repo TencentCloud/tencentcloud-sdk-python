@@ -59,6 +59,109 @@ class BindStaffSkillGroupListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CallInMetrics(AbstractModel):
+    """呼入实时指标
+
+    """
+
+    def __init__(self):
+        """
+        :param IvrCount: IVR驻留数量\n        :type IvrCount: int\n        :param QueueCount: 排队中数量\n        :type QueueCount: int\n        :param RingCount: 振铃中数量\n        :type RingCount: int\n        :param AcceptCount: 接通中数量\n        :type AcceptCount: int\n        :param TransferOuterCount: 客服转接外线中数量\n        :type TransferOuterCount: int\n        :param MaxQueueDuration: 最大排队时长\n        :type MaxQueueDuration: int\n        :param AvgQueueDuration: 平均排队时长\n        :type AvgQueueDuration: int\n        :param MaxRingDuration: 最大振铃时长\n        :type MaxRingDuration: int\n        :param AvgRingDuration: 平均振铃时长\n        :type AvgRingDuration: int\n        :param MaxAcceptDuration: 最大接通时长\n        :type MaxAcceptDuration: int\n        :param AvgAcceptDuration: 平均接通时长\n        :type AvgAcceptDuration: int\n        """
+        self.IvrCount = None
+        self.QueueCount = None
+        self.RingCount = None
+        self.AcceptCount = None
+        self.TransferOuterCount = None
+        self.MaxQueueDuration = None
+        self.AvgQueueDuration = None
+        self.MaxRingDuration = None
+        self.AvgRingDuration = None
+        self.MaxAcceptDuration = None
+        self.AvgAcceptDuration = None
+
+
+    def _deserialize(self, params):
+        self.IvrCount = params.get("IvrCount")
+        self.QueueCount = params.get("QueueCount")
+        self.RingCount = params.get("RingCount")
+        self.AcceptCount = params.get("AcceptCount")
+        self.TransferOuterCount = params.get("TransferOuterCount")
+        self.MaxQueueDuration = params.get("MaxQueueDuration")
+        self.AvgQueueDuration = params.get("AvgQueueDuration")
+        self.MaxRingDuration = params.get("MaxRingDuration")
+        self.AvgRingDuration = params.get("AvgRingDuration")
+        self.MaxAcceptDuration = params.get("MaxAcceptDuration")
+        self.AvgAcceptDuration = params.get("AvgAcceptDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallInNumberMetrics(AbstractModel):
+    """呼入线路维度相关指标
+
+    """
+
+    def __init__(self):
+        """
+        :param Number: 线路号码\n        :type Number: str\n        :param Metrics: 线路相关指标\n        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`\n        :param SkillGroupMetrics: 所属技能组相关指标\n        :type SkillGroupMetrics: list of CallInSkillGroupMetrics\n        """
+        self.Number = None
+        self.Metrics = None
+        self.SkillGroupMetrics = None
+
+
+    def _deserialize(self, params):
+        self.Number = params.get("Number")
+        if params.get("Metrics") is not None:
+            self.Metrics = CallInMetrics()
+            self.Metrics._deserialize(params.get("Metrics"))
+        if params.get("SkillGroupMetrics") is not None:
+            self.SkillGroupMetrics = []
+            for item in params.get("SkillGroupMetrics"):
+                obj = CallInSkillGroupMetrics()
+                obj._deserialize(item)
+                self.SkillGroupMetrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallInSkillGroupMetrics(AbstractModel):
+    """呼入技能组相关指标
+
+    """
+
+    def __init__(self):
+        """
+        :param SkillGroupId: 技能组ID\n        :type SkillGroupId: int\n        :param Metrics: 数据指标\n        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`\n        :param Name: 技能组名称\n        :type Name: str\n        """
+        self.SkillGroupId = None
+        self.Metrics = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.SkillGroupId = params.get("SkillGroupId")
+        if params.get("Metrics") is not None:
+            self.Metrics = CallInMetrics()
+            self.Metrics._deserialize(params.get("Metrics"))
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateSDKLoginTokenRequest(AbstractModel):
     """CreateSDKLoginToken请求参数结构体
 
@@ -240,6 +343,69 @@ class DeleteStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.OnlineStaffList = params.get("OnlineStaffList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCallInMetricsRequest(AbstractModel):
+    """DescribeCallInMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param EnabledSkillGroup: 是否返回技能组维度信息，默认“是”\n        :type EnabledSkillGroup: bool\n        :param EnabledNumber: 是否返回线路维度信息，默认“否”\n        :type EnabledNumber: bool\n        """
+        self.SdkAppId = None
+        self.EnabledSkillGroup = None
+        self.EnabledNumber = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.EnabledSkillGroup = params.get("EnabledSkillGroup")
+        self.EnabledNumber = params.get("EnabledNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCallInMetricsResponse(AbstractModel):
+    """DescribeCallInMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: 时间戳\n        :type Timestamp: int\n        :param TotalMetrics: 总体指标\n        :type TotalMetrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`\n        :param NumberMetrics: 线路维度指标
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NumberMetrics: list of CallInNumberMetrics\n        :param SkillGroupMetrics: 技能组维度指标
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupMetrics: list of CallInSkillGroupMetrics\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Timestamp = None
+        self.TotalMetrics = None
+        self.NumberMetrics = None
+        self.SkillGroupMetrics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        if params.get("TotalMetrics") is not None:
+            self.TotalMetrics = CallInMetrics()
+            self.TotalMetrics._deserialize(params.get("TotalMetrics"))
+        if params.get("NumberMetrics") is not None:
+            self.NumberMetrics = []
+            for item in params.get("NumberMetrics"):
+                obj = CallInNumberMetrics()
+                obj._deserialize(item)
+                self.NumberMetrics.append(obj)
+        if params.get("SkillGroupMetrics") is not None:
+            self.SkillGroupMetrics = []
+            for item in params.get("SkillGroupMetrics"):
+                obj = CallInSkillGroupMetrics()
+                obj._deserialize(item)
+                self.SkillGroupMetrics.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -562,6 +728,52 @@ class DescribeStaffInfoListResponse(AbstractModel):
                 obj = StaffInfo()
                 obj._deserialize(item)
                 self.StaffList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStaffStatusMetricsRequest(AbstractModel):
+    """DescribeStaffStatusMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param StaffList: 筛选坐席列表，默认不传返回全部坐席信息\n        :type StaffList: list of str\n        """
+        self.SdkAppId = None
+        self.StaffList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffList = params.get("StaffList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStaffStatusMetricsResponse(AbstractModel):
+    """DescribeStaffStatusMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Metrics: 坐席状态实时信息\n        :type Metrics: list of StaffStatusMetrics\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Metrics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = StaffStatusMetrics()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1156,6 +1368,76 @@ class StaffInfo(AbstractModel):
                 obj._deserialize(item)
                 self.SkillGroupList.append(obj)
         self.LastModifyTimestamp = params.get("LastModifyTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffStatusExtra(AbstractModel):
+    """坐席状态补充信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: im - 文本 | tel - 电话 | all - 全媒体\n        :type Type: str\n        :param Direct: in - 呼入 | out - 呼出\n        :type Direct: str\n        """
+        self.Type = None
+        self.Direct = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Direct = params.get("Direct")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffStatusMetrics(AbstractModel):
+    """坐席状态相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Email: 坐席邮箱\n        :type Email: str\n        :param Status: 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线\n        :type Status: str\n        :param StatusExtra: 坐席状态补充信息\n        :type StatusExtra: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`\n        :param OnlineDuration: 当天在线总时长\n        :type OnlineDuration: int\n        :param FreeDuration: 当天示闲总时长\n        :type FreeDuration: int\n        :param BusyDuration: 当天忙碌总时长\n        :type BusyDuration: int\n        :param NotReadyDuration: 当天示忙总时长\n        :type NotReadyDuration: int\n        :param RestDuration: 当天小休总时长\n        :type RestDuration: int\n        :param AfterCallWorkDuration: 当天话后调整总时长\n        :type AfterCallWorkDuration: int\n        :param Reason: 小休原因\n        :type Reason: str\n        :param ReserveRest: 是否预约小休\n        :type ReserveRest: bool\n        :param ReserveNotReady: 是否预约示忙\n        :type ReserveNotReady: bool\n        """
+        self.Email = None
+        self.Status = None
+        self.StatusExtra = None
+        self.OnlineDuration = None
+        self.FreeDuration = None
+        self.BusyDuration = None
+        self.NotReadyDuration = None
+        self.RestDuration = None
+        self.AfterCallWorkDuration = None
+        self.Reason = None
+        self.ReserveRest = None
+        self.ReserveNotReady = None
+
+
+    def _deserialize(self, params):
+        self.Email = params.get("Email")
+        self.Status = params.get("Status")
+        if params.get("StatusExtra") is not None:
+            self.StatusExtra = StaffStatusExtra()
+            self.StatusExtra._deserialize(params.get("StatusExtra"))
+        self.OnlineDuration = params.get("OnlineDuration")
+        self.FreeDuration = params.get("FreeDuration")
+        self.BusyDuration = params.get("BusyDuration")
+        self.NotReadyDuration = params.get("NotReadyDuration")
+        self.RestDuration = params.get("RestDuration")
+        self.AfterCallWorkDuration = params.get("AfterCallWorkDuration")
+        self.Reason = params.get("Reason")
+        self.ReserveRest = params.get("ReserveRest")
+        self.ReserveNotReady = params.get("ReserveNotReady")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1518,6 +1518,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryDownloadBillURL(self, request):
+        """云鉴-查询对账单下载地址的接口
+
+        :param request: Request instance for QueryDownloadBillURL.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryDownloadBillURLRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryDownloadBillURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryDownloadBillURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryDownloadBillURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryExchangeRate(self, request):
         """跨境-查询汇率
 

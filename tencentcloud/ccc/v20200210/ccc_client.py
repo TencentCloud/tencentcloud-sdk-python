@@ -166,6 +166,34 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCallInMetrics(self, request):
+        """获取呼入实时数据统计指标
+
+        :param request: Request instance for DescribeCallInMetrics.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCallInMetricsRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeCallInMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCallInMetrics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCallInMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeChatMessages(self, request):
         """包括具体聊天内容
 
@@ -322,6 +350,34 @@ class CccClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStaffInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStaffStatusMetrics(self, request):
+        """获取坐席实时状态统计指标
+
+        :param request: Request instance for DescribeStaffStatusMetrics.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusMetricsRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStaffStatusMetrics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStaffStatusMetricsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

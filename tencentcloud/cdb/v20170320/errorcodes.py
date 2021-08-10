@@ -35,6 +35,9 @@ CDBERROR_TASKERROR = 'CdbError.TaskError'
 # 异步任务状态异常。
 FAILEDOPERATION_ASYNCTASKSTATUSERROR = 'FailedOperation.AsyncTaskStatusError'
 
+# 实例互斥操作锁定失败,请稍后重试。
+FAILEDOPERATION_CDBINSTANCELOCKFAILERROR = 'FailedOperation.CdbInstanceLockFailError'
+
 # 创建失败，请检查用户是否已存在。
 FAILEDOPERATION_CREATEACCOUNTERROR = 'FailedOperation.CreateAccountError'
 
@@ -47,8 +50,14 @@ FAILEDOPERATION_CREATEROVIPERROR = 'FailedOperation.CreateRoVipError'
 # 数据库操作失败。
 FAILEDOPERATION_DBOPERATIONACTIONERROR = 'FailedOperation.DBOperationActionError'
 
+# 删除审计失败。
+FAILEDOPERATION_DELETEAUDITFAILERROR = 'FailedOperation.DeleteAuditFailError'
+
 # 获取权限错误。
 FAILEDOPERATION_GETPRIVILEGEERROR = 'FailedOperation.GetPrivilegeError'
+
+# 查询失败。
+FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
 # json反序列化失败。
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
@@ -224,6 +233,9 @@ INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundE
 # 置放群组下存在资源。
 INVALIDPARAMETER_DEPLOYGROUPNOTEMPTY = 'InvalidParameter.DeployGroupNotEmpty'
 
+# 异常参数。
+INVALIDPARAMETER_EXCEPTIONPARAM = 'InvalidParameter.ExceptionParam'
+
 # 未找到该实例。
 INVALIDPARAMETER_INSTANCENAMENOTFOUND = 'InvalidParameter.InstanceNameNotFound'
 
@@ -368,6 +380,9 @@ OPERATIONDENIED_DELETEROOTACCOUNTERROR = 'OperationDenied.DeleteRootAccountError
 # 该实例无此功能权限。
 OPERATIONDENIED_FUNCTIONDENIED = 'OperationDenied.FunctionDenied'
 
+# 实例锁冲突，请稍后重试。
+OPERATIONDENIED_INSTANCELOCKERCONFLICT = 'OperationDenied.InstanceLockerConflict'
+
 # 实例状态异常。
 OPERATIONDENIED_INSTANCESTATUSERROR = 'OperationDenied.InstanceStatusError'
 
@@ -380,6 +395,9 @@ OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = 'OperationDenied.InstanceUnsup
 # 修改审计状态失败。
 OPERATIONDENIED_MODIFYAUDITSTATUSERROR = 'OperationDenied.ModifyAuditStatusError'
 
+# 基础版实例不支持当前操作（功能）。
+OPERATIONDENIED_NOTSUPPORTBASIC = 'OperationDenied.NotSupportBasic'
+
 # 不支持修改本地root账号host信息。
 OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = 'OperationDenied.NotSupportModifyLocalRootHostError'
 
@@ -388,6 +406,9 @@ OPERATIONDENIED_OTHERODERINPROCESS = 'OperationDenied.OtherOderInProcess'
 
 # 资源配额超限。
 OPERATIONDENIED_OVERQUOTA = 'OperationDenied.OverQuota'
+
+# 结果集超过限制，请缩小检索范围。
+OPERATIONDENIED_RESULTOVERLIMIT = 'OperationDenied.ResultOverLimit'
 
 # 腾讯云子账号权限不足，不允许执行当前操作。
 OPERATIONDENIED_SUBACCOUNTOPERATIONDENIED = 'OperationDenied.SubAccountOperationDenied'

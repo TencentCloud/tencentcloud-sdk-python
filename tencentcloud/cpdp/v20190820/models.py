@@ -5147,6 +5147,51 @@ class QueryDeclareResult(AbstractModel):
         
 
 
+class QueryDownloadBillURLRequest(AbstractModel):
+    """QueryDownloadBillURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 分配给商户的AppId。进件成功后返给商户方的AppId。\n        :type MerchantAppId: str\n        :param ChannelCode: 渠道编号。固定值：ZSB2B\n        :type ChannelCode: str\n        :param BillDate: 对账单日期，格式yyyyMMdd\n        :type BillDate: str\n        """
+        self.MerchantAppId = None
+        self.ChannelCode = None
+        self.BillDate = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.ChannelCode = params.get("ChannelCode")
+        self.BillDate = params.get("BillDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryDownloadBillURLResponse(AbstractModel):
+    """QueryDownloadBillURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 分配给商户的AppId。进件成功后返给商户方的AppId。\n        :type MerchantAppId: str\n        :param DownloadUrl: 对账单下载地址。\n        :type DownloadUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.MerchantAppId = None
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class QueryExchangeRateRequest(AbstractModel):
     """QueryExchangeRate请求参数结构体
 
