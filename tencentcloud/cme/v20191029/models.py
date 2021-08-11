@@ -199,7 +199,16 @@ class AudioTrackItem(AbstractModel):
 <li>VOD ：素材来源于云点播文件 ；</li>
 <li>CME ：视频来源于制作云媒体文件 ；</li>
 <li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
-</ul>\n        :type SourceType: str\n        :param SourceMedia: 注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉<code> 'https://' </code>；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉<code> 'http://'</code>。\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 音频片段的时长，单位为秒。默认和媒体本身长度一致，表示截取全部媒体。\n        :type Duration: float\n        """
+</ul>\n        :type SourceType: str\n        :param SourceMedia: 音频媒体，可取值为：
+<ul>
+<li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
+<li>当 SourceType 为 CME 时，参数填云剪媒体 Id；</li>
+<li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp3`)，参数填写规则请参见注意事项。</li>
+</ul>
+
+注意：
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `https` 时(如：`https://www.example.com/a.mp3`)，参数为：`1000000:www.example.com/a.mp3`。</li>
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `http` 时(如：`http://www.example.com/b.mp3`)，参数为：`1000001:www.example.com/b.mp3`。</li>\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 音频片段的时长，单位为秒。默认和媒体本身长度一致，表示截取全部媒体。\n        :type Duration: float\n        """
         self.SourceType = None
         self.SourceMedia = None
         self.SourceMediaStartTime = None
@@ -1989,7 +1998,8 @@ class ExternalMediaInfo(AbstractModel):
 <li>1000000：媒体文件为 URL，且 URL Scheme 为 https；</li>
 <li>1000001：媒体文件为 URL，且 URL Scheme 为 http。</li>
 
-注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。\n        :type Definition: int\n        :param MediaKey: 媒资绑定媒体路径或文件 ID，如果要绑定 URL 类型的媒体，请将 URL 的 <code> 'https://' </code>或者<code> 'http://' </code>去掉。\n        :type MediaKey: str\n        """
+注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。\n        :type Definition: int\n        :param MediaKey: 媒资绑定媒体路径或文件 ID。如果要绑定 URL 类型的媒体，请将 URL 的 <code>'https://'</code> 或者 <code>'http://'</code> 去掉，例如：
+原始媒体 URL 为 `https://www.example.com/a.mp4`，则 MediaKey 为 `www.example.com/a.mp4`。\n        :type MediaKey: str\n        """
         self.Definition = None
         self.MediaKey = None
 
@@ -4648,7 +4658,16 @@ class VideoTrackItem(AbstractModel):
 <li>VOD ：媒体来源于云点播文件 。</li>
 <li>CME ：视频来源制作云媒体文件。</li>
 <li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
-</ul>\n        :type SourceType: str\n        :param SourceMedia: 注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉<code> 'https://' </code>；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉<code> 'http://'</code>。\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 视频片段取自媒体文件的起始时间，单位为秒。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 视频片段时长，单位为秒。默认取视频媒体文件本身长度，表示截取全部媒体文件。如果源文件是图片，Duration需要大于0。\n        :type Duration: float\n        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+</ul>\n        :type SourceType: str\n        :param SourceMedia: 视频媒体，可取值为：
+<ul>
+<li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
+<li>当 SourceType 为 CME 时，参数填云剪媒体 Id；</li>
+<li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp4`)，参数填写规则请参见注意事项。</li>
+</ul>
+
+注意：
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `https` 时(如：`https://www.example.com/a.mp4`)，参数为：`1000000:www.example.com/a.mp4`。</li>
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `http` 时(如：`http://www.example.com/b.mp4`)，参数为：`1000001:www.example.com/b.mp4`。</li>\n        :type SourceMedia: str\n        :param SourceMediaStartTime: 视频片段取自媒体文件的起始时间，单位为秒。默认为0。\n        :type SourceMediaStartTime: float\n        :param Duration: 视频片段时长，单位为秒。默认取视频媒体文件本身长度，表示截取全部媒体文件。如果源文件是图片，Duration需要大于0。\n        :type Duration: float\n        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
 <li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
 默认值：0px。\n        :type XPos: str\n        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：

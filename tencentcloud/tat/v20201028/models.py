@@ -619,9 +619,10 @@ class InvocationTask(AbstractModel):
 <li> DELIVERING：下发中
 <li> DELIVER_DELAYED：延时下发 
 <li> DELIVER_FAILED：下发失败
+<li> START_FAILED：命令启动失败
 <li> RUNNING：命令运行中
 <li> SUCCESS：命令成功
-<li> FAILED：命令失败
+<li> FAILED：命令执行失败，执行完退出码不为 0
 <li> TIMEOUT：命令超时
 <li> TASK_TIMEOUT：执行任务超时\n        :type TaskStatus: str\n        :param InstanceId: 实例ID。\n        :type InstanceId: str\n        :param TaskResult: 执行结果。\n        :type TaskResult: :class:`tencentcloud.tat.v20201028.models.TaskResult`\n        :param StartTime: 执行任务开始时间。\n        :type StartTime: str\n        :param EndTime: 执行任务结束时间。\n        :type EndTime: str\n        :param CreatedTime: 创建时间。\n        :type CreatedTime: str\n        :param UpdatedTime: 更新时间。\n        :type UpdatedTime: str\n        :param CommandDocument: 执行任务所执行的命令详情。\n        :type CommandDocument: :class:`tencentcloud.tat.v20201028.models.CommandDocument`\n        :param ErrorInfo: 执行任务失败时的错误信息。\n        :type ErrorInfo: str\n        :param InvocationSource: 调用来源。\n        :type InvocationSource: str\n        """
         self.InvocationId = None

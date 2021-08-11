@@ -430,6 +430,67 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckIdNameDateRequest(AbstractModel):
+    """CheckIdNameDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 姓名\n        :type Name: str\n        :param IdCard: 身份证号\n        :type IdCard: str\n        :param ValidityBegin: 身份证有效期开始时间，格式：YYYYMMDD。如：20210701\n        :type ValidityBegin: str\n        :param ValidityEnd: 身份证有效期到期时间，格式：YYYYMMDD，长期用“00000000”代替；如：20210701\n        :type ValidityEnd: str\n        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。\n        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`\n        """
+        self.Name = None
+        self.IdCard = None
+        self.ValidityBegin = None
+        self.ValidityEnd = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.IdCard = params.get("IdCard")
+        self.ValidityBegin = params.get("ValidityBegin")
+        self.ValidityEnd = params.get("ValidityEnd")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckIdNameDateResponse(AbstractModel):
+    """CheckIdNameDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 一致
+-1: 不一致
+不收费结果码：
+-2: 非法身份证号（长度、校验位等不正确）
+-3: 非法姓名（长度、格式等不正确）
+-4: 非法有效期（长度、格式等不正确）
+-5: 身份信息无效
+-6: 证件库服务异常
+-7: 证件库中无此身份证记录\n        :type Result: str\n        :param Description: 业务结果描述。\n        :type Description: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class CheckPhoneAndNameRequest(AbstractModel):
     """CheckPhoneAndName请求参数结构体
 

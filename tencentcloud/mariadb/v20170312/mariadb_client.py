@@ -1380,6 +1380,39 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRealServerAccessStrategy(self, request):
+        """本接口(ModifyRealServerAccessStrategy)用于修改云数据库的VPCGW到RS的访问策略。
+
+        **注意**
+        - 修改策略后只对新建立的连接生效，老连接不受影响
+        - 就近访问只针对实例是跨可用区部署有用，单可用区部署实例就近与否并无作用
+        - DB每个Node对应一个proxy，如果开启就近访问，将会把连接集中到对应可用区的proxy上，可能造成热点问题，这种情况下如果是线上业务，请务必根据自己的业务请求量测试符合预期后再进行就近策略变更
+
+        :param request: Request instance for ModifyRealServerAccessStrategy.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyRealServerAccessStrategyRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyRealServerAccessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRealServerAccessStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRealServerAccessStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OpenDBExtranetAccess(self, request):
         """本接口（OpenDBExtranetAccess）用于开通云数据库实例的外网访问。开通外网访问后，您可通过外网域名和端口访问实例，可使用查询实例列表接口获取外网域名和端口信息。
 

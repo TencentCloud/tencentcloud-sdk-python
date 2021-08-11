@@ -121,7 +121,7 @@ class BGPIPInstance(AbstractModel):
 注意：当资产实例不是套餐包的实例时，此字段为null
 注意：此字段可能返回 null，表示取不到有效值。\n        :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`\n        :param StaticPackRelation: 资产实例所属的三网套餐包详情，
 注意：当资产实例不是三网套餐包的实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`\n        :param ZoneId: 区分高防IP海外线路
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`\n        :param ZoneId: 区分高防IP境外线路
 注意：此字段可能返回 null，表示取不到有效值。\n        :type ZoneId: int\n        :param Tgw: 区分集群
 注意：此字段可能返回 null，表示取不到有效值。\n        :type Tgw: int\n        :param EipAddressStatus: 高防弹性公网IP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)。只对高防弹性公网IP实例有效。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressStatus: str\n        :param EipFlag: 是否高防弹性公网IP实例，是为1，否为0。
@@ -129,7 +129,8 @@ class BGPIPInstance(AbstractModel):
 注意：当资产实例不是高防弹性公网IP套餐包的实例时，此字段为null
 注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressPackRelation: :class:`tencentcloud.antiddos.v20200309.models.EipAddressPackRelation`\n        :param EipAddressInfo: 高防弹性公网IP关联的实例信息。
 注意：当资产实例不是高防弹性公网IP实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`\n        :param Domain: 建议客户接入的域名，客户可使用域名接入。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        """
         self.InstanceDetail = None
         self.SpecificationLimit = None
         self.Usage = None
@@ -146,6 +147,7 @@ class BGPIPInstance(AbstractModel):
         self.EipFlag = None
         self.EipAddressPackRelation = None
         self.EipAddressInfo = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -181,6 +183,7 @@ class BGPIPInstance(AbstractModel):
         if params.get("EipAddressInfo") is not None:
             self.EipAddressInfo = EipAddressRelation()
             self.EipAddressInfo._deserialize(params.get("EipAddressInfo"))
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -197,7 +200,7 @@ class BGPIPInstanceSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ProtectBandwidth: 保底防护峰值，单位Gbps\n        :type ProtectBandwidth: int\n        :param ProtectCCQPS: CC防护峰值，单位qps\n        :type ProtectCCQPS: int\n        :param NormalBandwidth: 正常业务带宽，单位Mbps\n        :type NormalBandwidth: int\n        :param ForwardRulesLimit: 转发规则数，单位条\n        :type ForwardRulesLimit: int\n        :param AutoRenewFlag: 自动续费状态，取值[
+        :param ProtectBandwidth: 保底防护峰值，单位Mbps\n        :type ProtectBandwidth: int\n        :param ProtectCCQPS: CC防护峰值，单位qps\n        :type ProtectCCQPS: int\n        :param NormalBandwidth: 正常业务带宽，单位Mbps\n        :type NormalBandwidth: int\n        :param ForwardRulesLimit: 转发规则数，单位条\n        :type ForwardRulesLimit: int\n        :param AutoRenewFlag: 自动续费状态，取值[
 0：没有开启自动续费
 1：开启了自动续费
 ]\n        :type AutoRenewFlag: int\n        :param Line: 高防IP线路，取值为[
@@ -206,7 +209,7 @@ class BGPIPInstanceSpecification(AbstractModel):
 3：联通
 4：移动
 99：第三方合作线路
-]\n        :type Line: int\n        :param ElasticBandwidth: 弹性防护峰值，单位Gbps\n        :type ElasticBandwidth: int\n        """
+]\n        :type Line: int\n        :param ElasticBandwidth: 弹性防护峰值，单位Mbps\n        :type ElasticBandwidth: int\n        """
         self.ProtectBandwidth = None
         self.ProtectCCQPS = None
         self.NormalBandwidth = None

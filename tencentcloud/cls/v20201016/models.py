@@ -234,6 +234,101 @@ class ApplyConfigToMachineGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AsyncContextTask(AbstractModel):
+    """异步上下文任务
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param CreateTime: 创建时间，时间戳，精确到毫秒\n        :type CreateTime: int\n        :param Status: 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败\n        :type Status: int\n        :param AsyncContextTaskId: 异步上下文任务ID\n        :type AsyncContextTaskId: str\n        :param ErrorMessage: 任务失败的错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param PkgId: 日志包序号
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PkgId: str\n        :param PkgLogId: 日志包内一条日志的序号
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PkgLogId: str\n        :param Time: 日志时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Time: int\n        :param FinishTime: 任务完成时间，时间戳，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FinishTime: int\n        :param AsyncSearchTaskId: 相关联的异步检索ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsyncSearchTaskId: str\n        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.CreateTime = None
+        self.Status = None
+        self.AsyncContextTaskId = None
+        self.ErrorMessage = None
+        self.PkgId = None
+        self.PkgLogId = None
+        self.Time = None
+        self.FinishTime = None
+        self.AsyncSearchTaskId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.PkgId = params.get("PkgId")
+        self.PkgLogId = params.get("PkgLogId")
+        self.Time = params.get("Time")
+        self.FinishTime = params.get("FinishTime")
+        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsyncSearchTask(AbstractModel):
+    """异步检索任务
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Status: 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败\n        :type Status: int\n        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        :param Query: 查询语句\n        :type Query: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Sort: 日志扫描顺序，可选值：asc(升序)、desc(降序)\n        :type Sort: str\n        :param ErrorMessage: 任务失败的错误信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param LogCount: 异步检索任务匹配的总日志条数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LogCount: int\n        :param FinishTime: 任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FinishTime: str\n        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.CreateTime = None
+        self.Status = None
+        self.AsyncSearchTaskId = None
+        self.Query = None
+        self.From = None
+        self.To = None
+        self.Sort = None
+        self.ErrorMessage = None
+        self.LogCount = None
+        self.FinishTime = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
+        self.Query = params.get("Query")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Sort = params.get("Sort")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.LogCount = params.get("LogCount")
+        self.FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallBackInfo(AbstractModel):
     """回调配置
 
@@ -479,6 +574,102 @@ class CreateAlarmResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AlarmId = params.get("AlarmId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAsyncContextTaskRequest(AbstractModel):
+    """CreateAsyncContextTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Time: 日志时间，单位ms\n        :type Time: int\n        :param PkgId: 日志包序号\n        :type PkgId: str\n        :param PkgLogId: 日志包内一条日志的序号\n        :type PkgLogId: str\n        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        """
+        self.TopicId = None
+        self.Time = None
+        self.PkgId = None
+        self.PkgLogId = None
+        self.LogsetId = None
+        self.AsyncSearchTaskId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Time = params.get("Time")
+        self.PkgId = params.get("PkgId")
+        self.PkgLogId = params.get("PkgLogId")
+        self.LogsetId = params.get("LogsetId")
+        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAsyncContextTaskResponse(AbstractModel):
+    """CreateAsyncContextTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncContextTaskId: 异步上下文任务ID\n        :type AsyncContextTaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.AsyncContextTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAsyncSearchTaskRequest(AbstractModel):
+    """CreateAsyncSearchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID，目前仅支持StorageType为cold的日志主题\n        :type TopicId: str\n        :param Query: 查询语句，语句长度最大为1024\n        :type Query: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Sort: 日志扫描顺序；可选值：asc(升序)、desc(降序)，默认为 desc\n        :type Sort: str\n        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.Query = None
+        self.From = None
+        self.To = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.Query = params.get("Query")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAsyncSearchTaskResponse(AbstractModel):
+    """CreateAsyncSearchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -965,6 +1156,84 @@ class DeleteAlarmResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAsyncContextTaskRequest(AbstractModel):
+    """DeleteAsyncContextTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param AsyncContextTaskId: 异步上下文任务ID\n        :type AsyncContextTaskId: str\n        """
+        self.TopicId = None
+        self.AsyncContextTaskId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAsyncContextTaskResponse(AbstractModel):
+    """DeleteAsyncContextTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAsyncSearchTaskRequest(AbstractModel):
+    """DeleteAsyncSearchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        """
+        self.AsyncSearchTaskId = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAsyncSearchTaskResponse(AbstractModel):
+    """DeleteAsyncSearchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteConfigFromMachineGroupRequest(AbstractModel):
     """DeleteConfigFromMachineGroup请求参数结构体
 
@@ -1430,6 +1699,262 @@ class DescribeAlarmsResponse(AbstractModel):
                 obj = AlarmInfo()
                 obj._deserialize(item)
                 self.Alarms.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAsyncContextResultRequest(AbstractModel):
+    """DescribeAsyncContextResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncContextTaskId: 异步检索任务ID\n        :type AsyncContextTaskId: str\n        :param PkgId: 日志包序号\n        :type PkgId: str\n        :param PkgLogId: 日志在日志包内的序号\n        :type PkgLogId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param PrevLogs: 上文日志条数，默认值10\n        :type PrevLogs: int\n        :param NextLogs: 下文日志条数，默认值10\n        :type NextLogs: int\n        """
+        self.AsyncContextTaskId = None
+        self.PkgId = None
+        self.PkgLogId = None
+        self.TopicId = None
+        self.PrevLogs = None
+        self.NextLogs = None
+
+
+    def _deserialize(self, params):
+        self.AsyncContextTaskId = params.get("AsyncContextTaskId")
+        self.PkgId = params.get("PkgId")
+        self.PkgLogId = params.get("PkgLogId")
+        self.TopicId = params.get("TopicId")
+        self.PrevLogs = params.get("PrevLogs")
+        self.NextLogs = params.get("NextLogs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsyncContextResultResponse(AbstractModel):
+    """DescribeAsyncContextResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PrevOver: 上文日志是否已经返回\n        :type PrevOver: bool\n        :param NextOver: 下文日志是否已经返回\n        :type NextOver: bool\n        :param Results: 日志内容\n        :type Results: list of LogInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.PrevOver = None
+        self.NextOver = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PrevOver = params.get("PrevOver")
+        self.NextOver = params.get("NextOver")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = LogInfo()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAsyncContextTasksRequest(AbstractModel):
+    """DescribeAsyncContextTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100\n        :type Limit: int\n        :param Filters: <br><li> topicId
+
+按照【日志主题ID】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> logsetId
+
+按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。
+
+类型：String
+
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5\n        :type Filters: list of Filter\n        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsyncContextTasksResponse(AbstractModel):
+    """DescribeAsyncContextTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncContextTasks: 异步上下文任务列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsyncContextTasks: list of AsyncContextTask\n        :param TotalCount: 异步上下文任务的总数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.AsyncContextTasks = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsyncContextTasks") is not None:
+            self.AsyncContextTasks = []
+            for item in params.get("AsyncContextTasks"):
+                obj = AsyncContextTask()
+                obj._deserialize(item)
+                self.AsyncContextTasks.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAsyncSearchResultRequest(AbstractModel):
+    """DescribeAsyncSearchResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        :param TopicId: 日志集ID\n        :type TopicId: str\n        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容\n        :type Context: str\n        :param Limit: 单次调用返回的日志条数，默认为20，最大为500\n        :type Limit: int\n        """
+        self.AsyncSearchTaskId = None
+        self.TopicId = None
+        self.Context = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AsyncSearchTaskId = params.get("AsyncSearchTaskId")
+        self.TopicId = params.get("TopicId")
+        self.Context = params.get("Context")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsyncSearchResultResponse(AbstractModel):
+    """DescribeAsyncSearchResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Context: 加载后续内容的Context\n        :type Context: str\n        :param ListOver: 日志查询结果是否全部返回\n        :type ListOver: bool\n        :param Results: 日志内容\n        :type Results: list of LogInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Context = None
+        self.ListOver = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.ListOver = params.get("ListOver")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = LogInfo()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAsyncSearchTasksRequest(AbstractModel):
+    """DescribeAsyncSearchTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100\n        :type Limit: int\n        :param Filters: <br><li> topicId
+
+按照【日志主题ID】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> logsetId
+
+按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。
+
+类型：String
+
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5\n        :type Filters: list of Filter\n        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsyncSearchTasksResponse(AbstractModel):
+    """DescribeAsyncSearchTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncSearchTasks: 异步检索任务列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AsyncSearchTasks: list of AsyncSearchTask\n        :param TotalCount: 异步检索任务的总数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.AsyncSearchTasks = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsyncSearchTasks") is not None:
+            self.AsyncSearchTasks = []
+            for item in params.get("AsyncSearchTasks"):
+                obj = AsyncSearchTask()
+                obj._deserialize(item)
+                self.AsyncSearchTasks.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 

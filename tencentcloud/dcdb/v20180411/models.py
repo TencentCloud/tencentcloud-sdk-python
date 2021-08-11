@@ -2755,6 +2755,45 @@ class ModifyDBSyncModeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRealServerAccessStrategyRequest(AbstractModel):
+    """ModifyRealServerAccessStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：tdsqlshard-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。\n        :type InstanceId: str\n        :param RsAccessStrategy: RS就近模式, 0-无策略, 1-可用区就近访问。\n        :type RsAccessStrategy: int\n        """
+        self.InstanceId = None
+        self.RsAccessStrategy = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RsAccessStrategy = params.get("RsAccessStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRealServerAccessStrategyResponse(AbstractModel):
+    """ModifyRealServerAccessStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class OpenDBExtranetAccessRequest(AbstractModel):
     """OpenDBExtranetAccess请求参数结构体
 
