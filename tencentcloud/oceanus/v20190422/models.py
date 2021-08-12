@@ -96,13 +96,14 @@ class CreateJobRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名\n        :type Name: str\n        :param JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业\n        :type JobType: int\n        :param ClusterType: 集群的类型，1 表示共享集群，2 表示独享集群\n        :type ClusterType: int\n        :param ClusterId: 当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID\n        :type ClusterId: str\n        :param CuMem: 设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存\n        :type CuMem: int\n        :param Remark: 作业的备注信息，可以随意设置\n        :type Remark: str\n        """
+        :param Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名\n        :type Name: str\n        :param JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业\n        :type JobType: int\n        :param ClusterType: 集群的类型，1 表示共享集群，2 表示独享集群\n        :type ClusterType: int\n        :param ClusterId: 当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID\n        :type ClusterId: str\n        :param CuMem: 设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存\n        :type CuMem: int\n        :param Remark: 作业的备注信息，可以随意设置\n        :type Remark: str\n        :param FolderId: 作业名所属文件夹ID，根目录为"root"\n        :type FolderId: str\n        """
         self.Name = None
         self.JobType = None
         self.ClusterType = None
         self.ClusterId = None
         self.CuMem = None
         self.Remark = None
+        self.FolderId = None
 
 
     def _deserialize(self, params):
@@ -112,6 +113,7 @@ class CreateJobRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.CuMem = params.get("CuMem")
         self.Remark = params.get("Remark")
+        self.FolderId = params.get("FolderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

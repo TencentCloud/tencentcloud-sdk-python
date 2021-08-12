@@ -13,3 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# 创建服务失败。
+INTERNALERROR_CREATESERVICEERROR = 'InternalError.CreateServiceError'

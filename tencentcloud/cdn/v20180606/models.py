@@ -599,8 +599,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
 
 class AdvancedCache(AbstractModel):
-    """缓存过期配置高级版（功能灰度中，尚未全量）
-    注意：该版本不支持设置首页缓存规则
+    """缓存过期配置高级版，注意：此字段已经弃用，请使用RuleCache
 
     """
 
@@ -1192,15 +1191,15 @@ off：关闭
 
 
 class CacheKey(AbstractModel):
-    """缓存键配置（过滤参数配置）
+    """缓存键配置（忽略参数配置）
 
     """
 
     def __init__(self):
         """
         :param FullUrlCache: 是否开启全路径缓存
-on：开启全路径缓存（即关闭参数过滤）
-off：关闭全路径缓存（即开启参数过滤）\n        :type FullUrlCache: str\n        :param IgnoreCase: 是否忽略大小写缓存
+on：开启全路径缓存（即关闭参数忽略）
+off：关闭全路径缓存（即开启参数忽略）\n        :type FullUrlCache: str\n        :param IgnoreCase: 是否忽略大小写缓存
 注意：此字段可能返回 null，表示取不到有效值。\n        :type IgnoreCase: str\n        :param QueryString: CacheKey中包含请求参数
 注意：此字段可能返回 null，表示取不到有效值。\n        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.QueryStringKey`\n        :param Cookie: CacheKey中包含Cookie
 注意：此字段可能返回 null，表示取不到有效值。\n        :type Cookie: :class:`tencentcloud.cdn.v20180606.models.CookieKey`\n        :param Header: CacheKey中包含请求头部
@@ -2305,7 +2304,9 @@ statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 �
 4xx：返回 4xx 状态码汇总及各 4 开头状态码数据，单位为 个
 5xx：返回 5xx 状态码汇总及各 5 开头状态码数据，单位为 个
 支持指定具体状态码查询，若未产生过，则返回为空\n        :type Metric: str\n        :param Domains: 指定查询域名列表
-最多可一次性查询 30 个加速域名明细\n        :type Domains: list of str\n        :param Project: 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+查询单域名：指定单个域名
+查询多个域名：指定多个域名，最多可一次性查询 30 个
+查询账号下所有域名：不传参，默认查询账号维度\n        :type Domains: list of str\n        :param Project: 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主\n        :type Project: int\n        :param Interval: 时间粒度，支持以下几种模式：
 min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据（指定查询服务地域为中国境外时不支持 1 分钟粒度）
 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
@@ -4614,7 +4615,7 @@ class EnableClsLogTopicResponse(AbstractModel):
 
 
 class ErrorPage(AbstractModel):
-    """状态码重定向配置，默认为关闭状态（功能灰度中，尚未全量）
+    """状态码重定向配置，默认为关闭状态
 
     """
 
@@ -5268,8 +5269,8 @@ directory：指定路径生效
 path：指定绝对路径生效
 index：首页
 注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleType: str\n        :param FullUrlCache: 是否开启全路径缓存
-on：开启全路径缓存（即关闭参数过滤）
-off：关闭全路径缓存（即开启参数过滤）
+on：开启全路径缓存（即关闭参数忽略）
+off：关闭全路径缓存（即开启参数忽略）
 注意：此字段可能返回 null，表示取不到有效值。\n        :type FullUrlCache: str\n        :param IgnoreCase: 是否忽略大小写缓存
 注意：此字段可能返回 null，表示取不到有效值。\n        :type IgnoreCase: str\n        :param QueryString: CacheKey中包含请求参数
 注意：此字段可能返回 null，表示取不到有效值。\n        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.RuleQueryString`\n        :param RuleTag: 路径缓存键标签，传 user
@@ -5905,7 +5906,7 @@ class MapInfo(AbstractModel):
 
 
 class MaxAge(AbstractModel):
-    """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态（功能灰度中，尚未全量）
+    """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态
 
     """
 
@@ -7107,10 +7108,10 @@ class ResourceData(AbstractModel):
     def __init__(self):
         """
         :param Resource: 资源名称，根据查询条件不同分为以下几类：
-具体域名：表示该域名明细数据
-multiDomains：表示多域名汇总明细数据
-项目 ID：指定项目查询时，显示为项目 ID
-all：账号维度明细数据\n        :type Resource: str\n        :param CdnData: 资源对应的数据明细\n        :type CdnData: list of CdnData\n        """
+单域名：指定单域名查询，表示该域名明细数据，当传入参数 detail 指定为 true 时，显示该域名（ detail 参数默认为 false ）
+多域名：指定多个域名查询，表示多域名汇总明细数据，显示 multiDomains
+项目 ID：指定项目查询时，表示该项目下的域名汇总明细数据，显示该项目 ID
+all：账号维度明细数据，即账号下所有域名的汇总明细数据\n        :type Resource: str\n        :param CdnData: 资源对应的数据明细\n        :type CdnData: list of CdnData\n        """
         self.Resource = None
         self.CdnData = None
 
@@ -9089,15 +9090,15 @@ class UrlRecord(AbstractModel):
 
 
 class UrlRedirect(AbstractModel):
-    """URL重定向配置
+    """访问URL重写配置
 
     """
 
     def __init__(self):
         """
-        :param Switch: URL重定向配置开关
+        :param Switch: 访问URL重写配置开关
 on：开启
-off：关闭\n        :type Switch: str\n        :param PathRules: URL重定向规则，当Switch为on时必填，规则数量最大为10个。
+off：关闭\n        :type Switch: str\n        :param PathRules: 访问URL重写规则，当Switch为on时必填，规则数量最大为10个。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type PathRules: list of UrlRedirectRule\n        """
         self.Switch = None
         self.PathRules = None

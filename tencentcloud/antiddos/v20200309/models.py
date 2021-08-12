@@ -1517,6 +1517,68 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBizTrendRequest(AbstractModel):
+    """DescribeBizTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max\n        :type Statistics: str\n        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒\n        :type Period: int\n        :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”\n        :type StartTime: str\n        :param EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”\n        :type EndTime: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps\n        :type MetricName: str\n        :param Domain: 统计纬度为qps时，可选特定域名查询\n        :type Domain: str\n        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效\n        :type ProtoInfo: list of ProtocolPort\n        """
+        self.Statistics = None
+        self.Business = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Id = None
+        self.MetricName = None
+        self.Domain = None
+        self.ProtoInfo = None
+
+
+    def _deserialize(self, params):
+        self.Statistics = params.get("Statistics")
+        self.Business = params.get("Business")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.Domain = params.get("Domain")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBizTrendResponse(AbstractModel):
+    """DescribeBizTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataList: 曲线图各个时间点的值\n        :type DataList: list of float\n        :param MetricName: 统计纬度\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.DataList = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlackWhiteIpListRequest(AbstractModel):
     """DescribeBlackWhiteIpList请求参数结构体
 
@@ -1555,6 +1617,144 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
     def _deserialize(self, params):
         self.BlackIpList = params.get("BlackIpList")
         self.WhiteIpList = params.get("WhiteIpList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCCTrendRequest(AbstractModel):
+    """DescribeCCTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]\n        :type MetricName: str\n        :param Domain: 域名，可选\n        :type Domain: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        """
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Domain = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Domain = params.get("Domain")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCTrendResponse(AbstractModel):
+    """DescribeCCTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 值个数\n        :type Count: int\n        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组\n        :type Data: list of int non-negative\n        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Count = None
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.Id = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Data = params.get("Data")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSTrendRequest(AbstractModel):
+    """DescribeDDoSTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源实例的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        """
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSTrendResponse(AbstractModel):
+    """DescribeDDoSTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 值个数\n        :type Count: int\n        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps\n        :type Data: list of int non-negative\n        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Count = None
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.Id = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Data = params.get("Data")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
         self.RequestId = params.get("RequestId")
 
 
@@ -3359,6 +3559,30 @@ class ProtocolBlockRelation(AbstractModel):
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetailList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProtocolPort(AbstractModel):
+    """Protocol、Port参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Protocol: 协议（tcp；udp）\n        :type Protocol: str\n        :param Port: 端口\n        :type Port: int\n        """
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

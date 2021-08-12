@@ -25,16 +25,18 @@ class AccessConfiguration(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessRegion: 加速地域。\n        :type AccessRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        """
+        :param AccessRegion: 加速地域。\n        :type AccessRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        :param NetworkType: 网络类型，可取值：normal、cn2，默认值为normal\n        :type NetworkType: str\n        """
         self.AccessRegion = None
         self.Bandwidth = None
         self.Concurrent = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
         self.AccessRegion = params.get("AccessRegion")
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -462,13 +464,14 @@ class CheckProxyCreateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessRegion: 通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到\n        :type AccessRegion: str\n        :param RealServerRegion: 通道的源站区域。取值可通过接口DescribeDestRegions获取到\n        :type RealServerRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        :param GroupId: 如果在通道组下创建通道，需要填写通道组的ID\n        :type GroupId: str\n        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4\n        :type IPAddressVersion: str\n        """
+        :param AccessRegion: 通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到\n        :type AccessRegion: str\n        :param RealServerRegion: 通道的源站区域。取值可通过接口DescribeDestRegions获取到\n        :type RealServerRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        :param GroupId: 如果在通道组下创建通道，需要填写通道组的ID\n        :type GroupId: str\n        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4\n        :type IPAddressVersion: str\n        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal\n        :type NetworkType: str\n        """
         self.AccessRegion = None
         self.RealServerRegion = None
         self.Bandwidth = None
         self.Concurrent = None
         self.GroupId = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -478,6 +481,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Concurrent = params.get("Concurrent")
         self.GroupId = params.get("GroupId")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1073,7 +1077,7 @@ class CreateProxyRequest(AbstractModel):
         """
         :param ProjectId: 通道的项目ID。\n        :type ProjectId: int\n        :param ProxyName: 通道名称。\n        :type ProxyName: str\n        :param AccessRegion: 接入地域。\n        :type AccessRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        :param RealServerRegion: 源站地域。当GroupId存在时，源站地域为通道组的源站地域,此时可不填该字段。当GroupId不存在时，需要填写该字段\n        :type RealServerRegion: str\n        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 更多详细信息请参阅：如何保证幂等性。\n        :type ClientToken: str\n        :param GroupId: 通道所在的通道组ID，当在通道组中创建通道时必带，否则忽略该字段。\n        :type GroupId: str\n        :param TagSet: 通道需要添加的标签列表。\n        :type TagSet: list of TagPair\n        :param ClonedProxyId: 被复制的通道ID。只有处于运行中状态的通道可以被复制。
-当设置该参数时，表示复制该通道。\n        :type ClonedProxyId: str\n        :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）\n        :type BillingType: int\n        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4\n        :type IPAddressVersion: str\n        """
+当设置该参数时，表示复制该通道。\n        :type ClonedProxyId: str\n        :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）\n        :type BillingType: int\n        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4\n        :type IPAddressVersion: str\n        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal\n        :type NetworkType: str\n        """
         self.ProjectId = None
         self.ProxyName = None
         self.AccessRegion = None
@@ -1086,6 +1090,7 @@ class CreateProxyRequest(AbstractModel):
         self.ClonedProxyId = None
         self.BillingType = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -1106,6 +1111,7 @@ class CreateProxyRequest(AbstractModel):
         self.ClonedProxyId = params.get("ClonedProxyId")
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3957,7 +3963,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccessRegion: 加速区域名称。\n        :type AccessRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param DestRegion: （旧参数，请切换到RealServerRegion）源站区域名称。\n        :type DestRegion: str\n        :param Concurrency: （旧参数，请切换到Concurrent）通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrency: int\n        :param RealServerRegion: （新参数）源站区域名称。\n        :type RealServerRegion: str\n        :param Concurrent: （新参数）通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        :param BillingType: 计费方式，0表示按带宽计费，1表示按流量计费。默认按带宽计费\n        :type BillingType: int\n        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4\n        :type IPAddressVersion: str\n        """
+        :param AccessRegion: 加速区域名称。\n        :type AccessRegion: str\n        :param Bandwidth: 通道带宽上限，单位：Mbps。\n        :type Bandwidth: int\n        :param DestRegion: （旧参数，请切换到RealServerRegion）源站区域名称。\n        :type DestRegion: str\n        :param Concurrency: （旧参数，请切换到Concurrent）通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrency: int\n        :param RealServerRegion: （新参数）源站区域名称。\n        :type RealServerRegion: str\n        :param Concurrent: （新参数）通道并发量上限，表示同时在线的连接数，单位：万。\n        :type Concurrent: int\n        :param BillingType: 计费方式，0表示按带宽计费，1表示按流量计费。默认按带宽计费\n        :type BillingType: int\n        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4\n        :type IPAddressVersion: str\n        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal\n        :type NetworkType: str\n        """
         self.AccessRegion = None
         self.Bandwidth = None
         self.DestRegion = None
@@ -3966,6 +3972,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrent = None
         self.BillingType = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -3977,6 +3984,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrent = params.get("Concurrent")
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3996,13 +4004,17 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         :param ProxyDailyPrice: 通道基础费用价格，单位：元/天。\n        :type ProxyDailyPrice: float\n        :param BandwidthUnitPrice: 通道带宽费用梯度价格。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type BandwidthUnitPrice: list of BandwidthPriceGradient\n        :param DiscountProxyDailyPrice: 通道基础费用折扣价格，单位：元/天。\n        :type DiscountProxyDailyPrice: float\n        :param Currency: 价格使用的货币，支持人民币，美元等。\n        :type Currency: str\n        :param FlowUnitPrice: 通道的流量费用价格，单位: 元/GB
 注意：此字段可能返回 null，表示取不到有效值。\n        :type FlowUnitPrice: float\n        :param DiscountFlowUnitPrice: 通道的流量费用折扣价格，单位:元/GB
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountFlowUnitPrice: float\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type DiscountFlowUnitPrice: float\n        :param Cn2BandwidthPrice: 精品BGP的带宽费用价格，单位: 元/Mbps/天
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cn2BandwidthPrice: float\n        :param Cn2BandwidthPriceWithDiscount: 精品BGP的折后带宽费用价格，单位: 元/Mbps/天
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cn2BandwidthPriceWithDiscount: float\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProxyDailyPrice = None
         self.BandwidthUnitPrice = None
         self.DiscountProxyDailyPrice = None
         self.Currency = None
         self.FlowUnitPrice = None
         self.DiscountFlowUnitPrice = None
+        self.Cn2BandwidthPrice = None
+        self.Cn2BandwidthPriceWithDiscount = None
         self.RequestId = None
 
 
@@ -4018,6 +4030,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         self.Currency = params.get("Currency")
         self.FlowUnitPrice = params.get("FlowUnitPrice")
         self.DiscountFlowUnitPrice = params.get("DiscountFlowUnitPrice")
+        self.Cn2BandwidthPrice = params.get("Cn2BandwidthPrice")
+        self.Cn2BandwidthPriceWithDiscount = params.get("Cn2BandwidthPriceWithDiscount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5146,10 +5160,11 @@ UNKNOWN表示未知状态。\n        :type Status: str\n        :param Domain: 
 注意：此字段可能返回 null，表示取不到有效值。\n        :type SupportSecurity: int\n        :param BillingType: 计费类型: 0表示按带宽计费  1表示按流量计费。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type BillingType: int\n        :param RelatedGlobalDomains: 关联了解析的域名列表
 注意：此字段可能返回 null，表示取不到有效值。\n        :type RelatedGlobalDomains: list of str\n        :param ModifyConfigTime: 配置变更时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifyConfigTime: int\n        :param ProxyType: 通道类型，104表示新的银牌质量通道类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifyConfigTime: int\n        :param ProxyType: 通道类型
 注意：此字段可能返回 null，表示取不到有效值。\n        :type ProxyType: int\n        :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientIPMethod: list of int\n        :param IPAddressVersion: IP版本：IPv4、IPv6
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IPAddressVersion: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IPAddressVersion: str\n        :param NetworkType: 网络类型：normal、cn2
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NetworkType: str\n        """
         self.InstanceId = None
         self.CreateTime = None
         self.ProjectId = None
@@ -5178,6 +5193,7 @@ UNKNOWN表示未知状态。\n        :type Status: str\n        :param Domain: 
         self.ProxyType = None
         self.ClientIPMethod = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -5218,6 +5234,7 @@ UNKNOWN表示未知状态。\n        :type Status: str\n        :param Domain: 
         self.ProxyType = params.get("ProxyType")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

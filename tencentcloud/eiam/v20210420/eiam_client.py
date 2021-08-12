@@ -642,6 +642,34 @@ class EiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyApplication(self, request):
+        """更新一个应用的信息
+
+        :param request: Request instance for ModifyApplication.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.ModifyApplicationRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.ModifyApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyApplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyUserInfo(self, request):
         """通过用户名或用户 id 冻结用户
 

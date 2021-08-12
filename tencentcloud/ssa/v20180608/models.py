@@ -1430,6 +1430,32 @@ class DescribeSafetyEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSocCspmComplianceRequest(AbstractModel):
+    """DescribeSocCspmCompliance请求参数结构体
+
+    """
+
+
+class DescribeSocCspmComplianceResponse(AbstractModel):
+    """DescribeSocCspmCompliance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: :class:`tencentcloud.ssa.v20180608.models.SocComplianceInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = SocComplianceInfoResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVulDetailRequest(AbstractModel):
     """DescribeVulDetail请求参数结构体
 
@@ -1744,6 +1770,149 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
             self.Data = SaDivulgeDataQueryPubList()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class SocCheckItem(AbstractModel):
+    """SocCheckItem类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param LevelId: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type LevelId: str\n        :param SuccessCount: 成功数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SuccessCount: int\n        :param FailCount: 失败数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FailCount: int\n        """
+        self.Name = None
+        self.LevelId = None
+        self.SuccessCount = None
+        self.FailCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.LevelId = params.get("LevelId")
+        self.SuccessCount = params.get("SuccessCount")
+        self.FailCount = params.get("FailCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocComplianceInfoResp(AbstractModel):
+    """返回结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 合格项
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Items: list of SocComplianceItem\n        """
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SocComplianceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocComplianceItem(AbstractModel):
+    """soc合规信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Item: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Item: str\n        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param StandardItem: 分类
+注意：此字段可能返回 null，表示取不到有效值。\n        :type StandardItem: str\n        :param Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: int\n        :param Suggestion: 建议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param ProStr: 产品字符
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ProStr: str\n        :param Production: 产品数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Production: list of SocProductionItem\n        :param CheckItems: 配置项数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CheckItems: list of SocCheckItem\n        """
+        self.Item = None
+        self.Description = None
+        self.StandardItem = None
+        self.Result = None
+        self.Suggestion = None
+        self.ProStr = None
+        self.Production = None
+        self.CheckItems = None
+
+
+    def _deserialize(self, params):
+        self.Item = params.get("Item")
+        self.Description = params.get("Description")
+        self.StandardItem = params.get("StandardItem")
+        self.Result = params.get("Result")
+        self.Suggestion = params.get("Suggestion")
+        self.ProStr = params.get("ProStr")
+        if params.get("Production") is not None:
+            self.Production = []
+            for item in params.get("Production"):
+                obj = SocProductionItem()
+                obj._deserialize(item)
+                self.Production.append(obj)
+        if params.get("CheckItems") is not None:
+            self.CheckItems = []
+            for item in params.get("CheckItems"):
+                obj = SocCheckItem()
+                obj._deserialize(item)
+                self.CheckItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocProductionItem(AbstractModel):
+    """soc产品购买信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Index: 标识
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Index: int\n        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
+        self.Name = None
+        self.Index = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Index = params.get("Index")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):

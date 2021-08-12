@@ -510,7 +510,11 @@ class DescribeApplicationResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。\n        :type TokenExpired: int\n        :param ClientSecret: 客户端secret。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientSecret: str\n        :param PublicKey: 公钥信息。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicKey: str\n        :param AuthorizeUrl: 授权地址。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizeUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizeUrl: str\n        :param IconUrl: 应用图标图片访问地址。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IconUrl: str\n        :param SecureLevel: 安全等级。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SecureLevel: str\n        :param AppStatus: 应用状态。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AppStatus: bool\n        :param Description: 描述。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.KeyId = None
         self.DisplayName = None
         self.LastModifiedDate = None
@@ -522,6 +526,10 @@ class DescribeApplicationResponse(AbstractModel):
         self.ClientSecret = None
         self.PublicKey = None
         self.AuthorizeUrl = None
+        self.IconUrl = None
+        self.SecureLevel = None
+        self.AppStatus = None
+        self.Description = None
         self.RequestId = None
 
 
@@ -537,6 +545,10 @@ class DescribeApplicationResponse(AbstractModel):
         self.ClientSecret = params.get("ClientSecret")
         self.PublicKey = params.get("PublicKey")
         self.AuthorizeUrl = params.get("AuthorizeUrl")
+        self.IconUrl = params.get("IconUrl")
+        self.SecureLevel = params.get("SecureLevel")
+        self.AppStatus = params.get("AppStatus")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -1318,6 +1330,53 @@ class ListUsersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.UserList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyApplicationRequest(AbstractModel):
+    """ModifyApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID，是应用的全局唯一标识。\n        :type ApplicationId: str\n        :param SecureLevel: 安全级别。\n        :type SecureLevel: str\n        :param DisplayName: 应用展示名称，长度限制：32个字符。 默认与应用名字相同。\n        :type DisplayName: str\n        :param AppStatus: 应用状态\n        :type AppStatus: bool\n        :param IconUrl: 应用图标图片访问地址。\n        :type IconUrl: str\n        :param Description: 描述。长度不超过128。\n        :type Description: str\n        """
+        self.ApplicationId = None
+        self.SecureLevel = None
+        self.DisplayName = None
+        self.AppStatus = None
+        self.IconUrl = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SecureLevel = params.get("SecureLevel")
+        self.DisplayName = params.get("DisplayName")
+        self.AppStatus = params.get("AppStatus")
+        self.IconUrl = params.get("IconUrl")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationResponse(AbstractModel):
+    """ModifyApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

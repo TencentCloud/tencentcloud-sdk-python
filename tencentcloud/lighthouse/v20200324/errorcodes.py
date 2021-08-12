@@ -146,6 +146,9 @@ INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = 'InvalidParameterValue.InvalidBluepri
 # 镜像操作系统类型不合法。
 INVALIDPARAMETERVALUE_INVALIDBLUEPRINTPLATFORMTYPE = 'InvalidParameterValue.InvalidBlueprintPlatformType'
 
+# 镜像状态取值非法。
+INVALIDPARAMETERVALUE_INVALIDBLUEPRINTSTATE = 'InvalidParameterValue.InvalidBlueprintState'
+
 # 镜像类型不合法。
 INVALIDPARAMETERVALUE_INVALIDBLUEPRINTTYPE = 'InvalidParameterValue.InvalidBlueprintType'
 

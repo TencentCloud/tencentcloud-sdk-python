@@ -2934,6 +2934,32 @@ class MediaMetaData(AbstractModel):
         
 
 
+class MediaPreprocessOperation(AbstractModel):
+    """媒体处理视频合成任务的预处理操作。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 预处理操作的类型，取值范围：
+<li>ImageTextMask：图片文字遮罩。</li>\n        :type Type: str\n        :param Args: 预处理操作参数。
+当 Type 取值 ImageTextMask 时，参数为要保留的文字。\n        :type Args: list of str\n        """
+        self.Type = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Args = params.get("Args")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaReplacementInfo(AbstractModel):
     """媒体替换信息。
 
@@ -2941,14 +2967,30 @@ class MediaReplacementInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialId: 素材 ID。\n        :type MaterialId: str\n        :param StartTimeOffset: 替换媒体选取的开始时间，单位为秒，默认为 0。\n        :type StartTimeOffset: float\n        """
+        :param MediaType: 替换的媒体类型，取值有：
+<li>CMEMaterialId：替换的媒体类型为媒体 ID；</li>
+<li>ImageUrl：替换的媒体类型为图片 URL；</li>
+
+注：默认为 CMEMaterialId 。\n        :type MediaType: str\n        :param MaterialId: 媒体 ID。
+当媒体类型取值为 CMEMaterialId 时有效。\n        :type MaterialId: str\n        :param MediaUrl: 媒体 URL。
+当媒体类型取值为 ImageUrl 时有效，
+图片仅支持 jpg、png 格式，且大小不超过 2M 。\n        :type MediaUrl: str\n        :param StartTimeOffset: 替换媒体选取的开始时间，单位为秒，默认为 0。\n        :type StartTimeOffset: float\n        :param PreprocessOperation: 预处理操作。
+注：目前该功能暂不支持，请勿使用。\n        :type PreprocessOperation: :class:`tencentcloud.cme.v20191029.models.MediaPreprocessOperation`\n        """
+        self.MediaType = None
         self.MaterialId = None
+        self.MediaUrl = None
         self.StartTimeOffset = None
+        self.PreprocessOperation = None
 
 
     def _deserialize(self, params):
+        self.MediaType = params.get("MediaType")
         self.MaterialId = params.get("MaterialId")
+        self.MediaUrl = params.get("MediaUrl")
         self.StartTimeOffset = params.get("StartTimeOffset")
+        if params.get("PreprocessOperation") is not None:
+            self.PreprocessOperation = MediaPreprocessOperation()
+            self.PreprocessOperation._deserialize(params.get("PreprocessOperation"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
