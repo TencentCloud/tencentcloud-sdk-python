@@ -2429,7 +2429,7 @@ class JoinTeamInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param Name: 团队名称。\n        :type Name: str\n        :param MemberCount: 团队成员个数\n        :type MemberCount: int\n        :param Role: 成员在团队中的角色，取值有：
+        :param TeamId: 团队 ID。\n        :type TeamId: str\n        :param Name: 团队名称。\n        :type Name: str\n        :param MemberCount: 团队成员个数。\n        :type MemberCount: int\n        :param Role: 成员在团队中的角色，取值有：
 <li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
 <li>Admin：团队管理员；</li>
 <li>Member：普通成员。</li>\n        :type Role: str\n        """

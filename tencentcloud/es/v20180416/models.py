@@ -616,7 +616,9 @@ class InstanceInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityType: int\n        :param SceneType: 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
 注意：此字段可能返回 null，表示取不到有效值。\n        :type SceneType: int\n        :param KibanaConfig: Kibana配置项
 注意：此字段可能返回 null，表示取不到有效值。\n        :type KibanaConfig: str\n        :param KibanaNodeInfo: Kibana节点信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`\n        :param WebNodeTypeInfo: 可视化节点配置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`\n        :param Jdk: JDK类型，oracle或kona
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Jdk: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.Region = None
@@ -672,6 +674,8 @@ class InstanceInfo(AbstractModel):
         self.SceneType = None
         self.KibanaConfig = None
         self.KibanaNodeInfo = None
+        self.WebNodeTypeInfo = None
+        self.Jdk = None
 
 
     def _deserialize(self, params):
@@ -757,6 +761,10 @@ class InstanceInfo(AbstractModel):
         if params.get("KibanaNodeInfo") is not None:
             self.KibanaNodeInfo = KibanaNodeInfo()
             self.KibanaNodeInfo._deserialize(params.get("KibanaNodeInfo"))
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.Jdk = params.get("Jdk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1034,14 +1042,16 @@ class RestartInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param ForceRestart: 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false\n        :type ForceRestart: bool\n        """
+        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param ForceRestart: 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false\n        :type ForceRestart: bool\n        :param RestartMode: 重启模式：0 滚动重启； 1 全量重启\n        :type RestartMode: int\n        """
         self.InstanceId = None
         self.ForceRestart = None
+        self.RestartMode = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ForceRestart = params.get("ForceRestart")
+        self.RestartMode = params.get("RestartMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1291,7 +1301,7 @@ class UpdateInstanceRequest(AbstractModel):
 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>\n        :type NodeType: str\n        :param MasterNodeNum: 已废弃请使用NodeInfoList
 专用主节点个数（只支持3个或5个）\n        :type MasterNodeNum: int\n        :param MasterNodeType: 已废弃请使用NodeInfoList
 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>\n        :type MasterNodeType: str\n        :param MasterNodeDiskSize: 已废弃请使用NodeInfoList
-专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）\n        :type MasterNodeDiskSize: int\n        :param ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false\n        :type ForceRestart: bool\n        :param CosBackup: COS自动备份信息\n        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`\n        :param NodeInfoList: 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改\n        :type NodeInfoList: list of NodeInfo\n        :param PublicAccess: 公网访问状态\n        :type PublicAccess: str\n        :param EsPublicAcl: 公网访问控制列表\n        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`\n        :param KibanaPublicAccess: Kibana公网访问状态\n        :type KibanaPublicAccess: str\n        :param KibanaPrivateAccess: Kibana内网访问状态\n        :type KibanaPrivateAccess: str\n        :param BasicSecurityType: ES 6.8及以上版本基础版开启或关闭用户认证\n        :type BasicSecurityType: int\n        :param KibanaPrivatePort: Kibana内网端口\n        :type KibanaPrivatePort: int\n        :param ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启\n        :type ScaleType: int\n        :param MultiZoneInfo: 多可用区部署\n        :type MultiZoneInfo: list of ZoneDetail\n        :param SceneType: 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索\n        :type SceneType: int\n        :param KibanaConfig: Kibana配置项（JSON格式字符串）\n        :type KibanaConfig: str\n        """
+专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）\n        :type MasterNodeDiskSize: int\n        :param ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false\n        :type ForceRestart: bool\n        :param CosBackup: COS自动备份信息\n        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`\n        :param NodeInfoList: 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改\n        :type NodeInfoList: list of NodeInfo\n        :param PublicAccess: 公网访问状态\n        :type PublicAccess: str\n        :param EsPublicAcl: 公网访问控制列表\n        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`\n        :param KibanaPublicAccess: Kibana公网访问状态\n        :type KibanaPublicAccess: str\n        :param KibanaPrivateAccess: Kibana内网访问状态\n        :type KibanaPrivateAccess: str\n        :param BasicSecurityType: ES 6.8及以上版本基础版开启或关闭用户认证\n        :type BasicSecurityType: int\n        :param KibanaPrivatePort: Kibana内网端口\n        :type KibanaPrivatePort: int\n        :param ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启\n        :type ScaleType: int\n        :param MultiZoneInfo: 多可用区部署\n        :type MultiZoneInfo: list of ZoneDetail\n        :param SceneType: 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索\n        :type SceneType: int\n        :param KibanaConfig: Kibana配置项（JSON格式字符串）\n        :type KibanaConfig: str\n        :param WebNodeTypeInfo: 可视化节点配置\n        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.NodeNum = None
@@ -1316,6 +1326,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.MultiZoneInfo = None
         self.SceneType = None
         self.KibanaConfig = None
+        self.WebNodeTypeInfo = None
 
 
     def _deserialize(self, params):
@@ -1359,6 +1370,9 @@ class UpdateInstanceRequest(AbstractModel):
                 self.MultiZoneInfo.append(obj)
         self.SceneType = params.get("SceneType")
         self.KibanaConfig = params.get("KibanaConfig")
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

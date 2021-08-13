@@ -630,7 +630,7 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CaptchaType: 固定填值：9（滑块验证码）\n        :type CaptchaType: int\n        :param Ticket: 验证码返回给用户的票据\n        :type Ticket: str\n        :param UserIp: 透传业务侧获取到的验证码使用者的IP\n        :type UserIp: str\n        :param CaptchaAppId: 验证码应用APPID\n        :type CaptchaAppId: int\n        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方\n        :type AppSecretKey: str\n        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据\n        :type BusinessId: int\n        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据\n        :type SceneId: int\n        :param MacAddress: mac 地址或设备唯一标识\n        :type MacAddress: str\n        :param Imei: 手机设备号\n        :type Imei: str\n        """
+        :param CaptchaType: 固定填值：9（滑块验证码）\n        :type CaptchaType: int\n        :param Ticket: 验证码返回给用户的票据\n        :type Ticket: str\n        :param UserIp: 业务侧获取到的验证码使用者的外网IP\n        :type UserIp: str\n        :param CaptchaAppId: 验证码应用APPID\n        :type CaptchaAppId: int\n        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方\n        :type AppSecretKey: str\n        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据\n        :type BusinessId: int\n        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据\n        :type SceneId: int\n        :param MacAddress: mac 地址或设备唯一标识\n        :type MacAddress: str\n        :param Imei: 手机设备号\n        :type Imei: str\n        """
         self.CaptchaType = None
         self.Ticket = None
         self.UserIp = None
@@ -696,7 +696,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CaptchaType: 固定填值：9（滑块验证码）\n        :type CaptchaType: int\n        :param Ticket: 验证码返回给用户的票据\n        :type Ticket: str\n        :param UserIp: 用户操作来源的外网 IP\n        :type UserIp: str\n        :param CaptchaAppId: 验证码应用APPID\n        :type CaptchaAppId: int\n        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方\n        :type AppSecretKey: str\n        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据\n        :type BusinessId: int\n        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据\n        :type SceneId: int\n        :param MacAddress: mac 地址或设备唯一标识\n        :type MacAddress: str\n        :param Imei: 手机设备号\n        :type Imei: str\n        :param SceneCode: 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。\n        :type SceneCode: int\n        :param WeChatOpenId: 用户操作来源的微信开放账号\n        :type WeChatOpenId: str\n        """
+        :param CaptchaType: 固定填值：9（滑块验证码）\n        :type CaptchaType: int\n        :param Ticket: 验证码返回给用户的票据\n        :type Ticket: str\n        :param UserIp: 业务侧获取到的验证码使用者的外网IP\n        :type UserIp: str\n        :param CaptchaAppId: 验证码应用APPID\n        :type CaptchaAppId: int\n        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方\n        :type AppSecretKey: str\n        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据\n        :type BusinessId: int\n        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据\n        :type SceneId: int\n        :param MacAddress: mac 地址或设备唯一标识\n        :type MacAddress: str\n        :param Imei: 手机设备号\n        :type Imei: str\n        :param SceneCode: 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。\n        :type SceneCode: int\n        :param WeChatOpenId: 用户操作来源的微信开放账号\n        :type WeChatOpenId: str\n        """
         self.CaptchaType = None
         self.Ticket = None
         self.UserIp = None
@@ -825,7 +825,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。\n        :type CaptchaType: int\n        :param Ticket: 前端回调函数返回的用户验证票据\n        :type Ticket: str\n        :param UserIp: 透传业务侧获取到的验证码使用者的IP\n        :type UserIp: str\n        :param Randstr: 前端回调函数返回的随机字符串\n        :type Randstr: str\n        :param CaptchaAppId: 验证码应用ID\n        :type CaptchaAppId: int\n        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方\n        :type AppSecretKey: str\n        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据\n        :type BusinessId: int\n        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据\n        :type SceneId: int\n        :param MacAddress: mac 地址或设备唯一标识\n        :type MacAddress: str\n        :param Imei: 手机设备号\n        :type Imei: str\n        :param NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回\n        :type NeedGetCaptchaTime: int\n        """
+        :param CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。\n        :type CaptchaType: int\n        :param Ticket: 前端回调函数返回的用户验证票据\n        :type Ticket: str\n        :param UserIp: 业务侧获取到的验证码使用者的外网IP\n        :type UserIp: str\n        :param Randstr: 前端回调函数返回的随机字符串\n        :type Randstr: str\n        :param CaptchaAppId: 验证码应用ID\n        :type CaptchaAppId: int\n        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方\n        :type AppSecretKey: str\n        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据\n        :type BusinessId: int\n        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据\n        :type SceneId: int\n        :param MacAddress: mac 地址或设备唯一标识\n        :type MacAddress: str\n        :param Imei: 手机设备号\n        :type Imei: str\n        :param NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回\n        :type NeedGetCaptchaTime: int\n        """
         self.CaptchaType = None
         self.Ticket = None
         self.UserIp = None
@@ -877,7 +877,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
 12 sig len error 签名长度错误
 13 verify ip no match ip不匹配，非法请求，可能存在不规范接入
 15 decrypt fail 验证码签名解密失败，票据校验失败，请检查Ticket票据是否与前端返回Ticket一致
-16 appid no match 验证码强校验appid错误，请检查CaptchaAppId是否为控制台基础配置界面系统分配的APPID
+16 appid no match 验证码强校验appid错误，前端代码 data-appid 和后端 CaptchaAppId 所填写的值，必须和 验证码控制台 中【验证详情】>【基础配置】内的 AppID 一致,请检查CaptchaAppId是否为控制台基础配置界面系统分配的APPID
 17 cmd no much 验证码系统命令不匹配
 18 uin no match 号码不匹配
 19 seq redirect 重定向验证
@@ -888,7 +888,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
 24 invalid pkg 非法请求包
 25 bad visitor 策略拦截
 26 system busy 系统内部错误
-100 param err appsecretkey 参数校验错误，请检查AppSecretKey是否与控制台基础配置界面系统分配的APPID、AppSecretKey相对应
+100 param err appsecretkey 参数校验错误，CaptchaAppId 与对应 AppSecretKey 不一致，需检查 AppSecretKey 参数是否有误。其中 CaptchaAppId、 AppSecretKey 在 验证码控制台 的【验证详情】>【基础配置】中获取
 104 Ticket Reuse 票据重复使用，同个票据验证多次，请重新生成Randstr、Ticket进行校验\n        :type CaptchaCode: int\n        :param CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。\n        :type CaptchaMsg: str\n        :param EvilLevel: [0,100]，恶意等级
 注意：此字段可能返回 null，表示取不到有效值。\n        :type EvilLevel: int\n        :param GetCaptchaTime: 前端获取验证码时间，时间戳格式

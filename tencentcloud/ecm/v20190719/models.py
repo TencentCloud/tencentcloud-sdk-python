@@ -7804,7 +7804,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
 0，按资源维度后付费，计算当日用量峰值，例如CPU，内存，硬盘等，仅适用于非GNR系列机型；
 1，按小时后付费，单价：xx元/实例/小时，仅适用于GNR机型，如需开通该计费方式请提工单申请；
 2，按月后付费，单价：xx元/实例/月，仅适用于GNR机型；
-该字段不填时，非GNR机型会默认选择0；GNR机型默认选择2。\n        :type InstanceChargeType: int\n        """
+该字段不填时，非GNR机型会默认选择0；GNR机型默认选择2。\n        :type InstanceChargeType: int\n        :param KeyIds: 密钥对。\n        :type KeyIds: list of str\n        """
         self.ZoneInstanceCountISPSet = None
         self.Password = None
         self.InternetMaxBandwidthOut = None
@@ -7822,6 +7822,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.SystemDiskSize = None
         self.InternetMaxBandwidthIn = None
         self.InstanceChargeType = None
+        self.KeyIds = None
 
 
     def _deserialize(self, params):
@@ -7854,6 +7855,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.SystemDiskSize = params.get("SystemDiskSize")
         self.InternetMaxBandwidthIn = params.get("InternetMaxBandwidthIn")
         self.InstanceChargeType = params.get("InstanceChargeType")
+        self.KeyIds = params.get("KeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

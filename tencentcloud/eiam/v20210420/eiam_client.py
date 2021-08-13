@@ -278,6 +278,34 @@ class EiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOrgResourcesAuthorization(self, request):
+        """查询指定机构下的资源授权列表
+
+        :param request: Request instance for DescribeOrgResourcesAuthorization.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeOrgResourcesAuthorizationRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.DescribeOrgResourcesAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOrgResourcesAuthorization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOrgResourcesAuthorizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePublicKey(self, request):
         """获取JWT公钥信息。
 
@@ -334,6 +362,34 @@ class EiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUserGroupResourcesAuthorization(self, request):
+        """查询指定用户组下的资源授权列表
+
+        :param request: Request instance for DescribeUserGroupResourcesAuthorization.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeUserGroupResourcesAuthorizationRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.DescribeUserGroupResourcesAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserGroupResourcesAuthorization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserGroupResourcesAuthorizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserInfo(self, request):
         """通过用户名或用户 id 搜索用户
 
@@ -348,6 +404,34 @@ class EiamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserResourcesAuthorization(self, request):
+        """查询指定用户下的资源授权列表
+
+        :param request: Request instance for DescribeUserResourcesAuthorization.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.DescribeUserResourcesAuthorizationRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.DescribeUserResourcesAuthorizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserResourcesAuthorization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserResourcesAuthorizationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

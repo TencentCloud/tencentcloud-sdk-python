@@ -209,6 +209,72 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
         
 
 
+class AuthorizationResouceEntityInfo(AbstractModel):
+    """授权资源详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 授权关系的唯一ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceId: str\n        :param ResourceType: 资源授权类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceType: str\n        :param Resource: 授权的资源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Resource: str\n        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.Resource = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizationUserResouceInfo(AbstractModel):
+    """返回符合条件的用户数据列表
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceId: str\n        :param ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceType: str\n        :param Resource: 授权资源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Resource: str\n        :param InheritedForm: 继承关系
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InheritedForm: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`\n        :param ApplicationAccounts: 应用账户
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationAccounts: list of str\n        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.Resource = None
+        self.InheritedForm = None
+        self.ApplicationAccounts = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.Resource = params.get("Resource")
+        if params.get("InheritedForm") is not None:
+            self.InheritedForm = InheritedForm()
+            self.InheritedForm._deserialize(params.get("InheritedForm"))
+        self.ApplicationAccounts = params.get("ApplicationAccounts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateOrgNodeRequest(AbstractModel):
     """CreateOrgNode请求参数结构体
 
@@ -620,6 +686,64 @@ class DescribeOrgNodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOrgResourcesAuthorizationRequest(AbstractModel):
+    """DescribeOrgResourcesAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param OrgNodeId: 机构ID\n        :type OrgNodeId: str\n        """
+        self.ApplicationId = None
+        self.OrgNodeId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.OrgNodeId = params.get("OrgNodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
+    """DescribeOrgResourcesAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param OrgNodeId: 授权机构ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeId: str\n        :param OrgNodeName: 机构名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodeName: str\n        :param OrgNodePath: 机构目录
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrgNodePath: str\n        :param AuthorizationOrgResourceList: 资源列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizationOrgResourceList: list of AuthorizationResouceEntityInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ApplicationId = None
+        self.OrgNodeId = None
+        self.OrgNodeName = None
+        self.OrgNodePath = None
+        self.AuthorizationOrgResourceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.OrgNodeId = params.get("OrgNodeId")
+        self.OrgNodeName = params.get("OrgNodeName")
+        self.OrgNodePath = params.get("OrgNodePath")
+        if params.get("AuthorizationOrgResourceList") is not None:
+            self.AuthorizationOrgResourceList = []
+            for item in params.get("AuthorizationOrgResourceList"):
+                obj = AuthorizationResouceEntityInfo()
+                obj._deserialize(item)
+                self.AuthorizationOrgResourceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePublicKeyRequest(AbstractModel):
     """DescribePublicKey请求参数结构体
 
@@ -686,6 +810,62 @@ class DescribeUserGroupRequest(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeUserGroupResourcesAuthorizationRequest(AbstractModel):
+    """DescribeUserGroupResourcesAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param UserGroupId: 用户组ID\n        :type UserGroupId: str\n        """
+        self.ApplicationId = None
+        self.UserGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.UserGroupId = params.get("UserGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
+    """DescribeUserGroupResourcesAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationId: str\n        :param UserGroupId: 用户组ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupId: str\n        :param UserGroupName: 用户组名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserGroupName: str\n        :param AuthorizationUserGroupResourceList: 资源列表
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizationUserGroupResourceList: list of AuthorizationResouceEntityInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ApplicationId = None
+        self.UserGroupId = None
+        self.UserGroupName = None
+        self.AuthorizationUserGroupResourceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.UserGroupId = params.get("UserGroupId")
+        self.UserGroupName = params.get("UserGroupName")
+        if params.get("AuthorizationUserGroupResourceList") is not None:
+            self.AuthorizationUserGroupResourceList = []
+            for item in params.get("AuthorizationUserGroupResourceList"):
+                obj = AuthorizationResouceEntityInfo()
+                obj._deserialize(item)
+                self.AuthorizationUserGroupResourceList.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeUserGroupResponse(AbstractModel):
@@ -784,6 +964,68 @@ class DescribeUserInfoResponse(AbstractModel):
         self.DataSource = params.get("DataSource")
         self.ExpirationTime = params.get("ExpirationTime")
         self.ActivationTime = params.get("ActivationTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserResourcesAuthorizationRequest(AbstractModel):
+    """DescribeUserResourcesAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID。\n        :type ApplicationId: str\n        :param UserId: 用户ID。\n        :type UserId: str\n        :param UserName: 用户名。\n        :type UserName: str\n        :param IncludeInheritedAuthorizations: 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 ，传false表示不查询该范围，传true查询该范围。\n        :type IncludeInheritedAuthorizations: bool\n        """
+        self.ApplicationId = None
+        self.UserId = None
+        self.UserName = None
+        self.IncludeInheritedAuthorizations = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        self.IncludeInheritedAuthorizations = params.get("IncludeInheritedAuthorizations")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserResourcesAuthorizationResponse(AbstractModel):
+    """DescribeUserResourcesAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用的唯一ID。\n        :type ApplicationId: str\n        :param ApplicationAccounts: 应用账户。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationAccounts: list of str\n        :param UserId: 授权用户的唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param UserName: 授权的用户名。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type UserName: str\n        :param AuthorizationUserResourceList: 返回的资源列表。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizationUserResourceList: list of AuthorizationUserResouceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ApplicationId = None
+        self.ApplicationAccounts = None
+        self.UserId = None
+        self.UserName = None
+        self.AuthorizationUserResourceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationAccounts = params.get("ApplicationAccounts")
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        if params.get("AuthorizationUserResourceList") is not None:
+            self.AuthorizationUserResourceList = []
+            for item in params.get("AuthorizationUserResourceList"):
+                obj = AuthorizationUserResouceInfo()
+                obj._deserialize(item)
+                self.AuthorizationUserResourceList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

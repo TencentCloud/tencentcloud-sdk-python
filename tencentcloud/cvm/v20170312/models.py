@@ -2770,7 +2770,7 @@ class Instance(AbstractModel):
 
     def __init__(self):
         """
-        :param Placement: 实例所在的位置。\n        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`\n        :param InstanceId: 实例`ID`。\n        :type InstanceId: str\n        :param InstanceType: 实例机型。\n        :type InstanceType: str\n        :param CPU: 实例的CPU核数，单位：核。\n        :type CPU: int\n        :param Memory: 实例内存容量，单位：`GB`。\n        :type Memory: int\n        :param RestrictState: 实例业务状态。取值范围：<br><li>NORMAL：表示正常状态的实例<br><li>EXPIRED：表示过期的实例<br><li>PROTECTIVELY_ISOLATED：表示被安全隔离的实例。\n        :type RestrictState: str\n        :param InstanceName: 实例名称。\n        :type InstanceName: str\n        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。\n        :type InstanceChargeType: str\n        :param SystemDisk: 实例系统盘信息。\n        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`\n        :param DataDisks: 实例数据盘信息。只包含随实例购买的数据盘。\n        :type DataDisks: list of DataDisk\n        :param PrivateIpAddresses: 实例主网卡的内网`IP`列表。\n        :type PrivateIpAddresses: list of str\n        :param PublicIpAddresses: 实例主网卡的公网`IP`列表。
+        :param Placement: 实例所在的位置。\n        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`\n        :param InstanceId: 实例`ID`。\n        :type InstanceId: str\n        :param InstanceType: 实例机型。\n        :type InstanceType: str\n        :param CPU: 实例的CPU核数，单位：核。\n        :type CPU: int\n        :param Memory: 实例内存容量，单位：`GB`。\n        :type Memory: int\n        :param RestrictState: 实例业务状态。取值范围：<br><li>NORMAL：表示正常状态的实例<br><li>EXPIRED：表示过期的实例<br><li>PROTECTIVELY_ISOLATED：表示被安全隔离的实例。\n        :type RestrictState: str\n        :param InstanceName: 实例名称。\n        :type InstanceName: str\n        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。\n        :type InstanceChargeType: str\n        :param SystemDisk: 实例系统盘信息。\n        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`\n        :param DataDisks: 实例数据盘信息。\n        :type DataDisks: list of DataDisk\n        :param PrivateIpAddresses: 实例主网卡的内网`IP`列表。\n        :type PrivateIpAddresses: list of str\n        :param PublicIpAddresses: 实例主网卡的公网`IP`列表。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIpAddresses: list of str\n        :param InternetAccessible: 实例带宽信息。\n        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`\n        :param VirtualPrivateCloud: 实例所属虚拟私有网络信息。\n        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`\n        :param ImageId: 生产实例所使用的镜像`ID`。\n        :type ImageId: str\n        :param RenewFlag: 自动续费标识。取值范围：<br><li>`NOTIFY_AND_MANUAL_RENEW`：表示通知即将过期，但不自动续费<br><li>`NOTIFY_AND_AUTO_RENEW`：表示通知即将过期，而且自动续费<br><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`：表示不通知即将过期，也不自动续费。
 <br><li>注意：后付费模式本项为null\n        :type RenewFlag: str\n        :param CreatedTime: 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。\n        :type CreatedTime: str\n        :param ExpiredTime: 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。注意：后付费模式本项为null\n        :type ExpiredTime: str\n        :param OsName: 操作系统名称。\n        :type OsName: str\n        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。\n        :type SecurityGroupIds: list of str\n        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。\n        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`\n        :param InstanceState: 实例状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>RUNNING：表示运行中<br></li><li>STOPPED：表示关机<br></li><li>STARTING：表示开机中<br></li><li>STOPPING：表示关机中<br></li><li>REBOOTING：表示重启中<br></li><li>SHUTDOWN：表示停止待销毁<br></li><li>TERMINATING：表示销毁中。<br></li>\n        :type InstanceState: str\n        :param Tags: 实例关联的标签列表。\n        :type Tags: list of Tag\n        :param StopChargingMode: 实例的关机计费模式。
 取值范围：<br><li>KEEP_CHARGING：关机继续收费<br><li>STOP_CHARGING：关机停止收费<li>NOT_APPLICABLE：实例处于非关机状态或者不适用关机停止计费的条件<br>\n        :type StopChargingMode: str\n        :param Uuid: 实例全局唯一ID\n        :type Uuid: str\n        :param LatestOperation: 实例的最新操作。例：StopInstances、ResetInstance。
@@ -2781,7 +2781,8 @@ class Instance(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。\n        :type IPv6Addresses: list of str\n        :param CamRoleName: CAM角色名。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type CamRoleName: str\n        :param HpcClusterId: 高性能计算集群`ID`。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type HpcClusterId: str\n        :param RdmaIpAddresses: 高性能计算集群`IP`列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RdmaIpAddresses: list of str\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RdmaIpAddresses: list of str\n        :param IsolatedSource: 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsolatedSource: str\n        """
         self.Placement = None
         self.InstanceId = None
         self.InstanceType = None
@@ -2815,6 +2816,7 @@ class Instance(AbstractModel):
         self.CamRoleName = None
         self.HpcClusterId = None
         self.RdmaIpAddresses = None
+        self.IsolatedSource = None
 
 
     def _deserialize(self, params):
@@ -2871,6 +2873,7 @@ class Instance(AbstractModel):
         self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
         self.RdmaIpAddresses = params.get("RdmaIpAddresses")
+        self.IsolatedSource = params.get("IsolatedSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -6512,7 +6512,10 @@ OV：中国境外
 默认为CN。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginArea: str\n        :param ForwardUri: 路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度为1024个字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号“*”，最多支持10个捕获值。
 注意：此字段可能返回 null，表示取不到有效值。\n        :type ForwardUri: str\n        :param RequestHeaders: 路径匹配时回源的头部设置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RequestHeaders: list of HttpHeaderRule\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type RequestHeaders: list of HttpHeaderRule\n        :param FullMatch: 当Regex为false时，Path是否开启完全匹配。
+false：关闭
+true：开启
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FullMatch: bool\n        """
         self.Regex = None
         self.Path = None
         self.Origin = None
@@ -6520,6 +6523,7 @@ OV：中国境外
         self.OriginArea = None
         self.ForwardUri = None
         self.RequestHeaders = None
+        self.FullMatch = None
 
 
     def _deserialize(self, params):
@@ -6535,6 +6539,7 @@ OV：中国境外
                 obj = HttpHeaderRule()
                 obj._deserialize(item)
                 self.RequestHeaders.append(obj)
+        self.FullMatch = params.get("FullMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

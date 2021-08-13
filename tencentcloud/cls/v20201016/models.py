@@ -27,7 +27,8 @@ class AlarmInfo(AbstractModel):
         """
         :param Name: 告警策略名称。\n        :type Name: str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTargetInfo\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是min。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param Status: 开启状态。\n        :type Status: bool\n        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        :param CreateTime: 创建时间。\n        :type CreateTime: str\n        :param UpdateTime: 最近更新时间。\n        :type UpdateTime: str\n        :param MessageTemplate: 自定义通知模板
 注意：此字段可能返回 null，表示取不到有效值。\n        :type MessageTemplate: str\n        :param CallBack: 自定义回调模板
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        """
+注意：此字段可能返回 null，表示取不到有效值。\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        :param Analysis: 多维分析设置
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Analysis: list of AnalysisDimensional\n        """
         self.Name = None
         self.AlarmTargets = None
         self.MonitorTime = None
@@ -41,6 +42,7 @@ class AlarmInfo(AbstractModel):
         self.UpdateTime = None
         self.MessageTemplate = None
         self.CallBack = None
+        self.Analysis = None
 
 
     def _deserialize(self, params):
@@ -66,6 +68,12 @@ class AlarmInfo(AbstractModel):
         if params.get("CallBack") is not None:
             self.CallBack = CallBackInfo()
             self.CallBack._deserialize(params.get("CallBack"))
+        if params.get("Analysis") is not None:
+            self.Analysis = []
+            for item in params.get("Analysis"):
+                obj = AnalysisDimensional()
+                obj._deserialize(item)
+                self.Analysis.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -186,6 +194,32 @@ class AlarmTargetInfo(AbstractModel):
         self.Number = params.get("Number")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalysisDimensional(AbstractModel):
+    """多维分析的分析维度
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 分析名称\n        :type Name: str\n        :param Type: 分析类型：query，field\n        :type Type: str\n        :param Content: 分析内容\n        :type Content: str\n        """
+        self.Name = None
+        self.Type = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -524,7 +558,7 @@ class CreateAlarmRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 告警策略名称\n        :type Name: str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTarget\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param Status: 是否开启告警策略。默认值为true\n        :type Status: bool\n        """
+        :param Name: 告警策略名称\n        :type Name: str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTarget\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param Status: 是否开启告警策略。默认值为true\n        :type Status: bool\n        :param MessageTemplate: 用户自定义告警内容\n        :type MessageTemplate: str\n        :param CallBack: 用户自定义回调\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        :param Analysis: 多维分析\n        :type Analysis: list of AnalysisDimensional\n        """
         self.Name = None
         self.AlarmTargets = None
         self.MonitorTime = None
@@ -533,6 +567,9 @@ class CreateAlarmRequest(AbstractModel):
         self.AlarmPeriod = None
         self.AlarmNoticeIds = None
         self.Status = None
+        self.MessageTemplate = None
+        self.CallBack = None
+        self.Analysis = None
 
 
     def _deserialize(self, params):
@@ -551,6 +588,16 @@ class CreateAlarmRequest(AbstractModel):
         self.AlarmPeriod = params.get("AlarmPeriod")
         self.AlarmNoticeIds = params.get("AlarmNoticeIds")
         self.Status = params.get("Status")
+        self.MessageTemplate = params.get("MessageTemplate")
+        if params.get("CallBack") is not None:
+            self.CallBack = CallBackInfo()
+            self.CallBack._deserialize(params.get("CallBack"))
+        if params.get("Analysis") is not None:
+            self.Analysis = []
+            for item in params.get("Analysis"):
+                obj = AnalysisDimensional()
+                obj._deserialize(item)
+                self.Analysis.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3508,7 +3555,7 @@ class ModifyAlarmRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        :param Name: 告警策略名称\n        :type Name: str\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTarget\n        :param Status: 是否开启告警策略。\n        :type Status: bool\n        """
+        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        :param Name: 告警策略名称\n        :type Name: str\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTarget\n        :param Status: 是否开启告警策略。\n        :type Status: bool\n        :param MessageTemplate: 用户自定义告警内容\n        :type MessageTemplate: str\n        :param CallBack: 用户自定义回调\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        :param Analysis: 多维分析\n        :type Analysis: list of AnalysisDimensional\n        """
         self.AlarmId = None
         self.Name = None
         self.MonitorTime = None
@@ -3518,6 +3565,9 @@ class ModifyAlarmRequest(AbstractModel):
         self.AlarmNoticeIds = None
         self.AlarmTargets = None
         self.Status = None
+        self.MessageTemplate = None
+        self.CallBack = None
+        self.Analysis = None
 
 
     def _deserialize(self, params):
@@ -3537,6 +3587,16 @@ class ModifyAlarmRequest(AbstractModel):
                 obj._deserialize(item)
                 self.AlarmTargets.append(obj)
         self.Status = params.get("Status")
+        self.MessageTemplate = params.get("MessageTemplate")
+        if params.get("CallBack") is not None:
+            self.CallBack = CallBackInfo()
+            self.CallBack._deserialize(params.get("CallBack"))
+        if params.get("Analysis") is not None:
+            self.Analysis = []
+            for item in params.get("Analysis"):
+                obj = AnalysisDimensional()
+                obj._deserialize(item)
+                self.Analysis.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

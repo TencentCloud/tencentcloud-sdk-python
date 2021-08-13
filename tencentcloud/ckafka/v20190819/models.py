@@ -1698,6 +1698,53 @@ class DescribeTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopicSubscribeGroupRequest(AbstractModel):
+    """DescribeTopicSubscribeGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id\n        :type InstanceId: str\n        :param TopicName: 主题名称\n        :type TopicName: str\n        :param Offset: 分页时的起始位置\n        :type Offset: int\n        :param Limit: 分页时的个数\n        :type Limit: int\n        """
+        self.InstanceId = None
+        self.TopicName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicSubscribeGroupResponse(AbstractModel):
+    """DescribeTopicSubscribeGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果\n        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicSubscribeGroup`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TopicSubscribeGroup()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserRequest(AbstractModel):
     """DescribeUser请求参数结构体
 
@@ -3175,6 +3222,41 @@ class TopicRetentionTimeConfigRsp(AbstractModel):
         self.Expect = params.get("Expect")
         self.Current = params.get("Current")
         self.ModTimeStamp = params.get("ModTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicSubscribeGroup(AbstractModel):
+    """DescribeTopicSubscribeGroup接口出参
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数\n        :type TotalCount: int\n        :param StatusCountInfo: 消费分组状态数量信息\n        :type StatusCountInfo: str\n        :param GroupsInfo: 消费分组信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupsInfo: list of GroupInfoResponse\n        :param Status: 此次请求是否异步的状态。实例里分组较少的会直接返回结果,Status为1。当分组较多时,会异步更新缓存，Status为0时不会返回分组信息，直至Status为1更新完毕返回结果。
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
+        self.TotalCount = None
+        self.StatusCountInfo = None
+        self.GroupsInfo = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.StatusCountInfo = params.get("StatusCountInfo")
+        if params.get("GroupsInfo") is not None:
+            self.GroupsInfo = []
+            for item in params.get("GroupsInfo"):
+                obj = GroupInfoResponse()
+                obj._deserialize(item)
+                self.GroupsInfo.append(obj)
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

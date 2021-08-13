@@ -65,6 +65,30 @@ class AcListsData(AbstractModel):
         
 
 
+class AssetZone(AbstractModel):
+    """AssetZone
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 地域\n        :type Zone: str\n        :param ZoneEng: 地域英文\n        :type ZoneEng: str\n        """
+        self.Zone = None
+        self.ZoneEng = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneEng = params.get("ZoneEng")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociatedInstanceInfo(AbstractModel):
     """企业安全组关联实例信息
 
@@ -202,6 +226,103 @@ class CreateAcRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateChooseVpcsRequest(AbstractModel):
+    """CreateChooseVpcs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcList: vpc列表\n        :type VpcList: list of str\n        :param AllZoneList: zone列表\n        :type AllZoneList: list of VpcZoneData\n        """
+        self.VpcList = None
+        self.AllZoneList = None
+
+
+    def _deserialize(self, params):
+        self.VpcList = params.get("VpcList")
+        if params.get("AllZoneList") is not None:
+            self.AllZoneList = []
+            for item in params.get("AllZoneList"):
+                obj = VpcZoneData()
+                obj._deserialize(item)
+                self.AllZoneList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChooseVpcsResponse(AbstractModel):
+    """CreateChooseVpcs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatFwInstanceRequest(AbstractModel):
+    """CreateNatFwInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 防火墙实例名称\n        :type Name: str\n        :param Width: 带宽\n        :type Width: int\n        :param Mode: 模式 1：接入模式；0：新增模式\n        :type Mode: int\n        :param NewModeItems: 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。\n        :type NewModeItems: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`\n        :param NatGwList: 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。\n        :type NatGwList: list of str\n        :param Zone: 主可用区，为空则选择默认可用区\n        :type Zone: str\n        :param ZoneBak: 备可用区，为空则选择默认可用区\n        :type ZoneBak: str\n        :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备\n        :type CrossAZone: int\n        """
+        self.Name = None
+        self.Width = None
+        self.Mode = None
+        self.NewModeItems = None
+        self.NatGwList = None
+        self.Zone = None
+        self.ZoneBak = None
+        self.CrossAZone = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Mode = params.get("Mode")
+        if params.get("NewModeItems") is not None:
+            self.NewModeItems = NewModeItems()
+            self.NewModeItems._deserialize(params.get("NewModeItems"))
+        self.NatGwList = params.get("NatGwList")
+        self.Zone = params.get("Zone")
+        self.ZoneBak = params.get("ZoneBak")
+        self.CrossAZone = params.get("CrossAZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNatFwInstanceResponse(AbstractModel):
+    """CreateNatFwInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSecurityGroupApiRulesRequest(AbstractModel):
     """CreateSecurityGroupApiRules请求参数结构体
 
@@ -243,6 +364,56 @@ class CreateSecurityGroupApiRulesResponse(AbstractModel):
     def __init__(self):
         """
         :param Status: 状态值，0:添加成功，非0：添加失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSecurityGroupRulesRequest(AbstractModel):
+    """CreateSecurityGroupRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 添加的企业安全组规则数据\n        :type Data: list of SecurityGroupListData\n        :param Direction: 方向，0：出站，1：入站，默认1\n        :type Direction: int\n        :param Type: 0：后插，1：前插，2：中插，默认0\n        :type Type: int\n        :param Enable: 添加后是否启用规则，0：不启用，1：启用，默认1\n        :type Enable: int\n        """
+        self.Data = None
+        self.Direction = None
+        self.Type = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecurityGroupListData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Direction = params.get("Direction")
+        self.Type = params.get("Type")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityGroupRulesResponse(AbstractModel):
+    """CreateSecurityGroupRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态值，0：添加成功，非0：添加失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -346,6 +517,80 @@ class DeleteAllAccessControlRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteNatFwInstanceRequest(AbstractModel):
+    """DeleteNatFwInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CfwInstance: 防火墙实例id\n        :type CfwInstance: str\n        """
+        self.CfwInstance = None
+
+
+    def _deserialize(self, params):
+        self.CfwInstance = params.get("CfwInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNatFwInstanceResponse(AbstractModel):
+    """DeleteNatFwInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteResourceGroupRequest(AbstractModel):
+    """DeleteResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 组id\n        :type GroupId: str\n        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteResourceGroupResponse(AbstractModel):
+    """DeleteResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSecurityGroupAllRuleRequest(AbstractModel):
     """DeleteSecurityGroupAllRule请求参数结构体
 
@@ -435,6 +680,27 @@ class DeleteSecurityGroupRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpcInstanceRequest(AbstractModel):
+    """DeleteVpcInstance请求参数结构体
+
+    """
+
+
+class DeleteVpcInstanceResponse(AbstractModel):
+    """DeleteVpcInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -748,6 +1014,210 @@ class DescribeGuideScanInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNatFwInfoCountRequest(AbstractModel):
+    """DescribeNatFwInfoCount请求参数结构体
+
+    """
+
+
+class DescribeNatFwInfoCountResponse(AbstractModel):
+    """DescribeNatFwInfoCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 返回参数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param NatFwInsCount: 当前租户的nat实例个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatFwInsCount: int\n        :param SubnetCount: 当前租户接入子网个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetCount: int\n        :param OpenSwitchCount: 打开开关个数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OpenSwitchCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ReturnMsg = None
+        self.NatFwInsCount = None
+        self.SubnetCount = None
+        self.OpenSwitchCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.NatFwInsCount = params.get("NatFwInsCount")
+        self.SubnetCount = params.get("SubnetCount")
+        self.OpenSwitchCount = params.get("OpenSwitchCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatFwInstanceRequest(AbstractModel):
+    """DescribeNatFwInstance请求参数结构体
+
+    """
+
+
+class DescribeNatFwInstanceResponse(AbstractModel):
+    """DescribeNatFwInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatinsLst: 实例数组\n        :type NatinsLst: list of NatFwInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.NatinsLst = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatinsLst") is not None:
+            self.NatinsLst = []
+            for item in params.get("NatinsLst"):
+                obj = NatFwInstance()
+                obj._deserialize(item)
+                self.NatinsLst.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatFwInstanceWithRegionRequest(AbstractModel):
+    """DescribeNatFwInstanceWithRegion请求参数结构体
+
+    """
+
+
+class DescribeNatFwInstanceWithRegionResponse(AbstractModel):
+    """DescribeNatFwInstanceWithRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatinsLst: 实例数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatinsLst: list of NatFwInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.NatinsLst = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatinsLst") is not None:
+            self.NatinsLst = []
+            for item in params.get("NatinsLst"):
+                obj = NatFwInstance()
+                obj._deserialize(item)
+                self.NatinsLst.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatFwInstancesInfoRequest(AbstractModel):
+    """DescribeNatFwInstancesInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filter: 获取实例列表过滤字段\n        :type Filter: list of NatFwFilter\n        :param Offset: 第几页\n        :type Offset: int\n        :param Limit: 每页长度\n        :type Limit: int\n        """
+        self.Filter = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = NatFwFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatFwInstancesInfoResponse(AbstractModel):
+    """DescribeNatFwInstancesInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatinsLst: 实例卡片信息数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatinsLst: list of NatInstanceInfo\n        :param Total: 总共多少条数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.NatinsLst = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatinsLst") is not None:
+            self.NatinsLst = []
+            for item in params.get("NatinsLst"):
+                obj = NatInstanceInfo()
+                obj._deserialize(item)
+                self.NatinsLst.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatFwVpcDnsLstRequest(AbstractModel):
+    """DescribeNatFwVpcDnsLst请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatFwInsId: natfw 防火墙实例id\n        :type NatFwInsId: str\n        :param NatInsIdFilter: natfw 过滤，以','分隔\n        :type NatInsIdFilter: str\n        :param Offset: 分页页数\n        :type Offset: int\n        :param Limit: 每页最多个数\n        :type Limit: int\n        """
+        self.NatFwInsId = None
+        self.NatInsIdFilter = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatFwInsId = params.get("NatFwInsId")
+        self.NatInsIdFilter = params.get("NatInsIdFilter")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatFwVpcDnsLstResponse(AbstractModel):
+    """DescribeNatFwVpcDnsLst返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcDnsSwitchLst: nat防火墙vpc dns 信息数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcDnsSwitchLst: list of VpcDnsInfo\n        :param ReturnMsg: 返回参数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param Total: 开关总条数
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.VpcDnsSwitchLst = None
+        self.ReturnMsg = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcDnsSwitchLst") is not None:
+            self.VpcDnsSwitchLst = []
+            for item in params.get("VpcDnsSwitchLst"):
+                obj = VpcDnsInfo()
+                obj._deserialize(item)
+                self.VpcDnsSwitchLst.append(obj)
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatRuleOverviewRequest(AbstractModel):
     """DescribeNatRuleOverview请求参数结构体
 
@@ -815,6 +1285,47 @@ class DescribeNatRuleOverviewResponse(AbstractModel):
         self.RemainNum = params.get("RemainNum")
         self.BlockNum = params.get("BlockNum")
         self.EnableNum = params.get("EnableNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceGroupRequest(AbstractModel):
+    """DescribeResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QueryType: 查询类型 网络结构 vpc，业务识别- resource ，资源标签-tag\n        :type QueryType: str\n        :param GroupId: 资产组id  全部传0\n        :type GroupId: str\n        """
+        self.QueryType = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.QueryType = params.get("QueryType")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGroupResponse(AbstractModel):
+    """DescribeResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回树形结构\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -930,6 +1441,69 @@ class DescribeSecurityGroupListResponse(AbstractModel):
                 self.Data.append(obj)
         self.AllTotal = params.get("AllTotal")
         self.Enable = params.get("Enable")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSourceAssetRequest(AbstractModel):
+    """DescribeSourceAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FuzzySearch: 模糊查询\n        :type FuzzySearch: str\n        :param InsType: 资产类型 1公网 2内网\n        :type InsType: str\n        :param ChooseType: 是否未分组 1是\n        :type ChooseType: str\n        :param Zone: 地域\n        :type Zone: str\n        :param Limit: 页大小\n        :type Limit: int\n        :param Offset: 偏移量\n        :type Offset: int\n        """
+        self.FuzzySearch = None
+        self.InsType = None
+        self.ChooseType = None
+        self.Zone = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.FuzzySearch = params.get("FuzzySearch")
+        self.InsType = params.get("InsType")
+        self.ChooseType = params.get("ChooseType")
+        self.Zone = params.get("Zone")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSourceAssetResponse(AbstractModel):
+    """DescribeSourceAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneList: 地域集合\n        :type ZoneList: list of AssetZone\n        :param Data: 数据\n        :type Data: list of InstanceInfo\n        :param Total: 10\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ZoneList = None
+        self.Data = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneList") is not None:
+            self.ZoneList = []
+            for item in params.get("ZoneList"):
+                obj = AssetZone()
+                obj._deserialize(item)
+                self.ZoneList.append(obj)
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = InstanceInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -1278,6 +1852,30 @@ class DescribeVpcRuleOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DnsVpcSwitch(AbstractModel):
+    """设置nat防火墙的vpc dns 接入开关
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: vpc id\n        :type VpcId: str\n        :param Status: 0：设置为关闭 1:设置为打开\n        :type Status: int\n        """
+        self.VpcId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExpandCfwVerticalRequest(AbstractModel):
     """ExpandCfwVertical请求参数结构体
 
@@ -1317,6 +1915,74 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class InstanceInfo(AbstractModel):
+    """// InstanceInfo 实例详情结果
+    type InstanceInfo struct {
+    	AppID        string `json:"AppId" gorm:"column:appid"`
+    	Region       string `json:"Region" gorm:"column:region"`
+    	VPCID        string `json:"VpcId" gorm:"column:vpc_id"`
+    	SubNetID     string `json:"SubnetId" gorm:"column:subnet_id"`
+    	InstanceID   string `json:"InstanceId" gorm:"column:instance_id"`
+    	InstanceName string `json:"InstanceName" gorm:"column:instance_name"`
+    	//InsType common.CVM 3是cvm实例,4是clb实例,5是eni实例,6是mysql,7是redis,8是NAT,9是VPN,10是ES,11是MARIADB,12是KAFKA
+    	InsType   int    `json:"InsType" gorm:"column:instance_type"`
+    	PublicIP  string `json:"PublicIp" gorm:"column:public_ip"`
+    	PrivateIP string `json:"PrivateIp" gorm:"column:ip"`
+
+    	//规则下发无需管，前端展示用
+    	PortNum          string `json:"PortNum" gorm:"column:port_num"`
+    	LeakNum          string `json:"LeakNum" gorm:"column:leak_num"`
+    	ResourceGroupNum int    `json:"ResourceGroupNum"`
+    	VPCName          string `json:"VPCName" gorm:"column:VPCName"`
+    }
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: appid信息\n        :type AppId: str\n        :param Region: 地域\n        :type Region: str\n        :param VpcId: vpcid信息\n        :type VpcId: str\n        :param VPCName: vpc名称\n        :type VPCName: str\n        :param SubnetId: 子网id\n        :type SubnetId: str\n        :param InstanceId: 资产id\n        :type InstanceId: str\n        :param InstanceName: 资产名\n        :type InstanceName: str\n        :param InsType: 资产类型
+ 3是cvm实例,4是clb实例,5是eni实例,6是mysql,7是redis,8是NAT,9是VPN,10是ES,11是MARIADB,12是KAFKA 13 NATFW\n        :type InsType: int\n        :param PublicIp: 公网ip\n        :type PublicIp: str\n        :param PrivateIp: 内网ip\n        :type PrivateIp: str\n        :param PortNum: 端口数\n        :type PortNum: str\n        :param LeakNum: 漏洞数\n        :type LeakNum: str\n        :param InsSource: 1，公网 2内网\n        :type InsSource: str\n        :param ResourcePath: [a,b]
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourcePath: list of str\n        """
+        self.AppId = None
+        self.Region = None
+        self.VpcId = None
+        self.VPCName = None
+        self.SubnetId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InsType = None
+        self.PublicIp = None
+        self.PrivateIp = None
+        self.PortNum = None
+        self.LeakNum = None
+        self.InsSource = None
+        self.ResourcePath = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.VPCName = params.get("VPCName")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InsType = params.get("InsType")
+        self.PublicIp = params.get("PublicIp")
+        self.PrivateIp = params.get("PrivateIp")
+        self.PortNum = params.get("PortNum")
+        self.LeakNum = params.get("LeakNum")
+        self.InsSource = params.get("InsSource")
+        self.ResourcePath = params.get("ResourcePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IocListData(AbstractModel):
@@ -1422,6 +2088,51 @@ class ModifyAcRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAllPublicIPSwitchStatusRequest(AbstractModel):
+    """ModifyAllPublicIPSwitchStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态，0：关闭，1：开启\n        :type Status: int\n        :param FireWallPublicIPs: 选中的防火墙开关Id\n        :type FireWallPublicIPs: list of str\n        """
+        self.Status = None
+        self.FireWallPublicIPs = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.FireWallPublicIPs = params.get("FireWallPublicIPs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAllPublicIPSwitchStatusResponse(AbstractModel):
+    """ModifyAllPublicIPSwitchStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 接口返回信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param ReturnCode: 接口返回错误码，0请求成功  非0失败
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ReturnMsg = None
+        self.ReturnCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.ReturnCode = params.get("ReturnCode")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAllRuleStatusRequest(AbstractModel):
     """ModifyAllRuleStatus请求参数结构体
 
@@ -1511,6 +2222,100 @@ class ModifyAllSwitchStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAllVPCSwitchStatusRequest(AbstractModel):
+    """ModifyAllVPCSwitchStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态，0：关闭，1：开启\n        :type Status: int\n        :param FireWallVpcIds: 选中的防火墙开关Id\n        :type FireWallVpcIds: list of str\n        """
+        self.Status = None
+        self.FireWallVpcIds = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.FireWallVpcIds = params.get("FireWallVpcIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAllVPCSwitchStatusResponse(AbstractModel):
+    """ModifyAllVPCSwitchStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAssetScanRequest(AbstractModel):
+    """ModifyAssetScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScanRange: 扫描范围：1端口, 2端口+漏扫\n        :type ScanRange: int\n        :param ScanDeep: 扫描深度：'heavy', 'medium', 'light'\n        :type ScanDeep: str\n        :param RangeType: 扫描类型：1立即扫描 2 周期任务\n        :type RangeType: int\n        :param ScanPeriod: RangeType为2 是必须添加，定时任务时间\n        :type ScanPeriod: str\n        :param ScanFilterIp: 立即扫描这个字段传过滤的扫描集合\n        :type ScanFilterIp: list of str\n        :param ScanType: 1全量2单个\n        :type ScanType: int\n        """
+        self.ScanRange = None
+        self.ScanDeep = None
+        self.RangeType = None
+        self.ScanPeriod = None
+        self.ScanFilterIp = None
+        self.ScanType = None
+
+
+    def _deserialize(self, params):
+        self.ScanRange = params.get("ScanRange")
+        self.ScanDeep = params.get("ScanDeep")
+        self.RangeType = params.get("RangeType")
+        self.ScanPeriod = params.get("ScanPeriod")
+        self.ScanFilterIp = params.get("ScanFilterIp")
+        self.ScanType = params.get("ScanType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAssetScanResponse(AbstractModel):
+    """ModifyAssetScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 接口返回信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param ReturnCode: 接口返回错误码，0请求成功  非0失败
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnCode: int\n        :param Status: 状态值 0：成功，1 执行扫描中,其他：失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ReturnMsg = None
+        self.ReturnCode = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.ReturnCode = params.get("ReturnCode")
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
@@ -1651,6 +2456,224 @@ class ModifyItemSwitchStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNatFwReSelectRequest(AbstractModel):
+    """ModifyNatFwReSelect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 模式 1：接入模式；0：新增模式\n        :type Mode: int\n        :param CfwInstance: 防火墙实例id\n        :type CfwInstance: str\n        :param NatGwList: 接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。\n        :type NatGwList: list of str\n        :param VpcList: 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。\n        :type VpcList: list of str\n        """
+        self.Mode = None
+        self.CfwInstance = None
+        self.NatGwList = None
+        self.VpcList = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.CfwInstance = params.get("CfwInstance")
+        self.NatGwList = params.get("NatGwList")
+        self.VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatFwReSelectResponse(AbstractModel):
+    """ModifyNatFwReSelect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatFwSwitchRequest(AbstractModel):
+    """ModifyNatFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Enable: 开关，0：关闭，1：开启\n        :type Enable: int\n        :param CfwInsIdList: 防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。\n        :type CfwInsIdList: list of str\n        :param SubnetIdList: 子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。\n        :type SubnetIdList: list of str\n        :param RouteTableIdList: 路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。\n        :type RouteTableIdList: list of str\n        """
+        self.Enable = None
+        self.CfwInsIdList = None
+        self.SubnetIdList = None
+        self.RouteTableIdList = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.CfwInsIdList = params.get("CfwInsIdList")
+        self.SubnetIdList = params.get("SubnetIdList")
+        self.RouteTableIdList = params.get("RouteTableIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatFwSwitchResponse(AbstractModel):
+    """ModifyNatFwSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
+    """ModifyNatFwVpcDnsSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatFwInsId: nat 防火墙 id\n        :type NatFwInsId: str\n        :param DnsVpcSwitchLst: DNS 开关切换列表\n        :type DnsVpcSwitchLst: list of DnsVpcSwitch\n        """
+        self.NatFwInsId = None
+        self.DnsVpcSwitchLst = None
+
+
+    def _deserialize(self, params):
+        self.NatFwInsId = params.get("NatFwInsId")
+        if params.get("DnsVpcSwitchLst") is not None:
+            self.DnsVpcSwitchLst = []
+            for item in params.get("DnsVpcSwitchLst"):
+                obj = DnsVpcSwitch()
+                obj._deserialize(item)
+                self.DnsVpcSwitchLst.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatFwVpcDnsSwitchResponse(AbstractModel):
+    """ModifyNatFwVpcDnsSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 修改成功
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPublicIPSwitchStatusRequest(AbstractModel):
+    """ModifyPublicIPSwitchStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FireWallPublicIP: 公网IP\n        :type FireWallPublicIP: str\n        :param Status: 状态值，0: 关闭 ,1:开启\n        :type Status: int\n        """
+        self.FireWallPublicIP = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.FireWallPublicIP = params.get("FireWallPublicIP")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPublicIPSwitchStatusResponse(AbstractModel):
+    """ModifyPublicIPSwitchStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 接口返回信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param ReturnCode: 接口返回错误码，0请求成功  非0失败\n        :type ReturnCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ReturnMsg = None
+        self.ReturnCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.ReturnCode = params.get("ReturnCode")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyResourceGroupRequest(AbstractModel):
+    """ModifyResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 组id\n        :type GroupId: str\n        :param GroupName: 组名称\n        :type GroupName: str\n        :param ParentId: 上级组id\n        :type ParentId: str\n        """
+        self.GroupId = None
+        self.GroupName = None
+        self.ParentId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ParentId = params.get("ParentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceGroupResponse(AbstractModel):
+    """ModifyResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySecurityGroupAllRuleStatusRequest(AbstractModel):
     """ModifySecurityGroupAllRuleStatus请求参数结构体
 
@@ -1688,6 +2711,147 @@ class ModifySecurityGroupAllRuleStatusResponse(AbstractModel):
         """
         :param Status: 0: 修改成功, 其他: 修改失败
 注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityGroupItemRuleStatusRequest(AbstractModel):
+    """ModifySecurityGroupItemRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Direction: 方向，0：出站，1：入站，默认1\n        :type Direction: int\n        :param Status: 是否开关开启，0：未开启，1：开启\n        :type Status: int\n        :param RuleSequence: 更改的企业安全组规则的执行顺序\n        :type RuleSequence: int\n        """
+        self.Direction = None
+        self.Status = None
+        self.RuleSequence = None
+
+
+    def _deserialize(self, params):
+        self.Direction = params.get("Direction")
+        self.Status = params.get("Status")
+        self.RuleSequence = params.get("RuleSequence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityGroupItemRuleStatusResponse(AbstractModel):
+    """ModifySecurityGroupItemRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态值，0：修改成功，非0：修改失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityGroupRuleRequest(AbstractModel):
+    """ModifySecurityGroupRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Direction: 方向，0：出站，1：入站，默认1\n        :type Direction: int\n        :param Enable: 编辑后是否启用规则，0：不启用，1：启用，默认1\n        :type Enable: int\n        :param Data: 编辑的企业安全组规则数据\n        :type Data: list of SecurityGroupListData\n        :param SgRuleOriginSequence: 编辑的企业安全组规则的原始执行顺序\n        :type SgRuleOriginSequence: int\n        """
+        self.Direction = None
+        self.Enable = None
+        self.Data = None
+        self.SgRuleOriginSequence = None
+
+
+    def _deserialize(self, params):
+        self.Direction = params.get("Direction")
+        self.Enable = params.get("Enable")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecurityGroupListData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.SgRuleOriginSequence = params.get("SgRuleOriginSequence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityGroupRuleResponse(AbstractModel):
+    """ModifySecurityGroupRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态值，0：编辑成功，非0：编辑失败\n        :type Status: int\n        :param NewRuleId: 编辑后新生成规则的Id\n        :type NewRuleId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Status = None
+        self.NewRuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.NewRuleId = params.get("NewRuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityGroupSequenceRulesRequest(AbstractModel):
+    """ModifySecurityGroupSequenceRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Direction: 方向，0：出站，1：入站，默认1\n        :type Direction: int\n        :param Data: 企业安全组规则快速排序数据\n        :type Data: list of SecurityGroupOrderIndexData\n        """
+        self.Direction = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Direction = params.get("Direction")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecurityGroupOrderIndexData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityGroupSequenceRulesResponse(AbstractModel):
+    """ModifySecurityGroupSequenceRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态值，0：修改成功，非0：修改失败\n        :type Status: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.RequestId = None
 
@@ -1794,6 +2958,50 @@ class ModifyTableStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVPCSwitchStatusRequest(AbstractModel):
+    """ModifyVPCSwitchStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FirewallVpcId: 公网IP\n        :type FirewallVpcId: str\n        :param Status: 状态值，0: 关闭 ,1:开启\n        :type Status: int\n        """
+        self.FirewallVpcId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.FirewallVpcId = params.get("FirewallVpcId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVPCSwitchStatusResponse(AbstractModel):
+    """ModifyVPCSwitchStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 接口返回信息
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        :param ReturnCode: 接口返回错误码，0请求成功  非0失败\n        :type ReturnCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.ReturnMsg = None
+        self.ReturnCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.ReturnCode = params.get("ReturnCode")
+        self.RequestId = params.get("RequestId")
+
+
 class NatFwEipsInfo(AbstractModel):
     """Nat防火墙弹性公网ip列表
 
@@ -1813,6 +3021,137 @@ class NatFwEipsInfo(AbstractModel):
         self.Eip = params.get("Eip")
         self.NatGatewayId = params.get("NatGatewayId")
         self.NatGatewayName = params.get("NatGatewayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatFwFilter(AbstractModel):
+    """nat fw 实例展示的过滤列表
+
+    """
+
+    def __init__(self):
+        """
+        :param FilterType: 过滤的类型，例如实例id\n        :type FilterType: str\n        :param FilterContent: 过滤的内容，以',' 分隔\n        :type FilterContent: str\n        """
+        self.FilterType = None
+        self.FilterContent = None
+
+
+    def _deserialize(self, params):
+        self.FilterType = params.get("FilterType")
+        self.FilterContent = params.get("FilterContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatFwInstance(AbstractModel):
+    """Nat实例类型
+
+    """
+
+    def __init__(self):
+        """
+        :param NatinsId: nat实例id\n        :type NatinsId: str\n        :param NatinsName: nat实例名称\n        :type NatinsName: str\n        :param Region: 实例所在地域
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param FwMode: 0:新增模式，1:接入模式
+注意：此字段可能返回 null，表示取不到有效值。\n        :type FwMode: int\n        :param Status: 0:正常状态， 1: 正在创建
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
+        self.NatinsId = None
+        self.NatinsName = None
+        self.Region = None
+        self.FwMode = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.NatinsId = params.get("NatinsId")
+        self.NatinsName = params.get("NatinsName")
+        self.Region = params.get("Region")
+        self.FwMode = params.get("FwMode")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatInstanceInfo(AbstractModel):
+    """Nat实例卡片详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NatinsId: nat实例id\n        :type NatinsId: str\n        :param NatinsName: nat实例名称\n        :type NatinsName: str\n        :param Region: 实例所在地域\n        :type Region: str\n        :param FwMode: 0: 新增模式，1:接入模式\n        :type FwMode: int\n        :param BandWidth: 实例带宽大小 Mbps\n        :type BandWidth: int\n        :param InFlowMax: 入向带宽峰值 bps\n        :type InFlowMax: int\n        :param OutFlowMax: 出向带宽峰值 bps\n        :type OutFlowMax: int\n        :param RegionZh: 地域中文信息\n        :type RegionZh: str\n        :param EipAddress: 公网ip数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddress: list of str\n        :param VpcIp: 内外使用ip数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcIp: list of str\n        :param Subnets: 实例关联子网数组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Subnets: list of str\n        :param Status: 0 :正常 1：正在初始化
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
+        self.NatinsId = None
+        self.NatinsName = None
+        self.Region = None
+        self.FwMode = None
+        self.BandWidth = None
+        self.InFlowMax = None
+        self.OutFlowMax = None
+        self.RegionZh = None
+        self.EipAddress = None
+        self.VpcIp = None
+        self.Subnets = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.NatinsId = params.get("NatinsId")
+        self.NatinsName = params.get("NatinsName")
+        self.Region = params.get("Region")
+        self.FwMode = params.get("FwMode")
+        self.BandWidth = params.get("BandWidth")
+        self.InFlowMax = params.get("InFlowMax")
+        self.OutFlowMax = params.get("OutFlowMax")
+        self.RegionZh = params.get("RegionZh")
+        self.EipAddress = params.get("EipAddress")
+        self.VpcIp = params.get("VpcIp")
+        self.Subnets = params.get("Subnets")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NewModeItems(AbstractModel):
+    """新增模式传递参数
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcList: 新增模式下接入的vpc列表\n        :type VpcList: list of str\n        :param Eips: 新增模式下绑定的出口弹性公网ip列表，其中Eips和AddCount至少传递一个。\n        :type Eips: list of str\n        :param AddCount: 新增模式下新增绑定的出口弹性公网ip个数，其中Eips和AddCount至少传递一个。\n        :type AddCount: int\n        """
+        self.VpcList = None
+        self.Eips = None
+        self.AddCount = None
+
+
+    def _deserialize(self, params):
+        self.VpcList = params.get("VpcList")
+        self.Eips = params.get("Eips")
+        self.AddCount = params.get("AddCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2022,21 +3361,34 @@ class SecurityGroupApiRuleData(AbstractModel):
         
 
 
-class SecurityGroupListData(AbstractModel):
-    """安全组列表数据
+class SecurityGroupBothWayInfo(AbstractModel):
+    """双向下发的企业安全组规则
 
     """
 
     def __init__(self):
         """
-        :param Id: 规则ID\n        :type Id: int\n        :param OrderIndex: 执行顺序\n        :type OrderIndex: int\n        :param SourceId: 访问源\n        :type SourceId: str\n        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB\n        :type SourceType: int\n        :param TargetId: 访问目的\n        :type TargetId: str\n        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB\n        :type TargetType: int\n        :param Protocol: 协议\n        :type Protocol: str\n        :param Port: 目的端口\n        :type Port: str\n        :param Strategy: 策略, 1：阻断，2：放行\n        :type Strategy: int\n        :param Detail: 描述\n        :type Detail: str\n        :param Status: 是否开关开启，0：未开启，1：开启\n        :type Status: int\n        :param IsNew: 是否是正常规则，0：正常，1：异常\n        :type IsNew: int\n        :param BothWay: 单/双向下发，0:单向下发，1：双向下发\n        :type BothWay: int\n        :param VpcId: 私有网络ID
+        :param OrderIndex: 执行顺序
+注意：此字段可能返回 null，表示取不到有效值。\n        :type OrderIndex: int\n        :param SourceId: 访问源
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SourceId: str\n        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 100:资源组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SourceType: int\n        :param TargetId: 访问目的
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TargetId: str\n        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 100:资源组
+注意：此字段可能返回 null，表示取不到有效值。\n        :type TargetType: int\n        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param Port: 目的端口
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Port: str\n        :param Strategy: 策略, 1：阻断，2：放行
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Strategy: int\n        :param Direction: 方向，0：出站，1：入站，默认1
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Direction: int\n        :param Region: 地域\n        :type Region: str\n        :param Detail: 描述
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Detail: str\n        :param Status: 是否开关开启，0：未开启，1：开启
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param IsNew: 是否是正常规则，0：正常，1：异常
+注意：此字段可能返回 null，表示取不到有效值。\n        :type IsNew: int\n        :param BothWay: 单/双向下发，0:单向下发，1：双向下发
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BothWay: int\n        :param VpcId: 私有网络ID
 注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param SubnetId: 子网ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param InstanceName: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param PublicIp: 公网IP，多个以英文逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIp: str\n        :param PrivateIp: 内网IP，多个以英文逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivateIp: str\n        :param Cidr: 掩码地址，多个以英文逗号分隔
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Cidr: str\n        """
-        self.Id = None
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cidr: str\n        :param ServiceTemplateId: 端口协议类型参数模板id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceTemplateId: str\n        """
         self.OrderIndex = None
         self.SourceId = None
         self.SourceType = None
@@ -2045,6 +3397,8 @@ class SecurityGroupListData(AbstractModel):
         self.Protocol = None
         self.Port = None
         self.Strategy = None
+        self.Direction = None
+        self.Region = None
         self.Detail = None
         self.Status = None
         self.IsNew = None
@@ -2055,10 +3409,10 @@ class SecurityGroupListData(AbstractModel):
         self.PublicIp = None
         self.PrivateIp = None
         self.Cidr = None
+        self.ServiceTemplateId = None
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
         self.OrderIndex = params.get("OrderIndex")
         self.SourceId = params.get("SourceId")
         self.SourceType = params.get("SourceType")
@@ -2067,6 +3421,8 @@ class SecurityGroupListData(AbstractModel):
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
         self.Strategy = params.get("Strategy")
+        self.Direction = params.get("Direction")
+        self.Region = params.get("Region")
         self.Detail = params.get("Detail")
         self.Status = params.get("Status")
         self.IsNew = params.get("IsNew")
@@ -2077,6 +3433,108 @@ class SecurityGroupListData(AbstractModel):
         self.PublicIp = params.get("PublicIp")
         self.PrivateIp = params.get("PrivateIp")
         self.Cidr = params.get("Cidr")
+        self.ServiceTemplateId = params.get("ServiceTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupListData(AbstractModel):
+    """安全组列表数据
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderIndex: 执行顺序\n        :type OrderIndex: int\n        :param SourceId: 访问源\n        :type SourceId: str\n        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 100:资源组\n        :type SourceType: int\n        :param TargetId: 访问目的\n        :type TargetId: str\n        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 100:资源组\n        :type TargetType: int\n        :param Protocol: 协议\n        :type Protocol: str\n        :param Port: 目的端口\n        :type Port: str\n        :param Strategy: 策略, 1：阻断，2：放行\n        :type Strategy: int\n        :param Detail: 描述\n        :type Detail: str\n        :param BothWay: 单/双向下发，0:单向下发，1：双向下发\n        :type BothWay: int\n        :param Id: 规则ID\n        :type Id: int\n        :param Status: 是否开关开启，0：未开启，1：开启\n        :type Status: int\n        :param IsNew: 是否是正常规则，0：正常，1：异常\n        :type IsNew: int\n        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param PublicIp: 公网IP，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIp: str\n        :param PrivateIp: 内网IP，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivateIp: str\n        :param Cidr: 掩码地址，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Cidr: str\n        :param ServiceTemplateId: 端口协议类型参数模板id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceTemplateId: str\n        :param BothWayInfo: 当BothWay为0的时候，填空，当BothWay为1的时候，为JSON字符串，数据来源于DescribeBothWayInstanceListByIp个接口，如果该接口返回数据为空，则不支持双向下发
+注意：此字段可能返回 null，表示取不到有效值。\n        :type BothWayInfo: list of SecurityGroupBothWayInfo\n        :param Direction: 方向，0：出站，1：入站，默认1\n        :type Direction: int\n        """
+        self.OrderIndex = None
+        self.SourceId = None
+        self.SourceType = None
+        self.TargetId = None
+        self.TargetType = None
+        self.Protocol = None
+        self.Port = None
+        self.Strategy = None
+        self.Detail = None
+        self.BothWay = None
+        self.Id = None
+        self.Status = None
+        self.IsNew = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.InstanceName = None
+        self.PublicIp = None
+        self.PrivateIp = None
+        self.Cidr = None
+        self.ServiceTemplateId = None
+        self.BothWayInfo = None
+        self.Direction = None
+
+
+    def _deserialize(self, params):
+        self.OrderIndex = params.get("OrderIndex")
+        self.SourceId = params.get("SourceId")
+        self.SourceType = params.get("SourceType")
+        self.TargetId = params.get("TargetId")
+        self.TargetType = params.get("TargetType")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.Strategy = params.get("Strategy")
+        self.Detail = params.get("Detail")
+        self.BothWay = params.get("BothWay")
+        self.Id = params.get("Id")
+        self.Status = params.get("Status")
+        self.IsNew = params.get("IsNew")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceName = params.get("InstanceName")
+        self.PublicIp = params.get("PublicIp")
+        self.PrivateIp = params.get("PrivateIp")
+        self.Cidr = params.get("Cidr")
+        self.ServiceTemplateId = params.get("ServiceTemplateId")
+        if params.get("BothWayInfo") is not None:
+            self.BothWayInfo = []
+            for item in params.get("BothWayInfo"):
+                obj = SecurityGroupBothWayInfo()
+                obj._deserialize(item)
+                self.BothWayInfo.append(obj)
+        self.Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupOrderIndexData(AbstractModel):
+    """企业安全组规则执行顺序修改对象
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderIndex: 企业安全组规则当前执行顺序\n        :type OrderIndex: int\n        :param NewOrderIndex: 企业安全组规则更新目标执行顺序\n        :type NewOrderIndex: int\n        """
+        self.OrderIndex = None
+        self.NewOrderIndex = None
+
+
+    def _deserialize(self, params):
+        self.OrderIndex = params.get("OrderIndex")
+        self.NewOrderIndex = params.get("NewOrderIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2119,7 +3577,7 @@ class SetNatFwDnatRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Mode: 0：cfw新增模式，1：cfw接入模式。\n        :type Mode: int\n        :param OperationType: 操作类型，可选值：add，del，modify。\n        :type OperationType: str\n        :param CfwInstance: 防火墙实例id。\n        :type CfwInstance: str\n        :param AddOrDelDnatRules: 添加或删除操作的Dnat规则列表。\n        :type AddOrDelDnatRules: list of CfwNatDnatRule\n        :param OriginDnat: 修改操作的原始Dnat规则\n        :type OriginDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`\n        :param NewDnat: 修改操作的新的Dnat规则\n        :type NewDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`\n        """
+        :param Mode: 0：cfw新增模式，1：cfw接入模式。\n        :type Mode: int\n        :param OperationType: 操作类型，可选值：add，del，modify。\n        :type OperationType: str\n        :param CfwInstance: 防火墙实例id，该字段必须传递。\n        :type CfwInstance: str\n        :param AddOrDelDnatRules: 添加或删除操作的Dnat规则列表。\n        :type AddOrDelDnatRules: list of CfwNatDnatRule\n        :param OriginDnat: 修改操作的原始Dnat规则\n        :type OriginDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`\n        :param NewDnat: 修改操作的新的Dnat规则\n        :type NewDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`\n        """
         self.Mode = None
         self.OperationType = None
         self.CfwInstance = None
@@ -2168,6 +3626,47 @@ class SetNatFwDnatRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SetNatFwEipRequest(AbstractModel):
+    """SetNatFwEip请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OperationType: bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip\n        :type OperationType: str\n        :param CfwInstance: 防火墙实例id\n        :type CfwInstance: str\n        :param EipList: 当OperationType 为bind或unbind操作时，使用该字段。\n        :type EipList: list of str\n        """
+        self.OperationType = None
+        self.CfwInstance = None
+        self.EipList = None
+
+
+    def _deserialize(self, params):
+        self.OperationType = params.get("OperationType")
+        self.CfwInstance = params.get("CfwInstance")
+        self.EipList = params.get("EipList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetNatFwEipResponse(AbstractModel):
+    """SetNatFwEip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StaticInfo(AbstractModel):
     """StaticInfo 告警柱形图统计信息
 
@@ -2199,6 +3698,30 @@ class StaticInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopSecurityGroupRuleDispatchRequest(AbstractModel):
+    """StopSecurityGroupRuleDispatch请求参数结构体
+
+    """
+
+
+class StopSecurityGroupRuleDispatchResponse(AbstractModel):
+    """StopSecurityGroupRuleDispatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: true代表成功，false代表错误
+注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
 
 
 class SwitchListsData(AbstractModel):
@@ -2337,6 +3860,68 @@ class UnHandleEventDetail(AbstractModel):
     def _deserialize(self, params):
         self.EventName = params.get("EventName")
         self.Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcDnsInfo(AbstractModel):
+    """nat防火墙 vpc dns 开关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: vpc id\n        :type VpcId: str\n        :param VpcName: vpc 名称\n        :type VpcName: str\n        :param FwMode: nat 防火墙模式 0：新增模式， 1: 接入模式\n        :type FwMode: int\n        :param VpcIpv4Cidr: vpc ipv4网段范围 CIDR（Classless Inter-Domain Routing，无类域间路由选择）\n        :type VpcIpv4Cidr: str\n        :param DNSEip: 外网弹性ip，防火墙 dns解析地址\n        :type DNSEip: str\n        :param NatInsId: nat网关id
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatInsId: str\n        :param NatInsName: nat网关名称
+注意：此字段可能返回 null，表示取不到有效值。\n        :type NatInsName: str\n        :param SwitchStatus: 0：开关关闭 ， 1: 开关打开\n        :type SwitchStatus: int\n        """
+        self.VpcId = None
+        self.VpcName = None
+        self.FwMode = None
+        self.VpcIpv4Cidr = None
+        self.DNSEip = None
+        self.NatInsId = None
+        self.NatInsName = None
+        self.SwitchStatus = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.VpcName = params.get("VpcName")
+        self.FwMode = params.get("FwMode")
+        self.VpcIpv4Cidr = params.get("VpcIpv4Cidr")
+        self.DNSEip = params.get("DNSEip")
+        self.NatInsId = params.get("NatInsId")
+        self.NatInsName = params.get("NatInsName")
+        self.SwitchStatus = params.get("SwitchStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcZoneData(AbstractModel):
+    """vpc区域数据详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区\n        :type Zone: str\n        :param Region: vpc节点地域\n        :type Region: str\n        """
+        self.Zone = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
