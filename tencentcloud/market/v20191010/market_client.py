@@ -80,31 +80,3 @@ class MarketClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
-
-
-    def SyncUserAndOrderInfo(self, request):
-        """同步企微的用户信息和订单信息到云市场
-
-        :param request: Request instance for SyncUserAndOrderInfo.
-        :type request: :class:`tencentcloud.market.v20191010.models.SyncUserAndOrderInfoRequest`
-        :rtype: :class:`tencentcloud.market.v20191010.models.SyncUserAndOrderInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("SyncUserAndOrderInfo", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SyncUserAndOrderInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)

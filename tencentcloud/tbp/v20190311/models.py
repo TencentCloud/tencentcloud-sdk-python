@@ -24,8 +24,12 @@ class CreateBotRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotName: 机器人名称
+        :type BotName: str
+        :param BotCnName: 机器人中文名称
+        :type BotCnName: str
         """
-        :param BotName: 机器人名称\n        :type BotName: str\n        :param BotCnName: 机器人中文名称\n        :type BotCnName: str\n        """
         self.BotName = None
         self.BotCnName = None
 
@@ -48,8 +52,14 @@ class CreateBotResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskRequestId: 任务ID
+        :type TaskRequestId: str
+        :param Msg: 任务信息
+        :type Msg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskRequestId: 任务ID\n        :type TaskRequestId: str\n        :param Msg: 任务信息\n        :type Msg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskRequestId = None
         self.Msg = None
         self.RequestId = None
@@ -67,8 +77,16 @@ class ResetRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotId: 机器人标识
+        :type BotId: str
+        :param UserId: 子账户id，每个终端对应一个
+        :type UserId: str
+        :param BotVersion: 机器人版本号。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
+        :type BotVersion: str
+        :param BotEnv: 机器人环境{dev:测试;release:线上}。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev
+        :type BotEnv: str
         """
-        :param BotId: 机器人标识\n        :type BotId: str\n        :param UserId: 子账户id，每个终端对应一个\n        :type UserId: str\n        :param BotVersion: 机器人版本号。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev\n        :type BotVersion: str\n        :param BotEnv: 机器人环境{dev:测试;release:线上}。BotVersion/BotEnv二选一：二者均填，仅BotVersion有效；二者均不填，默认BotEnv=dev\n        :type BotEnv: str\n        """
         self.BotId = None
         self.UserId = None
         self.BotVersion = None
@@ -95,16 +113,36 @@ class ResetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态。取值:"start"/"continue"/"complete"
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DialogStatus: str\n        :param BotName: 匹配到的机器人名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BotName: str\n        :param IntentName: 匹配到的意图名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IntentName: str\n        :param ResponseText: 机器人回答\n        :type ResponseText: str\n        :param SlotInfoList: 语义解析的槽位结果列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SlotInfoList: list of SlotInfo\n        :param SessionAttributes: 透传字段
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionAttributes: str\n        :param Question: 用户说法。该说法是用户原生说法或ASR识别结果，未经过语义优化
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Question: str\n        :param WaveUrl: tts合成pcm音频存储链接。仅当请求参数NeedTts=true时返回
-注意：此字段可能返回 null，表示取不到有效值。\n        :type WaveUrl: str\n        :param WaveData: tts合成的pcm音频。二进制数组经过base64编码(暂时不返回)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type WaveData: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DialogStatus: str
+        :param BotName: 匹配到的机器人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotName: str
+        :param IntentName: 匹配到的意图名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentName: str
+        :param ResponseText: 机器人回答
+        :type ResponseText: str
+        :param SlotInfoList: 语义解析的槽位结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotInfoList: list of SlotInfo
+        :param SessionAttributes: 透传字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionAttributes: str
+        :param Question: 用户说法。该说法是用户原生说法或ASR识别结果，未经过语义优化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Question: str
+        :param WaveUrl: tts合成pcm音频存储链接。仅当请求参数NeedTts=true时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaveUrl: str
+        :param WaveData: tts合成的pcm音频。二进制数组经过base64编码(暂时不返回)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaveData: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.DialogStatus = None
         self.BotName = None
         self.IntentName = None
@@ -141,10 +179,14 @@ class SlotInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SlotName: 槽位名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SlotName: str\n        :param SlotValue: 槽位值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SlotValue: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotName: str
+        :param SlotValue: 槽位值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotValue: str
+        """
         self.SlotName = None
         self.SlotValue = None
 
@@ -167,8 +209,18 @@ class TextProcessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotId: 机器人标识，用于定义抽象机器人。
+        :type BotId: str
+        :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        :type TerminalId: str
+        :param InputText: 请求的文本。
+        :type InputText: str
+        :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        :type BotEnv: str
+        :param SessionAttributes: 透传字段，透传给用户自定义的WebService服务。
+        :type SessionAttributes: str
         """
-        :param BotId: 机器人标识，用于定义抽象机器人。\n        :type BotId: str\n        :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。\n        :type TerminalId: str\n        :param InputText: 请求的文本。\n        :type InputText: str\n        :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。\n        :type BotEnv: str\n        :param SessionAttributes: 透传字段，透传给用户自定义的WebService服务。\n        :type SessionAttributes: str\n        """
         self.BotId = None
         self.TerminalId = None
         self.InputText = None
@@ -197,15 +249,31 @@ class TextProcessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DialogStatus: str\n        :param BotName: 匹配到的机器人名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BotName: str\n        :param IntentName: 匹配到的意图名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IntentName: str\n        :param SlotInfoList: 槽位信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SlotInfoList: list of SlotInfo\n        :param InputText: 原始的用户说法。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InputText: str\n        :param SessionAttributes: 透传字段，由用户自定义的WebService服务返回。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionAttributes: str\n        :param ResponseText: 机器人对话的应答文本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResponseText: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DialogStatus: str
+        :param BotName: 匹配到的机器人名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotName: str
+        :param IntentName: 匹配到的意图名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentName: str
+        :param SlotInfoList: 槽位信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotInfoList: list of SlotInfo
+        :param InputText: 原始的用户说法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputText: str
+        :param SessionAttributes: 透传字段，由用户自定义的WebService服务返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionAttributes: str
+        :param ResponseText: 机器人对话的应答文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseText: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.DialogStatus = None
         self.BotName = None
         self.IntentName = None
@@ -238,8 +306,14 @@ class TextResetRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotId: 机器人标识，用于定义抽象机器人。
+        :type BotId: str
+        :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
+        :type TerminalId: str
+        :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
+        :type BotEnv: str
         """
-        :param BotId: 机器人标识，用于定义抽象机器人。\n        :type BotId: str\n        :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。\n        :type TerminalId: str\n        :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。\n        :type BotEnv: str\n        """
         self.BotId = None
         self.TerminalId = None
         self.BotEnv = None
@@ -264,15 +338,31 @@ class TextResetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态，取值："START"/"COUTINUE"/"COMPLETE"。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DialogStatus: str\n        :param BotName: 匹配到的机器人名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BotName: str\n        :param IntentName: 匹配到的意图名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IntentName: str\n        :param SlotInfoList: 槽位信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SlotInfoList: list of SlotInfo\n        :param InputText: 原始的用户说法。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InputText: str\n        :param SessionAttributes: 透传字段，由用户自定义的WebService服务返回。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionAttributes: str\n        :param ResponseText: 机器人对话的应答文本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResponseText: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DialogStatus: str
+        :param BotName: 匹配到的机器人名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotName: str
+        :param IntentName: 匹配到的意图名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentName: str
+        :param SlotInfoList: 槽位信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotInfoList: list of SlotInfo
+        :param InputText: 原始的用户说法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputText: str
+        :param SessionAttributes: 透传字段，由用户自定义的WebService服务返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionAttributes: str
+        :param ResponseText: 机器人对话的应答文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseText: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.DialogStatus = None
         self.BotName = None
         self.IntentName = None

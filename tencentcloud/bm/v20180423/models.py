@@ -24,8 +24,12 @@ class AttachCamRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 服务器ID
+        :type InstanceId: str
+        :param RoleName: 角色名称。
+        :type RoleName: str
         """
-        :param InstanceId: 服务器ID\n        :type InstanceId: str\n        :param RoleName: 角色名称。\n        :type RoleName: str\n        """
         self.InstanceId = None
         self.RoleName = None
 
@@ -48,8 +52,10 @@ class AttachCamRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -63,8 +69,14 @@ class BindPsaTagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaId: 预授权规则ID
+        :type PsaId: str
+        :param TagKey: 需要绑定的标签key
+        :type TagKey: str
+        :param TagValue: 需要绑定的标签value
+        :type TagValue: str
         """
-        :param PsaId: 预授权规则ID\n        :type PsaId: str\n        :param TagKey: 需要绑定的标签key\n        :type TagKey: str\n        :param TagValue: 需要绑定的标签value\n        :type TagValue: str\n        """
         self.PsaId = None
         self.TagKey = None
         self.TagValue = None
@@ -89,8 +101,10 @@ class BindPsaTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -104,9 +118,89 @@ class BuyDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/33564)获取可用区信息
+        :type Zone: str
+        :param OsTypeId: 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)获取操作系统信息
+        :type OsTypeId: int
+        :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息
+        :type RaidId: int
+        :param GoodsCount: 购买数量
+        :type GoodsCount: int
+        :param VpcId: 购买至私有网络ID
+        :type VpcId: str
+        :param SubnetId: 购买至子网ID
+        :type SubnetId: str
+        :param DeviceClassCode: 购买的机型ID。通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)获取机型信息
+        :type DeviceClassCode: str
+        :param TimeUnit: 购买时长单位，取值：M(月) D(天)
+        :type TimeUnit: str
+        :param TimeSpan: 购买时长
+        :type TimeSpan: int
+        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedSecurityAgent: int
+        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedMonitorAgent: int
+        :param NeedEMRAgent: 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRAgent: int
+        :param NeedEMRSoftware: 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRSoftware: int
+        :param ApplyEip: 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0
+        :type ApplyEip: int
+        :param EipPayMode: 弹性公网IP计费模式，取值：Flow(按流量计费) Bandwidth(按带宽计费)，默认取值Flow
+        :type EipPayMode: str
+        :param EipBandwidth: 弹性公网IP带宽限制，单位Mb
+        :type EipBandwidth: int
+        :param IsZoning: 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1
+        :type IsZoning: int
+        :param CpmPayMode: 物理机计费模式，取值：1(预付费) 2(后付费)，默认取值为1
+        :type CpmPayMode: int
+        :param ImageId: 自定义镜像ID，取值生效时用自定义镜像部署物理机
+        :type ImageId: str
+        :param Password: 设置Linux root或Windows Administrator的密码
+        :type Password: str
+        :param AutoRenewFlag: 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0
+        :type AutoRenewFlag: int
+        :param SysRootSpace: 系统盘根分区大小，单位为G，默认取值10G。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取根分区信息
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: 系统盘swap分区或/boot/efi分区的大小，单位为G。若是uefi启动的机器，分区为/boot/efi，且此值是默认是2G。 普通机器为swap分区，可以不指定此分区。 机型是否是uefi启动，参见接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: /usr/local分区大小，单位为G
+        :type SysUsrlocalSpace: int
+        :param SysDataSpace: /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）
+        :type SysDataSpace: int
+        :param HyperThreading: 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1
+        :type HyperThreading: int
+        :param LanIps: 指定的内网IP列表，不指定时自动分配
+        :type LanIps: list of str
+        :param Aliases: 设备名称列表
+        :type Aliases: list of str
+        :param CpuId: CPU型号ID，自定义机型需要传入，取值：
+<br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
+        :type CpuId: int
+        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入
+        :type ContainRaidCard: int
+        :param MemSize: 内存大小，单位为G，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
+        :type MemSize: int
+        :param SystemDiskTypeId: 系统盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 系统盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 数据盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 数据盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值
+        :type DataDiskCount: int
+        :param Tags: 绑定的标签列表
+        :type Tags: list of Tag
+        :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
+        :type FileSystem: str
+        :param BuySession: 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名作为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。
+        :type BuySession: str
+        :param SgId: 绑定已有的安全组ID。仅在NeedSecurityAgent为1时生效
+        :type SgId: str
+        :param TemplateId: 安全组模板ID，由模板创建新安全组并绑定。TemplateId和SgId不能同时传入
+        :type TemplateId: str
         """
-        :param Zone: 可用区ID。通过接口[查询地域以及可用区(DescribeRegions)](https://cloud.tencent.com/document/api/386/33564)获取可用区信息\n        :type Zone: str\n        :param OsTypeId: 部署服务器的操作系统ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)获取操作系统信息\n        :type OsTypeId: int\n        :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息\n        :type RaidId: int\n        :param GoodsCount: 购买数量\n        :type GoodsCount: int\n        :param VpcId: 购买至私有网络ID\n        :type VpcId: str\n        :param SubnetId: 购买至子网ID\n        :type SubnetId: str\n        :param DeviceClassCode: 购买的机型ID。通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)获取机型信息\n        :type DeviceClassCode: str\n        :param TimeUnit: 购买时长单位，取值：M(月) D(天)\n        :type TimeUnit: str\n        :param TimeSpan: 购买时长\n        :type TimeSpan: int\n        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedSecurityAgent: int\n        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedMonitorAgent: int\n        :param NeedEMRAgent: 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedEMRAgent: int\n        :param NeedEMRSoftware: 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedEMRSoftware: int\n        :param ApplyEip: 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0\n        :type ApplyEip: int\n        :param EipPayMode: 弹性公网IP计费模式，取值：Flow(按流量计费) Bandwidth(按带宽计费)，默认取值Flow\n        :type EipPayMode: str\n        :param EipBandwidth: 弹性公网IP带宽限制，单位Mb\n        :type EipBandwidth: int\n        :param IsZoning: 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1\n        :type IsZoning: int\n        :param CpmPayMode: 物理机计费模式，取值：1(预付费) 2(后付费)，默认取值为1\n        :type CpmPayMode: int\n        :param ImageId: 自定义镜像ID，取值生效时用自定义镜像部署物理机\n        :type ImageId: str\n        :param Password: 设置Linux root或Windows Administrator的密码\n        :type Password: str\n        :param AutoRenewFlag: 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0\n        :type AutoRenewFlag: int\n        :param SysRootSpace: 系统盘根分区大小，单位为G，默认取值10G。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取根分区信息\n        :type SysRootSpace: int\n        :param SysSwaporuefiSpace: 系统盘swap分区或/boot/efi分区的大小，单位为G。若是uefi启动的机器，分区为/boot/efi，且此值是默认是2G。 普通机器为swap分区，可以不指定此分区。 机型是否是uefi启动，参见接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)\n        :type SysSwaporuefiSpace: int\n        :param SysUsrlocalSpace: /usr/local分区大小，单位为G\n        :type SysUsrlocalSpace: int\n        :param SysDataSpace: /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）\n        :type SysDataSpace: int\n        :param HyperThreading: 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1\n        :type HyperThreading: int\n        :param LanIps: 指定的内网IP列表，不指定时自动分配\n        :type LanIps: list of str\n        :param Aliases: 设备名称列表\n        :type Aliases: list of str\n        :param CpuId: CPU型号ID，自定义机型需要传入，取值：
-<br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>\n        :type CpuId: int\n        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，自定义机型需要传入\n        :type ContainRaidCard: int\n        :param MemSize: 内存大小，单位为G，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值\n        :type MemSize: int\n        :param SystemDiskTypeId: 系统盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值\n        :type SystemDiskTypeId: int\n        :param SystemDiskCount: 系统盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值\n        :type SystemDiskCount: int\n        :param DataDiskTypeId: 数据盘ID，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值\n        :type DataDiskTypeId: int\n        :param DataDiskCount: 数据盘数量，自定义机型需要传入。取值参考接口[查询自定义机型部件信息(DescribeHardwareSpecification)](https://cloud.tencent.com/document/api/386/33565)返回值\n        :type DataDiskCount: int\n        :param Tags: 绑定的标签列表\n        :type Tags: list of Tag\n        :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效\n        :type FileSystem: str\n        :param BuySession: 此参数是为了防止重复发货。如果两次调用传入相同的BuySession，只会发货一次。 不要以设备别名作为BuySession，这样只会第一次购买成功。参数长度为128位，合法字符为大小字母，数字，下划线，横线。\n        :type BuySession: str\n        :param SgId: 绑定已有的安全组ID。仅在NeedSecurityAgent为1时生效\n        :type SgId: str\n        :param TemplateId: 安全组模板ID，由模板创建新安全组并绑定。TemplateId和SgId不能同时传入\n        :type TemplateId: str\n        """
         self.Zone = None
         self.OsTypeId = None
         self.RaidId = None
@@ -210,8 +304,12 @@ class BuyDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 购买的物理机实例ID列表
+        :type InstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param InstanceIds: 购买的物理机实例ID列表\n        :type InstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.InstanceIds = None
         self.RequestId = None
 
@@ -227,8 +325,16 @@ class CpuInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CpuId: CPU的ID
+        :type CpuId: int
+        :param CpuDescription: CPU型号描述
+        :type CpuDescription: str
+        :param Series: 机型序列
+        :type Series: int
+        :param ContainRaidCard: 支持的RAID方式，0：有RAID卡，1：没有RAID卡
+        :type ContainRaidCard: list of int non-negative
         """
-        :param CpuId: CPU的ID\n        :type CpuId: int\n        :param CpuDescription: CPU型号描述\n        :type CpuDescription: str\n        :param Series: 机型序列\n        :type Series: int\n        :param ContainRaidCard: 支持的RAID方式，0：有RAID卡，1：没有RAID卡\n        :type ContainRaidCard: list of int non-negative\n        """
         self.CpuId = None
         self.CpuDescription = None
         self.Series = None
@@ -255,8 +361,14 @@ class CreateCustomImageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 用于制作镜像的物理机ID
+        :type InstanceId: str
+        :param ImageName: 镜像别名
+        :type ImageName: str
+        :param ImageDescription: 镜像描述
+        :type ImageDescription: str
         """
-        :param InstanceId: 用于制作镜像的物理机ID\n        :type InstanceId: str\n        :param ImageName: 镜像别名\n        :type ImageName: str\n        :param ImageDescription: 镜像描述\n        :type ImageDescription: str\n        """
         self.InstanceId = None
         self.ImageName = None
         self.ImageDescription = None
@@ -281,8 +393,14 @@ class CreateCustomImageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param ImageId: 镜像ID\n        :type ImageId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.ImageId = None
         self.RequestId = None
@@ -300,8 +418,16 @@ class CreatePsaRegulationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaName: 规则别名
+        :type PsaName: str
+        :param TaskTypeIds: 关联的故障类型ID列表
+        :type TaskTypeIds: list of int non-negative
+        :param RepairLimit: 维修实例上限，默认为5
+        :type RepairLimit: int
+        :param PsaDescription: 规则备注
+        :type PsaDescription: str
         """
-        :param PsaName: 规则别名\n        :type PsaName: str\n        :param TaskTypeIds: 关联的故障类型ID列表\n        :type TaskTypeIds: list of int non-negative\n        :param RepairLimit: 维修实例上限，默认为5\n        :type RepairLimit: int\n        :param PsaDescription: 规则备注\n        :type PsaDescription: str\n        """
         self.PsaName = None
         self.TaskTypeIds = None
         self.RepairLimit = None
@@ -328,8 +454,12 @@ class CreatePsaRegulationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaId: 创建的预授权规则ID
+        :type PsaId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param PsaId: 创建的预授权规则ID\n        :type PsaId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PsaId = None
         self.RequestId = None
 
@@ -345,8 +475,26 @@ class CreateSpotDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区名称。如ap-guangzhou-bls-1, 通过DescribeRegions获取
+        :type Zone: str
+        :param ComputeType: 计算单元类型, 如v3.c2.medium，更详细的ComputeType参考[竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)
+        :type ComputeType: str
+        :param OsTypeId: 操作系统类型ID
+        :type OsTypeId: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param GoodsNum: 购买的计算单元个数
+        :type GoodsNum: int
+        :param SpotStrategy: 出价策略。可取值为SpotWithPriceLimit和SpotAsPriceGo。SpotWithPriceLimit，用户设置价格上限，需要传SpotPriceLimit参数， 如果市场价高于用户的指定价格，则购买不成功;  SpotAsPriceGo 是随市场价的策略。
+        :type SpotStrategy: str
+        :param SpotPriceLimit: 用户设置的价格。当为SpotWithPriceLimit竞价策略时有效
+        :type SpotPriceLimit: float
+        :param Passwd: 设置竞价实例密码。可选参数，没有指定会生成随机密码
+        :type Passwd: str
         """
-        :param Zone: 可用区名称。如ap-guangzhou-bls-1, 通过DescribeRegions获取\n        :type Zone: str\n        :param ComputeType: 计算单元类型, 如v3.c2.medium，更详细的ComputeType参考[竞价实例产品文档](https://cloud.tencent.com/document/product/386/30256)\n        :type ComputeType: str\n        :param OsTypeId: 操作系统类型ID\n        :type OsTypeId: int\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param GoodsNum: 购买的计算单元个数\n        :type GoodsNum: int\n        :param SpotStrategy: 出价策略。可取值为SpotWithPriceLimit和SpotAsPriceGo。SpotWithPriceLimit，用户设置价格上限，需要传SpotPriceLimit参数， 如果市场价高于用户的指定价格，则购买不成功;  SpotAsPriceGo 是随市场价的策略。\n        :type SpotStrategy: str\n        :param SpotPriceLimit: 用户设置的价格。当为SpotWithPriceLimit竞价策略时有效\n        :type SpotPriceLimit: float\n        :param Passwd: 设置竞价实例密码。可选参数，没有指定会生成随机密码\n        :type Passwd: str\n        """
         self.Zone = None
         self.ComputeType = None
         self.OsTypeId = None
@@ -383,8 +531,14 @@ class CreateSpotDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceIds: 创建的服务器ID
+        :type ResourceIds: list of str
+        :param FlowId: 任务ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ResourceIds: 创建的服务器ID\n        :type ResourceIds: list of str\n        :param FlowId: 任务ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResourceIds = None
         self.FlowId = None
         self.RequestId = None
@@ -402,8 +556,14 @@ class CreateUserCmdRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alias: 用户自定义脚本的名称
+        :type Alias: str
+        :param OsType: 命令适用的操作系统类型，取值linux或xserver
+        :type OsType: str
+        :param Content: 脚本内容，必须经过base64编码
+        :type Content: str
         """
-        :param Alias: 用户自定义脚本的名称\n        :type Alias: str\n        :param OsType: 命令适用的操作系统类型，取值linux或xserver\n        :type OsType: str\n        :param Content: 脚本内容，必须经过base64编码\n        :type Content: str\n        """
         self.Alias = None
         self.OsType = None
         self.Content = None
@@ -428,8 +588,12 @@ class CreateUserCmdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CmdId: 脚本ID
+        :type CmdId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CmdId: 脚本ID\n        :type CmdId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CmdId = None
         self.RequestId = None
 
@@ -445,8 +609,32 @@ class CustomImage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param ImageName: 镜像别名
+        :type ImageName: str
+        :param ImageStatus: 镜像状态码
+        :type ImageStatus: int
+        :param OsClass: 镜像OS名
+        :type OsClass: str
+        :param OsVersion: 镜像OS版本
+        :type OsVersion: str
+        :param OsBit: OS是64还是32位
+        :type OsBit: int
+        :param ImageSize: 镜像大小(M)
+        :type ImageSize: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param PartitionInfoSet: 分区信息
+        :type PartitionInfoSet: list of PartitionInfo
+        :param DeviceClassCode: 适用机型
+        :type DeviceClassCode: str
+        :param ImageDescription: 备注
+        :type ImageDescription: str
+        :param OsTypeId: 原始镜像id
+        :type OsTypeId: int
         """
-        :param ImageId: 镜像ID\n        :type ImageId: str\n        :param ImageName: 镜像别名\n        :type ImageName: str\n        :param ImageStatus: 镜像状态码\n        :type ImageStatus: int\n        :param OsClass: 镜像OS名\n        :type OsClass: str\n        :param OsVersion: 镜像OS版本\n        :type OsVersion: str\n        :param OsBit: OS是64还是32位\n        :type OsBit: int\n        :param ImageSize: 镜像大小(M)\n        :type ImageSize: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param PartitionInfoSet: 分区信息\n        :type PartitionInfoSet: list of PartitionInfo\n        :param DeviceClassCode: 适用机型\n        :type DeviceClassCode: str\n        :param ImageDescription: 备注\n        :type ImageDescription: str\n        :param OsTypeId: 原始镜像id\n        :type OsTypeId: int\n        """
         self.ImageId = None
         self.ImageName = None
         self.ImageStatus = None
@@ -494,8 +682,14 @@ class CustomImageProcess(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StepName: 步骤
+        :type StepName: str
+        :param StartTime: 此步骤开始时间
+        :type StartTime: str
+        :param StepType: 0: 已完成 1: 当前进行 2: 未开始
+        :type StepType: int
         """
-        :param StepName: 步骤\n        :type StepName: str\n        :param StartTime: 此步骤开始时间\n        :type StartTime: str\n        :param StepType: 0: 已完成 1: 当前进行 2: 未开始\n        :type StepType: int\n        """
         self.StepName = None
         self.StartTime = None
         self.StepType = None
@@ -520,8 +714,10 @@ class DeleteCustomImagesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageIds: 准备删除的镜像ID列表
+        :type ImageIds: list of str
         """
-        :param ImageIds: 准备删除的镜像ID列表\n        :type ImageIds: list of str\n        """
         self.ImageIds = None
 
 
@@ -542,8 +738,12 @@ class DeleteCustomImagesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -559,8 +759,10 @@ class DeletePsaRegulationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaId: 预授权规则ID
+        :type PsaId: str
         """
-        :param PsaId: 预授权规则ID\n        :type PsaId: str\n        """
         self.PsaId = None
 
 
@@ -581,8 +783,10 @@ class DeletePsaRegulationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -596,8 +800,10 @@ class DeleteUserCmdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CmdIds: 需要删除的脚本ID
+        :type CmdIds: list of str
         """
-        :param CmdIds: 需要删除的脚本ID\n        :type CmdIds: list of str\n        """
         self.CmdIds = None
 
 
@@ -618,8 +824,10 @@ class DeleteUserCmdsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -633,8 +841,10 @@ class DescribeCustomImageProcessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageId: 镜像ID
+        :type ImageId: str
         """
-        :param ImageId: 镜像ID\n        :type ImageId: str\n        """
         self.ImageId = None
 
 
@@ -655,8 +865,12 @@ class DescribeCustomImageProcessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CustomImageProcessSet: 镜像制作进度
+        :type CustomImageProcessSet: list of CustomImageProcess
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CustomImageProcessSet: 镜像制作进度\n        :type CustomImageProcessSet: list of CustomImageProcess\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CustomImageProcessSet = None
         self.RequestId = None
 
@@ -677,14 +891,28 @@ class DescribeCustomImagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 数量限制\n        :type Limit: int\n        :param OrderField: 排序字段，仅支持CreateTime\n        :type OrderField: str\n        :param Order: 排序方式 0:递增(默认) 1:递减\n        :type Order: int\n        :param ImageId: 按ImageId查找指定镜像信息，ImageId字段存在时其他字段失效\n        :type ImageId: str\n        :param SearchKey: 模糊查询过滤，可以查询镜像ID或镜像名\n        :type SearchKey: str\n        :param ImageStatus: <ul>
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 数量限制
+        :type Limit: int
+        :param OrderField: 排序字段，仅支持CreateTime
+        :type OrderField: str
+        :param Order: 排序方式 0:递增(默认) 1:递减
+        :type Order: int
+        :param ImageId: 按ImageId查找指定镜像信息，ImageId字段存在时其他字段失效
+        :type ImageId: str
+        :param SearchKey: 模糊查询过滤，可以查询镜像ID或镜像名
+        :type SearchKey: str
+        :param ImageStatus: <ul>
 镜像状态过滤列表，有效取值为：
 <li>1：制作中</li>
 <li>2：制作失败</li>
 <li>3：正常</li>
 <li>4：删除中</li>
-</ul>\n        :type ImageStatus: list of int non-negative\n        """
+</ul>
+        :type ImageStatus: list of int non-negative
+        """
         self.Offset = None
         self.Limit = None
         self.OrderField = None
@@ -717,8 +945,14 @@ class DescribeCustomImagesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回镜像数量
+        :type TotalCount: int
+        :param CustomImageSet: 镜像信息列表
+        :type CustomImageSet: list of CustomImage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回镜像数量\n        :type TotalCount: int\n        :param CustomImageSet: 镜像信息列表\n        :type CustomImageSet: list of CustomImage\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.CustomImageSet = None
         self.RequestId = None
@@ -741,8 +975,26 @@ class DescribeDeviceClassPartitionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceClassCode: 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询。标准机型需要传入此参数。虽是可选参数，但DeviceClassCode和InstanceId参数，必须要填写一个。
+        :type DeviceClassCode: str
+        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时其余参数失效。
+        :type InstanceId: str
+        :param CpuId: CPU型号ID，查询自定义机型时需要传入
+        :type CpuId: int
+        :param MemSize: 内存大小，单位为G，查询自定义机型时需要传入
+        :type MemSize: int
+        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)。查询自定义机型时需要传入
+        :type ContainRaidCard: int
+        :param SystemDiskTypeId: 系统盘类型ID，查询自定义机型时需要传入
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 系统盘数量，查询自定义机型时需要传入
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 数据盘类型ID，查询自定义机型时可传入
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 数据盘数量，查询自定义机型时可传入
+        :type DataDiskCount: int
         """
-        :param DeviceClassCode: 设备类型代号。代号通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询。标准机型需要传入此参数。虽是可选参数，但DeviceClassCode和InstanceId参数，必须要填写一个。\n        :type DeviceClassCode: str\n        :param InstanceId: 需要查询自定义机型RAID信息时，传入自定义机型实例ID。InstanceId存在时其余参数失效。\n        :type InstanceId: str\n        :param CpuId: CPU型号ID，查询自定义机型时需要传入\n        :type CpuId: int\n        :param MemSize: 内存大小，单位为G，查询自定义机型时需要传入\n        :type MemSize: int\n        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)。查询自定义机型时需要传入\n        :type ContainRaidCard: int\n        :param SystemDiskTypeId: 系统盘类型ID，查询自定义机型时需要传入\n        :type SystemDiskTypeId: int\n        :param SystemDiskCount: 系统盘数量，查询自定义机型时需要传入\n        :type SystemDiskCount: int\n        :param DataDiskTypeId: 数据盘类型ID，查询自定义机型时可传入\n        :type DataDiskTypeId: int\n        :param DataDiskCount: 数据盘数量，查询自定义机型时可传入\n        :type DataDiskCount: int\n        """
         self.DeviceClassCode = None
         self.InstanceId = None
         self.CpuId = None
@@ -779,8 +1031,12 @@ class DescribeDeviceClassPartitionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceClassPartitionInfoSet: 支持的RAID格式列表
+        :type DeviceClassPartitionInfoSet: list of DeviceClassPartitionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DeviceClassPartitionInfoSet: 支持的RAID格式列表\n        :type DeviceClassPartitionInfoSet: list of DeviceClassPartitionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DeviceClassPartitionInfoSet = None
         self.RequestId = None
 
@@ -801,8 +1057,12 @@ class DescribeDeviceClassRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OnSale: 是否仅查询在售标准机型配置信息。取值0：查询所有机型；1：查询在售机型。默认为1
+        :type OnSale: int
+        :param NeedPriceInfo: 是否返回价格信息。取值0：不返回价格信息，接口返回速度更快；1：返回价格信息。默认为1
+        :type NeedPriceInfo: int
         """
-        :param OnSale: 是否仅查询在售标准机型配置信息。取值0：查询所有机型；1：查询在售机型。默认为1\n        :type OnSale: int\n        :param NeedPriceInfo: 是否返回价格信息。取值0：不返回价格信息，接口返回速度更快；1：返回价格信息。默认为1\n        :type NeedPriceInfo: int\n        """
         self.OnSale = None
         self.NeedPriceInfo = None
 
@@ -825,8 +1085,12 @@ class DescribeDeviceClassResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceClassSet: 物理机设备类型列表
+        :type DeviceClassSet: list of DeviceClass
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DeviceClassSet: 物理机设备类型列表\n        :type DeviceClassSet: list of DeviceClass\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DeviceClassSet = None
         self.RequestId = None
 
@@ -847,8 +1111,10 @@ class DescribeDeviceHardwareInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 设备 ID 列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 设备 ID 列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -869,8 +1135,12 @@ class DescribeDeviceHardwareInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceHardwareInfoSet: 设备硬件配置信息
+        :type DeviceHardwareInfoSet: list of DeviceHardwareInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DeviceHardwareInfoSet: 设备硬件配置信息\n        :type DeviceHardwareInfoSet: list of DeviceHardwareInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DeviceHardwareInfoSet = None
         self.RequestId = None
 
@@ -891,8 +1161,30 @@ class DescribeDeviceInventoryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区
+        :type Zone: str
+        :param DeviceClassCode: 设备型号
+        :type DeviceClassCode: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param CpuId: CPU型号ID，查询自定义机型时必填
+        :type CpuId: int
+        :param MemSize: 内存大小，单位为G，查询自定义机型时必填
+        :type MemSize: int
+        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，查询自定义机型时必填
+        :type ContainRaidCard: int
+        :param SystemDiskTypeId: 系统盘类型ID，查询自定义机型时必填
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 系统盘数量，查询自定义机型时必填
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 数据盘类型ID，查询自定义机型时可填
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 数据盘数量，查询自定义机型时可填
+        :type DataDiskCount: int
         """
-        :param Zone: 可用区\n        :type Zone: str\n        :param DeviceClassCode: 设备型号\n        :type DeviceClassCode: str\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param CpuId: CPU型号ID，查询自定义机型时必填\n        :type CpuId: int\n        :param MemSize: 内存大小，单位为G，查询自定义机型时必填\n        :type MemSize: int\n        :param ContainRaidCard: 是否有RAID卡，取值：1(有) 0(无)，查询自定义机型时必填\n        :type ContainRaidCard: int\n        :param SystemDiskTypeId: 系统盘类型ID，查询自定义机型时必填\n        :type SystemDiskTypeId: int\n        :param SystemDiskCount: 系统盘数量，查询自定义机型时必填\n        :type SystemDiskCount: int\n        :param DataDiskTypeId: 数据盘类型ID，查询自定义机型时可填\n        :type DataDiskTypeId: int\n        :param DataDiskCount: 数据盘数量，查询自定义机型时可填\n        :type DataDiskCount: int\n        """
         self.Zone = None
         self.DeviceClassCode = None
         self.VpcId = None
@@ -933,8 +1225,12 @@ class DescribeDeviceInventoryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceCount: 库存设备数量
+        :type DeviceCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DeviceCount: 库存设备数量\n        :type DeviceCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DeviceCount = None
         self.RequestId = None
 
@@ -950,8 +1246,18 @@ class DescribeDeviceOperationLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 设备实例ID
+        :type InstanceId: str
+        :param StartTime: 查询开始日期
+        :type StartTime: str
+        :param EndTime: 查询结束日期
+        :type EndTime: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
         """
-        :param InstanceId: 设备实例ID\n        :type InstanceId: str\n        :param StartTime: 查询开始日期\n        :type StartTime: str\n        :param EndTime: 查询结束日期\n        :type EndTime: str\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 返回数量\n        :type Limit: int\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -980,8 +1286,14 @@ class DescribeDeviceOperationLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceOperationLogSet: 操作日志列表
+        :type DeviceOperationLogSet: list of DeviceOperationLog
+        :param TotalCount: 返回数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DeviceOperationLogSet: 操作日志列表\n        :type DeviceOperationLogSet: list of DeviceOperationLog\n        :param TotalCount: 返回数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DeviceOperationLogSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1004,8 +1316,10 @@ class DescribeDevicePartitionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
         """
-        :param InstanceId: 物理机ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1026,8 +1340,12 @@ class DescribeDevicePartitionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DevicePartition: 物理机分区格式
+        :type DevicePartition: :class:`tencentcloud.bm.v20180423.models.DevicePartition`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DevicePartition: 物理机分区格式\n        :type DevicePartition: :class:`tencentcloud.bm.v20180423.models.DevicePartition`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DevicePartition = None
         self.RequestId = None
 
@@ -1045,8 +1363,20 @@ class DescribeDevicePositionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 数量限制
+        :type Limit: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        :param Alias: 实例别名
+        :type Alias: str
         """
-        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 数量限制\n        :type Limit: int\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param InstanceIds: 实例ID列表\n        :type InstanceIds: list of str\n        :param Alias: 实例别名\n        :type Alias: str\n        """
         self.Offset = None
         self.Limit = None
         self.VpcId = None
@@ -1077,8 +1407,14 @@ class DescribeDevicePositionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回数量
+        :type TotalCount: int
+        :param DevicePositionInfoSet: 设备所在机架信息
+        :type DevicePositionInfoSet: list of DevicePositionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回数量\n        :type TotalCount: int\n        :param DevicePositionInfoSet: 设备所在机架信息\n        :type DevicePositionInfoSet: list of DevicePositionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DevicePositionInfoSet = None
         self.RequestId = None
@@ -1101,8 +1437,14 @@ class DescribeDevicePriceInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要查询的实例列表
+        :type InstanceIds: list of str
+        :param TimeUnit: 购买时长单位，当前只支持取值为m
+        :type TimeUnit: str
+        :param TimeSpan: 购买时长
+        :type TimeSpan: int
         """
-        :param InstanceIds: 需要查询的实例列表\n        :type InstanceIds: list of str\n        :param TimeUnit: 购买时长单位，当前只支持取值为m\n        :type TimeUnit: str\n        :param TimeSpan: 购买时长\n        :type TimeSpan: int\n        """
         self.InstanceIds = None
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1127,8 +1469,12 @@ class DescribeDevicePriceInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DevicePriceInfoSet: 服务器价格信息列表
+        :type DevicePriceInfoSet: list of DevicePriceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DevicePriceInfoSet: 服务器价格信息列表\n        :type DevicePriceInfoSet: list of DevicePriceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DevicePriceInfoSet = None
         self.RequestId = None
 
@@ -1149,8 +1495,46 @@ class DescribeDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询
+        :type DeviceClassCode: str
+        :param InstanceIds: 设备ID数组
+        :type InstanceIds: list of str
+        :param WanIps: 外网IP数组
+        :type WanIps: list of str
+        :param LanIps: 内网IP数组
+        :type LanIps: list of str
+        :param Alias: 设备名称
+        :type Alias: str
+        :param VagueIp: 模糊IP查询
+        :type VagueIp: str
+        :param DeadlineStartTime: 设备到期时间查询的起始时间
+        :type DeadlineStartTime: str
+        :param DeadlineEndTime: 设备到期时间查询的结束时间
+        :type DeadlineEndTime: str
+        :param AutoRenewFlag: 自动续费标志 0:不自动续费，1:自动续费
+        :type AutoRenewFlag: int
+        :param VpcId: 私有网络唯一ID
+        :type VpcId: str
+        :param SubnetId: 子网唯一ID
+        :type SubnetId: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        :param DeviceType: 设备类型，取值有: compute(计算型), standard(标准型), storage(存储型) 等
+        :type DeviceType: str
+        :param IsLuckyDevice: 竞价实例机器的过滤。如果未指定此参数，则不做过滤。0: 查询非竞价实例的机器; 1: 查询竞价实例的机器。
+        :type IsLuckyDevice: int
+        :param OrderField: 排序字段
+        :type OrderField: str
+        :param Order: 排序方式，取值：0:增序(默认)，1:降序
+        :type Order: int
+        :param MaintainStatus: 按照维保方式过滤。可取值为 Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
+        :type MaintainStatus: str
         """
-        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。\n        :type Limit: int\n        :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询\n        :type DeviceClassCode: str\n        :param InstanceIds: 设备ID数组\n        :type InstanceIds: list of str\n        :param WanIps: 外网IP数组\n        :type WanIps: list of str\n        :param LanIps: 内网IP数组\n        :type LanIps: list of str\n        :param Alias: 设备名称\n        :type Alias: str\n        :param VagueIp: 模糊IP查询\n        :type VagueIp: str\n        :param DeadlineStartTime: 设备到期时间查询的起始时间\n        :type DeadlineStartTime: str\n        :param DeadlineEndTime: 设备到期时间查询的结束时间\n        :type DeadlineEndTime: str\n        :param AutoRenewFlag: 自动续费标志 0:不自动续费，1:自动续费\n        :type AutoRenewFlag: int\n        :param VpcId: 私有网络唯一ID\n        :type VpcId: str\n        :param SubnetId: 子网唯一ID\n        :type SubnetId: str\n        :param Tags: 标签列表\n        :type Tags: list of Tag\n        :param DeviceType: 设备类型，取值有: compute(计算型), standard(标准型), storage(存储型) 等\n        :type DeviceType: str\n        :param IsLuckyDevice: 竞价实例机器的过滤。如果未指定此参数，则不做过滤。0: 查询非竞价实例的机器; 1: 查询竞价实例的机器。\n        :type IsLuckyDevice: int\n        :param OrderField: 排序字段\n        :type OrderField: str\n        :param Order: 排序方式，取值：0:增序(默认)，1:降序\n        :type Order: int\n        :param MaintainStatus: 按照维保方式过滤。可取值为 Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保\n        :type MaintainStatus: str\n        """
         self.Offset = None
         self.Limit = None
         self.DeviceClassCode = None
@@ -1212,8 +1596,14 @@ class DescribeDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回数量
+        :type TotalCount: int
+        :param DeviceInfoSet: 物理机信息列表
+        :type DeviceInfoSet: list of DeviceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回数量\n        :type TotalCount: int\n        :param DeviceInfoSet: 物理机信息列表\n        :type DeviceInfoSet: list of DeviceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DeviceInfoSet = None
         self.RequestId = None
@@ -1242,8 +1632,16 @@ class DescribeHardwareSpecificationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CpuInfoSet: CPU型号列表
+        :type CpuInfoSet: list of CpuInfo
+        :param MemSet: 内存的取值，单位为G
+        :type MemSet: list of int non-negative
+        :param DiskInfoSet: 硬盘型号列表
+        :type DiskInfoSet: list of DiskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CpuInfoSet: CPU型号列表\n        :type CpuInfoSet: list of CpuInfo\n        :param MemSet: 内存的取值，单位为G\n        :type MemSet: list of int non-negative\n        :param DiskInfoSet: 硬盘型号列表\n        :type DiskInfoSet: list of DiskInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CpuInfoSet = None
         self.MemSet = None
         self.DiskInfoSet = None
@@ -1273,8 +1671,12 @@ class DescribeHostedDeviceOutBandInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 托管设备的唯一ID数组,数组个数不超过20
+        :type InstanceIds: list of str
+        :param Zone: 可用区ID
+        :type Zone: str
         """
-        :param InstanceIds: 托管设备的唯一ID数组,数组个数不超过20\n        :type InstanceIds: list of str\n        :param Zone: 可用区ID\n        :type Zone: str\n        """
         self.InstanceIds = None
         self.Zone = None
 
@@ -1297,8 +1699,12 @@ class DescribeHostedDeviceOutBandInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param HostedDeviceOutBandInfoSet: 托管设备带外信息
+        :type HostedDeviceOutBandInfoSet: list of HostedDeviceOutBandInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param HostedDeviceOutBandInfoSet: 托管设备带外信息\n        :type HostedDeviceOutBandInfoSet: list of HostedDeviceOutBandInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.HostedDeviceOutBandInfoSet = None
         self.RequestId = None
 
@@ -1319,8 +1725,10 @@ class DescribeOperationResultRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID
+        :type TaskId: int
         """
-        :param TaskId: 异步任务ID\n        :type TaskId: int\n        """
         self.TaskId = None
 
 
@@ -1341,7 +1749,7 @@ class DescribeOperationResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskStatus: 任务的整体状态，取值如下：<br>
 1：成功<br>
 2：失败<br>
@@ -1349,7 +1757,13 @@ class DescribeOperationResultResponse(AbstractModel):
 4：未完成<br>
 5：部分成功，部分未完成<br>
 6：部分未完成，部分失败<br>
-7：部分未完成，部分失败，部分成功\n        :type TaskStatus: int\n        :param SubtaskStatusSet: 各实例对应任务的状态ID\n        :type SubtaskStatusSet: list of SubtaskStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+7：部分未完成，部分失败，部分成功
+        :type TaskStatus: int
+        :param SubtaskStatusSet: 各实例对应任务的状态ID
+        :type SubtaskStatusSet: list of SubtaskStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.TaskStatus = None
         self.SubtaskStatusSet = None
         self.RequestId = None
@@ -1372,8 +1786,10 @@ class DescribeOsInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceClassCode: 设备类型代号。 可以从DescribeDeviceClass查询设备类型列表
+        :type DeviceClassCode: str
         """
-        :param DeviceClassCode: 设备类型代号。 可以从DescribeDeviceClass查询设备类型列表\n        :type DeviceClassCode: str\n        """
         self.DeviceClassCode = None
 
 
@@ -1394,8 +1810,12 @@ class DescribeOsInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OsInfoSet: 操作系统信息列表
+        :type OsInfoSet: list of OsInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param OsInfoSet: 操作系统信息列表\n        :type OsInfoSet: list of OsInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OsInfoSet = None
         self.RequestId = None
 
@@ -1416,8 +1836,22 @@ class DescribePsaRegulationsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 数量限制
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param PsaIds: 规则ID过滤，支持模糊查询
+        :type PsaIds: list of str
+        :param PsaNames: 规则别名过滤，支持模糊查询
+        :type PsaNames: list of str
+        :param Tags: 标签过滤
+        :type Tags: list of Tag
+        :param OrderField: 排序字段，取值支持：CreateTime
+        :type OrderField: str
+        :param Order: 排序方式 0:递增(默认) 1:递减
+        :type Order: int
         """
-        :param Limit: 数量限制\n        :type Limit: int\n        :param Offset: 偏移量\n        :type Offset: int\n        :param PsaIds: 规则ID过滤，支持模糊查询\n        :type PsaIds: list of str\n        :param PsaNames: 规则别名过滤，支持模糊查询\n        :type PsaNames: list of str\n        :param Tags: 标签过滤\n        :type Tags: list of Tag\n        :param OrderField: 排序字段，取值支持：CreateTime\n        :type OrderField: str\n        :param Order: 排序方式 0:递增(默认) 1:递减\n        :type Order: int\n        """
         self.Limit = None
         self.Offset = None
         self.PsaIds = None
@@ -1455,8 +1889,14 @@ class DescribePsaRegulationsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回规则数量
+        :type TotalCount: int
+        :param PsaRegulations: 返回规则列表
+        :type PsaRegulations: list of PsaRegulation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回规则数量\n        :type TotalCount: int\n        :param PsaRegulations: 返回规则列表\n        :type PsaRegulations: list of PsaRegulation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.PsaRegulations = None
         self.RequestId = None
@@ -1479,8 +1919,10 @@ class DescribeRegionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: 地域整型ID，目前黑石可用地域包括：8-北京，4-上海，1-广州， 19-重庆
+        :type RegionId: int
         """
-        :param RegionId: 地域整型ID，目前黑石可用地域包括：8-北京，4-上海，1-广州， 19-重庆\n        :type RegionId: int\n        """
         self.RegionId = None
 
 
@@ -1501,8 +1943,12 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionInfoSet: 地域信息
+        :type RegionInfoSet: list of RegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegionInfoSet: 地域信息\n        :type RegionInfoSet: list of RegionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionInfoSet = None
         self.RequestId = None
 
@@ -1529,8 +1975,12 @@ class DescribeRepairTaskConstantResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskTypeSet: 故障类型ID与对应中文名列表
+        :type TaskTypeSet: list of TaskType
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskTypeSet: 故障类型ID与对应中文名列表\n        :type TaskTypeSet: list of TaskType\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskTypeSet = None
         self.RequestId = None
 
@@ -1551,8 +2001,30 @@ class DescribeTaskInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 开始位置
+        :type Offset: int
+        :param Limit: 数据条数
+        :type Limit: int
+        :param StartDate: 时间过滤下限
+        :type StartDate: str
+        :param EndDate: 时间过滤上限
+        :type EndDate: str
+        :param TaskStatus: 任务状态ID过滤
+        :type TaskStatus: list of int non-negative
+        :param OrderField: 排序字段，目前支持：CreateTime，AuthTime，EndTime
+        :type OrderField: str
+        :param Order: 排序方式 0:递增(默认) 1:递减
+        :type Order: int
+        :param TaskIds: 任务ID过滤
+        :type TaskIds: list of str
+        :param InstanceIds: 实例ID过滤
+        :type InstanceIds: list of str
+        :param Aliases: 实例别名过滤
+        :type Aliases: list of str
+        :param TaskTypeIds: 故障类型ID过滤
+        :type TaskTypeIds: list of int non-negative
         """
-        :param Offset: 开始位置\n        :type Offset: int\n        :param Limit: 数据条数\n        :type Limit: int\n        :param StartDate: 时间过滤下限\n        :type StartDate: str\n        :param EndDate: 时间过滤上限\n        :type EndDate: str\n        :param TaskStatus: 任务状态ID过滤\n        :type TaskStatus: list of int non-negative\n        :param OrderField: 排序字段，目前支持：CreateTime，AuthTime，EndTime\n        :type OrderField: str\n        :param Order: 排序方式 0:递增(默认) 1:递减\n        :type Order: int\n        :param TaskIds: 任务ID过滤\n        :type TaskIds: list of str\n        :param InstanceIds: 实例ID过滤\n        :type InstanceIds: list of str\n        :param Aliases: 实例别名过滤\n        :type Aliases: list of str\n        :param TaskTypeIds: 故障类型ID过滤\n        :type TaskTypeIds: list of int non-negative\n        """
         self.Offset = None
         self.Limit = None
         self.StartDate = None
@@ -1593,8 +2065,14 @@ class DescribeTaskInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回任务总数量
+        :type TotalCount: int
+        :param TaskInfoSet: 任务信息列表
+        :type TaskInfoSet: list of TaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回任务总数量\n        :type TotalCount: int\n        :param TaskInfoSet: 任务信息列表\n        :type TaskInfoSet: list of TaskInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TaskInfoSet = None
         self.RequestId = None
@@ -1617,8 +2095,14 @@ class DescribeTaskOperationLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 维修任务ID
+        :type TaskId: str
+        :param OrderField: 排序字段，目前支持：OperationTime
+        :type OrderField: str
+        :param Order: 排序方式 0:递增(默认) 1:递减
+        :type Order: int
         """
-        :param TaskId: 维修任务ID\n        :type TaskId: str\n        :param OrderField: 排序字段，目前支持：OperationTime\n        :type OrderField: str\n        :param Order: 排序方式 0:递增(默认) 1:递减\n        :type Order: int\n        """
         self.TaskId = None
         self.OrderField = None
         self.Order = None
@@ -1643,8 +2127,14 @@ class DescribeTaskOperationLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskOperationLogSet: 操作日志
+        :type TaskOperationLogSet: list of TaskOperationLog
+        :param TotalCount: 日志条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskOperationLogSet: 操作日志\n        :type TaskOperationLogSet: list of TaskOperationLog\n        :param TotalCount: 日志条数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskOperationLogSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -1667,8 +2157,20 @@ class DescribeUserCmdTaskInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 数量限制
+        :type Limit: int
+        :param OrderField: 排序字段，支持： RunBeginTime,RunEndTime,Status
+        :type OrderField: str
+        :param Order: 排序方式，取值: 1倒序，0顺序；默认倒序
+        :type Order: int
+        :param SearchKey: 关键字搜索，可搜索ID或别名，支持模糊搜索
+        :type SearchKey: str
         """
-        :param TaskId: 任务ID\n        :type TaskId: str\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 数量限制\n        :type Limit: int\n        :param OrderField: 排序字段，支持： RunBeginTime,RunEndTime,Status\n        :type OrderField: str\n        :param Order: 排序方式，取值: 1倒序，0顺序；默认倒序\n        :type Order: int\n        :param SearchKey: 关键字搜索，可搜索ID或别名，支持模糊搜索\n        :type SearchKey: str\n        """
         self.TaskId = None
         self.Offset = None
         self.Limit = None
@@ -1699,8 +2201,14 @@ class DescribeUserCmdTaskInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回数量
+        :type TotalCount: int
+        :param UserCmdTaskInfoSet: 自定义脚本任务详细信息列表
+        :type UserCmdTaskInfoSet: list of UserCmdTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回数量\n        :type TotalCount: int\n        :param UserCmdTaskInfoSet: 自定义脚本任务详细信息列表\n        :type UserCmdTaskInfoSet: list of UserCmdTaskInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.UserCmdTaskInfoSet = None
         self.RequestId = None
@@ -1723,8 +2231,16 @@ class DescribeUserCmdTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 数量限制
+        :type Limit: int
+        :param OrderField: 排序字段，支持： RunBeginTime,RunEndTime,InstanceCount,SuccessCount,FailureCount
+        :type OrderField: str
+        :param Order: 排序方式，取值: 1倒序，0顺序；默认倒序
+        :type Order: int
         """
-        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 数量限制\n        :type Limit: int\n        :param OrderField: 排序字段，支持： RunBeginTime,RunEndTime,InstanceCount,SuccessCount,FailureCount\n        :type OrderField: str\n        :param Order: 排序方式，取值: 1倒序，0顺序；默认倒序\n        :type Order: int\n        """
         self.Offset = None
         self.Limit = None
         self.OrderField = None
@@ -1751,8 +2267,14 @@ class DescribeUserCmdTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 脚本任务信息数量
+        :type TotalCount: int
+        :param UserCmdTasks: 脚本任务信息列表
+        :type UserCmdTasks: list of UserCmdTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 脚本任务信息数量\n        :type TotalCount: int\n        :param UserCmdTasks: 脚本任务信息列表\n        :type UserCmdTasks: list of UserCmdTask\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.UserCmdTasks = None
         self.RequestId = None
@@ -1775,8 +2297,20 @@ class DescribeUserCmdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 数量限制
+        :type Limit: int
+        :param OrderField: 排序字段，支持： OsType,CreateTime,ModifyTime
+        :type OrderField: str
+        :param Order: 排序方式，取值: 1倒序，0顺序；默认倒序
+        :type Order: int
+        :param SearchKey: 关键字搜索，可搜索ID或别名，支持模糊搜索
+        :type SearchKey: str
+        :param CmdId: 查询的脚本ID
+        :type CmdId: str
         """
-        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 数量限制\n        :type Limit: int\n        :param OrderField: 排序字段，支持： OsType,CreateTime,ModifyTime\n        :type OrderField: str\n        :param Order: 排序方式，取值: 1倒序，0顺序；默认倒序\n        :type Order: int\n        :param SearchKey: 关键字搜索，可搜索ID或别名，支持模糊搜索\n        :type SearchKey: str\n        :param CmdId: 查询的脚本ID\n        :type CmdId: str\n        """
         self.Offset = None
         self.Limit = None
         self.OrderField = None
@@ -1807,8 +2341,14 @@ class DescribeUserCmdsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回数量
+        :type TotalCount: int
+        :param UserCmds: 脚本信息列表
+        :type UserCmds: list of UserCmd
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回数量\n        :type TotalCount: int\n        :param UserCmds: 脚本信息列表\n        :type UserCmds: list of UserCmd\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.UserCmds = None
         self.RequestId = None
@@ -1831,8 +2371,10 @@ class DetachCamRoleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 服务器ID
+        :type InstanceId: str
         """
-        :param InstanceId: 服务器ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1853,8 +2395,10 @@ class DetachCamRoleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1868,8 +2412,12 @@ class DeviceAlias(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 设备ID
+        :type InstanceId: str
+        :param Alias: 设备别名
+        :type Alias: str
         """
-        :param InstanceId: 设备ID\n        :type InstanceId: str\n        :param Alias: 设备别名\n        :type Alias: str\n        """
         self.InstanceId = None
         self.Alias = None
 
@@ -1892,12 +2440,42 @@ class DeviceClass(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceClassCode: 机型ID
+        :type DeviceClassCode: str
+        :param CpuDescription: CPU描述
+        :type CpuDescription: str
+        :param MemDescription: 内存描述
+        :type MemDescription: str
+        :param DiskDescription: 硬盘描述
+        :type DiskDescription: str
+        :param HaveRaidCard: 是否支持RAID. 0:不支持; 1:支持
+        :type HaveRaidCard: int
+        :param NicDescription: 网卡描述
+        :type NicDescription: str
+        :param GpuDescription: GPU描述
+        :type GpuDescription: str
+        :param Discount: 单价折扣
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        :param UnitPrice: 用户刊例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: int
+        :param RealPrice: 实际价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealPrice: int
+        :param NormalPrice: 官网刊例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalPrice: int
+        :param DeviceType: 设备使用场景类型
+        :type DeviceType: str
+        :param Series: 机型系列
+        :type Series: int
+        :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2
+        :type Cpu: int
+        :param Mem: 内存容量。单位G
+        :type Mem: int
         """
-        :param DeviceClassCode: 机型ID\n        :type DeviceClassCode: str\n        :param CpuDescription: CPU描述\n        :type CpuDescription: str\n        :param MemDescription: 内存描述\n        :type MemDescription: str\n        :param DiskDescription: 硬盘描述\n        :type DiskDescription: str\n        :param HaveRaidCard: 是否支持RAID. 0:不支持; 1:支持\n        :type HaveRaidCard: int\n        :param NicDescription: 网卡描述\n        :type NicDescription: str\n        :param GpuDescription: GPU描述\n        :type GpuDescription: str\n        :param Discount: 单价折扣
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Discount: float\n        :param UnitPrice: 用户刊例价格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnitPrice: int\n        :param RealPrice: 实际价格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RealPrice: int\n        :param NormalPrice: 官网刊例价格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NormalPrice: int\n        :param DeviceType: 设备使用场景类型\n        :type DeviceType: str\n        :param Series: 机型系列\n        :type Series: int\n        :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2\n        :type Cpu: int\n        :param Mem: 内存容量。单位G\n        :type Mem: int\n        """
         self.DeviceClassCode = None
         self.CpuDescription = None
         self.MemDescription = None
@@ -1946,8 +2524,30 @@ class DeviceClassPartitionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RaidId: RAID类型ID
+        :type RaidId: int
+        :param Raid: RAID名称
+        :type Raid: str
+        :param RaidDisplay: RAID名称（前台展示用）
+        :type RaidDisplay: str
+        :param SystemDiskSize: 系统盘总大小（单位GiB）
+        :type SystemDiskSize: int
+        :param SysRootSpace: 系统盘/分区默认大小（单位GiB）
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: 系统盘swap分区默认大小（单位GiB）
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: 系统盘/usr/local分区默认大小（单位GiB）
+        :type SysUsrlocalSpace: int
+        :param SysDataSpace: 系统盘/data分区默认大小（单位GiB）
+        :type SysDataSpace: int
+        :param SysIsUefiType: 设备是否是uefi启动方式。0:legacy启动; 1:uefi启动
+        :type SysIsUefiType: int
+        :param DataDiskSize: 数据盘总大小
+        :type DataDiskSize: int
+        :param DeviceDiskSizeInfoSet: 硬盘列表
+        :type DeviceDiskSizeInfoSet: list of DeviceDiskSizeInfo
         """
-        :param RaidId: RAID类型ID\n        :type RaidId: int\n        :param Raid: RAID名称\n        :type Raid: str\n        :param RaidDisplay: RAID名称（前台展示用）\n        :type RaidDisplay: str\n        :param SystemDiskSize: 系统盘总大小（单位GiB）\n        :type SystemDiskSize: int\n        :param SysRootSpace: 系统盘/分区默认大小（单位GiB）\n        :type SysRootSpace: int\n        :param SysSwaporuefiSpace: 系统盘swap分区默认大小（单位GiB）\n        :type SysSwaporuefiSpace: int\n        :param SysUsrlocalSpace: 系统盘/usr/local分区默认大小（单位GiB）\n        :type SysUsrlocalSpace: int\n        :param SysDataSpace: 系统盘/data分区默认大小（单位GiB）\n        :type SysDataSpace: int\n        :param SysIsUefiType: 设备是否是uefi启动方式。0:legacy启动; 1:uefi启动\n        :type SysIsUefiType: int\n        :param DataDiskSize: 数据盘总大小\n        :type DataDiskSize: int\n        :param DeviceDiskSizeInfoSet: 硬盘列表\n        :type DeviceDiskSizeInfoSet: list of DeviceDiskSizeInfo\n        """
         self.RaidId = None
         self.Raid = None
         self.RaidDisplay = None
@@ -1993,8 +2593,12 @@ class DeviceDiskSizeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DiskName: 硬盘名称
+        :type DiskName: str
+        :param DiskSize: 硬盘大小（单位GiB）
+        :type DiskSize: int
         """
-        :param DiskName: 硬盘名称\n        :type DiskName: str\n        :param DiskSize: 硬盘大小（单位GiB）\n        :type DiskSize: int\n        """
         self.DiskName = None
         self.DiskSize = None
 
@@ -2017,8 +2621,42 @@ class DeviceHardwareInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 设备实例 ID
+        :type InstanceId: str
+        :param IsElastic: 是否自定义机型
+        :type IsElastic: int
+        :param CpmPayMode: 机型计费模式，1 为预付费，2 为后付费
+        :type CpmPayMode: int
+        :param CpuId: 自定义机型，CPU 型号 ID（非自定义机型返回0）
+        :type CpuId: int
+        :param Mem: 自定义机型，内存大小, 单位 GB（非自定义机型返回0）
+        :type Mem: int
+        :param ContainRaidCard: 是否有 RAID 卡，0：没有 RAID 卡； 1：有 RAID 卡
+        :type ContainRaidCard: int
+        :param SystemDiskTypeId: 自定义机型系统盘类型ID（若没有则返回0）
+        :type SystemDiskTypeId: int
+        :param SystemDiskCount: 自定义机型系统盘数量（若没有则返回0）
+        :type SystemDiskCount: int
+        :param DataDiskTypeId: 自定义机型数据盘类型 ID（若没有则返回0）
+        :type DataDiskTypeId: int
+        :param DataDiskCount: 自定义机型数据盘数量（若没有则返回0）
+        :type DataDiskCount: int
+        :param CpuDescription: CPU 型号描述
+        :type CpuDescription: str
+        :param MemDescription: 内存描述
+        :type MemDescription: str
+        :param DiskDescription: 磁盘描述
+        :type DiskDescription: str
+        :param NicDescription: 网卡描述
+        :type NicDescription: str
+        :param RaidDescription: 是否支持 RAID 的描述
+        :type RaidDescription: str
+        :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2
+        :type Cpu: int
+        :param DeviceClassCode: 机型外部代号
+        :type DeviceClassCode: str
         """
-        :param InstanceId: 设备实例 ID\n        :type InstanceId: str\n        :param IsElastic: 是否自定义机型\n        :type IsElastic: int\n        :param CpmPayMode: 机型计费模式，1 为预付费，2 为后付费\n        :type CpmPayMode: int\n        :param CpuId: 自定义机型，CPU 型号 ID（非自定义机型返回0）\n        :type CpuId: int\n        :param Mem: 自定义机型，内存大小, 单位 GB（非自定义机型返回0）\n        :type Mem: int\n        :param ContainRaidCard: 是否有 RAID 卡，0：没有 RAID 卡； 1：有 RAID 卡\n        :type ContainRaidCard: int\n        :param SystemDiskTypeId: 自定义机型系统盘类型ID（若没有则返回0）\n        :type SystemDiskTypeId: int\n        :param SystemDiskCount: 自定义机型系统盘数量（若没有则返回0）\n        :type SystemDiskCount: int\n        :param DataDiskTypeId: 自定义机型数据盘类型 ID（若没有则返回0）\n        :type DataDiskTypeId: int\n        :param DataDiskCount: 自定义机型数据盘数量（若没有则返回0）\n        :type DataDiskCount: int\n        :param CpuDescription: CPU 型号描述\n        :type CpuDescription: str\n        :param MemDescription: 内存描述\n        :type MemDescription: str\n        :param DiskDescription: 磁盘描述\n        :type DiskDescription: str\n        :param NicDescription: 网卡描述\n        :type NicDescription: str\n        :param RaidDescription: 是否支持 RAID 的描述\n        :type RaidDescription: str\n        :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2\n        :type Cpu: int\n        :param DeviceClassCode: 机型外部代号\n        :type DeviceClassCode: str\n        """
         self.InstanceId = None
         self.IsElastic = None
         self.CpmPayMode = None
@@ -2071,11 +2709,63 @@ class DeviceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 设备唯一ID
+        :type InstanceId: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param DeviceStatus: 设备状态ID，取值：<li>1：申领设备中</li><li>2：初始化中</li><li>4：运营中</li><li>7：隔离中</li><li>8：已隔离</li><li>10：解隔离中</li><li>16：故障中</li>
+        :type DeviceStatus: int
+        :param OperateStatus: 设备操作状态ID，取值：
+<li>1：运行中</li><li>2：正在关机</li><li>3：已关机</li><li>5：正在开机</li><li>7：重启中</li><li>9：重装中</li><li>12：绑定EIP</li><li>13：解绑EIP</li><li>14：绑定LB</li><li>15：解绑LB</li><li>19：更换IP中</li><li>20：制作镜像中</li><li>21：制作镜像失败</li><li>23：故障待重装</li>
+        :type OperateStatus: int
+        :param OsTypeId: 操作系统ID，参考接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)
+        :type OsTypeId: int
+        :param RaidId: RAID类型ID，参考接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/product/386/32910)
+        :type RaidId: int
+        :param Alias: 设备别名
+        :type Alias: str
+        :param AppId: 用户AppId
+        :type AppId: int
+        :param Zone: 可用区
+        :type Zone: str
+        :param WanIp: 外网IP
+        :type WanIp: str
+        :param LanIp: 内网IP
+        :type LanIp: str
+        :param DeliverTime: 设备交付时间
+        :type DeliverTime: str
+        :param Deadline: 设备到期时间
+        :type Deadline: str
+        :param AutoRenewFlag: 自动续费标识。0: 不自动续费; 1:自动续费
+        :type AutoRenewFlag: int
+        :param DeviceClassCode: 设备类型
+        :type DeviceClassCode: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        :param CpmPayMode: 计费模式。1: 预付费; 2: 后付费; 3:预付费转后付费中
+        :type CpmPayMode: int
+        :param DhcpIp: 带外IP
+        :type DhcpIp: str
+        :param VpcName: 所在私有网络别名
+        :type VpcName: str
+        :param SubnetName: 所在子网别名
+        :type SubnetName: str
+        :param VpcCidrBlock: 所在私有网络CIDR
+        :type VpcCidrBlock: str
+        :param SubnetCidrBlock: 所在子网CIDR
+        :type SubnetCidrBlock: str
+        :param IsLuckyDevice: 标识是否是竞价实例。0: 普通设备; 1: 竞价实例设备
+        :type IsLuckyDevice: int
+        :param MaintainStatus: 标识机器维保状态。Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainStatus: str
+        :param MaintainMessage: 维保信息描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainMessage: str
         """
-        :param InstanceId: 设备唯一ID\n        :type InstanceId: str\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param DeviceStatus: 设备状态ID，取值：<li>1：申领设备中</li><li>2：初始化中</li><li>4：运营中</li><li>7：隔离中</li><li>8：已隔离</li><li>10：解隔离中</li><li>16：故障中</li>\n        :type DeviceStatus: int\n        :param OperateStatus: 设备操作状态ID，取值：
-<li>1：运行中</li><li>2：正在关机</li><li>3：已关机</li><li>5：正在开机</li><li>7：重启中</li><li>9：重装中</li><li>12：绑定EIP</li><li>13：解绑EIP</li><li>14：绑定LB</li><li>15：解绑LB</li><li>19：更换IP中</li><li>20：制作镜像中</li><li>21：制作镜像失败</li><li>23：故障待重装</li>\n        :type OperateStatus: int\n        :param OsTypeId: 操作系统ID，参考接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/product/386/32902)\n        :type OsTypeId: int\n        :param RaidId: RAID类型ID，参考接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/product/386/32910)\n        :type RaidId: int\n        :param Alias: 设备别名\n        :type Alias: str\n        :param AppId: 用户AppId\n        :type AppId: int\n        :param Zone: 可用区\n        :type Zone: str\n        :param WanIp: 外网IP\n        :type WanIp: str\n        :param LanIp: 内网IP\n        :type LanIp: str\n        :param DeliverTime: 设备交付时间\n        :type DeliverTime: str\n        :param Deadline: 设备到期时间\n        :type Deadline: str\n        :param AutoRenewFlag: 自动续费标识。0: 不自动续费; 1:自动续费\n        :type AutoRenewFlag: int\n        :param DeviceClassCode: 设备类型\n        :type DeviceClassCode: str\n        :param Tags: 标签列表\n        :type Tags: list of Tag\n        :param CpmPayMode: 计费模式。1: 预付费; 2: 后付费; 3:预付费转后付费中\n        :type CpmPayMode: int\n        :param DhcpIp: 带外IP\n        :type DhcpIp: str\n        :param VpcName: 所在私有网络别名\n        :type VpcName: str\n        :param SubnetName: 所在子网别名\n        :type SubnetName: str\n        :param VpcCidrBlock: 所在私有网络CIDR\n        :type VpcCidrBlock: str\n        :param SubnetCidrBlock: 所在子网CIDR\n        :type SubnetCidrBlock: str\n        :param IsLuckyDevice: 标识是否是竞价实例。0: 普通设备; 1: 竞价实例设备\n        :type IsLuckyDevice: int\n        :param MaintainStatus: 标识机器维保状态。Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaintainStatus: str\n        :param MaintainMessage: 维保信息描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaintainMessage: str\n        """
         self.InstanceId = None
         self.VpcId = None
         self.SubnetId = None
@@ -2151,8 +2841,28 @@ class DeviceOperationLog(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 日志的ID
+        :type Id: int
+        :param InstanceId: 设备ID
+        :type InstanceId: str
+        :param TaskId: 日志对应的操作任务ID
+        :type TaskId: int
+        :param TaskName: 操作任务名称
+        :type TaskName: str
+        :param TaskDescription: 操作任务中文名称
+        :type TaskDescription: str
+        :param StartTime: 操作开始时间
+        :type StartTime: str
+        :param EndTime: 操作结束时间
+        :type EndTime: str
+        :param Status: 操作状态，0: 正在执行中；1：任务成功； 2: 任务失败。
+        :type Status: int
+        :param OpUin: 操作者
+        :type OpUin: str
+        :param LogDescription: 操作描述
+        :type LogDescription: str
         """
-        :param Id: 日志的ID\n        :type Id: int\n        :param InstanceId: 设备ID\n        :type InstanceId: str\n        :param TaskId: 日志对应的操作任务ID\n        :type TaskId: int\n        :param TaskName: 操作任务名称\n        :type TaskName: str\n        :param TaskDescription: 操作任务中文名称\n        :type TaskDescription: str\n        :param StartTime: 操作开始时间\n        :type StartTime: str\n        :param EndTime: 操作结束时间\n        :type EndTime: str\n        :param Status: 操作状态，0: 正在执行中；1：任务成功； 2: 任务失败。\n        :type Status: int\n        :param OpUin: 操作者\n        :type OpUin: str\n        :param LogDescription: 操作描述\n        :type LogDescription: str\n        """
         self.Id = None
         self.InstanceId = None
         self.TaskId = None
@@ -2191,8 +2901,24 @@ class DevicePartition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SystemDiskSize: 系统盘大小
+        :type SystemDiskSize: int
+        :param DataDiskSize: 数据盘大小
+        :type DataDiskSize: int
+        :param SysIsUefiType: 是否兼容Uefi
+        :type SysIsUefiType: bool
+        :param SysRootSpace: root分区大小
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: Swaporuefi分区大小
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: Usrlocal分区大小
+        :type SysUsrlocalSpace: int
+        :param SysDataSpace: data分区大小
+        :type SysDataSpace: int
+        :param DeviceDiskSizeInfoSet: 硬盘大小详情
+        :type DeviceDiskSizeInfoSet: list of DeviceDiskSizeInfo
         """
-        :param SystemDiskSize: 系统盘大小\n        :type SystemDiskSize: int\n        :param DataDiskSize: 数据盘大小\n        :type DataDiskSize: int\n        :param SysIsUefiType: 是否兼容Uefi\n        :type SysIsUefiType: bool\n        :param SysRootSpace: root分区大小\n        :type SysRootSpace: int\n        :param SysSwaporuefiSpace: Swaporuefi分区大小\n        :type SysSwaporuefiSpace: int\n        :param SysUsrlocalSpace: Usrlocal分区大小\n        :type SysUsrlocalSpace: int\n        :param SysDataSpace: data分区大小\n        :type SysDataSpace: int\n        :param DeviceDiskSizeInfoSet: 硬盘大小详情\n        :type DeviceDiskSizeInfoSet: list of DeviceDiskSizeInfo\n        """
         self.SystemDiskSize = None
         self.DataDiskSize = None
         self.SysIsUefiType = None
@@ -2232,8 +2958,30 @@ class DevicePositionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 设备ID
+        :type InstanceId: str
+        :param Zone: 所在可用区
+        :type Zone: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param LanIp: 业务IP
+        :type LanIp: str
+        :param Alias: 实例别名
+        :type Alias: str
+        :param RckName: 机架名称
+        :type RckName: str
+        :param PosCode: 机位
+        :type PosCode: int
+        :param SwitchName: 交换机名称
+        :type SwitchName: str
+        :param DeliverTime: 设备交付时间
+        :type DeliverTime: str
+        :param Deadline: 过期时间
+        :type Deadline: str
         """
-        :param InstanceId: 设备ID\n        :type InstanceId: str\n        :param Zone: 所在可用区\n        :type Zone: str\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param LanIp: 业务IP\n        :type LanIp: str\n        :param Alias: 实例别名\n        :type Alias: str\n        :param RckName: 机架名称\n        :type RckName: str\n        :param PosCode: 机位\n        :type PosCode: int\n        :param SwitchName: 交换机名称\n        :type SwitchName: str\n        :param DeliverTime: 设备交付时间\n        :type DeliverTime: str\n        :param Deadline: 过期时间\n        :type Deadline: str\n        """
         self.InstanceId = None
         self.Zone = None
         self.VpcId = None
@@ -2274,8 +3022,42 @@ class DevicePriceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
+        :param DeviceClassCode: 设备型号
+        :type DeviceClassCode: str
+        :param IsElastic: 是否是弹性机型，1：是，0：否
+        :type IsElastic: int
+        :param CpmPayMode: 付费模式ID, 1:预付费; 2:后付费; 3:预付费转后付费中
+        :type CpmPayMode: int
+        :param CpuDescription: Cpu信息描述
+        :type CpuDescription: str
+        :param MemDescription: 内存信息描述
+        :type MemDescription: str
+        :param DiskDescription: 硬盘信息描述
+        :type DiskDescription: str
+        :param NicDescription: 网卡信息描述
+        :type NicDescription: str
+        :param GpuDescription: Gpu信息描述
+        :type GpuDescription: str
+        :param RaidDescription: Raid信息描述
+        :type RaidDescription: str
+        :param Price: 客户的单价
+        :type Price: int
+        :param NormalPrice: 刊例单价
+        :type NormalPrice: int
+        :param TotalCost: 原价
+        :type TotalCost: int
+        :param RealTotalCost: 折扣价
+        :type RealTotalCost: int
+        :param TimeSpan: 计费时长
+        :type TimeSpan: int
+        :param TimeUnit: 计费时长单位, M:按月计费; D:按天计费
+        :type TimeUnit: str
+        :param GoodsCount: 商品数量
+        :type GoodsCount: int
         """
-        :param InstanceId: 物理机ID\n        :type InstanceId: str\n        :param DeviceClassCode: 设备型号\n        :type DeviceClassCode: str\n        :param IsElastic: 是否是弹性机型，1：是，0：否\n        :type IsElastic: int\n        :param CpmPayMode: 付费模式ID, 1:预付费; 2:后付费; 3:预付费转后付费中\n        :type CpmPayMode: int\n        :param CpuDescription: Cpu信息描述\n        :type CpuDescription: str\n        :param MemDescription: 内存信息描述\n        :type MemDescription: str\n        :param DiskDescription: 硬盘信息描述\n        :type DiskDescription: str\n        :param NicDescription: 网卡信息描述\n        :type NicDescription: str\n        :param GpuDescription: Gpu信息描述\n        :type GpuDescription: str\n        :param RaidDescription: Raid信息描述\n        :type RaidDescription: str\n        :param Price: 客户的单价\n        :type Price: int\n        :param NormalPrice: 刊例单价\n        :type NormalPrice: int\n        :param TotalCost: 原价\n        :type TotalCost: int\n        :param RealTotalCost: 折扣价\n        :type RealTotalCost: int\n        :param TimeSpan: 计费时长\n        :type TimeSpan: int\n        :param TimeUnit: 计费时长单位, M:按月计费; D:按天计费\n        :type TimeUnit: str\n        :param GoodsCount: 商品数量\n        :type GoodsCount: int\n        """
         self.InstanceId = None
         self.DeviceClassCode = None
         self.IsElastic = None
@@ -2328,8 +3110,14 @@ class DiskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DiskTypeId: 磁盘ID
+        :type DiskTypeId: int
+        :param Size: 磁盘的容量，单位为G
+        :type Size: int
+        :param DiskDescription: 磁盘信息描述
+        :type DiskDescription: str
         """
-        :param DiskTypeId: 磁盘ID\n        :type DiskTypeId: int\n        :param Size: 磁盘的容量，单位为G\n        :type Size: int\n        :param DiskDescription: 磁盘信息描述\n        :type DiskDescription: str\n        """
         self.DiskTypeId = None
         self.Size = None
         self.DiskDescription = None
@@ -2354,8 +3142,12 @@ class FailedTaskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 运行脚本的设备ID
+        :type InstanceId: str
+        :param ErrorMsg: 失败原因
+        :type ErrorMsg: str
         """
-        :param InstanceId: 运行脚本的设备ID\n        :type InstanceId: str\n        :param ErrorMsg: 失败原因\n        :type ErrorMsg: str\n        """
         self.InstanceId = None
         self.ErrorMsg = None
 
@@ -2378,8 +3170,16 @@ class HostedDeviceOutBandInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
+        :param OutBandIp: 带外IP
+        :type OutBandIp: str
+        :param VpnIp: VPN的IP
+        :type VpnIp: str
+        :param VpnPort: VPN的端口
+        :type VpnPort: int
         """
-        :param InstanceId: 物理机ID\n        :type InstanceId: str\n        :param OutBandIp: 带外IP\n        :type OutBandIp: str\n        :param VpnIp: VPN的IP\n        :type VpnIp: str\n        :param VpnPort: VPN的端口\n        :type VpnPort: int\n        """
         self.InstanceId = None
         self.OutBandIp = None
         self.VpnIp = None
@@ -2406,8 +3206,14 @@ class ModifyCustomImageAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param ImageName: 设置新的镜像名
+        :type ImageName: str
+        :param ImageDescription: 设置新的镜像描述
+        :type ImageDescription: str
         """
-        :param ImageId: 镜像ID\n        :type ImageId: str\n        :param ImageName: 设置新的镜像名\n        :type ImageName: str\n        :param ImageDescription: 设置新的镜像描述\n        :type ImageDescription: str\n        """
         self.ImageId = None
         self.ImageName = None
         self.ImageDescription = None
@@ -2432,8 +3238,10 @@ class ModifyCustomImageAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2447,8 +3255,10 @@ class ModifyDeviceAliasesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceAliases: 需要改名的设备与别名列表
+        :type DeviceAliases: list of DeviceAlias
         """
-        :param DeviceAliases: 需要改名的设备与别名列表\n        :type DeviceAliases: list of DeviceAlias\n        """
         self.DeviceAliases = None
 
 
@@ -2474,8 +3284,10 @@ class ModifyDeviceAliasesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2489,8 +3301,12 @@ class ModifyDeviceAutoRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AutoRenewFlag: 自动续费标志位。0: 不自动续费; 1: 自动续费
+        :type AutoRenewFlag: int
+        :param InstanceIds: 需要修改的设备ID列表
+        :type InstanceIds: list of str
         """
-        :param AutoRenewFlag: 自动续费标志位。0: 不自动续费; 1: 自动续费\n        :type AutoRenewFlag: int\n        :param InstanceIds: 需要修改的设备ID列表\n        :type InstanceIds: list of str\n        """
         self.AutoRenewFlag = None
         self.InstanceIds = None
 
@@ -2513,8 +3329,10 @@ class ModifyDeviceAutoRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2528,8 +3346,18 @@ class ModifyLanIpRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 物理机ID
+        :type InstanceId: str
+        :param VpcId: 指定新VPC
+        :type VpcId: str
+        :param SubnetId: 指定新子网
+        :type SubnetId: str
+        :param LanIp: 指定新内网IP
+        :type LanIp: str
+        :param RebootDevice: 是否需要重启机器，取值 1(需要) 0(不需要)，默认取值0
+        :type RebootDevice: int
         """
-        :param InstanceId: 物理机ID\n        :type InstanceId: str\n        :param VpcId: 指定新VPC\n        :type VpcId: str\n        :param SubnetId: 指定新子网\n        :type SubnetId: str\n        :param LanIp: 指定新内网IP\n        :type LanIp: str\n        :param RebootDevice: 是否需要重启机器，取值 1(需要) 0(不需要)，默认取值0\n        :type RebootDevice: int\n        """
         self.InstanceId = None
         self.VpcId = None
         self.SubnetId = None
@@ -2558,8 +3386,12 @@ class ModifyLanIpResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2575,8 +3407,10 @@ class ModifyPayModePre2PostRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要修改的设备ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要修改的设备ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -2597,8 +3431,10 @@ class ModifyPayModePre2PostResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2612,8 +3448,18 @@ class ModifyPsaRegulationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaId: 预授权规则ID
+        :type PsaId: str
+        :param PsaName: 预授权规则别名
+        :type PsaName: str
+        :param RepairLimit: 维修中的实例上限
+        :type RepairLimit: int
+        :param PsaDescription: 预授权规则备注
+        :type PsaDescription: str
+        :param TaskTypeIds: 预授权规则关联故障类型ID列表
+        :type TaskTypeIds: list of int non-negative
         """
-        :param PsaId: 预授权规则ID\n        :type PsaId: str\n        :param PsaName: 预授权规则别名\n        :type PsaName: str\n        :param RepairLimit: 维修中的实例上限\n        :type RepairLimit: int\n        :param PsaDescription: 预授权规则备注\n        :type PsaDescription: str\n        :param TaskTypeIds: 预授权规则关联故障类型ID列表\n        :type TaskTypeIds: list of int non-negative\n        """
         self.PsaId = None
         self.PsaName = None
         self.RepairLimit = None
@@ -2642,8 +3488,10 @@ class ModifyPsaRegulationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2657,8 +3505,16 @@ class ModifyUserCmdRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CmdId: 待修改的脚本ID
+        :type CmdId: str
+        :param Alias: 待修改的脚本名称
+        :type Alias: str
+        :param OsType: 脚本适用的操作系统类型
+        :type OsType: str
+        :param Content: 待修改的脚本内容，必须经过base64编码
+        :type Content: str
         """
-        :param CmdId: 待修改的脚本ID\n        :type CmdId: str\n        :param Alias: 待修改的脚本名称\n        :type Alias: str\n        :param OsType: 脚本适用的操作系统类型\n        :type OsType: str\n        :param Content: 待修改的脚本内容，必须经过base64编码\n        :type Content: str\n        """
         self.CmdId = None
         self.Alias = None
         self.OsType = None
@@ -2685,8 +3541,10 @@ class ModifyUserCmdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2700,8 +3558,10 @@ class OfflineDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要退还的物理机ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要退还的物理机ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -2722,8 +3582,12 @@ class OfflineDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2739,10 +3603,28 @@ class OsInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OsTypeId: 操作系统ID
+        :type OsTypeId: int
+        :param OsName: 操作系统名称
+        :type OsName: str
+        :param OsDescription: 操作系统名称描述
+        :type OsDescription: str
+        :param OsEnglishDescription: 操作系统英文名称
+        :type OsEnglishDescription: str
+        :param OsClass: 操作系统的分类，如CentOs Debian
+        :type OsClass: str
+        :param ImageTag: 标识镜像分类。public:公共镜像; private: 专属镜像
+        :type ImageTag: str
+        :param MaxPartitionSize: 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T
+        :type MaxPartitionSize: int
+        :param OsMinorVersion: 黑石版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsMinorVersion: str
+        :param OsMinorClass: 黑石版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsMinorClass: str
         """
-        :param OsTypeId: 操作系统ID\n        :type OsTypeId: int\n        :param OsName: 操作系统名称\n        :type OsName: str\n        :param OsDescription: 操作系统名称描述\n        :type OsDescription: str\n        :param OsEnglishDescription: 操作系统英文名称\n        :type OsEnglishDescription: str\n        :param OsClass: 操作系统的分类，如CentOs Debian\n        :type OsClass: str\n        :param ImageTag: 标识镜像分类。public:公共镜像; private: 专属镜像\n        :type ImageTag: str\n        :param MaxPartitionSize: 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T\n        :type MaxPartitionSize: int\n        :param OsMinorVersion: 黑石版本号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OsMinorVersion: str\n        :param OsMinorClass: 黑石版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OsMinorClass: str\n        """
         self.OsTypeId = None
         self.OsName = None
         self.OsDescription = None
@@ -2779,8 +3661,12 @@ class PartitionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 分区名称
+        :type Name: str
+        :param Size: 分区大小
+        :type Size: int
         """
-        :param Name: 分区名称\n        :type Name: str\n        :param Size: 分区大小\n        :type Size: int\n        """
         self.Name = None
         self.Size = None
 
@@ -2803,8 +3689,28 @@ class PsaRegulation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaId: 规则ID
+        :type PsaId: str
+        :param PsaName: 规则别名
+        :type PsaName: str
+        :param TagCount: 关联标签数量
+        :type TagCount: int
+        :param InstanceCount: 关联实例数量
+        :type InstanceCount: int
+        :param RepairCount: 故障实例数量
+        :type RepairCount: int
+        :param RepairLimit: 故障实例上限
+        :type RepairLimit: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param PsaDescription: 规则备注
+        :type PsaDescription: str
+        :param Tags: 关联标签
+        :type Tags: list of Tag
+        :param TaskTypeIds: 关联故障类型id
+        :type TaskTypeIds: list of int non-negative
         """
-        :param PsaId: 规则ID\n        :type PsaId: str\n        :param PsaName: 规则别名\n        :type PsaName: str\n        :param TagCount: 关联标签数量\n        :type TagCount: int\n        :param InstanceCount: 关联实例数量\n        :type InstanceCount: int\n        :param RepairCount: 故障实例数量\n        :type RepairCount: int\n        :param RepairLimit: 故障实例上限\n        :type RepairLimit: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param PsaDescription: 规则备注\n        :type PsaDescription: str\n        :param Tags: 关联标签\n        :type Tags: list of Tag\n        :param TaskTypeIds: 关联故障类型id\n        :type TaskTypeIds: list of int non-negative\n        """
         self.PsaId = None
         self.PsaName = None
         self.TagCount = None
@@ -2848,8 +3754,10 @@ class RebootDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要重启的设备ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要重启的设备ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -2870,8 +3778,12 @@ class RebootDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2887,8 +3799,10 @@ class RecoverDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要恢复的物理机ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要恢复的物理机ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -2909,8 +3823,12 @@ class RecoverDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -2926,8 +3844,16 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 地域ID
+        :type Region: str
+        :param RegionId: 地域整型ID
+        :type RegionId: int
+        :param RegionDescription: 地域描述
+        :type RegionDescription: str
+        :param ZoneInfoSet: 该地域下的可用区信息
+        :type ZoneInfoSet: list of ZoneInfo
         """
-        :param Region: 地域ID\n        :type Region: str\n        :param RegionId: 地域整型ID\n        :type RegionId: int\n        :param RegionDescription: 地域描述\n        :type RegionDescription: str\n        :param ZoneInfoSet: 该地域下的可用区信息\n        :type ZoneInfoSet: list of ZoneInfo\n        """
         self.Region = None
         self.RegionId = None
         self.RegionDescription = None
@@ -2959,8 +3885,48 @@ class ReloadDeviceOsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 设备的唯一ID
+        :type InstanceId: str
+        :param Password: 密码。 用户设置的linux root或Windows Administrator密码。密码校验规则: <li> Windows机器密码需12到16位，至少包括三项 `[a-z]`,`[A-Z]`,`[0-9]`和`[()`'`~!@#$%^&*-+=_`|`{}[]:;'<>,.?/]`的特殊符号, 密码不能包含Administrator(不区分大小写); <li> Linux机器密码需8到16位，至少包括两项`[a-z,A-Z]`,`[0-9]`和`[()`'`~!@#$%^&*-+=_`|`{}[]:;'<>,.?/]`的特殊符号
+        :type Password: str
+        :param OsTypeId: 操作系统类型ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/32902)获取操作系统信息
+        :type OsTypeId: int
+        :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息
+        :type RaidId: int
+        :param IsZoning: 是否格式化数据盘。0: 不格式化（默认值）；1：格式化
+        :type IsZoning: int
+        :param SysRootSpace: 系统盘根分区大小，默认是10G。系统盘的大小参考接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)
+        :type SysRootSpace: int
+        :param SysSwaporuefiSpace: 系统盘swap分区或/boot/efi分区的大小。若是uefi启动的机器，分区为/boot/efi ,且此值是默认是2G。普通机器为swap分区，可以不指定此分区。机型是否是uefi启动，参考接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)
+        :type SysSwaporuefiSpace: int
+        :param SysUsrlocalSpace: /usr/local分区大小
+        :type SysUsrlocalSpace: int
+        :param VpcId: 重装到新的私有网络的ID。如果改变VPC子网，则要求与SubnetId同时传参，否则可不填
+        :type VpcId: str
+        :param SubnetId: 重装到新的子网的ID。如果改变VPC子网，则要求与VpcId同时传参，否则可不填
+        :type SubnetId: str
+        :param LanIp: 重装指定IP地址
+        :type LanIp: str
+        :param HyperThreading: 指定是否开启超线程。 0：关闭超线程；1：开启超线程（默认值）
+        :type HyperThreading: int
+        :param ImageId: 自定义镜像ID。传此字段则用自定义镜像重装
+        :type ImageId: str
+        :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
+        :type FileSystem: str
+        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedSecurityAgent: int
+        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedMonitorAgent: int
+        :param NeedEMRAgent: 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRAgent: int
+        :param NeedEMRSoftware: 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0
+        :type NeedEMRSoftware: int
+        :param ReserveSgConfig: 是否保留安全组配置，取值：1(保留) 0(不保留)，默认取值0
+        :type ReserveSgConfig: int
+        :param SysDataSpace: /data分区大小，可不填。除root、swap、usr/local的剩余空间会自动分配到data分区
+        :type SysDataSpace: int
         """
-        :param InstanceId: 设备的唯一ID\n        :type InstanceId: str\n        :param Password: 密码。 用户设置的linux root或Windows Administrator密码。密码校验规则: <li> Windows机器密码需12到16位，至少包括三项 `[a-z]`,`[A-Z]`,`[0-9]`和`[()`'`~!@#$%^&*-+=_`|`{}[]:;'<>,.?/]`的特殊符号, 密码不能包含Administrator(不区分大小写); <li> Linux机器密码需8到16位，至少包括两项`[a-z,A-Z]`,`[0-9]`和`[()`'`~!@#$%^&*-+=_`|`{}[]:;'<>,.?/]`的特殊符号\n        :type Password: str\n        :param OsTypeId: 操作系统类型ID。通过接口[查询操作系统信息(DescribeOsInfo)](https://cloud.tencent.com/document/api/386/32902)获取操作系统信息\n        :type OsTypeId: int\n        :param RaidId: RAID类型ID。通过接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)获取RAID信息\n        :type RaidId: int\n        :param IsZoning: 是否格式化数据盘。0: 不格式化（默认值）；1：格式化\n        :type IsZoning: int\n        :param SysRootSpace: 系统盘根分区大小，默认是10G。系统盘的大小参考接口[查询机型RAID方式以及系统盘大小(DescribeDeviceClassPartition)](https://cloud.tencent.com/document/api/386/32910)\n        :type SysRootSpace: int\n        :param SysSwaporuefiSpace: 系统盘swap分区或/boot/efi分区的大小。若是uefi启动的机器，分区为/boot/efi ,且此值是默认是2G。普通机器为swap分区，可以不指定此分区。机型是否是uefi启动，参考接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)\n        :type SysSwaporuefiSpace: int\n        :param SysUsrlocalSpace: /usr/local分区大小\n        :type SysUsrlocalSpace: int\n        :param VpcId: 重装到新的私有网络的ID。如果改变VPC子网，则要求与SubnetId同时传参，否则可不填\n        :type VpcId: str\n        :param SubnetId: 重装到新的子网的ID。如果改变VPC子网，则要求与VpcId同时传参，否则可不填\n        :type SubnetId: str\n        :param LanIp: 重装指定IP地址\n        :type LanIp: str\n        :param HyperThreading: 指定是否开启超线程。 0：关闭超线程；1：开启超线程（默认值）\n        :type HyperThreading: int\n        :param ImageId: 自定义镜像ID。传此字段则用自定义镜像重装\n        :type ImageId: str\n        :param FileSystem: 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效\n        :type FileSystem: str\n        :param NeedSecurityAgent: 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedSecurityAgent: int\n        :param NeedMonitorAgent: 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedMonitorAgent: int\n        :param NeedEMRAgent: 是否安装EMR Agent，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedEMRAgent: int\n        :param NeedEMRSoftware: 是否安装EMR软件包，取值：1(安装) 0(不安装)，默认取值0\n        :type NeedEMRSoftware: int\n        :param ReserveSgConfig: 是否保留安全组配置，取值：1(保留) 0(不保留)，默认取值0\n        :type ReserveSgConfig: int\n        :param SysDataSpace: /data分区大小，可不填。除root、swap、usr/local的剩余空间会自动分配到data分区\n        :type SysDataSpace: int\n        """
         self.InstanceId = None
         self.Password = None
         self.OsTypeId = None
@@ -3019,8 +3985,12 @@ class ReloadDeviceOsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3036,8 +4006,14 @@ class RepairTaskControlRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 维修任务ID
+        :type TaskId: str
+        :param Operate: 操作
+        :type Operate: str
+        :param OperateRemark: 需要重新维修操作的备注信息，可提供返场维修原因，以便驻场快速针对问题定位解决。
+        :type OperateRemark: str
         """
-        :param TaskId: 维修任务ID\n        :type TaskId: str\n        :param Operate: 操作\n        :type Operate: str\n        :param OperateRemark: 需要重新维修操作的备注信息，可提供返场维修原因，以便驻场快速针对问题定位解决。\n        :type OperateRemark: str\n        """
         self.TaskId = None
         self.Operate = None
         self.OperateRemark = None
@@ -3062,9 +4038,13 @@ class RepairTaskControlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 出参TaskId是黑石异步任务ID，不同于入参TaskId字段。
-此字段可作为DescriptionOperationResult查询异步任务状态接口的入参，查询异步任务执行结果。\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+此字段可作为DescriptionOperationResult查询异步任务状态接口的入参，查询异步任务执行结果。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3080,8 +4060,12 @@ class ResetDevicePasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要重置密码的服务器ID列表
+        :type InstanceIds: list of str
+        :param Password: 新密码
+        :type Password: str
         """
-        :param InstanceIds: 需要重置密码的服务器ID列表\n        :type InstanceIds: list of str\n        :param Password: 新密码\n        :type Password: str\n        """
         self.InstanceIds = None
         self.Password = None
 
@@ -3104,8 +4088,12 @@ class ResetDevicePasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3121,8 +4109,10 @@ class ReturnDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要退还的物理机ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要退还的物理机ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -3143,8 +4133,12 @@ class ReturnDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3160,8 +4154,18 @@ class RunUserCmdRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CmdId: 自定义脚本ID
+        :type CmdId: str
+        :param UserName: 执行脚本机器的用户名
+        :type UserName: str
+        :param Password: 执行脚本机器的用户名的密码
+        :type Password: str
+        :param InstanceIds: 执行脚本的服务器实例
+        :type InstanceIds: list of str
+        :param CmdParam: 执行脚本的参数，必须经过base64编码
+        :type CmdParam: str
         """
-        :param CmdId: 自定义脚本ID\n        :type CmdId: str\n        :param UserName: 执行脚本机器的用户名\n        :type UserName: str\n        :param Password: 执行脚本机器的用户名的密码\n        :type Password: str\n        :param InstanceIds: 执行脚本的服务器实例\n        :type InstanceIds: list of str\n        :param CmdParam: 执行脚本的参数，必须经过base64编码\n        :type CmdParam: str\n        """
         self.CmdId = None
         self.UserName = None
         self.Password = None
@@ -3190,8 +4194,14 @@ class RunUserCmdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SuccessTaskInfoSet: 运行成功的任务信息列表
+        :type SuccessTaskInfoSet: list of SuccessTaskInfo
+        :param FailedTaskInfoSet: 运行失败的任务信息列表
+        :type FailedTaskInfoSet: list of FailedTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SuccessTaskInfoSet: 运行成功的任务信息列表\n        :type SuccessTaskInfoSet: list of SuccessTaskInfo\n        :param FailedTaskInfoSet: 运行失败的任务信息列表\n        :type FailedTaskInfoSet: list of FailedTaskInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SuccessTaskInfoSet = None
         self.FailedTaskInfoSet = None
         self.RequestId = None
@@ -3219,8 +4229,12 @@ class SetOutBandVpnAuthPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Password: 设置的Vpn认证密码
+        :type Password: str
+        :param Operate: 操作字段，取值为：Create（创建）或Update（修改）
+        :type Operate: str
         """
-        :param Password: 设置的Vpn认证密码\n        :type Password: str\n        :param Operate: 操作字段，取值为：Create（创建）或Update（修改）\n        :type Operate: str\n        """
         self.Password = None
         self.Operate = None
 
@@ -3243,8 +4257,10 @@ class SetOutBandVpnAuthPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3258,8 +4274,10 @@ class ShutdownDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要关闭的设备ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要关闭的设备ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -3280,8 +4298,12 @@ class ShutdownDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3297,8 +4319,10 @@ class StartDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 需要开机的设备ID列表
+        :type InstanceIds: list of str
         """
-        :param InstanceIds: 需要开机的设备ID列表\n        :type InstanceIds: list of str\n        """
         self.InstanceIds = None
 
 
@@ -3319,8 +4343,12 @@ class StartDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 异步任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -3336,15 +4364,19 @@ class SubtaskStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param TaskStatus: 实例ID对应任务的状态，取值如下：<br>
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param TaskStatus: 实例ID对应任务的状态，取值如下：<br>
 1：成功<br>
 2：失败<br>
 3：部分成功，部分失败<br>
 4：未完成<br>
 5：部分成功，部分未完成<br>
 6：部分未完成，部分失败<br>
-7：部分未完成，部分失败，部分成功\n        :type TaskStatus: int\n        """
+7：部分未完成，部分失败，部分成功
+        :type TaskStatus: int
+        """
         self.InstanceId = None
         self.TaskStatus = None
 
@@ -3367,8 +4399,14 @@ class SuccessTaskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 运行脚本的设备ID
+        :type InstanceId: str
+        :param TaskId: 黑石异步任务ID
+        :type TaskId: int
+        :param CmdTaskId: 黑石自定义脚本运行任务ID
+        :type CmdTaskId: str
         """
-        :param InstanceId: 运行脚本的设备ID\n        :type InstanceId: str\n        :param TaskId: 黑石异步任务ID\n        :type TaskId: int\n        :param CmdTaskId: 黑石自定义脚本运行任务ID\n        :type CmdTaskId: str\n        """
         self.InstanceId = None
         self.TaskId = None
         self.CmdTaskId = None
@@ -3393,8 +4431,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValues: 标签键对应的值
+        :type TagValues: list of str
         """
-        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValues: 标签键对应的值\n        :type TagValues: list of str\n        """
         self.TagKey = None
         self.TagValues = None
 
@@ -3417,10 +4459,58 @@ class TaskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param InstanceId: 主机id
+        :type InstanceId: str
+        :param Alias: 主机别名
+        :type Alias: str
+        :param TaskTypeId: 故障类型id
+        :type TaskTypeId: int
+        :param TaskStatus: 任务状态id
+        :type TaskStatus: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param AuthTime: 授权时间
+        :type AuthTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param TaskDetail: 任务详情
+        :type TaskDetail: str
+        :param DeviceStatus: 设备状态
+        :type DeviceStatus: int
+        :param OperateStatus: 设备操作状态
+        :type OperateStatus: int
+        :param Zone: 可用区
+        :type Zone: str
+        :param Region: 地域
+        :type Region: str
+        :param VpcId: 所属网络
+        :type VpcId: str
+        :param SubnetId: 所在子网
+        :type SubnetId: str
+        :param SubnetName: 子网名
+        :type SubnetName: str
+        :param VpcName: VPC名
+        :type VpcName: str
+        :param VpcCidrBlock: VpcCidrBlock
+        :type VpcCidrBlock: str
+        :param SubnetCidrBlock: SubnetCidrBlock
+        :type SubnetCidrBlock: str
+        :param WanIp: 公网ip
+        :type WanIp: str
+        :param LanIp: 内网IP
+        :type LanIp: str
+        :param MgtIp: 管理IP
+        :type MgtIp: str
+        :param TaskTypeName: 故障类中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeName: str
+        :param TaskSubType: 故障类型，取值：unconfirmed (不明确故障)；redundancy (有冗余故障)；nonredundancy (无冗余故障)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskSubType: str
         """
-        :param TaskId: 任务id\n        :type TaskId: str\n        :param InstanceId: 主机id\n        :type InstanceId: str\n        :param Alias: 主机别名\n        :type Alias: str\n        :param TaskTypeId: 故障类型id\n        :type TaskTypeId: int\n        :param TaskStatus: 任务状态id\n        :type TaskStatus: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param AuthTime: 授权时间\n        :type AuthTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param TaskDetail: 任务详情\n        :type TaskDetail: str\n        :param DeviceStatus: 设备状态\n        :type DeviceStatus: int\n        :param OperateStatus: 设备操作状态\n        :type OperateStatus: int\n        :param Zone: 可用区\n        :type Zone: str\n        :param Region: 地域\n        :type Region: str\n        :param VpcId: 所属网络\n        :type VpcId: str\n        :param SubnetId: 所在子网\n        :type SubnetId: str\n        :param SubnetName: 子网名\n        :type SubnetName: str\n        :param VpcName: VPC名\n        :type VpcName: str\n        :param VpcCidrBlock: VpcCidrBlock\n        :type VpcCidrBlock: str\n        :param SubnetCidrBlock: SubnetCidrBlock\n        :type SubnetCidrBlock: str\n        :param WanIp: 公网ip\n        :type WanIp: str\n        :param LanIp: 内网IP\n        :type LanIp: str\n        :param MgtIp: 管理IP\n        :type MgtIp: str\n        :param TaskTypeName: 故障类中文名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskTypeName: str\n        :param TaskSubType: 故障类型，取值：unconfirmed (不明确故障)；redundancy (有冗余故障)；nonredundancy (无冗余故障)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskSubType: str\n        """
         self.TaskId = None
         self.InstanceId = None
         self.Alias = None
@@ -3487,8 +4577,16 @@ class TaskOperationLog(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskStep: 操作步骤
+        :type TaskStep: str
+        :param Operator: 操作人
+        :type Operator: str
+        :param OperationDetail: 操作描述
+        :type OperationDetail: str
+        :param OperationTime: 操作时间
+        :type OperationTime: str
         """
-        :param TaskStep: 操作步骤\n        :type TaskStep: str\n        :param Operator: 操作人\n        :type Operator: str\n        :param OperationDetail: 操作描述\n        :type OperationDetail: str\n        :param OperationTime: 操作时间\n        :type OperationTime: str\n        """
         self.TaskStep = None
         self.Operator = None
         self.OperationDetail = None
@@ -3515,8 +4613,14 @@ class TaskType(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TypeId: 故障类ID
+        :type TypeId: int
+        :param TypeName: 故障类中文名
+        :type TypeName: str
+        :param TaskSubType: 故障类型父类
+        :type TaskSubType: str
         """
-        :param TypeId: 故障类ID\n        :type TypeId: int\n        :param TypeName: 故障类中文名\n        :type TypeName: str\n        :param TaskSubType: 故障类型父类\n        :type TaskSubType: str\n        """
         self.TypeId = None
         self.TypeName = None
         self.TaskSubType = None
@@ -3541,8 +4645,14 @@ class UnbindPsaTagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PsaId: 预授权规则ID
+        :type PsaId: str
+        :param TagKey: 需要解绑的标签key
+        :type TagKey: str
+        :param TagValue: 需要解绑的标签value
+        :type TagValue: str
         """
-        :param PsaId: 预授权规则ID\n        :type PsaId: str\n        :param TagKey: 需要解绑的标签key\n        :type TagKey: str\n        :param TagValue: 需要解绑的标签value\n        :type TagValue: str\n        """
         self.PsaId = None
         self.TagKey = None
         self.TagValue = None
@@ -3567,8 +4677,10 @@ class UnbindPsaTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3582,8 +4694,24 @@ class UserCmd(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alias: 用户自定义脚本名
+        :type Alias: str
+        :param AppId: AppId
+        :type AppId: int
+        :param AutoId: 脚本自增ID
+        :type AutoId: int
+        :param CmdId: 脚本ID
+        :type CmdId: str
+        :param Content: 脚本内容
+        :type Content: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param OsType: 命令适用的操作系统类型
+        :type OsType: str
         """
-        :param Alias: 用户自定义脚本名\n        :type Alias: str\n        :param AppId: AppId\n        :type AppId: int\n        :param AutoId: 脚本自增ID\n        :type AutoId: int\n        :param CmdId: 脚本ID\n        :type CmdId: str\n        :param Content: 脚本内容\n        :type Content: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param ModifyTime: 修改时间\n        :type ModifyTime: str\n        :param OsType: 命令适用的操作系统类型\n        :type OsType: str\n        """
         self.Alias = None
         self.AppId = None
         self.AutoId = None
@@ -3618,8 +4746,26 @@ class UserCmdTask(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param Status: 任务状态ID，取值: -1(进行中) 0(结束)
+        :type Status: int
+        :param Alias: 脚本名称
+        :type Alias: str
+        :param CmdId: 脚本ID
+        :type CmdId: str
+        :param InstanceCount: 运行实例数量
+        :type InstanceCount: int
+        :param SuccessCount: 运行成功数量
+        :type SuccessCount: int
+        :param FailureCount: 运行失败数量
+        :type FailureCount: int
+        :param RunBeginTime: 执行开始时间
+        :type RunBeginTime: str
+        :param RunEndTime: 执行结束时间
+        :type RunEndTime: str
         """
-        :param TaskId: 任务ID\n        :type TaskId: str\n        :param Status: 任务状态ID，取值: -1(进行中) 0(结束)\n        :type Status: int\n        :param Alias: 脚本名称\n        :type Alias: str\n        :param CmdId: 脚本ID\n        :type CmdId: str\n        :param InstanceCount: 运行实例数量\n        :type InstanceCount: int\n        :param SuccessCount: 运行成功数量\n        :type SuccessCount: int\n        :param FailureCount: 运行失败数量\n        :type FailureCount: int\n        :param RunBeginTime: 执行开始时间\n        :type RunBeginTime: str\n        :param RunEndTime: 执行结束时间\n        :type RunEndTime: str\n        """
         self.TaskId = None
         self.Status = None
         self.Alias = None
@@ -3656,8 +4802,46 @@ class UserCmdTaskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AutoId: 自动编号，可忽略
+        :type AutoId: int
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param RunBeginTime: 任务开始时间
+        :type RunBeginTime: str
+        :param RunEndTime: 任务结束时间
+        :type RunEndTime: str
+        :param Status: 任务状态ID，取值为 -1：进行中；0：成功；>0：失败错误码
+        :type Status: int
+        :param InstanceName: 设备别名
+        :type InstanceName: str
+        :param InstanceId: 设备ID
+        :type InstanceId: str
+        :param VpcName: 私有网络名
+        :type VpcName: str
+        :param VpcId: 私有网络整型ID
+        :type VpcId: str
+        :param VpcCidrBlock: 私有网络Cidr
+        :type VpcCidrBlock: str
+        :param SubnetName: 子网名
+        :type SubnetName: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param SubnetCidrBlock: 子网Cidr
+        :type SubnetCidrBlock: str
+        :param LanIp: 内网IP
+        :type LanIp: str
+        :param CmdContent: 脚本内容，base64编码后的值
+        :type CmdContent: str
+        :param CmdParam: 脚本参数，base64编码后的值
+        :type CmdParam: str
+        :param CmdResult: 脚本执行结果，base64编码后的值
+        :type CmdResult: str
+        :param AppId: 用户AppId
+        :type AppId: int
+        :param LastShellExit: 用户执行脚本结束退出的返回值，没有返回值为-1
+        :type LastShellExit: int
         """
-        :param AutoId: 自动编号，可忽略\n        :type AutoId: int\n        :param TaskId: 任务ID\n        :type TaskId: str\n        :param RunBeginTime: 任务开始时间\n        :type RunBeginTime: str\n        :param RunEndTime: 任务结束时间\n        :type RunEndTime: str\n        :param Status: 任务状态ID，取值为 -1：进行中；0：成功；>0：失败错误码\n        :type Status: int\n        :param InstanceName: 设备别名\n        :type InstanceName: str\n        :param InstanceId: 设备ID\n        :type InstanceId: str\n        :param VpcName: 私有网络名\n        :type VpcName: str\n        :param VpcId: 私有网络整型ID\n        :type VpcId: str\n        :param VpcCidrBlock: 私有网络Cidr\n        :type VpcCidrBlock: str\n        :param SubnetName: 子网名\n        :type SubnetName: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param SubnetCidrBlock: 子网Cidr\n        :type SubnetCidrBlock: str\n        :param LanIp: 内网IP\n        :type LanIp: str\n        :param CmdContent: 脚本内容，base64编码后的值\n        :type CmdContent: str\n        :param CmdParam: 脚本参数，base64编码后的值\n        :type CmdParam: str\n        :param CmdResult: 脚本执行结果，base64编码后的值\n        :type CmdResult: str\n        :param AppId: 用户AppId\n        :type AppId: int\n        :param LastShellExit: 用户执行脚本结束退出的返回值，没有返回值为-1\n        :type LastShellExit: int\n        """
         self.AutoId = None
         self.TaskId = None
         self.RunBeginTime = None
@@ -3714,8 +4898,14 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区ID
+        :type Zone: str
+        :param ZoneId: 可用区整型ID
+        :type ZoneId: int
+        :param ZoneDescription: 可用区描述
+        :type ZoneDescription: str
         """
-        :param Zone: 可用区ID\n        :type Zone: str\n        :param ZoneId: 可用区整型ID\n        :type ZoneId: int\n        :param ZoneDescription: 可用区描述\n        :type ZoneDescription: str\n        """
         self.Zone = None
         self.ZoneId = None
         self.ZoneDescription = None

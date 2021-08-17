@@ -24,8 +24,14 @@ class AlarmEvent(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventName: 事件名
+        :type EventName: str
+        :param Description: 展示的事件名
+        :type Description: str
+        :param Namespace: 告警策略类型
+        :type Namespace: str
         """
-        :param EventName: 事件名\n        :type EventName: str\n        :param Description: 展示的事件名\n        :type Description: str\n        :param Namespace: 告警策略类型\n        :type Namespace: str\n        """
         self.EventName = None
         self.Description = None
         self.Namespace = None
@@ -50,10 +56,58 @@ class AlarmHistory(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AlarmId: 告警历史Id
+        :type AlarmId: str
+        :param MonitorType: 监控类型
+        :type MonitorType: str
+        :param Namespace: 策略类型
+        :type Namespace: str
+        :param AlarmObject: 告警对象
+        :type AlarmObject: str
+        :param Content: 告警内容
+        :type Content: str
+        :param FirstOccurTime: 时间戳，首次出现时间
+        :type FirstOccurTime: int
+        :param LastOccurTime: 时间戳，最后出现时间
+        :type LastOccurTime: int
+        :param AlarmStatus: 告警状态，ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足
+        :type AlarmStatus: str
+        :param PolicyId: 告警策略 Id
+        :type PolicyId: str
+        :param PolicyName: 策略名称
+        :type PolicyName: str
+        :param VPC: 基础产品告警的告警对象所属网络
+        :type VPC: str
+        :param ProjectId: 项目 Id
+        :type ProjectId: int
+        :param ProjectName: 项目名字
+        :type ProjectName: str
+        :param InstanceGroup: 告警对象所属实例组
+        :type InstanceGroup: list of InstanceGroups
+        :param ReceiverUids: 接收人列表
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: 接收组列表
+        :type ReceiverGroups: list of int
+        :param NoticeWays: 告警渠道列表 SMS=短信 EMAIL=邮件 CALL=电话 WECHAT=微信
+        :type NoticeWays: list of str
+        :param OriginId: 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+        :type OriginId: str
+        :param AlarmType: 告警类型
+        :type AlarmType: str
+        :param EventId: 事件Id
+        :type EventId: int
+        :param Region: 地域
+        :type Region: str
+        :param PolicyExists: 策略是否存在 0=不存在 1=存在
+        :type PolicyExists: int
+        :param MetricsInfo: 指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricsInfo: list of AlarmHistoryMetric
+        :param Dimensions: 告警实例的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
         """
-        :param AlarmId: 告警历史Id\n        :type AlarmId: str\n        :param MonitorType: 监控类型\n        :type MonitorType: str\n        :param Namespace: 策略类型\n        :type Namespace: str\n        :param AlarmObject: 告警对象\n        :type AlarmObject: str\n        :param Content: 告警内容\n        :type Content: str\n        :param FirstOccurTime: 时间戳，首次出现时间\n        :type FirstOccurTime: int\n        :param LastOccurTime: 时间戳，最后出现时间\n        :type LastOccurTime: int\n        :param AlarmStatus: 告警状态，ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足\n        :type AlarmStatus: str\n        :param PolicyId: 告警策略 Id\n        :type PolicyId: str\n        :param PolicyName: 策略名称\n        :type PolicyName: str\n        :param VPC: 基础产品告警的告警对象所属网络\n        :type VPC: str\n        :param ProjectId: 项目 Id\n        :type ProjectId: int\n        :param ProjectName: 项目名字\n        :type ProjectName: str\n        :param InstanceGroup: 告警对象所属实例组\n        :type InstanceGroup: list of InstanceGroups\n        :param ReceiverUids: 接收人列表\n        :type ReceiverUids: list of int\n        :param ReceiverGroups: 接收组列表\n        :type ReceiverGroups: list of int\n        :param NoticeWays: 告警渠道列表 SMS=短信 EMAIL=邮件 CALL=电话 WECHAT=微信\n        :type NoticeWays: list of str\n        :param OriginId: 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID\n        :type OriginId: str\n        :param AlarmType: 告警类型\n        :type AlarmType: str\n        :param EventId: 事件Id\n        :type EventId: int\n        :param Region: 地域\n        :type Region: str\n        :param PolicyExists: 策略是否存在 0=不存在 1=存在\n        :type PolicyExists: int\n        :param MetricsInfo: 指标信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetricsInfo: list of AlarmHistoryMetric\n        :param Dimensions: 告警实例的维度信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Dimensions: str\n        """
         self.AlarmId = None
         self.MonitorType = None
         self.Namespace = None
@@ -130,8 +184,18 @@ class AlarmHistoryMetric(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QceNamespace: 云产品监控类型查询数据使用的命名空间
+        :type QceNamespace: str
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Period: 统计周期
+        :type Period: int
+        :param Value: 触发告警的数值
+        :type Value: str
+        :param Description: 指标的展示名
+        :type Description: str
         """
-        :param QceNamespace: 云产品监控类型查询数据使用的命名空间\n        :type QceNamespace: str\n        :param MetricName: 指标名\n        :type MetricName: str\n        :param Period: 统计周期\n        :type Period: int\n        :param Value: 触发告警的数值\n        :type Value: str\n        :param Description: 指标的展示名\n        :type Description: str\n        """
         self.QceNamespace = None
         self.MetricName = None
         self.Period = None
@@ -160,18 +224,38 @@ class AlarmNotice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 告警通知模板 ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param Name: 告警通知模板名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param UpdatedAt: 上次修改时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdatedAt: str\n        :param UpdatedBy: 上次修改人
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdatedBy: str\n        :param NoticeType: 告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NoticeType: str\n        :param UserNotices: 用户通知列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserNotices: list of UserNotice\n        :param URLNotices: 回调通知列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type URLNotices: list of URLNotice\n        :param IsPreset: 是否是系统预设通知模板 0=否 1=是
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsPreset: int\n        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NoticeLanguage: str\n        :param PolicyIds: 告警通知模板绑定的告警策略ID列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PolicyIds: list of str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Name: 告警通知模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param UpdatedAt: 上次修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param UpdatedBy: 上次修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedBy: str
+        :param NoticeType: 告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeType: str
+        :param UserNotices: 用户通知列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNotices: list of UserNotice
+        :param URLNotices: 回调通知列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URLNotices: list of URLNotice
+        :param IsPreset: 是否是系统预设通知模板 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPreset: int
+        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeLanguage: str
+        :param PolicyIds: 告警通知模板绑定的告警策略ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyIds: list of str
+        """
         self.Id = None
         self.Name = None
         self.UpdatedAt = None
@@ -220,40 +304,98 @@ class AlarmPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 告警策略 ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PolicyId: str\n        :param PolicyName: 告警策略名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PolicyName: str\n        :param Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param MonitorType: 监控类型 MT_QCE=云产品监控
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MonitorType: str\n        :param Enable: 启停状态 0=停用 1=启用
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Enable: int\n        :param UseSum: 策略组绑定的实例数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UseSum: int\n        :param ProjectId: 项目 Id -1=无项目 0=默认项目
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: int\n        :param ProjectName: 项目名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectName: str\n        :param Namespace: 告警策略类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Namespace: str\n        :param ConditionTemplateId: 触发条件模板 Id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConditionTemplateId: str\n        :param Condition: 指标触发条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`\n        :param EventCondition: 事件触发条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`\n        :param NoticeIds: 通知规则 id 列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NoticeIds: list of str\n        :param Notices: 通知规则 列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Notices: list of AlarmNotice\n        :param TriggerTasks: 触发任务列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TriggerTasks: list of AlarmPolicyTriggerTask\n        :param ConditionsTemp: 模板策略组
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.ConditionsTemp`\n        :param LastEditUin: 最后编辑的用户uin
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastEditUin: str\n        :param UpdateTime: 更新时间
+        :type PolicyId: str
+        :param PolicyName: 告警策略名称
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: int\n        :param InsertTime: 创建时间
+        :type PolicyName: str
+        :param Remark: 备注信息
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InsertTime: int\n        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: list of str\n        :param NamespaceShowName: namespace显示名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceShowName: str\n        :param IsDefault: 是否默认策略，1是，0否
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDefault: int\n        :param CanSetDefault: 能否设置默认策略，1是，0否
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CanSetDefault: int\n        :param InstanceGroupId: 实例分组ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroupId: int\n        :param InstanceSum: 实例分组总实例数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceSum: int\n        :param InstanceGroupName: 实例分组名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroupName: str\n        :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleType: str\n        :param OriginId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OriginId: str\n        :param TagInstances: 标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagInstances: list of TagInstance\n        """
+        :type Remark: str
+        :param MonitorType: 监控类型 MT_QCE=云产品监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: str
+        :param Enable: 启停状态 0=停用 1=启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param UseSum: 策略组绑定的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseSum: int
+        :param ProjectId: 项目 Id -1=无项目 0=默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param ProjectName: 项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param Namespace: 告警策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param ConditionTemplateId: 触发条件模板 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionTemplateId: str
+        :param Condition: 指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param NoticeIds: 通知规则 id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeIds: list of str
+        :param Notices: 通知规则 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notices: list of AlarmNotice
+        :param TriggerTasks: 触发任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param ConditionsTemp: 模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.ConditionsTemp`
+        :param LastEditUin: 最后编辑的用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastEditUin: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: int
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: list of str
+        :param NamespaceShowName: namespace显示名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceShowName: str
+        :param IsDefault: 是否默认策略，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: int
+        :param CanSetDefault: 能否设置默认策略，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanSetDefault: int
+        :param InstanceGroupId: 实例分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: int
+        :param InstanceSum: 实例分组总实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSum: int
+        :param InstanceGroupName: 实例分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupName: str
+        :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param OriginId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginId: str
+        :param TagInstances: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInstances: list of TagInstance
+        """
         self.PolicyId = None
         self.PolicyName = None
         self.Remark = None
@@ -351,10 +493,14 @@ class AlarmPolicyCondition(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsUnionRule: 指标触发与或条件，0=或，1=与
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsUnionRule: int\n        :param Rules: 告警触发条件列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Rules: list of AlarmPolicyRule\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
+        :param Rules: 告警触发条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of AlarmPolicyRule
+        """
         self.IsUnionRule = None
         self.Rules = None
 
@@ -382,9 +528,11 @@ class AlarmPolicyEventCondition(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rules: 告警触发条件列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Rules: list of AlarmPolicyRule\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of AlarmPolicyRule
+        """
         self.Rules = None
 
 
@@ -410,10 +558,14 @@ class AlarmPolicyFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 过滤条件类型 DIMENSION=使用 Dimensions 做过滤
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param Dimensions: AlarmPolicyDimension 二维数组序列化后的json字符串，一维数组之间互为或关系，一维数组内的元素互为与关系
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Dimensions: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Dimensions: AlarmPolicyDimension 二维数组序列化后的json字符串，一维数组之间互为或关系，一维数组内的元素互为与关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
+        """
         self.Type = None
         self.Dimensions = None
 
@@ -436,10 +588,14 @@ class AlarmPolicyRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetricName: 指标名或事件名，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询 。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetricName: str\n        :param Period: 秒数 统计周期，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Period: int\n        :param Operator: 英文运算符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param Period: 秒数 统计周期，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param Operator: 英文运算符
 intelligent=无阈值智能检测
 eq=等于
 ge=大于等于
@@ -458,15 +614,33 @@ cycle_decrease=环比下降
 cycle_wave=环比波动
 re=正则匹配
 支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Operator: str\n        :param Value: 阈值，支持的范围可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        :param ContinuePeriod: 周期数 持续通知周期 1=持续1个周期 2=持续2个周期...，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContinuePeriod: int\n        :param NoticeFrequency: 秒数 告警间隔  0=不重复 300=每5分钟告警一次 600=每10分钟告警一次 900=每15分钟告警一次 1800=每30分钟告警一次 3600=每1小时告警一次 7200=每2小时告警一次 10800=每3小时告警一次 21600=每6小时告警一次 43200=每12小时告警一次 86400=每1天告警一次
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NoticeFrequency: int\n        :param IsPowerNotice: 告警频率是否指数增长 0=否 1=是
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsPowerNotice: int\n        :param Filter: 对于单个触发规则的过滤条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`\n        :param Description: 指标展示名，用于出参
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param Unit: 单位，用于出参
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Unit: str\n        :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值。创建或编辑策略时，如不填则默认为 STATIC。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleType: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param Value: 阈值，支持的范围可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param ContinuePeriod: 周期数 持续通知周期 1=持续1个周期 2=持续2个周期...，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinuePeriod: int
+        :param NoticeFrequency: 秒数 告警间隔  0=不重复 300=每5分钟告警一次 600=每10分钟告警一次 900=每15分钟告警一次 1800=每30分钟告警一次 3600=每1小时告警一次 7200=每2小时告警一次 10800=每3小时告警一次 21600=每6小时告警一次 43200=每12小时告警一次 86400=每1天告警一次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeFrequency: int
+        :param IsPowerNotice: 告警频率是否指数增长 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPowerNotice: int
+        :param Filter: 对于单个触发规则的过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param Description: 指标展示名，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Unit: 单位，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值。创建或编辑策略时，如不填则默认为 STATIC。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        """
         self.MetricName = None
         self.Period = None
         self.Operator = None
@@ -509,10 +683,14 @@ class AlarmPolicyTriggerTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 触发任务类型 AS=弹性伸缩
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param TaskConfig: 用 json 表示配置信息 {"Key1":"Value1","Key2":"Value2"}
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskConfig: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param TaskConfig: 用 json 表示配置信息 {"Key1":"Value1","Key2":"Value2"}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskConfig: str
+        """
         self.Type = None
         self.TaskConfig = None
 
@@ -535,10 +713,18 @@ class BindingPolicyObjectDimension(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Region: 地域名\n        :type Region: str\n        :param RegionId: 地域ID\n        :type RegionId: int\n        :param Dimensions: 实例的维度信息，格式为
+        r"""
+        :param Region: 地域名
+        :type Region: str
+        :param RegionId: 地域ID
+        :type RegionId: int
+        :param Dimensions: 实例的维度信息，格式为
 {"unInstanceId":"ins-00jvv9mo"}。不同云产品的维度信息不同，详见
-[指标维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)\n        :type Dimensions: str\n        :param EventDimensions: 事件维度信息\n        :type EventDimensions: str\n        """
+[指标维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
+        :type Dimensions: str
+        :param EventDimensions: 事件维度信息
+        :type EventDimensions: str
+        """
         self.Region = None
         self.RegionId = None
         self.Dimensions = None
@@ -565,8 +751,18 @@ class BindingPolicyObjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 必填。固定值"monitor"
+        :type Module: str
+        :param GroupId: 策略组id，如传入 PolicyId 则该字段会被忽略可传入任意值如 0
+        :type GroupId: int
+        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
+        :type PolicyId: str
+        :param InstanceGroupId: 实例分组ID
+        :type InstanceGroupId: int
+        :param Dimensions: 需要绑定的对象维度信息
+        :type Dimensions: list of BindingPolicyObjectDimension
         """
-        :param Module: 必填。固定值"monitor"\n        :type Module: str\n        :param GroupId: 策略组id，如传入 PolicyId 则该字段会被忽略可传入任意值如 0\n        :type GroupId: int\n        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略\n        :type PolicyId: str\n        :param InstanceGroupId: 实例分组ID\n        :type InstanceGroupId: int\n        :param Dimensions: 需要绑定的对象维度信息\n        :type Dimensions: list of BindingPolicyObjectDimension\n        """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
@@ -600,8 +796,10 @@ class BindingPolicyObjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -615,8 +813,24 @@ class CommonNamespace(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 命名空间标示
+        :type Id: str
+        :param Name: 命名空间名称
+        :type Name: str
+        :param Value: 命名空间值
+        :type Value: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param Config: 配置信息
+        :type Config: str
+        :param AvailableRegions: 支持地域列表
+        :type AvailableRegions: list of str
+        :param SortId: 排序Id
+        :type SortId: int
+        :param DashboardId: Dashboard中的唯一表示
+        :type DashboardId: str
         """
-        :param Id: 命名空间标示\n        :type Id: str\n        :param Name: 命名空间名称\n        :type Name: str\n        :param Value: 命名空间值\n        :type Value: str\n        :param ProductName: 产品名称\n        :type ProductName: str\n        :param Config: 配置信息\n        :type Config: str\n        :param AvailableRegions: 支持地域列表\n        :type AvailableRegions: list of str\n        :param SortId: 排序Id\n        :type SortId: int\n        :param DashboardId: Dashboard中的唯一表示\n        :type DashboardId: str\n        """
         self.Id = None
         self.Name = None
         self.Value = None
@@ -651,11 +865,17 @@ class ConditionsTemp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateName: 模版名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TemplateName: str\n        :param Condition: 指标触发条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`\n        :param EventCondition: 事件触发条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param Condition: 指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
         self.TemplateName = None
         self.Condition = None
         self.EventCondition = None
@@ -684,8 +904,20 @@ class CreateAlarmNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param Name: 通知模板名称 60字符以内
+        :type Name: str
+        :param NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :type NoticeType: str
+        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :type NoticeLanguage: str
+        :param UserNotices: 用户通知 最多5个
+        :type UserNotices: list of UserNotice
+        :param URLNotices: 回调通知 最多3个
+        :type URLNotices: list of URLNotice
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param Name: 通知模板名称 60字符以内\n        :type Name: str\n        :param NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知\n        :type NoticeType: str\n        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文\n        :type NoticeLanguage: str\n        :param UserNotices: 用户通知 最多5个\n        :type UserNotices: list of UserNotice\n        :param URLNotices: 回调通知 最多3个\n        :type URLNotices: list of URLNotice\n        """
         self.Module = None
         self.Name = None
         self.NoticeType = None
@@ -726,8 +958,12 @@ class CreateAlarmNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NoticeId: 告警通知模板ID
+        :type NoticeId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param NoticeId: 告警通知模板ID\n        :type NoticeId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NoticeId = None
         self.RequestId = None
 
@@ -743,8 +979,36 @@ class CreateAlarmPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PolicyName: 策略名称，不超过20字符
+        :type PolicyName: str
+        :param MonitorType: 监控类型 MT_QCE=云产品监控
+        :type MonitorType: str
+        :param Namespace: 告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得，例如 cvm_device
+        :type Namespace: str
+        :param Remark: 备注，不超过100字符，仅支持中英文、数字、下划线、-
+        :type Remark: str
+        :param Enable: 是否启用 0=停用 1=启用，可不传 默认为1
+        :type Enable: int
+        :param ProjectId: 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
+        :type ProjectId: int
+        :param ConditionTemplateId: 触发条件模板 Id ，可不传
+        :type ConditionTemplateId: int
+        :param Condition: 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param NoticeIds: 通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
+        :type NoticeIds: list of str
+        :param TriggerTasks: 触发任务列表
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param Filter: 全局过滤条件
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :type GroupBy: list of str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param PolicyName: 策略名称，不超过20字符\n        :type PolicyName: str\n        :param MonitorType: 监控类型 MT_QCE=云产品监控\n        :type MonitorType: str\n        :param Namespace: 告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得，例如 cvm_device\n        :type Namespace: str\n        :param Remark: 备注，不超过100字符，仅支持中英文、数字、下划线、-\n        :type Remark: str\n        :param Enable: 是否启用 0=停用 1=启用，可不传 默认为1\n        :type Enable: int\n        :param ProjectId: 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。\n        :type ProjectId: int\n        :param ConditionTemplateId: 触发条件模板 Id ，可不传\n        :type ConditionTemplateId: int\n        :param Condition: 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。\n        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`\n        :param EventCondition: 事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。\n        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`\n        :param NoticeIds: 通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得\n        :type NoticeIds: list of str\n        :param TriggerTasks: 触发任务列表\n        :type TriggerTasks: list of AlarmPolicyTriggerTask\n        :param Filter: 全局过滤条件\n        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`\n        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by\n        :type GroupBy: list of str\n        """
         self.Module = None
         self.PolicyName = None
         self.MonitorType = None
@@ -802,8 +1066,14 @@ class CreateAlarmPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param OriginId: 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+        :type OriginId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        :param OriginId: 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID\n        :type OriginId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PolicyId = None
         self.OriginId = None
         self.RequestId = None
@@ -821,12 +1091,30 @@ class CreateAlertRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param RuleName: 规则名称\n        :type RuleName: str\n        :param Expr: 规则表达式\n        :type Expr: str\n        :param Receivers: 告警通知模板 ID 列表\n        :type Receivers: list of str\n        :param RuleState: 规则状态码，取值如下：
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Expr: 规则表达式
+        :type Expr: str
+        :param Receivers: 告警通知模板 ID 列表
+        :type Receivers: list of str
+        :param RuleState: 规则状态码，取值如下：
 <li>2=RuleEnabled</li>
-<li>3=RuleDisabled</li>\n        :type RuleState: int\n        :param Duration: 规则报警持续时间\n        :type Duration: str\n        :param Labels: 标签列表\n        :type Labels: list of PrometheusRuleKV\n        :param Annotations: 注释列表。
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param Duration: 规则报警持续时间
+        :type Duration: str
+        :param Labels: 标签列表
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: 注释列表。
 
-告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。\n        :type Annotations: list of PrometheusRuleKV\n        :param Type: 报警策略模板分类\n        :type Type: str\n        """
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+        :type Annotations: list of PrometheusRuleKV
+        :param Type: 报警策略模板分类
+        :type Type: str
+        """
         self.InstanceId = None
         self.RuleName = None
         self.Expr = None
@@ -873,9 +1161,13 @@ class CreateAlertRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleId: 规则 ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.RuleId = None
         self.RequestId = None
 
@@ -891,8 +1183,24 @@ class CreatePolicyGroupCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricId: 指标Id
+        :type MetricId: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等。如果指标有配置默认比较类型值可以不填。
+        :type CalcType: int
+        :param CalcValue: 比较的值，如果指标不必须CalcValue可不填
+        :type CalcValue: float
+        :param CalcPeriod: 数据聚合周期(单位秒)，若指标有默认值可不填
+        :type CalcPeriod: int
+        :param ContinuePeriod: 持续几个检测周期触发规则会告警
+        :type ContinuePeriod: int
+        :param RuleId: 如果通过模版创建，需要传入模版中该指标的对应RuleId
+        :type RuleId: int
         """
-        :param MetricId: 指标Id\n        :type MetricId: int\n        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警\n        :type AlarmNotifyType: int\n        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次\n        :type AlarmNotifyPeriod: int\n        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等。如果指标有配置默认比较类型值可以不填。\n        :type CalcType: int\n        :param CalcValue: 比较的值，如果指标不必须CalcValue可不填\n        :type CalcValue: float\n        :param CalcPeriod: 数据聚合周期(单位秒)，若指标有默认值可不填\n        :type CalcPeriod: int\n        :param ContinuePeriod: 持续几个检测周期触发规则会告警\n        :type ContinuePeriod: int\n        :param RuleId: 如果通过模版创建，需要传入模版中该指标的对应RuleId\n        :type RuleId: int\n        """
         self.MetricId = None
         self.AlarmNotifyType = None
         self.AlarmNotifyPeriod = None
@@ -927,8 +1235,16 @@ class CreatePolicyGroupEventCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 告警事件的Id
+        :type EventId: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param RuleId: 如果通过模版创建，需要传入模版中该指标的对应RuleId
+        :type RuleId: int
         """
-        :param EventId: 告警事件的Id\n        :type EventId: int\n        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警\n        :type AlarmNotifyType: int\n        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次\n        :type AlarmNotifyPeriod: int\n        :param RuleId: 如果通过模版创建，需要传入模版中该指标的对应RuleId\n        :type RuleId: int\n        """
         self.EventId = None
         self.AlarmNotifyType = None
         self.AlarmNotifyPeriod = None
@@ -955,8 +1271,32 @@ class CreatePolicyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupName: 组策略名称
+        :type GroupName: str
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param ViewName: 策略组所属视图的名称，若通过模版创建，可不传入
+        :type ViewName: str
+        :param ProjectId: 策略组所属项目Id，会进行鉴权操作
+        :type ProjectId: int
+        :param ConditionTempGroupId: 模版策略组Id, 通过模版创建时才需要传
+        :type ConditionTempGroupId: int
+        :param IsShielded: 是否屏蔽策略组，0表示不屏蔽，1表示屏蔽。不填默认为0
+        :type IsShielded: int
+        :param Remark: 策略组的备注信息
+        :type Remark: str
+        :param InsertTime: 插入时间，戳格式为Unix时间戳，不填则按后台处理时间填充
+        :type InsertTime: int
+        :param Conditions: 策略组中的阈值告警规则
+        :type Conditions: list of CreatePolicyGroupCondition
+        :param EventConditions: 策略组中的事件告警规则
+        :type EventConditions: list of CreatePolicyGroupEventCondition
+        :param BackEndCall: 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段
+        :type BackEndCall: int
+        :param IsUnionRule: 指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)
+        :type IsUnionRule: int
         """
-        :param GroupName: 组策略名称\n        :type GroupName: str\n        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param ViewName: 策略组所属视图的名称，若通过模版创建，可不传入\n        :type ViewName: str\n        :param ProjectId: 策略组所属项目Id，会进行鉴权操作\n        :type ProjectId: int\n        :param ConditionTempGroupId: 模版策略组Id, 通过模版创建时才需要传\n        :type ConditionTempGroupId: int\n        :param IsShielded: 是否屏蔽策略组，0表示不屏蔽，1表示屏蔽。不填默认为0\n        :type IsShielded: int\n        :param Remark: 策略组的备注信息\n        :type Remark: str\n        :param InsertTime: 插入时间，戳格式为Unix时间戳，不填则按后台处理时间填充\n        :type InsertTime: int\n        :param Conditions: 策略组中的阈值告警规则\n        :type Conditions: list of CreatePolicyGroupCondition\n        :param EventConditions: 策略组中的事件告警规则\n        :type EventConditions: list of CreatePolicyGroupEventCondition\n        :param BackEndCall: 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段\n        :type BackEndCall: int\n        :param IsUnionRule: 指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)\n        :type IsUnionRule: int\n        """
         self.GroupName = None
         self.Module = None
         self.ViewName = None
@@ -1009,8 +1349,12 @@ class CreatePolicyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 创建成功的策略组Id
+        :type GroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param GroupId: 创建成功的策略组Id\n        :type GroupId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -1026,12 +1370,22 @@ class CreateServiceDiscoveryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param KubeClusterId: <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>\n        :type KubeClusterId: str\n        :param KubeType: 用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>\n        :type KubeType: int\n        :param Type: 服务发现类型，取值如下：
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        :param Type: 服务发现类型，取值如下：
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
-<li> 3 = JobMonitor</li>\n        :type Type: int\n        :param Yaml: 服务发现配置信息\n        :type Yaml: str\n        """
+<li> 3 = JobMonitor</li>
+        :type Type: int
+        :param Yaml: 服务发现配置信息
+        :type Yaml: str
+        """
         self.InstanceId = None
         self.KubeClusterId = None
         self.KubeType = None
@@ -1060,8 +1414,12 @@ class CreateServiceDiscoveryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceDiscovery: 创建成功之后，返回对应服务发现信息
+        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ServiceDiscovery: 创建成功之后，返回对应服务发现信息\n        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServiceDiscovery = None
         self.RequestId = None
 
@@ -1079,8 +1437,14 @@ class DataPoint(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Dimensions: 实例对象维度组合
+        :type Dimensions: list of Dimension
+        :param Timestamps: 时间戳数组，表示那些时间点有数据，缺失的时间戳，没有数据点，可以理解为掉点了
+        :type Timestamps: list of float
+        :param Values: 监控值数组，该数组和Timestamps一一对应
+        :type Values: list of float
         """
-        :param Dimensions: 实例对象维度组合\n        :type Dimensions: list of Dimension\n        :param Timestamps: 时间戳数组，表示那些时间点有数据，缺失的时间戳，没有数据点，可以理解为掉点了\n        :type Timestamps: list of float\n        :param Values: 监控值数组，该数组和Timestamps一一对应\n        :type Values: list of float\n        """
         self.Dimensions = None
         self.Timestamps = None
         self.Values = None
@@ -1110,8 +1474,12 @@ class DeleteAlarmNoticesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param NoticeIds: 告警通知模板id列表
+        :type NoticeIds: list of str
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param NoticeIds: 告警通知模板id列表\n        :type NoticeIds: list of str\n        """
         self.Module = None
         self.NoticeIds = None
 
@@ -1134,8 +1502,10 @@ class DeleteAlarmNoticesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1149,8 +1519,12 @@ class DeleteAlarmPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyIds: 告警策略 ID 列表
+        :type PolicyIds: list of str
         """
-        :param Module: 模块名，固定值 monitor\n        :type Module: str\n        :param PolicyIds: 告警策略 ID 列表\n        :type PolicyIds: list of str\n        """
         self.Module = None
         self.PolicyIds = None
 
@@ -1173,8 +1547,10 @@ class DeleteAlarmPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1188,8 +1564,12 @@ class DeleteAlertRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleIds: 规则 ID 列表
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
         """
-        :param RuleIds: 规则 ID 列表\n        :type RuleIds: list of str\n        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        """
         self.RuleIds = None
         self.InstanceId = None
 
@@ -1212,8 +1592,10 @@ class DeleteAlertRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1227,8 +1609,12 @@ class DeletePolicyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: list of int
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param GroupId: 策略组id\n        :type GroupId: list of int\n        """
         self.Module = None
         self.GroupId = None
 
@@ -1251,8 +1637,10 @@ class DeletePolicyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1266,12 +1654,22 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>\n        :type KubeClusterId: str\n        :param KubeType: 用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>\n        :type KubeType: int\n        :param Type: 服务发现类型，取值如下：
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        :param Type: 服务发现类型，取值如下：
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
-<li> 3 = PodMonitor</li>\n        :type Type: int\n        :param Yaml: 服务发现配置信息\n        :type Yaml: str\n        """
+<li> 3 = PodMonitor</li>
+        :type Type: int
+        :param Yaml: 服务发现配置信息
+        :type Yaml: str
+        """
         self.InstanceId = None
         self.KubeClusterId = None
         self.KubeType = None
@@ -1300,8 +1698,10 @@ class DeleteServiceDiscoveryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1315,16 +1715,32 @@ class DescribeAccidentEventListAlarms(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessTypeDesc: 事件分类
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BusinessTypeDesc: str\n        :param AccidentTypeDesc: 事件类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AccidentTypeDesc: str\n        :param BusinessID: 事件分类的ID，1表示服务问题，2表示其他订阅
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BusinessID: int\n        :param EventStatus: 事件状态的ID，0表示已恢复，1表示未恢复
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventStatus: int\n        :param AffectResource: 影响的对象
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AffectResource: str\n        :param Region: 事件的地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param OccurTime: 事件发生的时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OccurTime: str\n        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessTypeDesc: str
+        :param AccidentTypeDesc: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccidentTypeDesc: str
+        :param BusinessID: 事件分类的ID，1表示服务问题，2表示其他订阅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessID: int
+        :param EventStatus: 事件状态的ID，0表示已恢复，1表示未恢复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventStatus: int
+        :param AffectResource: 影响的对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectResource: str
+        :param Region: 事件的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param OccurTime: 事件发生的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OccurTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
         self.BusinessTypeDesc = None
         self.AccidentTypeDesc = None
         self.BusinessID = None
@@ -1359,8 +1775,32 @@ class DescribeAccidentEventListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 接口模块名，当前接口取值monitor
+        :type Module: str
+        :param StartTime: 起始时间，默认一天前的时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间，默认当前时间戳
+        :type EndTime: int
+        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
+        :type Limit: int
+        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
+        :type Offset: int
+        :param UpdateTimeOrder: 根据UpdateTime排序的规则，取值asc或desc
+        :type UpdateTimeOrder: str
+        :param OccurTimeOrder: 根据OccurTime排序的规则，取值asc或desc（优先根据UpdateTimeOrder排序）
+        :type OccurTimeOrder: str
+        :param AccidentType: 根据事件类型过滤，1表示服务问题，2表示其他订阅
+        :type AccidentType: list of int
+        :param AccidentEvent: 根据事件过滤，1表示云服务器存储问题，2表示云服务器网络连接问题，3表示云服务器运行异常，202表示运营商网络抖动
+        :type AccidentEvent: list of int
+        :param AccidentStatus: 根据事件状态过滤，0表示已恢复，1表示未恢复
+        :type AccidentStatus: list of int
+        :param AccidentRegion: 根据事件地域过滤，gz表示广州，sh表示上海等
+        :type AccidentRegion: list of str
+        :param AffectResource: 根据影响资源过滤，比如ins-19a06bka
+        :type AffectResource: str
         """
-        :param Module: 接口模块名，当前接口取值monitor\n        :type Module: str\n        :param StartTime: 起始时间，默认一天前的时间戳\n        :type StartTime: int\n        :param EndTime: 结束时间，默认当前时间戳\n        :type EndTime: int\n        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20\n        :type Limit: int\n        :param Offset: 分页参数，页偏移量，从0开始计数，默认0\n        :type Offset: int\n        :param UpdateTimeOrder: 根据UpdateTime排序的规则，取值asc或desc\n        :type UpdateTimeOrder: str\n        :param OccurTimeOrder: 根据OccurTime排序的规则，取值asc或desc（优先根据UpdateTimeOrder排序）\n        :type OccurTimeOrder: str\n        :param AccidentType: 根据事件类型过滤，1表示服务问题，2表示其他订阅\n        :type AccidentType: list of int\n        :param AccidentEvent: 根据事件过滤，1表示云服务器存储问题，2表示云服务器网络连接问题，3表示云服务器运行异常，202表示运营商网络抖动\n        :type AccidentEvent: list of int\n        :param AccidentStatus: 根据事件状态过滤，0表示已恢复，1表示未恢复\n        :type AccidentStatus: list of int\n        :param AccidentRegion: 根据事件地域过滤，gz表示广州，sh表示上海等\n        :type AccidentRegion: list of str\n        :param AffectResource: 根据影响资源过滤，比如ins-19a06bka\n        :type AffectResource: str\n        """
         self.Module = None
         self.StartTime = None
         self.EndTime = None
@@ -1403,10 +1843,16 @@ class DescribeAccidentEventListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Alarms: 平台事件列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Alarms: list of DescribeAccidentEventListAlarms\n        :param Total: 平台事件的总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarms: list of DescribeAccidentEventListAlarms
+        :param Total: 平台事件的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Alarms = None
         self.Total = None
         self.RequestId = None
@@ -1429,8 +1875,14 @@ class DescribeAlarmEventsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :type Namespace: str
+        :param MonitorType: 监控类型，如 MT_QCE。如果不填默认为 MT_QCE。
+        :type MonitorType: str
         """
-        :param Module: 模块名，固定值 monitor\n        :type Module: str\n        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device\n        :type Namespace: str\n        :param MonitorType: 监控类型，如 MT_QCE。如果不填默认为 MT_QCE。\n        :type MonitorType: str\n        """
         self.Module = None
         self.Namespace = None
         self.MonitorType = None
@@ -1455,8 +1907,12 @@ class DescribeAlarmEventsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Events: 告警事件列表
+        :type Events: list of AlarmEvent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Events: 告警事件列表\n        :type Events: list of AlarmEvent\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Events = None
         self.RequestId = None
 
@@ -1477,10 +1933,46 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PageNumber: 页数，从 1 开始计数，默认 1
+        :type PageNumber: int
+        :param PageSize: 每页的数量，取值1~100，默认20
+        :type PageSize: int
+        :param Order: 默认按首次出现时间倒序排列 "ASC"=正序 "DESC"=逆序
+        :type Order: str
+        :param StartTime: 起始时间，默认一天前的时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 晚于 `StartTime` 才可能被搜索到。
+        :type StartTime: int
+        :param EndTime: 结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。
+        :type EndTime: int
+        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控
+        :type MonitorTypes: list of str
+        :param AlarmObject: 根据告警对象过滤 字符串模糊搜索
+        :type AlarmObject: str
+        :param AlarmStatus: 根据告警状态过滤 ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足，不选默认查所有
+        :type AlarmStatus: list of str
+        :param ProjectIds: 根据项目ID过滤，-1=无项目 0=默认项目
+可在此页面查询 [项目管理](https://console.cloud.tencent.com/project)
+        :type ProjectIds: list of int
+        :param InstanceGroupIds: 根据实例组ID过滤
+        :type InstanceGroupIds: list of int
+        :param Namespaces: 根据策略类型过滤，策略类型是监控类型之下的概念，在这里两者都需要传入，例如 `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
+可使用 [查询所有名字空间 DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 接口查询
+        :type Namespaces: list of MonitorTypeNamespace
+        :param MetricNames: 根据指标名过滤
+        :type MetricNames: list of str
+        :param PolicyName: 根据策略名称模糊搜索
+        :type PolicyName: str
+        :param Content: 根据告警内容模糊搜索
+        :type Content: str
+        :param ReceiverUids: 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: 根据接收组搜索，可以使用“访问管理”的 [查询用户组列表 ListGroups](https://cloud.tencent.com/document/product/598/34589) 接口获取用户组列表 或 [列出用户关联的用户组 ListGroupsForUser](https://cloud.tencent.com/document/product/598/34588) 查询某个子用户所在的用户组列表 ，此处填入返回结果中的 `GroupId ` 字段
+        :type ReceiverGroups: list of int
+        :param PolicyIds: 根据告警策略 Id 列表搜索
+        :type PolicyIds: list of str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param PageNumber: 页数，从 1 开始计数，默认 1\n        :type PageNumber: int\n        :param PageSize: 每页的数量，取值1~100，默认20\n        :type PageSize: int\n        :param Order: 默认按首次出现时间倒序排列 "ASC"=正序 "DESC"=逆序\n        :type Order: str\n        :param StartTime: 起始时间，默认一天前的时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 晚于 `StartTime` 才可能被搜索到。\n        :type StartTime: int\n        :param EndTime: 结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。\n        :type EndTime: int\n        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控\n        :type MonitorTypes: list of str\n        :param AlarmObject: 根据告警对象过滤 字符串模糊搜索\n        :type AlarmObject: str\n        :param AlarmStatus: 根据告警状态过滤 ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足，不选默认查所有\n        :type AlarmStatus: list of str\n        :param ProjectIds: 根据项目ID过滤，-1=无项目 0=默认项目
-可在此页面查询 [项目管理](https://console.cloud.tencent.com/project)\n        :type ProjectIds: list of int\n        :param InstanceGroupIds: 根据实例组ID过滤\n        :type InstanceGroupIds: list of int\n        :param Namespaces: 根据策略类型过滤，策略类型是监控类型之下的概念，在这里两者都需要传入，例如 `[{"MonitorType": "MT_QCE", "Namespace": "cvm_device"}]`
-可使用 [查询所有名字空间 DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 接口查询\n        :type Namespaces: list of MonitorTypeNamespace\n        :param MetricNames: 根据指标名过滤\n        :type MetricNames: list of str\n        :param PolicyName: 根据策略名称模糊搜索\n        :type PolicyName: str\n        :param Content: 根据告警内容模糊搜索\n        :type Content: str\n        :param ReceiverUids: 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段\n        :type ReceiverUids: list of int\n        :param ReceiverGroups: 根据接收组搜索，可以使用“访问管理”的 [查询用户组列表 ListGroups](https://cloud.tencent.com/document/product/598/34589) 接口获取用户组列表 或 [列出用户关联的用户组 ListGroupsForUser](https://cloud.tencent.com/document/product/598/34588) 查询某个子用户所在的用户组列表 ，此处填入返回结果中的 `GroupId ` 字段\n        :type ReceiverGroups: list of int\n        :param PolicyIds: 根据告警策略 Id 列表搜索\n        :type PolicyIds: list of str\n        """
         self.Module = None
         self.PageNumber = None
         self.PageSize = None
@@ -1540,8 +2032,14 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Histories: 告警历史列表
+        :type Histories: list of AlarmHistory
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数\n        :type TotalCount: int\n        :param Histories: 告警历史列表\n        :type Histories: list of AlarmHistory\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Histories = None
         self.RequestId = None
@@ -1564,8 +2062,14 @@ class DescribeAlarmMetricsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param MonitorType: 监控类型过滤 "MT_QCE"=云产品监控
+        :type MonitorType: str
+        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :type Namespace: str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param MonitorType: 监控类型过滤 "MT_QCE"=云产品监控\n        :type MonitorType: str\n        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device\n        :type Namespace: str\n        """
         self.Module = None
         self.MonitorType = None
         self.Namespace = None
@@ -1590,8 +2094,12 @@ class DescribeAlarmMetricsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Metrics: 告警指标列表
+        :type Metrics: list of Metric
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Metrics: 告警指标列表\n        :type Metrics: list of Metric\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Metrics = None
         self.RequestId = None
 
@@ -1612,8 +2120,10 @@ class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        """
         self.Module = None
 
 
@@ -1634,9 +2144,13 @@ class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param URLNotices: 告警回调通知
-注意：此字段可能返回 null，表示取不到有效值。\n        :type URLNotices: list of URLNotice\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URLNotices: list of URLNotice
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.URLNotices = None
         self.RequestId = None
 
@@ -1657,8 +2171,12 @@ class DescribeAlarmNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param NoticeId: 告警通知模板 id
+        :type NoticeId: str
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param NoticeId: 告警通知模板 id\n        :type NoticeId: str\n        """
         self.Module = None
         self.NoticeId = None
 
@@ -1681,8 +2199,12 @@ class DescribeAlarmNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Notice: 告警通知模板详细信息
+        :type Notice: :class:`tencentcloud.monitor.v20180724.models.AlarmNotice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Notice: 告警通知模板详细信息\n        :type Notice: :class:`tencentcloud.monitor.v20180724.models.AlarmNotice`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Notice = None
         self.RequestId = None
 
@@ -1700,8 +2222,26 @@ class DescribeAlarmNoticesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PageNumber: 页码 最小为1
+        :type PageNumber: int
+        :param PageSize: 分页大小 1～200
+        :type PageSize: int
+        :param Order: 按更新时间排序方式 ASC=正序 DESC=倒序
+        :type Order: str
+        :param OwnerUid: 主账号 uid 用于创建预设通知
+        :type OwnerUid: int
+        :param Name: 告警通知模板名称 用来模糊搜索
+        :type Name: str
+        :param ReceiverType: 根据接收人过滤告警通知模板需要选定通知用户类型 USER=用户 GROUP=用户组 传空=不按接收人过滤
+        :type ReceiverType: str
+        :param UserIds: 接收对象列表
+        :type UserIds: list of int
+        :param GroupIds: 接收组列表
+        :type GroupIds: list of int
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param PageNumber: 页码 最小为1\n        :type PageNumber: int\n        :param PageSize: 分页大小 1～200\n        :type PageSize: int\n        :param Order: 按更新时间排序方式 ASC=正序 DESC=倒序\n        :type Order: str\n        :param OwnerUid: 主账号 uid 用于创建预设通知\n        :type OwnerUid: int\n        :param Name: 告警通知模板名称 用来模糊搜索\n        :type Name: str\n        :param ReceiverType: 根据接收人过滤告警通知模板需要选定通知用户类型 USER=用户 GROUP=用户组 传空=不按接收人过滤\n        :type ReceiverType: str\n        :param UserIds: 接收对象列表\n        :type UserIds: list of int\n        :param GroupIds: 接收组列表\n        :type GroupIds: list of int\n        """
         self.Module = None
         self.PageNumber = None
         self.PageSize = None
@@ -1738,8 +2278,14 @@ class DescribeAlarmNoticesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 告警通知模板总数
+        :type TotalCount: int
+        :param Notices: 告警通知模板列表
+        :type Notices: list of AlarmNotice
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 告警通知模板总数\n        :type TotalCount: int\n        :param Notices: 告警通知模板列表\n        :type Notices: list of AlarmNotice\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Notices = None
         self.RequestId = None
@@ -1762,15 +2308,49 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param PageNumber: 页数，从 1 开始计数，默认 1\n        :type PageNumber: int\n        :param PageSize: 每页的数量，取值1~100，默认20\n        :type PageSize: int\n        :param PolicyName: 按策略名称模糊搜索\n        :type PolicyName: str\n        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控\n        :type MonitorTypes: list of str\n        :param Namespaces: 根据命名空间过滤，不同策略类型的值详见
-[策略类型列表](https://cloud.tencent.com/document/product/248/50397)\n        :type Namespaces: list of str\n        :param Dimensions: 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PageNumber: 页数，从 1 开始计数，默认 1
+        :type PageNumber: int
+        :param PageSize: 每页的数量，取值1~100，默认20
+        :type PageSize: int
+        :param PolicyName: 按策略名称模糊搜索
+        :type PolicyName: str
+        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控
+        :type MonitorTypes: list of str
+        :param Namespaces: 根据命名空间过滤，不同策略类型的值详见
+[策略类型列表](https://cloud.tencent.com/document/product/248/50397)
+        :type Namespaces: list of str
+        :param Dimensions: 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
 `[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
 具体也可以参考下方的示例 2。
 
-不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)\n        :type Dimensions: str\n        :param ReceiverUids: 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段\n        :type ReceiverUids: list of int\n        :param ReceiverGroups: 根据接收组搜索，可以使用“访问管理”的 [查询用户组列表 ListGroups](https://cloud.tencent.com/document/product/598/34589) 接口获取用户组列表 或 [列出用户关联的用户组 ListGroupsForUser](https://cloud.tencent.com/document/product/598/34588) 查询某个子用户所在的用户组列表 ，此处填入返回结果中的 `GroupId ` 字段\n        :type ReceiverGroups: list of int\n        :param PolicyType: 根据默认策略筛选 不传展示全部策略 DEFAULT=展示默认策略 NOT_DEFAULT=展示非默认策略\n        :type PolicyType: list of str\n        :param Field: 排序字段，例如按照最后修改时间排序，Field: "UpdateTime"\n        :type Field: str\n        :param Order: 排序顺序：升序：ASC  降序：DESC\n        :type Order: str\n        :param ProjectIds: 策略所属项目的id数组，可在此页面查看
-[项目管理](https://console.cloud.tencent.com/project)\n        :type ProjectIds: list of int\n        :param NoticeIds: 通知模版的id列表，可查询通知模版列表获取。
-可使用 [查询通知模板列表](https://cloud.tencent.com/document/product/248/51280) 接口查询。\n        :type NoticeIds: list of str\n        :param RuleTypes: 根据触发条件筛选 不传展示全部策略 STATIC=展示静态阈值策略 DYNAMIC=展示动态阈值策略\n        :type RuleTypes: list of str\n        :param Enable: 告警启停筛选，[1]：启用   [0]：停止，全部[0, 1]\n        :type Enable: list of int\n        :param NotBindingNoticeRule: 传 1 查询未配置通知规则的告警策略；不传或传其他数值，查询所有策略。\n        :type NotBindingNoticeRule: int\n        """
+不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
+        :type Dimensions: str
+        :param ReceiverUids: 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: 根据接收组搜索，可以使用“访问管理”的 [查询用户组列表 ListGroups](https://cloud.tencent.com/document/product/598/34589) 接口获取用户组列表 或 [列出用户关联的用户组 ListGroupsForUser](https://cloud.tencent.com/document/product/598/34588) 查询某个子用户所在的用户组列表 ，此处填入返回结果中的 `GroupId ` 字段
+        :type ReceiverGroups: list of int
+        :param PolicyType: 根据默认策略筛选 不传展示全部策略 DEFAULT=展示默认策略 NOT_DEFAULT=展示非默认策略
+        :type PolicyType: list of str
+        :param Field: 排序字段，例如按照最后修改时间排序，Field: "UpdateTime"
+        :type Field: str
+        :param Order: 排序顺序：升序：ASC  降序：DESC
+        :type Order: str
+        :param ProjectIds: 策略所属项目的id数组，可在此页面查看
+[项目管理](https://console.cloud.tencent.com/project)
+        :type ProjectIds: list of int
+        :param NoticeIds: 通知模版的id列表，可查询通知模版列表获取。
+可使用 [查询通知模板列表](https://cloud.tencent.com/document/product/248/51280) 接口查询。
+        :type NoticeIds: list of str
+        :param RuleTypes: 根据触发条件筛选 不传展示全部策略 STATIC=展示静态阈值策略 DYNAMIC=展示动态阈值策略
+        :type RuleTypes: list of str
+        :param Enable: 告警启停筛选，[1]：启用   [0]：停止，全部[0, 1]
+        :type Enable: list of int
+        :param NotBindingNoticeRule: 传 1 查询未配置通知规则的告警策略；不传或传其他数值，查询所有策略。
+        :type NotBindingNoticeRule: int
+        """
         self.Module = None
         self.PageNumber = None
         self.PageSize = None
@@ -1823,8 +2403,14 @@ class DescribeAlarmPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 策略总数
+        :type TotalCount: int
+        :param Policies: 策略数组
+        :type Policies: list of AlarmPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 策略总数\n        :type TotalCount: int\n        :param Policies: 策略数组\n        :type Policies: list of AlarmPolicy\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Policies = None
         self.RequestId = None
@@ -1847,8 +2433,12 @@ class DescribeAlarmPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PolicyId: 告警策略ID
+        :type PolicyId: str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param PolicyId: 告警策略ID\n        :type PolicyId: str\n        """
         self.Module = None
         self.PolicyId = None
 
@@ -1871,8 +2461,12 @@ class DescribeAlarmPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Policy: 策略详情
+        :type Policy: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicy`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Policy: 策略详情\n        :type Policy: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicy`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Policy = None
         self.RequestId = None
 
@@ -1890,10 +2484,24 @@ class DescribeAlertRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0\n        :type Offset: int\n        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param RuleState: 规则状态码，取值如下：
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0
+        :type Offset: int
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RuleState: 规则状态码，取值如下：
 <li>2=RuleEnabled</li>
-<li>3=RuleDisabled</li>\n        :type RuleState: int\n        :param RuleName: 规则名称\n        :type RuleName: str\n        :param Type: 报警策略模板分类\n        :type Type: str\n        """
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Type: 报警策略模板分类
+        :type Type: str
+        """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
@@ -1926,9 +2534,15 @@ class DescribeAlertRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 报警规则数量
+        :type TotalCount: int
+        :param AlertRuleSet: 报警规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertRuleSet: list of PrometheusRuleSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 报警规则数量\n        :type TotalCount: int\n        :param AlertRuleSet: 报警规则详情
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AlertRuleSet: list of PrometheusRuleSet\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.AlertRuleSet = None
         self.RequestId = None
@@ -1951,8 +2565,16 @@ class DescribeAllNamespacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SceneType: 根据使用场景过滤 目前仅有"ST_ALARM"=告警类型
+        :type SceneType: str
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param MonitorTypes: 根据监控类型过滤 不填默认查所有类型 "MT_QCE"=云产品监控
+        :type MonitorTypes: list of str
+        :param Ids: 根据namespace的Id过滤 不填默认查询所有
+        :type Ids: list of str
         """
-        :param SceneType: 根据使用场景过滤 目前仅有"ST_ALARM"=告警类型\n        :type SceneType: str\n        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param MonitorTypes: 根据监控类型过滤 不填默认查所有类型 "MT_QCE"=云产品监控\n        :type MonitorTypes: list of str\n        :param Ids: 根据namespace的Id过滤 不填默认查询所有\n        :type Ids: list of str\n        """
         self.SceneType = None
         self.Module = None
         self.MonitorTypes = None
@@ -1979,8 +2601,18 @@ class DescribeAllNamespacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QceNamespaces: 云产品的告警策略类型，已废弃
+        :type QceNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        :param CustomNamespaces: 其他告警策略类型，已废弃
+        :type CustomNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        :param QceNamespacesNew: 云产品的告警策略类型
+        :type QceNamespacesNew: list of CommonNamespace
+        :param CustomNamespacesNew: 其他告警策略类型，暂不支持
+        :type CustomNamespacesNew: list of CommonNamespace
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param QceNamespaces: 云产品的告警策略类型，已废弃\n        :type QceNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`\n        :param CustomNamespaces: 其他告警策略类型，已废弃\n        :type CustomNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`\n        :param QceNamespacesNew: 云产品的告警策略类型\n        :type QceNamespacesNew: list of CommonNamespace\n        :param CustomNamespacesNew: 其他告警策略类型，暂不支持\n        :type CustomNamespacesNew: list of CommonNamespace\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.QceNamespaces = None
         self.CustomNamespaces = None
         self.QceNamespacesNew = None
@@ -2016,8 +2648,12 @@ class DescribeBaseMetricsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 业务命名空间，各个云产品的业务命名空间不同。如需获取业务命名空间，请前往各产品监控指标文档，例如云服务器的命名空间，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
+        :type Namespace: str
+        :param MetricName: 指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控指标文档，例如云服务器的指标名，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
+        :type MetricName: str
         """
-        :param Namespace: 业务命名空间，各个云产品的业务命名空间不同。如需获取业务命名空间，请前往各产品监控指标文档，例如云服务器的命名空间，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)\n        :type Namespace: str\n        :param MetricName: 指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控指标文档，例如云服务器的指标名，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)\n        :type MetricName: str\n        """
         self.Namespace = None
         self.MetricName = None
 
@@ -2040,8 +2676,12 @@ class DescribeBaseMetricsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricSet: 查询得到的指标描述列表
+        :type MetricSet: list of MetricSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param MetricSet: 查询得到的指标描述列表\n        :type MetricSet: list of MetricSet\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MetricSet = None
         self.RequestId = None
 
@@ -2062,29 +2702,73 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 该条告警的ID
+        :type Id: int
+        :param ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param Status: 告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param AlarmStatus: 告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmStatus: str
+        :param GroupId: 策略组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: int
+        :param GroupName: 策略组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param FirstOccurTime: 发生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstOccurTime: str
+        :param Duration: 持续时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param LastOccurTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOccurTime: str
+        :param Content: 告警内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param ObjName: 告警对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjName: str
+        :param ObjId: 告警对象ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjId: str
+        :param ViewName: 策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewName: str
+        :param Vpc: VPC，只有CVM有
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vpc: str
+        :param MetricId: 指标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricId: int
+        :param MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param AlarmType: 告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmType: int
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Dimensions: 告警对象维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
+        :param NotifyWay: 通知方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyWay: list of str
+        :param InstanceGroup: 所属实例组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroup: list of InstanceGroup
         """
-        :param Id: 该条告警的ID\n        :type Id: int\n        :param ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: int\n        :param ProjectName: 项目名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectName: str\n        :param Status: 告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param AlarmStatus: 告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AlarmStatus: str\n        :param GroupId: 策略组ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupId: int\n        :param GroupName: 策略组名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupName: str\n        :param FirstOccurTime: 发生时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FirstOccurTime: str\n        :param Duration: 持续时间，单位s
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Duration: int\n        :param LastOccurTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastOccurTime: str\n        :param Content: 告警内容
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Content: str\n        :param ObjName: 告警对象
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ObjName: str\n        :param ObjId: 告警对象ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ObjId: str\n        :param ViewName: 策略类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ViewName: str\n        :param Vpc: VPC，只有CVM有
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Vpc: str\n        :param MetricId: 指标ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetricId: int\n        :param MetricName: 指标名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetricName: str\n        :param AlarmType: 告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AlarmType: int\n        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param Dimensions: 告警对象维度信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Dimensions: str\n        :param NotifyWay: 通知方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NotifyWay: list of str\n        :param InstanceGroup: 所属实例组信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroup: list of InstanceGroup\n        """
         self.Id = None
         self.ProjectId = None
         self.ProjectName = None
@@ -2152,8 +2836,32 @@ class DescribeBasicAlarmListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 接口模块名，当前取值monitor
+        :type Module: str
+        :param StartTime: 起始时间，默认一天前的时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间，默认当前时间戳
+        :type EndTime: int
+        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
+        :type Limit: int
+        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
+        :type Offset: int
+        :param OccurTimeOrder: 根据发生时间排序，取值ASC或DESC
+        :type OccurTimeOrder: str
+        :param ProjectIds: 根据项目ID过滤
+        :type ProjectIds: list of int
+        :param ViewNames: 根据策略类型过滤
+        :type ViewNames: list of str
+        :param AlarmStatus: 根据告警状态过滤
+        :type AlarmStatus: list of int
+        :param ObjLike: 根据告警对象过滤
+        :type ObjLike: str
+        :param InstanceGroupIds: 根据实例组ID过滤
+        :type InstanceGroupIds: list of int
+        :param MetricNames: 根据指标名过滤
+        :type MetricNames: list of str
         """
-        :param Module: 接口模块名，当前取值monitor\n        :type Module: str\n        :param StartTime: 起始时间，默认一天前的时间戳\n        :type StartTime: int\n        :param EndTime: 结束时间，默认当前时间戳\n        :type EndTime: int\n        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20\n        :type Limit: int\n        :param Offset: 分页参数，页偏移量，从0开始计数，默认0\n        :type Offset: int\n        :param OccurTimeOrder: 根据发生时间排序，取值ASC或DESC\n        :type OccurTimeOrder: str\n        :param ProjectIds: 根据项目ID过滤\n        :type ProjectIds: list of int\n        :param ViewNames: 根据策略类型过滤\n        :type ViewNames: list of str\n        :param AlarmStatus: 根据告警状态过滤\n        :type AlarmStatus: list of int\n        :param ObjLike: 根据告警对象过滤\n        :type ObjLike: str\n        :param InstanceGroupIds: 根据实例组ID过滤\n        :type InstanceGroupIds: list of int\n        :param MetricNames: 根据指标名过滤\n        :type MetricNames: list of str\n        """
         self.Module = None
         self.StartTime = None
         self.EndTime = None
@@ -2196,10 +2904,16 @@ class DescribeBasicAlarmListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Alarms: 告警列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Alarms: list of DescribeBasicAlarmListAlarms\n        :param Total: 总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarms: list of DescribeBasicAlarmListAlarms
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Alarms = None
         self.Total = None
         self.RequestId = None
@@ -2222,8 +2936,16 @@ class DescribeBindingPolicyObjectListDimension(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: 地域id
+        :type RegionId: int
+        :param Region: 地域简称
+        :type Region: str
+        :param Dimensions: 维度组合json字符串
+        :type Dimensions: str
+        :param EventDimensions: 事件维度组合json字符串
+        :type EventDimensions: str
         """
-        :param RegionId: 地域id\n        :type RegionId: int\n        :param Region: 地域简称\n        :type Region: str\n        :param Dimensions: 维度组合json字符串\n        :type Dimensions: str\n        :param EventDimensions: 事件维度组合json字符串\n        :type EventDimensions: str\n        """
         self.RegionId = None
         self.Region = None
         self.Dimensions = None
@@ -2250,8 +2972,16 @@ class DescribeBindingPolicyObjectListInstance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UniqueId: 对象唯一id
+        :type UniqueId: str
+        :param Dimensions: 表示对象实例的维度集合，jsonObj字符串
+        :type Dimensions: str
+        :param IsShielded: 对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽
+        :type IsShielded: int
+        :param Region: 对象所在的地域
+        :type Region: str
         """
-        :param UniqueId: 对象唯一id\n        :type UniqueId: str\n        :param Dimensions: 表示对象实例的维度集合，jsonObj字符串\n        :type Dimensions: str\n        :param IsShielded: 对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽\n        :type IsShielded: int\n        :param Region: 对象所在的地域\n        :type Region: str\n        """
         self.UniqueId = None
         self.Dimensions = None
         self.IsShielded = None
@@ -2278,9 +3008,25 @@ class DescribeBindingPolicyObjectListInstanceGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceGroupId: 实例分组id
+        :type InstanceGroupId: int
+        :param ViewName: 告警策略类型名称
+        :type ViewName: str
+        :param LastEditUin: 最后编辑uin
+        :type LastEditUin: str
+        :param GroupName: 实例分组名称
+        :type GroupName: str
+        :param InstanceSum: 实例数量
+        :type InstanceSum: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        :param Regions: 实例所在的地域集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regions: list of str
         """
-        :param InstanceGroupId: 实例分组id\n        :type InstanceGroupId: int\n        :param ViewName: 告警策略类型名称\n        :type ViewName: str\n        :param LastEditUin: 最后编辑uin\n        :type LastEditUin: str\n        :param GroupName: 实例分组名称\n        :type GroupName: str\n        :param InstanceSum: 实例数量\n        :type InstanceSum: int\n        :param UpdateTime: 更新时间\n        :type UpdateTime: int\n        :param InsertTime: 创建时间\n        :type InsertTime: int\n        :param Regions: 实例所在的地域集合
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Regions: list of str\n        """
         self.InstanceGroupId = None
         self.ViewName = None
         self.LastEditUin = None
@@ -2315,8 +3061,20 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id，如果有形如 policy-xxxx 的 id，请填到 PolicyId 字段中，本字段填 0
+        :type GroupId: int
+        :param PolicyId: 告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0
+        :type PolicyId: str
+        :param Limit: 每次返回的数量，取值1~100，默认20
+        :type Limit: int
+        :param Offset: 偏移量，从0开始计数，默认0。举例来说，参数 Offset=0&Limit=20 返回第 0 到 19 项，Offset=20&Limit=20 返回第 20 到 39 项，以此类推
+        :type Offset: int
+        :param Dimensions: 筛选对象的维度信息
+        :type Dimensions: list of DescribeBindingPolicyObjectListDimension
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param GroupId: 策略组id，如果有形如 policy-xxxx 的 id，请填到 PolicyId 字段中，本字段填 0\n        :type GroupId: int\n        :param PolicyId: 告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0\n        :type PolicyId: str\n        :param Limit: 每次返回的数量，取值1~100，默认20\n        :type Limit: int\n        :param Offset: 偏移量，从0开始计数，默认0。举例来说，参数 Offset=0&Limit=20 返回第 0 到 19 项，Offset=20&Limit=20 返回第 20 到 39 项，以此类推\n        :type Offset: int\n        :param Dimensions: 筛选对象的维度信息\n        :type Dimensions: list of DescribeBindingPolicyObjectListDimension\n        """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
@@ -2352,10 +3110,20 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 绑定的对象实例列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type List: list of DescribeBindingPolicyObjectListInstance\n        :param Total: 绑定的对象实例总数\n        :type Total: int\n        :param NoShieldedSum: 未屏蔽的对象实例数\n        :type NoShieldedSum: int\n        :param InstanceGroup: 绑定的实例分组信息，没有绑定实例分组则为空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListInstanceGroup`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DescribeBindingPolicyObjectListInstance
+        :param Total: 绑定的对象实例总数
+        :type Total: int
+        :param NoShieldedSum: 未屏蔽的对象实例数
+        :type NoShieldedSum: int
+        :param InstanceGroup: 绑定的实例分组信息，没有绑定实例分组则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribeBindingPolicyObjectListInstanceGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.List = None
         self.Total = None
         self.NoShieldedSum = None
@@ -2384,8 +3152,10 @@ class DescribeMonitorTypesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
         """
-        :param Module: 模块名，固定值 monitor\n        :type Module: str\n        """
         self.Module = None
 
 
@@ -2406,8 +3176,12 @@ class DescribeMonitorTypesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MonitorTypes: 监控类型，云产品监控为 MT_QCE
+        :type MonitorTypes: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param MonitorTypes: 监控类型，云产品监控为 MT_QCE\n        :type MonitorTypes: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MonitorTypes = None
         self.RequestId = None
 
@@ -2423,11 +3197,27 @@ class DescribePolicyConditionListCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyViewName: 策略视图名称
+        :type PolicyViewName: str
+        :param EventMetrics: 事件告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventMetrics: list of DescribePolicyConditionListEventMetric
+        :param IsSupportMultiRegion: 是否支持多地域
+        :type IsSupportMultiRegion: bool
+        :param Metrics: 指标告警条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of DescribePolicyConditionListMetric
+        :param Name: 策略类型名称
+        :type Name: str
+        :param SortId: 排序id
+        :type SortId: int
+        :param SupportDefault: 是否支持默认策略
+        :type SupportDefault: bool
+        :param SupportRegions: 支持该策略类型的地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportRegions: list of str
         """
-        :param PolicyViewName: 策略视图名称\n        :type PolicyViewName: str\n        :param EventMetrics: 事件告警条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventMetrics: list of DescribePolicyConditionListEventMetric\n        :param IsSupportMultiRegion: 是否支持多地域\n        :type IsSupportMultiRegion: bool\n        :param Metrics: 指标告警条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Metrics: list of DescribePolicyConditionListMetric\n        :param Name: 策略类型名称\n        :type Name: str\n        :param SortId: 排序id\n        :type SortId: int\n        :param SupportDefault: 是否支持默认策略\n        :type SupportDefault: bool\n        :param SupportRegions: 支持该策略类型的地域列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SupportRegions: list of str\n        """
         self.PolicyViewName = None
         self.EventMetrics = None
         self.IsSupportMultiRegion = None
@@ -2472,14 +3262,26 @@ class DescribePolicyConditionListConfigManual(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CalcType: 检测方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CalcType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcType`\n        :param CalcValue: 检测阈值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CalcValue: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcValue`\n        :param ContinueTime: 持续时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContinueTime: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualContinueTime`\n        :param Period: 数据周期
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Period: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriod`\n        :param PeriodNum: 持续周期个数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PeriodNum: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriodNum`\n        :param StatType: 聚合方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StatType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualStatType`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcType`
+        :param CalcValue: 检测阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcValue: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualCalcValue`
+        :param ContinueTime: 持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinueTime: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualContinueTime`
+        :param Period: 数据周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriod`
+        :param PeriodNum: 持续周期个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodNum: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualPeriodNum`
+        :param StatType: 聚合方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatType: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManualStatType`
+        """
         self.CalcType = None
         self.CalcValue = None
         self.ContinueTime = None
@@ -2522,9 +3324,13 @@ class DescribePolicyConditionListConfigManualCalcType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Keys: CalcType 取值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Keys: list of int\n        :param Need: 是否必须\n        :type Need: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
         self.Keys = None
         self.Need = None
 
@@ -2547,12 +3353,22 @@ class DescribePolicyConditionListConfigManualCalcValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Default: 默认值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Default: str\n        :param Fixed: 固定值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Fixed: str\n        :param Max: 最大值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Max: str\n        :param Min: 最小值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Min: str\n        :param Need: 是否必须\n        :type Need: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: str
+        :param Fixed: 固定值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fixed: str
+        :param Max: 最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: str
+        :param Min: 最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: str
+        :param Need: 是否必须
+        :type Need: bool
+        """
         self.Default = None
         self.Fixed = None
         self.Max = None
@@ -2581,10 +3397,16 @@ class DescribePolicyConditionListConfigManualContinueTime(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Default: 默认持续时间，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Default: int\n        :param Keys: 可选持续时间，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Keys: list of int\n        :param Need: 是否必须\n        :type Need: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        :param Keys: 可选持续时间，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
         self.Default = None
         self.Keys = None
         self.Need = None
@@ -2609,10 +3431,16 @@ class DescribePolicyConditionListConfigManualPeriod(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Default: 默认周期，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Default: int\n        :param Keys: 可选周期，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Keys: list of int\n        :param Need: 是否必须\n        :type Need: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        :param Keys: 可选周期，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
         self.Default = None
         self.Keys = None
         self.Need = None
@@ -2637,10 +3465,16 @@ class DescribePolicyConditionListConfigManualPeriodNum(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Default: 默认周期数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Default: int\n        :param Keys: 可选周期数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Keys: list of int\n        :param Need: 是否必须\n        :type Need: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: int
+        :param Keys: 可选周期数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of int
+        :param Need: 是否必须
+        :type Need: bool
+        """
         self.Default = None
         self.Keys = None
         self.Need = None
@@ -2665,16 +3499,32 @@ class DescribePolicyConditionListConfigManualStatType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param P5: 数据聚合方式，周期5秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P5: str\n        :param P10: 数据聚合方式，周期10秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P10: str\n        :param P60: 数据聚合方式，周期1分钟
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P60: str\n        :param P300: 数据聚合方式，周期5分钟
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P300: str\n        :param P600: 数据聚合方式，周期10分钟
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P600: str\n        :param P1800: 数据聚合方式，周期30分钟
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P1800: str\n        :param P3600: 数据聚合方式，周期1小时
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P3600: str\n        :param P86400: 数据聚合方式，周期1天
-注意：此字段可能返回 null，表示取不到有效值。\n        :type P86400: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P5: str
+        :param P10: 数据聚合方式，周期10秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P10: str
+        :param P60: 数据聚合方式，周期1分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P60: str
+        :param P300: 数据聚合方式，周期5分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P300: str
+        :param P600: 数据聚合方式，周期10分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P600: str
+        :param P1800: 数据聚合方式，周期30分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P1800: str
+        :param P3600: 数据聚合方式，周期1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P3600: str
+        :param P86400: 数据聚合方式，周期1天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P86400: str
+        """
         self.P5 = None
         self.P10 = None
         self.P60 = None
@@ -2709,8 +3559,16 @@ class DescribePolicyConditionListEventMetric(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件id
+        :type EventId: int
+        :param EventShowName: 事件名称
+        :type EventShowName: str
+        :param NeedRecovered: 是否需要恢复
+        :type NeedRecovered: bool
+        :param Type: 事件类型，预留字段，当前固定取值为2
+        :type Type: int
         """
-        :param EventId: 事件id\n        :type EventId: int\n        :param EventShowName: 事件名称\n        :type EventShowName: str\n        :param NeedRecovered: 是否需要恢复\n        :type NeedRecovered: bool\n        :param Type: 事件类型，预留字段，当前固定取值为2\n        :type Type: int\n        """
         self.EventId = None
         self.EventShowName = None
         self.NeedRecovered = None
@@ -2737,9 +3595,17 @@ class DescribePolicyConditionListMetric(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConfigManual: 指标配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConfigManual: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManual`\n        :param MetricId: 指标id\n        :type MetricId: int\n        :param MetricShowName: 指标名称\n        :type MetricShowName: str\n        :param MetricUnit: 指标单位\n        :type MetricUnit: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigManual: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListConfigManual`
+        :param MetricId: 指标id
+        :type MetricId: int
+        :param MetricShowName: 指标名称
+        :type MetricShowName: str
+        :param MetricUnit: 指标单位
+        :type MetricUnit: str
+        """
         self.ConfigManual = None
         self.MetricId = None
         self.MetricShowName = None
@@ -2768,8 +3634,10 @@ class DescribePolicyConditionListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        """
         self.Module = None
 
 
@@ -2790,8 +3658,12 @@ class DescribePolicyConditionListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Conditions: 告警策略条件列表
+        :type Conditions: list of DescribePolicyConditionListCondition
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Conditions: 告警策略条件列表\n        :type Conditions: list of DescribePolicyConditionListCondition\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Conditions = None
         self.RequestId = None
 
@@ -2812,8 +3684,14 @@ class DescribePolicyGroupInfoCallback(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CallbackUrl: 用户回调接口地址
+        :type CallbackUrl: str
+        :param ValidFlag: 用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证
+        :type ValidFlag: int
+        :param VerifyCode: 用户回调接口验证码
+        :type VerifyCode: str
         """
-        :param CallbackUrl: 用户回调接口地址\n        :type CallbackUrl: str\n        :param ValidFlag: 用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证\n        :type ValidFlag: int\n        :param VerifyCode: 用户回调接口验证码\n        :type VerifyCode: str\n        """
         self.CallbackUrl = None
         self.ValidFlag = None
         self.VerifyCode = None
@@ -2838,12 +3716,34 @@ class DescribePolicyGroupInfoCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricShowName: 指标名称
+        :type MetricShowName: str
+        :param Period: 数据聚合周期(单位秒)
+        :type Period: int
+        :param MetricId: 指标id
+        :type MetricId: int
+        :param RuleId: 阈值规则id
+        :type RuleId: int
+        :param Unit: 指标单位
+        :type Unit: str
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcType: int
+        :param CalcValue: 检测阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcValue: str
+        :param ContinueTime: 持续多长时间触发规则会告警(单位秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinueTime: int
+        :param MetricName: 告警指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
         """
-        :param MetricShowName: 指标名称\n        :type MetricShowName: str\n        :param Period: 数据聚合周期(单位秒)\n        :type Period: int\n        :param MetricId: 指标id\n        :type MetricId: int\n        :param RuleId: 阈值规则id\n        :type RuleId: int\n        :param Unit: 指标单位\n        :type Unit: str\n        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警\n        :type AlarmNotifyType: int\n        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次\n        :type AlarmNotifyPeriod: int\n        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CalcType: int\n        :param CalcValue: 检测阈值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CalcValue: str\n        :param ContinueTime: 持续多长时间触发规则会告警(单位秒)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContinueTime: int\n        :param MetricName: 告警指标名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetricName: str\n        """
         self.MetricShowName = None
         self.Period = None
         self.MetricId = None
@@ -2884,11 +3784,27 @@ class DescribePolicyGroupInfoConditionTpl(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param ViewName: 策略类型
+        :type ViewName: str
+        :param Remark: 策略组说明
+        :type Remark: str
+        :param LastEditUin: 最后编辑的用户uin
+        :type LastEditUin: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: int
+        :param IsUnionRule: 是否且规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
         """
-        :param GroupId: 策略组id\n        :type GroupId: int\n        :param GroupName: 策略组名称\n        :type GroupName: str\n        :param ViewName: 策略类型\n        :type ViewName: str\n        :param Remark: 策略组说明\n        :type Remark: str\n        :param LastEditUin: 最后编辑的用户uin\n        :type LastEditUin: str\n        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: int\n        :param InsertTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InsertTime: int\n        :param IsUnionRule: 是否且规则
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsUnionRule: int\n        """
         self.GroupId = None
         self.GroupName = None
         self.ViewName = None
@@ -2923,8 +3839,18 @@ class DescribePolicyGroupInfoEventCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件id
+        :type EventId: int
+        :param RuleId: 事件告警规则id
+        :type RuleId: int
+        :param EventShowName: 事件名称
+        :type EventShowName: str
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
         """
-        :param EventId: 事件id\n        :type EventId: int\n        :param RuleId: 事件告警规则id\n        :type RuleId: int\n        :param EventShowName: 事件名称\n        :type EventShowName: str\n        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次\n        :type AlarmNotifyPeriod: int\n        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警\n        :type AlarmNotifyType: int\n        """
         self.EventId = None
         self.RuleId = None
         self.EventShowName = None
@@ -2953,10 +3879,38 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReceiverGroupList: 告警接收组id列表
+        :type ReceiverGroupList: list of int
+        :param ReceiverUserList: 告警接收人id列表
+        :type ReceiverUserList: list of int
+        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :type StartTime: int
+        :param EndTime: 告警时间段结束时间。含义同StartTime
+        :type EndTime: int
+        :param ReceiverType: 接收类型。“group”(接收组)或“user”(接收人)
+        :type ReceiverType: str
+        :param NotifyWay: 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+        :type NotifyWay: list of str
+        :param UidList: 电话告警接收者uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UidList: list of int
+        :param RoundNumber: 电话告警轮数
+        :type RoundNumber: int
+        :param RoundInterval: 电话告警每轮间隔（秒）
+        :type RoundInterval: int
+        :param PersonInterval: 电话告警对个人间隔（秒）
+        :type PersonInterval: int
+        :param NeedSendNotice: 是否需要电话告警触达提示。0不需要，1需要
+        :type NeedSendNotice: int
+        :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+        :type SendFor: list of str
+        :param RecoverNotify: 恢复通知方式。可选"SMS"
+        :type RecoverNotify: list of str
+        :param ReceiveLanguage: 告警发送语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveLanguage: str
         """
-        :param ReceiverGroupList: 告警接收组id列表\n        :type ReceiverGroupList: list of int\n        :param ReceiverUserList: 告警接收人id列表\n        :type ReceiverUserList: list of int\n        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"\n        :type StartTime: int\n        :param EndTime: 告警时间段结束时间。含义同StartTime\n        :type EndTime: int\n        :param ReceiverType: 接收类型。“group”(接收组)或“user”(接收人)\n        :type ReceiverType: str\n        :param NotifyWay: 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"\n        :type NotifyWay: list of str\n        :param UidList: 电话告警接收者uid
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UidList: list of int\n        :param RoundNumber: 电话告警轮数\n        :type RoundNumber: int\n        :param RoundInterval: 电话告警每轮间隔（秒）\n        :type RoundInterval: int\n        :param PersonInterval: 电话告警对个人间隔（秒）\n        :type PersonInterval: int\n        :param NeedSendNotice: 是否需要电话告警触达提示。0不需要，1需要\n        :type NeedSendNotice: int\n        :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)\n        :type SendFor: list of str\n        :param RecoverNotify: 恢复通知方式。可选"SMS"\n        :type RecoverNotify: list of str\n        :param ReceiveLanguage: 告警发送语言
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReceiveLanguage: str\n        """
         self.ReceiverGroupList = None
         self.ReceiverUserList = None
         self.StartTime = None
@@ -3003,8 +3957,12 @@ class DescribePolicyGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param GroupId: 策略组id\n        :type GroupId: int\n        """
         self.Module = None
         self.GroupId = None
 
@@ -3027,14 +3985,50 @@ class DescribePolicyGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param ProjectId: 策略组所属的项目id
+        :type ProjectId: int
+        :param IsDefault: 是否为默认策略，0表示非默认策略，1表示默认策略
+        :type IsDefault: int
+        :param ViewName: 策略类型
+        :type ViewName: str
+        :param Remark: 策略说明
+        :type Remark: str
+        :param ShowName: 策略类型名称
+        :type ShowName: str
+        :param LastEditUin: 最近编辑的用户uin
+        :type LastEditUin: str
+        :param UpdateTime: 最近编辑时间
+        :type UpdateTime: str
+        :param Region: 该策略支持的地域
+        :type Region: list of str
+        :param DimensionGroup: 策略类型的维度列表
+        :type DimensionGroup: list of str
+        :param ConditionsConfig: 阈值规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsConfig: list of DescribePolicyGroupInfoCondition
+        :param EventConfig: 产品事件规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventConfig: list of DescribePolicyGroupInfoEventCondition
+        :param ReceiverInfos: 用户接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverInfos: list of DescribePolicyGroupInfoReceiverInfo
+        :param Callback: 用户回调信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Callback: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoCallback`
+        :param ConditionsTemp: 模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
+        :param CanSetDefault: 是否可以设置成默认策略
+        :type CanSetDefault: bool
+        :param IsUnionRule: 是否且规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param GroupName: 策略组名称\n        :type GroupName: str\n        :param ProjectId: 策略组所属的项目id\n        :type ProjectId: int\n        :param IsDefault: 是否为默认策略，0表示非默认策略，1表示默认策略\n        :type IsDefault: int\n        :param ViewName: 策略类型\n        :type ViewName: str\n        :param Remark: 策略说明\n        :type Remark: str\n        :param ShowName: 策略类型名称\n        :type ShowName: str\n        :param LastEditUin: 最近编辑的用户uin\n        :type LastEditUin: str\n        :param UpdateTime: 最近编辑时间\n        :type UpdateTime: str\n        :param Region: 该策略支持的地域\n        :type Region: list of str\n        :param DimensionGroup: 策略类型的维度列表\n        :type DimensionGroup: list of str\n        :param ConditionsConfig: 阈值规则列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConditionsConfig: list of DescribePolicyGroupInfoCondition\n        :param EventConfig: 产品事件规则列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventConfig: list of DescribePolicyGroupInfoEventCondition\n        :param ReceiverInfos: 用户接收人列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReceiverInfos: list of DescribePolicyGroupInfoReceiverInfo\n        :param Callback: 用户回调信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Callback: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoCallback`\n        :param ConditionsTemp: 模板策略组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`\n        :param CanSetDefault: 是否可以设置成默认策略\n        :type CanSetDefault: bool\n        :param IsUnionRule: 是否且规则
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsUnionRule: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.GroupName = None
         self.ProjectId = None
         self.IsDefault = None
@@ -3101,14 +4095,54 @@ class DescribePolicyGroupListGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param IsOpen: 是否开启
+        :type IsOpen: bool
+        :param ViewName: 策略视图名称
+        :type ViewName: str
+        :param LastEditUin: 最近编辑的用户uin
+        :type LastEditUin: str
+        :param UpdateTime: 最后修改时间
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        :param UseSum: 策略组绑定的实例数
+        :type UseSum: int
+        :param NoShieldedSum: 策略组绑定的未屏蔽实例数
+        :type NoShieldedSum: int
+        :param IsDefault: 是否为默认策略，0表示非默认策略，1表示默认策略
+        :type IsDefault: int
+        :param CanSetDefault: 是否可以设置成默认策略
+        :type CanSetDefault: bool
+        :param ParentGroupId: 父策略组id
+        :type ParentGroupId: int
+        :param Remark: 策略组备注
+        :type Remark: str
+        :param ProjectId: 策略组所属项目id
+        :type ProjectId: int
+        :param Conditions: 阈值规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of DescribePolicyGroupInfoCondition
+        :param EventConditions: 产品事件规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventConditions: list of DescribePolicyGroupInfoEventCondition
+        :param ReceiverInfos: 用户接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverInfos: list of DescribePolicyGroupInfoReceiverInfo
+        :param ConditionsTemp: 模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`
+        :param InstanceGroup: 策略组绑定的实例组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`
+        :param IsUnionRule: 且或规则标识, 0表示或规则(任意一条规则满足阈值条件就告警), 1表示且规则(所有规则都满足阈值条件才告警)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
         """
-        :param GroupId: 策略组id\n        :type GroupId: int\n        :param GroupName: 策略组名称\n        :type GroupName: str\n        :param IsOpen: 是否开启\n        :type IsOpen: bool\n        :param ViewName: 策略视图名称\n        :type ViewName: str\n        :param LastEditUin: 最近编辑的用户uin\n        :type LastEditUin: str\n        :param UpdateTime: 最后修改时间\n        :type UpdateTime: int\n        :param InsertTime: 创建时间\n        :type InsertTime: int\n        :param UseSum: 策略组绑定的实例数\n        :type UseSum: int\n        :param NoShieldedSum: 策略组绑定的未屏蔽实例数\n        :type NoShieldedSum: int\n        :param IsDefault: 是否为默认策略，0表示非默认策略，1表示默认策略\n        :type IsDefault: int\n        :param CanSetDefault: 是否可以设置成默认策略\n        :type CanSetDefault: bool\n        :param ParentGroupId: 父策略组id\n        :type ParentGroupId: int\n        :param Remark: 策略组备注\n        :type Remark: str\n        :param ProjectId: 策略组所属项目id\n        :type ProjectId: int\n        :param Conditions: 阈值规则列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Conditions: list of DescribePolicyGroupInfoCondition\n        :param EventConditions: 产品事件规则列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventConditions: list of DescribePolicyGroupInfoEventCondition\n        :param ReceiverInfos: 用户接收人列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReceiverInfos: list of DescribePolicyGroupInfoReceiverInfo\n        :param ConditionsTemp: 模板策略组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupInfoConditionTpl`\n        :param InstanceGroup: 策略组绑定的实例组信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroup: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyGroupListGroupInstanceGroup`\n        :param IsUnionRule: 且或规则标识, 0表示或规则(任意一条规则满足阈值条件就告警), 1表示且规则(所有规则都满足阈值条件才告警)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsUnionRule: int\n        """
         self.GroupId = None
         self.GroupName = None
         self.IsOpen = None
@@ -3186,8 +4220,22 @@ class DescribePolicyGroupListGroupInstanceGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceGroupId: 实例分组名称id
+        :type InstanceGroupId: int
+        :param ViewName: 策略类型视图名称
+        :type ViewName: str
+        :param LastEditUin: 最近编辑的用户uin
+        :type LastEditUin: str
+        :param GroupName: 实例分组名称
+        :type GroupName: str
+        :param InstanceSum: 实例数量
+        :type InstanceSum: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+        :type InsertTime: int
         """
-        :param InstanceGroupId: 实例分组名称id\n        :type InstanceGroupId: int\n        :param ViewName: 策略类型视图名称\n        :type ViewName: str\n        :param LastEditUin: 最近编辑的用户uin\n        :type LastEditUin: str\n        :param GroupName: 实例分组名称\n        :type GroupName: str\n        :param InstanceSum: 实例数量\n        :type InstanceSum: int\n        :param UpdateTime: 更新时间\n        :type UpdateTime: int\n        :param InsertTime: 创建时间\n        :type InsertTime: int\n        """
         self.InstanceGroupId = None
         self.ViewName = None
         self.LastEditUin = None
@@ -3220,8 +4268,38 @@ class DescribePolicyGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param Limit: 分页参数，每页返回的数量，取值1~100
+        :type Limit: int
+        :param Offset: 分页参数，页偏移量，从0开始计数
+        :type Offset: int
+        :param Like: 按策略名搜索
+        :type Like: str
+        :param InstanceGroupId: 实例分组id
+        :type InstanceGroupId: int
+        :param UpdateTimeOrder: 按更新时间排序, asc 或者 desc
+        :type UpdateTimeOrder: str
+        :param ProjectIds: 项目id列表
+        :type ProjectIds: list of int
+        :param ViewNames: 告警策略类型列表
+        :type ViewNames: list of str
+        :param FilterUnuseReceiver: 是否过滤无接收人策略组, 1表示过滤, 0表示不过滤
+        :type FilterUnuseReceiver: int
+        :param Receivers: 过滤条件, 接收组列表
+        :type Receivers: list of str
+        :param ReceiverUserList: 过滤条件, 接收人列表
+        :type ReceiverUserList: list of str
+        :param Dimensions: 维度组合字段(json字符串), 例如[[{"name":"unInstanceId","value":"ins-6e4b2aaa"}]]
+        :type Dimensions: str
+        :param ConditionTempGroupId: 模板策略组id, 多个id用逗号分隔
+        :type ConditionTempGroupId: str
+        :param ReceiverType: 过滤条件, 接收人或者接收组, user表示接收人, group表示接收组
+        :type ReceiverType: str
+        :param IsOpen: 过滤条件，告警策略是否已启动或停止
+        :type IsOpen: bool
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param Limit: 分页参数，每页返回的数量，取值1~100\n        :type Limit: int\n        :param Offset: 分页参数，页偏移量，从0开始计数\n        :type Offset: int\n        :param Like: 按策略名搜索\n        :type Like: str\n        :param InstanceGroupId: 实例分组id\n        :type InstanceGroupId: int\n        :param UpdateTimeOrder: 按更新时间排序, asc 或者 desc\n        :type UpdateTimeOrder: str\n        :param ProjectIds: 项目id列表\n        :type ProjectIds: list of int\n        :param ViewNames: 告警策略类型列表\n        :type ViewNames: list of str\n        :param FilterUnuseReceiver: 是否过滤无接收人策略组, 1表示过滤, 0表示不过滤\n        :type FilterUnuseReceiver: int\n        :param Receivers: 过滤条件, 接收组列表\n        :type Receivers: list of str\n        :param ReceiverUserList: 过滤条件, 接收人列表\n        :type ReceiverUserList: list of str\n        :param Dimensions: 维度组合字段(json字符串), 例如[[{"name":"unInstanceId","value":"ins-6e4b2aaa"}]]\n        :type Dimensions: str\n        :param ConditionTempGroupId: 模板策略组id, 多个id用逗号分隔\n        :type ConditionTempGroupId: str\n        :param ReceiverType: 过滤条件, 接收人或者接收组, user表示接收人, group表示接收组\n        :type ReceiverType: str\n        :param IsOpen: 过滤条件，告警策略是否已启动或停止\n        :type IsOpen: bool\n        """
         self.Module = None
         self.Limit = None
         self.Offset = None
@@ -3270,9 +4348,15 @@ class DescribePolicyGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupList: 策略组列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupList: list of DescribePolicyGroupListGroup\n        :param Total: 策略组总数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupList: list of DescribePolicyGroupListGroup
+        :param Total: 策略组总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.GroupList = None
         self.Total = None
         self.RequestId = None
@@ -3295,8 +4379,12 @@ class DescribeProductEventListDimensions(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 维度名
+        :type Name: str
+        :param Value: 维度值
+        :type Value: str
         """
-        :param Name: 维度名\n        :type Name: str\n        :param Value: 维度值\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -3319,29 +4407,71 @@ class DescribeProductEventListEvents(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 事件ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventId: int\n        :param EventCName: 事件中文名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventCName: str\n        :param EventEName: 事件英文名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventEName: str\n        :param EventName: 事件简称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventName: str\n        :param ProductCName: 产品中文名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductCName: str\n        :param ProductEName: 产品英文名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductEName: str\n        :param ProductName: 产品简称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductName: str\n        :param InstanceId: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param ProjectId: 项目ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: str\n        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param SupportAlarm: 是否支持告警
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SupportAlarm: int\n        :param Type: 事件类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: int\n        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: int\n        :param Dimensions: 实例对象信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Dimensions: list of DescribeProductEventListEventsDimensions\n        :param AdditionMsg: 实例对象附加信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AdditionMsg: list of DescribeProductEventListEventsDimensions\n        :param IsAlarmConfig: 是否配置告警
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAlarmConfig: int\n        :param GroupInfo: 策略信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupInfo: list of DescribeProductEventListEventsGroupInfo\n        :param ViewName: 显示名称ViewName
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ViewName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: int
+        :param EventCName: 事件中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCName: str
+        :param EventEName: 事件英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventEName: str
+        :param EventName: 事件简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
+        :param ProductCName: 产品中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCName: str
+        :param ProductEName: 产品英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductEName: str
+        :param ProductName: 产品简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param SupportAlarm: 是否支持告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportAlarm: int
+        :param Type: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param Dimensions: 实例对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: list of DescribeProductEventListEventsDimensions
+        :param AdditionMsg: 实例对象附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdditionMsg: list of DescribeProductEventListEventsDimensions
+        :param IsAlarmConfig: 是否配置告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAlarmConfig: int
+        :param GroupInfo: 策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupInfo: list of DescribeProductEventListEventsGroupInfo
+        :param ViewName: 显示名称ViewName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewName: str
+        """
         self.EventId = None
         self.EventCName = None
         self.EventEName = None
@@ -3417,11 +4547,17 @@ class DescribeProductEventListEventsDimensions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 维度名（英文）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Name: 维度名（中文）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Value: 维度值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Name: 维度名（中文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 维度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
         self.Key = None
         self.Name = None
         self.Value = None
@@ -3446,10 +4582,14 @@ class DescribeProductEventListEventsGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 策略ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupId: int\n        :param GroupName: 策略名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: int
+        :param GroupName: 策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        """
         self.GroupId = None
         self.GroupName = None
 
@@ -3472,12 +4612,20 @@ class DescribeProductEventListOverView(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusChangeAmount: 状态变更的事件数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusChangeAmount: int\n        :param UnConfigAlarmAmount: 告警状态未配置的事件数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnConfigAlarmAmount: int\n        :param UnNormalEventAmount: 异常事件数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnNormalEventAmount: int\n        :param UnRecoverAmount: 未恢复的事件数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnRecoverAmount: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusChangeAmount: int
+        :param UnConfigAlarmAmount: 告警状态未配置的事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnConfigAlarmAmount: int
+        :param UnNormalEventAmount: 异常事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnNormalEventAmount: int
+        :param UnRecoverAmount: 未恢复的事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnRecoverAmount: int
+        """
         self.StatusChangeAmount = None
         self.UnConfigAlarmAmount = None
         self.UnNormalEventAmount = None
@@ -3504,8 +4652,38 @@ class DescribeProductEventListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 接口模块名，固定值"monitor"
+        :type Module: str
+        :param ProductName: 产品类型过滤，比如"cvm"表示云服务器
+        :type ProductName: list of str
+        :param EventName: 事件名称过滤，比如"guest_reboot"表示机器重启
+        :type EventName: list of str
+        :param InstanceId: 影响对象，比如"ins-19708ino"
+        :type InstanceId: list of str
+        :param Dimensions: 维度过滤，比如外网IP:10.0.0.1
+        :type Dimensions: list of DescribeProductEventListDimensions
+        :param RegionList: 产品事件地域过滤参数，比如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
+        :type RegionList: list of str
+        :param Type: 事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件
+        :type Type: list of str
+        :param Status: 事件状态过滤，取值范围["recover","alarm","-"]，分别表示已恢复、未恢复、无状态
+        :type Status: list of str
+        :param Project: 项目ID过滤
+        :type Project: list of str
+        :param IsAlarmConfig: 告警状态配置过滤，1表示已配置，0表示未配置
+        :type IsAlarmConfig: int
+        :param TimeOrder: 按更新时间排序，ASC表示升序，DESC表示降序，默认DESC
+        :type TimeOrder: str
+        :param StartTime: 起始时间，默认一天前的时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间，默认当前时间戳
+        :type EndTime: int
+        :param Offset: 页偏移量，默认0
+        :type Offset: int
+        :param Limit: 每页返回的数量，默认20
+        :type Limit: int
         """
-        :param Module: 接口模块名，固定值"monitor"\n        :type Module: str\n        :param ProductName: 产品类型过滤，比如"cvm"表示云服务器\n        :type ProductName: list of str\n        :param EventName: 事件名称过滤，比如"guest_reboot"表示机器重启\n        :type EventName: list of str\n        :param InstanceId: 影响对象，比如"ins-19708ino"\n        :type InstanceId: list of str\n        :param Dimensions: 维度过滤，比如外网IP:10.0.0.1\n        :type Dimensions: list of DescribeProductEventListDimensions\n        :param RegionList: 产品事件地域过滤参数，比如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)\n        :type RegionList: list of str\n        :param Type: 事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件\n        :type Type: list of str\n        :param Status: 事件状态过滤，取值范围["recover","alarm","-"]，分别表示已恢复、未恢复、无状态\n        :type Status: list of str\n        :param Project: 项目ID过滤\n        :type Project: list of str\n        :param IsAlarmConfig: 告警状态配置过滤，1表示已配置，0表示未配置\n        :type IsAlarmConfig: int\n        :param TimeOrder: 按更新时间排序，ASC表示升序，DESC表示降序，默认DESC\n        :type TimeOrder: str\n        :param StartTime: 起始时间，默认一天前的时间戳\n        :type StartTime: int\n        :param EndTime: 结束时间，默认当前时间戳\n        :type EndTime: int\n        :param Offset: 页偏移量，默认0\n        :type Offset: int\n        :param Limit: 每页返回的数量，默认20\n        :type Limit: int\n        """
         self.Module = None
         self.ProductName = None
         self.EventName = None
@@ -3559,10 +4737,18 @@ class DescribeProductEventListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Events: 事件列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Events: list of DescribeProductEventListEvents\n        :param OverView: 事件统计\n        :type OverView: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListOverView`\n        :param Total: 事件总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of DescribeProductEventListEvents
+        :param OverView: 事件统计
+        :type OverView: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListOverView`
+        :param Total: 事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Events = None
         self.OverView = None
         self.Total = None
@@ -3589,8 +4775,16 @@ class DescribeProductListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定传值monitor
+        :type Module: str
+        :param Order: 排序方式：DESC/ASC（区分大小写），默认值DESC
+        :type Order: str
+        :param Offset: 分页查询的偏移量，默认值0
+        :type Offset: int
+        :param Limit: 分页查询的每页数据量，默认值20
+        :type Limit: int
         """
-        :param Module: 固定传值monitor\n        :type Module: str\n        :param Order: 排序方式：DESC/ASC（区分大小写），默认值DESC\n        :type Order: str\n        :param Offset: 分页查询的偏移量，默认值0\n        :type Offset: int\n        :param Limit: 分页查询的每页数据量，默认值20\n        :type Limit: int\n        """
         self.Module = None
         self.Order = None
         self.Offset = None
@@ -3617,10 +4811,16 @@ class DescribeProductListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductList: 产品信息列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductList: list of ProductSimple\n        :param TotalCount: 产品总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductList: list of ProductSimple
+        :param TotalCount: 产品总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ProductList = None
         self.TotalCount = None
         self.RequestId = None
@@ -3643,9 +4843,15 @@ class DescribeServiceDiscoveryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
         """
-        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>\n        :type KubeClusterId: str\n        :param KubeType: 用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>\n        :type KubeType: int\n        """
         self.InstanceId = None
         self.KubeClusterId = None
         self.KubeType = None
@@ -3670,9 +4876,13 @@ class DescribeServiceDiscoveryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceDiscoverySet: 返回服务发现列表信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceDiscoverySet: list of ServiceDiscoveryItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDiscoverySet: list of ServiceDiscoveryItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ServiceDiscoverySet = None
         self.RequestId = None
 
@@ -3693,8 +4903,24 @@ class DescribeStatisticDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 所属模块，固定值，为monitor
+        :type Module: str
+        :param Namespace: 命名空间，目前只支持QCE/TKE
+        :type Namespace: str
+        :param MetricNames: 指标名列表
+        :type MetricNames: list of str
+        :param Conditions: 维度条件，操作符支持=、in
+        :type Conditions: list of MidQueryCondition
+        :param Period: 统计粒度。默认取值为300，单位为s
+        :type Period: int
+        :param StartTime: 起始时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+        :type StartTime: str
+        :param EndTime: 结束时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+        :type EndTime: str
+        :param GroupBys: 按指定维度groupBy
+        :type GroupBys: list of str
         """
-        :param Module: 所属模块，固定值，为monitor\n        :type Module: str\n        :param Namespace: 命名空间，目前只支持QCE/TKE\n        :type Namespace: str\n        :param MetricNames: 指标名列表\n        :type MetricNames: list of str\n        :param Conditions: 维度条件，操作符支持=、in\n        :type Conditions: list of MidQueryCondition\n        :param Period: 统计粒度。默认取值为300，单位为s\n        :type Period: int\n        :param StartTime: 起始时间，默认为当前时间，如2020-12-08T19:51:23+08:00\n        :type StartTime: str\n        :param EndTime: 结束时间，默认为当前时间，如2020-12-08T19:51:23+08:00\n        :type EndTime: str\n        :param GroupBys: 按指定维度groupBy\n        :type GroupBys: list of str\n        """
         self.Module = None
         self.Namespace = None
         self.MetricNames = None
@@ -3734,8 +4960,18 @@ class DescribeStatisticDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Period: 统计周期
+        :type Period: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Data: 监控数据
+        :type Data: list of MetricData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Period: 统计周期\n        :type Period: int\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Data: 监控数据\n        :type Data: list of MetricData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Period = None
         self.StartTime = None
         self.EndTime = None
@@ -3762,8 +4998,12 @@ class Dimension(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 实例维度名称
+        :type Name: str
+        :param Value: 实例维度值
+        :type Value: str
         """
-        :param Name: 实例维度名称\n        :type Name: str\n        :param Value: 实例维度值\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -3786,8 +5026,10 @@ class DimensionsDesc(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Dimensions: 维度名数组
+        :type Dimensions: list of str
         """
-        :param Dimensions: 维度名数组\n        :type Dimensions: list of str\n        """
         self.Dimensions = None
 
 
@@ -3808,8 +5050,20 @@ class GetMonitorDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
+        :type Namespace: str
+        :param MetricName: 指标名称，如CPUUsage，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的指标英文名即为MetricName
+        :type MetricName: str
+        :param Instances: 实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取10个实例的监控数据。
+        :type Instances: list of Instance
+        :param Period: 监控统计周期，如60。默认为取值为300，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的统计周期列即为支持的统计周期。单请求的数据点数限制为1440个。
+        :type Period: int
+        :param StartTime: 起始时间，如2018-09-22T19:51:23+08:00
+        :type StartTime: str
+        :param EndTime: 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
+        :type EndTime: str
         """
-        :param Namespace: 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档\n        :type Namespace: str\n        :param MetricName: 指标名称，如CPUUsage，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的指标英文名即为MetricName\n        :type MetricName: str\n        :param Instances: 实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取10个实例的监控数据。\n        :type Instances: list of Instance\n        :param Period: 监控统计周期，如60。默认为取值为300，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的统计周期列即为支持的统计周期。单请求的数据点数限制为1440个。\n        :type Period: int\n        :param StartTime: 起始时间，如2018-09-22T19:51:23+08:00\n        :type StartTime: str\n        :param EndTime: 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime\n        :type EndTime: str\n        """
         self.Namespace = None
         self.MetricName = None
         self.Instances = None
@@ -3845,8 +5099,20 @@ class GetMonitorDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Period: 统计周期
+        :type Period: int
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param DataPoints: 数据点数组
+        :type DataPoints: list of DataPoint
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Period: 统计周期\n        :type Period: int\n        :param MetricName: 指标名\n        :type MetricName: str\n        :param DataPoints: 数据点数组\n        :type DataPoints: list of DataPoint\n        :param StartTime: 开始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Period = None
         self.MetricName = None
         self.DataPoints = None
@@ -3875,8 +5141,10 @@ class Instance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Dimensions: 实例的维度组合
+        :type Dimensions: list of Dimension
         """
-        :param Dimensions: 实例的维度组合\n        :type Dimensions: list of Dimension\n        """
         self.Dimensions = None
 
 
@@ -3902,10 +5170,14 @@ class InstanceGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceGroupId: 实例组ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroupId: int\n        :param InstanceGroupName: 实例组名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceGroupName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: int
+        :param InstanceGroupName: 实例组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupName: str
+        """
         self.InstanceGroupId = None
         self.InstanceGroupName = None
 
@@ -3928,8 +5200,12 @@ class InstanceGroups(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 实例组 Id
+        :type Id: int
+        :param Name: 实例组名称
+        :type Name: str
         """
-        :param Id: 实例组 Id\n        :type Id: int\n        :param Name: 实例组名称\n        :type Name: str\n        """
         self.Id = None
         self.Name = None
 
@@ -3952,9 +5228,25 @@ class Metric(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 告警策略类型
+        :type Namespace: str
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Description: 指标展示名
+        :type Description: str
+        :param Min: 最小值
+        :type Min: float
+        :param Max: 最大值
+        :type Max: float
+        :param Dimensions: 维度列表
+        :type Dimensions: list of str
+        :param Unit: 单位
+        :type Unit: str
+        :param MetricConfig: 指标配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricConfig: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
         """
-        :param Namespace: 告警策略类型\n        :type Namespace: str\n        :param MetricName: 指标名\n        :type MetricName: str\n        :param Description: 指标展示名\n        :type Description: str\n        :param Min: 最小值\n        :type Min: float\n        :param Max: 最大值\n        :type Max: float\n        :param Dimensions: 维度列表\n        :type Dimensions: list of str\n        :param Unit: 单位\n        :type Unit: str\n        :param MetricConfig: 指标配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetricConfig: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`\n        """
         self.Namespace = None
         self.MetricName = None
         self.Description = None
@@ -3991,8 +5283,14 @@ class MetricConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Operator: 允许使用的运算符
+        :type Operator: list of str
+        :param Period: 允许配置的数据周期，以秒为单位
+        :type Period: list of int
+        :param ContinuePeriod: 允许配置的持续周期个数
+        :type ContinuePeriod: list of int
         """
-        :param Operator: 允许使用的运算符\n        :type Operator: list of str\n        :param Period: 允许配置的数据周期，以秒为单位\n        :type Period: list of int\n        :param ContinuePeriod: 允许配置的持续周期个数\n        :type ContinuePeriod: list of int\n        """
         self.Operator = None
         self.Period = None
         self.ContinuePeriod = None
@@ -4017,8 +5315,12 @@ class MetricData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Points: 监控数据点
+        :type Points: list of MetricDataPoint
         """
-        :param MetricName: 指标名\n        :type MetricName: str\n        :param Points: 监控数据点\n        :type Points: list of MetricDataPoint\n        """
         self.MetricName = None
         self.Points = None
 
@@ -4046,8 +5348,12 @@ class MetricDataPoint(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Dimensions: 实例对象维度组合
+        :type Dimensions: list of Dimension
+        :param Values: 数据点列表
+        :type Values: list of Point
         """
-        :param Dimensions: 实例对象维度组合\n        :type Dimensions: list of Dimension\n        :param Values: 数据点列表\n        :type Values: list of Point\n        """
         self.Dimensions = None
         self.Values = None
 
@@ -4080,8 +5386,12 @@ class MetricDatum(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricName: 指标名称
+        :type MetricName: str
+        :param Value: 指标的值
+        :type Value: int
         """
-        :param MetricName: 指标名称\n        :type MetricName: str\n        :param Value: 指标的值\n        :type Value: int\n        """
         self.MetricName = None
         self.Value = None
 
@@ -4104,8 +5414,12 @@ class MetricObjectMeaning(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param En: 指标英文解释
+        :type En: str
+        :param Zh: 指标中文解释
+        :type Zh: str
         """
-        :param En: 指标英文解释\n        :type En: str\n        :param Zh: 指标中文解释\n        :type Zh: str\n        """
         self.En = None
         self.Zh = None
 
@@ -4128,8 +5442,24 @@ class MetricSet(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间，每个云产品会有一个命名空间
+        :type Namespace: str
+        :param MetricName: 指标名称
+        :type MetricName: str
+        :param Unit: 指标使用的单位
+        :type Unit: str
+        :param UnitCname: 指标使用的单位
+        :type UnitCname: str
+        :param Period: 指标支持的统计周期，单位是秒，如60、300
+        :type Period: list of int
+        :param Periods: 统计周期内指标方式
+        :type Periods: list of PeriodsSt
+        :param Meaning: 统计指标含义解释
+        :type Meaning: :class:`tencentcloud.monitor.v20180724.models.MetricObjectMeaning`
+        :param Dimensions: 维度描述信息
+        :type Dimensions: list of DimensionsDesc
         """
-        :param Namespace: 命名空间，每个云产品会有一个命名空间\n        :type Namespace: str\n        :param MetricName: 指标名称\n        :type MetricName: str\n        :param Unit: 指标使用的单位\n        :type Unit: str\n        :param UnitCname: 指标使用的单位\n        :type UnitCname: str\n        :param Period: 指标支持的统计周期，单位是秒，如60、300\n        :type Period: list of int\n        :param Periods: 统计周期内指标方式\n        :type Periods: list of PeriodsSt\n        :param Meaning: 统计指标含义解释\n        :type Meaning: :class:`tencentcloud.monitor.v20180724.models.MetricObjectMeaning`\n        :param Dimensions: 维度描述信息\n        :type Dimensions: list of DimensionsDesc\n        """
         self.Namespace = None
         self.MetricName = None
         self.Unit = None
@@ -4176,8 +5506,14 @@ class MidQueryCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 维度
+        :type Key: str
+        :param Operator: 操作符，支持等于(eq)、不等于(ne)，以及in
+        :type Operator: str
+        :param Value: 维度值，当Op是eq、ne时，只使用第一个元素
+        :type Value: list of str
         """
-        :param Key: 维度\n        :type Key: str\n        :param Operator: 操作符，支持等于(eq)、不等于(ne)，以及in\n        :type Operator: str\n        :param Value: 维度值，当Op是eq、ne时，只使用第一个元素\n        :type Value: list of str\n        """
         self.Key = None
         self.Operator = None
         self.Value = None
@@ -4202,8 +5538,22 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param Name: 告警通知规则名称 60字符以内
+        :type Name: str
+        :param NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :type NoticeType: str
+        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :type NoticeLanguage: str
+        :param NoticeId: 告警通知模板 ID
+        :type NoticeId: str
+        :param UserNotices: 用户通知 最多5个
+        :type UserNotices: list of UserNotice
+        :param URLNotices: 回调通知 最多3个
+        :type URLNotices: list of URLNotice
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param Name: 告警通知规则名称 60字符以内\n        :type Name: str\n        :param NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知\n        :type NoticeType: str\n        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文\n        :type NoticeLanguage: str\n        :param NoticeId: 告警通知模板 ID\n        :type NoticeId: str\n        :param UserNotices: 用户通知 最多5个\n        :type UserNotices: list of UserNotice\n        :param URLNotices: 回调通知 最多3个\n        :type URLNotices: list of URLNotice\n        """
         self.Module = None
         self.Name = None
         self.NoticeType = None
@@ -4246,8 +5596,10 @@ class ModifyAlarmNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4261,8 +5613,22 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param ConditionTemplateId: 触发条件模板 Id，可不传
+        :type ConditionTemplateId: int
+        :param Condition: 指标触发条件
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param Filter: 全局过滤条件
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :type GroupBy: list of str
         """
-        :param Module: 模块名，固定值 monitor\n        :type Module: str\n        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        :param ConditionTemplateId: 触发条件模板 Id，可不传\n        :type ConditionTemplateId: int\n        :param Condition: 指标触发条件\n        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`\n        :param EventCondition: 事件触发条件\n        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`\n        :param Filter: 全局过滤条件\n        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`\n        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by\n        :type GroupBy: list of str\n        """
         self.Module = None
         self.PolicyId = None
         self.ConditionTemplateId = None
@@ -4301,8 +5667,10 @@ class ModifyAlarmPolicyConditionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4316,8 +5684,16 @@ class ModifyAlarmPolicyInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param Key: 要修改的字段 NAME=策略名称 REMARK=策略备注
+        :type Key: str
+        :param Value: 修改后的值
+        :type Value: str
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        :param Key: 要修改的字段 NAME=策略名称 REMARK=策略备注\n        :type Key: str\n        :param Value: 修改后的值\n        :type Value: str\n        """
         self.Module = None
         self.PolicyId = None
         self.Key = None
@@ -4344,8 +5720,10 @@ class ModifyAlarmPolicyInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4359,8 +5737,14 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param NoticeIds: 告警通知模板 ID 列表
+        :type NoticeIds: list of str
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        :param NoticeIds: 告警通知模板 ID 列表\n        :type NoticeIds: list of str\n        """
         self.Module = None
         self.PolicyId = None
         self.NoticeIds = None
@@ -4385,8 +5769,10 @@ class ModifyAlarmPolicyNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4400,8 +5786,14 @@ class ModifyAlarmPolicyStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param Enable: 启停状态 0=停用 1=启用
+        :type Enable: int
         """
-        :param Module: 模块名，固定值 monitor\n        :type Module: str\n        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        :param Enable: 启停状态 0=停用 1=启用\n        :type Enable: int\n        """
         self.Module = None
         self.PolicyId = None
         self.Enable = None
@@ -4426,8 +5818,10 @@ class ModifyAlarmPolicyStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4441,8 +5835,14 @@ class ModifyAlarmPolicyTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param TriggerTasks: 告警策略触发任务列表，空数据代表解绑
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
         """
-        :param Module: 模块名，这里填“monitor”\n        :type Module: str\n        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        :param TriggerTasks: 告警策略触发任务列表，空数据代表解绑\n        :type TriggerTasks: list of AlarmPolicyTriggerTask\n        """
         self.Module = None
         self.PolicyId = None
         self.TriggerTasks = None
@@ -4472,8 +5872,10 @@ class ModifyAlarmPolicyTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4487,8 +5889,14 @@ class ModifyAlarmReceiversRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 需要修改接收人的策略组Id
+        :type GroupId: int
+        :param Module: 必填。固定为“monitor”
+        :type Module: str
+        :param ReceiverInfos: 新接收人信息, 没有填写则删除所有接收人
+        :type ReceiverInfos: list of ReceiverInfo
         """
-        :param GroupId: 需要修改接收人的策略组Id\n        :type GroupId: int\n        :param Module: 必填。固定为“monitor”\n        :type Module: str\n        :param ReceiverInfos: 新接收人信息, 没有填写则删除所有接收人\n        :type ReceiverInfos: list of ReceiverInfo\n        """
         self.GroupId = None
         self.Module = None
         self.ReceiverInfos = None
@@ -4518,8 +5926,10 @@ class ModifyAlarmReceiversResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4533,8 +5943,24 @@ class ModifyPolicyGroupCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricId: 指标id
+        :type MetricId: int
+        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等
+        :type CalcType: int
+        :param CalcValue: 检测阈值
+        :type CalcValue: str
+        :param CalcPeriod: 检测指标的数据周期
+        :type CalcPeriod: int
+        :param ContinuePeriod: 持续周期个数
+        :type ContinuePeriod: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param RuleId: 规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改
+        :type RuleId: int
         """
-        :param MetricId: 指标id\n        :type MetricId: int\n        :param CalcType: 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等\n        :type CalcType: int\n        :param CalcValue: 检测阈值\n        :type CalcValue: str\n        :param CalcPeriod: 检测指标的数据周期\n        :type CalcPeriod: int\n        :param ContinuePeriod: 持续周期个数\n        :type ContinuePeriod: int\n        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警\n        :type AlarmNotifyType: int\n        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次\n        :type AlarmNotifyPeriod: int\n        :param RuleId: 规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改\n        :type RuleId: int\n        """
         self.MetricId = None
         self.CalcType = None
         self.CalcValue = None
@@ -4569,8 +5995,16 @@ class ModifyPolicyGroupEventCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件id
+        :type EventId: int
+        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警
+        :type AlarmNotifyType: int
+        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+        :type AlarmNotifyPeriod: int
+        :param RuleId: 规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改
+        :type RuleId: int
         """
-        :param EventId: 事件id\n        :type EventId: int\n        :param AlarmNotifyType: 告警发送收敛类型。0连续告警，1指数告警\n        :type AlarmNotifyType: int\n        :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次\n        :type AlarmNotifyPeriod: int\n        :param RuleId: 规则id，不填表示新增，填写了ruleId表示在已存在的规则基础上进行修改\n        :type RuleId: int\n        """
         self.EventId = None
         self.AlarmNotifyType = None
         self.AlarmNotifyPeriod = None
@@ -4597,8 +6031,24 @@ class ModifyPolicyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param ViewName: 告警类型
+        :type ViewName: str
+        :param GroupName: 策略组名称
+        :type GroupName: str
+        :param IsUnionRule: 指标告警条件的且或关系，1表示且告警，所有指标告警条件都达到才告警，0表示或告警，任意指标告警条件达到都告警
+        :type IsUnionRule: int
+        :param Conditions: 指标告警条件规则，不填表示删除已有的所有指标告警条件规则
+        :type Conditions: list of ModifyPolicyGroupCondition
+        :param EventConditions: 事件告警条件，不填表示删除已有的事件告警条件
+        :type EventConditions: list of ModifyPolicyGroupEventCondition
+        :param ConditionTempGroupId: 模板策略组id
+        :type ConditionTempGroupId: int
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param GroupId: 策略组id\n        :type GroupId: int\n        :param ViewName: 告警类型\n        :type ViewName: str\n        :param GroupName: 策略组名称\n        :type GroupName: str\n        :param IsUnionRule: 指标告警条件的且或关系，1表示且告警，所有指标告警条件都达到才告警，0表示或告警，任意指标告警条件达到都告警\n        :type IsUnionRule: int\n        :param Conditions: 指标告警条件规则，不填表示删除已有的所有指标告警条件规则\n        :type Conditions: list of ModifyPolicyGroupCondition\n        :param EventConditions: 事件告警条件，不填表示删除已有的事件告警条件\n        :type EventConditions: list of ModifyPolicyGroupEventCondition\n        :param ConditionTempGroupId: 模板策略组id\n        :type ConditionTempGroupId: int\n        """
         self.Module = None
         self.GroupId = None
         self.ViewName = None
@@ -4643,8 +6093,12 @@ class ModifyPolicyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 策略组id
+        :type GroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param GroupId: 策略组id\n        :type GroupId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -4660,8 +6114,12 @@ class MonitorTypeNamespace(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MonitorType: 监控类型
+        :type MonitorType: str
+        :param Namespace: 策略类型值
+        :type Namespace: str
         """
-        :param MonitorType: 监控类型\n        :type MonitorType: str\n        :param Namespace: 策略类型值\n        :type Namespace: str\n        """
         self.MonitorType = None
         self.Namespace = None
 
@@ -4684,8 +6142,12 @@ class PeriodsSt(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Period: 周期
+        :type Period: str
+        :param StatType: 统计方式
+        :type StatType: list of str
         """
-        :param Period: 周期\n        :type Period: str\n        :param StatType: 统计方式\n        :type StatType: list of str\n        """
         self.Period = None
         self.StatType = None
 
@@ -4708,9 +6170,13 @@ class Point(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Timestamp: 该监控数据点生成的时间点
+        :type Timestamp: int
+        :param Value: 监控数据点的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
         """
-        :param Timestamp: 该监控数据点生成的时间点\n        :type Timestamp: int\n        :param Value: 监控数据点的值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: float\n        """
         self.Timestamp = None
         self.Value = None
 
@@ -4733,9 +6199,15 @@ class ProductSimple(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param ProductName: 产品中文名称
+        :type ProductName: str
+        :param ProductEnName: 产品英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductEnName: str
         """
-        :param Namespace: 命名空间\n        :type Namespace: str\n        :param ProductName: 产品中文名称\n        :type ProductName: str\n        :param ProductEnName: 产品英文名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductEnName: str\n        """
         self.Namespace = None
         self.ProductName = None
         self.ProductEnName = None
@@ -4760,8 +6232,12 @@ class PrometheusRuleKV(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
         """
-        :param Key: 键\n        :type Key: str\n        :param Value: 值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -4784,20 +6260,44 @@ class PrometheusRuleSet(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param RuleName: 规则名称\n        :type RuleName: str\n        :param RuleState: 规则状态码\n        :type RuleState: int\n        :param Type: 规则类别
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param Labels: 规则标签列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Labels: list of PrometheusRuleKV\n        :param Annotations: 规则注释列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Annotations: list of PrometheusRuleKV\n        :param Expr: 规则表达式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Expr: str\n        :param Duration: 规则报警持续时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Duration: str\n        :param Receivers: 报警接收组列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Receivers: list of str\n        :param Health: 规则运行健康状态，取值如下：
+        r"""
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param RuleState: 规则状态码
+        :type RuleState: int
+        :param Type: 规则类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Labels: 规则标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: 规则注释列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Annotations: list of PrometheusRuleKV
+        :param Expr: 规则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expr: str
+        :param Duration: 规则报警持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param Receivers: 报警接收组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Receivers: list of str
+        :param Health: 规则运行健康状态，取值如下：
 <li>unknown 未知状态</li>
 <li>pending 加载中</li>
 <li>ok 运行正常</li>
-<li>err 运行错误</li>\n        :type Health: str\n        :param CreatedAt: 规则创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedAt: str\n        :param UpdatedAt: 规则更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdatedAt: str\n        """
+<li>err 运行错误</li>
+        :type Health: str
+        :param CreatedAt: 规则创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param UpdatedAt: 规则更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        """
         self.RuleId = None
         self.RuleName = None
         self.RuleState = None
@@ -4850,8 +6350,16 @@ class PutMonitorDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Metrics: 一组指标和数据
+        :type Metrics: list of MetricDatum
+        :param AnnounceIp: 上报时自行指定的 IP
+        :type AnnounceIp: str
+        :param AnnounceTimestamp: 上报时自行指定的时间戳
+        :type AnnounceTimestamp: int
+        :param AnnounceInstance: 上报时自行指定的 IP 或 产品实例ID
+        :type AnnounceInstance: str
         """
-        :param Metrics: 一组指标和数据\n        :type Metrics: list of MetricDatum\n        :param AnnounceIp: 上报时自行指定的 IP\n        :type AnnounceIp: str\n        :param AnnounceTimestamp: 上报时自行指定的时间戳\n        :type AnnounceTimestamp: int\n        :param AnnounceInstance: 上报时自行指定的 IP 或 产品实例ID\n        :type AnnounceInstance: str\n        """
         self.Metrics = None
         self.AnnounceIp = None
         self.AnnounceTimestamp = None
@@ -4883,8 +6391,10 @@ class PutMonitorDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4898,8 +6408,38 @@ class ReceiverInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :type StartTime: int
+        :param EndTime: 告警时间段结束时间。含义同StartTime
+        :type EndTime: int
+        :param NotifyWay: 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+        :type NotifyWay: list of str
+        :param ReceiverType: 接收人类型。“group” 或 “user”
+        :type ReceiverType: str
+        :param Id: ReceiverId
+        :type Id: int
+        :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+        :type SendFor: list of str
+        :param UidList: 电话告警接收者uid
+        :type UidList: list of int
+        :param RoundNumber: 电话告警轮数
+        :type RoundNumber: int
+        :param PersonInterval: 电话告警对个人间隔（秒）
+        :type PersonInterval: int
+        :param RoundInterval: 电话告警每轮间隔（秒）
+        :type RoundInterval: int
+        :param RecoverNotify: 恢复通知方式。可选"SMS"
+        :type RecoverNotify: list of str
+        :param NeedSendNotice: 是否需要电话告警触达提示。0不需要，1需要
+        :type NeedSendNotice: int
+        :param ReceiverGroupList: 接收组列表。通过平台接口查询到的接收组id列表
+        :type ReceiverGroupList: list of int
+        :param ReceiverUserList: 接收人列表。通过平台接口查询到的接收人id列表
+        :type ReceiverUserList: list of int
+        :param ReceiveLanguage: 告警接收语言，枚举值（zh-CN，en-US）
+        :type ReceiveLanguage: str
         """
-        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"\n        :type StartTime: int\n        :param EndTime: 告警时间段结束时间。含义同StartTime\n        :type EndTime: int\n        :param NotifyWay: 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"\n        :type NotifyWay: list of str\n        :param ReceiverType: 接收人类型。“group” 或 “user”\n        :type ReceiverType: str\n        :param Id: ReceiverId\n        :type Id: int\n        :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)\n        :type SendFor: list of str\n        :param UidList: 电话告警接收者uid\n        :type UidList: list of int\n        :param RoundNumber: 电话告警轮数\n        :type RoundNumber: int\n        :param PersonInterval: 电话告警对个人间隔（秒）\n        :type PersonInterval: int\n        :param RoundInterval: 电话告警每轮间隔（秒）\n        :type RoundInterval: int\n        :param RecoverNotify: 恢复通知方式。可选"SMS"\n        :type RecoverNotify: list of str\n        :param NeedSendNotice: 是否需要电话告警触达提示。0不需要，1需要\n        :type NeedSendNotice: int\n        :param ReceiverGroupList: 接收组列表。通过平台接口查询到的接收组id列表\n        :type ReceiverGroupList: list of int\n        :param ReceiverUserList: 接收人列表。通过平台接口查询到的接收人id列表\n        :type ReceiverUserList: list of int\n        :param ReceiveLanguage: 告警接收语言，枚举值（zh-CN，en-US）\n        :type ReceiveLanguage: str\n        """
         self.StartTime = None
         self.EndTime = None
         self.NotifyWay = None
@@ -4948,8 +6488,14 @@ class SendCustomAlarmMsgRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 接口模块名，当前取值monitor
+        :type Module: str
+        :param PolicyId: 消息策略ID，在云监控自定义消息页面配置
+        :type PolicyId: str
+        :param Msg: 用户想要发送的自定义消息内容
+        :type Msg: str
         """
-        :param Module: 接口模块名，当前取值monitor\n        :type Module: str\n        :param PolicyId: 消息策略ID，在云监控自定义消息页面配置\n        :type PolicyId: str\n        :param Msg: 用户想要发送的自定义消息内容\n        :type Msg: str\n        """
         self.Module = None
         self.PolicyId = None
         self.Msg = None
@@ -4974,8 +6520,10 @@ class SendCustomAlarmMsgResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4989,11 +6537,25 @@ class ServiceDiscoveryItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 服务发现名称
+        :type Name: str
+        :param Namespace: 服务发现属于的 Namespace
+        :type Namespace: str
+        :param Kind: 服务发现类型: ServiceMonitor/PodMonitor
+        :type Kind: str
+        :param NamespaceSelector: Namespace 选取方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceSelector: str
+        :param Selector: Label 选取方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Selector: str
+        :param Endpoints: Endpoints 信息（PodMonitor 不含该参数）
+        :type Endpoints: str
+        :param Yaml: 服务发现对应的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Yaml: str
         """
-        :param Name: 服务发现名称\n        :type Name: str\n        :param Namespace: 服务发现属于的 Namespace\n        :type Namespace: str\n        :param Kind: 服务发现类型: ServiceMonitor/PodMonitor\n        :type Kind: str\n        :param NamespaceSelector: Namespace 选取方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceSelector: str\n        :param Selector: Label 选取方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Selector: str\n        :param Endpoints: Endpoints 信息（PodMonitor 不含该参数）\n        :type Endpoints: str\n        :param Yaml: 服务发现对应的配置信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Yaml: str\n        """
         self.Name = None
         self.Namespace = None
         self.Kind = None
@@ -5026,8 +6588,12 @@ class SetDefaultAlarmPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
         """
-        :param Module: 模块名，固定值 monitor\n        :type Module: str\n        :param PolicyId: 告警策略 ID\n        :type PolicyId: str\n        """
         self.Module = None
         self.PolicyId = None
 
@@ -5050,8 +6616,10 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5065,15 +6633,29 @@ class TagInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签Key
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Value: 标签Value
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        :param InstanceSum: 实例个数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceSum: int\n        :param ServiceType: 产品类型，如：cvm
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceType: str\n        :param RegionId: 地域ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RegionId: str\n        :param BindingStatus: 绑定状态，2：绑定成功，1：绑定中
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindingStatus: int\n        :param TagStatus: 标签状态，2：标签存在，1：标签不存在
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagStatus: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 标签Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param InstanceSum: 实例个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSum: int
+        :param ServiceType: 产品类型，如：cvm
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param BindingStatus: 绑定状态，2：绑定成功，1：绑定中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingStatus: int
+        :param TagStatus: 标签状态，2：标签存在，1：标签不存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagStatus: int
+        """
         self.Key = None
         self.Value = None
         self.InstanceSum = None
@@ -5106,11 +6688,17 @@ class URLNotice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param URL: 回调 url（限长256字符）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type URL: str\n        :param IsValid: 是否通过验证 0=否 1=是
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsValid: int\n        :param ValidationCode: 验证码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ValidationCode: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URL: str
+        :param IsValid: 是否通过验证 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsValid: int
+        :param ValidationCode: 验证码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidationCode: str
+        """
         self.URL = None
         self.IsValid = None
         self.ValidationCode = None
@@ -5135,8 +6723,14 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0
+        :type GroupId: int
+        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
+        :type PolicyId: str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param GroupId: 策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0\n        :type GroupId: int\n        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略\n        :type PolicyId: str\n        """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
@@ -5161,8 +6755,10 @@ class UnBindingAllPolicyObjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5176,8 +6772,18 @@ class UnBindingPolicyObjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param GroupId: 策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0
+        :type GroupId: int
+        :param UniqueId: 待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到
+        :type UniqueId: list of str
+        :param InstanceGroupId: 实例分组id，如果按实例分组删除的话UniqueId参数是无效的
+        :type InstanceGroupId: int
+        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
+        :type PolicyId: str
         """
-        :param Module: 固定值，为"monitor"\n        :type Module: str\n        :param GroupId: 策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0\n        :type GroupId: int\n        :param UniqueId: 待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到\n        :type UniqueId: list of str\n        :param InstanceGroupId: 实例分组id，如果按实例分组删除的话UniqueId参数是无效的\n        :type InstanceGroupId: int\n        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略\n        :type PolicyId: str\n        """
         self.Module = None
         self.GroupId = None
         self.UniqueId = None
@@ -5206,8 +6812,10 @@ class UnBindingPolicyObjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5221,14 +6829,34 @@ class UpdateAlertRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleId: Prometheus 报警规则 ID\n        :type RuleId: str\n        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param RuleState: 规则状态码，取值如下：
+        r"""
+        :param RuleId: Prometheus 报警规则 ID
+        :type RuleId: str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleState: 规则状态码，取值如下：
 <li>1=RuleDeleted</li>
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
-默认状态码为 2 启用。\n        :type RuleState: int\n        :param RuleName: 报警规则名称\n        :type RuleName: str\n        :param Expr: 报警规则表达式\n        :type Expr: str\n        :param Duration: 报警规则持续时间\n        :type Duration: str\n        :param Receivers: 报警规则接收组列表\n        :type Receivers: list of str\n        :param Labels: 报警规则标签列表\n        :type Labels: list of PrometheusRuleKV\n        :param Annotations: 报警规则注释列表。
+默认状态码为 2 启用。
+        :type RuleState: int
+        :param RuleName: 报警规则名称
+        :type RuleName: str
+        :param Expr: 报警规则表达式
+        :type Expr: str
+        :param Duration: 报警规则持续时间
+        :type Duration: str
+        :param Receivers: 报警规则接收组列表
+        :type Receivers: list of str
+        :param Labels: 报警规则标签列表
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: 报警规则注释列表。
 
-告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。\n        :type Annotations: list of PrometheusRuleKV\n        :param Type: 报警策略模板分类\n        :type Type: str\n        """
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+        :type Annotations: list of PrometheusRuleKV
+        :param Type: 报警策略模板分类
+        :type Type: str
+        """
         self.RuleId = None
         self.InstanceId = None
         self.RuleState = None
@@ -5277,8 +6905,12 @@ class UpdateAlertRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RuleId: 规则 ID\n        :type RuleId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleId = None
         self.RequestId = None
 
@@ -5294,11 +6926,17 @@ class UpdateAlertRuleStateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleIds: 规则 ID 列表\n        :type RuleIds: list of str\n        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param RuleState: 规则状态码，取值如下：
+        r"""
+        :param RuleIds: 规则 ID 列表
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleState: 规则状态码，取值如下：
 <li>2=RuleEnabled</li>
 <li>3=RuleDisabled</li>
-默认状态码为 2 启用。\n        :type RuleState: int\n        """
+默认状态码为 2 启用。
+        :type RuleState: int
+        """
         self.RuleIds = None
         self.InstanceId = None
         self.RuleState = None
@@ -5323,8 +6961,10 @@ class UpdateAlertRuleStateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5338,12 +6978,22 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: Prometheus 实例 ID\n        :type InstanceId: str\n        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>\n        :type KubeClusterId: str\n        :param KubeType: 用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>\n        :type KubeType: int\n        :param Type: 服务发现类型，取值如下：
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        :param Type: 服务发现类型，取值如下：
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
-<li> 3 = JobMonitor</li>\n        :type Type: int\n        :param Yaml: 服务发现配置信息\n        :type Yaml: str\n        """
+<li> 3 = JobMonitor</li>
+        :type Type: int
+        :param Yaml: 服务发现配置信息
+        :type Yaml: str
+        """
         self.InstanceId = None
         self.KubeClusterId = None
         self.KubeType = None
@@ -5372,8 +7022,12 @@ class UpdateServiceDiscoveryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceDiscovery: 更新成功之后，返回对应服务发现的信息
+        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ServiceDiscovery: 更新成功之后，返回对应服务发现的信息\n        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServiceDiscovery = None
         self.RequestId = None
 
@@ -5391,19 +7045,41 @@ class UserNotice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReceiverType: 接收者类型 USER=用户 GROUP=用户组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReceiverType: str\n        :param StartTime: 通知开始时间 00:00:00 开始的秒数（取值范围0-86399）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: int\n        :param EndTime: 通知结束时间 00:00:00 开始的秒数（取值范围0-86399）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: int\n        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NoticeWay: list of str\n        :param UserIds: 用户 uid 列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserIds: list of int\n        :param GroupIds: 用户组 group id 列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupIds: list of int\n        :param PhoneOrder: 电话轮询列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneOrder: list of int\n        :param PhoneCircleTimes: 电话轮询次数 （取值范围1-5）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneCircleTimes: int\n        :param PhoneInnerInterval: 单次轮询内拨打间隔 秒数 （取值范围60-900）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneInnerInterval: int\n        :param PhoneCircleInterval: 两次轮询间隔 秒数（取值范围60-900）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PhoneCircleInterval: int\n        :param NeedPhoneArriveNotice: 是否需要触达通知 0=否 1=是
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NeedPhoneArriveNotice: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverType: str
+        :param StartTime: 通知开始时间 00:00:00 开始的秒数（取值范围0-86399）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 通知结束时间 00:00:00 开始的秒数（取值范围0-86399）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeWay: list of str
+        :param UserIds: 用户 uid 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: list of int
+        :param GroupIds: 用户组 group id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupIds: list of int
+        :param PhoneOrder: 电话轮询列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneOrder: list of int
+        :param PhoneCircleTimes: 电话轮询次数 （取值范围1-5）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleTimes: int
+        :param PhoneInnerInterval: 单次轮询内拨打间隔 秒数 （取值范围60-900）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneInnerInterval: int
+        :param PhoneCircleInterval: 两次轮询间隔 秒数（取值范围60-900）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleInterval: int
+        :param NeedPhoneArriveNotice: 是否需要触达通知 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedPhoneArriveNotice: int
+        """
         self.ReceiverType = None
         self.StartTime = None
         self.EndTime = None

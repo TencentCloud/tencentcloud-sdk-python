@@ -24,8 +24,14 @@ class BindStaffSkillGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffEmail: 坐席邮箱
+        :type StaffEmail: str
+        :param SkillGroupList: 绑定技能组列表
+        :type SkillGroupList: list of int
         """
-        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param StaffEmail: 坐席邮箱\n        :type StaffEmail: str\n        :param SkillGroupList: 绑定技能组列表\n        :type SkillGroupList: list of int\n        """
         self.SdkAppId = None
         self.StaffEmail = None
         self.SkillGroupList = None
@@ -50,8 +56,10 @@ class BindStaffSkillGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -65,8 +73,30 @@ class CallInMetrics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IvrCount: IVR驻留数量
+        :type IvrCount: int
+        :param QueueCount: 排队中数量
+        :type QueueCount: int
+        :param RingCount: 振铃中数量
+        :type RingCount: int
+        :param AcceptCount: 接通中数量
+        :type AcceptCount: int
+        :param TransferOuterCount: 客服转接外线中数量
+        :type TransferOuterCount: int
+        :param MaxQueueDuration: 最大排队时长
+        :type MaxQueueDuration: int
+        :param AvgQueueDuration: 平均排队时长
+        :type AvgQueueDuration: int
+        :param MaxRingDuration: 最大振铃时长
+        :type MaxRingDuration: int
+        :param AvgRingDuration: 平均振铃时长
+        :type AvgRingDuration: int
+        :param MaxAcceptDuration: 最大接通时长
+        :type MaxAcceptDuration: int
+        :param AvgAcceptDuration: 平均接通时长
+        :type AvgAcceptDuration: int
         """
-        :param IvrCount: IVR驻留数量\n        :type IvrCount: int\n        :param QueueCount: 排队中数量\n        :type QueueCount: int\n        :param RingCount: 振铃中数量\n        :type RingCount: int\n        :param AcceptCount: 接通中数量\n        :type AcceptCount: int\n        :param TransferOuterCount: 客服转接外线中数量\n        :type TransferOuterCount: int\n        :param MaxQueueDuration: 最大排队时长\n        :type MaxQueueDuration: int\n        :param AvgQueueDuration: 平均排队时长\n        :type AvgQueueDuration: int\n        :param MaxRingDuration: 最大振铃时长\n        :type MaxRingDuration: int\n        :param AvgRingDuration: 平均振铃时长\n        :type AvgRingDuration: int\n        :param MaxAcceptDuration: 最大接通时长\n        :type MaxAcceptDuration: int\n        :param AvgAcceptDuration: 平均接通时长\n        :type AvgAcceptDuration: int\n        """
         self.IvrCount = None
         self.QueueCount = None
         self.RingCount = None
@@ -107,8 +137,14 @@ class CallInNumberMetrics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Number: 线路号码
+        :type Number: str
+        :param Metrics: 线路相关指标
+        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        :param SkillGroupMetrics: 所属技能组相关指标
+        :type SkillGroupMetrics: list of CallInSkillGroupMetrics
         """
-        :param Number: 线路号码\n        :type Number: str\n        :param Metrics: 线路相关指标\n        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`\n        :param SkillGroupMetrics: 所属技能组相关指标\n        :type SkillGroupMetrics: list of CallInSkillGroupMetrics\n        """
         self.Number = None
         self.Metrics = None
         self.SkillGroupMetrics = None
@@ -140,8 +176,14 @@ class CallInSkillGroupMetrics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param Metrics: 数据指标
+        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        :param Name: 技能组名称
+        :type Name: str
         """
-        :param SkillGroupId: 技能组ID\n        :type SkillGroupId: int\n        :param Metrics: 数据指标\n        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`\n        :param Name: 技能组名称\n        :type Name: str\n        """
         self.SkillGroupId = None
         self.Metrics = None
         self.Name = None
@@ -168,8 +210,12 @@ class CreateSDKLoginTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID。
+        :type SdkAppId: int
+        :param SeatUserId: 坐席账号。
+        :type SeatUserId: str
         """
-        :param SdkAppId: 应用ID。\n        :type SdkAppId: int\n        :param SeatUserId: 坐席账号。\n        :type SeatUserId: str\n        """
         self.SdkAppId = None
         self.SeatUserId = None
 
@@ -192,8 +238,16 @@ class CreateSDKLoginTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Token: SDK 登录 Token。
+        :type Token: str
+        :param ExpiredTime: 过期时间戳，Unix 时间戳。
+        :type ExpiredTime: int
+        :param SdkURL: SDK 加载路径会随着 SDK 的发布而变动。
+        :type SdkURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Token: SDK 登录 Token。\n        :type Token: str\n        :param ExpiredTime: 过期时间戳，Unix 时间戳。\n        :type ExpiredTime: int\n        :param SdkURL: SDK 加载路径会随着 SDK 的发布而变动。\n        :type SdkURL: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Token = None
         self.ExpiredTime = None
         self.SdkURL = None
@@ -213,8 +267,12 @@ class CreateStaffRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Staffs: 客服信息，个数不超过 10
+        :type Staffs: list of SeatUserInfo
         """
-        :param SdkAppId: 应用ID\n        :type SdkAppId: int\n        :param Staffs: 客服信息，个数不超过 10\n        :type Staffs: list of SeatUserInfo\n        """
         self.SdkAppId = None
         self.Staffs = None
 
@@ -242,9 +300,13 @@ class CreateStaffResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorStaffList: 错误坐席列表及错误信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorStaffList: list of ErrStaffItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorStaffList: list of ErrStaffItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ErrorStaffList = None
         self.RequestId = None
 
@@ -265,8 +327,16 @@ class CreateUserSigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param Uid: 用户 ID
+        :type Uid: str
+        :param ExpiredTime: 有效期，单位秒，不超过 1 小时
+        :type ExpiredTime: int
+        :param ClientData: 用户签名数据
+        :type ClientData: str
         """
-        :param SdkAppId: 应用 ID\n        :type SdkAppId: int\n        :param Uid: 用户 ID\n        :type Uid: str\n        :param ExpiredTime: 有效期，单位秒，不超过 1 小时\n        :type ExpiredTime: int\n        :param ClientData: 用户签名数据\n        :type ClientData: str\n        """
         self.SdkAppId = None
         self.Uid = None
         self.ExpiredTime = None
@@ -293,8 +363,12 @@ class CreateUserSigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserSig: 签名结果
+        :type UserSig: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param UserSig: 签名结果\n        :type UserSig: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.UserSig = None
         self.RequestId = None
 
@@ -310,8 +384,12 @@ class DeleteStaffRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffList: 待删除客服邮箱列表
+        :type StaffList: list of str
         """
-        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param StaffList: 待删除客服邮箱列表\n        :type StaffList: list of str\n        """
         self.SdkAppId = None
         self.StaffList = None
 
@@ -334,9 +412,13 @@ class DeleteStaffResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OnlineStaffList: 无法删除的状态为在线的客服列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OnlineStaffList: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineStaffList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.OnlineStaffList = None
         self.RequestId = None
 
@@ -352,8 +434,14 @@ class DescribeCallInMetricsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param EnabledSkillGroup: 是否返回技能组维度信息，默认“是”
+        :type EnabledSkillGroup: bool
+        :param EnabledNumber: 是否返回线路维度信息，默认“否”
+        :type EnabledNumber: bool
         """
-        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param EnabledSkillGroup: 是否返回技能组维度信息，默认“是”\n        :type EnabledSkillGroup: bool\n        :param EnabledNumber: 是否返回线路维度信息，默认“否”\n        :type EnabledNumber: bool\n        """
         self.SdkAppId = None
         self.EnabledSkillGroup = None
         self.EnabledNumber = None
@@ -378,10 +466,20 @@ class DescribeCallInMetricsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Timestamp: 时间戳
+        :type Timestamp: int
+        :param TotalMetrics: 总体指标
+        :type TotalMetrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        :param NumberMetrics: 线路维度指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberMetrics: list of CallInNumberMetrics
+        :param SkillGroupMetrics: 技能组维度指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupMetrics: list of CallInSkillGroupMetrics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Timestamp: 时间戳\n        :type Timestamp: int\n        :param TotalMetrics: 总体指标\n        :type TotalMetrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`\n        :param NumberMetrics: 线路维度指标
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NumberMetrics: list of CallInNumberMetrics\n        :param SkillGroupMetrics: 技能组维度指标
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupMetrics: list of CallInSkillGroupMetrics\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Timestamp = None
         self.TotalMetrics = None
         self.NumberMetrics = None
@@ -415,8 +513,20 @@ class DescribeChatMessagesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CdrId: 服务记录ID
+        :type CdrId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: int
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Limit: 返回记录条数 最大为100默认20
+        :type Limit: int
+        :param Offset: 返回记录偏移 默认为0
+        :type Offset: int
+        :param Order: 1为从早到晚，2为从晚到早，默认为2
+        :type Order: int
         """
-        :param CdrId: 服务记录ID\n        :type CdrId: str\n        :param InstanceId: 实例ID\n        :type InstanceId: int\n        :param SdkAppId: 应用ID\n        :type SdkAppId: int\n        :param Limit: 返回记录条数 最大为100默认20\n        :type Limit: int\n        :param Offset: 返回记录偏移 默认为0\n        :type Offset: int\n        :param Order: 1为从早到晚，2为从晚到早，默认为2\n        :type Order: int\n        """
         self.CdrId = None
         self.InstanceId = None
         self.SdkAppId = None
@@ -447,8 +557,14 @@ class DescribeChatMessagesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Messages: 消息列表
+        :type Messages: list of MessageBody
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param Messages: 消息列表\n        :type Messages: list of MessageBody\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Messages = None
         self.RequestId = None
@@ -471,8 +587,22 @@ class DescribeIMCdrsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimestamp: 起始时间
+        :type StartTimestamp: int
+        :param EndTimestamp: 结束时间
+        :type EndTimestamp: int
+        :param InstanceId: 实例ID
+        :type InstanceId: int
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Limit: 返回记录条数 最大为100默认20
+        :type Limit: int
+        :param Offset: 返回记录偏移 默认为0
+        :type Offset: int
+        :param Type: 1为全媒体，2为文本客服，不填则查询全部
+        :type Type: int
         """
-        :param StartTimestamp: 起始时间\n        :type StartTimestamp: int\n        :param EndTimestamp: 结束时间\n        :type EndTimestamp: int\n        :param InstanceId: 实例ID\n        :type InstanceId: int\n        :param SdkAppId: 应用ID\n        :type SdkAppId: int\n        :param Limit: 返回记录条数 最大为100默认20\n        :type Limit: int\n        :param Offset: 返回记录偏移 默认为0\n        :type Offset: int\n        :param Type: 1为全媒体，2为文本客服，不填则查询全部\n        :type Type: int\n        """
         self.StartTimestamp = None
         self.EndTimestamp = None
         self.InstanceId = None
@@ -505,8 +635,14 @@ class DescribeIMCdrsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param IMCdrs: 服务记录列表
+        :type IMCdrs: list of IMCdrInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总记录数\n        :type TotalCount: int\n        :param IMCdrs: 服务记录列表\n        :type IMCdrs: list of IMCdrInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.IMCdrs = None
         self.RequestId = None
@@ -529,8 +665,14 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param Offset: 数据偏移
+        :type Offset: int
+        :param Limit: 返回的数据条数，最大 25
+        :type Limit: int
         """
-        :param SdkAppId: 应用 ID\n        :type SdkAppId: int\n        :param Offset: 数据偏移\n        :type Offset: int\n        :param Limit: 返回的数据条数，最大 25\n        :type Limit: int\n        """
         self.SdkAppId = None
         self.Offset = None
         self.Limit = None
@@ -555,8 +697,14 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 列表总条数
+        :type Total: int
+        :param Sessions: 列表内容
+        :type Sessions: list of PSTNSessionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 列表总条数\n        :type Total: int\n        :param Sessions: 列表内容\n        :type Sessions: list of PSTNSessionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Sessions = None
         self.RequestId = None
@@ -579,8 +727,14 @@ class DescribeSeatUserListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
         """
-        :param InstanceId: 实例ID\n        :type InstanceId: int\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 返回数量\n        :type Limit: int\n        """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
@@ -605,8 +759,14 @@ class DescribeSeatUserListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 此实例的坐席用户总数
+        :type TotalCount: int
+        :param SeatUsers: 坐席用户信息列表
+        :type SeatUsers: list of SeatUserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 此实例的坐席用户总数\n        :type TotalCount: int\n        :param SeatUsers: 坐席用户信息列表\n        :type SeatUsers: list of SeatUserInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SeatUsers = None
         self.RequestId = None
@@ -629,8 +789,18 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param SkillGroupId: 技能组ID，查询单个技能组时使用
+        :type SkillGroupId: int
+        :param ModifiedTime: 查询修改时间大于等于ModifiedTime的技能组时使用
+        :type ModifiedTime: int
         """
-        :param SdkAppId: 应用ID\n        :type SdkAppId: int\n        :param PageSize: 分页尺寸，上限 100\n        :type PageSize: int\n        :param PageNumber: 分页页码，从 0 开始\n        :type PageNumber: int\n        :param SkillGroupId: 技能组ID，查询单个技能组时使用\n        :type SkillGroupId: int\n        :param ModifiedTime: 查询修改时间大于等于ModifiedTime的技能组时使用\n        :type ModifiedTime: int\n        """
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
@@ -659,8 +829,14 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 技能组总数
+        :type TotalCount: int
+        :param SkillGroupList: 技能组信息列表
+        :type SkillGroupList: list of SkillGroupInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 技能组总数\n        :type TotalCount: int\n        :param SkillGroupList: 技能组信息列表\n        :type SkillGroupList: list of SkillGroupInfoItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SkillGroupList = None
         self.RequestId = None
@@ -683,8 +859,18 @@ class DescribeStaffInfoListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param StaffMail: 坐席账号，查询单个坐席时使用
+        :type StaffMail: str
+        :param ModifiedTime: 查询修改时间大于等于ModifiedTime的坐席时使用
+        :type ModifiedTime: int
         """
-        :param SdkAppId: 应用ID\n        :type SdkAppId: int\n        :param PageSize: 分页尺寸，上限 100\n        :type PageSize: int\n        :param PageNumber: 分页页码，从 0 开始\n        :type PageNumber: int\n        :param StaffMail: 坐席账号，查询单个坐席时使用\n        :type StaffMail: str\n        :param ModifiedTime: 查询修改时间大于等于ModifiedTime的坐席时使用\n        :type ModifiedTime: int\n        """
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
@@ -713,8 +899,14 @@ class DescribeStaffInfoListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 坐席用户总数
+        :type TotalCount: int
+        :param StaffList: 坐席用户信息列表
+        :type StaffList: list of StaffInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 坐席用户总数\n        :type TotalCount: int\n        :param StaffList: 坐席用户信息列表\n        :type StaffList: list of StaffInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.StaffList = None
         self.RequestId = None
@@ -737,8 +929,12 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffList: 筛选坐席列表，默认不传返回全部坐席信息
+        :type StaffList: list of str
         """
-        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param StaffList: 筛选坐席列表，默认不传返回全部坐席信息\n        :type StaffList: list of str\n        """
         self.SdkAppId = None
         self.StaffList = None
 
@@ -761,8 +957,12 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Metrics: 坐席状态实时信息
+        :type Metrics: list of StaffStatusMetrics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Metrics: 坐席状态实时信息\n        :type Metrics: list of StaffStatusMetrics\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Metrics = None
         self.RequestId = None
 
@@ -783,8 +983,14 @@ class DescribeTelCallInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeStamp: 起始时间戳，Unix 时间戳
+        :type StartTimeStamp: int
+        :param EndTimeStamp: 结束时间戳，Unix 时间戳，查询时间范围最大为90天
+        :type EndTimeStamp: int
+        :param SdkAppIdList: 应用ID列表，多个ID时，返回值为多个ID使用总和
+        :type SdkAppIdList: list of int
         """
-        :param StartTimeStamp: 起始时间戳，Unix 时间戳\n        :type StartTimeStamp: int\n        :param EndTimeStamp: 结束时间戳，Unix 时间戳，查询时间范围最大为90天\n        :type EndTimeStamp: int\n        :param SdkAppIdList: 应用ID列表，多个ID时，返回值为多个ID使用总和\n        :type SdkAppIdList: list of int\n        """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
         self.SdkAppIdList = None
@@ -809,8 +1015,16 @@ class DescribeTelCallInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TelCallOutCount: 电话呼出统计分钟数
+        :type TelCallOutCount: int
+        :param TelCallInCount: 电话呼入统计分钟数
+        :type TelCallInCount: int
+        :param SeatUsedCount: 坐席使用统计个数
+        :type SeatUsedCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TelCallOutCount: 电话呼出统计分钟数\n        :type TelCallOutCount: int\n        :param TelCallInCount: 电话呼入统计分钟数\n        :type TelCallInCount: int\n        :param SeatUsedCount: 坐席使用统计个数\n        :type SeatUsedCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TelCallOutCount = None
         self.TelCallInCount = None
         self.SeatUsedCount = None
@@ -830,8 +1044,26 @@ class DescribeTelCdrRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTimeStamp: 起始时间戳，Unix 时间戳
+        :type StartTimeStamp: int
+        :param EndTimeStamp: 结束时间戳，Unix 时间戳
+        :type EndTimeStamp: int
+        :param Limit: 返回数据条数，上限（deprecated）
+        :type Limit: int
+        :param Offset: 偏移（deprecated）
+        :type Offset: int
+        :param InstanceId: 实例 ID（deprecated）
+        :type InstanceId: int
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param Phones: 按手机号筛选
+        :type Phones: list of str
         """
-        :param StartTimeStamp: 起始时间戳，Unix 时间戳\n        :type StartTimeStamp: int\n        :param EndTimeStamp: 结束时间戳，Unix 时间戳\n        :type EndTimeStamp: int\n        :param Limit: 返回数据条数，上限（deprecated）\n        :type Limit: int\n        :param Offset: 偏移（deprecated）\n        :type Offset: int\n        :param InstanceId: 实例 ID（deprecated）\n        :type InstanceId: int\n        :param SdkAppId: 应用 ID\n        :type SdkAppId: int\n        :param PageSize: 分页尺寸，上限 100\n        :type PageSize: int\n        :param PageNumber: 分页页码，从 0 开始\n        :type PageNumber: int\n        :param Phones: 按手机号筛选\n        :type Phones: list of str\n        """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
         self.Limit = None
@@ -868,8 +1100,14 @@ class DescribeTelCdrResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 话单记录总数
+        :type TotalCount: int
+        :param TelCdrs: 话单记录
+        :type TelCdrs: list of TelCdrInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 话单记录总数\n        :type TotalCount: int\n        :param TelCdrs: 话单记录\n        :type TelCdrs: list of TelCdrInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TelCdrs = None
         self.RequestId = None
@@ -892,8 +1130,12 @@ class DescribeTelSessionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param SessionId: 会话ID
+        :type SessionId: str
         """
-        :param SdkAppId: 应用ID\n        :type SdkAppId: int\n        :param SessionId: 会话ID\n        :type SessionId: str\n        """
         self.SdkAppId = None
         self.SessionId = None
 
@@ -916,8 +1158,12 @@ class DescribeTelSessionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Session: 会话信息
+        :type Session: :class:`tencentcloud.ccc.v20200210.models.PSTNSession`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Session: 会话信息\n        :type Session: :class:`tencentcloud.ccc.v20200210.models.PSTNSession`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Session = None
         self.RequestId = None
 
@@ -935,8 +1181,14 @@ class ErrStaffItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StaffEmail: 坐席邮箱地址
+        :type StaffEmail: str
+        :param Code: 错误码
+        :type Code: str
+        :param Message: 错误描述
+        :type Message: str
         """
-        :param StaffEmail: 坐席邮箱地址\n        :type StaffEmail: str\n        :param Code: 错误码\n        :type Code: str\n        :param Message: 错误描述\n        :type Message: str\n        """
         self.StaffEmail = None
         self.Code = None
         self.Message = None
@@ -961,8 +1213,22 @@ class IMCdrInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 服务记录ID
+        :type Id: str
+        :param Duration: 服务时长秒数
+        :type Duration: int
+        :param EndStatus: 结束状态
+        :type EndStatus: int
+        :param Nickname: 用户昵称
+        :type Nickname: str
+        :param Type: 服务类型 1为全媒体，2为文本客服
+        :type Type: int
+        :param StaffId: 客服ID
+        :type StaffId: str
+        :param Timestamp: 服务时间戳
+        :type Timestamp: int
         """
-        :param Id: 服务记录ID\n        :type Id: str\n        :param Duration: 服务时长秒数\n        :type Duration: int\n        :param EndStatus: 结束状态\n        :type EndStatus: int\n        :param Nickname: 用户昵称\n        :type Nickname: str\n        :param Type: 服务类型 1为全媒体，2为文本客服\n        :type Type: int\n        :param StaffId: 客服ID\n        :type StaffId: str\n        :param Timestamp: 服务时间戳\n        :type Timestamp: int\n        """
         self.Id = None
         self.Duration = None
         self.EndStatus = None
@@ -995,10 +1261,14 @@ class IVRKeyPressedElement(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 按键
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Label: 按键关联的标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Label: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Label: 按键关联的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        """
         self.Key = None
         self.Label = None
 
@@ -1021,8 +1291,12 @@ class Message(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 消息类型
+        :type Type: str
+        :param Content: 消息内容
+        :type Content: str
         """
-        :param Type: 消息类型\n        :type Type: str\n        :param Content: 消息内容\n        :type Content: str\n        """
         self.Type = None
         self.Content = None
 
@@ -1045,8 +1319,14 @@ class MessageBody(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Timestamp: 消息时间戳
+        :type Timestamp: int
+        :param From: 发消息的用户ID
+        :type From: str
+        :param Messages: 消息列表
+        :type Messages: list of Message
         """
-        :param Timestamp: 消息时间戳\n        :type Timestamp: int\n        :param From: 发消息的用户ID\n        :type From: str\n        :param Messages: 消息列表\n        :type Messages: list of Message\n        """
         self.Timestamp = None
         self.From = None
         self.Messages = None
@@ -1076,12 +1356,38 @@ class PSTNSession(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SessionID: 会话 ID\n        :type SessionID: str\n        :param RoomID: 会话临时房间 ID\n        :type RoomID: str\n        :param Caller: 主叫\n        :type Caller: str\n        :param Callee: 被叫\n        :type Callee: str\n        :param StartTimestamp: 开始时间，Unix 时间戳\n        :type StartTimestamp: int\n        :param RingTimestamp: 振铃时间，Unix 时间戳\n        :type RingTimestamp: int\n        :param AcceptTimestamp: 接听时间，Unix 时间戳\n        :type AcceptTimestamp: int\n        :param StaffEmail: 坐席邮箱\n        :type StaffEmail: str\n        :param StaffNumber: 坐席工号\n        :type StaffNumber: str\n        :param SessionStatus: 会话状态
+        r"""
+        :param SessionID: 会话 ID
+        :type SessionID: str
+        :param RoomID: 会话临时房间 ID
+        :type RoomID: str
+        :param Caller: 主叫
+        :type Caller: str
+        :param Callee: 被叫
+        :type Callee: str
+        :param StartTimestamp: 开始时间，Unix 时间戳
+        :type StartTimestamp: int
+        :param RingTimestamp: 振铃时间，Unix 时间戳
+        :type RingTimestamp: int
+        :param AcceptTimestamp: 接听时间，Unix 时间戳
+        :type AcceptTimestamp: int
+        :param StaffEmail: 坐席邮箱
+        :type StaffEmail: str
+        :param StaffNumber: 坐席工号
+        :type StaffNumber: str
+        :param SessionStatus: 会话状态
 ringing 振铃中
 seatJoining  等待坐席接听
 inProgress 进行中
-finished 已完成\n        :type SessionStatus: str\n        :param Direction: 会话呼叫方向， 0 呼入 | 1 - 呼出\n        :type Direction: int\n        :param OutBoundCaller: 转外线使用的号码（转外线主叫）\n        :type OutBoundCaller: str\n        :param OutBoundCallee: 转外线被叫\n        :type OutBoundCallee: str\n        """
+finished 已完成
+        :type SessionStatus: str
+        :param Direction: 会话呼叫方向， 0 呼入 | 1 - 呼出
+        :type Direction: int
+        :param OutBoundCaller: 转外线使用的号码（转外线主叫）
+        :type OutBoundCaller: str
+        :param OutBoundCallee: 转外线被叫
+        :type OutBoundCallee: str
+        """
         self.SessionID = None
         self.RoomID = None
         self.Caller = None
@@ -1126,8 +1432,30 @@ class PSTNSessionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SessionID: 会话 ID
+        :type SessionID: str
+        :param RoomID: 会话临时房间 ID
+        :type RoomID: str
+        :param Caller: 主叫
+        :type Caller: str
+        :param Callee: 被叫
+        :type Callee: str
+        :param StartTimestamp: 开始时间，Unix 时间戳
+        :type StartTimestamp: str
+        :param AcceptTimestamp: 接听时间，Unix 时间戳
+        :type AcceptTimestamp: str
+        :param StaffEmail: 坐席邮箱
+        :type StaffEmail: str
+        :param StaffNumber: 坐席工号
+        :type StaffNumber: str
+        :param SessionStatus: 坐席状态 inProgress 进行中
+        :type SessionStatus: str
+        :param Direction: 会话呼叫方向， 0 呼入 | 1 - 呼出
+        :type Direction: int
+        :param RingTimestamp: 振铃时间，Unix 时间戳
+        :type RingTimestamp: int
         """
-        :param SessionID: 会话 ID\n        :type SessionID: str\n        :param RoomID: 会话临时房间 ID\n        :type RoomID: str\n        :param Caller: 主叫\n        :type Caller: str\n        :param Callee: 被叫\n        :type Callee: str\n        :param StartTimestamp: 开始时间，Unix 时间戳\n        :type StartTimestamp: str\n        :param AcceptTimestamp: 接听时间，Unix 时间戳\n        :type AcceptTimestamp: str\n        :param StaffEmail: 坐席邮箱\n        :type StaffEmail: str\n        :param StaffNumber: 坐席工号\n        :type StaffNumber: str\n        :param SessionStatus: 坐席状态 inProgress 进行中\n        :type SessionStatus: str\n        :param Direction: 会话呼叫方向， 0 呼入 | 1 - 呼出\n        :type Direction: int\n        :param RingTimestamp: 振铃时间，Unix 时间戳\n        :type RingTimestamp: int\n        """
         self.SessionID = None
         self.RoomID = None
         self.Caller = None
@@ -1168,10 +1496,24 @@ class SeatUserInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 坐席名称
+        :type Name: str
+        :param Mail: 坐席邮箱
+        :type Mail: str
+        :param Phone: 坐席电话号码（带0086前缀）
+        :type Phone: str
+        :param Nick: 坐席昵称
+        :type Nick: str
+        :param UserId: 用户ID
+        :type UserId: str
+        :param SkillGroupNameList: 坐席关联的技能组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupNameList: list of str
+        :param StaffNumber: 工号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffNumber: str
         """
-        :param Name: 坐席名称\n        :type Name: str\n        :param Mail: 坐席邮箱\n        :type Mail: str\n        :param Phone: 坐席电话号码（带0086前缀）\n        :type Phone: str\n        :param Nick: 坐席昵称\n        :type Nick: str\n        :param UserId: 用户ID\n        :type UserId: str\n        :param SkillGroupNameList: 坐席关联的技能组列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupNameList: list of str\n        :param StaffNumber: 工号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StaffNumber: str\n        """
         self.Name = None
         self.Mail = None
         self.Phone = None
@@ -1204,24 +1546,56 @@ class ServeParticipant(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mail: 坐席邮箱
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Mail: str\n        :param Phone: 坐席电话
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        :param RingTimestamp: 振铃时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RingTimestamp: int\n        :param AcceptTimestamp: 接听时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AcceptTimestamp: int\n        :param EndedTimestamp: 结束时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndedTimestamp: int\n        :param RecordId: 录音 ID，能够索引到坐席侧的录音
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordId: str\n        :param Type: 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param TransferFrom: 转接来源坐席信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TransferFrom: str\n        :param TransferTo: 转接去向坐席信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TransferTo: str\n        :param TransferToType: 转接去向参与者类型，取值与 Type 一致
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TransferToType: str\n        :param SkillGroupId: 技能组 ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupId: int\n        :param EndStatusString: 结束状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndStatusString: str\n        :param RecordURL: 录音 URL
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordURL: str\n        :param Sequence: 参与者序号，从 0 开始
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Sequence: int\n        :param StartTimestamp: 开始时间戳，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTimestamp: int\n        :param SkillGroupName: 技能组名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mail: str
+        :param Phone: 坐席电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param RingTimestamp: 振铃时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingTimestamp: int
+        :param AcceptTimestamp: 接听时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AcceptTimestamp: int
+        :param EndedTimestamp: 结束时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndedTimestamp: int
+        :param RecordId: 录音 ID，能够索引到坐席侧的录音
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param Type: 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param TransferFrom: 转接来源坐席信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferFrom: str
+        :param TransferTo: 转接去向坐席信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferTo: str
+        :param TransferToType: 转接去向参与者类型，取值与 Type 一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferToType: str
+        :param SkillGroupId: 技能组 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupId: int
+        :param EndStatusString: 结束状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndStatusString: str
+        :param RecordURL: 录音 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordURL: str
+        :param Sequence: 参与者序号，从 0 开始
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sequence: int
+        :param StartTimestamp: 开始时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimestamp: int
+        :param SkillGroupName: 技能组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupName: str
+        """
         self.Mail = None
         self.Phone = None
         self.RingTimestamp = None
@@ -1272,12 +1646,26 @@ class SkillGroupInfoItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param SkillGroupName: 技能组名称
+        :type SkillGroupName: str
+        :param Type: 类型：IM、TEL、ALL（全媒体）
+        :type Type: str
+        :param RoutePolicy: 会话分配策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicy: str
+        :param UsingLastSeat: 会话分配是否优先上次服务坐席
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsingLastSeat: int
+        :param MaxConcurrency: 单客服最大并发数（电话类型默认1）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConcurrency: int
+        :param LastModifyTimestamp: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTimestamp: int
         """
-        :param SkillGroupId: 技能组ID\n        :type SkillGroupId: int\n        :param SkillGroupName: 技能组名称\n        :type SkillGroupName: str\n        :param Type: 类型：IM、TEL、ALL（全媒体）\n        :type Type: str\n        :param RoutePolicy: 会话分配策略
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RoutePolicy: str\n        :param UsingLastSeat: 会话分配是否优先上次服务坐席
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsingLastSeat: int\n        :param MaxConcurrency: 单客服最大并发数（电话类型默认1）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxConcurrency: int\n        :param LastModifyTimestamp: 最后修改时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifyTimestamp: int\n        """
         self.SkillGroupId = None
         self.SkillGroupName = None
         self.Type = None
@@ -1310,8 +1698,16 @@ class SkillGroupItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param SkillGroupName: 技能组名称
+        :type SkillGroupName: str
+        :param Priority: 优先级
+        :type Priority: int
+        :param Type: 类型：IM、TEL、ALL（全媒体）
+        :type Type: str
         """
-        :param SkillGroupId: 技能组ID\n        :type SkillGroupId: int\n        :param SkillGroupName: 技能组名称\n        :type SkillGroupName: str\n        :param Priority: 优先级\n        :type Priority: int\n        :param Type: 类型：IM、TEL、ALL（全媒体）\n        :type Type: str\n        """
         self.SkillGroupId = None
         self.SkillGroupName = None
         self.Priority = None
@@ -1338,14 +1734,28 @@ class StaffInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 坐席名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Mail: 坐席邮箱\n        :type Mail: str\n        :param Phone: 坐席电话号码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        :param Nick: 坐席昵称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Nick: str\n        :param StaffNumber: 坐席工号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StaffNumber: str\n        :param SkillGroupList: 所属技能组列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupList: list of SkillGroupItem\n        :param LastModifyTimestamp: 最后修改时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifyTimestamp: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Mail: 坐席邮箱
+        :type Mail: str
+        :param Phone: 坐席电话号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param Nick: 坐席昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param StaffNumber: 坐席工号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffNumber: str
+        :param SkillGroupList: 所属技能组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupList: list of SkillGroupItem
+        :param LastModifyTimestamp: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTimestamp: int
+        """
         self.Name = None
         self.Mail = None
         self.Phone = None
@@ -1383,8 +1793,12 @@ class StaffStatusExtra(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: im - 文本 | tel - 电话 | all - 全媒体
+        :type Type: str
+        :param Direct: in - 呼入 | out - 呼出
+        :type Direct: str
         """
-        :param Type: im - 文本 | tel - 电话 | all - 全媒体\n        :type Type: str\n        :param Direct: in - 呼入 | out - 呼出\n        :type Direct: str\n        """
         self.Type = None
         self.Direct = None
 
@@ -1407,8 +1821,32 @@ class StaffStatusMetrics(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Email: 坐席邮箱
+        :type Email: str
+        :param Status: 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+        :type Status: str
+        :param StatusExtra: 坐席状态补充信息
+        :type StatusExtra: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
+        :param OnlineDuration: 当天在线总时长
+        :type OnlineDuration: int
+        :param FreeDuration: 当天示闲总时长
+        :type FreeDuration: int
+        :param BusyDuration: 当天忙碌总时长
+        :type BusyDuration: int
+        :param NotReadyDuration: 当天示忙总时长
+        :type NotReadyDuration: int
+        :param RestDuration: 当天小休总时长
+        :type RestDuration: int
+        :param AfterCallWorkDuration: 当天话后调整总时长
+        :type AfterCallWorkDuration: int
+        :param Reason: 小休原因
+        :type Reason: str
+        :param ReserveRest: 是否预约小休
+        :type ReserveRest: bool
+        :param ReserveNotReady: 是否预约示忙
+        :type ReserveNotReady: bool
         """
-        :param Email: 坐席邮箱\n        :type Email: str\n        :param Status: 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线\n        :type Status: str\n        :param StatusExtra: 坐席状态补充信息\n        :type StatusExtra: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`\n        :param OnlineDuration: 当天在线总时长\n        :type OnlineDuration: int\n        :param FreeDuration: 当天示闲总时长\n        :type FreeDuration: int\n        :param BusyDuration: 当天忙碌总时长\n        :type BusyDuration: int\n        :param NotReadyDuration: 当天示忙总时长\n        :type NotReadyDuration: int\n        :param RestDuration: 当天小休总时长\n        :type RestDuration: int\n        :param AfterCallWorkDuration: 当天话后调整总时长\n        :type AfterCallWorkDuration: int\n        :param Reason: 小休原因\n        :type Reason: str\n        :param ReserveRest: 是否预约小休\n        :type ReserveRest: bool\n        :param ReserveNotReady: 是否预约示忙\n        :type ReserveNotReady: bool\n        """
         self.Email = None
         self.Status = None
         self.StatusExtra = None
@@ -1453,8 +1891,22 @@ class TelCdrInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Caller: 主叫号码\n        :type Caller: str\n        :param Callee: 被叫号码\n        :type Callee: str\n        :param Time: 呼叫发起时间戳，Unix 时间戳\n        :type Time: int\n        :param Direction: 呼入呼出方向 0 呼入 1 呼出\n        :type Direction: int\n        :param Duration: 通话时长\n        :type Duration: int\n        :param RecordURL: 录音信息\n        :type RecordURL: str\n        :param SeatUser: 坐席信息\n        :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`\n        :param EndStatus: 结束状态
+        r"""
+        :param Caller: 主叫号码
+        :type Caller: str
+        :param Callee: 被叫号码
+        :type Callee: str
+        :param Time: 呼叫发起时间戳，Unix 时间戳
+        :type Time: int
+        :param Direction: 呼入呼出方向 0 呼入 1 呼出
+        :type Direction: int
+        :param Duration: 通话时长
+        :type Duration: int
+        :param RecordURL: 录音信息
+        :type RecordURL: str
+        :param SeatUser: 坐席信息
+        :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
+        :param EndStatus: 结束状态
 0	错误
 1	正常结束
 2	未接通
@@ -1476,15 +1928,37 @@ class TelCdrInfo(AbstractModel):
 207	欠费
 208	运营商线路异常
 209	主叫取消
-210	不在服务区\n        :type EndStatus: int\n        :param SkillGroup: 技能组名称\n        :type SkillGroup: str\n        :param CallerLocation: 主叫归属地\n        :type CallerLocation: str\n        :param IVRDuration: IVR 阶段耗时
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IVRDuration: int\n        :param RingTimestamp: 振铃时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RingTimestamp: int\n        :param AcceptTimestamp: 接听时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AcceptTimestamp: int\n        :param EndedTimestamp: 结束时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndedTimestamp: int\n        :param IVRKeyPressed: IVR 按键信息 ，e.g. ["1","2","3"]
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IVRKeyPressed: list of str\n        :param HungUpSide: 挂机方 seat 坐席 user 用户
-注意：此字段可能返回 null，表示取不到有效值。\n        :type HungUpSide: str\n        :param ServeParticipants: 服务参与者列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServeParticipants: list of ServeParticipant\n        :param SkillGroupId: 技能组ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SkillGroupId: int\n        :param EndStatusString: error                   错误
+210	不在服务区
+        :type EndStatus: int
+        :param SkillGroup: 技能组名称
+        :type SkillGroup: str
+        :param CallerLocation: 主叫归属地
+        :type CallerLocation: str
+        :param IVRDuration: IVR 阶段耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IVRDuration: int
+        :param RingTimestamp: 振铃时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingTimestamp: int
+        :param AcceptTimestamp: 接听时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AcceptTimestamp: int
+        :param EndedTimestamp: 结束时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndedTimestamp: int
+        :param IVRKeyPressed: IVR 按键信息 ，e.g. ["1","2","3"]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IVRKeyPressed: list of str
+        :param HungUpSide: 挂机方 seat 坐席 user 用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HungUpSide: str
+        :param ServeParticipants: 服务参与者列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServeParticipants: list of ServeParticipant
+        :param SkillGroupId: 技能组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupId: int
+        :param EndStatusString: error                   错误
 ok                       正常结束
 unconnected      未接通
 seatGiveUp         坐席未接
@@ -1506,12 +1980,24 @@ outOfCredit        欠费
 operatorError     运营商线路异常
 callerCancel        主叫取消
 notInService       不在服务区
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndStatusString: str\n        :param StartTimestamp: 会话开始时间戳，UNIX 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTimestamp: int\n        :param QueuedTimestamp: 进入排队时间，Unix 秒级时间戳
-注意：此字段可能返回 null，表示取不到有效值。\n        :type QueuedTimestamp: int\n        :param PostIVRKeyPressed: 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PostIVRKeyPressed: list of IVRKeyPressedElement\n        :param QueuedSkillGroupId: 排队技能组Id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type QueuedSkillGroupId: int\n        :param SessionId: 会话 ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndStatusString: str
+        :param StartTimestamp: 会话开始时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimestamp: int
+        :param QueuedTimestamp: 进入排队时间，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueuedTimestamp: int
+        :param PostIVRKeyPressed: 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostIVRKeyPressed: list of IVRKeyPressedElement
+        :param QueuedSkillGroupId: 排队技能组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueuedSkillGroupId: int
+        :param SessionId: 会话 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        """
         self.Caller = None
         self.Callee = None
         self.Time = None
@@ -1590,8 +2076,14 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffEmail: 客服邮箱
+        :type StaffEmail: str
+        :param SkillGroupList: 解绑技能组列表
+        :type SkillGroupList: list of int
         """
-        :param SdkAppId: 实例ID\n        :type SdkAppId: int\n        :param StaffEmail: 客服邮箱\n        :type StaffEmail: str\n        :param SkillGroupList: 解绑技能组列表\n        :type SkillGroupList: list of int\n        """
         self.SdkAppId = None
         self.StaffEmail = None
         self.SkillGroupList = None
@@ -1616,8 +2108,10 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

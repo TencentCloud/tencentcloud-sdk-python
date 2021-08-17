@@ -24,8 +24,14 @@ class ApplyBlackListDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，AiApi
+        :type Module: str
+        :param Operation: 操作名，ApplyBlackListData
+        :type Operation: str
+        :param BlackList: 黑名单列表
+        :type BlackList: list of BlackListData
         """
-        :param Module: 模块名，AiApi\n        :type Module: str\n        :param Operation: 操作名，ApplyBlackListData\n        :type Operation: str\n        :param BlackList: 黑名单列表\n        :type BlackList: list of BlackListData\n        """
         self.Module = None
         self.Operation = None
         self.BlackList = None
@@ -55,8 +61,10 @@ class ApplyBlackListDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -70,8 +78,16 @@ class ApplyBlackListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：account
+        :type Module: str
+        :param Operation: 操作名，本接口取值：ApplyBlackList
+        :type Operation: str
+        :param BlackList: 黑名单列表
+        :type BlackList: list of SingleBlackApply
+        :param InstId: 实例ID，不传默认为系统分配的初始实例
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：account\n        :type Module: str\n        :param Operation: 操作名，本接口取值：ApplyBlackList\n        :type Operation: str\n        :param BlackList: 黑名单列表\n        :type BlackList: list of SingleBlackApply\n        :param InstId: 实例ID，不传默认为系统分配的初始实例\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.BlackList = None
@@ -103,8 +119,10 @@ class ApplyBlackListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -118,8 +136,22 @@ class ApplyCreditAuditRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Credit
+        :type Module: str
+        :param Operation: 操作名，本接口取值：Apply
+        :type Operation: str
+        :param InstId: 实例ID
+        :type InstId: str
+        :param ProductId: 产品ID，形如P******。
+        :type ProductId: str
+        :param CaseId: 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。
+        :type CaseId: str
+        :param CallbackUrl: 回调地址
+        :type CallbackUrl: str
+        :param Data: JSON格式的业务字段。
+        :type Data: str
         """
-        :param Module: 模块名，本接口取值：Credit\n        :type Module: str\n        :param Operation: 操作名，本接口取值：Apply\n        :type Operation: str\n        :param InstId: 实例ID\n        :type InstId: str\n        :param ProductId: 产品ID，形如P******。\n        :type ProductId: str\n        :param CaseId: 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。\n        :type CaseId: str\n        :param CallbackUrl: 回调地址\n        :type CallbackUrl: str\n        :param Data: JSON格式的业务字段。\n        :type Data: str\n        """
         self.Module = None
         self.Operation = None
         self.InstId = None
@@ -152,8 +184,12 @@ class ApplyCreditAuditResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestDate: 请求日期
+        :type RequestDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestDate: 请求日期\n        :type RequestDate: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestDate = None
         self.RequestId = None
 
@@ -169,12 +205,26 @@ class BlackListData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BlackType: 黑名单类型，01代表手机号码。
+        :type BlackType: str
+        :param OperType: 操作类型，A为新增，D为删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperType: str
+        :param BlackValue: 黑名单值，BlackType为01时，填写11位手机号码。
+        :type BlackValue: str
+        :param BlackDescription: 备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackDescription: str
+        :param BlackValidDate: 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackValidDate: str
+        :param BlackAddDate: 黑名单加入日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackAddDate: str
+        :param BlackStatus: 0-生效 1-失效
+        :type BlackStatus: str
         """
-        :param BlackType: 黑名单类型，01代表手机号码。\n        :type BlackType: str\n        :param OperType: 操作类型，A为新增，D为删除。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OperType: str\n        :param BlackValue: 黑名单值，BlackType为01时，填写11位手机号码。\n        :type BlackValue: str\n        :param BlackDescription: 备注。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BlackDescription: str\n        :param BlackValidDate: 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BlackValidDate: str\n        :param BlackAddDate: 黑名单加入日期
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BlackAddDate: str\n        :param BlackStatus: 0-生效 1-失效\n        :type BlackStatus: str\n        """
         self.BlackType = None
         self.OperType = None
         self.BlackValue = None
@@ -207,8 +257,12 @@ class BotFileData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileType: 文件类型 A 拨打结果 T 记录详情
+        :type FileType: str
+        :param CosUrl: 文件地址
+        :type CosUrl: str
         """
-        :param FileType: 文件类型 A 拨打结果 T 记录详情\n        :type FileType: str\n        :param CosUrl: 文件地址\n        :type CosUrl: str\n        """
         self.FileType = None
         self.CosUrl = None
 
@@ -231,8 +285,14 @@ class BotFlow(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotFlowId: 对话流ID
+        :type BotFlowId: str
+        :param BotFlowName: 对话流名称
+        :type BotFlowName: str
+        :param PhonePoolList: 号码组信息列表
+        :type PhonePoolList: list of PhonePool
         """
-        :param BotFlowId: 对话流ID\n        :type BotFlowId: str\n        :param BotFlowName: 对话流名称\n        :type BotFlowName: str\n        :param PhonePoolList: 号码组信息列表\n        :type PhonePoolList: list of PhonePool\n        """
         self.BotFlowId = None
         self.BotFlowName = None
         self.PhonePoolList = None
@@ -262,8 +322,14 @@ class BotInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotId: 机器人ID
+        :type BotId: str
+        :param BotName: 机器人名称
+        :type BotName: str
+        :param BotStatus: 机器人状态。0-停用 1-启用 2-待审核
+        :type BotStatus: str
         """
-        :param BotId: 机器人ID\n        :type BotId: str\n        :param BotName: 机器人名称\n        :type BotName: str\n        :param BotStatus: 机器人状态。0-停用 1-启用 2-待审核\n        :type BotStatus: str\n        """
         self.BotId = None
         self.BotName = None
         self.BotStatus = None
@@ -288,9 +354,21 @@ class CallInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BizDate: 业务日期
+        :type BizDate: str
+        :param Status: 状态 WAIT：待执行；DOING：执行中；ERROR：执行错误；DONE：已完成；
+        :type Status: str
+        :param TotalCount: 成功总数
+        :type TotalCount: int
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileType: 文件类型 I：呼叫文件 R：停拨文件
+        :type FileType: str
+        :param CallId: 作业唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallId: str
         """
-        :param BizDate: 业务日期\n        :type BizDate: str\n        :param Status: 状态 WAIT：待执行；DOING：执行中；ERROR：执行错误；DONE：已完成；\n        :type Status: str\n        :param TotalCount: 成功总数\n        :type TotalCount: int\n        :param FileName: 文件名称\n        :type FileName: str\n        :param FileType: 文件类型 I：呼叫文件 R：停拨文件\n        :type FileType: str\n        :param CallId: 作业唯一标识
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallId: str\n        """
         self.BizDate = None
         self.Status = None
         self.TotalCount = None
@@ -321,8 +399,22 @@ class CallTimeDict(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Monday: 周一
+        :type Monday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Tuesday: 周二
+        :type Tuesday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Wednesday: 周三
+        :type Wednesday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Thursday: 周四
+        :type Thursday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Friday: 周五
+        :type Friday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Saturday: 周六
+        :type Saturday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Sunday: 周日
+        :type Sunday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
         """
-        :param Monday: 周一\n        :type Monday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        :param Tuesday: 周二\n        :type Tuesday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        :param Wednesday: 周三\n        :type Wednesday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        :param Thursday: 周四\n        :type Thursday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        :param Friday: 周五\n        :type Friday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        :param Saturday: 周六\n        :type Saturday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        :param Sunday: 周日\n        :type Sunday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`\n        """
         self.Monday = None
         self.Tuesday = None
         self.Wednesday = None
@@ -369,8 +461,12 @@ class CallTimeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StartTime: 产品开始拨打时间，HHmmss格式,默认090000
+        :type StartTime: str
+        :param EndTime: 产品结束拨打时间，HHmmss格式.默认200000
+        :type EndTime: str
         """
-        :param StartTime: 产品开始拨打时间，HHmmss格式,默认090000\n        :type StartTime: str\n        :param EndTime: 产品结束拨打时间，HHmmss格式.默认200000\n        :type EndTime: str\n        """
         self.StartTime = None
         self.EndTime = None
 
@@ -393,9 +489,23 @@ class ChangeBotCallStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：ChangeBotCallStatus
+        :type Operation: str
+        :param Status: 作业变更状态
+SUSPEND：暂停；EXECUTE：恢复；
+        :type Status: str
+        :param CallId: 作业唯一标识
+        :type CallId: str
+        :param BizDate: 业务日期
+        :type BizDate: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：ChangeBotCallStatus\n        :type Operation: str\n        :param Status: 作业变更状态
-SUSPEND：暂停；EXECUTE：恢复；\n        :type Status: str\n        :param CallId: 作业唯一标识\n        :type CallId: str\n        :param BizDate: 业务日期\n        :type BizDate: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        """
         self.Module = None
         self.Operation = None
         self.Status = None
@@ -428,8 +538,10 @@ class ChangeBotCallStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -443,9 +555,19 @@ class ChangeBotTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：ChangeBotTaskStatus
+        :type Operation: str
+        :param Status: 作业变更状态
+SUSPEND：暂停；EXECUTE：恢复；
+        :type Status: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：ChangeBotTaskStatus\n        :type Operation: str\n        :param Status: 作业变更状态
-SUSPEND：暂停；EXECUTE：恢复；\n        :type Status: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        """
         self.Module = None
         self.Operation = None
         self.Status = None
@@ -474,8 +596,10 @@ class ChangeBotTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -489,8 +613,44 @@ class CreateBotTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：CreateTask
+        :type Operation: str
+        :param BotName: 任务名称
+        :type BotName: str
+        :param FlowId: 对话流ID
+        :type FlowId: str
+        :param BanCall: 是否禁止拨打，默认Y
+        :type BanCall: str
+        :param PhoneCollection: 拨打线路集合
+        :type PhoneCollection: str
+        :param CallTimeCollection: 产品拨打时间集合
+        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`
+        :param StartTimeBan: 禁止拨打起始时间。默认130000
+        :type StartTimeBan: str
+        :param EndTimeBan: 禁止拨打结束时间。默认140000
+        :type EndTimeBan: str
+        :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
+        :type CodeType: str
+        :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
+        :type CodeCollection: str
+        :param CallCount: 继续拨打次数
+        :type CallCount: int
+        :param CallInterval: 拨打间隔
+        :type CallInterval: int
+        :param SmsSignId: 未接通引用短信签名ID
+        :type SmsSignId: str
+        :param SmsTemplateId: 未接通引用短信模板ID
+        :type SmsTemplateId: str
+        :param CallType: 拨打方式。NORMAL - 正常拨打；TIMER - 定时拨打
+        :type CallType: str
+        :param CallStartDate: 拨打开始日期。CallType=TIMER时有值，yyyy-MM-dd
+        :type CallStartDate: str
+        :param CallEndDate: 拨打结束日期。CallType=PERIOD 时有值，yyyy-MM-dd
+        :type CallEndDate: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：CreateTask\n        :type Operation: str\n        :param BotName: 任务名称\n        :type BotName: str\n        :param FlowId: 对话流ID\n        :type FlowId: str\n        :param BanCall: 是否禁止拨打，默认Y\n        :type BanCall: str\n        :param PhoneCollection: 拨打线路集合\n        :type PhoneCollection: str\n        :param CallTimeCollection: 产品拨打时间集合\n        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`\n        :param StartTimeBan: 禁止拨打起始时间。默认130000\n        :type StartTimeBan: str\n        :param EndTimeBan: 禁止拨打结束时间。默认140000\n        :type EndTimeBan: str\n        :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL\n        :type CodeType: str\n        :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G\n        :type CodeCollection: str\n        :param CallCount: 继续拨打次数\n        :type CallCount: int\n        :param CallInterval: 拨打间隔\n        :type CallInterval: int\n        :param SmsSignId: 未接通引用短信签名ID\n        :type SmsSignId: str\n        :param SmsTemplateId: 未接通引用短信模板ID\n        :type SmsTemplateId: str\n        :param CallType: 拨打方式。NORMAL - 正常拨打；TIMER - 定时拨打\n        :type CallType: str\n        :param CallStartDate: 拨打开始日期。CallType=TIMER时有值，yyyy-MM-dd\n        :type CallStartDate: str\n        :param CallEndDate: 拨打结束日期。CallType=PERIOD 时有值，yyyy-MM-dd\n        :type CallEndDate: str\n        """
         self.Module = None
         self.Operation = None
         self.BotName = None
@@ -547,8 +707,12 @@ class CreateBotTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotId: 机器人任务Id
+        :type BotId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param BotId: 机器人任务Id\n        :type BotId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BotId = None
         self.RequestId = None
 
@@ -564,8 +728,12 @@ class DescribeBotFlowRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：GetFlow
+        :type Operation: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：GetFlow\n        :type Operation: str\n        """
         self.Module = None
         self.Operation = None
 
@@ -588,11 +756,19 @@ class DescribeBotFlowResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotFlowList: 机器人对话流列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BotFlowList: list of BotFlow\n        :param SmsSignList: 短信签名列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SmsSignList: list of SmsSign\n        :param SmsTemplateList: 短信模板列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SmsTemplateList: list of SmsTemplate\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotFlowList: list of BotFlow
+        :param SmsSignList: 短信签名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsSignList: list of SmsSign
+        :param SmsTemplateList: 短信模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsTemplateList: list of SmsTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.BotFlowList = None
         self.SmsSignList = None
         self.SmsTemplateList = None
@@ -627,8 +803,20 @@ class DescribeCreditResultRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Credit
+        :type Module: str
+        :param Operation: 操作名，本接口取值：Get
+        :type Operation: str
+        :param InstId: 实例ID
+        :type InstId: str
+        :param ProductId: 产品ID，形如P******。
+        :type ProductId: str
+        :param CaseId: 信审任务ID
+        :type CaseId: str
+        :param RequestDate: 请求日期，格式为YYYY-MM-DD
+        :type RequestDate: str
         """
-        :param Module: 模块名，本接口取值：Credit\n        :type Module: str\n        :param Operation: 操作名，本接口取值：Get\n        :type Operation: str\n        :param InstId: 实例ID\n        :type InstId: str\n        :param ProductId: 产品ID，形如P******。\n        :type ProductId: str\n        :param CaseId: 信审任务ID\n        :type CaseId: str\n        :param RequestDate: 请求日期，格式为YYYY-MM-DD\n        :type RequestDate: str\n        """
         self.Module = None
         self.Operation = None
         self.InstId = None
@@ -659,11 +847,25 @@ class DescribeCreditResultResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResultCode: <p>呼叫结果，取值范围：</p><ul style="margin-bottom:0px;"><li>NON：接通</li><li>DBU：号码忙</li><li>DRF：不在服务区</li><li>ANA：欠费未接听</li><li>REJ：拒接</li><li>SHU：关机</li><li>NAN：空号</li><li>HAL：停机</li><li>DAD：未接听</li><li>EXE：其他异常</li></ul>
+        :type ResultCode: str
+        :param ClientCode: 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientCode: str
+        :param RingStartTime: 开始振铃时间，ResultCode为NON或DAD时才有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingStartTime: str
+        :param RingDuration: 振铃时长
+        :type RingDuration: int
+        :param AnswerDuration: 接通时长
+        :type AnswerDuration: int
+        :param ContextValue: JSON格式的扩展信息字段，ResultCode为NON时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextValue: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ResultCode: <p>呼叫结果，取值范围：</p><ul style="margin-bottom:0px;"><li>NON：接通</li><li>DBU：号码忙</li><li>DRF：不在服务区</li><li>ANA：欠费未接听</li><li>REJ：拒接</li><li>SHU：关机</li><li>NAN：空号</li><li>HAL：停机</li><li>DAD：未接听</li><li>EXE：其他异常</li></ul>\n        :type ResultCode: str\n        :param ClientCode: 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientCode: str\n        :param RingStartTime: 开始振铃时间，ResultCode为NON或DAD时才有此字段。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RingStartTime: str\n        :param RingDuration: 振铃时长\n        :type RingDuration: int\n        :param AnswerDuration: 接通时长\n        :type AnswerDuration: int\n        :param ContextValue: JSON格式的扩展信息字段，ResultCode为NON时才有。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContextValue: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResultCode = None
         self.ClientCode = None
         self.RingStartTime = None
@@ -689,8 +891,18 @@ class DescribeFileModelRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：DescribeFileModel
+        :type Operation: str
+        :param FileType: 模板文件类型，输入input，停拨stop
+        :type FileType: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：DescribeFileModel\n        :type Operation: str\n        :param FileType: 模板文件类型，输入input，停拨stop\n        :type FileType: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        """
         self.Module = None
         self.Operation = None
         self.FileType = None
@@ -719,8 +931,12 @@ class DescribeFileModelResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CosUrl: 模板下载链接
+        :type CosUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CosUrl: 模板下载链接\n        :type CosUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CosUrl = None
         self.RequestId = None
 
@@ -736,8 +952,28 @@ class DescribeRecordsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Record
+        :type Module: str
+        :param Operation: 操作名，本接口取值：List
+        :type Operation: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param AccountNum: 案件编号
+        :type AccountNum: str
+        :param CalledPhone: 被叫号码
+        :type CalledPhone: str
+        :param StartBizDate: 查询起始日期，格式为YYYY-MM-DD
+        :type StartBizDate: str
+        :param EndBizDate: 查询结束日期，格式为YYYY-MM-DD
+        :type EndBizDate: str
+        :param Offset: 分页参数，索引，默认为0
+        :type Offset: str
+        :param Limit: 分页参数，页长，默认为20
+        :type Limit: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：Record\n        :type Module: str\n        :param Operation: 操作名，本接口取值：List\n        :type Operation: str\n        :param ProductId: 产品ID\n        :type ProductId: str\n        :param AccountNum: 案件编号\n        :type AccountNum: str\n        :param CalledPhone: 被叫号码\n        :type CalledPhone: str\n        :param StartBizDate: 查询起始日期，格式为YYYY-MM-DD\n        :type StartBizDate: str\n        :param EndBizDate: 查询结束日期，格式为YYYY-MM-DD\n        :type EndBizDate: str\n        :param Offset: 分页参数，索引，默认为0\n        :type Offset: str\n        :param Limit: 分页参数，页长，默认为20\n        :type Limit: str\n        :param InstId: 实例ID，不传默认为系统分配的初始实例\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.ProductId = None
@@ -776,9 +1012,15 @@ class DescribeRecordsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 录音列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordList: list of SingleRecord\n        :param TotalCount: 录音总量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordList: list of SingleRecord
+        :param TotalCount: 录音总量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.RecordList = None
         self.TotalCount = None
         self.RequestId = None
@@ -801,8 +1043,16 @@ class DescribeTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Task
+        :type Module: str
+        :param Operation: 操作名，本接口取值：DescribeTaskStatus
+        :type Operation: str
+        :param TaskId: 任务ID，"上传文件"接口返回的DataResId，形如abc-xyz123
+        :type TaskId: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：Task\n        :type Module: str\n        :param Operation: 操作名，本接口取值：DescribeTaskStatus\n        :type Operation: str\n        :param TaskId: 任务ID，"上传文件"接口返回的DataResId，形如abc-xyz123\n        :type TaskId: str\n        :param InstId: 实例ID，不传默认为系统分配的初始实例。\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.TaskId = None
@@ -829,9 +1079,17 @@ class DescribeTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskResult: <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>
+        :type TaskResult: str
+        :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>到期/逾期提醒数据上传：002</li><li>到期/逾期提醒停拨数据上传：003</li><li>回访数据上传：004</li><li>回访停拨数据上传：005</li></ul>
+        :type TaskType: str
+        :param TaskFileUrl: 过滤文件下载链接，有过滤数据时才存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFileUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskResult: <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>\n        :type TaskResult: str\n        :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>到期/逾期提醒数据上传：002</li><li>到期/逾期提醒停拨数据上传：003</li><li>回访数据上传：004</li><li>回访停拨数据上传：005</li></ul>\n        :type TaskType: str\n        :param TaskFileUrl: 过滤文件下载链接，有过滤数据时才存在。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskFileUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskResult = None
         self.TaskType = None
         self.TaskFileUrl = None
@@ -851,8 +1109,14 @@ class DownloadBotRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块：AiApi
+        :type Module: str
+        :param Operation: 操作：DownloadRecord
+        :type Operation: str
+        :param BizDate: 业务日期
+        :type BizDate: str
         """
-        :param Module: 模块：AiApi\n        :type Module: str\n        :param Operation: 操作：DownloadRecord\n        :type Operation: str\n        :param BizDate: 业务日期\n        :type BizDate: str\n        """
         self.Module = None
         self.Operation = None
         self.BizDate = None
@@ -877,8 +1141,14 @@ class DownloadBotRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RecordCosUrl: 录音地址。请求后30分钟内有效
+        :type RecordCosUrl: str
+        :param TextCosUrl: 文本地址。请求后30分钟内有效
+        :type TextCosUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RecordCosUrl: 录音地址。请求后30分钟内有效\n        :type RecordCosUrl: str\n        :param TextCosUrl: 文本地址。请求后30分钟内有效\n        :type TextCosUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordCosUrl = None
         self.TextCosUrl = None
         self.RequestId = None
@@ -896,8 +1166,16 @@ class DownloadDialogueTextRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Report
+        :type Module: str
+        :param Operation: 操作名，本接口取值：DownloadTextReport
+        :type Operation: str
+        :param ReportDate: 报告日期，格式为YYYY-MM-DD
+        :type ReportDate: str
+        :param InstId: 实例ID
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：Report\n        :type Module: str\n        :param Operation: 操作名，本接口取值：DownloadTextReport\n        :type Operation: str\n        :param ReportDate: 报告日期，格式为YYYY-MM-DD\n        :type ReportDate: str\n        :param InstId: 实例ID\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.ReportDate = None
@@ -924,8 +1202,12 @@ class DownloadDialogueTextResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TextReportUrl: 对话文本下载地址
+        :type TextReportUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TextReportUrl: 对话文本下载地址\n        :type TextReportUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TextReportUrl = None
         self.RequestId = None
 
@@ -941,8 +1223,16 @@ class DownloadRecordListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Record
+        :type Module: str
+        :param Operation: 操作名，本接口取值：DownloadList
+        :type Operation: str
+        :param BizDate: 录音日期，格式为YYYY-MM-DD
+        :type BizDate: str
+        :param InstId: 实例ID
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：Record\n        :type Module: str\n        :param Operation: 操作名，本接口取值：DownloadList\n        :type Operation: str\n        :param BizDate: 录音日期，格式为YYYY-MM-DD\n        :type BizDate: str\n        :param InstId: 实例ID\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.BizDate = None
@@ -969,8 +1259,12 @@ class DownloadRecordListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RecordListUrl: 录音列表下载地址
+        :type RecordListUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RecordListUrl: 录音列表下载地址\n        :type RecordListUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordListUrl = None
         self.RequestId = None
 
@@ -986,8 +1280,16 @@ class DownloadReportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Report
+        :type Module: str
+        :param Operation: 操作名，本接口取值：DownloadReport
+        :type Operation: str
+        :param ReportDate: 报告日期，格式为YYYY-MM-DD
+        :type ReportDate: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：Report\n        :type Module: str\n        :param Operation: 操作名，本接口取值：DownloadReport\n        :type Operation: str\n        :param ReportDate: 报告日期，格式为YYYY-MM-DD\n        :type ReportDate: str\n        :param InstId: 实例ID，不传默认为系统分配的初始实例。\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.ReportDate = None
@@ -1014,14 +1316,28 @@ class DownloadReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DailyReportUrl: 到期/逾期提醒日报下载地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DailyReportUrl: str\n        :param ResultReportUrl: 到期/逾期提醒结果下载地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResultReportUrl: str\n        :param DetailReportUrl: 到期/逾期提醒明细下载地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DetailReportUrl: str\n        :param CallbackDailyReportUrl: 回访日报下载地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallbackDailyReportUrl: str\n        :param CallbackResultReportUrl: 回访结果下载地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallbackResultReportUrl: str\n        :param CallbackDetailReportUrl: 回访明细下载地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallbackDetailReportUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DailyReportUrl: str
+        :param ResultReportUrl: 到期/逾期提醒结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultReportUrl: str
+        :param DetailReportUrl: 到期/逾期提醒明细下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailReportUrl: str
+        :param CallbackDailyReportUrl: 回访日报下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackDailyReportUrl: str
+        :param CallbackResultReportUrl: 回访结果下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackResultReportUrl: str
+        :param CallbackDetailReportUrl: 回访明细下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackDetailReportUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.DailyReportUrl = None
         self.ResultReportUrl = None
         self.DetailReportUrl = None
@@ -1047,8 +1363,18 @@ class ExportBotDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：ExportBotData
+        :type Operation: str
+        :param BizDate: 业务日期。YYYY-MM-DD
+        :type BizDate: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：ExportBotData\n        :type Operation: str\n        :param BizDate: 业务日期。YYYY-MM-DD\n        :type BizDate: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        """
         self.Module = None
         self.Operation = None
         self.BizDate = None
@@ -1077,8 +1403,12 @@ class ExportBotDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 导出文件列表
+        :type Data: list of BotFileData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 导出文件列表\n        :type Data: list of BotFileData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1099,8 +1429,12 @@ class PhonePool(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PoolId: 号码组ID
+        :type PoolId: str
+        :param PoolName: 号码组名称
+        :type PoolName: str
         """
-        :param PoolId: 号码组ID\n        :type PoolId: str\n        :param PoolName: 号码组名称\n        :type PoolName: str\n        """
         self.PoolId = None
         self.PoolName = None
 
@@ -1123,11 +1457,21 @@ class ProductQueryInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param ProductCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param ProductStatus: 产品状态 0 禁用 1 启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductStatus: int
+        :param SceneType: 场景类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneType: str
         """
-        :param ProductId: 产品Id\n        :type ProductId: str\n        :param ProductName: 产品名称\n        :type ProductName: str\n        :param ProductCode: 产品编码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductCode: str\n        :param ProductStatus: 产品状态 0 禁用 1 启用
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductStatus: int\n        :param SceneType: 场景类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SceneType: str\n        """
         self.ProductId = None
         self.ProductName = None
         self.ProductCode = None
@@ -1156,8 +1500,22 @@ class QueryBlackListDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块:AiApi
+        :type Module: str
+        :param Operation: 操作:QueryBlackListData
+        :type Operation: str
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 每页数量
+        :type Limit: int
+        :param StartBizDate: 开始日期
+        :type StartBizDate: str
+        :param EndBizDate: 结束日期
+        :type EndBizDate: str
+        :param BlackValue: 电话号码、手机
+        :type BlackValue: str
         """
-        :param Module: 模块:AiApi\n        :type Module: str\n        :param Operation: 操作:QueryBlackListData\n        :type Operation: str\n        :param Offset: 页码\n        :type Offset: int\n        :param Limit: 每页数量\n        :type Limit: int\n        :param StartBizDate: 开始日期\n        :type StartBizDate: str\n        :param EndBizDate: 结束日期\n        :type EndBizDate: str\n        :param BlackValue: 电话号码、手机\n        :type BlackValue: str\n        """
         self.Module = None
         self.Operation = None
         self.Offset = None
@@ -1190,9 +1548,15 @@ class QueryBlackListDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数。
+        :type TotalCount: int
+        :param Data: 黑名单列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BlackListData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数。\n        :type TotalCount: int\n        :param Data: 黑名单列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: list of BlackListData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Data = None
         self.RequestId = None
@@ -1215,8 +1579,12 @@ class QueryBotListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名：AiApi
+        :type Module: str
+        :param Operation: 操作名：QueryBotList
+        :type Operation: str
         """
-        :param Module: 模块名：AiApi\n        :type Module: str\n        :param Operation: 操作名：QueryBotList\n        :type Operation: str\n        """
         self.Module = None
         self.Operation = None
 
@@ -1239,8 +1607,12 @@ class QueryBotListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotList: 任务列表。
+        :type BotList: list of BotInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param BotList: 任务列表。\n        :type BotList: list of BotInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BotList = None
         self.RequestId = None
 
@@ -1261,8 +1633,20 @@ class QueryCallListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：QueryCallList
+        :type Operation: str
+        :param BizDate: 业务日期
+        :type BizDate: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        :param FileName: 通过API或平台上传的文件完整名称
+        :type FileName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：QueryCallList\n        :type Operation: str\n        :param BizDate: 业务日期\n        :type BizDate: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        :param FileName: 通过API或平台上传的文件完整名称\n        :type FileName: str\n        """
         self.Module = None
         self.Operation = None
         self.BizDate = None
@@ -1293,9 +1677,13 @@ class QueryCallListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallList: 任务作业状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallList: list of CallInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallList: list of CallInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.CallList = None
         self.RequestId = None
 
@@ -1316,8 +1704,20 @@ class QueryInstantDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Data
+        :type Module: str
+        :param Operation: 操作名，本接口取值：Query
+        :type Operation: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param InstanceId: 实例ID，不传默认为系统分配的初始实例
+        :type InstanceId: str
+        :param QueryModel: 查询类型：callRecord 通话记录
+        :type QueryModel: str
+        :param Data: 查询参数
+        :type Data: str
         """
-        :param Module: 模块名，本接口取值：Data\n        :type Module: str\n        :param Operation: 操作名，本接口取值：Query\n        :type Operation: str\n        :param ProductId: 产品ID\n        :type ProductId: str\n        :param InstanceId: 实例ID，不传默认为系统分配的初始实例\n        :type InstanceId: str\n        :param QueryModel: 查询类型：callRecord 通话记录\n        :type QueryModel: str\n        :param Data: 查询参数\n        :type Data: str\n        """
         self.Module = None
         self.Operation = None
         self.ProductId = None
@@ -1348,10 +1748,16 @@ class QueryInstantDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param Data: 返回内容
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Data: 返回内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.TotalCount = None
         self.Data = None
         self.RequestId = None
@@ -1369,8 +1775,14 @@ class QueryProductsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：Product
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：QueryProducts
+        :type Operation: str
+        :param InstanceId: 实例Id。
+        :type InstanceId: str
         """
-        :param Module: 模块名。默认值（固定）：Product\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：QueryProducts\n        :type Operation: str\n        :param InstanceId: 实例Id。\n        :type InstanceId: str\n        """
         self.Module = None
         self.Operation = None
         self.InstanceId = None
@@ -1395,8 +1807,12 @@ class QueryProductsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProductList: 产品信息。
+        :type ProductList: list of ProductQueryInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ProductList: 产品信息。\n        :type ProductList: list of ProductQueryInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProductList = None
         self.RequestId = None
 
@@ -1417,8 +1833,26 @@ class QueryRecordListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。AiApi
+        :type Module: str
+        :param Operation: 操作名。QueryRecordList
+        :type Operation: str
+        :param Offset: 偏移值
+        :type Offset: int
+        :param Limit: 偏移位移，最大20
+        :type Limit: int
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        :param CalledPhone: 被叫号码
+        :type CalledPhone: str
+        :param StartBizDate: 开始日期
+        :type StartBizDate: str
+        :param EndBizDate: 结束日期
+        :type EndBizDate: str
         """
-        :param Module: 模块名。AiApi\n        :type Module: str\n        :param Operation: 操作名。QueryRecordList\n        :type Operation: str\n        :param Offset: 偏移值\n        :type Offset: int\n        :param Limit: 偏移位移，最大20\n        :type Limit: int\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        :param CalledPhone: 被叫号码\n        :type CalledPhone: str\n        :param StartBizDate: 开始日期\n        :type StartBizDate: str\n        :param EndBizDate: 结束日期\n        :type EndBizDate: str\n        """
         self.Module = None
         self.Operation = None
         self.Offset = None
@@ -1455,8 +1889,14 @@ class QueryRecordListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RecordList: 录音列表。
+        :type RecordList: list of RecordInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RecordList: 录音列表。\n        :type RecordList: list of RecordInfo\n        :param TotalCount: 总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RecordList = None
         self.TotalCount = None
         self.RequestId = None
@@ -1479,8 +1919,26 @@ class RecordInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BotId: 任务Id
+        :type BotId: str
+        :param BotName: 任务名称
+        :type BotName: str
+        :param BizDate: 任务日期
+        :type BizDate: str
+        :param CalledPhone: 被叫号码
+        :type CalledPhone: str
+        :param CallStartTime: 开始通话时间
+        :type CallStartTime: str
+        :param Duration: 通话时长
+        :type Duration: int
+        :param CosUrl: 录音文件地址
+        :type CosUrl: str
+        :param DialogueLog: 对话日志。JSON格式
+        :type DialogueLog: str
+        :param CosFileName: 录音文件名
+        :type CosFileName: str
         """
-        :param BotId: 任务Id\n        :type BotId: str\n        :param BotName: 任务名称\n        :type BotName: str\n        :param BizDate: 任务日期\n        :type BizDate: str\n        :param CalledPhone: 被叫号码\n        :type CalledPhone: str\n        :param CallStartTime: 开始通话时间\n        :type CallStartTime: str\n        :param Duration: 通话时长\n        :type Duration: int\n        :param CosUrl: 录音文件地址\n        :type CosUrl: str\n        :param DialogueLog: 对话日志。JSON格式\n        :type DialogueLog: str\n        :param CosFileName: 录音文件名\n        :type CosFileName: str\n        """
         self.BotId = None
         self.BotName = None
         self.BizDate = None
@@ -1517,8 +1975,18 @@ class SingleBlackApply(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BlackType: 黑名单类型，01代表手机号码。
+        :type BlackType: str
+        :param OperationType: 操作类型，A为新增，D为删除。
+        :type OperationType: str
+        :param BlackValue: 黑名单值，BlackType为01时，填写11位手机号码。
+        :type BlackValue: str
+        :param BlackDescription: 备注。
+        :type BlackDescription: str
+        :param BlackValidDate: 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
+        :type BlackValidDate: str
         """
-        :param BlackType: 黑名单类型，01代表手机号码。\n        :type BlackType: str\n        :param OperationType: 操作类型，A为新增，D为删除。\n        :type OperationType: str\n        :param BlackValue: 黑名单值，BlackType为01时，填写11位手机号码。\n        :type BlackValue: str\n        :param BlackDescription: 备注。\n        :type BlackDescription: str\n        :param BlackValidDate: 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。\n        :type BlackValidDate: str\n        """
         self.BlackType = None
         self.OperationType = None
         self.BlackValue = None
@@ -1547,10 +2015,26 @@ class SingleRecord(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccountNum: 案件编号。
+        :type AccountNum: str
+        :param BizDate: 外呼日期。
+        :type BizDate: str
+        :param CallStartTime: 开始呼叫时间。
+        :type CallStartTime: str
+        :param CallerPhone: 主叫号码。
+        :type CallerPhone: str
+        :param Direction: 呼叫方向，O为呼出，I为呼入。
+        :type Direction: str
+        :param Duration: 通话时长。
+        :type Duration: int
+        :param ProductId: 产品ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param RecordCosUrl: 录音下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordCosUrl: str
         """
-        :param AccountNum: 案件编号。\n        :type AccountNum: str\n        :param BizDate: 外呼日期。\n        :type BizDate: str\n        :param CallStartTime: 开始呼叫时间。\n        :type CallStartTime: str\n        :param CallerPhone: 主叫号码。\n        :type CallerPhone: str\n        :param Direction: 呼叫方向，O为呼出，I为呼入。\n        :type Direction: str\n        :param Duration: 通话时长。\n        :type Duration: int\n        :param ProductId: 产品ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductId: str\n        :param RecordCosUrl: 录音下载链接。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RecordCosUrl: str\n        """
         self.AccountNum = None
         self.BizDate = None
         self.CallStartTime = None
@@ -1585,8 +2069,12 @@ class SmsSign(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SignId: 短信签名ID
+        :type SignId: str
+        :param SignName: 短信签名名称
+        :type SignName: str
         """
-        :param SignId: 短信签名ID\n        :type SignId: str\n        :param SignName: 短信签名名称\n        :type SignName: str\n        """
         self.SignId = None
         self.SignName = None
 
@@ -1609,8 +2097,12 @@ class SmsTemplate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateId: 短信模板ID
+        :type TemplateId: str
+        :param TemplateName: 短信模板名称
+        :type TemplateName: str
         """
-        :param TemplateId: 短信模板ID\n        :type TemplateId: str\n        :param TemplateName: 短信模板名称\n        :type TemplateName: str\n        """
         self.TemplateId = None
         self.TemplateName = None
 
@@ -1633,8 +2125,38 @@ class UpdateBotTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：UpdateTask
+        :type Operation: str
+        :param BotName: 任务名称
+        :type BotName: str
+        :param BotId: 任务ID
+        :type BotId: str
+        :param CallTimeCollection: 产品拨打时间集合
+        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`
+        :param BanCall: 是否禁止拨打，默认Y
+        :type BanCall: str
+        :param StartTimeBan: 禁止拨打起始时间。默认130000
+        :type StartTimeBan: str
+        :param EndTimeBan: 禁止拨打结束时间。默认140000
+        :type EndTimeBan: str
+        :param PhoneCollection: 拨打线路集合
+        :type PhoneCollection: str
+        :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
+        :type CodeType: str
+        :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
+        :type CodeCollection: str
+        :param CallCount: 继续拨打次数
+        :type CallCount: int
+        :param CallInterval: 拨打间隔
+        :type CallInterval: int
+        :param SmsSignId: 未接通引用短信签名ID
+        :type SmsSignId: str
+        :param SmsTemplateId: 未接通引用短信模板ID
+        :type SmsTemplateId: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：UpdateTask\n        :type Operation: str\n        :param BotName: 任务名称\n        :type BotName: str\n        :param BotId: 任务ID\n        :type BotId: str\n        :param CallTimeCollection: 产品拨打时间集合\n        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`\n        :param BanCall: 是否禁止拨打，默认Y\n        :type BanCall: str\n        :param StartTimeBan: 禁止拨打起始时间。默认130000\n        :type StartTimeBan: str\n        :param EndTimeBan: 禁止拨打结束时间。默认140000\n        :type EndTimeBan: str\n        :param PhoneCollection: 拨打线路集合\n        :type PhoneCollection: str\n        :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL\n        :type CodeType: str\n        :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G\n        :type CodeCollection: str\n        :param CallCount: 继续拨打次数\n        :type CallCount: int\n        :param CallInterval: 拨打间隔\n        :type CallInterval: int\n        :param SmsSignId: 未接通引用短信签名ID\n        :type SmsSignId: str\n        :param SmsTemplateId: 未接通引用短信模板ID\n        :type SmsTemplateId: str\n        """
         self.Module = None
         self.Operation = None
         self.BotName = None
@@ -1685,8 +2207,10 @@ class UpdateBotTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1700,8 +2224,18 @@ class UploadBotDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：UploadData
+        :type Operation: str
+        :param Data: 任务数据。JSON格式
+        :type Data: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：UploadData\n        :type Operation: str\n        :param Data: 任务数据。JSON格式\n        :type Data: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        """
         self.Module = None
         self.Operation = None
         self.Data = None
@@ -1730,8 +2264,10 @@ class UploadBotDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1745,8 +2281,22 @@ class UploadBotFileRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：Upload
+        :type Operation: str
+        :param FileType: 文件类型，输入input，停拨stop
+        :type FileType: str
+        :param FileUrl: 文件链接
+        :type FileUrl: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
         """
-        :param Module: 模块名。默认值（固定）：AiApi\n        :type Module: str\n        :param Operation: 操作名。默认值（固定）：Upload\n        :type Operation: str\n        :param FileType: 文件类型，输入input，停拨stop\n        :type FileType: str\n        :param FileUrl: 文件链接\n        :type FileUrl: str\n        :param FileName: 文件名\n        :type FileName: str\n        :param BotId: 任务ID，二者必填一个\n        :type BotId: str\n        :param BotName: 任务名称，二者必填一个\n        :type BotName: str\n        """
         self.Module = None
         self.Operation = None
         self.FileType = None
@@ -1779,8 +2329,10 @@ class UploadBotFileResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1794,8 +2346,22 @@ class UploadDataFileRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Data
+        :type Module: str
+        :param Operation: 操作名，本接口取值：Upload
+        :type Operation: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param UploadModel: <p>上传类型，不填默认到期/逾期提醒文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒文件</li><li>repay：到期/逾期提醒停拨文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li><li>blacklist：黑名单文件</li></ul>
+        :type UploadModel: str
+        :param File: 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
+        :type File: binary
+        :param FileUrl: 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
+        :type FileUrl: str
+        :param InstId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstId: str
         """
-        :param Module: 模块名，本接口取值：Data\n        :type Module: str\n        :param Operation: 操作名，本接口取值：Upload\n        :type Operation: str\n        :param FileName: 文件名\n        :type FileName: str\n        :param UploadModel: <p>上传类型，不填默认到期/逾期提醒文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒文件</li><li>repay：到期/逾期提醒停拨文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li><li>blacklist：黑名单文件</li></ul>\n        :type UploadModel: str\n        :param File: 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。\n        :type File: binary\n        :param FileUrl: 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。\n        :type FileUrl: str\n        :param InstId: 实例ID，不传默认为系统分配的初始实例。\n        :type InstId: str\n        """
         self.Module = None
         self.Operation = None
         self.FileName = None
@@ -1828,8 +2394,12 @@ class UploadDataFileResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DataResId: 数据ID
+        :type DataResId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DataResId: 数据ID\n        :type DataResId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataResId = None
         self.RequestId = None
 
@@ -1845,8 +2415,18 @@ class UploadDataJsonRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名，本接口取值：Data
+        :type Module: str
+        :param Operation: 操作名，本接口取值：UploadJson
+        :type Operation: str
+        :param Data: 报文信息
+        :type Data: str
+        :param UploadModel: <p>上传类型，不填默认到期/逾期提醒数据，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒数据</li><li>repay：到期/逾期提醒停拨数据</li></ul>
+        :type UploadModel: str
+        :param InstanceId: 实例ID，不传默认为系统分配的初始实例。
+        :type InstanceId: str
         """
-        :param Module: 模块名，本接口取值：Data\n        :type Module: str\n        :param Operation: 操作名，本接口取值：UploadJson\n        :type Operation: str\n        :param Data: 报文信息\n        :type Data: str\n        :param UploadModel: <p>上传类型，不填默认到期/逾期提醒数据，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒数据</li><li>repay：到期/逾期提醒停拨数据</li></ul>\n        :type UploadModel: str\n        :param InstanceId: 实例ID，不传默认为系统分配的初始实例。\n        :type InstanceId: str\n        """
         self.Module = None
         self.Operation = None
         self.Data = None
@@ -1875,9 +2455,13 @@ class UploadDataJsonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 响应报文信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Data = None
         self.RequestId = None
 
@@ -1893,8 +2477,18 @@ class UploadFileRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Module: 模块名
+        :type Module: str
+        :param Operation: 操作名
+        :type Operation: str
+        :param FileUrl: 文件上传地址，要求地址协议为HTTPS，且URL端口必须为443
+        :type FileUrl: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param FileDate: 文件日期
+        :type FileDate: str
         """
-        :param Module: 模块名\n        :type Module: str\n        :param Operation: 操作名\n        :type Operation: str\n        :param FileUrl: 文件上传地址，要求地址协议为HTTPS，且URL端口必须为443\n        :type FileUrl: str\n        :param FileName: 文件名\n        :type FileName: str\n        :param FileDate: 文件日期\n        :type FileDate: str\n        """
         self.Module = None
         self.Operation = None
         self.FileUrl = None
@@ -1923,8 +2517,12 @@ class UploadFileResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 任务ID\n        :type TaskId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 

@@ -24,8 +24,12 @@ class AggregationObj(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 类型
+        :type Type: str
+        :param Bucket: 数组
+        :type Bucket: list of Bucket
         """
-        :param Type: 类型\n        :type Type: str\n        :param Bucket: 数组\n        :type Bucket: list of Bucket\n        """
         self.Type = None
         self.Bucket = None
 
@@ -53,22 +57,84 @@ class Asset(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AssetType: 资产类型
+        :type AssetType: str
+        :param Name: 名字
+        :type Name: str
+        :param AssetRegionName: 区域
+        :type AssetRegionName: str
+        :param AssetVpcid: 所属网络
+        :type AssetVpcid: str
+        :param InstanceType: 主机类型
+        :type InstanceType: str
+        :param InstanceState: 主机状态
+        :type InstanceState: str
+        :param EngineVersion: 引擎版本
+        :type EngineVersion: str
+        :param Id: 数据库标识
+        :type Id: str
+        :param Tag: 标签
+        :type Tag: list of Tag
+        :param AssetCspmRiskNum: 配置风险统计数
+        :type AssetCspmRiskNum: int
+        :param PublicIpAddresses: 主机IP
+        :type PublicIpAddresses: list of str
+        :param AssetUniqid: 资产唯一标识
+        :type AssetUniqid: str
+        :param ChargeType: 付费类型
+        :type ChargeType: str
+        :param AssetEventNum: 安全事件统计数
+        :type AssetEventNum: int
+        :param AssetVulNum: 漏洞统计数
+        :type AssetVulNum: int
+        :param PrivateIpAddresses: 主机IP内网
+        :type PrivateIpAddresses: list of str
+        :param GroupName: 所属分组
+        :type GroupName: str
+        :param SsaAssetDiscoverTime: 发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetDiscoverTime: str
+        :param SsaAssetDeleteTime: 下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetDeleteTime: str
+        :param IsNew: 是否是新增资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNew: bool
+        :param AssetSubnetId: 所属子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetSubnetId: str
+        :param AssetSubnetName: 子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetSubnetName: str
+        :param AssetVpcName: vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetVpcName: str
+        :param ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: int
+        :param NameSpace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameSpace: str
+        :param LoadBalancerType: 负载均衡实例的网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        :param LoadBalancerVips: 负载均衡实例的vip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerVips: list of str
+        :param AssetIpv6: ipv6信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetIpv6: list of str
+        :param SSHRisk: ssh端口暴露风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSHRisk: str
+        :param RDPRisk: rdp端口暴露风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RDPRisk: str
+        :param EventRisk: 资产失陷事件风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventRisk: str
         """
-        :param AssetType: 资产类型\n        :type AssetType: str\n        :param Name: 名字\n        :type Name: str\n        :param AssetRegionName: 区域\n        :type AssetRegionName: str\n        :param AssetVpcid: 所属网络\n        :type AssetVpcid: str\n        :param InstanceType: 主机类型\n        :type InstanceType: str\n        :param InstanceState: 主机状态\n        :type InstanceState: str\n        :param EngineVersion: 引擎版本\n        :type EngineVersion: str\n        :param Id: 数据库标识\n        :type Id: str\n        :param Tag: 标签\n        :type Tag: list of Tag\n        :param AssetCspmRiskNum: 配置风险统计数\n        :type AssetCspmRiskNum: int\n        :param PublicIpAddresses: 主机IP\n        :type PublicIpAddresses: list of str\n        :param AssetUniqid: 资产唯一标识\n        :type AssetUniqid: str\n        :param ChargeType: 付费类型\n        :type ChargeType: str\n        :param AssetEventNum: 安全事件统计数\n        :type AssetEventNum: int\n        :param AssetVulNum: 漏洞统计数\n        :type AssetVulNum: int\n        :param PrivateIpAddresses: 主机IP内网\n        :type PrivateIpAddresses: list of str\n        :param GroupName: 所属分组\n        :type GroupName: str\n        :param SsaAssetDiscoverTime: 发现时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaAssetDiscoverTime: str\n        :param SsaAssetDeleteTime: 下线时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaAssetDeleteTime: str\n        :param IsNew: 是否是新增资产
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsNew: bool\n        :param AssetSubnetId: 所属子网
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetSubnetId: str\n        :param AssetSubnetName: 子网名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetSubnetName: str\n        :param AssetVpcName: vpc名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetVpcName: str\n        :param ClusterType: 集群类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterType: int\n        :param NameSpace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NameSpace: str\n        :param LoadBalancerType: 负载均衡实例的网络类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LoadBalancerType: str\n        :param LoadBalancerVips: 负载均衡实例的vip列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LoadBalancerVips: list of str\n        :param AssetIpv6: ipv6信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetIpv6: list of str\n        :param SSHRisk: ssh端口暴露风险
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SSHRisk: str\n        :param RDPRisk: rdp端口暴露风险
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RDPRisk: str\n        :param EventRisk: 资产失陷事件风险
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventRisk: str\n        """
         self.AssetType = None
         self.Name = None
         self.AssetRegionName = None
@@ -154,41 +220,131 @@ class AssetDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AssetType: 资产类型
+        :type AssetType: str
+        :param Name: 名字
+        :type Name: str
+        :param Region: 区域
+        :type Region: str
+        :param VpcId: 所属网络
+        :type VpcId: str
+        :param InstanceType: 主机类型
+        :type InstanceType: str
+        :param InstanceState: 主机状态
+        :type InstanceState: str
+        :param PublicIpAddresses: 主机IP-公网
+        :type PublicIpAddresses: list of str
+        :param EngineVersion: 引擎版本
+        :type EngineVersion: str
+        :param Id: 标识
+        :type Id: str
+        :param Tag: 标签
+        :type Tag: list of Tag
+        :param Vip: 内网IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param LoadBalancerVips: 负载均衡示例的vip列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerVips: list of str
+        :param Uin: 账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: int
+        :param CreationDate: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationDate: str
+        :param Domain: 访问域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param AssetUniqid: 资产唯一id
+        :type AssetUniqid: str
+        :param InstanceId: 关联实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param DiskType: 配置硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param DiskSize: 配置硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param AssetStatus: 云硬盘/证书状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetStatus: str
+        :param CertType: 证书类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertType: str
+        :param ProjectName: 所属项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param CertEndTime: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertEndTime: str
+        :param ProductType: nosql引擎/版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductType: int
+        :param PrivateIpAddresses: 主机IP-内网
+        :type PrivateIpAddresses: list of str
+        :param ValidityPeriod: 证书有效期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidityPeriod: str
+        :param GroupName: 分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param Port: 端口服务数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: list of str
+        :param RiskConfig: 配置风险数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskConfig: list of str
+        :param Event: 相关待处理事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Event: str
+        :param Vul: 相关待处理漏洞
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vul: str
+        :param SsaAssetDiscoverTime: 资产发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetDiscoverTime: str
+        :param AssetSubnetId: 所属子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetSubnetId: str
+        :param AssetSubnetName: 子网名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetSubnetName: str
+        :param AssetVpcName: vpc名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetVpcName: str
+        :param ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: int
+        :param NameSpace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameSpace: str
+        :param AssetCreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCreateTime: str
+        :param LoadBalancerType: 负载均衡网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        :param AssetIpv6: ipv6信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetIpv6: list of str
+        :param SSHRisk: ssh风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSHRisk: str
+        :param RDPRisk: rdp风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RDPRisk: str
+        :param EventRisk: 安全事件风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventRisk: str
+        :param AssetVulNum: 漏洞数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetVulNum: int
         """
-        :param AssetType: 资产类型\n        :type AssetType: str\n        :param Name: 名字\n        :type Name: str\n        :param Region: 区域\n        :type Region: str\n        :param VpcId: 所属网络\n        :type VpcId: str\n        :param InstanceType: 主机类型\n        :type InstanceType: str\n        :param InstanceState: 主机状态\n        :type InstanceState: str\n        :param PublicIpAddresses: 主机IP-公网\n        :type PublicIpAddresses: list of str\n        :param EngineVersion: 引擎版本\n        :type EngineVersion: str\n        :param Id: 标识\n        :type Id: str\n        :param Tag: 标签\n        :type Tag: list of Tag\n        :param Vip: 内网IP地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Vip: str\n        :param Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param LoadBalancerVips: 负载均衡示例的vip列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LoadBalancerVips: list of str\n        :param Uin: 账号ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Uin: int\n        :param CreationDate: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreationDate: str\n        :param Domain: 访问域名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        :param AssetUniqid: 资产唯一id\n        :type AssetUniqid: str\n        :param InstanceId: 关联实例
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param DiskType: 配置硬盘类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskType: str\n        :param DiskSize: 配置硬盘大小
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DiskSize: int\n        :param AssetStatus: 云硬盘/证书状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetStatus: str\n        :param CertType: 证书类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CertType: str\n        :param ProjectName: 所属项目
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectName: str\n        :param CertEndTime: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CertEndTime: str\n        :param ProductType: nosql引擎/版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProductType: int\n        :param PrivateIpAddresses: 主机IP-内网\n        :type PrivateIpAddresses: list of str\n        :param ValidityPeriod: 证书有效期
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ValidityPeriod: str\n        :param GroupName: 分组名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupName: str\n        :param Port: 端口服务数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Port: list of str\n        :param RiskConfig: 配置风险数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskConfig: list of str\n        :param Event: 相关待处理事件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Event: str\n        :param Vul: 相关待处理漏洞
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Vul: str\n        :param SsaAssetDiscoverTime: 资产发现时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaAssetDiscoverTime: str\n        :param AssetSubnetId: 所属子网
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetSubnetId: str\n        :param AssetSubnetName: 子网名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetSubnetName: str\n        :param AssetVpcName: vpc名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetVpcName: str\n        :param ClusterType: 集群类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterType: int\n        :param NameSpace: 命名空间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NameSpace: str\n        :param AssetCreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetCreateTime: str\n        :param LoadBalancerType: 负载均衡网络类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LoadBalancerType: str\n        :param AssetIpv6: ipv6信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetIpv6: list of str\n        :param SSHRisk: ssh风险
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SSHRisk: str\n        :param RDPRisk: rdp风险
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RDPRisk: str\n        :param EventRisk: 安全事件风险
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventRisk: str\n        :param AssetVulNum: 漏洞数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetVulNum: int\n        """
         self.AssetType = None
         self.Name = None
         self.Region = None
@@ -302,8 +458,12 @@ class AssetList(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param List: 资产数组
+        :type List: list of Asset
         """
-        :param Total: 总数\n        :type Total: int\n        :param List: 资产数组\n        :type List: list of Asset\n        """
         self.Total = None
         self.List = None
 
@@ -331,8 +491,12 @@ class Bucket(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: key
+        :type Key: str
+        :param Count: 数量
+        :type Count: int
         """
-        :param Key: key\n        :type Key: str\n        :param Count: 数量\n        :type Count: int\n        """
         self.Key = None
         self.Count = None
 
@@ -355,9 +519,35 @@ class CheckAssetItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项下资产组ID
+        :type Id: int
+        :param Instid: 资产组实例id
+        :type Instid: str
+        :param Url: 处置跳转URL
+        :type Url: str
+        :param Taskid: 检查任务id
+        :type Taskid: str
+        :param Result: 检查结果
+        :type Result: int
+        :param Updatetime: 更新时间
+        :type Updatetime: str
+        :param Tag: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
+        :param IsIgnore: 是否忽略
+        :type IsIgnore: int
+        :param IsChecked: 检查状态
+        :type IsChecked: int
+        :param AssetInfo: 资产组信息
+        :type AssetInfo: str
+        :param AssetId: 资产组ES的_id
+        :type AssetId: str
+        :param Detail: 详情
+        :type Detail: str
+        :param Remarks: 备注内容
+        :type Remarks: str
         """
-        :param Id: 检查项下资产组ID\n        :type Id: int\n        :param Instid: 资产组实例id\n        :type Instid: str\n        :param Url: 处置跳转URL\n        :type Url: str\n        :param Taskid: 检查任务id\n        :type Taskid: str\n        :param Result: 检查结果\n        :type Result: int\n        :param Updatetime: 更新时间\n        :type Updatetime: str\n        :param Tag: 标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tag: str\n        :param IsIgnore: 是否忽略\n        :type IsIgnore: int\n        :param IsChecked: 检查状态\n        :type IsChecked: int\n        :param AssetInfo: 资产组信息\n        :type AssetInfo: str\n        :param AssetId: 资产组ES的_id\n        :type AssetId: str\n        :param Detail: 详情\n        :type Detail: str\n        :param Remarks: 备注内容\n        :type Remarks: str\n        """
         self.Id = None
         self.Instid = None
         self.Url = None
@@ -402,8 +592,36 @@ class CheckConfigDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项Id
+        :type Id: str
+        :param CheckName: 检查项名称
+        :type CheckName: str
+        :param Content: 检查项内容
+        :type Content: str
+        :param Method: 检查项处置方案
+        :type Method: str
+        :param Doc: 检查项帮助文档
+        :type Doc: str
+        :param ErrorCount: 未通过总数
+        :type ErrorCount: int
+        :param IsPass: 是否通过检查
+        :type IsPass: int
+        :param SafeCount: 通过检查项
+        :type SafeCount: int
+        :param IgnoreCount: 忽略检查项
+        :type IgnoreCount: int
+        :param RiskCount: 风险检查项
+        :type RiskCount: int
+        :param NameEn: 检查项英文
+        :type NameEn: str
+        :param AssetType: 检查项类型
+        :type AssetType: str
+        :param ResCount: res_count
+        :type ResCount: int
+        :param IsIgnore: 是否忽略
+        :type IsIgnore: int
         """
-        :param Id: 检查项Id\n        :type Id: str\n        :param CheckName: 检查项名称\n        :type CheckName: str\n        :param Content: 检查项内容\n        :type Content: str\n        :param Method: 检查项处置方案\n        :type Method: str\n        :param Doc: 检查项帮助文档\n        :type Doc: str\n        :param ErrorCount: 未通过总数\n        :type ErrorCount: int\n        :param IsPass: 是否通过检查\n        :type IsPass: int\n        :param SafeCount: 通过检查项\n        :type SafeCount: int\n        :param IgnoreCount: 忽略检查项\n        :type IgnoreCount: int\n        :param RiskCount: 风险检查项\n        :type RiskCount: int\n        :param NameEn: 检查项英文\n        :type NameEn: str\n        :param AssetType: 检查项类型\n        :type AssetType: str\n        :param ResCount: res_count\n        :type ResCount: int\n        :param IsIgnore: 是否忽略\n        :type IsIgnore: int\n        """
         self.Id = None
         self.CheckName = None
         self.Content = None
@@ -450,15 +668,61 @@ class ComplianceCheckDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项ID
+        :type Id: str
+        :param Category: 检查项类别
+        :type Category: str
+        :param Type: 检查项类型
+        :type Type: str
+        :param ErrorCount: 不通过总数
+        :type ErrorCount: int
+        :param NameEn: 检查项英文名
+        :type NameEn: str
+        :param CheckName: 检查项名称
+        :type CheckName: str
+        :param Method: 检查项处置方式
+        :type Method: str
+        :param Doc: 帮助文档
+        :type Doc: str
+        :param SafeCount: 通过总数
+        :type SafeCount: int
+        :param Content: 检查项检查内容
+        :type Content: str
+        :param IsPass: 是否通过检测
+        :type IsPass: int
+        :param IgnoreCount: 忽略总数
+        :type IgnoreCount: int
+        :param RiskCount: 风险总数
+        :type RiskCount: int
+        :param LastCheckTime: 最近一次检测时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastCheckTime: str
+        :param AssetType: 资产组类型
+        :type AssetType: str
+        :param ResCount: res_count
+        :type ResCount: int
+        :param UUID: 检查项UUID
+        :type UUID: str
+        :param StandardItem: 标准项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardItem: str
+        :param Chapter: 章节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Chapter: str
+        :param AssetTypeDesc: 资产类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetTypeDesc: str
+        :param IsIgnore: 是否忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIgnore: int
+        :param RiskItem: 风险项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskItem: str
+        :param Title: 合规检查项完整名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
         """
-        :param Id: 检查项ID\n        :type Id: str\n        :param Category: 检查项类别\n        :type Category: str\n        :param Type: 检查项类型\n        :type Type: str\n        :param ErrorCount: 不通过总数\n        :type ErrorCount: int\n        :param NameEn: 检查项英文名\n        :type NameEn: str\n        :param CheckName: 检查项名称\n        :type CheckName: str\n        :param Method: 检查项处置方式\n        :type Method: str\n        :param Doc: 帮助文档\n        :type Doc: str\n        :param SafeCount: 通过总数\n        :type SafeCount: int\n        :param Content: 检查项检查内容\n        :type Content: str\n        :param IsPass: 是否通过检测\n        :type IsPass: int\n        :param IgnoreCount: 忽略总数\n        :type IgnoreCount: int\n        :param RiskCount: 风险总数\n        :type RiskCount: int\n        :param LastCheckTime: 最近一次检测时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastCheckTime: str\n        :param AssetType: 资产组类型\n        :type AssetType: str\n        :param ResCount: res_count\n        :type ResCount: int\n        :param UUID: 检查项UUID\n        :type UUID: str\n        :param StandardItem: 标准项
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StandardItem: str\n        :param Chapter: 章节
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Chapter: str\n        :param AssetTypeDesc: 资产类型描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetTypeDesc: str\n        :param IsIgnore: 是否忽略
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsIgnore: int\n        :param RiskItem: 风险项
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskItem: str\n        :param Title: 合规检查项完整名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Title: str\n        """
         self.Id = None
         self.Category = None
         self.Type = None
@@ -523,26 +787,62 @@ class DataAssetMapping(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AssetIp: 资产主IP地址(公网IP)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetIp: str\n        :param AssetName: 资产名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetName: str\n        :param Instid: 资产ID(各模块间通用)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Instid: str\n        :param AssetType: 资产类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetType: str\n        :param AssetRegionEn: 资产可用区(英文)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetRegionEn: str\n        :param AssetRegionCn: 资产可用区(中文)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetRegionCn: str\n        :param AssetNetwork: 资产所属网络
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetNetwork: str\n        :param AssetStatusEn: 资产运行状态(英文)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetStatusEn: str\n        :param AssetStatusCn: 资产运行状态(中文)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetStatusCn: str\n        :param IsWhite: 是否白名单：“True”为白名单不测绘，默认“False”正常测绘
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsWhite: str\n        :param Status: 资产测绘状态(“unstart”未开始/“running”测绘中/“finish”已完成/“abandoned”任务中止)
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param Time: 最近更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Time: str\n        :param Tag: 资产标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tag: list of Tag\n        :param Group: 资产组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Group: list of str\n        :param Port: 端口和服务信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Port: str\n        :param Component: 组件信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Component: str\n        :param AssetInstanceType: 资产实例类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetInstanceType: str\n        :param IsIntranet: 资产是否是内网类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsIntranet: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetIp: str
+        :param AssetName: 资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param Instid: 资产ID(各模块间通用)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instid: str
+        :param AssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param AssetRegionEn: 资产可用区(英文)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetRegionEn: str
+        :param AssetRegionCn: 资产可用区(中文)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetRegionCn: str
+        :param AssetNetwork: 资产所属网络
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetNetwork: str
+        :param AssetStatusEn: 资产运行状态(英文)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetStatusEn: str
+        :param AssetStatusCn: 资产运行状态(中文)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetStatusCn: str
+        :param IsWhite: 是否白名单：“True”为白名单不测绘，默认“False”正常测绘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWhite: str
+        :param Status: 资产测绘状态(“unstart”未开始/“running”测绘中/“finish”已完成/“abandoned”任务中止)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Time: 最近更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param Tag: 资产标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of Tag
+        :param Group: 资产组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: list of str
+        :param Port: 端口和服务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param Component: 组件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Component: str
+        :param AssetInstanceType: 资产实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetInstanceType: str
+        :param IsIntranet: 资产是否是内网类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIntranet: int
+        """
         self.AssetIp = None
         self.AssetName = None
         self.Instid = None
@@ -602,15 +902,35 @@ class DataCheck(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项唯一标识符uuid
+        :type Id: str
+        :param Name: 检查项名称
+        :type Name: str
+        :param Type: 检查项类型
+        :type Type: str
+        :param LastCheckTime: 最近一次检查时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastCheckTime: str
+        :param Status: 初始未检测状态0, 已通过为1，未通过为2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param IsIgnored: 0-未忽略,1-已忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIgnored: int
+        :param RiskCount: 有风险的资源总数，未通过数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCount: int
+        :param IsChecked: 0-检测中,1-结束检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsChecked: int
+        :param AssetTotal: 总资产数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetTotal: int
+        :param Remarks: 备注内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remarks: str
         """
-        :param Id: 检查项唯一标识符uuid\n        :type Id: str\n        :param Name: 检查项名称\n        :type Name: str\n        :param Type: 检查项类型\n        :type Type: str\n        :param LastCheckTime: 最近一次检查时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastCheckTime: str\n        :param Status: 初始未检测状态0, 已通过为1，未通过为2
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param IsIgnored: 0-未忽略,1-已忽略
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsIgnored: int\n        :param RiskCount: 有风险的资源总数，未通过数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskCount: int\n        :param IsChecked: 0-检测中,1-结束检测
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsChecked: int\n        :param AssetTotal: 总资产数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetTotal: int\n        :param Remarks: 备注内容
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remarks: str\n        """
         self.Id = None
         self.Name = None
         self.Type = None
@@ -649,17 +969,51 @@ class DataCompliance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 等保唯一标识符
+        :type Id: str
+        :param CheckItemId: 检查项唯一标识符
+        :type CheckItemId: str
+        :param Name: 检查项名称
+        :type Name: str
+        :param AssetType: 检查项资产类型
+        :type AssetType: str
+        :param Type: 检查项类型
+        :type Type: str
+        :param Category: 检查项类别
+        :type Category: str
+        :param StandardItem: 检查项标准项
+        :type StandardItem: str
+        :param Chapter: 检查项章节号
+        :type Chapter: str
+        :param LastCheckTime: 最近一次检查时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastCheckTime: str
+        :param Status: 初始未检测状态0, 已通过为1，未通过为2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RiskCount: 有风险的资源总数，未通过数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCount: int
+        :param IsChecked: 0-检测中,1-结束检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsChecked: int
+        :param RiskItem: 检查项风险项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskItem: str
+        :param IsIgnored: 0-未忽略,1-已忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIgnored: int
+        :param Title: 等保检查项完整名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param AssetTotal: 资产总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetTotal: int
+        :param Remarks: 忽略内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remarks: str
         """
-        :param Id: 等保唯一标识符\n        :type Id: str\n        :param CheckItemId: 检查项唯一标识符\n        :type CheckItemId: str\n        :param Name: 检查项名称\n        :type Name: str\n        :param AssetType: 检查项资产类型\n        :type AssetType: str\n        :param Type: 检查项类型\n        :type Type: str\n        :param Category: 检查项类别\n        :type Category: str\n        :param StandardItem: 检查项标准项\n        :type StandardItem: str\n        :param Chapter: 检查项章节号\n        :type Chapter: str\n        :param LastCheckTime: 最近一次检查时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastCheckTime: str\n        :param Status: 初始未检测状态0, 已通过为1，未通过为2
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RiskCount: 有风险的资源总数，未通过数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskCount: int\n        :param IsChecked: 0-检测中,1-结束检测
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsChecked: int\n        :param RiskItem: 检查项风险项
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskItem: str\n        :param IsIgnored: 0-未忽略,1-已忽略
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsIgnored: int\n        :param Title: 等保检查项完整名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Title: str\n        :param AssetTotal: 资产总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetTotal: int\n        :param Remarks: 忽略内容
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remarks: str\n        """
         self.Id = None
         self.CheckItemId = None
         self.Name = None
@@ -712,39 +1066,111 @@ class DataEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldIdMd5: Md5值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OldIdMd5: str\n        :param EventName: 事件名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventName: str\n        :param EventType1: 事件类型一级分类
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventType1: int\n        :param EventType2: 事件类型二级分类
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EventType2: int\n        :param Level: 事件等级
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Level: int\n        :param Status: 处理状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param SrcIp: 源ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SrcIp: str\n        :param DstIp: 目的ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DstIp: str\n        :param Time: 事件发生时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Time: str\n        :param Dstport: 目的端口
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Dstport: int\n        :param AssetIp: 资产ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetIp: str\n        :param AssetName: 资产名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetName: str\n        :param SsaEventUniqid: 安全事件唯一标识符
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaEventUniqid: str\n        :param AssetId: 资产id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetId: str\n        :param Source: 事件来源
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Source: str\n        :param Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Index: str\n        :param Id: 索引中的唯一标识符
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param IsAssetDeleted: 受影响资产是否已下线
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAssetDeleted: str\n        :param SsaSrcCountry: 源ip所属地
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaSrcCountry: str\n        :param SsaDstCountry: 目的ip所属地
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaDstCountry: str\n        :param SsaDescription: 木马类型的描述信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaDescription: str\n        :param SsaAttackChain: 供给链类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaAttackChain: str\n        :param RuleComponents: 受影响组件\n        :type RuleComponents: str\n        :param AssetIpAll: 资产ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetIpAll: list of str\n        :param AssetType: 资产类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetType: str\n        :param PublicIpAddresses: cvm类型资产的公网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIpAddresses: list of str\n        :param PrivateIpAddresses: cvm类型资产的内网ip\n        :type PrivateIpAddresses: list of str\n        :param SoarResponseStatus: 事件响应状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SoarResponseStatus: int\n        :param SoarResponseTime: 事件最近响应时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SoarResponseTime: int\n        :param SoarSuggestStatus: 事件建议处理状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SoarSuggestStatus: int\n        :param SoarPlaybookType: 事件剧本类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SoarPlaybookType: str\n        :param SoarRunId: 剧本任务Id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SoarRunId: str\n        :param SsaEventId: 事件Id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaEventId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldIdMd5: str
+        :param EventName: 事件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
+        :param EventType1: 事件类型一级分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventType1: int
+        :param EventType2: 事件类型二级分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventType2: int
+        :param Level: 事件等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Status: 处理状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param SrcIp: 源ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcIp: str
+        :param DstIp: 目的ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstIp: str
+        :param Time: 事件发生时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param Dstport: 目的端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dstport: int
+        :param AssetIp: 资产ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetIp: str
+        :param AssetName: 资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param SsaEventUniqid: 安全事件唯一标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaEventUniqid: str
+        :param AssetId: 资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetId: str
+        :param Source: 事件来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param Index: 索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param Id: 索引中的唯一标识符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param IsAssetDeleted: 受影响资产是否已下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssetDeleted: str
+        :param SsaSrcCountry: 源ip所属地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaSrcCountry: str
+        :param SsaDstCountry: 目的ip所属地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaDstCountry: str
+        :param SsaDescription: 木马类型的描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaDescription: str
+        :param SsaAttackChain: 供给链类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAttackChain: str
+        :param RuleComponents: 受影响组件
+        :type RuleComponents: str
+        :param AssetIpAll: 资产ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetIpAll: list of str
+        :param AssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param PublicIpAddresses: cvm类型资产的公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddresses: list of str
+        :param PrivateIpAddresses: cvm类型资产的内网ip
+        :type PrivateIpAddresses: list of str
+        :param SoarResponseStatus: 事件响应状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoarResponseStatus: int
+        :param SoarResponseTime: 事件最近响应时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoarResponseTime: int
+        :param SoarSuggestStatus: 事件建议处理状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoarSuggestStatus: int
+        :param SoarPlaybookType: 事件剧本类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoarPlaybookType: str
+        :param SoarRunId: 剧本任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoarRunId: str
+        :param SsaEventId: 事件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaEventId: str
+        :param IsNewCfwEvent: 是否新接入的云防事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewCfwEvent: bool
+        :param Direction: 出入站方向
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Direction: str
+        """
         self.OldIdMd5 = None
         self.EventName = None
         self.EventType1 = None
@@ -778,6 +1204,8 @@ class DataEvent(AbstractModel):
         self.SoarPlaybookType = None
         self.SoarRunId = None
         self.SsaEventId = None
+        self.IsNewCfwEvent = None
+        self.Direction = None
 
 
     def _deserialize(self, params):
@@ -814,6 +1242,8 @@ class DataEvent(AbstractModel):
         self.SoarPlaybookType = params.get("SoarPlaybookType")
         self.SoarRunId = params.get("SoarRunId")
         self.SsaEventId = params.get("SsaEventId")
+        self.IsNewCfwEvent = params.get("IsNewCfwEvent")
+        self.Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -829,8 +1259,10 @@ class DescribeAssetDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Params: 查询过滤参数
+        :type Params: str
         """
-        :param Params: 查询过滤参数\n        :type Params: str\n        """
         self.Params = None
 
 
@@ -851,9 +1283,13 @@ class DescribeAssetDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 资产详情
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: :class:`tencentcloud.ssa.v20180608.models.AssetDetail`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.AssetDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Data = None
         self.RequestId = None
 
@@ -871,8 +1307,10 @@ class DescribeAssetListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Params: 查询过滤参数
+        :type Params: str
         """
-        :param Params: 查询过滤参数\n        :type Params: str\n        """
         self.Params = None
 
 
@@ -893,8 +1331,16 @@ class DescribeAssetListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AssetList: 资产列表
+        :type AssetList: :class:`tencentcloud.ssa.v20180608.models.AssetList`
+        :param AggregationData: 聚合数据
+        :type AggregationData: list of AggregationObj
+        :param NamespaceData: 命名空间数据
+        :type NamespaceData: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param AssetList: 资产列表\n        :type AssetList: :class:`tencentcloud.ssa.v20180608.models.AssetList`\n        :param AggregationData: 聚合数据\n        :type AggregationData: list of AggregationObj\n        :param NamespaceData: 命名空间数据\n        :type NamespaceData: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AssetList = None
         self.AggregationData = None
         self.NamespaceData = None
@@ -921,8 +1367,10 @@ class DescribeAssetsMappingListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Params: 请求参数
+        :type Params: str
         """
-        :param Params: 请求参数\n        :type Params: str\n        """
         self.Params = None
 
 
@@ -943,9 +1391,17 @@ class DescribeAssetsMappingListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 资产测绘列表
+        :type Data: list of DataAssetMapping
+        :param TotalCount: 资产测绘总数
+        :type TotalCount: int
+        :param CountByType: 类型分类统计数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountByType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 资产测绘列表\n        :type Data: list of DataAssetMapping\n        :param TotalCount: 资产测绘总数\n        :type TotalCount: int\n        :param CountByType: 类型分类统计数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CountByType: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.TotalCount = None
         self.CountByType = None
@@ -970,8 +1426,18 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项UUID
+        :type Id: str
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 每页列表数
+        :type Limit: int
+        :param Search: db搜索条件
+        :type Search: list of Filter
+        :param Filter: ES过滤条件
+        :type Filter: list of Filter
         """
-        :param Id: 检查项UUID\n        :type Id: str\n        :param Offset: 页码\n        :type Offset: int\n        :param Limit: 每页列表数\n        :type Limit: int\n        :param Search: db搜索条件\n        :type Search: list of Filter\n        :param Filter: ES过滤条件\n        :type Filter: list of Filter\n        """
         self.Id = None
         self.Offset = None
         self.Limit = None
@@ -1010,9 +1476,15 @@ class DescribeCheckConfigAssetListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 资产列表总数
+        :type Total: int
+        :param CheckAssetsList: 资产列表项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckAssetsList: list of CheckAssetItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 资产列表总数\n        :type Total: int\n        :param CheckAssetsList: 资产列表项
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CheckAssetsList: list of CheckAssetItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.CheckAssetsList = None
         self.RequestId = None
@@ -1035,8 +1507,10 @@ class DescribeCheckConfigDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项ID
+        :type Id: str
         """
-        :param Id: 检查项ID\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -1057,8 +1531,12 @@ class DescribeCheckConfigDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CheckConfigDetail: 检查项详情
+        :type CheckConfigDetail: :class:`tencentcloud.ssa.v20180608.models.CheckConfigDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CheckConfigDetail: 检查项详情\n        :type CheckConfigDetail: :class:`tencentcloud.ssa.v20180608.models.CheckConfigDetail`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CheckConfigDetail = None
         self.RequestId = None
 
@@ -1076,8 +1554,18 @@ class DescribeComplianceAssetListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 每页数量
+        :type Limit: int
+        :param Id: 检查项uuid
+        :type Id: str
+        :param Filter: 过滤条件
+        :type Filter: list of Filter
+        :param Search: 查询条件
+        :type Search: list of Filter
         """
-        :param Offset: 页码\n        :type Offset: int\n        :param Limit: 每页数量\n        :type Limit: int\n        :param Id: 检查项uuid\n        :type Id: str\n        :param Filter: 过滤条件\n        :type Filter: list of Filter\n        :param Search: 查询条件\n        :type Search: list of Filter\n        """
         self.Offset = None
         self.Limit = None
         self.Id = None
@@ -1116,8 +1604,14 @@ class DescribeComplianceAssetListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CheckAssetsList: 资产组列表
+        :type CheckAssetsList: list of CheckAssetItem
+        :param Total: 资产组列表总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CheckAssetsList: 资产组列表\n        :type CheckAssetsList: list of CheckAssetItem\n        :param Total: 资产组列表总数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CheckAssetsList = None
         self.Total = None
         self.RequestId = None
@@ -1140,8 +1634,10 @@ class DescribeComplianceDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 检查项uuid
+        :type Id: str
         """
-        :param Id: 检查项uuid\n        :type Id: str\n        """
         self.Id = None
 
 
@@ -1162,8 +1658,12 @@ class DescribeComplianceDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CheckConfigDetail: 合规管理检查项详情
+        :type CheckConfigDetail: :class:`tencentcloud.ssa.v20180608.models.ComplianceCheckDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CheckConfigDetail: 合规管理检查项详情\n        :type CheckConfigDetail: :class:`tencentcloud.ssa.v20180608.models.ComplianceCheckDetail`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CheckConfigDetail = None
         self.RequestId = None
 
@@ -1181,8 +1681,10 @@ class DescribeComplianceListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filter: 搜索过滤条件
+        :type Filter: str
         """
-        :param Filter: 搜索过滤条件\n        :type Filter: str\n        """
         self.Filter = None
 
 
@@ -1203,10 +1705,18 @@ class DescribeComplianceListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 检查项列表
+        :type Data: list of DataCompliance
+        :param AssetTotalNum: 总检查资产数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetTotalNum: int
+        :param ConfigTotalNum: 总检查项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigTotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 检查项列表\n        :type Data: list of DataCompliance\n        :param AssetTotalNum: 总检查资产数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetTotalNum: int\n        :param ConfigTotalNum: 总检查项
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConfigTotalNum: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.AssetTotalNum = None
         self.ConfigTotalNum = None
@@ -1231,8 +1741,10 @@ class DescribeConfigListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filter: 搜索过滤条件
+        :type Filter: str
         """
-        :param Filter: 搜索过滤条件\n        :type Filter: str\n        """
         self.Filter = None
 
 
@@ -1253,8 +1765,12 @@ class DescribeConfigListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 检查项列表
+        :type Data: list of DataCheck
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 检查项列表\n        :type Data: list of DataCheck\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1275,8 +1791,18 @@ class DescribeEventDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Index: 事件索引名
+        :type Index: str
+        :param Id: 事件id
+        :type Id: str
+        :param Source: 事件来源
+        :type Source: str
+        :param SubEventType: 事件子类型
+        :type SubEventType: int
+        :param Name: 事件名称
+        :type Name: str
         """
-        :param Index: 事件索引名\n        :type Index: str\n        :param Id: 事件id\n        :type Id: str\n        :param Source: 事件来源\n        :type Source: str\n        :param SubEventType: 事件子类型\n        :type SubEventType: int\n        :param Name: 事件名称\n        :type Name: str\n        """
         self.Index = None
         self.Id = None
         self.Source = None
@@ -1305,8 +1831,12 @@ class DescribeEventDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 事件详情
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 事件详情\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1322,8 +1852,18 @@ class DescribeLeakDetectionListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filters: 筛选条件
+        :type Filters: list of Filter
+        :param Limit: 每页数量
+        :type Limit: int
+        :param Page: 页码
+        :type Page: int
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
         """
-        :param Filters: 筛选条件\n        :type Filters: list of Filter\n        :param Limit: 每页数量\n        :type Limit: int\n        :param Page: 页码\n        :type Page: int\n        :param StartTime: 起始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        """
         self.Filters = None
         self.Limit = None
         self.Page = None
@@ -1357,8 +1897,14 @@ class DescribeLeakDetectionListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param List: 数据列表
+        :type List: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数\n        :type TotalCount: int\n        :param List: 数据列表\n        :type List: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.List = None
         self.RequestId = None
@@ -1376,8 +1922,24 @@ class DescribeSafetyEventListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filter: 搜索过滤查询参数
+        :type Filter: str
+        :param Limit: 限制数目
+        :type Limit: int
+        :param Offset: 页偏移
+        :type Offset: int
+        :param Order: 排序列名
+        :type Order: str
+        :param By: 排序升降：desc-降序 asc-升序
+        :type By: str
+        :param StartTime: 开始查询时间
+        :type StartTime: str
+        :param EndTime: 结束查询时间
+        :type EndTime: str
+        :param IsFilterResponseTime: 是否过滤响应时间
+        :type IsFilterResponseTime: bool
         """
-        :param Filter: 搜索过滤查询参数\n        :type Filter: str\n        :param Limit: 限制数目\n        :type Limit: int\n        :param Offset: 页偏移\n        :type Offset: int\n        :param Order: 排序列名\n        :type Order: str\n        :param By: 排序升降：desc-降序 asc-升序\n        :type By: str\n        :param StartTime: 开始查询时间\n        :type StartTime: str\n        :param EndTime: 结束查询时间\n        :type EndTime: str\n        :param IsFilterResponseTime: 是否过滤响应时间\n        :type IsFilterResponseTime: bool\n        """
         self.Filter = None
         self.Limit = None
         self.Offset = None
@@ -1412,8 +1974,14 @@ class DescribeSafetyEventListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param List: 事件列表
+        :type List: list of DataEvent
+        :param Total: 事件总条数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param List: 事件列表\n        :type List: list of DataEvent\n        :param Total: 事件总条数\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.List = None
         self.Total = None
         self.RequestId = None
@@ -1442,9 +2010,13 @@ class DescribeSocCspmComplianceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 数据
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: :class:`tencentcloud.ssa.v20180608.models.SocComplianceInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.SocComplianceInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Data = None
         self.RequestId = None
 
@@ -1462,8 +2034,12 @@ class DescribeVulDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UniqId: 漏洞唯一标识符
+        :type UniqId: str
+        :param Source: 查看详情来源
+        :type Source: str
         """
-        :param UniqId: 漏洞唯一标识符\n        :type UniqId: str\n        :param Source: 查看详情来源\n        :type Source: str\n        """
         self.UniqId = None
         self.Source = None
 
@@ -1486,29 +2062,73 @@ class DescribeVulDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulType: 漏洞类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VulType: int\n        :param SubVulType: 漏洞子类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubVulType: str\n        :param CvssScore: cvss分数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CvssScore: str\n        :param Cvss: cvss值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Cvss: str\n        :param Cve: cve编号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Cve: str\n        :param Cnvd: cnvd编号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Cnvd: str\n        :param Cnnvd: cnnvd编号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Cnnvd: str\n        :param Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Desc: str\n        :param Reference: 参考
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Reference: str\n        :param Repair: 修复意见
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Repair: str\n        :param ReleaseTime: 披露时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReleaseTime: str\n        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param Name: 漏洞名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Level: 等级
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Level: int\n        :param Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param ImpactAsset: 受影响资产唯一标识
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ImpactAsset: str\n        :param ImpactAssetName: 受影响资产名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ImpactAssetName: str\n        :param IsAssetDeleted: 受影响资产是否已删除
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAssetDeleted: bool\n        :param Source: 漏洞来源
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Source: str\n        :param VulUrl: 漏洞URL
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VulUrl: str\n        :param SsaAssetCategory: 资产归属
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaAssetCategory: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulType: int
+        :param SubVulType: 漏洞子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubVulType: str
+        :param CvssScore: cvss分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvssScore: str
+        :param Cvss: cvss值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cvss: str
+        :param Cve: cve编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cve: str
+        :param Cnvd: cnvd编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cnvd: str
+        :param Cnnvd: cnnvd编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cnnvd: str
+        :param Desc: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param Reference: 参考
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: str
+        :param Repair: 修复意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repair: str
+        :param ReleaseTime: 披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Name: 漏洞名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Level: 等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param ImpactAsset: 受影响资产唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactAsset: str
+        :param ImpactAssetName: 受影响资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactAssetName: str
+        :param IsAssetDeleted: 受影响资产是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssetDeleted: bool
+        :param Source: 漏洞来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param VulUrl: 漏洞URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulUrl: str
+        :param SsaAssetCategory: 资产归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetCategory: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.VulType = None
         self.SubVulType = None
         self.CvssScore = None
@@ -1564,8 +2184,10 @@ class DescribeVulListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Params: 查询过滤参数
+        :type Params: str
         """
-        :param Params: 查询过滤参数\n        :type Params: str\n        """
         self.Params = None
 
 
@@ -1586,8 +2208,12 @@ class DescribeVulListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 漏洞列表
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.VulList`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 漏洞列表\n        :type Data: :class:`tencentcloud.ssa.v20180608.models.VulList`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1608,8 +2234,14 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 过滤键的名称。
+        :type Name: str
+        :param Values: 一个或者多个过滤值。
+        :type Values: list of str
+        :param ExactMatch: 是否需要精确匹配
+        :type ExactMatch: bool
         """
-        :param Name: 过滤键的名称。\n        :type Name: str\n        :param Values: 一个或者多个过滤值。\n        :type Values: list of str\n        :param ExactMatch: 是否需要精确匹配\n        :type ExactMatch: bool\n        """
         self.Name = None
         self.Values = None
         self.ExactMatch = None
@@ -1634,8 +2266,40 @@ class SaDivulgeDataQueryPub(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: Id
+        :type Id: str
+        :param Uin: Uin
+        :type Uin: str
+        :param AppId: AppId
+        :type AppId: str
+        :param EventName: EventName
+        :type EventName: str
+        :param DivulgeSoure: DivulgeSoure
+        :type DivulgeSoure: str
+        :param Asset: Asset
+        :type Asset: str
+        :param RuleName: RuleName
+        :type RuleName: str
+        :param RuleId: RuleId
+        :type RuleId: str
+        :param RuleWord: RuleWord
+        :type RuleWord: str
+        :param ScanUrl: ScanUrl
+        :type ScanUrl: str
+        :param ScanCount: ScanCount
+        :type ScanCount: str
+        :param Level: Level
+        :type Level: str
+        :param Status: Status
+        :type Status: str
+        :param EventTime: EventTime
+        :type EventTime: str
+        :param InsertTime: InsertTime
+        :type InsertTime: str
+        :param UpdateTime: UpdateTime
+        :type UpdateTime: str
         """
-        :param Id: Id\n        :type Id: str\n        :param Uin: Uin\n        :type Uin: str\n        :param AppId: AppId\n        :type AppId: str\n        :param EventName: EventName\n        :type EventName: str\n        :param DivulgeSoure: DivulgeSoure\n        :type DivulgeSoure: str\n        :param Asset: Asset\n        :type Asset: str\n        :param RuleName: RuleName\n        :type RuleName: str\n        :param RuleId: RuleId\n        :type RuleId: str\n        :param RuleWord: RuleWord\n        :type RuleWord: str\n        :param ScanUrl: ScanUrl\n        :type ScanUrl: str\n        :param ScanCount: ScanCount\n        :type ScanCount: str\n        :param Level: Level\n        :type Level: str\n        :param Status: Status\n        :type Status: str\n        :param EventTime: EventTime\n        :type EventTime: str\n        :param InsertTime: InsertTime\n        :type InsertTime: str\n        :param UpdateTime: UpdateTime\n        :type UpdateTime: str\n        """
         self.Id = None
         self.Uin = None
         self.AppId = None
@@ -1686,8 +2350,12 @@ class SaDivulgeDataQueryPubList(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: Count
+        :type Count: int
+        :param List: List
+        :type List: list of SaDivulgeDataQueryPub
         """
-        :param Count: Count\n        :type Count: int\n        :param List: List\n        :type List: list of SaDivulgeDataQueryPub\n        """
         self.Count = None
         self.List = None
 
@@ -1715,8 +2383,32 @@ class SaDivulgeDataQueryPubRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueryKey: 模糊查询字段
+        :type QueryKey: str
+        :param EventName: 安全事件名称
+        :type EventName: str
+        :param DivulgeSoure: 监控源
+        :type DivulgeSoure: str
+        :param Asset: 受影响资产
+        :type Asset: str
+        :param RuleName: 命中主题集下的规则topic名称
+        :type RuleName: str
+        :param RuleId: 命中主题集下的规则topic唯一id
+        :type RuleId: str
+        :param Level: 风险等级
+        :type Level: str
+        :param Status: 安全事件状态
+        :type Status: str
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Offset: 查询起始地址
+        :type Offset: str
+        :param Limit: 查询个数
+        :type Limit: str
         """
-        :param QueryKey: 模糊查询字段\n        :type QueryKey: str\n        :param EventName: 安全事件名称\n        :type EventName: str\n        :param DivulgeSoure: 监控源\n        :type DivulgeSoure: str\n        :param Asset: 受影响资产\n        :type Asset: str\n        :param RuleName: 命中主题集下的规则topic名称\n        :type RuleName: str\n        :param RuleId: 命中主题集下的规则topic唯一id\n        :type RuleId: str\n        :param Level: 风险等级\n        :type Level: str\n        :param Status: 安全事件状态\n        :type Status: str\n        :param StartTime: 起始时间\n        :type StartTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        :param Offset: 查询起始地址\n        :type Offset: str\n        :param Limit: 查询个数\n        :type Limit: str\n        """
         self.QueryKey = None
         self.EventName = None
         self.DivulgeSoure = None
@@ -1759,8 +2451,12 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubList`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 结果\n        :type Data: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubList`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1778,12 +2474,20 @@ class SocCheckItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param LevelId: 唯一id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LevelId: str\n        :param SuccessCount: 成功数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SuccessCount: int\n        :param FailCount: 失败数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FailCount: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param LevelId: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelId: str
+        :param SuccessCount: 成功数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param FailCount: 失败数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailCount: int
+        """
         self.Name = None
         self.LevelId = None
         self.SuccessCount = None
@@ -1810,9 +2514,11 @@ class SocComplianceInfoResp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Items: 合格项
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Items: list of SocComplianceItem\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of SocComplianceItem
+        """
         self.Items = None
 
 
@@ -1838,16 +2544,32 @@ class SocComplianceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Item: 唯一id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Item: str\n        :param Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param StandardItem: 分类
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StandardItem: str\n        :param Result: 结果
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: int\n        :param Suggestion: 建议
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Suggestion: str\n        :param ProStr: 产品字符
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProStr: str\n        :param Production: 产品数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Production: list of SocProductionItem\n        :param CheckItems: 配置项数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CheckItems: list of SocCheckItem\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param StandardItem: 分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardItem: str
+        :param Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param Suggestion: 建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: str
+        :param ProStr: 产品字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProStr: str
+        :param Production: 产品数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Production: list of SocProductionItem
+        :param CheckItems: 配置项数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckItems: list of SocCheckItem
+        """
         self.Item = None
         self.Description = None
         self.StandardItem = None
@@ -1892,11 +2614,17 @@ class SocProductionItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Index: 标识
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Index: int\n        :param Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Index: 标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
         self.Name = None
         self.Index = None
         self.Status = None
@@ -1921,8 +2649,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Fid: 数据库标识
+        :type Fid: int
+        :param Fname: 标签名称
+        :type Fname: str
         """
-        :param Fid: 数据库标识\n        :type Fid: int\n        :param Fname: 标签名称\n        :type Fname: str\n        """
         self.Fid = None
         self.Fname = None
 
@@ -1945,23 +2677,85 @@ class VulItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 标识
+        :type Id: str
+        :param VulName: 漏洞名称
+        :type VulName: str
+        :param Type: 漏洞类型
+        :type Type: int
+        :param Level: 风险等级
+        :type Level: int
+        :param Status: 处理状态
+        :type Status: int
+        :param Time: 发现时间
+        :type Time: str
+        :param ImpactAssetNum: 影响资产数
+        :type ImpactAssetNum: int
+        :param ImpactAsset: 影响资产id
+        :type ImpactAsset: str
+        :param ImpactAssetName: 影响资产名称
+        :type ImpactAssetName: str
+        :param VulDetail: 漏洞描述
+        :type VulDetail: str
+        :param VulRefLink: 参考链接
+        :type VulRefLink: str
+        :param OldIdMd5: Md5值
+        :type OldIdMd5: str
+        :param UniqId: 漏洞唯一标识
+        :type UniqId: str
+        :param OperateTime: 忽略时间
+        :type OperateTime: str
+        :param IsAssetDeleted: 受影响资产是否下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssetDeleted: str
+        :param DiscoverTime: 漏洞首次发现时间
+        :type DiscoverTime: str
+        :param OriginId: 主机源信息标识符
+        :type OriginId: int
+        :param Region: 资产区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Vpcid: 资产所属网络
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vpcid: str
+        :param AssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param AssetSubType: 资产子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetSubType: str
+        :param AssetIpAll: 资产IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetIpAll: list of str
+        :param PublicIpAddresses: cvm类型的公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddresses: list of str
+        :param PrivateIpAddresses: cvm类型的内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddresses: list of str
+        :param VulSource: 漏洞来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulSource: str
+        :param AffectedUrl: 影响URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedUrl: str
+        :param SsaAssetCategory: 资产归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetCategory: int
+        :param VulUrl: 影响url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulUrl: str
+        :param IsOpen: 是否扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpen: bool
+        :param YzHostId: 御知主机id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YzHostId: int
+        :param VulRepairPlan: 漏洞描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulRepairPlan: str
         """
-        :param Id: 标识\n        :type Id: str\n        :param VulName: 漏洞名称\n        :type VulName: str\n        :param Type: 漏洞类型\n        :type Type: int\n        :param Level: 风险等级\n        :type Level: int\n        :param Status: 处理状态\n        :type Status: int\n        :param Time: 发现时间\n        :type Time: str\n        :param ImpactAssetNum: 影响资产数\n        :type ImpactAssetNum: int\n        :param ImpactAsset: 影响资产id\n        :type ImpactAsset: str\n        :param ImpactAssetName: 影响资产名称\n        :type ImpactAssetName: str\n        :param VulDetail: 漏洞描述\n        :type VulDetail: str\n        :param VulRefLink: 参考链接\n        :type VulRefLink: str\n        :param OldIdMd5: Md5值\n        :type OldIdMd5: str\n        :param UniqId: 漏洞唯一标识\n        :type UniqId: str\n        :param OperateTime: 忽略时间\n        :type OperateTime: str\n        :param IsAssetDeleted: 受影响资产是否下线
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAssetDeleted: str\n        :param DiscoverTime: 漏洞首次发现时间\n        :type DiscoverTime: str\n        :param OriginId: 主机源信息标识符\n        :type OriginId: int\n        :param Region: 资产区域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param Vpcid: 资产所属网络
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Vpcid: str\n        :param AssetType: 资产类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetType: str\n        :param AssetSubType: 资产子类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetSubType: str\n        :param AssetIpAll: 资产IP
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssetIpAll: list of str\n        :param PublicIpAddresses: cvm类型的公网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIpAddresses: list of str\n        :param PrivateIpAddresses: cvm类型的内网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivateIpAddresses: list of str\n        :param VulSource: 漏洞来源
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VulSource: str\n        :param AffectedUrl: 影响URL
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AffectedUrl: str\n        :param SsaAssetCategory: 资产归属
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SsaAssetCategory: int\n        :param VulUrl: 影响url
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VulUrl: str\n        :param IsOpen: 是否扫描
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsOpen: bool\n        :param YzHostId: 御知主机id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type YzHostId: int\n        :param VulRepairPlan: 漏洞描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VulRepairPlan: str\n        """
         self.Id = None
         self.VulName = None
         self.Type = None
@@ -2042,8 +2836,12 @@ class VulList(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param List: 列表
+        :type List: list of VulItem
+        :param Total: 总数
+        :type Total: int
         """
-        :param List: 列表\n        :type List: list of VulItem\n        :param Total: 总数\n        :type Total: int\n        """
         self.List = None
         self.Total = None
 

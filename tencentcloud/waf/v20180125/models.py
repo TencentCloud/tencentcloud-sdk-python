@@ -24,12 +24,18 @@ class AccessFullTextInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaseSensitive: 是否大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CaseSensitive: bool\n        :param Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tokenizer: str\n        :param ContainZH: 是否包含中文
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainZH: bool\n        """
+        :type CaseSensitive: bool
+        :param Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tokenizer: str
+        :param ContainZH: 是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainZH: bool
+        """
         self.CaseSensitive = None
         self.Tokenizer = None
         self.ContainZH = None
@@ -54,10 +60,14 @@ class AccessKeyValueInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 需要配置键值或者元字段索引的字段
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Value: 字段的索引描述信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: :class:`tencentcloud.waf.v20180125.models.AccessValueInfo`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 字段的索引描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.waf.v20180125.models.AccessValueInfo`
+        """
         self.Key = None
         self.Value = None
 
@@ -82,17 +92,33 @@ class AccessLogInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 日志时间，单位ms
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Time: int\n        :param TopicId: 日志主题ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicId: str\n        :param TopicName: 日志主题名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicName: str\n        :param Source: 日志来源IP
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Source: str\n        :param FileName: 日志文件名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FileName: str\n        :param PkgId: 日志上报请求包的ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PkgId: str\n        :param PkgLogId: 请求包内日志的ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PkgLogId: str\n        :param LogJson: 日志内容的Json序列化字符串
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogJson: str\n        """
+        :type Time: int
+        :param TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param TopicName: 日志主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param Source: 日志来源IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param FileName: 日志文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param PkgId: 日志上报请求包的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgId: str
+        :param PkgLogId: 请求包内日志的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgLogId: str
+        :param LogJson: 日志内容的Json序列化字符串
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogJson: str
+        """
         self.Time = None
         self.TopicId = None
         self.TopicName = None
@@ -127,10 +153,14 @@ class AccessLogItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 日记Key
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Key: str\n        :param Value: 日志Value
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 日志Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
         self.Key = None
         self.Value = None
 
@@ -153,9 +183,11 @@ class AccessLogItems(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 分析结果返回的KV数据对
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: list of AccessLogItem\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of AccessLogItem
+        """
         self.Data = None
 
 
@@ -181,14 +213,20 @@ class AccessRuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FullText: 全文索引配置
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FullText: :class:`tencentcloud.waf.v20180125.models.AccessFullTextInfo`\n        :param KeyValue: 键值索引配置
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyValue: :class:`tencentcloud.waf.v20180125.models.AccessRuleKeyValueInfo`\n        :param Tag: 元字段索引配置
+        :type FullText: :class:`tencentcloud.waf.v20180125.models.AccessFullTextInfo`
+        :param KeyValue: 键值索引配置
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tag: :class:`tencentcloud.waf.v20180125.models.AccessRuleTagInfo`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyValue: :class:`tencentcloud.waf.v20180125.models.AccessRuleKeyValueInfo`
+        :param Tag: 元字段索引配置
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: :class:`tencentcloud.waf.v20180125.models.AccessRuleTagInfo`
+        """
         self.FullText = None
         self.KeyValue = None
         self.Tag = None
@@ -219,10 +257,14 @@ class AccessRuleKeyValueInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaseSensitive: 是否大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CaseSensitive: bool\n        :param KeyValues: 需要建立索引的键值对信息；最大只能配置100个键值对
-注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyValues: list of AccessKeyValueInfo\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaseSensitive: bool
+        :param KeyValues: 需要建立索引的键值对信息；最大只能配置100个键值对
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyValues: list of AccessKeyValueInfo
+        """
         self.CaseSensitive = None
         self.KeyValues = None
 
@@ -250,10 +292,14 @@ class AccessRuleTagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaseSensitive: 是否大小写敏感
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CaseSensitive: bool\n        :param KeyValues: 标签索引配置中的字段信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyValues: list of AccessKeyValueInfo\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaseSensitive: bool
+        :param KeyValues: 标签索引配置中的字段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyValues: list of AccessKeyValueInfo
+        """
         self.CaseSensitive = None
         self.KeyValues = None
 
@@ -281,13 +327,21 @@ class AccessValueInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 字段类型，目前支持的类型有：long、text、double
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param Tokenizer: 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tokenizer: str\n        :param SqlFlag: 字段是否开启分析功能
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SqlFlag: bool\n        :param ContainZH: 是否包含中文
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainZH: bool\n        """
+        :type Type: str
+        :param Tokenizer: 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tokenizer: str
+        :param SqlFlag: 字段是否开启分析功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlFlag: bool
+        :param ContainZH: 是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainZH: bool
+        """
         self.Type = None
         self.Tokenizer = None
         self.SqlFlag = None
@@ -314,8 +368,26 @@ class AddCustomRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 规则名称
+        :type Name: str
+        :param SortId: 优先级
+        :type SortId: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param Strategies: 策略详情
+        :type Strategies: list of Strategy
+        :param Domain: 需要添加策略的域名
+        :type Domain: str
+        :param ActionType: 动作类型
+        :type ActionType: str
+        :param Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空
+        :type Redirect: str
+        :param Edition: "clb-waf"或者"sparta-waf"
+        :type Edition: str
+        :param Bypass: 放行的详情
+        :type Bypass: str
         """
-        :param Name: 规则名称\n        :type Name: str\n        :param SortId: 优先级\n        :type SortId: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: str\n        :param Strategies: 策略详情\n        :type Strategies: list of Strategy\n        :param Domain: 需要添加策略的域名\n        :type Domain: str\n        :param ActionType: 动作类型\n        :type ActionType: str\n        :param Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空\n        :type Redirect: str\n        :param Edition: "clb-waf"或者"sparta-waf"\n        :type Edition: str\n        :param Bypass: 放行的详情\n        :type Bypass: str\n        """
         self.Name = None
         self.SortId = None
         self.ExpireTime = None
@@ -357,9 +429,15 @@ class AddCustomRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param RuleId: 添加成功的规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败\n        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`\n        :param RuleId: 添加成功的规则ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RuleId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RuleId = None
         self.RequestId = None
@@ -379,8 +457,16 @@ class BotStatPointItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TimeStamp: 横坐标
+        :type TimeStamp: str
+        :param Key: value的所属对象
+        :type Key: str
+        :param Value: 纵列表
+        :type Value: int
+        :param Label: Key对应的页面展示内容
+        :type Label: str
         """
-        :param TimeStamp: 横坐标\n        :type TimeStamp: str\n        :param Key: value的所属对象\n        :type Key: str\n        :param Value: 纵列表\n        :type Value: int\n        :param Label: Key对应的页面展示内容\n        :type Label: str\n        """
         self.TimeStamp = None
         self.Key = None
         self.Value = None
@@ -407,8 +493,22 @@ class CreateAccessExportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
+        :type TopicId: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Query: 日志导出检索语句
+        :type Query: str
+        :param Count: 日志导出数量
+        :type Count: int
+        :param Format: 日志导出数据格式。json，csv，默认为json
+        :type Format: str
+        :param Order: 日志导出时间排序。desc，asc，默认为desc
+        :type Order: str
         """
-        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题\n        :type TopicId: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Query: 日志导出检索语句\n        :type Query: str\n        :param Count: 日志导出数量\n        :type Count: int\n        :param Format: 日志导出数据格式。json，csv，默认为json\n        :type Format: str\n        :param Order: 日志导出时间排序。desc，asc，默认为desc\n        :type Order: str\n        """
         self.TopicId = None
         self.From = None
         self.To = None
@@ -441,8 +541,12 @@ class CreateAccessExportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExportId: 日志导出ID。
+        :type ExportId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ExportId: 日志导出ID。\n        :type ExportId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ExportId = None
         self.RequestId = None
 
@@ -458,8 +562,26 @@ class CreateAttackDownloadTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名，所有域名填写all
+        :type Domain: str
+        :param FromTime: 查询起始时间
+        :type FromTime: str
+        :param ToTime: 查询结束时间
+        :type ToTime: str
+        :param Name: 下载任务名字
+        :type Name: str
+        :param RiskLevel: 风险等级
+        :type RiskLevel: int
+        :param Status: 拦截状态
+        :type Status: int
+        :param RuleId: 自定义策略ID
+        :type RuleId: int
+        :param AttackIp: 攻击者IP
+        :type AttackIp: str
+        :param AttackType: 攻击类型
+        :type AttackType: str
         """
-        :param Domain: 域名，所有域名填写all\n        :type Domain: str\n        :param FromTime: 查询起始时间\n        :type FromTime: str\n        :param ToTime: 查询结束时间\n        :type ToTime: str\n        :param Name: 下载任务名字\n        :type Name: str\n        :param RiskLevel: 风险等级\n        :type RiskLevel: int\n        :param Status: 拦截状态\n        :type Status: int\n        :param RuleId: 自定义策略ID\n        :type RuleId: int\n        :param AttackIp: 攻击者IP\n        :type AttackIp: str\n        :param AttackType: 攻击类型\n        :type AttackType: str\n        """
         self.Domain = None
         self.FromTime = None
         self.ToTime = None
@@ -496,8 +618,12 @@ class CreateAttackDownloadTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Flow: 任务ID
+        :type Flow: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Flow: 任务ID\n        :type Flow: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Flow = None
         self.RequestId = None
 
@@ -513,8 +639,12 @@ class DeleteAccessExportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExportId: 日志导出ID
+        :type ExportId: str
+        :param TopicId: 日志主题
+        :type TopicId: str
         """
-        :param ExportId: 日志导出ID\n        :type ExportId: str\n        :param TopicId: 日志主题\n        :type TopicId: str\n        """
         self.ExportId = None
         self.TopicId = None
 
@@ -537,8 +667,10 @@ class DeleteAccessExportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -552,8 +684,10 @@ class DeleteAttackDownloadRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 下载任务记录唯一标记
+        :type Id: int
         """
-        :param Id: 下载任务记录唯一标记\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -574,8 +708,10 @@ class DeleteAttackDownloadRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -589,8 +725,10 @@ class DeleteDownloadRecordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Flow: 记录id
+        :type Flow: str
         """
-        :param Flow: 记录id\n        :type Flow: str\n        """
         self.Flow = None
 
 
@@ -611,8 +749,10 @@ class DeleteDownloadRecordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -626,8 +766,12 @@ class DeleteSessionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Edition: clb-waf 或者 sprta-waf
+        :type Edition: str
         """
-        :param Domain: 域名\n        :type Domain: str\n        :param Edition: clb-waf 或者 sprta-waf\n        :type Edition: str\n        """
         self.Domain = None
         self.Edition = None
 
@@ -650,9 +794,13 @@ class DeleteSessionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 结果
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Data = None
         self.RequestId = None
 
@@ -668,8 +816,14 @@ class DescribeAccessExportsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
+        :type TopicId: str
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100
+        :type Limit: int
         """
-        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题\n        :type TopicId: str\n        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100\n        :type Limit: int\n        """
         self.TopicId = None
         self.Offset = None
         self.Limit = None
@@ -694,9 +848,15 @@ class DescribeAccessExportsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 日志导出ID。
+        :type TotalCount: int
+        :param Exports: 日志导出列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exports: list of ExportAccessInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 日志导出ID。\n        :type TotalCount: int\n        :param Exports: 日志导出列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Exports: list of ExportAccessInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Exports = None
         self.RequestId = None
@@ -725,8 +885,10 @@ class DescribeAccessFastAnalysisResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -746,10 +908,18 @@ class DescribeAccessIndexResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Status: 是否生效\n        :type Status: bool\n        :param Rule: 索引配置信息
+        r"""
+        :param Status: 是否生效
+        :type Status: bool
+        :param Rule: 索引配置信息
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Rule: :class:`tencentcloud.waf.v20180125.models.AccessRuleInfo`\n        :param ModifyTime: 索引修改时间，初始值为索引创建时间。\n        :type ModifyTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: :class:`tencentcloud.waf.v20180125.models.AccessRuleInfo`
+        :param ModifyTime: 索引修改时间，初始值为索引创建时间。
+        :type ModifyTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Status = None
         self.Rule = None
         self.ModifyTime = None
@@ -771,8 +941,12 @@ class DescribeCustomRulesPagingInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 当前页码
+        :type Offset: int
+        :param Limit: 当前页的最大数据条数
+        :type Limit: int
         """
-        :param Offset: 当前页码\n        :type Offset: int\n        :param Limit: 当前页的最大数据条数\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -795,8 +969,18 @@ class DescribeCustomRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Paging: 分页参数
+        :type Paging: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRulesPagingInfo`
+        :param Edition: clb-waf或者sparta-waf
+        :type Edition: str
+        :param ActionType: 过滤参数：动作类型：0放行，1阻断，2人机识别，3观察，4重定向
+        :type ActionType: str
+        :param Search: 过滤参数：规则名称过滤条件
+        :type Search: str
         """
-        :param Domain: 域名\n        :type Domain: str\n        :param Paging: 分页参数\n        :type Paging: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRulesPagingInfo`\n        :param Edition: clb-waf或者sparta-waf\n        :type Edition: str\n        :param ActionType: 过滤参数：动作类型：0放行，1阻断，2人机识别，3观察，4重定向\n        :type ActionType: str\n        :param Search: 过滤参数：规则名称过滤条件\n        :type Search: str\n        """
         self.Domain = None
         self.Paging = None
         self.Edition = None
@@ -827,8 +1011,14 @@ class DescribeCustomRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuleList: 规则详情
+        :type RuleList: list of DescribeCustomRulesRspRuleListItem
+        :param TotalCount: 规则条数
+        :type TotalCount: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RuleList: 规则详情\n        :type RuleList: list of DescribeCustomRulesRspRuleListItem\n        :param TotalCount: 规则条数\n        :type TotalCount: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RuleList = None
         self.TotalCount = None
         self.RequestId = None
@@ -851,8 +1041,28 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ActionType: 动作类型
+        :type ActionType: str
+        :param Bypass: 跳过的策略
+        :type Bypass: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param Name: 策略名称
+        :type Name: str
+        :param Redirect: 重定向地址
+        :type Redirect: str
+        :param RuleId: 策略ID
+        :type RuleId: str
+        :param SortId: 优先级
+        :type SortId: str
+        :param Status: 状态
+        :type Status: str
+        :param Strategies: 策略详情
+        :type Strategies: list of Strategy
         """
-        :param ActionType: 动作类型\n        :type ActionType: str\n        :param Bypass: 跳过的策略\n        :type Bypass: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: str\n        :param Name: 策略名称\n        :type Name: str\n        :param Redirect: 重定向地址\n        :type Redirect: str\n        :param RuleId: 策略ID\n        :type RuleId: str\n        :param SortId: 优先级\n        :type SortId: str\n        :param Status: 状态\n        :type Status: str\n        :param Strategies: 策略详情\n        :type Strategies: list of Strategy\n        """
         self.ActionType = None
         self.Bypass = None
         self.CreateTime = None
@@ -896,8 +1106,14 @@ class DescribeFlowTrendRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 需要获取流量趋势的域名, all表示所有域名
+        :type Domain: str
+        :param StartTs: 起始时间戳，精度秒
+        :type StartTs: int
+        :param EndTs: 结束时间戳，精度秒
+        :type EndTs: int
         """
-        :param Domain: 需要获取流量趋势的域名, all表示所有域名\n        :type Domain: str\n        :param StartTs: 起始时间戳，精度秒\n        :type StartTs: int\n        :param EndTs: 结束时间戳，精度秒\n        :type EndTs: int\n        """
         self.Domain = None
         self.StartTs = None
         self.EndTs = None
@@ -922,8 +1138,12 @@ class DescribeFlowTrendResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 流量趋势数据
+        :type Data: list of BotStatPointItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 流量趋势数据\n        :type Data: list of BotStatPointItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -950,9 +1170,13 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 地域（标准的ap-格式）列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Data: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Data = None
         self.RequestId = None
 
@@ -968,14 +1192,38 @@ class ExportAccessInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExportId: 日志导出任务ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExportId: str\n        :param Query: 日志导出查询语句
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Query: str\n        :param FileName: 日志导出文件名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FileName: str\n        :param FileSize: 日志文件大小\n        :type FileSize: int\n        :param Order: 日志导出时间排序
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Order: str\n        :param Format: 日志导出格式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Format: str\n        :param Count: 日志导出数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Count: int\n        :param Status: 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）\n        :type Status: str\n        :param From: 日志导出起始时间\n        :type From: int\n        :param To: 日志导出结束时间\n        :type To: int\n        :param CosPath: 日志导出路径\n        :type CosPath: str\n        :param CreateTime: 日志导出创建时间\n        :type CreateTime: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExportId: str
+        :param Query: 日志导出查询语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Query: str
+        :param FileName: 日志导出文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param FileSize: 日志文件大小
+        :type FileSize: int
+        :param Order: 日志导出时间排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Order: str
+        :param Format: 日志导出格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        :param Count: 日志导出数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param Status: 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）
+        :type Status: str
+        :param From: 日志导出起始时间
+        :type From: int
+        :param To: 日志导出结束时间
+        :type To: int
+        :param CosPath: 日志导出路径
+        :type CosPath: str
+        :param CreateTime: 日志导出创建时间
+        :type CreateTime: str
+        """
         self.ExportId = None
         self.Query = None
         self.FileName = None
@@ -1018,8 +1266,12 @@ class ModifyAccessPeriodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Period: 访问日志保存期限，范围为[1, 30]
+        :type Period: int
+        :param TopicId: 日志主题
+        :type TopicId: str
         """
-        :param Period: 访问日志保存期限，范围为[1, 30]\n        :type Period: int\n        :param TopicId: 日志主题\n        :type TopicId: str\n        """
         self.Period = None
         self.TopicId = None
 
@@ -1042,8 +1294,10 @@ class ModifyAccessPeriodResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1057,8 +1311,16 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param RuleId: 规则ID
+        :type RuleId: int
+        :param Status: 开关的状态，1是开启、0是关闭
+        :type Status: int
+        :param Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+        :type Edition: str
         """
-        :param Domain: 域名\n        :type Domain: str\n        :param RuleId: 规则ID\n        :type RuleId: int\n        :param Status: 开关的状态，1是开启、0是关闭\n        :type Status: int\n        :param Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。\n        :type Edition: str\n        """
         self.Domain = None
         self.RuleId = None
         self.Status = None
@@ -1085,8 +1347,12 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败\n        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -1104,8 +1370,12 @@ class ResponseCode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Code: 如果成功则返回Success，失败则返回yunapi定义的错误码
+        :type Code: str
+        :param Message: 如果成功则返回Success，失败则返回WAF定义的二级错误码
+        :type Message: str
         """
-        :param Code: 如果成功则返回Success，失败则返回yunapi定义的错误码\n        :type Code: str\n        :param Message: 如果成功则返回Success，失败则返回WAF定义的二级错误码\n        :type Message: str\n        """
         self.Code = None
         self.Message = None
 
@@ -1128,8 +1398,22 @@ class SearchAccessLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
+        :type TopicId: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Query: 查询语句，语句长度最大为4096
+        :type Query: str
+        :param Limit: 单次查询返回的日志条数，最大值为100
+        :type Limit: int
+        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+        :type Context: str
+        :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+        :type Sort: str
         """
-        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题\n        :type TopicId: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Query: 查询语句，语句长度最大为4096\n        :type Query: str\n        :param Limit: 单次查询返回的日志条数，最大值为100\n        :type Limit: int\n        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容\n        :type Context: str\n        :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc\n        :type Sort: str\n        """
         self.TopicId = None
         self.From = None
         self.To = None
@@ -1162,14 +1446,28 @@ class SearchAccessLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Context: 加载后续内容的Context\n        :type Context: str\n        :param ListOver: 日志查询结果是否全部返回\n        :type ListOver: bool\n        :param Analysis: 返回的是否为分析结果\n        :type Analysis: bool\n        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
+        r"""
+        :param Context: 加载后续内容的Context
+        :type Context: str
+        :param ListOver: 日志查询结果是否全部返回
+        :type ListOver: bool
+        :param Analysis: 返回的是否为分析结果
+        :type Analysis: bool
+        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ColNames: list of str\n        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColNames: list of str
+        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Results: list of AccessLogInfo\n        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of AccessLogInfo
+        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AnalysisResults: list of AccessLogItems\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisResults: list of AccessLogItems
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Context = None
         self.ListOver = None
         self.Analysis = None
@@ -1205,8 +1503,16 @@ class Strategy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Field: 匹配字段
+        :type Field: str
+        :param CompareFunc: 逻辑符号
+        :type CompareFunc: str
+        :param Content: 匹配内容
+        :type Content: str
+        :param Arg: 匹配参数
+        :type Arg: str
         """
-        :param Field: 匹配字段\n        :type Field: str\n        :param CompareFunc: 逻辑符号\n        :type CompareFunc: str\n        :param Content: 匹配内容\n        :type Content: str\n        :param Arg: 匹配参数\n        :type Arg: str\n        """
         self.Field = None
         self.CompareFunc = None
         self.Content = None

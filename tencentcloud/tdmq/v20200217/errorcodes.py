@@ -155,6 +155,9 @@ LIMITEXCEEDED_SUBSCRIPTIONS = 'LimitExceeded.Subscriptions'
 # 实例下主题数量超过限制。
 LIMITEXCEEDED_TOPICS = 'LimitExceeded.Topics'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 必要参数没有传递。
 MISSINGPARAMETER_NEEDMOREPARAMS = 'MissingParameter.NeedMoreParams'
 
@@ -163,9 +166,6 @@ OPERATIONDENIED_CONSUMERRUNNING = 'OperationDenied.ConsumerRunning'
 
 # 默认环境不允许操作。
 OPERATIONDENIED_DEFAULTENVIRONMENT = 'OperationDenied.DefaultEnvironment'
-
-# 集群已存在。
-RESOURCEINUSE_CLUSTER = 'ResourceInUse.Cluster'
 
 # 重名，命名空间已存在。
 RESOURCEINUSE_NAMESPACE = 'ResourceInUse.Namespace'

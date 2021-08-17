@@ -24,8 +24,14 @@ class CallDetailItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DataType: 数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)
+        :type DataType: int
+        :param ValidAmount: 有效数据量
+        :type ValidAmount: int
+        :param Date: 调用时间
+        :type Date: str
         """
-        :param DataType: 数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)\n        :type DataType: int\n        :param ValidAmount: 有效数据量\n        :type ValidAmount: int\n        :param Date: 调用时间\n        :type Date: str\n        """
         self.DataType = None
         self.ValidAmount = None
         self.Date = None
@@ -50,8 +56,12 @@ class CallDetails(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的总条数
+        :type TotalCount: int
+        :param CallDetailSet: 调用明细数组
+        :type CallDetailSet: list of CallDetailItem
         """
-        :param TotalCount: 符合条件的总条数\n        :type TotalCount: int\n        :param CallDetailSet: 调用明细数组\n        :type CallDetailSet: list of CallDetailItem\n        """
         self.TotalCount = None
         self.CallDetailSet = None
 
@@ -79,8 +89,12 @@ class CallStatItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Date: 当前统计量的时间段
+        :type Date: str
+        :param Amount: 当前时间段的调用量
+        :type Amount: int
         """
-        :param Date: 当前统计量的时间段\n        :type Date: str\n        :param Amount: 当前时间段的调用量\n        :type Amount: int\n        """
         self.Date = None
         self.Amount = None
 
@@ -103,8 +117,16 @@ class GeneralStat(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TodayAmount: 今日调用量
+        :type TodayAmount: int
+        :param WeekAmount: 本周调用量
+        :type WeekAmount: int
+        :param MonthAmount: 本月调用量
+        :type MonthAmount: int
+        :param TotalAmount: 总调用量
+        :type TotalAmount: int
         """
-        :param TodayAmount: 今日调用量\n        :type TodayAmount: int\n        :param WeekAmount: 本周调用量\n        :type WeekAmount: int\n        :param MonthAmount: 本月调用量\n        :type MonthAmount: int\n        :param TotalAmount: 总调用量\n        :type TotalAmount: int\n        """
         self.TodayAmount = None
         self.WeekAmount = None
         self.MonthAmount = None
@@ -131,8 +153,10 @@ class GetTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 任务ID
+        :type Id: int
         """
-        :param Id: 任务ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -153,8 +177,12 @@ class GetTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskDetailDataList: 画像洞察任务TAG详细数据列表
+        :type TaskDetailDataList: list of TaskDetailData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskDetailDataList: 画像洞察任务TAG详细数据列表\n        :type TaskDetailDataList: list of TaskDetailData\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskDetailDataList = None
         self.RequestId = None
 
@@ -175,8 +203,20 @@ class GetTaskListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PageNumber: 查询分页页码
+        :type PageNumber: int
+        :param PageSize: 查询分页大小
+        :type PageSize: int
+        :param StartTime: 查询起始时间（13位数字的UNIX时间戳，单位毫秒 ）
+        :type StartTime: int
+        :param EndTime: 查询结束时间（13位数字的UNIX时间戳，单位毫秒 ）
+        :type EndTime: int
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskStatus: 查询任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+        :type TaskStatus: int
         """
-        :param PageNumber: 查询分页页码\n        :type PageNumber: int\n        :param PageSize: 查询分页大小\n        :type PageSize: int\n        :param StartTime: 查询起始时间（13位数字的UNIX时间戳，单位毫秒 ）\n        :type StartTime: int\n        :param EndTime: 查询结束时间（13位数字的UNIX时间戳，单位毫秒 ）\n        :type EndTime: int\n        :param TaskName: 任务名称\n        :type TaskName: str\n        :param TaskStatus: 查询任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败\n        :type TaskStatus: int\n        """
         self.PageNumber = None
         self.PageSize = None
         self.StartTime = None
@@ -207,8 +247,12 @@ class GetTaskListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskListData: 任务列表对象
+        :type TaskListData: :class:`tencentcloud.apcas.v20201127.models.TaskListData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskListData: 任务列表对象\n        :type TaskListData: :class:`tencentcloud.apcas.v20201127.models.TaskListData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskListData = None
         self.RequestId = None
 
@@ -226,8 +270,12 @@ class LabelDetailData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Value: 标签数据对象
+        :type Value: :class:`tencentcloud.apcas.v20201127.models.LabelValue`
+        :param Label: 标签表述，如"汽车资讯"、"游戏#手游"等
+        :type Label: str
         """
-        :param Value: 标签数据对象\n        :type Value: :class:`tencentcloud.apcas.v20201127.models.LabelValue`\n        :param Label: 标签表述，如"汽车资讯"、"游戏#手游"等\n        :type Label: str\n        """
         self.Value = None
         self.Label = None
 
@@ -252,8 +300,14 @@ class LabelValue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Proportion: 标签覆盖率占比（在整个上传的ID列表中的覆盖率）
+        :type Proportion: float
+        :param Market: 标签大盘覆盖率占比
+        :type Market: float
+        :param Tgi: TGI指数，由Proportion除以Market得到
+        :type Tgi: float
         """
-        :param Proportion: 标签覆盖率占比（在整个上传的ID列表中的覆盖率）\n        :type Proportion: float\n        :param Market: 标签大盘覆盖率占比\n        :type Market: float\n        :param Tgi: TGI指数，由Proportion除以Market得到\n        :type Tgi: float\n        """
         self.Proportion = None
         self.Market = None
         self.Tgi = None
@@ -278,8 +332,20 @@ class ListModel(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ID: 任务ID
+        :type ID: int
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param StartTime: 任务起始时间（13位数字的UNIX 时间戳，单位毫秒 ）
+        :type StartTime: int
+        :param Status: 任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+        :type Status: int
+        :param Available: 画像覆盖人数
+        :type Available: int
+        :param ErrMsg: 任务失败描述信息
+        :type ErrMsg: str
         """
-        :param ID: 任务ID\n        :type ID: int\n        :param TaskName: 任务名称\n        :type TaskName: str\n        :param StartTime: 任务起始时间（13位数字的UNIX 时间戳，单位毫秒 ）\n        :type StartTime: int\n        :param Status: 任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败\n        :type Status: int\n        :param Available: 画像覆盖人数\n        :type Available: int\n        :param ErrMsg: 任务失败描述信息\n        :type ErrMsg: str\n        """
         self.ID = None
         self.TaskName = None
         self.StartTime = None
@@ -310,8 +376,12 @@ class PredictRatingRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
+        :type Type: int
+        :param Id: 请求唯一标志ID
+        :type Id: str
         """
-        :param Type: ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密\n        :type Type: int\n        :param Id: 请求唯一标志ID\n        :type Id: str\n        """
         self.Type = None
         self.Id = None
 
@@ -334,8 +404,12 @@ class PredictRatingResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RatingData: 意向评级
+        :type RatingData: :class:`tencentcloud.apcas.v20201127.models.RatingData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RatingData: 意向评级\n        :type RatingData: :class:`tencentcloud.apcas.v20201127.models.RatingData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RatingData = None
         self.RequestId = None
 
@@ -353,8 +427,18 @@ class QueryCallDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
+        :type Type: int
+        :param StartTime: 开始时间戳（毫秒）
+        :type StartTime: int
+        :param EndTime: 结束时间戳（毫秒）
+        :type EndTime: int
+        :param PageNumber: 页数
+        :type PageNumber: int
+        :param PageSize: 每页个数
+        :type PageSize: int
         """
-        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计\n        :type Type: int\n        :param StartTime: 开始时间戳（毫秒）\n        :type StartTime: int\n        :param EndTime: 结束时间戳（毫秒）\n        :type EndTime: int\n        :param PageNumber: 页数\n        :type PageNumber: int\n        :param PageSize: 每页个数\n        :type PageSize: int\n        """
         self.Type = None
         self.StartTime = None
         self.EndTime = None
@@ -383,8 +467,12 @@ class QueryCallDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CallDetails: 调用明细
+        :type CallDetails: :class:`tencentcloud.apcas.v20201127.models.CallDetails`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CallDetails: 调用明细\n        :type CallDetails: :class:`tencentcloud.apcas.v20201127.models.CallDetails`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CallDetails = None
         self.RequestId = None
 
@@ -402,8 +490,14 @@ class QueryCallStatRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
+        :type Type: int
+        :param StartTime: 开始时间戳（毫秒）
+        :type StartTime: int
+        :param EndTime: 结束时间戳（毫秒）
+        :type EndTime: int
         """
-        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计\n        :type Type: int\n        :param StartTime: 开始时间戳（毫秒）\n        :type StartTime: int\n        :param EndTime: 结束时间戳（毫秒）\n        :type EndTime: int\n        """
         self.Type = None
         self.StartTime = None
         self.EndTime = None
@@ -428,8 +522,12 @@ class QueryCallStatResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CallSet: 调用量数组
+        :type CallSet: list of CallStatItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CallSet: 调用量数组\n        :type CallSet: list of CallStatItem\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CallSet = None
         self.RequestId = None
 
@@ -450,8 +548,10 @@ class QueryGeneralStatRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计
+        :type Type: int
         """
-        :param Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计\n        :type Type: int\n        """
         self.Type = None
 
 
@@ -472,8 +572,12 @@ class QueryGeneralStatResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GeneralStat: 调用量信息
+        :type GeneralStat: :class:`tencentcloud.apcas.v20201127.models.GeneralStat`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param GeneralStat: 调用量信息\n        :type GeneralStat: :class:`tencentcloud.apcas.v20201127.models.GeneralStat`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.GeneralStat = None
         self.RequestId = None
 
@@ -491,8 +595,10 @@ class RatingData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Rank: 线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）
+        :type Rank: int
         """
-        :param Rank: 线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）\n        :type Rank: int\n        """
         self.Rank = None
 
 
@@ -513,8 +619,10 @@ class TaskData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 画像洞察任务ID
+        :type Id: int
         """
-        :param Id: 画像洞察任务ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -535,8 +643,14 @@ class TaskDetailData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagId: 画像TAG ID
+        :type TagId: int
+        :param TagDesc: 画像TAG描述（如“省份分布”）
+        :type TagDesc: str
+        :param LabelDetailDataList: 画像Label对象列表（一个TAG对于N个Label，例如“省份分布”TAG对应“广东省”、“浙江省”等多个Label）
+        :type LabelDetailDataList: list of LabelDetailData
         """
-        :param TagId: 画像TAG ID\n        :type TagId: int\n        :param TagDesc: 画像TAG描述（如“省份分布”）\n        :type TagDesc: str\n        :param LabelDetailDataList: 画像Label对象列表（一个TAG对于N个Label，例如“省份分布”TAG对应“广东省”、“浙江省”等多个Label）\n        :type LabelDetailDataList: list of LabelDetailData\n        """
         self.TagId = None
         self.TagDesc = None
         self.LabelDetailDataList = None
@@ -566,8 +680,16 @@ class TaskListData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PageNumber: 查询分页页码
+        :type PageNumber: int
+        :param PageSize: 查询分页大小
+        :type PageSize: int
+        :param TotalCount: 任务列表总记录数
+        :type TotalCount: int
+        :param TaskList: 任务列表
+        :type TaskList: list of ListModel
         """
-        :param PageNumber: 查询分页页码\n        :type PageNumber: int\n        :param PageSize: 查询分页大小\n        :type PageSize: int\n        :param TotalCount: 任务列表总记录数\n        :type TotalCount: int\n        :param TaskList: 任务列表\n        :type TaskList: list of ListModel\n        """
         self.PageNumber = None
         self.PageSize = None
         self.TotalCount = None
@@ -599,8 +721,14 @@ class UploadIdRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
+        :type Type: int
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param IdListBase64: ID列表（ID间使用换行符分割、然后使用Base64编码）
+        :type IdListBase64: str
         """
-        :param Type: id标志的类型: 0:imei 7:IDFA 8:MD5(imei)\n        :type Type: int\n        :param TaskName: 任务名称\n        :type TaskName: str\n        :param IdListBase64: ID列表（ID间使用换行符分割、然后使用Base64编码）\n        :type IdListBase64: str\n        """
         self.Type = None
         self.TaskName = None
         self.IdListBase64 = None
@@ -625,8 +753,12 @@ class UploadIdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskData: 画像洞察任务ID等信息
+        :type TaskData: :class:`tencentcloud.apcas.v20201127.models.TaskData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskData: 画像洞察任务ID等信息\n        :type TaskData: :class:`tencentcloud.apcas.v20201127.models.TaskData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskData = None
         self.RequestId = None
 

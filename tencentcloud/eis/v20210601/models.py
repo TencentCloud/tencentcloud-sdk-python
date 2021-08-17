@@ -24,8 +24,20 @@ class AbstractRuntimeMC(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuntimeId: 运行时id
+        :type RuntimeId: int
+        :param DisplayName: 运行时名称，用户输入，同一uin内唯一
+        :type DisplayName: str
+        :param Type: 运行时类型：0: sandbox, 1:shared, 2:private
+        :type Type: int
+        :param Zone: 运行时所在地域，tianjin，beijiing，guangzhou等
+        :type Zone: str
+        :param Area: 运行时所在地域，tianjin，beijiing，guangzhou等（同Zone）
+        :type Area: str
+        :param Addr: 运行时应用listener地址后缀
+        :type Addr: str
         """
-        :param RuntimeId: 运行时id\n        :type RuntimeId: int\n        :param DisplayName: 运行时名称，用户输入，同一uin内唯一\n        :type DisplayName: str\n        :param Type: 运行时类型：0: sandbox, 1:shared, 2:private\n        :type Type: int\n        :param Zone: 运行时所在地域，tianjin，beijiing，guangzhou等\n        :type Zone: str\n        :param Area: 运行时所在地域，tianjin，beijiing，guangzhou等（同Zone）\n        :type Area: str\n        :param Addr: 运行时应用listener地址后缀\n        :type Addr: str\n        """
         self.RuntimeId = None
         self.DisplayName = None
         self.Type = None
@@ -56,8 +68,12 @@ class GetRuntimeMCRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuntimeId: 运行时id
+        :type RuntimeId: int
+        :param Zone: 运行时地域
+        :type Zone: str
         """
-        :param RuntimeId: 运行时id\n        :type RuntimeId: int\n        :param Zone: 运行时地域\n        :type Zone: str\n        """
         self.RuntimeId = None
         self.Zone = None
 
@@ -80,8 +96,12 @@ class GetRuntimeMCResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Runtime: 运行时详情
+        :type Runtime: :class:`tencentcloud.eis.v20210601.models.RuntimeMC`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Runtime: 运行时详情\n        :type Runtime: :class:`tencentcloud.eis.v20210601.models.RuntimeMC`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Runtime = None
         self.RequestId = None
 
@@ -99,8 +119,20 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuntimeId: 运行时id
+        :type RuntimeId: int
+        :param StartTime: 起始时间
+        :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        :param MetricType: 指标类型：0:CPU, 1:MemUsageBytes, 2:K8sWorkloadNetworkReceiveBytesBw, 3:K8sWorkloadNetworkTransmitBytesBw
+        :type MetricType: int
+        :param RateType: 是否返回百分比数值，仅支持CPU，Memory
+        :type RateType: bool
+        :param Interval: 采样粒度：60(s), 300(s), 3600(s), 86400(s)
+        :type Interval: int
         """
-        :param RuntimeId: 运行时id\n        :type RuntimeId: int\n        :param StartTime: 起始时间\n        :type StartTime: int\n        :param EndTime: 结束时间\n        :type EndTime: int\n        :param MetricType: 指标类型：0:CPU, 1:MemUsageBytes, 2:K8sWorkloadNetworkReceiveBytesBw, 3:K8sWorkloadNetworkTransmitBytesBw\n        :type MetricType: int\n        :param RateType: 是否返回百分比数值，仅支持CPU，Memory\n        :type RateType: bool\n        :param Interval: 采样粒度：60(s), 300(s), 3600(s), 86400(s)\n        :type Interval: int\n        """
         self.RuntimeId = None
         self.StartTime = None
         self.EndTime = None
@@ -131,8 +163,14 @@ class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MetricType: 指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw
+        :type MetricType: str
+        :param Values: metric数值列表
+        :type Values: list of MetricValueMC
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param MetricType: 指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw\n        :type MetricType: str\n        :param Values: metric数值列表\n        :type Values: list of MetricValueMC\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MetricType = None
         self.Values = None
         self.RequestId = None
@@ -161,8 +199,12 @@ class ListDeployableRuntimesMCResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Runtimes: 运行时列表
+        :type Runtimes: list of AbstractRuntimeMC
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Runtimes: 运行时列表\n        :type Runtimes: list of AbstractRuntimeMC\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Runtimes = None
         self.RequestId = None
 
@@ -183,8 +225,20 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuntimeId: 运行时id
+        :type RuntimeId: int
+        :param Limit: 最大请求数量
+        :type Limit: int
+        :param Offset: 请求偏移量
+        :type Offset: int
+        :param SortType: 排序类型：1:创建时间排序, 2:更新时间排序（默认）
+        :type SortType: int
+        :param Sort: 排序方式：asc，desc（默认）
+        :type Sort: str
+        :param Zone: 运行时地域
+        :type Zone: str
         """
-        :param RuntimeId: 运行时id\n        :type RuntimeId: int\n        :param Limit: 最大请求数量\n        :type Limit: int\n        :param Offset: 请求偏移量\n        :type Offset: int\n        :param SortType: 排序类型：1:创建时间排序, 2:更新时间排序（默认）\n        :type SortType: int\n        :param Sort: 排序方式：asc，desc（默认）\n        :type Sort: str\n        :param Zone: 运行时地域\n        :type Zone: str\n        """
         self.RuntimeId = None
         self.Limit = None
         self.Offset = None
@@ -215,8 +269,14 @@ class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Instances: 运行时所部属的应用实例列表
+        :type Instances: list of RuntimeDeployedInstanceMC
+        :param TotalCount: 满足条件的记录总数，用于分页器
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Instances: 运行时所部属的应用实例列表\n        :type Instances: list of RuntimeDeployedInstanceMC\n        :param TotalCount: 满足条件的记录总数，用于分页器\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Instances = None
         self.TotalCount = None
         self.RequestId = None
@@ -245,8 +305,12 @@ class ListRuntimesMCResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Runtimes: 运行时列表
+        :type Runtimes: list of RuntimeMC
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Runtimes: 运行时列表\n        :type Runtimes: list of RuntimeMC\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Runtimes = None
         self.RequestId = None
 
@@ -267,10 +331,14 @@ class MetricValueMC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Time: int\n        :param Val: 对应的value值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Val: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: int
+        :param Val: 对应的value值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Val: str
+        """
         self.Time = None
         self.Val = None
 
@@ -293,8 +361,28 @@ class RuntimeDeployedInstanceMC(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 项目id
+        :type GroupId: int
+        :param GroupName: 项目名称
+        :type GroupName: str
+        :param ProjectId: 应用id
+        :type ProjectId: int
+        :param ProjectName: 应用名称
+        :type ProjectName: str
+        :param InstanceId: 应用实例id
+        :type InstanceId: int
+        :param InstanceVersion: 应用实例版本
+        :type InstanceVersion: int
+        :param InstanceCreatedAt: 应用实例创建时间
+        :type InstanceCreatedAt: int
+        :param Status: 应用实例部署状态. 0:running, 1:deleting
+        :type Status: int
+        :param CreatedAt: 应用实例部署创建时间
+        :type CreatedAt: int
+        :param UpdatedAt: 应用实例部署更新时间
+        :type UpdatedAt: int
         """
-        :param GroupId: 项目id\n        :type GroupId: int\n        :param GroupName: 项目名称\n        :type GroupName: str\n        :param ProjectId: 应用id\n        :type ProjectId: int\n        :param ProjectName: 应用名称\n        :type ProjectName: str\n        :param InstanceId: 应用实例id\n        :type InstanceId: int\n        :param InstanceVersion: 应用实例版本\n        :type InstanceVersion: int\n        :param InstanceCreatedAt: 应用实例创建时间\n        :type InstanceCreatedAt: int\n        :param Status: 应用实例部署状态. 0:running, 1:deleting\n        :type Status: int\n        :param CreatedAt: 应用实例部署创建时间\n        :type CreatedAt: int\n        :param UpdatedAt: 应用实例部署更新时间\n        :type UpdatedAt: int\n        """
         self.GroupId = None
         self.GroupName = None
         self.ProjectId = None
@@ -333,8 +421,30 @@ class RuntimeMC(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RuntimeId: 运行时id
+        :type RuntimeId: int
+        :param Uin: 主账号uin
+        :type Uin: str
+        :param DisplayName: 运行时名称，用户输入，同一uin内唯一
+        :type DisplayName: str
+        :param Zone: 运行时所在地域，tianjin，beijiing，guangzhou等
+        :type Zone: str
+        :param Type: 运行时类型：0: sandbox, 1:shared, 2:private
+        :type Type: int
+        :param Status: 运行时状态：1:running, 2:deleting, 3:creating, 4:scaling, 5:unavailable, 6:deleted, 7:errored
+        :type Status: int
+        :param CreatedAt: 运行时创建时间
+        :type CreatedAt: int
+        :param UpdatedAt: 运行时更新时间
+        :type UpdatedAt: int
+        :param WorkerSize: 运行时资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
+        :type WorkerSize: int
+        :param WorkerReplica: 运行时资源配置，worker副本数
+        :type WorkerReplica: int
+        :param RunningInstanceCount: 正在运行的应用实例数量
+        :type RunningInstanceCount: int
         """
-        :param RuntimeId: 运行时id\n        :type RuntimeId: int\n        :param Uin: 主账号uin\n        :type Uin: str\n        :param DisplayName: 运行时名称，用户输入，同一uin内唯一\n        :type DisplayName: str\n        :param Zone: 运行时所在地域，tianjin，beijiing，guangzhou等\n        :type Zone: str\n        :param Type: 运行时类型：0: sandbox, 1:shared, 2:private\n        :type Type: int\n        :param Status: 运行时状态：1:running, 2:deleting, 3:creating, 4:scaling, 5:unavailable, 6:deleted, 7:errored\n        :type Status: int\n        :param CreatedAt: 运行时创建时间\n        :type CreatedAt: int\n        :param UpdatedAt: 运行时更新时间\n        :type UpdatedAt: int\n        :param WorkerSize: 运行时资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited\n        :type WorkerSize: int\n        :param WorkerReplica: 运行时资源配置，worker副本数\n        :type WorkerReplica: int\n        :param RunningInstanceCount: 正在运行的应用实例数量\n        :type RunningInstanceCount: int\n        """
         self.RuntimeId = None
         self.Uin = None
         self.DisplayName = None

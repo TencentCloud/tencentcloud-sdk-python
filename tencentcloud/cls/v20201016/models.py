@@ -24,11 +24,39 @@ class AlarmInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 告警策略名称。
+        :type Name: str
+        :param AlarmTargets: 监控对象列表。
+        :type AlarmTargets: list of AlarmTargetInfo
+        :param MonitorTime: 监控任务运行时间点。
+        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
+        :param Condition: 触发条件。
+        :type Condition: str
+        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :type TriggerCount: int
+        :param AlarmPeriod: 告警重复的周期。单位是min。取值范围是0~1440。
+        :type AlarmPeriod: int
+        :param AlarmNoticeIds: 关联的告警通知模板列表。
+        :type AlarmNoticeIds: list of str
+        :param Status: 开启状态。
+        :type Status: bool
+        :param AlarmId: 告警策略ID。
+        :type AlarmId: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 最近更新时间。
+        :type UpdateTime: str
+        :param MessageTemplate: 自定义通知模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTemplate: str
+        :param CallBack: 自定义回调模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
+        :param Analysis: 多维分析设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Analysis: list of AnalysisDimensional
         """
-        :param Name: 告警策略名称。\n        :type Name: str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTargetInfo\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是min。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param Status: 开启状态。\n        :type Status: bool\n        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        :param CreateTime: 创建时间。\n        :type CreateTime: str\n        :param UpdateTime: 最近更新时间。\n        :type UpdateTime: str\n        :param MessageTemplate: 自定义通知模板
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MessageTemplate: str\n        :param CallBack: 自定义回调模板
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        :param Analysis: 多维分析设置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Analysis: list of AnalysisDimensional\n        """
         self.Name = None
         self.AlarmTargets = None
         self.MonitorTime = None
@@ -89,16 +117,30 @@ class AlarmNotice(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: 告警通知模板名称。\n        :type Name: str\n        :param Type: 告警模板的类型。可选值：
+        r"""
+        :param Name: 告警通知模板名称。
+        :type Name: str
+        :param Type: 告警模板的类型。可选值：
 <br><li> Trigger - 告警触发
 <br><li> Recovery - 告警恢复
-<br><li> All - 告警触发和告警恢复\n        :type Type: str\n        :param NoticeReceivers: 告警通知模板接收者信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NoticeReceivers: list of NoticeReceiver\n        :param WebCallbacks: 告警通知模板回调信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type WebCallbacks: list of WebCallback\n        :param AlarmNoticeId: 告警通知模板ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AlarmNoticeId: str\n        :param CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param UpdateTime: 最近更新时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        """
+<br><li> All - 告警触发和告警恢复
+        :type Type: str
+        :param NoticeReceivers: 告警通知模板接收者信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeReceivers: list of NoticeReceiver
+        :param WebCallbacks: 告警通知模板回调信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbacks: list of WebCallback
+        :param AlarmNoticeId: 告警通知模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmNoticeId: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 最近更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
         self.Name = None
         self.Type = None
         self.NoticeReceivers = None
@@ -141,8 +183,20 @@ class AlarmTarget(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID。
+        :type TopicId: str
+        :param Query: 查询语句。
+        :type Query: str
+        :param Number: 告警对象序号；从1开始递增。
+        :type Number: int
+        :param StartTimeOffset: 查询范围起始时间相对当前的历史时间，单位非分钟，取值为非正，最大值为0，最小值为-1440。
+        :type StartTimeOffset: int
+        :param EndTimeOffset: 查询范围终止时间相对当前的历史时间，单位非分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+        :type EndTimeOffset: int
+        :param LogsetId: 日志集ID。
+        :type LogsetId: str
         """
-        :param TopicId: 日志主题ID。\n        :type TopicId: str\n        :param Query: 查询语句。\n        :type Query: str\n        :param Number: 告警对象序号；从1开始递增。\n        :type Number: int\n        :param StartTimeOffset: 查询范围起始时间相对当前的历史时间，单位非分钟，取值为非正，最大值为0，最小值为-1440。\n        :type StartTimeOffset: int\n        :param EndTimeOffset: 查询范围终止时间相对当前的历史时间，单位非分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。\n        :type EndTimeOffset: int\n        :param LogsetId: 日志集ID。\n        :type LogsetId: str\n        """
         self.TopicId = None
         self.Query = None
         self.Number = None
@@ -173,8 +227,24 @@ class AlarmTargetInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID。
+        :type LogsetId: str
+        :param LogsetName: 日志集名称。
+        :type LogsetName: str
+        :param TopicId: 日志主题ID。
+        :type TopicId: str
+        :param TopicName: 日志主题名称。
+        :type TopicName: str
+        :param Query: 查询语句。
+        :type Query: str
+        :param Number: 告警对象序号。
+        :type Number: int
+        :param StartTimeOffset: 查询范围起始时间相对当前的历史时间，取值为非正，最大值为0，最小值为-1440。
+        :type StartTimeOffset: int
+        :param EndTimeOffset: 查询范围终止时间相对当前的历史时间，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+        :type EndTimeOffset: int
         """
-        :param LogsetId: 日志集ID。\n        :type LogsetId: str\n        :param LogsetName: 日志集名称。\n        :type LogsetName: str\n        :param TopicId: 日志主题ID。\n        :type TopicId: str\n        :param TopicName: 日志主题名称。\n        :type TopicName: str\n        :param Query: 查询语句。\n        :type Query: str\n        :param Number: 告警对象序号。\n        :type Number: int\n        :param StartTimeOffset: 查询范围起始时间相对当前的历史时间，取值为非正，最大值为0，最小值为-1440。\n        :type StartTimeOffset: int\n        :param EndTimeOffset: 查询范围终止时间相对当前的历史时间，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。\n        :type EndTimeOffset: int\n        """
         self.LogsetId = None
         self.LogsetName = None
         self.TopicId = None
@@ -209,8 +279,14 @@ class AnalysisDimensional(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 分析名称
+        :type Name: str
+        :param Type: 分析类型：query，field
+        :type Type: str
+        :param Content: 分析内容
+        :type Content: str
         """
-        :param Name: 分析名称\n        :type Name: str\n        :param Type: 分析类型：query，field\n        :type Type: str\n        :param Content: 分析内容\n        :type Content: str\n        """
         self.Name = None
         self.Type = None
         self.Content = None
@@ -235,8 +311,12 @@ class ApplyConfigToMachineGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
+        :param GroupId: 机器组ID
+        :type GroupId: str
         """
-        :param ConfigId: 采集配置ID\n        :type ConfigId: str\n        :param GroupId: 机器组ID\n        :type GroupId: str\n        """
         self.ConfigId = None
         self.GroupId = None
 
@@ -259,8 +339,10 @@ class ApplyConfigToMachineGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -274,14 +356,36 @@ class AsyncContextTask(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param CreateTime: 创建时间，时间戳，精确到毫秒
+        :type CreateTime: int
+        :param Status: 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败
+        :type Status: int
+        :param AsyncContextTaskId: 异步上下文任务ID
+        :type AsyncContextTaskId: str
+        :param ErrorMessage: 任务失败的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param PkgId: 日志包序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgId: str
+        :param PkgLogId: 日志包内一条日志的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgLogId: str
+        :param Time: 日志时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: int
+        :param FinishTime: 任务完成时间，时间戳，精确到毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: int
+        :param AsyncSearchTaskId: 相关联的异步检索ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncSearchTaskId: str
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param CreateTime: 创建时间，时间戳，精确到毫秒\n        :type CreateTime: int\n        :param Status: 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败\n        :type Status: int\n        :param AsyncContextTaskId: 异步上下文任务ID\n        :type AsyncContextTaskId: str\n        :param ErrorMessage: 任务失败的错误信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param PkgId: 日志包序号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PkgId: str\n        :param PkgLogId: 日志包内一条日志的序号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PkgLogId: str\n        :param Time: 日志时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Time: int\n        :param FinishTime: 任务完成时间，时间戳，精确到毫秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FinishTime: int\n        :param AsyncSearchTaskId: 相关联的异步检索ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AsyncSearchTaskId: str\n        """
         self.LogsetId = None
         self.TopicId = None
         self.CreateTime = None
@@ -322,11 +426,35 @@ class AsyncSearchTask(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Status: 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败
+        :type Status: int
+        :param AsyncSearchTaskId: 异步检索任务ID
+        :type AsyncSearchTaskId: str
+        :param Query: 查询语句
+        :type Query: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Sort: 日志扫描顺序，可选值：asc(升序)、desc(降序)
+        :type Sort: str
+        :param ErrorMessage: 任务失败的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param LogCount: 异步检索任务匹配的总日志条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogCount: int
+        :param FinishTime: 任务完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Status: 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败\n        :type Status: int\n        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        :param Query: 查询语句\n        :type Query: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Sort: 日志扫描顺序，可选值：asc(升序)、desc(降序)\n        :type Sort: str\n        :param ErrorMessage: 任务失败的错误信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param LogCount: 异步检索任务匹配的总日志条数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogCount: int\n        :param FinishTime: 任务完成时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FinishTime: str\n        """
         self.LogsetId = None
         self.TopicId = None
         self.CreateTime = None
@@ -369,9 +497,13 @@ class CallBackInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Body: 回调时的Body
+        :type Body: str
+        :param Headers: 回调时的Headers
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of str
         """
-        :param Body: 回调时的Body\n        :type Body: str\n        :param Headers: 回调时的Headers
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Headers: list of str\n        """
         self.Body = None
         self.Headers = None
 
@@ -394,8 +526,10 @@ class CompressInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Format: 压缩格式，支持gzip、lzop和none不压缩
+        :type Format: str
         """
-        :param Format: 压缩格式，支持gzip、lzop和none不压缩\n        :type Format: str\n        """
         self.Format = None
 
 
@@ -416,14 +550,32 @@ class ConfigInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigId: 采集规则配置ID
+        :type ConfigId: str
+        :param LogFormat: 日志格式化方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFormat: str
+        :param Path: 日志采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogType: str
+        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param ExcludePaths: 采集黑名单路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludePaths: list of ExcludePathInfo
+        :param Output: 采集配置所属日志主题ID即TopicId
+        :type Output: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
         """
-        :param ConfigId: 采集规则配置ID\n        :type ConfigId: str\n        :param LogFormat: 日志格式化方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogFormat: str\n        :param Path: 日志采集路径
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Path: str\n        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogType: str\n        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`\n        :param ExcludePaths: 采集黑名单路径列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExcludePaths: list of ExcludePathInfo\n        :param Output: 采集配置所属日志主题ID即TopicId\n        :type Output: str\n        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        """
         self.ConfigId = None
         self.LogFormat = None
         self.Path = None
@@ -467,10 +619,16 @@ class ContentInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Format: 内容格式，支持json、csv
+        :type Format: str
+        :param Csv: csv格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Csv: :class:`tencentcloud.cls.v20201016.models.CsvInfo`
+        :param Json: json格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Json: :class:`tencentcloud.cls.v20201016.models.JsonInfo`
         """
-        :param Format: 内容格式，支持json、csv\n        :type Format: str\n        :param Csv: csv格式内容描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Csv: :class:`tencentcloud.cls.v20201016.models.CsvInfo`\n        :param Json: json格式内容描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Json: :class:`tencentcloud.cls.v20201016.models.JsonInfo`\n        """
         self.Format = None
         self.Csv = None
         self.Json = None
@@ -499,11 +657,19 @@ class CreateAlarmNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: 告警模板名称。\n        :type Name: str\n        :param Type: 告警模板的类型。可选值：
+        r"""
+        :param Name: 告警模板名称。
+        :type Name: str
+        :param Type: 告警模板的类型。可选值：
 <br><li> Trigger - 告警触发
 <br><li> Recovery - 告警恢复
-<br><li> All - 告警触发和告警恢复\n        :type Type: str\n        :param NoticeReceivers: 告警模板接收者信息。\n        :type NoticeReceivers: list of NoticeReceiver\n        :param WebCallbacks: 告警模板回调信息。\n        :type WebCallbacks: list of WebCallback\n        """
+<br><li> All - 告警触发和告警恢复
+        :type Type: str
+        :param NoticeReceivers: 告警模板接收者信息。
+        :type NoticeReceivers: list of NoticeReceiver
+        :param WebCallbacks: 告警模板回调信息。
+        :type WebCallbacks: list of WebCallback
+        """
         self.Name = None
         self.Type = None
         self.NoticeReceivers = None
@@ -540,8 +706,12 @@ class CreateAlarmNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AlarmNoticeId: 告警模板ID
+        :type AlarmNoticeId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param AlarmNoticeId: 告警模板ID\n        :type AlarmNoticeId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AlarmNoticeId = None
         self.RequestId = None
 
@@ -557,8 +727,30 @@ class CreateAlarmRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 告警策略名称
+        :type Name: str
+        :param AlarmTargets: 监控对象列表。
+        :type AlarmTargets: list of AlarmTarget
+        :param MonitorTime: 监控任务运行时间点。
+        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
+        :param Condition: 触发条件。
+        :type Condition: str
+        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :type TriggerCount: int
+        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
+        :type AlarmPeriod: int
+        :param AlarmNoticeIds: 关联的告警通知模板列表。
+        :type AlarmNoticeIds: list of str
+        :param Status: 是否开启告警策略。默认值为true
+        :type Status: bool
+        :param MessageTemplate: 用户自定义告警内容
+        :type MessageTemplate: str
+        :param CallBack: 用户自定义回调
+        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
+        :param Analysis: 多维分析
+        :type Analysis: list of AnalysisDimensional
         """
-        :param Name: 告警策略名称\n        :type Name: str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTarget\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param Status: 是否开启告警策略。默认值为true\n        :type Status: bool\n        :param MessageTemplate: 用户自定义告警内容\n        :type MessageTemplate: str\n        :param CallBack: 用户自定义回调\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        :param Analysis: 多维分析\n        :type Analysis: list of AnalysisDimensional\n        """
         self.Name = None
         self.AlarmTargets = None
         self.MonitorTime = None
@@ -613,8 +805,12 @@ class CreateAlarmResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AlarmId: 告警策略ID。
+        :type AlarmId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AlarmId = None
         self.RequestId = None
 
@@ -630,8 +826,20 @@ class CreateAsyncContextTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Time: 日志时间，单位ms
+        :type Time: int
+        :param PkgId: 日志包序号
+        :type PkgId: str
+        :param PkgLogId: 日志包内一条日志的序号
+        :type PkgLogId: str
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param AsyncSearchTaskId: 异步检索任务ID
+        :type AsyncSearchTaskId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Time: 日志时间，单位ms\n        :type Time: int\n        :param PkgId: 日志包序号\n        :type PkgId: str\n        :param PkgLogId: 日志包内一条日志的序号\n        :type PkgLogId: str\n        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        """
         self.TopicId = None
         self.Time = None
         self.PkgId = None
@@ -662,8 +870,12 @@ class CreateAsyncContextTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsyncContextTaskId: 异步上下文任务ID
+        :type AsyncContextTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param AsyncContextTaskId: 异步上下文任务ID\n        :type AsyncContextTaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AsyncContextTaskId = None
         self.RequestId = None
 
@@ -679,8 +891,20 @@ class CreateAsyncSearchTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param TopicId: 日志主题ID，目前仅支持StorageType为cold的日志主题
+        :type TopicId: str
+        :param Query: 查询语句，语句长度最大为1024
+        :type Query: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Sort: 日志扫描顺序；可选值：asc(升序)、desc(降序)，默认为 desc
+        :type Sort: str
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID，目前仅支持StorageType为cold的日志主题\n        :type TopicId: str\n        :param Query: 查询语句，语句长度最大为1024\n        :type Query: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Sort: 日志扫描顺序；可选值：asc(升序)、desc(降序)，默认为 desc\n        :type Sort: str\n        """
         self.LogsetId = None
         self.TopicId = None
         self.Query = None
@@ -711,8 +935,10 @@ class CreateAsyncSearchTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -726,8 +952,20 @@ class CreateConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 采集配置名称
+        :type Name: str
+        :param Output: 采集配置所属日志主题ID即TopicId
+        :type Output: str
+        :param Path: 日志采集路径,包含文件名
+        :type Path: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+        :type LogType: str
+        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param ExcludePaths: 采集黑名单路径列表
+        :type ExcludePaths: list of ExcludePathInfo
         """
-        :param Name: 采集配置名称\n        :type Name: str\n        :param Output: 采集配置所属日志主题ID即TopicId\n        :type Output: str\n        :param Path: 日志采集路径,包含文件名\n        :type Path: str\n        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log\n        :type LogType: str\n        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType\n        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`\n        :param ExcludePaths: 采集黑名单路径列表\n        :type ExcludePaths: list of ExcludePathInfo\n        """
         self.Name = None
         self.Output = None
         self.Path = None
@@ -765,8 +1003,12 @@ class CreateConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ConfigId: 采集配置ID\n        :type ConfigId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ConfigId = None
         self.RequestId = None
 
@@ -782,8 +1024,22 @@ class CreateExportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题
+        :type TopicId: str
+        :param Query: 日志导出检索语句
+        :type Query: str
+        :param Count: 日志导出数量
+        :type Count: int
+        :param From: 日志导出起始时间，毫秒时间戳
+        :type From: int
+        :param To: 日志导出结束时间，毫秒时间戳
+        :type To: int
+        :param Order: 日志导出时间排序。desc，asc，默认为desc
+        :type Order: str
+        :param Format: 日志导出数据格式。json，csv，默认为json
+        :type Format: str
         """
-        :param TopicId: 日志主题\n        :type TopicId: str\n        :param Query: 日志导出检索语句\n        :type Query: str\n        :param Count: 日志导出数量\n        :type Count: int\n        :param From: 日志导出起始时间，毫秒时间戳\n        :type From: int\n        :param To: 日志导出结束时间，毫秒时间戳\n        :type To: int\n        :param Order: 日志导出时间排序。desc，asc，默认为desc\n        :type Order: str\n        :param Format: 日志导出数据格式。json，csv，默认为json\n        :type Format: str\n        """
         self.TopicId = None
         self.Query = None
         self.Count = None
@@ -816,8 +1072,12 @@ class CreateExportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExportId: 日志导出ID。
+        :type ExportId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ExportId: 日志导出ID。\n        :type ExportId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ExportId = None
         self.RequestId = None
 
@@ -833,8 +1093,14 @@ class CreateIndexRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Rule: 索引规则
+        :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        :param Status: 是否生效，默认为true
+        :type Status: bool
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Rule: 索引规则\n        :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`\n        :param Status: 是否生效，默认为true\n        :type Status: bool\n        """
         self.TopicId = None
         self.Rule = None
         self.Status = None
@@ -861,8 +1127,10 @@ class CreateIndexResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -876,8 +1144,12 @@ class CreateLogsetRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetName: 日志集名字，不能重名
+        :type LogsetName: str
+        :param Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
+        :type Tags: list of Tag
         """
-        :param LogsetName: 日志集名字，不能重名\n        :type LogsetName: str\n        :param Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对\n        :type Tags: list of Tag\n        """
         self.LogsetName = None
         self.Tags = None
 
@@ -905,8 +1177,12 @@ class CreateLogsetResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogsetId = None
         self.RequestId = None
 
@@ -922,8 +1198,22 @@ class CreateMachineGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupName: 机器组名字，不能重复
+        :type GroupName: str
+        :param MachineGroupType: 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :type Tags: list of Tag
+        :param AutoUpdate: 是否开启机器组自动更新
+        :type AutoUpdate: bool
+        :param UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+        :type UpdateStartTime: str
+        :param UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+        :type UpdateEndTime: str
+        :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+        :type ServiceLogging: bool
         """
-        :param GroupName: 机器组名字，不能重复\n        :type GroupName: str\n        :param MachineGroupType: 创建机器组类型，Type为ip，Values中为Ip字符串列表创建机器组，Type为label， Values中为标签字符串列表创建机器组\n        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`\n        :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。\n        :type Tags: list of Tag\n        :param AutoUpdate: 是否开启机器组自动更新\n        :type AutoUpdate: bool\n        :param UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener\n        :type UpdateStartTime: str\n        :param UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener\n        :type UpdateEndTime: str\n        :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费\n        :type ServiceLogging: bool\n        """
         self.GroupName = None
         self.MachineGroupType = None
         self.Tags = None
@@ -963,8 +1253,12 @@ class CreateMachineGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param GroupId: 机器组ID\n        :type GroupId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.GroupId = None
         self.RequestId = None
 
@@ -980,8 +1274,28 @@ class CreateShipperRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 创建的投递规则所属的日志主题ID
+        :type TopicId: str
+        :param Bucket: 创建的投递规则投递的bucket
+        :type Bucket: str
+        :param Prefix: 创建的投递规则投递目录的前缀
+        :type Prefix: str
+        :param ShipperName: 投递规则的名字
+        :type ShipperName: str
+        :param Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900
+        :type Interval: int
+        :param MaxSize: 投递的文件的最大值，单位 MB，默认256，范围 100-256
+        :type MaxSize: int
+        :param FilterRules: 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示
+        :type Partition: str
+        :param Compress: 投递日志的压缩配置
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: 投递日志的内容格式配置
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         """
-        :param TopicId: 创建的投递规则所属的日志主题ID\n        :type TopicId: str\n        :param Bucket: 创建的投递规则投递的bucket\n        :type Bucket: str\n        :param Prefix: 创建的投递规则投递目录的前缀\n        :type Prefix: str\n        :param ShipperName: 投递规则的名字\n        :type ShipperName: str\n        :param Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900\n        :type Interval: int\n        :param MaxSize: 投递的文件的最大值，单位 MB，默认256，范围 100-256\n        :type MaxSize: int\n        :param FilterRules: 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递\n        :type FilterRules: list of FilterRuleInfo\n        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示\n        :type Partition: str\n        :param Compress: 投递日志的压缩配置\n        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`\n        :param Content: 投递日志的内容格式配置\n        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`\n        """
         self.TopicId = None
         self.Bucket = None
         self.Prefix = None
@@ -1029,8 +1343,12 @@ class CreateShipperResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ShipperId: 投递规则ID\n        :type ShipperId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ShipperId = None
         self.RequestId = None
 
@@ -1046,8 +1364,24 @@ class CreateTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param TopicName: 日志主题名称
+        :type TopicName: str
+        :param PartitionCount: 日志主题分区个数。默认创建1个，最大支持创建10个分区。
+        :type PartitionCount: int
+        :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :type Tags: list of Tag
+        :param AutoSplit: 是否开启自动分裂，默认值为true
+        :type AutoSplit: bool
+        :param MaxSplitPartitions: 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
+        :type MaxSplitPartitions: int
+        :param StorageType: 日志主题的存储类型，可选值 hot（实时存储），cold（离线存储）；默认为hot。若传入cold，请先联系客服进行开白。
+        :type StorageType: str
+        :param Period: 生命周期，单位天；可取值范围1~366。默认30天
+        :type Period: int
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicName: 日志主题名称\n        :type TopicName: str\n        :param PartitionCount: 日志主题分区个数。默认创建1个，最大支持创建10个分区。\n        :type PartitionCount: int\n        :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。\n        :type Tags: list of Tag\n        :param AutoSplit: 是否开启自动分裂，默认值为true\n        :type AutoSplit: bool\n        :param MaxSplitPartitions: 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50\n        :type MaxSplitPartitions: int\n        :param StorageType: 日志主题的存储类型，可选值 hot（实时存储），cold（离线存储）；默认为hot。若传入cold，请先联系客服进行开白。\n        :type StorageType: str\n        :param Period: 生命周期，单位天；可取值范围1~366。默认30天\n        :type Period: int\n        """
         self.LogsetId = None
         self.TopicName = None
         self.PartitionCount = None
@@ -1087,8 +1421,12 @@ class CreateTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TopicId = None
         self.RequestId = None
 
@@ -1104,9 +1442,19 @@ class CsvInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PrintKey: csv首行是否打印key
+        :type PrintKey: bool
+        :param Keys: 每列key的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        :param Delimiter: 各字段间的分隔符
+        :type Delimiter: str
+        :param EscapeChar: 若字段内容中包含分隔符，则使用该转义符包裹改字段，只能填写单引号、双引号、空字符串
+        :type EscapeChar: str
+        :param NonExistingField: 对于上面指定的不存在字段使用该内容填充
+        :type NonExistingField: str
         """
-        :param PrintKey: csv首行是否打印key\n        :type PrintKey: bool\n        :param Keys: 每列key的名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Keys: list of str\n        :param Delimiter: 各字段间的分隔符\n        :type Delimiter: str\n        :param EscapeChar: 若字段内容中包含分隔符，则使用该转义符包裹改字段，只能填写单引号、双引号、空字符串\n        :type EscapeChar: str\n        :param NonExistingField: 对于上面指定的不存在字段使用该内容填充\n        :type NonExistingField: str\n        """
         self.PrintKey = None
         self.Keys = None
         self.Delimiter = None
@@ -1135,8 +1483,10 @@ class DeleteAlarmNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AlarmNoticeId: 告警通知模板
+        :type AlarmNoticeId: str
         """
-        :param AlarmNoticeId: 告警通知模板\n        :type AlarmNoticeId: str\n        """
         self.AlarmNoticeId = None
 
 
@@ -1157,8 +1507,10 @@ class DeleteAlarmNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1172,8 +1524,10 @@ class DeleteAlarmRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AlarmId: 告警策略ID。
+        :type AlarmId: str
         """
-        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        """
         self.AlarmId = None
 
 
@@ -1194,8 +1548,10 @@ class DeleteAlarmResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1209,8 +1565,12 @@ class DeleteAsyncContextTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param AsyncContextTaskId: 异步上下文任务ID
+        :type AsyncContextTaskId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param AsyncContextTaskId: 异步上下文任务ID\n        :type AsyncContextTaskId: str\n        """
         self.TopicId = None
         self.AsyncContextTaskId = None
 
@@ -1233,8 +1593,10 @@ class DeleteAsyncContextTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1248,8 +1610,12 @@ class DeleteAsyncSearchTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsyncSearchTaskId: 异步检索任务ID
+        :type AsyncSearchTaskId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
         """
-        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        """
         self.AsyncSearchTaskId = None
         self.TopicId = None
 
@@ -1272,8 +1638,10 @@ class DeleteAsyncSearchTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1287,8 +1655,12 @@ class DeleteConfigFromMachineGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
         """
-        :param GroupId: 机器组ID\n        :type GroupId: str\n        :param ConfigId: 采集配置ID\n        :type ConfigId: str\n        """
         self.GroupId = None
         self.ConfigId = None
 
@@ -1311,8 +1683,10 @@ class DeleteConfigFromMachineGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1326,8 +1700,10 @@ class DeleteConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigId: 采集规则配置ID
+        :type ConfigId: str
         """
-        :param ConfigId: 采集规则配置ID\n        :type ConfigId: str\n        """
         self.ConfigId = None
 
 
@@ -1348,8 +1724,10 @@ class DeleteConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1363,8 +1741,10 @@ class DeleteExportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExportId: 日志导出ID
+        :type ExportId: str
         """
-        :param ExportId: 日志导出ID\n        :type ExportId: str\n        """
         self.ExportId = None
 
 
@@ -1385,8 +1765,10 @@ class DeleteExportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1400,8 +1782,10 @@ class DeleteIndexRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        """
         self.TopicId = None
 
 
@@ -1422,8 +1806,10 @@ class DeleteIndexResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1437,8 +1823,10 @@ class DeleteLogsetRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        """
         self.LogsetId = None
 
 
@@ -1459,8 +1847,10 @@ class DeleteLogsetResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1474,8 +1864,10 @@ class DeleteMachineGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
         """
-        :param GroupId: 机器组ID\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -1496,8 +1888,10 @@ class DeleteMachineGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1511,8 +1905,10 @@ class DeleteShipperRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
         """
-        :param ShipperId: 投递规则ID\n        :type ShipperId: str\n        """
         self.ShipperId = None
 
 
@@ -1533,8 +1929,10 @@ class DeleteShipperResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1548,8 +1946,10 @@ class DeleteTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        """
         self.TopicId = None
 
 
@@ -1570,8 +1970,10 @@ class DeleteTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1585,7 +1987,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> name
 
 按照【告警通知模板名称】进行过滤。
@@ -1616,7 +2018,13 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
 必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0。\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100。\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -1646,9 +2054,15 @@ class DescribeAlarmNoticesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlarmNotices: 告警通知模板列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AlarmNotices: list of AlarmNotice\n        :param TotalCount: 符合条件的告警通知模板总数。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmNotices: list of AlarmNotice
+        :param TotalCount: 符合条件的告警通知模板总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.AlarmNotices = None
         self.TotalCount = None
         self.RequestId = None
@@ -1671,7 +2085,7 @@ class DescribeAlarmsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> name
 
 按照【告警策略名称】进行过滤。
@@ -1702,7 +2116,13 @@ class DescribeAlarmsRequest(AbstractModel):
 
 必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0。\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100。\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -1732,8 +2152,14 @@ class DescribeAlarmsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alarms: 告警策略列表。
+        :type Alarms: list of AlarmInfo
+        :param TotalCount: 符合查询条件的告警策略数目。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Alarms: 告警策略列表。\n        :type Alarms: list of AlarmInfo\n        :param TotalCount: 符合查询条件的告警策略数目。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Alarms = None
         self.TotalCount = None
         self.RequestId = None
@@ -1756,8 +2182,20 @@ class DescribeAsyncContextResultRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsyncContextTaskId: 异步检索任务ID
+        :type AsyncContextTaskId: str
+        :param PkgId: 日志包序号
+        :type PkgId: str
+        :param PkgLogId: 日志在日志包内的序号
+        :type PkgLogId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param PrevLogs: 上文日志条数，默认值10
+        :type PrevLogs: int
+        :param NextLogs: 下文日志条数，默认值10
+        :type NextLogs: int
         """
-        :param AsyncContextTaskId: 异步检索任务ID\n        :type AsyncContextTaskId: str\n        :param PkgId: 日志包序号\n        :type PkgId: str\n        :param PkgLogId: 日志在日志包内的序号\n        :type PkgLogId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param PrevLogs: 上文日志条数，默认值10\n        :type PrevLogs: int\n        :param NextLogs: 下文日志条数，默认值10\n        :type NextLogs: int\n        """
         self.AsyncContextTaskId = None
         self.PkgId = None
         self.PkgLogId = None
@@ -1788,8 +2226,16 @@ class DescribeAsyncContextResultResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PrevOver: 上文日志是否已经返回
+        :type PrevOver: bool
+        :param NextOver: 下文日志是否已经返回
+        :type NextOver: bool
+        :param Results: 日志内容
+        :type Results: list of LogInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param PrevOver: 上文日志是否已经返回\n        :type PrevOver: bool\n        :param NextOver: 下文日志是否已经返回\n        :type NextOver: bool\n        :param Results: 日志内容\n        :type Results: list of LogInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PrevOver = None
         self.NextOver = None
         self.Results = None
@@ -1814,8 +2260,12 @@ class DescribeAsyncContextTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100\n        :type Limit: int\n        :param Filters: <br><li> topicId
+        r"""
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100
+        :type Limit: int
+        :param Filters: <br><li> topicId
 
 按照【日志主题ID】进行过滤。
 类型：String
@@ -1830,7 +2280,9 @@ class DescribeAsyncContextTasksRequest(AbstractModel):
 
 必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5\n        :type Filters: list of Filter\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5
+        :type Filters: list of Filter
+        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -1860,10 +2312,16 @@ class DescribeAsyncContextTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncContextTasks: 异步上下文任务列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AsyncContextTasks: list of AsyncContextTask\n        :param TotalCount: 异步上下文任务的总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncContextTasks: list of AsyncContextTask
+        :param TotalCount: 异步上下文任务的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.AsyncContextTasks = None
         self.TotalCount = None
         self.RequestId = None
@@ -1886,8 +2344,16 @@ class DescribeAsyncSearchResultRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsyncSearchTaskId: 异步检索任务ID
+        :type AsyncSearchTaskId: str
+        :param TopicId: 日志集ID
+        :type TopicId: str
+        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+        :type Context: str
+        :param Limit: 单次调用返回的日志条数，默认为20，最大为500
+        :type Limit: int
         """
-        :param AsyncSearchTaskId: 异步检索任务ID\n        :type AsyncSearchTaskId: str\n        :param TopicId: 日志集ID\n        :type TopicId: str\n        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容\n        :type Context: str\n        :param Limit: 单次调用返回的日志条数，默认为20，最大为500\n        :type Limit: int\n        """
         self.AsyncSearchTaskId = None
         self.TopicId = None
         self.Context = None
@@ -1914,8 +2380,16 @@ class DescribeAsyncSearchResultResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Context: 加载后续内容的Context
+        :type Context: str
+        :param ListOver: 日志查询结果是否全部返回
+        :type ListOver: bool
+        :param Results: 日志内容
+        :type Results: list of LogInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Context: 加载后续内容的Context\n        :type Context: str\n        :param ListOver: 日志查询结果是否全部返回\n        :type ListOver: bool\n        :param Results: 日志内容\n        :type Results: list of LogInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Context = None
         self.ListOver = None
         self.Results = None
@@ -1940,8 +2414,12 @@ class DescribeAsyncSearchTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100\n        :type Limit: int\n        :param Filters: <br><li> topicId
+        r"""
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100
+        :type Limit: int
+        :param Filters: <br><li> topicId
 
 按照【日志主题ID】进行过滤。
 类型：String
@@ -1956,7 +2434,9 @@ class DescribeAsyncSearchTasksRequest(AbstractModel):
 
 必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5\n        :type Filters: list of Filter\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5
+        :type Filters: list of Filter
+        """
         self.Offset = None
         self.Limit = None
         self.Filters = None
@@ -1986,10 +2466,16 @@ class DescribeAsyncSearchTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncSearchTasks: 异步检索任务列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AsyncSearchTasks: list of AsyncSearchTask\n        :param TotalCount: 异步检索任务的总数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncSearchTasks: list of AsyncSearchTask
+        :param TotalCount: 异步检索任务的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.AsyncSearchTasks = None
         self.TotalCount = None
         self.RequestId = None
@@ -2012,8 +2498,10 @@ class DescribeConfigMachineGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
         """
-        :param ConfigId: 采集配置ID\n        :type ConfigId: str\n        """
         self.ConfigId = None
 
 
@@ -2034,9 +2522,13 @@ class DescribeConfigMachineGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineGroups: 采集规则配置绑定的机器组列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MachineGroups: list of MachineGroupInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineGroups: list of MachineGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.MachineGroups = None
         self.RequestId = None
 
@@ -2057,7 +2549,7 @@ class DescribeConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> name
 
 按照【采集配置名称】进行过滤。
@@ -2080,7 +2572,13 @@ class DescribeConfigsRequest(AbstractModel):
 
 必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页的限制数目，默认值为20，最大值100\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -2110,9 +2608,15 @@ class DescribeConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Configs: 采集配置列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Configs: list of ConfigInfo\n        :param TotalCount: 过滤到的总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configs: list of ConfigInfo
+        :param TotalCount: 过滤到的总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Configs = None
         self.TotalCount = None
         self.RequestId = None
@@ -2135,8 +2639,14 @@ class DescribeExportsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100
+        :type Limit: int
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100\n        :type Limit: int\n        """
         self.TopicId = None
         self.Offset = None
         self.Limit = None
@@ -2161,8 +2671,14 @@ class DescribeExportsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Exports: 日志导出列表
+        :type Exports: list of ExportInfo
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Exports: 日志导出列表\n        :type Exports: list of ExportInfo\n        :param TotalCount: 总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Exports = None
         self.TotalCount = None
         self.RequestId = None
@@ -2185,8 +2701,10 @@ class DescribeIndexRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        """
         self.TopicId = None
 
 
@@ -2207,9 +2725,19 @@ class DescribeIndexResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Status: 是否生效
+        :type Status: bool
+        :param Rule: 索引配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        :param ModifyTime: 索引修改时间，初始值为索引创建时间。
+        :type ModifyTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Status: 是否生效\n        :type Status: bool\n        :param Rule: 索引配置信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`\n        :param ModifyTime: 索引修改时间，初始值为索引创建时间。\n        :type ModifyTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TopicId = None
         self.Status = None
         self.Rule = None
@@ -2233,8 +2761,20 @@ class DescribeLogContextRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 要查询的日志主题ID
+        :type TopicId: str
+        :param BTime: 日志时间,  格式: YYYY-mm-dd HH:MM:SS
+        :type BTime: str
+        :param PkgId: 日志包序号
+        :type PkgId: str
+        :param PkgLogId: 日志包内一条日志的序号
+        :type PkgLogId: int
+        :param PrevLogs: 上文日志条数,  默认值10
+        :type PrevLogs: int
+        :param NextLogs: 下文日志条数,  默认值10
+        :type NextLogs: int
         """
-        :param TopicId: 要查询的日志主题ID\n        :type TopicId: str\n        :param BTime: 日志时间,  格式: YYYY-mm-dd HH:MM:SS\n        :type BTime: str\n        :param PkgId: 日志包序号\n        :type PkgId: str\n        :param PkgLogId: 日志包内一条日志的序号\n        :type PkgLogId: int\n        :param PrevLogs: 上文日志条数,  默认值10\n        :type PrevLogs: int\n        :param NextLogs: 下文日志条数,  默认值10\n        :type NextLogs: int\n        """
         self.TopicId = None
         self.BTime = None
         self.PkgId = None
@@ -2265,8 +2805,16 @@ class DescribeLogContextResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogContextInfos: 日志上下文信息集合
+        :type LogContextInfos: list of LogContextInfo
+        :param PrevOver: 上文日志是否已经返回
+        :type PrevOver: bool
+        :param NextOver: 下文日志是否已经返回
+        :type NextOver: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogContextInfos: 日志上下文信息集合\n        :type LogContextInfos: list of LogContextInfo\n        :param PrevOver: 上文日志是否已经返回\n        :type PrevOver: bool\n        :param NextOver: 下文日志是否已经返回\n        :type NextOver: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogContextInfos = None
         self.PrevOver = None
         self.NextOver = None
@@ -2291,7 +2839,7 @@ class DescribeLogsetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> logsetName
 
 按照【日志集名称】进行过滤。
@@ -2322,7 +2870,13 @@ class DescribeLogsetsRequest(AbstractModel):
 必选：否
 
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页的限制数目，默认值为20，最大值100\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -2352,8 +2906,14 @@ class DescribeLogsetsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 分页的总数目
+        :type TotalCount: int
+        :param Logsets: 日志集列表
+        :type Logsets: list of LogsetInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 分页的总数目\n        :type TotalCount: int\n        :param Logsets: 日志集列表\n        :type Logsets: list of LogsetInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Logsets = None
         self.RequestId = None
@@ -2376,8 +2936,10 @@ class DescribeMachineGroupConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
         """
-        :param GroupId: 机器组ID\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -2398,9 +2960,13 @@ class DescribeMachineGroupConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Configs: 采集规则配置列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Configs: list of ConfigInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configs: list of ConfigInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Configs = None
         self.RequestId = None
 
@@ -2421,7 +2987,7 @@ class DescribeMachineGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> machineGroupName
 
 按照【机器组名称】进行过滤。
@@ -2452,7 +3018,13 @@ class DescribeMachineGroupsRequest(AbstractModel):
 必选：否
 
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页的限制数目，默认值为20，最大值100\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -2482,9 +3054,15 @@ class DescribeMachineGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineGroups: 机器组信息列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MachineGroups: list of MachineGroupInfo\n        :param TotalCount: 分页的总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineGroups: list of MachineGroupInfo
+        :param TotalCount: 分页的总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.MachineGroups = None
         self.TotalCount = None
         self.RequestId = None
@@ -2507,8 +3085,10 @@ class DescribeMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 查询的机器组ID
+        :type GroupId: str
         """
-        :param GroupId: 查询的机器组ID\n        :type GroupId: str\n        """
         self.GroupId = None
 
 
@@ -2529,8 +3109,22 @@ class DescribeMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Machines: 机器状态信息组
+        :type Machines: list of MachineInfo
+        :param AutoUpdate: 机器组是否开启自动升级功能
+        :type AutoUpdate: int
+        :param UpdateStartTime: 机器组自动升级功能预设开始时间
+        :type UpdateStartTime: str
+        :param UpdateEndTime: 机器组自动升级功能预设结束时间
+        :type UpdateEndTime: str
+        :param LatestAgentVersion: 当前用户可用最新的Loglistener版本
+        :type LatestAgentVersion: str
+        :param ServiceLogging: 是否开启服务日志
+        :type ServiceLogging: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Machines: 机器状态信息组\n        :type Machines: list of MachineInfo\n        :param AutoUpdate: 机器组是否开启自动升级功能\n        :type AutoUpdate: int\n        :param UpdateStartTime: 机器组自动升级功能预设开始时间\n        :type UpdateStartTime: str\n        :param UpdateEndTime: 机器组自动升级功能预设结束时间\n        :type UpdateEndTime: str\n        :param LatestAgentVersion: 当前用户可用最新的Loglistener版本\n        :type LatestAgentVersion: str\n        :param ServiceLogging: 是否开启服务日志\n        :type ServiceLogging: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Machines = None
         self.AutoUpdate = None
         self.UpdateStartTime = None
@@ -2561,8 +3155,10 @@ class DescribePartitionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        """
         self.TopicId = None
 
 
@@ -2583,8 +3179,12 @@ class DescribePartitionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Partitions: 分区列表
+        :type Partitions: list of PartitionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Partitions: 分区列表\n        :type Partitions: list of PartitionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Partitions = None
         self.RequestId = None
 
@@ -2605,8 +3205,14 @@ class DescribeShipperTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒
+        :type StartTime: int
+        :param EndTime: 查询的结束时间戳， 毫秒
+        :type EndTime: int
         """
-        :param ShipperId: 投递规则ID\n        :type ShipperId: str\n        :param StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒\n        :type StartTime: int\n        :param EndTime: 查询的结束时间戳， 毫秒\n        :type EndTime: int\n        """
         self.ShipperId = None
         self.StartTime = None
         self.EndTime = None
@@ -2631,9 +3237,13 @@ class DescribeShipperTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tasks: 投递任务列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tasks: list of ShipperTaskInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ShipperTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Tasks = None
         self.RequestId = None
 
@@ -2654,7 +3264,7 @@ class DescribeShippersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> shipperName
 
 按照【投递规则名称】进行过滤。
@@ -2677,7 +3287,13 @@ class DescribeShippersRequest(AbstractModel):
 
 必选：否
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0\n        :type Offset: int\n        :param Limit: 分页单页的限制数目，默认值为20，最大值100\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -2707,9 +3323,15 @@ class DescribeShippersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Shippers: 投递规则列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Shippers: list of ShipperInfo\n        :param TotalCount: 本次查询获取到的总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Shippers: list of ShipperInfo
+        :param TotalCount: 本次查询获取到的总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Shippers = None
         self.TotalCount = None
         self.RequestId = None
@@ -2732,7 +3354,7 @@ class DescribeTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <br><li> topicName
 
 按照【日志主题名称】进行过滤。
@@ -2779,7 +3401,13 @@ class DescribeTopicsRequest(AbstractModel):
 必选：否
 
 
-每次请求的Filters的上限为10，Filter.Values的上限为100。\n        :type Filters: list of Filter\n        :param Offset: 分页的偏移量，默认值为0。\n        :type Offset: int\n        :param Limit: 分页单页限制数目，默认值为20，最大值100。\n        :type Limit: int\n        """
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
         self.Filters = None
         self.Offset = None
         self.Limit = None
@@ -2809,8 +3437,14 @@ class DescribeTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Topics: 日志主题列表
+        :type Topics: list of TopicInfo
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Topics: 日志主题列表\n        :type Topics: list of TopicInfo\n        :param TotalCount: 总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Topics = None
         self.TotalCount = None
         self.RequestId = None
@@ -2833,8 +3467,12 @@ class ExcludePathInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 类型，选填File或Path
+        :type Type: str
+        :param Value: Type对应的具体内容
+        :type Value: str
         """
-        :param Type: 类型，选填File或Path\n        :type Type: str\n        :param Value: Type对应的具体内容\n        :type Value: str\n        """
         self.Type = None
         self.Value = None
 
@@ -2857,8 +3495,34 @@ class ExportInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param ExportId: 日志导出任务ID
+        :type ExportId: str
+        :param Query: 日志导出查询语句
+        :type Query: str
+        :param FileName: 日志导出文件名
+        :type FileName: str
+        :param FileSize: 日志文件大小
+        :type FileSize: int
+        :param Order: 日志导出时间排序
+        :type Order: str
+        :param Format: 日志导出格式
+        :type Format: str
+        :param Count: 日志导出数量
+        :type Count: int
+        :param Status: 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）。
+        :type Status: str
+        :param From: 日志导出起始时间
+        :type From: int
+        :param To: 日志导出结束时间
+        :type To: int
+        :param CosPath: 日志导出路径
+        :type CosPath: str
+        :param CreateTime: 日志导出创建时间
+        :type CreateTime: str
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param ExportId: 日志导出任务ID\n        :type ExportId: str\n        :param Query: 日志导出查询语句\n        :type Query: str\n        :param FileName: 日志导出文件名\n        :type FileName: str\n        :param FileSize: 日志文件大小\n        :type FileSize: int\n        :param Order: 日志导出时间排序\n        :type Order: str\n        :param Format: 日志导出格式\n        :type Format: str\n        :param Count: 日志导出数量\n        :type Count: int\n        :param Status: 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）。\n        :type Status: str\n        :param From: 日志导出起始时间\n        :type From: int\n        :param To: 日志导出结束时间\n        :type To: int\n        :param CosPath: 日志导出路径\n        :type CosPath: str\n        :param CreateTime: 日志导出创建时间\n        :type CreateTime: str\n        """
         self.TopicId = None
         self.ExportId = None
         self.Query = None
@@ -2903,18 +3567,38 @@ class ExtractRuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeKey: 时间字段的key名字，time_key和time_format必须成对出现
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeKey: str\n        :param TimeFormat: 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TimeFormat: str\n        :param Delimiter: 分隔符类型日志的分隔符，只有log_type为delimiter_log时有效
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Delimiter: str\n        :param LogRegex: 整条日志匹配规则，只有log_type为fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogRegex: str\n        :param BeginRegex: 行首匹配规则，只有log_type为multiline_log或fullregex_log时有效
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BeginRegex: str\n        :param Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Keys: list of str\n        :param FilterKeyRegex: 需要过滤日志的key，及其对应的regex
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FilterKeyRegex: list of KeyRegexInfo\n        :param UnMatchUpLoadSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnMatchUpLoadSwitch: bool\n        :param UnMatchLogKey: 失败日志的key
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnMatchLogKey: str\n        :param Backtracking: 增量采集模式下的回溯数据量，默认-1（全量采集）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Backtracking: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeKey: str
+        :param TimeFormat: 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFormat: str
+        :param Delimiter: 分隔符类型日志的分隔符，只有log_type为delimiter_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Delimiter: str
+        :param LogRegex: 整条日志匹配规则，只有log_type为fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRegex: str
+        :param BeginRegex: 行首匹配规则，只有log_type为multiline_log或fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginRegex: str
+        :param Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        :param FilterKeyRegex: 需要过滤日志的key，及其对应的regex
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterKeyRegex: list of KeyRegexInfo
+        :param UnMatchUpLoadSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchUpLoadSwitch: bool
+        :param UnMatchLogKey: 失败日志的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchLogKey: str
+        :param Backtracking: 增量采集模式下的回溯数据量，默认-1（全量采集）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Backtracking: int
+        """
         self.TimeKey = None
         self.TimeFormat = None
         self.Delimiter = None
@@ -2958,8 +3642,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 需要过滤的字段。
+        :type Key: str
+        :param Values: 需要过滤的值。
+        :type Values: list of str
         """
-        :param Key: 需要过滤的字段。\n        :type Key: str\n        :param Values: 需要过滤的值。\n        :type Values: list of str\n        """
         self.Key = None
         self.Values = None
 
@@ -2982,8 +3670,14 @@ class FilterRuleInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 过滤规则Key
+        :type Key: str
+        :param Regex: 过滤规则
+        :type Regex: str
+        :param Value: 过滤规则Value
+        :type Value: str
         """
-        :param Key: 过滤规则Key\n        :type Key: str\n        :param Regex: 过滤规则\n        :type Regex: str\n        :param Value: 过滤规则Value\n        :type Value: str\n        """
         self.Key = None
         self.Regex = None
         self.Value = None
@@ -3008,9 +3702,15 @@ class FullTextInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CaseSensitive: 是否大小写敏感
+        :type CaseSensitive: bool
+        :param Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符
+        :type Tokenizer: str
+        :param ContainZH: 是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainZH: bool
         """
-        :param CaseSensitive: 是否大小写敏感\n        :type CaseSensitive: bool\n        :param Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符\n        :type Tokenizer: str\n        :param ContainZH: 是否包含中文
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainZH: bool\n        """
         self.CaseSensitive = None
         self.Tokenizer = None
         self.ContainZH = None
@@ -3035,8 +3735,20 @@ class GetAlarmLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Query: 查询语句，语句长度最大为1024
+        :type Query: str
+        :param Limit: 单次查询返回的日志条数，最大值为100
+        :type Limit: int
+        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+        :type Context: str
+        :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+        :type Sort: str
         """
-        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Query: 查询语句，语句长度最大为1024\n        :type Query: str\n        :param Limit: 单次查询返回的日志条数，最大值为100\n        :type Limit: int\n        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容\n        :type Context: str\n        :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc\n        :type Sort: str\n        """
         self.From = None
         self.To = None
         self.Query = None
@@ -3067,11 +3779,25 @@ class GetAlarmLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Context: 加载后续内容的Context
+        :type Context: str
+        :param ListOver: 日志查询结果是否全部返回
+        :type ListOver: bool
+        :param Analysis: 返回的是否为分析结果
+        :type Analysis: bool
+        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColNames: list of str
+        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of LogInfo
+        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisResults: list of LogItems
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Context: 加载后续内容的Context\n        :type Context: str\n        :param ListOver: 日志查询结果是否全部返回\n        :type ListOver: bool\n        :param Analysis: 返回的是否为分析结果\n        :type Analysis: bool\n        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ColNames: list of str\n        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Results: list of LogInfo\n        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AnalysisResults: list of LogItems\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Context = None
         self.ListOver = None
         self.Analysis = None
@@ -3107,9 +3833,13 @@ class JsonInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnableTag: 启用标志
+        :type EnableTag: bool
+        :param MetaFields: 元数据信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaFields: list of str
         """
-        :param EnableTag: 启用标志\n        :type EnableTag: bool\n        :param MetaFields: 元数据信息列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MetaFields: list of str\n        """
         self.EnableTag = None
         self.MetaFields = None
 
@@ -3132,8 +3862,12 @@ class KeyRegexInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 需要过滤日志的key
+        :type Key: str
+        :param Regex: key对应的过滤规则regex
+        :type Regex: str
         """
-        :param Key: 需要过滤日志的key\n        :type Key: str\n        :param Regex: key对应的过滤规则regex\n        :type Regex: str\n        """
         self.Key = None
         self.Regex = None
 
@@ -3156,8 +3890,12 @@ class KeyValueInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 需要配置键值或者元字段索引的字段
+        :type Key: str
+        :param Value: 字段的索引描述信息
+        :type Value: :class:`tencentcloud.cls.v20201016.models.ValueInfo`
         """
-        :param Key: 需要配置键值或者元字段索引的字段\n        :type Key: str\n        :param Value: 字段的索引描述信息\n        :type Value: :class:`tencentcloud.cls.v20201016.models.ValueInfo`\n        """
         self.Key = None
         self.Value = None
 
@@ -3182,8 +3920,20 @@ class LogContextInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Source: 日志来源设备
+        :type Source: str
+        :param Filename: 采集路径
+        :type Filename: str
+        :param Content: 日志内容
+        :type Content: str
+        :param PkgId: 日志包序号
+        :type PkgId: str
+        :param PkgLogId: 日志包内一条日志的序号
+        :type PkgLogId: int
+        :param BTime: 日志时间戳
+        :type BTime: int
         """
-        :param Source: 日志来源设备\n        :type Source: str\n        :param Filename: 采集路径\n        :type Filename: str\n        :param Content: 日志内容\n        :type Content: str\n        :param PkgId: 日志包序号\n        :type PkgId: str\n        :param PkgLogId: 日志包内一条日志的序号\n        :type PkgLogId: int\n        :param BTime: 日志时间戳\n        :type BTime: int\n        """
         self.Source = None
         self.Filename = None
         self.Content = None
@@ -3214,9 +3964,25 @@ class LogInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Time: 日志时间，单位ms
+        :type Time: int
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param TopicName: 日志主题名称
+        :type TopicName: str
+        :param Source: 日志来源IP
+        :type Source: str
+        :param FileName: 日志文件名称
+        :type FileName: str
+        :param PkgId: 日志上报请求包的ID
+        :type PkgId: str
+        :param PkgLogId: 请求包内日志的ID
+        :type PkgLogId: str
+        :param LogJson: 日志内容的Json序列化字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogJson: str
         """
-        :param Time: 日志时间，单位ms\n        :type Time: int\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param TopicName: 日志主题名称\n        :type TopicName: str\n        :param Source: 日志来源IP\n        :type Source: str\n        :param FileName: 日志文件名称\n        :type FileName: str\n        :param PkgId: 日志上报请求包的ID\n        :type PkgId: str\n        :param PkgLogId: 请求包内日志的ID\n        :type PkgLogId: str\n        :param LogJson: 日志内容的Json序列化字符串
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogJson: str\n        """
         self.Time = None
         self.TopicId = None
         self.TopicName = None
@@ -3251,8 +4017,12 @@ class LogItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 日志Key
+        :type Key: str
+        :param Value: 日志Value
+        :type Value: str
         """
-        :param Key: 日志Key\n        :type Key: str\n        :param Value: 日志Value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -3275,8 +4045,10 @@ class LogItems(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 分析结果返回的KV数据对
+        :type Data: list of LogItem
         """
-        :param Data: 分析结果返回的KV数据对\n        :type Data: list of LogItem\n        """
         self.Data = None
 
 
@@ -3302,9 +4074,21 @@ class LogsetInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param LogsetName: 日志集名称
+        :type LogsetName: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Tags: 日志集绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param TopicCount: 日志集下日志主题的数目
+        :type TopicCount: int
+        :param RoleName: 若AssumerUin非空，则表示创建该日志集的服务方角色
+        :type RoleName: str
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param LogsetName: 日志集名称\n        :type LogsetName: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Tags: 日志集绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param TopicCount: 日志集下日志主题的数目\n        :type TopicCount: int\n        :param RoleName: 若AssumerUin非空，则表示创建该日志集的服务方角色\n        :type RoleName: str\n        """
         self.LogsetId = None
         self.LogsetName = None
         self.CreateTime = None
@@ -3340,13 +4124,31 @@ class MachineGroupInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param GroupName: 机器组名称
+        :type GroupName: str
+        :param MachineGroupType: 机器组类型
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Tags: 机器组绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param AutoUpdate: 是否开启机器组自动更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoUpdate: str
+        :param UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateStartTime: str
+        :param UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateEndTime: str
+        :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceLogging: bool
         """
-        :param GroupId: 机器组ID\n        :type GroupId: str\n        :param GroupName: 机器组名称\n        :type GroupName: str\n        :param MachineGroupType: 机器组类型\n        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Tags: 机器组绑定的标签列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param AutoUpdate: 是否开启机器组自动更新
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoUpdate: str\n        :param UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateStartTime: str\n        :param UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateEndTime: str\n        :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceLogging: bool\n        """
         self.GroupId = None
         self.GroupName = None
         self.MachineGroupType = None
@@ -3390,8 +4192,12 @@ class MachineGroupTypeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 机器组类型，ip表示该机器组Values中存的是采集机器的IP地址，label表示该机器组Values中存储的是机器的标签
+        :type Type: str
+        :param Values: 机器描述列表
+        :type Values: list of str
         """
-        :param Type: 机器组类型，ip表示该机器组Values中存的是采集机器的IP地址，label表示该机器组Values中存储的是机器的标签\n        :type Type: str\n        :param Values: 机器描述列表\n        :type Values: list of str\n        """
         self.Type = None
         self.Values = None
 
@@ -3414,8 +4220,24 @@ class MachineInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: 机器的IP
+        :type Ip: str
+        :param Status: 机器状态，0:异常，1:正常
+        :type Status: int
+        :param OfflineTime: 机器离线时间，空为正常，异常返回具体时间
+        :type OfflineTime: str
+        :param AutoUpdate: 机器是否开启自动升级。0:关闭，1:开启
+        :type AutoUpdate: int
+        :param Version: 机器当前版本号。
+        :type Version: str
+        :param UpdateStatus: 机器升级功能状态。
+        :type UpdateStatus: int
+        :param ErrCode: 机器升级结果标识。
+        :type ErrCode: int
+        :param ErrMsg: 机器升级结果信息。
+        :type ErrMsg: str
         """
-        :param Ip: 机器的IP\n        :type Ip: str\n        :param Status: 机器状态，0:异常，1:正常\n        :type Status: int\n        :param OfflineTime: 机器离线时间，空为正常，异常返回具体时间\n        :type OfflineTime: str\n        :param AutoUpdate: 机器是否开启自动升级。0:关闭，1:开启\n        :type AutoUpdate: int\n        :param Version: 机器当前版本号。\n        :type Version: str\n        :param UpdateStatus: 机器升级功能状态。\n        :type UpdateStatus: int\n        :param ErrCode: 机器升级结果标识。\n        :type ErrCode: int\n        :param ErrMsg: 机器升级结果信息。\n        :type ErrMsg: str\n        """
         self.Ip = None
         self.Status = None
         self.OfflineTime = None
@@ -3450,8 +4272,12 @@ class MergePartitionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param PartitionId: 合并的PartitionId
+        :type PartitionId: int
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param PartitionId: 合并的PartitionId\n        :type PartitionId: int\n        """
         self.TopicId = None
         self.PartitionId = None
 
@@ -3474,8 +4300,12 @@ class MergePartitionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Partitions: 合并结果集
+        :type Partitions: list of PartitionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Partitions: 合并结果集\n        :type Partitions: list of PartitionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Partitions = None
         self.RequestId = None
 
@@ -3496,11 +4326,21 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param AlarmNoticeId: 告警通知模板ID。\n        :type AlarmNoticeId: str\n        :param Name: 告警模板名称。\n        :type Name: str\n        :param Type: 告警模板的类型。可选值：
+        r"""
+        :param AlarmNoticeId: 告警通知模板ID。
+        :type AlarmNoticeId: str
+        :param Name: 告警模板名称。
+        :type Name: str
+        :param Type: 告警模板的类型。可选值：
 <br><li> Trigger - 告警触发
 <br><li> Recovery - 告警恢复
-<br><li> All - 告警触发和告警恢复\n        :type Type: str\n        :param NoticeReceivers: 告警模板接收者信息。\n        :type NoticeReceivers: list of NoticeReceiver\n        :param WebCallbacks: 告警模板回调信息。\n        :type WebCallbacks: list of WebCallback\n        """
+<br><li> All - 告警触发和告警恢复
+        :type Type: str
+        :param NoticeReceivers: 告警模板接收者信息。
+        :type NoticeReceivers: list of NoticeReceiver
+        :param WebCallbacks: 告警模板回调信息。
+        :type WebCallbacks: list of WebCallback
+        """
         self.AlarmNoticeId = None
         self.Name = None
         self.Type = None
@@ -3539,8 +4379,10 @@ class ModifyAlarmNoticeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3554,8 +4396,32 @@ class ModifyAlarmRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AlarmId: 告警策略ID。
+        :type AlarmId: str
+        :param Name: 告警策略名称
+        :type Name: str
+        :param MonitorTime: 监控任务运行时间点。
+        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
+        :param Condition: 触发条件。
+        :type Condition: str
+        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :type TriggerCount: int
+        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
+        :type AlarmPeriod: int
+        :param AlarmNoticeIds: 关联的告警通知模板列表。
+        :type AlarmNoticeIds: list of str
+        :param AlarmTargets: 监控对象列表。
+        :type AlarmTargets: list of AlarmTarget
+        :param Status: 是否开启告警策略。
+        :type Status: bool
+        :param MessageTemplate: 用户自定义告警内容
+        :type MessageTemplate: str
+        :param CallBack: 用户自定义回调
+        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
+        :param Analysis: 多维分析
+        :type Analysis: list of AnalysisDimensional
         """
-        :param AlarmId: 告警策略ID。\n        :type AlarmId: str\n        :param Name: 告警策略名称\n        :type Name: str\n        :param MonitorTime: 监控任务运行时间点。\n        :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`\n        :param Condition: 触发条件。\n        :type Condition: str\n        :param TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。\n        :type TriggerCount: int\n        :param AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。\n        :type AlarmPeriod: int\n        :param AlarmNoticeIds: 关联的告警通知模板列表。\n        :type AlarmNoticeIds: list of str\n        :param AlarmTargets: 监控对象列表。\n        :type AlarmTargets: list of AlarmTarget\n        :param Status: 是否开启告警策略。\n        :type Status: bool\n        :param MessageTemplate: 用户自定义告警内容\n        :type MessageTemplate: str\n        :param CallBack: 用户自定义回调\n        :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`\n        :param Analysis: 多维分析\n        :type Analysis: list of AnalysisDimensional\n        """
         self.AlarmId = None
         self.Name = None
         self.MonitorTime = None
@@ -3612,8 +4478,10 @@ class ModifyAlarmResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3627,8 +4495,22 @@ class ModifyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigId: 采集规则配置ID
+        :type ConfigId: str
+        :param Name: 采集规则配置名称
+        :type Name: str
+        :param Path: 日志采集路径，包含文件名
+        :type Path: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+        :type LogType: str
+        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param ExcludePaths: 采集黑名单路径列表
+        :type ExcludePaths: list of ExcludePathInfo
+        :param Output: 采集配置关联的日志主题（TopicId）
+        :type Output: str
         """
-        :param ConfigId: 采集规则配置ID\n        :type ConfigId: str\n        :param Name: 采集规则配置名称\n        :type Name: str\n        :param Path: 日志采集路径，包含文件名\n        :type Path: str\n        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log\n        :type LogType: str\n        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType\n        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`\n        :param ExcludePaths: 采集黑名单路径列表\n        :type ExcludePaths: list of ExcludePathInfo\n        :param Output: 采集配置关联的日志主题（TopicId）\n        :type Output: str\n        """
         self.ConfigId = None
         self.Name = None
         self.Path = None
@@ -3668,8 +4550,10 @@ class ModifyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3683,8 +4567,14 @@ class ModifyIndexRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Status: 默认不生效
+        :type Status: bool
+        :param Rule: 索引规则，Rule和Effective两个必须有一个参数存在
+        :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Status: 默认不生效\n        :type Status: bool\n        :param Rule: 索引规则，Rule和Effective两个必须有一个参数存在\n        :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`\n        """
         self.TopicId = None
         self.Status = None
         self.Rule = None
@@ -3711,8 +4601,10 @@ class ModifyIndexResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3726,8 +4618,14 @@ class ModifyLogsetRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param LogsetName: 日志集名称
+        :type LogsetName: str
+        :param Tags: 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+        :type Tags: list of Tag
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param LogsetName: 日志集名称\n        :type LogsetName: str\n        :param Tags: 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。\n        :type Tags: list of Tag\n        """
         self.LogsetId = None
         self.LogsetName = None
         self.Tags = None
@@ -3757,8 +4655,10 @@ class ModifyLogsetResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3772,8 +4672,24 @@ class ModifyMachineGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param GroupName: 机器组名称
+        :type GroupName: str
+        :param MachineGroupType: 机器组类型
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        :param AutoUpdate: 是否开启机器组自动更新
+        :type AutoUpdate: bool
+        :param UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener
+        :type UpdateStartTime: str
+        :param UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener
+        :type UpdateEndTime: str
+        :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
+        :type ServiceLogging: bool
         """
-        :param GroupId: 机器组ID\n        :type GroupId: str\n        :param GroupName: 机器组名称\n        :type GroupName: str\n        :param MachineGroupType: 机器组类型\n        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`\n        :param Tags: 标签列表\n        :type Tags: list of Tag\n        :param AutoUpdate: 是否开启机器组自动更新\n        :type AutoUpdate: bool\n        :param UpdateStartTime: 升级开始时间，建议业务低峰期升级LogListener\n        :type UpdateStartTime: str\n        :param UpdateEndTime: 升级结束时间，建议业务低峰期升级LogListener\n        :type UpdateEndTime: str\n        :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费\n        :type ServiceLogging: bool\n        """
         self.GroupId = None
         self.GroupName = None
         self.MachineGroupType = None
@@ -3815,8 +4731,10 @@ class ModifyMachineGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3830,8 +4748,30 @@ class ModifyShipperRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param Bucket: 投递规则投递的新的bucket
+        :type Bucket: str
+        :param Prefix: 投递规则投递的新的目录前缀
+        :type Prefix: str
+        :param Status: 投递规则的开关状态
+        :type Status: bool
+        :param ShipperName: 投递规则的名字
+        :type ShipperName: str
+        :param Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900
+        :type Interval: int
+        :param MaxSize: 投递的文件的最大值，单位 MB，默认256，范围 100-256
+        :type MaxSize: int
+        :param FilterRules: 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示
+        :type Partition: str
+        :param Compress: 投递日志的压缩配置
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: 投递日志的内容格式配置
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         """
-        :param ShipperId: 投递规则ID\n        :type ShipperId: str\n        :param Bucket: 投递规则投递的新的bucket\n        :type Bucket: str\n        :param Prefix: 投递规则投递的新的目录前缀\n        :type Prefix: str\n        :param Status: 投递规则的开关状态\n        :type Status: bool\n        :param ShipperName: 投递规则的名字\n        :type ShipperName: str\n        :param Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900\n        :type Interval: int\n        :param MaxSize: 投递的文件的最大值，单位 MB，默认256，范围 100-256\n        :type MaxSize: int\n        :param FilterRules: 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递\n        :type FilterRules: list of FilterRuleInfo\n        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示\n        :type Partition: str\n        :param Compress: 投递日志的压缩配置\n        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`\n        :param Content: 投递日志的内容格式配置\n        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`\n        """
         self.ShipperId = None
         self.Bucket = None
         self.Prefix = None
@@ -3881,8 +4821,10 @@ class ModifyShipperResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3896,8 +4838,22 @@ class ModifyTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param TopicName: 日志主题名称
+        :type TopicName: str
+        :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
+        :type Tags: list of Tag
+        :param Status: 该日志主题是否开始采集
+        :type Status: bool
+        :param AutoSplit: 是否开启自动分裂
+        :type AutoSplit: bool
+        :param MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数
+        :type MaxSplitPartitions: int
+        :param Period: 生命周期，单位天；可取值范围1~366
+        :type Period: int
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param TopicName: 日志主题名称\n        :type TopicName: str\n        :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。\n        :type Tags: list of Tag\n        :param Status: 该日志主题是否开始采集\n        :type Status: bool\n        :param AutoSplit: 是否开启自动分裂\n        :type AutoSplit: bool\n        :param MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数\n        :type MaxSplitPartitions: int\n        :param Period: 生命周期，单位天；可取值范围1~366\n        :type Period: int\n        """
         self.TopicId = None
         self.TopicName = None
         self.Tags = None
@@ -3935,8 +4891,10 @@ class ModifyTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3950,10 +4908,14 @@ class MonitorTime(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 可选值：
 <br><li> Period - 周期执行
-<br><li> Fixed - 定期执行\n        :type Type: str\n        :param Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。\n        :type Time: int\n        """
+<br><li> Fixed - 定期执行
+        :type Type: str
+        :param Time: 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
+        :type Time: int
+        """
         self.Type = None
         self.Time = None
 
@@ -3976,15 +4938,27 @@ class NoticeReceiver(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReceiverType: 接受者类型。可选值：
 <br><li> Uin - 用户ID
 <br><li> Group - 用户组ID
-暂不支持其余接收者类型。\n        :type ReceiverType: str\n        :param ReceiverIds: 接收者。\n        :type ReceiverIds: list of int\n        :param ReceiverChannels: 通知接收渠道。
+暂不支持其余接收者类型。
+        :type ReceiverType: str
+        :param ReceiverIds: 接收者。
+        :type ReceiverIds: list of int
+        :param ReceiverChannels: 通知接收渠道。
 <br><li> Email - 邮件
 <br><li> Sms - 短信
 <br><li> WeChat - 微信
-<br><li> Phone - 电话\n        :type ReceiverChannels: list of str\n        :param StartTime: 允许接收信息的开始时间。\n        :type StartTime: str\n        :param EndTime: 允许接收信息的结束时间。\n        :type EndTime: str\n        :param Index: 位序\n        :type Index: int\n        """
+<br><li> Phone - 电话
+        :type ReceiverChannels: list of str
+        :param StartTime: 允许接收信息的开始时间。
+        :type StartTime: str
+        :param EndTime: 允许接收信息的结束时间。
+        :type EndTime: str
+        :param Index: 位序
+        :type Index: int
+        """
         self.ReceiverType = None
         self.ReceiverIds = None
         self.ReceiverChannels = None
@@ -4015,9 +4989,21 @@ class PartitionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PartitionId: 分区ID
+        :type PartitionId: int
+        :param Status: 分区的状态（readwrite或者是readonly）
+        :type Status: str
+        :param InclusiveBeginKey: 分区哈希键起始key
+        :type InclusiveBeginKey: str
+        :param ExclusiveEndKey: 分区哈希键结束key
+        :type ExclusiveEndKey: str
+        :param CreateTime: 分区创建时间
+        :type CreateTime: str
+        :param LastWriteTime: 只读分区数据停止写入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastWriteTime: str
         """
-        :param PartitionId: 分区ID\n        :type PartitionId: int\n        :param Status: 分区的状态（readwrite或者是readonly）\n        :type Status: str\n        :param InclusiveBeginKey: 分区哈希键起始key\n        :type InclusiveBeginKey: str\n        :param ExclusiveEndKey: 分区哈希键结束key\n        :type ExclusiveEndKey: str\n        :param CreateTime: 分区创建时间\n        :type CreateTime: str\n        :param LastWriteTime: 只读分区数据停止写入时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastWriteTime: str\n        """
         self.PartitionId = None
         self.Status = None
         self.InclusiveBeginKey = None
@@ -4048,8 +5034,12 @@ class RetryShipperTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param TaskId: 投递任务ID
+        :type TaskId: str
         """
-        :param ShipperId: 投递规则ID\n        :type ShipperId: str\n        :param TaskId: 投递任务ID\n        :type TaskId: str\n        """
         self.ShipperId = None
         self.TaskId = None
 
@@ -4072,8 +5062,10 @@ class RetryShipperTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4087,11 +5079,17 @@ class RuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FullText: 全文索引配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FullText: :class:`tencentcloud.cls.v20201016.models.FullTextInfo`\n        :param KeyValue: 键值索引配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type KeyValue: :class:`tencentcloud.cls.v20201016.models.RuleKeyValueInfo`\n        :param Tag: 元字段索引配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullText: :class:`tencentcloud.cls.v20201016.models.FullTextInfo`
+        :param KeyValue: 键值索引配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyValue: :class:`tencentcloud.cls.v20201016.models.RuleKeyValueInfo`
+        :param Tag: 元字段索引配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
+        """
         self.FullText = None
         self.KeyValue = None
         self.Tag = None
@@ -4122,8 +5120,12 @@ class RuleKeyValueInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CaseSensitive: 是否大小写敏感
+        :type CaseSensitive: bool
+        :param KeyValues: 需要建立索引的键值对信息；最大只能配置100个键值对
+        :type KeyValues: list of KeyValueInfo
         """
-        :param CaseSensitive: 是否大小写敏感\n        :type CaseSensitive: bool\n        :param KeyValues: 需要建立索引的键值对信息；最大只能配置100个键值对\n        :type KeyValues: list of KeyValueInfo\n        """
         self.CaseSensitive = None
         self.KeyValues = None
 
@@ -4151,8 +5153,12 @@ class RuleTagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CaseSensitive: 是否大小写敏感
+        :type CaseSensitive: bool
+        :param KeyValues: 标签索引配置中的字段信息
+        :type KeyValues: list of KeyValueInfo
         """
-        :param CaseSensitive: 是否大小写敏感\n        :type CaseSensitive: bool\n        :param KeyValues: 标签索引配置中的字段信息\n        :type KeyValues: list of KeyValueInfo\n        """
         self.CaseSensitive = None
         self.KeyValues = None
 
@@ -4180,8 +5186,22 @@ class SearchLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 要查询的日志主题ID
+        :type TopicId: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Query: 查询语句，语句长度最大为4096
+        :type Query: str
+        :param Limit: 单次查询返回的日志条数，最大值为100
+        :type Limit: int
+        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+        :type Context: str
+        :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+        :type Sort: str
         """
-        :param TopicId: 要查询的日志主题ID\n        :type TopicId: str\n        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms\n        :type From: int\n        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms\n        :type To: int\n        :param Query: 查询语句，语句长度最大为4096\n        :type Query: str\n        :param Limit: 单次查询返回的日志条数，最大值为100\n        :type Limit: int\n        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容\n        :type Context: str\n        :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc\n        :type Sort: str\n        """
         self.TopicId = None
         self.From = None
         self.To = None
@@ -4214,11 +5234,25 @@ class SearchLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Context: 加载后续内容的Context
+        :type Context: str
+        :param ListOver: 日志查询结果是否全部返回
+        :type ListOver: bool
+        :param Analysis: 返回的是否为分析结果
+        :type Analysis: bool
+        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColNames: list of str
+        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of LogInfo
+        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisResults: list of LogItems
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Context: 加载后续内容的Context\n        :type Context: str\n        :param ListOver: 日志查询结果是否全部返回\n        :type ListOver: bool\n        :param Analysis: 返回的是否为分析结果\n        :type Analysis: bool\n        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ColNames: list of str\n        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Results: list of LogInfo\n        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AnalysisResults: list of LogItems\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Context = None
         self.ListOver = None
         self.Analysis = None
@@ -4254,11 +5288,37 @@ class ShipperInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Bucket: 投递的bucket地址
+        :type Bucket: str
+        :param Prefix: 投递的前缀目录
+        :type Prefix: str
+        :param ShipperName: 投递规则的名字
+        :type ShipperName: str
+        :param Interval: 投递的时间间隔，单位 秒
+        :type Interval: int
+        :param MaxSize: 投递的文件的最大值，单位 MB
+        :type MaxSize: int
+        :param Status: 是否生效
+        :type Status: bool
+        :param FilterRules: 投递日志的过滤规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示
+        :type Partition: str
+        :param Compress: 投递日志的压缩配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: 投递日志的内容格式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        :param CreateTime: 投递日志的创建时间
+        :type CreateTime: str
         """
-        :param ShipperId: 投递规则ID\n        :type ShipperId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param Bucket: 投递的bucket地址\n        :type Bucket: str\n        :param Prefix: 投递的前缀目录\n        :type Prefix: str\n        :param ShipperName: 投递规则的名字\n        :type ShipperName: str\n        :param Interval: 投递的时间间隔，单位 秒\n        :type Interval: int\n        :param MaxSize: 投递的文件的最大值，单位 MB\n        :type MaxSize: int\n        :param Status: 是否生效\n        :type Status: bool\n        :param FilterRules: 投递日志的过滤规则
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FilterRules: list of FilterRuleInfo\n        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示\n        :type Partition: str\n        :param Compress: 投递日志的压缩配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`\n        :param Content: 投递日志的内容格式配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`\n        :param CreateTime: 投递日志的创建时间\n        :type CreateTime: str\n        """
         self.ShipperId = None
         self.TopicId = None
         self.Bucket = None
@@ -4312,8 +5372,26 @@ class ShipperTaskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 投递任务ID
+        :type TaskId: str
+        :param ShipperId: 投递信息ID
+        :type ShipperId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param RangeStart: 本批投递的日志的开始时间戳，毫秒
+        :type RangeStart: int
+        :param RangeEnd: 本批投递的日志的结束时间戳， 毫秒
+        :type RangeEnd: int
+        :param StartTime: 本次投递任务的开始时间戳， 毫秒
+        :type StartTime: int
+        :param EndTime: 本次投递任务的结束时间戳， 毫秒
+        :type EndTime: int
+        :param Status: 本次投递的结果，"success","running","failed"
+        :type Status: str
+        :param Message: 结果的详细信息
+        :type Message: str
         """
-        :param TaskId: 投递任务ID\n        :type TaskId: str\n        :param ShipperId: 投递信息ID\n        :type ShipperId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param RangeStart: 本批投递的日志的开始时间戳，毫秒\n        :type RangeStart: int\n        :param RangeEnd: 本批投递的日志的结束时间戳， 毫秒\n        :type RangeEnd: int\n        :param StartTime: 本次投递任务的开始时间戳， 毫秒\n        :type StartTime: int\n        :param EndTime: 本次投递任务的结束时间戳， 毫秒\n        :type EndTime: int\n        :param Status: 本次投递的结果，"success","running","failed"\n        :type Status: str\n        :param Message: 结果的详细信息\n        :type Message: str\n        """
         self.TaskId = None
         self.ShipperId = None
         self.TopicId = None
@@ -4350,8 +5428,16 @@ class SplitPartitionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param PartitionId: 待分裂分区ID
+        :type PartitionId: int
+        :param SplitKey: 分区切分的哈希key的位置，只在Number=2时有意义
+        :type SplitKey: str
+        :param Number: 分区分裂个数(可选)，默认等于2
+        :type Number: int
         """
-        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param PartitionId: 待分裂分区ID\n        :type PartitionId: int\n        :param SplitKey: 分区切分的哈希key的位置，只在Number=2时有意义\n        :type SplitKey: str\n        :param Number: 分区分裂个数(可选)，默认等于2\n        :type Number: int\n        """
         self.TopicId = None
         self.PartitionId = None
         self.SplitKey = None
@@ -4378,8 +5464,12 @@ class SplitPartitionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Partitions: 分裂结果集
+        :type Partitions: list of PartitionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Partitions: 分裂结果集\n        :type Partitions: list of PartitionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Partitions = None
         self.RequestId = None
 
@@ -4400,8 +5490,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
         """
-        :param Key: 标签键\n        :type Key: str\n        :param Value: 标签值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -4424,13 +5518,37 @@ class TopicInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param TopicName: 日志主题名称
+        :type TopicName: str
+        :param PartitionCount: 主题分区个数
+        :type PartitionCount: int
+        :param Index: 是否开启索引
+        :type Index: bool
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Status: 日主主题是否开启采集
+        :type Status: bool
+        :param Tags: 日志主题绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param AutoSplit: 该主题是否开启自动分裂
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSplit: bool
+        :param MaxSplitPartitions: 若开启自动分裂的话，该主题能够允许的最大分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSplitPartitions: int
+        :param StorageType: 日主题的存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param Period: 生命周期，单位为天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
         """
-        :param LogsetId: 日志集ID\n        :type LogsetId: str\n        :param TopicId: 日志主题ID\n        :type TopicId: str\n        :param TopicName: 日志主题名称\n        :type TopicName: str\n        :param PartitionCount: 主题分区个数\n        :type PartitionCount: int\n        :param Index: 是否开启索引\n        :type Index: bool\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Status: 日主主题是否开启采集\n        :type Status: bool\n        :param Tags: 日志主题绑定的标签信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param AutoSplit: 该主题是否开启自动分裂
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoSplit: bool\n        :param MaxSplitPartitions: 若开启自动分裂的话，该主题能够允许的最大分区数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxSplitPartitions: int\n        :param StorageType: 日主题的存储类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageType: str\n        :param Period: 生命周期，单位为天
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Period: int\n        """
         self.LogsetId = None
         self.TopicId = None
         self.TopicName = None
@@ -4484,8 +5602,10 @@ class UploadLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4499,9 +5619,17 @@ class ValueInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 字段类型，目前支持的类型有：long、text、double
+        :type Type: str
+        :param Tokenizer: 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
+        :type Tokenizer: str
+        :param SqlFlag: 字段是否开启分析功能
+        :type SqlFlag: bool
+        :param ContainZH: 是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainZH: bool
         """
-        :param Type: 字段类型，目前支持的类型有：long、text、double\n        :type Type: str\n        :param Tokenizer: 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符\n        :type Tokenizer: str\n        :param SqlFlag: 字段是否开启分析功能\n        :type SqlFlag: bool\n        :param ContainZH: 是否包含中文
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainZH: bool\n        """
         self.Type = None
         self.Tokenizer = None
         self.SqlFlag = None
@@ -4528,16 +5656,28 @@ class WebCallback(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Url: 回调地址。\n        :type Url: str\n        :param CallbackType: 回调的类型。可选值：
+        r"""
+        :param Url: 回调地址。
+        :type Url: str
+        :param CallbackType: 回调的类型。可选值：
 <br><li> WeCom
-<br><li> Http\n        :type CallbackType: str\n        :param Method: 回调方法。可选值：
+<br><li> Http
+        :type CallbackType: str
+        :param Method: 回调方法。可选值：
 <br><li> POST
 <br><li> PUT
 默认值为POST。CallbackType为Http时为必选。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Method: str\n        :param Headers: 请求头。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Headers: list of str\n        :param Body: 请求内容。CallbackType为Http时为必选。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Body: str\n        :param Index: 序号\n        :type Index: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param Headers: 请求头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of str
+        :param Body: 请求内容。CallbackType为Http时为必选。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Body: str
+        :param Index: 序号
+        :type Index: int
+        """
         self.Url = None
         self.CallbackType = None
         self.Method = None

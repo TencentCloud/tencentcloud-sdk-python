@@ -24,8 +24,16 @@ class AssociateDDoSEipAddressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
+        :type InstanceId: str
+        :param Eip: 资源实例ID对应的高防弹性公网IP。
+        :type Eip: str
+        :param CvmInstanceID: 要绑定的实例 ID。实例 ID 形如：ins-11112222。可通过登录控制台查询，也可通过 DescribeInstances 接口返回值中的InstanceId获取。
+        :type CvmInstanceID: str
+        :param CvmRegion: cvm实例所在地域，例如：ap-hongkong。
+        :type CvmRegion: str
         """
-        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。\n        :type InstanceId: str\n        :param Eip: 资源实例ID对应的高防弹性公网IP。\n        :type Eip: str\n        :param CvmInstanceID: 要绑定的实例 ID。实例 ID 形如：ins-11112222。可通过登录控制台查询，也可通过 DescribeInstances 接口返回值中的InstanceId获取。\n        :type CvmInstanceID: str\n        :param CvmRegion: cvm实例所在地域，例如：ap-hongkong。\n        :type CvmRegion: str\n        """
         self.InstanceId = None
         self.Eip = None
         self.CvmInstanceID = None
@@ -52,8 +60,10 @@ class AssociateDDoSEipAddressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -67,8 +77,16 @@ class AssociateDDoSEipLoadBalancerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
+        :type InstanceId: str
+        :param Eip: 资源实例ID对应的高防弹性公网IP。
+        :type Eip: str
+        :param LoadBalancerID: 要绑定的负载均衡ID。负载均衡 ID 形如：lb-0000002i。可通过登录控制台查询，也可通过 DescribeLoadBalancers 接口返回值中的LoadBalancerId获取。
+        :type LoadBalancerID: str
+        :param LoadBalancerRegion: Clb所在地域，例如：ap-hongkong。
+        :type LoadBalancerRegion: str
         """
-        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。\n        :type InstanceId: str\n        :param Eip: 资源实例ID对应的高防弹性公网IP。\n        :type Eip: str\n        :param LoadBalancerID: 要绑定的负载均衡ID。负载均衡 ID 形如：lb-0000002i。可通过登录控制台查询，也可通过 DescribeLoadBalancers 接口返回值中的LoadBalancerId获取。\n        :type LoadBalancerID: str\n        :param LoadBalancerRegion: Clb所在地域，例如：ap-hongkong。\n        :type LoadBalancerRegion: str\n        """
         self.InstanceId = None
         self.Eip = None
         self.LoadBalancerID = None
@@ -95,8 +113,10 @@ class AssociateDDoSEipLoadBalancerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -110,27 +130,61 @@ class BGPIPInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceDetail: 资产实例的详细信息\n        :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`\n        :param SpecificationLimit: 资产实例的规格信息\n        :type SpecificationLimit: :class:`tencentcloud.antiddos.v20200309.models.BGPIPInstanceSpecification`\n        :param Usage: 资产实例的使用统计信息\n        :type Usage: :class:`tencentcloud.antiddos.v20200309.models.BGPIPInstanceUsages`\n        :param Region: 资产实例所在的地域\n        :type Region: :class:`tencentcloud.antiddos.v20200309.models.RegionInfo`\n        :param Status: 资产实例的防护状态，状态码如下：
+        r"""
+        :param InstanceDetail: 资产实例的详细信息
+        :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`
+        :param SpecificationLimit: 资产实例的规格信息
+        :type SpecificationLimit: :class:`tencentcloud.antiddos.v20200309.models.BGPIPInstanceSpecification`
+        :param Usage: 资产实例的使用统计信息
+        :type Usage: :class:`tencentcloud.antiddos.v20200309.models.BGPIPInstanceUsages`
+        :param Region: 资产实例所在的地域
+        :type Region: :class:`tencentcloud.antiddos.v20200309.models.RegionInfo`
+        :param Status: 资产实例的防护状态，状态码如下：
 "idle"：正常状态(无攻击)
 "attacking"：攻击中
 "blocking"：封堵中
 "creating"：创建中
 "deblocking"：解封中
-"isolate"：回收隔离中\n        :type Status: str\n        :param ExpiredTime: 购买时间\n        :type ExpiredTime: str\n        :param CreatedTime: 到期时间\n        :type CreatedTime: str\n        :param Name: 资产实例的名称\n        :type Name: str\n        :param PackInfo: 资产实例所属的套餐包信息，
+"isolate"：回收隔离中
+        :type Status: str
+        :param ExpiredTime: 购买时间
+        :type ExpiredTime: str
+        :param CreatedTime: 到期时间
+        :type CreatedTime: str
+        :param Name: 资产实例的名称
+        :type Name: str
+        :param PackInfo: 资产实例所属的套餐包信息，
 注意：当资产实例不是套餐包的实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`\n        :param StaticPackRelation: 资产实例所属的三网套餐包详情，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`
+        :param StaticPackRelation: 资产实例所属的三网套餐包详情，
 注意：当资产实例不是三网套餐包的实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`\n        :param ZoneId: 区分高防IP境外线路
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ZoneId: int\n        :param Tgw: 区分集群
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tgw: int\n        :param EipAddressStatus: 高防弹性公网IP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)。只对高防弹性公网IP实例有效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressStatus: str\n        :param EipFlag: 是否高防弹性公网IP实例，是为1，否为0。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipFlag: int\n        :param EipAddressPackRelation: 资产实例所属的高防弹性公网IP套餐包详情，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`
+        :param ZoneId: 区分高防IP境外线路
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param Tgw: 区分集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tgw: int
+        :param EipAddressStatus: 高防弹性公网IP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)。只对高防弹性公网IP实例有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddressStatus: str
+        :param EipFlag: 是否高防弹性公网IP实例，是为1，否为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipFlag: int
+        :param EipAddressPackRelation: 资产实例所属的高防弹性公网IP套餐包详情，
 注意：当资产实例不是高防弹性公网IP套餐包的实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressPackRelation: :class:`tencentcloud.antiddos.v20200309.models.EipAddressPackRelation`\n        :param EipAddressInfo: 高防弹性公网IP关联的实例信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddressPackRelation: :class:`tencentcloud.antiddos.v20200309.models.EipAddressPackRelation`
+        :param EipAddressInfo: 高防弹性公网IP关联的实例信息。
 注意：当资产实例不是高防弹性公网IP实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`\n        :param Domain: 建议客户接入的域名，客户可使用域名接入。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Domain: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`
+        :param Domain: 建议客户接入的域名，客户可使用域名接入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        """
         self.InstanceDetail = None
         self.SpecificationLimit = None
         self.Usage = None
@@ -199,17 +253,31 @@ class BGPIPInstanceSpecification(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ProtectBandwidth: 保底防护峰值，单位Mbps\n        :type ProtectBandwidth: int\n        :param ProtectCCQPS: CC防护峰值，单位qps\n        :type ProtectCCQPS: int\n        :param NormalBandwidth: 正常业务带宽，单位Mbps\n        :type NormalBandwidth: int\n        :param ForwardRulesLimit: 转发规则数，单位条\n        :type ForwardRulesLimit: int\n        :param AutoRenewFlag: 自动续费状态，取值[
+        r"""
+        :param ProtectBandwidth: 保底防护峰值，单位Mbps
+        :type ProtectBandwidth: int
+        :param ProtectCCQPS: CC防护峰值，单位qps
+        :type ProtectCCQPS: int
+        :param NormalBandwidth: 正常业务带宽，单位Mbps
+        :type NormalBandwidth: int
+        :param ForwardRulesLimit: 转发规则数，单位条
+        :type ForwardRulesLimit: int
+        :param AutoRenewFlag: 自动续费状态，取值[
 0：没有开启自动续费
 1：开启了自动续费
-]\n        :type AutoRenewFlag: int\n        :param Line: 高防IP线路，取值为[
+]
+        :type AutoRenewFlag: int
+        :param Line: 高防IP线路，取值为[
 1：BGP线路
 2：电信
 3：联通
 4：移动
 99：第三方合作线路
-]\n        :type Line: int\n        :param ElasticBandwidth: 弹性防护峰值，单位Mbps\n        :type ElasticBandwidth: int\n        """
+]
+        :type Line: int
+        :param ElasticBandwidth: 弹性防护峰值，单位Mbps
+        :type ElasticBandwidth: int
+        """
         self.ProtectBandwidth = None
         self.ProtectCCQPS = None
         self.NormalBandwidth = None
@@ -242,8 +310,14 @@ class BGPIPInstanceUsages(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PortRulesUsage: 已使用的端口规则数，单位条
+        :type PortRulesUsage: int
+        :param DomainRulesUsage: 已使用的域名规则数，单位条
+        :type DomainRulesUsage: int
+        :param Last7DayAttackCount: 最近7天的攻击次数，单位次
+        :type Last7DayAttackCount: int
         """
-        :param PortRulesUsage: 已使用的端口规则数，单位条\n        :type PortRulesUsage: int\n        :param DomainRulesUsage: 已使用的域名规则数，单位条\n        :type DomainRulesUsage: int\n        :param Last7DayAttackCount: 最近7天的攻击次数，单位次\n        :type Last7DayAttackCount: int\n        """
         self.PortRulesUsage = None
         self.DomainRulesUsage = None
         self.Last7DayAttackCount = None
@@ -268,20 +342,46 @@ class BGPInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceDetail: 资产实例的详细信息\n        :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`\n        :param SpecificationLimit: 资产实例的规格信息\n        :type SpecificationLimit: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceSpecification`\n        :param Usage: 资产实例的使用统计信息\n        :type Usage: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceUsages`\n        :param Region: 资产实例所在的地域\n        :type Region: :class:`tencentcloud.antiddos.v20200309.models.RegionInfo`\n        :param Status: 资产实例的防护状态，状态码如下：
+        r"""
+        :param InstanceDetail: 资产实例的详细信息
+        :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`
+        :param SpecificationLimit: 资产实例的规格信息
+        :type SpecificationLimit: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceSpecification`
+        :param Usage: 资产实例的使用统计信息
+        :type Usage: :class:`tencentcloud.antiddos.v20200309.models.BGPInstanceUsages`
+        :param Region: 资产实例所在的地域
+        :type Region: :class:`tencentcloud.antiddos.v20200309.models.RegionInfo`
+        :param Status: 资产实例的防护状态，状态码如下：
 "idle"：正常状态(无攻击)
 "attacking"：攻击中
 "blocking"：封堵中
 "creating"：创建中
 "deblocking"：解封中
-"isolate"：回收隔离中\n        :type Status: str\n        :param CreatedTime: 购买时间\n        :type CreatedTime: str\n        :param ExpiredTime: 到期时间\n        :type ExpiredTime: str\n        :param Name: 资产实例的名称\n        :type Name: str\n        :param PackInfo: 资产实例所属的套餐包信息，
+"isolate"：回收隔离中
+        :type Status: str
+        :param CreatedTime: 购买时间
+        :type CreatedTime: str
+        :param ExpiredTime: 到期时间
+        :type ExpiredTime: str
+        :param Name: 资产实例的名称
+        :type Name: str
+        :param PackInfo: 资产实例所属的套餐包信息，
 注意：当资产实例不是套餐包的实例时，此字段为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`\n        :param EipProductInfos: 高防包绑定的EIP属于的云产品信息\n        :type EipProductInfos: list of EipProductInfo\n        :param BoundStatus: 高防包绑定状态，取值[
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackInfo: :class:`tencentcloud.antiddos.v20200309.models.PackInfo`
+        :param EipProductInfos: 高防包绑定的EIP属于的云产品信息
+        :type EipProductInfos: list of EipProductInfo
+        :param BoundStatus: 高防包绑定状态，取值[
 "idle"：绑定已完成
  "bounding"：正在绑定中
 "failed"：绑定失败
-]\n        :type BoundStatus: str\n        :param DDoSLevel: 四层防护严格级别\n        :type DDoSLevel: str\n        :param CCEnable: CC防护开关\n        :type CCEnable: int\n        """
+]
+        :type BoundStatus: str
+        :param DDoSLevel: 四层防护严格级别
+        :type DDoSLevel: str
+        :param CCEnable: CC防护开关
+        :type CCEnable: int
+        """
         self.InstanceDetail = None
         self.SpecificationLimit = None
         self.Usage = None
@@ -341,11 +441,19 @@ class BGPInstanceSpecification(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ProtectBandwidth: 保底防护峰值，单位Gbps\n        :type ProtectBandwidth: int\n        :param ProtectCountLimit: 防护次数，单位次\n        :type ProtectCountLimit: int\n        :param ProtectIPNumberLimit: 防护IP数，单位个\n        :type ProtectIPNumberLimit: int\n        :param AutoRenewFlag: 自动续费状态，取值[
+        r"""
+        :param ProtectBandwidth: 保底防护峰值，单位Gbps
+        :type ProtectBandwidth: int
+        :param ProtectCountLimit: 防护次数，单位次
+        :type ProtectCountLimit: int
+        :param ProtectIPNumberLimit: 防护IP数，单位个
+        :type ProtectIPNumberLimit: int
+        :param AutoRenewFlag: 自动续费状态，取值[
 0：没有开启自动续费
 1：开启了自动续费
-]\n        :type AutoRenewFlag: int\n        """
+]
+        :type AutoRenewFlag: int
+        """
         self.ProtectBandwidth = None
         self.ProtectCountLimit = None
         self.ProtectIPNumberLimit = None
@@ -372,8 +480,14 @@ class BGPInstanceUsages(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProtectCountUsage: 已使用的防护次数，单位次
+        :type ProtectCountUsage: int
+        :param ProtectIPNumberUsage: 已防护的IP数，单位个
+        :type ProtectIPNumberUsage: int
+        :param Last7DayAttackCount: 最近7天的攻击次数，单位次
+        :type Last7DayAttackCount: int
         """
-        :param ProtectCountUsage: 已使用的防护次数，单位次\n        :type ProtectCountUsage: int\n        :param ProtectIPNumberUsage: 已防护的IP数，单位个\n        :type ProtectIPNumberUsage: int\n        :param Last7DayAttackCount: 最近7天的攻击次数，单位次\n        :type Last7DayAttackCount: int\n        """
         self.ProtectCountUsage = None
         self.ProtectIPNumberUsage = None
         self.Last7DayAttackCount = None
@@ -398,8 +512,16 @@ class BlackWhiteIpRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: IP地址
+        :type Ip: str
+        :param Type: IP类型，取值[black(黑IP)，white(白IP)]
+        :type Type: str
+        :param InstanceDetailList: 黑白IP所属的实例
+        :type InstanceDetailList: list of InstanceRelation
+        :param Mask: ip掩码，0表示32位完整ip
+        :type Mask: int
         """
-        :param Ip: IP地址\n        :type Ip: str\n        :param Type: IP类型，取值[black(黑IP)，white(白IP)]\n        :type Type: str\n        :param InstanceDetailList: 黑白IP所属的实例\n        :type InstanceDetailList: list of InstanceRelation\n        :param Mask: ip掩码，0表示32位完整ip\n        :type Mask: int\n        """
         self.Ip = None
         self.Type = None
         self.InstanceDetailList = None
@@ -431,8 +553,18 @@ class BoundIpInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ip: IP地址
+        :type Ip: str
+        :param BizType: 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+        :type BizType: str
+        :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
+        :type InstanceId: str
+        :param DeviceType: 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+        :type DeviceType: str
+        :param IspCode: 运营商，0：电信；1：联通；2：移动；5：BGP
+        :type IspCode: int
         """
-        :param Ip: IP地址\n        :type Ip: str\n        :param BizType: 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]\n        :type BizType: str\n        :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";\n        :type InstanceId: str\n        :param DeviceType: 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]\n        :type DeviceType: str\n        :param IspCode: 运营商，0：电信；1：联通；2：移动；5：BGP\n        :type IspCode: int\n        """
         self.Ip = None
         self.BizType = None
         self.InstanceId = None
@@ -461,8 +593,12 @@ class CertIdInsL7Rules(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param L7Rules: 使用证书的规则列表
+        :type L7Rules: list of InsL7Rules
+        :param CertId: 证书ID
+        :type CertId: str
         """
-        :param L7Rules: 使用证书的规则列表\n        :type L7Rules: list of InsL7Rules\n        :param CertId: 证书ID\n        :type CertId: str\n        """
         self.L7Rules = None
         self.CertId = None
 
@@ -490,8 +626,14 @@ class CreateBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param IpList: IP列表
+        :type IpList: list of str
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param IpList: IP列表\n        :type IpList: list of str\n        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]\n        :type Type: str\n        """
         self.InstanceId = None
         self.IpList = None
         self.Type = None
@@ -516,8 +658,10 @@ class CreateBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -531,8 +675,18 @@ class CreateBoundIPRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param BoundDevList: 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+        :type BoundDevList: list of BoundIpInfo
+        :param UnBoundDevList: 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+        :type UnBoundDevList: list of BoundIpInfo
+        :param CopyPolicy: 已弃用，不填
+        :type CopyPolicy: str
         """
-        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）\n        :type Business: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param BoundDevList: 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；\n        :type BoundDevList: list of BoundIpInfo\n        :param UnBoundDevList: 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；\n        :type UnBoundDevList: list of BoundIpInfo\n        :param CopyPolicy: 已弃用，不填\n        :type CopyPolicy: str\n        """
         self.Business = None
         self.Id = None
         self.BoundDevList = None
@@ -571,8 +725,12 @@ class CreateBoundIPResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Success: 成功码\n        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -590,11 +748,15 @@ class CreateDDoSAIRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceIdList: 资源实例ID列表\n        :type InstanceIdList: list of str\n        :param DDoSAI: AI防护开关，取值[
+        r"""
+        :param InstanceIdList: 资源实例ID列表
+        :type InstanceIdList: list of str
+        :param DDoSAI: AI防护开关，取值[
 on(开启)
 off(关闭)
-]\n        :type DDoSAI: str\n        """
+]
+        :type DDoSAI: str
+        """
         self.InstanceIdList = None
         self.DDoSAI = None
 
@@ -617,8 +779,10 @@ class CreateDDoSAIResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -632,8 +796,12 @@ class CreateDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID请为空
+        :type DDoSGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID请为空\n        :type DDoSGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`\n        """
         self.InstanceId = None
         self.DDoSGeoIPBlockConfig = None
 
@@ -658,8 +826,10 @@ class CreateDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -673,8 +843,12 @@ class CreateDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID请为空
+        :type DDoSSpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID请为空\n        :type DDoSSpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`\n        """
         self.InstanceId = None
         self.DDoSSpeedLimitConfig = None
 
@@ -699,8 +873,10 @@ class CreateDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -714,11 +890,15 @@ class CreateDefaultAlarmThresholdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DefaultAlarmConfig: 默认告警阈值配置\n        :type DefaultAlarmConfig: :class:`tencentcloud.antiddos.v20200309.models.DefaultAlarmThreshold`\n        :param InstanceType: 产品类型，取值[
+        r"""
+        :param DefaultAlarmConfig: 默认告警阈值配置
+        :type DefaultAlarmConfig: :class:`tencentcloud.antiddos.v20200309.models.DefaultAlarmThreshold`
+        :param InstanceType: 产品类型，取值[
 bgp(表示高防包产品)
 bgpip(表示高防IP产品)
-]\n        :type InstanceType: str\n        """
+]
+        :type InstanceType: str
+        """
         self.DefaultAlarmConfig = None
         self.InstanceType = None
 
@@ -743,8 +923,10 @@ class CreateDefaultAlarmThresholdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -758,8 +940,10 @@ class CreateIPAlarmThresholdConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IpAlarmThresholdConfigList: IP告警阈值配置列表
+        :type IpAlarmThresholdConfigList: list of IPAlarmThresholdRelation
         """
-        :param IpAlarmThresholdConfigList: IP告警阈值配置列表\n        :type IpAlarmThresholdConfigList: list of IPAlarmThresholdRelation\n        """
         self.IpAlarmThresholdConfigList = None
 
 
@@ -785,8 +969,10 @@ class CreateIPAlarmThresholdConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -800,8 +986,12 @@ class CreateL7RuleCertsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertId: SSL证书ID
+        :type CertId: str
+        :param L7Rules: L7域名转发规则列表
+        :type L7Rules: list of InsL7Rules
         """
-        :param CertId: SSL证书ID\n        :type CertId: str\n        :param L7Rules: L7域名转发规则列表\n        :type L7Rules: list of InsL7Rules\n        """
         self.CertId = None
         self.L7Rules = None
 
@@ -829,8 +1019,12 @@ class CreateL7RuleCertsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Success: 成功码\n        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -848,8 +1042,12 @@ class CreatePacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param PacketFilterConfig: 特征过滤规则
+        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param PacketFilterConfig: 特征过滤规则\n        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`\n        """
         self.InstanceId = None
         self.PacketFilterConfig = None
 
@@ -874,8 +1072,10 @@ class CreatePacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -889,8 +1089,12 @@ class CreateProtocolBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param ProtocolBlockConfig: 协议封禁配置
+        :type ProtocolBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.ProtocolBlockConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param ProtocolBlockConfig: 协议封禁配置\n        :type ProtocolBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.ProtocolBlockConfig`\n        """
         self.InstanceId = None
         self.ProtocolBlockConfig = None
 
@@ -915,8 +1119,10 @@ class CreateProtocolBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -936,8 +1142,12 @@ class CreateSchedulingDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 新创建的域名
+        :type Domain: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Domain: 新创建的域名\n        :type Domain: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Domain = None
         self.RequestId = None
 
@@ -953,8 +1163,12 @@ class CreateWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param WaterPrintConfig: 水印防护配置
+        :type WaterPrintConfig: :class:`tencentcloud.antiddos.v20200309.models.WaterPrintConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param WaterPrintConfig: 水印防护配置\n        :type WaterPrintConfig: :class:`tencentcloud.antiddos.v20200309.models.WaterPrintConfig`\n        """
         self.InstanceId = None
         self.WaterPrintConfig = None
 
@@ -979,8 +1193,10 @@ class CreateWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -994,8 +1210,10 @@ class CreateWaterPrintKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1016,8 +1234,10 @@ class CreateWaterPrintKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1031,11 +1251,15 @@ class DDoSAIRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DDoSAI: AI防护开关，取值[
 on(开启)
 off(关闭)
-]\n        :type DDoSAI: str\n        :param InstanceDetailList: AI防护开关所属的资源实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
+]
+        :type DDoSAI: str
+        :param InstanceDetailList: AI防护开关所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
+        """
         self.DDoSAI = None
         self.InstanceDetailList = None
 
@@ -1063,15 +1287,23 @@ class DDoSGeoIPBlockConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionType: 区域类型，取值[
 oversea(海外)
 china(国内)
 customized(自定义地区)
-]\n        :type RegionType: str\n        :param Action: 封禁动作，取值[
+]
+        :type RegionType: str
+        :param Action: 封禁动作，取值[
 drop(拦截)
 trans(放行)
-]\n        :type Action: str\n        :param Id: 配置ID，配置添加成功后生成；添加新配置时不用填写此字段，修改或删除配置时需要填写配置ID\n        :type Id: str\n        :param AreaList: 当RegionType为customized时，必须填写AreaList，且最多填写128个；\n        :type AreaList: list of int\n        """
+]
+        :type Action: str
+        :param Id: 配置ID，配置添加成功后生成；添加新配置时不用填写此字段，修改或删除配置时需要填写配置ID
+        :type Id: str
+        :param AreaList: 当RegionType为customized时，必须填写AreaList，且最多填写128个；
+        :type AreaList: list of int
+        """
         self.RegionType = None
         self.Action = None
         self.Id = None
@@ -1098,8 +1330,12 @@ class DDoSGeoIPBlockConfigRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GeoIPBlockConfig: DDoS区域封禁配置
+        :type GeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`
+        :param InstanceDetailList: 配置所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
         """
-        :param GeoIPBlockConfig: DDoS区域封禁配置\n        :type GeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`\n        :param InstanceDetailList: 配置所属的资源实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
         self.GeoIPBlockConfig = None
         self.InstanceDetailList = None
 
@@ -1129,18 +1365,30 @@ class DDoSSpeedLimitConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mode: 限速模式，取值[
 1(基于源IP限速)
 2(基于目的端口限速)
-]\n        :type Mode: int\n        :param SpeedValues: 限速值，每种类型的限速值最多支持1个；该字段数组至少有一种限速值\n        :type SpeedValues: list of SpeedValue\n        :param DstPortScopes: 此字段已弃用，请填写新字段DstPortList。\n        :type DstPortScopes: list of PortSegment\n        :param Id: 配置ID，配置添加成功后生成；添加新限制配置时不用填写此字段，修改或删除限速配置时需要填写配置ID\n        :type Id: str\n        :param ProtocolList: IP protocol numbers, 取值[
+]
+        :type Mode: int
+        :param SpeedValues: 限速值，每种类型的限速值最多支持1个；该字段数组至少有一种限速值
+        :type SpeedValues: list of SpeedValue
+        :param DstPortScopes: 此字段已弃用，请填写新字段DstPortList。
+        :type DstPortScopes: list of PortSegment
+        :param Id: 配置ID，配置添加成功后生成；添加新限制配置时不用填写此字段，修改或删除限速配置时需要填写配置ID
+        :type Id: str
+        :param ProtocolList: IP protocol numbers, 取值[
 ALL(所有协议)
 TCP(tcp协议)
 UDP(udp协议)
 SMP(smp协议)
 1;2-100(自定义协议号范围,最多8个)
 ]
-注意：当自定义协议号范围时，只能填写协议号，多个范围;分隔；当填写ALL时不能再填写其他协议或协议号。\n        :type ProtocolList: str\n        :param DstPortList: 端口范围列表，最多8个，多个;分隔，范围表示用-；此端口范围必须填写；填写样式1:0-65535，样式2:80;443;1000-2000\n        :type DstPortList: str\n        """
+注意：当自定义协议号范围时，只能填写协议号，多个范围;分隔；当填写ALL时不能再填写其他协议或协议号。
+        :type ProtocolList: str
+        :param DstPortList: 端口范围列表，最多8个，多个;分隔，范围表示用-；此端口范围必须填写；填写样式1:0-65535，样式2:80;443;1000-2000
+        :type DstPortList: str
+        """
         self.Mode = None
         self.SpeedValues = None
         self.DstPortScopes = None
@@ -1181,8 +1429,12 @@ class DDoSSpeedLimitConfigRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpeedLimitConfig: DDoS访问限速配置
+        :type SpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`
+        :param InstanceDetailList: 配置所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
         """
-        :param SpeedLimitConfig: DDoS访问限速配置\n        :type SpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`\n        :param InstanceDetailList: 配置所属的资源实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
         self.SpeedLimitConfig = None
         self.InstanceDetailList = None
 
@@ -1212,11 +1464,15 @@ class DefaultAlarmThreshold(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlarmType: 告警阈值类型，取值[
 1(入流量告警阈值)
 2(攻击清洗流量告警阈值)
-]\n        :type AlarmType: int\n        :param AlarmThreshold: 告警阈值，单位Mbps，取值>=0；当作为输入参数时，设置0会删除告警阈值配置；\n        :type AlarmThreshold: int\n        """
+]
+        :type AlarmType: int
+        :param AlarmThreshold: 告警阈值，单位Mbps，取值>=0；当作为输入参数时，设置0会删除告警阈值配置；
+        :type AlarmThreshold: int
+        """
         self.AlarmType = None
         self.AlarmThreshold = None
 
@@ -1239,8 +1495,14 @@ class DeleteBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param IpList: IP列表
+        :type IpList: list of str
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param IpList: IP列表\n        :type IpList: list of str\n        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]\n        :type Type: str\n        """
         self.InstanceId = None
         self.IpList = None
         self.Type = None
@@ -1265,8 +1527,10 @@ class DeleteBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1280,8 +1544,12 @@ class DeleteDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID不能为空
+        :type DDoSGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID不能为空\n        :type DDoSGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`\n        """
         self.InstanceId = None
         self.DDoSGeoIPBlockConfig = None
 
@@ -1306,8 +1574,10 @@ class DeleteDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1321,8 +1591,12 @@ class DeleteDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID不能为空
+        :type DDoSSpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID不能为空\n        :type DDoSSpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`\n        """
         self.InstanceId = None
         self.DDoSSpeedLimitConfig = None
 
@@ -1347,8 +1621,10 @@ class DeleteDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1362,8 +1638,12 @@ class DeletePacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param PacketFilterConfig: 特征过滤配置
+        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param PacketFilterConfig: 特征过滤配置\n        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`\n        """
         self.InstanceId = None
         self.PacketFilterConfig = None
 
@@ -1388,8 +1668,10 @@ class DeletePacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1403,8 +1685,10 @@ class DeleteWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1425,8 +1709,10 @@ class DeleteWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1440,8 +1726,12 @@ class DeleteWaterPrintKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param KeyId: 水印密钥ID
+        :type KeyId: str
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param KeyId: 水印密钥ID\n        :type KeyId: str\n        """
         self.InstanceId = None
         self.KeyId = None
 
@@ -1464,8 +1754,10 @@ class DeleteWaterPrintKeyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1479,8 +1771,10 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IpList: IP 资源列表
+        :type IpList: list of str
         """
-        :param IpList: IP 资源列表\n        :type IpList: list of str\n        """
         self.IpList = None
 
 
@@ -1501,8 +1795,12 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 返回资源及状态
+        :type Data: list of KeyValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 返回资源及状态\n        :type Data: list of KeyValue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1523,8 +1821,26 @@ class DescribeBizTrendRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
+        :type Statistics: str
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒
+        :type Period: int
+        :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
+        :type StartTime: str
+        :param EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”
+        :type EndTime: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps
+        :type MetricName: str
+        :param Domain: 统计纬度为qps时，可选特定域名查询
+        :type Domain: str
+        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+        :type ProtoInfo: list of ProtocolPort
         """
-        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max\n        :type Statistics: str\n        :param Business: 大禹子产品代号（bgpip表示高防IP）\n        :type Business: str\n        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒\n        :type Period: int\n        :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”\n        :type StartTime: str\n        :param EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”\n        :type EndTime: str\n        :param Id: 资源实例ID\n        :type Id: str\n        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps\n        :type MetricName: str\n        :param Domain: 统计纬度为qps时，可选特定域名查询\n        :type Domain: str\n        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效\n        :type ProtoInfo: list of ProtocolPort\n        """
         self.Statistics = None
         self.Business = None
         self.Period = None
@@ -1566,8 +1882,14 @@ class DescribeBizTrendResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DataList: 曲线图各个时间点的值
+        :type DataList: list of float
+        :param MetricName: 统计纬度
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DataList: 曲线图各个时间点的值\n        :type DataList: list of float\n        :param MetricName: 统计纬度\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DataList = None
         self.MetricName = None
         self.RequestId = None
@@ -1585,8 +1907,10 @@ class DescribeBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -1607,8 +1931,14 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BlackIpList: 黑名单IP列表
+        :type BlackIpList: list of str
+        :param WhiteIpList: 白名单IP列表
+        :type WhiteIpList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param BlackIpList: 黑名单IP列表\n        :type BlackIpList: list of str\n        :param WhiteIpList: 白名单IP列表\n        :type WhiteIpList: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BlackIpList = None
         self.WhiteIpList = None
         self.RequestId = None
@@ -1626,8 +1956,24 @@ class DescribeCCTrendRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+        :type MetricName: str
+        :param Domain: 域名，可选
+        :type Domain: str
+        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+        :type Id: str
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]\n        :type MetricName: str\n        :param Domain: 域名，可选\n        :type Domain: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        """
         self.Business = None
         self.Ip = None
         self.Period = None
@@ -1662,9 +2008,29 @@ class DescribeCCTrendResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: 值个数
+        :type Count: int
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param Data: 值数组
+        :type Data: list of int non-negative
+        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Count: 值个数\n        :type Count: int\n        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组\n        :type Data: list of int non-negative\n        :param Id: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Count = None
         self.Business = None
         self.Ip = None
@@ -1696,8 +2062,22 @@ class DescribeDDoSTrendRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源实例的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+        :type MetricName: str
+        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+        :type Id: str
         """
-        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源实例的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）\n        :type Id: str\n        """
         self.Business = None
         self.Ip = None
         self.Period = None
@@ -1730,9 +2110,29 @@ class DescribeDDoSTrendResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: 值个数
+        :type Count: int
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
+        :type Data: list of int non-negative
+        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Count: 值个数\n        :type Count: int\n        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）\n        :type Business: str\n        :param Ip: 资源的IP\n        :type Ip: str\n        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]\n        :type Period: int\n        :param StartTime: 统计开始时间\n        :type StartTime: str\n        :param EndTime: 统计结束时间\n        :type EndTime: str\n        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps\n        :type Data: list of int non-negative\n        :param Id: 资源ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Id: str\n        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]\n        :type MetricName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Count = None
         self.Business = None
         self.Ip = None
@@ -1764,14 +2164,18 @@ class DescribeDefaultAlarmThresholdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceType: 产品类型，取值[
 bgp(表示高防包产品)
 bgpip(表示高防IP产品)
-]\n        :type InstanceType: str\n        :param FilterAlarmType: 告警阈值类型搜索，取值[
+]
+        :type InstanceType: str
+        :param FilterAlarmType: 告警阈值类型搜索，取值[
 1(入流量告警阈值)
 2(攻击清洗流量告警阈值)
-]\n        :type FilterAlarmType: int\n        """
+]
+        :type FilterAlarmType: int
+        """
         self.InstanceType = None
         self.FilterAlarmType = None
 
@@ -1794,8 +2198,12 @@ class DescribeDefaultAlarmThresholdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DefaultAlarmConfigList: 默认告警阈值配置
+        :type DefaultAlarmConfigList: list of DefaultAlarmThreshold
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DefaultAlarmConfigList: 默认告警阈值配置\n        :type DefaultAlarmConfigList: list of DefaultAlarmThreshold\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DefaultAlarmConfigList = None
         self.RequestId = None
 
@@ -1816,8 +2224,12 @@ class DescribeL7RulesBySSLCertIdRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: 域名状态，可取bindable, binded, opened, closed, all，all表示全部状态
+        :type Status: str
+        :param CertIds: 证书ID列表
+        :type CertIds: list of str
         """
-        :param Status: 域名状态，可取bindable, binded, opened, closed, all，all表示全部状态\n        :type Status: str\n        :param CertIds: 证书ID列表\n        :type CertIds: list of str\n        """
         self.Status = None
         self.CertIds = None
 
@@ -1840,8 +2252,12 @@ class DescribeL7RulesBySSLCertIdResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CertSet: 证书规则集合
+        :type CertSet: list of CertIdInsL7Rules
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CertSet: 证书规则集合\n        :type CertSet: list of CertIdInsL7Rules\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CertSet = None
         self.RequestId = None
 
@@ -1862,14 +2278,32 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100\n        :type Limit: int\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        :param FilterInstanceId: 资产实例ID搜索，例如，bgpip-00000001\n        :type FilterInstanceId: str\n        :param FilterLine: 高防IP线路搜索，取值为[
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100
+        :type Limit: int
+        :param FilterIp: IP搜索
+        :type FilterIp: str
+        :param FilterInstanceId: 资产实例ID搜索，例如，bgpip-00000001
+        :type FilterInstanceId: str
+        :param FilterLine: 高防IP线路搜索，取值为[
 1：BGP线路
 2：电信
 3：联通
 4：移动
 99：第三方合作线路
-]\n        :type FilterLine: int\n        :param FilterRegion: 地域搜索，例如，ap-guangzhou\n        :type FilterRegion: str\n        :param FilterName: 名称搜索\n        :type FilterName: str\n        :param FilterEipType: 是否只获取高防弹性公网IP实例。填写时，只能填写1或者0。当填写1时，表示返回高防弹性公网IP实例。当填写0时，表示返回非高防弹性公网IP实例。\n        :type FilterEipType: int\n        :param FilterEipEipAddressStatus: 高防弹性公网IP实例的绑定状态搜索条件，取值范围 [BINDING、 BIND、UNBINDING、UNBIND]。该搜索条件只在FilterEipType=1时才有效。\n        :type FilterEipEipAddressStatus: list of str\n        """
+]
+        :type FilterLine: int
+        :param FilterRegion: 地域搜索，例如，ap-guangzhou
+        :type FilterRegion: str
+        :param FilterName: 名称搜索
+        :type FilterName: str
+        :param FilterEipType: 是否只获取高防弹性公网IP实例。填写时，只能填写1或者0。当填写1时，表示返回高防弹性公网IP实例。当填写0时，表示返回非高防弹性公网IP实例。
+        :type FilterEipType: int
+        :param FilterEipEipAddressStatus: 高防弹性公网IP实例的绑定状态搜索条件，取值范围 [BINDING、 BIND、UNBINDING、UNBIND]。该搜索条件只在FilterEipType=1时才有效。
+        :type FilterEipEipAddressStatus: list of str
+        """
         self.Offset = None
         self.Limit = None
         self.FilterIp = None
@@ -1906,8 +2340,14 @@ class DescribeListBGPIPInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param InstanceList: 高防IP资产实例列表
+        :type InstanceList: list of BGPIPInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param InstanceList: 高防IP资产实例列表\n        :type InstanceList: list of BGPIPInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.InstanceList = None
         self.RequestId = None
@@ -1930,8 +2370,22 @@ class DescribeListBGPInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100
+        :type Limit: int
+        :param FilterIp: IP搜索
+        :type FilterIp: str
+        :param FilterInstanceId: 资产实例ID搜索，例如，bgp-00000001
+        :type FilterInstanceId: str
+        :param FilterRegion: 地域搜索，例如，ap-guangzhou
+        :type FilterRegion: str
+        :param FilterName: 名称搜索
+        :type FilterName: str
+        :param FilterLine: 按照线路搜索, 1: BGP; 2: 三网
+        :type FilterLine: int
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100\n        :type Limit: int\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        :param FilterInstanceId: 资产实例ID搜索，例如，bgp-00000001\n        :type FilterInstanceId: str\n        :param FilterRegion: 地域搜索，例如，ap-guangzhou\n        :type FilterRegion: str\n        :param FilterName: 名称搜索\n        :type FilterName: str\n        :param FilterLine: 按照线路搜索, 1: BGP; 2: 三网\n        :type FilterLine: int\n        """
         self.Offset = None
         self.Limit = None
         self.FilterIp = None
@@ -1964,8 +2418,14 @@ class DescribeListBGPInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param InstanceList: 高防包资产实例列表
+        :type InstanceList: list of BGPInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param InstanceList: 高防包资产实例列表\n        :type InstanceList: list of BGPInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.InstanceList = None
         self.RequestId = None
@@ -1988,8 +2448,16 @@ class DescribeListBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2016,8 +2484,14 @@ class DescribeListBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param IpList: 黑白IP列表
+        :type IpList: list of BlackWhiteIpRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param IpList: 黑白IP列表\n        :type IpList: list of BlackWhiteIpRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.IpList = None
         self.RequestId = None
@@ -2040,8 +2514,16 @@ class DescribeListDDoSAIRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2068,8 +2550,14 @@ class DescribeListDDoSAIResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: AI防护开关列表
+        :type ConfigList: list of DDoSAIRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: AI防护开关列表\n        :type ConfigList: list of DDoSAIRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2092,8 +2580,16 @@ class DescribeListDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2120,8 +2616,14 @@ class DescribeListDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: DDoS区域封禁配置列表
+        :type ConfigList: list of DDoSGeoIPBlockConfigRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: DDoS区域封禁配置列表\n        :type ConfigList: list of DDoSGeoIPBlockConfigRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2144,8 +2646,16 @@ class DescribeListDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2172,8 +2682,14 @@ class DescribeListDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: 访问限速配置列表
+        :type ConfigList: list of DDoSSpeedLimitConfigRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: 访问限速配置列表\n        :type ConfigList: list of DDoSSpeedLimitConfigRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2196,11 +2712,21 @@ class DescribeListIPAlarmConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterAlarmType: 告警阈值类型搜索，取值[
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterAlarmType: 告警阈值类型搜索，取值[
 1(入流量告警阈值)
 2(攻击清洗流量告警阈值)
-]\n        :type FilterAlarmType: int\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
+]
+        :type FilterAlarmType: int
+        :param FilterIp: IP搜索
+        :type FilterIp: str
+        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2229,8 +2755,14 @@ class DescribeListIPAlarmConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: IP告警阈值配置列表
+        :type ConfigList: list of IPAlarmThresholdRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: IP告警阈值配置列表\n        :type ConfigList: list of IPAlarmThresholdRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2259,8 +2791,14 @@ class DescribeListListenerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Layer4Listeners: 4层转发监听器列表
+        :type Layer4Listeners: list of Layer4Rule
+        :param Layer7Listeners: 7层转发监听器列表
+        :type Layer7Listeners: list of Layer7Rule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Layer4Listeners: 4层转发监听器列表\n        :type Layer4Listeners: list of Layer4Rule\n        :param Layer7Listeners: 7层转发监听器列表\n        :type Layer7Listeners: list of Layer7Rule\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Layer4Listeners = None
         self.Layer7Listeners = None
         self.RequestId = None
@@ -2288,8 +2826,16 @@ class DescribeListPacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2316,8 +2862,14 @@ class DescribeListPacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: 特征过滤配置
+        :type ConfigList: list of PacketFilterRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: 特征过滤配置\n        :type ConfigList: list of PacketFilterRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2340,8 +2892,20 @@ class DescribeListProtectThresholdConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
+        :param FilterDomain: 域名搜索(查询域名与协议的CC防护阈值时使用）
+        :type FilterDomain: str
+        :param FilterProtocol: 协议搜索(查询域名与协议的CC防护阈值时使用）
+        :type FilterProtocol: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        :param FilterDomain: 域名搜索(查询域名与协议的CC防护阈值时使用）\n        :type FilterDomain: str\n        :param FilterProtocol: 协议搜索(查询域名与协议的CC防护阈值时使用）\n        :type FilterProtocol: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2372,8 +2936,14 @@ class DescribeListProtectThresholdConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总记录数
+        :type Total: int
+        :param ConfigList: 防护阈值配置列表
+        :type ConfigList: list of ProtectThresholdRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总记录数\n        :type Total: int\n        :param ConfigList: 防护阈值配置列表\n        :type ConfigList: list of ProtectThresholdRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2396,8 +2966,16 @@ class DescribeListProtocolBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2424,8 +3002,14 @@ class DescribeListProtocolBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: 协议封禁配置
+        :type ConfigList: list of ProtocolBlockRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: 协议封禁配置\n        :type ConfigList: list of ProtocolBlockRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2448,8 +3032,14 @@ class DescribeListSchedulingDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100
+        :type Limit: int
+        :param FilterDomain: 调度域名搜索
+        :type FilterDomain: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100\n        :type Limit: int\n        :param FilterDomain: 调度域名搜索\n        :type FilterDomain: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterDomain = None
@@ -2474,8 +3064,14 @@ class DescribeListSchedulingDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param DomainList: 调度域名信息列表
+        :type DomainList: list of SchedulingDomainInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param DomainList: 调度域名信息列表\n        :type DomainList: list of SchedulingDomainInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.DomainList = None
         self.RequestId = None
@@ -2498,8 +3094,16 @@ class DescribeListWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: IP搜索
+        :type FilterIp: str
         """
-        :param Offset: 页起始偏移，取值为(页码-1)*一页条数\n        :type Offset: int\n        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100\n        :type Limit: int\n        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例\n        :type FilterInstanceId: str\n        :param FilterIp: IP搜索\n        :type FilterIp: str\n        """
         self.Offset = None
         self.Limit = None
         self.FilterInstanceId = None
@@ -2526,8 +3130,14 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param ConfigList: 水印配置列表
+        :type ConfigList: list of WaterPrintRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 总数\n        :type Total: int\n        :param ConfigList: 水印配置列表\n        :type ConfigList: list of WaterPrintRelation\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.ConfigList = None
         self.RequestId = None
@@ -2550,8 +3160,12 @@ class DisassociateDDoSEipAddressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
+        :type InstanceId: str
+        :param Eip: 资源实例ID对应的高防弹性公网IP。
+        :type Eip: str
         """
-        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。\n        :type InstanceId: str\n        :param Eip: 资源实例ID对应的高防弹性公网IP。\n        :type Eip: str\n        """
         self.InstanceId = None
         self.Eip = None
 
@@ -2574,8 +3188,10 @@ class DisassociateDDoSEipAddressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2589,8 +3205,14 @@ class EipAddressPackRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IpCount: 套餐IP数量
+        :type IpCount: int
+        :param AutoRenewFlag: 自动续费标记
+        :type AutoRenewFlag: int
+        :param CurDeadline: 当前到期时间
+        :type CurDeadline: str
         """
-        :param IpCount: 套餐IP数量\n        :type IpCount: int\n        :param AutoRenewFlag: 自动续费标记\n        :type AutoRenewFlag: int\n        :param CurDeadline: 当前到期时间\n        :type CurDeadline: str\n        """
         self.IpCount = None
         self.AutoRenewFlag = None
         self.CurDeadline = None
@@ -2615,13 +3237,23 @@ class EipAddressRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EipAddressRegion: 高防弹性公网IP绑定的实例地区，例如hk代表香港
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipAddressRegion: str\n        :param EipBoundRscIns: 绑定的资源实例ID。可能是一个CVM。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipBoundRscIns: str\n        :param EipBoundRscEni: 绑定的弹性网卡ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipBoundRscEni: str\n        :param EipBoundRscVip: 绑定的资源内网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EipBoundRscVip: str\n        :param ModifyTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifyTime: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddressRegion: str
+        :param EipBoundRscIns: 绑定的资源实例ID。可能是一个CVM。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipBoundRscIns: str
+        :param EipBoundRscEni: 绑定的弹性网卡ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipBoundRscEni: str
+        :param EipBoundRscVip: 绑定的资源内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipBoundRscVip: str
+        :param ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
         self.EipAddressRegion = None
         self.EipBoundRscIns = None
         self.EipBoundRscEni = None
@@ -2650,8 +3282,10 @@ class EipProductInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Ip: IP地址\n        :type Ip: str\n        :param BizType: 云产品类型，取值[
+        r"""
+        :param Ip: IP地址
+        :type Ip: str
+        :param BizType: 云产品类型，取值[
 public（CVM产品），
 bm（黑石产品），
 eni（弹性网卡），
@@ -2661,7 +3295,13 @@ waf（Web应用安全产品），
 fpc（金融产品），
 gaap（GAAP产品）, 
 other(托管IP)
-]\n        :type BizType: str\n        :param DeviceType: 云产品子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]\n        :type DeviceType: str\n        :param InstanceId: IP所属的云产品实例ID，例如是弹性网卡的IP，InstanceId为弹性网卡的ID(eni-*); 如果是托管IP没有对应的资源实例ID,InstanceId为""\n        :type InstanceId: str\n        """
+]
+        :type BizType: str
+        :param DeviceType: 云产品子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+        :type DeviceType: str
+        :param InstanceId: IP所属的云产品实例ID，例如是弹性网卡的IP，InstanceId为弹性网卡的ID(eni-*); 如果是托管IP没有对应的资源实例ID,InstanceId为""
+        :type InstanceId: str
+        """
         self.Ip = None
         self.BizType = None
         self.DeviceType = None
@@ -2688,11 +3328,17 @@ class ForwardListener(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param FrontendPort: 转发监听端口下限，取值1~65535\n        :type FrontendPort: int\n        :param ForwardProtocol: 转发协议，取值[
+        r"""
+        :param FrontendPort: 转发监听端口下限，取值1~65535
+        :type FrontendPort: int
+        :param ForwardProtocol: 转发协议，取值[
 TCP
 UDP
-]\n        :type ForwardProtocol: str\n        :param FrontendPortEnd: 转发监听端口上限，取值1~65535\n        :type FrontendPortEnd: int\n        """
+]
+        :type ForwardProtocol: str
+        :param FrontendPortEnd: 转发监听端口上限，取值1~65535
+        :type FrontendPortEnd: int
+        """
         self.FrontendPort = None
         self.ForwardProtocol = None
         self.FrontendPortEnd = None
@@ -2717,11 +3363,17 @@ class IPAlarmThresholdRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlarmType: 告警阈值类型，取值[
 1(入流量告警阈值)
 2(攻击清洗流量告警阈值)
-]\n        :type AlarmType: int\n        :param AlarmThreshold: 告警阈值，单位Mbps，取值>=0；当作为输入参数时，设置0会删除告警阈值配置；\n        :type AlarmThreshold: int\n        :param InstanceDetailList: 告警阈值所属的资源实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
+]
+        :type AlarmType: int
+        :param AlarmThreshold: 告警阈值，单位Mbps，取值>=0；当作为输入参数时，设置0会删除告警阈值配置；
+        :type AlarmThreshold: int
+        :param InstanceDetailList: 告警阈值所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
+        """
         self.AlarmType = None
         self.AlarmThreshold = None
         self.InstanceDetailList = None
@@ -2751,14 +3403,18 @@ class IPLineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: IP线路类型，取值[
 "bgp"：BGP线路IP
 "ctcc"：电信线路IP
 "cucc"：联通线路IP
 "cmcc"：移动线路IP
 "abroad"：境外线路IP
-]\n        :type Type: str\n        :param Eip: 线路IP\n        :type Eip: str\n        """
+]
+        :type Type: str
+        :param Eip: 线路IP
+        :type Eip: str
+        """
         self.Type = None
         self.Eip = None
 
@@ -2781,8 +3437,22 @@ class InsL7Rules(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中
+        :type Status: int
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议
+        :type Protocol: str
+        :param InsId: 实例ID
+        :type InsId: str
+        :param AppId: 用户AppID
+        :type AppId: str
+        :param VirtualPort: 高防端口
+        :type VirtualPort: str
+        :param SSLId: 证书ID
+        :type SSLId: str
         """
-        :param Status: 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中\n        :type Status: int\n        :param Domain: 域名\n        :type Domain: str\n        :param Protocol: 协议\n        :type Protocol: str\n        :param InsId: 实例ID\n        :type InsId: str\n        :param AppId: 用户AppID\n        :type AppId: str\n        :param VirtualPort: 高防端口\n        :type VirtualPort: str\n        :param SSLId: 证书ID\n        :type SSLId: str\n        """
         self.Status = None
         self.Domain = None
         self.Protocol = None
@@ -2815,8 +3485,12 @@ class InstanceRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EipList: 资源实例的IP
+        :type EipList: list of str
+        :param InstanceId: 资源实例的ID
+        :type InstanceId: str
         """
-        :param EipList: 资源实例的IP\n        :type EipList: list of str\n        :param InstanceId: 资源实例的ID\n        :type InstanceId: str\n        """
         self.EipList = None
         self.InstanceId = None
 
@@ -2839,8 +3513,12 @@ class KeyValue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 字段名称
+        :type Key: str
+        :param Value: 字段取值
+        :type Value: str
         """
-        :param Key: 字段名称\n        :type Key: str\n        :param Value: 字段取值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -2863,8 +3541,12 @@ class L4RuleSource(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Source: 回源IP或域名
+        :type Source: str
+        :param Weight: 权重值，取值[0,100]
+        :type Weight: int
         """
-        :param Source: 回源IP或域名\n        :type Source: str\n        :param Weight: 权重值，取值[0,100]\n        :type Weight: int\n        """
         self.Source = None
         self.Weight = None
 
@@ -2887,10 +3569,50 @@ class L7RuleEntry(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeepTime: 会话保持时间，单位秒
+        :type KeepTime: int
+        :param Domain: 转发域名
+        :type Domain: str
+        :param Protocol: 转发协议，取值[http, https]
+        :type Protocol: str
+        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
+        :type SourceType: int
+        :param LbType: 负载均衡方式，取值[1(加权轮询)]
+        :type LbType: int
+        :param SourceList: 回源列表
+        :type SourceList: list of L4RuleSource
+        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+        :type KeepEnable: int
+        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type Status: int
+        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+        :type RuleId: str
+        :param CCThreshold: HTTPS协议的CC防护阈值
+        :type CCThreshold: int
+        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type PrivateKey: str
+        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
+        :type CCEnable: int
+        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsToHttpEnable: int
+        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+        :type CertType: int
+        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type Cert: str
+        :param CCLevel: HTTPS协议的CC防护等级
+        :type CCLevel: str
+        :param RuleName: 规则描述
+        :type RuleName: str
+        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
+        :type CCStatus: int
+        :param VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPort: int
+        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+        :type SSLId: str
         """
-        :param KeepTime: 会话保持时间，单位秒\n        :type KeepTime: int\n        :param Domain: 转发域名\n        :type Domain: str\n        :param Protocol: 转发协议，取值[http, https]\n        :type Protocol: str\n        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]\n        :type SourceType: int\n        :param LbType: 负载均衡方式，取值[1(加权轮询)]\n        :type LbType: int\n        :param SourceList: 回源列表\n        :type SourceList: list of L4RuleSource\n        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]\n        :type KeepEnable: int\n        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]\n        :type Status: int\n        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；\n        :type RuleId: str\n        :param CCThreshold: HTTPS协议的CC防护阈值\n        :type CCThreshold: int\n        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type PrivateKey: str\n        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]\n        :type CCEnable: int\n        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-注意：此字段可能返回 null，表示取不到有效值。\n        :type HttpsToHttpEnable: int\n        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0\n        :type CertType: int\n        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)\n        :type Cert: str\n        :param CCLevel: HTTPS协议的CC防护等级\n        :type CCLevel: str\n        :param RuleName: 规则描述\n        :type RuleName: str\n        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]\n        :type CCStatus: int\n        :param VirtualPort: 接入端口值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VirtualPort: int\n        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID\n        :type SSLId: str\n        """
         self.KeepTime = None
         self.Domain = None
         self.Protocol = None
@@ -2954,11 +3676,21 @@ class Layer4Rule(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BackendPort: 源站端口，取值1~65535\n        :type BackendPort: int\n        :param FrontendPort: 转发端口，取值1~65535\n        :type FrontendPort: int\n        :param Protocol: 转发协议，取值[
+        r"""
+        :param BackendPort: 源站端口，取值1~65535
+        :type BackendPort: int
+        :param FrontendPort: 转发端口，取值1~65535
+        :type FrontendPort: int
+        :param Protocol: 转发协议，取值[
 TCP(TCP协议)
 UDP(UDP协议)
-]\n        :type Protocol: str\n        :param RealServers: 源站列表\n        :type RealServers: list of SourceServer\n        :param InstanceDetails: 规则所属的资源实例\n        :type InstanceDetails: list of InstanceRelation\n        """
+]
+        :type Protocol: str
+        :param RealServers: 源站列表
+        :type RealServers: list of SourceServer
+        :param InstanceDetails: 规则所属的资源实例
+        :type InstanceDetails: list of InstanceRelation
+        """
         self.BackendPort = None
         self.FrontendPort = None
         self.Protocol = None
@@ -2997,8 +3729,16 @@ class Layer7Rule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param ProxyTypeList: 转发类型列表
+        :type ProxyTypeList: list of ProxyTypeInfo
+        :param RealServers: 源站列表
+        :type RealServers: list of SourceServer
+        :param InstanceDetails: 规则所属的资源实例
+        :type InstanceDetails: list of InstanceRelation
         """
-        :param Domain: 域名\n        :type Domain: str\n        :param ProxyTypeList: 转发类型列表\n        :type ProxyTypeList: list of ProxyTypeInfo\n        :param RealServers: 源站列表\n        :type RealServers: list of SourceServer\n        :param InstanceDetails: 规则所属的资源实例\n        :type InstanceDetails: list of InstanceRelation\n        """
         self.Domain = None
         self.ProxyTypeList = None
         self.RealServers = None
@@ -3040,8 +3780,16 @@ class ListenerCcThreholdConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议（可取值htttps）
+        :type Protocol: str
+        :param CCEnable: 开关状态（0：关闭，1：开启）
+        :type CCEnable: int
+        :param CCThreshold: cc防护阈值
+        :type CCThreshold: int
         """
-        :param Domain: 域名\n        :type Domain: str\n        :param Protocol: 协议（可取值htttps）\n        :type Protocol: str\n        :param CCEnable: 开关状态（0：关闭，1：开启）\n        :type CCEnable: int\n        :param CCThreshold: cc防护阈值\n        :type CCThreshold: int\n        """
         self.Domain = None
         self.Protocol = None
         self.CCEnable = None
@@ -3068,8 +3816,12 @@ class ModifyDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID不能为空
+        :type DDoSGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID不能为空\n        :type DDoSGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`\n        """
         self.InstanceId = None
         self.DDoSGeoIPBlockConfig = None
 
@@ -3094,8 +3846,10 @@ class ModifyDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3109,8 +3863,12 @@ class ModifyDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID不能为空
+        :type DDoSSpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID不能为空\n        :type DDoSSpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`\n        """
         self.InstanceId = None
         self.DDoSSpeedLimitConfig = None
 
@@ -3135,8 +3893,10 @@ class ModifyDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3150,8 +3910,12 @@ class ModifyDomainUsrNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DomainName: 用户CNAME
+        :type DomainName: str
+        :param DomainUserName: 域名名称
+        :type DomainUserName: str
         """
-        :param DomainName: 用户CNAME\n        :type DomainName: str\n        :param DomainUserName: 域名名称\n        :type DomainUserName: str\n        """
         self.DomainName = None
         self.DomainUserName = None
 
@@ -3174,8 +3938,10 @@ class ModifyDomainUsrNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3189,8 +3955,14 @@ class ModifyL7RulesEdgeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（edge表示边界防护产品）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param Rule: 规则
+        :type Rule: :class:`tencentcloud.antiddos.v20200309.models.L7RuleEntry`
         """
-        :param Business: 大禹子产品代号（edge表示边界防护产品）\n        :type Business: str\n        :param Id: 资源ID\n        :type Id: str\n        :param Rule: 规则\n        :type Rule: :class:`tencentcloud.antiddos.v20200309.models.L7RuleEntry`\n        """
         self.Business = None
         self.Id = None
         self.Rule = None
@@ -3217,8 +3989,12 @@ class ModifyL7RulesEdgeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Success: 成功码\n        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Success = None
         self.RequestId = None
 
@@ -3236,8 +4012,12 @@ class ModifyPacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param PacketFilterConfig: 特征过滤配置
+        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param PacketFilterConfig: 特征过滤配置\n        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`\n        """
         self.InstanceId = None
         self.PacketFilterConfig = None
 
@@ -3262,8 +4042,10 @@ class ModifyPacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3277,11 +4059,15 @@ class PackInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PackType: 套餐包的类型，取值[
 staticpack：高防IP三网套餐包
 insurance：保险套餐包
-]\n        :type PackType: str\n        :param PackId: 套餐包的ID\n        :type PackId: str\n        """
+]
+        :type PackType: str
+        :param PackId: 套餐包的ID
+        :type PackId: str
+        """
         self.PackType = None
         self.PackId = None
 
@@ -3304,44 +4090,88 @@ class PacketFilterConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Protocol: 协议，取值[tcp udp icmp all]\n        :type Protocol: str\n        :param SportStart: 起始源端口，取值0~65535\n        :type SportStart: int\n        :param SportEnd: 结束源端口，取值1~65535，必须大于等于起始源端口\n        :type SportEnd: int\n        :param DportStart: 起始目的端口，取值0~65535\n        :type DportStart: int\n        :param DportEnd: 结束目的端口，取值1~65535，必须大于等于起始目的端口\n        :type DportEnd: int\n        :param PktlenMin: 最小报文长度，取值1-1500\n        :type PktlenMin: int\n        :param PktlenMax: 最大报文长度，取值1-1500，必须大于等于最小报文长度\n        :type PktlenMax: int\n        :param Action: 动作，取值[
+        r"""
+        :param Protocol: 协议，取值[tcp udp icmp all]
+        :type Protocol: str
+        :param SportStart: 起始源端口，取值0~65535
+        :type SportStart: int
+        :param SportEnd: 结束源端口，取值1~65535，必须大于等于起始源端口
+        :type SportEnd: int
+        :param DportStart: 起始目的端口，取值0~65535
+        :type DportStart: int
+        :param DportEnd: 结束目的端口，取值1~65535，必须大于等于起始目的端口
+        :type DportEnd: int
+        :param PktlenMin: 最小报文长度，取值1-1500
+        :type PktlenMin: int
+        :param PktlenMax: 最大报文长度，取值1-1500，必须大于等于最小报文长度
+        :type PktlenMax: int
+        :param Action: 动作，取值[
 drop(丢弃)
 transmit(放行)
 drop_black(丢弃并拉黑)
 drop_rst(拦截)
 drop_black_rst(拦截并拉黑)
 forward(继续防护)
-]\n        :type Action: str\n        :param MatchBegin: 检测位置，取值[
+]
+        :type Action: str
+        :param MatchBegin: 检测位置，取值[
 begin_l3(IP头)
 begin_l4(TCP/UDP头)
 begin_l5(T载荷)
 no_match(不匹配)
-]\n        :type MatchBegin: str\n        :param MatchType: 检测类型，取值[
+]
+        :type MatchBegin: str
+        :param MatchType: 检测类型，取值[
 sunday(关键字)
 pcre(正则表达式)
-]\n        :type MatchType: str\n        :param Str: 检测值，关键字符串或正则表达式,取值[
+]
+        :type MatchType: str
+        :param Str: 检测值，关键字符串或正则表达式,取值[
 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 当检测类型为pcre时, 请填写正则表达式字符串;
-]\n        :type Str: str\n        :param Depth: 从检测位置开始的检测深度，取值[0,1500]\n        :type Depth: int\n        :param Offset: 从检测位置开始的偏移量，取值范围[0,Depth]\n        :type Offset: int\n        :param IsNot: 是否包含检测值，取值[
+]
+        :type Str: str
+        :param Depth: 从检测位置开始的检测深度，取值[0,1500]
+        :type Depth: int
+        :param Offset: 从检测位置开始的偏移量，取值范围[0,Depth]
+        :type Offset: int
+        :param IsNot: 是否包含检测值，取值[
 0(包含)
 1(不包含)
-]\n        :type IsNot: int\n        :param MatchLogic: 当有第二个检测条件时，与第一检测条件的且或关系，取值[
+]
+        :type IsNot: int
+        :param MatchLogic: 当有第二个检测条件时，与第一检测条件的且或关系，取值[
 and(且的关系)
 none(当没有第二个检测条件时填写此值)
-]\n        :type MatchLogic: str\n        :param MatchBegin2: 第二个检测位置，取值[
+]
+        :type MatchLogic: str
+        :param MatchBegin2: 第二个检测位置，取值[
 begin_l5(载荷)
 no_match(不匹配)
-]\n        :type MatchBegin2: str\n        :param MatchType2: 第二个检测类型，取值[
+]
+        :type MatchBegin2: str
+        :param MatchType2: 第二个检测类型，取值[
 sunday(关键字)
 pcre(正则表达式)
-]\n        :type MatchType2: str\n        :param Str2: 第二个检测值，关键字符串或正则表达式,取值[
+]
+        :type MatchType2: str
+        :param Str2: 第二个检测值，关键字符串或正则表达式,取值[
 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 当检测类型为pcre时, 请填写正则表达式字符串;
-]\n        :type Str2: str\n        :param Depth2: 从第二个检测位置开始的第二个检测深度，取值[0,1500]\n        :type Depth2: int\n        :param Offset2: 从第二个检测位置开始的偏移量，取值范围[0,Depth2]\n        :type Offset2: int\n        :param IsNot2: 第二个检测是否包含检测值，取值[
+]
+        :type Str2: str
+        :param Depth2: 从第二个检测位置开始的第二个检测深度，取值[0,1500]
+        :type Depth2: int
+        :param Offset2: 从第二个检测位置开始的偏移量，取值范围[0,Depth2]
+        :type Offset2: int
+        :param IsNot2: 第二个检测是否包含检测值，取值[
 0(包含)
 1(不包含)
-]\n        :type IsNot2: int\n        :param Id: 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；\n        :type Id: str\n        """
+]
+        :type IsNot2: int
+        :param Id: 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；
+        :type Id: str
+        """
         self.Protocol = None
         self.SportStart = None
         self.SportEnd = None
@@ -3404,8 +4234,12 @@ class PacketFilterRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PacketFilterConfig: 特征过滤配置
+        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
+        :param InstanceDetailList: 特征过滤配置所属的实例
+        :type InstanceDetailList: list of InstanceRelation
         """
-        :param PacketFilterConfig: 特征过滤配置\n        :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`\n        :param InstanceDetailList: 特征过滤配置所属的实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
         self.PacketFilterConfig = None
         self.InstanceDetailList = None
 
@@ -3435,8 +4269,12 @@ class PortSegment(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BeginPort: 起始端口，取值1~65535
+        :type BeginPort: int
+        :param EndPort: 结束端口，取值1~65535，必须不小于起始端口
+        :type EndPort: int
         """
-        :param BeginPort: 起始端口，取值1~65535\n        :type BeginPort: int\n        :param EndPort: 结束端口，取值1~65535，必须不小于起始端口\n        :type EndPort: int\n        """
         self.BeginPort = None
         self.EndPort = None
 
@@ -3459,18 +4297,32 @@ class ProtectThresholdRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DDoSLevel: DDoS防护等级，取值[
 low(宽松)
 middle(适中)
 high(严格)
-]\n        :type DDoSLevel: str\n        :param DDoSThreshold: DDoS清洗阈值，单位Mbps\n        :type DDoSThreshold: int\n        :param DDoSAI: DDoS的AI防护开关，取值[
+]
+        :type DDoSLevel: str
+        :param DDoSThreshold: DDoS清洗阈值，单位Mbps
+        :type DDoSThreshold: int
+        :param DDoSAI: DDoS的AI防护开关，取值[
 on(开启)
 off(关闭)
-]\n        :type DDoSAI: str\n        :param CCEnable: CC清洗开关，取值[
+]
+        :type DDoSAI: str
+        :param CCEnable: CC清洗开关，取值[
 0(关闭)
 1(开启)
-]\n        :type CCEnable: int\n        :param CCThreshold: CC清洗阈值，单位QPS\n        :type CCThreshold: int\n        :param InstanceDetailList: 所属的资源实例\n        :type InstanceDetailList: list of InstanceRelation\n        :param ListenerCcThresholdList: 域名与协议纬度的防护阈值\n        :type ListenerCcThresholdList: list of ListenerCcThreholdConfig\n        """
+]
+        :type CCEnable: int
+        :param CCThreshold: CC清洗阈值，单位QPS
+        :type CCThreshold: int
+        :param InstanceDetailList: 所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
+        :param ListenerCcThresholdList: 域名与协议纬度的防护阈值
+        :type ListenerCcThresholdList: list of ListenerCcThreholdConfig
+        """
         self.DDoSLevel = None
         self.DDoSThreshold = None
         self.DDoSAI = None
@@ -3513,8 +4365,18 @@ class ProtocolBlockConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DropTcp: TCP封禁，取值[0(封禁关)，1(封禁开)]
+        :type DropTcp: int
+        :param DropUdp: UDP封禁，取值[0(封禁关)，1(封禁开)]
+        :type DropUdp: int
+        :param DropIcmp: ICMP封禁，取值[0(封禁关)，1(封禁开)]
+        :type DropIcmp: int
+        :param DropOther: 其他协议封禁，取值[0(封禁关)，1(封禁开)]
+        :type DropOther: int
+        :param CheckExceptNullConnect: 异常空连接防护，取值[0(防护关)，1(防护开)]
+        :type CheckExceptNullConnect: int
         """
-        :param DropTcp: TCP封禁，取值[0(封禁关)，1(封禁开)]\n        :type DropTcp: int\n        :param DropUdp: UDP封禁，取值[0(封禁关)，1(封禁开)]\n        :type DropUdp: int\n        :param DropIcmp: ICMP封禁，取值[0(封禁关)，1(封禁开)]\n        :type DropIcmp: int\n        :param DropOther: 其他协议封禁，取值[0(封禁关)，1(封禁开)]\n        :type DropOther: int\n        :param CheckExceptNullConnect: 异常空连接防护，取值[0(防护关)，1(防护开)]\n        :type CheckExceptNullConnect: int\n        """
         self.DropTcp = None
         self.DropUdp = None
         self.DropIcmp = None
@@ -3543,8 +4405,12 @@ class ProtocolBlockRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProtocolBlockConfig: 协议封禁配置
+        :type ProtocolBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.ProtocolBlockConfig`
+        :param InstanceDetailList: 协议封禁配置所属的实例
+        :type InstanceDetailList: list of InstanceRelation
         """
-        :param ProtocolBlockConfig: 协议封禁配置\n        :type ProtocolBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.ProtocolBlockConfig`\n        :param InstanceDetailList: 协议封禁配置所属的实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
         self.ProtocolBlockConfig = None
         self.InstanceDetailList = None
 
@@ -3574,8 +4440,12 @@ class ProtocolPort(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Protocol: 协议（tcp；udp）
+        :type Protocol: str
+        :param Port: 端口
+        :type Port: int
         """
-        :param Protocol: 协议（tcp；udp）\n        :type Protocol: str\n        :param Port: 端口\n        :type Port: int\n        """
         self.Protocol = None
         self.Port = None
 
@@ -3598,11 +4468,15 @@ class ProxyTypeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ProxyPorts: 转发监听端口列表，端口取值1~65535\n        :type ProxyPorts: list of int\n        :param ProxyType: 转发协议，取值[
+        r"""
+        :param ProxyPorts: 转发监听端口列表，端口取值1~65535
+        :type ProxyPorts: list of int
+        :param ProxyType: 转发协议，取值[
 http(HTTP协议)
 https(HTTPS协议)
-]\n        :type ProxyType: str\n        """
+]
+        :type ProxyType: str
+        """
         self.ProxyPorts = None
         self.ProxyType = None
 
@@ -3625,8 +4499,10 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 地域名称，例如，ap-guangzhou
+        :type Region: str
         """
-        :param Region: 地域名称，例如，ap-guangzhou\n        :type Region: str\n        """
         self.Region = None
 
 
@@ -3647,13 +4523,29 @@ class SchedulingDomainInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domain: 调度域名\n        :type Domain: str\n        :param LineIPList: 线路IP列表\n        :type LineIPList: list of IPLineInfo\n        :param Method: 调度方式，当前仅支持优先级的方式，取值[priority]\n        :type Method: str\n        :param TTL: 调度域名解析记录的TTL值\n        :type TTL: int\n        :param Status: 运行状态，取值[
+        r"""
+        :param Domain: 调度域名
+        :type Domain: str
+        :param LineIPList: 线路IP列表
+        :type LineIPList: list of IPLineInfo
+        :param Method: 调度方式，当前仅支持优先级的方式，取值[priority]
+        :type Method: str
+        :param TTL: 调度域名解析记录的TTL值
+        :type TTL: int
+        :param Status: 运行状态，取值[
 0：未运行
 1：运行中
 2：运行异常
-]\n        :type Status: int\n        :param CreatedTime: 创建时间\n        :type CreatedTime: str\n        :param ModifyTime: 最后修改时间\n        :type ModifyTime: str\n        :param UsrDomainName: 域名名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsrDomainName: str\n        """
+]
+        :type Status: int
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param ModifyTime: 最后修改时间
+        :type ModifyTime: str
+        :param UsrDomainName: 域名名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsrDomainName: str
+        """
         self.Domain = None
         self.LineIPList = None
         self.Method = None
@@ -3693,11 +4585,17 @@ class SourceServer(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RealServer: 源站的地址（IP或者域名）\n        :type RealServer: str\n        :param RsType: 源站的地址类型，取值[
+        r"""
+        :param RealServer: 源站的地址（IP或者域名）
+        :type RealServer: str
+        :param RsType: 源站的地址类型，取值[
 1(域名地址)
 2(IP地址)
-]\n        :type RsType: int\n        :param Weight: 源站的回源权重，取值1~100\n        :type Weight: int\n        """
+]
+        :type RsType: int
+        :param Weight: 源站的回源权重，取值1~100
+        :type Weight: int
+        """
         self.RealServer = None
         self.RsType = None
         self.Weight = None
@@ -3722,11 +4620,15 @@ class SpeedValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 限速值类型，取值[
 1(包速率pps)
 2(带宽bps)
-]\n        :type Type: int\n        :param Value: 值大小\n        :type Value: int\n        """
+]
+        :type Type: int
+        :param Value: 值大小
+        :type Value: int
+        """
         self.Type = None
         self.Value = None
 
@@ -3749,13 +4651,23 @@ class StaticPackRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtectBandwidth: 保底带宽
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProtectBandwidth: int\n        :param NormalBandwidth: 业务带宽
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NormalBandwidth: int\n        :param ForwardRulesLimit: 转发规则
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ForwardRulesLimit: int\n        :param AutoRenewFlag: 自动续费标记
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AutoRenewFlag: int\n        :param CurDeadline: 到期时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CurDeadline: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectBandwidth: int
+        :param NormalBandwidth: 业务带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalBandwidth: int
+        :param ForwardRulesLimit: 转发规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardRulesLimit: int
+        :param AutoRenewFlag: 自动续费标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param CurDeadline: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        """
         self.ProtectBandwidth = None
         self.NormalBandwidth = None
         self.ForwardRulesLimit = None
@@ -3784,8 +4696,12 @@ class SuccessCode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Message: 描述
+        :type Message: str
+        :param Code: 成功/错误码
+        :type Code: str
         """
-        :param Message: 描述\n        :type Message: str\n        :param Code: 成功/错误码\n        :type Code: str\n        """
         self.Message = None
         self.Code = None
 
@@ -3808,8 +4724,12 @@ class SwitchWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param OpenStatus: 水印开启/关闭状态，1表示开启；0表示关闭
+        :type OpenStatus: int
         """
-        :param InstanceId: 资源实例ID\n        :type InstanceId: str\n        :param OpenStatus: 水印开启/关闭状态，1表示开启；0表示关闭\n        :type OpenStatus: int\n        """
         self.InstanceId = None
         self.OpenStatus = None
 
@@ -3832,8 +4752,10 @@ class SwitchWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3847,14 +4769,24 @@ class WaterPrintConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Offset: 水印偏移量，取值范围[0, 100)\n        :type Offset: int\n        :param OpenStatus: 是否开启，取值[
+        r"""
+        :param Offset: 水印偏移量，取值范围[0, 100)
+        :type Offset: int
+        :param OpenStatus: 是否开启，取值[
 0（手动开启）
 1（立即运行）
-]\n        :type OpenStatus: int\n        :param Listeners: 水印所属的转发监听器列表\n        :type Listeners: list of ForwardListener\n        :param Keys: 水印添加成功后生成的水印密钥列表，一条水印最少1个密钥，最多2个密钥\n        :type Keys: list of WaterPrintKey\n        :param Verify: 水印检查模式, 取值[
+]
+        :type OpenStatus: int
+        :param Listeners: 水印所属的转发监听器列表
+        :type Listeners: list of ForwardListener
+        :param Keys: 水印添加成功后生成的水印密钥列表，一条水印最少1个密钥，最多2个密钥
+        :type Keys: list of WaterPrintKey
+        :param Verify: 水印检查模式, 取值[
 checkall（普通模式）
 shortfpcheckall（精简模式）
-]\n        :type Verify: str\n        """
+]
+        :type Verify: str
+        """
         self.Offset = None
         self.OpenStatus = None
         self.Listeners = None
@@ -3893,8 +4825,18 @@ class WaterPrintKey(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param KeyVersion: 密钥版本号
+        :type KeyVersion: str
+        :param KeyContent: 密钥内容
+        :type KeyContent: str
+        :param KeyId: 密钥ID
+        :type KeyId: str
+        :param KeyOpenStatus: 密钥启用状态，只有一个取值1(启用)
+        :type KeyOpenStatus: int
+        :param CreateTime: 密钥生成时间
+        :type CreateTime: str
         """
-        :param KeyVersion: 密钥版本号\n        :type KeyVersion: str\n        :param KeyContent: 密钥内容\n        :type KeyContent: str\n        :param KeyId: 密钥ID\n        :type KeyId: str\n        :param KeyOpenStatus: 密钥启用状态，只有一个取值1(启用)\n        :type KeyOpenStatus: int\n        :param CreateTime: 密钥生成时间\n        :type CreateTime: str\n        """
         self.KeyVersion = None
         self.KeyContent = None
         self.KeyId = None
@@ -3923,8 +4865,12 @@ class WaterPrintRelation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param WaterPrintConfig: 水印配置
+        :type WaterPrintConfig: :class:`tencentcloud.antiddos.v20200309.models.WaterPrintConfig`
+        :param InstanceDetailList: 水印配置所属的资源实例
+        :type InstanceDetailList: list of InstanceRelation
         """
-        :param WaterPrintConfig: 水印配置\n        :type WaterPrintConfig: :class:`tencentcloud.antiddos.v20200309.models.WaterPrintConfig`\n        :param InstanceDetailList: 水印配置所属的资源实例\n        :type InstanceDetailList: list of InstanceRelation\n        """
         self.WaterPrintConfig = None
         self.InstanceDetailList = None
 

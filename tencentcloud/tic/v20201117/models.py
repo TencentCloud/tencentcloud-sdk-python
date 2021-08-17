@@ -24,8 +24,12 @@ class ApplyStackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param VersionId: 待执行apply事件的版本ID
+        :type VersionId: str
         """
-        :param StackId: 资源栈ID\n        :type StackId: str\n        :param VersionId: 待执行apply事件的版本ID\n        :type VersionId: str\n        """
         self.StackId = None
         self.VersionId = None
 
@@ -48,8 +52,12 @@ class ApplyStackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 执行的事件ID
+        :type EventId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EventId: 执行的事件ID\n        :type EventId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EventId = None
         self.RequestId = None
 
@@ -65,8 +73,16 @@ class CreateStackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackName: 资源栈名称，不得超过60个字符
+        :type StackName: str
+        :param StackRegion: 资源栈所在地域
+        :type StackRegion: str
+        :param TemplateUrl: HCL模板URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :type TemplateUrl: str
+        :param Description: 资源栈描述，不得超过200个字符
+        :type Description: str
         """
-        :param StackName: 资源栈名称，不得超过60个字符\n        :type StackName: str\n        :param StackRegion: 资源栈所在地域\n        :type StackRegion: str\n        :param TemplateUrl: HCL模板URL，⽬前仅限 COS URL, ⽂件为zip压缩格式\n        :type TemplateUrl: str\n        :param Description: 资源栈描述，不得超过200个字符\n        :type Description: str\n        """
         self.StackName = None
         self.StackRegion = None
         self.TemplateUrl = None
@@ -93,8 +109,14 @@ class CreateStackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 创建得到的资源栈ID
+        :type StackId: str
+        :param VersionId: 资源栈版本ID
+        :type VersionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param StackId: 创建得到的资源栈ID\n        :type StackId: str\n        :param VersionId: 资源栈版本ID\n        :type VersionId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.StackId = None
         self.VersionId = None
         self.RequestId = None
@@ -112,8 +134,16 @@ class CreateStackVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 待增加版本的资源栈ID
+        :type StackId: str
+        :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :type TemplateUrl: str
+        :param VersionName: 版本名称，不得超过60个字符
+        :type VersionName: str
+        :param Description: 版本描述，不得超过200个字符
+        :type Description: str
         """
-        :param StackId: 待增加版本的资源栈ID\n        :type StackId: str\n        :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式\n        :type TemplateUrl: str\n        :param VersionName: 版本名称，不得超过60个字符\n        :type VersionName: str\n        :param Description: 版本描述，不得超过200个字符\n        :type Description: str\n        """
         self.StackId = None
         self.TemplateUrl = None
         self.VersionName = None
@@ -140,8 +170,12 @@ class CreateStackVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VersionId: 新创建的版本ID
+        :type VersionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param VersionId: 新创建的版本ID\n        :type VersionId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.VersionId = None
         self.RequestId = None
 
@@ -157,8 +191,10 @@ class DeleteStackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 待删除的资源栈ID
+        :type StackId: str
         """
-        :param StackId: 待删除的资源栈ID\n        :type StackId: str\n        """
         self.StackId = None
 
 
@@ -179,8 +215,10 @@ class DeleteStackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -194,8 +232,10 @@ class DeleteStackVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VersionId: 待删除的版本ID
+        :type VersionId: str
         """
-        :param VersionId: 待删除的版本ID\n        :type VersionId: str\n        """
         self.VersionId = None
 
 
@@ -216,8 +256,10 @@ class DeleteStackVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -231,8 +273,10 @@ class DescribeStackEventRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件ID
+        :type EventId: str
         """
-        :param EventId: 事件ID\n        :type EventId: str\n        """
         self.EventId = None
 
 
@@ -253,8 +297,26 @@ class DescribeStackEventResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件ID
+        :type EventId: str
+        :param VersionId: 版本ID
+        :type VersionId: str
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param Type: 事件类型
+        :type Type: str
+        :param Status: 事件状态
+        :type Status: str
+        :param EventMessage: 状态信息
+        :type EventMessage: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ConsoleLog: 控制台输出文本
+        :type ConsoleLog: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EventId: 事件ID\n        :type EventId: str\n        :param VersionId: 版本ID\n        :type VersionId: str\n        :param StackId: 资源栈ID\n        :type StackId: str\n        :param Type: 事件类型\n        :type Type: str\n        :param Status: 事件状态\n        :type Status: str\n        :param EventMessage: 状态信息\n        :type EventMessage: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param ConsoleLog: 控制台输出文本\n        :type ConsoleLog: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EventId = None
         self.VersionId = None
         self.StackId = None
@@ -284,8 +346,10 @@ class DescribeStackEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EventIds: 按照⼀个或者多个事件ID查询\n        :type EventIds: list of str\n        :param Filters: <li>**VersionId**</li>
+        r"""
+        :param EventIds: 按照⼀个或者多个事件ID查询
+        :type EventIds: list of str
+        :param Filters: <li>**VersionId**</li>
 按照【**版本ID**】过滤，VersionId形如 `ver-kg8hn58h`
 类型：string
 
@@ -299,7 +363,13 @@ class DescribeStackEventsRequest(AbstractModel):
 
 <li>**Status**</li>
 按照【**事件状态**】过滤，Status形如 queueing, running, success, failed
-类型：string\n        :type Filters: list of Filter\n        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节\n        :type Limit: int\n        """
+类型：string
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :type Limit: int
+        """
         self.EventIds = None
         self.Filters = None
         self.Offset = None
@@ -331,8 +401,14 @@ class DescribeStackEventsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的事件数量
+        :type TotalCount: int
+        :param Events: 事件详细信息列表
+        :type Events: list of EventInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 符合条件的事件数量\n        :type TotalCount: int\n        :param Events: 事件详细信息列表\n        :type Events: list of EventInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Events = None
         self.RequestId = None
@@ -355,8 +431,14 @@ class DescribeStackVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param VersionIds: 按照⼀个或者多个版本ID查询\n        :type VersionIds: list of str\n        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节\n        :type Limit: int\n        :param Filters: <li>**Name**</li>
+        r"""
+        :param VersionIds: 按照⼀个或者多个版本ID查询
+        :type VersionIds: list of str
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+        :type Limit: int
+        :param Filters: <li>**Name**</li>
 按照【**版本名称**】进行过滤
 类型：string
 
@@ -366,7 +448,9 @@ class DescribeStackVersionsRequest(AbstractModel):
 
 <li>**StackId**</li>
 按照版本所属的【**资源栈ID**】进行过滤，形如`stk-xxxxxx`
-类型：string\n        :type Filters: list of Filter\n        """
+类型：string
+        :type Filters: list of Filter
+        """
         self.VersionIds = None
         self.Offset = None
         self.Limit = None
@@ -398,8 +482,14 @@ class DescribeStackVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的版本数量
+        :type TotalCount: int
+        :param Versions: 版本详细信息列表
+        :type Versions: list of VersionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 符合条件的版本数量\n        :type TotalCount: int\n        :param Versions: 版本详细信息列表\n        :type Versions: list of VersionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Versions = None
         self.RequestId = None
@@ -422,8 +512,14 @@ class DescribeStacksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackIds: 按照⼀个或者多个资源栈ID查询
+        :type StackIds: list of str
+        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
         """
-        :param StackIds: 按照⼀个或者多个资源栈ID查询\n        :type StackIds: list of str\n        :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。\n        :type Limit: int\n        """
         self.StackIds = None
         self.Offset = None
         self.Limit = None
@@ -448,8 +544,14 @@ class DescribeStacksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的资源栈数量
+        :type TotalCount: int
+        :param Stacks: 资源栈详细信息列表
+        :type Stacks: list of StackInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 符合条件的资源栈数量\n        :type TotalCount: int\n        :param Stacks: 资源栈详细信息列表\n        :type Stacks: list of StackInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Stacks = None
         self.RequestId = None
@@ -472,8 +574,12 @@ class DestroyStackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param VersionId: 待执行destroy事件的版本ID
+        :type VersionId: str
         """
-        :param StackId: 资源栈ID\n        :type StackId: str\n        :param VersionId: 待执行destroy事件的版本ID\n        :type VersionId: str\n        """
         self.StackId = None
         self.VersionId = None
 
@@ -496,8 +602,12 @@ class DestroyStackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件ID
+        :type EventId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EventId: 事件ID\n        :type EventId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EventId = None
         self.RequestId = None
 
@@ -513,8 +623,22 @@ class EventInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 事件ID
+        :type EventId: str
+        :param VersionId: 版本ID
+        :type VersionId: str
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param Type: 事件类型
+        :type Type: str
+        :param Status: 版本状态
+        :type Status: str
+        :param Message: 状态信息
+        :type Message: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
         """
-        :param EventId: 事件ID\n        :type EventId: str\n        :param VersionId: 版本ID\n        :type VersionId: str\n        :param StackId: 资源栈ID\n        :type StackId: str\n        :param Type: 事件类型\n        :type Type: str\n        :param Status: 版本状态\n        :type Status: str\n        :param Message: 状态信息\n        :type Message: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        """
         self.EventId = None
         self.VersionId = None
         self.StackId = None
@@ -547,8 +671,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 条件名字
+        :type Name: str
+        :param Values: 匹配的值，可以有多个
+        :type Values: list of str
         """
-        :param Name: 条件名字\n        :type Name: str\n        :param Values: 匹配的值，可以有多个\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -571,8 +699,12 @@ class PlanStackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param VersionId: 待执行plan事件的版本ID
+        :type VersionId: str
         """
-        :param StackId: 资源栈ID\n        :type StackId: str\n        :param VersionId: 待执行plan事件的版本ID\n        :type VersionId: str\n        """
         self.StackId = None
         self.VersionId = None
 
@@ -595,8 +727,12 @@ class PlanStackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EventId: 执行的事件ID
+        :type EventId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EventId: 执行的事件ID\n        :type EventId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EventId = None
         self.RequestId = None
 
@@ -612,8 +748,20 @@ class StackInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param StackName: 资源栈名称
+        :type StackName: str
+        :param Description: 资源栈描述
+        :type Description: str
+        :param Region: 所处地域
+        :type Region: str
+        :param Status: 资源栈状态
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
         """
-        :param StackId: 资源栈ID\n        :type StackId: str\n        :param StackName: 资源栈名称\n        :type StackName: str\n        :param Description: 资源栈描述\n        :type Description: str\n        :param Region: 所处地域\n        :type Region: str\n        :param Status: 资源栈状态\n        :type Status: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        """
         self.StackId = None
         self.StackName = None
         self.Description = None
@@ -644,8 +792,14 @@ class UpdateStackRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StackId: 待更新的资源栈ID
+        :type StackId: str
+        :param StackName: 资源栈名称，不得超过60个字符
+        :type StackName: str
+        :param Description: 资源栈描述，不得超过200个字符
+        :type Description: str
         """
-        :param StackId: 待更新的资源栈ID\n        :type StackId: str\n        :param StackName: 资源栈名称，不得超过60个字符\n        :type StackName: str\n        :param Description: 资源栈描述，不得超过200个字符\n        :type Description: str\n        """
         self.StackId = None
         self.StackName = None
         self.Description = None
@@ -670,8 +824,10 @@ class UpdateStackResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -685,8 +841,16 @@ class UpdateStackVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VersionId: 待更新的版本ID
+        :type VersionId: str
+        :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+        :type TemplateUrl: str
+        :param VersionName: 版本名称，不得超过60个字符
+        :type VersionName: str
+        :param Description: 版本描述，不得超过200个字符
+        :type Description: str
         """
-        :param VersionId: 待更新的版本ID\n        :type VersionId: str\n        :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式\n        :type TemplateUrl: str\n        :param VersionName: 版本名称，不得超过60个字符\n        :type VersionName: str\n        :param Description: 版本描述，不得超过200个字符\n        :type Description: str\n        """
         self.VersionId = None
         self.TemplateUrl = None
         self.VersionName = None
@@ -713,8 +877,10 @@ class UpdateStackVersionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -728,8 +894,20 @@ class VersionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VersionId: 版本ID
+        :type VersionId: str
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param Description: 版本描述
+        :type Description: str
+        :param StackId: 资源栈ID
+        :type StackId: str
+        :param Status: 版本状态
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
         """
-        :param VersionId: 版本ID\n        :type VersionId: str\n        :param VersionName: 版本名称\n        :type VersionName: str\n        :param Description: 版本描述\n        :type Description: str\n        :param StackId: 资源栈ID\n        :type StackId: str\n        :param Status: 版本状态\n        :type Status: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        """
         self.VersionId = None
         self.VersionName = None
         self.Description = None

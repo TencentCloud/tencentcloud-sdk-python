@@ -24,8 +24,20 @@ class CompareMetricsData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ShortStructAccuracy: 短文准确率
+        :type ShortStructAccuracy: str
+        :param ShortStructRecall: 短文召回率
+        :type ShortStructRecall: str
+        :param LongStructAccuracy: 长文结构化准确率
+        :type LongStructAccuracy: str
+        :param LongStructRecall: 长文结构化召回率
+        :type LongStructRecall: str
+        :param LongContentAccuracy: 长文提取准确率
+        :type LongContentAccuracy: str
+        :param LongContentRecall: 长文提取召回率
+        :type LongContentRecall: str
         """
-        :param ShortStructAccuracy: 短文准确率\n        :type ShortStructAccuracy: str\n        :param ShortStructRecall: 短文召回率\n        :type ShortStructRecall: str\n        :param LongStructAccuracy: 长文结构化准确率\n        :type LongStructAccuracy: str\n        :param LongStructRecall: 长文结构化召回率\n        :type LongStructRecall: str\n        :param LongContentAccuracy: 长文提取准确率\n        :type LongContentAccuracy: str\n        :param LongContentRecall: 长文提取召回率\n        :type LongContentRecall: str\n        """
         self.ShortStructAccuracy = None
         self.ShortStructRecall = None
         self.LongStructAccuracy = None
@@ -56,11 +68,27 @@ class CreateStructureTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param PolicyId: 保单号\n        :type PolicyId: str\n        :param CustomerId: 客户号\n        :type CustomerId: str\n        :param CustomerName: 客户姓名\n        :type CustomerName: str\n        :param TaskType: 文件类型，目前只支持体检报告类型，对应的值为：HealthReport\n        :type TaskType: str\n        :param Year: 报告年份\n        :type Year: str\n        :param FileList: 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可\n        :type FileList: list of str\n        :param InsuranceTypes: 险种，如果是体检报告类型，此参数是必填，类型说明如下：
+        r"""
+        :param PolicyId: 保单号
+        :type PolicyId: str
+        :param CustomerId: 客户号
+        :type CustomerId: str
+        :param CustomerName: 客户姓名
+        :type CustomerName: str
+        :param TaskType: 文件类型，目前只支持体检报告类型，对应的值为：HealthReport
+        :type TaskType: str
+        :param Year: 报告年份
+        :type Year: str
+        :param FileList: 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+        :type FileList: list of str
+        :param InsuranceTypes: 险种，如果是体检报告类型，此参数是必填，类型说明如下：
 CriticalDiseaseInsurance:重疾险
 LifeInsurance：寿险
-AccidentInsurance：意外险\n        :type InsuranceTypes: list of str\n        :param ImageList: 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列\n        :type ImageList: list of str\n        """
+AccidentInsurance：意外险
+        :type InsuranceTypes: list of str
+        :param ImageList: 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+        :type ImageList: list of str
+        """
         self.PolicyId = None
         self.CustomerId = None
         self.CustomerName = None
@@ -95,8 +123,12 @@ class CreateStructureTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 本次结构化任务的ID
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 本次结构化任务的ID\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -112,8 +144,10 @@ class DescribeStructCompareDataRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 结构化任务ID
+        :type TaskId: str
         """
-        :param TaskId: 结构化任务ID\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -134,8 +168,30 @@ class DescribeStructCompareDataResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyId: 保单号
+        :type PolicyId: str
+        :param TaskId: 结构化任务ID
+        :type TaskId: str
+        :param CustomerId: 客户号
+        :type CustomerId: str
+        :param CustomerName: 客户姓名
+        :type CustomerName: str
+        :param ReviewTime: 复核时间
+        :type ReviewTime: str
+        :param MachineResult: 算法识别结果
+        :type MachineResult: str
+        :param ManualResult: 人工复核结果
+        :type ManualResult: str
+        :param Metrics: 结构化对比指标数据
+        :type Metrics: :class:`tencentcloud.cii.v20201210.models.CompareMetricsData`
+        :param NewItems: 新增项
+        :type NewItems: str
+        :param ModifyItems: 修改项
+        :type ModifyItems: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param PolicyId: 保单号\n        :type PolicyId: str\n        :param TaskId: 结构化任务ID\n        :type TaskId: str\n        :param CustomerId: 客户号\n        :type CustomerId: str\n        :param CustomerName: 客户姓名\n        :type CustomerName: str\n        :param ReviewTime: 复核时间\n        :type ReviewTime: str\n        :param MachineResult: 算法识别结果\n        :type MachineResult: str\n        :param ManualResult: 人工复核结果\n        :type ManualResult: str\n        :param Metrics: 结构化对比指标数据\n        :type Metrics: :class:`tencentcloud.cii.v20201210.models.CompareMetricsData`\n        :param NewItems: 新增项\n        :type NewItems: str\n        :param ModifyItems: 修改项\n        :type ModifyItems: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PolicyId = None
         self.TaskId = None
         self.CustomerId = None
@@ -171,8 +227,10 @@ class DescribeStructureTaskResultRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 结构化任务ID
+        :type TaskId: str
         """
-        :param TaskId: 结构化任务ID\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -193,12 +251,18 @@ class DescribeStructureTaskResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 结果状态：
 0：返回成功
 1：结果未生成
-2：结果生成失败\n        :type Status: int\n        :param Results: 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Results: list of ResultObject\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+2：结果生成失败
+        :type Status: int
+        :param Results: 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of ResultObject
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Status = None
         self.Results = None
         self.RequestId = None
@@ -221,8 +285,12 @@ class ResultObject(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Quality: 图片质量分
+        :type Quality: float
+        :param StructureResult: 由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
+        :type StructureResult: str
         """
-        :param Quality: 图片质量分\n        :type Quality: float\n        :param StructureResult: 由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议\n        :type StructureResult: str\n        """
         self.Quality = None
         self.StructureResult = None
 

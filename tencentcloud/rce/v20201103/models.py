@@ -24,7 +24,7 @@ class AccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 用户账号类型（默认开通 QQ 开放账号、手机号，手机 MD5 账号类型查询。如需使用微信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信开放账号）：
 1：QQ开放账号。
 2：微信开放账号。
@@ -33,7 +33,15 @@ class AccountInfo(AbstractModel):
 0：其他。
 10004：支持手机号MD5加密和sha256加密；
 标准中国大陆手机号11位，MD5加密后取长度32位小写字符串；例如：手机号13112345678的Md5加密结果为手"dafc728802534d51fbf85c70313a2bd2"
-标准中国大陆手机号11位，sha256加密后取长度为64位的小写字符串；例如：手机号13112345678的sha256加密的结果为“9f46715cff1a9ac969ec01924111f7f3697a97ad98a4fd53e15a78d79d1f3551”\n        :type AccountType: int\n        :param QQAccount: QQ账号信息，AccountType是1时，该字段必填。\n        :type QQAccount: :class:`tencentcloud.rce.v20201103.models.QQAccountInfo`\n        :param WeChatAccount: 微信账号信息，AccountType是2时，该字段必填。\n        :type WeChatAccount: :class:`tencentcloud.rce.v20201103.models.WeChatAccountInfo`\n        :param OtherAccount: 其它账号信息，AccountType是0、4、8或10004时，该字段必填。\n        :type OtherAccount: :class:`tencentcloud.rce.v20201103.models.OtherAccountInfo`\n        """
+标准中国大陆手机号11位，sha256加密后取长度为64位的小写字符串；例如：手机号13112345678的sha256加密的结果为“9f46715cff1a9ac969ec01924111f7f3697a97ad98a4fd53e15a78d79d1f3551”
+        :type AccountType: int
+        :param QQAccount: QQ账号信息，AccountType是1时，该字段必填。
+        :type QQAccount: :class:`tencentcloud.rce.v20201103.models.QQAccountInfo`
+        :param WeChatAccount: 微信账号信息，AccountType是2时，该字段必填。
+        :type WeChatAccount: :class:`tencentcloud.rce.v20201103.models.WeChatAccountInfo`
+        :param OtherAccount: 其它账号信息，AccountType是0、4、8或10004时，该字段必填。
+        :type OtherAccount: :class:`tencentcloud.rce.v20201103.models.OtherAccountInfo`
+        """
         self.AccountType = None
         self.QQAccount = None
         self.WeChatAccount = None
@@ -66,8 +74,12 @@ class InputDetails(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FieldName: 字段名称
+        :type FieldName: str
+        :param FieldValue: 字段值
+        :type FieldValue: str
         """
-        :param FieldName: 字段名称\n        :type FieldName: str\n        :param FieldValue: 字段值\n        :type FieldValue: str\n        """
         self.FieldName = None
         self.FieldValue = None
 
@@ -90,14 +102,50 @@ class InputManageMarketingRisk(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Account: 账号信息。\n        :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`\n        :param SceneCode: 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
+        r"""
+        :param Account: 账号信息。
+        :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
+        :param SceneCode: 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
 例如：e_register_protection_1521184361
-控制台链接：https://console.cloud.tencent.com/rce/risk/sceneroot；\n        :type SceneCode: str\n        :param UserIp: 登录来源的外网IP\n        :type UserIp: str\n        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。\n        :type PostTime: int\n        :param UserId: 用户唯一标识。\n        :type UserId: str\n        :param DeviceToken: 设备指纹token。\n        :type DeviceToken: str\n        :param DeviceBusinessId: 设备指纹BusinessId\n        :type DeviceBusinessId: int\n        :param BusinessId: 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。\n        :type BusinessId: int\n        :param Nickname: 昵称，UTF-8 编码。\n        :type Nickname: str\n        :param EmailAddress: 用户邮箱地址（非系统自动生成）。\n        :type EmailAddress: str\n        :param CheckDevice: 是否识别设备异常：
+控制台链接：https://console.cloud.tencent.com/rce/risk/sceneroot；
+        :type SceneCode: str
+        :param UserIp: 登录来源的外网IP
+        :type UserIp: str
+        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
+        :type PostTime: int
+        :param UserId: 用户唯一标识。
+        :type UserId: str
+        :param DeviceToken: 设备指纹token。
+        :type DeviceToken: str
+        :param DeviceBusinessId: 设备指纹BusinessId
+        :type DeviceBusinessId: int
+        :param BusinessId: 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+        :type BusinessId: int
+        :param Nickname: 昵称，UTF-8 编码。
+        :type Nickname: str
+        :param EmailAddress: 用户邮箱地址（非系统自动生成）。
+        :type EmailAddress: str
+        :param CheckDevice: 是否识别设备异常：
 0：不识别。
-1：识别。\n        :type CheckDevice: int\n        :param CookieHash: 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。\n        :type CookieHash: str\n        :param Referer: 用户HTTP请求的Referer值。\n        :type Referer: str\n        :param UserAgent: 用户HTTP请求的User-Agent值。\n        :type UserAgent: str\n        :param XForwardedFor: 用户HTTP请求的X-Forwarded-For值。\n        :type XForwardedFor: str\n        :param MacAddress: MAC地址或设备唯一标识。\n        :type MacAddress: str\n        :param VendorId: 手机制造商ID，如果手机注册，请带上此信息。\n        :type VendorId: str\n        :param DeviceType: 设备类型：
+1：识别。
+        :type CheckDevice: int
+        :param CookieHash: 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+        :type CookieHash: str
+        :param Referer: 用户HTTP请求的Referer值。
+        :type Referer: str
+        :param UserAgent: 用户HTTP请求的User-Agent值。
+        :type UserAgent: str
+        :param XForwardedFor: 用户HTTP请求的X-Forwarded-For值。
+        :type XForwardedFor: str
+        :param MacAddress: MAC地址或设备唯一标识。
+        :type MacAddress: str
+        :param VendorId: 手机制造商ID，如果手机注册，请带上此信息。
+        :type VendorId: str
+        :param DeviceType: 设备类型：
 1：Android
-2：IOS\n        :type DeviceType: int\n        :param Details: 详细信息
+2：IOS
+        :type DeviceType: int
+        :param Details: 详细信息
 FieldName 清单
 Android serial_number String 否 设备序列号
 Android carrier String 否 运营商；-1: 获取失败，0: 其他，1: 移动，2: 联通，3: 电信，4: 铁通
@@ -158,7 +206,13 @@ IOS network_type String 否 网络类型：2G/3G/4G/5G/WiFi/WWAN/other
 IOS wifi_mac String 否 WiFi MAC地址
 其他 os_system String 否 操作系统
 其他 browser String 否 浏览器信息
-其他 from_url String 否 来源链接\n        :type Details: list of InputDetails\n        :param Sponsor: 可选填写。详情请跳转至SponsorInfo查看。\n        :type Sponsor: :class:`tencentcloud.rce.v20201103.models.SponsorInfo`\n        :param OnlineScam: 可选填写。详情请跳转至OnlineScamInfo查看。\n        :type OnlineScam: :class:`tencentcloud.rce.v20201103.models.OnlineScamInfo`\n        """
+其他 from_url String 否 来源链接
+        :type Details: list of InputDetails
+        :param Sponsor: 可选填写。详情请跳转至SponsorInfo查看。
+        :type Sponsor: :class:`tencentcloud.rce.v20201103.models.SponsorInfo`
+        :param OnlineScam: 可选填写。详情请跳转至OnlineScamInfo查看。
+        :type OnlineScam: :class:`tencentcloud.rce.v20201103.models.OnlineScamInfo`
+        """
         self.Account = None
         self.SceneCode = None
         self.UserIp = None
@@ -230,8 +284,10 @@ class ManageMarketingRiskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputManageMarketingRisk`
         """
-        :param BusinessSecurityData: 业务入参\n        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputManageMarketingRisk`\n        """
         self.BusinessSecurityData = None
 
 
@@ -254,8 +310,12 @@ class ManageMarketingRiskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRisk`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 业务出参\n        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRisk`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -273,14 +333,24 @@ class OnlineScamInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ContentLabel: 内容标签。\n        :type ContentLabel: str\n        :param ContentRiskLevel: 内容风险等级：
+        r"""
+        :param ContentLabel: 内容标签。
+        :type ContentLabel: str
+        :param ContentRiskLevel: 内容风险等级：
 0：正常。
-1：可疑。\n        :type ContentRiskLevel: int\n        :param ContentType: 内容产生形式：
+1：可疑。
+        :type ContentRiskLevel: int
+        :param ContentType: 内容产生形式：
 0：对话。
-1：广播。\n        :type ContentType: int\n        :param FraudType: 诈骗账号类型：
+1：广播。
+        :type ContentType: int
+        :param FraudType: 诈骗账号类型：
 1：11位手机号。
-2：QQ账号。\n        :type FraudType: int\n        :param FraudAccount: 诈骗账号，手机号或QQ账号。\n        :type FraudAccount: str\n        """
+2：QQ账号。
+        :type FraudType: int
+        :param FraudAccount: 诈骗账号，手机号或QQ账号。
+        :type FraudAccount: str
+        """
         self.ContentLabel = None
         self.ContentRiskLevel = None
         self.ContentType = None
@@ -309,13 +379,19 @@ class OtherAccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountId: 其它账号信息：
 AccountType是4时，填入真实的手机号（如13123456789）。
 AccountType是8时，支持 imei、idfa、imeiMD5、idfaMD5 入参。
 AccountType是0时，填入账号信息。
 AccountType是10004时，填入手机号的MD5值。
-注：imeiMd5 加密方式为：imei 明文小写后，进行 MD5 加密，加密后取小写值。IdfaMd5 加密方式为：idfa 明文大写后，进行 MD5 加密，加密后取小写值。\n        :type AccountId: str\n        :param MobilePhone: 手机号，若 AccountType 是4（手机号）、或10004（手机号 MD5），则无需重复填写，否则填入对应的手机号（如13123456789）。\n        :type MobilePhone: str\n        :param DeviceId: 用户设备号。若 AccountType 是8（设备号），则无需重复填写，否则填入对应的设备号。\n        :type DeviceId: str\n        """
+注：imeiMd5 加密方式为：imei 明文小写后，进行 MD5 加密，加密后取小写值。IdfaMd5 加密方式为：idfa 明文大写后，进行 MD5 加密，加密后取小写值。
+        :type AccountId: str
+        :param MobilePhone: 手机号，若 AccountType 是4（手机号）、或10004（手机号 MD5），则无需重复填写，否则填入对应的手机号（如13123456789）。
+        :type MobilePhone: str
+        :param DeviceId: 用户设备号。若 AccountType 是8（设备号），则无需重复填写，否则填入对应的设备号。
+        :type DeviceId: str
+        """
         self.AccountId = None
         self.MobilePhone = None
         self.DeviceId = None
@@ -340,12 +416,20 @@ class OutputManageMarketingRisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 返回码。0表示成功，非0标识失败错误码。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Code: int\n        :param Message: UTF-8编码，出错消息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Message: str\n        :param Value: 业务详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Value: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRiskValue`\n        :param UUid: 控制台显示的req_id。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UUid: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param Message: UTF-8编码，出错消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Value: 业务详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRiskValue`
+        :param UUid: 控制台显示的req_id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UUid: str
+        """
         self.Code = None
         self.Message = None
         self.Value = None
@@ -374,7 +458,7 @@ class OutputManageMarketingRiskValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 账号ID。对应输入参数：
 AccountType是1时，对应QQ的OpenID。
 AccountType是2时，对应微信的OpenID/UnionID。
@@ -382,14 +466,24 @@ AccountType是4时，对应手机号。
 AccountType是8时，对应imei、idfa、imeiMD5或者idfaMD5。
 AccountType是0时，对应账号信息。
 AccountType是10004时，对应手机号的MD5。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserId: str\n        :param PostTime: 操作时间戳，单位秒（对应输入参数）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PostTime: int\n        :param AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AssociateAccount: str\n        :param UserIp: 操作来源的外网IP（对应输入参数）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserIp: str\n        :param RiskLevel: 风险值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param PostTime: 操作时间戳，单位秒（对应输入参数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostTime: int
+        :param AssociateAccount: 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateAccount: str
+        :param UserIp: 操作来源的外网IP（对应输入参数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIp: str
+        :param RiskLevel: 风险值
 pass : 无恶意
 review：需要人工审核
 reject：拒绝，高风险恶意
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskLevel: str\n        :param RiskType: 风险类型，请参考官网风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: str
+        :param RiskType: 风险类型，请参考官网风险类型
 账号风险 
 1 账号信用低,账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 11 疑似 低活跃账号,账号活跃度与正常用户有差异
@@ -415,7 +509,9 @@ reject：拒绝，高风险恶意
 2061 疑似 非常用设备 当前请求的设备非该账号常用设备
 2062 疑似 虚拟设备 请求设备为模拟器、脚本、云设备等虚拟设备
 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RiskType: list of int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskType: list of int
+        """
         self.UserId = None
         self.PostTime = None
         self.AssociateAccount = None
@@ -446,8 +542,18 @@ class QQAccountInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QQOpenId: QQ的OpenID。
+        :type QQOpenId: str
+        :param AppIdUser: QQ分配给网站或应用的AppId，用来唯一标识网站或应用。
+        :type AppIdUser: str
+        :param AssociateAccount: 用于标识QQ用户登录后所关联业务自身的账号ID。
+        :type AssociateAccount: str
+        :param MobilePhone: 账号绑定的手机号。
+        :type MobilePhone: str
+        :param DeviceId: 用户设备号。
+        :type DeviceId: str
         """
-        :param QQOpenId: QQ的OpenID。\n        :type QQOpenId: str\n        :param AppIdUser: QQ分配给网站或应用的AppId，用来唯一标识网站或应用。\n        :type AppIdUser: str\n        :param AssociateAccount: 用于标识QQ用户登录后所关联业务自身的账号ID。\n        :type AssociateAccount: str\n        :param MobilePhone: 账号绑定的手机号。\n        :type MobilePhone: str\n        :param DeviceId: 用户设备号。\n        :type DeviceId: str\n        """
         self.QQOpenId = None
         self.AppIdUser = None
         self.AssociateAccount = None
@@ -476,8 +582,18 @@ class SponsorInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SponsorOpenId: 助力场景建议填写：活动发起人微信OpenID。
+        :type SponsorOpenId: str
+        :param SponsorDeviceNumber: 助力场景建议填写：发起人设备号。
+        :type SponsorDeviceNumber: str
+        :param SponsorPhone: 助力场景建议填写：发起人手机号。
+        :type SponsorPhone: str
+        :param SponsorIp: 助力场景建议填写：发起人IP。
+        :type SponsorIp: str
+        :param CampaignUrl: 助力场景建议填写：活动链接。
+        :type CampaignUrl: str
         """
-        :param SponsorOpenId: 助力场景建议填写：活动发起人微信OpenID。\n        :type SponsorOpenId: str\n        :param SponsorDeviceNumber: 助力场景建议填写：发起人设备号。\n        :type SponsorDeviceNumber: str\n        :param SponsorPhone: 助力场景建议填写：发起人手机号。\n        :type SponsorPhone: str\n        :param SponsorIp: 助力场景建议填写：发起人IP。\n        :type SponsorIp: str\n        :param CampaignUrl: 助力场景建议填写：活动链接。\n        :type CampaignUrl: str\n        """
         self.SponsorOpenId = None
         self.SponsorDeviceNumber = None
         self.SponsorPhone = None
@@ -506,11 +622,25 @@ class WeChatAccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param WeChatOpenId: 微信的OpenID/UnionID 。\n        :type WeChatOpenId: str\n        :param WeChatSubType: 微信开放账号类型：
+        r"""
+        :param WeChatOpenId: 微信的OpenID/UnionID 。
+        :type WeChatOpenId: str
+        :param WeChatSubType: 微信开放账号类型：
 1：微信公众号/微信第三方登录。
-2：微信小程序。\n        :type WeChatSubType: int\n        :param RandStr: 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。\n        :type RandStr: str\n        :param WeChatAccessToken: 如果WeChatSubType是1，填入授权的access_token（注意：不是普通access_token，详情请参阅官方说明文档。获取网页版本的access_token时，scope字段必需填写snsapi_userinfo。
-如果WeChatSubType是2，填入以session_key为密钥签名随机数RandStr（hmac_sha256签名算法）得到的字符串。\n        :type WeChatAccessToken: str\n        :param AssociateAccount: 用于标识微信用户登录后所关联业务自身的账号ID。\n        :type AssociateAccount: str\n        :param MobilePhone: 账号绑定的手机号。\n        :type MobilePhone: str\n        :param DeviceId: 用户设备号。\n        :type DeviceId: str\n        """
+2：微信小程序。
+        :type WeChatSubType: int
+        :param RandStr: 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。
+        :type RandStr: str
+        :param WeChatAccessToken: 如果WeChatSubType是1，填入授权的access_token（注意：不是普通access_token，详情请参阅官方说明文档。获取网页版本的access_token时，scope字段必需填写snsapi_userinfo。
+如果WeChatSubType是2，填入以session_key为密钥签名随机数RandStr（hmac_sha256签名算法）得到的字符串。
+        :type WeChatAccessToken: str
+        :param AssociateAccount: 用于标识微信用户登录后所关联业务自身的账号ID。
+        :type AssociateAccount: str
+        :param MobilePhone: 账号绑定的手机号。
+        :type MobilePhone: str
+        :param DeviceId: 用户设备号。
+        :type DeviceId: str
+        """
         self.WeChatOpenId = None
         self.WeChatSubType = None
         self.RandStr = None

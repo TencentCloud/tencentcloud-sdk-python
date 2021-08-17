@@ -24,8 +24,12 @@ class AssignProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceIds: list of str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
         """
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceIds: list of str\n        :param ProjectId: 项目ID\n        :type ProjectId: int\n        """
         self.InstanceIds = None
         self.ProjectId = None
 
@@ -48,8 +52,12 @@ class AssignProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowIds: 返回的异步任务ID列表
+        :type FlowIds: list of int non-negative
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowIds: 返回的异步任务ID列表\n        :type FlowIds: list of int non-negative\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowIds = None
         self.RequestId = None
 
@@ -65,8 +73,12 @@ class ClientConnection(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IP: 连接的客户端IP
+        :type IP: str
+        :param Count: 对应客户端IP的连接数
+        :type Count: int
         """
-        :param IP: 连接的客户端IP\n        :type IP: str\n        :param Count: 对应客户端IP的连接数\n        :type Count: int\n        """
         self.IP = None
         self.Count = None
 
@@ -89,8 +101,38 @@ class CreateDBInstanceHourRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Memory: 实例内存大小，单位：GB
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param ReplicateSetNum: 副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10
+        :type ReplicateSetNum: int
+        :param SecondaryNum: 每个副本集内从节点个数，目前只支持从节点数为2
+        :type SecondaryNum: int
+        :param EngineVersion: MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT
+        :type EngineVersion: str
+        :param Machine: 实例类型，GIO：高IO版；TGIO：高IO万兆
+        :type Machine: str
+        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
+        :type GoodsNum: int
+        :param Zone: 可用区信息，格式如：ap-guangzhou-2
+        :type Zone: str
+        :param InstanceRole: 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例
+        :type InstanceRole: str
+        :param InstanceType: 实例类型，REPLSET-副本集，SHARD-分片集群
+        :type InstanceType: str
+        :param Encrypt: 数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密
+        :type Encrypt: int
+        :param VpcId: 私有网络ID，如果不传则默认选择基础网络
+        :type VpcId: str
+        :param SubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :type SubnetId: str
+        :param ProjectId: 项目ID，不填为默认项目
+        :type ProjectId: int
+        :param SecurityGroup: 安全组参数
+        :type SecurityGroup: list of str
         """
-        :param Memory: 实例内存大小，单位：GB\n        :type Memory: int\n        :param Volume: 实例硬盘大小，单位：GB\n        :type Volume: int\n        :param ReplicateSetNum: 副本集个数，1为单副本集实例，大于1为分片集群实例，最大不超过10\n        :type ReplicateSetNum: int\n        :param SecondaryNum: 每个副本集内从节点个数，目前只支持从节点数为2\n        :type SecondaryNum: int\n        :param EngineVersion: MongoDB引擎版本，值包括MONGO_3_WT 、MONGO_3_ROCKS和MONGO_36_WT\n        :type EngineVersion: str\n        :param Machine: 实例类型，GIO：高IO版；TGIO：高IO万兆\n        :type Machine: str\n        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10\n        :type GoodsNum: int\n        :param Zone: 可用区信息，格式如：ap-guangzhou-2\n        :type Zone: str\n        :param InstanceRole: 实例角色，支持值包括：MASTER-表示主实例，DR-表示灾备实例，RO-表示只读实例\n        :type InstanceRole: str\n        :param InstanceType: 实例类型，REPLSET-副本集，SHARD-分片集群\n        :type InstanceType: str\n        :param Encrypt: 数据是否加密，当且仅当引擎版本为MONGO_3_ROCKS，可以选择加密\n        :type Encrypt: int\n        :param VpcId: 私有网络ID，如果不传则默认选择基础网络\n        :type VpcId: str\n        :param SubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填\n        :type SubnetId: str\n        :param ProjectId: 项目ID，不填为默认项目\n        :type ProjectId: int\n        :param SecurityGroup: 安全组参数\n        :type SecurityGroup: list of str\n        """
         self.Memory = None
         self.Volume = None
         self.ReplicateSetNum = None
@@ -139,8 +181,14 @@ class CreateDBInstanceHourResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: 订单ID
+        :type DealId: str
+        :param InstanceIds: 创建的实例ID列表
+        :type InstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealId: 订单ID\n        :type DealId: str\n        :param InstanceIds: 创建的实例ID列表\n        :type InstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -158,8 +206,34 @@ class CreateDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecondaryNum: 每个副本集内从节点个数
+        :type SecondaryNum: int
+        :param Memory: 实例内存大小，单位：GB
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB
+        :type Volume: int
+        :param MongoVersion: 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT
+        :type MongoVersion: str
+        :param MachineCode: 机器类型，GIO：高IO版；TGIO：高IO万兆
+        :type MachineCode: str
+        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10
+        :type GoodsNum: int
+        :param Zone: 实例所属区域名称，格式如：ap-guangzhou-2
+        :type Zone: str
+        :param TimeSpan: 时长，购买月数
+        :type TimeSpan: int
+        :param Password: 实例密码
+        :type Password: str
+        :param ProjectId: 项目ID，不填为默认项目
+        :type ProjectId: int
+        :param SecurityGroup: 安全组参数
+        :type SecurityGroup: list of str
+        :param UniqVpcId: 私有网络ID，如果不传则默认选择基础网络
+        :type UniqVpcId: str
+        :param UniqSubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :type UniqSubnetId: str
         """
-        :param SecondaryNum: 每个副本集内从节点个数\n        :type SecondaryNum: int\n        :param Memory: 实例内存大小，单位：GB\n        :type Memory: int\n        :param Volume: 实例硬盘大小，单位：GB\n        :type Volume: int\n        :param MongoVersion: 版本号，当前支持 MONGO_3_WT、MONGO_3_ROCKS、MONGO_36_WT\n        :type MongoVersion: str\n        :param MachineCode: 机器类型，GIO：高IO版；TGIO：高IO万兆\n        :type MachineCode: str\n        :param GoodsNum: 实例数量，默认值为1, 最小值1，最大值为10\n        :type GoodsNum: int\n        :param Zone: 实例所属区域名称，格式如：ap-guangzhou-2\n        :type Zone: str\n        :param TimeSpan: 时长，购买月数\n        :type TimeSpan: int\n        :param Password: 实例密码\n        :type Password: str\n        :param ProjectId: 项目ID，不填为默认项目\n        :type ProjectId: int\n        :param SecurityGroup: 安全组参数\n        :type SecurityGroup: list of str\n        :param UniqVpcId: 私有网络ID，如果不传则默认选择基础网络\n        :type UniqVpcId: str\n        :param UniqSubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填\n        :type UniqSubnetId: str\n        """
         self.SecondaryNum = None
         self.Memory = None
         self.Volume = None
@@ -204,8 +278,14 @@ class CreateDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: 订单ID
+        :type DealId: str
+        :param InstanceIds: 创建的实例ID列表
+        :type InstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealId: 订单ID\n        :type DealId: str\n        :param InstanceIds: 创建的实例ID列表\n        :type InstanceIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealId = None
         self.InstanceIds = None
         self.RequestId = None
@@ -223,8 +303,10 @@ class DescribeClientConnectionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -245,9 +327,13 @@ class DescribeClientConnectionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Clients: list of ClientConnection\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clients: list of ClientConnection
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Clients = None
         self.RequestId = None
 
@@ -268,8 +354,30 @@ class DescribeDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceIds: list of str
+        :param InstanceType: 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+        :type InstanceType: int
+        :param ClusterType: 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+        :type ClusterType: int
+        :param Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+        :type Status: list of int
+        :param VpcId: 私有网络的ID，基础网络则不传该参数
+        :type VpcId: str
+        :param SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+        :type SubnetId: str
+        :param PayMode: 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+        :type PayMode: int
+        :param Limit: 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+        :type Limit: int
+        :param Offset: 偏移量，默认值为0
+        :type Offset: int
+        :param OrderBy: 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+        :type OrderBy: str
+        :param OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"
+        :type OrderByType: str
         """
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceIds: list of str\n        :param InstanceType: 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例\n        :type InstanceType: int\n        :param ClusterType: 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例\n        :type ClusterType: int\n        :param Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期\n        :type Status: list of int\n        :param VpcId: 私有网络的ID，基础网络则不传该参数\n        :type VpcId: str\n        :param SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId\n        :type SubnetId: str\n        :param PayMode: 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月\n        :type PayMode: int\n        :param Limit: 单次请求返回的数量，最小值为1，最大值为100，默认值为20\n        :type Limit: int\n        :param Offset: 偏移量，默认值为0\n        :type Offset: int\n        :param OrderBy: 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序\n        :type OrderBy: str\n        :param OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"\n        :type OrderByType: str\n        """
         self.InstanceIds = None
         self.InstanceType = None
         self.ClusterType = None
@@ -310,8 +418,14 @@ class DescribeDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合查询条件的实例总数
+        :type TotalCount: int
+        :param InstanceDetails: 实例详细信息
+        :type InstanceDetails: list of MongoDBInstanceDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 符合查询条件的实例总数\n        :type TotalCount: int\n        :param InstanceDetails: 实例详细信息\n        :type InstanceDetails: list of MongoDBInstanceDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.InstanceDetails = None
         self.RequestId = None
@@ -334,8 +448,20 @@ class DescribeSlowLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :type StartTime: str
+        :param EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
+        :type EndTime: str
+        :param SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。
+        :type SlowMS: int
+        :param Offset: 偏移量，最小值为0，最大值为10000，默认值为0。
+        :type Offset: int
+        :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
+        :type Limit: int
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceId: str\n        :param StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。\n        :type StartTime: str\n        :param EndTime: 慢日志终止时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-02 12:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。\n        :type EndTime: str\n        :param SlowMS: 慢日志执行时间阈值，返回执行时间超过该阈值的慢日志，单位为毫秒(ms)，最小为100毫秒。\n        :type SlowMS: int\n        :param Offset: 偏移量，最小值为0，最大值为10000，默认值为0。\n        :type Offset: int\n        :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。\n        :type Limit: int\n        """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -366,8 +492,14 @@ class DescribeSlowLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合查询条件的慢查询日志总数。
+        :type TotalCount: int
+        :param SlowLogList: 符合查询条件的慢查询日志详情。
+        :type SlowLogList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 符合查询条件的慢查询日志总数。\n        :type TotalCount: int\n        :param SlowLogList: 符合查询条件的慢查询日志详情。\n        :type SlowLogList: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SlowLogList = None
         self.RequestId = None
@@ -385,8 +517,10 @@ class DescribeSpecInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区
+        :type Zone: str
         """
-        :param Zone: 可用区\n        :type Zone: str\n        """
         self.Zone = None
 
 
@@ -407,8 +541,12 @@ class DescribeSpecInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecInfoList: 实例售卖规格信息列表
+        :type SpecInfoList: list of SpecificationInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SpecInfoList: 实例售卖规格信息列表\n        :type SpecInfoList: list of SpecificationInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SpecInfoList = None
         self.RequestId = None
 
@@ -429,8 +567,12 @@ class MongoDBInstance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Region: 地域信息
+        :type Region: str
         """
-        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param Region: 地域信息\n        :type Region: str\n        """
         self.InstanceId = None
         self.Region = None
 
@@ -453,13 +595,89 @@ class MongoDBInstanceDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param PayMode: 付费类型，可能的返回值：1-包年包月；0-按量计费
+        :type PayMode: int
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例，
+        :type ClusterType: int
+        :param Region: 地域信息
+        :type Region: str
+        :param Zone: 可用区信息
+        :type Zone: str
+        :param NetType: 网络类型，可能的返回值：0-基础网络，1-私有网络
+        :type NetType: int
+        :param VpcId: 私有网络的ID
+        :type VpcId: str
+        :param SubnetId: 私有网络的子网ID
+        :type SubnetId: str
+        :param Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
+        :type Status: int
+        :param Vip: 实例IP
+        :type Vip: str
+        :param Vport: 端口号
+        :type Vport: int
+        :param CreateTime: 实例创建时间
+        :type CreateTime: str
+        :param DeadLine: 实例到期时间
+        :type DeadLine: str
+        :param MongoVersion: 实例版本信息
+        :type MongoVersion: str
+        :param Memory: 实例内存规格，单位为MB
+        :type Memory: int
+        :param Volume: 实例磁盘规格，单位为MB
+        :type Volume: int
+        :param CpuNum: 实例CPU核心数
+        :type CpuNum: int
+        :param MachineType: 实例机器类型
+        :type MachineType: str
+        :param SecondaryNum: 实例从节点数
+        :type SecondaryNum: int
+        :param ReplicationSetNum: 实例分片数
+        :type ReplicationSetNum: int
+        :param AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
+        :type AutoRenewFlag: int
+        :param UsedVolume: 已用容量，单位MB
+        :type UsedVolume: int
+        :param MaintenanceStart: 维护窗口起始时间
+        :type MaintenanceStart: str
+        :param MaintenanceEnd: 维护窗口结束时间
+        :type MaintenanceEnd: str
+        :param ReplicaSets: 分片信息
+        :type ReplicaSets: list of MongodbShardInfo
+        :param ReadonlyInstances: 只读实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadonlyInstances: list of MongoDBInstance
+        :param StandbyInstances: 灾备实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandbyInstances: list of MongoDBInstance
+        :param CloneInstances: 临时实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloneInstances: list of MongoDBInstance
+        :param RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedInstance: :class:`tencentcloud.mongodb.v20180408.models.MongoDBInstance`
+        :param Tags: 实例标签信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param InstanceVer: 实例标记
+        :type InstanceVer: int
+        :param ClusterVer: 实例标记
+        :type ClusterVer: int
+        :param Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb
+        :type Protocol: int
+        :param InstanceType: 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
+        :type InstanceType: int
+        :param InstanceStatusDesc: 实例状态描述
+        :type InstanceStatusDesc: str
+        :param RealInstanceId: 实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
+        :type RealInstanceId: str
         """
-        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param InstanceName: 实例名称\n        :type InstanceName: str\n        :param PayMode: 付费类型，可能的返回值：1-包年包月；0-按量计费\n        :type PayMode: int\n        :param ProjectId: 项目ID\n        :type ProjectId: int\n        :param ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例，\n        :type ClusterType: int\n        :param Region: 地域信息\n        :type Region: str\n        :param Zone: 可用区信息\n        :type Zone: str\n        :param NetType: 网络类型，可能的返回值：0-基础网络，1-私有网络\n        :type NetType: int\n        :param VpcId: 私有网络的ID\n        :type VpcId: str\n        :param SubnetId: 私有网络的子网ID\n        :type SubnetId: str\n        :param Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期\n        :type Status: int\n        :param Vip: 实例IP\n        :type Vip: str\n        :param Vport: 端口号\n        :type Vport: int\n        :param CreateTime: 实例创建时间\n        :type CreateTime: str\n        :param DeadLine: 实例到期时间\n        :type DeadLine: str\n        :param MongoVersion: 实例版本信息\n        :type MongoVersion: str\n        :param Memory: 实例内存规格，单位为MB\n        :type Memory: int\n        :param Volume: 实例磁盘规格，单位为MB\n        :type Volume: int\n        :param CpuNum: 实例CPU核心数\n        :type CpuNum: int\n        :param MachineType: 实例机器类型\n        :type MachineType: str\n        :param SecondaryNum: 实例从节点数\n        :type SecondaryNum: int\n        :param ReplicationSetNum: 实例分片数\n        :type ReplicationSetNum: int\n        :param AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费\n        :type AutoRenewFlag: int\n        :param UsedVolume: 已用容量，单位MB\n        :type UsedVolume: int\n        :param MaintenanceStart: 维护窗口起始时间\n        :type MaintenanceStart: str\n        :param MaintenanceEnd: 维护窗口结束时间\n        :type MaintenanceEnd: str\n        :param ReplicaSets: 分片信息\n        :type ReplicaSets: list of MongodbShardInfo\n        :param ReadonlyInstances: 只读实例信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReadonlyInstances: list of MongoDBInstance\n        :param StandbyInstances: 灾备实例信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StandbyInstances: list of MongoDBInstance\n        :param CloneInstances: 临时实例信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CloneInstances: list of MongoDBInstance\n        :param RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelatedInstance: :class:`tencentcloud.mongodb.v20180408.models.MongoDBInstance`\n        :param Tags: 实例标签信息集合
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of TagInfo\n        :param InstanceVer: 实例标记\n        :type InstanceVer: int\n        :param ClusterVer: 实例标记\n        :type ClusterVer: int\n        :param Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb\n        :type Protocol: int\n        :param InstanceType: 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例\n        :type InstanceType: int\n        :param InstanceStatusDesc: 实例状态描述\n        :type InstanceStatusDesc: str\n        :param RealInstanceId: 实例对应的物理实例ID，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取\n        :type RealInstanceId: str\n        """
         self.InstanceId = None
         self.InstanceName = None
         self.PayMode = None
@@ -581,8 +799,24 @@ class MongodbShardInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsedVolume: 分片已使用容量
+        :type UsedVolume: float
+        :param ReplicaSetId: 分片ID
+        :type ReplicaSetId: str
+        :param ReplicaSetName: 分片名
+        :type ReplicaSetName: str
+        :param Memory: 分片内存规格，单位为MB
+        :type Memory: int
+        :param Volume: 分片磁盘规格，单位为MB
+        :type Volume: int
+        :param OplogSize: 分片Oplog大小，单位为MB
+        :type OplogSize: int
+        :param SecondaryNum: 分片从节点数
+        :type SecondaryNum: int
+        :param RealReplicaSetId: 分片物理ID
+        :type RealReplicaSetId: str
         """
-        :param UsedVolume: 分片已使用容量\n        :type UsedVolume: float\n        :param ReplicaSetId: 分片ID\n        :type ReplicaSetId: str\n        :param ReplicaSetName: 分片名\n        :type ReplicaSetName: str\n        :param Memory: 分片内存规格，单位为MB\n        :type Memory: int\n        :param Volume: 分片磁盘规格，单位为MB\n        :type Volume: int\n        :param OplogSize: 分片Oplog大小，单位为MB\n        :type OplogSize: int\n        :param SecondaryNum: 分片从节点数\n        :type SecondaryNum: int\n        :param RealReplicaSetId: 分片物理ID\n        :type RealReplicaSetId: str\n        """
         self.UsedVolume = None
         self.ReplicaSetId = None
         self.ReplicaSetName = None
@@ -617,8 +851,12 @@ class RenameInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param NewName: 实例名称
+        :type NewName: str
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceId: str\n        :param NewName: 实例名称\n        :type NewName: str\n        """
         self.InstanceId = None
         self.NewName = None
 
@@ -641,8 +879,10 @@ class RenameInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -656,8 +896,12 @@ class SetAutoRenewRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceIds: list of str
+        :param AutoRenewFlag: 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
+        :type AutoRenewFlag: int
         """
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceIds: list of str\n        :param AutoRenewFlag: 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费\n        :type AutoRenewFlag: int\n        """
         self.InstanceIds = None
         self.AutoRenewFlag = None
 
@@ -680,8 +924,10 @@ class SetAutoRenewResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -695,8 +941,14 @@ class SetPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param UserName: 实例账户名称
+        :type UserName: str
+        :param Password: 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
+        :type Password: str
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceId: str\n        :param UserName: 实例账户名称\n        :type UserName: str\n        :param Password: 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符\n        :type Password: str\n        """
         self.InstanceId = None
         self.UserName = None
         self.Password = None
@@ -721,8 +973,12 @@ class SetPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 返回的异步任务ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 返回的异步任务ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -738,8 +994,50 @@ class SpecItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecCode: 规格信息标识
+        :type SpecCode: str
+        :param Status: 规格有效标志，取值：0-停止售卖，1-开放售卖
+        :type Status: int
+        :param MachineType: 机器类型，取值：0-HIO，4-HIO10G
+        :type MachineType: str
+        :param Cpu: cpu核心数
+        :type Cpu: int
+        :param Memory: 内存规格，单位为MB
+        :type Memory: int
+        :param DefaultStorage: 默认磁盘规格，单位MB
+        :type DefaultStorage: int
+        :param MaxStorage: 最大磁盘规格，单位MB
+        :type MaxStorage: int
+        :param MinStorage: 最小磁盘规格，单位MB
+        :type MinStorage: int
+        :param Qps: 可承载qps信息
+        :type Qps: int
+        :param Conns: 连接数限制
+        :type Conns: int
+        :param MongoVersionCode: 实例mongodb版本信息
+        :type MongoVersionCode: str
+        :param MongoVersionValue: 实例mongodb版本号
+        :type MongoVersionValue: int
+        :param Version: 实例mongodb版本号（短）
+        :type Version: str
+        :param EngineName: 存储引擎
+        :type EngineName: str
+        :param ClusterType: 集群类型，取值：1-分片集群，0-副本集集群
+        :type ClusterType: int
+        :param MinNodeNum: 最小副本集从节点数
+        :type MinNodeNum: int
+        :param MaxNodeNum: 最大副本集从节点数
+        :type MaxNodeNum: int
+        :param MinReplicateSetNum: 最小分片数
+        :type MinReplicateSetNum: int
+        :param MaxReplicateSetNum: 最大分片数
+        :type MaxReplicateSetNum: int
+        :param MinReplicateSetNodeNum: 最小分片从节点数
+        :type MinReplicateSetNodeNum: int
+        :param MaxReplicateSetNodeNum: 最大分片从节点数
+        :type MaxReplicateSetNodeNum: int
         """
-        :param SpecCode: 规格信息标识\n        :type SpecCode: str\n        :param Status: 规格有效标志，取值：0-停止售卖，1-开放售卖\n        :type Status: int\n        :param MachineType: 机器类型，取值：0-HIO，4-HIO10G\n        :type MachineType: str\n        :param Cpu: cpu核心数\n        :type Cpu: int\n        :param Memory: 内存规格，单位为MB\n        :type Memory: int\n        :param DefaultStorage: 默认磁盘规格，单位MB\n        :type DefaultStorage: int\n        :param MaxStorage: 最大磁盘规格，单位MB\n        :type MaxStorage: int\n        :param MinStorage: 最小磁盘规格，单位MB\n        :type MinStorage: int\n        :param Qps: 可承载qps信息\n        :type Qps: int\n        :param Conns: 连接数限制\n        :type Conns: int\n        :param MongoVersionCode: 实例mongodb版本信息\n        :type MongoVersionCode: str\n        :param MongoVersionValue: 实例mongodb版本号\n        :type MongoVersionValue: int\n        :param Version: 实例mongodb版本号（短）\n        :type Version: str\n        :param EngineName: 存储引擎\n        :type EngineName: str\n        :param ClusterType: 集群类型，取值：1-分片集群，0-副本集集群\n        :type ClusterType: int\n        :param MinNodeNum: 最小副本集从节点数\n        :type MinNodeNum: int\n        :param MaxNodeNum: 最大副本集从节点数\n        :type MaxNodeNum: int\n        :param MinReplicateSetNum: 最小分片数\n        :type MinReplicateSetNum: int\n        :param MaxReplicateSetNum: 最大分片数\n        :type MaxReplicateSetNum: int\n        :param MinReplicateSetNodeNum: 最小分片从节点数\n        :type MinReplicateSetNodeNum: int\n        :param MaxReplicateSetNodeNum: 最大分片从节点数\n        :type MaxReplicateSetNodeNum: int\n        """
         self.SpecCode = None
         self.Status = None
         self.MachineType = None
@@ -800,8 +1098,14 @@ class SpecificationInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 地域信息
+        :type Region: str
+        :param Zone: 可用区信息
+        :type Zone: str
+        :param SpecItems: 售卖规格信息
+        :type SpecItems: list of SpecItem
         """
-        :param Region: 地域信息\n        :type Region: str\n        :param Zone: 可用区信息\n        :type Zone: str\n        :param SpecItems: 售卖规格信息\n        :type SpecItems: list of SpecItem\n        """
         self.Region = None
         self.Zone = None
         self.SpecItems = None
@@ -831,8 +1135,12 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: 标签Key值
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
         """
-        :param TagKey: 标签Key值\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -855,8 +1163,10 @@ class TerminateDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。
+        :type InstanceId: str
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -877,8 +1187,12 @@ class TerminateDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AsyncRequestId: 订单ID，表示注销实例成功
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param AsyncRequestId: 订单ID，表示注销实例成功\n        :type AsyncRequestId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AsyncRequestId = None
         self.RequestId = None
 
@@ -894,8 +1208,16 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5
+        :type InstanceId: str
+        :param Memory: 升级后的内存大小，单位：GB
+        :type Memory: int
+        :param Volume: 升级后的硬盘大小，单位：GB
+        :type Volume: int
+        :param OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+        :type OplogSize: int
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5\n        :type InstanceId: str\n        :param Memory: 升级后的内存大小，单位：GB\n        :type Memory: int\n        :param Volume: 升级后的硬盘大小，单位：GB\n        :type Volume: int\n        :param OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%\n        :type OplogSize: int\n        """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
@@ -922,8 +1244,12 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: 订单ID
+        :type DealId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealId: 订单ID\n        :type DealId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 
@@ -939,8 +1265,16 @@ class UpgradeDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param Memory: 升级后的内存大小，单位：GB
+        :type Memory: int
+        :param Volume: 升级后的硬盘大小，单位：GB
+        :type Volume: int
+        :param OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
+        :type OplogSize: int
         """
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同\n        :type InstanceId: str\n        :param Memory: 升级后的内存大小，单位：GB\n        :type Memory: int\n        :param Volume: 升级后的硬盘大小，单位：GB\n        :type Volume: int\n        :param OplogSize: 升级后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%\n        :type OplogSize: int\n        """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
@@ -967,8 +1301,12 @@ class UpgradeDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealId: 订单ID
+        :type DealId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealId: 订单ID\n        :type DealId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealId = None
         self.RequestId = None
 

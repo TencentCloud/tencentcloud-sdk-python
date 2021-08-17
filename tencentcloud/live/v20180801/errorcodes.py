@@ -272,6 +272,9 @@ INVALIDPARAMETER_DOMAINALREADYEXIST = 'InvalidParameter.DomainAlreadyExist'
 # 域名格式错误，请输入合法格式域名。
 INVALIDPARAMETER_DOMAINFORMATERROR = 'InvalidParameter.DomainFormatError'
 
+# 当前域名在黑名单中。
+INVALIDPARAMETER_DOMAINHITBLACKLIST = 'InvalidParameter.DomainHitBlackList'
+
 # 使用黑名单域名。
 INVALIDPARAMETER_DOMAINISFAMOUS = 'InvalidParameter.DomainIsFamous'
 

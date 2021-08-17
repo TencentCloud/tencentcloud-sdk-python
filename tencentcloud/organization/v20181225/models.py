@@ -24,8 +24,10 @@ class AcceptOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 邀请ID
+        :type Id: int
         """
-        :param Id: 邀请ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -46,8 +48,10 @@ class AcceptOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -61,8 +65,12 @@ class AddOrganizationNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ParentNodeId: 父组织单元ID
+        :type ParentNodeId: int
+        :param Name: 组织单元名字
+        :type Name: str
         """
-        :param ParentNodeId: 父组织单元ID\n        :type ParentNodeId: int\n        :param Name: 组织单元名字\n        :type Name: str\n        """
         self.ParentNodeId = None
         self.Name = None
 
@@ -85,8 +93,12 @@ class AddOrganizationNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: 组织单元ID
+        :type NodeId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param NodeId: 组织单元ID\n        :type NodeId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NodeId = None
         self.RequestId = None
 
@@ -102,8 +114,10 @@ class CancelOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 邀请ID
+        :type Id: int
         """
-        :param Id: 邀请ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -124,8 +138,10 @@ class CancelOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -139,8 +155,10 @@ class CreateOrganizationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgType: 组织类型（目前固定为1）
+        :type OrgType: int
         """
-        :param OrgType: 组织类型（目前固定为1）\n        :type OrgType: int\n        """
         self.OrgType = None
 
 
@@ -161,8 +179,18 @@ class CreateOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgId: 企业组织ID
+        :type OrgId: int
+        :param Nickname: 创建者昵称
+        :type Nickname: str
+        :param Mail: 创建者邮箱
+        :type Mail: str
+        :param OrgType: 组织类型
+        :type OrgType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param OrgId: 企业组织ID\n        :type OrgId: int\n        :param Nickname: 创建者昵称\n        :type Nickname: str\n        :param Mail: 创建者邮箱\n        :type Mail: str\n        :param OrgType: 组织类型\n        :type OrgType: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OrgId = None
         self.Nickname = None
         self.Mail = None
@@ -184,8 +212,12 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MemberUin: 被删除成员UIN
+        :type MemberUin: int
+        :param NodeId: 组织单元ID
+        :type NodeId: int
         """
-        :param MemberUin: 被删除成员UIN\n        :type MemberUin: int\n        :param NodeId: 组织单元ID\n        :type NodeId: int\n        """
         self.MemberUin = None
         self.NodeId = None
 
@@ -208,8 +240,10 @@ class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -223,8 +257,10 @@ class DeleteOrganizationMembersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uins: 被删除成员的UIN列表
+        :type Uins: list of int non-negative
         """
-        :param Uins: 被删除成员的UIN列表\n        :type Uins: list of int non-negative\n        """
         self.Uins = None
 
 
@@ -245,8 +281,10 @@ class DeleteOrganizationMembersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -260,8 +298,10 @@ class DeleteOrganizationNodesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeIds: 组织单元ID列表
+        :type NodeIds: list of int non-negative
         """
-        :param NodeIds: 组织单元ID列表\n        :type NodeIds: list of int non-negative\n        """
         self.NodeIds = None
 
 
@@ -282,8 +322,10 @@ class DeleteOrganizationNodesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -303,8 +345,10 @@ class DeleteOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -318,8 +362,10 @@ class DenyOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 邀请ID
+        :type Id: int
         """
-        :param Id: 邀请ID\n        :type Id: int\n        """
         self.Id = None
 
 
@@ -340,8 +386,10 @@ class DenyOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -355,8 +403,10 @@ class GetOrganizationMemberRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MemberUin: 组织成员UIN
+        :type MemberUin: int
         """
-        :param MemberUin: 组织成员UIN\n        :type MemberUin: int\n        """
         self.MemberUin = None
 
 
@@ -377,8 +427,24 @@ class GetOrganizationMemberResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: 组织成员UIN
+        :type Uin: int
+        :param Name: 组织成员名称
+        :type Name: str
+        :param Remark: 备注
+        :type Remark: str
+        :param JoinTime: 加入时间
+        :type JoinTime: str
+        :param NodeId: 组织单元ID
+        :type NodeId: int
+        :param NodeName: 组织单元名称
+        :type NodeName: str
+        :param ParentNodeId: 父组织单元ID
+        :type ParentNodeId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Uin: 组织成员UIN\n        :type Uin: int\n        :param Name: 组织成员名称\n        :type Name: str\n        :param Remark: 备注\n        :type Remark: str\n        :param JoinTime: 加入时间\n        :type JoinTime: str\n        :param NodeId: 组织单元ID\n        :type NodeId: int\n        :param NodeName: 组织单元名称\n        :type NodeName: str\n        :param ParentNodeId: 父组织单元ID\n        :type ParentNodeId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Uin = None
         self.Name = None
         self.Remark = None
@@ -412,8 +478,22 @@ class GetOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgId: 企业组织ID
+        :type OrgId: int
+        :param HostUin: 创建者UIN
+        :type HostUin: int
+        :param Nickname: 创建者昵称
+        :type Nickname: str
+        :param Mail: 创建者邮箱
+        :type Mail: str
+        :param OrgType: 企业组织类型
+        :type OrgType: int
+        :param IsEmpty: 是否为空
+        :type IsEmpty: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param OrgId: 企业组织ID\n        :type OrgId: int\n        :param HostUin: 创建者UIN\n        :type HostUin: int\n        :param Nickname: 创建者昵称\n        :type Nickname: str\n        :param Mail: 创建者邮箱\n        :type Mail: str\n        :param OrgType: 企业组织类型\n        :type OrgType: int\n        :param IsEmpty: 是否为空\n        :type IsEmpty: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OrgId = None
         self.HostUin = None
         self.Nickname = None
@@ -439,8 +519,14 @@ class ListOrganizationInvitationsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Invited: 是否被邀请。1：被邀请，0：发出的邀请
+        :type Invited: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
         """
-        :param Invited: 是否被邀请。1：被邀请，0：发出的邀请\n        :type Invited: int\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 限制数目\n        :type Limit: int\n        """
         self.Invited = None
         self.Offset = None
         self.Limit = None
@@ -465,8 +551,14 @@ class ListOrganizationInvitationsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Invitations: 邀请信息列表
+        :type Invitations: list of OrgInvitation
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Invitations: 邀请信息列表\n        :type Invitations: list of OrgInvitation\n        :param TotalCount: 总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Invitations = None
         self.TotalCount = None
         self.RequestId = None
@@ -489,8 +581,12 @@ class ListOrganizationMembersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
         """
-        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 限制数目\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -513,8 +609,14 @@ class ListOrganizationMembersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Members: 成员列表
+        :type Members: list of OrgMember
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Members: 成员列表\n        :type Members: list of OrgMember\n        :param TotalCount: 总数目\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Members = None
         self.TotalCount = None
         self.RequestId = None
@@ -537,8 +639,14 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: 企业组织单元ID
+        :type NodeId: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
         """
-        :param NodeId: 企业组织单元ID\n        :type NodeId: int\n        :param Offset: 偏移量\n        :type Offset: int\n        :param Limit: 限制数目\n        :type Limit: int\n        """
         self.NodeId = None
         self.Offset = None
         self.Limit = None
@@ -563,8 +671,14 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        :param Members: 成员列表
+        :type Members: list of OrgMember
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数目\n        :type TotalCount: int\n        :param Members: 成员列表\n        :type Members: list of OrgMember\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Members = None
         self.RequestId = None
@@ -593,8 +707,12 @@ class ListOrganizationNodesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Nodes: 企业组织单元列表
+        :type Nodes: list of OrgNode
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Nodes: 企业组织单元列表\n        :type Nodes: list of OrgNode\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Nodes = None
         self.RequestId = None
 
@@ -615,8 +733,12 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: 组织单元ID
+        :type NodeId: int
+        :param Uins: 成员UIN列表
+        :type Uins: list of int non-negative
         """
-        :param NodeId: 组织单元ID\n        :type NodeId: int\n        :param Uins: 成员UIN列表\n        :type Uins: list of int non-negative\n        """
         self.NodeId = None
         self.Uins = None
 
@@ -639,8 +761,10 @@ class MoveOrganizationMembersToNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -654,8 +778,30 @@ class OrgInvitation(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 邀请ID
+        :type Id: int
+        :param Uin: 被邀请UIN
+        :type Uin: int
+        :param HostUin: 创建者UIN
+        :type HostUin: int
+        :param HostName: 创建者名称
+        :type HostName: str
+        :param HostMail: 创建者邮箱
+        :type HostMail: str
+        :param Status: 邀请状态。-1：已过期，0：正常，1：已接受，2：已失效，3：已取消
+        :type Status: int
+        :param Name: 名称
+        :type Name: str
+        :param Remark: 备注
+        :type Remark: str
+        :param OrgType: 企业组织类型
+        :type OrgType: int
+        :param InviteTime: 邀请时间
+        :type InviteTime: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
         """
-        :param Id: 邀请ID\n        :type Id: int\n        :param Uin: 被邀请UIN\n        :type Uin: int\n        :param HostUin: 创建者UIN\n        :type HostUin: int\n        :param HostName: 创建者名称\n        :type HostName: str\n        :param HostMail: 创建者邮箱\n        :type HostMail: str\n        :param Status: 邀请状态。-1：已过期，0：正常，1：已接受，2：已失效，3：已取消\n        :type Status: int\n        :param Name: 名称\n        :type Name: str\n        :param Remark: 备注\n        :type Remark: str\n        :param OrgType: 企业组织类型\n        :type OrgType: int\n        :param InviteTime: 邀请时间\n        :type InviteTime: str\n        :param ExpireTime: 过期时间\n        :type ExpireTime: str\n        """
         self.Id = None
         self.Uin = None
         self.HostUin = None
@@ -696,8 +842,16 @@ class OrgMember(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Uin: UIN
+        :type Uin: int
+        :param Name: 名称
+        :type Name: str
+        :param Remark: 备注
+        :type Remark: str
+        :param JoinTime: 加入时间
+        :type JoinTime: str
         """
-        :param Uin: UIN\n        :type Uin: int\n        :param Name: 名称\n        :type Name: str\n        :param Remark: 备注\n        :type Remark: str\n        :param JoinTime: 加入时间\n        :type JoinTime: str\n        """
         self.Uin = None
         self.Name = None
         self.Remark = None
@@ -724,8 +878,16 @@ class OrgNode(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: 组织单元ID
+        :type NodeId: int
+        :param Name: 名称
+        :type Name: str
+        :param ParentNodeId: 父单元ID
+        :type ParentNodeId: int
+        :param MemberCount: 成员数量
+        :type MemberCount: int
         """
-        :param NodeId: 组织单元ID\n        :type NodeId: int\n        :param Name: 名称\n        :type Name: str\n        :param ParentNodeId: 父单元ID\n        :type ParentNodeId: int\n        :param MemberCount: 成员数量\n        :type MemberCount: int\n        """
         self.NodeId = None
         self.Name = None
         self.ParentNodeId = None
@@ -752,8 +914,10 @@ class QuitOrganizationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrgId: 企业组织ID
+        :type OrgId: int
         """
-        :param OrgId: 企业组织ID\n        :type OrgId: int\n        """
         self.OrgId = None
 
 
@@ -774,8 +938,10 @@ class QuitOrganizationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -789,8 +955,14 @@ class SendOrganizationInvitationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InviteUin: 被邀请账户UIN
+        :type InviteUin: int
+        :param Name: 名称
+        :type Name: str
+        :param Remark: 备注
+        :type Remark: str
         """
-        :param InviteUin: 被邀请账户UIN\n        :type InviteUin: int\n        :param Name: 名称\n        :type Name: str\n        :param Remark: 备注\n        :type Remark: str\n        """
         self.InviteUin = None
         self.Name = None
         self.Remark = None
@@ -815,8 +987,10 @@ class SendOrganizationInvitationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -830,8 +1004,14 @@ class UpdateOrganizationMemberRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MemberUin: 成员UIN
+        :type MemberUin: int
+        :param Name: 名称
+        :type Name: str
+        :param Remark: 备注
+        :type Remark: str
         """
-        :param MemberUin: 成员UIN\n        :type MemberUin: int\n        :param Name: 名称\n        :type Name: str\n        :param Remark: 备注\n        :type Remark: str\n        """
         self.MemberUin = None
         self.Name = None
         self.Remark = None
@@ -856,8 +1036,10 @@ class UpdateOrganizationMemberResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -871,8 +1053,14 @@ class UpdateOrganizationNodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeId: 企业组织单元ID
+        :type NodeId: int
+        :param Name: 名称
+        :type Name: str
+        :param ParentNodeId: 父单元ID
+        :type ParentNodeId: int
         """
-        :param NodeId: 企业组织单元ID\n        :type NodeId: int\n        :param Name: 名称\n        :type Name: str\n        :param ParentNodeId: 父单元ID\n        :type ParentNodeId: int\n        """
         self.NodeId = None
         self.Name = None
         self.ParentNodeId = None
@@ -897,8 +1085,10 @@ class UpdateOrganizationNodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

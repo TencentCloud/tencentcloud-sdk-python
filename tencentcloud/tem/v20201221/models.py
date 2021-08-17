@@ -24,8 +24,26 @@ class CosToken(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID
+        :type RequestId: str
+        :param Bucket: 存储桶桶名
+        :type Bucket: str
+        :param Region: 存储桶所在区域
+        :type Region: str
+        :param TmpSecretId: 临时密钥的SecretId
+        :type TmpSecretId: str
+        :param TmpSecretKey: 临时密钥的SecretKey
+        :type TmpSecretKey: str
+        :param SessionToken: 临时密钥的 sessionToken
+        :type SessionToken: str
+        :param StartTime: 临时密钥获取的开始时间
+        :type StartTime: str
+        :param ExpiredTime: 临时密钥的 expiredTime
+        :type ExpiredTime: str
+        :param FullPath: 包完整路径
+        :type FullPath: str
         """
-        :param RequestId: 唯一请求 ID\n        :type RequestId: str\n        :param Bucket: 存储桶桶名\n        :type Bucket: str\n        :param Region: 存储桶所在区域\n        :type Region: str\n        :param TmpSecretId: 临时密钥的SecretId\n        :type TmpSecretId: str\n        :param TmpSecretKey: 临时密钥的SecretKey\n        :type TmpSecretKey: str\n        :param SessionToken: 临时密钥的 sessionToken\n        :type SessionToken: str\n        :param StartTime: 临时密钥获取的开始时间\n        :type StartTime: str\n        :param ExpiredTime: 临时密钥的 expiredTime\n        :type ExpiredTime: str\n        :param FullPath: 包完整路径\n        :type FullPath: str\n        """
         self.RequestId = None
         self.Bucket = None
         self.Region = None
@@ -62,8 +80,18 @@ class CreateCosTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param VersionId: 服务版本ID
+        :type VersionId: str
+        :param PkgName: 包名
+        :type PkgName: str
+        :param OptType: optType 1上传  2查询
+        :type OptType: int
+        :param SourceChannel: 来源 channel
+        :type SourceChannel: int
         """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param VersionId: 服务版本ID\n        :type VersionId: str\n        :param PkgName: 包名\n        :type PkgName: str\n        :param OptType: optType 1上传  2查询\n        :type OptType: int\n        :param SourceChannel: 来源 channel\n        :type SourceChannel: int\n        """
         self.ServiceId = None
         self.VersionId = None
         self.PkgName = None
@@ -92,9 +120,13 @@ class CreateCosTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为CosToken对象，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -112,8 +144,18 @@ class CreateCosTokenV2Request(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param PkgName: 包名
+        :type PkgName: str
+        :param OptType: optType 1上传  2查询
+        :type OptType: int
+        :param SourceChannel: 来源 channel
+        :type SourceChannel: int
+        :param TimeVersion: 充当deployVersion入参
+        :type TimeVersion: str
         """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param PkgName: 包名\n        :type PkgName: str\n        :param OptType: optType 1上传  2查询\n        :type OptType: int\n        :param SourceChannel: 来源 channel\n        :type SourceChannel: int\n        :param TimeVersion: 充当deployVersion入参\n        :type TimeVersion: str\n        """
         self.ServiceId = None
         self.PkgName = None
         self.OptType = None
@@ -142,9 +184,13 @@ class CreateCosTokenV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为CosToken对象，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -162,8 +208,22 @@ class CreateNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param Vpc: 私有网络名称
+        :type Vpc: str
+        :param SubnetIds: 子网列表
+        :type SubnetIds: list of str
+        :param Description: 命名空间描述
+        :type Description: str
+        :param K8sVersion: K8s version
+        :type K8sVersion: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnableTswTraceService: 是否开启tsw服务
+        :type EnableTswTraceService: bool
         """
-        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param Vpc: 私有网络名称\n        :type Vpc: str\n        :param SubnetIds: 子网列表\n        :type SubnetIds: list of str\n        :param Description: 命名空间描述\n        :type Description: str\n        :param K8sVersion: K8s version\n        :type K8sVersion: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param EnableTswTraceService: 是否开启tsw服务\n        :type EnableTswTraceService: bool\n        """
         self.NamespaceName = None
         self.Vpc = None
         self.SubnetIds = None
@@ -196,9 +256,13 @@ class CreateNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为命名空间ID，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -214,8 +278,16 @@ class CreateResourceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: 命名空间 Id
+        :type NamespaceId: str
+        :param ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
+        :type ResourceType: str
+        :param ResourceId: 资源 Id
+        :type ResourceId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param NamespaceId: 命名空间 Id\n        :type NamespaceId: str\n        :param ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE\n        :type ResourceType: str\n        :param ResourceId: 资源 Id\n        :type ResourceId: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.ResourceType = None
         self.ResourceId = None
@@ -242,9 +314,13 @@ class CreateResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功与否
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -260,13 +336,35 @@ class CreateServiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ServiceName: 服务名\n        :type ServiceName: str\n        :param Description: 描述\n        :type Description: str\n        :param UseDefaultImageService: 是否使用默认镜像服务 1-是，0-否\n        :type UseDefaultImageService: int\n        :param RepoType: 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版\n        :type RepoType: int\n        :param InstanceId: 企业版镜像服务的实例id\n        :type InstanceId: str\n        :param RepoServer: 绑定镜像服务器地址\n        :type RepoServer: str\n        :param RepoName: 绑定镜像仓库名\n        :type RepoName: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param SubnetList: 服务所在子网\n        :type SubnetList: list of str\n        :param CodingLanguage: 编程语言 
+        r"""
+        :param ServiceName: 服务名
+        :type ServiceName: str
+        :param Description: 描述
+        :type Description: str
+        :param UseDefaultImageService: 是否使用默认镜像服务 1-是，0-否
+        :type UseDefaultImageService: int
+        :param RepoType: 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版
+        :type RepoType: int
+        :param InstanceId: 企业版镜像服务的实例id
+        :type InstanceId: str
+        :param RepoServer: 绑定镜像服务器地址
+        :type RepoServer: str
+        :param RepoName: 绑定镜像仓库名
+        :type RepoName: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param SubnetList: 服务所在子网
+        :type SubnetList: list of str
+        :param CodingLanguage: 编程语言 
 - JAVA
-- OTHER\n        :type CodingLanguage: str\n        :param DeployMode: 部署方式 
+- OTHER
+        :type CodingLanguage: str
+        :param DeployMode: 部署方式 
 - IMAGE
 - JAR
-- WAR\n        :type DeployMode: str\n        """
+- WAR
+        :type DeployMode: str
+        """
         self.ServiceName = None
         self.Description = None
         self.UseDefaultImageService = None
@@ -307,8 +405,12 @@ class CreateServiceV2Response(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 服务code
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 服务code\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -324,8 +426,16 @@ class DeleteIngressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: tem NamespaceId
+        :type NamespaceId: str
+        :param EksNamespace: eks namespace 名
+        :type EksNamespace: str
+        :param Name: ingress 规则名
+        :type Name: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param NamespaceId: tem NamespaceId\n        :type NamespaceId: str\n        :param EksNamespace: eks namespace 名\n        :type EksNamespace: str\n        :param Name: ingress 规则名\n        :type Name: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.Name = None
@@ -352,8 +462,12 @@ class DeleteIngressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 是否删除成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 是否删除成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -369,14 +483,82 @@ class DeployServiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param ContainerPort: 容器端口\n        :type ContainerPort: int\n        :param InitPodNum: 初始化 pod 数\n        :type InitPodNum: int\n        :param CpuSpec: cpu规格\n        :type CpuSpec: float\n        :param MemorySpec: 内存规格\n        :type MemorySpec: float\n        :param NamespaceId: 环境ID\n        :type NamespaceId: str\n        :param ImgRepo: 镜像仓库\n        :type ImgRepo: str\n        :param VersionDesc: 版本描述信息\n        :type VersionDesc: str\n        :param JvmOpts: 启动参数\n        :type JvmOpts: str\n        :param EsInfo: 弹性伸缩配置，不传默认不启用弹性伸缩配置\n        :type EsInfo: :class:`tencentcloud.tem.v20201221.models.EsInfo`\n        :param EnvConf: 环境变量配置\n        :type EnvConf: list of Pair\n        :param LogConfs: 日志配置\n        :type LogConfs: list of str\n        :param StorageConfs: 数据卷配置\n        :type StorageConfs: list of StorageConf\n        :param StorageMountConfs: 数据卷挂载配置\n        :type StorageMountConfs: list of StorageMountConf\n        :param DeployMode: 部署类型。
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param ContainerPort: 容器端口
+        :type ContainerPort: int
+        :param InitPodNum: 初始化 pod 数
+        :type InitPodNum: int
+        :param CpuSpec: cpu规格
+        :type CpuSpec: float
+        :param MemorySpec: 内存规格
+        :type MemorySpec: float
+        :param NamespaceId: 环境ID
+        :type NamespaceId: str
+        :param ImgRepo: 镜像仓库
+        :type ImgRepo: str
+        :param VersionDesc: 版本描述信息
+        :type VersionDesc: str
+        :param JvmOpts: 启动参数
+        :type JvmOpts: str
+        :param EsInfo: 弹性伸缩配置，不传默认不启用弹性伸缩配置
+        :type EsInfo: :class:`tencentcloud.tem.v20201221.models.EsInfo`
+        :param EnvConf: 环境变量配置
+        :type EnvConf: list of Pair
+        :param LogConfs: 日志配置
+        :type LogConfs: list of str
+        :param StorageConfs: 数据卷配置
+        :type StorageConfs: list of StorageConf
+        :param StorageMountConfs: 数据卷挂载配置
+        :type StorageMountConfs: list of StorageMountConf
+        :param DeployMode: 部署类型。
 - JAR：通过 jar 包部署
 - WAR：通过 war 包部署
-- IMAGE：通过镜像部署\n        :type DeployMode: str\n        :param DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
-部署类型为 JAR/WAR 时，该参数表示包版本号。\n        :type DeployVersion: str\n        :param PkgName: 包名。使用 JAR 包或者 WAR 包部署的时候必填。\n        :type PkgName: str\n        :param JdkVersion: JDK 版本。
+- IMAGE：通过镜像部署
+        :type DeployMode: str
+        :param DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
+部署类型为 JAR/WAR 时，该参数表示包版本号。
+        :type DeployVersion: str
+        :param PkgName: 包名。使用 JAR 包或者 WAR 包部署的时候必填。
+        :type PkgName: str
+        :param JdkVersion: JDK 版本。
 - KONA：使用 kona jdk。
-- OPEN：使用 open jdk。\n        :type JdkVersion: str\n        :param SecurityGroupIds: 安全组ID s\n        :type SecurityGroupIds: list of str\n        :param LogOutputConf: 日志输出配置\n        :type LogOutputConf: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param Description: 版本描述\n        :type Description: str\n        :param ImageCommand: 镜像命令\n        :type ImageCommand: str\n        :param ImageArgs: 镜像命令参数\n        :type ImageArgs: list of str\n        :param PortMappings: 服务端口映射\n        :type PortMappings: list of PortMapping\n        :param UseRegistryDefaultConfig: 是否添加默认注册中心配置\n        :type UseRegistryDefaultConfig: bool\n        :param SettingConfs: 挂载配置信息\n        :type SettingConfs: list of MountedSettingConf\n        :param EksService: eks 访问设置\n        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`\n        :param VersionId: 要回滚到的历史版本id\n        :type VersionId: str\n        :param PostStart: 启动后执行的脚本\n        :type PostStart: str\n        :param PreStop: 停止前执行的脚本\n        :type PreStop: str\n        :param DeployStrategyConf: 分批发布策略配置\n        :type DeployStrategyConf: :class:`tencentcloud.tem.v20201221.models.DeployStrategyConf`\n        :param Liveness: 存活探针配置\n        :type Liveness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`\n        :param Readiness: 就绪探针配置\n        :type Readiness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`\n        """
+- OPEN：使用 open jdk。
+        :type JdkVersion: str
+        :param SecurityGroupIds: 安全组ID s
+        :type SecurityGroupIds: list of str
+        :param LogOutputConf: 日志输出配置
+        :type LogOutputConf: :class:`tencentcloud.tem.v20201221.models.LogOutputConf`
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param Description: 版本描述
+        :type Description: str
+        :param ImageCommand: 镜像命令
+        :type ImageCommand: str
+        :param ImageArgs: 镜像命令参数
+        :type ImageArgs: list of str
+        :param PortMappings: 服务端口映射
+        :type PortMappings: list of PortMapping
+        :param UseRegistryDefaultConfig: 是否添加默认注册中心配置
+        :type UseRegistryDefaultConfig: bool
+        :param SettingConfs: 挂载配置信息
+        :type SettingConfs: list of MountedSettingConf
+        :param EksService: eks 访问设置
+        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
+        :param VersionId: 要回滚到的历史版本id
+        :type VersionId: str
+        :param PostStart: 启动后执行的脚本
+        :type PostStart: str
+        :param PreStop: 停止前执行的脚本
+        :type PreStop: str
+        :param DeployStrategyConf: 分批发布策略配置
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20201221.models.DeployStrategyConf`
+        :param Liveness: 存活探针配置
+        :type Liveness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
+        :param Readiness: 就绪探针配置
+        :type Readiness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
+        """
         self.ServiceId = None
         self.ContainerPort = None
         self.InitPodNum = None
@@ -500,8 +682,12 @@ class DeployServiceV2Response(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 版本ID（前端可忽略）
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 版本ID（前端可忽略）\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -517,8 +703,16 @@ class DeployStrategyConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalBatchCount: 总分批数
+        :type TotalBatchCount: int
+        :param BetaBatchNum: beta分批实例数
+        :type BetaBatchNum: int
+        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，beta分批一定是手动的，这里的策略指定的是剩余批次
+        :type DeployStrategyType: int
+        :param BatchInterval: 每批暂停间隔
+        :type BatchInterval: int
         """
-        :param TotalBatchCount: 总分批数\n        :type TotalBatchCount: int\n        :param BetaBatchNum: beta分批实例数\n        :type BetaBatchNum: int\n        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，beta分批一定是手动的，这里的策略指定的是剩余批次\n        :type DeployStrategyType: int\n        :param BatchInterval: 每批暂停间隔\n        :type BatchInterval: int\n        """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
@@ -545,8 +739,16 @@ class DescribeIngressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: tem namespaceId
+        :type NamespaceId: str
+        :param EksNamespace: eks namespace 名
+        :type EksNamespace: str
+        :param Name: ingress 规则名
+        :type Name: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param NamespaceId: tem namespaceId\n        :type NamespaceId: str\n        :param EksNamespace: eks namespace 名\n        :type EksNamespace: str\n        :param Name: ingress 规则名\n        :type Name: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.Name = None
@@ -573,8 +775,12 @@ class DescribeIngressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: Ingress 规则配置
+        :type Result: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: Ingress 规则配置\n        :type Result: :class:`tencentcloud.tem.v20201221.models.IngressInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -592,8 +798,16 @@ class DescribeIngressesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: namespace id
+        :type NamespaceId: str
+        :param EksNamespace: namespace
+        :type EksNamespace: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param Names: ingress 规则名列表
+        :type Names: list of str
         """
-        :param NamespaceId: namespace id\n        :type NamespaceId: str\n        :param EksNamespace: namespace\n        :type EksNamespace: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param Names: ingress 规则名列表\n        :type Names: list of str\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.SourceChannel = None
@@ -620,9 +834,13 @@ class DescribeIngressesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: ingress 数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: list of IngressInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of IngressInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -643,8 +861,14 @@ class DescribeNamespacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 分页limit
+        :type Limit: int
+        :param Offset: 分页下标
+        :type Offset: int
+        :param SourceChannel: 来源source
+        :type SourceChannel: int
         """
-        :param Limit: 分页limit\n        :type Limit: int\n        :param Offset: 分页下标\n        :type Offset: int\n        :param SourceChannel: 来源source\n        :type SourceChannel: int\n        """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
@@ -669,8 +893,12 @@ class DescribeNamespacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.tem.v20201221.models.NamespacePage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 返回结果\n        :type Result: :class:`tencentcloud.tem.v20201221.models.NamespacePage`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -688,8 +916,16 @@ class DescribeRelatedIngressesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: 环境 id
+        :type NamespaceId: str
+        :param EksNamespace: EKS namespace
+        :type EksNamespace: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param ServiceId: 服务 ID
+        :type ServiceId: str
         """
-        :param NamespaceId: 环境 id\n        :type NamespaceId: str\n        :param EksNamespace: EKS namespace\n        :type EksNamespace: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param ServiceId: 服务 ID\n        :type ServiceId: str\n        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.SourceChannel = None
@@ -716,9 +952,13 @@ class DescribeRelatedIngressesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: ingress 数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: list of IngressInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of IngressInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -739,8 +979,18 @@ class DescribeRunPodPage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 分页下标
+        :type Offset: int
+        :param Limit: 单页条数
+        :type Limit: int
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 请求id
+        :type RequestId: str
+        :param PodList: 条目
+        :type PodList: list of RunVersionPod
         """
-        :param Offset: 分页下标\n        :type Offset: int\n        :param Limit: 单页条数\n        :type Limit: int\n        :param TotalCount: 总数\n        :type TotalCount: int\n        :param RequestId: 请求id\n        :type RequestId: str\n        :param PodList: 条目\n        :type PodList: list of RunVersionPod\n        """
         self.Offset = None
         self.Limit = None
         self.TotalCount = None
@@ -774,11 +1024,25 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param NamespaceId: 环境id\n        :type NamespaceId: str\n        :param ServiceId: 服务名id\n        :type ServiceId: str\n        :param Limit: 单页条数，默认值20\n        :type Limit: int\n        :param Offset: 分页下标，默认值0\n        :type Offset: int\n        :param Status: 实例状态 
+        r"""
+        :param NamespaceId: 环境id
+        :type NamespaceId: str
+        :param ServiceId: 服务名id
+        :type ServiceId: str
+        :param Limit: 单页条数，默认值20
+        :type Limit: int
+        :param Offset: 分页下标，默认值0
+        :type Offset: int
+        :param Status: 实例状态 
 - Running 
 - Pending 
-- Error\n        :type Status: str\n        :param PodName: 实例名字\n        :type PodName: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
+- Error
+        :type Status: str
+        :param PodName: 实例名字
+        :type PodName: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        """
         self.NamespaceId = None
         self.ServiceId = None
         self.Limit = None
@@ -811,8 +1075,12 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.tem.v20201221.models.DescribeRunPodPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 返回结果\n        :type Result: :class:`tencentcloud.tem.v20201221.models.DescribeRunPodPage`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -830,19 +1098,41 @@ class EksService(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: service name\n        :type Name: str\n        :param Ports: 可用端口\n        :type Ports: list of int\n        :param Yaml: yaml 内容\n        :type Yaml: str\n        :param ServiceName: 服务名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        :param VersionName: 版本名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionName: str\n        :param ClusterIp: 内网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterIp: list of str\n        :param ExternalIp: 外网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExternalIp: str\n        :param Type: 访问类型，可选值：
+        r"""
+        :param Name: service name
+        :type Name: str
+        :param Ports: 可用端口
+        :type Ports: list of int
+        :param Yaml: yaml 内容
+        :type Yaml: str
+        :param ServiceName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param VersionName: 版本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param ClusterIp: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIp: list of str
+        :param ExternalIp: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalIp: str
+        :param Type: 访问类型，可选值：
 - EXTERNAL（公网访问）
 - VPC（vpc内访问）
 - CLUSTER（集群内访问）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param SubnetId: 子网ID，只在类型为vpc访问时才有值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param LoadBalanceId: 负载均衡ID，只在外网访问和vpc内访问才有值，默认自动创建
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LoadBalanceId: str\n        :param PortMappings: 端口映射
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PortMappings: list of PortMapping\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param SubnetId: 子网ID，只在类型为vpc访问时才有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param LoadBalanceId: 负载均衡ID，只在外网访问和vpc内访问才有值，默认自动创建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalanceId: str
+        :param PortMappings: 端口映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PortMappings: list of PortMapping
+        """
         self.Name = None
         self.Ports = None
         self.Yaml = None
@@ -888,8 +1178,18 @@ class EsInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MinAliveInstances: 最小实例数
+        :type MinAliveInstances: int
+        :param MaxAliveInstances: 最大实例数
+        :type MaxAliveInstances: int
+        :param EsStrategy: 弹性策略,1:cpu，2:内存
+        :type EsStrategy: int
+        :param Threshold: 弹性扩缩容条件值
+        :type Threshold: int
+        :param VersionId: 版本Id
+        :type VersionId: str
         """
-        :param MinAliveInstances: 最小实例数\n        :type MinAliveInstances: int\n        :param MaxAliveInstances: 最大实例数\n        :type MaxAliveInstances: int\n        :param EsStrategy: 弹性策略,1:cpu，2:内存\n        :type EsStrategy: int\n        :param Threshold: 弹性扩缩容条件值\n        :type Threshold: int\n        :param VersionId: 版本Id\n        :type VersionId: str\n        """
         self.MinAliveInstances = None
         self.MaxAliveInstances = None
         self.EsStrategy = None
@@ -918,8 +1218,16 @@ class GenerateDownloadUrlRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param PkgName: 包名
+        :type PkgName: str
+        :param DeployVersion: 需要下载的包版本
+        :type DeployVersion: str
+        :param SourceChannel: 来源 channel
+        :type SourceChannel: int
         """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param PkgName: 包名\n        :type PkgName: str\n        :param DeployVersion: 需要下载的包版本\n        :type DeployVersion: str\n        :param SourceChannel: 来源 channel\n        :type SourceChannel: int\n        """
         self.ServiceId = None
         self.PkgName = None
         self.DeployVersion = None
@@ -946,9 +1254,13 @@ class GenerateDownloadUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 包下载临时链接
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -964,8 +1276,24 @@ class HealthCheckConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 支持的健康检查类型，如 HttpGet，TcpSocket，Exec
+        :type Type: str
+        :param Protocol: 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS
+        :type Protocol: str
+        :param Path: 仅当健康检查类型为 HttpGet 时有效，表示请求路径
+        :type Path: str
+        :param Exec: 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容
+        :type Exec: str
+        :param Port: 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径
+        :type Port: int
+        :param InitialDelaySeconds: 检查延迟开始时间，单位为秒，默认为 0
+        :type InitialDelaySeconds: int
+        :param TimeoutSeconds: 超时时间，单位为秒，默认为 1
+        :type TimeoutSeconds: int
+        :param PeriodSeconds: 间隔时间，单位为秒，默认为 10
+        :type PeriodSeconds: int
         """
-        :param Type: 支持的健康检查类型，如 HttpGet，TcpSocket，Exec\n        :type Type: str\n        :param Protocol: 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS\n        :type Protocol: str\n        :param Path: 仅当健康检查类型为 HttpGet 时有效，表示请求路径\n        :type Path: str\n        :param Exec: 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容\n        :type Exec: str\n        :param Port: 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径\n        :type Port: int\n        :param InitialDelaySeconds: 检查延迟开始时间，单位为秒，默认为 0\n        :type InitialDelaySeconds: int\n        :param TimeoutSeconds: 超时时间，单位为秒，默认为 1\n        :type TimeoutSeconds: int\n        :param PeriodSeconds: 间隔时间，单位为秒，默认为 10\n        :type PeriodSeconds: int\n        """
         self.Type = None
         self.Protocol = None
         self.Path = None
@@ -1000,14 +1328,36 @@ class IngressInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: tem namespaceId
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceId: str\n        :param EksNamespace: eks namespace\n        :type EksNamespace: str\n        :param AddressIPVersion: ip version\n        :type AddressIPVersion: str\n        :param Name: ingress name\n        :type Name: str\n        :param Rules: rules 配置\n        :type Rules: list of IngressRule\n        :param ClbId: clb ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClbId: str\n        :param Tls: tls 配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tls: list of IngressTls\n        :param ClusterId: eks clusterId
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterId: str\n        :param Vip: clb ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Vip: str\n        :param CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听\n        :type Mixed: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param EksNamespace: eks namespace
+        :type EksNamespace: str
+        :param AddressIPVersion: ip version
+        :type AddressIPVersion: str
+        :param Name: ingress name
+        :type Name: str
+        :param Rules: rules 配置
+        :type Rules: list of IngressRule
+        :param ClbId: clb ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbId: str
+        :param Tls: tls 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tls: list of IngressTls
+        :param ClusterId: eks clusterId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Vip: clb ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+        :type Mixed: bool
+        """
         self.NamespaceId = None
         self.EksNamespace = None
         self.AddressIPVersion = None
@@ -1058,9 +1408,15 @@ class IngressRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Http: ingress rule value
+        :type Http: :class:`tencentcloud.tem.v20201221.models.IngressRuleValue`
+        :param Host: host 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param Protocol: 协议，选项为 http， https，默认为 http
+        :type Protocol: str
         """
-        :param Http: ingress rule value\n        :type Http: :class:`tencentcloud.tem.v20201221.models.IngressRuleValue`\n        :param Host: host 地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Host: str\n        :param Protocol: 协议，选项为 http， https，默认为 http\n        :type Protocol: str\n        """
         self.Http = None
         self.Host = None
         self.Protocol = None
@@ -1087,8 +1443,12 @@ class IngressRuleBackend(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceName: eks service 名
+        :type ServiceName: str
+        :param ServicePort: eks service 端口
+        :type ServicePort: int
         """
-        :param ServiceName: eks service 名\n        :type ServiceName: str\n        :param ServicePort: eks service 端口\n        :type ServicePort: int\n        """
         self.ServiceName = None
         self.ServicePort = None
 
@@ -1111,8 +1471,12 @@ class IngressRulePath(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Path: path 信息
+        :type Path: str
+        :param Backend: backend 配置
+        :type Backend: :class:`tencentcloud.tem.v20201221.models.IngressRuleBackend`
         """
-        :param Path: path 信息\n        :type Path: str\n        :param Backend: backend 配置\n        :type Backend: :class:`tencentcloud.tem.v20201221.models.IngressRuleBackend`\n        """
         self.Path = None
         self.Backend = None
 
@@ -1137,8 +1501,10 @@ class IngressRuleValue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Paths: rule 整体配置
+        :type Paths: list of IngressRulePath
         """
-        :param Paths: rule 整体配置\n        :type Paths: list of IngressRulePath\n        """
         self.Paths = None
 
 
@@ -1164,8 +1530,14 @@ class IngressTls(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Hosts: host 数组, 空数组表示全部域名的默认证书
+        :type Hosts: list of str
+        :param SecretName: secret name，如使用证书，则填空字符串
+        :type SecretName: str
+        :param CertificateId: SSL Certificate Id
+        :type CertificateId: str
         """
-        :param Hosts: host 数组, 空数组表示全部域名的默认证书\n        :type Hosts: list of str\n        :param SecretName: secret name，如使用证书，则填空字符串\n        :type SecretName: str\n        :param CertificateId: SSL Certificate Id\n        :type CertificateId: str\n        """
         self.Hosts = None
         self.SecretName = None
         self.CertificateId = None
@@ -1190,8 +1562,18 @@ class LogOutputConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputType: 日志消费端类型
+        :type OutputType: str
+        :param ClsLogsetName: cls日志集
+        :type ClsLogsetName: str
+        :param ClsLogTopicId: cls日志主题
+        :type ClsLogTopicId: str
+        :param ClsLogsetId: cls日志集id
+        :type ClsLogsetId: str
+        :param ClsLogTopicName: cls日志名称
+        :type ClsLogTopicName: str
         """
-        :param OutputType: 日志消费端类型\n        :type OutputType: str\n        :param ClsLogsetName: cls日志集\n        :type ClsLogsetName: str\n        :param ClsLogTopicId: cls日志主题\n        :type ClsLogTopicId: str\n        :param ClsLogsetId: cls日志集id\n        :type ClsLogsetId: str\n        :param ClsLogTopicName: cls日志名称\n        :type ClsLogTopicName: str\n        """
         self.OutputType = None
         self.ClsLogsetName = None
         self.ClsLogTopicId = None
@@ -1220,8 +1602,12 @@ class ModifyIngressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ingress: Ingress 规则配置
+        :type Ingress: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param Ingress: Ingress 规则配置\n        :type Ingress: :class:`tencentcloud.tem.v20201221.models.IngressInfo`\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.Ingress = None
         self.SourceChannel = None
 
@@ -1246,9 +1632,13 @@ class ModifyIngressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建成功
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1264,8 +1654,20 @@ class ModifyNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: 环境id
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param Description: 命名空间描述
+        :type Description: str
+        :param Vpc: 私有网络名称
+        :type Vpc: str
+        :param SubnetIds: 子网网络
+        :type SubnetIds: list of str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param NamespaceId: 环境id\n        :type NamespaceId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param Description: 命名空间描述\n        :type Description: str\n        :param Vpc: 私有网络名称\n        :type Vpc: str\n        :param SubnetIds: 子网网络\n        :type SubnetIds: list of str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.NamespaceName = None
         self.Description = None
@@ -1296,9 +1698,13 @@ class ModifyNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为命名空间ID，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1314,8 +1720,14 @@ class ModifyServiceInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param Description: 描述
+        :type Description: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param Description: 描述\n        :type Description: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.ServiceId = None
         self.Description = None
         self.SourceChannel = None
@@ -1340,9 +1752,13 @@ class ModifyServiceInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功与否
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1358,8 +1774,14 @@ class MountedSettingConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigDataName: 配置名称
+        :type ConfigDataName: str
+        :param MountedPath: 挂载路径
+        :type MountedPath: str
+        :param Data: 配置内容
+        :type Data: list of Pair
         """
-        :param ConfigDataName: 配置名称\n        :type ConfigDataName: str\n        :param MountedPath: 挂载路径\n        :type MountedPath: str\n        :param Data: 配置内容\n        :type Data: list of Pair\n        """
         self.ConfigDataName = None
         self.MountedPath = None
         self.Data = None
@@ -1389,8 +1811,16 @@ class NamespacePage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Records: 分页内容
+        :type Records: list of TemNamespaceInfo
+        :param Total: 总数
+        :type Total: int
+        :param Size: 条目数
+        :type Size: int
+        :param Pages: 页数
+        :type Pages: int
         """
-        :param Records: 分页内容\n        :type Records: list of TemNamespaceInfo\n        :param Total: 总数\n        :type Total: int\n        :param Size: 条目数\n        :type Size: int\n        :param Pages: 页数\n        :type Pages: int\n        """
         self.Records = None
         self.Total = None
         self.Size = None
@@ -1422,8 +1852,12 @@ class Pair(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 建
+        :type Key: str
+        :param Value: 值
+        :type Value: str
         """
-        :param Key: 建\n        :type Key: str\n        :param Value: 值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -1446,8 +1880,14 @@ class PortMapping(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Port: 端口
+        :type Port: int
+        :param TargetPort: 映射端口
+        :type TargetPort: int
+        :param Protocol: 协议栈 TCP/UDP
+        :type Protocol: str
         """
-        :param Port: 端口\n        :type Port: int\n        :param TargetPort: 映射端口\n        :type TargetPort: int\n        :param Protocol: 协议栈 TCP/UDP\n        :type Protocol: str\n        """
         self.Port = None
         self.TargetPort = None
         self.Protocol = None
@@ -1472,8 +1912,22 @@ class RestartServiceRunPodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: 环境id
+        :type NamespaceId: str
+        :param ServiceId: 服务名id
+        :type ServiceId: str
+        :param PodName: 名字
+        :type PodName: str
+        :param Limit: 单页条数
+        :type Limit: int
+        :param Offset: 分页下标
+        :type Offset: int
+        :param Status: pod状态
+        :type Status: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param NamespaceId: 环境id\n        :type NamespaceId: str\n        :param ServiceId: 服务名id\n        :type ServiceId: str\n        :param PodName: 名字\n        :type PodName: str\n        :param Limit: 单页条数\n        :type Limit: int\n        :param Offset: 分页下标\n        :type Offset: int\n        :param Status: pod状态\n        :type Status: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.NamespaceId = None
         self.ServiceId = None
         self.PodName = None
@@ -1506,9 +1960,13 @@ class RestartServiceRunPodResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1524,11 +1982,27 @@ class RunVersionPod(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Webshell: shell地址
+        :type Webshell: str
+        :param PodId: pod的id
+        :type PodId: str
+        :param Status: 状态
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param PodIp: 实例的ip
+        :type PodIp: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param DeployVersion: 部署版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployVersion: str
+        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
         """
-        :param Webshell: shell地址\n        :type Webshell: str\n        :param PodId: pod的id\n        :type PodId: str\n        :param Status: 状态\n        :type Status: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param PodIp: 实例的ip\n        :type PodIp: str\n        :param Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param DeployVersion: 部署版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DeployVersion: str\n        :param RestartCount: 重启次数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RestartCount: int\n        """
         self.Webshell = None
         self.PodId = None
         self.Status = None
@@ -1563,9 +2037,15 @@ class StorageConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StorageVolName: 存储卷名称
+        :type StorageVolName: str
+        :param StorageVolPath: 存储卷路径
+        :type StorageVolPath: str
+        :param StorageVolIp: 存储卷IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageVolIp: str
         """
-        :param StorageVolName: 存储卷名称\n        :type StorageVolName: str\n        :param StorageVolPath: 存储卷路径\n        :type StorageVolPath: str\n        :param StorageVolIp: 存储卷IP
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageVolIp: str\n        """
         self.StorageVolName = None
         self.StorageVolPath = None
         self.StorageVolIp = None
@@ -1590,8 +2070,12 @@ class StorageMountConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VolumeName: 数据卷名
+        :type VolumeName: str
+        :param MountPath: 数据卷绑定路径
+        :type MountPath: str
         """
-        :param VolumeName: 数据卷名\n        :type VolumeName: str\n        :param MountPath: 数据卷绑定路径\n        :type MountPath: str\n        """
         self.VolumeName = None
         self.MountPath = None
 
@@ -1614,9 +2098,43 @@ class TemNamespaceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceId: 命名空间id
+        :type NamespaceId: str
+        :param Channel: 渠道
+        :type Channel: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param Region: 区域名称
+        :type Region: str
+        :param Description: 命名空间描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Status: 状态,1:已销毁;0:正常
+        :type Status: int
+        :param Vpc: vpc网络
+        :type Vpc: str
+        :param CreateDate: 创建时间
+        :type CreateDate: str
+        :param ModifyDate: 修改时间
+        :type ModifyDate: str
+        :param Modifier: 修改人
+        :type Modifier: str
+        :param Creator: 创建人
+        :type Creator: str
+        :param ServiceNum: 服务数
+        :type ServiceNum: int
+        :param RunInstancesNum: 运行实例数
+        :type RunInstancesNum: int
+        :param SubnetId: 子网络
+        :type SubnetId: str
+        :param TcbEnvStatus: tcb环境状态
+        :type TcbEnvStatus: str
+        :param ClusterStatus: eks cluster status
+        :type ClusterStatus: str
+        :param EnableTswTraceService: 是否开启tsw
+        :type EnableTswTraceService: bool
         """
-        :param NamespaceId: 命名空间id\n        :type NamespaceId: str\n        :param Channel: 渠道\n        :type Channel: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param Region: 区域名称\n        :type Region: str\n        :param Description: 命名空间描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param Status: 状态,1:已销毁;0:正常\n        :type Status: int\n        :param Vpc: vpc网络\n        :type Vpc: str\n        :param CreateDate: 创建时间\n        :type CreateDate: str\n        :param ModifyDate: 修改时间\n        :type ModifyDate: str\n        :param Modifier: 修改人\n        :type Modifier: str\n        :param Creator: 创建人\n        :type Creator: str\n        :param ServiceNum: 服务数\n        :type ServiceNum: int\n        :param RunInstancesNum: 运行实例数\n        :type RunInstancesNum: int\n        :param SubnetId: 子网络\n        :type SubnetId: str\n        :param TcbEnvStatus: tcb环境状态\n        :type TcbEnvStatus: str\n        :param ClusterStatus: eks cluster status\n        :type ClusterStatus: str\n        :param EnableTswTraceService: 是否开启tsw\n        :type EnableTswTraceService: bool\n        """
         self.NamespaceId = None
         self.Channel = None
         self.NamespaceName = None

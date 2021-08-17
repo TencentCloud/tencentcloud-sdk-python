@@ -24,9 +24,19 @@ class SendCodeVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CodeMessage: 验证码，仅支持填写数字，实际播报语音时，会自动在数字前补充语音文本"您的验证码是"。
+        :type CodeMessage: str
+        :param CalledNumber: 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
+例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :type CalledNumber: str
+        :param VoiceSdkAppid: 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
+        :type VoiceSdkAppid: str
+        :param PlayTimes: 播放次数，可选，最多3次，默认2次。
+        :type PlayTimes: int
+        :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。
+        :type SessionContext: str
         """
-        :param CodeMessage: 验证码，仅支持填写数字，实际播报语音时，会自动在数字前补充语音文本"您的验证码是"。\n        :type CodeMessage: str\n        :param CalledNumber: 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
-例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。\n        :type CalledNumber: str\n        :param VoiceSdkAppid: 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。\n        :type VoiceSdkAppid: str\n        :param PlayTimes: 播放次数，可选，最多3次，默认2次。\n        :type PlayTimes: int\n        :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。\n        :type SessionContext: str\n        """
         self.CodeMessage = None
         self.CalledNumber = None
         self.VoiceSdkAppid = None
@@ -55,8 +65,12 @@ class SendCodeVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SendStatus: 语音验证码发送状态。
+        :type SendStatus: :class:`tencentcloud.vms.v20200902.models.SendStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SendStatus: 语音验证码发送状态。\n        :type SendStatus: :class:`tencentcloud.vms.v20200902.models.SendStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SendStatus = None
         self.RequestId = None
 
@@ -74,9 +88,13 @@ class SendStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CallId: 标识本次发送 ID，标识一次下发记录。
+        :type CallId: str
+        :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionContext: str
         """
-        :param CallId: 标识本次发送 ID，标识一次下发记录。\n        :type CallId: str\n        :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionContext: str\n        """
         self.CallId = None
         self.SessionContext = None
 
@@ -99,10 +117,22 @@ class SendTtsVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateId: 模板 ID，在控制台审核通过的模板 ID。
+        :type TemplateId: str
+        :param CalledNumber: 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
+例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :type CalledNumber: str
+        :param VoiceSdkAppid: 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
+        :type VoiceSdkAppid: str
+        :param TemplateParamSet: 模板参数，若模板没有参数，请提供为空数组。
+注：语音消息的内容长度不超过350字。
+        :type TemplateParamSet: list of str
+        :param PlayTimes: 播放次数，可选，最多3次，默认2次。
+        :type PlayTimes: int
+        :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。
+        :type SessionContext: str
         """
-        :param TemplateId: 模板 ID，在控制台审核通过的模板 ID。\n        :type TemplateId: str\n        :param CalledNumber: 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
-例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。\n        :type CalledNumber: str\n        :param VoiceSdkAppid: 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。\n        :type VoiceSdkAppid: str\n        :param TemplateParamSet: 模板参数，若模板没有参数，请提供为空数组。
-注：语音消息的内容长度不超过350字。\n        :type TemplateParamSet: list of str\n        :param PlayTimes: 播放次数，可选，最多3次，默认2次。\n        :type PlayTimes: int\n        :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。\n        :type SessionContext: str\n        """
         self.TemplateId = None
         self.CalledNumber = None
         self.VoiceSdkAppid = None
@@ -133,8 +163,12 @@ class SendTtsVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SendStatus: 语音通知发送状态。
+        :type SendStatus: :class:`tencentcloud.vms.v20200902.models.SendStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SendStatus: 语音通知发送状态。\n        :type SendStatus: :class:`tencentcloud.vms.v20200902.models.SendStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SendStatus = None
         self.RequestId = None
 

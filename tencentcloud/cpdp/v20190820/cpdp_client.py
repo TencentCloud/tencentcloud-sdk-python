@@ -194,6 +194,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindAccount(self, request):
+        """灵云-绑定账号
+
+        :param request: Request instance for BindAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.BindAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.BindAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindAcct(self, request):
         """商户绑定提现银行卡，每个商户只能绑定一张提现银行卡
 
@@ -524,6 +552,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustAcctIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateExternalAnchor(self, request):
+        """灵云-主播入驻
+
+        :param request: Request instance for CreateExternalAnchor.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateExternalAnchorRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateExternalAnchorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateExternalAnchor", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateExternalAnchorResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1028,6 +1084,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAgentTaxPaymentInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBindedAccount(self, request):
+        """灵云-重新绑定账号
+
+        :param request: Request instance for ModifyBindedAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ModifyBindedAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ModifyBindedAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBindedAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBindedAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2625,6 +2709,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnifiedOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadExternalAnchorInfo(self, request):
+        """灵云-上传主播信息
+
+        :param request: Request instance for UploadExternalAnchorInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.UploadExternalAnchorInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.UploadExternalAnchorInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadExternalAnchorInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadExternalAnchorInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

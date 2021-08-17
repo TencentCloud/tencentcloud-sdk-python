@@ -24,8 +24,10 @@ class CreateWeappQRUrlRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SessionKey: 代理角色临时密钥的Token
+        :type SessionKey: str
         """
-        :param SessionKey: 代理角色临时密钥的Token\n        :type SessionKey: str\n        """
         self.SessionKey = None
 
 
@@ -46,8 +48,12 @@ class CreateWeappQRUrlResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Url: 渠道备案小程序二维码
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Url: 渠道备案小程序二维码\n        :type Url: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Url = None
         self.RequestId = None
 
@@ -69,8 +75,16 @@ class DescribeGetAuthInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsTenPayMasked: 实名认证状态：0未实名，1已实名
+        :type IsTenPayMasked: str
+        :param IsAuthenticated: 实名认证类型：0个人，1企业
+        :type IsAuthenticated: str
+        :param Type: 认证类型，个人0，企业1
+        :type Type: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param IsTenPayMasked: 实名认证状态：0未实名，1已实名\n        :type IsTenPayMasked: str\n        :param IsAuthenticated: 实名认证类型：0个人，1企业\n        :type IsAuthenticated: str\n        :param Type: 认证类型，个人0，企业1\n        :type Type: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IsTenPayMasked = None
         self.IsAuthenticated = None
         self.Type = None
@@ -90,8 +104,18 @@ class SyncIcpOrderWebInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IcpOrderId: 备案ICP订单号
+        :type IcpOrderId: str
+        :param SourceWebId: 订单里的webId
+        :type SourceWebId: str
+        :param TargetWebIds: 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
+        :type TargetWebIds: list of str
+        :param SyncFields: 网站信息字段名 数组
+        :type SyncFields: list of str
+        :param CheckSamePerson: 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
+        :type CheckSamePerson: bool
         """
-        :param IcpOrderId: 备案ICP订单号\n        :type IcpOrderId: str\n        :param SourceWebId: 订单里的webId\n        :type SourceWebId: str\n        :param TargetWebIds: 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)\n        :type TargetWebIds: list of str\n        :param SyncFields: 网站信息字段名 数组\n        :type SyncFields: list of str\n        :param CheckSamePerson: 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值\n        :type CheckSamePerson: bool\n        """
         self.IcpOrderId = None
         self.SourceWebId = None
         self.TargetWebIds = None
@@ -120,8 +144,10 @@ class SyncIcpOrderWebInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

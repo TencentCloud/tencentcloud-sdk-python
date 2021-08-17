@@ -24,18 +24,38 @@ class ActivityDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityId: int\n        :param ActivityName: 活动名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityName: str\n        :param ActivityState: 活动状态，10:未开始状态、20:已开始（进行中）状态、30:已结束状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityState: int\n        :param ActivityType: 活动类型，100:留资活动
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityType: int\n        :param StartTime: 活动开始时间戳，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: int\n        :param EndTime: 活动结束时间戳，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: int\n        :param MainPhoto: 活动主图
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MainPhoto: str\n        :param PrivacyAgreementId: 协议编号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivacyAgreementId: str\n        :param UpdateTime: 活动更新时间戳，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: int\n        :param ActivityDataList: 活动数据列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityDataList: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: int
+        :param ActivityName: 活动名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityName: str
+        :param ActivityState: 活动状态，10:未开始状态、20:已开始（进行中）状态、30:已结束状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityState: int
+        :param ActivityType: 活动类型，100:留资活动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityType: int
+        :param StartTime: 活动开始时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 活动结束时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param MainPhoto: 活动主图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainPhoto: str
+        :param PrivacyAgreementId: 协议编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivacyAgreementId: str
+        :param UpdateTime: 活动更新时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param ActivityDataList: 活动数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityDataList: str
+        """
         self.ActivityId = None
         self.ActivityName = None
         self.ActivityState = None
@@ -74,24 +94,56 @@ class ActivityJoinDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityId: int\n        :param ActivityName: 活动名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityName: str\n        :param SalesName: 销售姓名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SalesName: str\n        :param SalesPhone: 销售电话
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SalesPhone: str\n        :param JoinId: 参与id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type JoinId: int\n        :param LiveCodeId: 活码id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LiveCodeId: int\n        :param UserPhone: 用户电话
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserPhone: str\n        :param UserName: 用户姓名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserName: str\n        :param ActivityData: 活动数据
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActivityData: str\n        :param LeadId: 线索id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LeadId: int\n        :param JoinTime: 参与时间戳，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type JoinTime: int\n        :param Duplicate: 线索是否是重复创建， 0 ：新建、 1：合并、 2：重复， 默认为0
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Duplicate: int\n        :param DuplicateLeadId: 重复线索id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DuplicateLeadId: int\n        :param JoinState: 是否为参与多次活动， 1：参与一次、2、参与多次，默认为0
-注意：此字段可能返回 null，表示取不到有效值。\n        :type JoinState: int\n        :param CreateTime: 创建时间戳，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: int\n        :param UpdateTime: 更新时间戳，单位：秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: int
+        :param ActivityName: 活动名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityName: str
+        :param SalesName: 销售姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesName: str
+        :param SalesPhone: 销售电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesPhone: str
+        :param JoinId: 参与id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinId: int
+        :param LiveCodeId: 活码id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveCodeId: int
+        :param UserPhone: 用户电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserPhone: str
+        :param UserName: 用户姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param ActivityData: 活动数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityData: str
+        :param LeadId: 线索id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeadId: int
+        :param JoinTime: 参与时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinTime: int
+        :param Duplicate: 线索是否是重复创建， 0 ：新建、 1：合并、 2：重复， 默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duplicate: int
+        :param DuplicateLeadId: 重复线索id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DuplicateLeadId: int
+        :param JoinState: 是否为参与多次活动， 1：参与一次、2、参与多次，默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinState: int
+        :param CreateTime: 创建时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        """
         self.ActivityId = None
         self.ActivityName = None
         self.SalesName = None
@@ -142,8 +194,40 @@ class ChannelCodeInnerDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 渠道活码id
+        :type Id: int
+        :param Type: 欢迎语类型，0：普通欢迎语、1:渠道欢迎语
+        :type Type: int
+        :param Source: 渠道来源
+        :type Source: str
+        :param SourceName: 渠道来源名称
+        :type SourceName: str
+        :param Name: 二维码名称
+        :type Name: str
+        :param UseUserIdList: 使用成员用户id集
+        :type UseUserIdList: list of int
+        :param UseUserOpenIdList: 使用成员企微账号id集
+        :type UseUserOpenIdList: list of str
+        :param TagList: 标签
+        :type TagList: list of WeComTagDetail
+        :param SkipVerify: 自动通过好友，0：开启、1：关闭，默认0开启
+        :type SkipVerify: int
+        :param Friends: 添加好友人数
+        :type Friends: int
+        :param Remark: 备注
+        :type Remark: str
+        :param MsgId: 欢迎语id（通过欢迎语新增返回的id）
+        :type MsgId: int
+        :param ConfigId: 联系我config_id
+        :type ConfigId: str
+        :param QrCodeUrl: 联系我二维码地址
+        :type QrCodeUrl: str
+        :param RecStatus: 记录状态， 0：有效、1：无效
+        :type RecStatus: int
+        :param AppId: 应用ID
+        :type AppId: str
         """
-        :param Id: 渠道活码id\n        :type Id: int\n        :param Type: 欢迎语类型，0：普通欢迎语、1:渠道欢迎语\n        :type Type: int\n        :param Source: 渠道来源\n        :type Source: str\n        :param SourceName: 渠道来源名称\n        :type SourceName: str\n        :param Name: 二维码名称\n        :type Name: str\n        :param UseUserIdList: 使用成员用户id集\n        :type UseUserIdList: list of int\n        :param UseUserOpenIdList: 使用成员企微账号id集\n        :type UseUserOpenIdList: list of str\n        :param TagList: 标签\n        :type TagList: list of WeComTagDetail\n        :param SkipVerify: 自动通过好友，0：开启、1：关闭，默认0开启\n        :type SkipVerify: int\n        :param Friends: 添加好友人数\n        :type Friends: int\n        :param Remark: 备注\n        :type Remark: str\n        :param MsgId: 欢迎语id（通过欢迎语新增返回的id）\n        :type MsgId: int\n        :param ConfigId: 联系我config_id\n        :type ConfigId: str\n        :param QrCodeUrl: 联系我二维码地址\n        :type QrCodeUrl: str\n        :param RecStatus: 记录状态， 0：有效、1：无效\n        :type RecStatus: int\n        :param AppId: 应用ID\n        :type AppId: str\n        """
         self.Id = None
         self.Type = None
         self.Source = None
@@ -199,16 +283,34 @@ class ChatArchivingDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MsgId: 消息id\n        :type MsgId: str\n        :param Action: 动作名称，switch表示切换企微账号，send表示企微普通消息\n        :type Action: str\n        :param MsgType: 消息类型，当Action != "switch"时存在，例如video, text, voice 等，和企微开放文档一一对应
+        r"""
+        :param MsgId: 消息id
+        :type MsgId: str
+        :param Action: 动作名称，switch表示切换企微账号，send表示企微普通消息
+        :type Action: str
+        :param MsgType: 消息类型，当Action != "switch"时存在，例如video, text, voice 等，和企微开放文档一一对应
 https://open.work.weixin.qq.com/api/doc/90000/90135/91774
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgType: str\n        :param From: 消息发送人
-注意：此字段可能返回 null，表示取不到有效值。\n        :type From: str\n        :param ToList: 消息接收人列表，注意接收人可能只有一个
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ToList: list of str\n        :param RoomId: 如果是群消息，则不为空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RoomId: str\n        :param MsgTime: 消息发送的时间戳，单位为秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgTime: int\n        :param Video: MsgType=video时的消息体，忽略此字段，见BodyJson字段
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Video: :class:`tencentcloud.wav.v20210129.models.ChatArchivingMsgTypeVideo`\n        :param BodyJson: 根据MsgType的不同取值，解析内容不同，参考：https://open.work.weixin.qq.com/api/doc/90000/90135/91774
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BodyJson: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgType: str
+        :param From: 消息发送人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type From: str
+        :param ToList: 消息接收人列表，注意接收人可能只有一个
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToList: list of str
+        :param RoomId: 如果是群消息，则不为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomId: str
+        :param MsgTime: 消息发送的时间戳，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgTime: int
+        :param Video: MsgType=video时的消息体，忽略此字段，见BodyJson字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Video: :class:`tencentcloud.wav.v20210129.models.ChatArchivingMsgTypeVideo`
+        :param BodyJson: 根据MsgType的不同取值，解析内容不同，参考：https://open.work.weixin.qq.com/api/doc/90000/90135/91774
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BodyJson: str
+        """
         self.MsgId = None
         self.Action = None
         self.MsgType = None
@@ -247,10 +349,16 @@ class ChatArchivingMsgTypeVideo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlayLength: 视频时长，单位秒
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PlayLength: int\n        :param FileSize: 文件大小
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FileSize: int\n        :param CosKey: 视频资源对象Cos下载地址\n        :type CosKey: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlayLength: int
+        :param FileSize: 文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param CosKey: 视频资源对象Cos下载地址
+        :type CosKey: str
+        """
         self.PlayLength = None
         self.FileSize = None
         self.CosKey = None
@@ -275,8 +383,32 @@ class CreateChannelCodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 欢迎语类型:0普通欢迎语,1渠道欢迎语
+        :type Type: int
+        :param UseUserId: 使用成员用户id集
+        :type UseUserId: list of int
+        :param UseUserOpenId: 使用成员企微账号id集
+        :type UseUserOpenId: list of str
+        :param AppIds: 应用ID,字典表中的APP_TYPE值,多个已逗号分隔
+        :type AppIds: str
+        :param Source: 渠道来源
+        :type Source: str
+        :param SourceName: 渠道来源名称
+        :type SourceName: str
+        :param Name: 二维码名称
+        :type Name: str
+        :param Tag: 标签
+        :type Tag: list of WeComTagDetail
+        :param SkipVerify: 自动通过好友：0开启 1关闭, 默认开启
+        :type SkipVerify: int
+        :param MsgId: 欢迎语id（通过欢迎语新增返回的id）
+        :type MsgId: int
+        :param Remark: 备注
+        :type Remark: str
+        :param SourceType: 渠道类型 0 未知 1 公域 2私域
+        :type SourceType: int
         """
-        :param Type: 欢迎语类型:0普通欢迎语,1渠道欢迎语\n        :type Type: int\n        :param UseUserId: 使用成员用户id集\n        :type UseUserId: list of int\n        :param UseUserOpenId: 使用成员企微账号id集\n        :type UseUserOpenId: list of str\n        :param AppIds: 应用ID,字典表中的APP_TYPE值,多个已逗号分隔\n        :type AppIds: str\n        :param Source: 渠道来源\n        :type Source: str\n        :param SourceName: 渠道来源名称\n        :type SourceName: str\n        :param Name: 二维码名称\n        :type Name: str\n        :param Tag: 标签\n        :type Tag: list of WeComTagDetail\n        :param SkipVerify: 自动通过好友：0开启 1关闭, 默认开启\n        :type SkipVerify: int\n        :param MsgId: 欢迎语id（通过欢迎语新增返回的id）\n        :type MsgId: int\n        :param Remark: 备注\n        :type Remark: str\n        :param SourceType: 渠道类型 0 未知 1 公域 2私域\n        :type SourceType: int\n        """
         self.Type = None
         self.UseUserId = None
         self.UseUserOpenId = None
@@ -324,8 +456,10 @@ class CreateChannelCodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -339,8 +473,14 @@ class CreateCorpTagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupName: 标签组名称，最长为15个字符
+        :type GroupName: str
+        :param Tags: 标签信息数组
+        :type Tags: list of TagInfo
+        :param Sort: 标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)
+        :type Sort: int
         """
-        :param GroupName: 标签组名称，最长为15个字符\n        :type GroupName: str\n        :param Tags: 标签信息数组\n        :type Tags: list of TagInfo\n        :param Sort: 标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)\n        :type Sort: int\n        """
         self.GroupName = None
         self.Tags = None
         self.Sort = None
@@ -370,8 +510,12 @@ class CreateCorpTagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagGroup: 标签组信息
+        :type TagGroup: :class:`tencentcloud.wav.v20210129.models.TagGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TagGroup: 标签组信息\n        :type TagGroup: :class:`tencentcloud.wav.v20210129.models.TagGroup`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TagGroup = None
         self.RequestId = None
 
@@ -389,10 +533,22 @@ class ExternalContact(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExternalUserId: 外部联系人的userId
+        :type ExternalUserId: str
+        :param Gender: 外部联系人性别 0-未知 1-男性 2-女性
+        :type Gender: int
+        :param Name: 外部联系人的名称
+        :type Name: str
+        :param Type: 外部联系人的类型，1表示该外部联系人是微信用户，2表示该外部联系人是企业微信用户
+        :type Type: int
+        :param UnionId: 外部联系人在微信开放平台的唯一身份标识（微信unionid），通过此字段企业可将外部联系人与公众号/小程序用户关联起来。仅当联系人类型是微信用户，且企业或第三方服务商绑定了微信开发者ID有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnionId: str
+        :param Phone: 外部联系人联系电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
         """
-        :param ExternalUserId: 外部联系人的userId\n        :type ExternalUserId: str\n        :param Gender: 外部联系人性别 0-未知 1-男性 2-女性\n        :type Gender: int\n        :param Name: 外部联系人的名称\n        :type Name: str\n        :param Type: 外部联系人的类型，1表示该外部联系人是微信用户，2表示该外部联系人是企业微信用户\n        :type Type: int\n        :param UnionId: 外部联系人在微信开放平台的唯一身份标识（微信unionid），通过此字段企业可将外部联系人与公众号/小程序用户关联起来。仅当联系人类型是微信用户，且企业或第三方服务商绑定了微信开发者ID有此字段。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UnionId: str\n        :param Phone: 外部联系人联系电话
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Phone: str\n        """
         self.ExternalUserId = None
         self.Gender = None
         self.Name = None
@@ -423,9 +579,15 @@ class ExternalContactSimpleInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExternalUserId: 外部联系人的userId
+        :type ExternalUserId: str
+        :param UserId: 添加了此外部联系人的企业成员userId
+        :type UserId: str
+        :param SalesName: 添加了此外部联系人的企业成员的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesName: str
         """
-        :param ExternalUserId: 外部联系人的userId\n        :type ExternalUserId: str\n        :param UserId: 添加了此外部联系人的企业成员userId\n        :type UserId: str\n        :param SalesName: 添加了此外部联系人的企业成员的姓名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SalesName: str\n        """
         self.ExternalUserId = None
         self.UserId = None
         self.SalesName = None
@@ -450,12 +612,20 @@ class ExternalContactTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 该成员添加此外部联系人所打标签的分组名称（标签功能需要企业微信升级到2.7.5及以上版本）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupName: str\n        :param TagName: 该成员添加此外部联系人所打标签名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagName: str\n        :param Type: 该成员添加此外部联系人所打标签类型, 1-企业设置, 2-用户自定义
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: int\n        :param TagId: 该成员添加此外部联系人所打企业标签的id，仅企业设置（type为1）的标签返回
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param TagName: 该成员添加此外部联系人所打标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param Type: 该成员添加此外部联系人所打标签类型, 1-企业设置, 2-用户自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param TagId: 该成员添加此外部联系人所打企业标签的id，仅企业设置（type为1）的标签返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagId: str
+        """
         self.GroupName = None
         self.TagName = None
         self.Type = None
@@ -482,9 +652,13 @@ class ExternalUserMappingInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CorpExternalUserId: 企业主体对应的外部联系人userId
+        :type CorpExternalUserId: str
+        :param ExternalUserId: 乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUserId: str
         """
-        :param CorpExternalUserId: 企业主体对应的外部联系人userId\n        :type CorpExternalUserId: str\n        :param ExternalUserId: 乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExternalUserId: str\n        """
         self.CorpExternalUserId = None
         self.ExternalUserId = None
 
@@ -507,11 +681,25 @@ class FollowUser(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserId: 添加了此外部联系人的企业成员userid
+        :type UserId: str
+        :param Remark: 该成员对此外部联系人的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Description: 该成员对此外部联系人的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreateTime: 该成员添加此外部联系人的时间戳，单位为秒
+        :type CreateTime: int
+        :param AddWay: 该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+        :type AddWay: int
+        :param OperUserId: 发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
+        :type OperUserId: str
+        :param Tags: 该成员添加此外部联系人所打标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ExternalContactTag
         """
-        :param UserId: 添加了此外部联系人的企业成员userid\n        :type UserId: str\n        :param Remark: 该成员对此外部联系人的备注
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param Description: 该成员对此外部联系人的描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param CreateTime: 该成员添加此外部联系人的时间戳，单位为秒\n        :type CreateTime: int\n        :param AddWay: 该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>\n        :type AddWay: int\n        :param OperUserId: 发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid\n        :type OperUserId: str\n        :param Tags: 该成员添加此外部联系人所打标签信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of ExternalContactTag\n        """
         self.UserId = None
         self.Remark = None
         self.Description = None
@@ -549,11 +737,27 @@ class LicenseInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param License: license编号
+        :type License: str
+        :param LicenseEdition: license版本；1-基础版，2-标准版，3-增值版
+        :type LicenseEdition: int
+        :param ResourceStartTime: 生效开始时间, 格式yyyy-MM-dd HH:mm:ss
+        :type ResourceStartTime: str
+        :param ResourceEndTime: 生效结束时间, 格式yyyy-MM-dd HH:mm:ss
+        :type ResourceEndTime: str
+        :param IsolationDeadline: 隔离截止时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolationDeadline: str
+        :param DestroyTime: 资源计划销毁时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: str
+        :param Status: 资源状态，1.正常，2.隔离，3.销毁
+        :type Status: int
+        :param Extra: 扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
         """
-        :param License: license编号\n        :type License: str\n        :param LicenseEdition: license版本；1-基础版，2-标准版，3-增值版\n        :type LicenseEdition: int\n        :param ResourceStartTime: 生效开始时间, 格式yyyy-MM-dd HH:mm:ss\n        :type ResourceStartTime: str\n        :param ResourceEndTime: 生效结束时间, 格式yyyy-MM-dd HH:mm:ss\n        :type ResourceEndTime: str\n        :param IsolationDeadline: 隔离截止时间, 格式yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsolationDeadline: str\n        :param DestroyTime: 资源计划销毁时间, 格式yyyy-MM-dd HH:mm:ss
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DestroyTime: str\n        :param Status: 资源状态，1.正常，2.隔离，3.销毁\n        :type Status: int\n        :param Extra: 扩展信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Extra: str\n        """
         self.License = None
         self.LicenseEdition = None
         self.ResourceStartTime = None
@@ -588,11 +792,31 @@ class LiveCodeDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LiveCodeId: 活码id
+        :type LiveCodeId: int
+        :param LiveCodeName: 活码名称
+        :type LiveCodeName: str
+        :param ShortChainAddress: 短链url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortChainAddress: str
+        :param LiveCodePreview: 活码二维码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveCodePreview: str
+        :param ActivityId: 活动id
+        :type ActivityId: int
+        :param ActivityName: 活动名称
+        :type ActivityName: str
+        :param LiveCodeState: 活码状态，-1：删除，0：启用，1禁用，默认为0
+        :type LiveCodeState: int
+        :param LiveCodeData: 活码参数，每个活码参数都是不一样的， 这个的值对应的是字符串json类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveCodeData: str
+        :param CreateTime: 创建时间戳，单位为秒
+        :type CreateTime: int
+        :param UpdateTime: 更新时间戳，单位为秒
+        :type UpdateTime: int
         """
-        :param LiveCodeId: 活码id\n        :type LiveCodeId: int\n        :param LiveCodeName: 活码名称\n        :type LiveCodeName: str\n        :param ShortChainAddress: 短链url
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ShortChainAddress: str\n        :param LiveCodePreview: 活码二维码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LiveCodePreview: str\n        :param ActivityId: 活动id\n        :type ActivityId: int\n        :param ActivityName: 活动名称\n        :type ActivityName: str\n        :param LiveCodeState: 活码状态，-1：删除，0：启用，1禁用，默认为0\n        :type LiveCodeState: int\n        :param LiveCodeData: 活码参数，每个活码参数都是不一样的， 这个的值对应的是字符串json类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LiveCodeData: str\n        :param CreateTime: 创建时间戳，单位为秒\n        :type CreateTime: int\n        :param UpdateTime: 更新时间戳，单位为秒\n        :type UpdateTime: int\n        """
         self.LiveCodeId = None
         self.LiveCodeName = None
         self.ShortChainAddress = None
@@ -631,8 +855,22 @@ class MiniAppCodeInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 主键id
+        :type Id: int
+        :param MiniAppName: 小程序名称
+        :type MiniAppName: str
+        :param MiniAppLogo: 小程序logo
+        :type MiniAppLogo: str
+        :param MiniAdminUrl: 小程序管理端地址
+        :type MiniAdminUrl: str
+        :param State: 状态：0正常，1删除
+        :type State: int
+        :param CreateTime: 创建时间戳，单位为秒
+        :type CreateTime: int
+        :param UpdateTime: 更新时间戳，单位为秒
+        :type UpdateTime: int
         """
-        :param Id: 主键id\n        :type Id: int\n        :param MiniAppName: 小程序名称\n        :type MiniAppName: str\n        :param MiniAppLogo: 小程序logo\n        :type MiniAppLogo: str\n        :param MiniAdminUrl: 小程序管理端地址\n        :type MiniAdminUrl: str\n        :param State: 状态：0正常，1删除\n        :type State: int\n        :param CreateTime: 创建时间戳，单位为秒\n        :type CreateTime: int\n        :param UpdateTime: 更新时间戳，单位为秒\n        :type UpdateTime: int\n        """
         self.Id = None
         self.MiniAppName = None
         self.MiniAppLogo = None
@@ -665,8 +903,14 @@ class QueryActivityJoinListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ActivityId: 活动id
+        :type ActivityId: int
+        :param Cursor: 分页游标，对应结果返回的NextCursor,首次请求保持为空
+        :type Cursor: str
+        :param Limit: 单页数据限制
+        :type Limit: int
         """
-        :param ActivityId: 活动id\n        :type ActivityId: int\n        :param Cursor: 分页游标，对应结果返回的NextCursor,首次请求保持为空\n        :type Cursor: str\n        :param Limit: 单页数据限制\n        :type Limit: int\n        """
         self.ActivityId = None
         self.Cursor = None
         self.Limit = None
@@ -691,10 +935,16 @@ class QueryActivityJoinListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param PageData: 活码列表响应参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of ActivityJoinDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ActivityJoinDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.PageData = None
         self.RequestId = None
@@ -717,8 +967,12 @@ class QueryActivityListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cursor: 分页游标，对应结果返回的NextCursor,首次请求保持为空
+        :type Cursor: str
+        :param Limit: 单页数据限制
+        :type Limit: int
         """
-        :param Cursor: 分页游标，对应结果返回的NextCursor,首次请求保持为空\n        :type Cursor: str\n        :param Limit: 单页数据限制\n        :type Limit: int\n        """
         self.Cursor = None
         self.Limit = None
 
@@ -741,10 +995,16 @@ class QueryActivityListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param PageData: 活码列表响应参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of ActivityDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ActivityDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.PageData = None
         self.RequestId = None
@@ -767,8 +1027,12 @@ class QueryActivityLiveCodeListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
         """
-        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填\n        :type Cursor: str\n        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值\n        :type Limit: int\n        """
         self.Cursor = None
         self.Limit = None
 
@@ -791,10 +1055,16 @@ class QueryActivityLiveCodeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param PageData: 活码列表响应参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of LiveCodeDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of LiveCodeDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.PageData = None
         self.RequestId = None
@@ -817,8 +1087,12 @@ class QueryChannelCodeListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
         """
-        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填\n        :type Cursor: str\n        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值\n        :type Limit: int\n        """
         self.Cursor = None
         self.Limit = None
 
@@ -841,10 +1115,16 @@ class QueryChannelCodeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param PageData: 活码列表响应参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of ChannelCodeInnerDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 活码列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ChannelCodeInnerDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.PageData = None
         self.RequestId = None
@@ -867,8 +1147,12 @@ class QueryChatArchivingListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
         """
-        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填\n        :type Cursor: str\n        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值\n        :type Limit: int\n        """
         self.Cursor = None
         self.Limit = None
 
@@ -891,10 +1175,16 @@ class QueryChatArchivingListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param PageData: 会话存档列表响应参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of ChatArchivingDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 会话存档列表响应参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ChatArchivingDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.PageData = None
         self.RequestId = None
@@ -917,8 +1207,14 @@ class QueryExternalContactDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExternalUserId: 外部联系人的userid，注意不是企业成员的帐号
+        :type ExternalUserId: str
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
+        :type Cursor: str
+        :param Limit: 当前接口Limit不需要传参， 保留Limit只是为了保持向后兼容性， Limit默认值为500，当返回结果超过500时， NextCursor才有返回值
+        :type Limit: int
         """
-        :param ExternalUserId: 外部联系人的userid，注意不是企业成员的帐号\n        :type ExternalUserId: str\n        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取\n        :type Cursor: str\n        :param Limit: 当前接口Limit不需要传参， 保留Limit只是为了保持向后兼容性， Limit默认值为500，当返回结果超过500时， NextCursor才有返回值\n        :type Limit: int\n        """
         self.ExternalUserId = None
         self.Cursor = None
         self.Limit = None
@@ -943,11 +1239,19 @@ class QueryExternalContactDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param Customer: 客户信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Customer: :class:`tencentcloud.wav.v20210129.models.ExternalContact`\n        :param FollowUser: 添加了此外部联系人的企业成员信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FollowUser: list of FollowUser\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param Customer: 客户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Customer: :class:`tencentcloud.wav.v20210129.models.ExternalContact`
+        :param FollowUser: 添加了此外部联系人的企业成员信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowUser: list of FollowUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.Customer = None
         self.FollowUser = None
@@ -974,8 +1278,12 @@ class QueryExternalContactListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
         """
-        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填\n        :type Cursor: str\n        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值\n        :type Limit: int\n        """
         self.Cursor = None
         self.Limit = None
 
@@ -998,10 +1306,16 @@ class QueryExternalContactListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageData: 外部联系人信息列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of ExternalContactSimpleInfo\n        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ExternalContactSimpleInfo
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.PageData = None
         self.NextCursor = None
         self.RequestId = None
@@ -1024,8 +1338,10 @@ class QueryExternalUserMappingInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CorpExternalUserIdList: 企业主体对应的外部联系人id列表，列表长度限制最大为50。
+        :type CorpExternalUserIdList: list of str
         """
-        :param CorpExternalUserIdList: 企业主体对应的外部联系人id列表，列表长度限制最大为50。\n        :type CorpExternalUserIdList: list of str\n        """
         self.CorpExternalUserIdList = None
 
 
@@ -1046,9 +1362,13 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalUserIdMapping: 外部联系人映射信息, 只返回映射成功的记录
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExternalUserIdMapping: list of ExternalUserMappingInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUserIdMapping: list of ExternalUserMappingInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ExternalUserIdMapping = None
         self.RequestId = None
 
@@ -1069,8 +1389,10 @@ class QueryLicenseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param License: license编号
+        :type License: str
         """
-        :param License: license编号\n        :type License: str\n        """
         self.License = None
 
 
@@ -1091,9 +1413,13 @@ class QueryLicenseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LicenseInfo: license响应信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LicenseInfo: :class:`tencentcloud.wav.v20210129.models.LicenseInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseInfo: :class:`tencentcloud.wav.v20210129.models.LicenseInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.LicenseInfo = None
         self.RequestId = None
 
@@ -1111,8 +1437,12 @@ class QueryMiniAppCodeListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
         """
-        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填\n        :type Cursor: str\n        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值\n        :type Limit: int\n        """
         self.Cursor = None
         self.Limit = None
 
@@ -1135,10 +1465,16 @@ class QueryMiniAppCodeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NextCursor: str\n        :param PageData: 小程序码列表响应数据
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PageData: list of MiniAppCodeInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 小程序码列表响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of MiniAppCodeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.NextCursor = None
         self.PageData = None
         self.RequestId = None
@@ -1161,8 +1497,18 @@ class TagDetailInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagName: 标签名称
+        :type TagName: str
+        :param BizTagId: 标签业务ID
+        :type BizTagId: str
+        :param TagId: 企微标签ID
+        :type TagId: str
+        :param Sort: 标签排序的次序值，sort值大的排序靠前。有效的值范围是[0, 2^32)
+        :type Sort: int
+        :param CreateTime: 标签创建时间,单位为秒
+        :type CreateTime: int
         """
-        :param TagName: 标签名称\n        :type TagName: str\n        :param BizTagId: 标签业务ID\n        :type BizTagId: str\n        :param TagId: 企微标签ID\n        :type TagId: str\n        :param Sort: 标签排序的次序值，sort值大的排序靠前。有效的值范围是[0, 2^32)\n        :type Sort: int\n        :param CreateTime: 标签创建时间,单位为秒\n        :type CreateTime: int\n        """
         self.TagName = None
         self.BizTagId = None
         self.TagId = None
@@ -1191,8 +1537,20 @@ class TagGroup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupId: 企微标签组id
+        :type GroupId: str
+        :param BizGroupId: 标签组业务id
+        :type BizGroupId: str
+        :param GroupName: 企微标签组名称，不能超过15个字符
+        :type GroupName: str
+        :param Sort: 标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)
+        :type Sort: int
+        :param CreateTime: 标签组创建时间,单位为秒
+        :type CreateTime: int
+        :param Tags: 标签组内的标签列表, 上限为20
+        :type Tags: list of TagDetailInfo
         """
-        :param GroupId: 企微标签组id\n        :type GroupId: str\n        :param BizGroupId: 标签组业务id\n        :type BizGroupId: str\n        :param GroupName: 企微标签组名称，不能超过15个字符\n        :type GroupName: str\n        :param Sort: 标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)\n        :type Sort: int\n        :param CreateTime: 标签组创建时间,单位为秒\n        :type CreateTime: int\n        :param Tags: 标签组内的标签列表, 上限为20\n        :type Tags: list of TagDetailInfo\n        """
         self.GroupId = None
         self.BizGroupId = None
         self.GroupName = None
@@ -1228,8 +1586,12 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagName: 标签名称, 最大长度限制15个字符
+        :type TagName: str
+        :param Sort: 标签组排序,值越大,排序越靠前
+        :type Sort: int
         """
-        :param TagName: 标签名称, 最大长度限制15个字符\n        :type TagName: str\n        :param Sort: 标签组排序,值越大,排序越靠前\n        :type Sort: int\n        """
         self.TagName = None
         self.Sort = None
 
@@ -1252,15 +1614,29 @@ class WeComTagDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 标签分组名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type GroupName: str\n        :param BizGroupId: 标签分组业务ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BizGroupId: str\n        :param TagName: 标签名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagName: str\n        :param TagId: 标签ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagId: str\n        :param BizTagId: 标签业务ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BizTagId: str\n        :param Type: 标签分类，1：企业设置、2：用户自定义
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: int\n        :param BizTagIdStr: 标签业务ID字符串格式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BizTagIdStr: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param BizGroupId: 标签分组业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizGroupId: str
+        :param TagName: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param TagId: 标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagId: str
+        :param BizTagId: 标签业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizTagId: str
+        :param Type: 标签分类，1：企业设置、2：用户自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param BizTagIdStr: 标签业务ID字符串格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizTagIdStr: str
+        """
         self.GroupName = None
         self.BizGroupId = None
         self.TagName = None

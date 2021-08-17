@@ -24,8 +24,32 @@ class CreateJobConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param EntrypointClass: 主类
+        :type EntrypointClass: str
+        :param ProgramArgs: 主类入参
+        :type ProgramArgs: str
+        :param Remark: 备注
+        :type Remark: str
+        :param ResourceRefs: 资源引用数组
+        :type ResourceRefs: list of ResourceRef
+        :param DefaultParallelism: 作业默认并行度
+        :type DefaultParallelism: int
+        :param Properties: 系统参数
+        :type Properties: list of Property
+        :param AutoDelete: 1: 作业配置达到上限之后，自动删除可删除的最早版本
+        :type AutoDelete: int
+        :param COSBucket: 作业使用的 COS 存储桶名
+        :type COSBucket: str
+        :param LogCollect: 是否采集作业日志
+        :type LogCollect: bool
+        :param JobManagerSpec: JobManager规格
+        :type JobManagerSpec: float
+        :param TaskManagerSpec: TaskManager规格
+        :type TaskManagerSpec: float
         """
-        :param JobId: 作业Id\n        :type JobId: str\n        :param EntrypointClass: 主类\n        :type EntrypointClass: str\n        :param ProgramArgs: 主类入参\n        :type ProgramArgs: str\n        :param Remark: 备注\n        :type Remark: str\n        :param ResourceRefs: 资源引用数组\n        :type ResourceRefs: list of ResourceRef\n        :param DefaultParallelism: 作业默认并行度\n        :type DefaultParallelism: int\n        :param Properties: 系统参数\n        :type Properties: list of Property\n        :param AutoDelete: 1: 作业配置达到上限之后，自动删除可删除的最早版本\n        :type AutoDelete: int\n        :param COSBucket: 作业使用的 COS 存储桶名\n        :type COSBucket: str\n        :param LogCollect: 是否采集作业日志\n        :type LogCollect: bool\n        :param JobManagerSpec: JobManager规格\n        :type JobManagerSpec: float\n        :param TaskManagerSpec: TaskManager规格\n        :type TaskManagerSpec: float\n        """
         self.JobId = None
         self.EntrypointClass = None
         self.ProgramArgs = None
@@ -78,8 +102,12 @@ class CreateJobConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Version: 作业配置版本号
+        :type Version: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Version: 作业配置版本号\n        :type Version: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Version = None
         self.RequestId = None
 
@@ -95,8 +123,22 @@ class CreateJobRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名
+        :type Name: str
+        :param JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业
+        :type JobType: int
+        :param ClusterType: 集群的类型，1 表示共享集群，2 表示独享集群
+        :type ClusterType: int
+        :param ClusterId: 当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID
+        :type ClusterId: str
+        :param CuMem: 设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存
+        :type CuMem: int
+        :param Remark: 作业的备注信息，可以随意设置
+        :type Remark: str
+        :param FolderId: 作业名所属文件夹ID，根目录为"root"
+        :type FolderId: str
         """
-        :param Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名\n        :type Name: str\n        :param JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业\n        :type JobType: int\n        :param ClusterType: 集群的类型，1 表示共享集群，2 表示独享集群\n        :type ClusterType: int\n        :param ClusterId: 当 ClusterType=2 时，必选，用来指定该作业提交的独享集群 ID\n        :type ClusterId: str\n        :param CuMem: 设置每 CU 的内存规格，单位为 GB，支持 2、4、8、16（需申请开通白名单后使用）。默认为 4，即 1 CU 对应 4 GB 的运行内存\n        :type CuMem: int\n        :param Remark: 作业的备注信息，可以随意设置\n        :type Remark: str\n        :param FolderId: 作业名所属文件夹ID，根目录为"root"\n        :type FolderId: str\n        """
         self.Name = None
         self.JobType = None
         self.ClusterType = None
@@ -129,8 +171,12 @@ class CreateJobResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param JobId: 作业Id\n        :type JobId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.JobId = None
         self.RequestId = None
 
@@ -146,8 +192,16 @@ class CreateResourceConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceLoc: 位置信息
+        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        :param Remark: 资源描述信息
+        :type Remark: str
+        :param AutoDelete: 1： 资源版本达到上限，自动删除最早可删除的版本
+        :type AutoDelete: int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param ResourceLoc: 位置信息\n        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`\n        :param Remark: 资源描述信息\n        :type Remark: str\n        :param AutoDelete: 1： 资源版本达到上限，自动删除最早可删除的版本\n        :type AutoDelete: int\n        """
         self.ResourceId = None
         self.ResourceLoc = None
         self.Remark = None
@@ -176,8 +230,12 @@ class CreateResourceConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Version: 资源版本ID
+        :type Version: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Version: 资源版本ID\n        :type Version: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Version = None
         self.RequestId = None
 
@@ -193,8 +251,18 @@ class CreateResourceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceLoc: 资源位置
+        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        :param Name: 资源名称
+        :type Name: str
+        :param ResourceType: 资源类型。目前只支持 JAR，取值为 1
+        :type ResourceType: int
+        :param Remark: 资源描述
+        :type Remark: str
+        :param ResourceConfigRemark: 资源版本描述
+        :type ResourceConfigRemark: str
         """
-        :param ResourceLoc: 资源位置\n        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`\n        :param Name: 资源名称\n        :type Name: str\n        :param ResourceType: 资源类型。目前只支持 JAR，取值为 1\n        :type ResourceType: int\n        :param Remark: 资源描述\n        :type Remark: str\n        :param ResourceConfigRemark: 资源版本描述\n        :type ResourceConfigRemark: str\n        """
         self.ResourceLoc = None
         self.Name = None
         self.ResourceType = None
@@ -225,8 +293,14 @@ class CreateResourceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Version: 资源版本
+        :type Version: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param Version: 资源版本\n        :type Version: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResourceId = None
         self.Version = None
         self.RequestId = None
@@ -244,8 +318,12 @@ class DeleteResourceConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceConfigVersions: 资源版本数组
+        :type ResourceConfigVersions: list of int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param ResourceConfigVersions: 资源版本数组\n        :type ResourceConfigVersions: list of int\n        """
         self.ResourceId = None
         self.ResourceConfigVersions = None
 
@@ -268,8 +346,10 @@ class DeleteResourceConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -283,8 +363,10 @@ class DeleteResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceIds: 待删除资源ID列表
+        :type ResourceIds: list of str
         """
-        :param ResourceIds: 待删除资源ID列表\n        :type ResourceIds: list of str\n        """
         self.ResourceIds = None
 
 
@@ -305,8 +387,10 @@ class DeleteResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -320,8 +404,14 @@ class DeleteTableConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业ID
+        :type JobId: str
+        :param DebugId: 调试作业ID
+        :type DebugId: int
+        :param TableName: 表名
+        :type TableName: str
         """
-        :param JobId: 作业ID\n        :type JobId: str\n        :param DebugId: 调试作业ID\n        :type DebugId: int\n        :param TableName: 表名\n        :type TableName: str\n        """
         self.JobId = None
         self.DebugId = None
         self.TableName = None
@@ -346,8 +436,10 @@ class DeleteTableConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -361,8 +453,20 @@ class DescribeJobConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param JobConfigVersions: 作业配置版本
+        :type JobConfigVersions: list of int non-negative
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param Limit: 分页大小，默认20，最大100
+        :type Limit: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param OnlyDraft: true 表示只展示草稿
+        :type OnlyDraft: bool
         """
-        :param JobId: 作业Id\n        :type JobId: str\n        :param JobConfigVersions: 作业配置版本\n        :type JobConfigVersions: list of int non-negative\n        :param Offset: 偏移量，默认0\n        :type Offset: int\n        :param Limit: 分页大小，默认20，最大100\n        :type Limit: int\n        :param Filters: 过滤条件\n        :type Filters: list of Filter\n        :param OnlyDraft: true 表示只展示草稿\n        :type OnlyDraft: bool\n        """
         self.JobId = None
         self.JobConfigVersions = None
         self.Offset = None
@@ -398,8 +502,14 @@ class DescribeJobConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总的配置版本数量
+        :type TotalCount: int
+        :param JobConfigSet: 作业配置列表
+        :type JobConfigSet: list of JobConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总的配置版本数量\n        :type TotalCount: int\n        :param JobConfigSet: 作业配置列表\n        :type JobConfigSet: list of JobConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.JobConfigSet = None
         self.RequestId = None
@@ -422,8 +532,16 @@ class DescribeJobsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+        :type JobIds: list of str
+        :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 分页大小，默认为20，最大值为100
+        :type Limit: int
         """
-        :param JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。\n        :type JobIds: list of str\n        :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。\n        :type Filters: list of Filter\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 分页大小，默认为20，最大值为100\n        :type Limit: int\n        """
         self.JobIds = None
         self.Filters = None
         self.Offset = None
@@ -455,8 +573,14 @@ class DescribeJobsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 作业总数
+        :type TotalCount: int
+        :param JobSet: 作业列表
+        :type JobSet: list of JobV1
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 作业总数\n        :type TotalCount: int\n        :param JobSet: 作业列表\n        :type JobSet: list of JobV1\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.JobSet = None
         self.RequestId = None
@@ -479,8 +603,20 @@ class DescribeResourceConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Offset: 偏移量，仅当设置 Limit 时该参数有效
+        :type Offset: int
+        :param Limit: 返回值大小，不填则返回全量数据
+        :type Limit: int
+        :param ResourceConfigVersions: 资源配置Versions集合
+        :type ResourceConfigVersions: list of int
+        :param JobConfigVersion: 作业配置版本
+        :type JobConfigVersion: int
+        :param JobId: 作业ID
+        :type JobId: str
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param Offset: 偏移量，仅当设置 Limit 时该参数有效\n        :type Offset: int\n        :param Limit: 返回值大小，不填则返回全量数据\n        :type Limit: int\n        :param ResourceConfigVersions: 资源配置Versions集合\n        :type ResourceConfigVersions: list of int\n        :param JobConfigVersion: 作业配置版本\n        :type JobConfigVersion: int\n        :param JobId: 作业ID\n        :type JobId: str\n        """
         self.ResourceId = None
         self.Offset = None
         self.Limit = None
@@ -511,8 +647,14 @@ class DescribeResourceConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceConfigSet: 资源配置描述数组
+        :type ResourceConfigSet: list of ResourceConfigItem
+        :param TotalCount: 资源配置数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ResourceConfigSet: 资源配置描述数组\n        :type ResourceConfigSet: list of ResourceConfigItem\n        :param TotalCount: 资源配置数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResourceConfigSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -535,8 +677,16 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param DESCByJobConfigCreateTime: 默认0;   1： 按照作业版本创建时间降序
+        :type DESCByJobConfigCreateTime: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 分页大小，默认为20，最大值为100
+        :type Limit: int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param DESCByJobConfigCreateTime: 默认0;   1： 按照作业版本创建时间降序\n        :type DESCByJobConfigCreateTime: int\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 分页大小，默认为20，最大值为100\n        :type Limit: int\n        """
         self.ResourceId = None
         self.DESCByJobConfigCreateTime = None
         self.Offset = None
@@ -563,8 +713,14 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RefJobInfos: 关联作业信息
+        :type RefJobInfos: list of ResourceRefJobInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数\n        :type TotalCount: int\n        :param RefJobInfos: 关联作业信息\n        :type RefJobInfos: list of ResourceRefJobInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RefJobInfos = None
         self.RequestId = None
@@ -587,9 +743,17 @@ class DescribeResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceIds: 需要查询的资源ID数组，数量不超过100个。如果填写了该参数则忽略Filters参数。
+        :type ResourceIds: list of str
+        :param Offset: 偏移量，仅当设置 Limit 参数时有效
+        :type Offset: int
+        :param Limit: 条数限制。如果不填，默认返回 20 条
+        :type Limit: int
+        :param Filters: <li><strong>ResourceName</strong></li>
+<p style="padding-left: 30px;">按照资源名字过滤，支持模糊过滤。传入的过滤名字不超过5个</p><p style="padding-left: 30px;">类型: String</p><p style="padding-left: 30px;">必选: 否</p>
+        :type Filters: list of Filter
         """
-        :param ResourceIds: 需要查询的资源ID数组，数量不超过100个。如果填写了该参数则忽略Filters参数。\n        :type ResourceIds: list of str\n        :param Offset: 偏移量，仅当设置 Limit 参数时有效\n        :type Offset: int\n        :param Limit: 条数限制。如果不填，默认返回 20 条\n        :type Limit: int\n        :param Filters: <li><strong>ResourceName</strong></li>
-<p style="padding-left: 30px;">按照资源名字过滤，支持模糊过滤。传入的过滤名字不超过5个</p><p style="padding-left: 30px;">类型: String</p><p style="padding-left: 30px;">必选: 否</p>\n        :type Filters: list of Filter\n        """
         self.ResourceIds = None
         self.Offset = None
         self.Limit = None
@@ -621,8 +785,14 @@ class DescribeResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceSet: 资源详细信息集合
+        :type ResourceSet: list of ResourceItem
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ResourceSet: 资源详细信息集合\n        :type ResourceSet: list of ResourceItem\n        :param TotalCount: 总数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResourceSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -645,8 +815,18 @@ class DescribeSystemResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceIds: 需要查询的资源ID数组
+        :type ResourceIds: list of str
+        :param Offset: 偏移量，仅当设置 Limit 参数时有效
+        :type Offset: int
+        :param Limit: 条数限制，默认返回 20 条
+        :type Limit: int
+        :param Filters: 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
+        :type Filters: list of Filter
+        :param ClusterId: 集群ID
+        :type ClusterId: str
         """
-        :param ResourceIds: 需要查询的资源ID数组\n        :type ResourceIds: list of str\n        :param Offset: 偏移量，仅当设置 Limit 参数时有效\n        :type Offset: int\n        :param Limit: 条数限制，默认返回 20 条\n        :type Limit: int\n        :param Filters: 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表\n        :type Filters: list of Filter\n        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.ResourceIds = None
         self.Offset = None
         self.Limit = None
@@ -680,8 +860,14 @@ class DescribeSystemResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceSet: 资源详细信息集合
+        :type ResourceSet: list of SystemResourceItem
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ResourceSet: 资源详细信息集合\n        :type ResourceSet: list of SystemResourceItem\n        :param TotalCount: 总数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ResourceSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -704,8 +890,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 要过滤的字段
+        :type Name: str
+        :param Values: 字段的过滤值
+        :type Values: list of str
         """
-        :param Name: 要过滤的字段\n        :type Name: str\n        :param Values: 字段的过滤值\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -728,21 +918,53 @@ class JobConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param EntrypointClass: 主类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntrypointClass: str
+        :param ProgramArgs: 主类入参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramArgs: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 作业配置创建时间
+        :type CreateTime: str
+        :param Version: 作业配置的版本号
+        :type Version: int
+        :param DefaultParallelism: 作业默认并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultParallelism: int
+        :param Properties: 系统参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of Property
+        :param ResourceRefDetails: 引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRefDetails: list of ResourceRefDetail
+        :param CreatorUin: 创建者uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param UpdateTime: 作业配置上次启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param COSBucket: 作业绑定的存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type COSBucket: str
+        :param LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogCollect: int
+        :param MaxParallelism: 作业的最大并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxParallelism: int
+        :param JobManagerSpec: JobManager规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobManagerSpec: float
+        :param TaskManagerSpec: TaskManager规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskManagerSpec: float
         """
-        :param JobId: 作业Id\n        :type JobId: str\n        :param EntrypointClass: 主类
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EntrypointClass: str\n        :param ProgramArgs: 主类入参
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProgramArgs: str\n        :param Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param CreateTime: 作业配置创建时间\n        :type CreateTime: str\n        :param Version: 作业配置的版本号\n        :type Version: int\n        :param DefaultParallelism: 作业默认并行度
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DefaultParallelism: int\n        :param Properties: 系统参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Properties: list of Property\n        :param ResourceRefDetails: 引用资源
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceRefDetails: list of ResourceRefDetail\n        :param CreatorUin: 创建者uin
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatorUin: str\n        :param UpdateTime: 作业配置上次启动时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param COSBucket: 作业绑定的存储桶
-注意：此字段可能返回 null，表示取不到有效值。\n        :type COSBucket: str\n        :param LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogCollect: int\n        :param MaxParallelism: 作业的最大并行度
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxParallelism: int\n        :param JobManagerSpec: JobManager规格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type JobManagerSpec: float\n        :param TaskManagerSpec: TaskManager规格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskManagerSpec: float\n        """
         self.JobId = None
         self.EntrypointClass = None
         self.ProgramArgs = None
@@ -803,36 +1025,92 @@ class JobV1(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type JobId: str\n        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param AppId: 用户AppId
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: int\n        :param OwnerUin: 用户UIN
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OwnerUin: str\n        :param CreatorUin: 创建者UIN
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatorUin: str\n        :param Name: 作业名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param JobType: 作业类型，1：sql作业，2：Jar作业
-注意：此字段可能返回 null，表示取不到有效值。\n        :type JobType: int\n        :param Status: 作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param CreateTime: 作业创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param StartTime: 作业启动时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: str\n        :param StopTime: 作业停止时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StopTime: str\n        :param UpdateTime: 作业更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param TotalRunMillis: 作业累计运行时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalRunMillis: int\n        :param Remark: 备注信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param LastOpResult: 操作错误提示信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastOpResult: str\n        :param ClusterName: 集群名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterName: str\n        :param LatestJobConfigVersion: 最新配置版本号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LatestJobConfigVersion: int\n        :param PublishedJobConfigVersion: 已发布的配置版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PublishedJobConfigVersion: int\n        :param RunningCuNum: 运行的CU数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RunningCuNum: int\n        :param CuMem: 作业内存规格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CuMem: int\n        :param StatusDesc: 作业状态描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusDesc: str\n        :param CurrentRunMillis: 运行状态时表示单次运行时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CurrentRunMillis: int\n        :param ClusterId: 作业所在的集群ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterId: str\n        :param WebUIUrl: 作业管理WEB UI 入口
-注意：此字段可能返回 null，表示取不到有效值。\n        :type WebUIUrl: str\n        :param SchedulerType: 作业所在集群类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SchedulerType: int\n        :param ClusterStatus: 作业所在集群状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterStatus: int\n        :param RunningCu: 细粒度下的运行的CU数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RunningCu: float\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param OwnerUin: 用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param CreatorUin: 创建者UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param Name: 作业名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param JobType: 作业类型，1：sql作业，2：Jar作业
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: int
+        :param Status: 作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param CreateTime: 作业创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param StartTime: 作业启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param StopTime: 作业停止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopTime: str
+        :param UpdateTime: 作业更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param TotalRunMillis: 作业累计运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRunMillis: int
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param LastOpResult: 操作错误提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOpResult: str
+        :param ClusterName: 集群名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param LatestJobConfigVersion: 最新配置版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestJobConfigVersion: int
+        :param PublishedJobConfigVersion: 已发布的配置版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishedJobConfigVersion: int
+        :param RunningCuNum: 运行的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCuNum: int
+        :param CuMem: 作业内存规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CuMem: int
+        :param StatusDesc: 作业状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param CurrentRunMillis: 运行状态时表示单次运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentRunMillis: int
+        :param ClusterId: 作业所在的集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param WebUIUrl: 作业管理WEB UI 入口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebUIUrl: str
+        :param SchedulerType: 作业所在集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerType: int
+        :param ClusterStatus: 作业所在集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: int
+        :param RunningCu: 细粒度下的运行的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCu: float
+        """
         self.JobId = None
         self.Region = None
         self.Zone = None
@@ -907,8 +1185,12 @@ class Property(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 系统配置的Key
+        :type Key: str
+        :param Value: 系统配置的Value
+        :type Value: str
         """
-        :param Key: 系统配置的Key\n        :type Key: str\n        :param Value: 系统配置的Value\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -931,10 +1213,34 @@ class ResourceConfigItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceType: 资源类型
+        :type ResourceType: int
+        :param Region: 资源所属地域
+        :type Region: str
+        :param AppId: 资源所属AppId
+        :type AppId: int
+        :param OwnerUin: 主账号Uin
+        :type OwnerUin: str
+        :param CreatorUin: 子账号Uin
+        :type CreatorUin: str
+        :param ResourceLoc: 资源位置描述
+        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        :param CreateTime: 资源创建时间
+        :type CreateTime: str
+        :param Version: 资源版本
+        :type Version: int
+        :param Remark: 资源描述
+        :type Remark: str
+        :param Status: 资源状态：0: 资源同步中，1:资源已就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RefJobCount: 关联作业个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefJobCount: int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param ResourceType: 资源类型\n        :type ResourceType: int\n        :param Region: 资源所属地域\n        :type Region: str\n        :param AppId: 资源所属AppId\n        :type AppId: int\n        :param OwnerUin: 主账号Uin\n        :type OwnerUin: str\n        :param CreatorUin: 子账号Uin\n        :type CreatorUin: str\n        :param ResourceLoc: 资源位置描述\n        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`\n        :param CreateTime: 资源创建时间\n        :type CreateTime: str\n        :param Version: 资源版本\n        :type Version: int\n        :param Remark: 资源描述\n        :type Remark: str\n        :param Status: 资源状态：0: 资源同步中，1:资源已就绪
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        :param RefJobCount: 关联作业个数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RefJobCount: int\n        """
         self.ResourceId = None
         self.ResourceType = None
         self.Region = None
@@ -979,11 +1285,39 @@ class ResourceItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Name: 资源名称
+        :type Name: str
+        :param ResourceType: 资源类型
+        :type ResourceType: int
+        :param ResourceLoc: 资源位置
+        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        :param Region: 资源地域
+        :type Region: str
+        :param AppId: 应用ID
+        :type AppId: int
+        :param OwnerUin: 主账号Uin
+        :type OwnerUin: str
+        :param CreatorUin: 子账号Uin
+        :type CreatorUin: str
+        :param CreateTime: 资源创建时间
+        :type CreateTime: str
+        :param UpdateTime: 资源最后更新时间
+        :type UpdateTime: str
+        :param LatestResourceConfigVersion: 资源的资源版本ID
+        :type LatestResourceConfigVersion: int
+        :param Remark: 资源备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param VersionCount: 版本个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionCount: int
+        :param RefJobCount: 关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefJobCount: int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param Name: 资源名称\n        :type Name: str\n        :param ResourceType: 资源类型\n        :type ResourceType: int\n        :param ResourceLoc: 资源位置\n        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`\n        :param Region: 资源地域\n        :type Region: str\n        :param AppId: 应用ID\n        :type AppId: int\n        :param OwnerUin: 主账号Uin\n        :type OwnerUin: str\n        :param CreatorUin: 子账号Uin\n        :type CreatorUin: str\n        :param CreateTime: 资源创建时间\n        :type CreateTime: str\n        :param UpdateTime: 资源最后更新时间\n        :type UpdateTime: str\n        :param LatestResourceConfigVersion: 资源的资源版本ID\n        :type LatestResourceConfigVersion: int\n        :param Remark: 资源备注
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param VersionCount: 版本个数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionCount: int\n        :param RefJobCount: 关联作业数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RefJobCount: int\n        """
         self.ResourceId = None
         self.Name = None
         self.ResourceType = None
@@ -1032,8 +1366,12 @@ class ResourceLoc(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StorageType: 资源位置的存储类型，目前只支持1:COS
+        :type StorageType: int
+        :param Param: 描述资源位置的json
+        :type Param: :class:`tencentcloud.oceanus.v20190422.models.ResourceLocParam`
         """
-        :param StorageType: 资源位置的存储类型，目前只支持1:COS\n        :type StorageType: int\n        :param Param: 描述资源位置的json\n        :type Param: :class:`tencentcloud.oceanus.v20190422.models.ResourceLocParam`\n        """
         self.StorageType = None
         self.Param = None
 
@@ -1058,9 +1396,15 @@ class ResourceLocParam(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Bucket: 资源bucket
+        :type Bucket: str
+        :param Path: 资源路径
+        :type Path: str
+        :param Region: 资源所在地域，如果不填，则使用Resource的Region
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
-        :param Bucket: 资源bucket\n        :type Bucket: str\n        :param Path: 资源路径\n        :type Path: str\n        :param Region: 资源所在地域，如果不填，则使用Resource的Region
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        """
         self.Bucket = None
         self.Path = None
         self.Region = None
@@ -1085,8 +1429,14 @@ class ResourceRef(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Version: 资源版本ID，-1表示使用最新版本
+        :type Version: int
+        :param Type: 引用资源类型，例如主资源设置为1，代表main class所在的jar包
+        :type Type: int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param Version: 资源版本ID，-1表示使用最新版本\n        :type Version: int\n        :param Type: 引用资源类型，例如主资源设置为1，代表main class所在的jar包\n        :type Type: int\n        """
         self.ResourceId = None
         self.Version = None
         self.Type = None
@@ -1111,8 +1461,18 @@ class ResourceRefDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源id
+        :type ResourceId: str
+        :param Version: 资源版本，-1表示使用最新版本
+        :type Version: int
+        :param Name: 资源名称
+        :type Name: str
+        :param Type: 1: 主资源
+        :type Type: int
+        :param SystemProvide: 1: 系统内置资源
+        :type SystemProvide: int
         """
-        :param ResourceId: 资源id\n        :type ResourceId: str\n        :param Version: 资源版本，-1表示使用最新版本\n        :type Version: int\n        :param Name: 资源名称\n        :type Name: str\n        :param Type: 1: 主资源\n        :type Type: int\n        :param SystemProvide: 1: 系统内置资源\n        :type SystemProvide: int\n        """
         self.ResourceId = None
         self.Version = None
         self.Name = None
@@ -1141,8 +1501,14 @@ class ResourceRefJobInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: Job id
+        :type JobId: str
+        :param JobConfigVersion: Job配置版本
+        :type JobConfigVersion: int
+        :param ResourceVersion: 资源版本
+        :type ResourceVersion: int
         """
-        :param JobId: Job id\n        :type JobId: str\n        :param JobConfigVersion: Job配置版本\n        :type JobConfigVersion: int\n        :param ResourceVersion: 资源版本\n        :type ResourceVersion: int\n        """
         self.JobId = None
         self.JobConfigVersion = None
         self.ResourceVersion = None
@@ -1167,8 +1533,16 @@ class RunJobDescription(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param RunType: 运行类型，1：启动，2：恢复
+        :type RunType: int
+        :param StartMode: 已废弃。旧版 SQL 类型作业启动参数：指定数据源消费起始时间点
+        :type StartMode: str
+        :param JobConfigVersion: 当前作业的某个版本
+        :type JobConfigVersion: int
         """
-        :param JobId: 作业Id\n        :type JobId: str\n        :param RunType: 运行类型，1：启动，2：恢复\n        :type RunType: int\n        :param StartMode: 已废弃。旧版 SQL 类型作业启动参数：指定数据源消费起始时间点\n        :type StartMode: str\n        :param JobConfigVersion: 当前作业的某个版本\n        :type JobConfigVersion: int\n        """
         self.JobId = None
         self.RunType = None
         self.StartMode = None
@@ -1195,8 +1569,10 @@ class RunJobsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RunJobDescriptions: 批量启动作业的描述信息
+        :type RunJobDescriptions: list of RunJobDescription
         """
-        :param RunJobDescriptions: 批量启动作业的描述信息\n        :type RunJobDescriptions: list of RunJobDescription\n        """
         self.RunJobDescriptions = None
 
 
@@ -1222,8 +1598,10 @@ class RunJobsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1237,8 +1615,12 @@ class StopJobDescription(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param StopType: 停止类型，1 停止 2 暂停
+        :type StopType: int
         """
-        :param JobId: 作业Id\n        :type JobId: str\n        :param StopType: 停止类型，1 停止 2 暂停\n        :type StopType: int\n        """
         self.JobId = None
         self.StopType = None
 
@@ -1261,8 +1643,10 @@ class StopJobsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StopJobDescriptions: 批量停止作业的描述信息
+        :type StopJobDescriptions: list of StopJobDescription
         """
-        :param StopJobDescriptions: 批量停止作业的描述信息\n        :type StopJobDescriptions: list of StopJobDescription\n        """
         self.StopJobDescriptions = None
 
 
@@ -1288,8 +1672,10 @@ class StopJobsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1303,8 +1689,20 @@ class SystemResourceItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Name: 资源名称
+        :type Name: str
+        :param ResourceType: 资源类型。1 表示 JAR 包，目前只支持该值。
+        :type ResourceType: int
+        :param Remark: 资源备注
+        :type Remark: str
+        :param Region: 资源所属地域
+        :type Region: str
+        :param LatestResourceConfigVersion: 资源的最新版本
+        :type LatestResourceConfigVersion: int
         """
-        :param ResourceId: 资源ID\n        :type ResourceId: str\n        :param Name: 资源名称\n        :type Name: str\n        :param ResourceType: 资源类型。1 表示 JAR 包，目前只支持该值。\n        :type ResourceType: int\n        :param Remark: 资源备注\n        :type Remark: str\n        :param Region: 资源所属地域\n        :type Region: str\n        :param LatestResourceConfigVersion: 资源的最新版本\n        :type LatestResourceConfigVersion: int\n        """
         self.ResourceId = None
         self.Name = None
         self.ResourceType = None

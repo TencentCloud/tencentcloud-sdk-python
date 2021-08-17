@@ -24,8 +24,10 @@ class DeregisterMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
         """
-        :param TaskId: 任务ID\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -46,8 +48,10 @@ class DeregisterMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -61,8 +65,10 @@ class DescribeMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID，例如msp-jitoh33n
+        :type TaskId: str
         """
-        :param TaskId: 任务ID，例如msp-jitoh33n\n        :type TaskId: str\n        """
         self.TaskId = None
 
 
@@ -83,8 +89,12 @@ class DescribeMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskStatus: 迁移详情列表
+        :type TaskStatus: list of TaskStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskStatus: 迁移详情列表\n        :type TaskStatus: list of TaskStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskStatus = None
         self.RequestId = None
 
@@ -105,8 +115,16 @@ class DstInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 迁移目的地域
+        :type Region: str
+        :param Ip: 迁移目的Ip
+        :type Ip: str
+        :param Port: 迁移目的端口
+        :type Port: str
+        :param InstanceId: 迁移目的实例Id
+        :type InstanceId: str
         """
-        :param Region: 迁移目的地域\n        :type Region: str\n        :param Ip: 迁移目的Ip\n        :type Ip: str\n        :param Port: 迁移目的端口\n        :type Port: str\n        :param InstanceId: 迁移目的实例Id\n        :type InstanceId: str\n        """
         self.Region = None
         self.Ip = None
         self.Port = None
@@ -133,8 +151,12 @@ class ListMigrationProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 记录起始数，默认值为0
+        :type Offset: int
+        :param Limit: 返回条数，默认值为500
+        :type Limit: int
         """
-        :param Offset: 记录起始数，默认值为0\n        :type Offset: int\n        :param Limit: 返回条数，默认值为500\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -157,8 +179,14 @@ class ListMigrationProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Projects: 项目列表
+        :type Projects: list of Project
+        :param TotalCount: 项目总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Projects: 项目列表\n        :type Projects: list of Project\n        :param TotalCount: 项目总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Projects = None
         self.TotalCount = None
         self.RequestId = None
@@ -181,8 +209,14 @@ class ListMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 记录起始数，默认值为0
+        :type Offset: int
+        :param Limit: 记录条数，默认值为10
+        :type Limit: int
+        :param ProjectId: 项目ID，默认值为空
+        :type ProjectId: int
         """
-        :param Offset: 记录起始数，默认值为0\n        :type Offset: int\n        :param Limit: 记录条数，默认值为10\n        :type Limit: int\n        :param ProjectId: 项目ID，默认值为空\n        :type ProjectId: int\n        """
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
@@ -207,8 +241,14 @@ class ListMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 记录总条数
+        :type TotalCount: int
+        :param Tasks: 迁移任务列表
+        :type Tasks: list of Task
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 记录总条数\n        :type TotalCount: int\n        :param Tasks: 迁移任务列表\n        :type Tasks: list of Task\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Tasks = None
         self.RequestId = None
@@ -231,8 +271,12 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID，例如msp-jitoh33n
+        :type TaskId: str
+        :param ProjectId: 项目ID，例如10005
+        :type ProjectId: int
         """
-        :param TaskId: 任务ID，例如msp-jitoh33n\n        :type TaskId: str\n        :param ProjectId: 项目ID，例如10005\n        :type ProjectId: int\n        """
         self.TaskId = None
         self.ProjectId = None
 
@@ -255,8 +299,10 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -270,8 +316,12 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: 任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
+        :type Status: str
+        :param TaskId: 任务ID，例如msp-jitoh33n
+        :type TaskId: str
         """
-        :param Status: 任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败\n        :type Status: str\n        :param TaskId: 任务ID，例如msp-jitoh33n\n        :type TaskId: str\n        """
         self.Status = None
         self.TaskId = None
 
@@ -294,8 +344,10 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -309,8 +361,12 @@ class Project(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param ProjectName: 项目名称
+        :type ProjectName: str
         """
-        :param ProjectId: 项目ID\n        :type ProjectId: int\n        :param ProjectName: 项目名称\n        :type ProjectName: str\n        """
         self.ProjectId = None
         self.ProjectName = None
 
@@ -333,8 +389,32 @@ class RegisterMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskType: 任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）
+        :type TaskType: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param ServiceSupplier: 服务提供商名称
+        :type ServiceSupplier: str
+        :param CreateTime: 迁移任务创建时间
+        :type CreateTime: str
+        :param UpdateTime: 迁移任务更新时间
+        :type UpdateTime: str
+        :param MigrateClass: 迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
+        :type MigrateClass: str
+        :param SrcInfo: 迁移任务源信息
+        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
+        :param DstInfo: 迁移任务目的信息
+        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
+        :param SrcAccessType: 源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        :type SrcAccessType: str
+        :param SrcDatabaseType: 源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
+        :type SrcDatabaseType: str
+        :param DstAccessType: 目标实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+        :type DstAccessType: str
+        :param DstDatabaseType: 目标实例数据库类型,数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
+        :type DstDatabaseType: str
         """
-        :param TaskType: 任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）\n        :type TaskType: str\n        :param TaskName: 任务名称\n        :type TaskName: str\n        :param ServiceSupplier: 服务提供商名称\n        :type ServiceSupplier: str\n        :param CreateTime: 迁移任务创建时间\n        :type CreateTime: str\n        :param UpdateTime: 迁移任务更新时间\n        :type UpdateTime: str\n        :param MigrateClass: 迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos\n        :type MigrateClass: str\n        :param SrcInfo: 迁移任务源信息\n        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`\n        :param DstInfo: 迁移任务目的信息\n        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`\n        :param SrcAccessType: 源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)\n        :type SrcAccessType: str\n        :param SrcDatabaseType: 源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一\n        :type SrcDatabaseType: str\n        :param DstAccessType: 目标实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)\n        :type DstAccessType: str\n        :param DstDatabaseType: 目标实例数据库类型,数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一\n        :type DstDatabaseType: str\n        """
         self.TaskType = None
         self.TaskName = None
         self.ServiceSupplier = None
@@ -381,8 +461,12 @@ class RegisterMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskId: 任务ID\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskId = None
         self.RequestId = None
 
@@ -398,8 +482,16 @@ class SrcInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 迁移源地域
+        :type Region: str
+        :param Ip: 迁移源Ip
+        :type Ip: str
+        :param Port: 迁移源端口
+        :type Port: str
+        :param InstanceId: 迁移源实例Id
+        :type InstanceId: str
         """
-        :param Region: 迁移源地域\n        :type Region: str\n        :param Ip: 迁移源Ip\n        :type Ip: str\n        :param Port: 迁移源端口\n        :type Port: str\n        :param InstanceId: 迁移源实例Id\n        :type InstanceId: str\n        """
         self.Region = None
         self.Ip = None
         self.Port = None
@@ -426,8 +518,28 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param MigrationType: 迁移类型
+        :type MigrationType: str
+        :param Status: 迁移状态
+        :type Status: str
+        :param ProjectId: 项目Id
+        :type ProjectId: int
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param SrcInfo: 迁移源信息
+        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
+        :param MigrationTimeLine: 迁移时间信息
+        :type MigrationTimeLine: :class:`tencentcloud.msp.v20180319.models.TimeObj`
+        :param Updated: 状态更新时间
+        :type Updated: str
+        :param DstInfo: 迁移目的信息
+        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
         """
-        :param TaskId: 任务Id\n        :type TaskId: str\n        :param TaskName: 任务名称\n        :type TaskName: str\n        :param MigrationType: 迁移类型\n        :type MigrationType: str\n        :param Status: 迁移状态\n        :type Status: str\n        :param ProjectId: 项目Id\n        :type ProjectId: int\n        :param ProjectName: 项目名称\n        :type ProjectName: str\n        :param SrcInfo: 迁移源信息\n        :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`\n        :param MigrationTimeLine: 迁移时间信息\n        :type MigrationTimeLine: :class:`tencentcloud.msp.v20180319.models.TimeObj`\n        :param Updated: 状态更新时间\n        :type Updated: str\n        :param DstInfo: 迁移目的信息\n        :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`\n        """
         self.TaskId = None
         self.TaskName = None
         self.MigrationType = None
@@ -472,8 +584,14 @@ class TaskStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: 迁移状态
+        :type Status: str
+        :param Progress: 迁移进度
+        :type Progress: str
+        :param UpdateTime: 迁移日期
+        :type UpdateTime: str
         """
-        :param Status: 迁移状态\n        :type Status: str\n        :param Progress: 迁移进度\n        :type Progress: str\n        :param UpdateTime: 迁移日期\n        :type UpdateTime: str\n        """
         self.Status = None
         self.Progress = None
         self.UpdateTime = None
@@ -498,8 +616,12 @@ class TimeObj(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
         """
-        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param EndTime: 结束时间\n        :type EndTime: str\n        """
         self.CreateTime = None
         self.EndTime = None
 

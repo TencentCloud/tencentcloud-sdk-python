@@ -24,8 +24,26 @@ class CosToken(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID
+        :type RequestId: str
+        :param Bucket: 存储桶桶名
+        :type Bucket: str
+        :param Region: 存储桶所在区域
+        :type Region: str
+        :param TmpSecretId: 临时密钥的SecretId
+        :type TmpSecretId: str
+        :param TmpSecretKey: 临时密钥的SecretKey
+        :type TmpSecretKey: str
+        :param SessionToken: 临时密钥的 sessionToken
+        :type SessionToken: str
+        :param StartTime: 临时密钥获取的开始时间
+        :type StartTime: str
+        :param ExpiredTime: 临时密钥的 expiredTime
+        :type ExpiredTime: str
+        :param FullPath: 包完整路径
+        :type FullPath: str
         """
-        :param RequestId: 唯一请求 ID\n        :type RequestId: str\n        :param Bucket: 存储桶桶名\n        :type Bucket: str\n        :param Region: 存储桶所在区域\n        :type Region: str\n        :param TmpSecretId: 临时密钥的SecretId\n        :type TmpSecretId: str\n        :param TmpSecretKey: 临时密钥的SecretKey\n        :type TmpSecretKey: str\n        :param SessionToken: 临时密钥的 sessionToken\n        :type SessionToken: str\n        :param StartTime: 临时密钥获取的开始时间\n        :type StartTime: str\n        :param ExpiredTime: 临时密钥的 expiredTime\n        :type ExpiredTime: str\n        :param FullPath: 包完整路径\n        :type FullPath: str\n        """
         self.RequestId = None
         self.Bucket = None
         self.Region = None
@@ -62,13 +80,37 @@ class CreateApplicationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ApplicationName: 应用名\n        :type ApplicationName: str\n        :param Description: 描述\n        :type Description: str\n        :param UseDefaultImageService: 是否使用默认镜像服务 1-是，0-否\n        :type UseDefaultImageService: int\n        :param RepoType: 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版\n        :type RepoType: int\n        :param InstanceId: 企业版镜像服务的实例id\n        :type InstanceId: str\n        :param RepoServer: 绑定镜像服务器地址\n        :type RepoServer: str\n        :param RepoName: 绑定镜像仓库名\n        :type RepoName: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param SubnetList: 应用所在子网\n        :type SubnetList: list of str\n        :param CodingLanguage: 编程语言 
+        r"""
+        :param ApplicationName: 应用名
+        :type ApplicationName: str
+        :param Description: 描述
+        :type Description: str
+        :param UseDefaultImageService: 是否使用默认镜像服务 1-是，0-否
+        :type UseDefaultImageService: int
+        :param RepoType: 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版
+        :type RepoType: int
+        :param InstanceId: 企业版镜像服务的实例id
+        :type InstanceId: str
+        :param RepoServer: 绑定镜像服务器地址
+        :type RepoServer: str
+        :param RepoName: 绑定镜像仓库名
+        :type RepoName: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param SubnetList: 应用所在子网
+        :type SubnetList: list of str
+        :param CodingLanguage: 编程语言 
 - JAVA
-- OTHER\n        :type CodingLanguage: str\n        :param DeployMode: 部署方式 
+- OTHER
+        :type CodingLanguage: str
+        :param DeployMode: 部署方式 
 - IMAGE
 - JAR
-- WAR\n        :type DeployMode: str\n        :param EnableTracing: 是否启用调用链功能\n        :type EnableTracing: int\n        """
+- WAR
+        :type DeployMode: str
+        :param EnableTracing: 是否启用调用链功能
+        :type EnableTracing: int
+        """
         self.ApplicationName = None
         self.Description = None
         self.UseDefaultImageService = None
@@ -111,8 +153,12 @@ class CreateApplicationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 服务code
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 服务code\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -128,8 +174,18 @@ class CreateCosTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param PkgName: 包名
+        :type PkgName: str
+        :param OptType: optType 1上传  2查询
+        :type OptType: int
+        :param SourceChannel: 来源 channel
+        :type SourceChannel: int
+        :param TimeVersion: 充当deployVersion入参
+        :type TimeVersion: str
         """
-        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param PkgName: 包名\n        :type PkgName: str\n        :param OptType: optType 1上传  2查询\n        :type OptType: int\n        :param SourceChannel: 来源 channel\n        :type SourceChannel: int\n        :param TimeVersion: 充当deployVersion入参\n        :type TimeVersion: str\n        """
         self.ApplicationId = None
         self.PkgName = None
         self.OptType = None
@@ -158,9 +214,13 @@ class CreateCosTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为CosToken对象，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.tem.v20210701.models.CosToken`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tem.v20210701.models.CosToken`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -178,8 +238,22 @@ class CreateEnvironmentRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentName: 环境名称
+        :type EnvironmentName: str
+        :param Vpc: 私有网络名称
+        :type Vpc: str
+        :param SubnetIds: 子网列表
+        :type SubnetIds: list of str
+        :param Description: 环境描述
+        :type Description: str
+        :param K8sVersion: K8s version
+        :type K8sVersion: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnableTswTraceService: 是否开启tsw服务
+        :type EnableTswTraceService: bool
         """
-        :param EnvironmentName: 环境名称\n        :type EnvironmentName: str\n        :param Vpc: 私有网络名称\n        :type Vpc: str\n        :param SubnetIds: 子网列表\n        :type SubnetIds: list of str\n        :param Description: 环境描述\n        :type Description: str\n        :param K8sVersion: K8s version\n        :type K8sVersion: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param EnableTswTraceService: 是否开启tsw服务\n        :type EnableTswTraceService: bool\n        """
         self.EnvironmentName = None
         self.Vpc = None
         self.SubnetIds = None
@@ -212,9 +286,13 @@ class CreateEnvironmentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为环境ID，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -230,8 +308,16 @@ class CreateResourceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 Id
+        :type EnvironmentId: str
+        :param ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
+        :type ResourceType: str
+        :param ResourceId: 资源 Id
+        :type ResourceId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param EnvironmentId: 环境 Id\n        :type EnvironmentId: str\n        :param ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE\n        :type ResourceType: str\n        :param ResourceId: 资源 Id\n        :type ResourceId: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.EnvironmentId = None
         self.ResourceType = None
         self.ResourceId = None
@@ -258,9 +344,13 @@ class CreateResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功与否
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -276,13 +366,23 @@ class CronHorizontalAutoscaler(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: 定时伸缩策略名称\n        :type Name: str\n        :param Period: 策略周期
+        r"""
+        :param Name: 定时伸缩策略名称
+        :type Name: str
+        :param Period: 策略周期
 * * *，三个范围，第一个是天，第二个是月，第三个是周，中间用空格隔开
 例子：
 * * * （每天）
 * * 0-3 （每周日到周三）
-1,11,21 * *（每个月1号，11号，21号）\n        :type Period: str\n        :param Schedules: 定时伸缩策略明细\n        :type Schedules: list of CronHorizontalAutoscalerSchedule\n        :param Enabled: 是否启用\n        :type Enabled: bool\n        :param Priority: 策略优先级，值越大优先级越高，0为最小值\n        :type Priority: int\n        """
+1,11,21 * *（每个月1号，11号，21号）
+        :type Period: str
+        :param Schedules: 定时伸缩策略明细
+        :type Schedules: list of CronHorizontalAutoscalerSchedule
+        :param Enabled: 是否启用
+        :type Enabled: bool
+        :param Priority: 策略优先级，值越大优先级越高，0为最小值
+        :type Priority: int
+        """
         self.Name = None
         self.Period = None
         self.Schedules = None
@@ -316,11 +416,15 @@ class CronHorizontalAutoscalerSchedule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartAt: 触发事件，小时分钟，用:分割
 例如
-00:00（零点零分触发）\n        :type StartAt: str\n        :param TargetReplicas: 目标实例数（不大于50）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TargetReplicas: int\n        """
+00:00（零点零分触发）
+        :type StartAt: str
+        :param TargetReplicas: 目标实例数（不大于50）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetReplicas: int
+        """
         self.StartAt = None
         self.TargetReplicas = None
 
@@ -343,8 +447,16 @@ class DeleteIngressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param ClusterNamespace: 环境 namespace
+        :type ClusterNamespace: str
+        :param IngressName: ingress 规则名
+        :type IngressName: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param EnvironmentId: 环境ID\n        :type EnvironmentId: str\n        :param ClusterNamespace: 环境 namespace\n        :type ClusterNamespace: str\n        :param IngressName: ingress 规则名\n        :type IngressName: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.EnvironmentId = None
         self.ClusterNamespace = None
         self.IngressName = None
@@ -371,8 +483,12 @@ class DeleteIngressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 是否删除成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 是否删除成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -388,14 +504,82 @@ class DeployApplicationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param InitPodNum: 初始化 pod 数\n        :type InitPodNum: int\n        :param CpuSpec: cpu规格\n        :type CpuSpec: float\n        :param MemorySpec: 内存规格\n        :type MemorySpec: float\n        :param EnvironmentId: 环境ID\n        :type EnvironmentId: str\n        :param ImgRepo: 镜像仓库\n        :type ImgRepo: str\n        :param VersionDesc: 版本描述信息\n        :type VersionDesc: str\n        :param JvmOpts: 启动参数\n        :type JvmOpts: str\n        :param EsInfo: 弹性伸缩配置（已废弃，请使用HorizontalAutoscaler设置弹性策略）\n        :type EsInfo: :class:`tencentcloud.tem.v20210701.models.EsInfo`\n        :param EnvConf: 环境变量配置\n        :type EnvConf: list of Pair\n        :param LogConfs: 日志配置\n        :type LogConfs: list of str\n        :param StorageConfs: 数据卷配置\n        :type StorageConfs: list of StorageConf\n        :param StorageMountConfs: 数据卷挂载配置\n        :type StorageMountConfs: list of StorageMountConf\n        :param DeployMode: 部署类型。
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param InitPodNum: 初始化 pod 数
+        :type InitPodNum: int
+        :param CpuSpec: cpu规格
+        :type CpuSpec: float
+        :param MemorySpec: 内存规格
+        :type MemorySpec: float
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param ImgRepo: 镜像仓库
+        :type ImgRepo: str
+        :param VersionDesc: 版本描述信息
+        :type VersionDesc: str
+        :param JvmOpts: 启动参数
+        :type JvmOpts: str
+        :param EsInfo: 弹性伸缩配置（已废弃，请使用HorizontalAutoscaler设置弹性策略）
+        :type EsInfo: :class:`tencentcloud.tem.v20210701.models.EsInfo`
+        :param EnvConf: 环境变量配置
+        :type EnvConf: list of Pair
+        :param LogConfs: 日志配置
+        :type LogConfs: list of str
+        :param StorageConfs: 数据卷配置
+        :type StorageConfs: list of StorageConf
+        :param StorageMountConfs: 数据卷挂载配置
+        :type StorageMountConfs: list of StorageMountConf
+        :param DeployMode: 部署类型。
 - JAR：通过 jar 包部署
 - WAR：通过 war 包部署
-- IMAGE：通过镜像部署\n        :type DeployMode: str\n        :param DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
-部署类型为 JAR/WAR 时，该参数表示包版本号。\n        :type DeployVersion: str\n        :param PkgName: 包名。使用 JAR 包或者 WAR 包部署的时候必填。\n        :type PkgName: str\n        :param JdkVersion: JDK 版本。
+- IMAGE：通过镜像部署
+        :type DeployMode: str
+        :param DeployVersion: 部署类型为 IMAGE 时，该参数表示镜像 tag。
+部署类型为 JAR/WAR 时，该参数表示包版本号。
+        :type DeployVersion: str
+        :param PkgName: 包名。使用 JAR 包或者 WAR 包部署的时候必填。
+        :type PkgName: str
+        :param JdkVersion: JDK 版本。
 - KONA：使用 kona jdk。
-- OPEN：使用 open jdk。\n        :type JdkVersion: str\n        :param SecurityGroupIds: 安全组ID s\n        :type SecurityGroupIds: list of str\n        :param LogOutputConf: 日志输出配置\n        :type LogOutputConf: :class:`tencentcloud.tem.v20210701.models.LogOutputConf`\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param Description: 版本描述\n        :type Description: str\n        :param ImageCommand: 镜像命令\n        :type ImageCommand: str\n        :param ImageArgs: 镜像命令参数\n        :type ImageArgs: list of str\n        :param UseRegistryDefaultConfig: 是否添加默认注册中心配置\n        :type UseRegistryDefaultConfig: bool\n        :param SettingConfs: 挂载配置信息\n        :type SettingConfs: list of MountedSettingConf\n        :param Service: 应用访问设置\n        :type Service: :class:`tencentcloud.tem.v20210701.models.EksService`\n        :param VersionId: 要回滚到的历史版本id\n        :type VersionId: str\n        :param PostStart: 启动后执行的脚本\n        :type PostStart: str\n        :param PreStop: 停止前执行的脚本\n        :type PreStop: str\n        :param Liveness: 存活探针配置\n        :type Liveness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`\n        :param Readiness: 就绪探针配置\n        :type Readiness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`\n        :param DeployStrategyConf: 分批发布策略配置\n        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`\n        :param HorizontalAutoscaler: 弹性策略\n        :type HorizontalAutoscaler: list of HorizontalAutoscaler\n        :param CronHorizontalAutoscaler: 定时弹性策略\n        :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler\n        """
+- OPEN：使用 open jdk。
+        :type JdkVersion: str
+        :param SecurityGroupIds: 安全组ID s
+        :type SecurityGroupIds: list of str
+        :param LogOutputConf: 日志输出配置
+        :type LogOutputConf: :class:`tencentcloud.tem.v20210701.models.LogOutputConf`
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param Description: 版本描述
+        :type Description: str
+        :param ImageCommand: 镜像命令
+        :type ImageCommand: str
+        :param ImageArgs: 镜像命令参数
+        :type ImageArgs: list of str
+        :param UseRegistryDefaultConfig: 是否添加默认注册中心配置
+        :type UseRegistryDefaultConfig: bool
+        :param SettingConfs: 挂载配置信息
+        :type SettingConfs: list of MountedSettingConf
+        :param Service: 应用访问设置
+        :type Service: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param VersionId: 要回滚到的历史版本id
+        :type VersionId: str
+        :param PostStart: 启动后执行的脚本
+        :type PostStart: str
+        :param PreStop: 停止前执行的脚本
+        :type PreStop: str
+        :param Liveness: 存活探针配置
+        :type Liveness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param Readiness: 就绪探针配置
+        :type Readiness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param DeployStrategyConf: 分批发布策略配置
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`
+        :param HorizontalAutoscaler: 弹性策略
+        :type HorizontalAutoscaler: list of HorizontalAutoscaler
+        :param CronHorizontalAutoscaler: 定时弹性策略
+        :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
+        """
         self.ApplicationId = None
         self.InitPodNum = None
         self.CpuSpec = None
@@ -524,8 +708,12 @@ class DeployApplicationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 版本ID（前端可忽略）
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 版本ID（前端可忽略）\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -541,15 +729,32 @@ class DeployServiceBatchDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldPodList: 旧实例列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OldPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`\n        :param NewPodList: 新实例列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NewPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`\n        :param BatchStatus: 当前批次状态："WaitForTimeExceed", "WaitForResume", "Deploying", "Finish", "NotStart"
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BatchStatus: str\n        :param PodNum: 该批次预计旧实例数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PodNum: int\n        :param BatchIndex: 批次id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BatchIndex: int\n        :param OldPods: 旧实例列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OldPods: list of DeployServicePodDetail\n        :param NewPods: 新实例列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NewPods: list of DeployServicePodDetail\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`
+        :param NewPodList: 新实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewPodList: :class:`tencentcloud.tem.v20210701.models.DeployServicePodDetail`
+        :param BatchStatus: 当前批次状态："WaitForTimeExceed", "WaitForResume", "Deploying", "Finish", "NotStart"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchStatus: str
+        :param PodNum: 该批次预计旧实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodNum: int
+        :param BatchIndex: 批次id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchIndex: int
+        :param OldPods: 旧实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldPods: list of DeployServicePodDetail
+        :param NewPods: 新实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewPods: list of DeployServicePodDetail
+        :param NextBatchStartTime: =0：手动确认批次；>0：下一批次开始时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextBatchStartTime: int
+        """
         self.OldPodList = None
         self.NewPodList = None
         self.BatchStatus = None
@@ -557,6 +762,7 @@ class DeployServiceBatchDetail(AbstractModel):
         self.BatchIndex = None
         self.OldPods = None
         self.NewPods = None
+        self.NextBatchStartTime = None
 
 
     def _deserialize(self, params):
@@ -581,6 +787,7 @@ class DeployServiceBatchDetail(AbstractModel):
                 obj = DeployServicePodDetail()
                 obj._deserialize(item)
                 self.NewPods.append(obj)
+        self.NextBatchStartTime = params.get("NextBatchStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -596,14 +803,26 @@ class DeployServicePodDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PodId: pod Id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PodId: str\n        :param PodStatus: pod状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PodStatus: list of str\n        :param PodVersion: pod版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PodVersion: str\n        :param CreateTime: pod创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param Zone: pod所在可用区
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param Webshell: webshell地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Webshell: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodId: str
+        :param PodStatus: pod状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodStatus: list of str
+        :param PodVersion: pod版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodVersion: str
+        :param CreateTime: pod创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Zone: pod所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param Webshell: webshell地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Webshell: str
+        """
         self.PodId = None
         self.PodStatus = None
         self.PodVersion = None
@@ -634,8 +853,16 @@ class DeployStrategyConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalBatchCount: 总分批数
+        :type TotalBatchCount: int
+        :param BetaBatchNum: beta分批实例数
+        :type BetaBatchNum: int
+        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的
+        :type DeployStrategyType: int
+        :param BatchInterval: 每批暂停间隔
+        :type BatchInterval: int
         """
-        :param TotalBatchCount: 总分批数\n        :type TotalBatchCount: int\n        :param BetaBatchNum: beta分批实例数\n        :type BetaBatchNum: int\n        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的\n        :type DeployStrategyType: int\n        :param BatchInterval: 每批暂停间隔\n        :type BatchInterval: int\n        """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
@@ -662,11 +889,25 @@ class DescribeApplicationPodsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        :param ApplicationId: 应用id\n        :type ApplicationId: str\n        :param Limit: 单页条数，默认值20\n        :type Limit: int\n        :param Offset: 分页下标，默认值0\n        :type Offset: int\n        :param Status: 实例状态 
+        r"""
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
+        :param ApplicationId: 应用id
+        :type ApplicationId: str
+        :param Limit: 单页条数，默认值20
+        :type Limit: int
+        :param Offset: 分页下标，默认值0
+        :type Offset: int
+        :param Status: 实例状态 
 - Running 
 - Pending 
-- Error\n        :type Status: str\n        :param PodName: 实例名字\n        :type PodName: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
+- Error
+        :type Status: str
+        :param PodName: 实例名字
+        :type PodName: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        """
         self.EnvironmentId = None
         self.ApplicationId = None
         self.Limit = None
@@ -699,8 +940,12 @@ class DescribeApplicationPodsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 返回结果\n        :type Result: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -718,8 +963,12 @@ class DescribeDeployApplicationDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
         """
-        :param ApplicationId: 服务id\n        :type ApplicationId: str\n        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        """
         self.ApplicationId = None
         self.EnvironmentId = None
 
@@ -742,8 +991,12 @@ class DescribeDeployApplicationDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 分批发布结果详情
+        :type Result: :class:`tencentcloud.tem.v20210701.models.TemDeployApplicationDetailInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 分批发布结果详情\n        :type Result: :class:`tencentcloud.tem.v20210701.models.TemDeployApplicationDetailInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -761,8 +1014,14 @@ class DescribeEnvironmentsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 分页limit
+        :type Limit: int
+        :param Offset: 分页下标
+        :type Offset: int
+        :param SourceChannel: 来源source
+        :type SourceChannel: int
         """
-        :param Limit: 分页limit\n        :type Limit: int\n        :param Offset: 分页下标\n        :type Offset: int\n        :param SourceChannel: 来源source\n        :type SourceChannel: int\n        """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
@@ -787,8 +1046,12 @@ class DescribeEnvironmentsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.tem.v20210701.models.NamespacePage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 返回结果\n        :type Result: :class:`tencentcloud.tem.v20210701.models.NamespacePage`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -806,8 +1069,16 @@ class DescribeIngressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param ClusterNamespace: 环境namespace
+        :type ClusterNamespace: str
+        :param IngressName: ingress 规则名
+        :type IngressName: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param EnvironmentId: 环境ID\n        :type EnvironmentId: str\n        :param ClusterNamespace: 环境namespace\n        :type ClusterNamespace: str\n        :param IngressName: ingress 规则名\n        :type IngressName: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.EnvironmentId = None
         self.ClusterNamespace = None
         self.IngressName = None
@@ -834,8 +1105,12 @@ class DescribeIngressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: Ingress 规则配置
+        :type Result: :class:`tencentcloud.tem.v20210701.models.IngressInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: Ingress 规则配置\n        :type Result: :class:`tencentcloud.tem.v20210701.models.IngressInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -853,8 +1128,16 @@ class DescribeIngressesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 id
+        :type EnvironmentId: str
+        :param ClusterNamespace: 环境 namespace
+        :type ClusterNamespace: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param IngressNames: ingress 规则名列表
+        :type IngressNames: list of str
         """
-        :param EnvironmentId: 环境 id\n        :type EnvironmentId: str\n        :param ClusterNamespace: 环境 namespace\n        :type ClusterNamespace: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param IngressNames: ingress 规则名列表\n        :type IngressNames: list of str\n        """
         self.EnvironmentId = None
         self.ClusterNamespace = None
         self.SourceChannel = None
@@ -881,9 +1164,13 @@ class DescribeIngressesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: ingress 数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: list of IngressInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of IngressInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -904,8 +1191,16 @@ class DescribeRelatedIngressesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 id
+        :type EnvironmentId: str
+        :param ClusterNamespace: 环境 namespace
+        :type ClusterNamespace: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param ApplicationId: 应用 ID
+        :type ApplicationId: str
         """
-        :param EnvironmentId: 环境 id\n        :type EnvironmentId: str\n        :param ClusterNamespace: 环境 namespace\n        :type ClusterNamespace: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param ApplicationId: 应用 ID\n        :type ApplicationId: str\n        """
         self.EnvironmentId = None
         self.ClusterNamespace = None
         self.SourceChannel = None
@@ -932,9 +1227,13 @@ class DescribeRelatedIngressesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: ingress 数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: list of IngressInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of IngressInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -955,8 +1254,18 @@ class DescribeRunPodPage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 分页下标
+        :type Offset: int
+        :param Limit: 单页条数
+        :type Limit: int
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 请求id
+        :type RequestId: str
+        :param PodList: 条目
+        :type PodList: list of RunVersionPod
         """
-        :param Offset: 分页下标\n        :type Offset: int\n        :param Limit: 单页条数\n        :type Limit: int\n        :param TotalCount: 总数\n        :type TotalCount: int\n        :param RequestId: 请求id\n        :type RequestId: str\n        :param PodList: 条目\n        :type PodList: list of RunVersionPod\n        """
         self.Offset = None
         self.Limit = None
         self.TotalCount = None
@@ -990,19 +1299,41 @@ class EksService(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: service name\n        :type Name: str\n        :param Ports: 可用端口\n        :type Ports: list of int\n        :param Yaml: yaml 内容\n        :type Yaml: str\n        :param ApplicationName: 服务名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApplicationName: str\n        :param VersionName: 版本名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionName: str\n        :param ClusterIp: 内网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterIp: list of str\n        :param ExternalIp: 外网ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExternalIp: str\n        :param Type: 访问类型，可选值：
+        r"""
+        :param Name: service name
+        :type Name: str
+        :param Ports: 可用端口
+        :type Ports: list of int
+        :param Yaml: yaml 内容
+        :type Yaml: str
+        :param ApplicationName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param VersionName: 版本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param ClusterIp: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIp: list of str
+        :param ExternalIp: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalIp: str
+        :param Type: 访问类型，可选值：
 - EXTERNAL（公网访问）
 - VPC（vpc内访问）
 - CLUSTER（集群内访问）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Type: str\n        :param SubnetId: 子网ID，只在类型为vpc访问时才有值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param LoadBalanceId: 负载均衡ID，只在外网访问和vpc内访问才有值，默认自动创建
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LoadBalanceId: str\n        :param PortMappings: 端口映射
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PortMappings: list of PortMapping\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param SubnetId: 子网ID，只在类型为vpc访问时才有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param LoadBalanceId: 负载均衡ID，只在外网访问和vpc内访问才有值，默认自动创建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalanceId: str
+        :param PortMappings: 端口映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PortMappings: list of PortMapping
+        """
         self.Name = None
         self.Ports = None
         self.Yaml = None
@@ -1048,8 +1379,18 @@ class EsInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MinAliveInstances: 最小实例数
+        :type MinAliveInstances: int
+        :param MaxAliveInstances: 最大实例数
+        :type MaxAliveInstances: int
+        :param EsStrategy: 弹性策略,1:cpu，2:内存
+        :type EsStrategy: int
+        :param Threshold: 弹性扩缩容条件值
+        :type Threshold: int
+        :param VersionId: 版本Id
+        :type VersionId: str
         """
-        :param MinAliveInstances: 最小实例数\n        :type MinAliveInstances: int\n        :param MaxAliveInstances: 最大实例数\n        :type MaxAliveInstances: int\n        :param EsStrategy: 弹性策略,1:cpu，2:内存\n        :type EsStrategy: int\n        :param Threshold: 弹性扩缩容条件值\n        :type Threshold: int\n        :param VersionId: 版本Id\n        :type VersionId: str\n        """
         self.MinAliveInstances = None
         self.MaxAliveInstances = None
         self.EsStrategy = None
@@ -1078,8 +1419,16 @@ class GenerateApplicationPackageDownloadUrlRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param PkgName: 包名
+        :type PkgName: str
+        :param DeployVersion: 需要下载的包版本
+        :type DeployVersion: str
+        :param SourceChannel: 来源 channel
+        :type SourceChannel: int
         """
-        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param PkgName: 包名\n        :type PkgName: str\n        :param DeployVersion: 需要下载的包版本\n        :type DeployVersion: str\n        :param SourceChannel: 来源 channel\n        :type SourceChannel: int\n        """
         self.ApplicationId = None
         self.PkgName = None
         self.DeployVersion = None
@@ -1106,9 +1455,13 @@ class GenerateApplicationPackageDownloadUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 包下载临时链接
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1124,8 +1477,24 @@ class HealthCheckConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 支持的健康检查类型，如 HttpGet，TcpSocket，Exec
+        :type Type: str
+        :param Protocol: 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS
+        :type Protocol: str
+        :param Path: 仅当健康检查类型为 HttpGet 时有效，表示请求路径
+        :type Path: str
+        :param Exec: 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容
+        :type Exec: str
+        :param Port: 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径
+        :type Port: int
+        :param InitialDelaySeconds: 检查延迟开始时间，单位为秒，默认为 0
+        :type InitialDelaySeconds: int
+        :param TimeoutSeconds: 超时时间，单位为秒，默认为 1
+        :type TimeoutSeconds: int
+        :param PeriodSeconds: 间隔时间，单位为秒，默认为 10
+        :type PeriodSeconds: int
         """
-        :param Type: 支持的健康检查类型，如 HttpGet，TcpSocket，Exec\n        :type Type: str\n        :param Protocol: 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS\n        :type Protocol: str\n        :param Path: 仅当健康检查类型为 HttpGet 时有效，表示请求路径\n        :type Path: str\n        :param Exec: 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容\n        :type Exec: str\n        :param Port: 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径\n        :type Port: int\n        :param InitialDelaySeconds: 检查延迟开始时间，单位为秒，默认为 0\n        :type InitialDelaySeconds: int\n        :param TimeoutSeconds: 超时时间，单位为秒，默认为 1\n        :type TimeoutSeconds: int\n        :param PeriodSeconds: 间隔时间，单位为秒，默认为 10\n        :type PeriodSeconds: int\n        """
         self.Type = None
         self.Protocol = None
         self.Path = None
@@ -1160,8 +1529,16 @@ class HorizontalAutoscaler(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MinReplicas: 最小实例数
+        :type MinReplicas: int
+        :param MaxReplicas: 最大实例数
+        :type MaxReplicas: int
+        :param Metrics: 指标度量（CPU or MEMORY）
+        :type Metrics: str
+        :param Threshold: 阈值（百分比）
+        :type Threshold: int
         """
-        :param MinReplicas: 最小实例数\n        :type MinReplicas: int\n        :param MaxReplicas: 最大实例数\n        :type MaxReplicas: int\n        :param Metrics: 指标度量（CPU or MEMORY）\n        :type Metrics: str\n        :param Threshold: 阈值（百分比）\n        :type Threshold: int\n        """
         self.MinReplicas = None
         self.MaxReplicas = None
         self.Metrics = None
@@ -1188,14 +1565,36 @@ class IngressInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentId: str\n        :param ClusterNamespace: 环境namespace\n        :type ClusterNamespace: str\n        :param AddressIPVersion: ip version\n        :type AddressIPVersion: str\n        :param IngressName: ingress name\n        :type IngressName: str\n        :param Rules: rules 配置\n        :type Rules: list of IngressRule\n        :param ClbId: clb ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClbId: str\n        :param Tls: tls 配置
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tls: list of IngressTls\n        :param ClusterId: 环境集群ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterId: str\n        :param Vip: clb ip
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Vip: str\n        :param CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听\n        :type Mixed: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param ClusterNamespace: 环境namespace
+        :type ClusterNamespace: str
+        :param AddressIPVersion: ip version
+        :type AddressIPVersion: str
+        :param IngressName: ingress name
+        :type IngressName: str
+        :param Rules: rules 配置
+        :type Rules: list of IngressRule
+        :param ClbId: clb ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClbId: str
+        :param Tls: tls 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tls: list of IngressTls
+        :param ClusterId: 环境集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Vip: clb ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+        :type Mixed: bool
+        """
         self.EnvironmentId = None
         self.ClusterNamespace = None
         self.AddressIPVersion = None
@@ -1246,9 +1645,15 @@ class IngressRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Http: ingress rule value
+        :type Http: :class:`tencentcloud.tem.v20210701.models.IngressRuleValue`
+        :param Host: host 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param Protocol: 协议，选项为 http， https，默认为 http
+        :type Protocol: str
         """
-        :param Http: ingress rule value\n        :type Http: :class:`tencentcloud.tem.v20210701.models.IngressRuleValue`\n        :param Host: host 地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Host: str\n        :param Protocol: 协议，选项为 http， https，默认为 http\n        :type Protocol: str\n        """
         self.Http = None
         self.Host = None
         self.Protocol = None
@@ -1275,8 +1680,12 @@ class IngressRuleBackend(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceName: eks service 名
+        :type ServiceName: str
+        :param ServicePort: eks service 端口
+        :type ServicePort: int
         """
-        :param ServiceName: eks service 名\n        :type ServiceName: str\n        :param ServicePort: eks service 端口\n        :type ServicePort: int\n        """
         self.ServiceName = None
         self.ServicePort = None
 
@@ -1299,8 +1708,12 @@ class IngressRulePath(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Path: path 信息
+        :type Path: str
+        :param Backend: backend 配置
+        :type Backend: :class:`tencentcloud.tem.v20210701.models.IngressRuleBackend`
         """
-        :param Path: path 信息\n        :type Path: str\n        :param Backend: backend 配置\n        :type Backend: :class:`tencentcloud.tem.v20210701.models.IngressRuleBackend`\n        """
         self.Path = None
         self.Backend = None
 
@@ -1325,8 +1738,10 @@ class IngressRuleValue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Paths: rule 整体配置
+        :type Paths: list of IngressRulePath
         """
-        :param Paths: rule 整体配置\n        :type Paths: list of IngressRulePath\n        """
         self.Paths = None
 
 
@@ -1352,8 +1767,14 @@ class IngressTls(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Hosts: host 数组, 空数组表示全部域名的默认证书
+        :type Hosts: list of str
+        :param SecretName: secret name，如使用证书，则填空字符串
+        :type SecretName: str
+        :param CertificateId: SSL Certificate Id
+        :type CertificateId: str
         """
-        :param Hosts: host 数组, 空数组表示全部域名的默认证书\n        :type Hosts: list of str\n        :param SecretName: secret name，如使用证书，则填空字符串\n        :type SecretName: str\n        :param CertificateId: SSL Certificate Id\n        :type CertificateId: str\n        """
         self.Hosts = None
         self.SecretName = None
         self.CertificateId = None
@@ -1378,8 +1799,18 @@ class LogOutputConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OutputType: 日志消费端类型
+        :type OutputType: str
+        :param ClsLogsetName: cls日志集
+        :type ClsLogsetName: str
+        :param ClsLogTopicId: cls日志主题
+        :type ClsLogTopicId: str
+        :param ClsLogsetId: cls日志集id
+        :type ClsLogsetId: str
+        :param ClsLogTopicName: cls日志名称
+        :type ClsLogTopicName: str
         """
-        :param OutputType: 日志消费端类型\n        :type OutputType: str\n        :param ClsLogsetName: cls日志集\n        :type ClsLogsetName: str\n        :param ClsLogTopicId: cls日志主题\n        :type ClsLogTopicId: str\n        :param ClsLogsetId: cls日志集id\n        :type ClsLogsetId: str\n        :param ClsLogTopicName: cls日志名称\n        :type ClsLogTopicName: str\n        """
         self.OutputType = None
         self.ClsLogsetName = None
         self.ClsLogTopicId = None
@@ -1408,8 +1839,16 @@ class ModifyApplicationInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param Description: 描述
+        :type Description: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnableTracing: 是否开启调用链, 0 为关闭，1位开启
+        :type EnableTracing: int
         """
-        :param ApplicationId: 应用ID\n        :type ApplicationId: str\n        :param Description: 描述\n        :type Description: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        :param EnableTracing: 是否开启调用链, 0 为关闭，1位开启\n        :type EnableTracing: int\n        """
         self.ApplicationId = None
         self.Description = None
         self.SourceChannel = None
@@ -1436,9 +1875,13 @@ class ModifyApplicationInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功与否
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1454,8 +1897,20 @@ class ModifyEnvironmentRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
+        :param EnvironmentName: 环境名称
+        :type EnvironmentName: str
+        :param Description: 环境描述
+        :type Description: str
+        :param Vpc: 私有网络名称
+        :type Vpc: str
+        :param SubnetIds: 子网网络
+        :type SubnetIds: list of str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        :param EnvironmentName: 环境名称\n        :type EnvironmentName: str\n        :param Description: 环境描述\n        :type Description: str\n        :param Vpc: 私有网络名称\n        :type Vpc: str\n        :param SubnetIds: 子网网络\n        :type SubnetIds: list of str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.EnvironmentId = None
         self.EnvironmentName = None
         self.Description = None
@@ -1486,9 +1941,13 @@ class ModifyEnvironmentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为环境ID，失败为null
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1504,8 +1963,12 @@ class ModifyIngressRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ingress: Ingress 规则配置
+        :type Ingress: :class:`tencentcloud.tem.v20210701.models.IngressInfo`
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param Ingress: Ingress 规则配置\n        :type Ingress: :class:`tencentcloud.tem.v20210701.models.IngressInfo`\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.Ingress = None
         self.SourceChannel = None
 
@@ -1530,9 +1993,13 @@ class ModifyIngressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建成功
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1548,8 +2015,14 @@ class MountedSettingConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConfigDataName: 配置名称
+        :type ConfigDataName: str
+        :param MountedPath: 挂载路径
+        :type MountedPath: str
+        :param Data: 配置内容
+        :type Data: list of Pair
         """
-        :param ConfigDataName: 配置名称\n        :type ConfigDataName: str\n        :param MountedPath: 挂载路径\n        :type MountedPath: str\n        :param Data: 配置内容\n        :type Data: list of Pair\n        """
         self.ConfigDataName = None
         self.MountedPath = None
         self.Data = None
@@ -1579,8 +2052,16 @@ class NamespacePage(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Records: 分页内容
+        :type Records: list of TemNamespaceInfo
+        :param Total: 总数
+        :type Total: int
+        :param Size: 条目数
+        :type Size: int
+        :param Pages: 页数
+        :type Pages: int
         """
-        :param Records: 分页内容\n        :type Records: list of TemNamespaceInfo\n        :param Total: 总数\n        :type Total: int\n        :param Size: 条目数\n        :type Size: int\n        :param Pages: 页数\n        :type Pages: int\n        """
         self.Records = None
         self.Total = None
         self.Size = None
@@ -1612,8 +2093,12 @@ class Pair(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 建
+        :type Key: str
+        :param Value: 值
+        :type Value: str
         """
-        :param Key: 建\n        :type Key: str\n        :param Value: 值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -1636,8 +2121,14 @@ class PortMapping(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Port: 端口
+        :type Port: int
+        :param TargetPort: 映射端口
+        :type TargetPort: int
+        :param Protocol: 协议栈 TCP/UDP
+        :type Protocol: str
         """
-        :param Port: 端口\n        :type Port: int\n        :param TargetPort: 映射端口\n        :type TargetPort: int\n        :param Protocol: 协议栈 TCP/UDP\n        :type Protocol: str\n        """
         self.Port = None
         self.TargetPort = None
         self.Protocol = None
@@ -1662,8 +2153,22 @@ class RestartApplicationPodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
+        :param ApplicationId: 应用id
+        :type ApplicationId: str
+        :param PodName: 名字
+        :type PodName: str
+        :param Limit: 单页条数
+        :type Limit: int
+        :param Offset: 分页下标
+        :type Offset: int
+        :param Status: pod状态
+        :type Status: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
         """
-        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        :param ApplicationId: 应用id\n        :type ApplicationId: str\n        :param PodName: 名字\n        :type PodName: str\n        :param Limit: 单页条数\n        :type Limit: int\n        :param Offset: 分页下标\n        :type Offset: int\n        :param Status: pod状态\n        :type Status: str\n        :param SourceChannel: 来源渠道\n        :type SourceChannel: int\n        """
         self.EnvironmentId = None
         self.ApplicationId = None
         self.PodName = None
@@ -1696,9 +2201,13 @@ class RestartApplicationPodResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1714,8 +2223,12 @@ class ResumeDeployApplicationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: 需要开始下一批次的服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
         """
-        :param ApplicationId: 需要开始下一批次的服务id\n        :type ApplicationId: str\n        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        """
         self.ApplicationId = None
         self.EnvironmentId = None
 
@@ -1738,8 +2251,12 @@ class ResumeDeployApplicationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 是否成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1755,8 +2272,12 @@ class RevertDeployApplicationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApplicationId: 需要回滚的服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 需要回滚的服务所在环境id
+        :type EnvironmentId: str
         """
-        :param ApplicationId: 需要回滚的服务id\n        :type ApplicationId: str\n        :param EnvironmentId: 需要回滚的服务所在环境id\n        :type EnvironmentId: str\n        """
         self.ApplicationId = None
         self.EnvironmentId = None
 
@@ -1779,8 +2300,12 @@ class RevertDeployApplicationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 是否成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1796,13 +2321,33 @@ class RunVersionPod(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Webshell: shell地址
+        :type Webshell: str
+        :param PodId: pod的id
+        :type PodId: str
+        :param Status: 状态
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param PodIp: 实例的ip
+        :type PodIp: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param DeployVersion: 部署版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployVersion: str
+        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
+        :param Ready: pod是否就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ready: bool
+        :param ContainerState: 容器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerState: str
         """
-        :param Webshell: shell地址\n        :type Webshell: str\n        :param PodId: pod的id\n        :type PodId: str\n        :param Status: 状态\n        :type Status: str\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param PodIp: 实例的ip\n        :type PodIp: str\n        :param Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param DeployVersion: 部署版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DeployVersion: str\n        :param RestartCount: 重启次数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RestartCount: int\n        :param Ready: pod是否就绪
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Ready: bool\n        :param ContainerState: 容器状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainerState: str\n        """
         self.Webshell = None
         self.PodId = None
         self.Status = None
@@ -1841,9 +2386,15 @@ class StorageConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StorageVolName: 存储卷名称
+        :type StorageVolName: str
+        :param StorageVolPath: 存储卷路径
+        :type StorageVolPath: str
+        :param StorageVolIp: 存储卷IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageVolIp: str
         """
-        :param StorageVolName: 存储卷名称\n        :type StorageVolName: str\n        :param StorageVolPath: 存储卷路径\n        :type StorageVolPath: str\n        :param StorageVolIp: 存储卷IP
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StorageVolIp: str\n        """
         self.StorageVolName = None
         self.StorageVolPath = None
         self.StorageVolIp = None
@@ -1868,8 +2419,12 @@ class StorageMountConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VolumeName: 数据卷名
+        :type VolumeName: str
+        :param MountPath: 数据卷绑定路径
+        :type MountPath: str
         """
-        :param VolumeName: 数据卷名\n        :type VolumeName: str\n        :param MountPath: 数据卷绑定路径\n        :type MountPath: str\n        """
         self.VolumeName = None
         self.MountPath = None
 
@@ -1892,18 +2447,50 @@ class TemDeployApplicationDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeployStrategyConf: 分批发布策略
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`\n        :param StartTime: 开始时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StartTime: str\n        :param EndTime: 结束时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EndTime: str\n        :param Status: 当前状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param BetaBatchDetail: beta分批详情
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BetaBatchDetail: :class:`tencentcloud.tem.v20210701.models.DeployServiceBatchDetail`\n        :param OtherBatchDetail: 其他分批详情
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OtherBatchDetail: list of DeployServiceBatchDetail\n        :param OldVersionPodList: 老版本pod列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OldVersionPodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`\n        :param CurrentBatchIndex: 当前批次id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CurrentBatchIndex: int\n        :param ErrorMessage: 错误原因
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMessage: str\n        :param CurrentBatchStatus: 当前批次状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CurrentBatchStatus: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Status: 当前状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param BetaBatchDetail: beta分批详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BetaBatchDetail: :class:`tencentcloud.tem.v20210701.models.DeployServiceBatchDetail`
+        :param OtherBatchDetail: 其他分批详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherBatchDetail: list of DeployServiceBatchDetail
+        :param OldVersionPodList: 老版本pod列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldVersionPodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
+        :param CurrentBatchIndex: 当前批次id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentBatchIndex: int
+        :param ErrorMessage: 错误原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param CurrentBatchStatus: 当前批次状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentBatchStatus: str
+        :param NewDeployVersion: 新版本version
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewDeployVersion: str
+        :param OldDeployVersion: 旧版本version
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldDeployVersion: str
+        :param NewVersionPackageInfo: 包名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewVersionPackageInfo: str
+        :param NextBatchStartTime: 下一批次开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextBatchStartTime: int
+        """
         self.DeployStrategyConf = None
         self.StartTime = None
         self.EndTime = None
@@ -1914,6 +2501,10 @@ class TemDeployApplicationDetailInfo(AbstractModel):
         self.CurrentBatchIndex = None
         self.ErrorMessage = None
         self.CurrentBatchStatus = None
+        self.NewDeployVersion = None
+        self.OldDeployVersion = None
+        self.NewVersionPackageInfo = None
+        self.NextBatchStartTime = None
 
 
     def _deserialize(self, params):
@@ -1938,6 +2529,10 @@ class TemDeployApplicationDetailInfo(AbstractModel):
         self.CurrentBatchIndex = params.get("CurrentBatchIndex")
         self.ErrorMessage = params.get("ErrorMessage")
         self.CurrentBatchStatus = params.get("CurrentBatchStatus")
+        self.NewDeployVersion = params.get("NewDeployVersion")
+        self.OldDeployVersion = params.get("OldDeployVersion")
+        self.NewVersionPackageInfo = params.get("NewVersionPackageInfo")
+        self.NextBatchStartTime = params.get("NextBatchStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1953,9 +2548,41 @@ class TemNamespaceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
+        :param Channel: 渠道
+        :type Channel: str
+        :param EnvironmentName: 环境名称
+        :type EnvironmentName: str
+        :param Region: 区域名称
+        :type Region: str
+        :param Description: 环境描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Status: 状态,1:已销毁;0:正常
+        :type Status: int
+        :param Vpc: vpc网络
+        :type Vpc: str
+        :param CreateDate: 创建时间
+        :type CreateDate: str
+        :param ModifyDate: 修改时间
+        :type ModifyDate: str
+        :param Modifier: 修改人
+        :type Modifier: str
+        :param Creator: 创建人
+        :type Creator: str
+        :param ApplicationNum: 应用数
+        :type ApplicationNum: int
+        :param RunInstancesNum: 运行实例数
+        :type RunInstancesNum: int
+        :param SubnetId: 子网络
+        :type SubnetId: str
+        :param ClusterStatus: 环境集群 status
+        :type ClusterStatus: str
+        :param EnableTswTraceService: 是否开启tsw
+        :type EnableTswTraceService: bool
         """
-        :param EnvironmentId: 环境id\n        :type EnvironmentId: str\n        :param Channel: 渠道\n        :type Channel: str\n        :param EnvironmentName: 环境名称\n        :type EnvironmentName: str\n        :param Region: 区域名称\n        :type Region: str\n        :param Description: 环境描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param Status: 状态,1:已销毁;0:正常\n        :type Status: int\n        :param Vpc: vpc网络\n        :type Vpc: str\n        :param CreateDate: 创建时间\n        :type CreateDate: str\n        :param ModifyDate: 修改时间\n        :type ModifyDate: str\n        :param Modifier: 修改人\n        :type Modifier: str\n        :param Creator: 创建人\n        :type Creator: str\n        :param ApplicationNum: 应用数\n        :type ApplicationNum: int\n        :param RunInstancesNum: 运行实例数\n        :type RunInstancesNum: int\n        :param SubnetId: 子网络\n        :type SubnetId: str\n        :param ClusterStatus: 环境集群 status\n        :type ClusterStatus: str\n        :param EnableTswTraceService: 是否开启tsw\n        :type EnableTswTraceService: bool\n        """
         self.EnvironmentId = None
         self.Channel = None
         self.EnvironmentName = None

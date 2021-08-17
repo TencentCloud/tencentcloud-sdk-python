@@ -24,8 +24,16 @@ class DataManipulationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OpType: 操作类型，add或del
+        :type OpType: str
+        :param Encoding: 数据编码类型
+        :type Encoding: str
+        :param Contents: 数据
+        :type Contents: str
+        :param ResourceId: 应用Id
+        :type ResourceId: int
         """
-        :param OpType: 操作类型，add或del\n        :type OpType: str\n        :param Encoding: 数据编码类型\n        :type Encoding: str\n        :param Contents: 数据\n        :type Contents: str\n        :param ResourceId: 应用Id\n        :type ResourceId: int\n        """
         self.OpType = None
         self.Encoding = None
         self.Contents = None
@@ -52,8 +60,12 @@ class DataManipulationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 数据操作结果
+        :type Data: :class:`tencentcloud.yunsou.v20191115.models.DataManipulationResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 数据操作结果\n        :type Data: :class:`tencentcloud.yunsou.v20191115.models.DataManipulationResult`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -71,10 +83,20 @@ class DataManipulationResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AppId: 应用ID
+        :type AppId: int
+        :param Seq: 序号
+        :type Seq: int
+        :param TotalResult: 结果
+        :type TotalResult: str
+        :param Result: 操作结果明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of DataManipulationResultItem
+        :param ErrorResult: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorResult: str
         """
-        :param AppId: 应用ID\n        :type AppId: int\n        :param Seq: 序号\n        :type Seq: int\n        :param TotalResult: 结果\n        :type TotalResult: str\n        :param Result: 操作结果明细
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: list of DataManipulationResultItem\n        :param ErrorResult: 异常信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorResult: str\n        """
         self.AppId = None
         self.Seq = None
         self.TotalResult = None
@@ -108,8 +130,14 @@ class DataManipulationResultItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 结果
+        :type Result: str
+        :param DocId: 文档ID
+        :type DocId: str
+        :param Errno: 错误码
+        :type Errno: int
         """
-        :param Result: 结果\n        :type Result: str\n        :param DocId: 文档ID\n        :type DocId: str\n        :param Errno: 错误码\n        :type Errno: int\n        """
         self.Result = None
         self.DocId = None
         self.Errno = None
@@ -134,8 +162,54 @@ class DataSearchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务
+        :type ResourceId: int
+        :param SearchQuery: 检索串
+        :type SearchQuery: str
+        :param PageId: 当前页，从第0页开始计算
+        :type PageId: int
+        :param NumPerPage: 每页结果数
+        :type NumPerPage: int
+        :param SearchId: 当前检索号，用于定位问题，建议指定并且全局唯一
+        :type SearchId: str
+        :param QueryEncode: 请求编码，0表示utf8，1表示gbk，建议指定
+        :type QueryEncode: int
+        :param RankType: 排序类型
+        :type RankType: int
+        :param NumFilter: 数值过滤，结果中按属性过滤
+        :type NumFilter: str
+        :param ClFilter: 分类过滤，导航类检索请求
+        :type ClFilter: str
+        :param Extra: 检索用户相关字段
+        :type Extra: str
+        :param SourceId: 检索来源
+        :type SourceId: int
+        :param SecondSearch: 是否进行二次检索，0关闭，1打开
+        :type SecondSearch: int
+        :param MaxDocReturn: 指定返回最大篇数，无特殊原因不建议指定
+        :type MaxDocReturn: int
+        :param IsSmartbox: 是否smartbox检索，0关闭，1打开
+        :type IsSmartbox: int
+        :param EnableAbsHighlight: 是否打开高红标亮，0关闭，1打开
+        :type EnableAbsHighlight: int
+        :param QcBid: 指定访问QC纠错业务ID
+        :type QcBid: int
+        :param GroupBy: 按指定字段进行group by，只能对数值字段进行操作
+        :type GroupBy: str
+        :param Distinct: 按指定字段进行distinct，只能对数值字段进行操作
+        :type Distinct: str
+        :param L4RankExpression: 高级排序参数，具体参见高级排序说明
+        :type L4RankExpression: str
+        :param MatchValue: 高级排序参数，具体参见高级排序说明
+        :type MatchValue: str
+        :param Longitude: 经度信息
+        :type Longitude: float
+        :param Latitude: 纬度信息
+        :type Latitude: float
+        :param MultiFilter: 分类过滤并集
+        :type MultiFilter: list of str
         """
-        :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务\n        :type ResourceId: int\n        :param SearchQuery: 检索串\n        :type SearchQuery: str\n        :param PageId: 当前页，从第0页开始计算\n        :type PageId: int\n        :param NumPerPage: 每页结果数\n        :type NumPerPage: int\n        :param SearchId: 当前检索号，用于定位问题，建议指定并且全局唯一\n        :type SearchId: str\n        :param QueryEncode: 请求编码，0表示utf8，1表示gbk，建议指定\n        :type QueryEncode: int\n        :param RankType: 排序类型\n        :type RankType: int\n        :param NumFilter: 数值过滤，结果中按属性过滤\n        :type NumFilter: str\n        :param ClFilter: 分类过滤，导航类检索请求\n        :type ClFilter: str\n        :param Extra: 检索用户相关字段\n        :type Extra: str\n        :param SourceId: 检索来源\n        :type SourceId: int\n        :param SecondSearch: 是否进行二次检索，0关闭，1打开\n        :type SecondSearch: int\n        :param MaxDocReturn: 指定返回最大篇数，无特殊原因不建议指定\n        :type MaxDocReturn: int\n        :param IsSmartbox: 是否smartbox检索，0关闭，1打开\n        :type IsSmartbox: int\n        :param EnableAbsHighlight: 是否打开高红标亮，0关闭，1打开\n        :type EnableAbsHighlight: int\n        :param QcBid: 指定访问QC纠错业务ID\n        :type QcBid: int\n        :param GroupBy: 按指定字段进行group by，只能对数值字段进行操作\n        :type GroupBy: str\n        :param Distinct: 按指定字段进行distinct，只能对数值字段进行操作\n        :type Distinct: str\n        :param L4RankExpression: 高级排序参数，具体参见高级排序说明\n        :type L4RankExpression: str\n        :param MatchValue: 高级排序参数，具体参见高级排序说明\n        :type MatchValue: str\n        :param Longitude: 经度信息\n        :type Longitude: float\n        :param Latitude: 纬度信息\n        :type Latitude: float\n        :param MultiFilter: 分类过滤并集\n        :type MultiFilter: list of str\n        """
         self.ResourceId = None
         self.SearchQuery = None
         self.PageId = None
@@ -200,8 +274,12 @@ class DataSearchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 检索结果
+        :type Data: :class:`tencentcloud.yunsou.v20191115.models.SearchResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 检索结果\n        :type Data: :class:`tencentcloud.yunsou.v20191115.models.SearchResult`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -219,10 +297,24 @@ class SearchResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CostTime: 检索耗时，单位ms
+        :type CostTime: int
+        :param DisplayNum: 搜索最多可以展示的结果数，多页
+        :type DisplayNum: int
+        :param Echo: 和检索请求中的echo相对应
+        :type Echo: str
+        :param EResultNum: 检索结果的估算篇数，由索引平台估算
+        :type EResultNum: int
+        :param ResultNum: 检索返回的当前页码结果数
+        :type ResultNum: int
+        :param ResultList: 检索结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultList: list of SearchResultItem
+        :param SegList: 检索的分词结果，array类型，可包含多个
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegList: list of SearchResultSeg
         """
-        :param CostTime: 检索耗时，单位ms\n        :type CostTime: int\n        :param DisplayNum: 搜索最多可以展示的结果数，多页\n        :type DisplayNum: int\n        :param Echo: 和检索请求中的echo相对应\n        :type Echo: str\n        :param EResultNum: 检索结果的估算篇数，由索引平台估算\n        :type EResultNum: int\n        :param ResultNum: 检索返回的当前页码结果数\n        :type ResultNum: int\n        :param ResultList: 检索结果列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResultList: list of SearchResultItem\n        :param SegList: 检索的分词结果，array类型，可包含多个
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SegList: list of SearchResultSeg\n        """
         self.CostTime = None
         self.DisplayNum = None
         self.Echo = None
@@ -265,8 +357,18 @@ class SearchResultItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DocAbs: 动态摘要信息
+        :type DocAbs: str
+        :param DocId: 检索文档id
+        :type DocId: str
+        :param DocMeta: 原始文档信息
+        :type DocMeta: str
+        :param L2Score: 精计算得分
+        :type L2Score: float
+        :param SearchDebuginfo: 文档级回传信息
+        :type SearchDebuginfo: str
         """
-        :param DocAbs: 动态摘要信息\n        :type DocAbs: str\n        :param DocId: 检索文档id\n        :type DocId: str\n        :param DocMeta: 原始文档信息\n        :type DocMeta: str\n        :param L2Score: 精计算得分\n        :type L2Score: float\n        :param SearchDebuginfo: 文档级回传信息\n        :type SearchDebuginfo: str\n        """
         self.DocAbs = None
         self.DocId = None
         self.DocMeta = None
@@ -295,8 +397,10 @@ class SearchResultSeg(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SegStr: 分词
+        :type SegStr: str
         """
-        :param SegStr: 分词\n        :type SegStr: str\n        """
         self.SegStr = None
 
 

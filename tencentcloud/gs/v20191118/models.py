@@ -24,8 +24,42 @@ class CreateSessionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClientSession: 客户端session信息，从JSSDK请求中获得
+        :type ClientSession: str
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param GameRegion: 【已废弃】只在TrylockWorker时生效
+        :type GameRegion: str
+        :param GameParas: 游戏参数
+        :type GameParas: str
+        :param Resolution: 分辨率,，可设置为1080p或720p或1920x1080格式
+        :type Resolution: str
+        :param ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080
+        :type ImageUrl: str
+        :param SetNo: 【已废弃】
+        :type SetNo: int
+        :param Bitrate: 单位Mbps，固定码率建议值，有一定浮动范围，后端不动态调整(MaxBitrate和MinBitrate将无效)
+        :type Bitrate: int
+        :param MaxBitrate: 单位Mbps，动态调整最大码率建议值，会按实际情况调整
+        :type MaxBitrate: int
+        :param MinBitrate: 单位Mbps，动态调整最小码率建议值，会按实际情况调整
+        :type MinBitrate: int
+        :param Fps: 帧率，可设置为30、45、60、90、120、144
+        :type Fps: int
+        :param UserIp: 【已废弃】只在TrylockWorker时生效
+        :type UserIp: str
+        :param Optimization: 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
+        :type Optimization: int
+        :param HostUserId: 【互动云游】游戏主机用户ID
+        :type HostUserId: str
+        :param Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者
+        :type Role: str
+        :param GameContext: 游戏相关参数
+        :type GameContext: str
         """
-        :param ClientSession: 客户端session信息，从JSSDK请求中获得\n        :type ClientSession: str\n        :param UserId: 游戏用户ID\n        :type UserId: str\n        :param GameId: 游戏ID\n        :type GameId: str\n        :param GameRegion: 【已废弃】只在TrylockWorker时生效\n        :type GameRegion: str\n        :param GameParas: 游戏参数\n        :type GameParas: str\n        :param Resolution: 分辨率,，可设置为1080p或720p或1920x1080格式\n        :type Resolution: str\n        :param ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080\n        :type ImageUrl: str\n        :param SetNo: 【已废弃】\n        :type SetNo: int\n        :param Bitrate: 单位Mbps，固定码率建议值，有一定浮动范围，后端不动态调整(MaxBitrate和MinBitrate将无效)\n        :type Bitrate: int\n        :param MaxBitrate: 单位Mbps，动态调整最大码率建议值，会按实际情况调整\n        :type MaxBitrate: int\n        :param MinBitrate: 单位Mbps，动态调整最小码率建议值，会按实际情况调整\n        :type MinBitrate: int\n        :param Fps: 帧率，可设置为30、45、60、90、120、144\n        :type Fps: int\n        :param UserIp: 【已废弃】只在TrylockWorker时生效\n        :type UserIp: str\n        :param Optimization: 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0\n        :type Optimization: int\n        :param HostUserId: 【互动云游】游戏主机用户ID\n        :type HostUserId: str\n        :param Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者\n        :type Role: str\n        :param GameContext: 游戏相关参数\n        :type GameContext: str\n        """
         self.ClientSession = None
         self.UserId = None
         self.GameId = None
@@ -78,8 +112,16 @@ class CreateSessionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServerSession: 服务端session信息，返回给JSSDK
+        :type ServerSession: str
+        :param RoleNumber: 【已废弃】
+        :type RoleNumber: str
+        :param Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者
+        :type Role: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ServerSession: 服务端session信息，返回给JSSDK\n        :type ServerSession: str\n        :param RoleNumber: 【已废弃】\n        :type RoleNumber: str\n        :param Role: 【互动云游】角色；Player表示玩家；Viewer表示观察者\n        :type Role: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServerSession = None
         self.RoleNumber = None
         self.Role = None
@@ -99,8 +141,12 @@ class DescribeInstancesCountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param GroupId: 实例分组ID
+        :type GroupId: str
         """
-        :param GameId: 游戏ID\n        :type GameId: str\n        :param GroupId: 实例分组ID\n        :type GroupId: str\n        """
         self.GameId = None
         self.GroupId = None
 
@@ -123,8 +169,14 @@ class DescribeInstancesCountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Total: 客户的实例总数
+        :type Total: int
+        :param Running: 客户的实例运行数
+        :type Running: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Total: 客户的实例总数\n        :type Total: int\n        :param Running: 客户的实例运行数\n        :type Running: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Total = None
         self.Running = None
         self.RequestId = None
@@ -142,8 +194,12 @@ class SaveGameArchiveRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameId: 游戏ID
+        :type GameId: str
         """
-        :param UserId: 游戏用户ID\n        :type UserId: str\n        :param GameId: 游戏ID\n        :type GameId: str\n        """
         self.UserId = None
         self.GameId = None
 
@@ -166,8 +222,10 @@ class SaveGameArchiveResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -181,8 +239,12 @@ class StopGameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param HostUserId: 【多人游戏】游戏主机用户ID
+        :type HostUserId: str
         """
-        :param UserId: 游戏用户ID\n        :type UserId: str\n        :param HostUserId: 【多人游戏】游戏主机用户ID\n        :type HostUserId: str\n        """
         self.UserId = None
         self.HostUserId = None
 
@@ -205,8 +267,10 @@ class StopGameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -220,8 +284,16 @@ class SwitchGameArchiveRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param GameArchiveUrl: 游戏存档Url
+        :type GameArchiveUrl: str
+        :param GameContext: 游戏相关参数
+        :type GameContext: str
         """
-        :param UserId: 游戏用户ID\n        :type UserId: str\n        :param GameId: 游戏ID\n        :type GameId: str\n        :param GameArchiveUrl: 游戏存档Url\n        :type GameArchiveUrl: str\n        :param GameContext: 游戏相关参数\n        :type GameContext: str\n        """
         self.UserId = None
         self.GameId = None
         self.GameArchiveUrl = None
@@ -248,8 +320,10 @@ class SwitchGameArchiveResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -263,8 +337,20 @@ class TrylockWorkerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
+        :type GameRegion: str
+        :param SetNo: 【废弃】资源池编号
+        :type SetNo: int
+        :param UserIp: 【必选】用户IP，用于就近调度，不填将严重影响用户体验
+        :type UserIp: str
+        :param GroupId: 分组ID
+        :type GroupId: str
         """
-        :param UserId: 游戏用户ID\n        :type UserId: str\n        :param GameId: 游戏ID\n        :type GameId: str\n        :param GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器\n        :type GameRegion: str\n        :param SetNo: 【废弃】资源池编号\n        :type SetNo: int\n        :param UserIp: 【必选】用户IP，用于就近调度，不填将严重影响用户体验\n        :type UserIp: str\n        :param GroupId: 分组ID\n        :type GroupId: str\n        """
         self.UserId = None
         self.GameId = None
         self.GameRegion = None
@@ -295,8 +381,10 @@ class TrylockWorkerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 

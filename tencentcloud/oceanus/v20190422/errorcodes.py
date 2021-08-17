@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 未授权操作。
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
+# 重复的作业名。
+FAILEDOPERATION_DUPLICATEDJOBNAME = 'FailedOperation.DuplicatedJobName'
+
 # 用户未实名验证。
 FAILEDOPERATION_USERNOTAUTHENTICATED = 'FailedOperation.UserNotAuthenticated'
 

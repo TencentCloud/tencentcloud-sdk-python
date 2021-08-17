@@ -30,8 +30,10 @@ class DescribeComponentAlertObjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -51,8 +53,10 @@ class DescribeServiceAlertObjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -66,8 +70,10 @@ class DescribeTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间
+        :type Namespace: str
         """
-        :param Namespace: 命名空间\n        :type Namespace: str\n        """
         self.Namespace = None
 
 
@@ -88,8 +94,12 @@ class DescribeTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: token
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: token\n        :type Result: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 

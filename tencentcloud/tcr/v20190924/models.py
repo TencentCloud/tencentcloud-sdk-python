@@ -24,8 +24,16 @@ class AccessVpc(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VpcId: Vpc的Id
+        :type VpcId: str
+        :param SubnetId: 子网Id
+        :type SubnetId: str
+        :param Status: 内网接入状态
+        :type Status: str
+        :param AccessIp: 内网接入Ip
+        :type AccessIp: str
         """
-        :param VpcId: Vpc的Id\n        :type VpcId: str\n        :param SubnetId: 子网Id\n        :type SubnetId: str\n        :param Status: 内网接入状态\n        :type Status: str\n        :param AccessIp: 内网接入Ip\n        :type AccessIp: str\n        """
         self.VpcId = None
         self.SubnetId = None
         self.Status = None
@@ -52,8 +60,20 @@ class AutoDelStrategyInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Username: 用户名
+        :type Username: str
+        :param RepoName: 仓库名
+        :type RepoName: str
+        :param Type: 类型
+        :type Type: str
+        :param Value: 策略值
+        :type Value: int
+        :param Valid: Valid
+        :type Valid: int
+        :param CreationTime: 创建时间
+        :type CreationTime: str
         """
-        :param Username: 用户名\n        :type Username: str\n        :param RepoName: 仓库名\n        :type RepoName: str\n        :param Type: 类型\n        :type Type: str\n        :param Value: 策略值\n        :type Value: int\n        :param Valid: Valid\n        :type Valid: int\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        """
         self.Username = None
         self.RepoName = None
         self.Type = None
@@ -84,9 +104,13 @@ class AutoDelStrategyInfoResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        :param StrategyInfo: 自动删除策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyInfo: list of AutoDelStrategyInfo
         """
-        :param TotalCount: 总数目\n        :type TotalCount: int\n        :param StrategyInfo: 自动删除策略列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyInfo: list of AutoDelStrategyInfo\n        """
         self.TotalCount = None
         self.StrategyInfo = None
 
@@ -114,8 +138,12 @@ class BatchDeleteImagePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Tags: Tag列表
+        :type Tags: list of str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Tags: Tag列表\n        :type Tags: list of str\n        """
         self.RepoName = None
         self.Tags = None
 
@@ -138,8 +166,10 @@ class BatchDeleteImagePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -153,8 +183,10 @@ class BatchDeleteRepositoryPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoNames: 仓库名称数组
+        :type RepoNames: list of str
         """
-        :param RepoNames: 仓库名称数组\n        :type RepoNames: list of str\n        """
         self.RepoNames = None
 
 
@@ -175,8 +207,10 @@ class BatchDeleteRepositoryPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -190,8 +224,10 @@ class CheckInstanceNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryName: 待创建的实例名称
+        :type RegistryName: str
         """
-        :param RegistryName: 待创建的实例名称\n        :type RegistryName: str\n        """
         self.RegistryName = None
 
 
@@ -212,8 +248,12 @@ class CheckInstanceNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsValidated: 检查结果，true为合法，false为非法
+        :type IsValidated: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param IsValidated: 检查结果，true为合法，false为非法\n        :type IsValidated: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IsValidated = None
         self.RequestId = None
 
@@ -229,8 +269,10 @@ class CheckInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 待检测的实例Id
+        :type RegistryId: str
         """
-        :param RegistryId: 待检测的实例Id\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -251,8 +293,14 @@ class CheckInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsValidated: 检查结果，true为合法，false为非法
+        :type IsValidated: bool
+        :param RegionId: 实例所在的RegionId
+        :type RegionId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param IsValidated: 检查结果，true为合法，false为非法\n        :type IsValidated: bool\n        :param RegionId: 实例所在的RegionId\n        :type RegionId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.IsValidated = None
         self.RegionId = None
         self.RequestId = None
@@ -270,8 +318,28 @@ class CreateApplicationTriggerPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 触发器关联的镜像仓库，library/test格式
+        :type RepoName: str
+        :param TriggerName: 触发器名称
+        :type TriggerName: str
+        :param InvokeMethod: 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
+        :type InvokeMethod: str
+        :param ClusterId: 应用所在TKE集群ID
+        :type ClusterId: str
+        :param Namespace: 应用所在TKE集群命名空间
+        :type Namespace: str
+        :param WorkloadType: 应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。
+        :type WorkloadType: str
+        :param WorkloadName: 应用所在TKE集群工作负载名称
+        :type WorkloadName: str
+        :param ContainerName: 应用所在TKE集群工作负载下容器名称
+        :type ContainerName: str
+        :param ClusterRegion: 应用所在TKE集群地域
+        :type ClusterRegion: int
+        :param InvokeExpr: 触发方式对应的表达式
+        :type InvokeExpr: str
         """
-        :param RepoName: 触发器关联的镜像仓库，library/test格式\n        :type RepoName: str\n        :param TriggerName: 触发器名称\n        :type TriggerName: str\n        :param InvokeMethod: 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发\n        :type InvokeMethod: str\n        :param ClusterId: 应用所在TKE集群ID\n        :type ClusterId: str\n        :param Namespace: 应用所在TKE集群命名空间\n        :type Namespace: str\n        :param WorkloadType: 应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。\n        :type WorkloadType: str\n        :param WorkloadName: 应用所在TKE集群工作负载名称\n        :type WorkloadName: str\n        :param ContainerName: 应用所在TKE集群工作负载下容器名称\n        :type ContainerName: str\n        :param ClusterRegion: 应用所在TKE集群地域\n        :type ClusterRegion: int\n        :param InvokeExpr: 触发方式对应的表达式\n        :type InvokeExpr: str\n        """
         self.RepoName = None
         self.TriggerName = None
         self.InvokeMethod = None
@@ -310,8 +378,10 @@ class CreateApplicationTriggerPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -325,8 +395,14 @@ class CreateImageLifecyclePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Type: keep_last_days:保留最近几天的数据;keep_last_nums:保留最近多少个
+        :type Type: str
+        :param Val: 策略值
+        :type Val: int
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Type: keep_last_days:保留最近几天的数据;keep_last_nums:保留最近多少个\n        :type Type: str\n        :param Val: 策略值\n        :type Val: int\n        """
         self.RepoName = None
         self.Type = None
         self.Val = None
@@ -351,8 +427,10 @@ class CreateImageLifecyclePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -366,8 +444,14 @@ class CreateImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param Rule: 规则
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
         """
-        :param RegistryId: 实例 Id\n        :type RegistryId: str\n        :param NamespaceName: 命名空间\n        :type NamespaceName: str\n        :param Rule: 规则\n        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.Rule = None
@@ -394,8 +478,10 @@ class CreateImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -409,8 +495,16 @@ class CreateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryName: 企业版实例名称
+        :type RegistryName: str
+        :param RegistryType: 企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+        :type RegistryType: str
+        :param TagSpecification: 云标签描述
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        :param RegistryChargeType: 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+        :type RegistryChargeType: int
         """
-        :param RegistryName: 企业版实例名称\n        :type RegistryName: str\n        :param RegistryType: 企业版实例类型（basic 基础版；standard 标准版；premium 高级版）\n        :type RegistryType: str\n        :param TagSpecification: 云标签描述\n        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`\n        :param RegistryChargeType: 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费\n        :type RegistryChargeType: int\n        """
         self.RegistryName = None
         self.RegistryType = None
         self.TagSpecification = None
@@ -439,8 +533,12 @@ class CreateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 企业版实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 企业版实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -456,8 +554,14 @@ class CreateInstanceTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param TokenType: 访问凭证类型，longterm 为长期访问凭证，temp 为临时访问凭证，默认是临时访问凭证，有效期1小时
+        :type TokenType: str
+        :param Desc: 长期访问凭证描述信息
+        :type Desc: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param TokenType: 访问凭证类型，longterm 为长期访问凭证，temp 为临时访问凭证，默认是临时访问凭证，有效期1小时\n        :type TokenType: str\n        :param Desc: 长期访问凭证描述信息\n        :type Desc: str\n        """
         self.RegistryId = None
         self.TokenType = None
         self.Desc = None
@@ -482,10 +586,20 @@ class CreateInstanceTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Username: 用户名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Username: str\n        :param Token: 访问凭证\n        :type Token: str\n        :param ExpTime: 访问凭证过期时间戳\n        :type ExpTime: int\n        :param TokenId: 长期凭证的TokenId，短期凭证没有TokenId
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TokenId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param Token: 访问凭证
+        :type Token: str
+        :param ExpTime: 访问凭证过期时间戳，是一个时间戳数字，无单位
+        :type ExpTime: int
+        :param TokenId: 长期凭证的TokenId，短期凭证没有TokenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Username = None
         self.Token = None
         self.ExpTime = None
@@ -507,10 +621,18 @@ class CreateInternalEndpointDnsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param InstanceId: tcr实例id\n        :type InstanceId: str\n        :param VpcId: 私有网络id\n        :type VpcId: str\n        :param EniLBIp: tcr内网访问链路ip\n        :type EniLBIp: str\n        :param UsePublicDomain: true：为默认域名，公网域名一致
+        r"""
+        :param InstanceId: tcr实例id
+        :type InstanceId: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param EniLBIp: tcr内网访问链路ip
+        :type EniLBIp: str
+        :param UsePublicDomain: true：为默认域名，公网域名一致
 false: 使用vpc域名
-默认为vpc域名\n        :type UsePublicDomain: bool\n        """
+默认为vpc域名
+        :type UsePublicDomain: bool
+        """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
@@ -537,8 +659,10 @@ class CreateInternalEndpointDnsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -552,8 +676,12 @@ class CreateMultipleSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param SecurityGroupPolicySet: 安全组策略
+        :type SecurityGroupPolicySet: list of SecurityPolicy
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param SecurityGroupPolicySet: 安全组策略\n        :type SecurityGroupPolicySet: list of SecurityPolicy\n        """
         self.RegistryId = None
         self.SecurityGroupPolicySet = None
 
@@ -581,8 +709,12 @@ class CreateMultipleSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -598,8 +730,10 @@ class CreateNamespacePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间名称
+        :type Namespace: str
         """
-        :param Namespace: 命名空间名称\n        :type Namespace: str\n        """
         self.Namespace = None
 
 
@@ -620,8 +754,10 @@ class CreateNamespacePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -635,8 +771,14 @@ class CreateNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称（长度2-30个字符，只能包含小写字母、数字及分隔符("."、"_"、"-")，且不能以分隔符开头、结尾或连续）
+        :type NamespaceName: str
+        :param IsPublic: 是否公开，true为公开，fale为私有
+        :type IsPublic: bool
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间的名称\n        :type NamespaceName: str\n        :param IsPublic: 是否公开，true为公开，fale为私有\n        :type IsPublic: bool\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.IsPublic = None
@@ -661,8 +803,10 @@ class CreateNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -676,8 +820,12 @@ class CreateReplicationInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param ReplicationRegionId: 复制实例地域ID
+        :type ReplicationRegionId: int
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param ReplicationRegionId: 复制实例地域ID\n        :type ReplicationRegionId: int\n        """
         self.RegistryId = None
         self.ReplicationRegionId = None
 
@@ -700,8 +848,12 @@ class CreateReplicationInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReplicationRegistryId: 企业版复制实例Id
+        :type ReplicationRegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ReplicationRegistryId: 企业版复制实例Id\n        :type ReplicationRegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ReplicationRegistryId = None
         self.RequestId = None
 
@@ -717,8 +869,14 @@ class CreateRepositoryPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Public: 是否公共,1:公共,0:私有
+        :type Public: int
+        :param Description: 仓库描述
+        :type Description: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Public: 是否公共,1:公共,0:私有\n        :type Public: int\n        :param Description: 仓库描述\n        :type Description: str\n        """
         self.RepoName = None
         self.Public = None
         self.Description = None
@@ -743,8 +901,10 @@ class CreateRepositoryPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -758,8 +918,18 @@ class CreateRepositoryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 仓库名称
+        :type RepositoryName: str
+        :param BriefDescription: 仓库简短描述
+        :type BriefDescription: str
+        :param Description: 仓库详细描述
+        :type Description: str
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param RepositoryName: 仓库名称\n        :type RepositoryName: str\n        :param BriefDescription: 仓库简短描述\n        :type BriefDescription: str\n        :param Description: 仓库详细描述\n        :type Description: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RepositoryName = None
@@ -788,8 +958,10 @@ class CreateRepositoryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -803,8 +975,14 @@ class CreateSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param CidrBlock: 192.168.0.0/24
+        :type CidrBlock: str
+        :param Description: 备注
+        :type Description: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param CidrBlock: 192.168.0.0/24\n        :type CidrBlock: str\n        :param Description: 备注\n        :type Description: str\n        """
         self.RegistryId = None
         self.CidrBlock = None
         self.Description = None
@@ -829,8 +1007,12 @@ class CreateSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -846,8 +1028,14 @@ class CreateTagRetentionExecutionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 版本保留规则Id
+        :type RetentionId: int
+        :param DryRun: 是否模拟执行，默认值为false，即非模拟执行
+        :type DryRun: bool
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param RetentionId: 版本保留规则Id\n        :type RetentionId: int\n        :param DryRun: 是否模拟执行\n        :type DryRun: bool\n        """
         self.RegistryId = None
         self.RetentionId = None
         self.DryRun = None
@@ -872,8 +1060,10 @@ class CreateTagRetentionExecutionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -887,8 +1077,18 @@ class CreateTagRetentionRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param NamespaceId: 命名空间的Id
+        :type NamespaceId: int
+        :param RetentionRule: 保留策略
+        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param CronSetting: 执行周期，当前只能选择： manual;daily;weekly;monthly
+        :type CronSetting: str
+        :param Disabled: 是否禁用规则，默认值为false
+        :type Disabled: bool
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param NamespaceId: 命名空间的Id\n        :type NamespaceId: int\n        :param RetentionRule: 保留策略\n        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`\n        :param CronSetting: 执行周期，当前只能选择： manual;daily;weekly;monthly\n        :type CronSetting: str\n        :param Disabled: 是否禁用规则\n        :type Disabled: bool\n        """
         self.RegistryId = None
         self.NamespaceId = None
         self.RetentionRule = None
@@ -919,8 +1119,10 @@ class CreateTagRetentionRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -934,8 +1136,10 @@ class CreateUserPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Password: 用户密码，密码必须为8到16位
+        :type Password: str
         """
-        :param Password: 用户密码\n        :type Password: str\n        """
         self.Password = None
 
 
@@ -956,8 +1160,10 @@ class CreateUserPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -971,8 +1177,14 @@ class CreateWebhookTriggerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param Trigger: 触发器参数
+        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        :param Namespace: 命名空间
+        :type Namespace: str
         """
-        :param RegistryId: 实例 Id\n        :type RegistryId: str\n        :param Trigger: 触发器参数\n        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`\n        :param Namespace: 命名空间\n        :type Namespace: str\n        """
         self.RegistryId = None
         self.Trigger = None
         self.Namespace = None
@@ -999,8 +1211,12 @@ class CreateWebhookTriggerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Trigger: 新建的触发器
+        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Trigger: 新建的触发器\n        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Trigger = None
         self.RequestId = None
 
@@ -1018,8 +1234,10 @@ class DeleteApplicationTriggerPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TriggerName: 触发器名称
+        :type TriggerName: str
         """
-        :param TriggerName: 触发器名称\n        :type TriggerName: str\n        """
         self.TriggerName = None
 
 
@@ -1040,8 +1258,10 @@ class DeleteApplicationTriggerPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1061,8 +1281,10 @@ class DeleteImageLifecycleGlobalPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1076,8 +1298,10 @@ class DeleteImageLifecyclePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        """
         self.RepoName = None
 
 
@@ -1098,8 +1322,10 @@ class DeleteImageLifecyclePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1113,8 +1339,12 @@ class DeleteImagePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Tag: Tag名
+        :type Tag: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Tag: Tag名\n        :type Tag: str\n        """
         self.RepoName = None
         self.Tag = None
 
@@ -1137,8 +1367,10 @@ class DeleteImagePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1152,8 +1384,16 @@ class DeleteImageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: 镜像版本
+        :type ImageVersion: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RepositoryName: 镜像仓库名称\n        :type RepositoryName: str\n        :param ImageVersion: 镜像版本\n        :type ImageVersion: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        """
         self.RegistryId = None
         self.RepositoryName = None
         self.ImageVersion = None
@@ -1180,8 +1420,10 @@ class DeleteImageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1195,8 +1437,14 @@ class DeleteImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param RuleId: 规则 Id
+        :type RuleId: int
         """
-        :param RegistryId: 实例 Id\n        :type RegistryId: str\n        :param NamespaceName: 命名空间\n        :type NamespaceName: str\n        :param RuleId: 规则 Id\n        :type RuleId: int\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RuleId = None
@@ -1221,8 +1469,10 @@ class DeleteImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1236,8 +1486,12 @@ class DeleteInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例id
+        :type RegistryId: str
+        :param DeleteBucket: 是否删除存储桶，默认为false
+        :type DeleteBucket: bool
         """
-        :param RegistryId: 实例id\n        :type RegistryId: str\n        :param DeleteBucket: 是否删除存储桶，默认为false\n        :type DeleteBucket: bool\n        """
         self.RegistryId = None
         self.DeleteBucket = None
 
@@ -1260,8 +1514,10 @@ class DeleteInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1275,8 +1531,12 @@ class DeleteInstanceTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 ID
+        :type RegistryId: str
+        :param TokenId: 访问凭证 ID
+        :type TokenId: str
         """
-        :param RegistryId: 实例 ID\n        :type RegistryId: str\n        :param TokenId: 访问凭证 ID\n        :type TokenId: str\n        """
         self.RegistryId = None
         self.TokenId = None
 
@@ -1299,8 +1559,10 @@ class DeleteInstanceTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1314,9 +1576,17 @@ class DeleteInternalEndpointDnsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: tcr实例id
+        :type InstanceId: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param EniLBIp: tcr内网访问链路ip
+        :type EniLBIp: str
+        :param UsePublicDomain: true：使用默认域名
+false:  使用带有vpc的域名
+        :type UsePublicDomain: bool
         """
-        :param InstanceId: tcr实例id\n        :type InstanceId: str\n        :param VpcId: 私有网络id\n        :type VpcId: str\n        :param EniLBIp: tcr内网访问链路ip\n        :type EniLBIp: str\n        :param UsePublicDomain: true：use instance name as subdomain
-false: use instancename+"-vpc" as subdomain\n        :type UsePublicDomain: bool\n        """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
@@ -1343,8 +1613,10 @@ class DeleteInternalEndpointDnsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1358,8 +1630,12 @@ class DeleteMultipleSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param SecurityGroupPolicySet: 安全组策略
+        :type SecurityGroupPolicySet: list of SecurityPolicy
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param SecurityGroupPolicySet: 安全组策略\n        :type SecurityGroupPolicySet: list of SecurityPolicy\n        """
         self.RegistryId = None
         self.SecurityGroupPolicySet = None
 
@@ -1387,8 +1663,12 @@ class DeleteMultipleSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -1404,8 +1684,10 @@ class DeleteNamespacePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间名称
+        :type Namespace: str
         """
-        :param Namespace: 命名空间名称\n        :type Namespace: str\n        """
         self.Namespace = None
 
 
@@ -1426,8 +1708,10 @@ class DeleteNamespacePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1441,8 +1725,12 @@ class DeleteNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间的名称\n        :type NamespaceName: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
 
@@ -1465,8 +1753,10 @@ class DeleteNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1480,8 +1770,10 @@ class DeleteRepositoryPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        """
         self.RepoName = None
 
 
@@ -1502,8 +1794,10 @@ class DeleteRepositoryPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1517,8 +1811,14 @@ class DeleteRepositoryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param RepositoryName: 镜像仓库的名称
+        :type RepositoryName: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param NamespaceName: 命名空间的名称\n        :type NamespaceName: str\n        :param RepositoryName: 仓库名称的名称\n        :type RepositoryName: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RepositoryName = None
@@ -1543,8 +1843,10 @@ class DeleteRepositoryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1558,8 +1860,14 @@ class DeleteSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param PolicyIndex: 白名单Id
+        :type PolicyIndex: int
+        :param PolicyVersion: 白名单版本
+        :type PolicyVersion: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param PolicyIndex: 白名单Id\n        :type PolicyIndex: int\n        :param PolicyVersion: 白名单版本\n        :type PolicyVersion: str\n        """
         self.RegistryId = None
         self.PolicyIndex = None
         self.PolicyVersion = None
@@ -1584,8 +1892,12 @@ class DeleteSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -1601,8 +1913,12 @@ class DeleteTagRetentionRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 版本保留规则的Id
+        :type RetentionId: int
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param RetentionId: 版本保留规则的Id\n        :type RetentionId: int\n        """
         self.RegistryId = None
         self.RetentionId = None
 
@@ -1625,8 +1941,10 @@ class DeleteTagRetentionRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1640,8 +1958,14 @@ class DeleteWebhookTriggerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Id: 触发器 Id
+        :type Id: int
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param Namespace: 命名空间\n        :type Namespace: str\n        :param Id: 触发器 Id\n        :type Id: int\n        """
         self.RegistryId = None
         self.Namespace = None
         self.Id = None
@@ -1666,8 +1990,10 @@ class DeleteWebhookTriggerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1681,8 +2007,18 @@ class DescribeApplicationTriggerLogPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回最大数量，默认 20, 最大值 100
+        :type Limit: int
+        :param Order: 升序或降序
+        :type Order: str
+        :param OrderBy: 按某列排序
+        :type OrderBy: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回最大数量，默认 20, 最大值 100\n        :type Limit: int\n        :param Order: 升序或降序\n        :type Order: str\n        :param OrderBy: 按某列排序\n        :type OrderBy: str\n        """
         self.RepoName = None
         self.Offset = None
         self.Limit = None
@@ -1711,9 +2047,13 @@ class DescribeApplicationTriggerLogPersonalResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回总数
+        :type TotalCount: int
+        :param LogInfo: 触发日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogInfo: list of TriggerLogResp
         """
-        :param TotalCount: 返回总数\n        :type TotalCount: int\n        :param LogInfo: 触发日志列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogInfo: list of TriggerLogResp\n        """
         self.TotalCount = None
         self.LogInfo = None
 
@@ -1741,8 +2081,12 @@ class DescribeApplicationTriggerLogPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 触发日志返回值
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerLogPersonalResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 触发日志返回值\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerLogPersonalResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1760,8 +2104,16 @@ class DescribeApplicationTriggerPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param TriggerName: 触发器名称
+        :type TriggerName: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回最大数量，默认 20, 最大值 100
+        :type Limit: int
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param TriggerName: 触发器名称\n        :type TriggerName: str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回最大数量，默认 20, 最大值 100\n        :type Limit: int\n        """
         self.RepoName = None
         self.TriggerName = None
         self.Offset = None
@@ -1788,8 +2140,12 @@ class DescribeApplicationTriggerPersonalResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回条目总数
+        :type TotalCount: int
+        :param TriggerInfo: 触发器列表
+        :type TriggerInfo: list of TriggerResp
         """
-        :param TotalCount: 返回条目总数\n        :type TotalCount: int\n        :param TriggerInfo: 触发器列表\n        :type TriggerInfo: list of TriggerResp\n        """
         self.TotalCount = None
         self.TriggerInfo = None
 
@@ -1817,8 +2173,12 @@ class DescribeApplicationTriggerPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 触发器列表返回值
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerPersonalResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 触发器列表返回值\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.DescribeApplicationTriggerPersonalResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1836,8 +2196,16 @@ class DescribeChartDownloadInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param ChartName: Chart包的名称
+        :type ChartName: str
+        :param ChartVersion: Chart包的版本
+        :type ChartVersion: str
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间\n        :type NamespaceName: str\n        :param ChartName: Chart包的名称\n        :type ChartName: str\n        :param ChartVersion: Chart包的版本\n        :type ChartVersion: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.ChartName = None
@@ -1864,8 +2232,12 @@ class DescribeChartDownloadInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PreSignedDownloadURL: 用于下载的url的预签名地址
+        :type PreSignedDownloadURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param PreSignedDownloadURL: 用于下载的url的预签名地址\n        :type PreSignedDownloadURL: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PreSignedDownloadURL = None
         self.RequestId = None
 
@@ -1881,8 +2253,10 @@ class DescribeExternalEndpointStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -1903,9 +2277,15 @@ class DescribeExternalEndpointStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Status: 开启公网访问状态，开启中（Opening）、已开启（Opened）、关闭（Closed）
+        :type Status: str
+        :param Reason: 原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Status: 开启公网访问状态，开启中（Opening）、已开启（Opened）、关闭（Closed）\n        :type Status: str\n        :param Reason: 原因
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Reason: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Status = None
         self.Reason = None
         self.RequestId = None
@@ -1923,8 +2303,14 @@ class DescribeFavorRepositoryPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Limit: 分页Limit
+        :type Limit: int
+        :param Offset: Offset用于分页
+        :type Offset: int
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Limit: 分页Limit\n        :type Limit: int\n        :param Offset: Offset用于分页\n        :type Offset: int\n        """
         self.RepoName = None
         self.Limit = None
         self.Offset = None
@@ -1949,8 +2335,12 @@ class DescribeFavorRepositoryPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 个人收藏仓库列表返回信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.FavorResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 个人收藏仓库列表返回信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.FavorResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1968,8 +2358,12 @@ class DescribeImageFilterPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Tag: Tag名
+        :type Tag: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Tag: Tag名\n        :type Tag: str\n        """
         self.RepoName = None
         self.Tag = None
 
@@ -1992,8 +2386,12 @@ class DescribeImageFilterPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 返回tag镜像内容相同的tag列表
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.SameImagesResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: payload\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.SameImagesResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2017,8 +2415,12 @@ class DescribeImageLifecycleGlobalPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 全局自动删除策略信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 全局自动删除策略信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2036,8 +2438,10 @@ class DescribeImageLifecyclePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        """
         self.RepoName = None
 
 
@@ -2058,8 +2462,12 @@ class DescribeImageLifecyclePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 自动删除策略信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 自动删除策略信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.AutoDelStrategyInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2077,8 +2485,16 @@ class DescribeImageManifestsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: 镜像版本
+        :type ImageVersion: str
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param RepositoryName: 镜像仓库名称\n        :type RepositoryName: str\n        :param ImageVersion: 镜像版本\n        :type ImageVersion: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RepositoryName = None
@@ -2105,8 +2521,14 @@ class DescribeImageManifestsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Manifest: 镜像的Manifest信息
+        :type Manifest: str
+        :param Config: 镜像的配置信息
+        :type Config: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Manifest: 镜像的Manifest信息\n        :type Manifest: str\n        :param Config: 镜像的配置信息\n        :type Config: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Manifest = None
         self.Config = None
         self.RequestId = None
@@ -2124,8 +2546,16 @@ class DescribeImagePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回最大数量，默认 20, 最大值 100
+        :type Limit: int
+        :param Tag: tag名称，可根据输入搜索
+        :type Tag: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回最大数量，默认 20, 最大值 100\n        :type Limit: int\n        :param Tag: tag名称，可根据输入搜索\n        :type Tag: str\n        """
         self.RepoName = None
         self.Offset = None
         self.Limit = None
@@ -2152,8 +2582,12 @@ class DescribeImagePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 镜像tag信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.TagInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 镜像tag信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.TagInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2171,8 +2605,20 @@ class DescribeImagesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: 指定镜像版本进行查找，当前为模糊搜索
+        :type ImageVersion: str
+        :param Limit: 每页个数，用于分页，默认20
+        :type Limit: int
+        :param Offset: 页数，默认值为1
+        :type Offset: int
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param RepositoryName: 镜像仓库名称\n        :type RepositoryName: str\n        :param ImageVersion: 指定镜像版本进行查找，当前为模糊搜索\n        :type ImageVersion: str\n        :param Limit: 每页个数，用于分页，默认20\n        :type Limit: int\n        :param Offset: 页数，默认值为1\n        :type Offset: int\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RepositoryName = None
@@ -2203,8 +2649,14 @@ class DescribeImagesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageInfoList: 容器镜像信息列表
+        :type ImageInfoList: list of TcrImageInfo
+        :param TotalCount: 容器镜像总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ImageInfoList: 容器镜像信息列表\n        :type ImageInfoList: list of TcrImageInfo\n        :param TotalCount: 容器镜像总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ImageInfoList = None
         self.TotalCount = None
         self.RequestId = None
@@ -2227,8 +2679,10 @@ class DescribeImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
         """
-        :param RegistryId: 实例 Id\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -2249,10 +2703,18 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rules: 规则列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Rules: list of ImmutableTagRule\n        :param EmptyNs: 未创建规则的命名空间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EmptyNs: list of str\n        :param Total: 规则总量\n        :type Total: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of ImmutableTagRule
+        :param EmptyNs: 未创建规则的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyNs: list of str
+        :param Total: 规则总量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Rules = None
         self.EmptyNs = None
         self.Total = None
@@ -2277,8 +2739,10 @@ class DescribeInstanceStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryIds: 实例ID的数组
+        :type RegistryIds: list of str
         """
-        :param RegistryIds: 实例ID的数组\n        :type RegistryIds: list of str\n        """
         self.RegistryIds = None
 
 
@@ -2299,9 +2763,13 @@ class DescribeInstanceStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegistryStatusSet: 实例的状态列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RegistryStatusSet: list of RegistryStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryStatusSet: list of RegistryStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.RegistryStatusSet = None
         self.RequestId = None
 
@@ -2322,8 +2790,14 @@ class DescribeInstanceTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 ID
+        :type RegistryId: str
+        :param Limit: 分页单页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
         """
-        :param RegistryId: 实例 ID\n        :type RegistryId: str\n        :param Limit: 分页单页数量\n        :type Limit: int\n        :param Offset: 分页偏移量\n        :type Offset: int\n        """
         self.RegistryId = None
         self.Limit = None
         self.Offset = None
@@ -2348,8 +2822,14 @@ class DescribeInstanceTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 长期访问凭证总数
+        :type TotalCount: int
+        :param Tokens: 长期访问凭证列表
+        :type Tokens: list of TcrInstanceToken
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 长期访问凭证总数\n        :type TotalCount: int\n        :param Tokens: 长期访问凭证列表\n        :type Tokens: list of TcrInstanceToken\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Tokens = None
         self.RequestId = None
@@ -2372,9 +2852,19 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Registryids: 实例ID列表(为空时，
-表示获取账号下所有实例)\n        :type Registryids: list of str\n        :param Offset: 偏移量,默认0\n        :type Offset: int\n        :param Limit: 最大输出条数，默认20，最大为100\n        :type Limit: int\n        :param Filters: 过滤条件\n        :type Filters: list of Filter\n        :param AllRegion: 获取所有地域的实例，默认为False\n        :type AllRegion: bool\n        """
+表示获取账号下所有实例)
+        :type Registryids: list of str
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param AllRegion: 获取所有地域的实例，默认为False
+        :type AllRegion: bool
+        """
         self.Registryids = None
         self.Offset = None
         self.Limit = None
@@ -2408,9 +2898,15 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总实例个数
+        :type TotalCount: int
+        :param Registries: 实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Registries: list of Registry
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总实例个数\n        :type TotalCount: int\n        :param Registries: 实例信息列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Registries: list of Registry\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Registries = None
         self.RequestId = None
@@ -2433,8 +2929,10 @@ class DescribeInternalEndpointDnsStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VpcSet: vpc列表
+        :type VpcSet: list of VpcAndDomainInfo
         """
-        :param VpcSet: vpc列表\n        :type VpcSet: list of VpcAndDomainInfo\n        """
         self.VpcSet = None
 
 
@@ -2460,9 +2958,13 @@ class DescribeInternalEndpointDnsStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcSet: vpc私有域名解析状态列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcSet: list of VpcPrivateDomainStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcSet: list of VpcPrivateDomainStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.VpcSet = None
         self.RequestId = None
 
@@ -2483,8 +2985,10 @@ class DescribeInternalEndpointsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -2505,9 +3009,15 @@ class DescribeInternalEndpointsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessVpcSet: 内网接入信息的列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AccessVpcSet: list of AccessVpc\n        :param TotalCount: 内网接入总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessVpcSet: list of AccessVpc
+        :param TotalCount: 内网接入总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.AccessVpcSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -2530,8 +3040,14 @@ class DescribeNamespacePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间，支持模糊查询
+        :type Namespace: str
+        :param Limit: 单页数量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
         """
-        :param Namespace: 命名空间，支持模糊查询\n        :type Namespace: str\n        :param Limit: 单页数量\n        :type Limit: int\n        :param Offset: 偏移量\n        :type Offset: int\n        """
         self.Namespace = None
         self.Limit = None
         self.Offset = None
@@ -2556,8 +3072,12 @@ class DescribeNamespacePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 用户命名空间返回信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.NamespaceInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 用户命名空间返回信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.NamespaceInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2575,8 +3095,16 @@ class DescribeNamespacesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param NamespaceName: 指定命名空间，不填写默认查询所有命名空间
+        :type NamespaceName: str
+        :param Limit: 每页个数
+        :type Limit: int
+        :param Offset: 页偏移
+        :type Offset: int
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param NamespaceName: 指定命名空间，不填写默认查询所有命名空间\n        :type NamespaceName: str\n        :param Limit: 每页个数\n        :type Limit: int\n        :param Offset: 页偏移\n        :type Offset: int\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.Limit = None
@@ -2603,8 +3131,14 @@ class DescribeNamespacesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceList: 命名空间列表信息
+        :type NamespaceList: list of TcrNamespaceInfo
+        :param TotalCount: 总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param NamespaceList: 命名空间列表信息\n        :type NamespaceList: list of TcrNamespaceInfo\n        :param TotalCount: 总个数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NamespaceList = None
         self.TotalCount = None
         self.RequestId = None
@@ -2627,8 +3161,12 @@ class DescribeReplicationInstanceCreateTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReplicationRegistryId: 同步实例Id，见实例返回列表中的同步实例ID
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 同步实例的地域ID，见实例返回列表中地域ID
+        :type ReplicationRegionId: int
         """
-        :param ReplicationRegistryId: 同步实例Id\n        :type ReplicationRegistryId: str\n        :param ReplicationRegionId: 同步实例的地域ID\n        :type ReplicationRegionId: int\n        """
         self.ReplicationRegistryId = None
         self.ReplicationRegionId = None
 
@@ -2651,8 +3189,14 @@ class DescribeReplicationInstanceCreateTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskDetail: 任务详情
+        :type TaskDetail: list of TaskDetail
+        :param Status: 整体任务状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TaskDetail: 任务详情\n        :type TaskDetail: list of TaskDetail\n        :param Status: 整体任务状态\n        :type Status: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TaskDetail = None
         self.Status = None
         self.RequestId = None
@@ -2675,8 +3219,14 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例Id
+        :type RegistryId: str
+        :param ReplicationRegistryId: 复制实例Id
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 复制实例的地域Id
+        :type ReplicationRegionId: int
         """
-        :param RegistryId: 主实例Id\n        :type RegistryId: str\n        :param ReplicationRegistryId: 复制实例Id\n        :type ReplicationRegistryId: str\n        :param ReplicationRegionId: 复制实例的地域Id\n        :type ReplicationRegionId: int\n        """
         self.RegistryId = None
         self.ReplicationRegistryId = None
         self.ReplicationRegionId = None
@@ -2701,8 +3251,14 @@ class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReplicationStatus: 同步状态
+        :type ReplicationStatus: str
+        :param ReplicationTime: 同步完成时间
+        :type ReplicationTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ReplicationStatus: 同步状态\n        :type ReplicationStatus: str\n        :param ReplicationTime: 同步完成时间\n        :type ReplicationTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ReplicationStatus = None
         self.ReplicationTime = None
         self.RequestId = None
@@ -2720,8 +3276,14 @@ class DescribeReplicationInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param Offset: 偏移量,默认0\n        :type Offset: int\n        :param Limit: 最大输出条数，默认20，最大为100\n        :type Limit: int\n        """
         self.RegistryId = None
         self.Offset = None
         self.Limit = None
@@ -2746,9 +3308,15 @@ class DescribeReplicationInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总实例个数
+        :type TotalCount: int
+        :param ReplicationRegistries: 同步实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationRegistries: list of ReplicationRegistry
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总实例个数\n        :type TotalCount: int\n        :param ReplicationRegistries: 同步实例列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReplicationRegistries: list of ReplicationRegistry\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ReplicationRegistries = None
         self.RequestId = None
@@ -2771,8 +3339,20 @@ class DescribeRepositoriesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param NamespaceName: 指定命名空间，不填写默认为查询所有命名空间下镜像仓库
+        :type NamespaceName: str
+        :param RepositoryName: 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
+        :type RepositoryName: str
+        :param Offset: 页数，用于分页
+        :type Offset: int
+        :param Limit: 每页个数，用于分页
+        :type Limit: int
+        :param SortBy: 基于字段排序，支持的值有-creation_time,-name, -update_time
+        :type SortBy: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param NamespaceName: 指定命名空间，不填写默认为查询所有命名空间下镜像仓库\n        :type NamespaceName: str\n        :param RepositoryName: 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库\n        :type RepositoryName: str\n        :param Offset: 页数，用于分页\n        :type Offset: int\n        :param Limit: 每页个数，用于分页\n        :type Limit: int\n        :param SortBy: 基于字段排序，支持的值有-creation_time,-name, -update_time\n        :type SortBy: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RepositoryName = None
@@ -2803,8 +3383,14 @@ class DescribeRepositoriesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepositoryList: 仓库信息列表
+        :type RepositoryList: list of TcrRepositoryInfo
+        :param TotalCount: 总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RepositoryList: 仓库信息列表\n        :type RepositoryList: list of TcrRepositoryInfo\n        :param TotalCount: 总个数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RepositoryList = None
         self.TotalCount = None
         self.RequestId = None
@@ -2827,8 +3413,18 @@ class DescribeRepositoryFilterPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 搜索镜像名
+        :type RepoName: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回最大数量，默认 20，最大100
+        :type Limit: int
+        :param Public: 筛选条件：1表示public，0表示private
+        :type Public: int
+        :param Namespace: 命名空间
+        :type Namespace: str
         """
-        :param RepoName: 搜索镜像名\n        :type RepoName: str\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回最大数量，默认 20，最大100\n        :type Limit: int\n        :param Public: 筛选条件：1表示public，0表示private\n        :type Public: int\n        :param Namespace: 命名空间\n        :type Namespace: str\n        """
         self.RepoName = None
         self.Offset = None
         self.Limit = None
@@ -2857,8 +3453,12 @@ class DescribeRepositoryFilterPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 仓库信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.SearchUserRepositoryResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 仓库信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.SearchUserRepositoryResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2876,8 +3476,14 @@ class DescribeRepositoryOwnerPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回最大数量，默认 20, 最大值 100
+        :type Limit: int
+        :param RepoName: 仓库名称
+        :type RepoName: str
         """
-        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回最大数量，默认 20, 最大值 100\n        :type Limit: int\n        :param RepoName: 仓库名称\n        :type RepoName: str\n        """
         self.Offset = None
         self.Limit = None
         self.RepoName = None
@@ -2902,8 +3508,12 @@ class DescribeRepositoryOwnerPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 仓库信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.RepoInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 仓库信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.RepoInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2921,8 +3531,10 @@ class DescribeRepositoryPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名字
+        :type RepoName: str
         """
-        :param RepoName: 仓库名字\n        :type RepoName: str\n        """
         self.RepoName = None
 
 
@@ -2943,8 +3555,12 @@ class DescribeRepositoryPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 仓库信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.RepositoryInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 仓库信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.RepositoryInfoResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -2962,8 +3578,10 @@ class DescribeSecurityPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例的Id
+        :type RegistryId: str
         """
-        :param RegistryId: 实例的Id\n        :type RegistryId: str\n        """
         self.RegistryId = None
 
 
@@ -2984,9 +3602,13 @@ class DescribeSecurityPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityPolicySet: 实例安全策略组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SecurityPolicySet: list of SecurityPolicy\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityPolicySet: list of SecurityPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.SecurityPolicySet = None
         self.RequestId = None
 
@@ -3007,8 +3629,16 @@ class DescribeTagRetentionExecutionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 规则Id
+        :type RetentionId: int
+        :param Limit: 分页PageSize
+        :type Limit: int
+        :param Offset: 分页Page
+        :type Offset: int
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param RetentionId: 规则Id\n        :type RetentionId: int\n        :param Limit: 分页PageSize\n        :type Limit: int\n        :param Offset: 分页Page\n        :type Offset: int\n        """
         self.RegistryId = None
         self.RetentionId = None
         self.Limit = None
@@ -3035,8 +3665,14 @@ class DescribeTagRetentionExecutionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RetentionExecutionList: 版本保留执行记录列表
+        :type RetentionExecutionList: list of RetentionExecution
+        :param TotalCount: 版本保留执行记录总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RetentionExecutionList: 版本保留执行记录列表\n        :type RetentionExecutionList: list of RetentionExecution\n        :param TotalCount: 版本保留执行记录总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RetentionExecutionList = None
         self.TotalCount = None
         self.RequestId = None
@@ -3059,8 +3695,18 @@ class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 规则Id
+        :type RetentionId: int
+        :param ExecutionId: 规则执行Id
+        :type ExecutionId: int
+        :param Offset: 分页Page
+        :type Offset: int
+        :param Limit: 分页PageSize
+        :type Limit: int
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param RetentionId: 规则Id\n        :type RetentionId: int\n        :param ExecutionId: 规则执行Id\n        :type ExecutionId: int\n        :param Offset: 分页Page\n        :type Offset: int\n        :param Limit: 分页PageSize\n        :type Limit: int\n        """
         self.RegistryId = None
         self.RetentionId = None
         self.ExecutionId = None
@@ -3089,8 +3735,14 @@ class DescribeTagRetentionExecutionTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RetentionTaskList: 版本保留执行任务列表
+        :type RetentionTaskList: list of RetentionTask
+        :param TotalCount: 版本保留执行任务总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RetentionTaskList: 版本保留执行任务列表\n        :type RetentionTaskList: list of RetentionTask\n        :param TotalCount: 版本保留执行任务总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RetentionTaskList = None
         self.TotalCount = None
         self.RequestId = None
@@ -3113,8 +3765,16 @@ class DescribeTagRetentionRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param Limit: 分页PageSize
+        :type Limit: int
+        :param Offset: 分页Page
+        :type Offset: int
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param NamespaceName: 命名空间的名称\n        :type NamespaceName: str\n        :param Limit: 分页PageSize\n        :type Limit: int\n        :param Offset: 分页Page\n        :type Offset: int\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.Limit = None
@@ -3141,8 +3801,14 @@ class DescribeTagRetentionRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RetentionPolicyList: 版本保留策略列表
+        :type RetentionPolicyList: list of RetentionPolicy
+        :param TotalCount: 版本保留策略总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RetentionPolicyList: 版本保留策略列表\n        :type RetentionPolicyList: list of RetentionPolicy\n        :param TotalCount: 版本保留策略总数\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RetentionPolicyList = None
         self.TotalCount = None
         self.RequestId = None
@@ -3171,8 +3837,12 @@ class DescribeUserQuotaPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 配额返回信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.RespLimit`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 配额返回信息\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.RespLimit`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -3190,8 +3860,18 @@ class DescribeWebhookTriggerLogRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Id: 触发器 Id
+        :type Id: int
+        :param Limit: 分页单页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
         """
-        :param RegistryId: 实例 Id\n        :type RegistryId: str\n        :param Namespace: 命名空间\n        :type Namespace: str\n        :param Id: 触发器 Id\n        :type Id: int\n        :param Limit: 分页单页数量\n        :type Limit: int\n        :param Offset: 分页偏移量\n        :type Offset: int\n        """
         self.RegistryId = None
         self.Namespace = None
         self.Id = None
@@ -3220,8 +3900,14 @@ class DescribeWebhookTriggerLogResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Logs: 日志列表
+        :type Logs: list of WebhookTriggerLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数\n        :type TotalCount: int\n        :param Logs: 日志列表\n        :type Logs: list of WebhookTriggerLog\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Logs = None
         self.RequestId = None
@@ -3244,8 +3930,16 @@ class DescribeWebhookTriggerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Limit: 分页单页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Namespace: 命名空间
+        :type Namespace: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param Limit: 分页单页数量\n        :type Limit: int\n        :param Offset: 分页偏移量\n        :type Offset: int\n        :param Namespace: 命名空间\n        :type Namespace: str\n        """
         self.RegistryId = None
         self.Limit = None
         self.Offset = None
@@ -3272,8 +3966,14 @@ class DescribeWebhookTriggerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 触发器总数
+        :type TotalCount: int
+        :param Triggers: 触发器列表
+        :type Triggers: list of WebhookTrigger
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 触发器总数\n        :type TotalCount: int\n        :param Triggers: 触发器列表\n        :type Triggers: list of WebhookTrigger\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Triggers = None
         self.RequestId = None
@@ -3296,8 +3996,16 @@ class DownloadHelmChartRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param ChartName: Helm chart名称
+        :type ChartName: str
+        :param ChartVersion: Helm chart版本
+        :type ChartVersion: str
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param ChartName: Helm chart名称\n        :type ChartName: str\n        :param ChartVersion: Helm chart版本\n        :type ChartVersion: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.ChartName = None
@@ -3324,8 +4032,26 @@ class DownloadHelmChartResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TmpToken: 临时token
+        :type TmpToken: str
+        :param TmpSecretId: 临时的secretId
+        :type TmpSecretId: str
+        :param TmpSecretKey: 临时的secretKey
+        :type TmpSecretKey: str
+        :param Bucket: 存储桶信息
+        :type Bucket: str
+        :param Region: 实例ID
+        :type Region: str
+        :param Path: chart信息
+        :type Path: str
+        :param StartTime: 开始时间时间戳
+        :type StartTime: int
+        :param ExpiredTime: token过期时间时间戳
+        :type ExpiredTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TmpToken: 临时token\n        :type TmpToken: str\n        :param TmpSecretId: 临时的secretId\n        :type TmpSecretId: str\n        :param TmpSecretKey: 临时的secretKey\n        :type TmpSecretKey: str\n        :param Bucket: 存储桶信息\n        :type Bucket: str\n        :param Region: 实例ID\n        :type Region: str\n        :param Path: chart信息\n        :type Path: str\n        :param StartTime: 开始时间时间戳\n        :type StartTime: int\n        :param ExpiredTime: token过期时间时间戳\n        :type ExpiredTime: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TmpToken = None
         self.TmpSecretId = None
         self.TmpSecretKey = None
@@ -3355,8 +4081,10 @@ class DupImageTagResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Digest: 镜像Digest值
+        :type Digest: str
         """
-        :param Digest: 镜像Digest值\n        :type Digest: str\n        """
         self.Digest = None
 
 
@@ -3377,8 +4105,12 @@ class DuplicateImagePersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SrcImage: 源镜像名称，不包含domain。例如： tencentyun/foo:v1
+        :type SrcImage: str
+        :param DestImage: 目的镜像名称，不包含domain。例如： tencentyun/foo:latest
+        :type DestImage: str
         """
-        :param SrcImage: 源镜像名称，不包含domain。例如： tencentyun/foo:v1\n        :type SrcImage: str\n        :param DestImage: 目的镜像名称，不包含domain。例如： tencentyun/foo:latest\n        :type DestImage: str\n        """
         self.SrcImage = None
         self.DestImage = None
 
@@ -3401,8 +4133,12 @@ class DuplicateImagePersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 复制镜像返回值
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.DupImageTagResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 复制镜像返回值\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.DupImageTagResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -3420,9 +4156,13 @@ class FavorResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 收藏仓库的总数
+        :type TotalCount: int
+        :param RepoInfo: 仓库信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoInfo: list of Favors
         """
-        :param TotalCount: 收藏仓库的总数\n        :type TotalCount: int\n        :param RepoInfo: 仓库信息数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RepoInfo: list of Favors\n        """
         self.TotalCount = None
         self.RepoInfo = None
 
@@ -3450,14 +4190,34 @@ class Favors(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名字
+        :type RepoName: str
+        :param RepoType: 仓库类型
+        :type RepoType: str
+        :param PullCount: Pull总共的次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PullCount: int
+        :param FavorCount: 仓库收藏次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FavorCount: int
+        :param Public: 仓库是否公开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Public: int
+        :param IsQcloudOfficial: 是否为官方所有
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsQcloudOfficial: bool
+        :param TagCount: 仓库Tag的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagCount: int
+        :param Logo: Logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Logo: str
+        :param Region: 地域
+        :type Region: str
+        :param RegionId: 地域的Id
+        :type RegionId: int
         """
-        :param RepoName: 仓库名字\n        :type RepoName: str\n        :param RepoType: 仓库类型\n        :type RepoType: str\n        :param PullCount: Pull总共的次数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PullCount: int\n        :param FavorCount: 仓库收藏次数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FavorCount: int\n        :param Public: 仓库是否公开
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Public: int\n        :param IsQcloudOfficial: 是否为官方所有
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsQcloudOfficial: bool\n        :param TagCount: 仓库Tag的数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagCount: int\n        :param Logo: Logo
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Logo: str\n        :param Region: 地域\n        :type Region: str\n        :param RegionId: 地域的Id\n        :type RegionId: int\n        """
         self.RepoName = None
         self.RepoType = None
         self.PullCount = None
@@ -3496,8 +4256,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :type Name: str
+        :param Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :type Values: list of str
         """
-        :param Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。\n        :type Name: str\n        :param Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -3520,8 +4284,12 @@ class Header(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: Header Key
+        :type Key: str
+        :param Values: Header Values
+        :type Values: list of str
         """
-        :param Key: Header Key\n        :type Key: str\n        :param Values: Header Values\n        :type Values: list of str\n        """
         self.Key = None
         self.Values = None
 
@@ -3544,8 +4312,22 @@ class ImmutableTagRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepositoryPattern: 仓库匹配规则
+        :type RepositoryPattern: str
+        :param TagPattern: Tag 匹配规则
+        :type TagPattern: str
+        :param RepositoryDecoration: repoMatches或repoExcludes
+        :type RepositoryDecoration: str
+        :param TagDecoration: matches或excludes
+        :type TagDecoration: str
+        :param Disabled: 禁用规则
+        :type Disabled: bool
+        :param RuleId: 规则 Id
+        :type RuleId: int
+        :param NsName: 命名空间
+        :type NsName: str
         """
-        :param RepositoryPattern: 仓库匹配规则\n        :type RepositoryPattern: str\n        :param TagPattern: Tag 匹配规则\n        :type TagPattern: str\n        :param RepositoryDecoration: repoMatches或repoExcludes\n        :type RepositoryDecoration: str\n        :param TagDecoration: matches或excludes\n        :type TagDecoration: str\n        :param Disabled: 禁用规则\n        :type Disabled: bool\n        :param RuleId: 规则 Id\n        :type RuleId: int\n        :param NsName: 命名空间\n        :type NsName: str\n        """
         self.RepositoryPattern = None
         self.TagPattern = None
         self.RepositoryDecoration = None
@@ -3578,8 +4360,14 @@ class Limit(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Username: 用户名
+        :type Username: str
+        :param Type: 配额的类型
+        :type Type: str
+        :param Value: 配置的值
+        :type Value: int
         """
-        :param Username: 用户名\n        :type Username: str\n        :param Type: 配额的类型\n        :type Type: str\n        :param Value: 配置的值\n        :type Value: int\n        """
         self.Username = None
         self.Type = None
         self.Value = None
@@ -3604,8 +4392,12 @@ class ManageExternalEndpointRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Operation: 操作（Create/Delete）
+        :type Operation: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param Operation: 操作（Create/Delete）\n        :type Operation: str\n        """
         self.RegistryId = None
         self.Operation = None
 
@@ -3628,8 +4420,12 @@ class ManageExternalEndpointResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -3645,8 +4441,12 @@ class ManageImageLifecycleGlobalPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个
+        :type Type: str
+        :param Val: 策略值
+        :type Val: int
         """
-        :param Type: global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个\n        :type Type: str\n        :param Val: 策略值\n        :type Val: int\n        """
         self.Type = None
         self.Val = None
 
@@ -3669,8 +4469,10 @@ class ManageImageLifecycleGlobalPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3684,8 +4486,18 @@ class ManageInternalEndpointRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Operation: Create/Delete
+        :type Operation: str
+        :param VpcId: 需要接入的用户vpcid
+        :type VpcId: str
+        :param SubnetId: 需要接入的用户子网id
+        :type SubnetId: str
+        :param RegionId: 请求的地域ID
+        :type RegionId: int
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param Operation: Create/Delete\n        :type Operation: str\n        :param VpcId: 需要接入的用户vpcid\n        :type VpcId: str\n        :param SubnetId: 需要接入的用户子网id\n        :type SubnetId: str\n        :param RegionId: 请求的地域ID\n        :type RegionId: int\n        """
         self.RegistryId = None
         self.Operation = None
         self.VpcId = None
@@ -3714,8 +4526,12 @@ class ManageInternalEndpointResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -3731,8 +4547,20 @@ class ManageReplicationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SourceRegistryId: 复制源实例ID
+        :type SourceRegistryId: str
+        :param DestinationRegistryId: 复制目标实例ID
+        :type DestinationRegistryId: str
+        :param Rule: 同步规则
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ReplicationRule`
+        :param Description: 规则描述
+        :type Description: str
+        :param DestinationRegionId: 目标实例的地域ID，如广州是1
+        :type DestinationRegionId: int
+        :param PeerReplicationOption: 开启跨主账号实例同步配置项
+        :type PeerReplicationOption: :class:`tencentcloud.tcr.v20190924.models.PeerReplicationOption`
         """
-        :param SourceRegistryId: 复制源实例ID\n        :type SourceRegistryId: str\n        :param DestinationRegistryId: 复制目标实例ID\n        :type DestinationRegistryId: str\n        :param Rule: 同步规则\n        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ReplicationRule`\n        :param Description: 规则描述\n        :type Description: str\n        :param DestinationRegionId: 目标实例的地域ID，如广州是1\n        :type DestinationRegionId: int\n        :param PeerReplicationOption: 开启跨主账号实例同步配置项\n        :type PeerReplicationOption: :class:`tencentcloud.tcr.v20190924.models.PeerReplicationOption`\n        """
         self.SourceRegistryId = None
         self.DestinationRegistryId = None
         self.Rule = None
@@ -3767,8 +4595,10 @@ class ManageReplicationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3782,8 +4612,30 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 触发器关联的镜像仓库，library/test格式
+        :type RepoName: str
+        :param TriggerName: 触发器名称，必填参数
+        :type TriggerName: str
+        :param InvokeMethod: 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
+        :type InvokeMethod: str
+        :param InvokeExpr: 触发方式对应的表达式
+        :type InvokeExpr: str
+        :param ClusterId: 应用所在TKE集群ID
+        :type ClusterId: str
+        :param Namespace: 应用所在TKE集群命名空间
+        :type Namespace: str
+        :param WorkloadType: 应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。
+        :type WorkloadType: str
+        :param WorkloadName: 应用所在TKE集群工作负载名称
+        :type WorkloadName: str
+        :param ContainerName: 应用所在TKE集群工作负载下容器名称
+        :type ContainerName: str
+        :param ClusterRegion: 应用所在TKE集群地域数字ID，如1（广州）、16（成都）
+        :type ClusterRegion: int
+        :param NewTriggerName: 新触发器名称
+        :type NewTriggerName: str
         """
-        :param RepoName: 触发器关联的镜像仓库，library/test格式\n        :type RepoName: str\n        :param TriggerName: 触发器名称\n        :type TriggerName: str\n        :param InvokeMethod: 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发\n        :type InvokeMethod: str\n        :param InvokeExpr: 触发方式对应的表达式\n        :type InvokeExpr: str\n        :param ClusterId: 应用所在TKE集群ID\n        :type ClusterId: str\n        :param Namespace: 应用所在TKE集群命名空间\n        :type Namespace: str\n        :param WorkloadType: 应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。\n        :type WorkloadType: str\n        :param WorkloadName: 应用所在TKE集群工作负载名称\n        :type WorkloadName: str\n        :param ContainerName: 应用所在TKE集群工作负载下容器名称\n        :type ContainerName: str\n        :param ClusterRegion: 应用所在TKE集群地域数字ID，如1（广州）、16（成都）\n        :type ClusterRegion: int\n        :param NewTriggerName: 新触发器名称\n        :type NewTriggerName: str\n        """
         self.RepoName = None
         self.TriggerName = None
         self.InvokeMethod = None
@@ -3824,8 +4676,10 @@ class ModifyApplicationTriggerPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3839,8 +4693,16 @@ class ModifyImmutableTagRulesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param RuleId: 规则 Id
+        :type RuleId: int
+        :param Rule: 规则
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
         """
-        :param RegistryId: 实例 Id\n        :type RegistryId: str\n        :param NamespaceName: 命名空间\n        :type NamespaceName: str\n        :param RuleId: 规则 Id\n        :type RuleId: int\n        :param Rule: 规则\n        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RuleId = None
@@ -3869,8 +4731,10 @@ class ModifyImmutableTagRulesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3884,8 +4748,18 @@ class ModifyInstanceTokenRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TokenId: 实例长期访问凭证 ID
+        :type TokenId: str
+        :param RegistryId: 实例 ID
+        :type RegistryId: str
+        :param Enable: 启用或禁用实例长期访问凭证
+        :type Enable: bool
+        :param Desc: 访问凭证描述
+        :type Desc: str
+        :param ModifyFlag: 1为修改描述 2为操作启动禁用，默认值为2
+        :type ModifyFlag: int
         """
-        :param TokenId: 实例长期访问凭证 ID\n        :type TokenId: str\n        :param RegistryId: 实例 ID\n        :type RegistryId: str\n        :param Enable: 启用或禁用实例长期访问凭证\n        :type Enable: bool\n        :param Desc: 访问凭证描述\n        :type Desc: str\n        :param ModifyFlag: 1为修改描述 2为启动禁用，不填写默认为修改启动禁用\n        :type ModifyFlag: int\n        """
         self.TokenId = None
         self.RegistryId = None
         self.Enable = None
@@ -3914,8 +4788,10 @@ class ModifyInstanceTokenResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3929,8 +4805,14 @@ class ModifyNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param IsPublic: 访问级别，True为公开，False为私有
+        :type IsPublic: bool
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param IsPublic: 访问级别，True为公开，False为私有\n        :type IsPublic: bool\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.IsPublic = None
@@ -3955,8 +4837,10 @@ class ModifyNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3970,8 +4854,12 @@ class ModifyRepositoryAccessPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Public: 默认值为0, 1公共，0私有
+        :type Public: int
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Public: 默认值为0\n        :type Public: int\n        """
         self.RepoName = None
         self.Public = None
 
@@ -3994,8 +4882,10 @@ class ModifyRepositoryAccessPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4009,8 +4899,12 @@ class ModifyRepositoryInfoPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param Description: 仓库描述
+        :type Description: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param Description: 仓库描述\n        :type Description: str\n        """
         self.RepoName = None
         self.Description = None
 
@@ -4033,8 +4927,10 @@ class ModifyRepositoryInfoPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4048,8 +4944,18 @@ class ModifyRepositoryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param BriefDescription: 仓库简短描述
+        :type BriefDescription: str
+        :param Description: 仓库详细描述
+        :type Description: str
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param RepositoryName: 镜像仓库名称\n        :type RepositoryName: str\n        :param BriefDescription: 仓库简短描述\n        :type BriefDescription: str\n        :param Description: 仓库详细描述\n        :type Description: str\n        """
         self.RegistryId = None
         self.NamespaceName = None
         self.RepositoryName = None
@@ -4078,8 +4984,10 @@ class ModifyRepositoryResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4093,8 +5001,16 @@ class ModifySecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例的Id
+        :type RegistryId: str
+        :param PolicyIndex: PolicyId
+        :type PolicyIndex: int
+        :param CidrBlock: 192.168.0.0/24 白名单Ip
+        :type CidrBlock: str
+        :param Description: 备注
+        :type Description: str
         """
-        :param RegistryId: 实例的Id\n        :type RegistryId: str\n        :param PolicyIndex: PolicyId\n        :type PolicyIndex: int\n        :param CidrBlock: 192.168.0.0/24 白名单Ip\n        :type CidrBlock: str\n        :param Description: 备注\n        :type Description: str\n        """
         self.RegistryId = None
         self.PolicyIndex = None
         self.CidrBlock = None
@@ -4121,8 +5037,12 @@ class ModifySecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -4138,8 +5058,20 @@ class ModifyTagRetentionRuleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param NamespaceId: 命名空间的Id，必须填写原有的命名空间id
+        :type NamespaceId: int
+        :param RetentionRule: 保留策略
+        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param CronSetting: 执行周期，必须填写为原来的设置
+        :type CronSetting: str
+        :param RetentionId: 规则Id
+        :type RetentionId: int
+        :param Disabled: 是否禁用规则
+        :type Disabled: bool
         """
-        :param RegistryId: 主实例iD\n        :type RegistryId: str\n        :param NamespaceId: 命名空间的Id，必须填写原有的命名空间id\n        :type NamespaceId: int\n        :param RetentionRule: 保留策略\n        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`\n        :param CronSetting: 执行周期，必须填写为原来的设置\n        :type CronSetting: str\n        :param RetentionId: 规则Id\n        :type RetentionId: int\n        :param Disabled: 是否禁用规则\n        :type Disabled: bool\n        """
         self.RegistryId = None
         self.NamespaceId = None
         self.RetentionRule = None
@@ -4172,8 +5104,10 @@ class ModifyTagRetentionRuleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4187,8 +5121,10 @@ class ModifyUserPasswordPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Password: 更新后的密码
+        :type Password: str
         """
-        :param Password: 更新后的密码\n        :type Password: str\n        """
         self.Password = None
 
 
@@ -4209,8 +5145,10 @@ class ModifyUserPasswordPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4224,8 +5162,14 @@ class ModifyWebhookTriggerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Trigger: 触发器参数
+        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
+        :param Namespace: 命名空间
+        :type Namespace: str
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param Trigger: 触发器参数\n        :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`\n        :param Namespace: 命名空间\n        :type Namespace: str\n        """
         self.RegistryId = None
         self.Trigger = None
         self.Namespace = None
@@ -4252,8 +5196,10 @@ class ModifyWebhookTriggerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -4267,8 +5213,14 @@ class NamespaceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param RepoCount: 命名空间下仓库数量
+        :type RepoCount: int
         """
-        :param Namespace: 命名空间\n        :type Namespace: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param RepoCount: 命名空间下仓库数量\n        :type RepoCount: int\n        """
         self.Namespace = None
         self.CreationTime = None
         self.RepoCount = None
@@ -4293,8 +5245,12 @@ class NamespaceInfoResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NamespaceCount: 命名空间数量
+        :type NamespaceCount: int
+        :param NamespaceInfo: 命名空间信息
+        :type NamespaceInfo: list of NamespaceInfo
         """
-        :param NamespaceCount: 命名空间数量\n        :type NamespaceCount: int\n        :param NamespaceInfo: 命名空间信息\n        :type NamespaceInfo: list of NamespaceInfo\n        """
         self.NamespaceCount = None
         self.NamespaceInfo = None
 
@@ -4322,8 +5278,12 @@ class NamespaceIsExistsResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsExist: 命名空间是否存在
+        :type IsExist: bool
+        :param IsPreserved: 是否为保留命名空间
+        :type IsPreserved: bool
         """
-        :param IsExist: 命名空间是否存在\n        :type IsExist: bool\n        :param IsPreserved: 是否为保留命名空间\n        :type IsPreserved: bool\n        """
         self.IsExist = None
         self.IsPreserved = None
 
@@ -4346,8 +5306,14 @@ class PeerReplicationOption(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PeerRegistryUin: 待同步实例的uin
+        :type PeerRegistryUin: str
+        :param PeerRegistryToken: 待同步实例的访问永久Token
+        :type PeerRegistryToken: str
+        :param EnablePeerReplication: 是否开启跨主账号实例同步
+        :type EnablePeerReplication: bool
         """
-        :param PeerRegistryUin: 待同步实例的uin\n        :type PeerRegistryUin: str\n        :param PeerRegistryToken: 待同步实例的访问永久Token\n        :type PeerRegistryToken: str\n        :param EnablePeerReplication: 是否开启跨主账号实例同步\n        :type EnablePeerReplication: bool\n        """
         self.PeerRegistryUin = None
         self.PeerRegistryToken = None
         self.EnablePeerReplication = None
@@ -4372,12 +5338,42 @@ class Registry(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param RegistryName: 实例名称
+        :type RegistryName: str
+        :param RegistryType: 实例规格
+        :type RegistryType: str
+        :param Status: 实例状态
+        :type Status: str
+        :param PublicDomain: 实例的公共访问地址
+        :type PublicDomain: str
+        :param CreatedAt: 实例创建时间
+        :type CreatedAt: str
+        :param RegionName: 地域名称
+        :type RegionName: str
+        :param RegionId: 地域Id
+        :type RegionId: int
+        :param EnableAnonymous: 是否支持匿名
+        :type EnableAnonymous: bool
+        :param TokenValidTime: Token有效时间
+        :type TokenValidTime: int
+        :param InternalEndpoint: 实例内部访问地址
+        :type InternalEndpoint: str
+        :param TagSpecification: 实例云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        :param ExpiredAt: 实例过期时间（预付费）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredAt: str
+        :param PayMod: 实例付费类型，0表示后付费，1表示预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMod: int
+        :param RenewFlag: 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
-        :param RegistryId: 实例ID\n        :type RegistryId: str\n        :param RegistryName: 实例名称\n        :type RegistryName: str\n        :param RegistryType: 实例规格\n        :type RegistryType: str\n        :param Status: 实例状态\n        :type Status: str\n        :param PublicDomain: 实例的公共访问地址\n        :type PublicDomain: str\n        :param CreatedAt: 实例创建时间\n        :type CreatedAt: str\n        :param RegionName: 地域名称\n        :type RegionName: str\n        :param RegionId: 地域Id\n        :type RegionId: int\n        :param EnableAnonymous: 是否支持匿名\n        :type EnableAnonymous: bool\n        :param TokenValidTime: Token有效时间\n        :type TokenValidTime: int\n        :param InternalEndpoint: 实例内部访问地址\n        :type InternalEndpoint: str\n        :param TagSpecification: 实例云标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`\n        :param ExpiredAt: 实例过期时间（预付费）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpiredAt: str\n        :param PayMod: 实例付费类型，0表示后付费，1表示预付费
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PayMod: int\n        :param RenewFlag: 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RenewFlag: int\n        """
         self.RegistryId = None
         self.RegistryName = None
         self.RegistryType = None
@@ -4428,8 +5424,12 @@ class RegistryChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Period: 购买实例的时长，单位：月
+        :type Period: int
+        :param RenewFlag: 自动续费标识，0：手动续费，1：自动续费，2：不续费并且不通知
+        :type RenewFlag: int
         """
-        :param Period: 购买实例的时长，单位：月\n        :type Period: int\n        :param RenewFlag: 自动续费标识，0：手动续费，1：自动续费，2：不续费并且不通知\n        :type RenewFlag: int\n        """
         self.Period = None
         self.RenewFlag = None
 
@@ -4452,9 +5452,15 @@ class RegistryCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 实例创建过程类型
+        :type Type: str
+        :param Status: 实例创建过程状态
+        :type Status: str
+        :param Reason: 转换到该过程的简明原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
         """
-        :param Type: 实例创建过程类型\n        :type Type: str\n        :param Status: 实例创建过程状态\n        :type Status: str\n        :param Reason: 转换到该过程的简明原因
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Reason: str\n        """
         self.Type = None
         self.Status = None
         self.Reason = None
@@ -4479,9 +5485,15 @@ class RegistryStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例的Id
+        :type RegistryId: str
+        :param Status: 实例的状态
+        :type Status: str
+        :param Conditions: 附加状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of RegistryCondition
         """
-        :param RegistryId: 实例的Id\n        :type RegistryId: str\n        :param Status: 实例的状态\n        :type Status: str\n        :param Conditions: 附加状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Conditions: list of RegistryCondition\n        """
         self.RegistryId = None
         self.Status = None
         self.Conditions = None
@@ -4511,8 +5523,14 @@ class RenewInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RegistryChargePrepaid: 预付费自动续费标识和购买时长,0：手动续费，1：自动续费，2：不续费并且不通知;单位为月
+        :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
+        :param Flag: 0 续费， 1按量转包年包月
+        :type Flag: int
         """
-        :param RegistryId: 实例Id\n        :type RegistryId: str\n        :param RegistryChargePrepaid: 预付费自动续费标识和购买时长\n        :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`\n        :param Flag: 0 续费， 1按量转包年包月\n        :type Flag: int\n        """
         self.RegistryId = None
         self.RegistryChargePrepaid = None
         self.Flag = None
@@ -4539,8 +5557,12 @@ class RenewInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 企业版实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegistryId: 企业版实例Id\n        :type RegistryId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegistryId = None
         self.RequestId = None
 
@@ -4556,8 +5578,12 @@ class ReplicationFilter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Type: 类型（name、tag和resource）
+        :type Type: str
+        :param Value: 默认为空
+        :type Value: str
         """
-        :param Type: 类型（name、tag和resource）\n        :type Type: str\n        :param Value: 默认为空\n        :type Value: str\n        """
         self.Type = None
         self.Value = None
 
@@ -4580,8 +5606,20 @@ class ReplicationRegistry(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegistryId: 主实例ID
+        :type RegistryId: str
+        :param ReplicationRegistryId: 复制实例ID
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 复制实例的地域ID
+        :type ReplicationRegionId: int
+        :param ReplicationRegionName: 复制实例的地域名称
+        :type ReplicationRegionName: str
+        :param Status: 复制实例的状态
+        :type Status: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
         """
-        :param RegistryId: 主实例ID\n        :type RegistryId: str\n        :param ReplicationRegistryId: 复制实例ID\n        :type ReplicationRegistryId: str\n        :param ReplicationRegionId: 复制实例的地域ID\n        :type ReplicationRegionId: int\n        :param ReplicationRegionName: 复制实例的地域名称\n        :type ReplicationRegionName: str\n        :param Status: 复制实例的状态\n        :type Status: str\n        :param CreatedAt: 创建时间\n        :type CreatedAt: str\n        """
         self.RegistryId = None
         self.ReplicationRegistryId = None
         self.ReplicationRegionId = None
@@ -4612,8 +5650,16 @@ class ReplicationRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 同步规则名称
+        :type Name: str
+        :param DestNamespace: 目标命名空间
+        :type DestNamespace: str
+        :param Override: 是否覆盖
+        :type Override: bool
+        :param Filters: 同步过滤条件
+        :type Filters: list of ReplicationFilter
         """
-        :param Name: 同步规则名称\n        :type Name: str\n        :param DestNamespace: 目标命名空间\n        :type DestNamespace: str\n        :param Override: 是否覆盖\n        :type Override: bool\n        :param Filters: 同步过滤条件\n        :type Filters: list of ReplicationFilter\n        """
         self.Name = None
         self.DestNamespace = None
         self.Override = None
@@ -4645,8 +5691,30 @@ class RepoInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
+        :param RepoType: 仓库类型
+        :type RepoType: str
+        :param TagCount: Tag数量
+        :type TagCount: int
+        :param Public: 是否为公开
+        :type Public: int
+        :param IsUserFavor: 是否为用户收藏
+        :type IsUserFavor: bool
+        :param IsQcloudOfficial: 是否为腾讯云官方仓库
+        :type IsQcloudOfficial: bool
+        :param FavorCount: 被收藏的个数
+        :type FavorCount: int
+        :param PullCount: 拉取的数量
+        :type PullCount: int
+        :param Description: 描述
+        :type Description: str
+        :param CreationTime: 仓库创建时间
+        :type CreationTime: str
+        :param UpdateTime: 仓库更新时间
+        :type UpdateTime: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        :param RepoType: 仓库类型\n        :type RepoType: str\n        :param TagCount: Tag数量\n        :type TagCount: int\n        :param Public: 是否为公开\n        :type Public: int\n        :param IsUserFavor: 是否为用户收藏\n        :type IsUserFavor: bool\n        :param IsQcloudOfficial: 是否为腾讯云官方仓库\n        :type IsQcloudOfficial: bool\n        :param FavorCount: 被收藏的个数\n        :type FavorCount: int\n        :param PullCount: 拉取的数量\n        :type PullCount: int\n        :param Description: 描述\n        :type Description: str\n        :param CreationTime: 仓库创建时间\n        :type CreationTime: str\n        :param UpdateTime: 仓库更新时间\n        :type UpdateTime: str\n        """
         self.RepoName = None
         self.RepoType = None
         self.TagCount = None
@@ -4687,8 +5755,14 @@ class RepoInfoResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 仓库总数
+        :type TotalCount: int
+        :param RepoInfo: 仓库信息列表
+        :type RepoInfo: list of RepoInfo
+        :param Server: Server信息
+        :type Server: str
         """
-        :param TotalCount: 仓库总数\n        :type TotalCount: int\n        :param RepoInfo: 仓库信息列表\n        :type RepoInfo: list of RepoInfo\n        :param Server: Server信息\n        :type Server: str\n        """
         self.TotalCount = None
         self.RepoInfo = None
         self.Server = None
@@ -4718,8 +5792,10 @@ class RepoIsExistResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsExist: 仓库是否存在
+        :type IsExist: bool
         """
-        :param IsExist: 仓库是否存在\n        :type IsExist: bool\n        """
         self.IsExist = None
 
 
@@ -4740,9 +5816,29 @@ class RepositoryInfoResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 镜像仓库名字
+        :type RepoName: str
+        :param RepoType: 镜像仓库类型
+        :type RepoType: str
+        :param Server: 镜像仓库服务地址
+        :type Server: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param Description: 镜像仓库描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Public: 是否为公有镜像
+        :type Public: int
+        :param PullCount: 下载次数
+        :type PullCount: int
+        :param FavorCount: 收藏次数
+        :type FavorCount: int
+        :param IsUserFavor: 是否为用户收藏
+        :type IsUserFavor: bool
+        :param IsQcloudOfficial: 是否为腾讯云官方镜像
+        :type IsQcloudOfficial: bool
         """
-        :param RepoName: 镜像仓库名字\n        :type RepoName: str\n        :param RepoType: 镜像仓库类型\n        :type RepoType: str\n        :param Server: 镜像仓库服务地址\n        :type Server: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param Description: 镜像仓库描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param Public: 是否为公有镜像\n        :type Public: int\n        :param PullCount: 下载次数\n        :type PullCount: int\n        :param FavorCount: 收藏次数\n        :type FavorCount: int\n        :param IsUserFavor: 是否为用户收藏\n        :type IsUserFavor: bool\n        :param IsQcloudOfficial: 是否为腾讯云官方镜像\n        :type IsQcloudOfficial: bool\n        """
         self.RepoName = None
         self.RepoType = None
         self.Server = None
@@ -4781,8 +5877,10 @@ class RespLimit(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LimitInfo: 配额信息
+        :type LimitInfo: list of Limit
         """
-        :param LimitInfo: 配额信息\n        :type LimitInfo: list of Limit\n        """
         self.LimitInfo = None
 
 
@@ -4808,8 +5906,18 @@ class RetentionExecution(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ExecutionId: 执行Id
+        :type ExecutionId: int
+        :param RetentionId: 所属规则id
+        :type RetentionId: int
+        :param StartTime: 执行的开始时间
+        :type StartTime: str
+        :param EndTime: 执行的结束时间
+        :type EndTime: str
+        :param Status: 执行的状态，Failed, Succeed, Stopped, InProgress
+        :type Status: str
         """
-        :param ExecutionId: 执行Id\n        :type ExecutionId: int\n        :param RetentionId: 所属规则id\n        :type RetentionId: int\n        :param StartTime: 执行的开始时间\n        :type StartTime: str\n        :param EndTime: 执行的结束时间\n        :type EndTime: str\n        :param Status: 执行的状态，Failed, Succeed, Stopped, InProgress\n        :type Status: str\n        """
         self.ExecutionId = None
         self.RetentionId = None
         self.StartTime = None
@@ -4838,8 +5946,20 @@ class RetentionPolicy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RetentionId: 版本保留策略Id
+        :type RetentionId: int
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param RetentionRuleList: 规则列表
+        :type RetentionRuleList: list of RetentionRule
+        :param CronSetting: 定期执行方式
+        :type CronSetting: str
+        :param Disabled: 是否启用规则
+        :type Disabled: bool
+        :param NextExecutionTime: 基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用
+        :type NextExecutionTime: str
         """
-        :param RetentionId: 版本保留策略Id\n        :type RetentionId: int\n        :param NamespaceName: 命名空间的名称\n        :type NamespaceName: str\n        :param RetentionRuleList: 规则列表\n        :type RetentionRuleList: list of RetentionRule\n        :param CronSetting: 定期执行方式\n        :type CronSetting: str\n        :param Disabled: 是否启用规则\n        :type Disabled: bool\n        :param NextExecutionTime: 基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用\n        :type NextExecutionTime: str\n        """
         self.RetentionId = None
         self.NamespaceName = None
         self.RetentionRuleList = None
@@ -4875,8 +5995,12 @@ class RetentionRule(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
+        :type Key: str
+        :param Value: 规则设置下的对应值
+        :type Value: int
         """
-        :param Key: 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）\n        :type Key: str\n        :param Value: 规则设置下的对应值\n        :type Value: int\n        """
         self.Key = None
         self.Value = None
 
@@ -4899,8 +6023,24 @@ class RetentionTask(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: int
+        :param ExecutionId: 所属的规则执行Id
+        :type ExecutionId: int
+        :param StartTime: 任务开始时间
+        :type StartTime: str
+        :param EndTime: 任务结束时间
+        :type EndTime: str
+        :param Status: 任务的执行状态，Failed, Succeed, Stopped, InProgress
+        :type Status: str
+        :param Total: 总tag数
+        :type Total: int
+        :param Retained: 保留tag数
+        :type Retained: int
+        :param Repository: 应用的仓库
+        :type Repository: str
         """
-        :param TaskId: 任务Id\n        :type TaskId: int\n        :param ExecutionId: 所属的规则执行Id\n        :type ExecutionId: int\n        :param StartTime: 任务开始时间\n        :type StartTime: str\n        :param EndTime: 任务结束时间\n        :type EndTime: str\n        :param Status: 任务的执行状态，Failed, Succeed, Stopped, InProgress\n        :type Status: str\n        :param Total: 总tag数\n        :type Total: int\n        :param Retained: 保留tag数\n        :type Retained: int\n        :param Repository: 应用的仓库\n        :type Repository: str\n        """
         self.TaskId = None
         self.ExecutionId = None
         self.StartTime = None
@@ -4935,9 +6075,11 @@ class SameImagesResp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SameImages: tag列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SameImages: list of str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SameImages: list of str
+        """
         self.SameImages = None
 
 
@@ -4958,8 +6100,16 @@ class SearchUserRepositoryResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总个数
+        :type TotalCount: int
+        :param RepoInfo: 仓库列表
+        :type RepoInfo: list of RepoInfo
+        :param Server: Server
+        :type Server: str
+        :param PrivilegeFiltered: PrivilegeFiltered
+        :type PrivilegeFiltered: bool
         """
-        :param TotalCount: 总个数\n        :type TotalCount: int\n        :param RepoInfo: 仓库列表\n        :type RepoInfo: list of RepoInfo\n        :param Server: Server\n        :type Server: str\n        :param PrivilegeFiltered: PrivilegeFiltered\n        :type PrivilegeFiltered: bool\n        """
         self.TotalCount = None
         self.RepoInfo = None
         self.Server = None
@@ -4991,8 +6141,16 @@ class SecurityPolicy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PolicyIndex: 策略索引
+        :type PolicyIndex: int
+        :param Description: 备注
+        :type Description: str
+        :param CidrBlock: 运行访问的公网IP地址端
+        :type CidrBlock: str
+        :param PolicyVersion: 安全策略的版本
+        :type PolicyVersion: str
         """
-        :param PolicyIndex: 策略索引\n        :type PolicyIndex: int\n        :param Description: 备注\n        :type Description: str\n        :param CidrBlock: 运行访问的公网IP地址端\n        :type CidrBlock: str\n        :param PolicyVersion: 安全策略的版本\n        :type PolicyVersion: str\n        """
         self.PolicyIndex = None
         self.Description = None
         self.CidrBlock = None
@@ -5019,8 +6177,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 云标签的key
+        :type Key: str
+        :param Value: 云标签的值
+        :type Value: str
         """
-        :param Key: 云标签的key\n        :type Key: str\n        :param Value: 云标签的值\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -5043,9 +6205,37 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagName: Tag名称
+        :type TagName: str
+        :param TagId: 镜像Id
+        :type TagId: str
+        :param ImageId: docker image 可以看到的id
+        :type ImageId: str
+        :param Size: 大小
+        :type Size: str
+        :param CreationTime: 镜像的创建时间
+        :type CreationTime: str
+        :param DurationDays: 镜像创建至今时间长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationDays: str
+        :param Author: 镜像的作者
+        :type Author: str
+        :param Architecture: 次镜像建议运行的系统架构
+        :type Architecture: str
+        :param DockerVersion: 创建此镜像的docker版本
+        :type DockerVersion: str
+        :param OS: 此镜像建议运行系统
+        :type OS: str
+        :param SizeByte: SizeByte
+        :type SizeByte: int
+        :param Id: Id
+        :type Id: int
+        :param UpdateTime: 数据更新时间
+        :type UpdateTime: str
+        :param PushTime: 镜像更新时间
+        :type PushTime: str
         """
-        :param TagName: Tag名称\n        :type TagName: str\n        :param TagId: 镜像Id\n        :type TagId: str\n        :param ImageId: docker image 可以看到的id\n        :type ImageId: str\n        :param Size: 大小\n        :type Size: str\n        :param CreationTime: 镜像的创建时间\n        :type CreationTime: str\n        :param DurationDays: 镜像创建至今时间长度
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DurationDays: str\n        :param Author: 镜像的作者\n        :type Author: str\n        :param Architecture: 次镜像建议运行的系统架构\n        :type Architecture: str\n        :param DockerVersion: 创建此镜像的docker版本\n        :type DockerVersion: str\n        :param OS: 此镜像建议运行系统\n        :type OS: str\n        :param SizeByte: SizeByte\n        :type SizeByte: int\n        :param Id: Id\n        :type Id: int\n        :param UpdateTime: 数据更新时间\n        :type UpdateTime: str\n        :param PushTime: 镜像更新时间\n        :type PushTime: str\n        """
         self.TagName = None
         self.TagId = None
         self.ImageId = None
@@ -5092,8 +6282,16 @@ class TagInfoResp(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagCount: Tag的总数
+        :type TagCount: int
+        :param TagInfo: TagInfo列表
+        :type TagInfo: list of TagInfo
+        :param Server: Server
+        :type Server: str
+        :param RepoName: 仓库名称
+        :type RepoName: str
         """
-        :param TagCount: Tag的总数\n        :type TagCount: int\n        :param TagInfo: TagInfo列表\n        :type TagInfo: list of TagInfo\n        :param Server: Server\n        :type Server: str\n        :param RepoName: 仓库名称\n        :type RepoName: str\n        """
         self.TagCount = None
         self.TagInfo = None
         self.Server = None
@@ -5125,10 +6323,14 @@ class TagSpecification(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: 默认值为instance
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResourceType: str\n        :param Tags: 云标签数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param Tags: 云标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
         self.ResourceType = None
         self.Tags = None
 
@@ -5156,10 +6358,22 @@ class TaskDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskName: 任务
+        :type TaskName: str
+        :param TaskUUID: 任务UUID
+        :type TaskUUID: str
+        :param TaskStatus: 任务状态
+        :type TaskStatus: str
+        :param TaskMessage: 任务的状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskMessage: str
+        :param CreatedTime: 任务开始时间
+        :type CreatedTime: str
+        :param FinishedTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedTime: str
         """
-        :param TaskName: 任务\n        :type TaskName: str\n        :param TaskUUID: 任务UUID\n        :type TaskUUID: str\n        :param TaskStatus: 任务状态\n        :type TaskStatus: str\n        :param TaskMessage: 任务的状态信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TaskMessage: str\n        :param CreatedTime: 任务开始时间\n        :type CreatedTime: str\n        :param FinishedTime: 任务结束时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FinishedTime: str\n        """
         self.TaskName = None
         self.TaskUUID = None
         self.TaskStatus = None
@@ -5190,8 +6404,16 @@ class TcrImageInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Digest: 哈希值
+        :type Digest: str
+        :param Size: 镜像大小
+        :type Size: int
+        :param ImageVersion: Tag名称
+        :type ImageVersion: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
         """
-        :param Digest: 哈希值\n        :type Digest: str\n        :param Size: 镜像大小\n        :type Size: int\n        :param ImageVersion: Tag名称\n        :type ImageVersion: str\n        :param UpdateTime: 更新时间\n        :type UpdateTime: str\n        """
         self.Digest = None
         self.Size = None
         self.ImageVersion = None
@@ -5218,8 +6440,20 @@ class TcrInstanceToken(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 令牌ID
+        :type Id: str
+        :param Desc: 令牌描述
+        :type Desc: str
+        :param RegistryId: 令牌所属实例ID
+        :type RegistryId: str
+        :param Enabled: 令牌启用状态
+        :type Enabled: bool
+        :param CreatedAt: 令牌创建时间
+        :type CreatedAt: str
+        :param ExpiredAt: 令牌过期时间戳
+        :type ExpiredAt: int
         """
-        :param Id: 令牌ID\n        :type Id: str\n        :param Desc: 令牌描述\n        :type Desc: str\n        :param RegistryId: 令牌所属实例ID\n        :type RegistryId: str\n        :param Enabled: 令牌启用状态\n        :type Enabled: bool\n        :param CreatedAt: 令牌创建时间\n        :type CreatedAt: str\n        :param ExpiredAt: 令牌过期时间戳\n        :type ExpiredAt: int\n        """
         self.Id = None
         self.Desc = None
         self.RegistryId = None
@@ -5250,8 +6484,16 @@ class TcrNamespaceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 命名空间名称
+        :type Name: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param Public: 访问级别
+        :type Public: bool
+        :param NamespaceId: 命名空间的Id
+        :type NamespaceId: int
         """
-        :param Name: 命名空间名称\n        :type Name: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param Public: 访问级别\n        :type Public: bool\n        :param NamespaceId: 命名空间的Id\n        :type NamespaceId: int\n        """
         self.Name = None
         self.CreationTime = None
         self.Public = None
@@ -5278,10 +6520,24 @@ class TcrRepositoryInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 仓库名称
+        :type Name: str
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param Public: 是否公开
+        :type Public: bool
+        :param Description: 仓库详细描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param BriefDescription: 简单描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefDescription: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
         """
-        :param Name: 仓库名称\n        :type Name: str\n        :param Namespace: 命名空间名称\n        :type Namespace: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param Public: 是否公开\n        :type Public: bool\n        :param Description: 仓库详细描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param BriefDescription: 简单描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BriefDescription: str\n        :param UpdateTime: 更新时间\n        :type UpdateTime: str\n        """
         self.Name = None
         self.Namespace = None
         self.CreationTime = None
@@ -5314,9 +6570,13 @@ class TriggerInvokeCondition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InvokeMethod: 触发方式
+        :type InvokeMethod: str
+        :param InvokeExpr: 触发表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeExpr: str
         """
-        :param InvokeMethod: 触发方式\n        :type InvokeMethod: str\n        :param InvokeExpr: 触发表达式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeExpr: str\n        """
         self.InvokeMethod = None
         self.InvokeExpr = None
 
@@ -5339,14 +6599,26 @@ class TriggerInvokePara(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: AppId
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AppId: str\n        :param ClusterId: TKE集群ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterId: str\n        :param Namespace: TKE集群命名空间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Namespace: str\n        :param ServiceName: TKE集群工作负载名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        :param ContainerName: TKE集群工作负载中容器名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ContainerName: str\n        :param ClusterRegion: TKE集群地域数字ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClusterRegion: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param ClusterId: TKE集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Namespace: TKE集群命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param ServiceName: TKE集群工作负载名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param ContainerName: TKE集群工作负载中容器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param ClusterRegion: TKE集群地域数字ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterRegion: int
+        """
         self.AppId = None
         self.ClusterId = None
         self.Namespace = None
@@ -5377,10 +6649,14 @@ class TriggerInvokeResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReturnCode: 请求TKE返回值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnCode: int\n        :param ReturnMsg: 请求TKE返回信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReturnMsg: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: int
+        :param ReturnMsg: 请求TKE返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnMsg: str
+        """
         self.ReturnCode = None
         self.ReturnMsg = None
 
@@ -5403,17 +6679,35 @@ class TriggerLogResp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RepoName: 仓库名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RepoName: str\n        :param TagName: Tag名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagName: str\n        :param TriggerName: 触发器名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TriggerName: str\n        :param InvokeSource: 触发方式
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeSource: str\n        :param InvokeAction: 触发动作
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeAction: str\n        :param InvokeTime: 触发时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeTime: str\n        :param InvokeCondition: 触发条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeCondition: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`\n        :param InvokePara: 触发参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokePara: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`\n        :param InvokeResult: 触发结果
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeResult: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeResult`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        :param TagName: Tag名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param TriggerName: 触发器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerName: str
+        :param InvokeSource: 触发方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeSource: str
+        :param InvokeAction: 触发动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeAction: str
+        :param InvokeTime: 触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeTime: str
+        :param InvokeCondition: 触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeCondition: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
+        :param InvokePara: 触发参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokePara: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
+        :param InvokeResult: 触发结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeResult: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeResult`
+        """
         self.RepoName = None
         self.TagName = None
         self.TriggerName = None
@@ -5456,15 +6750,29 @@ class TriggerResp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TriggerName: 触发器名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TriggerName: str\n        :param InvokeSource: 触发来源
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeSource: str\n        :param InvokeAction: 触发动作
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeAction: str\n        :param CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param InvokeCondition: 触发条件
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokeCondition: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`\n        :param InvokePara: 触发器参数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InvokePara: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerName: str
+        :param InvokeSource: 触发来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeSource: str
+        :param InvokeAction: 触发动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeAction: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param InvokeCondition: 触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeCondition: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokeCondition`
+        :param InvokePara: 触发器参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokePara: :class:`tencentcloud.tcr.v20190924.models.TriggerInvokePara`
+        """
         self.TriggerName = None
         self.InvokeSource = None
         self.InvokeAction = None
@@ -5501,8 +6809,10 @@ class ValidateNamespaceExistPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Namespace: 命名空间名称
+        :type Namespace: str
         """
-        :param Namespace: 命名空间名称\n        :type Namespace: str\n        """
         self.Namespace = None
 
 
@@ -5523,8 +6833,12 @@ class ValidateNamespaceExistPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 验证命名空间是否存在返回信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.NamespaceIsExistsResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 命名空间是否存在\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.NamespaceIsExistsResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5542,8 +6856,10 @@ class ValidateRepositoryExistPersonalRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RepoName: 仓库名称
+        :type RepoName: str
         """
-        :param RepoName: 仓库名称\n        :type RepoName: str\n        """
         self.RepoName = None
 
 
@@ -5564,8 +6880,12 @@ class ValidateRepositoryExistPersonalResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 验证个人版仓库是否存在返回信息
+        :type Data: :class:`tencentcloud.tcr.v20190924.models.RepoIsExistResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 仓库是否存在\n        :type Data: :class:`tencentcloud.tcr.v20190924.models.RepoIsExistResp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -5583,9 +6903,17 @@ class VpcAndDomainInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: tcr实例id
+        :type InstanceId: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param EniLBIp: tcr内网访问链路ip
+        :type EniLBIp: str
+        :param UsePublicDomain: true：use instance name as subdomain
+false: use instancename+"-vpc" as subdomain
+        :type UsePublicDomain: bool
         """
-        :param InstanceId: tcr实例id\n        :type InstanceId: str\n        :param VpcId: 私有网络id\n        :type VpcId: str\n        :param EniLBIp: tcr内网访问链路ip\n        :type EniLBIp: str\n        :param UsePublicDomain: true：use instance name as subdomain
-false: use instancename+"-vpc" as subdomain\n        :type UsePublicDomain: bool\n        """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
@@ -5612,11 +6940,17 @@ class VpcPrivateDomainStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param VpcId: unique vpc id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param Status: ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param VpcId: unique vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param Status: ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
         self.Region = None
         self.VpcId = None
         self.Status = None
@@ -5641,8 +6975,12 @@ class WebhookTarget(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Address: 目标地址
+        :type Address: str
+        :param Headers: 自定义 Headers
+        :type Headers: list of Header
         """
-        :param Address: 目标地址\n        :type Address: str\n        :param Headers: 自定义 Headers\n        :type Headers: list of Header\n        """
         self.Address = None
         self.Headers = None
 
@@ -5670,8 +7008,24 @@ class WebhookTrigger(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 触发器名称
+        :type Name: str
+        :param Targets: 触发器目标
+        :type Targets: list of WebhookTarget
+        :param EventTypes: 触发动作
+        :type EventTypes: list of str
+        :param Condition: 触发规则
+        :type Condition: str
+        :param Enabled: 启用触发器
+        :type Enabled: bool
+        :param Id: 触发器Id
+        :type Id: int
+        :param Description: 触发器描述
+        :type Description: str
+        :param NamespaceId: 触发器所属命名空间 Id
+        :type NamespaceId: int
         """
-        :param Name: 触发器名称\n        :type Name: str\n        :param Targets: 触发器目标\n        :type Targets: list of WebhookTarget\n        :param EventTypes: 触发动作\n        :type EventTypes: list of str\n        :param Condition: 触发规则\n        :type Condition: str\n        :param Enabled: 启用触发器\n        :type Enabled: bool\n        :param Id: 触发器Id\n        :type Id: int\n        :param Description: 触发器描述\n        :type Description: str\n        :param NamespaceId: 触发器所属命名空间 Id\n        :type NamespaceId: int\n        """
         self.Name = None
         self.Targets = None
         self.EventTypes = None
@@ -5711,8 +7065,24 @@ class WebhookTriggerLog(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 日志 Id
+        :type Id: int
+        :param TriggerId: 触发器 Id
+        :type TriggerId: int
+        :param EventType: 事件类型
+        :type EventType: str
+        :param NotifyType: 通知类型
+        :type NotifyType: str
+        :param Detail: 详情
+        :type Detail: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Status: 状态
+        :type Status: str
         """
-        :param Id: 日志 Id\n        :type Id: int\n        :param TriggerId: 触发器 Id\n        :type TriggerId: int\n        :param EventType: 事件类型\n        :type EventType: str\n        :param NotifyType: 通知类型\n        :type NotifyType: str\n        :param Detail: 详情\n        :type Detail: str\n        :param CreationTime: 创建时间\n        :type CreationTime: str\n        :param UpdateTime: 更新时间\n        :type UpdateTime: str\n        :param Status: 状态\n        :type Status: str\n        """
         self.Id = None
         self.TriggerId = None
         self.EventType = None

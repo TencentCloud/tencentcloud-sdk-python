@@ -24,8 +24,34 @@ class EvaluationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SessionId: 图片唯一标识，一张图片一个SessionId；
+        :type SessionId: str
+        :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
+        :type Image: str
+        :param HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppid 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
+        :type HcmAppid: str
+        :param Url: 图片url，与Image参数二者填一即可；
+        :type Url: str
+        :param SupportHorizontalImage: 横屏拍摄开关，若开启则支持传输横屏拍摄的图片；
+        :type SupportHorizontalImage: bool
+        :param RejectNonArithmeticImage: 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。
+        :type RejectNonArithmeticImage: bool
+        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+        :type IsAsync: int
+        :param EnableDispRelatedVertical: 是否展开耦合算式中的竖式计算
+        :type EnableDispRelatedVertical: bool
+        :param EnableDispMidresult: 是否展示竖式算式的中间结果和格式控制字符
+        :type EnableDispMidresult: bool
+        :param EnablePdfRecognize: 是否开启pdf识别，默认开启
+        :type EnablePdfRecognize: bool
+        :param PdfPageIndex: pdf页码，从0开始，默认为0
+        :type PdfPageIndex: int
+        :param LaTex: 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
+        :type LaTex: int
+        :param RejectVagueArithmetic: 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。
+        :type RejectVagueArithmetic: bool
         """
-        :param SessionId: 图片唯一标识，一张图片一个SessionId；\n        :type SessionId: str\n        :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；\n        :type Image: str\n        :param HcmAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppid 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。\n        :type HcmAppid: str\n        :param Url: 图片url，与Image参数二者填一即可；\n        :type Url: str\n        :param SupportHorizontalImage: 横屏拍摄开关，若开启则支持传输横屏拍摄的图片；\n        :type SupportHorizontalImage: bool\n        :param RejectNonArithmeticImage: 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。\n        :type RejectNonArithmeticImage: bool\n        :param IsAsync: 异步模式标识，0：同步模式，1：异步模式。默认为同步模式\n        :type IsAsync: int\n        :param EnableDispRelatedVertical: 是否展开耦合算式中的竖式计算\n        :type EnableDispRelatedVertical: bool\n        :param EnableDispMidresult: 是否展示竖式算式的中间结果和格式控制字符\n        :type EnableDispMidresult: bool\n        :param EnablePdfRecognize: 是否开启pdf识别，默认开启\n        :type EnablePdfRecognize: bool\n        :param PdfPageIndex: pdf页码，从0开始，默认为0\n        :type PdfPageIndex: int\n        :param LaTex: 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式\n        :type LaTex: int\n        :param RejectVagueArithmetic: 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。\n        :type RejectVagueArithmetic: bool\n        """
         self.SessionId = None
         self.Image = None
         self.HcmAppid = None
@@ -70,9 +96,17 @@ class EvaluationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SessionId: 图片唯一标识，一张图片一个SessionId；
+        :type SessionId: str
+        :param Items: 识别出的算式信息；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of Item
+        :param TaskId: 任务 id，用于查询接口
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SessionId: 图片唯一标识，一张图片一个SessionId；\n        :type SessionId: str\n        :param Items: 识别出的算式信息；
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Items: list of Item\n        :param TaskId: 任务 id，用于查询接口\n        :type TaskId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SessionId = None
         self.Items = None
         self.TaskId = None
@@ -97,11 +131,25 @@ class Item(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Item: 识别的算式是否正确，算式运算结果: ‘YES’:正确 ‘NO’: 错误 ‘NA’: 非法参数
+        :type Item: str
+        :param ItemString: 识别出的算式，识别出的文本行字符串
+        :type ItemString: str
+        :param ItemCoord: 识别的算式在图片上的位置信息，文本行在旋转纠正之后的图像中的像素坐 标，表示为(左上角 x, 左上角 y，宽 width， 高 height)
+        :type ItemCoord: :class:`tencentcloud.hcm.v20181106.models.ItemCoord`
+        :param Answer: 错题推荐答案，算式运算结果正确返回为 ""，算式运算结果错误返回推荐答案 (注:暂不支持多个关系运算符(如 1<10<7)、 无关系运算符(如 frac(1,2)+frac(2,3))、单 位换算(如 1 元=100 角)错题的推荐答案 返回)
+        :type Answer: str
+        :param ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpressionType: str
+        :param ItemConf: 文本行置信度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemConf: float
+        :param QuestionId: 用于标识题目 id，如果有若干算式属于同一 题，则其对应的 id 相同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuestionId: str
         """
-        :param Item: 识别的算式是否正确，算式运算结果: ‘YES’:正确 ‘NO’: 错误 ‘NA’: 非法参数\n        :type Item: str\n        :param ItemString: 识别出的算式，识别出的文本行字符串\n        :type ItemString: str\n        :param ItemCoord: 识别的算式在图片上的位置信息，文本行在旋转纠正之后的图像中的像素坐 标，表示为(左上角 x, 左上角 y，宽 width， 高 height)\n        :type ItemCoord: :class:`tencentcloud.hcm.v20181106.models.ItemCoord`\n        :param Answer: 错题推荐答案，算式运算结果正确返回为 ""，算式运算结果错误返回推荐答案 (注:暂不支持多个关系运算符(如 1<10<7)、 无关系运算符(如 frac(1,2)+frac(2,3))、单 位换算(如 1 元=100 角)错题的推荐答案 返回)\n        :type Answer: str\n        :param ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExpressionType: str\n        :param ItemConf: 文本行置信度
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ItemConf: float\n        :param QuestionId: 用于标识题目 id，如果有若干算式属于同一 题，则其对应的 id 相同。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type QuestionId: str\n        """
         self.Item = None
         self.ItemString = None
         self.ItemCoord = None
@@ -136,8 +184,16 @@ class ItemCoord(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Height: 算式高度
+        :type Height: int
+        :param Width: 算式宽度
+        :type Width: int
+        :param X: 算式图的左上角横坐标
+        :type X: int
+        :param Y: 算式图的左上角纵坐标
+        :type Y: int
         """
-        :param Height: 算式高度\n        :type Height: int\n        :param Width: 算式宽度\n        :type Width: int\n        :param X: 算式图的左上角横坐标\n        :type X: int\n        :param Y: 算式图的左上角纵坐标\n        :type Y: int\n        """
         self.Height = None
         self.Width = None
         self.X = None

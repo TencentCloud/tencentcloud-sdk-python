@@ -24,12 +24,44 @@ class CdsAuditInstance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AppId: 用户AppId
+        :type AppId: str
+        :param Uin: 用户Uin
+        :type Uin: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param RenewFlag: 续费标识
+        :type RenewFlag: int
+        :param Region: 所属地域
+        :type Region: str
+        :param PayMode: 付费模式（数据安全审计只支持预付费：1）
+        :type PayMode: int
+        :param Status: 实例状态： 0，未生效；1：正常运行； 2：被隔离； 3，已过期
+        :type Status: int
+        :param IsolatedTimestamp: 实例被隔离时间，格式：yyyy-mm-dd HH:ii:ss
+        :type IsolatedTimestamp: str
+        :param CreateTime: 实例创建时间，格式： yyyy-mm-dd HH:ii:ss
+        :type CreateTime: str
+        :param ExpireTime: 实例过期时间，格式：yyyy-mm-dd HH:ii:ss
+        :type ExpireTime: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param PublicIp: 实例公网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param PrivateIp: 实例私网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIp: str
+        :param InstanceType: 实例类型（版本）
+        :type InstanceType: str
+        :param Pdomain: 实例域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pdomain: str
         """
-        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param AppId: 用户AppId\n        :type AppId: str\n        :param Uin: 用户Uin\n        :type Uin: str\n        :param ProjectId: 项目ID\n        :type ProjectId: int\n        :param RenewFlag: 续费标识\n        :type RenewFlag: int\n        :param Region: 所属地域\n        :type Region: str\n        :param PayMode: 付费模式（数据安全审计只支持预付费：1）\n        :type PayMode: int\n        :param Status: 实例状态： 0，未生效；1：正常运行； 2：被隔离； 3，已过期\n        :type Status: int\n        :param IsolatedTimestamp: 实例被隔离时间，格式：yyyy-mm-dd HH:ii:ss\n        :type IsolatedTimestamp: str\n        :param CreateTime: 实例创建时间，格式： yyyy-mm-dd HH:ii:ss\n        :type CreateTime: str\n        :param ExpireTime: 实例过期时间，格式：yyyy-mm-dd HH:ii:ss\n        :type ExpireTime: str\n        :param InstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param PublicIp: 实例公网IP
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicIp: str\n        :param PrivateIp: 实例私网IP
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PrivateIp: str\n        :param InstanceType: 实例类型（版本）\n        :type InstanceType: str\n        :param Pdomain: 实例域名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Pdomain: str\n        """
         self.InstanceId = None
         self.AppId = None
         self.Uin = None
@@ -80,8 +112,22 @@ class DbauditTypesInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceVersionName: 规格描述
+        :type InstanceVersionName: str
+        :param InstanceVersionKey: 规格名称
+        :type InstanceVersionKey: str
+        :param Qps: 最大吞吐量
+        :type Qps: int
+        :param MaxInstances: 最大实例数
+        :type MaxInstances: int
+        :param InsertSpeed: 入库速率（每小时）
+        :type InsertSpeed: int
+        :param OnlineStorageCapacity: 最大在线存储量，单位：条
+        :type OnlineStorageCapacity: int
+        :param ArchivingStorageCapacity: 最大归档存储量，单位：条
+        :type ArchivingStorageCapacity: int
         """
-        :param InstanceVersionName: 规格描述\n        :type InstanceVersionName: str\n        :param InstanceVersionKey: 规格名称\n        :type InstanceVersionKey: str\n        :param Qps: 最大吞吐量\n        :type Qps: int\n        :param MaxInstances: 最大实例数\n        :type MaxInstances: int\n        :param InsertSpeed: 入库速率（每小时）\n        :type InsertSpeed: int\n        :param OnlineStorageCapacity: 最大在线存储量，单位：条\n        :type OnlineStorageCapacity: int\n        :param ArchivingStorageCapacity: 最大归档存储量，单位：条\n        :type ArchivingStorageCapacity: int\n        """
         self.InstanceVersionName = None
         self.InstanceVersionKey = None
         self.Qps = None
@@ -120,8 +166,14 @@ class DescribeDasbImageIdsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BaseImageId: 基础镜像ID
+        :type BaseImageId: str
+        :param AiImageId: AI镜像ID
+        :type AiImageId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param BaseImageId: 基础镜像ID\n        :type BaseImageId: str\n        :param AiImageId: AI镜像ID\n        :type AiImageId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BaseImageId = None
         self.AiImageId = None
         self.RequestId = None
@@ -145,8 +197,12 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DbauditTypesSet: 数据安全审计产品规格信息列表
+        :type DbauditTypesSet: list of DbauditTypesInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DbauditTypesSet: 数据安全审计产品规格信息列表\n        :type DbauditTypesSet: list of DbauditTypesInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DbauditTypesSet = None
         self.RequestId = None
 
@@ -167,8 +223,14 @@ class DescribeDbauditInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SearchRegion: 查询条件地域
+        :type SearchRegion: str
+        :param Limit: 限制数目，默认10， 最大50
+        :type Limit: int
+        :param Offset: 偏移量，默认1
+        :type Offset: int
         """
-        :param SearchRegion: 查询条件地域\n        :type SearchRegion: str\n        :param Limit: 限制数目，默认10， 最大50\n        :type Limit: int\n        :param Offset: 偏移量，默认1\n        :type Offset: int\n        """
         self.SearchRegion = None
         self.Limit = None
         self.Offset = None
@@ -193,8 +255,14 @@ class DescribeDbauditInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总实例数
+        :type TotalCount: int
+        :param CdsAuditInstanceSet: 数据安全审计实例信息列表
+        :type CdsAuditInstanceSet: list of CdsAuditInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总实例数\n        :type TotalCount: int\n        :param CdsAuditInstanceSet: 数据安全审计实例信息列表\n        :type CdsAuditInstanceSet: list of CdsAuditInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.CdsAuditInstanceSet = None
         self.RequestId = None
@@ -223,8 +291,12 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionSet: 可售卖地域信息列表
+        :type RegionSet: list of RegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RegionSet: 可售卖地域信息列表\n        :type RegionSet: list of RegionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RegionSet = None
         self.RequestId = None
 
@@ -245,8 +317,18 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceVersion: 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
+        :type InstanceVersion: str
+        :param InquiryType: 询价类型： renew，续费；newbuy，新购
+        :type InquiryType: str
+        :param TimeSpan: 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
+        :type TimeSpan: int
+        :param TimeUnit: 购买时长单位，y：年；m：月
+        :type TimeUnit: str
+        :param ServiceRegion: 实例所在地域
+        :type ServiceRegion: str
         """
-        :param InstanceVersion: 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版\n        :type InstanceVersion: str\n        :param InquiryType: 询价类型： renew，续费；newbuy，新购\n        :type InquiryType: str\n        :param TimeSpan: 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）\n        :type TimeSpan: int\n        :param TimeUnit: 购买时长单位，y：年；m：月\n        :type TimeUnit: str\n        :param ServiceRegion: 实例所在地域\n        :type ServiceRegion: str\n        """
         self.InstanceVersion = None
         self.InquiryType = None
         self.TimeSpan = None
@@ -275,8 +357,14 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalPrice: 总价，单位：元
+        :type TotalPrice: float
+        :param RealTotalCost: 真实价钱，预支费用的折扣价，单位：元
+        :type RealTotalCost: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalPrice: 总价，单位：元\n        :type TotalPrice: float\n        :param RealTotalCost: 真实价钱，预支费用的折扣价，单位：元\n        :type RealTotalCost: float\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalPrice = None
         self.RealTotalCost = None
         self.RequestId = None
@@ -294,8 +382,12 @@ class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AutoRenewFlag: 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
+        :type AutoRenewFlag: int
         """
-        :param InstanceId: 实例ID\n        :type InstanceId: str\n        :param AutoRenewFlag: 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费\n        :type AutoRenewFlag: int\n        """
         self.InstanceId = None
         self.AutoRenewFlag = None
 
@@ -318,8 +410,10 @@ class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -333,8 +427,16 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RegionId: 地域ID
+        :type RegionId: int
+        :param Region: 地域名称
+        :type Region: str
+        :param RegionName: 地域描述
+        :type RegionName: str
+        :param RegionState: 地域可用状态
+        :type RegionState: int
         """
-        :param RegionId: 地域ID\n        :type RegionId: int\n        :param Region: 地域名称\n        :type Region: str\n        :param RegionName: 地域描述\n        :type RegionName: str\n        :param RegionState: 地域可用状态\n        :type RegionState: int\n        """
         self.RegionId = None
         self.Region = None
         self.RegionName = None

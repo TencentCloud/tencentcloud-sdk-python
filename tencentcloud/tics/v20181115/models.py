@@ -24,8 +24,12 @@ class DescribeDomainInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 要查询的域名
+        :type Key: str
+        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :type Option: int
         """
-        :param Key: 要查询的域名\n        :type Key: str\n        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。\n        :type Option: int\n        """
         self.Key = None
         self.Option = None
 
@@ -48,8 +52,14 @@ class DescribeDomainInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据\n        :type ReturnCode: int\n        :param Result: 判定结果，如：black、white、grey\n        :type Result: str\n        :param Confidence: 置信度，取值0-100\n        :type Confidence: int\n        :param ThreatTypes: 威胁类型。
+        r"""
+        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
+        :type ReturnCode: int
+        :param Result: 判定结果，如：black、white、grey
+        :type Result: str
+        :param Confidence: 置信度，取值0-100
+        :type Confidence: int
+        :param ThreatTypes: 威胁类型。
 botnet = 僵尸网络
 trojan = 木马
 ransomware = 勒索软件
@@ -65,7 +75,17 @@ tor = 暗网
 miner = 挖矿
 maleware site = 恶意站点
 malware IP = 恶意IP
-等等\n        :type ThreatTypes: list of str\n        :param Tags: 恶意标签，对应的团伙，家族等信息。\n        :type Tags: list of TagType\n        :param Intelligences: 对应的历史上的威胁情报事件\n        :type Intelligences: list of IntelligenceType\n        :param Context: 情报相关的上下文\n        :type Context: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+等等
+        :type ThreatTypes: list of str
+        :param Tags: 恶意标签，对应的团伙，家族等信息。
+        :type Tags: list of TagType
+        :param Intelligences: 对应的历史上的威胁情报事件
+        :type Intelligences: list of IntelligenceType
+        :param Context: 情报相关的上下文
+        :type Context: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ReturnCode = None
         self.Result = None
         self.Confidence = None
@@ -103,8 +123,12 @@ class DescribeFileInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 要查询文件的MD5
+        :type Key: str
+        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :type Option: int
         """
-        :param Key: 要查询文件的MD5\n        :type Key: str\n        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。\n        :type Option: int\n        """
         self.Key = None
         self.Option = None
 
@@ -127,10 +151,26 @@ class DescribeFileInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据\n        :type ReturnCode: int\n        :param Result: 判定结果，如：black、white、grey\n        :type Result: str\n        :param Confidence: 置信度，取值0-100\n        :type Confidence: int\n        :param FileInfo: 文件类型，文件hash
+        r"""
+        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
+        :type ReturnCode: int
+        :param Result: 判定结果，如：black、white、grey
+        :type Result: str
+        :param Confidence: 置信度，取值0-100
+        :type Confidence: int
+        :param FileInfo: 文件类型，文件hash
 （md5,sha1,sha256）,文件大小等等文件
-基础信息\n        :type FileInfo: list of FileInfoType\n        :param Tags: 恶意标签，对应的团伙，家族等信息。\n        :type Tags: list of TagType\n        :param Intelligences: 对应的历史上的威胁情报事件\n        :type Intelligences: list of IntelligenceType\n        :param Context: 情报相关的上下文\n        :type Context: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+基础信息
+        :type FileInfo: list of FileInfoType
+        :param Tags: 恶意标签，对应的团伙，家族等信息。
+        :type Tags: list of TagType
+        :param Intelligences: 对应的历史上的威胁情报事件
+        :type Intelligences: list of IntelligenceType
+        :param Context: 情报相关的上下文
+        :type Context: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ReturnCode = None
         self.Result = None
         self.Confidence = None
@@ -173,8 +213,12 @@ class DescribeIpInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 要查询的IP
+        :type Key: str
+        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :type Option: int
         """
-        :param Key: 要查询的IP\n        :type Key: str\n        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。\n        :type Option: int\n        """
         self.Key = None
         self.Option = None
 
@@ -197,8 +241,14 @@ class DescribeIpInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据\n        :type ReturnCode: int\n        :param Result: 判定结果，如：black、white、grey\n        :type Result: str\n        :param Confidence: 置信度，取值0-100\n        :type Confidence: int\n        :param ThreatTypes: 威胁类型。
+        r"""
+        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
+        :type ReturnCode: int
+        :param Result: 判定结果，如：black、white、grey
+        :type Result: str
+        :param Confidence: 置信度，取值0-100
+        :type Confidence: int
+        :param ThreatTypes: 威胁类型。
 botnet = 僵尸网络
 trojan = 木马
 ransomware = 勒索软件
@@ -214,7 +264,17 @@ tor = 暗网
 miner = 挖矿
 maleware site = 恶意站点
 malware IP = 恶意IP
-等等\n        :type ThreatTypes: list of str\n        :param Tags: 恶意标签，对应的团伙，家族等信息。\n        :type Tags: list of TagType\n        :param Intelligences: 对应的历史上的威胁情报事件\n        :type Intelligences: list of IntelligenceType\n        :param Context: 情报相关的上下文\n        :type Context: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+等等
+        :type ThreatTypes: list of str
+        :param Tags: 恶意标签，对应的团伙，家族等信息。
+        :type Tags: list of TagType
+        :param Intelligences: 对应的历史上的威胁情报事件
+        :type Intelligences: list of IntelligenceType
+        :param Context: 情报相关的上下文
+        :type Context: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ReturnCode = None
         self.Result = None
         self.Confidence = None
@@ -252,8 +312,14 @@ class DescribeThreatInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 查询对象，域名或IP
+        :type Key: str
+        :param Type: 查询类型，当前取值为domain或ip
+        :type Type: str
+        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+        :type Option: int
         """
-        :param Key: 查询对象，域名或IP\n        :type Key: str\n        :param Type: 查询类型，当前取值为domain或ip\n        :type Type: str\n        :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。\n        :type Option: int\n        """
         self.Key = None
         self.Type = None
         self.Option = None
@@ -278,8 +344,14 @@ class DescribeThreatInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据\n        :type ReturnCode: int\n        :param Result: 判定结果，如：black、white、grey\n        :type Result: str\n        :param Confidence: 置信度，取值0-100\n        :type Confidence: int\n        :param ThreatTypes: 威胁类型。
+        r"""
+        :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
+        :type ReturnCode: int
+        :param Result: 判定结果，如：black、white、grey
+        :type Result: str
+        :param Confidence: 置信度，取值0-100
+        :type Confidence: int
+        :param ThreatTypes: 威胁类型。
 botnet = 僵尸网络
 trojan = 木马
 ransomware = 勒索软件
@@ -295,13 +367,23 @@ tor = 暗网
 miner = 挖矿
 maleware site = 恶意站点
 malware IP = 恶意IP
-等等\n        :type ThreatTypes: list of str\n        :param Tags: 恶意标签，对应的团伙，家族等信息。\n        :type Tags: list of str\n        :param Status: 当前状态
+等等
+        :type ThreatTypes: list of str
+        :param Tags: 恶意标签，对应的团伙，家族等信息。
+        :type Tags: list of str
+        :param Status: 当前状态
 active = 活跃
 sinkholed = sinkholed
 inactive = 不活跃
 unknown = 未知
-expired = 过期\n        :type Status: str\n        :param Context: 情报相关的上下文，参数option=1 的时候提供
-每个数据默认为3 条\n        :type Context: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+expired = 过期
+        :type Status: str
+        :param Context: 情报相关的上下文，参数option=1 的时候提供
+每个数据默认为3 条
+        :type Context: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ReturnCode = None
         self.Result = None
         self.Confidence = None
@@ -329,8 +411,44 @@ class FileInfoType(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DetectId: 判定渠道
+        :type DetectId: str
+        :param DetectPriority: 检测优先级
+        :type DetectPriority: str
+        :param EnginePriority: 引擎优先级
+        :type EnginePriority: str
+        :param FileExist: 样本是否存在
+        :type FileExist: str
+        :param FileForceUpload: 文件上传
+        :type FileForceUpload: str
+        :param FileSize: 文件大小
+        :type FileSize: str
+        :param FileupTime: 文件上传时间
+        :type FileupTime: str
+        :param FullVirusName: 病毒文件全名
+        :type FullVirusName: str
+        :param IdcPosition: IDC位置
+        :type IdcPosition: str
+        :param Md5Type: 文件md5值
+        :type Md5Type: str
+        :param PeExist: PE结构是否存在
+        :type PeExist: str
+        :param PeForceUpload: PE结构上传
+        :type PeForceUpload: str
+        :param SafeLevel: 安全性等级
+        :type SafeLevel: str
+        :param ScanModiTime: 扫描时间
+        :type ScanModiTime: str
+        :param SubdetectId: 子判定渠道
+        :type SubdetectId: str
+        :param UserDefName: 病毒名
+        :type UserDefName: str
+        :param VirusType: 病毒类型
+        :type VirusType: str
+        :param WhiteScore: 白名单分数
+        :type WhiteScore: str
         """
-        :param DetectId: 判定渠道\n        :type DetectId: str\n        :param DetectPriority: 检测优先级\n        :type DetectPriority: str\n        :param EnginePriority: 引擎优先级\n        :type EnginePriority: str\n        :param FileExist: 样本是否存在\n        :type FileExist: str\n        :param FileForceUpload: 文件上传\n        :type FileForceUpload: str\n        :param FileSize: 文件大小\n        :type FileSize: str\n        :param FileupTime: 文件上传时间\n        :type FileupTime: str\n        :param FullVirusName: 病毒文件全名\n        :type FullVirusName: str\n        :param IdcPosition: IDC位置\n        :type IdcPosition: str\n        :param Md5Type: 文件md5值\n        :type Md5Type: str\n        :param PeExist: PE结构是否存在\n        :type PeExist: str\n        :param PeForceUpload: PE结构上传\n        :type PeForceUpload: str\n        :param SafeLevel: 安全性等级\n        :type SafeLevel: str\n        :param ScanModiTime: 扫描时间\n        :type ScanModiTime: str\n        :param SubdetectId: 子判定渠道\n        :type SubdetectId: str\n        :param UserDefName: 病毒名\n        :type UserDefName: str\n        :param VirusType: 病毒类型\n        :type VirusType: str\n        :param WhiteScore: 白名单分数\n        :type WhiteScore: str\n        """
         self.DetectId = None
         self.DetectPriority = None
         self.EnginePriority = None
@@ -385,8 +503,14 @@ class IntelligenceType(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Source: 来源
+        :type Source: str
+        :param Stamp: 标记
+        :type Stamp: str
+        :param Time: 时间
+        :type Time: int
         """
-        :param Source: 来源\n        :type Source: str\n        :param Stamp: 标记\n        :type Stamp: str\n        :param Time: 时间\n        :type Time: int\n        """
         self.Source = None
         self.Stamp = None
         self.Time = None
@@ -411,8 +535,12 @@ class TagType(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tag: 标签
+        :type Tag: str
+        :param Desc: 标签对应的中文解释
+        :type Desc: str
         """
-        :param Tag: 标签\n        :type Tag: str\n        :param Desc: 标签对应的中文解释\n        :type Desc: str\n        """
         self.Tag = None
         self.Desc = None
 

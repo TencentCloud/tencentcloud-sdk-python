@@ -24,8 +24,14 @@ class APIDoc(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ApiDocStatus: API文档构建状态
+        :type ApiDocStatus: str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        :param ApiDocName: API文档名称\n        :type ApiDocName: str\n        :param ApiDocStatus: API文档构建状态\n        :type ApiDocStatus: str\n        """
         self.ApiDocId = None
         self.ApiDocName = None
         self.ApiDocStatus = None
@@ -50,8 +56,36 @@ class APIDocInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ApiDocStatus: API文档构建状态
+        :type ApiDocStatus: str
+        :param ApiCount: API文档API数量
+        :type ApiCount: int
+        :param ViewCount: API文档查看次数
+        :type ViewCount: int
+        :param ReleaseCount: API文档发布次数
+        :type ReleaseCount: int
+        :param ApiDocUri: API文档访问URI
+        :type ApiDocUri: str
+        :param SharePassword: API文档分享密码
+        :type SharePassword: str
+        :param UpdatedTime: API文档更新时间
+        :type UpdatedTime: str
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param Environment: 环境信息
+        :type Environment: str
+        :param ApiIds: 生成API文档的API ID
+        :type ApiIds: list of str
+        :param ServiceName: 服务名称
+        :type ServiceName: str
+        :param ApiNames: 生成API文档的API名称
+        :type ApiNames: list of str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        :param ApiDocName: API文档名称\n        :type ApiDocName: str\n        :param ApiDocStatus: API文档构建状态\n        :type ApiDocStatus: str\n        :param ApiCount: API文档API数量\n        :type ApiCount: int\n        :param ViewCount: API文档查看次数\n        :type ViewCount: int\n        :param ReleaseCount: API文档发布次数\n        :type ReleaseCount: int\n        :param ApiDocUri: API文档访问URI\n        :type ApiDocUri: str\n        :param SharePassword: API文档分享密码\n        :type SharePassword: str\n        :param UpdatedTime: API文档更新时间\n        :type UpdatedTime: str\n        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param Environment: 环境信息\n        :type Environment: str\n        :param ApiIds: 生成API文档的API ID\n        :type ApiIds: list of str\n        :param ServiceName: 服务名称\n        :type ServiceName: str\n        :param ApiNames: 生成API文档的API名称\n        :type ApiNames: list of str\n        """
         self.ApiDocId = None
         self.ApiDocName = None
         self.ApiDocStatus = None
@@ -98,8 +132,12 @@ class APIDocs(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: API文档数量
+        :type TotalCount: int
+        :param APIDocSet: API文档基本信息
+        :type APIDocSet: list of APIDoc
         """
-        :param TotalCount: API文档数量\n        :type TotalCount: int\n        :param APIDocSet: API文档基本信息\n        :type APIDocSet: list of APIDoc\n        """
         self.TotalCount = None
         self.APIDocSet = None
 
@@ -127,15 +165,31 @@ class ApiAppApiInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApiAppName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppName: str\n        :param ApiAppId: 应用ID\n        :type ApiAppId: str\n        :param ApiId: Api的ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiId: str\n        :param ApiName: Api名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiName: str\n        :param ServiceId: 服务ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        :param AuthorizedTime: 授权绑定时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthorizedTime: str\n        :param ApiRegion: Api所属地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiRegion: str\n        :param EnvironmentName: 授权绑定的环境
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppName: str
+        :param ApiAppId: 应用ID
+        :type ApiAppId: str
+        :param ApiId: Api的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param ApiName: Api名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param ServiceId: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param AuthorizedTime: 授权绑定时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizedTime: str
+        :param ApiRegion: Api所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiRegion: str
+        :param EnvironmentName: 授权绑定的环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentName: str
+        """
         self.ApiAppName = None
         self.ApiAppId = None
         self.ApiId = None
@@ -170,9 +224,13 @@ class ApiAppApiInfos(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 数量
+        :type TotalCount: int
+        :param ApiAppApiSet: 应用绑定的Api信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppApiSet: list of ApiAppApiInfo
         """
-        :param TotalCount: 数量\n        :type TotalCount: int\n        :param ApiAppApiSet: 应用绑定的Api信息数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppApiSet: list of ApiAppApiInfo\n        """
         self.TotalCount = None
         self.ApiAppApiSet = None
 
@@ -200,14 +258,28 @@ class ApiAppInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApiAppName: 应用名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppName: str\n        :param ApiAppId: 应用ID\n        :type ApiAppId: str\n        :param ApiAppSecret: 应用SECRET
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppSecret: str\n        :param ApiAppDesc: 应用描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppDesc: str\n        :param CreatedTime: 创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 修改时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ApiAppKey: 应用KEY
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppKey: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppName: str
+        :param ApiAppId: 应用ID
+        :type ApiAppId: str
+        :param ApiAppSecret: 应用SECRET
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppSecret: str
+        :param ApiAppDesc: 应用描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppDesc: str
+        :param CreatedTime: 创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 修改时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ApiAppKey: 应用KEY
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppKey: str
+        """
         self.ApiAppName = None
         self.ApiAppId = None
         self.ApiAppSecret = None
@@ -240,9 +312,13 @@ class ApiAppInfos(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 应用数量
+        :type TotalCount: int
+        :param ApiAppSet: 应用信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiAppSet: list of ApiAppInfo
         """
-        :param TotalCount: 应用数量\n        :type TotalCount: int\n        :param ApiAppSet: 应用信息数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiAppSet: list of ApiAppInfo\n        """
         self.TotalCount = None
         self.ApiAppSet = None
 
@@ -270,8 +346,18 @@ class ApiEnvironmentStrategy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiId: API唯一ID。
+        :type ApiId: str
+        :param ApiName: 用户自定义API名称。
+        :type ApiName: str
+        :param Path: API的路径。如/path。
+        :type Path: str
+        :param Method: API的方法。如GET。
+        :type Method: str
+        :param EnvironmentStrategySet: 环境的限流信息。
+        :type EnvironmentStrategySet: list of EnvironmentStrategy
         """
-        :param ApiId: API唯一ID。\n        :type ApiId: str\n        :param ApiName: 用户自定义API名称。\n        :type ApiName: str\n        :param Path: API的路径。如/path。\n        :type Path: str\n        :param Method: API的方法。如GET。\n        :type Method: str\n        :param EnvironmentStrategySet: 环境的限流信息。\n        :type EnvironmentStrategySet: list of EnvironmentStrategy\n        """
         self.ApiId = None
         self.ApiName = None
         self.Path = None
@@ -305,10 +391,14 @@ class ApiEnvironmentStrategyStataus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: API绑定的限流策略数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ApiEnvironmentStrategySet: API绑定的限流策略列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiEnvironmentStrategySet: list of ApiEnvironmentStrategy\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApiEnvironmentStrategySet: API绑定的限流策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiEnvironmentStrategySet: list of ApiEnvironmentStrategy
+        """
         self.TotalCount = None
         self.ApiEnvironmentStrategySet = None
 
@@ -336,19 +426,55 @@ class ApiIdStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param ApiId: API唯一ID。
+        :type ApiId: str
+        :param ApiDesc: API描述
+        :type ApiDesc: str
+        :param Path: API PATH。
+        :type Path: str
+        :param Method: API METHOD。
+        :type Method: str
+        :param CreatedTime: 服务创建时间。
+        :type CreatedTime: str
+        :param ModifiedTime: 服务修改时间。
+        :type ModifiedTime: str
+        :param ApiName: API名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param UniqVpcId: VPC唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param ApiType: API类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiType: str
+        :param Protocol: API协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param IsDebugAfterCharge: 是否买后调试。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDebugAfterCharge: bool
+        :param AuthType: 授权类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param ApiBusinessType: API业务类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiBusinessType: str
+        :param AuthRelationApiId: 关联授权API唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRelationApiId: str
+        :param RelationBuniessApiIds: 授权API关联的业务API列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationBuniessApiIds: list of str
+        :param OauthConfig: oauth配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
+        :param TokenLocation: oauth2.0API请求，token存放位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenLocation: str
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param ApiId: API唯一ID。\n        :type ApiId: str\n        :param ApiDesc: API描述\n        :type ApiDesc: str\n        :param Path: API PATH。\n        :type Path: str\n        :param Method: API METHOD。\n        :type Method: str\n        :param CreatedTime: 服务创建时间。\n        :type CreatedTime: str\n        :param ModifiedTime: 服务修改时间。\n        :type ModifiedTime: str\n        :param ApiName: API名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiName: str\n        :param UniqVpcId: VPC唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UniqVpcId: str\n        :param ApiType: API类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiType: str\n        :param Protocol: API协议。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param IsDebugAfterCharge: 是否买后调试。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDebugAfterCharge: bool\n        :param AuthType: 授权类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthType: str\n        :param ApiBusinessType: API业务类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiBusinessType: str\n        :param AuthRelationApiId: 关联授权API唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthRelationApiId: str\n        :param RelationBuniessApiIds: 授权API关联的业务API列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelationBuniessApiIds: list of str\n        :param OauthConfig: oauth配置信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`\n        :param TokenLocation: oauth2.0API请求，token存放位置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TokenLocation: str\n        """
         self.ServiceId = None
         self.ApiId = None
         self.ApiDesc = None
@@ -405,59 +531,161 @@ class ApiInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: API 所在的服务唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        :param ServiceName: API 所在的服务的名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        :param ServiceDesc: API 所在的服务的描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceDesc: str\n        :param ApiId: API 接口唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiId: str\n        :param ApiDesc: API 接口的描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiDesc: str\n        :param CreatedTime: 创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 最后修改时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ApiName: API 接口的名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiName: str\n        :param ApiType: API 类型。可取值为NORMAL（普通API）、TSF（微服务API）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiType: str\n        :param Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param AuthType: API 鉴权类型。可取值为 SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthType: str\n        :param ApiBusinessType: OAUTH API的类型。可取值为NORMAL（业务API）、OAUTH（授权API）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiBusinessType: str\n        :param AuthRelationApiId: OAUTH 业务API 关联的授权API 唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthRelationApiId: str\n        :param OauthConfig: OAUTH配置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`\n        :param IsDebugAfterCharge: 是否购买后调试（云市场预留参数）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDebugAfterCharge: bool\n        :param RequestConfig: 请求的前端配置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`\n        :param ResponseType: 返回类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResponseType: str\n        :param ResponseSuccessExample: 自定义响应配置成功响应示例。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResponseSuccessExample: str\n        :param ResponseFailExample: 自定义响应配置失败响应示例。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResponseFailExample: str\n        :param ResponseErrorCodes: 用户自定义错误码配置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ResponseErrorCodes: list of ErrorCodes\n        :param RequestParameters: 前端请求参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RequestParameters: list of ReqParameter\n        :param ServiceTimeout: API 的后端服务超时时间，单位是秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceTimeout: int\n        :param ServiceType: API 的后端服务类型。可取值为 HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceType: str\n        :param ServiceConfig: API 的后端服务配置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`\n        :param ServiceParameters: API的后端服务参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceParameters: list of ServiceParameter\n        :param ConstantParameters: 常量参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConstantParameters: list of ConstantParameter\n        :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceMockReturnMessage: str\n        :param ServiceScfFunctionName: scf 函数名称。当后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceScfFunctionName: str\n        :param ServiceScfFunctionNamespace: scf 函数命名空间。当后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceScfFunctionNamespace: str\n        :param ServiceScfFunctionQualifier: scf函数版本。当后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceScfFunctionQualifier: str\n        :param ServiceScfIsIntegratedResponse: 是否开启集成响应。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceScfIsIntegratedResponse: bool\n        :param ServiceWebsocketRegisterFunctionName: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketRegisterFunctionName: str\n        :param ServiceWebsocketRegisterFunctionNamespace: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketRegisterFunctionNamespace: str\n        :param ServiceWebsocketRegisterFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketRegisterFunctionQualifier: str\n        :param ServiceWebsocketCleanupFunctionName: scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketCleanupFunctionName: str\n        :param ServiceWebsocketCleanupFunctionNamespace: scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketCleanupFunctionNamespace: str\n        :param ServiceWebsocketCleanupFunctionQualifier: scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketCleanupFunctionQualifier: str\n        :param InternalDomain: WEBSOCKET 回推地址。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InternalDomain: str\n        :param ServiceWebsocketTransportFunctionName: scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketTransportFunctionName: str\n        :param ServiceWebsocketTransportFunctionNamespace: scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketTransportFunctionNamespace: str\n        :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceWebsocketTransportFunctionQualifier: str\n        :param MicroServices: API绑定微服务服务列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MicroServices: list of MicroService\n        :param MicroServicesInfo: 微服务信息详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MicroServicesInfo: list of int\n        :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`\n        :param ServiceTsfHealthCheckConf: 微服务的健康检查配置。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`\n        :param EnableCORS: 是否开启跨域。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnableCORS: bool\n        :param Tags: API绑定的tag信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param Environments: API已发布的环境信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Environments: list of str\n        :param IsBase64Encoded: 是否开启Base64编码，只有后端为scf时才会生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsBase64Encoded: bool\n        :param IsBase64Trigger: 是否开启Base64编码的header触发，只有后端为scf时才会生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsBase64Trigger: bool\n        :param Base64EncodedTriggerRules: Header触发规则，总规则数量不超过10。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param ServiceName: API 所在的服务的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param ServiceDesc: API 所在的服务的描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDesc: str
+        :param ApiId: API 接口唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param ApiDesc: API 接口的描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiDesc: str
+        :param CreatedTime: 创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 最后修改时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ApiName: API 接口的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param ApiType: API 类型。可取值为NORMAL（普通API）、TSF（微服务API）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiType: str
+        :param Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param AuthType: API 鉴权类型。可取值为 SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param ApiBusinessType: OAUTH API的类型。可取值为NORMAL（业务API）、OAUTH（授权API）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiBusinessType: str
+        :param AuthRelationApiId: OAUTH 业务API 关联的授权API 唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRelationApiId: str
+        :param OauthConfig: OAUTH配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
+        :param IsDebugAfterCharge: 是否购买后调试（云市场预留参数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDebugAfterCharge: bool
+        :param RequestConfig: 请求的前端配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`
+        :param ResponseType: 返回类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseType: str
+        :param ResponseSuccessExample: 自定义响应配置成功响应示例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseSuccessExample: str
+        :param ResponseFailExample: 自定义响应配置失败响应示例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseFailExample: str
+        :param ResponseErrorCodes: 用户自定义错误码配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseErrorCodes: list of ErrorCodes
+        :param RequestParameters: 前端请求参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestParameters: list of ReqParameter
+        :param ServiceTimeout: API 的后端服务超时时间，单位是秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceTimeout: int
+        :param ServiceType: API 的后端服务类型。可取值为 HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param ServiceConfig: API 的后端服务配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
+        :param ServiceParameters: API的后端服务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceParameters: list of ServiceParameter
+        :param ConstantParameters: 常量参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConstantParameters: list of ConstantParameter
+        :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceMockReturnMessage: str
+        :param ServiceScfFunctionName: scf 函数名称。当后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceScfFunctionName: str
+        :param ServiceScfFunctionNamespace: scf 函数命名空间。当后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceScfFunctionNamespace: str
+        :param ServiceScfFunctionQualifier: scf函数版本。当后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceScfFunctionQualifier: str
+        :param ServiceScfIsIntegratedResponse: 是否开启集成响应。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceScfIsIntegratedResponse: bool
+        :param ServiceWebsocketRegisterFunctionName: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketRegisterFunctionName: str
+        :param ServiceWebsocketRegisterFunctionNamespace: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketRegisterFunctionNamespace: str
+        :param ServiceWebsocketRegisterFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketRegisterFunctionQualifier: str
+        :param ServiceWebsocketCleanupFunctionName: scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketCleanupFunctionName: str
+        :param ServiceWebsocketCleanupFunctionNamespace: scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketCleanupFunctionNamespace: str
+        :param ServiceWebsocketCleanupFunctionQualifier: scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketCleanupFunctionQualifier: str
+        :param InternalDomain: WEBSOCKET 回推地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalDomain: str
+        :param ServiceWebsocketTransportFunctionName: scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketTransportFunctionName: str
+        :param ServiceWebsocketTransportFunctionNamespace: scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketTransportFunctionNamespace: str
+        :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceWebsocketTransportFunctionQualifier: str
+        :param MicroServices: API绑定微服务服务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroServices: list of MicroService
+        :param MicroServicesInfo: 微服务信息详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroServicesInfo: list of int
+        :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
+        :param ServiceTsfHealthCheckConf: 微服务的健康检查配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
+        :param EnableCORS: 是否开启跨域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCORS: bool
+        :param Tags: API绑定的tag信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param Environments: API已发布的环境信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environments: list of str
+        :param IsBase64Encoded: 是否开启Base64编码，只有后端为scf时才会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBase64Encoded: bool
+        :param IsBase64Trigger: 是否开启Base64编码的header触发，只有后端为scf时才会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBase64Trigger: bool
+        :param Base64EncodedTriggerRules: Header触发规则，总规则数量不超过10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
+        """
         self.ServiceId = None
         self.ServiceName = None
         self.ServiceDesc = None
@@ -623,8 +851,12 @@ class ApiInfoSummary(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 插件相关的API总数。
+        :type TotalCount: int
+        :param ApiSet: 插件相关的API信息。
+        :type ApiSet: list of AvailableApiInfo
         """
-        :param TotalCount: 插件相关的API总数。\n        :type TotalCount: int\n        :param ApiSet: 插件相关的API信息。\n        :type ApiSet: list of AvailableApiInfo\n        """
         self.TotalCount = None
         self.ApiSet = None
 
@@ -652,8 +884,22 @@ class ApiKey(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: 创建的 API 密钥 ID 。
+        :type AccessKeyId: str
+        :param AccessKeySecret: 创建的 API 密钥 Key。
+        :type AccessKeySecret: str
+        :param AccessKeyType: 密钥类型，auto 或者 manual。
+        :type AccessKeyType: str
+        :param SecretName: 用户自定义密钥名称。
+        :type SecretName: str
+        :param ModifiedTime: 最后一次修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type ModifiedTime: str
+        :param Status: 密钥状态。0表示禁用，1表示启用。
+        :type Status: int
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type CreatedTime: str
         """
-        :param AccessKeyId: 创建的 API 密钥 ID 。\n        :type AccessKeyId: str\n        :param AccessKeySecret: 创建的 API 密钥 Key。\n        :type AccessKeySecret: str\n        :param AccessKeyType: 密钥类型，auto 或者 manual。\n        :type AccessKeyType: str\n        :param SecretName: 用户自定义密钥名称。\n        :type SecretName: str\n        :param ModifiedTime: 最后一次修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。\n        :type ModifiedTime: str\n        :param Status: 密钥状态。0表示禁用，1表示启用。\n        :type Status: int\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。\n        :type CreatedTime: str\n        """
         self.AccessKeyId = None
         self.AccessKeySecret = None
         self.AccessKeyType = None
@@ -686,10 +932,14 @@ class ApiKeysStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的 API 密钥数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ApiKeySet: API 密钥列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiKeySet: list of ApiKey\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApiKeySet: API 密钥列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiKeySet: list of ApiKey
+        """
         self.TotalCount = None
         self.ApiKeySet = None
 
@@ -717,8 +967,12 @@ class ApiRequestConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Path: path
+        :type Path: str
+        :param Method: 方法
+        :type Method: str
         """
-        :param Path: path\n        :type Path: str\n        :param Method: 方法\n        :type Method: str\n        """
         self.Path = None
         self.Method = None
 
@@ -741,23 +995,53 @@ class ApiUsagePlan(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        :param ApiId: API 唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiId: str\n        :param ApiName: API 名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiName: str\n        :param Path: API 路径。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Path: str\n        :param Method: API 方法。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Method: str\n        :param UsagePlanId: 使用计划的唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanId: str\n        :param UsagePlanName: 使用计划的名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanName: str\n        :param UsagePlanDesc: 使用计划的描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanDesc: str\n        :param Environment: 使用计划绑定的服务环境。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Environment: str\n        :param InUseRequestNum: 已经使用的配额。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InUseRequestNum: int\n        :param MaxRequestNum: 请求配额总量，-1表示没有限制。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNum: int\n        :param MaxRequestNumPreSec: 请求 QPS 上限，-1 表示没有限制。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNumPreSec: int\n        :param CreatedTime: 使用计划创建时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 使用计划最后修改时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ServiceName: 服务名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param ApiId: API 唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param ApiName: API 名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param Path: API 路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: API 方法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param UsagePlanId: 使用计划的唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanId: str
+        :param UsagePlanName: 使用计划的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanName: str
+        :param UsagePlanDesc: 使用计划的描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanDesc: str
+        :param Environment: 使用计划绑定的服务环境。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: str
+        :param InUseRequestNum: 已经使用的配额。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InUseRequestNum: int
+        :param MaxRequestNum: 请求配额总量，-1表示没有限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNum: int
+        :param MaxRequestNumPreSec: 请求 QPS 上限，-1 表示没有限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNumPreSec: int
+        :param CreatedTime: 使用计划创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 使用计划最后修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ServiceName: 服务名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        """
         self.ServiceId = None
         self.ApiId = None
         self.ApiName = None
@@ -806,10 +1090,14 @@ class ApiUsagePlanSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: API 绑定的使用计划总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ApiUsagePlanList: API 绑定使用计划列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiUsagePlanList: list of ApiUsagePlan\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApiUsagePlanList: API 绑定使用计划列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiUsagePlanList: list of ApiUsagePlan
+        """
         self.TotalCount = None
         self.ApiUsagePlanList = None
 
@@ -837,8 +1125,12 @@ class ApisStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的 API 接口数量。
+        :type TotalCount: int
+        :param ApiIdStatusSet: API 接口列表。
+        :type ApiIdStatusSet: list of DesApisStatus
         """
-        :param TotalCount: 符合条件的 API 接口数量。\n        :type TotalCount: int\n        :param ApiIdStatusSet: API 接口列表。\n        :type ApiIdStatusSet: list of DesApisStatus\n        """
         self.TotalCount = None
         self.ApiIdStatusSet = None
 
@@ -866,8 +1158,16 @@ class AttachPluginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 绑定的API网关插件ID。
+        :type PluginId: str
+        :param ServiceId: 要操作的服务ID。
+        :type ServiceId: str
+        :param EnvironmentName: 要操作API的环境。
+        :type EnvironmentName: str
+        :param ApiIds: 要绑定的API列表。
+        :type ApiIds: list of str
         """
-        :param PluginId: 绑定的API网关插件ID。\n        :type PluginId: str\n        :param ServiceId: 要操作的服务ID。\n        :type ServiceId: str\n        :param EnvironmentName: 要操作API的环境。\n        :type EnvironmentName: str\n        :param ApiIds: 要绑定的API列表。\n        :type ApiIds: list of str\n        """
         self.PluginId = None
         self.ServiceId = None
         self.EnvironmentName = None
@@ -894,8 +1194,12 @@ class AttachPluginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 绑定操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 绑定操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -911,10 +1215,26 @@ class AttachedApiInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API所在服务ID。
+        :type ServiceId: str
+        :param ServiceName: API所在服务名称。
+        :type ServiceName: str
+        :param ServiceDesc: API所在服务描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDesc: str
+        :param ApiId: API ID。
+        :type ApiId: str
+        :param ApiName: API名称。
+        :type ApiName: str
+        :param ApiDesc: API描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiDesc: str
+        :param Environment: 插件绑定API的环境。
+        :type Environment: str
+        :param AttachedTime: 插件和API绑定时间。
+        :type AttachedTime: str
         """
-        :param ServiceId: API所在服务ID。\n        :type ServiceId: str\n        :param ServiceName: API所在服务名称。\n        :type ServiceName: str\n        :param ServiceDesc: API所在服务描述信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceDesc: str\n        :param ApiId: API ID。\n        :type ApiId: str\n        :param ApiName: API名称。\n        :type ApiName: str\n        :param ApiDesc: API描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiDesc: str\n        :param Environment: 插件绑定API的环境。\n        :type Environment: str\n        :param AttachedTime: 插件和API绑定时间。\n        :type AttachedTime: str\n        """
         self.ServiceId = None
         self.ServiceName = None
         self.ServiceDesc = None
@@ -949,8 +1269,12 @@ class AttachedApiSummary(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 插件绑定的API数量。
+        :type TotalCount: int
+        :param AttachedApis: 插件绑定的API信息。
+        :type AttachedApis: list of AttachedApiInfo
         """
-        :param TotalCount: 插件绑定的API数量。\n        :type TotalCount: int\n        :param AttachedApis: 插件绑定的API信息。\n        :type AttachedApis: list of AttachedApiInfo\n        """
         self.TotalCount = None
         self.AttachedApis = None
 
@@ -978,10 +1302,24 @@ class AvailableApiInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiId: API ID。
+        :type ApiId: str
+        :param ApiName: API名称。
+        :type ApiName: str
+        :param ApiType: API类型。
+        :type ApiType: str
+        :param Path: API路径。
+        :type Path: str
+        :param Method: API方法。
+        :type Method: str
+        :param AttachedOtherPlugin: API是否绑定其他插件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedOtherPlugin: bool
+        :param IsAttached: API是否绑定当前插件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAttached: bool
         """
-        :param ApiId: API ID。\n        :type ApiId: str\n        :param ApiName: API名称。\n        :type ApiName: str\n        :param ApiType: API类型。\n        :type ApiType: str\n        :param Path: API路径。\n        :type Path: str\n        :param Method: API方法。\n        :type Method: str\n        :param AttachedOtherPlugin: API是否绑定其他插件。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AttachedOtherPlugin: bool\n        :param IsAttached: API是否绑定当前插件。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsAttached: bool\n        """
         self.ApiId = None
         self.ApiName = None
         self.ApiType = None
@@ -1014,15 +1352,19 @@ class Base64EncodedTriggerRule(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: 进行编码触发的header，可选值 "Accept"和"Content_Type" 对应实际数据流请求header中的Accept和 Content-Type。\n        :type Name: str\n        :param Value: 进行编码触发的header的可选值数组, 数组元素的字符串最大长度为40，元素可以包括数字，英文字母以及特殊字符，特殊字符的可选值为： `.`    `+`    `*`   `-`   `/`  `_` 
+        r"""
+        :param Name: 进行编码触发的header，可选值 "Accept"和"Content_Type" 对应实际数据流请求header中的Accept和 Content-Type。
+        :type Name: str
+        :param Value: 进行编码触发的header的可选值数组, 数组元素的字符串最大长度为40，元素可以包括数字，英文字母以及特殊字符，特殊字符的可选值为： `.`    `+`    `*`   `-`   `/`  `_` 
 
 例如 [
     "application/x-vpeg005",
     "application/xhtml+xml",
     "application/vnd.ms-project",
     "application/vnd.rn-rn_music_package"
-] 等都是合法的。\n        :type Value: list of str\n        """
+] 等都是合法的。
+        :type Value: list of str
+        """
         self.Name = None
         self.Value = None
 
@@ -1045,8 +1387,16 @@ class BindApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 待绑定的应用唯一 ID 。
+        :type ApiAppId: str
+        :param Environment: 待绑定的环境。
+        :type Environment: str
+        :param ServiceId: 待绑定的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiId: 待绑定的API唯一ID。
+        :type ApiId: str
         """
-        :param ApiAppId: 待绑定的应用唯一 ID 。\n        :type ApiAppId: str\n        :param Environment: 待绑定的环境。\n        :type Environment: str\n        :param ServiceId: 待绑定的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiId: 待绑定的API唯一ID。\n        :type ApiId: str\n        """
         self.ApiAppId = None
         self.Environment = None
         self.ServiceId = None
@@ -1073,9 +1423,13 @@ class BindApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1091,8 +1445,18 @@ class BindEnvironmentRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanIds: 待绑定的使用计划唯一 ID 列表。
+        :type UsagePlanIds: list of str
+        :param BindType: 绑定类型，取值为API、SERVICE，默认值为SERVICE。
+        :type BindType: str
+        :param Environment: 待绑定的环境。
+        :type Environment: str
+        :param ServiceId: 待绑定的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiIds: API唯一ID数组，当bindType=API时，需要传入此参数。
+        :type ApiIds: list of str
         """
-        :param UsagePlanIds: 待绑定的使用计划唯一 ID 列表。\n        :type UsagePlanIds: list of str\n        :param BindType: 绑定类型，取值为API、SERVICE，默认值为SERVICE。\n        :type BindType: str\n        :param Environment: 待绑定的环境。\n        :type Environment: str\n        :param ServiceId: 待绑定的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiIds: API唯一ID数组，当bindType=API时，需要传入此参数。\n        :type ApiIds: list of str\n        """
         self.UsagePlanIds = None
         self.BindType = None
         self.Environment = None
@@ -1121,9 +1485,13 @@ class BindEnvironmentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1139,8 +1507,16 @@ class BindIPStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待绑定的IP策略所属的服务唯一ID。
+        :type ServiceId: str
+        :param StrategyId: 待绑定的IP策略唯一ID。
+        :type StrategyId: str
+        :param EnvironmentName: IP策略待绑定的环境。
+        :type EnvironmentName: str
+        :param BindApiIds: IP策略待绑定的API列表。
+        :type BindApiIds: list of str
         """
-        :param ServiceId: 待绑定的IP策略所属的服务唯一ID。\n        :type ServiceId: str\n        :param StrategyId: 待绑定的IP策略唯一ID。\n        :type StrategyId: str\n        :param EnvironmentName: IP策略待绑定的环境。\n        :type EnvironmentName: str\n        :param BindApiIds: IP策略待绑定的API列表。\n        :type BindApiIds: list of str\n        """
         self.ServiceId = None
         self.StrategyId = None
         self.EnvironmentName = None
@@ -1167,9 +1543,13 @@ class BindIPStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1185,8 +1565,12 @@ class BindSecretIdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 待绑定的使用计划唯一 ID。
+        :type UsagePlanId: str
+        :param AccessKeyIds: 待绑定的密钥 ID 数组。
+        :type AccessKeyIds: list of str
         """
-        :param UsagePlanId: 待绑定的使用计划唯一 ID。\n        :type UsagePlanId: str\n        :param AccessKeyIds: 待绑定的密钥 ID 数组。\n        :type AccessKeyIds: list of str\n        """
         self.UsagePlanId = None
         self.AccessKeyIds = None
 
@@ -1209,9 +1593,13 @@ class BindSecretIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1227,8 +1615,26 @@ class BindSubDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一 ID。
+        :type ServiceId: str
+        :param SubDomain: 待绑定的自定义的域名。
+        :type SubDomain: str
+        :param Protocol: 服务支持协议，可选值为http、https、http&https。
+        :type Protocol: str
+        :param NetType: 网络类型，可选值为OUTER、INNER。
+        :type NetType: str
+        :param IsDefaultMapping: 是否使用默认路径映射，默认为 true。为 false 时，表示自定义路径映射，此时 PathMappingSet 必填。
+        :type IsDefaultMapping: bool
+        :param NetSubDomain: 默认域名。
+        :type NetSubDomain: str
+        :param CertificateId: 待绑定自定义域名的证书唯一 ID。针对Protocol 为https或http&https可以选择上传。
+        :type CertificateId: str
+        :param PathMappingSet: 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。
+        :type PathMappingSet: list of PathMapping
+        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+        :type IsForcedHttps: bool
         """
-        :param ServiceId: 服务唯一 ID。\n        :type ServiceId: str\n        :param SubDomain: 待绑定的自定义的域名。\n        :type SubDomain: str\n        :param Protocol: 服务支持协议，可选值为http、https、http&https。\n        :type Protocol: str\n        :param NetType: 网络类型，可选值为OUTER、INNER。\n        :type NetType: str\n        :param IsDefaultMapping: 是否使用默认路径映射，默认为 true。为 false 时，表示自定义路径映射，此时 PathMappingSet 必填。\n        :type IsDefaultMapping: bool\n        :param NetSubDomain: 默认域名。\n        :type NetSubDomain: str\n        :param CertificateId: 待绑定自定义域名的证书唯一 ID。针对Protocol 为https或http&https可以选择上传。\n        :type CertificateId: str\n        :param PathMappingSet: 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。\n        :type PathMappingSet: list of PathMapping\n        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。\n        :type IsForcedHttps: bool\n        """
         self.ServiceId = None
         self.SubDomain = None
         self.Protocol = None
@@ -1270,9 +1676,13 @@ class BindSubDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1288,8 +1698,10 @@ class BuildAPIDocRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        """
         self.ApiDocId = None
 
 
@@ -1310,8 +1722,12 @@ class BuildAPIDocResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 操作是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 操作是否成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1327,8 +1743,16 @@ class ConstantParameter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 常量参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
+        :type Name: str
+        :param Desc: 常量参数描述。只有 ServiceType 是 HTTP 才会用到此参数。
+        :type Desc: str
+        :param Position: 常量参数位置。只有 ServiceType 是 HTTP 才会用到此参数。
+        :type Position: str
+        :param DefaultValue: 常量参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
+        :type DefaultValue: str
         """
-        :param Name: 常量参数名称。只有 ServiceType 是 HTTP 才会用到此参数。\n        :type Name: str\n        :param Desc: 常量参数描述。只有 ServiceType 是 HTTP 才会用到此参数。\n        :type Desc: str\n        :param Position: 常量参数位置。只有 ServiceType 是 HTTP 才会用到此参数。\n        :type Position: str\n        :param DefaultValue: 常量参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。\n        :type DefaultValue: str\n        """
         self.Name = None
         self.Desc = None
         self.Position = None
@@ -1355,8 +1779,16 @@ class CreateAPIDocRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ServiceId: 服务名称
+        :type ServiceId: str
+        :param Environment: 环境名称
+        :type Environment: str
+        :param ApiIds: 生成文档的API列表
+        :type ApiIds: list of str
         """
-        :param ApiDocName: API文档名称\n        :type ApiDocName: str\n        :param ServiceId: 服务名称\n        :type ServiceId: str\n        :param Environment: 环境名称\n        :type Environment: str\n        :param ApiIds: 生成文档的API列表\n        :type ApiIds: list of str\n        """
         self.ApiDocName = None
         self.ServiceId = None
         self.Environment = None
@@ -1383,8 +1815,12 @@ class CreateAPIDocResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API文档基本信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API文档基本信息\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1402,8 +1838,12 @@ class CreateApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppName: 用户自定义应用名称。
+        :type ApiAppName: str
+        :param ApiAppDesc: 应用描述
+        :type ApiAppDesc: str
         """
-        :param ApiAppName: 用户自定义应用名称。\n        :type ApiAppName: str\n        :param ApiAppDesc: 应用描述\n        :type ApiAppDesc: str\n        """
         self.ApiAppName = None
         self.ApiAppDesc = None
 
@@ -1426,9 +1866,13 @@ class CreateApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 新增的应用详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1446,8 +1890,16 @@ class CreateApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SecretName: 用户自定义密钥名称。
+        :type SecretName: str
+        :param AccessKeyType: 密钥类型，支持 auto 和 manual（自定义密钥），默认为 auto。
+        :type AccessKeyType: str
+        :param AccessKeyId: 用户自定义密钥 ID，AccessKeyType 为 manual 时必传。长度为5 - 50字符，由字母、数字、英文下划线组成。
+        :type AccessKeyId: str
+        :param AccessKeySecret: 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。
+        :type AccessKeySecret: str
         """
-        :param SecretName: 用户自定义密钥名称。\n        :type SecretName: str\n        :param AccessKeyType: 密钥类型，支持 auto 和 manual（自定义密钥），默认为 auto。\n        :type AccessKeyType: str\n        :param AccessKeyId: 用户自定义密钥 ID，AccessKeyType 为 manual 时必传。长度为5 - 50字符，由字母、数字、英文下划线组成。\n        :type AccessKeyId: str\n        :param AccessKeySecret: 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。\n        :type AccessKeySecret: str\n        """
         self.SecretName = None
         self.AccessKeyType = None
         self.AccessKeyId = None
@@ -1474,9 +1926,13 @@ class CreateApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 新增的密钥详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1494,8 +1950,102 @@ class CreateApiRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。
+        :type ServiceType: str
+        :param ServiceTimeout: API 的后端服务超时时间，单位是秒。
+        :type ServiceTimeout: int
+        :param Protocol: API 的前端请求协议，支持HTTP和WEBSOCKET。
+        :type Protocol: str
+        :param RequestConfig: 请求的前端配置。
+        :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.ApiRequestConfig`
+        :param ApiName: 用户自定义的 API 名称。
+        :type ApiName: str
+        :param ApiDesc: 用户自定义的 API 接口描述。
+        :type ApiDesc: str
+        :param ApiType: API 类型，支持NORMAL（普通API）和TSF（微服务API），默认为NORMAL。
+        :type ApiType: str
+        :param AuthType: API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、APP（应用认证）。默认为NONE。
+        :type AuthType: str
+        :param EnableCORS: 是否开启跨域。
+        :type EnableCORS: bool
+        :param ConstantParameters: 常量参数。
+        :type ConstantParameters: list of ConstantParameter
+        :param RequestParameters: 前端请求参数。
+        :type RequestParameters: list of RequestParameter
+        :param ApiBusinessType: 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api OAUTH：授权API。
+        :type ApiBusinessType: str
+        :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
+        :type ServiceMockReturnMessage: str
+        :param MicroServices: API绑定微服务服务列表。
+        :type MicroServices: list of MicroServiceReq
+        :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。
+        :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
+        :param ServiceTsfHealthCheckConf: 微服务的健康检查配置。
+        :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
+        :param TargetServices: target类型后端资源信息。（内测阶段）
+        :type TargetServices: list of TargetServicesReq
+        :param TargetServicesLoadBalanceConf: target类型负载均衡配置。（内测阶段）
+        :type TargetServicesLoadBalanceConf: int
+        :param TargetServicesHealthCheckConf: target健康检查配置。（内测阶段）
+        :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
+        :param ServiceScfFunctionName: scf 函数名称。当后端类型是SCF时生效。
+        :type ServiceScfFunctionName: str
+        :param ServiceWebsocketRegisterFunctionName: scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketRegisterFunctionName: str
+        :param ServiceWebsocketCleanupFunctionName: scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketCleanupFunctionName: str
+        :param ServiceWebsocketTransportFunctionName: scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketTransportFunctionName: str
+        :param ServiceScfFunctionNamespace: scf 函数命名空间。当后端类型是SCF时生效。
+        :type ServiceScfFunctionNamespace: str
+        :param ServiceScfFunctionQualifier: scf函数版本。当后端类型是SCF时生效。
+        :type ServiceScfFunctionQualifier: str
+        :param ServiceWebsocketRegisterFunctionNamespace: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketRegisterFunctionNamespace: str
+        :param ServiceWebsocketRegisterFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketRegisterFunctionQualifier: str
+        :param ServiceWebsocketTransportFunctionNamespace: scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketTransportFunctionNamespace: str
+        :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketTransportFunctionQualifier: str
+        :param ServiceWebsocketCleanupFunctionNamespace: scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketCleanupFunctionNamespace: str
+        :param ServiceWebsocketCleanupFunctionQualifier: scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketCleanupFunctionQualifier: str
+        :param ServiceScfIsIntegratedResponse: 是否开启响应集成。当后端类型是SCF时生效。
+        :type ServiceScfIsIntegratedResponse: bool
+        :param IsDebugAfterCharge: 开始调试后计费。（云市场预留字段）
+        :type IsDebugAfterCharge: bool
+        :param IsDeleteResponseErrorCodes: 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。
+        :type IsDeleteResponseErrorCodes: bool
+        :param ResponseType: 返回类型。
+        :type ResponseType: str
+        :param ResponseSuccessExample: 自定义响应配置成功响应示例。
+        :type ResponseSuccessExample: str
+        :param ResponseFailExample: 自定义响应配置失败响应示例。
+        :type ResponseFailExample: str
+        :param ServiceConfig: API 的后端服务配置。
+        :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
+        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
+        :type AuthRelationApiId: str
+        :param ServiceParameters: API的后端服务参数。
+        :type ServiceParameters: list of ServiceParameter
+        :param OauthConfig: oauth配置。当AuthType是OAUTH时生效。
+        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
+        :param ResponseErrorCodes: 用户自定义错误码配置。
+        :type ResponseErrorCodes: list of ResponseErrorCodeReq
+        :param TargetNamespaceId: tsf serverless 命名空间ID。（内测中）
+        :type TargetNamespaceId: str
+        :param UserType: 用户类型。
+        :type UserType: str
+        :param IsBase64Encoded: 是否打开Base64编码，只有后端是scf时才会生效。
+        :type IsBase64Encoded: bool
+        :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
+        :type ServiceScfFunctionType: str
         """
-        :param ServiceId: API 所在的服务唯一 ID。\n        :type ServiceId: str\n        :param ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。\n        :type ServiceType: str\n        :param ServiceTimeout: API 的后端服务超时时间，单位是秒。\n        :type ServiceTimeout: int\n        :param Protocol: API 的前端请求协议，支持HTTP和WEBSOCKET。\n        :type Protocol: str\n        :param RequestConfig: 请求的前端配置。\n        :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.ApiRequestConfig`\n        :param ApiName: 用户自定义的 API 名称。\n        :type ApiName: str\n        :param ApiDesc: 用户自定义的 API 接口描述。\n        :type ApiDesc: str\n        :param ApiType: API 类型，支持NORMAL（普通API）和TSF（微服务API），默认为NORMAL。\n        :type ApiType: str\n        :param AuthType: API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、APP（应用认证）。默认为NONE。\n        :type AuthType: str\n        :param EnableCORS: 是否开启跨域。\n        :type EnableCORS: bool\n        :param ConstantParameters: 常量参数。\n        :type ConstantParameters: list of ConstantParameter\n        :param RequestParameters: 前端请求参数。\n        :type RequestParameters: list of RequestParameter\n        :param ApiBusinessType: 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api OAUTH：授权API。\n        :type ApiBusinessType: str\n        :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。\n        :type ServiceMockReturnMessage: str\n        :param MicroServices: API绑定微服务服务列表。\n        :type MicroServices: list of MicroServiceReq\n        :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。\n        :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`\n        :param ServiceTsfHealthCheckConf: 微服务的健康检查配置。\n        :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`\n        :param TargetServices: target类型后端资源信息。（内测阶段）\n        :type TargetServices: list of TargetServicesReq\n        :param TargetServicesLoadBalanceConf: target类型负载均衡配置。（内测阶段）\n        :type TargetServicesLoadBalanceConf: int\n        :param TargetServicesHealthCheckConf: target健康检查配置。（内测阶段）\n        :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`\n        :param ServiceScfFunctionName: scf 函数名称。当后端类型是SCF时生效。\n        :type ServiceScfFunctionName: str\n        :param ServiceWebsocketRegisterFunctionName: scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketRegisterFunctionName: str\n        :param ServiceWebsocketCleanupFunctionName: scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketCleanupFunctionName: str\n        :param ServiceWebsocketTransportFunctionName: scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketTransportFunctionName: str\n        :param ServiceScfFunctionNamespace: scf 函数命名空间。当后端类型是SCF时生效。\n        :type ServiceScfFunctionNamespace: str\n        :param ServiceScfFunctionQualifier: scf函数版本。当后端类型是SCF时生效。\n        :type ServiceScfFunctionQualifier: str\n        :param ServiceWebsocketRegisterFunctionNamespace: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketRegisterFunctionNamespace: str\n        :param ServiceWebsocketRegisterFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketRegisterFunctionQualifier: str\n        :param ServiceWebsocketTransportFunctionNamespace: scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketTransportFunctionNamespace: str\n        :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketTransportFunctionQualifier: str\n        :param ServiceWebsocketCleanupFunctionNamespace: scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketCleanupFunctionNamespace: str\n        :param ServiceWebsocketCleanupFunctionQualifier: scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketCleanupFunctionQualifier: str\n        :param ServiceScfIsIntegratedResponse: 是否开启响应集成。当后端类型是SCF时生效。\n        :type ServiceScfIsIntegratedResponse: bool\n        :param IsDebugAfterCharge: 开始调试后计费。（云市场预留字段）\n        :type IsDebugAfterCharge: bool\n        :param IsDeleteResponseErrorCodes: 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。\n        :type IsDeleteResponseErrorCodes: bool\n        :param ResponseType: 返回类型。\n        :type ResponseType: str\n        :param ResponseSuccessExample: 自定义响应配置成功响应示例。\n        :type ResponseSuccessExample: str\n        :param ResponseFailExample: 自定义响应配置失败响应示例。\n        :type ResponseFailExample: str\n        :param ServiceConfig: API 的后端服务配置。\n        :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`\n        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。\n        :type AuthRelationApiId: str\n        :param ServiceParameters: API的后端服务参数。\n        :type ServiceParameters: list of ServiceParameter\n        :param OauthConfig: oauth配置。当AuthType是OAUTH时生效。\n        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`\n        :param ResponseErrorCodes: 用户自定义错误码配置。\n        :type ResponseErrorCodes: list of ResponseErrorCodeReq\n        :param TargetNamespaceId: tsf serverless 命名空间ID。（内测中）\n        :type TargetNamespaceId: str\n        :param UserType: 用户类型。\n        :type UserType: str\n        :param IsBase64Encoded: 是否打开Base64编码，只有后端是scf时才会生效。\n        :type IsBase64Encoded: bool\n        :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。\n        :type ServiceScfFunctionType: str\n        """
         self.ServiceId = None
         self.ServiceType = None
         self.ServiceTimeout = None
@@ -1650,9 +2200,13 @@ class CreateApiResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: api信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRsp`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRsp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1670,12 +2224,20 @@ class CreateApiRsp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApiId: api id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiId: str\n        :param Path: path
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Path: str\n        :param Method: method
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Method: str\n        :param CreatedTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param Path: path
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: method
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
         self.ApiId = None
         self.Path = None
         self.Method = None
@@ -1702,8 +2264,16 @@ class CreateIPStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务的唯一ID。
+        :type ServiceId: str
+        :param StrategyName: 用户自定义的策略名称。
+        :type StrategyName: str
+        :param StrategyType: 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
+        :type StrategyType: str
+        :param StrategyData: 策略详情，多个ip 使用\n 分隔符分开。
+        :type StrategyData: str
         """
-        :param ServiceId: 服务的唯一ID。\n        :type ServiceId: str\n        :param StrategyName: 用户自定义的策略名称。\n        :type StrategyName: str\n        :param StrategyType: 策略类型。支持WHITE（白名单）和BLACK（黑名单）。\n        :type StrategyType: str\n        :param StrategyData: 策略详情，多个ip 使用\n 分隔符分开。\n        :type StrategyData: str\n        """
         self.ServiceId = None
         self.StrategyName = None
         self.StrategyType = None
@@ -1730,9 +2300,13 @@ class CreateIPStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 新建的IP策略详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1750,8 +2324,16 @@ class CreatePluginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginName: 用户自定义的插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+        :type PluginName: str
+        :param PluginType: 插件类型。目前支持IPControl。
+        :type PluginType: str
+        :param PluginData: 插件定义语句，支持json。
+        :type PluginData: str
+        :param Description: 插件描述，限定200字以内。
+        :type Description: str
         """
-        :param PluginName: 用户自定义的插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。\n        :type PluginName: str\n        :param PluginType: 插件类型。目前支持IPControl。\n        :type PluginType: str\n        :param PluginData: 插件定义语句，支持json。\n        :type PluginData: str\n        :param Description: 插件描述，限定200字以内。\n        :type Description: str\n        """
         self.PluginName = None
         self.PluginType = None
         self.PluginData = None
@@ -1778,8 +2360,12 @@ class CreatePluginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 新建的插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 新建的插件详情。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1797,8 +2383,28 @@ class CreateServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceName: 用户自定义的服务名称。
+        :type ServiceName: str
+        :param Protocol: 服务的前端请求类型。如 http、https、http&https。
+        :type Protocol: str
+        :param ServiceDesc: 用户自定义的服务描述。
+        :type ServiceDesc: str
+        :param ExclusiveSetName: 独立集群名称，用于指定创建服务所在的独立集群。
+        :type ExclusiveSetName: str
+        :param NetTypes: 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
+        :type NetTypes: list of str
+        :param IpVersion: IP版本号，支持IPv4和IPv6，默认为IPv4。
+        :type IpVersion: str
+        :param SetServerName: 集群名称。保留字段，tsf serverlss类型使用。
+        :type SetServerName: str
+        :param AppIdType: 用户类型。保留类型，serverless用户使用。
+        :type AppIdType: str
+        :param Tags: 标签。
+        :type Tags: list of Tag
+        :param InstanceId: 独享实例id
+        :type InstanceId: str
         """
-        :param ServiceName: 用户自定义的服务名称。\n        :type ServiceName: str\n        :param Protocol: 服务的前端请求类型。如 http、https、http&https。\n        :type Protocol: str\n        :param ServiceDesc: 用户自定义的服务描述。\n        :type ServiceDesc: str\n        :param ExclusiveSetName: 独立集群名称，用于指定创建服务所在的独立集群。\n        :type ExclusiveSetName: str\n        :param NetTypes: 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。\n        :type NetTypes: list of str\n        :param IpVersion: IP版本号，支持IPv4和IPv6，默认为IPv4。\n        :type IpVersion: str\n        :param SetServerName: 集群名称。保留字段，tsf serverlss类型使用。\n        :type SetServerName: str\n        :param AppIdType: 用户类型。保留类型，serverless用户使用。\n        :type AppIdType: str\n        :param Tags: 标签。\n        :type Tags: list of Tag\n        :param InstanceId: 独享实例id\n        :type InstanceId: str\n        """
         self.ServiceName = None
         self.Protocol = None
         self.ServiceDesc = None
@@ -1842,9 +2448,27 @@ class CreateServiceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param ServiceName: 用户自定义服务名称。
+        :type ServiceName: str
+        :param ServiceDesc: 用户自定义服务描述。
+        :type ServiceDesc: str
+        :param OuterSubDomain: 外网默认域名。
+        :type OuterSubDomain: str
+        :param InnerSubDomain: vpc内网默认域名。
+        :type InnerSubDomain: str
+        :param CreatedTime: 服务创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type CreatedTime: str
+        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。
+        :type NetTypes: list of str
+        :param IpVersion: IP版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param ServiceName: 用户自定义服务名称。\n        :type ServiceName: str\n        :param ServiceDesc: 用户自定义服务描述。\n        :type ServiceDesc: str\n        :param OuterSubDomain: 外网默认域名。\n        :type OuterSubDomain: str\n        :param InnerSubDomain: vpc内网默认域名。\n        :type InnerSubDomain: str\n        :param CreatedTime: 服务创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。\n        :type CreatedTime: str\n        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。\n        :type NetTypes: list of str\n        :param IpVersion: IP版本号。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IpVersion: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServiceId = None
         self.ServiceName = None
         self.ServiceDesc = None
@@ -1874,8 +2498,16 @@ class CreateUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanName: 用户自定义的使用计划名称。
+        :type UsagePlanName: str
+        :param UsagePlanDesc: 用户自定义的使用计划描述。
+        :type UsagePlanDesc: str
+        :param MaxRequestNum: 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。
+        :type MaxRequestNum: int
+        :param MaxRequestNumPreSec: 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
+        :type MaxRequestNumPreSec: int
         """
-        :param UsagePlanName: 用户自定义的使用计划名称。\n        :type UsagePlanName: str\n        :param UsagePlanDesc: 用户自定义的使用计划描述。\n        :type UsagePlanDesc: str\n        :param MaxRequestNum: 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。\n        :type MaxRequestNum: int\n        :param MaxRequestNumPreSec: 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。\n        :type MaxRequestNumPreSec: int\n        """
         self.UsagePlanName = None
         self.UsagePlanDesc = None
         self.MaxRequestNum = None
@@ -1902,9 +2534,13 @@ class CreateUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 使用计划详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -1922,8 +2558,10 @@ class DeleteAPIDocRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        """
         self.ApiDocId = None
 
 
@@ -1944,8 +2582,12 @@ class DeleteAPIDocResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 操作是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 操作是否成功\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -1961,8 +2603,10 @@ class DeleteApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 应用唯一 ID。
+        :type ApiAppId: str
         """
-        :param ApiAppId: 应用唯一 ID。\n        :type ApiAppId: str\n        """
         self.ApiAppId = None
 
 
@@ -1983,9 +2627,13 @@ class DeleteApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 删除操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2001,8 +2649,10 @@ class DeleteApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: 待删除的密钥 ID。
+        :type AccessKeyId: str
         """
-        :param AccessKeyId: 待删除的密钥 ID。\n        :type AccessKeyId: str\n        """
         self.AccessKeyId = None
 
 
@@ -2023,9 +2673,13 @@ class DeleteApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 删除操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2041,8 +2695,12 @@ class DeleteApiRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiId: API 接口唯一 ID。
+        :type ApiId: str
         """
-        :param ServiceId: API 所在的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiId: API 接口唯一 ID。\n        :type ApiId: str\n        """
         self.ServiceId = None
         self.ApiId = None
 
@@ -2065,9 +2723,13 @@ class DeleteApiResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 删除操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2083,8 +2745,12 @@ class DeleteIPStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待删除的IP策略所属的服务唯一ID。
+        :type ServiceId: str
+        :param StrategyId: 待删除的IP策略唯一ID。
+        :type StrategyId: str
         """
-        :param ServiceId: 待删除的IP策略所属的服务唯一ID。\n        :type ServiceId: str\n        :param StrategyId: 待删除的IP策略唯一ID。\n        :type StrategyId: str\n        """
         self.ServiceId = None
         self.StrategyId = None
 
@@ -2107,9 +2773,13 @@ class DeleteIPStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 删除操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2125,8 +2795,10 @@ class DeletePluginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 要删除的API网关插件的ID。
+        :type PluginId: str
         """
-        :param PluginId: 要删除的API网关插件的ID。\n        :type PluginId: str\n        """
         self.PluginId = None
 
 
@@ -2147,8 +2819,12 @@ class DeletePluginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 删除操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 删除操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2164,8 +2840,12 @@ class DeleteServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待删除服务的唯一 ID。
+        :type ServiceId: str
+        :param SkipVerification: 跳过删除前置条件校验（仅支持独享实例上的服务）
+        :type SkipVerification: int
         """
-        :param ServiceId: 待删除服务的唯一 ID。\n        :type ServiceId: str\n        :param SkipVerification: 跳过删除前置条件校验（仅支持独享实例上的服务）\n        :type SkipVerification: int\n        """
         self.ServiceId = None
         self.SkipVerification = None
 
@@ -2188,9 +2868,13 @@ class DeleteServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 删除操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2206,8 +2890,14 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一 ID。
+        :type ServiceId: str
+        :param SubDomain: 服务绑定的自定义域名。
+        :type SubDomain: str
+        :param Environment: 待删除映射的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
+        :type Environment: str
         """
-        :param ServiceId: 服务唯一 ID。\n        :type ServiceId: str\n        :param SubDomain: 服务绑定的自定义域名。\n        :type SubDomain: str\n        :param Environment: 待删除映射的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。\n        :type Environment: str\n        """
         self.ServiceId = None
         self.SubDomain = None
         self.Environment = None
@@ -2232,8 +2922,12 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 删除自定义域名的路径映射操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 删除自定义域名的路径映射操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2249,8 +2943,10 @@ class DeleteUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 待删除的使用计划唯一 ID。
+        :type UsagePlanId: str
         """
-        :param UsagePlanId: 待删除的使用计划唯一 ID。\n        :type UsagePlanId: str\n        """
         self.UsagePlanId = None
 
 
@@ -2271,9 +2967,13 @@ class DeleteUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 删除操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2289,8 +2989,14 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 使用计划ID。
+        :type UsagePlanId: str
+        :param ServiceId: 待降级的服务唯一 ID。
+        :type ServiceId: str
+        :param Environment: 环境名称。
+        :type Environment: str
         """
-        :param UsagePlanId: 使用计划ID。\n        :type UsagePlanId: str\n        :param ServiceId: 待降级的服务唯一 ID。\n        :type ServiceId: str\n        :param Environment: 环境名称。\n        :type Environment: str\n        """
         self.UsagePlanId = None
         self.ServiceId = None
         self.Environment = None
@@ -2315,9 +3021,13 @@ class DemoteServiceUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 降级操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2333,25 +3043,63 @@ class DesApisStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param ApiId: API唯一ID。
+        :type ApiId: str
+        :param ApiDesc: 用户自定义的 API 接口描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiDesc: str
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ApiName: API 接口的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param VpcId: VPCID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: int
+        :param UniqVpcId: VPC唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param ApiType: API类型。取值为NORMAL（普通API）和TSF（微服务API）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiType: str
+        :param Protocol: API协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param IsDebugAfterCharge: 是否买后调试。（云市场预留字段）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDebugAfterCharge: bool
+        :param AuthType: API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param ApiBusinessType: OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiBusinessType: str
+        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRelationApiId: str
+        :param OauthConfig: OAUTH 配置信息。当AuthType是OAUTH时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
+        :param RelationBuniessApiIds: 授权API关联的业务API列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationBuniessApiIds: list of str
+        :param Tags: API关联的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param Path: API 的路径，如 /path。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: API 的请求方法，如 GET。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param ApiId: API唯一ID。\n        :type ApiId: str\n        :param ApiDesc: 用户自定义的 API 接口描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiDesc: str\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ApiName: API 接口的名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiName: str\n        :param VpcId: VPCID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: int\n        :param UniqVpcId: VPC唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UniqVpcId: str\n        :param ApiType: API类型。取值为NORMAL（普通API）和TSF（微服务API）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiType: str\n        :param Protocol: API协议。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param IsDebugAfterCharge: 是否买后调试。（云市场预留字段）
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsDebugAfterCharge: bool\n        :param AuthType: API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthType: str\n        :param ApiBusinessType: OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiBusinessType: str\n        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AuthRelationApiId: str\n        :param OauthConfig: OAUTH 配置信息。当AuthType是OAUTH时生效。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`\n        :param RelationBuniessApiIds: 授权API关联的业务API列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelationBuniessApiIds: list of str\n        :param Tags: API关联的标签信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of str\n        :param Path: API 的路径，如 /path。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Path: str\n        :param Method: API 的请求方法，如 GET。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Method: str\n        """
         self.ServiceId = None
         self.ApiId = None
         self.ApiDesc = None
@@ -2410,8 +3158,10 @@ class DescribeAPIDocDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        """
         self.ApiDocId = None
 
 
@@ -2432,8 +3182,12 @@ class DescribeAPIDocDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API文档详细信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API文档详细信息\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2451,8 +3205,12 @@ class DescribeAPIDocsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.Limit = None
         self.Offset = None
 
@@ -2475,8 +3233,12 @@ class DescribeAPIDocsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API文档列表信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocs`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API文档列表信息\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocs`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2494,8 +3256,18 @@ class DescribeAllPluginApisRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 要查询的服务ID。
+        :type ServiceId: str
+        :param PluginId: 要查询的插件ID。
+        :type PluginId: str
+        :param EnvironmentName: 环境信息。
+        :type EnvironmentName: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: 要查询的服务ID。\n        :type ServiceId: str\n        :param PluginId: 要查询的插件ID。\n        :type PluginId: str\n        :param EnvironmentName: 环境信息。\n        :type EnvironmentName: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.PluginId = None
         self.EnvironmentName = None
@@ -2524,8 +3296,12 @@ class DescribeAllPluginApisResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 插件相关API的列表。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfoSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 插件相关API的列表。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfoSummary`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2543,8 +3319,16 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 应用ID
+        :type ApiAppId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。支持ApiId、ApiName、ServiceId、Environment 、KeyWord（ 可以匹配name或者ID）。
+        :type Filters: list of Filter
         """
-        :param ApiAppId: 应用ID\n        :type ApiAppId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。支持ApiId、ApiName、ServiceId、Environment 、KeyWord（ 可以匹配name或者ID）。\n        :type Filters: list of Filter\n        """
         self.ApiAppId = None
         self.Limit = None
         self.Offset = None
@@ -2576,9 +3360,13 @@ class DescribeApiAppBindApisStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 应用绑定的Api列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2596,8 +3384,10 @@ class DescribeApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 应用ID。
+        :type ApiAppId: str
         """
-        :param ApiAppId: 应用ID。\n        :type ApiAppId: str\n        """
         self.ApiAppId = None
 
 
@@ -2618,9 +3408,13 @@ class DescribeApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 应用详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2638,8 +3432,14 @@ class DescribeApiAppsStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。支持ApiAppId、ApiAppName、KeyWord（ 可以匹配name或者ID）。
+        :type Filters: list of Filter
         """
-        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。支持ApiAppId、ApiAppName、KeyWord（ 可以匹配name或者ID）。\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -2669,9 +3469,13 @@ class DescribeApiAppsStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 应用列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2689,8 +3493,18 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param ApiIds: Api的ID的数组
+        :type ApiIds: list of str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。支持ApiAppId、Environment、KeyWord（ 可以匹配name或者ID）。
+        :type Filters: list of Filter
         """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param ApiIds: Api的ID的数组\n        :type ApiIds: list of str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。支持ApiAppId、Environment、KeyWord（ 可以匹配name或者ID）。\n        :type Filters: list of Filter\n        """
         self.ServiceId = None
         self.ApiIds = None
         self.Limit = None
@@ -2724,9 +3538,13 @@ class DescribeApiBindApiAppsStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 应用绑定的Api列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2744,8 +3562,18 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API所属服务唯一ID。
+        :type ServiceId: str
+        :param EnvironmentNames: 环境列表。
+        :type EnvironmentNames: list of str
+        :param ApiId: API唯一ID。
+        :type ApiId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: API所属服务唯一ID。\n        :type ServiceId: str\n        :param EnvironmentNames: 环境列表。\n        :type EnvironmentNames: list of str\n        :param ApiId: API唯一ID。\n        :type ApiId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.EnvironmentNames = None
         self.ApiId = None
@@ -2774,9 +3602,13 @@ class DescribeApiEnvironmentStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: api绑定策略详情
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiEnvironmentStrategyStataus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiEnvironmentStrategyStataus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2794,8 +3626,14 @@ class DescribeApiForApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiId: API 接口唯一 ID。
+        :type ApiId: str
+        :param ApiRegion: Api所属地域
+        :type ApiRegion: str
         """
-        :param ServiceId: API 所在的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiId: API 接口唯一 ID。\n        :type ApiId: str\n        :param ApiRegion: Api所属地域\n        :type ApiRegion: str\n        """
         self.ServiceId = None
         self.ApiId = None
         self.ApiRegion = None
@@ -2820,8 +3658,12 @@ class DescribeApiForApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API 详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API 详情。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2839,8 +3681,10 @@ class DescribeApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: API 密钥 ID。
+        :type AccessKeyId: str
         """
-        :param AccessKeyId: API 密钥 ID。\n        :type AccessKeyId: str\n        """
         self.AccessKeyId = None
 
 
@@ -2861,9 +3705,13 @@ class DescribeApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 密钥详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2881,8 +3729,14 @@ class DescribeApiKeysStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。支持AccessKeyId、AccessKeySecret、SecretName、NotUsagePlanId、Status、KeyWord（ 可以匹配name或者path）。
+        :type Filters: list of Filter
         """
-        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。支持AccessKeyId、AccessKeySecret、SecretName、NotUsagePlanId、Status、KeyWord（ 可以匹配name或者path）。\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -2912,9 +3766,13 @@ class DescribeApiKeysStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 密钥列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKeysStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKeysStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2932,8 +3790,12 @@ class DescribeApiRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiId: API 接口唯一 ID。
+        :type ApiId: str
         """
-        :param ServiceId: API 所在的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiId: API 接口唯一 ID。\n        :type ApiId: str\n        """
         self.ServiceId = None
         self.ApiId = None
 
@@ -2956,8 +3818,12 @@ class DescribeApiResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API 详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API 详情。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -2975,8 +3841,14 @@ class DescribeApiUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.Limit = None
         self.Offset = None
@@ -3001,9 +3873,13 @@ class DescribeApiUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: api绑定使用计划列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiUsagePlanSet`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiUsagePlanSet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3021,8 +3897,16 @@ class DescribeApisStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param Filters: API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表）。
+        :type Filters: list of Filter
         """
-        :param ServiceId: API 所在的服务唯一 ID。\n        :type ServiceId: str\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Limit: 返回数量，默认为 20，最大值为 100\n        :type Limit: int\n        :param Filters: API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表）。\n        :type Filters: list of Filter\n        """
         self.ServiceId = None
         self.Offset = None
         self.Limit = None
@@ -3054,8 +3938,12 @@ class DescribeApisStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API 详情列表。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApisStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API 详情列表。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApisStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -3073,8 +3961,20 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param StrategyId: 策略唯一ID。
+        :type StrategyId: str
+        :param EnvironmentName: 策略所在环境。
+        :type EnvironmentName: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。支持 ApiPath、ApiName、KeyWord（模糊查询Path 和Name）。
+        :type Filters: list of Filter
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param StrategyId: 策略唯一ID。\n        :type StrategyId: str\n        :param EnvironmentName: 策略所在环境。\n        :type EnvironmentName: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。支持 ApiPath、ApiName、KeyWord（模糊查询Path 和Name）。\n        :type Filters: list of Filter\n        """
         self.ServiceId = None
         self.StrategyId = None
         self.EnvironmentName = None
@@ -3110,9 +4010,13 @@ class DescribeIPStrategyApisStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 环境绑定API列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategyApiStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategyApiStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3130,8 +4034,20 @@ class DescribeIPStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param StrategyId: IP 策略唯一ID。
+        :type StrategyId: str
+        :param EnvironmentName: 策略关联的环境。
+        :type EnvironmentName: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。预留字段，目前不支持过滤。
+        :type Filters: list of Filter
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param StrategyId: IP 策略唯一ID。\n        :type StrategyId: str\n        :param EnvironmentName: 策略关联的环境。\n        :type EnvironmentName: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。预留字段，目前不支持过滤。\n        :type Filters: list of Filter\n        """
         self.ServiceId = None
         self.StrategyId = None
         self.EnvironmentName = None
@@ -3167,9 +4083,13 @@ class DescribeIPStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: IP策略详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3187,8 +4107,12 @@ class DescribeIPStrategysStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param Filters: 过滤条件。支持StrategyName。
+        :type Filters: list of Filter
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param Filters: 过滤条件。支持StrategyName。\n        :type Filters: list of Filter\n        """
         self.ServiceId = None
         self.Filters = None
 
@@ -3216,9 +4140,13 @@ class DescribeIPStrategysStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 符合条件的策略列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategysStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategysStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3236,8 +4164,24 @@ class DescribeLogSearchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param StartTime: 日志开始时间\n        :type StartTime: str\n        :param EndTime: 日志结束时间\n        :type EndTime: str\n        :param ServiceId: 服务id\n        :type ServiceId: str\n        :param Filters: 保留字段\n        :type Filters: list of Filter\n        :param Limit: 单次要返回的日志条数，单次返回的最大条数为100\n        :type Limit: int\n        :param ConText: 根据上次返回的ConText，获取后续的内容，最多可获取10000条\n        :type ConText: str\n        :param Sort: 按时间排序 asc（升序）或者 desc（降序），默认为 desc\n        :type Sort: str\n        :param Query: 保留字段\n        :type Query: str\n        :param LogQuerys: 检索条件,支持的检索条件如下：
+        r"""
+        :param StartTime: 日志开始时间
+        :type StartTime: str
+        :param EndTime: 日志结束时间
+        :type EndTime: str
+        :param ServiceId: 服务id
+        :type ServiceId: str
+        :param Filters: 保留字段
+        :type Filters: list of Filter
+        :param Limit: 单次要返回的日志条数，单次返回的最大条数为100
+        :type Limit: int
+        :param ConText: 根据上次返回的ConText，获取后续的内容，最多可获取10000条
+        :type ConText: str
+        :param Sort: 按时间排序 asc（升序）或者 desc（降序），默认为 desc
+        :type Sort: str
+        :param Query: 保留字段
+        :type Query: str
+        :param LogQuerys: 检索条件,支持的检索条件如下：
 req_id：“=”
 api_id：“=”
 cip：“=”
@@ -3247,7 +4191,9 @@ rsp_st：“=” 、“!=” 、 “:” 、 “>” 、 “<”
 req_t：”>=“ 、 ”<=“
 
 说明：
-“:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明\n        :type LogQuerys: list of LogQuery\n        """
+“:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
+        :type LogQuerys: list of LogQuery
+        """
         self.StartTime = None
         self.EndTime = None
         self.ServiceId = None
@@ -3294,8 +4240,10 @@ class DescribeLogSearchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ConText: 获取更多检索结果的游标，值为""表示无后续结果\n        :type ConText: str\n        :param LogSet: 由0或多条日志组成，每条日志格式如下：
+        r"""
+        :param ConText: 获取更多检索结果的游标，值为""表示无后续结果
+        :type ConText: str
+        :param LogSet: 由0或多条日志组成，每条日志格式如下：
 '[$app_id][$env_name][$service_id][$http_host][$api_id][$uri][$scheme][rsp_st:$status][ups_st:$upstream_status]'
 '[cip:$remote_addr][uip:$upstream_addr][vip:$server_addr][rsp_len:$bytes_sent][req_len:$request_length]'
 '[req_t:$request_time][ups_rsp_t:$upstream_response_time][ups_conn_t:$upstream_connect_time][ups_head_t:$upstream_header_time]’
@@ -3322,7 +4270,13 @@ ups_conn_t: 与后端业务服务器连接建立成功时间。
 ups_head_t：后端响应的头部到达时间。
 err_msg： 错误信息。
 tcp_rtt： 客户端 TCP 连接信息，RTT（Round Trip Time）由三部分组成：链路的传播时间（propagation delay）、末端系统的处理时间、路由器缓存中的排队和处理时间（queuing delay）。
-req_id：请求id。\n        :type LogSet: list of str\n        :param TotalCount: 单次搜索返回的日志条数，TotalCount <= Limit\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+req_id：请求id。
+        :type LogSet: list of str
+        :param TotalCount: 单次搜索返回的日志条数，TotalCount <= Limit
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ConText = None
         self.LogSet = None
         self.TotalCount = None
@@ -3342,8 +4296,14 @@ class DescribePluginApisRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 查询的插件ID。
+        :type PluginId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param PluginId: 查询的插件ID。\n        :type PluginId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.PluginId = None
         self.Limit = None
         self.Offset = None
@@ -3368,8 +4328,12 @@ class DescribePluginApisResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 插件绑定的API列表信息。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.AttachedApiSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 插件绑定的API列表信息。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.AttachedApiSummary`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -3387,8 +4351,14 @@ class DescribePluginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 要查询的插件ID。
+        :type PluginId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param PluginId: 要查询的插件ID。\n        :type PluginId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.PluginId = None
         self.Limit = None
         self.Offset = None
@@ -3413,8 +4383,12 @@ class DescribePluginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 插件详情。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -3432,8 +4406,20 @@ class DescribePluginsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginIds: 要查询的插件列表。
+        :type PluginIds: list of str
+        :param PluginName: 要查询的插件名称。
+        :type PluginName: str
+        :param PluginType: 要查询的插件类型。
+        :type PluginType: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。预留字段，目前不支持过滤。
+        :type Filters: list of Filter
         """
-        :param PluginIds: 要查询的插件列表。\n        :type PluginIds: list of str\n        :param PluginName: 要查询的插件名称。\n        :type PluginName: str\n        :param PluginType: 要查询的插件类型。\n        :type PluginType: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。预留字段，目前不支持过滤。\n        :type Filters: list of Filter\n        """
         self.PluginIds = None
         self.PluginName = None
         self.PluginType = None
@@ -3469,8 +4455,12 @@ class DescribePluginsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.PluginSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 插件详情。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.PluginSummary`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -3488,8 +4478,14 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.Limit = None
         self.Offset = None
@@ -3514,9 +4510,13 @@ class DescribeServiceEnvironmentListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 服务绑定环境详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentSet`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentSet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3534,8 +4534,16 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
+        :param EnvironmentName: 环境名称。
+        :type EnvironmentName: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        :param EnvironmentName: 环境名称。\n        :type EnvironmentName: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.EnvironmentName = None
         self.Limit = None
@@ -3562,9 +4570,13 @@ class DescribeServiceEnvironmentReleaseHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 服务发布历史。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseHistory`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseHistory`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3582,8 +4594,14 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.Limit = None
         self.Offset = None
@@ -3608,9 +4626,13 @@ class DescribeServiceEnvironmentStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 限流策略列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentStrategyStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentStrategyStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3628,8 +4650,12 @@ class DescribeServiceForApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiRegion: 服务所属的地域
+        :type ApiRegion: str
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiRegion: 服务所属的地域\n        :type ApiRegion: str\n        """
         self.ServiceId = None
         self.ApiRegion = None
 
@@ -3652,22 +4678,66 @@ class DescribeServiceForApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param AvailableEnvironments: 服务 环境列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableEnvironments: list of str
+        :param ServiceName: 服务名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param ServiceDesc: 服务描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDesc: str
+        :param Protocol: 服务支持协议，可选值为http、https、http&https。
+        :type Protocol: str
+        :param CreatedTime: 服务创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 服务修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ExclusiveSetName: 独立集群名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveSetName: str
+        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。
+        :type NetTypes: list of str
+        :param InternalSubDomain: 内网访问子域名。
+        :type InternalSubDomain: str
+        :param OuterSubDomain: 外网访问子域名。
+        :type OuterSubDomain: str
+        :param InnerHttpPort: 内网访问http服务端口号。
+        :type InnerHttpPort: int
+        :param InnerHttpsPort: 内网访问https端口号。
+        :type InnerHttpsPort: int
+        :param ApiTotalCount: API总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiTotalCount: int
+        :param ApiIdStatusSet: API列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiIdStatusSet: list of ApiIdStatus
+        :param UsagePlanTotalCount: 使用计划总数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanTotalCount: int
+        :param UsagePlanList: 使用计划数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanList: list of UsagePlan
+        :param IpVersion: IP版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: str
+        :param UserType: 此服务的用户类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserType: str
+        :param SetId: 预留字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: int
+        :param Tags: 服务绑定的标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param AvailableEnvironments: 服务 环境列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AvailableEnvironments: list of str\n        :param ServiceName: 服务名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        :param ServiceDesc: 服务描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceDesc: str\n        :param Protocol: 服务支持协议，可选值为http、https、http&https。\n        :type Protocol: str\n        :param CreatedTime: 服务创建时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 服务修改时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ExclusiveSetName: 独立集群名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExclusiveSetName: str\n        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。\n        :type NetTypes: list of str\n        :param InternalSubDomain: 内网访问子域名。\n        :type InternalSubDomain: str\n        :param OuterSubDomain: 外网访问子域名。\n        :type OuterSubDomain: str\n        :param InnerHttpPort: 内网访问http服务端口号。\n        :type InnerHttpPort: int\n        :param InnerHttpsPort: 内网访问https端口号。\n        :type InnerHttpsPort: int\n        :param ApiTotalCount: API总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiTotalCount: int\n        :param ApiIdStatusSet: API列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiIdStatusSet: list of ApiIdStatus\n        :param UsagePlanTotalCount: 使用计划总数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanTotalCount: int\n        :param UsagePlanList: 使用计划数组。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanList: list of UsagePlan\n        :param IpVersion: IP版本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IpVersion: str\n        :param UserType: 此服务的用户类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserType: str\n        :param SetId: 预留字段。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SetId: int\n        :param Tags: 服务绑定的标签。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServiceId = None
         self.AvailableEnvironments = None
         self.ServiceName = None
@@ -3738,8 +4808,14 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.Limit = None
         self.Offset = None
@@ -3764,9 +4840,13 @@ class DescribeServiceReleaseVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 服务发布版本列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseVersion`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseVersion`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -3784,8 +4864,10 @@ class DescribeServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        """
         self.ServiceId = None
 
 
@@ -3806,18 +4888,68 @@ class DescribeServiceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param AvailableEnvironments: 服务 环境列表。
+        :type AvailableEnvironments: list of str
+        :param ServiceName: 服务名称。
+        :type ServiceName: str
+        :param ServiceDesc: 服务描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDesc: str
+        :param Protocol: 服务支持协议，可选值为http、https、http&https。
+        :type Protocol: str
+        :param CreatedTime: 服务创建时间。
+        :type CreatedTime: str
+        :param ModifiedTime: 服务修改时间。
+        :type ModifiedTime: str
+        :param ExclusiveSetName: 独立集群名称。
+        :type ExclusiveSetName: str
+        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。
+        :type NetTypes: list of str
+        :param InternalSubDomain: 内网访问子域名。
+        :type InternalSubDomain: str
+        :param OuterSubDomain: 外网访问子域名。
+        :type OuterSubDomain: str
+        :param InnerHttpPort: 内网访问http服务端口号。
+        :type InnerHttpPort: int
+        :param InnerHttpsPort: 内网访问https端口号。
+        :type InnerHttpsPort: int
+        :param ApiTotalCount: API总数。
+        :type ApiTotalCount: int
+        :param ApiIdStatusSet: API列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiIdStatusSet: list of ApiIdStatus
+        :param UsagePlanTotalCount: 使用计划总数量。
+        :type UsagePlanTotalCount: int
+        :param UsagePlanList: 使用计划数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanList: list of UsagePlan
+        :param IpVersion: IP版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: str
+        :param UserType: 此服务的用户类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserType: str
+        :param SetId: 预留字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: int
+        :param Tags: 服务绑定的标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param InstanceId: 独享实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 独享实例name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param SetType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param AvailableEnvironments: 服务 环境列表。\n        :type AvailableEnvironments: list of str\n        :param ServiceName: 服务名称。\n        :type ServiceName: str\n        :param ServiceDesc: 服务描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceDesc: str\n        :param Protocol: 服务支持协议，可选值为http、https、http&https。\n        :type Protocol: str\n        :param CreatedTime: 服务创建时间。\n        :type CreatedTime: str\n        :param ModifiedTime: 服务修改时间。\n        :type ModifiedTime: str\n        :param ExclusiveSetName: 独立集群名称。\n        :type ExclusiveSetName: str\n        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。\n        :type NetTypes: list of str\n        :param InternalSubDomain: 内网访问子域名。\n        :type InternalSubDomain: str\n        :param OuterSubDomain: 外网访问子域名。\n        :type OuterSubDomain: str\n        :param InnerHttpPort: 内网访问http服务端口号。\n        :type InnerHttpPort: int\n        :param InnerHttpsPort: 内网访问https端口号。\n        :type InnerHttpsPort: int\n        :param ApiTotalCount: API总数。\n        :type ApiTotalCount: int\n        :param ApiIdStatusSet: API列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiIdStatusSet: list of ApiIdStatus\n        :param UsagePlanTotalCount: 使用计划总数量。\n        :type UsagePlanTotalCount: int\n        :param UsagePlanList: 使用计划数组。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanList: list of UsagePlan\n        :param IpVersion: IP版本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IpVersion: str\n        :param UserType: 此服务的用户类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UserType: str\n        :param SetId: 预留字段。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SetId: int\n        :param Tags: 服务绑定的标签。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param InstanceId: 独享实例id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param InstanceName: 独享实例name
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceName: str\n        :param SetType: 集群类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SetType: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ServiceId = None
         self.AvailableEnvironments = None
         self.ServiceName = None
@@ -3894,8 +5026,12 @@ class DescribeServiceSubDomainMappingsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一 ID。
+        :type ServiceId: str
+        :param SubDomain: 服务绑定的自定义域名。
+        :type SubDomain: str
         """
-        :param ServiceId: 服务唯一 ID。\n        :type ServiceId: str\n        :param SubDomain: 服务绑定的自定义域名。\n        :type SubDomain: str\n        """
         self.ServiceId = None
         self.SubDomain = None
 
@@ -3918,8 +5054,12 @@ class DescribeServiceSubDomainMappingsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 自定义路径映射列表。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceSubDomainMappings`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 自定义路径映射列表。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceSubDomainMappings`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -3937,8 +5077,14 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一 ID。
+        :type ServiceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param ServiceId: 服务唯一 ID。\n        :type ServiceId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.Limit = None
         self.Offset = None
@@ -3963,8 +5109,12 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 查询服务自定义域名列表。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DomainSets`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 查询服务自定义域名列表。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DomainSets`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -3982,8 +5132,14 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待查询的服务唯一 ID。
+        :type ServiceId: str
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         """
-        :param ServiceId: 待查询的服务唯一 ID。\n        :type ServiceId: str\n        :param Limit: 返回数量，默认为20，最大值为100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        """
         self.ServiceId = None
         self.Limit = None
         self.Offset = None
@@ -4008,9 +5164,13 @@ class DescribeServiceUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 服务绑定使用计划列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceUsagePlanSet`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceUsagePlanSet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4028,8 +5188,14 @@ class DescribeServicesStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId
+        :type Filters: list of Filter
         """
-        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -4059,9 +5225,13 @@ class DescribeServicesStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 服务列表查询结果。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServicesStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServicesStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4079,8 +5249,16 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 待查询的使用计划唯一 ID。
+        :type UsagePlanId: str
+        :param BindType: 定类型，取值为 API、SERVICE，默认值为 SERVICE。
+        :type BindType: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param UsagePlanId: 待查询的使用计划唯一 ID。\n        :type UsagePlanId: str\n        :param BindType: 定类型，取值为 API、SERVICE，默认值为 SERVICE。\n        :type BindType: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.UsagePlanId = None
         self.BindType = None
         self.Limit = None
@@ -4107,9 +5285,13 @@ class DescribeUsagePlanEnvironmentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 使用计划绑定详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanEnvironmentStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanEnvironmentStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4127,8 +5309,10 @@ class DescribeUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 待查询的使用计划唯一 ID。
+        :type UsagePlanId: str
         """
-        :param UsagePlanId: 待查询的使用计划唯一 ID。\n        :type UsagePlanId: str\n        """
         self.UsagePlanId = None
 
 
@@ -4149,9 +5333,13 @@ class DescribeUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 使用计划详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4169,8 +5357,14 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 绑定的使用计划唯一 ID。
+        :type UsagePlanId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
         """
-        :param UsagePlanId: 绑定的使用计划唯一 ID。\n        :type UsagePlanId: str\n        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        """
         self.UsagePlanId = None
         self.Limit = None
         self.Offset = None
@@ -4195,9 +5389,13 @@ class DescribeUsagePlanSecretIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 使用计划绑定的密钥列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanBindSecretStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanBindSecretStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4215,8 +5413,14 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 使用计划过滤条件。支持UsagePlanId、UsagePlanName、NotServiceId、NotApiId、Environment。
+        :type Filters: list of Filter
         """
-        :param Limit: 返回数量，默认为 20，最大值为 100。\n        :type Limit: int\n        :param Offset: 偏移量，默认为 0。\n        :type Offset: int\n        :param Filters: 使用计划过滤条件。支持UsagePlanId、UsagePlanName、NotServiceId、NotApiId、Environment。\n        :type Filters: list of Filter\n        """
         self.Limit = None
         self.Offset = None
         self.Filters = None
@@ -4246,9 +5450,13 @@ class DescribeUsagePlansStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 使用计划列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlansStatus`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlansStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4266,8 +5474,16 @@ class DetachPluginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 要解绑的API网关插件ID。
+        :type PluginId: str
+        :param ServiceId: 要操作的服务ID。
+        :type ServiceId: str
+        :param EnvironmentName: 要操作API的环境。
+        :type EnvironmentName: str
+        :param ApiId: 要解绑的API ID。
+        :type ApiId: str
         """
-        :param PluginId: 要解绑的API网关插件ID。\n        :type PluginId: str\n        :param ServiceId: 要操作的服务ID。\n        :type ServiceId: str\n        :param EnvironmentName: 要操作API的环境。\n        :type EnvironmentName: str\n        :param ApiId: 要解绑的API ID。\n        :type ApiId: str\n        """
         self.PluginId = None
         self.ServiceId = None
         self.EnvironmentName = None
@@ -4294,8 +5510,12 @@ class DetachPluginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 解绑操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 解绑操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -4311,8 +5531,10 @@ class DisableApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: 待禁用的密钥 ID。
+        :type AccessKeyId: str
         """
-        :param AccessKeyId: 待禁用的密钥 ID。\n        :type AccessKeyId: str\n        """
         self.AccessKeyId = None
 
 
@@ -4333,9 +5555,13 @@ class DisableApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 禁用密钥操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4351,8 +5577,12 @@ class DocumentSDK(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DocumentURL: 生成的 document 会存放到 COS 中，此出参返回产生文件的下载链接。
+        :type DocumentURL: str
+        :param SdkURL: 生成的 SDK 会存放到 COS 中，此出参返回产生 SDK 文件的下载链接。
+        :type SdkURL: str
         """
-        :param DocumentURL: 生成的 document 会存放到 COS 中，此出参返回产生文件的下载链接。\n        :type DocumentURL: str\n        :param SdkURL: 生成的 SDK 会存放到 COS 中，此出参返回产生 SDK 文件的下载链接。\n        :type SdkURL: str\n        """
         self.DocumentURL = None
         self.SdkURL = None
 
@@ -4375,8 +5605,24 @@ class DomainSetList(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DomainName: 域名名称。
+        :type DomainName: str
+        :param Status: 域名解析状态。True 表示正常解析，False 表示解析失败。
+        :type Status: int
+        :param CertificateId: 证书ID。
+        :type CertificateId: str
+        :param IsDefaultMapping: 是否使用默认路径映射。
+        :type IsDefaultMapping: bool
+        :param Protocol: 自定义域名协议类型。
+        :type Protocol: str
+        :param NetType: 网络类型（'INNER' 或 'OUTER'）。
+        :type NetType: str
+        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+        :type IsForcedHttps: bool
+        :param RegistrationStatus: 域名备案注册状态
+        :type RegistrationStatus: bool
         """
-        :param DomainName: 域名名称。\n        :type DomainName: str\n        :param Status: 域名解析状态。True 表示正常解析，False 表示解析失败。\n        :type Status: int\n        :param CertificateId: 证书ID。\n        :type CertificateId: str\n        :param IsDefaultMapping: 是否使用默认路径映射。\n        :type IsDefaultMapping: bool\n        :param Protocol: 自定义域名协议类型。\n        :type Protocol: str\n        :param NetType: 网络类型（'INNER' 或 'OUTER'）。\n        :type NetType: str\n        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。\n        :type IsForcedHttps: bool\n        :param RegistrationStatus: 域名备案注册状态\n        :type RegistrationStatus: bool\n        """
         self.DomainName = None
         self.Status = None
         self.CertificateId = None
@@ -4411,8 +5657,12 @@ class DomainSets(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 服务下的自定义域名数量。
+        :type TotalCount: int
+        :param DomainSet: 自定义服务域名列表。
+        :type DomainSet: list of DomainSetList
         """
-        :param TotalCount: 服务下的自定义域名数量。\n        :type TotalCount: int\n        :param DomainSet: 自定义服务域名列表。\n        :type DomainSet: list of DomainSetList\n        """
         self.TotalCount = None
         self.DomainSet = None
 
@@ -4440,8 +5690,10 @@ class EnableApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: 待启用的密钥 ID。
+        :type AccessKeyId: str
         """
-        :param AccessKeyId: 待启用的密钥 ID。\n        :type AccessKeyId: str\n        """
         self.AccessKeyId = None
 
 
@@ -4462,9 +5714,13 @@ class EnableApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 启动密钥操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4480,8 +5736,16 @@ class Environment(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentName: 环境名称。
+        :type EnvironmentName: str
+        :param Url: 访问路径。
+        :type Url: str
+        :param Status: 发布状态，1 表示已发布，0 表示未发布。
+        :type Status: int
+        :param VersionName: 运行版本。
+        :type VersionName: str
         """
-        :param EnvironmentName: 环境名称。\n        :type EnvironmentName: str\n        :param Url: 访问路径。\n        :type Url: str\n        :param Status: 发布状态，1 表示已发布，0 表示未发布。\n        :type Status: int\n        :param VersionName: 运行版本。\n        :type VersionName: str\n        """
         self.EnvironmentName = None
         self.Url = None
         self.Status = None
@@ -4508,9 +5772,15 @@ class EnvironmentStrategy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentName: 环境名
+        :type EnvironmentName: str
+        :param Quota: 限流值
+        :type Quota: int
+        :param MaxQuota: 限流最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQuota: int
         """
-        :param EnvironmentName: 环境名\n        :type EnvironmentName: str\n        :param Quota: 限流值\n        :type Quota: int\n        :param MaxQuota: 限流最大值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxQuota: int\n        """
         self.EnvironmentName = None
         self.Quota = None
         self.MaxQuota = None
@@ -4535,13 +5805,23 @@ class ErrorCodes(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 自定义响应配置错误码。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Code: int\n        :param Msg: 自定义响应配置错误信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Msg: str\n        :param Desc: 自定义响应配置错误码备注。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Desc: str\n        :param ConvertedCode: 自定义错误码转换。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConvertedCode: int\n        :param NeedConvert: 是否需要开启错误码转换。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NeedConvert: bool\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param Msg: 自定义响应配置错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param Desc: 自定义响应配置错误码备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param ConvertedCode: 自定义错误码转换。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConvertedCode: int
+        :param NeedConvert: 是否需要开启错误码转换。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedConvert: bool
+        """
         self.Code = None
         self.Msg = None
         self.Desc = None
@@ -4573,8 +5853,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 需要过滤的字段。
+        :type Name: str
+        :param Values: 字段的过滤值。
+        :type Values: list of str
         """
-        :param Name: 需要过滤的字段。\n        :type Name: str\n        :param Values: 字段的过滤值。\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -4597,8 +5881,14 @@ class GenerateApiDocumentRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待创建文档的服务唯一 ID。
+        :type ServiceId: str
+        :param GenEnvironment: 待创建 SDK 的服务所在环境。
+        :type GenEnvironment: str
+        :param GenLanguage: 待创建 SDK 的语言。当前只支持 Python 和 JavaScript。
+        :type GenLanguage: str
         """
-        :param ServiceId: 待创建文档的服务唯一 ID。\n        :type ServiceId: str\n        :param GenEnvironment: 待创建 SDK 的服务所在环境。\n        :type GenEnvironment: str\n        :param GenLanguage: 待创建 SDK 的语言。当前只支持 Python 和 JavaScript。\n        :type GenLanguage: str\n        """
         self.ServiceId = None
         self.GenEnvironment = None
         self.GenLanguage = None
@@ -4623,8 +5913,12 @@ class GenerateApiDocumentResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: api文档&sdk链接。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DocumentSDK`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: api文档&sdk链接。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DocumentSDK`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -4642,8 +5936,16 @@ class HealthCheckConf(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsHealthCheck: 是否开启健康检查。
+        :type IsHealthCheck: bool
+        :param RequestVolumeThreshold: 健康检查阈值。
+        :type RequestVolumeThreshold: int
+        :param SleepWindowInMilliseconds: 窗口大小。
+        :type SleepWindowInMilliseconds: int
+        :param ErrorThresholdPercentage: 阈值百分比。
+        :type ErrorThresholdPercentage: int
         """
-        :param IsHealthCheck: 是否开启健康检查。\n        :type IsHealthCheck: bool\n        :param RequestVolumeThreshold: 健康检查阈值。\n        :type RequestVolumeThreshold: int\n        :param SleepWindowInMilliseconds: 窗口大小。\n        :type SleepWindowInMilliseconds: int\n        :param ErrorThresholdPercentage: 阈值百分比。\n        :type ErrorThresholdPercentage: int\n        """
         self.IsHealthCheck = None
         self.RequestVolumeThreshold = None
         self.SleepWindowInMilliseconds = None
@@ -4670,17 +5972,35 @@ class IPStrategy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StrategyId: 策略唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyId: str\n        :param StrategyName: 用户自定义策略名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyName: str\n        :param StrategyType: 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyType: str\n        :param StrategyData: IP列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategyData: str\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 修改时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ServiceId: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        :param BindApiTotalCount: 策略绑定的API数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindApiTotalCount: int\n        :param BindApis: 绑定的API详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindApis: list of DesApisStatus\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: str
+        :param StrategyName: 用户自定义策略名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param StrategyType: 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyType: str
+        :param StrategyData: IP列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyData: str
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ServiceId: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param BindApiTotalCount: 策略绑定的API数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindApiTotalCount: int
+        :param BindApis: 绑定的API详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindApis: list of DesApisStatus
+        """
         self.StrategyId = None
         self.StrategyName = None
         self.StrategyType = None
@@ -4722,8 +6042,22 @@ class IPStrategyApi(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiId: API 唯一 ID。
+        :type ApiId: str
+        :param ApiName: 用户自定义的 API 名称。
+        :type ApiName: str
+        :param ApiType: API 类型。取值为NORMAL（普通API）和TSF （微服务API）。
+        :type ApiType: str
+        :param Path: API 的路径。如 /path。
+        :type Path: str
+        :param Method: API 的请求方法。如 GET。
+        :type Method: str
+        :param OtherIPStrategyId: API 已经绑定的其他策略唯一ID。
+        :type OtherIPStrategyId: str
+        :param OtherEnvironmentName: API 已经绑定的环境。
+        :type OtherEnvironmentName: str
         """
-        :param ApiId: API 唯一 ID。\n        :type ApiId: str\n        :param ApiName: 用户自定义的 API 名称。\n        :type ApiName: str\n        :param ApiType: API 类型。取值为NORMAL（普通API）和TSF （微服务API）。\n        :type ApiType: str\n        :param Path: API 的路径。如 /path。\n        :type Path: str\n        :param Method: API 的请求方法。如 GET。\n        :type Method: str\n        :param OtherIPStrategyId: API 已经绑定的其他策略唯一ID。\n        :type OtherIPStrategyId: str\n        :param OtherEnvironmentName: API 已经绑定的环境。\n        :type OtherEnvironmentName: str\n        """
         self.ApiId = None
         self.ApiName = None
         self.ApiType = None
@@ -4756,10 +6090,14 @@ class IPStrategyApiStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 环境绑定API数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ApiIdStatusSet: 环境绑定API详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiIdStatusSet: list of IPStrategyApi\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApiIdStatusSet: 环境绑定API详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiIdStatusSet: list of IPStrategyApi
+        """
         self.TotalCount = None
         self.ApiIdStatusSet = None
 
@@ -4787,10 +6125,14 @@ class IPStrategysStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 策略数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param StrategySet: 策略列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StrategySet: list of IPStrategy\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param StrategySet: 策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategySet: list of IPStrategy
+        """
         self.TotalCount = None
         self.StrategySet = None
 
@@ -4818,8 +6160,14 @@ class LogQuery(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 检索字段
+        :type Name: str
+        :param Operator: 操作符
+        :type Operator: str
+        :param Value: 检索值
+        :type Value: str
         """
-        :param Name: 检索字段\n        :type Name: str\n        :param Operator: 操作符\n        :type Operator: str\n        :param Value: 检索值\n        :type Value: str\n        """
         self.Name = None
         self.Operator = None
         self.Value = None
@@ -4844,8 +6192,14 @@ class MicroService(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 微服务集群ID。
+        :type ClusterId: str
+        :param NamespaceId: 微服务命名空间ID。
+        :type NamespaceId: str
+        :param MicroServiceName: 微服务名称。
+        :type MicroServiceName: str
         """
-        :param ClusterId: 微服务集群ID。\n        :type ClusterId: str\n        :param NamespaceId: 微服务命名空间ID。\n        :type NamespaceId: str\n        :param MicroServiceName: 微服务名称。\n        :type MicroServiceName: str\n        """
         self.ClusterId = None
         self.NamespaceId = None
         self.MicroServiceName = None
@@ -4870,8 +6224,14 @@ class MicroServiceReq(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 微服务集群。
+        :type ClusterId: str
+        :param NamespaceId: 微服务命名空间。
+        :type NamespaceId: str
+        :param MicroServiceName: 微服务名称。
+        :type MicroServiceName: str
         """
-        :param ClusterId: 微服务集群。\n        :type ClusterId: str\n        :param NamespaceId: 微服务命名空间。\n        :type NamespaceId: str\n        :param MicroServiceName: 微服务名称。\n        :type MicroServiceName: str\n        """
         self.ClusterId = None
         self.NamespaceId = None
         self.MicroServiceName = None
@@ -4896,8 +6256,18 @@ class ModifyAPIDocRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ServiceId: 服务名称
+        :type ServiceId: str
+        :param Environment: 环境名称
+        :type Environment: str
+        :param ApiIds: 生成文档的API列表
+        :type ApiIds: list of str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        :param ApiDocName: API文档名称\n        :type ApiDocName: str\n        :param ServiceId: 服务名称\n        :type ServiceId: str\n        :param Environment: 环境名称\n        :type Environment: str\n        :param ApiIds: 生成文档的API列表\n        :type ApiIds: list of str\n        """
         self.ApiDocId = None
         self.ApiDocName = None
         self.ServiceId = None
@@ -4926,8 +6296,12 @@ class ModifyAPIDocResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API文档基本信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API文档基本信息\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -4945,8 +6319,14 @@ class ModifyApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 应用唯一 ID。
+        :type ApiAppId: str
+        :param ApiAppName: 修改的应用名称
+        :type ApiAppName: str
+        :param ApiAppDesc: 修改的应用描述
+        :type ApiAppDesc: str
         """
-        :param ApiAppId: 应用唯一 ID。\n        :type ApiAppId: str\n        :param ApiAppName: 修改的应用名称\n        :type ApiAppName: str\n        :param ApiAppDesc: 修改的应用描述\n        :type ApiAppDesc: str\n        """
         self.ApiAppId = None
         self.ApiAppName = None
         self.ApiAppDesc = None
@@ -4971,9 +6351,13 @@ class ModifyApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 修改操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -4989,8 +6373,16 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param Strategy: 限流值。
+        :type Strategy: int
+        :param EnvironmentName: 环境名。
+        :type EnvironmentName: str
+        :param ApiIds: API列表。
+        :type ApiIds: list of str
         """
-        :param ServiceId: 服务唯一ID。\n        :type ServiceId: str\n        :param Strategy: 限流值。\n        :type Strategy: int\n        :param EnvironmentName: 环境名。\n        :type EnvironmentName: str\n        :param ApiIds: API列表。\n        :type ApiIds: list of str\n        """
         self.ServiceId = None
         self.Strategy = None
         self.EnvironmentName = None
@@ -5017,9 +6409,13 @@ class ModifyApiEnvironmentStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 修改操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -5035,8 +6431,18 @@ class ModifyApiIncrementRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param ApiId: 接口ID
+        :type ApiId: str
+        :param BusinessType: 需要修改的API auth类型(可选择OAUTH-授权API)
+        :type BusinessType: str
+        :param PublicKey: oauth接口需要修改的公钥值
+        :type PublicKey: str
+        :param LoginRedirectUrl: oauth接口重定向地址
+        :type LoginRedirectUrl: str
         """
-        :param ServiceId: 服务ID\n        :type ServiceId: str\n        :param ApiId: 接口ID\n        :type ApiId: str\n        :param BusinessType: 需要修改的API auth类型(可选择OAUTH-授权API)\n        :type BusinessType: str\n        :param PublicKey: oauth接口需要修改的公钥值\n        :type PublicKey: str\n        :param LoginRedirectUrl: oauth接口重定向地址\n        :type LoginRedirectUrl: str\n        """
         self.ServiceId = None
         self.ApiId = None
         self.BusinessType = None
@@ -5065,8 +6471,10 @@ class ModifyApiIncrementResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5080,8 +6488,104 @@ class ModifyApiRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
+        :type ServiceType: str
+        :param RequestConfig: 请求的前端配置。
+        :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`
+        :param ApiId: API 接口唯一 ID。
+        :type ApiId: str
+        :param ApiName: 用户自定义的 API 名称。
+        :type ApiName: str
+        :param ApiDesc: 用户自定义的 API 接口描述。
+        :type ApiDesc: str
+        :param ApiType: API 类型，支持NORMAL和TSF，默认为NORMAL。
+        :type ApiType: str
+        :param AuthType: API 鉴权类型。支持SECRET、NONE、OAUTH、APP。默认为NONE。
+        :type AuthType: str
+        :param AuthRequired: 是否需要签名认证，True 表示需要，False 表示不需要。待废弃。
+        :type AuthRequired: bool
+        :param ServiceTimeout: API 的后端服务超时时间，单位是秒。
+        :type ServiceTimeout: int
+        :param Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
+        :type Protocol: str
+        :param EnableCORS: 是否需要开启跨域，Ture 表示需要，False 表示不需要。
+        :type EnableCORS: bool
+        :param ConstantParameters: 常量参数。
+        :type ConstantParameters: list of ConstantParameter
+        :param RequestParameters: 前端请求参数。
+        :type RequestParameters: list of ReqParameter
+        :param ApiBusinessType: 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api   OAUTH：授权API。
+        :type ApiBusinessType: str
+        :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
+        :type ServiceMockReturnMessage: str
+        :param MicroServices: API绑定微服务服务列表。
+        :type MicroServices: list of MicroServiceReq
+        :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。
+        :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
+        :param ServiceTsfHealthCheckConf: 微服务的健康检查配置。
+        :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
+        :param TargetServicesLoadBalanceConf: target类型负载均衡配置。（内测阶段）
+        :type TargetServicesLoadBalanceConf: int
+        :param TargetServicesHealthCheckConf: target健康检查配置。（内测阶段）
+        :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
+        :param ServiceScfFunctionName: scf 函数名称。当后端类型是SCF时生效。
+        :type ServiceScfFunctionName: str
+        :param ServiceWebsocketRegisterFunctionName: scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketRegisterFunctionName: str
+        :param ServiceWebsocketCleanupFunctionName: scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketCleanupFunctionName: str
+        :param ServiceWebsocketTransportFunctionName: scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketTransportFunctionName: str
+        :param ServiceScfFunctionNamespace: scf 函数命名空间。当后端类型是SCF时生效。
+        :type ServiceScfFunctionNamespace: str
+        :param ServiceScfFunctionQualifier: scf函数版本。当后端类型是SCF时生效。
+        :type ServiceScfFunctionQualifier: str
+        :param ServiceWebsocketRegisterFunctionNamespace: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketRegisterFunctionNamespace: str
+        :param ServiceWebsocketRegisterFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketRegisterFunctionQualifier: str
+        :param ServiceWebsocketTransportFunctionNamespace: scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketTransportFunctionNamespace: str
+        :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketTransportFunctionQualifier: str
+        :param ServiceWebsocketCleanupFunctionNamespace: scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketCleanupFunctionNamespace: str
+        :param ServiceWebsocketCleanupFunctionQualifier: scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
+        :type ServiceWebsocketCleanupFunctionQualifier: str
+        :param ServiceScfIsIntegratedResponse: 是否开启响应集成。当后端类型是SCF时生效。
+        :type ServiceScfIsIntegratedResponse: bool
+        :param IsDebugAfterCharge: 开始调试后计费。（云市场预留字段）
+        :type IsDebugAfterCharge: bool
+        :param TagSpecifications: 标签。
+        :type TagSpecifications: :class:`tencentcloud.apigateway.v20180808.models.Tag`
+        :param IsDeleteResponseErrorCodes: 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。
+        :type IsDeleteResponseErrorCodes: bool
+        :param ResponseType: 返回类型。
+        :type ResponseType: str
+        :param ResponseSuccessExample: 自定义响应配置成功响应示例。
+        :type ResponseSuccessExample: str
+        :param ResponseFailExample: 自定义响应配置失败响应示例。
+        :type ResponseFailExample: str
+        :param ServiceConfig: API 的后端服务配置。
+        :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
+        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
+        :type AuthRelationApiId: str
+        :param ServiceParameters: API的后端服务参数。
+        :type ServiceParameters: list of ServiceParameter
+        :param OauthConfig: oauth配置。当AuthType是OAUTH时生效。
+        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
+        :param ResponseErrorCodes: 用户自定义错误码配置。
+        :type ResponseErrorCodes: list of ResponseErrorCodeReq
+        :param IsBase64Encoded: 是否开启Base64编码，只有后端为scf时才会生效。
+        :type IsBase64Encoded: bool
+        :param IsBase64Trigger: 是否开启Base64编码的header触发，只有后端为scf时才会生效。
+        :type IsBase64Trigger: bool
+        :param Base64EncodedTriggerRules: Header触发规则，总规则数不能超过10。
+        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
-        :param ServiceId: API 所在的服务唯一 ID。\n        :type ServiceId: str\n        :param ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。\n        :type ServiceType: str\n        :param RequestConfig: 请求的前端配置。\n        :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`\n        :param ApiId: API 接口唯一 ID。\n        :type ApiId: str\n        :param ApiName: 用户自定义的 API 名称。\n        :type ApiName: str\n        :param ApiDesc: 用户自定义的 API 接口描述。\n        :type ApiDesc: str\n        :param ApiType: API 类型，支持NORMAL和TSF，默认为NORMAL。\n        :type ApiType: str\n        :param AuthType: API 鉴权类型。支持SECRET、NONE、OAUTH、APP。默认为NONE。\n        :type AuthType: str\n        :param AuthRequired: 是否需要签名认证，True 表示需要，False 表示不需要。待废弃。\n        :type AuthRequired: bool\n        :param ServiceTimeout: API 的后端服务超时时间，单位是秒。\n        :type ServiceTimeout: int\n        :param Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。\n        :type Protocol: str\n        :param EnableCORS: 是否需要开启跨域，Ture 表示需要，False 表示不需要。\n        :type EnableCORS: bool\n        :param ConstantParameters: 常量参数。\n        :type ConstantParameters: list of ConstantParameter\n        :param RequestParameters: 前端请求参数。\n        :type RequestParameters: list of ReqParameter\n        :param ApiBusinessType: 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api   OAUTH：授权API。\n        :type ApiBusinessType: str\n        :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。\n        :type ServiceMockReturnMessage: str\n        :param MicroServices: API绑定微服务服务列表。\n        :type MicroServices: list of MicroServiceReq\n        :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。\n        :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`\n        :param ServiceTsfHealthCheckConf: 微服务的健康检查配置。\n        :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`\n        :param TargetServicesLoadBalanceConf: target类型负载均衡配置。（内测阶段）\n        :type TargetServicesLoadBalanceConf: int\n        :param TargetServicesHealthCheckConf: target健康检查配置。（内测阶段）\n        :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`\n        :param ServiceScfFunctionName: scf 函数名称。当后端类型是SCF时生效。\n        :type ServiceScfFunctionName: str\n        :param ServiceWebsocketRegisterFunctionName: scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketRegisterFunctionName: str\n        :param ServiceWebsocketCleanupFunctionName: scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketCleanupFunctionName: str\n        :param ServiceWebsocketTransportFunctionName: scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketTransportFunctionName: str\n        :param ServiceScfFunctionNamespace: scf 函数命名空间。当后端类型是SCF时生效。\n        :type ServiceScfFunctionNamespace: str\n        :param ServiceScfFunctionQualifier: scf函数版本。当后端类型是SCF时生效。\n        :type ServiceScfFunctionQualifier: str\n        :param ServiceWebsocketRegisterFunctionNamespace: scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketRegisterFunctionNamespace: str\n        :param ServiceWebsocketRegisterFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketRegisterFunctionQualifier: str\n        :param ServiceWebsocketTransportFunctionNamespace: scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketTransportFunctionNamespace: str\n        :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketTransportFunctionQualifier: str\n        :param ServiceWebsocketCleanupFunctionNamespace: scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketCleanupFunctionNamespace: str\n        :param ServiceWebsocketCleanupFunctionQualifier: scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。\n        :type ServiceWebsocketCleanupFunctionQualifier: str\n        :param ServiceScfIsIntegratedResponse: 是否开启响应集成。当后端类型是SCF时生效。\n        :type ServiceScfIsIntegratedResponse: bool\n        :param IsDebugAfterCharge: 开始调试后计费。（云市场预留字段）\n        :type IsDebugAfterCharge: bool\n        :param TagSpecifications: 标签。\n        :type TagSpecifications: :class:`tencentcloud.apigateway.v20180808.models.Tag`\n        :param IsDeleteResponseErrorCodes: 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。\n        :type IsDeleteResponseErrorCodes: bool\n        :param ResponseType: 返回类型。\n        :type ResponseType: str\n        :param ResponseSuccessExample: 自定义响应配置成功响应示例。\n        :type ResponseSuccessExample: str\n        :param ResponseFailExample: 自定义响应配置失败响应示例。\n        :type ResponseFailExample: str\n        :param ServiceConfig: API 的后端服务配置。\n        :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`\n        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。\n        :type AuthRelationApiId: str\n        :param ServiceParameters: API的后端服务参数。\n        :type ServiceParameters: list of ServiceParameter\n        :param OauthConfig: oauth配置。当AuthType是OAUTH时生效。\n        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`\n        :param ResponseErrorCodes: 用户自定义错误码配置。\n        :type ResponseErrorCodes: list of ResponseErrorCodeReq\n        :param IsBase64Encoded: 是否开启Base64编码，只有后端为scf时才会生效。\n        :type IsBase64Encoded: bool\n        :param IsBase64Trigger: 是否开启Base64编码的header触发，只有后端为scf时才会生效。\n        :type IsBase64Trigger: bool\n        :param Base64EncodedTriggerRules: Header触发规则，总规则数不能超过10。\n        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule\n        """
         self.ServiceId = None
         self.ServiceType = None
         self.RequestConfig = None
@@ -5240,8 +6744,10 @@ class ModifyApiResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5255,8 +6761,14 @@ class ModifyIPStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待修改的策略所属服务的唯一ID。
+        :type ServiceId: str
+        :param StrategyId: 待修改的策略唯一ID。
+        :type StrategyId: str
+        :param StrategyData: 待修改的策略详情。
+        :type StrategyData: str
         """
-        :param ServiceId: 待修改的策略所属服务的唯一ID。\n        :type ServiceId: str\n        :param StrategyId: 待修改的策略唯一ID。\n        :type StrategyId: str\n        :param StrategyData: 待修改的策略详情。\n        :type StrategyData: str\n        """
         self.ServiceId = None
         self.StrategyId = None
         self.StrategyData = None
@@ -5281,9 +6793,13 @@ class ModifyIPStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 修改操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -5299,8 +6815,16 @@ class ModifyPluginRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 要修改的插件ID。
+        :type PluginId: str
+        :param PluginName: 要修改的API网关插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+        :type PluginName: str
+        :param Description: 要修改的插件描述，限定200字以内。
+        :type Description: str
+        :param PluginData: 要修改的插件定义语句，支持json。
+        :type PluginData: str
         """
-        :param PluginId: 要修改的插件ID。\n        :type PluginId: str\n        :param PluginName: 要修改的API网关插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。\n        :type PluginName: str\n        :param Description: 要修改的插件描述，限定200字以内。\n        :type Description: str\n        :param PluginData: 要修改的插件定义语句，支持json。\n        :type PluginData: str\n        """
         self.PluginId = None
         self.PluginName = None
         self.Description = None
@@ -5327,8 +6851,12 @@ class ModifyPluginResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 修改操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 修改操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -5344,8 +6872,14 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务的唯一ID。
+        :type ServiceId: str
+        :param Strategy: 限流值。
+        :type Strategy: int
+        :param EnvironmentNames: 环境列表。
+        :type EnvironmentNames: list of str
         """
-        :param ServiceId: 服务的唯一ID。\n        :type ServiceId: str\n        :param Strategy: 限流值。\n        :type Strategy: int\n        :param EnvironmentNames: 环境列表。\n        :type EnvironmentNames: list of str\n        """
         self.ServiceId = None
         self.Strategy = None
         self.EnvironmentNames = None
@@ -5370,9 +6904,13 @@ class ModifyServiceEnvironmentStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 修改操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -5388,8 +6926,18 @@ class ModifyServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待修改服务的唯一 Id。
+        :type ServiceId: str
+        :param ServiceName: 修改后的服务名称。
+        :type ServiceName: str
+        :param ServiceDesc: 修改后的服务描述。
+        :type ServiceDesc: str
+        :param Protocol: 修改后的服务前端请求类型，如 http、https和 http&https。
+        :type Protocol: str
+        :param NetTypes: 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
+        :type NetTypes: list of str
         """
-        :param ServiceId: 待修改服务的唯一 Id。\n        :type ServiceId: str\n        :param ServiceName: 修改后的服务名称。\n        :type ServiceName: str\n        :param ServiceDesc: 修改后的服务描述。\n        :type ServiceDesc: str\n        :param Protocol: 修改后的服务前端请求类型，如 http、https和 http&https。\n        :type Protocol: str\n        :param NetTypes: 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。\n        :type NetTypes: list of str\n        """
         self.ServiceId = None
         self.ServiceName = None
         self.ServiceDesc = None
@@ -5418,8 +6966,10 @@ class ModifyServiceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -5433,8 +6983,24 @@ class ModifySubDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一 ID。
+        :type ServiceId: str
+        :param SubDomain: 待修改路径映射的自定义的域名。
+        :type SubDomain: str
+        :param IsDefaultMapping: 是否修改为使用默认路径映射。为 true，表示使用默认路径映射，为 false，表示使用自定义路径映射。
+        :type IsDefaultMapping: bool
+        :param CertificateId: 证书 ID，协议包含 HTTPS 的时候要传该字段。
+        :type CertificateId: str
+        :param Protocol: 修改后的自定义域名协议类型。（http，https 或 http&https)
+        :type Protocol: str
+        :param PathMappingSet: 修改后的路径映射列表。
+        :type PathMappingSet: list of PathMapping
+        :param NetType: 网络类型 （'INNER' 或 'OUTER'）
+        :type NetType: str
+        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+        :type IsForcedHttps: bool
         """
-        :param ServiceId: 服务唯一 ID。\n        :type ServiceId: str\n        :param SubDomain: 待修改路径映射的自定义的域名。\n        :type SubDomain: str\n        :param IsDefaultMapping: 是否修改为使用默认路径映射。为 true，表示使用默认路径映射，为 false，表示使用自定义路径映射。\n        :type IsDefaultMapping: bool\n        :param CertificateId: 证书 ID，协议包含 HTTPS 的时候要传该字段。\n        :type CertificateId: str\n        :param Protocol: 修改后的自定义域名协议类型。（http，https 或 http&https)\n        :type Protocol: str\n        :param PathMappingSet: 修改后的路径映射列表。\n        :type PathMappingSet: list of PathMapping\n        :param NetType: 网络类型 （'INNER' 或 'OUTER'）\n        :type NetType: str\n        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。\n        :type IsForcedHttps: bool\n        """
         self.ServiceId = None
         self.SubDomain = None
         self.IsDefaultMapping = None
@@ -5474,8 +7040,12 @@ class ModifySubDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 修改自定义域名操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 修改自定义域名操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -5491,8 +7061,18 @@ class ModifyUsagePlanRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 使用计划唯一 ID。
+        :type UsagePlanId: str
+        :param UsagePlanName: 修改后的用户自定义的使用计划名称。
+        :type UsagePlanName: str
+        :param UsagePlanDesc: 修改后的用户自定义的使用计划描述。
+        :type UsagePlanDesc: str
+        :param MaxRequestNum: 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。
+        :type MaxRequestNum: int
+        :param MaxRequestNumPreSec: 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
+        :type MaxRequestNumPreSec: int
         """
-        :param UsagePlanId: 使用计划唯一 ID。\n        :type UsagePlanId: str\n        :param UsagePlanName: 修改后的用户自定义的使用计划名称。\n        :type UsagePlanName: str\n        :param UsagePlanDesc: 修改后的用户自定义的使用计划描述。\n        :type UsagePlanDesc: str\n        :param MaxRequestNum: 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。\n        :type MaxRequestNum: int\n        :param MaxRequestNumPreSec: 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。\n        :type MaxRequestNumPreSec: int\n        """
         self.UsagePlanId = None
         self.UsagePlanName = None
         self.UsagePlanDesc = None
@@ -5521,9 +7101,13 @@ class ModifyUsagePlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 使用计划详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -5541,8 +7125,14 @@ class OauthConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PublicKey: 公钥，用于验证用户token。
+        :type PublicKey: str
+        :param TokenLocation: token传递位置。
+        :type TokenLocation: str
+        :param LoginRedirectUrl: 重定向地址，用于引导用户登录操作。
+        :type LoginRedirectUrl: str
         """
-        :param PublicKey: 公钥，用于验证用户token。\n        :type PublicKey: str\n        :param TokenLocation: token传递位置。\n        :type TokenLocation: str\n        :param LoginRedirectUrl: 重定向地址，用于引导用户登录操作。\n        :type LoginRedirectUrl: str\n        """
         self.PublicKey = None
         self.TokenLocation = None
         self.LoginRedirectUrl = None
@@ -5567,8 +7157,12 @@ class PathMapping(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Path: 路径。
+        :type Path: str
+        :param Environment: 发布环境，可选值为“test”、 ”prepub“、”release“。
+        :type Environment: str
         """
-        :param Path: 路径。\n        :type Path: str\n        :param Environment: 发布环境，可选值为“test”、 ”prepub“、”release“。\n        :type Environment: str\n        """
         self.Path = None
         self.Environment = None
 
@@ -5591,11 +7185,29 @@ class Plugin(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PluginId: 插件ID。
+        :type PluginId: str
+        :param PluginName: 插件名称。
+        :type PluginName: str
+        :param PluginType: 插件类型。
+        :type PluginType: str
+        :param PluginData: 插件定义语句。
+        :type PluginData: str
+        :param Description: 插件描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreatedTime: 插件创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type CreatedTime: str
+        :param ModifiedTime: 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type ModifiedTime: str
+        :param AttachedApiTotalCount: 插件绑定的API总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedApiTotalCount: int
+        :param AttachedApis: 插件绑定的API信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedApis: list of AttachedApiInfo
         """
-        :param PluginId: 插件ID。\n        :type PluginId: str\n        :param PluginName: 插件名称。\n        :type PluginName: str\n        :param PluginType: 插件类型。\n        :type PluginType: str\n        :param PluginData: 插件定义语句。\n        :type PluginData: str\n        :param Description: 插件描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Description: str\n        :param CreatedTime: 插件创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。\n        :type CreatedTime: str\n        :param ModifiedTime: 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。\n        :type ModifiedTime: str\n        :param AttachedApiTotalCount: 插件绑定的API总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AttachedApiTotalCount: int\n        :param AttachedApis: 插件绑定的API信息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AttachedApis: list of AttachedApiInfo\n        """
         self.PluginId = None
         self.PluginName = None
         self.PluginType = None
@@ -5637,8 +7249,12 @@ class PluginSummary(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 插件个数。
+        :type TotalCount: int
+        :param PluginSet: 插件详情。
+        :type PluginSet: list of Plugin
         """
-        :param TotalCount: 插件个数。\n        :type TotalCount: int\n        :param PluginSet: 插件详情。\n        :type PluginSet: list of Plugin\n        """
         self.TotalCount = None
         self.PluginSet = None
 
@@ -5666,10 +7282,14 @@ class ReleaseService(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReleaseDesc: 发布时的备注信息填写。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReleaseDesc: str\n        :param ReleaseVersion: 发布的版本id。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReleaseVersion: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseDesc: str
+        :param ReleaseVersion: 发布的版本id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseVersion: str
+        """
         self.ReleaseDesc = None
         self.ReleaseVersion = None
 
@@ -5692,8 +7312,16 @@ class ReleaseServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待发布服务的唯一 ID。
+        :type ServiceId: str
+        :param EnvironmentName: 待发布的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
+        :type EnvironmentName: str
+        :param ReleaseDesc: 本次的发布描述。
+        :type ReleaseDesc: str
+        :param ApiIds: apiId列表，预留字段，默认全量api发布。
+        :type ApiIds: list of str
         """
-        :param ServiceId: 待发布服务的唯一 ID。\n        :type ServiceId: str\n        :param EnvironmentName: 待发布的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。\n        :type EnvironmentName: str\n        :param ReleaseDesc: 本次的发布描述。\n        :type ReleaseDesc: str\n        :param ApiIds: apiId列表，预留字段，默认全量api发布。\n        :type ApiIds: list of str\n        """
         self.ServiceId = None
         self.EnvironmentName = None
         self.ReleaseDesc = None
@@ -5720,8 +7348,12 @@ class ReleaseServiceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 发布信息。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ReleaseService`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 发布信息。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ReleaseService`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -5739,8 +7371,20 @@ class ReqParameter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: API 的前端参数名称。
+        :type Name: str
+        :param Position: API 的前端参数位置，如 header。目前支持 header、query、path。
+        :type Position: str
+        :param Type: API 的前端参数类型，如 String、int。
+        :type Type: str
+        :param DefaultValue: API 的前端参数默认值。
+        :type DefaultValue: str
+        :param Required: API 的前端参数是否必填，True：表示必填，False：表示可选。
+        :type Required: bool
+        :param Desc: API 的前端参数备注。
+        :type Desc: str
         """
-        :param Name: API 的前端参数名称。\n        :type Name: str\n        :param Position: API 的前端参数位置，如 header。目前支持 header、query、path。\n        :type Position: str\n        :param Type: API 的前端参数类型，如 String、int。\n        :type Type: str\n        :param DefaultValue: API 的前端参数默认值。\n        :type DefaultValue: str\n        :param Required: API 的前端参数是否必填，True：表示必填，False：表示可选。\n        :type Required: bool\n        :param Desc: API 的前端参数备注。\n        :type Desc: str\n        """
         self.Name = None
         self.Position = None
         self.Type = None
@@ -5771,8 +7415,12 @@ class RequestConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Path: API 的路径，如 /path。
+        :type Path: str
+        :param Method: API 的请求方法，如 GET。
+        :type Method: str
         """
-        :param Path: API 的路径，如 /path。\n        :type Path: str\n        :param Method: API 的请求方法，如 GET。\n        :type Method: str\n        """
         self.Path = None
         self.Method = None
 
@@ -5795,8 +7443,20 @@ class RequestParameter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 请求参数名称
+        :type Name: str
+        :param Desc: 描述
+        :type Desc: str
+        :param Position: 参数位置
+        :type Position: str
+        :param Type: 参数类型
+        :type Type: str
+        :param DefaultValue: 默认值
+        :type DefaultValue: str
+        :param Required: 是否必须
+        :type Required: bool
         """
-        :param Name: 请求参数名称\n        :type Name: str\n        :param Desc: 描述\n        :type Desc: str\n        :param Position: 参数位置\n        :type Position: str\n        :param Type: 参数类型\n        :type Type: str\n        :param DefaultValue: 默认值\n        :type DefaultValue: str\n        :param Required: 是否必须\n        :type Required: bool\n        """
         self.Name = None
         self.Desc = None
         self.Position = None
@@ -5827,8 +7487,10 @@ class ResetAPIDocPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
         """
-        :param ApiDocId: API文档ID\n        :type ApiDocId: str\n        """
         self.ApiDocId = None
 
 
@@ -5849,8 +7511,12 @@ class ResetAPIDocPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: API文档基本信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: API文档基本信息\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -5868,8 +7534,18 @@ class ResponseErrorCodeReq(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Code: 自定义响应配置错误码。
+        :type Code: int
+        :param Msg: 自定义响应配置错误信息。
+        :type Msg: str
+        :param Desc: 自定义响应配置错误码备注。
+        :type Desc: str
+        :param ConvertedCode: 自定义错误码转换。
+        :type ConvertedCode: int
+        :param NeedConvert: 是否需要开启错误码转换。
+        :type NeedConvert: bool
         """
-        :param Code: 自定义响应配置错误码。\n        :type Code: int\n        :param Msg: 自定义响应配置错误信息。\n        :type Msg: str\n        :param Desc: 自定义响应配置错误码备注。\n        :type Desc: str\n        :param ConvertedCode: 自定义错误码转换。\n        :type ConvertedCode: int\n        :param NeedConvert: 是否需要开启错误码转换。\n        :type NeedConvert: bool\n        """
         self.Code = None
         self.Msg = None
         self.Desc = None
@@ -5898,26 +7574,62 @@ class Service(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InnerHttpsPort: 内网访问https端口。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InnerHttpsPort: int\n        :param ServiceDesc: 用户自定义的服务描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceDesc: str\n        :param Protocol: 服务的前端请求类型。如http、https 或者 http&https。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param NetTypes: 服务支持的网络类型。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NetTypes: list of str\n        :param ExclusiveSetName: 独占集群名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExclusiveSetName: str\n        :param ServiceId: 服务唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        :param IpVersion: IP版本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IpVersion: str\n        :param AvailableEnvironments: 已经发布的环境列表。如test、prepub、release。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AvailableEnvironments: list of str\n        :param ServiceName: 用户自定义的服务名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        :param OuterSubDomain: 系统为该服务分配的外网域名。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OuterSubDomain: str\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param InnerHttpPort: 内网访问http端口。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InnerHttpPort: int\n        :param InnerSubDomain: 系统为该服务自动分配的内网域名。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InnerSubDomain: str\n        :param TradeIsolateStatus: 服务的计费状态。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TradeIsolateStatus: int\n        :param Tags: 服务绑定的标签
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param InstanceId: 独享实例
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InstanceId: str\n        :param SetType: 集群类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SetType: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpsPort: int
+        :param ServiceDesc: 用户自定义的服务描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDesc: str
+        :param Protocol: 服务的前端请求类型。如http、https 或者 http&https。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param NetTypes: 服务支持的网络类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetTypes: list of str
+        :param ExclusiveSetName: 独占集群名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveSetName: str
+        :param ServiceId: 服务唯一 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param IpVersion: IP版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: str
+        :param AvailableEnvironments: 已经发布的环境列表。如test、prepub、release。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableEnvironments: list of str
+        :param ServiceName: 用户自定义的服务名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param OuterSubDomain: 系统为该服务分配的外网域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OuterSubDomain: str
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param InnerHttpPort: 内网访问http端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpPort: int
+        :param InnerSubDomain: 系统为该服务自动分配的内网域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerSubDomain: str
+        :param TradeIsolateStatus: 服务的计费状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeIsolateStatus: int
+        :param Tags: 服务绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param InstanceId: 独享实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param SetType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetType: str
+        """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
         self.Protocol = None
@@ -5977,8 +7689,18 @@ class ServiceConfig(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道
+        :type Product: str
+        :param UniqVpcId: vpc 的唯一ID。
+        :type UniqVpcId: str
+        :param Url: API 的后端服务url。如果ServiceType是HTTP，则此参数必传。
+        :type Url: str
+        :param Path: API 的后端服务路径，如 /path。如果 ServiceType 是 HTTP，则此参数必传。前后端路径可不同。
+        :type Path: str
+        :param Method: API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
+        :type Method: str
         """
-        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道\n        :type Product: str\n        :param UniqVpcId: vpc 的唯一ID。\n        :type UniqVpcId: str\n        :param Url: API 的后端服务url。如果ServiceType是HTTP，则此参数必传。\n        :type Url: str\n        :param Path: API 的后端服务路径，如 /path。如果 ServiceType 是 HTTP，则此参数必传。前后端路径可不同。\n        :type Path: str\n        :param Method: API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。\n        :type Method: str\n        """
         self.Product = None
         self.UniqVpcId = None
         self.Url = None
@@ -6007,10 +7729,14 @@ class ServiceEnvironmentSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 服务绑定环境总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param EnvironmentList: 服务绑定环境列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentList: list of Environment\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param EnvironmentList: 服务绑定环境列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentList: list of Environment
+        """
         self.TotalCount = None
         self.EnvironmentList = None
 
@@ -6038,10 +7764,22 @@ class ServiceEnvironmentStrategy(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentName: 环境名。
+        :type EnvironmentName: str
+        :param Url: 访问服务对应环境的url。
+        :type Url: str
+        :param Status: 发布状态。
+        :type Status: int
+        :param VersionName: 发布的版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param Strategy: 限流值。
+        :type Strategy: int
+        :param MaxStrategy: 最大限流值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxStrategy: int
         """
-        :param EnvironmentName: 环境名。\n        :type EnvironmentName: str\n        :param Url: 访问服务对应环境的url。\n        :type Url: str\n        :param Status: 发布状态。\n        :type Status: int\n        :param VersionName: 发布的版本号。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionName: str\n        :param Strategy: 限流值。\n        :type Strategy: int\n        :param MaxStrategy: 最大限流值
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxStrategy: int\n        """
         self.EnvironmentName = None
         self.Url = None
         self.Status = None
@@ -6072,10 +7810,14 @@ class ServiceEnvironmentStrategyStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 限流策略数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param EnvironmentList: 限流策略列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentList: list of ServiceEnvironmentStrategy\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param EnvironmentList: 限流策略列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentList: list of ServiceEnvironmentStrategy
+        """
         self.TotalCount = None
         self.EnvironmentList = None
 
@@ -6103,15 +7845,29 @@ class ServiceParameter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: API的后端服务参数名称。只有ServiceType是HTTP才会用到此参数。前后端参数名称可不同。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Name: str\n        :param Position: API 的后端服务参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。前后端参数位置可配置不同。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Position: str\n        :param RelevantRequestParameterPosition: API 的后端服务参数对应的前端参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelevantRequestParameterPosition: str\n        :param RelevantRequestParameterName: API 的后端服务参数对应的前端参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelevantRequestParameterName: str\n        :param DefaultValue: API 的后端服务参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DefaultValue: str\n        :param RelevantRequestParameterDesc: API 的后端服务参数备注。只有 ServiceType 是 HTTP 才会用到此参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelevantRequestParameterDesc: str\n        :param RelevantRequestParameterType: API 的后端服务参数类型。只有 ServiceType 是 HTTP 才会用到此参数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RelevantRequestParameterType: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Position: API 的后端服务参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。前后端参数位置可配置不同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: str
+        :param RelevantRequestParameterPosition: API 的后端服务参数对应的前端参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterPosition: str
+        :param RelevantRequestParameterName: API 的后端服务参数对应的前端参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterName: str
+        :param DefaultValue: API 的后端服务参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param RelevantRequestParameterDesc: API 的后端服务参数备注。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterDesc: str
+        :param RelevantRequestParameterType: API 的后端服务参数类型。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterType: str
+        """
         self.Name = None
         self.Position = None
         self.RelevantRequestParameterPosition = None
@@ -6144,10 +7900,14 @@ class ServiceReleaseHistory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 发布版本总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param VersionList: 历史版本列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionList: list of ServiceReleaseHistoryInfo\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param VersionList: 历史版本列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionList: list of ServiceReleaseHistoryInfo
+        """
         self.TotalCount = None
         self.VersionList = None
 
@@ -6175,11 +7935,17 @@ class ServiceReleaseHistoryInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionName: 版本号。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionName: str\n        :param VersionDesc: 版本描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionDesc: str\n        :param ReleaseTime: 版本发布时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReleaseTime: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param VersionDesc: 版本描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionDesc: str
+        :param ReleaseTime: 版本发布时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        """
         self.VersionName = None
         self.VersionDesc = None
         self.ReleaseTime = None
@@ -6204,10 +7970,14 @@ class ServiceReleaseVersion(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 发布版本总数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param VersionList: 发布版本列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VersionList: list of ServiceReleaseHistoryInfo\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param VersionList: 发布版本列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionList: list of ServiceReleaseHistoryInfo
+        """
         self.TotalCount = None
         self.VersionList = None
 
@@ -6235,8 +8005,12 @@ class ServiceSubDomainMappings(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IsDefaultMapping: 是否使用默认路径映射，为 True 表示使用默认路径映射；为 False 的话，表示使用自定义路径映射，此时 PathMappingSet 不为空。
+        :type IsDefaultMapping: bool
+        :param PathMappingSet: 自定义路径映射列表。
+        :type PathMappingSet: list of PathMapping
         """
-        :param IsDefaultMapping: 是否使用默认路径映射，为 True 表示使用默认路径映射；为 False 的话，表示使用自定义路径映射，此时 PathMappingSet 不为空。\n        :type IsDefaultMapping: bool\n        :param PathMappingSet: 自定义路径映射列表。\n        :type PathMappingSet: list of PathMapping\n        """
         self.IsDefaultMapping = None
         self.PathMappingSet = None
 
@@ -6264,10 +8038,14 @@ class ServiceUsagePlanSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 服务上绑定的使用计划总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ServiceUsagePlanList: 服务上绑定的使用计划列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceUsagePlanList: list of ApiUsagePlan\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ServiceUsagePlanList: 服务上绑定的使用计划列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceUsagePlanList: list of ApiUsagePlan
+        """
         self.TotalCount = None
         self.ServiceUsagePlanList = None
 
@@ -6295,10 +8073,14 @@ class ServicesStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 服务列表总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param ServiceSet: 服务列表详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceSet: list of Service\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ServiceSet: 服务列表详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceSet: list of Service
+        """
         self.TotalCount = None
         self.ServiceSet = None
 
@@ -6326,8 +8108,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Key: 标签的 key。
+        :type Key: str
+        :param Value: 便签的 value。
+        :type Value: str
         """
-        :param Key: 标签的 key。\n        :type Key: str\n        :param Value: 便签的 value。\n        :type Value: str\n        """
         self.Key = None
         self.Value = None
 
@@ -6350,8 +8136,18 @@ class TargetServicesReq(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param VmIp: vm ip
+        :type VmIp: str
+        :param VpcId: vpc id
+        :type VpcId: str
+        :param VmPort: vm port
+        :type VmPort: int
+        :param HostIp: cvm所在宿主机ip
+        :type HostIp: str
+        :param DockerIp: docker ip
+        :type DockerIp: str
         """
-        :param VmIp: vm ip\n        :type VmIp: str\n        :param VpcId: vpc id\n        :type VpcId: str\n        :param VmPort: vm port\n        :type VmPort: int\n        :param HostIp: cvm所在宿主机ip\n        :type HostIp: str\n        :param DockerIp: docker ip\n        :type DockerIp: str\n        """
         self.VmIp = None
         self.VpcId = None
         self.VmPort = None
@@ -6380,12 +8176,20 @@ class TsfLoadBalanceConfResp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsLoadBalance: 是否开启负载均衡。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsLoadBalance: bool\n        :param Method: 负载均衡方式。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Method: str\n        :param SessionStickRequired: 是否开启会话保持。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionStickRequired: bool\n        :param SessionStickTimeout: 会话保持超时时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SessionStickTimeout: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLoadBalance: bool
+        :param Method: 负载均衡方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param SessionStickRequired: 是否开启会话保持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionStickRequired: bool
+        :param SessionStickTimeout: 会话保持超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionStickTimeout: int
+        """
         self.IsLoadBalance = None
         self.Method = None
         self.SessionStickRequired = None
@@ -6412,8 +8216,18 @@ class UnBindEnvironmentRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BindType: 绑定类型，取值为 API、SERVICE，默认值为 SERVICE。
+        :type BindType: str
+        :param UsagePlanIds: 待绑定的使用计划唯一 ID 列表。
+        :type UsagePlanIds: list of str
+        :param Environment: 待解绑的服务环境。
+        :type Environment: str
+        :param ServiceId: 待解绑的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiIds: API 唯一 ID 数组，当 BindType=API 时，需要传入此参数。
+        :type ApiIds: list of str
         """
-        :param BindType: 绑定类型，取值为 API、SERVICE，默认值为 SERVICE。\n        :type BindType: str\n        :param UsagePlanIds: 待绑定的使用计划唯一 ID 列表。\n        :type UsagePlanIds: list of str\n        :param Environment: 待解绑的服务环境。\n        :type Environment: str\n        :param ServiceId: 待解绑的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiIds: API 唯一 ID 数组，当 BindType=API 时，需要传入此参数。\n        :type ApiIds: list of str\n        """
         self.BindType = None
         self.UsagePlanIds = None
         self.Environment = None
@@ -6442,9 +8256,13 @@ class UnBindEnvironmentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 解绑操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6460,8 +8278,16 @@ class UnBindIPStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待解绑的服务唯一ID。
+        :type ServiceId: str
+        :param StrategyId: 待解绑的IP策略唯一ID。
+        :type StrategyId: str
+        :param EnvironmentName: 待解绑的环境。
+        :type EnvironmentName: str
+        :param UnBindApiIds: 待解绑的 API 列表。
+        :type UnBindApiIds: list of str
         """
-        :param ServiceId: 待解绑的服务唯一ID。\n        :type ServiceId: str\n        :param StrategyId: 待解绑的IP策略唯一ID。\n        :type StrategyId: str\n        :param EnvironmentName: 待解绑的环境。\n        :type EnvironmentName: str\n        :param UnBindApiIds: 待解绑的 API 列表。\n        :type UnBindApiIds: list of str\n        """
         self.ServiceId = None
         self.StrategyId = None
         self.EnvironmentName = None
@@ -6488,9 +8314,13 @@ class UnBindIPStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 解绑操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6506,8 +8336,12 @@ class UnBindSecretIdsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UsagePlanId: 待解绑的使用计划唯一 ID。
+        :type UsagePlanId: str
+        :param AccessKeyIds: 待解绑的密钥 ID 数组。
+        :type AccessKeyIds: list of str
         """
-        :param UsagePlanId: 待解绑的使用计划唯一 ID。\n        :type UsagePlanId: str\n        :param AccessKeyIds: 待解绑的密钥 ID 数组。\n        :type AccessKeyIds: list of str\n        """
         self.UsagePlanId = None
         self.AccessKeyIds = None
 
@@ -6530,9 +8364,13 @@ class UnBindSecretIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 解绑操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6548,8 +8386,12 @@ class UnBindSubDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一 ID。
+        :type ServiceId: str
+        :param SubDomain: 待解绑的自定义的域名。
+        :type SubDomain: str
         """
-        :param ServiceId: 服务唯一 ID。\n        :type ServiceId: str\n        :param SubDomain: 待解绑的自定义的域名。\n        :type SubDomain: str\n        """
         self.ServiceId = None
         self.SubDomain = None
 
@@ -6572,8 +8414,12 @@ class UnBindSubDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 解绑自定义域名操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 解绑自定义域名操作是否成功。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -6589,8 +8435,14 @@ class UnReleaseServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待下线服务的唯一 ID。
+        :type ServiceId: str
+        :param EnvironmentName: 待下线的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
+        :type EnvironmentName: str
+        :param ApiIds: 保留字段，待下线的API列表。
+        :type ApiIds: list of str
         """
-        :param ServiceId: 待下线服务的唯一 ID。\n        :type ServiceId: str\n        :param EnvironmentName: 待下线的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。\n        :type EnvironmentName: str\n        :param ApiIds: 保留字段，待下线的API列表。\n        :type ApiIds: list of str\n        """
         self.ServiceId = None
         self.EnvironmentName = None
         self.ApiIds = None
@@ -6615,9 +8467,13 @@ class UnReleaseServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 下线操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6633,8 +8489,16 @@ class UnbindApiAppRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 待绑定的应用唯一 ID 。
+        :type ApiAppId: str
+        :param Environment: 待绑定的环境。
+        :type Environment: str
+        :param ServiceId: 待绑定的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiId: 待绑定的API唯一ID。
+        :type ApiId: str
         """
-        :param ApiAppId: 待绑定的应用唯一 ID 。\n        :type ApiAppId: str\n        :param Environment: 待绑定的环境。\n        :type Environment: str\n        :param ServiceId: 待绑定的服务唯一 ID。\n        :type ServiceId: str\n        :param ApiId: 待绑定的API唯一ID。\n        :type ApiId: str\n        """
         self.ApiAppId = None
         self.Environment = None
         self.ServiceId = None
@@ -6661,9 +8525,13 @@ class UnbindApiAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 解除绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6679,8 +8547,14 @@ class UpdateApiAppKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ApiAppId: 应用唯一 ID。
+        :type ApiAppId: str
+        :param ApiAppKey: 应用的Key。
+        :type ApiAppKey: str
+        :param ApiAppSecret: 应用的Secret。
+        :type ApiAppSecret: str
         """
-        :param ApiAppId: 应用唯一 ID。\n        :type ApiAppId: str\n        :param ApiAppKey: 应用的Key。\n        :type ApiAppKey: str\n        :param ApiAppSecret: 应用的Secret。\n        :type ApiAppSecret: str\n        """
         self.ApiAppId = None
         self.ApiAppKey = None
         self.ApiAppSecret = None
@@ -6705,9 +8579,13 @@ class UpdateApiAppKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 更新操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6723,8 +8601,12 @@ class UpdateApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessKeyId: 待更换的密钥 ID。
+        :type AccessKeyId: str
+        :param AccessKeySecret: 待更换的密钥 Key，更新自定义密钥时，该字段为必传。长度10 - 50字符，包括字母、数字、英文下划线。
+        :type AccessKeySecret: str
         """
-        :param AccessKeyId: 待更换的密钥 ID。\n        :type AccessKeyId: str\n        :param AccessKeySecret: 待更换的密钥 Key，更新自定义密钥时，该字段为必传。长度10 - 50字符，包括字母、数字、英文下划线。\n        :type AccessKeySecret: str\n        """
         self.AccessKeyId = None
         self.AccessKeySecret = None
 
@@ -6747,9 +8629,13 @@ class UpdateApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 更换后的密钥详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6767,8 +8653,16 @@ class UpdateServiceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ServiceId: 待切换服务的唯一 Id。
+        :type ServiceId: str
+        :param EnvironmentName: 待切换的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
+        :type EnvironmentName: str
+        :param VersionName: 切换的版本号。
+        :type VersionName: str
+        :param UpdateDesc: 本次的切换描述。
+        :type UpdateDesc: str
         """
-        :param ServiceId: 待切换服务的唯一 Id。\n        :type ServiceId: str\n        :param EnvironmentName: 待切换的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。\n        :type EnvironmentName: str\n        :param VersionName: 切换的版本号。\n        :type VersionName: str\n        :param UpdateDesc: 本次的切换描述。\n        :type UpdateDesc: str\n        """
         self.ServiceId = None
         self.EnvironmentName = None
         self.VersionName = None
@@ -6795,9 +8689,13 @@ class UpdateServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 切换版本操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -6813,8 +8711,22 @@ class UsagePlan(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Environment: 环境名称。
+        :type Environment: str
+        :param UsagePlanId: 使用计划唯一ID。
+        :type UsagePlanId: str
+        :param UsagePlanName: 使用计划名称。
+        :type UsagePlanName: str
+        :param UsagePlanDesc: 使用计划描述。
+        :type UsagePlanDesc: str
+        :param MaxRequestNumPreSec: 使用计划qps，-1表示没有限制。
+        :type MaxRequestNumPreSec: int
+        :param CreatedTime: 使用计划时间。
+        :type CreatedTime: str
+        :param ModifiedTime: 使用计划修改时间。
+        :type ModifiedTime: str
         """
-        :param Environment: 环境名称。\n        :type Environment: str\n        :param UsagePlanId: 使用计划唯一ID。\n        :type UsagePlanId: str\n        :param UsagePlanName: 使用计划名称。\n        :type UsagePlanName: str\n        :param UsagePlanDesc: 使用计划描述。\n        :type UsagePlanDesc: str\n        :param MaxRequestNumPreSec: 使用计划qps，-1表示没有限制。\n        :type MaxRequestNumPreSec: int\n        :param CreatedTime: 使用计划时间。\n        :type CreatedTime: str\n        :param ModifiedTime: 使用计划修改时间。\n        :type ModifiedTime: str\n        """
         self.Environment = None
         self.UsagePlanId = None
         self.UsagePlanName = None
@@ -6847,10 +8759,14 @@ class UsagePlanBindEnvironment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentName: 环境名。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentName: str\n        :param ServiceId: 服务唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentName: str
+        :param ServiceId: 服务唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        """
         self.EnvironmentName = None
         self.ServiceId = None
 
@@ -6873,11 +8789,17 @@ class UsagePlanBindSecret(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessKeyId: 密钥ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AccessKeyId: str\n        :param SecretName: 密钥名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SecretName: str\n        :param Status: 密钥状态，0表示已禁用，1表示启用中。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKeyId: str
+        :param SecretName: 密钥名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param Status: 密钥状态，0表示已禁用，1表示启用中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
         self.AccessKeyId = None
         self.SecretName = None
         self.Status = None
@@ -6902,10 +8824,14 @@ class UsagePlanBindSecretStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 使用计划绑定密钥的数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param AccessKeyList: 密钥详情列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AccessKeyList: list of UsagePlanBindSecret\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param AccessKeyList: 密钥详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKeyList: list of UsagePlanBindSecret
+        """
         self.TotalCount = None
         self.AccessKeyList = None
 
@@ -6933,20 +8859,44 @@ class UsagePlanEnvironment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 绑定的服务唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceId: str\n        :param ApiId: API 的唯一ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiId: str\n        :param ApiName: API 的名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ApiName: str\n        :param Path: API 的路径。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Path: str\n        :param Method: API 的方法。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Method: str\n        :param Environment: 已经绑定的环境名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Environment: str\n        :param InUseRequestNum: 已经使用的配额。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InUseRequestNum: int\n        :param MaxRequestNum: 最大请求量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNum: int\n        :param MaxRequestNumPreSec: 每秒最大请求次数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNumPreSec: int\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param ServiceName: 服务名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ServiceName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param ApiId: API 的唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param ApiName: API 的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param Path: API 的路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: API 的方法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param Environment: 已经绑定的环境名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: str
+        :param InUseRequestNum: 已经使用的配额。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InUseRequestNum: int
+        :param MaxRequestNum: 最大请求量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNum: int
+        :param MaxRequestNumPreSec: 每秒最大请求次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNumPreSec: int
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ServiceName: 服务名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        """
         self.ServiceId = None
         self.ApiId = None
         self.ApiName = None
@@ -6989,10 +8939,14 @@ class UsagePlanEnvironmentStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 使用计划绑定的服务的环境数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param EnvironmentList: 使用计划已经绑定的各个服务的环境状态。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentList: list of UsagePlanEnvironment\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param EnvironmentList: 使用计划已经绑定的各个服务的环境状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentList: list of UsagePlanEnvironment
+        """
         self.TotalCount = None
         self.EnvironmentList = None
 
@@ -7020,21 +8974,47 @@ class UsagePlanInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UsagePlanId: 使用计划唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanId: str\n        :param UsagePlanName: 使用计划名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanName: str\n        :param UsagePlanDesc: 使用计划描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanDesc: str\n        :param InitQuota: 初始化调用次数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InitQuota: int\n        :param MaxRequestNumPreSec: 每秒请求限制数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNumPreSec: int\n        :param MaxRequestNum: 最大调用次数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNum: int\n        :param IsHide: 是否隐藏。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsHide: int\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        :param BindSecretIdTotalCount: 绑定密钥的数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindSecretIdTotalCount: int\n        :param BindSecretIds: 绑定密钥的详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindSecretIds: list of str\n        :param BindEnvironmentTotalCount: 绑定环境数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindEnvironmentTotalCount: int\n        :param BindEnvironments: 绑定环境详情。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindEnvironments: list of UsagePlanBindEnvironment\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanId: str
+        :param UsagePlanName: 使用计划名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanName: str
+        :param UsagePlanDesc: 使用计划描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanDesc: str
+        :param InitQuota: 初始化调用次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitQuota: int
+        :param MaxRequestNumPreSec: 每秒请求限制数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNumPreSec: int
+        :param MaxRequestNum: 最大调用次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNum: int
+        :param IsHide: 是否隐藏。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsHide: int
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param BindSecretIdTotalCount: 绑定密钥的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindSecretIdTotalCount: int
+        :param BindSecretIds: 绑定密钥的详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindSecretIds: list of str
+        :param BindEnvironmentTotalCount: 绑定环境数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindEnvironmentTotalCount: int
+        :param BindEnvironments: 绑定环境详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindEnvironments: list of UsagePlanBindEnvironment
+        """
         self.UsagePlanId = None
         self.UsagePlanName = None
         self.UsagePlanDesc = None
@@ -7084,15 +9064,29 @@ class UsagePlanStatusInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UsagePlanId: 使用计划唯一 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanId: str\n        :param UsagePlanName: 用户自定义的使用计划名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanName: str\n        :param UsagePlanDesc: 用户自定义的使用计划描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanDesc: str\n        :param MaxRequestNumPreSec: 每秒最大请求次数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNumPreSec: int\n        :param MaxRequestNum: 请求配额总量，-1表示没有限制。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxRequestNum: int\n        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreatedTime: str\n        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ModifiedTime: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanId: str
+        :param UsagePlanName: 用户自定义的使用计划名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanName: str
+        :param UsagePlanDesc: 用户自定义的使用计划描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanDesc: str
+        :param MaxRequestNumPreSec: 每秒最大请求次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNumPreSec: int
+        :param MaxRequestNum: 请求配额总量，-1表示没有限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRequestNum: int
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        """
         self.UsagePlanId = None
         self.UsagePlanName = None
         self.UsagePlanDesc = None
@@ -7125,10 +9119,14 @@ class UsagePlansStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的使用计划数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalCount: int\n        :param UsagePlanStatusSet: 使用计划列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UsagePlanStatusSet: list of UsagePlanStatusInfo\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param UsagePlanStatusSet: 使用计划列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsagePlanStatusSet: list of UsagePlanStatusInfo
+        """
         self.TotalCount = None
         self.UsagePlanStatusSet = None
 

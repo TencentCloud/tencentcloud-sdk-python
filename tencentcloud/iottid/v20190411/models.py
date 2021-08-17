@@ -24,8 +24,10 @@ class AuthTestTidRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 设备端SDK填入测试TID参数后生成的加密数据串
+        :type Data: str
         """
-        :param Data: 设备端SDK填入测试TID参数后生成的加密数据串\n        :type Data: str\n        """
         self.Data = None
 
 
@@ -46,8 +48,12 @@ class AuthTestTidResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Pass: 认证结果
+        :type Pass: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Pass: 认证结果\n        :type Pass: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Pass = None
         self.RequestId = None
 
@@ -63,8 +69,12 @@ class BurnTidNotifyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrderId: 订单编号
+        :type OrderId: str
+        :param Tid: TID编号
+        :type Tid: str
         """
-        :param OrderId: 订单编号\n        :type OrderId: str\n        :param Tid: TID编号\n        :type Tid: str\n        """
         self.OrderId = None
         self.Tid = None
 
@@ -87,8 +97,12 @@ class BurnTidNotifyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tid: 接收回执成功的TID
+        :type Tid: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Tid: 接收回执成功的TID\n        :type Tid: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Tid = None
         self.RequestId = None
 
@@ -104,8 +118,12 @@ class DeliverTidNotifyRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrderId: 订单编号
+        :type OrderId: str
+        :param Tid: TID编号
+        :type Tid: str
         """
-        :param OrderId: 订单编号\n        :type OrderId: str\n        :param Tid: TID编号\n        :type Tid: str\n        """
         self.OrderId = None
         self.Tid = None
 
@@ -128,8 +146,16 @@ class DeliverTidNotifyResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RemaindCount: 剩余空发数量
+        :type RemaindCount: int
+        :param Tid: 已回执的TID编码
+        :type Tid: str
+        :param ProductKey: 产品公钥
+        :type ProductKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RemaindCount: 剩余空发数量\n        :type RemaindCount: int\n        :param Tid: 已回执的TID编码\n        :type Tid: str\n        :param ProductKey: 产品公钥\n        :type ProductKey: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RemaindCount = None
         self.Tid = None
         self.ProductKey = None
@@ -149,8 +175,12 @@ class DeliverTidsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrderId: 订单ID
+        :type OrderId: str
+        :param Quantity: 数量，1~100
+        :type Quantity: int
         """
-        :param OrderId: 订单ID\n        :type OrderId: str\n        :param Quantity: 数量，1~100\n        :type Quantity: int\n        """
         self.OrderId = None
         self.Quantity = None
 
@@ -173,9 +203,15 @@ class DeliverTidsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TidSet: 空发的TID信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TidSet: list of TidKeysInfo\n        :param ProductKey: 产品公钥\n        :type ProductKey: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TidSet: list of TidKeysInfo
+        :param ProductKey: 产品公钥
+        :type ProductKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.TidSet = None
         self.ProductKey = None
         self.RequestId = None
@@ -198,8 +234,10 @@ class DescribeAvailableLibCountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrderId: 订单编号
+        :type OrderId: str
         """
-        :param OrderId: 订单编号\n        :type OrderId: str\n        """
         self.OrderId = None
 
 
@@ -220,8 +258,12 @@ class DescribeAvailableLibCountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Quantity: 可空发的白盒密钥数量
+        :type Quantity: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Quantity: 可空发的白盒密钥数量\n        :type Quantity: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Quantity = None
         self.RequestId = None
 
@@ -243,8 +285,16 @@ class DescribePermissionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnterpriseUser: 企业用户
+        :type EnterpriseUser: bool
+        :param DownloadPermission: 下载控制台权限
+        :type DownloadPermission: str
+        :param UsePermission: 使用控制台权限
+        :type UsePermission: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EnterpriseUser: 企业用户\n        :type EnterpriseUser: bool\n        :param DownloadPermission: 下载控制台权限\n        :type DownloadPermission: str\n        :param UsePermission: 使用控制台权限\n        :type UsePermission: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EnterpriseUser = None
         self.DownloadPermission = None
         self.UsePermission = None
@@ -264,8 +314,12 @@ class DownloadTidsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrderId: 订单编号
+        :type OrderId: str
+        :param Quantity: 下载数量：1~10
+        :type Quantity: int
         """
-        :param OrderId: 订单编号\n        :type OrderId: str\n        :param Quantity: 下载数量：1~10\n        :type Quantity: int\n        """
         self.OrderId = None
         self.Quantity = None
 
@@ -288,9 +342,13 @@ class DownloadTidsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TidSet: 下载的TID信息列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TidSet: list of TidKeysInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TidSet: list of TidKeysInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.TidSet = None
         self.RequestId = None
 
@@ -311,8 +369,20 @@ class TidKeysInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tid: TID号码
+        :type Tid: str
+        :param PublicKey: 公钥
+        :type PublicKey: str
+        :param PrivateKey: 私钥
+        :type PrivateKey: str
+        :param Psk: 共享密钥
+        :type Psk: str
+        :param DownloadUrl: 软加固白盒密钥下载地址
+        :type DownloadUrl: str
+        :param DeviceCode: 软加固设备标识码
+        :type DeviceCode: str
         """
-        :param Tid: TID号码\n        :type Tid: str\n        :param PublicKey: 公钥\n        :type PublicKey: str\n        :param PrivateKey: 私钥\n        :type PrivateKey: str\n        :param Psk: 共享密钥\n        :type Psk: str\n        :param DownloadUrl: 软加固白盒密钥下载地址\n        :type DownloadUrl: str\n        :param DeviceCode: 软加固设备标识码\n        :type DeviceCode: str\n        """
         self.Tid = None
         self.PublicKey = None
         self.PrivateKey = None
@@ -343,8 +413,12 @@ class UploadDeviceUniqueCodeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CodeSet: 硬件唯一标识码
+        :type CodeSet: list of str
+        :param OrderId: 硬件标识码绑定的申请编号
+        :type OrderId: str
         """
-        :param CodeSet: 硬件唯一标识码\n        :type CodeSet: list of str\n        :param OrderId: 硬件标识码绑定的申请编号\n        :type OrderId: str\n        """
         self.CodeSet = None
         self.OrderId = None
 
@@ -367,10 +441,20 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: 本次已上传数量
+        :type Count: int
+        :param ExistedCodeSet: 重复的硬件唯一标识码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExistedCodeSet: list of str
+        :param LeftQuantity: 剩余可上传数量
+        :type LeftQuantity: int
+        :param IllegalCodeSet: 错误的硬件唯一标识码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IllegalCodeSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Count: 本次已上传数量\n        :type Count: int\n        :param ExistedCodeSet: 重复的硬件唯一标识码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ExistedCodeSet: list of str\n        :param LeftQuantity: 剩余可上传数量\n        :type LeftQuantity: int\n        :param IllegalCodeSet: 错误的硬件唯一标识码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IllegalCodeSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Count = None
         self.ExistedCodeSet = None
         self.LeftQuantity = None
@@ -392,8 +476,10 @@ class VerifyChipBurnInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 验证数据
+        :type Data: str
         """
-        :param Data: 验证数据\n        :type Data: str\n        """
         self.Data = None
 
 
@@ -414,8 +500,16 @@ class VerifyChipBurnInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Pass: 验证结果
+        :type Pass: bool
+        :param VerifiedTimes: 已验证次数
+        :type VerifiedTimes: int
+        :param LeftTimes: 剩余验证次数
+        :type LeftTimes: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Pass: 验证结果\n        :type Pass: bool\n        :param VerifiedTimes: 已验证次数\n        :type VerifiedTimes: int\n        :param LeftTimes: 剩余验证次数\n        :type LeftTimes: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Pass = None
         self.VerifiedTimes = None
         self.LeftTimes = None

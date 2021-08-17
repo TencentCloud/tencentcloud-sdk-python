@@ -24,8 +24,20 @@ class AccountInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-lnp6j617
+        :type DBInstanceId: str
+        :param UserName: 帐号
+        :type UserName: str
+        :param Remark: 帐号备注
+        :type Remark: str
+        :param Status: 帐号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，-1-删除中
+        :type Status: int
+        :param CreateTime: 帐号创建时间
+        :type CreateTime: str
+        :param UpdateTime: 帐号最后一次更新时间
+        :type UpdateTime: str
         """
-        :param DBInstanceId: 实例ID，形如postgres-lnp6j617\n        :type DBInstanceId: str\n        :param UserName: 帐号\n        :type UserName: str\n        :param Remark: 帐号备注\n        :type Remark: str\n        :param Status: 帐号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，-1-删除中\n        :type Status: int\n        :param CreateTime: 帐号创建时间\n        :type CreateTime: str\n        :param UpdateTime: 帐号最后一次更新时间\n        :type UpdateTime: str\n        """
         self.DBInstanceId = None
         self.UserName = None
         self.Remark = None
@@ -56,8 +68,12 @@ class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
         """
-        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        :param ReadOnlyGroupId: 只读组ID\n        :type ReadOnlyGroupId: str\n        """
         self.DBInstanceId = None
         self.ReadOnlyGroupId = None
 
@@ -80,8 +96,12 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -97,8 +117,12 @@ class CloseDBExtranetAccessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-6r233v55
+        :type DBInstanceId: str
+        :param IsIpv6: 是否关闭Ipv6外网，1：是，0：否
+        :type IsIpv6: int
         """
-        :param DBInstanceId: 实例ID，形如postgres-6r233v55\n        :type DBInstanceId: str\n        :param IsIpv6: 是否关闭Ipv6外网，1：是，0：否\n        :type IsIpv6: int\n        """
         self.DBInstanceId = None
         self.IsIpv6 = None
 
@@ -121,8 +145,12 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 异步任务流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -138,8 +166,12 @@ class CloseServerlessDBExtranetAccessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例唯一标识符
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+        :type DBInstanceName: str
         """
-        :param DBInstanceId: 实例唯一标识符\n        :type DBInstanceId: str\n        :param DBInstanceName: 实例名称\n        :type DBInstanceName: str\n        """
         self.DBInstanceId = None
         self.DBInstanceName = None
 
@@ -162,8 +194,10 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -177,8 +211,44 @@ class CreateDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL内核版本，目前支持以下版本：9.3.5、9.5.4、10.4、11.8、12.4 。
+        :type DBVersion: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 一次性购买的实例数量。取值1-100
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID。
+        :type SubnetId: str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；
+        :type AutoRenewFlag: int
+        :param ActivityId: 活动ID
+        :type ActivityId: int
+        :param Name: 实例名(后续支持)
+        :type Name: str
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否
+        :type NeedSupportIpv6: int
+        :param TagList: 实例需要绑定的Tag信息，默认为空
+        :type TagList: list of Tag
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: list of str
         """
-        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。\n        :type SpecCode: str\n        :param DBVersion: PostgreSQL内核版本，目前支持以下版本：9.3.5、9.5.4、10.4、11.8、12.4 。\n        :type DBVersion: str\n        :param Storage: 实例容量大小，单位：GB。\n        :type Storage: int\n        :param InstanceCount: 一次性购买的实例数量。取值1-100\n        :type InstanceCount: int\n        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。\n        :type Period: int\n        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。\n        :type Zone: str\n        :param ProjectId: 项目ID。\n        :type ProjectId: int\n        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。\n        :type InstanceChargeType: str\n        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。\n        :type AutoVoucher: int\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。\n        :type VoucherIds: list of str\n        :param VpcId: 私有网络ID。\n        :type VpcId: str\n        :param SubnetId: 私有网络子网ID。\n        :type SubnetId: str\n        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；\n        :type AutoRenewFlag: int\n        :param ActivityId: 活动ID\n        :type ActivityId: int\n        :param Name: 实例名(后续支持)\n        :type Name: str\n        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否\n        :type NeedSupportIpv6: int\n        :param TagList: 实例需要绑定的Tag信息，默认为空\n        :type TagList: list of Tag\n        :param SecurityGroupIds: 安全组id\n        :type SecurityGroupIds: list of str\n        """
         self.SpecCode = None
         self.DBVersion = None
         self.Storage = None
@@ -238,8 +308,16 @@ class CreateDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealNames: 订单号列表。每个实例对应一个订单号。
+        :type DealNames: list of str
+        :param BillId: 冻结流水号
+        :type BillId: str
+        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealNames: 订单号列表。每个实例对应一个订单号。\n        :type DealNames: list of str\n        :param BillId: 冻结流水号\n        :type BillId: str\n        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值\n        :type DBInstanceIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealNames = None
         self.BillId = None
         self.DBInstanceIdSet = None
@@ -259,8 +337,50 @@ class CreateInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4、11.8、12.4五种版本。
+        :type DBVersion: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 一次性购买的实例数量。取值1-10。
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param Charset: 实例字符集，目前只支持：UTF8、LATIN1。
+        :type Charset: str
+        :param AdminName: 实例根账号用户名。
+        :type AdminName: str
+        :param AdminPassword: 实例根账号用户名对应的密码。
+        :type AdminPassword: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 已配置的私有网络中的子网ID。
+        :type SubnetId: str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费。
+        :type AutoRenewFlag: int
+        :param ActivityId: 活动ID。
+        :type ActivityId: int
+        :param Name: 实例名。
+        :type Name: str
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否（默认）。
+        :type NeedSupportIpv6: int
+        :param TagList: 实例需要绑定的Tag信息，默认为空。
+        :type TagList: list of Tag
+        :param SecurityGroupIds: 安全组ID。
+        :type SecurityGroupIds: list of str
         """
-        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。\n        :type SpecCode: str\n        :param DBVersion: PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4、11.8、12.4五种版本。\n        :type DBVersion: str\n        :param Storage: 实例容量大小，单位：GB。\n        :type Storage: int\n        :param InstanceCount: 一次性购买的实例数量。取值1-10。\n        :type InstanceCount: int\n        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。\n        :type Period: int\n        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。\n        :type Zone: str\n        :param Charset: 实例字符集，目前只支持：UTF8、LATIN1。\n        :type Charset: str\n        :param AdminName: 实例根账号用户名。\n        :type AdminName: str\n        :param AdminPassword: 实例根账号用户名对应的密码。\n        :type AdminPassword: str\n        :param ProjectId: 项目ID。\n        :type ProjectId: int\n        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。\n        :type InstanceChargeType: str\n        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。\n        :type AutoVoucher: int\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。\n        :type VoucherIds: list of str\n        :param VpcId: 私有网络ID。\n        :type VpcId: str\n        :param SubnetId: 已配置的私有网络中的子网ID。\n        :type SubnetId: str\n        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费。\n        :type AutoRenewFlag: int\n        :param ActivityId: 活动ID。\n        :type ActivityId: int\n        :param Name: 实例名。\n        :type Name: str\n        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否（默认）。\n        :type NeedSupportIpv6: int\n        :param TagList: 实例需要绑定的Tag信息，默认为空。\n        :type TagList: list of Tag\n        :param SecurityGroupIds: 安全组ID。\n        :type SecurityGroupIds: list of str\n        """
         self.SpecCode = None
         self.DBVersion = None
         self.Storage = None
@@ -326,8 +446,16 @@ class CreateInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealNames: 订单号列表。每个实例对应一个订单号。
+        :type DealNames: list of str
+        :param BillId: 冻结流水号。
+        :type BillId: str
+        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值。
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealNames: 订单号列表。每个实例对应一个订单号。\n        :type DealNames: list of str\n        :param BillId: 冻结流水号。\n        :type BillId: str\n        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值。\n        :type DBInstanceIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealNames = None
         self.BillId = None
         self.DBInstanceIdSet = None
@@ -347,8 +475,48 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL内核版本，目前强制和主实例保持一致
+        :type DBVersion: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 一次性购买的实例数量。取值1-100
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param MasterDBInstanceId: 只读实例的主实例ID
+        :type MasterDBInstanceId: str
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；
+        :type AutoRenewFlag: int
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID。
+        :type SubnetId: str
+        :param ActivityId: 优惠活动ID
+        :type ActivityId: int
+        :param Name: 实例名(后续支持)
+        :type Name: str
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否
+        :type NeedSupportIpv6: int
+        :param ReadOnlyGroupId: 只读组ID。
+        :type ReadOnlyGroupId: str
+        :param TagList: 实例需要绑定的Tag信息，默认为空
+        :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: list of str
         """
-        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。\n        :type SpecCode: str\n        :param DBVersion: PostgreSQL内核版本，目前强制和主实例保持一致\n        :type DBVersion: str\n        :param Storage: 实例容量大小，单位：GB。\n        :type Storage: int\n        :param InstanceCount: 一次性购买的实例数量。取值1-100\n        :type InstanceCount: int\n        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。\n        :type Period: int\n        :param MasterDBInstanceId: 只读实例的主实例ID\n        :type MasterDBInstanceId: str\n        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。\n        :type Zone: str\n        :param ProjectId: 项目ID。\n        :type ProjectId: int\n        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。\n        :type InstanceChargeType: str\n        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。\n        :type AutoVoucher: int\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。\n        :type VoucherIds: list of str\n        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；\n        :type AutoRenewFlag: int\n        :param VpcId: 私有网络ID。\n        :type VpcId: str\n        :param SubnetId: 私有网络子网ID。\n        :type SubnetId: str\n        :param ActivityId: 优惠活动ID\n        :type ActivityId: int\n        :param Name: 实例名(后续支持)\n        :type Name: str\n        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否\n        :type NeedSupportIpv6: int\n        :param ReadOnlyGroupId: 只读组ID。\n        :type ReadOnlyGroupId: str\n        :param TagList: 实例需要绑定的Tag信息，默认为空\n        :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`\n        :param SecurityGroupIds: 安全组id\n        :type SecurityGroupIds: list of str\n        """
         self.SpecCode = None
         self.DBVersion = None
         self.Storage = None
@@ -409,8 +577,16 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealNames: 订单号列表。每个实例对应一个订单号
+        :type DealNames: list of str
+        :param BillId: 冻结流水号
+        :type BillId: str
+        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealNames: 订单号列表。每个实例对应一个订单号\n        :type DealNames: list of str\n        :param BillId: 冻结流水号\n        :type BillId: str\n        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值\n        :type DBInstanceIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealNames = None
         self.BillId = None
         self.DBInstanceIdSet = None
@@ -430,8 +606,30 @@ class CreateReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MasterDBInstanceId: 主实例ID
+        :type MasterDBInstanceId: str
+        :param Name: 只读组名称
+        :type Name: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param ReplayLagEliminate: 延迟时间大小开关：0关、1开
+        :type ReplayLagEliminate: int
+        :param ReplayLatencyEliminate: 延迟空间大小开关： 0关、1开
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLag: 延迟时间大小阈值，单位ms
+        :type MaxReplayLag: int
+        :param MaxReplayLatency: 延迟空间大小阈值，单位MB
+        :type MaxReplayLatency: int
+        :param MinDelayEliminateReserve: 延迟剔除最小保留实例数
+        :type MinDelayEliminateReserve: int
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: list of str
         """
-        :param MasterDBInstanceId: 主实例ID\n        :type MasterDBInstanceId: str\n        :param Name: 只读组名称\n        :type Name: str\n        :param ProjectId: 项目ID\n        :type ProjectId: int\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param ReplayLagEliminate: 延迟时间大小开关：0关、1开\n        :type ReplayLagEliminate: int\n        :param ReplayLatencyEliminate: 延迟空间大小开关： 0关、1开\n        :type ReplayLatencyEliminate: int\n        :param MaxReplayLag: 延迟时间大小阈值，单位ms\n        :type MaxReplayLag: int\n        :param MaxReplayLatency: 延迟空间大小阈值，单位MB\n        :type MaxReplayLatency: int\n        :param MinDelayEliminateReserve: 延迟剔除最小保留实例数\n        :type MinDelayEliminateReserve: int\n        :param SecurityGroupIds: 安全组id\n        :type SecurityGroupIds: list of str\n        """
         self.MasterDBInstanceId = None
         self.Name = None
         self.ProjectId = None
@@ -472,9 +670,15 @@ class CreateReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ReadOnlyGroupId: 只读组ID\n        :type ReadOnlyGroupId: str\n        :param FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ReadOnlyGroupId = None
         self.FlowId = None
         self.RequestId = None
@@ -492,8 +696,24 @@ class CreateServerlessDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区ID。公测阶段仅支持ap-shanghai-2、ap-beijing-1,ap-guangzhou-2.
+        :type Zone: str
+        :param DBInstanceName: DB实例名称，同一个账号下该值必须唯一。
+        :type DBInstanceName: str
+        :param DBVersion: PostgreSQL内核版本，目前只支持：10.4。
+        :type DBVersion: str
+        :param DBCharset: PostgreSQL数据库字符集，目前支持UTF8。
+        :type DBCharset: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID。
+        :type SubnetId: str
+        :param TagList: 实例需要绑定的标签数组信息
+        :type TagList: list of Tag
         """
-        :param Zone: 可用区ID。公测阶段仅支持ap-shanghai-2、ap-beijing-1,ap-guangzhou-2.\n        :type Zone: str\n        :param DBInstanceName: DB实例名称，同一个账号下该值必须唯一。\n        :type DBInstanceName: str\n        :param DBVersion: PostgreSQL内核版本，目前只支持：10.4。\n        :type DBVersion: str\n        :param DBCharset: PostgreSQL数据库字符集，目前支持UTF8。\n        :type DBCharset: str\n        :param ProjectId: 项目ID。\n        :type ProjectId: int\n        :param VpcId: 私有网络ID。\n        :type VpcId: str\n        :param SubnetId: 私有网络子网ID。\n        :type SubnetId: str\n        :param TagList: 实例需要绑定的标签数组信息\n        :type TagList: list of Tag\n        """
         self.Zone = None
         self.DBInstanceName = None
         self.DBVersion = None
@@ -533,8 +753,12 @@ class CreateServerlessDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，该ID全局唯一，如：postgres-xxxxx
+        :type DBInstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DBInstanceId: 实例ID，该ID全局唯一，如：postgres-xxxxx\n        :type DBInstanceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DBInstanceId = None
         self.RequestId = None
 
@@ -550,8 +774,30 @@ class DBBackup(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 备份文件唯一标识
+        :type Id: int
+        :param StartTime: 文件生成的开始时间
+        :type StartTime: str
+        :param EndTime: 文件生成的结束时间
+        :type EndTime: str
+        :param Size: 文件大小(K)
+        :type Size: int
+        :param Strategy: 策略（0-实例备份；1-多库备份）
+        :type Strategy: int
+        :param Way: 类型（0-定时）
+        :type Way: int
+        :param Type: 备份方式（1-完整）
+        :type Type: int
+        :param Status: 状态（1-创建中；2-成功；3-失败）
+        :type Status: int
+        :param DbList: DB列表
+        :type DbList: list of str
+        :param InternalAddr: 内网下载地址
+        :type InternalAddr: str
+        :param ExternalAddr: 外网下载地址
+        :type ExternalAddr: str
         """
-        :param Id: 备份文件唯一标识\n        :type Id: int\n        :param StartTime: 文件生成的开始时间\n        :type StartTime: str\n        :param EndTime: 文件生成的结束时间\n        :type EndTime: str\n        :param Size: 文件大小(K)\n        :type Size: int\n        :param Strategy: 策略（0-实例备份；1-多库备份）\n        :type Strategy: int\n        :param Way: 类型（0-定时）\n        :type Way: int\n        :param Type: 备份方式（1-完整）\n        :type Type: int\n        :param Status: 状态（1-创建中；2-成功；3-失败）\n        :type Status: int\n        :param DbList: DB列表\n        :type DbList: list of str\n        :param InternalAddr: 内网下载地址\n        :type InternalAddr: str\n        :param ExternalAddr: 外网下载地址\n        :type ExternalAddr: str\n        """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
@@ -592,13 +838,77 @@ class DBInstance(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段
+        :type Region: str
+        :param Zone: 实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段
+        :type Zone: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+        :type DBInstanceName: str
+        :param DBInstanceStatus: 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、
+        :type DBInstanceStatus: str
+        :param DBInstanceMemory: 实例分配的内存大小，单位：GB
+        :type DBInstanceMemory: int
+        :param DBInstanceStorage: 实例分配的存储空间大小，单位：GB
+        :type DBInstanceStorage: int
+        :param DBInstanceCpu: 实例分配的CPU数量，单位：个
+        :type DBInstanceCpu: int
+        :param DBInstanceClass: 售卖规格ID
+        :type DBInstanceClass: str
+        :param DBInstanceType: 实例类型，类型有：1、primary（主实例）；2、readonly（只读实例）；3、guard（灾备实例）；4、temp（临时实例）
+        :type DBInstanceType: str
+        :param DBInstanceVersion: 实例版本，目前只支持standard（双机高可用版, 一主一从）
+        :type DBInstanceVersion: str
+        :param DBCharset: 实例DB字符集
+        :type DBCharset: str
+        :param DBVersion: PostgreSQL内核版本
+        :type DBVersion: str
+        :param CreateTime: 实例创建时间
+        :type CreateTime: str
+        :param UpdateTime: 实例执行最后一次更新的时间
+        :type UpdateTime: str
+        :param ExpireTime: 实例到期时间
+        :type ExpireTime: str
+        :param IsolatedTime: 实例隔离时间
+        :type IsolatedTime: str
+        :param PayType: 计费模式，1、prepaid（包年包月,预付费）；2、postpaid（按量计费，后付费）
+        :type PayType: str
+        :param AutoRenew: 是否自动续费，1：自动续费，0：不自动续费
+        :type AutoRenew: int
+        :param DBInstanceNetInfo: 实例网络连接信息
+        :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        :param Type: 机器类型
+        :type Type: str
+        :param AppId: 用户的AppId
+        :type AppId: int
+        :param Uid: 实例的Uid
+        :type Uid: int
+        :param SupportIpv6: 实例是否支持Ipv6，1：支持，0：不支持
+        :type SupportIpv6: int
+        :param TagList: 实例绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
+        :param MasterDBInstanceId: 主实例信息，仅在实例为只读实例时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterDBInstanceId: str
+        :param ReadOnlyInstanceNum: 只读实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnlyInstanceNum: int
+        :param StatusInReadonlyGroup: 只读实例在只读组中的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusInReadonlyGroup: str
+        :param OfflineTime: 下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTime: str
         """
-        :param Region: 实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段\n        :type Region: str\n        :param Zone: 实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段\n        :type Zone: str\n        :param ProjectId: 项目ID\n        :type ProjectId: int\n        :param VpcId: 私有网络ID\n        :type VpcId: str\n        :param SubnetId: 子网ID\n        :type SubnetId: str\n        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        :param DBInstanceName: 实例名称\n        :type DBInstanceName: str\n        :param DBInstanceStatus: 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、\n        :type DBInstanceStatus: str\n        :param DBInstanceMemory: 实例分配的内存大小，单位：GB\n        :type DBInstanceMemory: int\n        :param DBInstanceStorage: 实例分配的存储空间大小，单位：GB\n        :type DBInstanceStorage: int\n        :param DBInstanceCpu: 实例分配的CPU数量，单位：个\n        :type DBInstanceCpu: int\n        :param DBInstanceClass: 售卖规格ID\n        :type DBInstanceClass: str\n        :param DBInstanceType: 实例类型，类型有：1、primary（主实例）；2、readonly（只读实例）；3、guard（灾备实例）；4、temp（临时实例）\n        :type DBInstanceType: str\n        :param DBInstanceVersion: 实例版本，目前只支持standard（双机高可用版, 一主一从）\n        :type DBInstanceVersion: str\n        :param DBCharset: 实例DB字符集\n        :type DBCharset: str\n        :param DBVersion: PostgreSQL内核版本\n        :type DBVersion: str\n        :param CreateTime: 实例创建时间\n        :type CreateTime: str\n        :param UpdateTime: 实例执行最后一次更新的时间\n        :type UpdateTime: str\n        :param ExpireTime: 实例到期时间\n        :type ExpireTime: str\n        :param IsolatedTime: 实例隔离时间\n        :type IsolatedTime: str\n        :param PayType: 计费模式，1、prepaid（包年包月,预付费）；2、postpaid（按量计费，后付费）\n        :type PayType: str\n        :param AutoRenew: 是否自动续费，1：自动续费，0：不自动续费\n        :type AutoRenew: int\n        :param DBInstanceNetInfo: 实例网络连接信息\n        :type DBInstanceNetInfo: list of DBInstanceNetInfo\n        :param Type: 机器类型\n        :type Type: str\n        :param AppId: 用户的AppId\n        :type AppId: int\n        :param Uid: 实例的Uid\n        :type Uid: int\n        :param SupportIpv6: 实例是否支持Ipv6，1：支持，0：不支持\n        :type SupportIpv6: int\n        :param TagList: 实例绑定的标签信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagList: list of Tag\n        :param MasterDBInstanceId: 主实例信息，仅在实例为只读实例时返回
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MasterDBInstanceId: str\n        :param ReadOnlyInstanceNum: 只读实例数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReadOnlyInstanceNum: int\n        :param StatusInReadonlyGroup: 只读实例在只读组中的状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type StatusInReadonlyGroup: str\n        :param OfflineTime: 下线时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type OfflineTime: str\n        """
         self.Region = None
         self.Zone = None
         self.ProjectId = None
@@ -691,8 +1001,18 @@ class DBInstanceNetInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Address: DNS域名
+        :type Address: str
+        :param Ip: IP地址
+        :type Ip: str
+        :param Port: 连接Port地址
+        :type Port: int
+        :param NetType: 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
+        :type NetType: str
+        :param Status: 网络连接状态
+        :type Status: str
         """
-        :param Address: DNS域名\n        :type Address: str\n        :param Ip: IP地址\n        :type Ip: str\n        :param Port: 连接Port地址\n        :type Port: int\n        :param NetType: 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；\n        :type NetType: str\n        :param Status: 网络连接状态\n        :type Status: str\n        """
         self.Address = None
         self.Ip = None
         self.Port = None
@@ -721,8 +1041,10 @@ class DeleteReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: 待删除只读组ID
+        :type ReadOnlyGroupId: str
         """
-        :param ReadOnlyGroupId: 待删除只读组ID\n        :type ReadOnlyGroupId: str\n        """
         self.ReadOnlyGroupId = None
 
 
@@ -743,9 +1065,13 @@ class DeleteReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.FlowId = None
         self.RequestId = None
 
@@ -761,8 +1087,12 @@ class DeleteServerlessDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceName: DB实例名称，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
+        :type DBInstanceName: str
+        :param DBInstanceId: DB实例ID，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
+        :type DBInstanceId: str
         """
-        :param DBInstanceName: DB实例名称，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。\n        :type DBInstanceName: str\n        :param DBInstanceId: DB实例ID，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。\n        :type DBInstanceId: str\n        """
         self.DBInstanceName = None
         self.DBInstanceId = None
 
@@ -785,8 +1115,10 @@ class DeleteServerlessDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -800,8 +1132,18 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-6fego161
+        :type DBInstanceId: str
+        :param Limit: 分页返回，每页最大返回数目，默认20，取值范围为1-100
+        :type Limit: int
+        :param Offset: 分页返回，返回第几页的用户数据。页码从0开始计数
+        :type Offset: int
+        :param OrderBy: 返回数据按照创建时间或者用户名排序。取值只能为createTime或者name。createTime-按照创建时间排序；name-按照用户名排序
+        :type OrderBy: str
+        :param OrderByType: 返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序
+        :type OrderByType: str
         """
-        :param DBInstanceId: 实例ID，形如postgres-6fego161\n        :type DBInstanceId: str\n        :param Limit: 分页返回，每页最大返回数目，默认20，取值范围为1-100\n        :type Limit: int\n        :param Offset: 分页返回，返回第几页的用户数据。页码从0开始计数\n        :type Offset: int\n        :param OrderBy: 返回数据按照创建时间或者用户名排序。取值只能为createTime或者name。createTime-按照创建时间排序；name-按照用户名排序\n        :type OrderBy: str\n        :param OrderByType: 返回结果是升序还是降序。取值只能为desc或者asc。desc-降序；asc-升序\n        :type OrderByType: str\n        """
         self.DBInstanceId = None
         self.Limit = None
         self.Offset = None
@@ -830,8 +1172,14 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 本次调用接口共返回了多少条数据。
+        :type TotalCount: int
+        :param Details: 帐号列表详细信息。
+        :type Details: list of AccountInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 本次调用接口共返回了多少条数据。\n        :type TotalCount: int\n        :param Details: 帐号列表详细信息。\n        :type Details: list of AccountInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Details = None
         self.RequestId = None
@@ -854,8 +1202,20 @@ class DescribeDBBackupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv。
+        :type DBInstanceId: str
+        :param Type: 备份方式（1-全量）。目前只支持全量，取值为1。
+        :type Type: int
+        :param StartTime: 查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
+        :type StartTime: str
+        :param EndTime: 查询结束时间，形如2018-06-10 17:06:38
+        :type EndTime: str
+        :param Limit: 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。（当该参数不传或者传0时按默认值处理）
+        :type Limit: int
+        :param Offset: 返回结果中的第几页，从第0页开始。默认为0。
+        :type Offset: int
         """
-        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv。\n        :type DBInstanceId: str\n        :param Type: 备份方式（1-全量）。目前只支持全量，取值为1。\n        :type Type: int\n        :param StartTime: 查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前\n        :type StartTime: str\n        :param EndTime: 查询结束时间，形如2018-06-10 17:06:38\n        :type EndTime: str\n        :param Limit: 备份列表分页返回，每页返回数量，默认为 20，最小为1，最大值为 100。（当该参数不传或者传0时按默认值处理）\n        :type Limit: int\n        :param Offset: 返回结果中的第几页，从第0页开始。默认为0。\n        :type Offset: int\n        """
         self.DBInstanceId = None
         self.Type = None
         self.StartTime = None
@@ -886,8 +1246,14 @@ class DescribeDBBackupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回备份列表中备份文件的个数
+        :type TotalCount: int
+        :param BackupList: 备份列表
+        :type BackupList: list of DBBackup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回备份列表中备份文件的个数\n        :type TotalCount: int\n        :param BackupList: 备份列表\n        :type BackupList: list of DBBackup\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BackupList = None
         self.RequestId = None
@@ -910,8 +1276,22 @@ class DescribeDBErrlogsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-5bq3wfjd
+        :type DBInstanceId: str
+        :param StartTime: 查询起始时间，形如2018-01-01 00:00:00，起始时间不得小于7天以前
+        :type StartTime: str
+        :param EndTime: 查询结束时间，形如2018-01-01 00:00:00
+        :type EndTime: str
+        :param DatabaseName: 数据库名字
+        :type DatabaseName: str
+        :param SearchKeys: 搜索关键字
+        :type SearchKeys: list of str
+        :param Limit: 分页返回，每页返回的最大数量。取值为1-100
+        :type Limit: int
+        :param Offset: 分页返回，返回第几页的数据，从第0页开始计数
+        :type Offset: int
         """
-        :param DBInstanceId: 实例ID，形如postgres-5bq3wfjd\n        :type DBInstanceId: str\n        :param StartTime: 查询起始时间，形如2018-01-01 00:00:00，起始时间不得小于7天以前\n        :type StartTime: str\n        :param EndTime: 查询结束时间，形如2018-01-01 00:00:00\n        :type EndTime: str\n        :param DatabaseName: 数据库名字\n        :type DatabaseName: str\n        :param SearchKeys: 搜索关键字\n        :type SearchKeys: list of str\n        :param Limit: 分页返回，每页返回的最大数量。取值为1-100\n        :type Limit: int\n        :param Offset: 分页返回，返回第几页的数据，从第0页开始计数\n        :type Offset: int\n        """
         self.DBInstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -944,8 +1324,14 @@ class DescribeDBErrlogsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 本次调用返回了多少条数据
+        :type TotalCount: int
+        :param Details: 错误日志列表
+        :type Details: list of ErrLogDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 本次调用返回了多少条数据\n        :type TotalCount: int\n        :param Details: 错误日志列表\n        :type Details: list of ErrLogDetail\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Details = None
         self.RequestId = None
@@ -968,8 +1354,10 @@ class DescribeDBInstanceAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
         """
-        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -990,8 +1378,12 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstance: 实例详细信息。
+        :type DBInstance: :class:`tencentcloud.postgres.v20170312.models.DBInstance`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DBInstance: 实例详细信息。\n        :type DBInstance: :class:`tencentcloud.postgres.v20170312.models.DBInstance`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DBInstance = None
         self.RequestId = None
 
@@ -1009,13 +1401,23 @@ class DescribeDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 db-instance-id：按照实例ID过滤，类型为string
 db-instance-name：按照实例名过滤，类型为string
 db-project-id：按照项目ID过滤，类型为integer
 db-pay-mode：按照付费模式过滤，类型为string
-db-tag-key：按照标签键过滤，类型为string\n        :type Filters: list of Filter\n        :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。\n        :type Limit: int\n        :param OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime\n        :type OrderBy: str\n        :param Offset: 页码偏移量，从0开始。\n        :type Offset: int\n        :param OrderByType: 排序方式，包括升序：asc、降序：desc。\n        :type OrderByType: str\n        """
+db-tag-key：按照标签键过滤，类型为string
+        :type Filters: list of Filter
+        :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
+        :type Limit: int
+        :param OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
+        :type OrderBy: str
+        :param Offset: 页码偏移量，从0开始。
+        :type Offset: int
+        :param OrderByType: 排序方式，包括升序：asc、降序：desc。
+        :type OrderByType: str
+        """
         self.Filters = None
         self.Limit = None
         self.OrderBy = None
@@ -1049,8 +1451,14 @@ class DescribeDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 查询到的实例数量。
+        :type TotalCount: int
+        :param DBInstanceSet: 实例详细信息集合。
+        :type DBInstanceSet: list of DBInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 查询到的实例数量。\n        :type TotalCount: int\n        :param DBInstanceSet: 实例详细信息集合。\n        :type DBInstanceSet: list of DBInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DBInstanceSet = None
         self.RequestId = None
@@ -1073,8 +1481,24 @@ class DescribeDBSlowlogsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-lnp6j617
+        :type DBInstanceId: str
+        :param StartTime: 查询起始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
+        :type StartTime: str
+        :param EndTime: 查询结束时间，形如2018-06-10 17:06:38
+        :type EndTime: str
+        :param DatabaseName: 数据库名字
+        :type DatabaseName: str
+        :param OrderBy: 按照何种指标排序，取值为sum_calls或者sum_cost_time。sum_calls-总调用次数；sum_cost_time-总的花费时间
+        :type OrderBy: str
+        :param OrderByType: 排序规则。desc-降序；asc-升序
+        :type OrderByType: str
+        :param Limit: 分页返回结果，每页最大返回数量，取值为1-100，默认20
+        :type Limit: int
+        :param Offset: 分页返回结果，返回结果的第几页，从0开始计数
+        :type Offset: int
         """
-        :param DBInstanceId: 实例ID，形如postgres-lnp6j617\n        :type DBInstanceId: str\n        :param StartTime: 查询起始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前\n        :type StartTime: str\n        :param EndTime: 查询结束时间，形如2018-06-10 17:06:38\n        :type EndTime: str\n        :param DatabaseName: 数据库名字\n        :type DatabaseName: str\n        :param OrderBy: 按照何种指标排序，取值为sum_calls或者sum_cost_time。sum_calls-总调用次数；sum_cost_time-总的花费时间\n        :type OrderBy: str\n        :param OrderByType: 排序规则。desc-降序；asc-升序\n        :type OrderByType: str\n        :param Limit: 分页返回结果，每页最大返回数量，取值为1-100，默认20\n        :type Limit: int\n        :param Offset: 分页返回结果，返回结果的第几页，从0开始计数\n        :type Offset: int\n        """
         self.DBInstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1109,8 +1533,14 @@ class DescribeDBSlowlogsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 本次返回多少条数据
+        :type TotalCount: int
+        :param Detail: 慢查询日志详情
+        :type Detail: :class:`tencentcloud.postgres.v20170312.models.SlowlogDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 本次返回多少条数据\n        :type TotalCount: int\n        :param Detail: 慢查询日志详情\n        :type Detail: :class:`tencentcloud.postgres.v20170312.models.SlowlogDetail`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Detail = None
         self.RequestId = None
@@ -1130,8 +1560,18 @@ class DescribeDBXlogsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv。
+        :type DBInstanceId: str
+        :param StartTime: 查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前
+        :type StartTime: str
+        :param EndTime: 查询结束时间，形如2018-06-10 17:06:38
+        :type EndTime: str
+        :param Offset: 分页返回，表示返回第几页的条目。从第0页开始计数。
+        :type Offset: int
+        :param Limit: 分页返回，表示每页有多少条目。取值为1-100。
+        :type Limit: int
         """
-        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv。\n        :type DBInstanceId: str\n        :param StartTime: 查询开始时间，形如2018-06-10 17:06:38，起始时间不得小于7天以前\n        :type StartTime: str\n        :param EndTime: 查询结束时间，形如2018-06-10 17:06:38\n        :type EndTime: str\n        :param Offset: 分页返回，表示返回第几页的条目。从第0页开始计数。\n        :type Offset: int\n        :param Limit: 分页返回，表示每页有多少条目。取值为1-100。\n        :type Limit: int\n        """
         self.DBInstanceId = None
         self.StartTime = None
         self.EndTime = None
@@ -1160,8 +1600,14 @@ class DescribeDBXlogsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 表示此次返回结果有多少条数据。
+        :type TotalCount: int
+        :param XlogList: Xlog列表
+        :type XlogList: list of Xlog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 表示此次返回结果有多少条数据。\n        :type TotalCount: int\n        :param XlogList: Xlog列表\n        :type XlogList: list of Xlog\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.XlogList = None
         self.RequestId = None
@@ -1184,8 +1630,10 @@ class DescribeDatabasesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
         """
-        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -1206,8 +1654,12 @@ class DescribeDatabasesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Items: 数据库信息
+        :type Items: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Items: 数据库信息\n        :type Items: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Items = None
         self.RequestId = None
 
@@ -1223,8 +1675,10 @@ class DescribeOrdersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealNames: 订单名集合
+        :type DealNames: list of str
         """
-        :param DealNames: 订单名集合\n        :type DealNames: list of str\n        """
         self.DealNames = None
 
 
@@ -1245,8 +1699,14 @@ class DescribeOrdersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 订单数量
+        :type TotalCount: int
+        :param Deals: 订单数组
+        :type Deals: list of PgDeal
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 订单数量\n        :type TotalCount: int\n        :param Deals: 订单数组\n        :type Deals: list of PgDeal\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.Deals = None
         self.RequestId = None
@@ -1269,8 +1729,10 @@ class DescribeProductConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区名称
+        :type Zone: str
         """
-        :param Zone: 可用区名称\n        :type Zone: str\n        """
         self.Zone = None
 
 
@@ -1291,8 +1753,12 @@ class DescribeProductConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecInfoList: 售卖规格列表。
+        :type SpecInfoList: list of SpecInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SpecInfoList: 售卖规格列表。\n        :type SpecInfoList: list of SpecInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SpecInfoList = None
         self.RequestId = None
 
@@ -1313,8 +1779,18 @@ class DescribeReadOnlyGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filters: 过滤条件，必须传入主实例ID进行过滤，否则返回值将为空，过滤参数为：db-master-instance-id
+        :type Filters: list of Filter
+        :param PageSize: 查询每一页的条数，默认为10
+        :type PageSize: int
+        :param PageNumber: 查询的页码，默认为1
+        :type PageNumber: int
+        :param OrderBy: 查询排序依据，目前支持:ROGroupId,CreateTime,Name
+        :type OrderBy: str
+        :param OrderByType: 查询排序依据类型，目前支持:desc,asc
+        :type OrderByType: str
         """
-        :param Filters: 过滤条件，必须传入主实例ID进行过滤，否则返回值将为空，过滤参数为：db-master-instance-id\n        :type Filters: list of Filter\n        :param PageSize: 查询每一页的条数，默认为10\n        :type PageSize: int\n        :param PageNumber: 查询的页码，默认为1\n        :type PageNumber: int\n        :param OrderBy: 查询排序依据，目前支持:ROGroupId,CreateTime,Name\n        :type OrderBy: str\n        :param OrderByType: 查询排序依据类型，目前支持:desc,asc\n        :type OrderByType: str\n        """
         self.Filters = None
         self.PageSize = None
         self.PageNumber = None
@@ -1348,8 +1824,12 @@ class DescribeReadOnlyGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReadOnlyGroupList: 只读组列表
+        :type ReadOnlyGroupList: list of ReadOnlyGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ReadOnlyGroupList: 只读组列表\n        :type ReadOnlyGroupList: list of ReadOnlyGroup\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ReadOnlyGroupList = None
         self.RequestId = None
 
@@ -1376,8 +1856,14 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回的结果数量。
+        :type TotalCount: int
+        :param RegionSet: 地域信息集合。
+        :type RegionSet: list of RegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回的结果数量。\n        :type TotalCount: int\n        :param RegionSet: 地域信息集合。\n        :type RegionSet: list of RegionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionSet = None
         self.RequestId = None
@@ -1400,8 +1886,18 @@ class DescribeServerlessDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filter: 查询条件
+        :type Filter: list of Filter
+        :param Limit: 查询个数
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param OrderBy: 排序指标，目前支持实例创建时间CreateTime
+        :type OrderBy: str
+        :param OrderByType: 排序方式，包括升序、降序
+        :type OrderByType: str
         """
-        :param Filter: 查询条件\n        :type Filter: list of Filter\n        :param Limit: 查询个数\n        :type Limit: int\n        :param Offset: 偏移量\n        :type Offset: int\n        :param OrderBy: 排序指标，目前支持实例创建时间CreateTime\n        :type OrderBy: str\n        :param OrderByType: 排序方式，包括升序、降序\n        :type OrderByType: str\n        """
         self.Filter = None
         self.Limit = None
         self.Offset = None
@@ -1435,9 +1931,15 @@ class DescribeServerlessDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 查询结果数
+        :type TotalCount: int
+        :param DBInstanceSet: 查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceSet: list of ServerlessDBInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 查询结果数\n        :type TotalCount: int\n        :param DBInstanceSet: 查询结果
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBInstanceSet: list of ServerlessDBInstance\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DBInstanceSet = None
         self.RequestId = None
@@ -1466,8 +1968,14 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 返回的结果数量。
+        :type TotalCount: int
+        :param ZoneSet: 可用区信息集合。
+        :type ZoneSet: list of ZoneInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 返回的结果数量。\n        :type TotalCount: int\n        :param ZoneSet: 可用区信息集合。\n        :type ZoneSet: list of ZoneInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ZoneSet = None
         self.RequestId = None
@@ -1490,8 +1998,10 @@ class DestroyDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 待下线实例ID
+        :type DBInstanceId: str
         """
-        :param DBInstanceId: 待下线实例ID\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -1512,8 +2022,10 @@ class DestroyDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1527,8 +2039,16 @@ class DisIsolateDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceIdSet: 资源ID列表
+        :type DBInstanceIdSet: list of str
+        :param Period: 包年包月实例解隔离时购买时常 以月为单位
+        :type Period: int
+        :param AutoVoucher: 是否使用代金券：true-使用,false-不使用，默认不使用
+        :type AutoVoucher: bool
+        :param VoucherIds: 代金券id列表
+        :type VoucherIds: list of str
         """
-        :param DBInstanceIdSet: 资源ID列表\n        :type DBInstanceIdSet: list of str\n        :param Period: 包年包月实例解隔离时购买时常 以月为单位\n        :type Period: int\n        :param AutoVoucher: 是否使用代金券：true-使用,false-不使用，默认不使用\n        :type AutoVoucher: bool\n        :param VoucherIds: 代金券id列表\n        :type VoucherIds: list of str\n        """
         self.DBInstanceIdSet = None
         self.Period = None
         self.AutoVoucher = None
@@ -1555,8 +2075,10 @@ class DisIsolateDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1570,8 +2092,16 @@ class ErrLogDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserName: 用户名
+        :type UserName: str
+        :param Database: 数据库名字
+        :type Database: str
+        :param ErrTime: 错误发生时间
+        :type ErrTime: str
+        :param ErrMsg: 错误消息
+        :type ErrMsg: str
         """
-        :param UserName: 用户名\n        :type UserName: str\n        :param Database: 数据库名字\n        :type Database: str\n        :param ErrTime: 错误发生时间\n        :type ErrTime: str\n        :param ErrMsg: 错误消息\n        :type ErrMsg: str\n        """
         self.UserName = None
         self.Database = None
         self.ErrTime = None
@@ -1600,8 +2130,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 过滤键的名称。
+        :type Name: str
+        :param Values: 一个或者多个过滤值。
+        :type Values: list of str
         """
-        :param Name: 过滤键的名称。\n        :type Name: str\n        :param Values: 一个或者多个过滤值。\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -1624,8 +2158,16 @@ class InitDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceIdSet: 实例ID集合。
+        :type DBInstanceIdSet: list of str
+        :param AdminName: 实例根账号用户名。
+        :type AdminName: str
+        :param AdminPassword: 实例根账号用户名对应的密码。
+        :type AdminPassword: str
+        :param Charset: 实例字符集，目前只支持：UTF8、LATIN1。
+        :type Charset: str
         """
-        :param DBInstanceIdSet: 实例ID集合。\n        :type DBInstanceIdSet: list of str\n        :param AdminName: 实例根账号用户名。\n        :type AdminName: str\n        :param AdminPassword: 实例根账号用户名对应的密码。\n        :type AdminPassword: str\n        :param Charset: 实例字符集，目前只支持：UTF8、LATIN1。\n        :type Charset: str\n        """
         self.DBInstanceIdSet = None
         self.AdminName = None
         self.AdminPassword = None
@@ -1652,8 +2194,12 @@ class InitDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceIdSet: 实例ID集合。
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DBInstanceIdSet: 实例ID集合。\n        :type DBInstanceIdSet: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DBInstanceIdSet = None
         self.RequestId = None
 
@@ -1669,8 +2215,22 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param SpecCode: 规格ID。该参数可以通过调用DescribeProductConfig接口的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param Storage: 存储容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 实例数量。目前最大数量不超过100，如需一次性创建更多实例，请联系客服支持。
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
+        :type Period: int
+        :param Pid: 计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
+        :type Pid: int
+        :param InstanceChargeType: 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
+        :type InstanceChargeType: str
         """
-        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。\n        :type Zone: str\n        :param SpecCode: 规格ID。该参数可以通过调用DescribeProductConfig接口的返回值中的SpecCode字段来获取。\n        :type SpecCode: str\n        :param Storage: 存储容量大小，单位：GB。\n        :type Storage: int\n        :param InstanceCount: 实例数量。目前最大数量不超过100，如需一次性创建更多实例，请联系客服支持。\n        :type InstanceCount: int\n        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。\n        :type Period: int\n        :param Pid: 计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。\n        :type Pid: int\n        :param InstanceChargeType: 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。\n        :type InstanceChargeType: str\n        """
         self.Zone = None
         self.SpecCode = None
         self.Storage = None
@@ -1703,8 +2263,14 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OriginalPrice: 原始价格，单位：分
+        :type OriginalPrice: int
+        :param Price: 折后价格，单位：分
+        :type Price: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param OriginalPrice: 原始价格，单位：分\n        :type OriginalPrice: int\n        :param Price: 折后价格，单位：分\n        :type Price: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -1722,8 +2288,12 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param Period: 续费周期，按月计算，最大不超过48
+        :type Period: int
         """
-        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        :param Period: 续费周期，按月计算，最大不超过48\n        :type Period: int\n        """
         self.DBInstanceId = None
         self.Period = None
 
@@ -1746,8 +2316,14 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OriginalPrice: 总费用，打折前的。比如24650表示246.5元
+        :type OriginalPrice: int
+        :param Price: 实际需要付款金额。比如24650表示246.5元
+        :type Price: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param OriginalPrice: 总费用，打折前的。比如24650表示246.5元\n        :type OriginalPrice: int\n        :param Price: 实际需要付款金额。比如24650表示246.5元\n        :type Price: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -1765,8 +2341,16 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Storage: 实例的磁盘大小，单位GB
+        :type Storage: int
+        :param Memory: 实例的内存大小，单位GB
+        :type Memory: int
+        :param DBInstanceId: 实例ID，形如postgres-hez4fh0v
+        :type DBInstanceId: str
+        :param InstanceChargeType: 实例计费类型，预付费或者后付费。PREPAID-预付费。目前只支持预付费。
+        :type InstanceChargeType: str
         """
-        :param Storage: 实例的磁盘大小，单位GB\n        :type Storage: int\n        :param Memory: 实例的内存大小，单位GB\n        :type Memory: int\n        :param DBInstanceId: 实例ID，形如postgres-hez4fh0v\n        :type DBInstanceId: str\n        :param InstanceChargeType: 实例计费类型，预付费或者后付费。PREPAID-预付费。目前只支持预付费。\n        :type InstanceChargeType: str\n        """
         self.Storage = None
         self.Memory = None
         self.DBInstanceId = None
@@ -1793,8 +2377,14 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OriginalPrice: 总费用，打折前的
+        :type OriginalPrice: int
+        :param Price: 实际需要付款金额
+        :type Price: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param OriginalPrice: 总费用，打折前的\n        :type OriginalPrice: int\n        :param Price: 实际需要付款金额\n        :type Price: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.OriginalPrice = None
         self.Price = None
         self.RequestId = None
@@ -1812,8 +2402,10 @@ class IsolateDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceIdSet: 实例ID集合
+        :type DBInstanceIdSet: list of str
         """
-        :param DBInstanceIdSet: 实例ID集合\n        :type DBInstanceIdSet: list of str\n        """
         self.DBInstanceIdSet = None
 
 
@@ -1834,8 +2426,10 @@ class IsolateDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1849,8 +2443,14 @@ class ModifyAccountRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv
+        :type DBInstanceId: str
+        :param UserName: 实例用户名
+        :type UserName: str
+        :param Remark: 用户UserName对应的新备注
+        :type Remark: str
         """
-        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv\n        :type DBInstanceId: str\n        :param UserName: 实例用户名\n        :type UserName: str\n        :param Remark: 用户UserName对应的新备注\n        :type Remark: str\n        """
         self.DBInstanceId = None
         self.UserName = None
         self.Remark = None
@@ -1875,8 +2475,10 @@ class ModifyAccountRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1890,8 +2492,12 @@ class ModifyDBInstanceNameRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 数据库实例ID，形如postgres-6fego161
+        :type DBInstanceId: str
+        :param InstanceName: 新的数据库实例名字
+        :type InstanceName: str
         """
-        :param DBInstanceId: 数据库实例ID，形如postgres-6fego161\n        :type DBInstanceId: str\n        :param InstanceName: 新的数据库实例名字\n        :type InstanceName: str\n        """
         self.DBInstanceId = None
         self.InstanceName = None
 
@@ -1914,8 +2520,10 @@ class ModifyDBInstanceNameResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1929,8 +2537,14 @@ class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 当前实例所在只读组ID
+        :type ReadOnlyGroupId: str
+        :param NewReadOnlyGroupId: 实例修改的目标只读组ID
+        :type NewReadOnlyGroupId: str
         """
-        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        :param ReadOnlyGroupId: 当前实例所在只读组ID\n        :type ReadOnlyGroupId: str\n        :param NewReadOnlyGroupId: 实例修改的目标只读组ID\n        :type NewReadOnlyGroupId: str\n        """
         self.DBInstanceId = None
         self.ReadOnlyGroupId = None
         self.NewReadOnlyGroupId = None
@@ -1955,8 +2569,12 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -1972,8 +2590,12 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceIdSet: postgresql实例ID数组
+        :type DBInstanceIdSet: list of str
+        :param ProjectId: postgresql实例所属新项目的ID
+        :type ProjectId: str
         """
-        :param DBInstanceIdSet: postgresql实例ID数组\n        :type DBInstanceIdSet: list of str\n        :param ProjectId: postgresql实例所属新项目的ID\n        :type ProjectId: str\n        """
         self.DBInstanceIdSet = None
         self.ProjectId = None
 
@@ -1996,8 +2618,12 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: 转移项目成功的实例个数
+        :type Count: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Count: 转移项目成功的实例个数\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -2013,8 +2639,24 @@ class ModifyReadOnlyGroupConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名称
+        :type ReadOnlyGroupName: str
+        :param ReplayLagEliminate: 延迟时间配置开关：0关、1开
+        :type ReplayLagEliminate: int
+        :param ReplayLatencyEliminate: 延迟日志大小配置开关：0关、1开
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLatency: 延迟日志大小阈值，单位MB
+        :type MaxReplayLatency: int
+        :param MaxReplayLag: 延迟时间大小阈值，单位ms
+        :type MaxReplayLag: int
+        :param Rebalance: 自动负载均衡开关：0关、1开
+        :type Rebalance: int
+        :param MinDelayEliminateReserve: 延迟剔除最小保留实例数
+        :type MinDelayEliminateReserve: int
         """
-        :param ReadOnlyGroupId: 只读组ID\n        :type ReadOnlyGroupId: str\n        :param ReadOnlyGroupName: 只读组名称\n        :type ReadOnlyGroupName: str\n        :param ReplayLagEliminate: 延迟时间配置开关：0关、1开\n        :type ReplayLagEliminate: int\n        :param ReplayLatencyEliminate: 延迟日志大小配置开关：0关、1开\n        :type ReplayLatencyEliminate: int\n        :param MaxReplayLatency: 延迟日志大小阈值，单位MB\n        :type MaxReplayLatency: int\n        :param MaxReplayLag: 延迟时间大小阈值，单位ms\n        :type MaxReplayLag: int\n        :param Rebalance: 自动负载均衡开关：0关、1开\n        :type Rebalance: int\n        :param MinDelayEliminateReserve: 延迟剔除最小保留实例数\n        :type MinDelayEliminateReserve: int\n        """
         self.ReadOnlyGroupId = None
         self.ReadOnlyGroupName = None
         self.ReplayLagEliminate = None
@@ -2049,8 +2691,10 @@ class ModifyReadOnlyGroupConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2064,8 +2708,12 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 处于等待切换状态中的实例ID
+        :type DBInstanceId: str
+        :param SwitchTag: 入参取值为 0 ，代表立即切换。
+        :type SwitchTag: int
         """
-        :param DBInstanceId: 处于等待切换状态中的实例ID\n        :type DBInstanceId: str\n        :param SwitchTag: 入参取值为 0 ，代表立即切换。\n        :type SwitchTag: int\n        """
         self.DBInstanceId = None
         self.SwitchTag = None
 
@@ -2088,8 +2736,10 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2103,8 +2753,38 @@ class NormalQueryItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UserName: 用户名
+        :type UserName: str
+        :param Calls: 调用次数
+        :type Calls: int
+        :param CallsGrids: 粒度点
+        :type CallsGrids: list of int
+        :param CostTime: 花费总时间
+        :type CostTime: float
+        :param Rows: 影响的行数
+        :type Rows: int
+        :param MinCostTime: 花费最小时间
+        :type MinCostTime: float
+        :param MaxCostTime: 花费最大时间
+        :type MaxCostTime: float
+        :param FirstTime: 最早一条慢SQL时间
+        :type FirstTime: str
+        :param LastTime: 最晚一条慢SQL时间
+        :type LastTime: str
+        :param SharedReadBlks: 读共享内存块数
+        :type SharedReadBlks: int
+        :param SharedWriteBlks: 写共享内存块数
+        :type SharedWriteBlks: int
+        :param ReadCostTime: 读io总耗时
+        :type ReadCostTime: int
+        :param WriteCostTime: 写io总耗时
+        :type WriteCostTime: int
+        :param DatabaseName: 数据库名字
+        :type DatabaseName: str
+        :param NormalQuery: 脱敏后的慢SQL
+        :type NormalQuery: str
         """
-        :param UserName: 用户名\n        :type UserName: str\n        :param Calls: 调用次数\n        :type Calls: int\n        :param CallsGrids: 粒度点\n        :type CallsGrids: list of int\n        :param CostTime: 花费总时间\n        :type CostTime: float\n        :param Rows: 影响的行数\n        :type Rows: int\n        :param MinCostTime: 花费最小时间\n        :type MinCostTime: float\n        :param MaxCostTime: 花费最大时间\n        :type MaxCostTime: float\n        :param FirstTime: 最早一条慢SQL时间\n        :type FirstTime: str\n        :param LastTime: 最晚一条慢SQL时间\n        :type LastTime: str\n        :param SharedReadBlks: 读共享内存块数\n        :type SharedReadBlks: int\n        :param SharedWriteBlks: 写共享内存块数\n        :type SharedWriteBlks: int\n        :param ReadCostTime: 读io总耗时\n        :type ReadCostTime: int\n        :param WriteCostTime: 写io总耗时\n        :type WriteCostTime: int\n        :param DatabaseName: 数据库名字\n        :type DatabaseName: str\n        :param NormalQuery: 脱敏后的慢SQL\n        :type NormalQuery: str\n        """
         self.UserName = None
         self.Calls = None
         self.CallsGrids = None
@@ -2153,8 +2833,12 @@ class OpenDBExtranetAccessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-hez4fh0v
+        :type DBInstanceId: str
+        :param IsIpv6: 是否开通Ipv6外网，1：是，0：否
+        :type IsIpv6: int
         """
-        :param DBInstanceId: 实例ID，形如postgres-hez4fh0v\n        :type DBInstanceId: str\n        :param IsIpv6: 是否开通Ipv6外网，1：是，0：否\n        :type IsIpv6: int\n        """
         self.DBInstanceId = None
         self.IsIpv6 = None
 
@@ -2177,8 +2861,12 @@ class OpenDBExtranetAccessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 异步任务流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2194,8 +2882,12 @@ class OpenServerlessDBExtranetAccessRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例的唯一标识符
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+        :type DBInstanceName: str
         """
-        :param DBInstanceId: 实例的唯一标识符\n        :type DBInstanceId: str\n        :param DBInstanceName: 实例名称\n        :type DBInstanceName: str\n        """
         self.DBInstanceId = None
         self.DBInstanceName = None
 
@@ -2218,8 +2910,10 @@ class OpenServerlessDBExtranetAccessResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2233,8 +2927,20 @@ class PgDeal(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealName: 订单名
+        :type DealName: str
+        :param OwnerUin: 所属用户
+        :type OwnerUin: str
+        :param Count: 订单涉及多少个实例
+        :type Count: int
+        :param PayMode: 付费模式。1-预付费；0-后付费
+        :type PayMode: int
+        :param FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param DBInstanceIdSet: 实例ID数组
+        :type DBInstanceIdSet: list of str
         """
-        :param DealName: 订单名\n        :type DealName: str\n        :param OwnerUin: 所属用户\n        :type OwnerUin: str\n        :param Count: 订单涉及多少个实例\n        :type Count: int\n        :param PayMode: 付费模式。1-预付费；0-后付费\n        :type PayMode: int\n        :param FlowId: 异步任务流程ID\n        :type FlowId: int\n        :param DBInstanceIdSet: 实例ID数组\n        :type DBInstanceIdSet: list of str\n        """
         self.DealName = None
         self.OwnerUin = None
         self.Count = None
@@ -2265,14 +2971,48 @@ class ReadOnlyGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadOnlyGroupId: 只读组标识
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReadOnlyGroupId: str\n        :param ReadOnlyGroupName: 只读组名字
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ReadOnlyGroupName: str\n        :param ProjectId: 项目id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: int\n        :param MasterDBInstanceId: 主实例id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MasterDBInstanceId: str\n        :param MinDelayEliminateReserve: 最小保留实例数
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MinDelayEliminateReserve: int\n        :param MaxReplayLatency: 延迟空间大小阈值\n        :type MaxReplayLatency: int\n        :param ReplayLatencyEliminate: 延迟大小开关\n        :type ReplayLatencyEliminate: int\n        :param MaxReplayLag: 延迟时间大小阈值\n        :type MaxReplayLag: float\n        :param ReplayLagEliminate: 延迟时间开关\n        :type ReplayLagEliminate: int\n        :param VpcId: 虚拟网络id\n        :type VpcId: str\n        :param SubnetId: 子网id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param Region: 地域id\n        :type Region: str\n        :param Zone: 地区id\n        :type Zone: str\n        :param Status: 状态\n        :type Status: str\n        :param ReadOnlyDBInstanceList: 实例详细信息\n        :type ReadOnlyDBInstanceList: list of DBInstance\n        :param Rebalance: 自动负载均衡开关\n        :type Rebalance: int\n        :param DBInstanceNetInfo: 网络信息\n        :type DBInstanceNetInfo: list of DBInstanceNetInfo\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnlyGroupName: str
+        :param ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param MasterDBInstanceId: 主实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterDBInstanceId: str
+        :param MinDelayEliminateReserve: 最小保留实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinDelayEliminateReserve: int
+        :param MaxReplayLatency: 延迟空间大小阈值
+        :type MaxReplayLatency: int
+        :param ReplayLatencyEliminate: 延迟大小开关
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLag: 延迟时间大小阈值
+        :type MaxReplayLag: float
+        :param ReplayLagEliminate: 延迟时间开关
+        :type ReplayLagEliminate: int
+        :param VpcId: 虚拟网络id
+        :type VpcId: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param Region: 地域id
+        :type Region: str
+        :param Zone: 地区id
+        :type Zone: str
+        :param Status: 状态
+        :type Status: str
+        :param ReadOnlyDBInstanceList: 实例详细信息
+        :type ReadOnlyDBInstanceList: list of DBInstance
+        :param Rebalance: 自动负载均衡开关
+        :type Rebalance: int
+        :param DBInstanceNetInfo: 网络信息
+        :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        """
         self.ReadOnlyGroupId = None
         self.ReadOnlyGroupName = None
         self.ProjectId = None
@@ -2335,8 +3075,10 @@ class RebalanceReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
         """
-        :param ReadOnlyGroupId: 只读组ID\n        :type ReadOnlyGroupId: str\n        """
         self.ReadOnlyGroupId = None
 
 
@@ -2357,8 +3099,10 @@ class RebalanceReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2372,9 +3116,19 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 该地域对应的英文名称
+        :type Region: str
+        :param RegionName: 该地域对应的中文名称
+        :type RegionName: str
+        :param RegionId: 该地域对应的数字编号
+        :type RegionId: int
+        :param RegionState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
+        :type RegionState: str
+        :param SupportInternational: 该地域是否支持国际站售卖，0：不支持，1：支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportInternational: int
         """
-        :param Region: 该地域对应的英文名称\n        :type Region: str\n        :param RegionName: 该地域对应的中文名称\n        :type RegionName: str\n        :param RegionId: 该地域对应的数字编号\n        :type RegionId: int\n        :param RegionState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用\n        :type RegionState: str\n        :param SupportInternational: 该地域是否支持国际站售卖，0：不支持，1：支持
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SupportInternational: int\n        """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
@@ -2403,8 +3157,12 @@ class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
         """
-        :param DBInstanceId: 实例ID\n        :type DBInstanceId: str\n        :param ReadOnlyGroupId: 只读组ID\n        :type ReadOnlyGroupId: str\n        """
         self.DBInstanceId = None
         self.ReadOnlyGroupId = None
 
@@ -2427,8 +3185,12 @@ class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2444,8 +3206,16 @@ class RenewInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-6fego161
+        :type DBInstanceId: str
+        :param Period: 续费多少个月
+        :type Period: int
+        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券
+        :type VoucherIds: list of str
         """
-        :param DBInstanceId: 实例ID，形如postgres-6fego161\n        :type DBInstanceId: str\n        :param Period: 续费多少个月\n        :type Period: int\n        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用\n        :type AutoVoucher: int\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券\n        :type VoucherIds: list of str\n        """
         self.DBInstanceId = None
         self.Period = None
         self.AutoVoucher = None
@@ -2472,8 +3242,12 @@ class RenewInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealName: 订单名
+        :type DealName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealName: 订单名\n        :type DealName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealName = None
         self.RequestId = None
 
@@ -2489,8 +3263,14 @@ class ResetAccountPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv
+        :type DBInstanceId: str
+        :param UserName: 实例账户名
+        :type UserName: str
+        :param Password: UserName账户对应的新密码
+        :type Password: str
         """
-        :param DBInstanceId: 实例ID，形如postgres-4wdeb0zv\n        :type DBInstanceId: str\n        :param UserName: 实例账户名\n        :type UserName: str\n        :param Password: UserName账户对应的新密码\n        :type Password: str\n        """
         self.DBInstanceId = None
         self.UserName = None
         self.Password = None
@@ -2515,8 +3295,10 @@ class ResetAccountPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2530,8 +3312,10 @@ class RestartDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-6r233v55
+        :type DBInstanceId: str
         """
-        :param DBInstanceId: 实例ID，形如postgres-6r233v55\n        :type DBInstanceId: str\n        """
         self.DBInstanceId = None
 
 
@@ -2552,8 +3336,12 @@ class RestartDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FlowId: 异步流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FlowId: 异步流程ID\n        :type FlowId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FlowId = None
         self.RequestId = None
 
@@ -2569,11 +3357,17 @@ class ServerlessDBAccount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBUser: 用户名
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBUser: str\n        :param DBPassword: 密码
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBPassword: str\n        :param DBConnLimit: 连接数限制
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBConnLimit: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBUser: str
+        :param DBPassword: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBPassword: str
+        :param DBConnLimit: 连接数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBConnLimit: int
+        """
         self.DBUser = None
         self.DBPassword = None
         self.DBConnLimit = None
@@ -2598,23 +3392,53 @@ class ServerlessDBInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBInstanceId: 实例id，唯一标识符
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBInstanceId: str\n        :param DBInstanceName: 实例名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBInstanceName: str\n        :param DBInstanceStatus: 实例状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBInstanceStatus: str\n        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Region: str\n        :param Zone: 可用区
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Zone: str\n        :param ProjectId: 项目id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProjectId: int\n        :param VpcId: 私有网络Id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcId: str\n        :param SubnetId: 子网id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubnetId: str\n        :param DBCharset: 字符集
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBCharset: str\n        :param DBVersion: 数据库版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBVersion: str\n        :param CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param DBInstanceNetInfo: 实例网络信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBInstanceNetInfo: list of ServerlessDBInstanceNetInfo\n        :param DBAccountSet: 实例账户信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBAccountSet: list of ServerlessDBAccount\n        :param DBDatabaseList: 实例下的db信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DBDatabaseList: list of str\n        :param TagList: 实例绑定的标签数组
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TagList: list of Tag\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceId: str
+        :param DBInstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceName: str
+        :param DBInstanceStatus: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceStatus: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param VpcId: 私有网络Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param DBCharset: 字符集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBCharset: str
+        :param DBVersion: 数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBVersion: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param DBInstanceNetInfo: 实例网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceNetInfo: list of ServerlessDBInstanceNetInfo
+        :param DBAccountSet: 实例账户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBAccountSet: list of ServerlessDBAccount
+        :param DBDatabaseList: 实例下的db信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBDatabaseList: list of str
+        :param TagList: 实例绑定的标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
+        """
         self.DBInstanceId = None
         self.DBInstanceName = None
         self.DBInstanceStatus = None
@@ -2678,13 +3502,23 @@ class ServerlessDBInstanceNetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Address: 地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Address: str\n        :param Ip: ip地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Ip: str\n        :param Port: 端口号
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Port: int\n        :param Status: 状态
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Status: str\n        :param NetType: 网络类型
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NetType: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param Ip: ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Port: 端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param NetType: 网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: str
+        """
         self.Address = None
         self.Ip = None
         self.Port = None
@@ -2713,8 +3547,12 @@ class SetAutoRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DBInstanceIdSet: 实例ID数组
+        :type DBInstanceIdSet: list of str
+        :param AutoRenewFlag: 续费标记。0-正常续费；1-自动续费；2-到期不续费
+        :type AutoRenewFlag: int
         """
-        :param DBInstanceIdSet: 实例ID数组\n        :type DBInstanceIdSet: list of str\n        :param AutoRenewFlag: 续费标记。0-正常续费；1-自动续费；2-到期不续费\n        :type AutoRenewFlag: int\n        """
         self.DBInstanceIdSet = None
         self.AutoRenewFlag = None
 
@@ -2737,8 +3575,12 @@ class SetAutoRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Count: 设置成功的实例个数
+        :type Count: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Count: 设置成功的实例个数\n        :type Count: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Count = None
         self.RequestId = None
 
@@ -2754,8 +3596,14 @@ class SlowlogDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalTime: 花费总时间
+        :type TotalTime: float
+        :param TotalCalls: 调用总次数
+        :type TotalCalls: int
+        :param NormalQueries: 脱敏后的慢SQL列表
+        :type NormalQueries: list of NormalQueryItem
         """
-        :param TotalTime: 花费总时间\n        :type TotalTime: float\n        :param TotalCalls: 调用总次数\n        :type TotalCalls: int\n        :param NormalQueries: 脱敏后的慢SQL列表\n        :type NormalQueries: list of NormalQueryItem\n        """
         self.TotalTime = None
         self.TotalCalls = None
         self.NormalQueries = None
@@ -2785,8 +3633,14 @@ class SpecInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 地域英文编码，对应RegionSet的Region字段
+        :type Region: str
+        :param Zone: 区域英文编码，对应ZoneSet的Zone字段
+        :type Zone: str
+        :param SpecItemInfoList: 规格详细信息列表
+        :type SpecItemInfoList: list of SpecItemInfo
         """
-        :param Region: 地域英文编码，对应RegionSet的Region字段\n        :type Region: str\n        :param Zone: 区域英文编码，对应ZoneSet的Zone字段\n        :type Zone: str\n        :param SpecItemInfoList: 规格详细信息列表\n        :type SpecItemInfoList: list of SpecItemInfo\n        """
         self.Region = None
         self.Zone = None
         self.SpecItemInfoList = None
@@ -2816,8 +3670,28 @@ class SpecItemInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SpecCode: 规格ID
+        :type SpecCode: str
+        :param Version: PostgreSQL的内核版本编号
+        :type Version: str
+        :param VersionName: 内核编号对应的完整版本名称
+        :type VersionName: str
+        :param Cpu: CPU核数
+        :type Cpu: int
+        :param Memory: 内存大小，单位：MB
+        :type Memory: int
+        :param MaxStorage: 该规格所支持最大存储容量，单位：GB
+        :type MaxStorage: int
+        :param MinStorage: 该规格所支持最小存储容量，单位：GB
+        :type MinStorage: int
+        :param Qps: 该规格的预估QPS
+        :type Qps: int
+        :param Pid: 该规格对应的计费ID
+        :type Pid: int
+        :param Type: 机器类型
+        :type Type: str
         """
-        :param SpecCode: 规格ID\n        :type SpecCode: str\n        :param Version: PostgreSQL的内核版本编号\n        :type Version: str\n        :param VersionName: 内核编号对应的完整版本名称\n        :type VersionName: str\n        :param Cpu: CPU核数\n        :type Cpu: int\n        :param Memory: 内存大小，单位：MB\n        :type Memory: int\n        :param MaxStorage: 该规格所支持最大存储容量，单位：GB\n        :type MaxStorage: int\n        :param MinStorage: 该规格所支持最小存储容量，单位：GB\n        :type MinStorage: int\n        :param Qps: 该规格的预估QPS\n        :type Qps: int\n        :param Pid: 该规格对应的计费ID\n        :type Pid: int\n        :param Type: 机器类型\n        :type Type: str\n        """
         self.SpecCode = None
         self.Version = None
         self.VersionName = None
@@ -2856,8 +3730,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
         """
-        :param TagKey: 标签键\n        :type TagKey: str\n        :param TagValue: 标签值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -2880,8 +3758,26 @@ class UpgradeDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Memory: 升级后的实例内存大小，单位GB
+        :type Memory: int
+        :param Storage: 升级后的实例磁盘大小，单位GB
+        :type Storage: int
+        :param DBInstanceId: 实例ID，形如postgres-lnp6j617
+        :type DBInstanceId: str
+        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券
+        :type VoucherIds: list of str
+        :param ActivityId: 活动ID
+        :type ActivityId: int
+        :param SwitchTag: 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+        :type SwitchTag: int
+        :param SwitchStartTime: 切换开始时间
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换截止时间
+        :type SwitchEndTime: str
         """
-        :param Memory: 升级后的实例内存大小，单位GB\n        :type Memory: int\n        :param Storage: 升级后的实例磁盘大小，单位GB\n        :type Storage: int\n        :param DBInstanceId: 实例ID，形如postgres-lnp6j617\n        :type DBInstanceId: str\n        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用\n        :type AutoVoucher: int\n        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券\n        :type VoucherIds: list of str\n        :param ActivityId: 活动ID\n        :type ActivityId: int\n        :param SwitchTag: 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。\n        :type SwitchTag: int\n        :param SwitchStartTime: 切换开始时间\n        :type SwitchStartTime: str\n        :param SwitchEndTime: 切换截止时间\n        :type SwitchEndTime: str\n        """
         self.Memory = None
         self.Storage = None
         self.DBInstanceId = None
@@ -2918,8 +3814,14 @@ class UpgradeDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DealName: 交易名字。
+        :type DealName: str
+        :param BillId: 冻结流水号
+        :type BillId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DealName: 交易名字。\n        :type DealName: str\n        :param BillId: 冻结流水号\n        :type BillId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DealName = None
         self.BillId = None
         self.RequestId = None
@@ -2937,8 +3839,20 @@ class Xlog(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 备份文件唯一标识
+        :type Id: int
+        :param StartTime: 文件生成的开始时间
+        :type StartTime: str
+        :param EndTime: 文件生成的结束时间
+        :type EndTime: str
+        :param InternalAddr: 内网下载地址
+        :type InternalAddr: str
+        :param ExternalAddr: 外网下载地址
+        :type ExternalAddr: str
+        :param Size: 备份文件大小
+        :type Size: int
         """
-        :param Id: 备份文件唯一标识\n        :type Id: int\n        :param StartTime: 文件生成的开始时间\n        :type StartTime: str\n        :param EndTime: 文件生成的结束时间\n        :type EndTime: str\n        :param InternalAddr: 内网下载地址\n        :type InternalAddr: str\n        :param ExternalAddr: 外网下载地址\n        :type ExternalAddr: str\n        :param Size: 备份文件大小\n        :type Size: int\n        """
         self.Id = None
         self.StartTime = None
         self.EndTime = None
@@ -2969,8 +3883,18 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zone: 该可用区的英文名称
+        :type Zone: str
+        :param ZoneName: 该可用区的中文名称
+        :type ZoneName: str
+        :param ZoneId: 该可用区对应的数字编号
+        :type ZoneId: int
+        :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
+        :type ZoneState: str
+        :param ZoneSupportIpv6: 该可用区是否支持Ipv6
+        :type ZoneSupportIpv6: int
         """
-        :param Zone: 该可用区的英文名称\n        :type Zone: str\n        :param ZoneName: 该可用区的中文名称\n        :type ZoneName: str\n        :param ZoneId: 该可用区对应的数字编号\n        :type ZoneId: int\n        :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用\n        :type ZoneState: str\n        :param ZoneSupportIpv6: 该可用区是否支持Ipv6\n        :type ZoneSupportIpv6: int\n        """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None

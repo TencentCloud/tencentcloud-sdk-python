@@ -24,8 +24,14 @@ class BunkZone(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param ZoneName: 点位名称
+        :type ZoneName: str
+        :param BunkCodes: 铺位编码
+        :type BunkCodes: str
         """
-        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param ZoneName: 点位名称\n        :type ZoneName: str\n        :param BunkCodes: 铺位编码\n        :type BunkCodes: str\n        """
         self.ZoneId = None
         self.ZoneName = None
         self.BunkCodes = None
@@ -50,14 +56,34 @@ class CameraConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param FloorId: 楼层ID\n        :type FloorId: int\n        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param CameraIp: 摄像头IP\n        :type CameraIp: str\n        :param CameraMac: 摄像头Mac\n        :type CameraMac: str\n        :param CameraType: 摄像头类型:
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param FloorId: 楼层ID
+        :type FloorId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param CameraIp: 摄像头IP
+        :type CameraIp: str
+        :param CameraMac: 摄像头Mac
+        :type CameraMac: str
+        :param CameraType: 摄像头类型:
 1: 码流机
-2: AI相机\n        :type CameraType: int\n        :param CameraFeature: 摄像头功能:
+2: AI相机
+        :type CameraType: int
+        :param CameraFeature: 摄像头功能:
 1: 人脸
-2: 人体\n        :type CameraFeature: int\n        :param CameraState: 摄像头是否启用:
+2: 人体
+        :type CameraFeature: int
+        :param CameraState: 摄像头是否启用:
 0: 下线
-1: 启用\n        :type CameraState: int\n        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param ZoneType: 点位类型:
+1: 启用
+        :type CameraState: int
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param ZoneType: 点位类型:
 1: 场门
 3: 层门
 5: 特殊区域
@@ -65,7 +91,15 @@ class CameraConfig(AbstractModel):
 8: 补位
 10: 开放式门店
 11: 品类区
-12: 公共区\n        :type ZoneType: int\n        :param Config: 配置\n        :type Config: :class:`tencentcloud.ump.v20200918.models.Config`\n        :param Width: 宽\n        :type Width: int\n        :param Height: 高\n        :type Height: int\n        """
+12: 公共区
+        :type ZoneType: int
+        :param Config: 配置
+        :type Config: :class:`tencentcloud.ump.v20200918.models.Config`
+        :param Width: 宽
+        :type Width: int
+        :param Height: 高
+        :type Height: int
+        """
         self.GroupCode = None
         self.MallId = None
         self.FloorId = None
@@ -114,15 +148,19 @@ class CameraState(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CameraId: 相机ID\n        :type CameraId: int\n        :param State: 相机状态:
+        r"""
+        :param CameraId: 相机ID
+        :type CameraId: int
+        :param State: 相机状态:
 10: 初始化
 11: 未知状态
 12: 网络异常
 13: 未授权
 14: 相机App异常
 15: 相机取流异常
-16: 状态正常\n        :type State: int\n        """
+16: 状态正常
+        :type State: int
+        """
         self.CameraId = None
         self.State = None
 
@@ -145,10 +183,18 @@ class CameraZones(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param CameraName: 摄像头名称\n        :type CameraName: str\n        :param CameraFeature: 摄像头功能:
+        r"""
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param CameraName: 摄像头名称
+        :type CameraName: str
+        :param CameraFeature: 摄像头功能:
 1: 人脸
-2: 人体\n        :type CameraFeature: int\n        :param CameraIp: 摄像头IP\n        :type CameraIp: str\n        :param CameraState: 摄像头状态:
+2: 人体
+        :type CameraFeature: int
+        :param CameraIp: 摄像头IP
+        :type CameraIp: str
+        :param CameraState: 摄像头状态:
 0: 异常 (不再使用)
 1: 正常 (不再使用)
 10: 初始化
@@ -157,11 +203,19 @@ class CameraZones(AbstractModel):
 13: 未授权
 14: 相机App异常
 15: 相机取流异常
-16: 正常\n        :type CameraState: int\n        :param Zones: 点位列表\n        :type Zones: list of BunkZone\n        :param Pixel: 像素:
+16: 正常
+        :type CameraState: int
+        :param Zones: 点位列表
+        :type Zones: list of BunkZone
+        :param Pixel: 像素:
 130W(1280*960)
 200W(1920*1080)
-400W(2560*1440)\n        :type Pixel: str\n        :param RTSP: 相机Rtsp地址
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RTSP: str\n        """
+400W(2560*1440)
+        :type Pixel: str
+        :param RTSP: 相机Rtsp地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTSP: str
+        """
         self.CameraId = None
         self.CameraName = None
         self.CameraFeature = None
@@ -201,16 +255,36 @@ class Config(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CameraProducer: 摄像头厂商:
 H: 海康
 D: 大华
 Y: 英飞拓
-L: 联纵\n        :type CameraProducer: str\n        :param RTSP: rtsp 地址\n        :type RTSP: str\n        :param Fps: 摄像头帧率\n        :type Fps: int\n        :param DecodeFps: 解码帧率\n        :type DecodeFps: int\n        :param PassengerFlow: 是否做客流计算:
+L: 联纵
+        :type CameraProducer: str
+        :param RTSP: rtsp 地址
+        :type RTSP: str
+        :param Fps: 摄像头帧率
+        :type Fps: int
+        :param DecodeFps: 解码帧率
+        :type DecodeFps: int
+        :param PassengerFlow: 是否做客流计算:
 0: 否
-1: 是\n        :type PassengerFlow: int\n        :param FaceExpose: 是否打开人脸曝光:
+1: 是
+        :type PassengerFlow: int
+        :param FaceExpose: 是否打开人脸曝光:
 0: 关闭
-1: 开启\n        :type FaceExpose: int\n        :param MallArea: 门线标注\n        :type MallArea: list of Point\n        :param ShopArea: 店门标注\n        :type ShopArea: list of Point\n        :param TrackAreas: 检测区标注\n        :type TrackAreas: list of Polygon\n        :param Zones: 点位列表（品类区）\n        :type Zones: list of ZoneArea\n        """
+1: 开启
+        :type FaceExpose: int
+        :param MallArea: 门线标注
+        :type MallArea: list of Point
+        :param ShopArea: 店门标注
+        :type ShopArea: list of Point
+        :param TrackAreas: 检测区标注
+        :type TrackAreas: list of Polygon
+        :param Zones: 点位列表（品类区）
+        :type Zones: list of ZoneArea
+        """
         self.CameraProducer = None
         self.RTSP = None
         self.Fps = None
@@ -269,8 +343,22 @@ class CreateCameraAlertAlert(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param CameraId: 相机ID
+        :type CameraId: int
+        :param CaptureTime: 时间戳,ms,默认为告警请求到达时间
+        :type CaptureTime: int
+        :param Image: 图片base64编码
+        :type Image: str
+        :param MoveAlert: 移动告警
+        :type MoveAlert: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsMoveAlert`
+        :param CoverAlert: 遮挡告警
+        :type CoverAlert: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsCoverAlert`
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param CameraId: 相机ID\n        :type CameraId: int\n        :param CaptureTime: 时间戳,ms,默认为告警请求到达时间\n        :type CaptureTime: int\n        :param Image: 图片base64编码\n        :type Image: str\n        :param MoveAlert: 移动告警\n        :type MoveAlert: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsMoveAlert`\n        :param CoverAlert: 遮挡告警\n        :type CoverAlert: :class:`tencentcloud.ump.v20200918.models.CreateCameraAlertsCoverAlert`\n        """
         self.GroupCode = None
         self.MallId = None
         self.CameraId = None
@@ -307,8 +395,12 @@ class CreateCameraAlertsCoverAlert(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cover: 是否遮挡
+        :type Cover: bool
+        :param CoverConfidence: 是否移动置信度
+        :type CoverConfidence: float
         """
-        :param Cover: 是否遮挡\n        :type Cover: bool\n        :param CoverConfidence: 是否移动置信度\n        :type CoverConfidence: float\n        """
         self.Cover = None
         self.CoverConfidence = None
 
@@ -331,8 +423,12 @@ class CreateCameraAlertsMoveAlert(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Move: 是否移动
+        :type Move: bool
+        :param MoveConfidence: 是否移动置信度
+        :type MoveConfidence: float
         """
-        :param Move: 是否移动\n        :type Move: bool\n        :param MoveConfidence: 是否移动置信度\n        :type MoveConfidence: float\n        """
         self.Move = None
         self.MoveConfidence = None
 
@@ -355,8 +451,10 @@ class CreateCameraAlertsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Alerts: 告警信息列表
+        :type Alerts: list of CreateCameraAlertAlert
         """
-        :param Alerts: 告警信息列表\n        :type Alerts: list of CreateCameraAlertAlert\n        """
         self.Alerts = None
 
 
@@ -382,8 +480,10 @@ class CreateCameraAlertsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -397,8 +497,14 @@ class CreateCameraStateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param CameraStates: 场内所有相机的状态值
+        :type CameraStates: list of CameraState
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param CameraStates: 场内所有相机的状态值\n        :type CameraStates: list of CameraState\n        """
         self.GroupCode = None
         self.MallId = None
         self.CameraStates = None
@@ -428,8 +534,10 @@ class CreateCameraStateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -443,8 +551,10 @@ class CreateCaptureRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 原始抓拍报文
+        :type Data: str
         """
-        :param Data: 原始抓拍报文\n        :type Data: str\n        """
         self.Data = None
 
 
@@ -465,9 +575,13 @@ class CreateCaptureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RspData: 原始应答报文
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RspData: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RspData: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.RspData = None
         self.RequestId = None
 
@@ -483,11 +597,27 @@ class CreateMultiBizAlertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param CaptureTime: 时间戳，毫秒\n        :type CaptureTime: int\n        :param State: 状态: 
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param CaptureTime: 时间戳，毫秒
+        :type CaptureTime: int
+        :param State: 状态: 
 1: 侵占
 2: 消失
-3: 即侵占又消失\n        :type State: int\n        :param Image: 图片base64字符串\n        :type Image: str\n        :param Warnings: 告警列表\n        :type Warnings: list of MultiBizWarning\n        """
+3: 即侵占又消失
+        :type State: int
+        :param Image: 图片base64字符串
+        :type Image: str
+        :param Warnings: 告警列表
+        :type Warnings: list of MultiBizWarning
+        """
         self.GroupCode = None
         self.MallId = None
         self.ZoneId = None
@@ -527,8 +657,10 @@ class CreateMultiBizAlertResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -542,8 +674,14 @@ class CreateProgramStateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param ProgramStateItems: 进程监控信息列表
+        :type ProgramStateItems: list of ProgramStateItem
+        :param MallId: 商场ID
+        :type MallId: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param ProgramStateItems: 进程监控信息列表\n        :type ProgramStateItems: list of ProgramStateItem\n        :param MallId: 商场ID\n        :type MallId: int\n        """
         self.GroupCode = None
         self.ProgramStateItems = None
         self.MallId = None
@@ -573,8 +711,10 @@ class CreateProgramStateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -588,8 +728,16 @@ class CreateServerStateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param ServerStateItems: 服务器监控信息列表
+        :type ServerStateItems: list of ServerStateItem
+        :param MallId: 商场ID
+        :type MallId: int
+        :param ReportTime: 服务器监控信息上报时间戳，单位毫秒
+        :type ReportTime: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param ServerStateItems: 服务器监控信息列表\n        :type ServerStateItems: list of ServerStateItem\n        :param MallId: 商场ID\n        :type MallId: int\n        :param ReportTime: 服务器监控信息上报时间戳，单位毫秒\n        :type ReportTime: int\n        """
         self.GroupCode = None
         self.ServerStateItems = None
         self.MallId = None
@@ -621,8 +769,10 @@ class CreateServerStateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -636,11 +786,23 @@ class DeleteMultiBizAlertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param ActionType: 消警动作:
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param ActionType: 消警动作:
 1: 误报
 2: 正报合规
-3: 正报不合规，整改完成\n        :type ActionType: int\n        :param Image: 图片base64字符串\n        :type Image: str\n        """
+3: 正报不合规，整改完成
+        :type ActionType: int
+        :param Image: 图片base64字符串
+        :type Image: str
+        """
         self.GroupCode = None
         self.MallId = None
         self.ZoneId = None
@@ -671,8 +833,10 @@ class DeleteMultiBizAlertResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -686,8 +850,14 @@ class DeleteTaskRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param TaskId: 任务ID
+        :type TaskId: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param TaskId: 任务ID\n        :type TaskId: int\n        """
         self.GroupCode = None
         self.MallId = None
         self.TaskId = None
@@ -712,8 +882,10 @@ class DeleteTaskResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -727,8 +899,12 @@ class DescribeCamerasRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        """
         self.GroupCode = None
         self.MallId = None
 
@@ -751,8 +927,12 @@ class DescribeCamerasResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cameras: 摄像头列表
+        :type Cameras: list of CameraZones
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Cameras: 摄像头列表\n        :type Cameras: list of CameraZones\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Cameras = None
         self.RequestId = None
 
@@ -773,8 +953,22 @@ class DescribeConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SessionId: 会话ID
+        :type SessionId: str
+        :param CameraSign: 摄像头签名
+        :type CameraSign: str
+        :param CameraAppId: 摄像头app id
+        :type CameraAppId: str
+        :param CameraTimestamp: 摄像头时间戳，毫秒
+        :type CameraTimestamp: int
+        :param ServerMac: MAC地址，字母大写
+        :type ServerMac: str
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
         """
-        :param SessionId: 会话ID\n        :type SessionId: str\n        :param CameraSign: 摄像头签名\n        :type CameraSign: str\n        :param CameraAppId: 摄像头app id\n        :type CameraAppId: str\n        :param CameraTimestamp: 摄像头时间戳，毫秒\n        :type CameraTimestamp: int\n        :param ServerMac: MAC地址，字母大写\n        :type ServerMac: str\n        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        """
         self.SessionId = None
         self.CameraSign = None
         self.CameraAppId = None
@@ -807,8 +1001,16 @@ class DescribeConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SessionId: 会话ID
+        :type SessionId: str
+        :param Version: 配置版本号
+        :type Version: int
+        :param Cameras: 摄像头列表
+        :type Cameras: list of CameraConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SessionId: 会话ID\n        :type SessionId: str\n        :param Version: 配置版本号\n        :type Version: int\n        :param Cameras: 摄像头列表\n        :type Cameras: list of CameraConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SessionId = None
         self.Version = None
         self.Cameras = None
@@ -833,8 +1035,14 @@ class DescribeImageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param CameraId: 摄像头ID\n        :type CameraId: int\n        """
         self.GroupCode = None
         self.MallId = None
         self.CameraId = None
@@ -859,8 +1067,12 @@ class DescribeImageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageUrl: cos 临时 url，异步上传图片，client需要轮询
+        :type ImageUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ImageUrl: cos 临时 url，异步上传图片，client需要轮询\n        :type ImageUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ImageUrl = None
         self.RequestId = None
 
@@ -876,8 +1088,16 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param ZoneId: 点位ID
+        :type ZoneId: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param ZoneId: 点位ID\n        :type ZoneId: int\n        """
         self.GroupCode = None
         self.MallId = None
         self.CameraId = None
@@ -904,8 +1124,12 @@ class DescribeMultiBizBaseImageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageUrl: cos 临时 url
+        :type ImageUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ImageUrl: cos 临时 url\n        :type ImageUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ImageUrl = None
         self.RequestId = None
 
@@ -921,9 +1145,15 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param TaskType: 任务类型:
+1: 底图拉取
+        :type TaskType: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param TaskType: 任务类型:
-1: 底图拉取\n        :type TaskType: int\n        """
         self.GroupCode = None
         self.MallId = None
         self.TaskType = None
@@ -948,8 +1178,12 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tasks: 任务列表
+        :type Tasks: list of Task
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Tasks: 任务列表\n        :type Tasks: list of Task\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Tasks = None
         self.RequestId = None
 
@@ -970,8 +1204,12 @@ class DescribeZonesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        """
         self.GroupCode = None
         self.MallId = None
 
@@ -994,8 +1232,12 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Zones: 点位列表
+        :type Zones: list of ZoneConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Zones: 点位列表\n        :type Zones: list of ZoneConfig\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Zones = None
         self.RequestId = None
 
@@ -1016,8 +1258,12 @@ class DiskInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DiskName: 硬盘名字
+        :type DiskName: str
+        :param Usage: 硬盘使用率
+        :type Usage: float
         """
-        :param DiskName: 硬盘名字\n        :type DiskName: str\n        :param Usage: 硬盘使用率\n        :type Usage: float\n        """
         self.DiskName = None
         self.Usage = None
 
@@ -1040,8 +1286,18 @@ class ModifyMultiBizConfigRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param MonitoringAreas: 监控区域
+        :type MonitoringAreas: list of Polygon
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param MonitoringAreas: 监控区域\n        :type MonitoringAreas: list of Polygon\n        """
         self.GroupCode = None
         self.MallId = None
         self.ZoneId = None
@@ -1075,8 +1331,10 @@ class ModifyMultiBizConfigResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1090,8 +1348,14 @@ class MultiBizWarning(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 编号
+        :type Id: int
+        :param MonitoringArea: 监控区域
+        :type MonitoringArea: list of Point
+        :param WarningInfos: 告警列表
+        :type WarningInfos: list of MultiBizWarningInfo
         """
-        :param Id: 编号\n        :type Id: int\n        :param MonitoringArea: 监控区域\n        :type MonitoringArea: list of Point\n        :param WarningInfos: 告警列表\n        :type WarningInfos: list of MultiBizWarningInfo\n        """
         self.Id = None
         self.MonitoringArea = None
         self.WarningInfos = None
@@ -1126,11 +1390,19 @@ class MultiBizWarningInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WarningType: 告警类型：
 0: 无变化
 1: 侵占
-2: 消失\n        :type WarningType: int\n        :param WarningAreaSize: 告警侵占或消失面积\n        :type WarningAreaSize: float\n        :param WarningLocation: 告警侵占或消失坐标\n        :type WarningLocation: :class:`tencentcloud.ump.v20200918.models.Point`\n        :param WarningAreaContour: 告警侵占或消失轮廓\n        :type WarningAreaContour: list of Point\n        """
+2: 消失
+        :type WarningType: int
+        :param WarningAreaSize: 告警侵占或消失面积
+        :type WarningAreaSize: float
+        :param WarningLocation: 告警侵占或消失坐标
+        :type WarningLocation: :class:`tencentcloud.ump.v20200918.models.Point`
+        :param WarningAreaContour: 告警侵占或消失轮廓
+        :type WarningAreaContour: list of Point
+        """
         self.WarningType = None
         self.WarningAreaSize = None
         self.WarningLocation = None
@@ -1164,8 +1436,12 @@ class Point(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param X: X坐标
+        :type X: int
+        :param Y: Y坐标
+        :type Y: int
         """
-        :param X: X坐标\n        :type X: int\n        :param Y: Y坐标\n        :type Y: int\n        """
         self.X = None
         self.Y = None
 
@@ -1188,8 +1464,10 @@ class Polygon(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Points: 标注列表
+        :type Points: list of Point
         """
-        :param Points: 标注列表\n        :type Points: list of Point\n        """
         self.Points = None
 
 
@@ -1215,11 +1493,21 @@ class ProgramStateItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ServerIp: 服务器IP\n        :type ServerIp: str\n        :param ProgramName: 进程名字\n        :type ProgramName: str\n        :param OnlineCount: 在线个数\n        :type OnlineCount: int\n        :param OfflineCount: 离线个数\n        :type OfflineCount: int\n        :param State: 上报状态:
+        r"""
+        :param ServerIp: 服务器IP
+        :type ServerIp: str
+        :param ProgramName: 进程名字
+        :type ProgramName: str
+        :param OnlineCount: 在线个数
+        :type OnlineCount: int
+        :param OfflineCount: 离线个数
+        :type OfflineCount: int
+        :param State: 上报状态:
 1: 正常上报
 2: 异常上报
-注：此处异常上报是指本次上报由于场内服务内部原因导致上报数据不可信等。此时离线个数重置为1，在线个数重置为0\n        :type State: int\n        """
+注：此处异常上报是指本次上报由于场内服务内部原因导致上报数据不可信等。此时离线个数重置为1，在线个数重置为0
+        :type State: int
+        """
         self.ServerIp = None
         self.ProgramName = None
         self.OnlineCount = None
@@ -1248,8 +1536,20 @@ class ReportServiceRegisterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param ServiceRegisterInfos: 服务上报当前的服务能力信息
+        :type ServiceRegisterInfos: list of ServiceRegisterInfo
+        :param ServerIp: 服务内网Ip
+        :type ServerIp: str
+        :param ServerNodeId: 上报服务所在服务器的唯一ID
+        :type ServerNodeId: str
+        :param ReportTime: 上报时间戳, 单位毫秒
+        :type ReportTime: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param ServiceRegisterInfos: 服务上报当前的服务能力信息\n        :type ServiceRegisterInfos: list of ServiceRegisterInfo\n        :param ServerIp: 服务内网Ip\n        :type ServerIp: str\n        :param ServerNodeId: 上报服务所在服务器的唯一ID\n        :type ServerNodeId: str\n        :param ReportTime: 上报时间戳, 单位毫秒\n        :type ReportTime: int\n        """
         self.GroupCode = None
         self.MallId = None
         self.ServiceRegisterInfos = None
@@ -1285,8 +1585,10 @@ class ReportServiceRegisterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1300,8 +1602,16 @@ class SearchImageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param Image: 图片base64字符串
+        :type Image: str
+        :param ImageTime: 时间戳，毫秒
+        :type ImageTime: int
         """
-        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param Image: 图片base64字符串\n        :type Image: str\n        :param ImageTime: 时间戳，毫秒\n        :type ImageTime: int\n        """
         self.GroupCode = None
         self.MallId = None
         self.Image = None
@@ -1328,8 +1638,14 @@ class SearchImageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FaceId: face id
+        :type FaceId: str
+        :param Results: 搜索结果列表
+        :type Results: list of SearchResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FaceId: face id\n        :type FaceId: str\n        :param Results: 搜索结果列表\n        :type Results: list of SearchResult\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FaceId = None
         self.Results = None
         self.RequestId = None
@@ -1352,8 +1668,14 @@ class SearchResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Image: 图片base64数据
+        :type Image: str
+        :param PersonId: 身份ID
+        :type PersonId: str
+        :param Similarity: 相似度
+        :type Similarity: float
         """
-        :param Image: 图片base64数据\n        :type Image: str\n        :param PersonId: 身份ID\n        :type PersonId: str\n        :param Similarity: 相似度\n        :type Similarity: float\n        """
         self.Image = None
         self.PersonId = None
         self.Similarity = None
@@ -1378,11 +1700,17 @@ class ServerStateItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerState: 服务器状态
 1: 在线
 2: 离线
-3: 重启\n        :type ServerState: int\n        :param ServerIp: 服务器IP\n        :type ServerIp: str\n        :param DiskInfos: 硬盘监控信息列表\n        :type DiskInfos: list of DiskInfo\n        """
+3: 重启
+        :type ServerState: int
+        :param ServerIp: 服务器IP
+        :type ServerIp: str
+        :param DiskInfos: 硬盘监控信息列表
+        :type DiskInfos: list of DiskInfo
+        """
         self.ServerState = None
         self.ServerIp = None
         self.DiskInfos = None
@@ -1412,11 +1740,15 @@ class ServiceRegisterInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CgiUrl: 当前服务的回调地址\n        :type CgiUrl: str\n        :param ServiceType: 当前服务类型:
+        r"""
+        :param CgiUrl: 当前服务的回调地址
+        :type CgiUrl: str
+        :param ServiceType: 当前服务类型:
 1: 多经服务
 2: 相机误报警确认
-3: 底图更新\n        :type ServiceType: int\n        """
+3: 底图更新
+        :type ServiceType: int
+        """
         self.CgiUrl = None
         self.ServiceType = None
 
@@ -1439,9 +1771,19 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param TaskContent: 任务内容
+        :type TaskContent: :class:`tencentcloud.ump.v20200918.models.TaskContent`
+        :param TaskType: 任务类型:
+1: 底图拉取
+        :type TaskType: int
         """
-        :param TaskId: 任务ID\n        :type TaskId: int\n        :param GroupCode: 集团编码\n        :type GroupCode: str\n        :param MallId: 广场ID\n        :type MallId: int\n        :param TaskContent: 任务内容\n        :type TaskContent: :class:`tencentcloud.ump.v20200918.models.TaskContent`\n        :param TaskType: 任务类型:
-1: 底图拉取\n        :type TaskType: int\n        """
         self.TaskId = None
         self.GroupCode = None
         self.MallId = None
@@ -1472,8 +1814,14 @@ class TaskContent(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param RTSP: rtsp 地址
+        :type RTSP: str
+        :param Url: 图片上传地址
+        :type Url: str
         """
-        :param CameraId: 摄像头ID\n        :type CameraId: int\n        :param RTSP: rtsp 地址\n        :type RTSP: str\n        :param Url: 图片上传地址\n        :type Url: str\n        """
         self.CameraId = None
         self.RTSP = None
         self.Url = None
@@ -1498,8 +1846,12 @@ class ZoneArea(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param ShopArea: 店门标注
+        :type ShopArea: list of Point
         """
-        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param ShopArea: 店门标注\n        :type ShopArea: list of Point\n        """
         self.ZoneId = None
         self.ShopArea = None
 
@@ -1527,8 +1879,12 @@ class ZoneConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ZoneId: 点位ID\n        :type ZoneId: int\n        :param ZoneName: 点位名称\n        :type ZoneName: str\n        :param ZoneType: 点位类型:
+        r"""
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param ZoneName: 点位名称
+        :type ZoneName: str
+        :param ZoneType: 点位类型:
 1: 场门
 3: 层门
 5: 特殊区域
@@ -1536,10 +1892,24 @@ class ZoneConfig(AbstractModel):
 8: 补位
 10: 开放式门店
 11: 品类区
-12: 公共区\n        :type ZoneType: int\n        :param BunkCodes: 铺位编码\n        :type BunkCodes: str\n        :param FloorName: 楼层名称\n        :type FloorName: str\n        :param FloorId: 楼层ID\n        :type FloorId: int\n        :param BindNum: 绑定数\n        :type BindNum: int\n        :param DebugNum: 调试数\n        :type DebugNum: int\n        :param State: 下发状态:
+12: 公共区
+        :type ZoneType: int
+        :param BunkCodes: 铺位编码
+        :type BunkCodes: str
+        :param FloorName: 楼层名称
+        :type FloorName: str
+        :param FloorId: 楼层ID
+        :type FloorId: int
+        :param BindNum: 绑定数
+        :type BindNum: int
+        :param DebugNum: 调试数
+        :type DebugNum: int
+        :param State: 下发状态:
 1: 不可下发
 2: 可下发
-3: 已下发\n        :type State: int\n        """
+3: 已下发
+        :type State: int
+        """
         self.ZoneId = None
         self.ZoneName = None
         self.ZoneType = None

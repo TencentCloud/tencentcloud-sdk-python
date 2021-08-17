@@ -24,8 +24,12 @@ class AgePortrait(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AgeRange: 年龄区间
+        :type AgeRange: str
+        :param Percent: 百分比
+        :type Percent: float
         """
-        :param AgeRange: 年龄区间\n        :type AgeRange: str\n        :param Percent: 百分比\n        :type Percent: float\n        """
         self.AgeRange = None
         self.Percent = None
 
@@ -48,8 +52,10 @@ class AgePortraitInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PortraitSet: 用户年龄画像数组
+        :type PortraitSet: list of AgePortrait
         """
-        :param PortraitSet: 用户年龄画像数组\n        :type PortraitSet: list of AgePortrait\n        """
         self.PortraitSet = None
 
 
@@ -75,8 +81,26 @@ class BrandReportArticle(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Title: 文章标题
+        :type Title: str
+        :param Url: 文章url地址
+        :type Url: str
+        :param FromSite: 文章来源
+        :type FromSite: str
+        :param PubTime: 文章发表日期
+        :type PubTime: str
+        :param Flag: 文章标识
+        :type Flag: int
+        :param Hot: 文章热度值
+        :type Hot: int
+        :param Level: 文章来源等级
+        :type Level: int
+        :param Abstract: 文章摘要
+        :type Abstract: str
+        :param ArticleId: 文章ID
+        :type ArticleId: str
         """
-        :param Title: 文章标题\n        :type Title: str\n        :param Url: 文章url地址\n        :type Url: str\n        :param FromSite: 文章来源\n        :type FromSite: str\n        :param PubTime: 文章发表日期\n        :type PubTime: str\n        :param Flag: 文章标识\n        :type Flag: int\n        :param Hot: 文章热度值\n        :type Hot: int\n        :param Level: 文章来源等级\n        :type Level: int\n        :param Abstract: 文章摘要\n        :type Abstract: str\n        :param ArticleId: 文章ID\n        :type ArticleId: str\n        """
         self.Title = None
         self.Url = None
         self.FromSite = None
@@ -113,8 +137,14 @@ class Comment(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Date: 评论的日期
+        :type Date: str
+        :param NegCommentCount: 差评的个数
+        :type NegCommentCount: int
+        :param PosCommentCount: 好评的个数
+        :type PosCommentCount: int
         """
-        :param Date: 评论的日期\n        :type Date: str\n        :param NegCommentCount: 差评的个数\n        :type NegCommentCount: int\n        :param PosCommentCount: 好评的个数\n        :type PosCommentCount: int\n        """
         self.Date = None
         self.NegCommentCount = None
         self.PosCommentCount = None
@@ -139,8 +169,12 @@ class CommentInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Comment: 用户评论内容
+        :type Comment: str
+        :param Date: 评论的时间
+        :type Date: str
         """
-        :param Comment: 用户评论内容\n        :type Comment: str\n        :param Date: 评论的时间\n        :type Date: str\n        """
         self.Comment = None
         self.Date = None
 
@@ -163,8 +197,12 @@ class DateCount(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Date: 统计日期
+        :type Date: str
+        :param Count: 统计值
+        :type Count: int
         """
-        :param Date: 统计日期\n        :type Date: str\n        :param Count: 统计值\n        :type Count: int\n        """
         self.Date = None
         self.Count = None
 
@@ -187,8 +225,14 @@ class DescribeBrandCommentCountRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 查询开始日期
+        :type StartDate: str
+        :param EndDate: 查询结束日期
+        :type EndDate: str
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 查询开始日期\n        :type StartDate: str\n        :param EndDate: 查询结束日期\n        :type EndDate: str\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -213,8 +257,12 @@ class DescribeBrandCommentCountResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CommentSet: 按天统计好评/差评数
+        :type CommentSet: list of Comment
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param CommentSet: 按天统计好评/差评数\n        :type CommentSet: list of Comment\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.CommentSet = None
         self.RequestId = None
 
@@ -235,8 +283,14 @@ class DescribeBrandExposureRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 查询开始时间
+        :type StartDate: str
+        :param EndDate: 查询结束时间
+        :type EndDate: str
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 查询开始时间\n        :type StartDate: str\n        :param EndDate: 查询结束时间\n        :type EndDate: str\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -261,8 +315,14 @@ class DescribeBrandExposureResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 累计曝光量
+        :type TotalCount: int
+        :param DateCountSet: 按天计算的统计数据
+        :type DateCountSet: list of DateCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 累计曝光量\n        :type TotalCount: int\n        :param DateCountSet: 按天计算的统计数据\n        :type DateCountSet: list of DateCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DateCountSet = None
         self.RequestId = None
@@ -285,8 +345,14 @@ class DescribeBrandMediaReportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 查询开始时间
+        :type StartDate: str
+        :param EndDate: 查询结束时间
+        :type EndDate: str
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 查询开始时间\n        :type StartDate: str\n        :param EndDate: 查询结束时间\n        :type EndDate: str\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -311,8 +377,14 @@ class DescribeBrandMediaReportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 查询范围内文章总数
+        :type TotalCount: int
+        :param DateCountSet: 按天计算的每天文章数
+        :type DateCountSet: list of DateCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 查询范围内文章总数\n        :type TotalCount: int\n        :param DateCountSet: 按天计算的每天文章数\n        :type DateCountSet: list of DateCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DateCountSet = None
         self.RequestId = None
@@ -335,8 +407,18 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 查询开始时间
+        :type StartDate: str
+        :param EndDate: 查询结束时间
+        :type EndDate: str
+        :param Limit: 查询条数上限，默认20
+        :type Limit: int
+        :param Offset: 查询偏移，默认从0开始
+        :type Offset: int
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 查询开始时间\n        :type StartDate: str\n        :param EndDate: 查询结束时间\n        :type EndDate: str\n        :param Limit: 查询条数上限，默认20\n        :type Limit: int\n        :param Offset: 查询偏移，默认从0开始\n        :type Offset: int\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -365,8 +447,14 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandCommentSet: 评论列表
+        :type BrandCommentSet: list of CommentInfo
+        :param TotalComments: 总的差评个数
+        :type TotalComments: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param BrandCommentSet: 评论列表\n        :type BrandCommentSet: list of CommentInfo\n        :param TotalComments: 总的差评个数\n        :type TotalComments: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BrandCommentSet = None
         self.TotalComments = None
         self.RequestId = None
@@ -389,8 +477,18 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 查询开始时间
+        :type StartDate: str
+        :param EndDate: 查询结束时间
+        :type EndDate: str
+        :param Limit: 查询条数上限，默认20
+        :type Limit: int
+        :param Offset: 查询偏移，从0开始
+        :type Offset: int
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 查询开始时间\n        :type StartDate: str\n        :param EndDate: 查询结束时间\n        :type EndDate: str\n        :param Limit: 查询条数上限，默认20\n        :type Limit: int\n        :param Offset: 查询偏移，从0开始\n        :type Offset: int\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -419,8 +517,14 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandCommentSet: 评论列表
+        :type BrandCommentSet: list of CommentInfo
+        :param TotalComments: 总的好评个数
+        :type TotalComments: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param BrandCommentSet: 评论列表\n        :type BrandCommentSet: list of CommentInfo\n        :param TotalComments: 总的好评个数\n        :type TotalComments: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.BrandCommentSet = None
         self.TotalComments = None
         self.RequestId = None
@@ -443,8 +547,20 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 检索开始时间
+        :type StartDate: str
+        :param EndDate: 检索结束时间
+        :type EndDate: str
+        :param Offset: 查询偏移，默认从0开始
+        :type Offset: int
+        :param Limit: 查询条数上限，默认20
+        :type Limit: int
+        :param ShowList: 列表显示标记，若为true，则返回文章列表详情
+        :type ShowList: bool
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 检索开始时间\n        :type StartDate: str\n        :param EndDate: 检索结束时间\n        :type EndDate: str\n        :param Offset: 查询偏移，默认从0开始\n        :type Offset: int\n        :param Limit: 查询条数上限，默认20\n        :type Limit: int\n        :param ShowList: 列表显示标记，若为true，则返回文章列表详情\n        :type ShowList: bool\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -475,8 +591,18 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ArticleCount: 文章总数
+        :type ArticleCount: int
+        :param FromCount: 来源统计总数
+        :type FromCount: int
+        :param AdverseCount: 疑似负面报道总数
+        :type AdverseCount: int
+        :param ArticleSet: 文章列表详情
+        :type ArticleSet: list of BrandReportArticle
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ArticleCount: 文章总数\n        :type ArticleCount: int\n        :param FromCount: 来源统计总数\n        :type FromCount: int\n        :param AdverseCount: 疑似负面报道总数\n        :type AdverseCount: int\n        :param ArticleSet: 文章列表详情\n        :type ArticleSet: list of BrandReportArticle\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ArticleCount = None
         self.FromCount = None
         self.AdverseCount = None
@@ -503,8 +629,14 @@ class DescribeBrandSocialReportRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
+        :param StartDate: 查询开始时间
+        :type StartDate: str
+        :param EndDate: 查询结束时间
+        :type EndDate: str
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        :param StartDate: 查询开始时间\n        :type StartDate: str\n        :param EndDate: 查询结束时间\n        :type EndDate: str\n        """
         self.BrandId = None
         self.StartDate = None
         self.EndDate = None
@@ -529,8 +661,14 @@ class DescribeBrandSocialReportResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 累计统计数据
+        :type TotalCount: int
+        :param DateCountSet: 按天计算的统计数据
+        :type DateCountSet: list of DateCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 累计统计数据\n        :type TotalCount: int\n        :param DateCountSet: 按天计算的统计数据\n        :type DateCountSet: list of DateCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DateCountSet = None
         self.RequestId = None
@@ -553,8 +691,20 @@ class DescribeIndustryNewsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IndustryId: 行业ID
+        :type IndustryId: str
+        :param StartDate: 查询开始时间
+        :type StartDate: str
+        :param EndDate: 查询结束时间
+        :type EndDate: str
+        :param ShowList: 是否显示列表，若为 true，则返回文章列表
+        :type ShowList: bool
+        :param Offset: 查询偏移，默认从0开始
+        :type Offset: int
+        :param Limit: 查询条数上限，默认20
+        :type Limit: int
         """
-        :param IndustryId: 行业ID\n        :type IndustryId: str\n        :param StartDate: 查询开始时间\n        :type StartDate: str\n        :param EndDate: 查询结束时间\n        :type EndDate: str\n        :param ShowList: 是否显示列表，若为 true，则返回文章列表\n        :type ShowList: bool\n        :param Offset: 查询偏移，默认从0开始\n        :type Offset: int\n        :param Limit: 查询条数上限，默认20\n        :type Limit: int\n        """
         self.IndustryId = None
         self.StartDate = None
         self.EndDate = None
@@ -585,8 +735,20 @@ class DescribeIndustryNewsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NewsCount: 总计文章数量
+        :type NewsCount: int
+        :param FromCount: 总计来源数量
+        :type FromCount: int
+        :param AdverseCount: 总计疑似负面数量
+        :type AdverseCount: int
+        :param NewsSet: 文章列表
+        :type NewsSet: list of IndustryNews
+        :param DateCountSet: 按天统计的数量列表
+        :type DateCountSet: list of DateCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param NewsCount: 总计文章数量\n        :type NewsCount: int\n        :param FromCount: 总计来源数量\n        :type FromCount: int\n        :param AdverseCount: 总计疑似负面数量\n        :type AdverseCount: int\n        :param NewsSet: 文章列表\n        :type NewsSet: list of IndustryNews\n        :param DateCountSet: 按天统计的数量列表\n        :type DateCountSet: list of DateCount\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NewsCount = None
         self.FromCount = None
         self.AdverseCount = None
@@ -620,8 +782,10 @@ class DescribeUserPortraitRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BrandId: 品牌ID
+        :type BrandId: str
         """
-        :param BrandId: 品牌ID\n        :type BrandId: str\n        """
         self.BrandId = None
 
 
@@ -642,8 +806,20 @@ class DescribeUserPortraitResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Age: 年龄画像
+        :type Age: :class:`tencentcloud.tbm.v20180129.models.AgePortraitInfo`
+        :param Gender: 性别画像
+        :type Gender: :class:`tencentcloud.tbm.v20180129.models.GenderPortraitInfo`
+        :param Province: 省份画像
+        :type Province: :class:`tencentcloud.tbm.v20180129.models.ProvincePortraitInfo`
+        :param Movie: 电影喜好画像
+        :type Movie: :class:`tencentcloud.tbm.v20180129.models.MoviePortraitInfo`
+        :param Star: 明星喜好画像
+        :type Star: :class:`tencentcloud.tbm.v20180129.models.StarPortraitInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Age: 年龄画像\n        :type Age: :class:`tencentcloud.tbm.v20180129.models.AgePortraitInfo`\n        :param Gender: 性别画像\n        :type Gender: :class:`tencentcloud.tbm.v20180129.models.GenderPortraitInfo`\n        :param Province: 省份画像\n        :type Province: :class:`tencentcloud.tbm.v20180129.models.ProvincePortraitInfo`\n        :param Movie: 电影喜好画像\n        :type Movie: :class:`tencentcloud.tbm.v20180129.models.MoviePortraitInfo`\n        :param Star: 明星喜好画像\n        :type Star: :class:`tencentcloud.tbm.v20180129.models.StarPortraitInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Age = None
         self.Gender = None
         self.Province = None
@@ -677,8 +853,12 @@ class GenderPortrait(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Gender: 性别
+        :type Gender: str
+        :param Percent: 百分比
+        :type Percent: int
         """
-        :param Gender: 性别\n        :type Gender: str\n        :param Percent: 百分比\n        :type Percent: int\n        """
         self.Gender = None
         self.Percent = None
 
@@ -701,8 +881,10 @@ class GenderPortraitInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PortraitSet: 用户性别画像数组
+        :type PortraitSet: list of GenderPortrait
         """
-        :param PortraitSet: 用户性别画像数组\n        :type PortraitSet: list of GenderPortrait\n        """
         self.PortraitSet = None
 
 
@@ -728,8 +910,26 @@ class IndustryNews(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param IndustryId: 行业报道ID
+        :type IndustryId: str
+        :param PubTime: 报道发表时间
+        :type PubTime: str
+        :param FromSite: 报道来源
+        :type FromSite: str
+        :param Title: 报道标题
+        :type Title: str
+        :param Url: 报道来源url
+        :type Url: str
+        :param Level: 报道来源等级
+        :type Level: int
+        :param Hot: 热度值
+        :type Hot: int
+        :param Flag: 报道标识
+        :type Flag: int
+        :param Abstract: 报道摘要
+        :type Abstract: str
         """
-        :param IndustryId: 行业报道ID\n        :type IndustryId: str\n        :param PubTime: 报道发表时间\n        :type PubTime: str\n        :param FromSite: 报道来源\n        :type FromSite: str\n        :param Title: 报道标题\n        :type Title: str\n        :param Url: 报道来源url\n        :type Url: str\n        :param Level: 报道来源等级\n        :type Level: int\n        :param Hot: 热度值\n        :type Hot: int\n        :param Flag: 报道标识\n        :type Flag: int\n        :param Abstract: 报道摘要\n        :type Abstract: str\n        """
         self.IndustryId = None
         self.PubTime = None
         self.FromSite = None
@@ -766,8 +966,12 @@ class MoviePortrait(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 电影名称
+        :type Name: str
+        :param Percent: 百分比
+        :type Percent: float
         """
-        :param Name: 电影名称\n        :type Name: str\n        :param Percent: 百分比\n        :type Percent: float\n        """
         self.Name = None
         self.Percent = None
 
@@ -790,8 +994,10 @@ class MoviePortraitInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PortraitSet: 用户喜好电影画像数组
+        :type PortraitSet: list of MoviePortrait
         """
-        :param PortraitSet: 用户喜好电影画像数组\n        :type PortraitSet: list of MoviePortrait\n        """
         self.PortraitSet = None
 
 
@@ -817,8 +1023,12 @@ class ProvincePortrait(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Province: 省份名称
+        :type Province: str
+        :param Percent: 百分比
+        :type Percent: float
         """
-        :param Province: 省份名称\n        :type Province: str\n        :param Percent: 百分比\n        :type Percent: float\n        """
         self.Province = None
         self.Percent = None
 
@@ -841,8 +1051,10 @@ class ProvincePortraitInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PortraitSet: 用户省份画像数组
+        :type PortraitSet: list of ProvincePortrait
         """
-        :param PortraitSet: 用户省份画像数组\n        :type PortraitSet: list of ProvincePortrait\n        """
         self.PortraitSet = None
 
 
@@ -868,8 +1080,12 @@ class StarPortrait(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 喜欢的明星名字
+        :type Name: str
+        :param Percent: 百分比
+        :type Percent: float
         """
-        :param Name: 喜欢的明星名字\n        :type Name: str\n        :param Percent: 百分比\n        :type Percent: float\n        """
         self.Name = None
         self.Percent = None
 
@@ -892,8 +1108,10 @@ class StarPortraitInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PortraitSet: 用户喜好的明星画像数组
+        :type PortraitSet: list of StarPortrait
         """
-        :param PortraitSet: 用户喜好的明星画像数组\n        :type PortraitSet: list of StarPortrait\n        """
         self.PortraitSet = None
 
 

@@ -24,8 +24,16 @@ class CodeDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param CodePosition: 二维码在图片中的位置，由边界点的坐标表示
+        :type CodePosition: list of CodePosition
+        :param CodeCharset: 二维码文本的编码格式
+        :type CodeCharset: str
+        :param CodeText: 二维码的文本内容
+        :type CodeText: str
+        :param CodeType: 二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX
+        :type CodeType: int
         """
-        :param CodePosition: 二维码在图片中的位置，由边界点的坐标表示\n        :type CodePosition: list of CodePosition\n        :param CodeCharset: 二维码文本的编码格式\n        :type CodeCharset: str\n        :param CodeText: 二维码的文本内容\n        :type CodeText: str\n        :param CodeType: 二维码的类型：1:ONED_BARCODE，2:QRCOD，3:WXCODE，4:PDF417，5:DATAMATRIX\n        :type CodeType: int\n        """
         self.CodePosition = None
         self.CodeCharset = None
         self.CodeText = None
@@ -57,8 +65,12 @@ class CodeDetect(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ModerationDetail: 从图片中检测到的二维码，可能为多个
+        :type ModerationDetail: list of CodeDetail
+        :param ModerationCode: 检测是否成功，0：成功，-1：出错
+        :type ModerationCode: int
         """
-        :param ModerationDetail: 从图片中检测到的二维码，可能为多个\n        :type ModerationDetail: list of CodeDetail\n        :param ModerationCode: 检测是否成功，0：成功，-1：出错\n        :type ModerationCode: int\n        """
         self.ModerationDetail = None
         self.ModerationCode = None
 
@@ -86,8 +98,12 @@ class CodePosition(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FloatX: 二维码边界点X轴坐标
+        :type FloatX: float
+        :param FloatY: 二维码边界点Y轴坐标
+        :type FloatY: float
         """
-        :param FloatX: 二维码边界点X轴坐标\n        :type FloatX: float\n        :param FloatY: 二维码边界点Y轴坐标\n        :type FloatY: float\n        """
         self.FloatX = None
         self.FloatY = None
 
@@ -110,8 +126,16 @@ class Coordinate(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cx: 左上角横坐标
+        :type Cx: int
+        :param Cy: 左上角纵坐标
+        :type Cy: int
+        :param Height: 高度
+        :type Height: int
+        :param Width: 宽度
+        :type Width: int
         """
-        :param Cx: 左上角横坐标\n        :type Cx: int\n        :param Cy: 左上角纵坐标\n        :type Cy: int\n        :param Height: 高度\n        :type Height: int\n        :param Width: 宽度\n        :type Width: int\n        """
         self.Cx = None
         self.Cy = None
         self.Height = None
@@ -138,17 +162,25 @@ class CreateFileSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Contents: 文件类型结构数组\n        :type Contents: list of FileSample\n        :param EvilType: 恶意类型
+        r"""
+        :param Contents: 文件类型结构数组
+        :type Contents: list of FileSample
+        :param EvilType: 恶意类型
 100：正常
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
 24001：暴恐
-20105：广告引流\n        :type EvilType: int\n        :param FileType: image：图片\n        :type FileType: str\n        :param Label: 样本类型
+20105：广告引流
+        :type EvilType: int
+        :param FileType: image：图片
+        :type FileType: str
+        :param Label: 样本类型
 1：黑库
-2：白库\n        :type Label: int\n        """
+2：白库
+        :type Label: int
+        """
         self.Contents = None
         self.EvilType = None
         self.FileType = None
@@ -180,10 +212,14 @@ class CreateFileSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态
 1：已完成
-2：处理中\n        :type Progress: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Progress = None
         self.RequestId = None
 
@@ -199,17 +235,25 @@ class CreateTextSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Contents: 关键词数组\n        :type Contents: list of str\n        :param EvilType: 恶意类型
+        r"""
+        :param Contents: 关键词数组
+        :type Contents: list of str
+        :param EvilType: 恶意类型
 100：正常
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
 24001：暴恐
-20105：广告引流\n        :type EvilType: int\n        :param Label: 样本类型
+20105：广告引流
+        :type EvilType: int
+        :param Label: 样本类型
 1：黑库
-2：白库\n        :type Label: int\n        :param Test: 测试修改参数\n        :type Test: str\n        """
+2：白库
+        :type Label: int
+        :param Test: 测试修改参数
+        :type Test: str
+        """
         self.Contents = None
         self.EvilType = None
         self.Label = None
@@ -236,10 +280,16 @@ class CreateTextSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ErrMsg: 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码\n        :type ErrMsg: str\n        :param Progress: 任务状态
+        r"""
+        :param ErrMsg: 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码
+        :type ErrMsg: str
+        :param Progress: 任务状态
 1：已完成
-2：处理中\n        :type Progress: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ErrMsg = None
         self.Progress = None
         self.RequestId = None
@@ -257,8 +307,16 @@ class CustomResult(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Keywords: 命中的自定义关键词
+        :type Keywords: list of str
+        :param LibId: 自定义库id
+        :type LibId: str
+        :param LibName: 自定义词库名称
+        :type LibName: str
+        :param Type: 命中的自定义关键词的类型
+        :type Type: str
         """
-        :param Keywords: 命中的自定义关键词\n        :type Keywords: list of str\n        :param LibId: 自定义库id\n        :type LibId: str\n        :param LibName: 自定义词库名称\n        :type LibName: str\n        :param Type: 命中的自定义关键词的类型\n        :type Type: str\n        """
         self.Keywords = None
         self.LibId = None
         self.LibName = None
@@ -285,8 +343,10 @@ class DeleteFileSampleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: 唯一标识数组
+        :type Ids: list of str
         """
-        :param Ids: 唯一标识数组\n        :type Ids: list of str\n        """
         self.Ids = None
 
 
@@ -307,10 +367,14 @@ class DeleteFileSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态
 1：已完成
-2：处理中\n        :type Progress: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Progress = None
         self.RequestId = None
 
@@ -326,8 +390,10 @@ class DeleteTextSampleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Ids: 唯一标识数组，目前暂时只支持单个删除
+        :type Ids: list of str
         """
-        :param Ids: 唯一标识数组，目前暂时只支持单个删除\n        :type Ids: list of str\n        """
         self.Ids = None
 
 
@@ -348,10 +414,14 @@ class DeleteTextSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态
 1：已完成
-2：处理中\n        :type Progress: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+2：处理中
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Progress = None
         self.RequestId = None
 
@@ -367,8 +437,18 @@ class DescribeFileSampleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filters: 支持通过标签值进行筛选
+        :type Filters: list of Filter
+        :param Limit: 数量限制，默认为20，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc
+        :type OrderDirection: str
+        :param OrderField: 按某个字段排序，目前仅支持CreatedAt排序
+        :type OrderField: str
         """
-        :param Filters: 支持通过标签值进行筛选\n        :type Filters: list of Filter\n        :param Limit: 数量限制，默认为20，最大值为100\n        :type Limit: int\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc\n        :type OrderDirection: str\n        :param OrderField: 按某个字段排序，目前仅支持CreatedAt排序\n        :type OrderField: str\n        """
         self.Filters = None
         self.Limit = None
         self.Offset = None
@@ -402,8 +482,14 @@ class DescribeFileSampleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileSampleSet: 符合要求的样本的信息
+        :type FileSampleSet: list of FileSampleInfo
+        :param TotalCount: 符合要求的样本的数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param FileSampleSet: 符合要求的样本的信息\n        :type FileSampleSet: list of FileSampleInfo\n        :param TotalCount: 符合要求的样本的数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.FileSampleSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -426,8 +512,18 @@ class DescribeTextSampleRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Filters: 支持通过标签值进行筛选
+        :type Filters: list of Filter
+        :param Limit: 数量限制，默认为20，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc
+        :type OrderDirection: str
+        :param OrderField: 按某个字段排序，目前仅支持CreatedAt排序
+        :type OrderField: str
         """
-        :param Filters: 支持通过标签值进行筛选\n        :type Filters: list of Filter\n        :param Limit: 数量限制，默认为20，最大值为100\n        :type Limit: int\n        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param OrderDirection: 升序（asc）还是降序（desc），默认：desc\n        :type OrderDirection: str\n        :param OrderField: 按某个字段排序，目前仅支持CreatedAt排序\n        :type OrderField: str\n        """
         self.Filters = None
         self.Limit = None
         self.Offset = None
@@ -461,8 +557,14 @@ class DescribeTextSampleResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TextSampleSet: 符合要求的样本的信息
+        :type TextSampleSet: list of TextSample
+        :param TotalCount: 符合要求的样本的数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TextSampleSet: 符合要求的样本的信息\n        :type TextSampleSet: list of TextSample\n        :param TotalCount: 符合要求的样本的数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TextSampleSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -485,15 +587,23 @@ class DetailResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词\n        :type EvilLabel: str\n        :param EvilType: 恶意类型
+        r"""
+        :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :type EvilLabel: str
+        :param EvilType: 恶意类型
 100：正常
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂
 20105：广告引流 
-24001：暴恐\n        :type EvilType: int\n        :param Keywords: 该标签下命中的关键词\n        :type Keywords: list of str\n        :param Score: 该标签模型命中的分值\n        :type Score: int\n        """
+24001：暴恐
+        :type EvilType: int
+        :param Keywords: 该标签下命中的关键词
+        :type Keywords: list of str
+        :param Score: 该标签模型命中的分值
+        :type Score: int
+        """
         self.EvilLabel = None
         self.EvilType = None
         self.Keywords = None
@@ -520,8 +630,22 @@ class Device(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeviceId: 设备指纹ID
+        :type DeviceId: str
+        :param IDFA: IOS设备，Identifier For Advertising（广告标识符）
+        :type IDFA: str
+        :param IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）
+        :type IDFV: str
+        :param IMEI: 设备序列号
+        :type IMEI: str
+        :param IP: 用户IP
+        :type IP: str
+        :param Mac: Mac地址
+        :type Mac: str
+        :param TokenId: 设备指纹Token
+        :type TokenId: str
         """
-        :param DeviceId: 设备指纹ID\n        :type DeviceId: str\n        :param IDFA: IOS设备，Identifier For Advertising（广告标识符）\n        :type IDFA: str\n        :param IDFV: IOS设备，IDFV - Identifier For Vendor（应用开发商标识符）\n        :type IDFV: str\n        :param IMEI: 设备序列号\n        :type IMEI: str\n        :param IP: 用户IP\n        :type IP: str\n        :param Mac: Mac地址\n        :type Mac: str\n        :param TokenId: 设备指纹Token\n        :type TokenId: str\n        """
         self.DeviceId = None
         self.IDFA = None
         self.IDFV = None
@@ -554,8 +678,16 @@ class FileSample(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileMd5: 文件md5
+        :type FileMd5: str
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileUrl: 文件url
+        :type FileUrl: str
+        :param CompressFileUrl: 文件压缩后云url
+        :type CompressFileUrl: str
         """
-        :param FileMd5: 文件md5\n        :type FileMd5: str\n        :param FileName: 文件名称\n        :type FileName: str\n        :param FileUrl: 文件url\n        :type FileUrl: str\n        :param CompressFileUrl: 文件压缩后云url\n        :type CompressFileUrl: str\n        """
         self.FileMd5 = None
         self.FileName = None
         self.FileUrl = None
@@ -582,22 +714,44 @@ class FileSampleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Code: 处理错误码\n        :type Code: int\n        :param CreatedAt: 创建时间戳\n        :type CreatedAt: int\n        :param EvilType: 恶意类型
+        r"""
+        :param Code: 处理错误码
+        :type Code: int
+        :param CreatedAt: 创建时间戳
+        :type CreatedAt: int
+        :param EvilType: 恶意类型
 100：正常
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
-24001：暴恐\n        :type EvilType: int\n        :param FileMd5: 文件的md5\n        :type FileMd5: str\n        :param FileName: 文件名称\n        :type FileName: str\n        :param FileType: 文件类型\n        :type FileType: str\n        :param Id: 唯一标识\n        :type Id: str\n        :param Label: 样本类型
+24001：暴恐
+        :type EvilType: int
+        :param FileMd5: 文件的md5
+        :type FileMd5: str
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileType: 文件类型
+        :type FileType: str
+        :param Id: 唯一标识
+        :type Id: str
+        :param Label: 样本类型
 1：黑库
-2：白库\n        :type Label: int\n        :param Status: 任务状态
+2：白库
+        :type Label: int
+        :param Status: 任务状态
 1：添加完成
 2：添加处理中
 3：下载中
 4：下载完成
 5：上传完成
-6：步骤完成\n        :type Status: int\n        :param CompressFileUrl: 文件压缩后云url\n        :type CompressFileUrl: str\n        :param FileUrl: 文件的url\n        :type FileUrl: str\n        """
+6：步骤完成
+        :type Status: int
+        :param CompressFileUrl: 文件压缩后云url
+        :type CompressFileUrl: str
+        :param FileUrl: 文件的url
+        :type FileUrl: str
+        """
         self.Code = None
         self.CreatedAt = None
         self.EvilType = None
@@ -638,8 +792,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 需要过滤的字段
+        :type Name: str
+        :param Value: 需要过滤字段的值
+        :type Value: str
         """
-        :param Name: 需要过滤的字段\n        :type Name: str\n        :param Value: 需要过滤字段的值\n        :type Value: str\n        """
         self.Name = None
         self.Value = None
 
@@ -662,15 +820,39 @@ class ImageData(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EvilFlag: 是否恶意 0：正常 1：可疑\n        :type EvilFlag: int\n        :param EvilType: 恶意类型
+        r"""
+        :param EvilFlag: 是否恶意 0：正常 1：可疑
+        :type EvilFlag: int
+        :param EvilType: 恶意类型
 100：正常 
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
 20103：性感
-24001：暴恐\n        :type EvilType: int\n        :param CodeDetect: 图片二维码详情\n        :type CodeDetect: :class:`tencentcloud.cms.v20190321.models.CodeDetect`\n        :param HotDetect: 图片性感详情\n        :type HotDetect: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`\n        :param IllegalDetect: 图片违法详情\n        :type IllegalDetect: :class:`tencentcloud.cms.v20190321.models.ImageIllegalDetect`\n        :param LogoDetect: logo详情\n        :type LogoDetect: :class:`tencentcloud.cms.v20190321.models.LogoDetail`\n        :param OCRDetect: 图片OCR详情\n        :type OCRDetect: :class:`tencentcloud.cms.v20190321.models.OCRDetect`\n        :param PhoneDetect: 手机检测详情\n        :type PhoneDetect: :class:`tencentcloud.cms.v20190321.models.PhoneDetect`\n        :param PolityDetect: 图片涉政详情\n        :type PolityDetect: :class:`tencentcloud.cms.v20190321.models.ImagePolityDetect`\n        :param PornDetect: 图片涉黄详情\n        :type PornDetect: :class:`tencentcloud.cms.v20190321.models.ImagePornDetect`\n        :param Similar: 图片相似度详情\n        :type Similar: :class:`tencentcloud.cms.v20190321.models.Similar`\n        :param TerrorDetect: 图片暴恐详情\n        :type TerrorDetect: :class:`tencentcloud.cms.v20190321.models.ImageTerrorDetect`\n        """
+24001：暴恐
+        :type EvilType: int
+        :param CodeDetect: 图片二维码详情
+        :type CodeDetect: :class:`tencentcloud.cms.v20190321.models.CodeDetect`
+        :param HotDetect: 图片性感详情
+        :type HotDetect: :class:`tencentcloud.cms.v20190321.models.ImageHotDetect`
+        :param IllegalDetect: 图片违法详情
+        :type IllegalDetect: :class:`tencentcloud.cms.v20190321.models.ImageIllegalDetect`
+        :param LogoDetect: logo详情
+        :type LogoDetect: :class:`tencentcloud.cms.v20190321.models.LogoDetail`
+        :param OCRDetect: 图片OCR详情
+        :type OCRDetect: :class:`tencentcloud.cms.v20190321.models.OCRDetect`
+        :param PhoneDetect: 手机检测详情
+        :type PhoneDetect: :class:`tencentcloud.cms.v20190321.models.PhoneDetect`
+        :param PolityDetect: 图片涉政详情
+        :type PolityDetect: :class:`tencentcloud.cms.v20190321.models.ImagePolityDetect`
+        :param PornDetect: 图片涉黄详情
+        :type PornDetect: :class:`tencentcloud.cms.v20190321.models.ImagePornDetect`
+        :param Similar: 图片相似度详情
+        :type Similar: :class:`tencentcloud.cms.v20190321.models.Similar`
+        :param TerrorDetect: 图片暴恐详情
+        :type TerrorDetect: :class:`tencentcloud.cms.v20190321.models.ImageTerrorDetect`
+        """
         self.EvilFlag = None
         self.EvilType = None
         self.CodeDetect = None
@@ -733,10 +915,20 @@ class ImageHotDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
-20103：性感\n        :type EvilType: int\n        :param HitFlag: 处置判定 0：正常 1：可疑\n        :type HitFlag: int\n        :param Keywords: 关键词明细\n        :type Keywords: list of str\n        :param Labels: 性感标签：性感特征中文描述\n        :type Labels: list of str\n        :param Score: 性感分：分值范围 0-100，分数越高性感倾向越明显\n        :type Score: int\n        """
+20103：性感
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Keywords: 关键词明细
+        :type Keywords: list of str
+        :param Labels: 性感标签：性感特征中文描述
+        :type Labels: list of str
+        :param Score: 性感分：分值范围 0-100，分数越高性感倾向越明显
+        :type Score: int
+        """
         self.EvilType = None
         self.HitFlag = None
         self.Keywords = None
@@ -765,10 +957,20 @@ class ImageIllegalDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常 
-20006：涉毒违法\n        :type EvilType: int\n        :param HitFlag: 处置判定 0：正常 1：可疑\n        :type HitFlag: int\n        :param Keywords: 关键词明细\n        :type Keywords: list of str\n        :param Labels: 违法标签：返回违法特征中文描述，如赌桌，枪支\n        :type Labels: list of str\n        :param Score: 违法分：分值范围 0-100，分数越高违法倾向越明显\n        :type Score: int\n        """
+20006：涉毒违法
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Keywords: 关键词明细
+        :type Keywords: list of str
+        :param Labels: 违法标签：返回违法特征中文描述，如赌桌，枪支
+        :type Labels: list of str
+        :param Score: 违法分：分值范围 0-100，分数越高违法倾向越明显
+        :type Score: int
+        """
         self.EvilType = None
         self.HitFlag = None
         self.Keywords = None
@@ -797,8 +999,14 @@ class ImageModerationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param FileContent: 文件内容 Base64,与FileUrl必须二填一
+        :type FileContent: str
+        :param FileMD5: 文件MD5值
+        :type FileMD5: str
+        :param FileUrl: 文件地址
+        :type FileUrl: str
         """
-        :param FileContent: 文件内容 Base64,与FileUrl必须二填一\n        :type FileContent: str\n        :param FileMD5: 文件MD5值\n        :type FileMD5: str\n        :param FileUrl: 文件地址\n        :type FileUrl: str\n        """
         self.FileContent = None
         self.FileMD5 = None
         self.FileUrl = None
@@ -823,8 +1031,14 @@ class ImageModerationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 识别结果
+        :type Data: :class:`tencentcloud.cms.v20190321.models.ImageData`
+        :param BusinessCode: 业务返回码
+        :type BusinessCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 识别结果\n        :type Data: :class:`tencentcloud.cms.v20190321.models.ImageData`\n        :param BusinessCode: 业务返回码\n        :type BusinessCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.BusinessCode = None
         self.RequestId = None
@@ -844,10 +1058,24 @@ class ImagePolityDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常 
-20001：政治\n        :type EvilType: int\n        :param HitFlag: 处置判定  0：正常 1：可疑\n        :type HitFlag: int\n        :param PolityLogoDetail: 命中的logo标签信息\n        :type PolityLogoDetail: list of Logo\n        :param FaceNames: 命中的人脸名称\n        :type FaceNames: list of str\n        :param Keywords: 关键词明细\n        :type Keywords: list of str\n        :param PolityItems: 命中的政治物品名称\n        :type PolityItems: list of str\n        :param Score: 政治（人脸）分：分值范围 0-100，分数越高可疑程度越高\n        :type Score: int\n        """
+20001：政治
+        :type EvilType: int
+        :param HitFlag: 处置判定  0：正常 1：可疑
+        :type HitFlag: int
+        :param PolityLogoDetail: 命中的logo标签信息
+        :type PolityLogoDetail: list of Logo
+        :param FaceNames: 命中的人脸名称
+        :type FaceNames: list of str
+        :param Keywords: 关键词明细
+        :type Keywords: list of str
+        :param PolityItems: 命中的政治物品名称
+        :type PolityItems: list of str
+        :param Score: 政治（人脸）分：分值范围 0-100，分数越高可疑程度越高
+        :type Score: int
+        """
         self.EvilType = None
         self.HitFlag = None
         self.PolityLogoDetail = None
@@ -885,10 +1113,20 @@ class ImagePornDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
-20002：色情\n        :type EvilType: int\n        :param HitFlag: 处置判定 0：正常 1：可疑\n        :type HitFlag: int\n        :param Keywords: 关键词明细\n        :type Keywords: list of str\n        :param Labels: 色情标签：色情特征中文描述\n        :type Labels: list of str\n        :param Score: 色情分：分值范围 0-100，分数越高色情倾向越明显\n        :type Score: int\n        """
+20002：色情
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Keywords: 关键词明细
+        :type Keywords: list of str
+        :param Labels: 色情标签：色情特征中文描述
+        :type Labels: list of str
+        :param Score: 色情分：分值范围 0-100，分数越高色情倾向越明显
+        :type Score: int
+        """
         self.EvilType = None
         self.HitFlag = None
         self.Keywords = None
@@ -917,10 +1155,20 @@ class ImageTerrorDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
-24001：暴恐\n        :type EvilType: int\n        :param HitFlag: 处置判定 0：正常 1：可疑\n        :type HitFlag: int\n        :param Keywords: 关键词明细\n        :type Keywords: list of str\n        :param Labels: 暴恐标签：返回暴恐特征中文描述\n        :type Labels: list of str\n        :param Score: 暴恐分：分值范围0--100，分数越高暴恐倾向越明显\n        :type Score: int\n        """
+24001：暴恐
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Keywords: 关键词明细
+        :type Keywords: list of str
+        :param Labels: 暴恐标签：返回暴恐特征中文描述
+        :type Labels: list of str
+        :param Score: 暴恐分：分值范围0--100，分数越高暴恐倾向越明显
+        :type Score: int
+        """
         self.EvilType = None
         self.HitFlag = None
         self.Keywords = None
@@ -949,8 +1197,14 @@ class Logo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RrectF: logo图标坐标信息
+        :type RrectF: :class:`tencentcloud.cms.v20190321.models.RrectF`
+        :param Confidence: logo图标置信度
+        :type Confidence: float
+        :param Name: logo图标名称
+        :type Name: str
         """
-        :param RrectF: logo图标坐标信息\n        :type RrectF: :class:`tencentcloud.cms.v20190321.models.RrectF`\n        :param Confidence: logo图标置信度\n        :type Confidence: float\n        :param Name: logo图标名称\n        :type Name: str\n        """
         self.RrectF = None
         self.Confidence = None
         self.Name = None
@@ -977,8 +1231,10 @@ class LogoDetail(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AppLogoDetail: 命中的Applogo详情
+        :type AppLogoDetail: list of Logo
         """
-        :param AppLogoDetail: 命中的Applogo详情\n        :type AppLogoDetail: list of Logo\n        """
         self.AppLogoDetail = None
 
 
@@ -1004,8 +1260,18 @@ class ManualReviewContent(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BatchId: 审核批次号\n        :type BatchId: str\n        :param Content: 审核内容\n        :type Content: str\n        :param ContentId: 消息Id\n        :type ContentId: str\n        :param ContentType: 审核内容类型 1 图片 2 视频 3 文本 4 音频\n        :type ContentType: int\n        :param UserInfo: 用户信息\n        :type UserInfo: :class:`tencentcloud.cms.v20190321.models.User`\n        :param AutoDetailCode: 机器审核类型，与腾讯机器审核定义一致
+        r"""
+        :param BatchId: 审核批次号
+        :type BatchId: str
+        :param Content: 审核内容
+        :type Content: str
+        :param ContentId: 消息Id
+        :type ContentId: str
+        :param ContentType: 审核内容类型 1 图片 2 视频 3 文本 4 音频
+        :type ContentType: int
+        :param UserInfo: 用户信息
+        :type UserInfo: :class:`tencentcloud.cms.v20190321.models.User`
+        :param AutoDetailCode: 机器审核类型，与腾讯机器审核定义一致
 100 正常
 20001 政治
 20002 色情
@@ -1013,7 +1279,19 @@ class ManualReviewContent(AbstractModel):
 20007 谩骂
 24001 暴恐
 20105 广告
-20103 性感\n        :type AutoDetailCode: int\n        :param AutoResult: 机器审核结果 0 放过 1 拦截\n        :type AutoResult: int\n        :param CallBackInfo: 回调信息标识，回传数据时原样返回\n        :type CallBackInfo: str\n        :param CreateTime: 创建时间 格式“2020-01-01 00:00:12”\n        :type CreateTime: str\n        :param Priority: 审核优先级，可选值 [1,2,3,4]，其中 1 最高，4 最低\n        :type Priority: int\n        :param Title: 标题\n        :type Title: str\n        """
+20103 性感
+        :type AutoDetailCode: int
+        :param AutoResult: 机器审核结果 0 放过 1 拦截
+        :type AutoResult: int
+        :param CallBackInfo: 回调信息标识，回传数据时原样返回
+        :type CallBackInfo: str
+        :param CreateTime: 创建时间 格式“2020-01-01 00:00:12”
+        :type CreateTime: str
+        :param Priority: 审核优先级，可选值 [1,2,3,4]，其中 1 最高，4 最低
+        :type Priority: int
+        :param Title: 标题
+        :type Title: str
+        """
         self.BatchId = None
         self.Content = None
         self.ContentId = None
@@ -1056,8 +1334,12 @@ class ManualReviewData(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param BatchId: 人审内容批次号
+        :type BatchId: str
+        :param ContentId: 人审内容ID
+        :type ContentId: str
         """
-        :param BatchId: 人审内容批次号\n        :type BatchId: str\n        :param ContentId: 人审内容ID\n        :type ContentId: str\n        """
         self.BatchId = None
         self.ContentId = None
 
@@ -1080,8 +1362,10 @@ class ManualReviewRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ReviewContent: 人工审核信息
+        :type ReviewContent: :class:`tencentcloud.cms.v20190321.models.ManualReviewContent`
         """
-        :param ReviewContent: 人工审核信息\n        :type ReviewContent: :class:`tencentcloud.cms.v20190321.models.ManualReviewContent`\n        """
         self.ReviewContent = None
 
 
@@ -1104,8 +1388,12 @@ class ManualReviewResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 人审接口同步响应结果
+        :type Data: :class:`tencentcloud.cms.v20190321.models.ManualReviewData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 人审接口同步响应结果\n        :type Data: :class:`tencentcloud.cms.v20190321.models.ManualReviewData`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.RequestId = None
 
@@ -1123,8 +1411,12 @@ class OCRDetect(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Item: 识别到的详细信息
+        :type Item: list of OCRItem
+        :param TextInfo: 识别到的文本信息
+        :type TextInfo: str
         """
-        :param Item: 识别到的详细信息\n        :type Item: list of OCRItem\n        :param TextInfo: 识别到的文本信息\n        :type TextInfo: str\n        """
         self.Item = None
         self.TextInfo = None
 
@@ -1152,8 +1444,20 @@ class OCRItem(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TextPosition: 检测到的文本坐标信息
+        :type TextPosition: :class:`tencentcloud.cms.v20190321.models.Coordinate`
+        :param EvilLabel: 文本命中具体标签
+        :type EvilLabel: str
+        :param EvilType: 文本命中恶意违规类型
+        :type EvilType: int
+        :param Keywords: 文本命中违规的关键词
+        :type Keywords: list of str
+        :param Rate: 文本涉嫌违规分值
+        :type Rate: int
+        :param TextContent: 检测到的文本信息
+        :type TextContent: str
         """
-        :param TextPosition: 检测到的文本坐标信息\n        :type TextPosition: :class:`tencentcloud.cms.v20190321.models.Coordinate`\n        :param EvilLabel: 文本命中具体标签\n        :type EvilLabel: str\n        :param EvilType: 文本命中恶意违规类型\n        :type EvilType: int\n        :param Keywords: 文本命中违规的关键词\n        :type Keywords: list of str\n        :param Rate: 文本涉嫌违规分值\n        :type Rate: int\n        :param TextContent: 检测到的文本信息\n        :type TextContent: str\n        """
         self.TextPosition = None
         self.EvilLabel = None
         self.EvilType = None
@@ -1186,10 +1490,18 @@ class PhoneDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
-21000：综合\n        :type EvilType: int\n        :param HitFlag: 处置判定 0：正常 1：可疑\n        :type HitFlag: int\n        :param Labels: 特征中文描述\n        :type Labels: list of str\n        :param Score: 分值范围 0-100，分数越高倾向越明显\n        :type Score: int\n        """
+21000：综合
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：正常 1：可疑
+        :type HitFlag: int
+        :param Labels: 特征中文描述
+        :type Labels: list of str
+        :param Score: 分值范围 0-100，分数越高倾向越明显
+        :type Score: int
+        """
         self.EvilType = None
         self.HitFlag = None
         self.Labels = None
@@ -1216,8 +1528,16 @@ class RiskDetails(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Keywords: 预留字段，暂时不使用
+        :type Keywords: list of str
+        :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
+        :type Label: str
+        :param Lable: 预留字段，暂时不用
+        :type Lable: str
+        :param Level: 风险等级，1:疑似，2：恶意
+        :type Level: int
         """
-        :param Keywords: 预留字段，暂时不使用\n        :type Keywords: list of str\n        :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI\n        :type Label: str\n        :param Lable: 预留字段，暂时不用\n        :type Lable: str\n        :param Level: 风险等级，1:疑似，2：恶意\n        :type Level: int\n        """
         self.Keywords = None
         self.Label = None
         self.Lable = None
@@ -1244,8 +1564,18 @@ class RrectF(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Cx: logo横坐标
+        :type Cx: float
+        :param Cy: logo纵坐标
+        :type Cy: float
+        :param Height: logo图标高度
+        :type Height: float
+        :param Rotate: logo图标中心旋转度
+        :type Rotate: float
+        :param Width: logo图标宽度
+        :type Width: float
         """
-        :param Cx: logo横坐标\n        :type Cx: float\n        :param Cy: logo纵坐标\n        :type Cy: float\n        :param Height: logo图标高度\n        :type Height: float\n        :param Rotate: logo图标中心旋转度\n        :type Rotate: float\n        :param Width: logo图标宽度\n        :type Width: float\n        """
         self.Cx = None
         self.Cy = None
         self.Height = None
@@ -1274,14 +1604,20 @@ class Similar(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常 
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
-24001：暴恐\n        :type EvilType: int\n        :param HitFlag: 处置判定 0：未匹配到 1：恶意 2：白样本\n        :type HitFlag: int\n        :param SeedUrl: 返回的种子url\n        :type SeedUrl: str\n        """
+24001：暴恐
+        :type EvilType: int
+        :param HitFlag: 处置判定 0：未匹配到 1：恶意 2：白样本
+        :type HitFlag: int
+        :param SeedUrl: 返回的种子url
+        :type SeedUrl: str
+        """
         self.EvilType = None
         self.HitFlag = None
         self.SeedUrl = None
@@ -1306,15 +1642,45 @@ class TextData(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EvilFlag: 是否恶意 0：正常 1：可疑\n        :type EvilFlag: int\n        :param EvilType: 恶意类型
+        r"""
+        :param EvilFlag: 是否恶意 0：正常 1：可疑
+        :type EvilFlag: int
+        :param EvilType: 恶意类型
 100：正常
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂
 20105：广告引流 
-24001：暴恐\n        :type EvilType: int\n        :param Common: 消息类公共相关参数\n        :type Common: :class:`tencentcloud.cms.v20190321.models.TextOutputComm`\n        :param CustomResult: 返回的自定义词库结果\n        :type CustomResult: list of CustomResult\n        :param DetailResult: 返回的详细结果\n        :type DetailResult: list of DetailResult\n        :param ID: 消息类ID信息\n        :type ID: :class:`tencentcloud.cms.v20190321.models.TextOutputID`\n        :param Res: 消息类输出结果\n        :type Res: :class:`tencentcloud.cms.v20190321.models.TextOutputRes`\n        :param RiskDetails: 账号风险检测结果\n        :type RiskDetails: list of RiskDetails\n        :param BizType: 最终使用的BizType\n        :type BizType: int\n        :param DataId: 和请求中的DataId一致，原样返回\n        :type DataId: str\n        :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词\n        :type EvilLabel: str\n        :param Extra: 输出的其他信息，不同客户内容不同\n        :type Extra: str\n        :param Keywords: 命中的关键词\n        :type Keywords: list of str\n        :param Score: 命中的模型分值\n        :type Score: int\n        :param Suggestion: 建议值,Block：打击,Review：待复审,Normal：正常\n        :type Suggestion: str\n        """
+24001：暴恐
+        :type EvilType: int
+        :param Common: 消息类公共相关参数
+        :type Common: :class:`tencentcloud.cms.v20190321.models.TextOutputComm`
+        :param CustomResult: 返回的自定义词库结果
+        :type CustomResult: list of CustomResult
+        :param DetailResult: 返回的详细结果
+        :type DetailResult: list of DetailResult
+        :param ID: 消息类ID信息
+        :type ID: :class:`tencentcloud.cms.v20190321.models.TextOutputID`
+        :param Res: 消息类输出结果
+        :type Res: :class:`tencentcloud.cms.v20190321.models.TextOutputRes`
+        :param RiskDetails: 账号风险检测结果
+        :type RiskDetails: list of RiskDetails
+        :param BizType: 最终使用的BizType
+        :type BizType: int
+        :param DataId: 和请求中的DataId一致，原样返回
+        :type DataId: str
+        :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :type EvilLabel: str
+        :param Extra: 输出的其他信息，不同客户内容不同
+        :type Extra: str
+        :param Keywords: 命中的关键词
+        :type Keywords: list of str
+        :param Score: 命中的模型分值
+        :type Score: int
+        :param Suggestion: 建议值,Block：打击,Review：待复审,Normal：正常
+        :type Suggestion: str
+        """
         self.EvilFlag = None
         self.EvilType = None
         self.Common = None
@@ -1384,8 +1750,20 @@ class TextModerationRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+        :type Content: str
+        :param Device: 设备相关信息
+        :type Device: :class:`tencentcloud.cms.v20190321.models.Device`
+        :param User: 用户相关信息
+        :type User: :class:`tencentcloud.cms.v20190321.models.User`
+        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+        :type BizType: int
+        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
+        :type DataId: str
+        :param SdkAppId: 业务应用ID
+        :type SdkAppId: int
         """
-        :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。\n        :type Content: str\n        :param Device: 设备相关信息\n        :type Device: :class:`tencentcloud.cms.v20190321.models.Device`\n        :param User: 用户相关信息\n        :type User: :class:`tencentcloud.cms.v20190321.models.User`\n        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略\n        :type BizType: int\n        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符\n        :type DataId: str\n        :param SdkAppId: 业务应用ID\n        :type SdkAppId: int\n        """
         self.Content = None
         self.Device = None
         self.User = None
@@ -1420,8 +1798,14 @@ class TextModerationResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Data: 识别结果
+        :type Data: :class:`tencentcloud.cms.v20190321.models.TextData`
+        :param BusinessCode: 业务返回码
+        :type BusinessCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Data: 识别结果\n        :type Data: :class:`tencentcloud.cms.v20190321.models.TextData`\n        :param BusinessCode: 业务返回码\n        :type BusinessCode: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Data = None
         self.BusinessCode = None
         self.RequestId = None
@@ -1441,8 +1825,16 @@ class TextOutputComm(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AppID: 接入业务的唯一ID
+        :type AppID: int
+        :param BUCtrlID: 接口唯一ID，旁路调用接口返回有该字段，标识唯一接口
+        :type BUCtrlID: int
+        :param SendTime: 消息发送时间
+        :type SendTime: int
+        :param Uin: 请求字段里的Common.Uin
+        :type Uin: int
         """
-        :param AppID: 接入业务的唯一ID\n        :type AppID: int\n        :param BUCtrlID: 接口唯一ID，旁路调用接口返回有该字段，标识唯一接口\n        :type BUCtrlID: int\n        :param SendTime: 消息发送时间\n        :type SendTime: int\n        :param Uin: 请求字段里的Common.Uin\n        :type Uin: int\n        """
         self.AppID = None
         self.BUCtrlID = None
         self.SendTime = None
@@ -1469,8 +1861,12 @@ class TextOutputID(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MsgID: 接入业务的唯一ID
+        :type MsgID: str
+        :param Uin: 用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段
+        :type Uin: str
         """
-        :param MsgID: 接入业务的唯一ID\n        :type MsgID: str\n        :param Uin: 用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段\n        :type Uin: str\n        """
         self.MsgID = None
         self.Uin = None
 
@@ -1493,9 +1889,17 @@ class TextOutputRes(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Operator: 操作人,信安处理人企业微信ID
+        :type Operator: str
+        :param ResultCode: 恶意操作码，
+删除（1）， 通过（2）， 先审后发（100012）
+        :type ResultCode: int
+        :param ResultMsg: 操作结果备注说明
+        :type ResultMsg: str
+        :param ResultType: 恶意类型，广告（10001）， 政治（20001）， 色情（20002）， 社会事件（20004）， 暴力（20011）， 低俗（20012）， 违法犯罪（20006）， 欺诈（20008）， 版权（20013）， 谣言（20104）， 其他（21000）
+        :type ResultType: int
         """
-        :param Operator: 操作人,信安处理人企业微信ID\n        :type Operator: str\n        :param ResultCode: 恶意操作码，
-删除（1）， 通过（2）， 先审后发（100012）\n        :type ResultCode: int\n        :param ResultMsg: 操作结果备注说明\n        :type ResultMsg: str\n        :param ResultType: 恶意类型，广告（10001）， 政治（20001）， 色情（20002）， 社会事件（20004）， 暴力（20011）， 低俗（20012）， 违法犯罪（20006）， 欺诈（20008）， 版权（20013）， 谣言（20104）， 其他（21000）\n        :type ResultType: int\n        """
         self.Operator = None
         self.ResultCode = None
         self.ResultMsg = None
@@ -1522,19 +1926,33 @@ class TextSample(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Code: 处理错误码\n        :type Code: int\n        :param Content: 关键词\n        :type Content: str\n        :param CreatedAt: 创建时间戳\n        :type CreatedAt: int\n        :param EvilType: 恶意类型
+        r"""
+        :param Code: 处理错误码
+        :type Code: int
+        :param Content: 关键词
+        :type Content: str
+        :param CreatedAt: 创建时间戳
+        :type CreatedAt: int
+        :param EvilType: 恶意类型
 100：正常
 20001：政治
 20002：色情 
 20006：涉毒违法
 20007：谩骂 
 20105：广告引流 
-24001：暴恐\n        :type EvilType: int\n        :param Id: 唯一标识\n        :type Id: str\n        :param Label: 样本类型
+24001：暴恐
+        :type EvilType: int
+        :param Id: 唯一标识
+        :type Id: str
+        :param Label: 样本类型
 1：黑库
-2：白库\n        :type Label: int\n        :param Status: 任务状态
+2：白库
+        :type Label: int
+        :param Status: 任务状态
 1：已完成
-2：处理中\n        :type Status: int\n        """
+2：处理中
+        :type Status: int
+        """
         self.Code = None
         self.Content = None
         self.CreatedAt = None
@@ -1567,8 +1985,22 @@ class User(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
+        :type AccountType: int
+        :param Age: 年龄 默认0 未知
+        :type Age: int
+        :param Gender: 性别 默认0 未知 1 男性 2 女性
+        :type Gender: int
+        :param Level: 用户等级，默认0 未知 1 低 2 中 3 高
+        :type Level: int
+        :param Nickname: 用户昵称
+        :type Nickname: str
+        :param Phone: 手机号
+        :type Phone: str
+        :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        :type UserId: str
         """
-        :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"\n        :type AccountType: int\n        :param Age: 年龄 默认0 未知\n        :type Age: int\n        :param Gender: 性别 默认0 未知 1 男性 2 女性\n        :type Gender: int\n        :param Level: 用户等级，默认0 未知 1 低 2 中 3 高\n        :type Level: int\n        :param Nickname: 用户昵称\n        :type Nickname: str\n        :param Phone: 手机号\n        :type Phone: str\n        :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。\n        :type UserId: str\n        """
         self.AccountType = None
         self.Age = None
         self.Gender = None

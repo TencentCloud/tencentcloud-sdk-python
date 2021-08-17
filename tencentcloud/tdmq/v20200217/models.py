@@ -24,8 +24,14 @@ class AcknowledgeMessageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MessageId: 用作标识消息的唯一的ID（可从 receiveMessage 的返回值中获得）
+        :type MessageId: str
+        :param AckTopic: Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
+        :type AckTopic: str
+        :param SubName: 订阅者的名字，可以从receiveMessage的返回值中获取到。这里尽量与receiveMessage中的订阅者保持一致，否则没办法正确ack 接收回来的消息。
+        :type SubName: str
         """
-        :param MessageId: 用作标识消息的唯一的ID（可从 receiveMessage 的返回值中获得）\n        :type MessageId: str\n        :param AckTopic: Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default\n        :type AckTopic: str\n        :param SubName: 订阅者的名字，可以从receiveMessage的返回值中获取到。这里尽量与receiveMessage中的订阅者保持一致，否则没办法正确ack 接收回来的消息。\n        :type SubName: str\n        """
         self.MessageId = None
         self.AckTopic = None
         self.SubName = None
@@ -50,9 +56,13 @@ class AcknowledgeMessageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorMsg: 如果为“”，则说明没有错误返回
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.ErrorMsg = None
         self.RequestId = None
 
@@ -68,8 +78,10 @@ class BindCluster(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterName: 物理集群的名称
+        :type ClusterName: str
         """
-        :param ClusterName: 物理集群的名称\n        :type ClusterName: str\n        """
         self.ClusterName = None
 
 
@@ -96,8 +108,10 @@ class ClearCmqQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type QueueName: str
         """
-        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type QueueName: str\n        """
         self.QueueName = None
 
 
@@ -118,8 +132,10 @@ class ClearCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -133,8 +149,12 @@ class ClearCmqSubscriptionFilterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        :type TopicName: str
+        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type SubscriptionName: str
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。\n        :type TopicName: str\n        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type SubscriptionName: str\n        """
         self.TopicName = None
         self.SubscriptionName = None
 
@@ -157,8 +177,10 @@ class ClearCmqSubscriptionFilterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -172,13 +194,47 @@ class Cluster(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 集群Id。
+        :type ClusterId: str
+        :param ClusterName: 集群名称。
+        :type ClusterName: str
+        :param Remark: 说明信息。
+        :type Remark: str
+        :param EndPointNum: 接入点数量
+        :type EndPointNum: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Healthy: 集群是否健康，1表示健康，0表示异常
+        :type Healthy: int
+        :param HealthyInfo: 集群健康信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyInfo: str
+        :param Status: 集群状态，0:创建中，1:正常，2:删除中，3:已删除，5:创建失败，6: 删除失败
+        :type Status: int
+        :param MaxNamespaceNum: 最大命名空间数量
+        :type MaxNamespaceNum: int
+        :param MaxTopicNum: 最大Topic数量
+        :type MaxTopicNum: int
+        :param MaxQps: 最大QPS
+        :type MaxQps: int
+        :param MessageRetentionTime: 消息保留时间
+        :type MessageRetentionTime: int
+        :param MaxStorageCapacity: 最大存储容量
+        :type MaxStorageCapacity: int
+        :param Version: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param PublicEndPoint: 公网访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicEndPoint: str
+        :param VpcEndPoint: VPC访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcEndPoint: str
+        :param NamespaceNum: 命名空间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceNum: int
         """
-        :param ClusterId: 集群Id。\n        :type ClusterId: str\n        :param ClusterName: 集群名称。\n        :type ClusterName: str\n        :param Remark: 说明信息。\n        :type Remark: str\n        :param EndPointNum: 接入点数量\n        :type EndPointNum: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param Healthy: 集群是否健康，1表示健康，0表示异常\n        :type Healthy: int\n        :param HealthyInfo: 集群健康信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type HealthyInfo: str\n        :param Status: 集群状态，0:创建中，1:正常，2:删除中，3:已删除，5:创建失败，6: 删除失败\n        :type Status: int\n        :param MaxNamespaceNum: 最大命名空间数量\n        :type MaxNamespaceNum: int\n        :param MaxTopicNum: 最大Topic数量\n        :type MaxTopicNum: int\n        :param MaxQps: 最大QPS\n        :type MaxQps: int\n        :param MessageRetentionTime: 消息保留时间\n        :type MessageRetentionTime: int\n        :param MaxStorageCapacity: 最大存储容量\n        :type MaxStorageCapacity: int\n        :param Version: 集群版本
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Version: str\n        :param PublicEndPoint: 公网访问接入点
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PublicEndPoint: str\n        :param VpcEndPoint: VPC访问接入点
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VpcEndPoint: str\n        :param NamespaceNum: 命名空间数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceNum: int\n        """
         self.ClusterId = None
         self.ClusterName = None
         self.Remark = None
@@ -231,12 +287,20 @@ class CmqDeadLetterPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeadLetterQueue: 死信队列。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DeadLetterQueue: str\n        :param Policy: 死信队列策略。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Policy: int\n        :param MaxTimeToLive: 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxTimeToLive: int\n        :param MaxReceiveCount: 最大接收次数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxReceiveCount: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterQueue: str
+        :param Policy: 死信队列策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: int
+        :param MaxTimeToLive: 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxTimeToLive: int
+        :param MaxReceiveCount: 最大接收次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReceiveCount: int
+        """
         self.DeadLetterQueue = None
         self.Policy = None
         self.MaxTimeToLive = None
@@ -263,10 +327,14 @@ class CmqDeadLetterSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 消息队列ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type QueueId: str\n        :param QueueName: 消息队列名字。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type QueueName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueId: str
+        :param QueueName: 消息队列名字。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
+        """
         self.QueueId = None
         self.QueueName = None
 
@@ -289,32 +357,86 @@ class CmqQueue(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueId: 消息队列ID。
+        :type QueueId: str
+        :param QueueName: 消息队列名字。
+        :type QueueName: str
+        :param Qps: 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: int
+        :param Bps: 带宽限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bps: int
+        :param MaxDelaySeconds: 飞行消息最大保留时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDelaySeconds: int
+        :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
+        :type MaxMsgHeapNum: int
+        :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PollingWaitSeconds: int
+        :param MsgRetentionSeconds: 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRetentionSeconds: int
+        :param VisibilityTimeout: 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VisibilityTimeout: int
+        :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMsgSize: int
+        :param RewindSeconds: 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewindSeconds: int
+        :param CreateTime: 队列的创建时间。返回 Unix 时间戳，精确到毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param LastModifyTime: 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: int
+        :param ActiveMsgNum: 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveMsgNum: int
+        :param InactiveMsgNum: 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InactiveMsgNum: int
+        :param DelayMsgNum: 延迟消息数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayMsgNum: int
+        :param RewindMsgNum: 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewindMsgNum: int
+        :param MinMsgTime: 消息最小未消费时间，单位为秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinMsgTime: int
+        :param Transaction: 事务消息队列。true表示是事务消息，false表示不是事务消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Transaction: bool
+        :param DeadLetterSource: 死信队列。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterSource: list of CmqDeadLetterSource
+        :param DeadLetterPolicy: 死信队列策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterPolicy: :class:`tencentcloud.tdmq.v20200217.models.CmqDeadLetterPolicy`
+        :param TransactionPolicy: 事务消息策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransactionPolicy: :class:`tencentcloud.tdmq.v20200217.models.CmqTransactionPolicy`
+        :param CreateUin: 创建者Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: int
+        :param Tags: 关联的标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param Trace: 消息轨迹。true表示开启，false表示不开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trace: bool
+        :param TenantId: 租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
         """
-        :param QueueId: 消息队列ID。\n        :type QueueId: str\n        :param QueueName: 消息队列名字。\n        :type QueueName: str\n        :param Qps: 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Qps: int\n        :param Bps: 带宽限制。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Bps: int\n        :param MaxDelaySeconds: 飞行消息最大保留时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxDelaySeconds: int\n        :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。\n        :type MaxMsgHeapNum: int\n        :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type PollingWaitSeconds: int\n        :param MsgRetentionSeconds: 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRetentionSeconds: int\n        :param VisibilityTimeout: 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type VisibilityTimeout: int\n        :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxMsgSize: int\n        :param RewindSeconds: 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RewindSeconds: int\n        :param CreateTime: 队列的创建时间。返回 Unix 时间戳，精确到毫秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: int\n        :param LastModifyTime: 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到毫秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifyTime: int\n        :param ActiveMsgNum: 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ActiveMsgNum: int\n        :param InactiveMsgNum: 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type InactiveMsgNum: int\n        :param DelayMsgNum: 延迟消息数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DelayMsgNum: int\n        :param RewindMsgNum: 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RewindMsgNum: int\n        :param MinMsgTime: 消息最小未消费时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MinMsgTime: int\n        :param Transaction: 事务消息队列。true表示是事务消息，false表示不是事务消息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Transaction: bool\n        :param DeadLetterSource: 死信队列。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DeadLetterSource: list of CmqDeadLetterSource\n        :param DeadLetterPolicy: 死信队列策略。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DeadLetterPolicy: :class:`tencentcloud.tdmq.v20200217.models.CmqDeadLetterPolicy`\n        :param TransactionPolicy: 事务消息策略。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TransactionPolicy: :class:`tencentcloud.tdmq.v20200217.models.CmqTransactionPolicy`\n        :param CreateUin: 创建者Uin。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateUin: int\n        :param Tags: 关联的标签。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param Trace: 消息轨迹。true表示开启，false表示不开启。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Trace: bool\n        :param TenantId: 租户id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TenantId: str\n        :param NamespaceName: 命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceName: str\n        """
         self.QueueId = None
         self.QueueName = None
         self.Qps = None
@@ -401,24 +523,48 @@ class CmqSubscription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubscriptionName: str\n        :param SubscriptionId: 订阅 ID。订阅 ID 在拉取监控数据时会用到。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubscriptionId: str\n        :param TopicOwner: 订阅拥有者的 APPID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicOwner: int\n        :param MsgCount: 该订阅待投递的消息数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgCount: int\n        :param LastModifyTime: 最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到毫秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifyTime: int\n        :param CreateTime: 订阅的创建时间。返回 Unix 时间戳，精确到毫秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: int\n        :param BindingKey: 表示订阅接收消息的过滤策略。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type BindingKey: list of str\n        :param Endpoint: 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Endpoint: str\n        :param FilterTags: 描述用户创建订阅时选择的过滤策略：
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionName: str
+        :param SubscriptionId: 订阅 ID。订阅 ID 在拉取监控数据时会用到。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionId: str
+        :param TopicOwner: 订阅拥有者的 APPID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicOwner: int
+        :param MsgCount: 该订阅待投递的消息数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgCount: int
+        :param LastModifyTime: 最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: int
+        :param CreateTime: 订阅的创建时间。返回 Unix 时间戳，精确到毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param BindingKey: 表示订阅接收消息的过滤策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingKey: list of str
+        :param Endpoint: 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoint: str
+        :param FilterTags: 描述用户创建订阅时选择的过滤策略：
 filterType = 1表示用户使用 filterTag 标签过滤
 filterType = 2表示用户使用 bindingKey 过滤。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FilterTags: list of str\n        :param Protocol: 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Protocol: str\n        :param NotifyStrategy: 向 endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值有：
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterTags: list of str
+        :param Protocol: 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param NotifyStrategy: 向 endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值有：
 （1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息；
 （2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始 1s，后面是 2s，4s，8s...由于 Topic 消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是 EXPONENTIAL_DECAY_RETRY。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NotifyStrategy: str\n        :param NotifyContentFormat: 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 protocol 是 queue，则取值必须为 SIMPLIFIED。如果 protocol 是 HTTP，两个值均可以，默认值是 JSON。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NotifyContentFormat: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyStrategy: str
+        :param NotifyContentFormat: 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 protocol 是 queue，则取值必须为 SIMPLIFIED。如果 protocol 是 HTTP，两个值均可以，默认值是 JSON。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyContentFormat: str
+        """
         self.SubscriptionName = None
         self.SubscriptionId = None
         self.TopicOwner = None
@@ -461,24 +607,52 @@ class CmqTopic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题的 ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicId: str\n        :param TopicName: 主题名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicName: str\n        :param MsgRetentionSeconds: 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRetentionSeconds: int\n        :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxMsgSize: int\n        :param Qps: 每秒钟发布消息的条数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Qps: int\n        :param FilterType: 描述用户创建订阅时选择的过滤策略：
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param TopicName: 主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param MsgRetentionSeconds: 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRetentionSeconds: int
+        :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMsgSize: int
+        :param Qps: 每秒钟发布消息的条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: int
+        :param FilterType: 描述用户创建订阅时选择的过滤策略：
 FilterType = 1表示用户使用 FilterTag 标签过滤;
 FilterType = 2表示用户使用 BindingKey 过滤。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FilterType: int\n        :param CreateTime: 主题的创建时间。返回 Unix 时间戳，精确到毫秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: int\n        :param LastModifyTime: 最后一次修改主题属性的时间。返回 Unix 时间戳，精确到毫秒。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastModifyTime: int\n        :param MsgCount: 当前该主题中消息数目（消息堆积数）。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgCount: int\n        :param CreateUin: 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateUin: int\n        :param Tags: 关联的标签。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Tags: list of Tag\n        :param Trace: 消息轨迹。true表示开启，false表示不开启。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Trace: bool\n        :param TenantId: 租户id
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TenantId: str\n        :param NamespaceName: 命名空间名称
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceName: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: int
+        :param CreateTime: 主题的创建时间。返回 Unix 时间戳，精确到毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param LastModifyTime: 最后一次修改主题属性的时间。返回 Unix 时间戳，精确到毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: int
+        :param MsgCount: 当前该主题中消息数目（消息堆积数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgCount: int
+        :param CreateUin: 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: int
+        :param Tags: 关联的标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param Trace: 消息轨迹。true表示开启，false表示不开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trace: bool
+        :param TenantId: 租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        """
         self.TopicId = None
         self.TopicName = None
         self.MsgRetentionSeconds = None
@@ -530,10 +704,14 @@ class CmqTransactionPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstQueryInterval: 第一次回查时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FirstQueryInterval: int\n        :param MaxQueryCount: 最大查询次数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MaxQueryCount: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstQueryInterval: int
+        :param MaxQueryCount: 最大查询次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQueryCount: int
+        """
         self.FirstQueryInterval = None
         self.MaxQueryCount = None
 
@@ -556,15 +734,29 @@ class Connection(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Address: 生产者地址。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Address: str\n        :param Partitions: 主题分区。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Partitions: int\n        :param ClientVersion: 生产者版本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientVersion: str\n        :param ProducerName: 生产者名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProducerName: str\n        :param ProducerId: 生产者ID。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProducerId: str\n        :param AverageMsgSize: 消息平均大小(byte)。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AverageMsgSize: str\n        :param MsgThroughputIn: 生成速率(byte/秒)。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgThroughputIn: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param Partitions: 主题分区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: int
+        :param ClientVersion: 生产者版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientVersion: str
+        :param ProducerName: 生产者名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerName: str
+        :param ProducerId: 生产者ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerId: str
+        :param AverageMsgSize: 消息平均大小(byte)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AverageMsgSize: str
+        :param MsgThroughputIn: 生成速率(byte/秒)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputIn: str
+        """
         self.Address = None
         self.Partitions = None
         self.ClientVersion = None
@@ -597,12 +789,20 @@ class Consumer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConnectedSince: 消费者开始连接的时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConnectedSince: str\n        :param ConsumerAddr: 消费者地址。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerAddr: str\n        :param ConsumerName: 消费者名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerName: str\n        :param ClientVersion: 消费者版本。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ClientVersion: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectedSince: str
+        :param ConsumerAddr: 消费者地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerAddr: str
+        :param ConsumerName: 消费者名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerName: str
+        :param ClientVersion: 消费者版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientVersion: str
+        """
         self.ConnectedSince = None
         self.ConsumerAddr = None
         self.ConsumerName = None
@@ -629,12 +829,24 @@ class ConsumersSchedule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Partitions: 当前分区id。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Partitions: int\n        :param NumberOfEntries: 消息数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NumberOfEntries: int\n        :param MsgBacklog: 消息积压数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgBacklog: int\n        :param MsgRateOut: 消费者每秒分发消息的数量之和。\n        :type MsgRateOut: str\n        :param MsgThroughputOut: 消费者每秒消息的byte。\n        :type MsgThroughputOut: str\n        :param MsgRateExpired: 超时丢弃比例。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateExpired: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: int
+        :param NumberOfEntries: 消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberOfEntries: int
+        :param MsgBacklog: 消息积压数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgBacklog: int
+        :param MsgRateOut: 消费者每秒分发消息的数量之和。
+        :type MsgRateOut: str
+        :param MsgThroughputOut: 消费者每秒消息的byte。
+        :type MsgThroughputOut: str
+        :param MsgRateExpired: 超时丢弃比例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateExpired: str
+        """
         self.Partitions = None
         self.NumberOfEntries = None
         self.MsgBacklog = None
@@ -665,8 +877,16 @@ class CreateClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+        :type ClusterName: str
+        :param BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
+        :type BindClusterId: int
+        :param Remark: 说明，128个字符以内。
+        :type Remark: str
+        :param Tags: 集群的标签列表
+        :type Tags: list of Tag
         """
-        :param ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。\n        :type ClusterName: str\n        :param BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。\n        :type BindClusterId: int\n        :param Remark: 说明，128个字符以内。\n        :type Remark: str\n        :param Tags: 集群的标签列表\n        :type Tags: list of Tag\n        """
         self.ClusterName = None
         self.BindClusterId = None
         self.Remark = None
@@ -698,8 +918,12 @@ class CreateClusterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ClusterId: 集群ID\n        :type ClusterId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -715,8 +939,38 @@ class CreateCmqQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type QueueName: str
+        :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
+        :type MaxMsgHeapNum: int
+        :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围 0-30 秒，默认值 0。
+        :type PollingWaitSeconds: int
+        :param VisibilityTimeout: 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
+        :type VisibilityTimeout: int
+        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+        :type MaxMsgSize: int
+        :param MsgRetentionSeconds: 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
+        :type MsgRetentionSeconds: int
+        :param RewindSeconds: 队列是否开启回溯消息能力，该参数取值范围0-msgRetentionSeconds,即最大的回溯时间为消息在队列中的保留周期，0表示不开启。
+        :type RewindSeconds: int
+        :param Transaction: 1 表示事务队列，0 表示普通队列
+        :type Transaction: int
+        :param FirstQueryInterval: 第一次回查间隔
+        :type FirstQueryInterval: int
+        :param MaxQueryCount: 最大回查次数
+        :type MaxQueryCount: int
+        :param DeadLetterQueueName: 死信队列名称
+        :type DeadLetterQueueName: str
+        :param Policy: 死信策略。0为消息被多次消费未删除，1为Time-To-Live过期
+        :type Policy: int
+        :param MaxReceiveCount: 最大接收次数 1-1000
+        :type MaxReceiveCount: int
+        :param MaxTimeToLive: policy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间msgRetentionSeconds
+        :type MaxTimeToLive: int
+        :param Trace: 是否开启消息轨迹追踪，当不设置字段时，默认为不开启，该字段为true表示开启，为false表示不开启
+        :type Trace: bool
         """
-        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type QueueName: str\n        :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。\n        :type MaxMsgHeapNum: int\n        :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围 0-30 秒，默认值 0。\n        :type PollingWaitSeconds: int\n        :param VisibilityTimeout: 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。\n        :type VisibilityTimeout: int\n        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。\n        :type MaxMsgSize: int\n        :param MsgRetentionSeconds: 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。\n        :type MsgRetentionSeconds: int\n        :param RewindSeconds: 队列是否开启回溯消息能力，该参数取值范围0-msgRetentionSeconds,即最大的回溯时间为消息在队列中的保留周期，0表示不开启。\n        :type RewindSeconds: int\n        :param Transaction: 1 表示事务队列，0 表示普通队列\n        :type Transaction: int\n        :param FirstQueryInterval: 第一次回查间隔\n        :type FirstQueryInterval: int\n        :param MaxQueryCount: 最大回查次数\n        :type MaxQueryCount: int\n        :param DeadLetterQueueName: 死信队列名称\n        :type DeadLetterQueueName: str\n        :param Policy: 死信策略。0为消息被多次消费未删除，1为Time-To-Live过期\n        :type Policy: int\n        :param MaxReceiveCount: 最大接收次数 1-1000\n        :type MaxReceiveCount: int\n        :param MaxTimeToLive: policy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间msgRetentionSeconds\n        :type MaxTimeToLive: int\n        :param Trace: 是否开启消息轨迹追踪，当不设置字段时，默认为不开启，该字段为true表示开启，为false表示不开启\n        :type Trace: bool\n        """
         self.QueueName = None
         self.MaxMsgHeapNum = None
         self.PollingWaitSeconds = None
@@ -765,8 +1019,12 @@ class CreateCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueId: 创建成功的queueId
+        :type QueueId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param QueueId: 创建成功的queueId\n        :type QueueId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.QueueId = None
         self.RequestId = None
 
@@ -782,8 +1040,24 @@ class CreateCmqSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        :type TopicName: str
+        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type SubscriptionName: str
+        :param Protocol: 订阅的协议，目前支持两种协议：http、queue。使用http协议，用户需自己搭建接受消息的web server。使用queue，消息会自动推送到CMQ queue，用户可以并发地拉取消息。
+        :type Protocol: str
+        :param Endpoint: 接收通知的Endpoint，根据协议Protocol区分：对于http，Endpoint必须以“`http://`”开头，host可以是域名或IP；对于Queue，则填QueueName。 请注意，目前推送服务不能推送到私有网络中，因此Endpoint填写为私有网络域名或地址将接收不到推送的消息，目前支持推送到公网和基础网络。
+        :type Endpoint: str
+        :param NotifyStrategy: 向Endpoint推送消息出现错误时，CMQ推送服务器的重试策略。取值有：1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息；2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始1s，后面是2s，4s，8s...由于Topic消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是EXPONENTIAL_DECAY_RETRY。
+        :type NotifyStrategy: str
+        :param FilterTag: 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
+        :type FilterTag: list of str
+        :param BindingKey: BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
+        :type BindingKey: list of str
+        :param NotifyContentFormat: 推送内容的格式。取值：1）JSON；2）SIMPLIFIED，即raw格式。如果Protocol是queue，则取值必须为SIMPLIFIED。如果Protocol是http，两个值均可以，默认值是JSON。
+        :type NotifyContentFormat: str
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。\n        :type TopicName: str\n        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type SubscriptionName: str\n        :param Protocol: 订阅的协议，目前支持两种协议：http、queue。使用http协议，用户需自己搭建接受消息的web server。使用queue，消息会自动推送到CMQ queue，用户可以并发地拉取消息。\n        :type Protocol: str\n        :param Endpoint: 接收通知的Endpoint，根据协议Protocol区分：对于http，Endpoint必须以“`http://`”开头，host可以是域名或IP；对于Queue，则填QueueName。 请注意，目前推送服务不能推送到私有网络中，因此Endpoint填写为私有网络域名或地址将接收不到推送的消息，目前支持推送到公网和基础网络。\n        :type Endpoint: str\n        :param NotifyStrategy: 向Endpoint推送消息出现错误时，CMQ推送服务器的重试策略。取值有：1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息；2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始1s，后面是2s，4s，8s...由于Topic消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是EXPONENTIAL_DECAY_RETRY。\n        :type NotifyStrategy: str\n        :param FilterTag: 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。\n        :type FilterTag: list of str\n        :param BindingKey: BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。\n        :type BindingKey: list of str\n        :param NotifyContentFormat: 推送内容的格式。取值：1）JSON；2）SIMPLIFIED，即raw格式。如果Protocol是queue，则取值必须为SIMPLIFIED。如果Protocol是http，两个值均可以，默认值是JSON。\n        :type NotifyContentFormat: str\n        """
         self.TopicName = None
         self.SubscriptionName = None
         self.Protocol = None
@@ -818,8 +1092,12 @@ class CreateCmqSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubscriptionId: 订阅id
+        :type SubscriptionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SubscriptionId: 订阅id\n        :type SubscriptionId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubscriptionId = None
         self.RequestId = None
 
@@ -835,8 +1113,18 @@ class CreateCmqTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        :type TopicName: str
+        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+        :type MaxMsgSize: int
+        :param FilterType: 用于指定主题的消息匹配策略。1：表示标签匹配策略；2：表示路由匹配策略，默认值为标签匹配策略。
+        :type FilterType: int
+        :param MsgRetentionSeconds: 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。
+        :type MsgRetentionSeconds: int
+        :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
+        :type Trace: bool
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。\n        :type TopicName: str\n        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。\n        :type MaxMsgSize: int\n        :param FilterType: 用于指定主题的消息匹配策略。1：表示标签匹配策略；2：表示路由匹配策略，默认值为标签匹配策略。\n        :type FilterType: int\n        :param MsgRetentionSeconds: 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。\n        :type MsgRetentionSeconds: int\n        :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。\n        :type Trace: bool\n        """
         self.TopicName = None
         self.MaxMsgSize = None
         self.FilterType = None
@@ -865,8 +1153,12 @@ class CreateCmqTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicId: 主题id
+        :type TopicId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TopicId: 主题id\n        :type TopicId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TopicId = None
         self.RequestId = None
 
@@ -882,8 +1174,16 @@ class CreateEnvironmentRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+        :type EnvironmentId: str
+        :param MsgTTL: 未消费消息过期时间，单位：秒，最小60，最大1296000，（15天）。
+        :type MsgTTL: int
+        :param Remark: 说明，128个字符以内。
+        :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。\n        :type EnvironmentId: str\n        :param MsgTTL: 未消费消息过期时间，单位：秒，最小60，最大1296000，（15天）。\n        :type MsgTTL: int\n        :param Remark: 说明，128个字符以内。\n        :type Remark: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
@@ -910,9 +1210,19 @@ class CreateEnvironmentResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param MsgTTL: 未消费消息过期时间，单位：秒。
+        :type MsgTTL: int
+        :param Remark: 说明，128个字符以内。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param MsgTTL: 未消费消息过期时间，单位：秒。\n        :type MsgTTL: int\n        :param Remark: 说明，128个字符以内。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param NamespaceId: 命名空间ID\n        :type NamespaceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
@@ -934,8 +1244,24 @@ class CreateSubscriptionRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+        :type TopicName: str
+        :param SubscriptionName: 订阅者名称，不支持中字以及除了短线和下划线外的特殊字符且不超过150个字符。
+        :type SubscriptionName: str
+        :param IsIdempotent: 是否幂等创建，若否不允许创建同名的订阅关系。
+        :type IsIdempotent: bool
+        :param Remark: 备注，128个字符以内。
+        :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param AutoCreatePolicyTopic: 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
+        :type AutoCreatePolicyTopic: bool
+        :param PostFixPattern: 指定死信和重试主题名称规范，LEGACY表示历史命名规则，COMMUNITY表示Pulsar社区命名规范
+        :type PostFixPattern: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。\n        :type TopicName: str\n        :param SubscriptionName: 订阅者名称，不支持中字以及除了短线和下划线外的特殊字符且不超过150个字符。\n        :type SubscriptionName: str\n        :param IsIdempotent: 是否幂等创建，若否不允许创建同名的订阅关系。\n        :type IsIdempotent: bool\n        :param Remark: 备注，128个字符以内。\n        :type Remark: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        :param AutoCreatePolicyTopic: 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。\n        :type AutoCreatePolicyTopic: bool\n        :param PostFixPattern: 指定死信和重试主题名称规范，LEGACY表示历史命名规则，COMMUNITY表示Pulsar社区命名规范\n        :type PostFixPattern: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.SubscriptionName = None
@@ -970,8 +1296,12 @@ class CreateSubscriptionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: 创建结果。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: 创建结果。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.RequestId = None
 
@@ -987,12 +1317,24 @@ class CreateTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。\n        :type TopicName: str\n        :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。\n        :type Partitions: int\n        :param TopicType: 0： 普通消息；
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+        :type TopicName: str
+        :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
+        :type Partitions: int
+        :param TopicType: 0： 普通消息；
 1 ：全局顺序消息；
 2 ：局部顺序消息；
 3 ：重试队列；
-4 ：死信队列。\n        :type TopicType: int\n        :param Remark: 备注，128字符以内。\n        :type Remark: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
+4 ：死信队列。
+        :type TopicType: int
+        :param Remark: 备注，128字符以内。
+        :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
@@ -1023,15 +1365,27 @@ class CreateTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名。\n        :type TopicName: str\n        :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数。\n        :type Partitions: int\n        :param Remark: 备注，128字符以内。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param TopicType: 0： 普通消息；
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名。
+        :type TopicName: str
+        :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数。
+        :type Partitions: int
+        :param Remark: 备注，128字符以内。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param TopicType: 0： 普通消息；
 1 ：全局顺序消息；
 2 ：局部顺序消息；
 3 ：重试队列；
 4 ：死信队列；
 5 ：事务消息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicType: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
@@ -1055,8 +1409,10 @@ class DeleteClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 集群Id，传入需要删除的集群Id。
+        :type ClusterId: str
         """
-        :param ClusterId: 集群Id，传入需要删除的集群Id。\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1077,8 +1433,12 @@ class DeleteClusterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 集群的ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ClusterId: 集群的ID\n        :type ClusterId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -1094,8 +1454,10 @@ class DeleteCmqQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type QueueName: str
         """
-        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type QueueName: str\n        """
         self.QueueName = None
 
 
@@ -1116,8 +1478,10 @@ class DeleteCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1131,8 +1495,12 @@ class DeleteCmqSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type TopicName: str
+        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type SubscriptionName: str
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type TopicName: str\n        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type SubscriptionName: str\n        """
         self.TopicName = None
         self.SubscriptionName = None
 
@@ -1155,8 +1523,10 @@ class DeleteCmqSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1170,8 +1540,10 @@ class DeleteCmqTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type TopicName: str
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type TopicName: str\n        """
         self.TopicName = None
 
 
@@ -1192,8 +1564,10 @@ class DeleteCmqTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1207,8 +1581,12 @@ class DeleteEnvironmentsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentIds: 环境（命名空间）数组，每次最多删除20个。
+        :type EnvironmentIds: list of str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentIds: 环境（命名空间）数组，每次最多删除20个。\n        :type EnvironmentIds: list of str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentIds = None
         self.ClusterId = None
 
@@ -1231,8 +1609,12 @@ class DeleteEnvironmentsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentIds: 成功删除的环境（命名空间）数组。
+        :type EnvironmentIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EnvironmentIds: 成功删除的环境（命名空间）数组。\n        :type EnvironmentIds: list of str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EnvironmentIds = None
         self.RequestId = None
 
@@ -1248,8 +1630,14 @@ class DeleteSubscriptionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubscriptionTopicSets: 订阅关系集合，每次最多删除20个。
+        :type SubscriptionTopicSets: list of SubscriptionTopic
+        :param ClusterId: pulsar集群Id。
+        :type ClusterId: str
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
         """
-        :param SubscriptionTopicSets: 订阅关系集合，每次最多删除20个。\n        :type SubscriptionTopicSets: list of SubscriptionTopic\n        :param ClusterId: pulsar集群Id。\n        :type ClusterId: str\n        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        """
         self.SubscriptionTopicSets = None
         self.ClusterId = None
         self.EnvironmentId = None
@@ -1279,8 +1667,12 @@ class DeleteSubscriptionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubscriptionTopicSets: 成功删除的订阅关系数组。
+        :type SubscriptionTopicSets: list of SubscriptionTopic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SubscriptionTopicSets: 成功删除的订阅关系数组。\n        :type SubscriptionTopicSets: list of SubscriptionTopic\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubscriptionTopicSets = None
         self.RequestId = None
 
@@ -1301,8 +1693,14 @@ class DeleteTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicSets: 主题集合，每次最多删除20个。
+        :type TopicSets: list of TopicRecord
+        :param ClusterId: pulsar集群Id。
+        :type ClusterId: str
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
         """
-        :param TopicSets: 主题集合，每次最多删除20个。\n        :type TopicSets: list of TopicRecord\n        :param ClusterId: pulsar集群Id。\n        :type ClusterId: str\n        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        """
         self.TopicSets = None
         self.ClusterId = None
         self.EnvironmentId = None
@@ -1332,8 +1730,12 @@ class DeleteTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicSets: 被删除的主题数组。
+        :type TopicSets: list of TopicRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TopicSets: 被删除的主题数组。\n        :type TopicSets: list of TopicRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TopicSets = None
         self.RequestId = None
 
@@ -1360,8 +1762,14 @@ class DescribeBindClustersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 专享集群的数量
+        :type TotalCount: int
+        :param ClusterSet: 专享集群的列表
+        :type ClusterSet: list of BindCluster
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 专享集群的数量\n        :type TotalCount: int\n        :param ClusterSet: 专享集群的列表\n        :type ClusterSet: list of BindCluster\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ClusterSet = None
         self.RequestId = None
@@ -1384,8 +1792,14 @@ class DescribeBindVpcsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.Offset = None
         self.Limit = None
         self.ClusterId = None
@@ -1410,8 +1824,14 @@ class DescribeBindVpcsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 记录数。
+        :type TotalCount: int
+        :param VpcSets: Vpc集合。
+        :type VpcSets: list of VpcBindRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 记录数。\n        :type TotalCount: int\n        :param VpcSets: Vpc集合。\n        :type VpcSets: list of VpcBindRecord\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.VpcSets = None
         self.RequestId = None
@@ -1434,8 +1854,10 @@ class DescribeClusterDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: 集群的ID
+        :type ClusterId: str
         """
-        :param ClusterId: 集群的ID\n        :type ClusterId: str\n        """
         self.ClusterId = None
 
 
@@ -1456,8 +1878,12 @@ class DescribeClusterDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterSet: 集群的详细信息
+        :type ClusterSet: :class:`tencentcloud.tdmq.v20200217.models.Cluster`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ClusterSet: 集群的详细信息\n        :type ClusterSet: :class:`tencentcloud.tdmq.v20200217.models.Cluster`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterSet = None
         self.RequestId = None
 
@@ -1475,8 +1901,12 @@ class DescribeClustersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
         """
-        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -1499,8 +1929,14 @@ class DescribeClustersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 集群列表数量
+        :type TotalCount: int
+        :param ClusterSet: 集群信息列表
+        :type ClusterSet: list of Cluster
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 集群列表数量\n        :type TotalCount: int\n        :param ClusterSet: 集群信息列表\n        :type ClusterSet: list of Cluster\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ClusterSet = None
         self.RequestId = None
@@ -1523,8 +1959,16 @@ class DescribeCmqDeadLetterSourceQueuesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DeadLetterQueueName: 死信队列名称
+        :type DeadLetterQueueName: str
+        :param Limit: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
+        :type Limit: int
+        :param Offset: 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        :type Offset: int
+        :param SourceQueueName: 根据SourceQueueName过滤
+        :type SourceQueueName: str
         """
-        :param DeadLetterQueueName: 死信队列名称\n        :type DeadLetterQueueName: str\n        :param Limit: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。\n        :type Limit: int\n        :param Offset: 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。\n        :type Offset: int\n        :param SourceQueueName: 根据SourceQueueName过滤\n        :type SourceQueueName: str\n        """
         self.DeadLetterQueueName = None
         self.Limit = None
         self.Offset = None
@@ -1551,8 +1995,14 @@ class DescribeCmqDeadLetterSourceQueuesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 满足本次条件的队列个数
+        :type TotalCount: int
+        :param QueueSet: 死信队列源队列
+        :type QueueSet: list of CmqDeadLetterSource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 满足本次条件的队列个数\n        :type TotalCount: int\n        :param QueueSet: 死信队列源队列\n        :type QueueSet: list of CmqDeadLetterSource\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.QueueSet = None
         self.RequestId = None
@@ -1575,8 +2025,10 @@ class DescribeCmqQueueDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 精确匹配QueueName
+        :type QueueName: str
         """
-        :param QueueName: 精确匹配QueueName\n        :type QueueName: str\n        """
         self.QueueName = None
 
 
@@ -1597,8 +2049,12 @@ class DescribeCmqQueueDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueDescribe: 队列详情列表。
+        :type QueueDescribe: :class:`tencentcloud.tdmq.v20200217.models.CmqQueue`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param QueueDescribe: 队列详情列表。\n        :type QueueDescribe: :class:`tencentcloud.tdmq.v20200217.models.CmqQueue`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.QueueDescribe = None
         self.RequestId = None
 
@@ -1616,8 +2072,14 @@ class DescribeCmqQueuesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+        :type Offset: int
+        :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        :type Limit: int
+        :param QueueName: 根据QueueName进行过滤
+        :type QueueName: str
         """
-        :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0\n        :type Offset: int\n        :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。\n        :type Limit: int\n        :param QueueName: 根据QueueName进行过滤\n        :type QueueName: str\n        """
         self.Offset = None
         self.Limit = None
         self.QueueName = None
@@ -1642,9 +2104,15 @@ class DescribeCmqQueuesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 数量
+        :type TotalCount: int
+        :param QueueList: 队列列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueList: list of CmqQueue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 数量\n        :type TotalCount: int\n        :param QueueList: 队列列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type QueueList: list of CmqQueue\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.QueueList = None
         self.RequestId = None
@@ -1667,8 +2135,16 @@ class DescribeCmqSubscriptionDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        :type TopicName: str
+        :param Offset: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+        :type Offset: int
+        :param Limit: 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        :type Limit: int
+        :param SubscriptionName: 根据SubscriptionName进行模糊搜索
+        :type SubscriptionName: str
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。\n        :type TopicName: str\n        :param Offset: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0\n        :type Offset: int\n        :param Limit: 分页时本页获取主题的个数，如果不传递该参数，则该参数默认为20，最大值为50。\n        :type Limit: int\n        :param SubscriptionName: 根据SubscriptionName进行模糊搜索\n        :type SubscriptionName: str\n        """
         self.TopicName = None
         self.Offset = None
         self.Limit = None
@@ -1695,9 +2171,15 @@ class DescribeCmqSubscriptionDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param SubscriptionSet: Subscription属性集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionSet: list of CmqSubscription
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数\n        :type TotalCount: int\n        :param SubscriptionSet: Subscription属性集合
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubscriptionSet: list of CmqSubscription\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.SubscriptionSet = None
         self.RequestId = None
@@ -1720,8 +2202,10 @@ class DescribeCmqTopicDetailRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 精确匹配TopicName。
+        :type TopicName: str
         """
-        :param TopicName: 精确匹配TopicName。\n        :type TopicName: str\n        """
         self.TopicName = None
 
 
@@ -1742,8 +2226,12 @@ class DescribeCmqTopicDetailResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicDescribe: 主题详情
+        :type TopicDescribe: :class:`tencentcloud.tdmq.v20200217.models.CmqTopic`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TopicDescribe: 主题详情\n        :type TopicDescribe: :class:`tencentcloud.tdmq.v20200217.models.CmqTopic`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TopicDescribe = None
         self.RequestId = None
 
@@ -1761,8 +2249,14 @@ class DescribeCmqTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
+        :type Offset: int
+        :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
+        :type Limit: int
+        :param TopicName: 根据TopicName进行模糊搜索
+        :type TopicName: str
         """
-        :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0\n        :type Offset: int\n        :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。\n        :type Limit: int\n        :param TopicName: 根据TopicName进行模糊搜索\n        :type TopicName: str\n        """
         self.Offset = None
         self.Limit = None
         self.TopicName = None
@@ -1787,9 +2281,15 @@ class DescribeCmqTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicList: 主题列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicList: list of CmqTopic\n        :param TotalCount: 全量主题数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicList: list of CmqTopic
+        :param TotalCount: 全量主题数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.TopicList = None
         self.TotalCount = None
         self.RequestId = None
@@ -1812,8 +2312,12 @@ class DescribeEnvironmentAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.ClusterId = None
 
@@ -1836,8 +2340,26 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000（15天）。
+        :type MsgTTL: int
+        :param RateInByte: 消费速率限制，单位：byte/秒，0：不限速。
+        :type RateInByte: int
+        :param RateInSize: 消费速率限制，单位：个数/秒，0：不限速。
+        :type RateInSize: int
+        :param RetentionHours: 已消费消息保存策略，单位：小时，0：消费完马上删除。
+        :type RetentionHours: int
+        :param RetentionSize: 已消费消息保存策略，单位：G，0：消费完马上删除。
+        :type RetentionSize: int
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param Replicas: 副本数。
+        :type Replicas: int
+        :param Remark: 备注。
+        :type Remark: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000（15天）。\n        :type MsgTTL: int\n        :param RateInByte: 消费速率限制，单位：byte/秒，0：不限速。\n        :type RateInByte: int\n        :param RateInSize: 消费速率限制，单位：个数/秒，0：不限速。\n        :type RateInSize: int\n        :param RetentionHours: 已消费消息保存策略，单位：小时，0：消费完马上删除。\n        :type RetentionHours: int\n        :param RetentionSize: 已消费消息保存策略，单位：G，0：消费完马上删除。\n        :type RetentionSize: int\n        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param Replicas: 副本数。\n        :type Replicas: int\n        :param Remark: 备注。\n        :type Remark: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MsgTTL = None
         self.RateInByte = None
         self.RateInSize = None
@@ -1867,8 +2389,18 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param RoleName: 角色名称
+        :type RoleName: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        :param RoleName: 角色名称\n        :type RoleName: str\n        """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
@@ -1897,8 +2429,14 @@ class DescribeEnvironmentRolesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 记录数。
+        :type TotalCount: int
+        :param EnvironmentRoleSets: 命名空间角色集合。
+        :type EnvironmentRoleSets: list of EnvironmentRole
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 记录数。\n        :type TotalCount: int\n        :param EnvironmentRoleSets: 命名空间角色集合。\n        :type EnvironmentRoleSets: list of EnvironmentRole\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.EnvironmentRoleSets = None
         self.RequestId = None
@@ -1921,11 +2459,21 @@ class DescribeEnvironmentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EnvironmentId: 命名空间名称，模糊搜索。\n        :type EnvironmentId: str\n        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        :param Filters: * EnvironmentId
+        r"""
+        :param EnvironmentId: 命名空间名称，模糊搜索。
+        :type EnvironmentId: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param Filters: * EnvironmentId
 按照名称空间进行过滤，精确查询。
 类型：String
-必选：否\n        :type Filters: list of Filter\n        """
+必选：否
+        :type Filters: list of Filter
+        """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
@@ -1959,8 +2507,14 @@ class DescribeEnvironmentsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 命名空间记录数。
+        :type TotalCount: int
+        :param EnvironmentSet: 命名空间集合数组。
+        :type EnvironmentSet: list of Environment
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 命名空间记录数。\n        :type TotalCount: int\n        :param EnvironmentSet: 命名空间集合数组。\n        :type EnvironmentSet: list of Environment\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.EnvironmentSet = None
         self.RequestId = None
@@ -1983,8 +2537,20 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterName: 物理集群名
+        :type ClusterName: str
+        :param TenantId: 虚拟集群（租户）ID
+        :type TenantId: str
+        :param NamespaceName: 命名空间名
+        :type NamespaceName: str
+        :param NeedMetrics: 是否需要监控指标，若传false，则不需要传Limit和Offset分页参数
+        :type NeedMetrics: bool
+        :param Limit: 查询限制条数
+        :type Limit: int
+        :param Offset: 查询偏移量
+        :type Offset: int
         """
-        :param ClusterName: 物理集群名\n        :type ClusterName: str\n        :param TenantId: 虚拟集群（租户）ID\n        :type TenantId: str\n        :param NamespaceName: 命名空间名\n        :type NamespaceName: str\n        :param NeedMetrics: 是否需要监控指标，若传false，则不需要传Limit和Offset分页参数\n        :type NeedMetrics: bool\n        :param Limit: 查询限制条数\n        :type Limit: int\n        :param Offset: 查询偏移量\n        :type Offset: int\n        """
         self.ClusterName = None
         self.TenantId = None
         self.NamespaceName = None
@@ -2015,8 +2581,14 @@ class DescribeNamespaceBundlesOptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 记录条数
+        :type TotalCount: int
+        :param BundleSet: bundle列表
+        :type BundleSet: list of BundleSetOpt
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 记录条数\n        :type TotalCount: int\n        :param BundleSet: bundle列表\n        :type BundleSet: list of BundleSetOpt\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.BundleSet = None
         self.RequestId = None
@@ -2039,8 +2611,10 @@ class DescribeNodeHealthOptRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param InstanceId: 节点实例ID
+        :type InstanceId: str
         """
-        :param InstanceId: 节点实例ID\n        :type InstanceId: str\n        """
         self.InstanceId = None
 
 
@@ -2061,8 +2635,14 @@ class DescribeNodeHealthOptResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param NodeState: 0-异常；1-正常
+        :type NodeState: int
+        :param LatestHealthCheckTime: 最近一次健康检查的时间
+        :type LatestHealthCheckTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param NodeState: 0-异常；1-正常\n        :type NodeState: int\n        :param LatestHealthCheckTime: 最近一次健康检查的时间\n        :type LatestHealthCheckTime: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.NodeState = None
         self.LatestHealthCheckTime = None
         self.RequestId = None
@@ -2080,8 +2660,20 @@ class DescribeProducersRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名。
+        :type TopicName: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param ProducerName: 生产者名称，模糊匹配。
+        :type ProducerName: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名。\n        :type TopicName: str\n        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        :param ProducerName: 生产者名称，模糊匹配。\n        :type ProducerName: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Offset = None
@@ -2112,8 +2704,14 @@ class DescribeProducersResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ProducerSets: 生产者集合数组。
+        :type ProducerSets: list of Producer
+        :param TotalCount: 记录总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ProducerSets: 生产者集合数组。\n        :type ProducerSets: list of Producer\n        :param TotalCount: 记录总数。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ProducerSets = None
         self.TotalCount = None
         self.RequestId = None
@@ -2136,8 +2734,22 @@ class DescribeSubscriptionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+        :type TopicName: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param SubscriptionName: 订阅者名称，模糊匹配。
+        :type SubscriptionName: str
+        :param Filters: 数据过滤条件。
+        :type Filters: list of FilterSubscription
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。\n        :type TopicName: str\n        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        :param SubscriptionName: 订阅者名称，模糊匹配。\n        :type SubscriptionName: str\n        :param Filters: 数据过滤条件。\n        :type Filters: list of FilterSubscription\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Offset = None
@@ -2175,8 +2787,14 @@ class DescribeSubscriptionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SubscriptionSets: 订阅者集合数组。
+        :type SubscriptionSets: list of Subscription
+        :param TotalCount: 数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param SubscriptionSets: 订阅者集合数组。\n        :type SubscriptionSets: list of Subscription\n        :param TotalCount: 数量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.SubscriptionSets = None
         self.TotalCount = None
         self.RequestId = None
@@ -2199,17 +2817,31 @@ class DescribeTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名模糊匹配。\n        :type TopicName: str\n        :param Offset: 起始下标，不填默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，不填则默认为10，最大值为20。\n        :type Limit: int\n        :param TopicType: topic类型描述：
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名模糊匹配。
+        :type TopicName: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param TopicType: topic类型描述：
 0：普通消息；
 1：全局顺序消息；
 2：局部顺序消息；
 3：重试队列；
 4：死信队列；
-5：事务消息。\n        :type TopicType: int\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        :param Filters: * TopicName
+5：事务消息。
+        :type TopicType: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param Filters: * TopicName
 按照主题名字查询，精确查询。
 类型：String
-必选：否\n        :type Filters: list of Filter\n        """
+必选：否
+        :type Filters: list of Filter
+        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Offset = None
@@ -2247,8 +2879,14 @@ class DescribeTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicSets: 主题集合数组。
+        :type TopicSets: list of Topic
+        :param TotalCount: 主题数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TopicSets: 主题集合数组。\n        :type TopicSets: list of Topic\n        :param TotalCount: 主题数量。\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TopicSets = None
         self.TotalCount = None
         self.RequestId = None
@@ -2271,9 +2909,25 @@ class Environment(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间名称
+        :type EnvironmentId: str
+        :param Remark: 说明
+        :type Remark: str
+        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000（15天）
+        :type MsgTTL: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 最近修改时间
+        :type UpdateTime: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param TopicNum: Topic数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNum: int
         """
-        :param EnvironmentId: 命名空间名称\n        :type EnvironmentId: str\n        :param Remark: 说明\n        :type Remark: str\n        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000（15天）\n        :type MsgTTL: int\n        :param CreateTime: 创建时间\n        :type CreateTime: str\n        :param UpdateTime: 最近修改时间\n        :type UpdateTime: str\n        :param NamespaceId: 命名空间ID\n        :type NamespaceId: str\n        :param NamespaceName: 命名空间名称\n        :type NamespaceName: str\n        :param TopicNum: Topic数量
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicNum: int\n        """
         self.EnvironmentId = None
         self.Remark = None
         self.MsgTTL = None
@@ -2308,8 +2962,20 @@ class EnvironmentRole(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）。
+        :type EnvironmentId: str
+        :param RoleName: 角色名称。
+        :type RoleName: str
+        :param Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。
+        :type Permissions: list of str
+        :param RoleDescribe: 角色描述。
+        :type RoleDescribe: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间。
+        :type UpdateTime: str
         """
-        :param EnvironmentId: 环境（命名空间）。\n        :type EnvironmentId: str\n        :param RoleName: 角色名称。\n        :type RoleName: str\n        :param Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。\n        :type Permissions: list of str\n        :param RoleDescribe: 角色描述。\n        :type RoleDescribe: str\n        :param CreateTime: 创建时间。\n        :type CreateTime: str\n        :param UpdateTime: 更新时间。\n        :type UpdateTime: str\n        """
         self.EnvironmentId = None
         self.RoleName = None
         self.Permissions = None
@@ -2340,8 +3006,12 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 过滤参数的名字
+        :type Name: str
+        :param Values: 数值
+        :type Values: list of str
         """
-        :param Name: 过滤参数的名字\n        :type Name: str\n        :param Values: 数值\n        :type Values: list of str\n        """
         self.Name = None
         self.Values = None
 
@@ -2364,8 +3034,16 @@ class FilterSubscription(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ConsumerHasCount: 是否仅展示包含真实消费者的订阅。
+        :type ConsumerHasCount: bool
+        :param ConsumerHasBacklog: 是否仅展示消息堆积的订阅。
+        :type ConsumerHasBacklog: bool
+        :param ConsumerHasExpired: 是否仅展示存在消息超期丢弃的订阅。
+        :type ConsumerHasExpired: bool
+        :param SubscriptionNames: 按照订阅名过滤，精确查询。
+        :type SubscriptionNames: list of str
         """
-        :param ConsumerHasCount: 是否仅展示包含真实消费者的订阅。\n        :type ConsumerHasCount: bool\n        :param ConsumerHasBacklog: 是否仅展示消息堆积的订阅。\n        :type ConsumerHasBacklog: bool\n        :param ConsumerHasExpired: 是否仅展示存在消息超期丢弃的订阅。\n        :type ConsumerHasExpired: bool\n        :param SubscriptionNames: 按照订阅名过滤，精确查询。\n        :type SubscriptionNames: list of str\n        """
         self.ConsumerHasCount = None
         self.ConsumerHasBacklog = None
         self.ConsumerHasExpired = None
@@ -2392,8 +3070,14 @@ class ModifyClusterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Pulsar 集群的ID，需要更新的集群Id。
+        :type ClusterId: str
+        :param ClusterName: 更新后的集群名称。
+        :type ClusterName: str
+        :param Remark: 说明信息。
+        :type Remark: str
         """
-        :param ClusterId: Pulsar 集群的ID，需要更新的集群Id。\n        :type ClusterId: str\n        :param ClusterName: 更新后的集群名称。\n        :type ClusterName: str\n        :param Remark: 说明信息。\n        :type Remark: str\n        """
         self.ClusterId = None
         self.ClusterName = None
         self.Remark = None
@@ -2418,8 +3102,12 @@ class ModifyClusterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.ClusterId = None
         self.RequestId = None
 
@@ -2435,8 +3123,38 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type QueueName: str
+        :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
+        :type MaxMsgHeapNum: int
+        :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围 0-30 秒，默认值 0。
+        :type PollingWaitSeconds: int
+        :param VisibilityTimeout: 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
+        :type VisibilityTimeout: int
+        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+        :type MaxMsgSize: int
+        :param MsgRetentionSeconds: 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
+        :type MsgRetentionSeconds: int
+        :param RewindSeconds: 消息最长回溯时间，取值范围0-msgRetentionSeconds，消息的最大回溯之间为消息在队列中的保存周期，0表示不开启消息回溯。
+        :type RewindSeconds: int
+        :param FirstQueryInterval: 第一次查询时间
+        :type FirstQueryInterval: int
+        :param MaxQueryCount: 最大查询次数
+        :type MaxQueryCount: int
+        :param DeadLetterQueueName: 死信队列名称
+        :type DeadLetterQueueName: str
+        :param MaxTimeToLive: MaxTimeToLivepolicy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds
+        :type MaxTimeToLive: int
+        :param MaxReceiveCount: 最大接收次数
+        :type MaxReceiveCount: int
+        :param Policy: 死信队列策略
+        :type Policy: int
+        :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
+        :type Trace: bool
+        :param Transaction: 是否开启事务，1开启，0不开启
+        :type Transaction: int
         """
-        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type QueueName: str\n        :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。\n        :type MaxMsgHeapNum: int\n        :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围 0-30 秒，默认值 0。\n        :type PollingWaitSeconds: int\n        :param VisibilityTimeout: 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。\n        :type VisibilityTimeout: int\n        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。\n        :type MaxMsgSize: int\n        :param MsgRetentionSeconds: 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。\n        :type MsgRetentionSeconds: int\n        :param RewindSeconds: 消息最长回溯时间，取值范围0-msgRetentionSeconds，消息的最大回溯之间为消息在队列中的保存周期，0表示不开启消息回溯。\n        :type RewindSeconds: int\n        :param FirstQueryInterval: 第一次查询时间\n        :type FirstQueryInterval: int\n        :param MaxQueryCount: 最大查询次数\n        :type MaxQueryCount: int\n        :param DeadLetterQueueName: 死信队列名称\n        :type DeadLetterQueueName: str\n        :param MaxTimeToLive: MaxTimeToLivepolicy为1时必选。最大未消费过期时间。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds\n        :type MaxTimeToLive: int\n        :param MaxReceiveCount: 最大接收次数\n        :type MaxReceiveCount: int\n        :param Policy: 死信队列策略\n        :type Policy: int\n        :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。\n        :type Trace: bool\n        :param Transaction: 是否开启事务，1开启，0不开启\n        :type Transaction: int\n        """
         self.QueueName = None
         self.MaxMsgHeapNum = None
         self.PollingWaitSeconds = None
@@ -2485,8 +3203,10 @@ class ModifyCmqQueueAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2500,10 +3220,22 @@ class ModifyCmqSubscriptionAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。\n        :type TopicName: str\n        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type SubscriptionName: str\n        :param NotifyStrategy: 向 Endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值如下：
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+        :type TopicName: str
+        :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type SubscriptionName: str
+        :param NotifyStrategy: 向 Endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值如下：
 （1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息。
-（2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始1s，后面是2s，4s，8s···由于 Topic 消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是 EXPONENTIAL_DECAY_RETRY。\n        :type NotifyStrategy: str\n        :param NotifyContentFormat: 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 Protocol 是 queue，则取值必须为 SIMPLIFIED。如果 Protocol 是 HTTP，两个值均可以，默认值是 JSON。\n        :type NotifyContentFormat: str\n        :param FilterTags: 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。\n        :type FilterTags: list of str\n        :param BindingKey: BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。\n        :type BindingKey: list of str\n        """
+（2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始1s，后面是2s，4s，8s···由于 Topic 消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是 EXPONENTIAL_DECAY_RETRY。
+        :type NotifyStrategy: str
+        :param NotifyContentFormat: 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 Protocol 是 queue，则取值必须为 SIMPLIFIED。如果 Protocol 是 HTTP，两个值均可以，默认值是 JSON。
+        :type NotifyContentFormat: str
+        :param FilterTags: 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
+        :type FilterTags: list of str
+        :param BindingKey: BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
+        :type BindingKey: list of str
+        """
         self.TopicName = None
         self.SubscriptionName = None
         self.NotifyStrategy = None
@@ -2534,8 +3266,10 @@ class ModifyCmqSubscriptionAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2549,8 +3283,16 @@ class ModifyCmqTopicAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type TopicName: str
+        :param MaxMsgSize: 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。
+        :type MaxMsgSize: int
+        :param MsgRetentionSeconds: 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。
+        :type MsgRetentionSeconds: int
+        :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
+        :type Trace: bool
         """
-        :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type TopicName: str\n        :param MaxMsgSize: 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。\n        :type MaxMsgSize: int\n        :param MsgRetentionSeconds: 消息保存时间。取值范围60 - 86400 s（即1分钟 - 1天），默认值86400。\n        :type MsgRetentionSeconds: int\n        :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。\n        :type Trace: bool\n        """
         self.TopicName = None
         self.MaxMsgSize = None
         self.MsgRetentionSeconds = None
@@ -2577,8 +3319,10 @@ class ModifyCmqTopicAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2592,8 +3336,16 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间名称。
+        :type EnvironmentId: str
+        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000。
+        :type MsgTTL: int
+        :param Remark: 备注，字符串最长不超过128。
+        :type Remark: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 命名空间名称。\n        :type EnvironmentId: str\n        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000。\n        :type MsgTTL: int\n        :param Remark: 备注，字符串最长不超过128。\n        :type Remark: str\n        :param ClusterId: 集群ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
@@ -2620,10 +3372,20 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间名称。
+        :type EnvironmentId: str
+        :param MsgTTL: 未消费消息过期时间，单位：秒。
+        :type MsgTTL: int
+        :param Remark: 备注，字符串最长不超过128。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param EnvironmentId: 命名空间名称。\n        :type EnvironmentId: str\n        :param MsgTTL: 未消费消息过期时间，单位：秒。\n        :type MsgTTL: int\n        :param Remark: 备注，字符串最长不超过128。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param NamespaceId: 命名空间ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NamespaceId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
@@ -2645,8 +3407,18 @@ class ModifyTopicRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名。
+        :type TopicName: str
+        :param Partitions: 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
+        :type Partitions: int
+        :param Remark: 备注，128字符以内。
+        :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名。\n        :type TopicName: str\n        :param Partitions: 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。\n        :type Partitions: int\n        :param Remark: 备注，128字符以内。\n        :type Remark: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
@@ -2675,8 +3447,14 @@ class ModifyTopicResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Partitions: 分区数
+        :type Partitions: int
+        :param Remark: 备注，128字符以内。
+        :type Remark: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Partitions: 分区数\n        :type Partitions: int\n        :param Remark: 备注，128字符以内。\n        :type Remark: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Partitions = None
         self.Remark = None
         self.RequestId = None
@@ -2694,21 +3472,47 @@ class PartitionsTopic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AverageMsgSize: 最后一次间隔内发布消息的平均byte大小。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AverageMsgSize: str\n        :param ConsumerCount: 消费者数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerCount: str\n        :param LastConfirmedEntry: 被记录下来的消息总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastConfirmedEntry: str\n        :param LastLedgerCreatedTimestamp: 最后一个ledger创建的时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastLedgerCreatedTimestamp: str\n        :param MsgRateIn: 本地和复制的发布者每秒发布消息的速率。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateIn: str\n        :param MsgRateOut: 本地和复制的消费者每秒分发消息的数量之和。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateOut: str\n        :param MsgThroughputIn: 本地和复制的发布者每秒发布消息的byte。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgThroughputIn: str\n        :param MsgThroughputOut: 本地和复制的消费者每秒分发消息的byte。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgThroughputOut: str\n        :param NumberOfEntries: 被记录下来的消息总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NumberOfEntries: str\n        :param Partitions: 子分区id。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Partitions: int\n        :param ProducerCount: 生产者数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProducerCount: str\n        :param TotalSize: 以byte计算的所有消息存储总量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalSize: str\n        :param TopicType: topic类型描述。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicType: int\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AverageMsgSize: str
+        :param ConsumerCount: 消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerCount: str
+        :param LastConfirmedEntry: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastConfirmedEntry: str
+        :param LastLedgerCreatedTimestamp: 最后一个ledger创建的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastLedgerCreatedTimestamp: str
+        :param MsgRateIn: 本地和复制的发布者每秒发布消息的速率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateIn: str
+        :param MsgRateOut: 本地和复制的消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateOut: str
+        :param MsgThroughputIn: 本地和复制的发布者每秒发布消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputIn: str
+        :param MsgThroughputOut: 本地和复制的消费者每秒分发消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputOut: str
+        :param NumberOfEntries: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberOfEntries: str
+        :param Partitions: 子分区id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: int
+        :param ProducerCount: 生产者数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerCount: str
+        :param TotalSize: 以byte计算的所有消息存储总量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalSize: str
+        :param TopicType: topic类型描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicType: int
+        """
         self.AverageMsgSize = None
         self.ConsumerCount = None
         self.LastConfirmedEntry = None
@@ -2753,10 +3557,18 @@ class Producer(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+        :type TopicName: str
+        :param CountConnect: 连接数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountConnect: int
+        :param ConnectionSets: 连接集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionSets: list of Connection
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。\n        :type TopicName: str\n        :param CountConnect: 连接数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CountConnect: int\n        :param ConnectionSets: 连接集合。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConnectionSets: list of Connection\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.CountConnect = None
@@ -2788,8 +3600,14 @@ class PublishCmqMsgRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名
+        :type TopicName: str
+        :param MsgContent: 消息内容
+        :type MsgContent: str
+        :param MsgTag: 消息标签
+        :type MsgTag: list of str
         """
-        :param TopicName: 主题名\n        :type TopicName: str\n        :param MsgContent: 消息内容\n        :type MsgContent: str\n        :param MsgTag: 消息标签\n        :type MsgTag: list of str\n        """
         self.TopicName = None
         self.MsgContent = None
         self.MsgTag = None
@@ -2814,8 +3632,14 @@ class PublishCmqMsgResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: true表示发送成功
+        :type Result: bool
+        :param MsgId: 消息id
+        :type MsgId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: true表示发送成功\n        :type Result: bool\n        :param MsgId: 消息id\n        :type MsgId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.MsgId = None
         self.RequestId = None
@@ -2833,8 +3657,16 @@ class ReceiveMessageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Topic: 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，即：tenant/namespace/topic。默认使用的是：public/default
+        :type Topic: str
+        :param SubscriptionName: 订阅者的名字
+        :type SubscriptionName: str
+        :param ReceiverQueueSize: 默认值为1000，consumer接收的消息会首先存储到receiverQueueSize这个队列中，用作调优接收消息的速率
+        :type ReceiverQueueSize: int
+        :param SubInitialPosition: 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
+        :type SubInitialPosition: str
         """
-        :param Topic: 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，即：tenant/namespace/topic。默认使用的是：public/default\n        :type Topic: str\n        :param SubscriptionName: 订阅者的名字\n        :type SubscriptionName: str\n        :param ReceiverQueueSize: 默认值为1000，consumer接收的消息会首先存储到receiverQueueSize这个队列中，用作调优接收消息的速率\n        :type ReceiverQueueSize: int\n        :param SubInitialPosition: 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest\n        :type SubInitialPosition: str\n        """
         self.Topic = None
         self.SubscriptionName = None
         self.ReceiverQueueSize = None
@@ -2861,10 +3693,22 @@ class ReceiveMessageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param MessageID: 用作标识消息的唯一主键
+        :type MessageID: str
+        :param MessagePayload: 接收消息的内容
+        :type MessagePayload: str
+        :param AckTopic: 提供给 Ack 接口，用来Ack哪一个topic中的消息
+        :type AckTopic: str
+        :param ErrorMsg: 返回的错误信息，如果为空，说明没有错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param SubName: 返回订阅者的名字，用来创建 ack consumer时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param MessageID: 用作标识消息的唯一主键\n        :type MessageID: str\n        :param MessagePayload: 接收消息的内容\n        :type MessagePayload: str\n        :param AckTopic: 提供给 Ack 接口，用来Ack哪一个topic中的消息\n        :type AckTopic: str\n        :param ErrorMsg: 返回的错误信息，如果为空，说明没有错误
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMsg: str\n        :param SubName: 返回订阅者的名字，用来创建 ack consumer时使用
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubName: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.MessageID = None
         self.MessagePayload = None
         self.AckTopic = None
@@ -2888,8 +3732,18 @@ class ResetMsgSubOffsetByTimestampRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+        :type TopicName: str
+        :param Subscription: 订阅者名称。
+        :type Subscription: str
+        :param ToTimestamp: 时间戳，精确到毫秒。
+        :type ToTimestamp: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 命名空间名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。\n        :type TopicName: str\n        :param Subscription: 订阅者名称。\n        :type Subscription: str\n        :param ToTimestamp: 时间戳，精确到毫秒。\n        :type ToTimestamp: int\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.Subscription = None
@@ -2918,9 +3772,13 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 结果。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Result: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.Result = None
         self.RequestId = None
 
@@ -2936,8 +3794,12 @@ class RewindCmqQueueRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+        :type QueueName: str
+        :param StartConsumeTime: 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。
+        :type StartConsumeTime: int
         """
-        :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。\n        :type QueueName: str\n        :param StartConsumeTime: 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。\n        :type StartConsumeTime: int\n        """
         self.QueueName = None
         self.StartConsumeTime = None
 
@@ -2960,8 +3822,10 @@ class RewindCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -2975,8 +3839,26 @@ class SendBatchMessagesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
+        :type Topic: str
+        :param Payload: 需要发送消息的内容
+        :type Payload: str
+        :param StringToken: String 类型的 token，可以不填，系统会自动获取
+        :type StringToken: str
+        :param ProducerName: producer 的名字，要求全局是唯一的，如果不设置，系统会自动生成
+        :type ProducerName: str
+        :param SendTimeout: 单位：s。消息发送的超时时间。默认值为：30s
+        :type SendTimeout: int
+        :param MaxPendingMessages: 内存中允许缓存的生产消息的最大数量，默认值：1000条
+        :type MaxPendingMessages: int
+        :param BatchingMaxMessages: 每一个batch中消息的最大数量，默认值：1000条/batch
+        :type BatchingMaxMessages: int
+        :param BatchingMaxPublishDelay: 每一个batch最大等待的时间，超过这个时间，不管是否达到指定的batch中消息的数量和大小，都会将该batch发送出去，默认：10ms
+        :type BatchingMaxPublishDelay: int
+        :param BatchingMaxBytes: 每一个batch中最大允许的消息的大小，默认：128KB
+        :type BatchingMaxBytes: int
         """
-        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default\n        :type Topic: str\n        :param Payload: 需要发送消息的内容\n        :type Payload: str\n        :param StringToken: String 类型的 token，可以不填，系统会自动获取\n        :type StringToken: str\n        :param ProducerName: producer 的名字，要求全局是唯一的，如果不设置，系统会自动生成\n        :type ProducerName: str\n        :param SendTimeout: 单位：s。消息发送的超时时间。默认值为：30s\n        :type SendTimeout: int\n        :param MaxPendingMessages: 内存中允许缓存的生产消息的最大数量，默认值：1000条\n        :type MaxPendingMessages: int\n        :param BatchingMaxMessages: 每一个batch中消息的最大数量，默认值：1000条/batch\n        :type BatchingMaxMessages: int\n        :param BatchingMaxPublishDelay: 每一个batch最大等待的时间，超过这个时间，不管是否达到指定的batch中消息的数量和大小，都会将该batch发送出去，默认：10ms\n        :type BatchingMaxPublishDelay: int\n        :param BatchingMaxBytes: 每一个batch中最大允许的消息的大小，默认：128KB\n        :type BatchingMaxBytes: int\n        """
         self.Topic = None
         self.Payload = None
         self.StringToken = None
@@ -3013,10 +3895,16 @@ class SendBatchMessagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: 消息的唯一标识
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MessageId: str\n        :param ErrorMsg: 错误消息，返回为 ""，代表没有错误
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageId: str
+        :param ErrorMsg: 错误消息，返回为 ""，代表没有错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.MessageId = None
         self.ErrorMsg = None
         self.RequestId = None
@@ -3034,8 +3922,14 @@ class SendCmqMsgRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param QueueName: 队列名
+        :type QueueName: str
+        :param MsgContent: 消息内容
+        :type MsgContent: str
+        :param DelaySeconds: 延迟时间
+        :type DelaySeconds: int
         """
-        :param QueueName: 队列名\n        :type QueueName: str\n        :param MsgContent: 消息内容\n        :type MsgContent: str\n        :param DelaySeconds: 延迟时间\n        :type DelaySeconds: int\n        """
         self.QueueName = None
         self.MsgContent = None
         self.DelaySeconds = None
@@ -3060,8 +3954,14 @@ class SendCmqMsgResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Result: true表示发送成功
+        :type Result: bool
+        :param MsgId: 消息id
+        :type MsgId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Result: true表示发送成功\n        :type Result: bool\n        :param MsgId: 消息id\n        :type MsgId: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Result = None
         self.MsgId = None
         self.RequestId = None
@@ -3079,8 +3979,20 @@ class SendMessagesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
+        :type Topic: str
+        :param Payload: 要发送的消息的内容
+        :type Payload: str
+        :param StringToken: Token 是用来做鉴权使用的，可以不填，系统会自动获取
+        :type StringToken: str
+        :param ProducerName: 设置 producer 的名字，要求全局唯一，用户不配置，系统会随机生成
+        :type ProducerName: str
+        :param SendTimeout: 设置消息发送的超时时间，默认为30s
+        :type SendTimeout: int
+        :param MaxPendingMessages: 内存中缓存的最大的生产消息的数量，默认为1000条
+        :type MaxPendingMessages: int
         """
-        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default\n        :type Topic: str\n        :param Payload: 要发送的消息的内容\n        :type Payload: str\n        :param StringToken: Token 是用来做鉴权使用的，可以不填，系统会自动获取\n        :type StringToken: str\n        :param ProducerName: 设置 producer 的名字，要求全局唯一，用户不配置，系统会随机生成\n        :type ProducerName: str\n        :param SendTimeout: 设置消息发送的超时时间，默认为30s\n        :type SendTimeout: int\n        :param MaxPendingMessages: 内存中缓存的最大的生产消息的数量，默认为1000条\n        :type MaxPendingMessages: int\n        """
         self.Topic = None
         self.Payload = None
         self.StringToken = None
@@ -3111,10 +4023,16 @@ class SendMessagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: 消息的messageID, 是全局唯一的，用来标识消息的元数据信息
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MessageId: str\n        :param ErrorMsg: 返回的错误消息，如果返回为 “”，说明没有错误
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ErrorMsg: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageId: str
+        :param ErrorMsg: 返回的错误消息，如果返回为 “”，说明没有错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.MessageId = None
         self.ErrorMsg = None
         self.RequestId = None
@@ -3132,8 +4050,16 @@ class SendMsgRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称，如果是分区topic需要指定具体分区，如果没有指定则默认发到0分区，例如：my_topic-partition-0。
+        :type TopicName: str
+        :param MsgContent: 消息内容，不能为空且大小不得大于5242880个byte。
+        :type MsgContent: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称，如果是分区topic需要指定具体分区，如果没有指定则默认发到0分区，例如：my_topic-partition-0。\n        :type TopicName: str\n        :param MsgContent: 消息内容，不能为空且大小不得大于5242880个byte。\n        :type MsgContent: str\n        :param ClusterId: Pulsar 集群的ID\n        :type ClusterId: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.MsgContent = None
@@ -3160,8 +4086,10 @@ class SendMsgResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3175,23 +4103,57 @@ class Subscription(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TopicName: 主题名称。
+        :type TopicName: str
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param ConnectedSince: 消费者开始连接的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectedSince: str
+        :param ConsumerAddr: 消费者地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerAddr: str
+        :param ConsumerCount: 消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerCount: str
+        :param ConsumerName: 消费者名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerName: str
+        :param MsgBacklog: 堆积的消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgBacklog: str
+        :param MsgRateExpired: 于TTL，此订阅下没有被发送而是被丢弃的比例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateExpired: str
+        :param MsgRateOut: 消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateOut: str
+        :param MsgThroughputOut: 消费者每秒消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputOut: str
+        :param SubscriptionName: 订阅名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionName: str
+        :param ConsumerSets: 消费者集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerSets: list of Consumer
+        :param IsOnline: 是否在线。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOnline: bool
+        :param ConsumersScheduleSets: 消费进度集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumersScheduleSets: list of ConsumersSchedule
+        :param Remark: 备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
-        :param TopicName: 主题名称。\n        :type TopicName: str\n        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param ConnectedSince: 消费者开始连接的时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConnectedSince: str\n        :param ConsumerAddr: 消费者地址。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerAddr: str\n        :param ConsumerCount: 消费者数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerCount: str\n        :param ConsumerName: 消费者名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerName: str\n        :param MsgBacklog: 堆积的消息数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgBacklog: str\n        :param MsgRateExpired: 于TTL，此订阅下没有被发送而是被丢弃的比例。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateExpired: str\n        :param MsgRateOut: 消费者每秒分发消息的数量之和。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateOut: str\n        :param MsgThroughputOut: 消费者每秒消息的byte。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgThroughputOut: str\n        :param SubscriptionName: 订阅名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubscriptionName: str\n        :param ConsumerSets: 消费者集合。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerSets: list of Consumer\n        :param IsOnline: 是否在线。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type IsOnline: bool\n        :param ConsumersScheduleSets: 消费进度集合。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumersScheduleSets: list of ConsumersSchedule\n        :param Remark: 备注。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param UpdateTime: 最近修改时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        """
         self.TopicName = None
         self.EnvironmentId = None
         self.ConnectedSince = None
@@ -3254,8 +4216,14 @@ class SubscriptionTopic(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+        :type TopicName: str
+        :param SubscriptionName: 订阅名称。
+        :type SubscriptionName: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。\n        :type TopicName: str\n        :param SubscriptionName: 订阅名称。\n        :type SubscriptionName: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
         self.SubscriptionName = None
@@ -3280,8 +4248,12 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TagKey: 标签的key的值
+        :type TagKey: str
+        :param TagValue: 标签的Value的值
+        :type TagValue: str
         """
-        :param TagKey: 标签的key的值\n        :type TagKey: str\n        :param TagValue: 标签的Value的值\n        :type TagValue: str\n        """
         self.TagKey = None
         self.TagValue = None
 
@@ -3304,35 +4276,77 @@ class Topic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AverageMsgSize: 最后一次间隔内发布消息的平均byte大小。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type AverageMsgSize: str\n        :param ConsumerCount: 消费者数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerCount: str\n        :param LastConfirmedEntry: 被记录下来的消息总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastConfirmedEntry: str\n        :param LastLedgerCreatedTimestamp: 最后一个ledger创建的时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LastLedgerCreatedTimestamp: str\n        :param MsgRateIn: 本地和复制的发布者每秒发布消息的速率。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateIn: str\n        :param MsgRateOut: 本地和复制的消费者每秒分发消息的数量之和。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgRateOut: str\n        :param MsgThroughputIn: 本地和复制的发布者每秒发布消息的byte。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgThroughputIn: str\n        :param MsgThroughputOut: 本地和复制的消费者每秒分发消息的byte。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type MsgThroughputOut: str\n        :param NumberOfEntries: 被记录下来的消息总数。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type NumberOfEntries: str\n        :param Partitions: 分区数<=0：topic下无子分区。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Partitions: int\n        :param ProducerCount: 生产者数量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProducerCount: str\n        :param TotalSize: 以byte计算的所有消息存储总量。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TotalSize: str\n        :param SubTopicSets: 分区topic里面的子分区。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type SubTopicSets: list of PartitionsTopic\n        :param TopicType: topic类型描述：
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AverageMsgSize: str
+        :param ConsumerCount: 消费者数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerCount: str
+        :param LastConfirmedEntry: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastConfirmedEntry: str
+        :param LastLedgerCreatedTimestamp: 最后一个ledger创建的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastLedgerCreatedTimestamp: str
+        :param MsgRateIn: 本地和复制的发布者每秒发布消息的速率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateIn: str
+        :param MsgRateOut: 本地和复制的消费者每秒分发消息的数量之和。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateOut: str
+        :param MsgThroughputIn: 本地和复制的发布者每秒发布消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputIn: str
+        :param MsgThroughputOut: 本地和复制的消费者每秒分发消息的byte。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputOut: str
+        :param NumberOfEntries: 被记录下来的消息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberOfEntries: str
+        :param Partitions: 分区数<=0：topic下无子分区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: int
+        :param ProducerCount: 生产者数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerCount: str
+        :param TotalSize: 以byte计算的所有消息存储总量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalSize: str
+        :param SubTopicSets: 分区topic里面的子分区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubTopicSets: list of PartitionsTopic
+        :param TopicType: topic类型描述：
 0：普通消息；
 1：全局顺序消息；
 2：局部顺序消息；
 3：重试队列；
 4：死信队列；
 5：事务消息。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicType: int\n        :param EnvironmentId: 环境（命名空间）名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type TopicName: str\n        :param Remark: 说明，128个字符以内。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        :param CreateTime: 创建时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type CreateTime: str\n        :param UpdateTime: 最近修改时间。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type UpdateTime: str\n        :param ProducerLimit: 生产者上限。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ProducerLimit: str\n        :param ConsumerLimit: 消费者上限。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type ConsumerLimit: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicType: int
+        :param EnvironmentId: 环境（命名空间）名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param Remark: 说明，128个字符以内。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 最近修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param ProducerLimit: 生产者上限。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerLimit: str
+        :param ConsumerLimit: 消费者上限。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLimit: str
+        """
         self.AverageMsgSize = None
         self.ConsumerCount = None
         self.LastConfirmedEntry = None
@@ -3398,8 +4412,12 @@ class TopicRecord(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称。
+        :type TopicName: str
         """
-        :param EnvironmentId: 环境（命名空间）名称。\n        :type EnvironmentId: str\n        :param TopicName: 主题名称。\n        :type TopicName: str\n        """
         self.EnvironmentId = None
         self.TopicName = None
 
@@ -3422,8 +4440,10 @@ class UnbindCmqDeadLetterRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param SourceQueueName: 死信策略源队列名称，调用本接口会清空该队列的死信队列策略。
+        :type SourceQueueName: str
         """
-        :param SourceQueueName: 死信策略源队列名称，调用本接口会清空该队列的死信队列策略。\n        :type SourceQueueName: str\n        """
         self.SourceQueueName = None
 
 
@@ -3444,8 +4464,10 @@ class UnbindCmqDeadLetterResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -3459,9 +4481,21 @@ class VpcBindRecord(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param UniqueVpcId: 租户Vpc Id
+        :type UniqueVpcId: str
+        :param UniqueSubnetId: 租户Vpc子网Id
+        :type UniqueSubnetId: str
+        :param RouterId: 路由Id
+        :type RouterId: str
+        :param Ip: Vpc的Id
+        :type Ip: str
+        :param Port: Vpc的Port
+        :type Port: int
+        :param Remark: 说明，128个字符以内
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
-        :param UniqueVpcId: 租户Vpc Id\n        :type UniqueVpcId: str\n        :param UniqueSubnetId: 租户Vpc子网Id\n        :type UniqueSubnetId: str\n        :param RouterId: 路由Id\n        :type RouterId: str\n        :param Ip: Vpc的Id\n        :type Ip: str\n        :param Port: Vpc的Port\n        :type Port: int\n        :param Remark: 说明，128个字符以内
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Remark: str\n        """
         self.UniqueVpcId = None
         self.UniqueSubnetId = None
         self.RouterId = None

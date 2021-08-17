@@ -24,10 +24,16 @@ class BatchModifyDomainInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domains: 批量修改的域名。\n        :type Domains: list of str\n        :param TemplateId: 模板ID。\n        :type TemplateId: str\n        :param LockTransfer: true： 开启60天内禁止转移注册商锁定
+        r"""
+        :param Domains: 批量修改的域名。
+        :type Domains: list of str
+        :param TemplateId: 模板ID。
+        :type TemplateId: str
+        :param LockTransfer: true： 开启60天内禁止转移注册商锁定
 false：关闭60天内禁止转移注册商锁定
-默认 true\n        :type LockTransfer: bool\n        """
+默认 true
+        :type LockTransfer: bool
+        """
         self.Domains = None
         self.TemplateId = None
         self.LockTransfer = None
@@ -52,8 +58,12 @@ class BatchModifyDomainInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 日志ID\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -69,8 +79,14 @@ class BatchStatus(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 批量任务id
+        :type LogId: int
+        :param Status: 批量任务状态  doing：进行中  success：成功  failed：失败  partial_success：部分成功
+        :type Status: str
+        :param BatchAction: 批量任务类型
+        :type BatchAction: str
         """
-        :param LogId: 批量任务id\n        :type LogId: int\n        :param Status: 批量任务状态  doing：进行中  success：成功  failed：失败  partial_success：部分成功\n        :type Status: str\n        :param BatchAction: 批量任务类型\n        :type BatchAction: str\n        """
         self.LogId = None
         self.Status = None
         self.BatchAction = None
@@ -95,8 +111,10 @@ class CertificateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CertificateCode: 证件号码。\n        :type CertificateCode: str\n        :param CertificateType: 证件类型。
+        r"""
+        :param CertificateCode: 证件号码。
+        :type CertificateCode: str
+        :param CertificateType: 证件类型。
 SFZ: 身份证。
 HZ: 护照。
 TXZ: 中国港澳居民来往内地通行证。
@@ -124,7 +142,11 @@ YLJGXKZ: 医疗机构执业许可证。
 GAJZZ: 中国港澳居住证。
 TWJZZ: 中国台湾居住证。
 QTTYDM: 其他-统一社会信用代码证书。
-GZJGZY: 公证机构执业证。\n        :type CertificateType: str\n        :param ImgUrl: 证件照片地址。\n        :type ImgUrl: str\n        """
+GZJGZY: 公证机构执业证。
+        :type CertificateType: str
+        :param ImgUrl: 证件照片地址。
+        :type ImgUrl: str
+        """
         self.CertificateCode = None
         self.CertificateType = None
         self.ImgUrl = None
@@ -149,8 +171,10 @@ class CheckBatchStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogIds: 操作日志 ID数组，最多 200 个
+        :type LogIds: list of int non-negative
         """
-        :param LogIds: 操作日志 ID数组，最多 200 个\n        :type LogIds: list of int non-negative\n        """
         self.LogIds = None
 
 
@@ -171,8 +195,12 @@ class CheckBatchStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param StatusSet: 批量任务状态集
+        :type StatusSet: list of BatchStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param StatusSet: 批量任务状态集\n        :type StatusSet: list of BatchStatus\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.StatusSet = None
         self.RequestId = None
 
@@ -193,8 +221,12 @@ class CheckDomainRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DomainName: 所查询域名名称
+        :type DomainName: str
+        :param Period: 年限。该参数为空时无法查询溢价词域名
+        :type Period: str
         """
-        :param DomainName: 所查询域名名称\n        :type DomainName: str\n        :param Period: 年限。该参数为空时无法查询溢价词域名\n        :type Period: str\n        """
         self.DomainName = None
         self.Period = None
 
@@ -217,12 +249,40 @@ class CheckDomainResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DomainName: 所查询域名名称
+        :type DomainName: str
+        :param Available: 是否能够注册
+        :type Available: bool
+        :param Reason: 不能注册原因
+        :type Reason: str
+        :param Premium: 是否是溢价词
+        :type Premium: bool
+        :param Price: 域名价格
+        :type Price: int
+        :param BlackWord: 是否是敏感词
+        :type BlackWord: bool
+        :param Describe: 溢价词描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param FeeRenew: 溢价词的续费价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeRenew: int
+        :param RealPrice: 域名真实价格, 溢价词时价格跟年限有关，非溢价词时价格为1年的价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealPrice: int
+        :param FeeTransfer: 溢价词的转入价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeTransfer: int
+        :param FeeRestore: 溢价词的赎回价格
+        :type FeeRestore: int
+        :param Period: 检测年限
+        :type Period: int
+        :param RecordSupport: 是否支持北京备案  true 支持  false 不支持
+        :type RecordSupport: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DomainName: 所查询域名名称\n        :type DomainName: str\n        :param Available: 是否能够注册\n        :type Available: bool\n        :param Reason: 不能注册原因\n        :type Reason: str\n        :param Premium: 是否是溢价词\n        :type Premium: bool\n        :param Price: 域名价格\n        :type Price: int\n        :param BlackWord: 是否是敏感词\n        :type BlackWord: bool\n        :param Describe: 溢价词描述
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Describe: str\n        :param FeeRenew: 溢价词的续费价格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FeeRenew: int\n        :param RealPrice: 域名真实价格, 溢价词时价格跟年限有关，非溢价词时价格为1年的价格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RealPrice: int\n        :param FeeTransfer: 溢价词的转入价格
-注意：此字段可能返回 null，表示取不到有效值。\n        :type FeeTransfer: int\n        :param FeeRestore: 溢价词的赎回价格\n        :type FeeRestore: int\n        :param Period: 检测年限\n        :type Period: int\n        :param RecordSupport: 是否支持北京备案  true 支持  false 不支持\n        :type RecordSupport: bool\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DomainName = None
         self.Available = None
         self.Reason = None
@@ -262,8 +322,40 @@ class ContactInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OrganizationNameCN: 注册人（中文）
+        :type OrganizationNameCN: str
+        :param OrganizationName: 注册人（英文）
+        :type OrganizationName: str
+        :param RegistrantNameCN: 联系人（中文）
+        :type RegistrantNameCN: str
+        :param RegistrantName: 联系人（英文）
+        :type RegistrantName: str
+        :param ProvinceCN: 省份（中文）
+        :type ProvinceCN: str
+        :param CityCN: 城市（中文）
+        :type CityCN: str
+        :param StreetCN: 街道（中文）
+        :type StreetCN: str
+        :param Street: 街道（英文）
+        :type Street: str
+        :param CountryCN: 国家（中文）
+        :type CountryCN: str
+        :param Telephone: 联系人手机号
+        :type Telephone: str
+        :param Email: 联系人邮箱
+        :type Email: str
+        :param ZipCode: 邮编
+        :type ZipCode: str
+        :param RegistrantType: 用户类型 E:组织， I:个人
+        :type RegistrantType: str
+        :param Province: 省份（英文）。作为入参时可以不填
+        :type Province: str
+        :param City: 城市（英文）。作为入参时可以不填
+        :type City: str
+        :param Country: 国家（英文）。作为入参时可以不填
+        :type Country: str
         """
-        :param OrganizationNameCN: 注册人（中文）\n        :type OrganizationNameCN: str\n        :param OrganizationName: 注册人（英文）\n        :type OrganizationName: str\n        :param RegistrantNameCN: 联系人（中文）\n        :type RegistrantNameCN: str\n        :param RegistrantName: 联系人（英文）\n        :type RegistrantName: str\n        :param ProvinceCN: 省份（中文）\n        :type ProvinceCN: str\n        :param CityCN: 城市（中文）\n        :type CityCN: str\n        :param StreetCN: 街道（中文）\n        :type StreetCN: str\n        :param Street: 街道（英文）\n        :type Street: str\n        :param CountryCN: 国家（中文）\n        :type CountryCN: str\n        :param Telephone: 联系人手机号\n        :type Telephone: str\n        :param Email: 联系人邮箱\n        :type Email: str\n        :param ZipCode: 邮编\n        :type ZipCode: str\n        :param RegistrantType: 用户类型 E:组织， I:个人\n        :type RegistrantType: str\n        :param Province: 省份（英文）。作为入参时可以不填\n        :type Province: str\n        :param City: 城市（英文）。作为入参时可以不填\n        :type City: str\n        :param Country: 国家（英文）。作为入参时可以不填\n        :type Country: str\n        """
         self.OrganizationNameCN = None
         self.OrganizationName = None
         self.RegistrantNameCN = None
@@ -314,10 +406,22 @@ class CreateDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TemplateId: 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)\n        :type TemplateId: str\n        :param Period: 购买域名的年限，可选值：[1-10]\n        :type Period: int\n        :param Domains: 批量购买的域名,最多为4000个\n        :type Domains: list of str\n        :param PayMode: 付费模式 0手动在线付费，1使用余额付费，2使用特惠包\n        :type PayMode: int\n        :param AutoRenewFlag: 自动续费开关。有两个可选值：
+        r"""
+        :param TemplateId: 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
+        :type TemplateId: str
+        :param Period: 购买域名的年限，可选值：[1-10]
+        :type Period: int
+        :param Domains: 批量购买的域名,最多为4000个
+        :type Domains: list of str
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费，2使用特惠包
+        :type PayMode: int
+        :param AutoRenewFlag: 自动续费开关。有两个可选值：
 0 表示关闭，不自动续费（默认值）
-1 表示开启，将自动续费\n        :type AutoRenewFlag: int\n        :param PackageResourceId: 使用的特惠包ID，PayMode为2时必填\n        :type PackageResourceId: str\n        """
+1 表示开启，将自动续费
+        :type AutoRenewFlag: int
+        :param PackageResourceId: 使用的特惠包ID，PayMode为2时必填
+        :type PackageResourceId: str
+        """
         self.TemplateId = None
         self.Period = None
         self.Domains = None
@@ -348,9 +452,13 @@ class CreateDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 批量日志ID
-注意：此字段可能返回 null，表示取不到有效值。\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.LogId = None
         self.RequestId = None
 
@@ -366,8 +474,12 @@ class CreateTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ContactInfo: 联系人信息
+        :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        :param CertificateInfo: 证件信息
+        :type CertificateInfo: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
         """
-        :param ContactInfo: 联系人信息\n        :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`\n        :param CertificateInfo: 证件信息\n        :type CertificateInfo: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`\n        """
         self.ContactInfo = None
         self.CertificateInfo = None
 
@@ -394,8 +506,12 @@ class CreateTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Template: 模板信息
+        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Template: 模板信息\n        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Template = None
         self.RequestId = None
 
@@ -413,8 +529,10 @@ class DeleteTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateId: 模板ID
+        :type TemplateId: str
         """
-        :param TemplateId: 模板ID\n        :type TemplateId: str\n        """
         self.TemplateId = None
 
 
@@ -435,8 +553,10 @@ class DeleteTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -450,8 +570,14 @@ class DescribeBatchOperationLogDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志ID。
+        :type LogId: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为200。
+        :type Limit: int
         """
-        :param LogId: 日志ID。\n        :type LogId: int\n        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为200。\n        :type Limit: int\n        """
         self.LogId = None
         self.Offset = None
         self.Limit = None
@@ -476,9 +602,15 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数量。
+        :type TotalCount: int
+        :param DomainBatchDetailSet: 日志详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainBatchDetailSet: list of DomainBatchDetailSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数量。\n        :type TotalCount: int\n        :param DomainBatchDetailSet: 日志详情列表。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainBatchDetailSet: list of DomainBatchDetailSet\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DomainBatchDetailSet = None
         self.RequestId = None
@@ -501,8 +633,12 @@ class DescribeBatchOperationLogsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为200。
+        :type Limit: int
         """
-        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为200。\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -525,9 +661,15 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param DomainBatchLogSet: 日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainBatchLogSet: list of DomainBatchLogSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 总数量\n        :type TotalCount: int\n        :param DomainBatchLogSet: 日志列表
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainBatchLogSet: list of DomainBatchLogSet\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.DomainBatchLogSet = None
         self.RequestId = None
@@ -550,8 +692,10 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
         """
-        :param Domain: 域名\n        :type Domain: str\n        """
         self.Domain = None
 
 
@@ -572,9 +716,15 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param DomainInfo: 域名信息
+        :type DomainInfo: :class:`tencentcloud.domain.v20180808.models.DomainBaseInfo`
+        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param DomainInfo: 域名信息\n        :type DomainInfo: :class:`tencentcloud.domain.v20180808.models.DomainBaseInfo`\n        :param Uin: 用户Uin
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Uin: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.DomainInfo = None
         self.Uin = None
         self.RequestId = None
@@ -594,8 +744,12 @@ class DescribeDomainNameListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，取值范围[1,100]
+        :type Limit: int
         """
-        :param Offset: 偏移量，默认为0\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，取值范围[1,100]\n        :type Limit: int\n        """
         self.Offset = None
         self.Limit = None
 
@@ -618,9 +772,15 @@ class DescribeDomainNameListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainSet: 域名信息集合
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainSet: list of DomainList\n        :param TotalCount: 域名总数量\n        :type TotalCount: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainSet: list of DomainList
+        :param TotalCount: 域名总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
         self.DomainSet = None
         self.TotalCount = None
         self.RequestId = None
@@ -643,8 +803,14 @@ class DescribeDomainPriceListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TldList: 查询价格的后缀列表。默认则为全部后缀
+        :type TldList: list of str
+        :param Year: 查询购买的年份，默认会列出所有年份的价格
+        :type Year: list of int
+        :param Operation: 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
+        :type Operation: list of str
         """
-        :param TldList: 查询价格的后缀列表。默认则为全部后缀\n        :type TldList: list of str\n        :param Year: 查询购买的年份，默认会列出所有年份的价格\n        :type Year: list of int\n        :param Operation: 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入\n        :type Operation: list of str\n        """
         self.TldList = None
         self.Year = None
         self.Operation = None
@@ -669,8 +835,12 @@ class DescribeDomainPriceListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param PriceList: 域名价格列表
+        :type PriceList: list of PriceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param PriceList: 域名价格列表\n        :type PriceList: list of PriceInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.PriceList = None
         self.RequestId = None
 
@@ -691,8 +861,18 @@ class DescribeTemplateListRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Type: 用户注册类型，默认:all , 个人：I ,企业: E
+        :type Type: str
+        :param Status: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+        :type Status: str
+        :param Keyword: 域名所有者筛选
+        :type Keyword: str
         """
-        :param Offset: 偏移量，默认为0。\n        :type Offset: int\n        :param Limit: 返回数量，默认为20，最大值为100。\n        :type Limit: int\n        :param Type: 用户注册类型，默认:all , 个人：I ,企业: E\n        :type Type: str\n        :param Status: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject\n        :type Status: str\n        :param Keyword: 域名所有者筛选\n        :type Keyword: str\n        """
         self.Offset = None
         self.Limit = None
         self.Type = None
@@ -721,8 +901,14 @@ class DescribeTemplateListResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 模板数量。
+        :type TotalCount: int
+        :param TemplateSet: 模板详细信息列表。
+        :type TemplateSet: list of TemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 模板数量。\n        :type TotalCount: int\n        :param TemplateSet: 模板详细信息列表。\n        :type TemplateSet: list of TemplateInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.TemplateSet = None
         self.RequestId = None
@@ -745,8 +931,10 @@ class DescribeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateId: 模板ID
+        :type TemplateId: str
         """
-        :param TemplateId: 模板ID\n        :type TemplateId: str\n        """
         self.TemplateId = None
 
 
@@ -767,8 +955,12 @@ class DescribeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Template: 模板信息
+        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Template: 模板信息\n        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Template = None
         self.RequestId = None
 
@@ -786,20 +978,36 @@ class DomainBaseInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DomainId: 域名资源ID。\n        :type DomainId: str\n        :param DomainName: 域名名称。\n        :type DomainName: str\n        :param RealNameAuditStatus: 域名实名认证状态。
+        r"""
+        :param DomainId: 域名资源ID。
+        :type DomainId: str
+        :param DomainName: 域名名称。
+        :type DomainName: str
+        :param RealNameAuditStatus: 域名实名认证状态。
 NotUpload：未实名认证
 InAudit：实名审核中
 Approved：实名审核通过
 Reject：实名审核失败
-NoAudit: 无需实名认证\n        :type RealNameAuditStatus: str\n        :param RealNameAuditUnpassReason: 域名实名认证不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type RealNameAuditUnpassReason: str\n        :param DomainNameAuditStatus: 域名命名审核状态。
+NoAudit: 无需实名认证
+        :type RealNameAuditStatus: str
+        :param RealNameAuditUnpassReason: 域名实名认证不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealNameAuditUnpassReason: str
+        :param DomainNameAuditStatus: 域名命名审核状态。
 NotAudit：命名审核未上传
 Pending：命名审核待上传
 Auditing：域名命名审核中
 Approved：域名命名审核通过
-Rejected：域名命名审核拒绝\n        :type DomainNameAuditStatus: str\n        :param DomainNameAuditUnpassReason: 域名命名审核不通过原因。
-注意：此字段可能返回 null，表示取不到有效值。\n        :type DomainNameAuditUnpassReason: str\n        :param CreationDate: 注册时间。\n        :type CreationDate: str\n        :param ExpirationDate: 到期时间\n        :type ExpirationDate: str\n        :param DomainStatus: 域名状态。
+Rejected：域名命名审核拒绝
+        :type DomainNameAuditStatus: str
+        :param DomainNameAuditUnpassReason: 域名命名审核不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainNameAuditUnpassReason: str
+        :param CreationDate: 注册时间。
+        :type CreationDate: str
+        :param ExpirationDate: 到期时间
+        :type ExpirationDate: str
+        :param DomainStatus: 域名状态。
 ok：正常
 serverHold：注册局暂停解析 
 clientHold：注册商暂停解析
@@ -812,7 +1020,9 @@ serverUpdateProhibited：注册局禁止更新
 serverDeleteProhibited：注册局禁止删除
 clientTransferProhibited：注册商禁止转移
 clientUpdateProhibited：注册商禁止更新
-clientDeleteProhibited：注册商禁止删除\n        :type DomainStatus: list of str\n        :param BuyStatus: 域名购买状态。
+clientDeleteProhibited：注册商禁止删除
+        :type DomainStatus: list of str
+        :param BuyStatus: 域名购买状态。
 ok：正常
 RegisterPending：待注册
 RegisterDoing：注册中
@@ -824,12 +1034,22 @@ RedemptionPending：已进入赎回期，需要进行续费
 RedemptionDoing：赎回中
 TransferPending：待转入中
 TransferTransing：转入中
-TransferFailed：转入失败\n        :type BuyStatus: str\n        :param RegistrarType: 注册商类型
+TransferFailed：转入失败
+        :type BuyStatus: str
+        :param RegistrarType: 注册商类型
 epp: DNSPod, Inc.（烟台帝思普网络科技有限公司）
 qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云计算（北京）有限责任公司）
 yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
-xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）\n        :type RegistrarType: str\n        :param NameServer: 域名绑定的ns\n        :type NameServer: list of str\n        :param LockTransfer: true：开启锁定
-false：关闭锁定\n        :type LockTransfer: bool\n        :param LockEndTime: 锁定结束时间\n        :type LockEndTime: str\n        """
+xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
+        :type RegistrarType: str
+        :param NameServer: 域名绑定的ns
+        :type NameServer: list of str
+        :param LockTransfer: true：开启锁定
+false：关闭锁定
+        :type LockTransfer: bool
+        :param LockEndTime: 锁定结束时间
+        :type LockEndTime: str
+        """
         self.DomainId = None
         self.DomainName = None
         self.RealNameAuditStatus = None
@@ -876,12 +1096,24 @@ class DomainBatchDetailSet(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: 详情ID\n        :type Id: int\n        :param Domain: 域名\n        :type Domain: str\n        :param Status: 执行状态：
+        r"""
+        :param Id: 详情ID
+        :type Id: int
+        :param Domain: 域名
+        :type Domain: str
+        :param Status: 执行状态：
 doing 执行中。
 failed 操作失败。
-success  操作成功。\n        :type Status: str\n        :param Reason: 失败原因
-注意：此字段可能返回 null，表示取不到有效值。\n        :type Reason: str\n        :param CreatedOn: 创建时间\n        :type CreatedOn: str\n        :param UpdatedOn: 更新时间\n        :type UpdatedOn: str\n        """
+success  操作成功。
+        :type Status: str
+        :param Reason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param CreatedOn: 创建时间
+        :type CreatedOn: str
+        :param UpdatedOn: 更新时间
+        :type UpdatedOn: str
+        """
         self.Id = None
         self.Domain = None
         self.Status = None
@@ -912,10 +1144,18 @@ class DomainBatchLogSet(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param LogId: 日志ID\n        :type LogId: int\n        :param Number: 数量\n        :type Number: int\n        :param Status: 执行状态：
+        r"""
+        :param LogId: 日志ID
+        :type LogId: int
+        :param Number: 数量
+        :type Number: int
+        :param Status: 执行状态：
 doing 执行中。
-done 执行完成。\n        :type Status: str\n        :param CreatedOn: 提交时间\n        :type CreatedOn: str\n        """
+done 执行完成。
+        :type Status: str
+        :param CreatedOn: 提交时间
+        :type CreatedOn: str
+        """
         self.LogId = None
         self.Number = None
         self.Status = None
@@ -942,12 +1182,28 @@ class DomainList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsPremium: 是否是溢价域名：
 ture 是    
-false 不是\n        :type IsPremium: bool\n        :param DomainId: 域名资源ID。\n        :type DomainId: str\n        :param DomainName: 域名名称。\n        :type DomainName: str\n        :param AutoRenew: 是否已设置自动续费 。
+false 不是
+        :type IsPremium: bool
+        :param DomainId: 域名资源ID。
+        :type DomainId: str
+        :param DomainName: 域名名称。
+        :type DomainName: str
+        :param AutoRenew: 是否已设置自动续费 。
 0：未设置 
-1：已设置\n        :type AutoRenew: int\n        :param CreationDate: 注册时间。\n        :type CreationDate: str\n        :param ExpirationDate: 到期时间。\n        :type ExpirationDate: str\n        :param Tld: 域名后缀\n        :type Tld: str\n        :param CodeTld: 编码后的后缀（中文会进行编码）\n        :type CodeTld: str\n        :param BuyStatus: 域名购买状态。
+1：已设置
+        :type AutoRenew: int
+        :param CreationDate: 注册时间。
+        :type CreationDate: str
+        :param ExpirationDate: 到期时间。
+        :type ExpirationDate: str
+        :param Tld: 域名后缀
+        :type Tld: str
+        :param CodeTld: 编码后的后缀（中文会进行编码）
+        :type CodeTld: str
+        :param BuyStatus: 域名购买状态。
 ok：正常
 AboutToExpire: 即将到期
 RegisterPending：注册中
@@ -959,7 +1215,9 @@ RedemptionPending：赎回期
 RedemptionDoing：赎回中
 TransferPending：转入中
 TransferTransing：转入中
-TransferFailed：转入失败\n        :type BuyStatus: str\n        """
+TransferFailed：转入失败
+        :type BuyStatus: str
+        """
         self.IsPremium = None
         self.DomainId = None
         self.DomainName = None
@@ -996,8 +1254,12 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domains: 批量操作的域名。
+        :type Domains: list of str
+        :param Dns: 域名DNS 数组。
+        :type Dns: list of str
         """
-        :param Domains: 批量操作的域名。\n        :type Domains: list of str\n        :param Dns: 域名DNS 数组。\n        :type Dns: list of str\n        """
         self.Domains = None
         self.Dns = None
 
@@ -1020,8 +1282,12 @@ class ModifyDomainDNSBatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志ID。
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 日志ID。\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -1037,8 +1303,14 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Domains: 要过户的域名。
+        :type Domains: list of str
+        :param NewOwnerUin: 转入账户的uin。
+        :type NewOwnerUin: str
+        :param TransferDns: 是否同时转移对应的 DNS 解析域名，默认false
+        :type TransferDns: bool
         """
-        :param Domains: 要过户的域名。\n        :type Domains: list of str\n        :param NewOwnerUin: 转入账户的uin。\n        :type NewOwnerUin: str\n        :param TransferDns: 是否同时转移对应的 DNS 解析域名，默认false\n        :type TransferDns: bool\n        """
         self.Domains = None
         self.NewOwnerUin = None
         self.TransferDns = None
@@ -1063,8 +1335,12 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志id
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 日志id\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -1080,8 +1356,18 @@ class PriceInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Tld: 域名后缀，例如.com
+        :type Tld: str
+        :param Year: 购买年限，范围[1-10]
+        :type Year: int
+        :param Price: 域名原价
+        :type Price: int
+        :param RealPrice: 域名现价
+        :type RealPrice: int
+        :param Operation: 商品的购买类型，新购，续费，赎回，转入，续费并转入
+        :type Operation: str
         """
-        :param Tld: 域名后缀，例如.com\n        :type Tld: str\n        :param Year: 购买年限，范围[1-10]\n        :type Year: int\n        :param Price: 域名原价\n        :type Price: int\n        :param RealPrice: 域名现价\n        :type RealPrice: int\n        :param Operation: 商品的购买类型，新购，续费，赎回，转入，续费并转入\n        :type Operation: str\n        """
         self.Tld = None
         self.Year = None
         self.Price = None
@@ -1110,11 +1396,19 @@ class RenewDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Period: 域名续费的年限。\n        :type Period: int\n        :param Domains: 批量续费的域名。\n        :type Domains: list of str\n        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。\n        :type PayMode: int\n        :param AutoRenewFlag: 自动续费开关。有三个可选值：
+        r"""
+        :param Period: 域名续费的年限。
+        :type Period: int
+        :param Domains: 批量续费的域名。
+        :type Domains: list of str
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
+        :type PayMode: int
+        :param AutoRenewFlag: 自动续费开关。有三个可选值：
 0 表示关闭，不自动续费
 1 表示开启，将自动续费
-2 表示不处理，保留域名原有状态（默认值）\n        :type AutoRenewFlag: int\n        """
+2 表示不处理，保留域名原有状态（默认值）
+        :type AutoRenewFlag: int
+        """
         self.Period = None
         self.Domains = None
         self.PayMode = None
@@ -1141,8 +1435,12 @@ class RenewDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 操作日志ID。
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 操作日志ID。\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -1158,11 +1456,15 @@ class SetDomainAutoRenewRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DomainId: 域名ID。\n        :type DomainId: str\n        :param AutoRenew: AutoRenew 有三个可选值：
+        r"""
+        :param DomainId: 域名ID。
+        :type DomainId: str
+        :param AutoRenew: AutoRenew 有三个可选值：
  0：不设置自动续费
 1：设置自动续费
-2：设置到期后不续费\n        :type AutoRenew: int\n        """
+2：设置到期后不续费
+        :type AutoRenew: int
+        """
         self.DomainId = None
         self.AutoRenew = None
 
@@ -1185,8 +1487,10 @@ class SetDomainAutoRenewResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -1200,8 +1504,30 @@ class TemplateInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        :param AuditStatus: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+        :type AuditStatus: str
+        :param CreatedOn: 创建时间
+        :type CreatedOn: str
+        :param UpdatedOn: 更新时间
+        :type UpdatedOn: str
+        :param UserUin: 用户UIN
+        :type UserUin: str
+        :param IsDefault: 是否是默认模板: 是:yes，否:no
+        :type IsDefault: str
+        :param AuditReason: 认证失败原因
+        :type AuditReason: str
+        :param CertificateInfo: 认证信息
+        :type CertificateInfo: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
+        :param ContactInfo: 联系人信息
+        :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        :param IsValidTemplate: 模板是否符合规范， 1是 0 否
+        :type IsValidTemplate: int
+        :param InvalidReason: 不符合规范原因
+        :type InvalidReason: str
         """
-        :param TemplateId: 模板ID\n        :type TemplateId: str\n        :param AuditStatus: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject\n        :type AuditStatus: str\n        :param CreatedOn: 创建时间\n        :type CreatedOn: str\n        :param UpdatedOn: 更新时间\n        :type UpdatedOn: str\n        :param UserUin: 用户UIN\n        :type UserUin: str\n        :param IsDefault: 是否是默认模板: 是:yes，否:no\n        :type IsDefault: str\n        :param AuditReason: 认证失败原因\n        :type AuditReason: str\n        :param CertificateInfo: 认证信息\n        :type CertificateInfo: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`\n        :param ContactInfo: 联系人信息\n        :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`\n        :param IsValidTemplate: 模板是否符合规范， 1是 0 否\n        :type IsValidTemplate: int\n        :param InvalidReason: 不符合规范原因\n        :type InvalidReason: str\n        """
         self.TemplateId = None
         self.AuditStatus = None
         self.CreatedOn = None
@@ -1246,12 +1572,24 @@ class TransferInDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domains: 转入的域名名称数组。\n        :type Domains: list of str\n        :param PassWords: 域名转移码数组。\n        :type PassWords: list of str\n        :param TemplateId: 模板ID。\n        :type TemplateId: str\n        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。\n        :type PayMode: int\n        :param AutoRenewFlag: 自动续费开关。有两个可选值：
+        r"""
+        :param Domains: 转入的域名名称数组。
+        :type Domains: list of str
+        :param PassWords: 域名转移码数组。
+        :type PassWords: list of str
+        :param TemplateId: 模板ID。
+        :type TemplateId: str
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
+        :type PayMode: int
+        :param AutoRenewFlag: 自动续费开关。有两个可选值：
 0 表示关闭，不自动续费（默认值）
-1 表示开启，将自动续费\n        :type AutoRenewFlag: int\n        :param LockTransfer: true： 开启60天内禁止转移注册商锁定
+1 表示开启，将自动续费
+        :type AutoRenewFlag: int
+        :param LockTransfer: true： 开启60天内禁止转移注册商锁定
 false：关闭60天内禁止转移注册商锁定
-默认 true\n        :type LockTransfer: bool\n        """
+默认 true
+        :type LockTransfer: bool
+        """
         self.Domains = None
         self.PassWords = None
         self.TemplateId = None
@@ -1282,8 +1620,12 @@ class TransferInDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 日志ID\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -1299,10 +1641,14 @@ class TransferProhibitionBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domains: 批量操作的域名。\n        :type Domains: list of str\n        :param Status: 是否开启禁止域名转移。
+        r"""
+        :param Domains: 批量操作的域名。
+        :type Domains: list of str
+        :param Status: 是否开启禁止域名转移。
 True: 开启禁止域名转移状态。
-False：关闭禁止域名转移状态。\n        :type Status: bool\n        """
+False：关闭禁止域名转移状态。
+        :type Status: bool
+        """
         self.Domains = None
         self.Status = None
 
@@ -1325,8 +1671,12 @@ class TransferProhibitionBatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 日志ID\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -1342,10 +1692,14 @@ class UpdateProhibitionBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Domains: 批量操作的域名。\n        :type Domains: list of str\n        :param Status: 是否开启禁止域名更新。
+        r"""
+        :param Domains: 批量操作的域名。
+        :type Domains: list of str
+        :param Status: 是否开启禁止域名更新。
 True:开启禁止域名更新状态。
-False：关闭禁止域名更新状态。\n        :type Status: bool\n        """
+False：关闭禁止域名更新状态。
+        :type Status: bool
+        """
         self.Domains = None
         self.Status = None
 
@@ -1368,8 +1722,12 @@ class UpdateProhibitionBatchResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param LogId: 日志ID\n        :type LogId: int\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.LogId = None
         self.RequestId = None
 
@@ -1385,8 +1743,10 @@ class UploadImageRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param ImageFile: 资质照片，照片的base64编码。
+        :type ImageFile: str
         """
-        :param ImageFile: 资质照片，照片的base64编码。\n        :type ImageFile: str\n        """
         self.ImageFile = None
 
 
@@ -1407,8 +1767,12 @@ class UploadImageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param AccessUrl: 资质照片地址。
+        :type AccessUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param AccessUrl: 资质照片地址。\n        :type AccessUrl: str\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.AccessUrl = None
         self.RequestId = None
 

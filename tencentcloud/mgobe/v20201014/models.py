@@ -24,8 +24,14 @@ class ChangeRoomPlayerProfileRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param PlayerId: 发起修改的玩家Id。
+        :type PlayerId: str
+        :param CustomProfile: 需要修改的玩家自定义属性。
+        :type CustomProfile: str
         """
-        :param GameId: 游戏资源Id。\n        :type GameId: str\n        :param PlayerId: 发起修改的玩家Id。\n        :type PlayerId: str\n        :param CustomProfile: 需要修改的玩家自定义属性。\n        :type CustomProfile: str\n        """
         self.GameId = None
         self.PlayerId = None
         self.CustomProfile = None
@@ -50,8 +56,12 @@ class ChangeRoomPlayerProfileResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Room: 房间信息。
+        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Room: 房间信息。\n        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Room = None
         self.RequestId = None
 
@@ -69,8 +79,14 @@ class ChangeRoomPlayerStatusRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param CustomStatus: 玩家自定义状态。
+        :type CustomStatus: int
+        :param PlayerId: 玩家id。
+        :type PlayerId: str
         """
-        :param GameId: 游戏资源Id。\n        :type GameId: str\n        :param CustomStatus: 玩家自定义状态。\n        :type CustomStatus: int\n        :param PlayerId: 玩家id。\n        :type PlayerId: str\n        """
         self.GameId = None
         self.CustomStatus = None
         self.PlayerId = None
@@ -95,8 +111,12 @@ class ChangeRoomPlayerStatusResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Room: 房间信息
+        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Room: 房间信息\n        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Room = None
         self.RequestId = None
 
@@ -114,8 +134,14 @@ class DescribePlayerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param OpenId: 玩家OpenId。
+        :type OpenId: str
+        :param PlayerId: 玩家PlayerId，由后台分配，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+        :type PlayerId: str
         """
-        :param GameId: 游戏资源Id。\n        :type GameId: str\n        :param OpenId: 玩家OpenId。\n        :type OpenId: str\n        :param PlayerId: 玩家PlayerId，由后台分配，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。\n        :type PlayerId: str\n        """
         self.GameId = None
         self.OpenId = None
         self.PlayerId = None
@@ -140,8 +166,12 @@ class DescribePlayerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Player: 玩家信息。
+        :type Player: :class:`tencentcloud.mgobe.v20201014.models.Player`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Player: 玩家信息。\n        :type Player: :class:`tencentcloud.mgobe.v20201014.models.Player`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Player = None
         self.RequestId = None
 
@@ -159,8 +189,14 @@ class DescribeRoomRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param PlayerId: 玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。
+        :type PlayerId: str
+        :param RoomId: 房间Id。
+        :type RoomId: str
         """
-        :param GameId: 游戏资源Id。\n        :type GameId: str\n        :param PlayerId: 玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。\n        :type PlayerId: str\n        :param RoomId: 房间Id。\n        :type RoomId: str\n        """
         self.GameId = None
         self.PlayerId = None
         self.RoomId = None
@@ -185,8 +221,12 @@ class DescribeRoomResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Room: 房间信息。
+        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Room: 房间信息。\n        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Room = None
         self.RequestId = None
 
@@ -204,8 +244,12 @@ class DismissRoomRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
+        :type GameId: str
+        :param RoomId: 表示游戏房间唯一ID。
+        :type RoomId: str
         """
-        :param GameId: 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。\n        :type GameId: str\n        :param RoomId: 表示游戏房间唯一ID。\n        :type RoomId: str\n        """
         self.GameId = None
         self.RoomId = None
 
@@ -228,8 +272,10 @@ class DismissRoomResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.RequestId = None
 
 
@@ -243,8 +289,30 @@ class ModifyRoomRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param RoomId: 房间ID。
+        :type RoomId: str
+        :param PlayerId: 发起者的PlayerId。
+        :type PlayerId: str
+        :param ChangeRoomOptionList: 需要修改的房间选项，0表示房间名称，1表示房主，2表示是否允许观战，3表示是否支持邀请码/密码，4表示是否私有，5表示是否自定义房间属性，6表示是否禁止加人。
+        :type ChangeRoomOptionList: list of int
+        :param RoomName: 房间名称。
+        :type RoomName: str
+        :param Owner: 变更房主。
+        :type Owner: str
+        :param IsViewed: 是否支持观战。
+        :type IsViewed: bool
+        :param IsInvited: 是否支持邀请码/密码。
+        :type IsInvited: bool
+        :param IsPrivate: 是否私有。
+        :type IsPrivate: bool
+        :param CustomProperties: 自定义房间属性。
+        :type CustomProperties: str
+        :param IsForbidJoin: 房间是否禁止加人。
+        :type IsForbidJoin: bool
         """
-        :param GameId: 游戏资源Id。\n        :type GameId: str\n        :param RoomId: 房间ID。\n        :type RoomId: str\n        :param PlayerId: 发起者的PlayerId。\n        :type PlayerId: str\n        :param ChangeRoomOptionList: 需要修改的房间选项，0表示房间名称，1表示房主，2表示是否允许观战，3表示是否支持邀请码/密码，4表示是否私有，5表示是否自定义房间属性，6表示是否禁止加人。\n        :type ChangeRoomOptionList: list of int\n        :param RoomName: 房间名称。\n        :type RoomName: str\n        :param Owner: 变更房主。\n        :type Owner: str\n        :param IsViewed: 是否支持观战。\n        :type IsViewed: bool\n        :param IsInvited: 是否支持邀请码/密码。\n        :type IsInvited: bool\n        :param IsPrivate: 是否私有。\n        :type IsPrivate: bool\n        :param CustomProperties: 自定义房间属性。\n        :type CustomProperties: str\n        :param IsForbidJoin: 房间是否禁止加人。\n        :type IsForbidJoin: bool\n        """
         self.GameId = None
         self.RoomId = None
         self.PlayerId = None
@@ -285,8 +353,12 @@ class ModifyRoomResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Room: 房间信息
+        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Room: 房间信息\n        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Room = None
         self.RequestId = None
 
@@ -304,8 +376,22 @@ class Player(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param OpenId: 玩家 OpenId。最长不超过64个字符。
+        :type OpenId: str
+        :param Name: 玩家昵称。最长不超过32个字符。
+        :type Name: str
+        :param TeamId: 队伍 ID。最长不超过16个字符。
+        :type TeamId: str
+        :param IsRobot: 是否为机器人。
+        :type IsRobot: bool
+        :param PlayerId: 玩家 PlayerId。出参使用，由后端返回。
+        :type PlayerId: str
+        :param CustomPlayerStatus: 自定义玩家状态。非负数，最大不超过4294967295。默认为0。
+        :type CustomPlayerStatus: int
+        :param CustomProfile: 自定义玩家属性。最长不超过256个字符。默认为空字符串。
+        :type CustomProfile: str
         """
-        :param OpenId: 玩家 OpenId。最长不超过64个字符。\n        :type OpenId: str\n        :param Name: 玩家昵称。最长不超过32个字符。\n        :type Name: str\n        :param TeamId: 队伍 ID。最长不超过16个字符。\n        :type TeamId: str\n        :param IsRobot: 是否为机器人。\n        :type IsRobot: bool\n        :param PlayerId: 玩家 PlayerId。出参使用，由后端返回。\n        :type PlayerId: str\n        :param CustomPlayerStatus: 自定义玩家状态。非负数，最大不超过4294967295。默认为0。\n        :type CustomPlayerStatus: int\n        :param CustomProfile: 自定义玩家属性。最长不超过256个字符。默认为空字符串。\n        :type CustomProfile: str\n        """
         self.OpenId = None
         self.Name = None
         self.TeamId = None
@@ -338,8 +424,12 @@ class RemoveRoomPlayerRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param RemovePlayerId: 被踢出房间的玩家Id。
+        :type RemovePlayerId: str
         """
-        :param GameId: 游戏资源Id。\n        :type GameId: str\n        :param RemovePlayerId: 被踢出房间的玩家Id。\n        :type RemovePlayerId: str\n        """
         self.GameId = None
         self.RemovePlayerId = None
 
@@ -362,8 +452,12 @@ class RemoveRoomPlayerResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Room: 房间信息
+        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param Room: 房间信息\n        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.Room = None
         self.RequestId = None
 
@@ -381,8 +475,42 @@ class Room(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Name: 表示房间名称。最长不超过32个字符。
+        :type Name: str
+        :param MaxPlayers: 表示房间最大玩家数量。最大不超过100人。
+        :type MaxPlayers: int
+        :param OwnerOpenId: 表示房主OpenId。最长不超过16个字符。
+        :type OwnerOpenId: str
+        :param IsPrivate: 表示是否私有，私有指的是不允许其他玩家通过匹配加入房间。
+        :type IsPrivate: bool
+        :param Players: 表示玩家详情列表。
+        :type Players: list of Player
+        :param Teams: 表示团队属性列表。
+        :type Teams: list of Team
+        :param Id: 表示房间 ID。出参用，由后端返回。
+        :type Id: str
+        :param Type: 表示房间类型。最长不超过32个字符。
+        :type Type: str
+        :param CreateType: 表示创建方式：0.单人主动发起创建房间请求；1.多人在线匹配请求分配房间；2. 直接创建满员房间。调用云API的创房请求默认为3，目前通过云API调用只支持第3种方式。
+        :type CreateType: int
+        :param CustomProperties: 表示自定义房间属性，不传为空字符串。最长不超过1024个字符。
+        :type CustomProperties: str
+        :param FrameSyncState: 表示房间帧同步状态。0表示未开始帧同步，1表示已开始帧同步，用于出参。
+        :type FrameSyncState: int
+        :param FrameRate: 表示帧率。由控制台设置，用于出参。
+        :type FrameRate: int
+        :param RouteId: 表示路由ID。用于出参。
+        :type RouteId: str
+        :param CreateTime: 表示房间创建的时间戳（单位：秒）。
+        :type CreateTime: int
+        :param StartGameTime: 表示开始帧同步时的时间戳（单位：秒）,未开始帧同步时返回为0。
+        :type StartGameTime: int
+        :param IsForbidJoin: 表示是否禁止加入房间。出参使用，默认为False，通过SDK的ChangeRoom接口可以修改。
+        :type IsForbidJoin: bool
+        :param Owner: 表示房主PlayerId。
+        :type Owner: str
         """
-        :param Name: 表示房间名称。最长不超过32个字符。\n        :type Name: str\n        :param MaxPlayers: 表示房间最大玩家数量。最大不超过100人。\n        :type MaxPlayers: int\n        :param OwnerOpenId: 表示房主OpenId。最长不超过16个字符。\n        :type OwnerOpenId: str\n        :param IsPrivate: 表示是否私有，私有指的是不允许其他玩家通过匹配加入房间。\n        :type IsPrivate: bool\n        :param Players: 表示玩家详情列表。\n        :type Players: list of Player\n        :param Teams: 表示团队属性列表。\n        :type Teams: list of Team\n        :param Id: 表示房间 ID。出参用，由后端返回。\n        :type Id: str\n        :param Type: 表示房间类型。最长不超过32个字符。\n        :type Type: str\n        :param CreateType: 表示创建方式：0.单人主动发起创建房间请求；1.多人在线匹配请求分配房间；2. 直接创建满员房间。调用云API的创房请求默认为3，目前通过云API调用只支持第3种方式。\n        :type CreateType: int\n        :param CustomProperties: 表示自定义房间属性，不传为空字符串。最长不超过1024个字符。\n        :type CustomProperties: str\n        :param FrameSyncState: 表示房间帧同步状态。0表示未开始帧同步，1表示已开始帧同步，用于出参。\n        :type FrameSyncState: int\n        :param FrameRate: 表示帧率。由控制台设置，用于出参。\n        :type FrameRate: int\n        :param RouteId: 表示路由ID。用于出参。\n        :type RouteId: str\n        :param CreateTime: 表示房间创建的时间戳（单位：秒）。\n        :type CreateTime: int\n        :param StartGameTime: 表示开始帧同步时的时间戳（单位：秒）,未开始帧同步时返回为0。\n        :type StartGameTime: int\n        :param IsForbidJoin: 表示是否禁止加入房间。出参使用，默认为False，通过SDK的ChangeRoom接口可以修改。\n        :type IsForbidJoin: bool\n        :param Owner: 表示房主PlayerId。\n        :type Owner: str\n        """
         self.Name = None
         self.MaxPlayers = None
         self.OwnerOpenId = None
@@ -445,8 +573,16 @@ class Team(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Id: 队伍ID。最长不超过16个字符。
+        :type Id: str
+        :param Name: 队伍名称。最长不超过32个字符。
+        :type Name: str
+        :param MinPlayers: 队伍最小人数。最大不超过100人。
+        :type MinPlayers: int
+        :param MaxPlayers: 队伍最大人数。最大不超过100人。
+        :type MaxPlayers: int
         """
-        :param Id: 队伍ID。最长不超过16个字符。\n        :type Id: str\n        :param Name: 队伍名称。最长不超过32个字符。\n        :type Name: str\n        :param MinPlayers: 队伍最小人数。最大不超过100人。\n        :type MinPlayers: int\n        :param MaxPlayers: 队伍最大人数。最大不超过100人。\n        :type MaxPlayers: int\n        """
         self.Id = None
         self.Name = None
         self.MinPlayers = None

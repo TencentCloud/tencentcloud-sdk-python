@@ -24,8 +24,10 @@ class DescribeRegionsRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: 待查询产品的名称，例如cvm、vpc
+        :type Product: str
         """
-        :param Product: 待查询产品的名称，例如cvm、vpc\n        :type Product: str\n        """
         self.Product = None
 
 
@@ -46,8 +48,14 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 地域数量
+        :type TotalCount: int
+        :param RegionSet: 地域列表信息
+        :type RegionSet: list of RegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 地域数量\n        :type TotalCount: int\n        :param RegionSet: 地域列表信息\n        :type RegionSet: list of RegionInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.RegionSet = None
         self.RequestId = None
@@ -70,8 +78,10 @@ class DescribeZonesRequest(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Product: 待查询产品的名称，例如cvm、vpc
+        :type Product: str
         """
-        :param Product: 待查询产品的名称，例如cvm、vpc\n        :type Product: str\n        """
         self.Product = None
 
 
@@ -92,8 +102,14 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param TotalCount: 可用区数量。
+        :type TotalCount: int
+        :param ZoneSet: 可用区列表信息。
+        :type ZoneSet: list of ZoneInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
-        :param TotalCount: 可用区数量。\n        :type TotalCount: int\n        :param ZoneSet: 可用区列表信息。\n        :type ZoneSet: list of ZoneInfo\n        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。\n        :type RequestId: str\n        """
         self.TotalCount = None
         self.ZoneSet = None
         self.RequestId = None
@@ -116,8 +132,14 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param Region: 地域名称，例如，ap-guangzhou
+        :type Region: str
+        :param RegionName: 地域描述，例如，华南地区(广州)
+        :type RegionName: str
+        :param RegionState: 地域是否可用状态
+        :type RegionState: str
         """
-        :param Region: 地域名称，例如，ap-guangzhou\n        :type Region: str\n        :param RegionName: 地域描述，例如，华南地区(广州)\n        :type RegionName: str\n        :param RegionState: 地域是否可用状态\n        :type RegionState: str\n        """
         self.Region = None
         self.RegionName = None
         self.RegionState = None
@@ -142,7 +164,7 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区名称，例如，ap-guangzhou-3
 全网可用区名称如下：
 <li> ap-chongqing-1 </li>
@@ -187,7 +209,15 @@ class ZoneInfo(AbstractModel):
 <li> na-ashburn-1 </li>
 <li> na-ashburn-2 </li>
 <li> ap-nanjing-1 </li>
-<li> ap-nanjing-2 </li>\n        :type Zone: str\n        :param ZoneName: 可用区描述，例如，广州三区\n        :type ZoneName: str\n        :param ZoneId: 可用区ID\n        :type ZoneId: str\n        :param ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。\n        :type ZoneState: str\n        """
+<li> ap-nanjing-2 </li>
+        :type Zone: str
+        :param ZoneName: 可用区描述，例如，广州三区
+        :type ZoneName: str
+        :param ZoneId: 可用区ID
+        :type ZoneId: str
+        :param ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+        :type ZoneState: str
+        """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
