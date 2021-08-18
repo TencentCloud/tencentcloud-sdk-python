@@ -2737,6 +2737,222 @@ class CreateAgentTaxPaymentInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateBatchPaymentBatchData(AbstractModel):
+    """CreateBatchPayment接口BatchInfo对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param TradeSerialNo: 交易流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeSerialNo: str
+        :param Status: 交易状态。
+0 处理中  
+1 预占成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+5 预占额度失败
+6 提交成功
+7 提交失败
+8 订单重复提交
+99 未知系统异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
+        """
+        self.OrderId = None
+        self.TradeSerialNo = None
+        self.Status = None
+        self.StatusDesc = None
+        self.AgentId = None
+        self.AgentName = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentData(AbstractModel):
+    """CreateBatchPayment接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次号
+        :type BatchId: str
+        :param BatchInfoList: 批次列表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchInfoList: list of CreateBatchPaymentBatchData
+        """
+        self.BatchId = None
+        self.BatchInfoList = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        if params.get("BatchInfoList") is not None:
+            self.BatchInfoList = []
+            for item in params.get("BatchInfoList"):
+                obj = CreateBatchPaymentBatchData()
+                obj._deserialize(item)
+                self.BatchInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentRecipient(AbstractModel):
+    """CreateBatchPayment转账明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferAmount: 转账金额
+        :type TransferAmount: int
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param AnchorId: 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+        :type AnchorId: str
+        :param Uid: 主播业务ID（与主播业务ID不能同时为空，两者都填取主播ID）
+        :type Uid: str
+        :param AnchorName: 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+        :type AnchorName: str
+        :param Remark: 业务备注
+        :type Remark: str
+        :param ReqReserved: 子单请求预留字段
+        :type ReqReserved: str
+        """
+        self.TransferAmount = None
+        self.OrderId = None
+        self.AnchorId = None
+        self.Uid = None
+        self.AnchorName = None
+        self.Remark = None
+        self.ReqReserved = None
+
+
+    def _deserialize(self, params):
+        self.TransferAmount = params.get("TransferAmount")
+        self.OrderId = params.get("OrderId")
+        self.AnchorId = params.get("AnchorId")
+        self.Uid = params.get("Uid")
+        self.AnchorName = params.get("AnchorName")
+        self.Remark = params.get("Remark")
+        self.ReqReserved = params.get("ReqReserved")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentRequest(AbstractModel):
+    """CreateBatchPayment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferType: 1 微信企业付款 
+2 支付宝转账 
+3 平安银企直连代发转账
+        :type TransferType: int
+        :param RecipientList: 转账详情
+        :type RecipientList: list of CreateBatchPaymentRecipient
+        :param ReqReserved: 请求预留字段
+        :type ReqReserved: str
+        :param NotifyUrl: 回调Url
+        :type NotifyUrl: str
+        """
+        self.TransferType = None
+        self.RecipientList = None
+        self.ReqReserved = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TransferType = params.get("TransferType")
+        if params.get("RecipientList") is not None:
+            self.RecipientList = []
+            for item in params.get("RecipientList"):
+                obj = CreateBatchPaymentRecipient()
+                obj._deserialize(item)
+                self.RecipientList.append(obj)
+        self.ReqReserved = params.get("ReqReserved")
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentResponse(AbstractModel):
+    """CreateBatchPayment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateBatchPaymentData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateBatchPaymentData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCustAcctIdRequest(AbstractModel):
     """CreateCustAcctId请求参数结构体
 
@@ -4302,6 +4518,118 @@ class CreateSinglePayResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateSinglePaymentData(AbstractModel):
+    """CreateSinglePayment接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TradeSerialNo: 平台交易流水号，唯一
+        :type TradeSerialNo: str
+        """
+        self.TradeSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSinglePaymentRequest(AbstractModel):
+    """CreateSinglePayment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferType: 转账类型
+        :type TransferType: int
+        :param OrderId: 订单流水号
+        :type OrderId: str
+        :param TransferAmount: 转账金额
+        :type TransferAmount: int
+        :param AnchorId: 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+        :type AnchorId: str
+        :param ReqReserved: 请求预留字段，原样透传返回
+        :type ReqReserved: str
+        :param Remark: 业务备注
+        :type Remark: str
+        :param AnchorName: 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+        :type AnchorName: str
+        :param Uid: 主播业务ID（与主播ID不能同时为空，两者都填取主播ID）
+        :type Uid: str
+        :param NotifyUrl: 转账结果回调通知URL。若不填，则不进行回调。
+        :type NotifyUrl: str
+        """
+        self.TransferType = None
+        self.OrderId = None
+        self.TransferAmount = None
+        self.AnchorId = None
+        self.ReqReserved = None
+        self.Remark = None
+        self.AnchorName = None
+        self.Uid = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TransferType = params.get("TransferType")
+        self.OrderId = params.get("OrderId")
+        self.TransferAmount = params.get("TransferAmount")
+        self.AnchorId = params.get("AnchorId")
+        self.ReqReserved = params.get("ReqReserved")
+        self.Remark = params.get("Remark")
+        self.AnchorName = params.get("AnchorName")
+        self.Uid = params.get("Uid")
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSinglePaymentResponse(AbstractModel):
+    """CreateSinglePayment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码
+        :type ErrCode: str
+        :param ErrMessage: 响应消息
+        :type ErrMessage: str
+        :param Result: 返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateSinglePaymentData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateSinglePaymentData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class CreateTransferBatchRequest(AbstractModel):
@@ -6860,6 +7188,181 @@ class QueryBankWithdrawCashDetailsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryBatchPaymentResultData(AbstractModel):
+    """QueryBatchPaymentResult接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param TotalAmount: 批次总额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalAmount: int
+        :param TotalCount: 批次总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ReqReserved: 批次预留字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReqReserved: str
+        :param Remark: 批次备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param TransferType: 渠道类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferType: int
+        :param TransferInfoList: 转账明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferInfoList: list of QueryBatchPaymentResultDataInfo
+        """
+        self.BatchId = None
+        self.TotalAmount = None
+        self.TotalCount = None
+        self.ReqReserved = None
+        self.Remark = None
+        self.TransferType = None
+        self.TransferInfoList = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.TotalAmount = params.get("TotalAmount")
+        self.TotalCount = params.get("TotalCount")
+        self.ReqReserved = params.get("ReqReserved")
+        self.Remark = params.get("Remark")
+        self.TransferType = params.get("TransferType")
+        if params.get("TransferInfoList") is not None:
+            self.TransferInfoList = []
+            for item in params.get("TransferInfoList"):
+                obj = QueryBatchPaymentResultDataInfo()
+                obj._deserialize(item)
+                self.TransferInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryBatchPaymentResultDataInfo(AbstractModel):
+    """QueryBatchPaymentResultData复杂类型中的TransferInfoList
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
+        :param Status: 交易状态。
+0 处理中  
+1 预占成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+5 预占额度失败
+6 提交成功
+7 提交失败
+8 订单重复提交
+99 未知系统异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param TransferAmount: 转账金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferAmount: int
+        """
+        self.OrderId = None
+        self.AgentId = None
+        self.AgentName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.TransferAmount = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.TransferAmount = params.get("TransferAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryBatchPaymentResultRequest(AbstractModel):
+    """QueryBatchPaymentResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次号
+        :type BatchId: str
+        """
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryBatchPaymentResultResponse(AbstractModel):
+    """QueryBatchPaymentResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryBatchPaymentResultData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryBatchPaymentResultData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryBillDownloadURLData(AbstractModel):
     """智能代发-单笔代发转账对账单返回数据
 
@@ -9307,6 +9810,130 @@ class QuerySinglePayResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QuerySinglePaymentResultData(AbstractModel):
+    """QuerySinglePaymentResult接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TradeSerialNo: 平台交易流水号，唯一
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeSerialNo: str
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param TradeStatus: 交易状态。
+0 处理中  
+1 预占成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+5 预占额度失败
+6 提交成功
+7 提交失败
+8 订单重复提交
+99 未知系统异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeStatus: int
+        :param Remark: 业务备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
+        """
+        self.TradeSerialNo = None
+        self.OrderId = None
+        self.TradeStatus = None
+        self.Remark = None
+        self.AgentId = None
+        self.AgentName = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.OrderId = params.get("OrderId")
+        self.TradeStatus = params.get("TradeStatus")
+        self.Remark = params.get("Remark")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySinglePaymentResultRequest(AbstractModel):
+    """QuerySinglePaymentResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferType: 转账类型
+        :type TransferType: int
+        :param TradeSerialNo: 交易流水流水号，唯一
+        :type TradeSerialNo: str
+        :param OrderId: 订单号，与TradeSerialNo不能同时为空
+        :type OrderId: str
+        """
+        self.TransferType = None
+        self.TradeSerialNo = None
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.TransferType = params.get("TransferType")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySinglePaymentResultResponse(AbstractModel):
+    """QuerySinglePaymentResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QuerySinglePaymentResultData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QuerySinglePaymentResultData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class QuerySingleTransactionStatusRequest(AbstractModel):

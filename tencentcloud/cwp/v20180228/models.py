@@ -6555,6 +6555,52 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyWarningSettingRequest(AbstractModel):
+    """ModifyWarningSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WarningObjects: 告警设置的修改内容
+        :type WarningObjects: list of WarningObject
+        """
+        self.WarningObjects = None
+
+
+    def _deserialize(self, params):
+        if params.get("WarningObjects") is not None:
+            self.WarningObjects = []
+            for item in params.get("WarningObjects"):
+                obj = WarningObject()
+                obj._deserialize(item)
+                self.WarningObjects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWarningSettingResponse(AbstractModel):
+    """ModifyWarningSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyWebPageProtectSettingRequest(AbstractModel):
     """ModifyWebPageProtectSetting请求参数结构体
 
@@ -8470,6 +8516,46 @@ class VulDetailInfo(AbstractModel):
         self.CvssScore = params.get("CvssScore")
         self.Cvss = params.get("Cvss")
         self.PublishTime = params.get("PublishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WarningObject(AbstractModel):
+    """告警更新或插入的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线
+        :type Type: int
+        :param DisablePhoneWarning: 1: 关闭告警 0: 开启告警
+        :type DisablePhoneWarning: int
+        :param BeginTime: 开始时间，格式: HH:mm
+        :type BeginTime: str
+        :param EndTime: 结束时间，格式: HH:mm
+        :type EndTime: str
+        :param ControlBits: 漏洞等级控制位二进制，每一位对应页面漏洞等级的开启关闭：低中高（0:关闭；1：开启），例如：101 → 同时勾选低+高；01→(登录审计)疑似不告警，高危告警
+        :type ControlBits: str
+        """
+        self.Type = None
+        self.DisablePhoneWarning = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.ControlBits = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.DisablePhoneWarning = params.get("DisablePhoneWarning")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.ControlBits = params.get("ControlBits")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -237,6 +237,8 @@ class CreateDeviceRequest(AbstractModel):
         :type AppSKey: str
         :param NwkSKey: LoRaWAN 网络会话密钥
         :type NwkSKey: str
+        :param DefinedPsk: 手动指定设备的PSK密钥
+        :type DefinedPsk: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -245,6 +247,7 @@ class CreateDeviceRequest(AbstractModel):
         self.DevEUI = None
         self.AppSKey = None
         self.NwkSKey = None
+        self.DefinedPsk = None
 
 
     def _deserialize(self, params):
@@ -255,6 +258,7 @@ class CreateDeviceRequest(AbstractModel):
         self.DevEUI = params.get("DevEUI")
         self.AppSKey = params.get("AppSKey")
         self.NwkSKey = params.get("NwkSKey")
+        self.DefinedPsk = params.get("DefinedPsk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

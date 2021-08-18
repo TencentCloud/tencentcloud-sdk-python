@@ -2604,6 +2604,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyWarningSetting(self, request):
+        """修改告警设置
+
+        :param request: Request instance for ModifyWarningSetting.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWarningSettingRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyWarningSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWarningSetting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWarningSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyWebPageProtectSetting(self, request):
         """网站防篡改-修改网站防护设置
 

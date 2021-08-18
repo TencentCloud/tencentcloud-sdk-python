@@ -1183,11 +1183,14 @@ class CreateEnvironmentRequest(AbstractModel):
         :type Remark: str
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param RetentionPolicy: 消息保留策略
+        :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
         self.ClusterId = None
+        self.RetentionPolicy = None
 
 
     def _deserialize(self, params):
@@ -1195,6 +1198,9 @@ class CreateEnvironmentRequest(AbstractModel):
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
         self.ClusterId = params.get("ClusterId")
+        if params.get("RetentionPolicy") is not None:
+            self.RetentionPolicy = RetentionPolicy()
+            self.RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1637,10 +1643,13 @@ class DeleteSubscriptionsRequest(AbstractModel):
         :type ClusterId: str
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
+        :param Force: 是否强制删除，默认为false
+        :type Force: bool
         """
         self.SubscriptionTopicSets = None
         self.ClusterId = None
         self.EnvironmentId = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -1652,6 +1661,7 @@ class DeleteSubscriptionsRequest(AbstractModel):
                 self.SubscriptionTopicSets.append(obj)
         self.ClusterId = params.get("ClusterId")
         self.EnvironmentId = params.get("EnvironmentId")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1700,10 +1710,13 @@ class DeleteTopicsRequest(AbstractModel):
         :type ClusterId: str
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
+        :param Force: 是否强制删除，默认为false
+        :type Force: bool
         """
         self.TopicSets = None
         self.ClusterId = None
         self.EnvironmentId = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -1715,6 +1728,7 @@ class DeleteTopicsRequest(AbstractModel):
                 self.TopicSets.append(obj)
         self.ClusterId = params.get("ClusterId")
         self.EnvironmentId = params.get("EnvironmentId")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3345,11 +3359,14 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type Remark: str
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param RetentionPolicy: 消息保留策略
+        :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
         self.ClusterId = None
+        self.RetentionPolicy = None
 
 
     def _deserialize(self, params):
@@ -3357,6 +3374,9 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
         self.ClusterId = params.get("ClusterId")
+        if params.get("RetentionPolicy") is not None:
+            self.RetentionPolicy = RetentionPolicy()
+            self.RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3786,6 +3806,34 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class RetentionPolicy(AbstractModel):
+    """消息保留策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeInMinutes: 消息保留时长
+        :type TimeInMinutes: int
+        :param SizeInMB: 消息保留大小
+        :type SizeInMB: int
+        """
+        self.TimeInMinutes = None
+        self.SizeInMB = None
+
+
+    def _deserialize(self, params):
+        self.TimeInMinutes = params.get("TimeInMinutes")
+        self.SizeInMB = params.get("SizeInMB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RewindCmqQueueRequest(AbstractModel):

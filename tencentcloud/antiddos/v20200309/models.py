@@ -3612,6 +3612,8 @@ class L7RuleEntry(AbstractModel):
         :type VirtualPort: int
         :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
         :type SSLId: str
+        :param Id: 同ruleId
+        :type Id: str
         """
         self.KeepTime = None
         self.Domain = None
@@ -3633,6 +3635,7 @@ class L7RuleEntry(AbstractModel):
         self.CCStatus = None
         self.VirtualPort = None
         self.SSLId = None
+        self.Id = None
 
 
     def _deserialize(self, params):
@@ -3661,6 +3664,7 @@ class L7RuleEntry(AbstractModel):
         self.CCStatus = params.get("CCStatus")
         self.VirtualPort = params.get("VirtualPort")
         self.SSLId = params.get("SSLId")
+        self.Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

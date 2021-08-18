@@ -537,6 +537,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBatchPayment(self, request):
+        """灵云-批量主播转账接口
+
+        :param request: Request instance for CreateBatchPayment.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateBatchPaymentRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateBatchPaymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBatchPayment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBatchPaymentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCustAcctId(self, request):
         """会员子账户开立。会员在银行注册，并开立会员子账户，交易网会员代码即会员在平台端系统的会员编号。
         平台需保存银行返回的子账户账号，后续交易接口都会用到。会员属性字段为预留扩展字段，当前必须送默认值。
@@ -804,6 +832,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSinglePayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSinglePayment(self, request):
+        """灵云-单笔主播转账接口
+
+        :param request: Request instance for CreateSinglePayment.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateSinglePaymentRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateSinglePaymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSinglePayment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSinglePaymentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1490,6 +1546,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryBatchPaymentResult(self, request):
+        """灵云-批量转账结果查询
+
+        :param request: Request instance for QueryBatchPaymentResult.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryBatchPaymentResultRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryBatchPaymentResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryBatchPaymentResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryBatchPaymentResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryBillDownloadURL(self, request):
         """获取单笔代发转账对账单下载URL
 
@@ -2037,6 +2121,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuerySinglePayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QuerySinglePaymentResult(self, request):
+        """灵云-单笔转账结果查询
+
+        :param request: Request instance for QuerySinglePaymentResult.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QuerySinglePaymentResultRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QuerySinglePaymentResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QuerySinglePaymentResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QuerySinglePaymentResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

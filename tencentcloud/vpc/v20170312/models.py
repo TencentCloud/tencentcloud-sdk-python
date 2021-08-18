@@ -2546,13 +2546,18 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetworkType: 带宽包类型，包括'HIGH_QUALITY_BGP', 'BGP'，'SINGLEISP'，'ANYCAST'
+        :param NetworkType: 带宽包类型, 默认值: BGP, 可选值:
+<li>BGP: 普通BGP共享带宽包</li>
+<li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
         :type NetworkType: str
-        :param ChargeType: 带宽包计费类型，包括‘TOP5_POSTPAID_BY_MONTH’，‘PERCENT95_POSTPAID_BY_MONTH’
+        :param ChargeType: 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
+<li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
+<li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
+<li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
         :type ChargeType: str
-        :param BandwidthPackageName: 带宽包名字
+        :param BandwidthPackageName: 带宽包名称。
         :type BandwidthPackageName: str
-        :param BandwidthPackageCount: 带宽包数量(传统账户类型只能填1)
+        :param BandwidthPackageCount: 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
         :type BandwidthPackageCount: int
         :param InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。该功能当前内测中，暂不对外开放。
         :type InternetMaxBandwidth: int
@@ -2599,9 +2604,9 @@ class CreateBandwidthPackageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BandwidthPackageId: 带宽包唯一ID
+        :param BandwidthPackageId: 带宽包唯一ID。
         :type BandwidthPackageId: str
-        :param BandwidthPackageIds: 带宽包唯一ID列表(申请数量大于1时有效)
+        :param BandwidthPackageIds: 带宽包唯一ID列表(申请数量大于1时有效)。
         :type BandwidthPackageIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

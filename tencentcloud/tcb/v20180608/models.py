@@ -1312,6 +1312,9 @@ class CodeSource(AbstractModel):
         :param Branch: 代码分支
 注意：此字段可能返回 null，表示取不到有效值。
         :type Branch: str
+        :param ProjectId: coding项目ID，type为coding时需要填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
         """
         self.Type = None
         self.Url = None
@@ -1321,6 +1324,7 @@ class CodeSource(AbstractModel):
         self.CodingPackageVersion = None
         self.RawCode = None
         self.Branch = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1332,6 +1336,7 @@ class CodeSource(AbstractModel):
         self.CodingPackageVersion = params.get("CodingPackageVersion")
         self.RawCode = params.get("RawCode")
         self.Branch = params.get("Branch")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
