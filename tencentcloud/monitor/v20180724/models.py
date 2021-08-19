@@ -2350,6 +2350,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type Enable: list of int
         :param NotBindingNoticeRule: 传 1 查询未配置通知规则的告警策略；不传或传其他数值，查询所有策略。
         :type NotBindingNoticeRule: int
+        :param InstanceGroupId: 实例分组id
+        :type InstanceGroupId: int
         """
         self.Module = None
         self.PageNumber = None
@@ -2368,6 +2370,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.RuleTypes = None
         self.Enable = None
         self.NotBindingNoticeRule = None
+        self.InstanceGroupId = None
 
 
     def _deserialize(self, params):
@@ -2388,6 +2391,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.RuleTypes = params.get("RuleTypes")
         self.Enable = params.get("Enable")
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
+        self.InstanceGroupId = params.get("InstanceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

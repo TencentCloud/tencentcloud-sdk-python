@@ -80,6 +80,9 @@ INVALIDPARAMETERVALUE_STREAMID = 'InvalidParameterValue.StreamId'
 # 流不存在，请检查设备配置。
 INVALIDPARAMETERVALUE_STREAMINFONOTEXIST = 'InvalidParameterValue.StreamInfoNotExist'
 
+# 最多创建100个时间模板。
+INVALIDPARAMETERVALUE_TEMPLATEBEYONDLIMIT = 'InvalidParameterValue.TemplateBeyondLimit'
+
 # 模板时间片段为空。
 INVALIDPARAMETERVALUE_TEMPLATESPECEMPTY = 'InvalidParameterValue.TemplateSpecEmpty'
 
@@ -154,6 +157,9 @@ UNSUPPORTEDOPERATION_DEVICECANNOTDO = 'UnsupportedOperation.DeviceCanNotDo'
 
 # 存在重复设备。
 UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = 'UnsupportedOperation.DeviceDupKeyExist'
+
+# 设备和通道不匹配，请检查。
+UNSUPPORTEDOPERATION_DEVICEMISSMATCH = 'UnsupportedOperation.DeviceMissMatch'
 
 # 绑定的设备列表中有不存在的设备。
 UNSUPPORTEDOPERATION_DEVICENOTFOUND = 'UnsupportedOperation.DeviceNotFound'

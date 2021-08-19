@@ -4292,13 +4292,13 @@ class SecurityGroupBothWayInfo(AbstractModel):
         :param SourceId: 访问源
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceId: str
-        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 100:资源组
+        :param SourceType: 访问源类型，默认为0，0: IP, 1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 7: 参数模板, 100: 资产分组
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: int
         :param TargetId: 访问目的
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetId: str
-        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 100:资源组
+        :param TargetType: 访问目的类型，默认为0，0: IP, 1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB, 7: 参数模板, 100: 资产分组
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: int
         :param Protocol: 协议
@@ -4333,7 +4333,7 @@ class SecurityGroupBothWayInfo(AbstractModel):
         :param SubnetId: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param InstanceName: 子网ID
+        :param InstanceName: 实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
         :param PublicIp: 公网IP，多个以英文逗号分隔

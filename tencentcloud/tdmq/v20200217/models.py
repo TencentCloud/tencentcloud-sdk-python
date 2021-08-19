@@ -2414,12 +2414,18 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
         :type ClusterId: str
         :param RoleName: 角色名称
         :type RoleName: str
+        :param Filters: * RoleName
+按照角色名进行过滤，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
         """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
         self.ClusterId = None
         self.RoleName = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -2428,6 +2434,12 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ClusterId = params.get("ClusterId")
         self.RoleName = params.get("RoleName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

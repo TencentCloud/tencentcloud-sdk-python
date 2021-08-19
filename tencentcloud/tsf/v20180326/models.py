@@ -3937,8 +3937,11 @@ class DeleteImageTagsRequest(AbstractModel):
         r"""
         :param ImageTags: 镜像版本数组
         :type ImageTags: list of DeleteImageTag
+        :param RepoType: 企业: tcr ；个人: personal或者不填
+        :type RepoType: str
         """
         self.ImageTags = None
+        self.RepoType = None
 
 
     def _deserialize(self, params):
@@ -3948,6 +3951,7 @@ class DeleteImageTagsRequest(AbstractModel):
                 obj = DeleteImageTag()
                 obj._deserialize(item)
                 self.ImageTags.append(obj)
+        self.RepoType = params.get("RepoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4522,9 +4526,9 @@ class DeployContainerGroupRequest(AbstractModel):
         :type MemLimit: str
         :param JvmOpts: jvm参数
         :type JvmOpts: str
-        :param CpuRequest: 业务容器分配的 CPU 核数，对应 K8S 的 request
+        :param CpuRequest: 业务容器分配的 CPU 核数，对应 K8S 的 request，默认0.25
         :type CpuRequest: str
-        :param MemRequest: 业务容器分配的内存 MiB 数，对应 K8S 的 request
+        :param MemRequest: 业务容器分配的内存 MiB 数，对应 K8S 的 request，默认640 MiB
         :type MemRequest: str
         :param DoNotStart: 是否不立即启动
         :type DoNotStart: bool
@@ -4564,6 +4568,10 @@ class DeployContainerGroupRequest(AbstractModel):
         :type DeployAgent: bool
         :param SchedulingStrategy: 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
         :type SchedulingStrategy: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
+        :param IncrementalDeployment: 是否进行增量部署，默认为false，全量更新
+        :type IncrementalDeployment: bool
+        :param RepoType: tcr或者不填
+        :type RepoType: str
         """
         self.GroupId = None
         self.TagName = None
@@ -4594,6 +4602,8 @@ class DeployContainerGroupRequest(AbstractModel):
         self.ServiceSetting = None
         self.DeployAgent = None
         self.SchedulingStrategy = None
+        self.IncrementalDeployment = None
+        self.RepoType = None
 
 
     def _deserialize(self, params):
@@ -4637,6 +4647,8 @@ class DeployContainerGroupRequest(AbstractModel):
         if params.get("SchedulingStrategy") is not None:
             self.SchedulingStrategy = SchedulingStrategy()
             self.SchedulingStrategy._deserialize(params.get("SchedulingStrategy"))
+        self.IncrementalDeployment = params.get("IncrementalDeployment")
+        self.RepoType = params.get("RepoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4704,6 +4716,8 @@ class DeployGroupRequest(AbstractModel):
         :type StartScript: str
         :param StopScript: 停止脚本 base64编码
         :type StopScript: str
+        :param IncrementalDeployment: 是否进行增量部署，默认为false，全量更新
+        :type IncrementalDeployment: bool
         """
         self.GroupId = None
         self.PkgId = None
@@ -4719,6 +4733,7 @@ class DeployGroupRequest(AbstractModel):
         self.DeployWaitTime = None
         self.StartScript = None
         self.StopScript = None
+        self.IncrementalDeployment = None
 
 
     def _deserialize(self, params):
@@ -4738,6 +4753,7 @@ class DeployGroupRequest(AbstractModel):
         self.DeployWaitTime = params.get("DeployWaitTime")
         self.StartScript = params.get("StartScript")
         self.StopScript = params.get("StopScript")
+        self.IncrementalDeployment = params.get("IncrementalDeployment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6537,6 +6553,54 @@ class DescribeGroupInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGroupReleaseRequest(AbstractModel):
+    """DescribeGroupRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupReleaseResponse(AbstractModel):
+    """DescribeGroupRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 部署组发布的相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GroupRelease()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGroupRequest(AbstractModel):
     """DescribeGroup请求参数结构体
 
@@ -6812,16 +6876,30 @@ class DescribeImageRepositoryRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页个数，默认为20， 取值应为1~100
         :type Limit: int
+        :param RepoType: 企业: tcr ；个人: personal或者不填
+        :type RepoType: str
+        :param ApplicationId: 应用id
+        :type ApplicationId: str
+        :param TcrRepoInfo: TcrRepoInfo值
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
         """
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.RepoType = None
+        self.ApplicationId = None
+        self.TcrRepoInfo = None
 
 
     def _deserialize(self, params):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.RepoType = params.get("RepoType")
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("TcrRepoInfo") is not None:
+            self.TcrRepoInfo = TcrRepoInfo()
+            self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6871,12 +6949,18 @@ class DescribeImageTagsRequest(AbstractModel):
         :type QueryImageIdFlag: int
         :param SearchWord: 可用于搜索的 tag 名字
         :type SearchWord: str
+        :param RepoType: 企业: tcr ；个人: personal或者不填
+        :type RepoType: str
+        :param TcrRepoInfo: TcrRepoInfo值
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
         """
         self.ApplicationId = None
         self.Offset = None
         self.Limit = None
         self.QueryImageIdFlag = None
         self.SearchWord = None
+        self.RepoType = None
+        self.TcrRepoInfo = None
 
 
     def _deserialize(self, params):
@@ -6885,6 +6969,10 @@ class DescribeImageTagsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.QueryImageIdFlag = params.get("QueryImageIdFlag")
         self.SearchWord = params.get("SearchWord")
+        self.RepoType = params.get("RepoType")
+        if params.get("TcrRepoInfo") is not None:
+            self.TcrRepoInfo = TcrRepoInfo()
+            self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9677,6 +9765,86 @@ class FileConfig(AbstractModel):
         
 
 
+class FileConfigRelease(AbstractModel):
+    """文件配置项发布信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigReleaseId: 配置项发布ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigReleaseId: str
+        :param ConfigId: 配置项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        :param ReleaseDesc: 发布描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseDesc: str
+        :param ReleaseTime: 发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        """
+        self.ConfigReleaseId = None
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ReleaseDesc = None
+        self.ReleaseTime = None
+        self.GroupId = None
+        self.GroupName = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.ClusterId = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ConfigReleaseId = params.get("ConfigReleaseId")
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+        self.ReleaseTime = params.get("ReleaseTime")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayApiGroupVo(AbstractModel):
     """网关分组简单信息
 
@@ -10208,6 +10376,81 @@ class GroupPodResult(AbstractModel):
         
 
 
+class GroupRelease(AbstractModel):
+    """部署组配置发布相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageId: 程序包ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageId: str
+        :param PackageName: 程序包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageName: str
+        :param PackageVersion: 程序包版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageVersion: str
+        :param RepoName: 镜像名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        :param TagName: 镜像版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param PublicConfigReleaseList: 已发布的全局配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicConfigReleaseList: list of ConfigRelease
+        :param ConfigReleaseList: 已发布的应用配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigReleaseList: list of ConfigRelease
+        :param FileConfigReleaseList: 已发布的文件配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileConfigReleaseList: list of FileConfigRelease
+        """
+        self.PackageId = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.RepoName = None
+        self.TagName = None
+        self.PublicConfigReleaseList = None
+        self.ConfigReleaseList = None
+        self.FileConfigReleaseList = None
+
+
+    def _deserialize(self, params):
+        self.PackageId = params.get("PackageId")
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        self.RepoName = params.get("RepoName")
+        self.TagName = params.get("TagName")
+        if params.get("PublicConfigReleaseList") is not None:
+            self.PublicConfigReleaseList = []
+            for item in params.get("PublicConfigReleaseList"):
+                obj = ConfigRelease()
+                obj._deserialize(item)
+                self.PublicConfigReleaseList.append(obj)
+        if params.get("ConfigReleaseList") is not None:
+            self.ConfigReleaseList = []
+            for item in params.get("ConfigReleaseList"):
+                obj = ConfigRelease()
+                obj._deserialize(item)
+                self.ConfigReleaseList.append(obj)
+        if params.get("FileConfigReleaseList") is not None:
+            self.FileConfigReleaseList = []
+            for item in params.get("FileConfigReleaseList"):
+                obj = FileConfigRelease()
+                obj._deserialize(item)
+                self.FileConfigReleaseList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GroupUnitApiDailyUseStatistics(AbstractModel):
     """单元化API使用详情统计对象列表
 
@@ -10525,6 +10768,18 @@ class ImageRepository(AbstractModel):
         :param UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param TcrRepoInfo: TcrRepoInfo值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param TcrBindingId: TcrBindingId值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrBindingId: int
+        :param ApplicationId: applicationid值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: ApplicationName值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: :class:`tencentcloud.tsf.v20180326.models.ScalableRule`
         """
         self.Reponame = None
         self.Repotype = None
@@ -10537,6 +10792,10 @@ class ImageRepository(AbstractModel):
         self.Description = None
         self.CreationTime = None
         self.UpdateTime = None
+        self.TcrRepoInfo = None
+        self.TcrBindingId = None
+        self.ApplicationId = None
+        self.ApplicationName = None
 
 
     def _deserialize(self, params):
@@ -10551,6 +10810,14 @@ class ImageRepository(AbstractModel):
         self.Description = params.get("Description")
         self.CreationTime = params.get("CreationTime")
         self.UpdateTime = params.get("UpdateTime")
+        if params.get("TcrRepoInfo") is not None:
+            self.TcrRepoInfo = TcrRepoInfo()
+            self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        self.TcrBindingId = params.get("TcrBindingId")
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("ApplicationName") is not None:
+            self.ApplicationName = ScalableRule()
+            self.ApplicationName._deserialize(params.get("ApplicationName"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10634,6 +10901,9 @@ class ImageTag(AbstractModel):
         :type PushTime: str
         :param SizeByte: 单位为字节
         :type SizeByte: int
+        :param TcrRepoInfo: TcrRepoInfo值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
         """
         self.RepoName = None
         self.TagName = None
@@ -10648,6 +10918,7 @@ class ImageTag(AbstractModel):
         self.Os = None
         self.PushTime = None
         self.SizeByte = None
+        self.TcrRepoInfo = None
 
 
     def _deserialize(self, params):
@@ -10664,6 +10935,9 @@ class ImageTag(AbstractModel):
         self.Os = params.get("Os")
         self.PushTime = params.get("PushTime")
         self.SizeByte = params.get("SizeByte")
+        if params.get("TcrRepoInfo") is not None:
+            self.TcrRepoInfo = TcrRepoInfo()
+            self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12313,6 +12587,61 @@ class Namespace(AbstractModel):
         
 
 
+class OperateApplicationTcrBindingRequest(AbstractModel):
+    """OperateApplicationTcrBinding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Command: bind 或 unbind
+        :type Command: str
+        :param ApplicationId: 应用id
+        :type ApplicationId: str
+        :param TcrRepoInfo: TcrRepoInfo值
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        """
+        self.Command = None
+        self.ApplicationId = None
+        self.TcrRepoInfo = None
+
+
+    def _deserialize(self, params):
+        self.Command = params.get("Command")
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("TcrRepoInfo") is not None:
+            self.TcrRepoInfo = TcrRepoInfo()
+            self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateApplicationTcrBindingResponse(AbstractModel):
+    """OperateApplicationTcrBinding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class OperationInfo(AbstractModel):
     """提供给前端，控制按钮是否显示
 
@@ -13547,6 +13876,56 @@ class RollbackConfigResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class ScalableRule(AbstractModel):
+    """ScalableRule值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: RuleId值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param Name: Name值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param ExpandVmCountLimit: ExpandVmCountLimit值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpandVmCountLimit: int
+        :param ShrinkVmCountLimit: ShrinkVmCountLimit值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShrinkVmCountLimit: int
+        :param GroupCount: GroupCount值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupCount: int
+        :param Desc: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        """
+        self.RuleId = None
+        self.Name = None
+        self.ExpandVmCountLimit = None
+        self.ShrinkVmCountLimit = None
+        self.GroupCount = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Name = params.get("Name")
+        self.ExpandVmCountLimit = params.get("ExpandVmCountLimit")
+        self.ShrinkVmCountLimit = params.get("ShrinkVmCountLimit")
+        self.GroupCount = params.get("GroupCount")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SchedulingStrategy(AbstractModel):
@@ -14982,6 +15361,51 @@ class TaskRule(AbstractModel):
         self.RuleType = params.get("RuleType")
         self.Expression = params.get("Expression")
         self.RepeatInterval = params.get("RepeatInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TcrRepoInfo(AbstractModel):
+    """tcr仓库信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param RegistryId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryId: str
+        :param RegistryName: 实例名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryName: str
+        :param Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param RepoName: 仓库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        """
+        self.Region = None
+        self.RegistryId = None
+        self.RegistryName = None
+        self.Namespace = None
+        self.RepoName = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegistryId = params.get("RegistryId")
+        self.RegistryName = params.get("RegistryName")
+        self.Namespace = params.get("Namespace")
+        self.RepoName = params.get("RepoName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

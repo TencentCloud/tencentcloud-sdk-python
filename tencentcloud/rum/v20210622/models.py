@@ -218,3 +218,60 @@ class DescribeDataPerformancePageResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeErrorRequest(AbstractModel):
+    """DescribeError请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Date: 日期
+        :type Date: str
+        :param ID: 项目ID
+        :type ID: int
+        """
+        self.Date = None
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeErrorResponse(AbstractModel):
+    """DescribeError返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 内容
+        :type Content: str
+        :param ID: 项目ID
+        :type ID: int
+        :param CreateTime: 时间
+        :type CreateTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Content = None
+        self.ID = None
+        self.CreateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.ID = params.get("ID")
+        self.CreateTime = params.get("CreateTime")
+        self.RequestId = params.get("RequestId")

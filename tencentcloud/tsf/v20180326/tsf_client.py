@@ -2184,6 +2184,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGroupRelease(self, request):
+        """查询部署组相关的发布信息
+
+        :param request: Request instance for DescribeGroupRelease.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupReleaseRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupRelease", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupReleaseResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupUseDetail(self, request):
         """查询网关分组监控明细数据
 
@@ -3796,6 +3824,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUploadInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OperateApplicationTcrBinding(self, request):
+        """绑定解绑tcr仓库
+
+        :param request: Request instance for OperateApplicationTcrBinding.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.OperateApplicationTcrBindingRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.OperateApplicationTcrBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OperateApplicationTcrBinding", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OperateApplicationTcrBindingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -27,12 +27,20 @@ class DescribeSREInstanceAccessAddressRequest(AbstractModel):
         r"""
         :param InstanceId: 注册引擎实例Id
         :type InstanceId: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
         """
         self.InstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -317,6 +325,9 @@ class SREInstance(AbstractModel):
         :param EnableInternet: 注册引擎是否开启公网
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableInternet: bool
+        :param VpcInfos: 私有网络列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcInfos: list of VpcInfo
         """
         self.InstanceId = None
         self.Name = None
@@ -336,6 +347,7 @@ class SREInstance(AbstractModel):
         self.EnvInfos = None
         self.EngineRegion = None
         self.EnableInternet = None
+        self.VpcInfos = None
 
 
     def _deserialize(self, params):
@@ -362,6 +374,12 @@ class SREInstance(AbstractModel):
                 self.EnvInfos.append(obj)
         self.EngineRegion = params.get("EngineRegion")
         self.EnableInternet = params.get("EnableInternet")
+        if params.get("VpcInfos") is not None:
+            self.VpcInfos = []
+            for item in params.get("VpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.VpcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -382,14 +400,19 @@ class VpcInfo(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID
         :type SubnetId: str
+        :param IntranetAddress: 内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetAddress: str
         """
         self.VpcId = None
         self.SubnetId = None
+        self.IntranetAddress = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.IntranetAddress = params.get("IntranetAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

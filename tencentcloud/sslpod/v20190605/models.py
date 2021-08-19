@@ -596,30 +596,64 @@ class DomainSiteInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: ID
+        :param Id: ID标识
         :type Id: int
         :param Domain: 域名
         :type Domain: str
         :param Ip: IP地址
         :type Ip: str
-        :param AutoIP: 是否自动获取IP
+        :param AutoIP: 是否自动获取IP：true：是，false:否
         :type AutoIP: bool
-        :param ServerType: 监控服务类型
-        :type ServerType: int
+        :param Grade: 评级
+"A+"，
+ "A"，
+"A-"，
+"B"，
+"C"，
+"D"，
+ "E"，
+ "F"，
+"T"，
+        :type Grade: str
         :param Brand: 证书品牌
         :type Brand: str
-        :param Grade: 评级
-        :type Grade: str
+        :param ServerType: 监控服务类型
+0 :Web
+1: SMTP
+2: IMAP
+3: POP3
+        :type ServerType: int
         :param GradeCode: 评级Code
+0："unknown"，
+1："A+"，
+2： "A"，
+3："A-"，
+4："B"，
+5："C"，
+6："D"，
+7： "E"，
+8： "F"，
+9："T"，
         :type GradeCode: int
-        :param Notice: 是否监控告警
+        :param Notice: 是否监控告警；true：是，false:否
         :type Notice: bool
         :param AccountDomainId: 账号域名关系ID
         :type AccountDomainId: int
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
-        :param Status: 域名状态
+        :param Status: 域名状态:
+连接异常，
+证书已过期，
+证书已吊销，
+证书黑名单，
+证书域名不匹配，
+证书不可信，
+证书密钥弱，
+证书即将过期，少于7天，
+证书即将过期，少于30天，
+正常，
+部分异常
         :type Status: str
         :param Port: 域名端口
         :type Port: str
@@ -628,9 +662,9 @@ class DomainSiteInfo(AbstractModel):
         self.Domain = None
         self.Ip = None
         self.AutoIP = None
-        self.ServerType = None
-        self.Brand = None
         self.Grade = None
+        self.Brand = None
+        self.ServerType = None
         self.GradeCode = None
         self.Notice = None
         self.AccountDomainId = None
@@ -644,9 +678,9 @@ class DomainSiteInfo(AbstractModel):
         self.Domain = params.get("Domain")
         self.Ip = params.get("Ip")
         self.AutoIP = params.get("AutoIP")
-        self.ServerType = params.get("ServerType")
-        self.Brand = params.get("Brand")
         self.Grade = params.get("Grade")
+        self.Brand = params.get("Brand")
+        self.ServerType = params.get("ServerType")
         self.GradeCode = params.get("GradeCode")
         self.Notice = params.get("Notice")
         self.AccountDomainId = params.get("AccountDomainId")
@@ -669,7 +703,10 @@ class LimitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 通知类型
+        :param Type: 通知类型：
+limit_emai：邮件
+limit_wechat：微信
+limit_phone：手机
         :type Type: str
         :param Total: 总量
         :type Total: int
@@ -748,7 +785,7 @@ class NoticeInfoResult(AbstractModel):
         r"""
         :param Id: 通知ID
         :type Id: int
-        :param NoticeType: 通知开关信息
+        :param NoticeType: 通知开关信息；0：关闭；15开启
         :type NoticeType: int
         :param LimitInfos: 额度信息
         :type LimitInfos: list of LimitInfo

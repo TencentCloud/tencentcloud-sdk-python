@@ -55,6 +55,15 @@ class AllDeviceInfo(AbstractModel):
         :param Recordable: 该设备是否可录制
 注意：此字段可能返回 null，表示取不到有效值。
         :type Recordable: int
+        :param Protocol: 设备接入协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param GroupId: 组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self.DeviceId = None
         self.DeviceType = None
@@ -66,6 +75,9 @@ class AllDeviceInfo(AbstractModel):
         self.DeviceCode = None
         self.IsRecord = None
         self.Recordable = None
+        self.Protocol = None
+        self.GroupId = None
+        self.GroupName = None
 
 
     def _deserialize(self, params):
@@ -79,6 +91,9 @@ class AllDeviceInfo(AbstractModel):
         self.DeviceCode = params.get("DeviceCode")
         self.IsRecord = params.get("IsRecord")
         self.Recordable = params.get("Recordable")
+        self.Protocol = params.get("Protocol")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -159,14 +174,18 @@ irisOut - 光圈放大
 focusIn - 焦距变近
 focusOut - 焦距变远
         :type Command: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         """
         self.DeviceId = None
         self.Command = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
         self.Command = params.get("Command")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -178,6 +197,60 @@ focusOut - 焦距变远
 
 class ControlDevicePTZResponse(AbstractModel):
     """ControlDevicePTZ返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ControlRecordStreamRequest(AbstractModel):
+    """ControlRecordStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备Id，设备的唯一标识
+        :type DeviceId: str
+        :param StreamId: 流Id，流的唯一标识
+        :type StreamId: str
+        :param Command: |控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
+| Offset  | uint  |否|拖动播放时的时间偏移量（相对于起始时间）,单位：秒
+        :type Command: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        """
+        self.DeviceId = None
+        self.StreamId = None
+        self.Command = None
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.StreamId = params.get("StreamId")
+        self.Command = params.get("Command")
+        self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlRecordStreamResponse(AbstractModel):
+    """ControlRecordStream返回参数结构体
 
     """
 
@@ -335,11 +408,14 @@ class CreateRecordPlanRequest(AbstractModel):
         :type EventId: int
         :param Devices: 该录制计划绑定的设备列表
         :type Devices: list of DeviceItem
+        :param RecordStorageTime: 存储周期
+        :type RecordStorageTime: int
         """
         self.Name = None
         self.TimeTemplateId = None
         self.EventId = None
         self.Devices = None
+        self.RecordStorageTime = None
 
 
     def _deserialize(self, params):
@@ -352,6 +428,7 @@ class CreateRecordPlanRequest(AbstractModel):
                 obj = DeviceItem()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        self.RecordStorageTime = params.get("RecordStorageTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -638,11 +715,14 @@ class DescribeAllDeviceListRequest(AbstractModel):
         :type NickName: str
         :param DeviceIds: DeviceId列表，需要精确查找设备时为必填
         :type DeviceIds: list of str
+        :param DeviceTypes: 设备类型过滤
+        :type DeviceTypes: list of int
         """
         self.Offset = None
         self.Limit = None
         self.NickName = None
         self.DeviceIds = None
+        self.DeviceTypes = None
 
 
     def _deserialize(self, params):
@@ -650,6 +730,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.NickName = params.get("NickName")
         self.DeviceIds = params.get("DeviceIds")
+        self.DeviceTypes = params.get("DeviceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -834,14 +915,18 @@ class DescribeDeviceStreamsRequest(AbstractModel):
         :type DeviceId: str
         :param ExpireTime: 流地址失效时间
         :type ExpireTime: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         """
         self.DeviceId = None
         self.ExpireTime = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
         self.ExpireTime = params.get("ExpireTime")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -987,12 +1072,15 @@ class DescribeGroupDevicesRequest(AbstractModel):
         :type NickName: str
         :param Recordable: 过滤不可录制设备
         :type Recordable: int
+        :param DeviceTypes: 当Group是普通组的时候，支持根据deviceTypes筛选类型
+        :type DeviceTypes: list of int
         """
         self.GroupId = None
         self.Offset = None
         self.Limit = None
         self.NickName = None
         self.Recordable = None
+        self.DeviceTypes = None
 
 
     def _deserialize(self, params):
@@ -1001,6 +1089,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.NickName = params.get("NickName")
         self.Recordable = params.get("Recordable")
+        self.DeviceTypes = params.get("DeviceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1150,12 +1239,15 @@ class DescribeRecordStreamRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 录像流结束时间，当录像文件Id为空时有效
         :type EndTime: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         """
         self.DeviceId = None
         self.ExpireTime = None
         self.RecordId = None
         self.StartTime = None
         self.EndTime = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
@@ -1164,6 +1256,7 @@ class DescribeRecordStreamRequest(AbstractModel):
         self.RecordId = params.get("RecordId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1241,6 +1334,8 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 2.非录制设备数：NonRecordingDevice
 3.观看流量总数：WatchFlux
 4.已用存储容量总数：StorageUsage
+5. X-P2P分享流量: P2PFluxTotal
+6. X-P2P峰值带宽: P2PPeakValue
         :type StatisticField: str
         """
         self.StartDate = None
@@ -1331,6 +1426,12 @@ class DescribeStatisticSummaryResponse(AbstractModel):
         :param StorageUsage: 累计有效存储容量总数。单位：GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageUsage: float
+        :param P2PFluxTotal: X-P2P分享流量。单位 Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P2PFluxTotal: float
+        :param P2PPeakValue: X-P2P峰值带宽。 单位bps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P2PPeakValue: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1338,6 +1439,8 @@ class DescribeStatisticSummaryResponse(AbstractModel):
         self.NonRecordingDevice = None
         self.WatchFlux = None
         self.StorageUsage = None
+        self.P2PFluxTotal = None
+        self.P2PPeakValue = None
         self.RequestId = None
 
 
@@ -1346,6 +1449,8 @@ class DescribeStatisticSummaryResponse(AbstractModel):
         self.NonRecordingDevice = params.get("NonRecordingDevice")
         self.WatchFlux = params.get("WatchFlux")
         self.StorageUsage = params.get("StorageUsage")
+        self.P2PFluxTotal = params.get("P2PFluxTotal")
+        self.P2PPeakValue = params.get("P2PPeakValue")
         self.RequestId = params.get("RequestId")
 
 
@@ -1547,12 +1652,17 @@ class DeviceItem(AbstractModel):
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
         """
         self.DeviceId = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1575,16 +1685,24 @@ class GetRecordDatesByDevRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制量，默认200
         :type Limit: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Type: 1: 云端录制 2: 本地录制
+        :type Type: int
         """
         self.DeviceId = None
         self.Offset = None
         self.Limit = None
+        self.ChannelId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ChannelId = params.get("ChannelId")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1853,12 +1971,18 @@ class GetVideoListByConRequest(AbstractModel):
         :param Date: 指定某天。取值【YYYY-MM-DD】
 当LatestDay为空或为0时，本参数不允许为空。
         :type Date: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Type: 1: 云端录制 2: 本地录制
+        :type Type: int
         """
         self.DeviceId = None
         self.Offset = None
         self.Limit = None
         self.LatestDay = None
         self.Date = None
+        self.ChannelId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -1867,6 +1991,8 @@ class GetVideoListByConRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.LatestDay = params.get("LatestDay")
         self.Date = params.get("Date")
+        self.ChannelId = params.get("ChannelId")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1942,6 +2068,9 @@ class GroupDeviceItem(AbstractModel):
         :param Recordable: 该设备是否可录制
 注意：此字段可能返回 null，表示取不到有效值。
         :type Recordable: int
+        :param Protocol: 设备接入协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
         """
         self.DeviceId = None
         self.NickName = None
@@ -1952,6 +2081,7 @@ class GroupDeviceItem(AbstractModel):
         self.DeviceCode = None
         self.IsRecord = None
         self.Recordable = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -1964,6 +2094,7 @@ class GroupDeviceItem(AbstractModel):
         self.DeviceCode = params.get("DeviceCode")
         self.IsRecord = params.get("IsRecord")
         self.Recordable = params.get("Recordable")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
