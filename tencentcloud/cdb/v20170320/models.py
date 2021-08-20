@@ -1090,6 +1090,7 @@ class CreateAuditPolicyRequest(AbstractModel):
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         :param LogExpireDay: 审计日志保存时长。支持值包括：
+7 - 一周
 30 - 一个月；
 180 - 六个月；
 365 - 一年；
@@ -2741,19 +2742,23 @@ class DescribeAuditConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogExpireDay: 审计日志保存时长。目前支持的值包括：[0，30，180，365，1095，1825]。
+        :param LogExpireDay: 审计日志保存时长。目前支持的值包括：[0，7，30，180，365，1095，1825]。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogExpireDay: int
         :param LogType: 审计日志存储类型。目前支持的值包括："storage" - 存储型。
         :type LogType: str
         :param IsClosing: 是否正在关闭审计。目前支持的值包括："false"-否，"true"-是
         :type IsClosing: str
+        :param CreateTime: 审计服务开通时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LogExpireDay = None
         self.LogType = None
         self.IsClosing = None
+        self.CreateTime = None
         self.RequestId = None
 
 
@@ -2761,6 +2766,7 @@ class DescribeAuditConfigResponse(AbstractModel):
         self.LogExpireDay = params.get("LogExpireDay")
         self.LogType = params.get("LogType")
         self.IsClosing = params.get("IsClosing")
+        self.CreateTime = params.get("CreateTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -7042,6 +7048,7 @@ class ModifyAuditConfigRequest(AbstractModel):
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param LogExpireDay: 审计日志保存时长。支持值包括：
+7 - 一周
 30 - 一个月；
 180 - 六个月；
 365 - 一年；

@@ -51,7 +51,7 @@ class DescribeNewUserAcquisitionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceRsp: 用户信誉值
+        :param ServiceRsp: 用户信誉分，1-5从低到高
         :type ServiceRsp: :class:`tencentcloud.pds.v20210701.models.Score`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -100,7 +100,7 @@ class DescribeStockEstimationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceRsp: 用户信誉值
+        :param ServiceRsp: 用户信誉分，1-5从低到高
         :type ServiceRsp: :class:`tencentcloud.pds.v20210701.models.Score`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -117,13 +117,13 @@ class DescribeStockEstimationResponse(AbstractModel):
 
 
 class Score(AbstractModel):
-    """信誉分
+    """信誉分，1-5从低到高
 
     """
 
     def __init__(self):
         r"""
-        :param Star: 用户信誉分
+        :param Star: 信誉分，1-5从低到高
         :type Star: int
         """
         self.Star = None

@@ -4348,6 +4348,8 @@ class SecurityGroupBothWayInfo(AbstractModel):
         :param ServiceTemplateId: 端口协议类型参数模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTemplateId: str
+        :param ProtocolPortType: 是否使用端口协议模板，0：否，1：是
+        :type ProtocolPortType: int
         """
         self.OrderIndex = None
         self.SourceId = None
@@ -4370,6 +4372,7 @@ class SecurityGroupBothWayInfo(AbstractModel):
         self.PrivateIp = None
         self.Cidr = None
         self.ServiceTemplateId = None
+        self.ProtocolPortType = None
 
 
     def _deserialize(self, params):
@@ -4394,6 +4397,7 @@ class SecurityGroupBothWayInfo(AbstractModel):
         self.PrivateIp = params.get("PrivateIp")
         self.Cidr = params.get("Cidr")
         self.ServiceTemplateId = params.get("ServiceTemplateId")
+        self.ProtocolPortType = params.get("ProtocolPortType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4462,6 +4466,8 @@ class SecurityGroupListData(AbstractModel):
         :type BothWayInfo: list of SecurityGroupBothWayInfo
         :param Direction: 方向，0：出站，1：入站，默认1
         :type Direction: int
+        :param ProtocolPortType: 是否使用端口协议模板，0：否，1：是
+        :type ProtocolPortType: int
         """
         self.OrderIndex = None
         self.SourceId = None
@@ -4485,6 +4491,7 @@ class SecurityGroupListData(AbstractModel):
         self.ServiceTemplateId = None
         self.BothWayInfo = None
         self.Direction = None
+        self.ProtocolPortType = None
 
 
     def _deserialize(self, params):
@@ -4515,6 +4522,7 @@ class SecurityGroupListData(AbstractModel):
                 obj._deserialize(item)
                 self.BothWayInfo.append(obj)
         self.Direction = params.get("Direction")
+        self.ProtocolPortType = params.get("ProtocolPortType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

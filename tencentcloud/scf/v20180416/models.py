@@ -2901,11 +2901,14 @@ class ListNamespacesRequest(AbstractModel):
         :type Orderby: str
         :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
         :type Order: str
+        :param SearchKey: 关键字匹配搜索，Key 可选值为 Namespace 和 Description，多个搜索条件之间是与的关系
+        :type SearchKey: list of SearchKey
         """
         self.Limit = None
         self.Offset = None
         self.Orderby = None
         self.Order = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -2913,6 +2916,12 @@ class ListNamespacesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Orderby = params.get("Orderby")
         self.Order = params.get("Order")
+        if params.get("SearchKey") is not None:
+            self.SearchKey = []
+            for item in params.get("SearchKey"):
+                obj = SearchKey()
+                obj._deserialize(item)
+                self.SearchKey.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3773,6 +3782,34 @@ class RoutingConfig(AbstractModel):
                 obj = VersionMatch()
                 obj._deserialize(item)
                 self.AddtionVersionMatchs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchKey(AbstractModel):
+    """包含搜索关键字和对应的内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 搜索关键字
+        :type Key: str
+        :param Value: 搜索内容
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

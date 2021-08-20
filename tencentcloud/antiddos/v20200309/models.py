@@ -1796,7 +1796,10 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 返回资源及状态
+        :param Data: 返回资源及状态，状态码：
+1 - 封堵状态
+2 - 正常状态
+3 - 攻击状态
         :type Data: list of KeyValue
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

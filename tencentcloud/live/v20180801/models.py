@@ -1756,8 +1756,10 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 范围： 5s ~ 300s。
         :type SnapshotInterval: int
         :param Width: 截图宽度。默认：0（原始宽）。
+范围：0-3000 。
         :type Width: int
         :param Height: 截图高度。默认：0（原始高）。
+范围：0-2000 。
         :type Height: int
         :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0。
         :type PornFlag: int
