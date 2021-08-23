@@ -6111,6 +6111,55 @@ class ModifyNodePoolDesiredCapacityAboutAsgResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNodePoolInstanceTypesRequest(AbstractModel):
+    """ModifyNodePoolInstanceTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param InstanceTypes: 机型列表
+        :type InstanceTypes: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceTypes = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceTypes = params.get("InstanceTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNodePoolInstanceTypesResponse(AbstractModel):
+    """ModifyNodePoolInstanceTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusAlertRuleRequest(AbstractModel):
     """ModifyPrometheusAlertRule请求参数结构体
 
