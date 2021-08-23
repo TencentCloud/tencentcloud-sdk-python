@@ -111,6 +111,78 @@ class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AnalysisItems(AbstractModel):
+    """慢查询分析接口返回的分析详情，按照参数抽象之后进行分类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: 慢SQL查询的数据库名
+        :type DatabaseName: str
+        :param UserName: 慢SQL执行的用户名
+        :type UserName: str
+        :param NormalQuery: 抽象参数之后的慢SQL
+        :type NormalQuery: str
+        :param ClientAddr: 慢SQL执行的客户端地址
+        :type ClientAddr: str
+        :param CallNum: 在选定时间范围内慢SQL语句执行的次数
+        :type CallNum: int
+        :param CallPercent: 在选定时间范围内，慢SQL语句执行的次数占所有慢SQL的比例（小数返回）
+        :type CallPercent: float
+        :param CostTime: 在选定时间范围内，慢SQL执行的总时间
+        :type CostTime: float
+        :param CostPercent: 在选定时间范围内，慢SQL语句执行的总时间占所有慢SQL的比例（小数返回）
+        :type CostPercent: float
+        :param MinCostTime: 在选定时间范围内，慢SQL语句执行的耗时最短的时间（单位：ms）
+        :type MinCostTime: float
+        :param MaxCostTime: 在选定时间范围内，慢SQL语句执行的耗时最长的时间（单位：ms）
+        :type MaxCostTime: float
+        :param AvgCostTime: 在选定时间范围内，慢SQL语句执行的耗时平均时间（单位：ms）
+        :type AvgCostTime: float
+        :param FirstTime: 在选定时间范围内，慢SQL第一条开始执行的时间戳
+        :type FirstTime: str
+        :param LastTime: 在选定时间范围内，慢SQL最后一条开始执行的时间戳
+        :type LastTime: str
+        """
+        self.DatabaseName = None
+        self.UserName = None
+        self.NormalQuery = None
+        self.ClientAddr = None
+        self.CallNum = None
+        self.CallPercent = None
+        self.CostTime = None
+        self.CostPercent = None
+        self.MinCostTime = None
+        self.MaxCostTime = None
+        self.AvgCostTime = None
+        self.FirstTime = None
+        self.LastTime = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.UserName = params.get("UserName")
+        self.NormalQuery = params.get("NormalQuery")
+        self.ClientAddr = params.get("ClientAddr")
+        self.CallNum = params.get("CallNum")
+        self.CallPercent = params.get("CallPercent")
+        self.CostTime = params.get("CostTime")
+        self.CostPercent = params.get("CostPercent")
+        self.MinCostTime = params.get("MinCostTime")
+        self.MaxCostTime = params.get("MaxCostTime")
+        self.AvgCostTime = params.get("AvgCostTime")
+        self.FirstTime = params.get("FirstTime")
+        self.LastTime = params.get("LastTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess请求参数结构体
 
@@ -1956,6 +2028,178 @@ class DescribeServerlessDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowQueryAnalysisRequest(AbstractModel):
+    """DescribeSlowQueryAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param StartTime: 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+        :type StartTime: str
+        :param EndTime: 查询j结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+        :type EndTime: str
+        :param DatabaseName: 根据数据库名进行筛选，可以为空。
+        :type DatabaseName: str
+        :param OrderBy: 排序维度。 可选参数，取值范围[CallNum,CostTime,AvgCostTime]。
+        :type OrderBy: str
+        :param OrderByType: 排序类型。升序asc、降序desc。
+        :type OrderByType: str
+        :param Limit: 分页大小。取值范围[1,100]。
+        :type Limit: int
+        :param Offset: 分页偏移。取值范围[0,INF)。
+        :type Offset: int
+        """
+        self.DBInstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DatabaseName = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DatabaseName = params.get("DatabaseName")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowQueryAnalysisResponse(AbstractModel):
+    """DescribeSlowQueryAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 查询总条数。
+        :type TotalCount: int
+        :param Detail: 慢SQL统计分析接口返回详情。
+        :type Detail: :class:`tencentcloud.postgres.v20170312.models.Detail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Detail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Detail") is not None:
+            self.Detail = Detail()
+            self.Detail._deserialize(params.get("Detail"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSlowQueryListRequest(AbstractModel):
+    """DescribeSlowQueryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param StartTime: 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+        :type StartTime: str
+        :param EndTime: 查询j结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+        :type EndTime: str
+        :param DatabaseName: 根据数据库名进行筛选，可以为空。
+        :type DatabaseName: str
+        :param OrderByType: 排序类型。升序asc、降序desc。默认为desc。
+        :type OrderByType: str
+        :param OrderBy: 排序维度。 可选参数，取值范围[SessionStartTime,Duration]，默认为SessionStartTime。
+        :type OrderBy: str
+        :param Limit: 分页大小。取值范围[1,100],默认为20。
+        :type Limit: int
+        :param Offset: 分页偏移。取值范围[0,INF)，默认为0。
+        :type Offset: int
+        """
+        self.DBInstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DatabaseName = None
+        self.OrderByType = None
+        self.OrderBy = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DatabaseName = params.get("DatabaseName")
+        self.OrderByType = params.get("OrderByType")
+        self.OrderBy = params.get("OrderBy")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowQueryListResponse(AbstractModel):
+    """DescribeSlowQueryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 选定时间范围内慢SQL总条数。
+        :type TotalCount: int
+        :param DurationAnalysis: 指定时间范围内，慢SQL耗时分段分析。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationAnalysis: list of DurationAnalysis
+        :param RawSlowQueryList: 指定时间范围内 慢SQL流水。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawSlowQueryList: list of RawSlowQuery
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DurationAnalysis = None
+        self.RawSlowQueryList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DurationAnalysis") is not None:
+            self.DurationAnalysis = []
+            for item in params.get("DurationAnalysis"):
+                obj = DurationAnalysis()
+                obj._deserialize(item)
+                self.DurationAnalysis.append(obj)
+        if params.get("RawSlowQueryList") is not None:
+            self.RawSlowQueryList = []
+            for item in params.get("RawSlowQueryList"):
+                obj = RawSlowQuery()
+                obj._deserialize(item)
+                self.RawSlowQueryList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 
@@ -2033,6 +2277,44 @@ class DestroyDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Detail(AbstractModel):
+    """慢SQL 统计分析接口返回详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalTime: 输入时间范围内所有慢sql执行的总时间，单位毫秒（ms）
+        :type TotalTime: float
+        :param TotalCallNum: 输入时间范围内所有慢sql总条数
+        :type TotalCallNum: int
+        :param AnalysisItems: 慢SQL统计分析列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisItems: list of AnalysisItems
+        """
+        self.TotalTime = None
+        self.TotalCallNum = None
+        self.AnalysisItems = None
+
+
+    def _deserialize(self, params):
+        self.TotalTime = params.get("TotalTime")
+        self.TotalCallNum = params.get("TotalCallNum")
+        if params.get("AnalysisItems") is not None:
+            self.AnalysisItems = []
+            for item in params.get("AnalysisItems"):
+                obj = AnalysisItems()
+                obj._deserialize(item)
+                self.AnalysisItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisIsolateDBInstancesRequest(AbstractModel):
     """DisIsolateDBInstances请求参数结构体
 
@@ -2084,6 +2366,34 @@ class DisIsolateDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DurationAnalysis(AbstractModel):
+    """慢SQL耗时分段分析
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeSegment: 慢SQL耗时，时段
+        :type TimeSegment: str
+        :param Count: 对应时段区间慢SQL 条数
+        :type Count: int
+        """
+        self.TimeSegment = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.TimeSegment = params.get("TimeSegment")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ErrLogDetail(AbstractModel):
@@ -2956,6 +3266,50 @@ class PgDeal(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.FlowId = params.get("FlowId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RawSlowQuery(AbstractModel):
+    """慢SQL查询接口返回 慢SQL列表详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RawQuery: 慢SQL 语句
+        :type RawQuery: str
+        :param DatabaseName: 慢SQL 查询的数据库
+        :type DatabaseName: str
+        :param Duration: 慢SQL执行 耗时
+        :type Duration: float
+        :param ClientAddr: 执行慢SQL的客户端
+        :type ClientAddr: str
+        :param UserName: 执行慢SQL的用户名
+        :type UserName: str
+        :param SessionStartTime: 慢SQL执行的开始时间
+        :type SessionStartTime: str
+        """
+        self.RawQuery = None
+        self.DatabaseName = None
+        self.Duration = None
+        self.ClientAddr = None
+        self.UserName = None
+        self.SessionStartTime = None
+
+
+    def _deserialize(self, params):
+        self.RawQuery = params.get("RawQuery")
+        self.DatabaseName = params.get("DatabaseName")
+        self.Duration = params.get("Duration")
+        self.ClientAddr = params.get("ClientAddr")
+        self.UserName = params.get("UserName")
+        self.SessionStartTime = params.get("SessionStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
