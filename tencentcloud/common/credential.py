@@ -260,8 +260,7 @@ class ProfileCredential():
     def get_credential(self):
         """Tencent Cloud ProfileCredential.
 
-        Access https://console.cloud.tencent.com/cam/capi to manage your
-        credentials.
+        Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
 
         default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
         such as:
