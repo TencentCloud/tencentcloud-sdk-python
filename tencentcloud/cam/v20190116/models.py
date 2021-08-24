@@ -2437,16 +2437,20 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
         :type Page: int
         :param Rp: 每页大小，默认值是 20
         :type Rp: int
+        :param Keyword: 搜索关键字
+        :type Keyword: str
         """
         self.TargetGroupId = None
         self.Page = None
         self.Rp = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
         self.TargetGroupId = params.get("TargetGroupId")
         self.Page = params.get("Page")
         self.Rp = params.get("Rp")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2503,12 +2507,15 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
         :type RoleName: str
         :param PolicyType: 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
         :type PolicyType: str
+        :param Keyword: 搜索关键字
+        :type Keyword: str
         """
         self.Page = None
         self.Rp = None
         self.RoleId = None
         self.RoleName = None
         self.PolicyType = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
@@ -2517,6 +2524,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
         self.RoleId = params.get("RoleId")
         self.RoleName = params.get("RoleName")
         self.PolicyType = params.get("PolicyType")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

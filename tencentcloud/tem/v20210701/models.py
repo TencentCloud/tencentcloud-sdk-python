@@ -579,6 +579,8 @@ class DeployApplicationRequest(AbstractModel):
         :type HorizontalAutoscaler: list of HorizontalAutoscaler
         :param CronHorizontalAutoscaler: 定时弹性策略
         :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
+        :param LogEnable: 是否启用log，1为启用，0为不启用
+        :type LogEnable: int
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -614,6 +616,7 @@ class DeployApplicationRequest(AbstractModel):
         self.DeployStrategyConf = None
         self.HorizontalAutoscaler = None
         self.CronHorizontalAutoscaler = None
+        self.LogEnable = None
 
 
     def _deserialize(self, params):
@@ -693,6 +696,7 @@ class DeployApplicationRequest(AbstractModel):
                 obj = CronHorizontalAutoscaler()
                 obj._deserialize(item)
                 self.CronHorizontalAutoscaler.append(obj)
+        self.LogEnable = params.get("LogEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

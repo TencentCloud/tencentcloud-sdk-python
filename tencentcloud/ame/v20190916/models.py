@@ -147,12 +147,15 @@ class DataInfo(AbstractModel):
         :type AuditionBegin: int
         :param AuditionEnd: 试听结束时间
         :type AuditionEnd: int
+        :param TagNames: 标签名称
+        :type TagNames: list of str
         """
         self.Name = None
         self.Version = None
         self.Duration = None
         self.AuditionBegin = None
         self.AuditionEnd = None
+        self.TagNames = None
 
 
     def _deserialize(self, params):
@@ -161,6 +164,7 @@ class DataInfo(AbstractModel):
         self.Duration = params.get("Duration")
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
+        self.TagNames = params.get("TagNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

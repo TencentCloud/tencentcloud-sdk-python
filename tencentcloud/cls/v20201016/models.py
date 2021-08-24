@@ -520,6 +520,34 @@ class CallBackInfo(AbstractModel):
         
 
 
+class Column(AbstractModel):
+    """日志分析的列属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 列的名字
+        :type Name: str
+        :param Type: 列的属性
+        :type Type: str
+        """
+        self.Name = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompressInfo(AbstractModel):
     """投递日志的压缩配置
 
@@ -1029,7 +1057,7 @@ class CreateExportRequest(AbstractModel):
         :type TopicId: str
         :param Query: 日志导出检索语句
         :type Query: str
-        :param Count: 日志导出数量
+        :param Count: 日志导出数量,  最大值1000万
         :type Count: int
         :param From: 日志导出起始时间，毫秒时间戳
         :type From: int
@@ -5201,6 +5229,8 @@ class SearchLogRequest(AbstractModel):
         :type Context: str
         :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
         :type Sort: str
+        :param UseNewAnalysis: 为true代表使用新检索,响应参数AnalysisRecords和Columns有效， 为false时代表使用老检索方式, AnalysisResults和ColNames有效
+        :type UseNewAnalysis: bool
         """
         self.TopicId = None
         self.From = None
@@ -5209,6 +5239,7 @@ class SearchLogRequest(AbstractModel):
         self.Limit = None
         self.Context = None
         self.Sort = None
+        self.UseNewAnalysis = None
 
 
     def _deserialize(self, params):
@@ -5219,6 +5250,7 @@ class SearchLogRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Context = params.get("Context")
         self.Sort = params.get("Sort")
+        self.UseNewAnalysis = params.get("UseNewAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5250,6 +5282,12 @@ class SearchLogResponse(AbstractModel):
         :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of LogItems
+        :param AnalysisRecords: 新的日志分析结果; UseNewAnalysis为true有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisRecords: list of str
+        :param Columns: 日志分析的列属性; UseNewAnalysis为true有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of Column
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5259,6 +5297,8 @@ class SearchLogResponse(AbstractModel):
         self.ColNames = None
         self.Results = None
         self.AnalysisResults = None
+        self.AnalysisRecords = None
+        self.Columns = None
         self.RequestId = None
 
 
@@ -5279,6 +5319,13 @@ class SearchLogResponse(AbstractModel):
                 obj = LogItems()
                 obj._deserialize(item)
                 self.AnalysisResults.append(obj)
+        self.AnalysisRecords = params.get("AnalysisRecords")
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self.Columns.append(obj)
         self.RequestId = params.get("RequestId")
 
 

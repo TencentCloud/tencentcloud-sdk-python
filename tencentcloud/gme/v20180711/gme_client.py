@@ -26,6 +26,34 @@ class GmeClient(AbstractClient):
     _service = 'gme'
 
 
+    def CreateAgeDetectTask(self, request):
+        """用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
+
+        :param request: Request instance for CreateAgeDetectTask.
+        :type request: :class:`tencentcloud.gme.v20180711.models.CreateAgeDetectTaskRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.CreateAgeDetectTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAgeDetectTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAgeDetectTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApp(self, request):
         """本接口(CreateApp)用于创建一个GME应用。
 
@@ -40,6 +68,34 @@ class GmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgeDetectTask(self, request):
+        """查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
+
+        :param request: Request instance for DescribeAgeDetectTask.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAgeDetectTaskRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAgeDetectTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgeDetectTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgeDetectTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

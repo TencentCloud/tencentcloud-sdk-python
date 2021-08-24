@@ -1984,7 +1984,7 @@ class ModifyApplicationRequest(AbstractModel):
         :type SecureLevel: str
         :param DisplayName: 应用展示名称，长度限制：32个字符。 默认与应用名字相同。
         :type DisplayName: str
-        :param AppStatus: 应用状态
+        :param AppStatus: 应用状态，true表示启用，false表示禁用。
         :type AppStatus: bool
         :param IconUrl: 应用图标图片访问地址。
         :type IconUrl: str

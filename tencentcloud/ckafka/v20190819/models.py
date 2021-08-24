@@ -3650,7 +3650,7 @@ class Route(AbstractModel):
         :type AccessType: int
         :param RouteId: 路由ID
         :type RouteId: int
-        :param VipType: vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:腾讯云支持环境(一般用于内部实例) 5:SSL外网访问方式访问 6:黑石环境vpc）
+        :param VipType: vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(标准版) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(专业版)）
         :type VipType: int
         :param VipList: 虚拟IP列表
         :type VipList: list of VipEntity
@@ -3660,6 +3660,9 @@ class Route(AbstractModel):
         :param DomainPort: 域名port
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainPort: int
+        :param DeleteTimestamp: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteTimestamp: str
         """
         self.AccessType = None
         self.RouteId = None
@@ -3667,6 +3670,7 @@ class Route(AbstractModel):
         self.VipList = None
         self.Domain = None
         self.DomainPort = None
+        self.DeleteTimestamp = None
 
 
     def _deserialize(self, params):
@@ -3681,6 +3685,7 @@ class Route(AbstractModel):
                 self.VipList.append(obj)
         self.Domain = params.get("Domain")
         self.DomainPort = params.get("DomainPort")
+        self.DeleteTimestamp = params.get("DeleteTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

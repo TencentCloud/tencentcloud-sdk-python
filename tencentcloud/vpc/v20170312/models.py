@@ -3043,11 +3043,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
-        :type VpcId: str
         :param FlowLogName: 流日志实例名字
         :type FlowLogName: str
-        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
         :type ResourceType: str
         :param ResourceId: 资源唯一ID
         :type ResourceId: str
@@ -3055,28 +3053,30 @@ class CreateFlowLogRequest(AbstractModel):
         :type TrafficType: str
         :param CloudLogId: 流日志存储ID
         :type CloudLogId: str
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
+        :type VpcId: str
         :param FlowLogDescription: 流日志实例描述
         :type FlowLogDescription: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
         """
-        self.VpcId = None
         self.FlowLogName = None
         self.ResourceType = None
         self.ResourceId = None
         self.TrafficType = None
         self.CloudLogId = None
+        self.VpcId = None
         self.FlowLogDescription = None
         self.Tags = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.FlowLogName = params.get("FlowLogName")
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.TrafficType = params.get("TrafficType")
         self.CloudLogId = params.get("CloudLogId")
+        self.VpcId = params.get("VpcId")
         self.FlowLogDescription = params.get("FlowLogDescription")
         if params.get("Tags") is not None:
             self.Tags = []
@@ -5390,18 +5390,18 @@ class DeleteFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
-        :type VpcId: str
         :param FlowLogId: 流日志唯一ID
         :type FlowLogId: str
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
+        :type VpcId: str
         """
-        self.VpcId = None
         self.FlowLogId = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.FlowLogId = params.get("FlowLogId")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12154,7 +12154,7 @@ class FlowLog(AbstractModel):
         :type FlowLogId: str
         :param FlowLogName: 流日志实例名字
         :type FlowLogName: str
-        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
         :type ResourceType: str
         :param ResourceId: 资源唯一ID
         :type ResourceId: str
@@ -14064,24 +14064,24 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
-        :type VpcId: str
         :param FlowLogId: 流日志唯一ID
         :type FlowLogId: str
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
+        :type VpcId: str
         :param FlowLogName: 流日志实例名字
         :type FlowLogName: str
         :param FlowLogDescription: 流日志实例描述
         :type FlowLogDescription: str
         """
-        self.VpcId = None
         self.FlowLogId = None
+        self.VpcId = None
         self.FlowLogName = None
         self.FlowLogDescription = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.FlowLogId = params.get("FlowLogId")
+        self.VpcId = params.get("VpcId")
         self.FlowLogName = params.get("FlowLogName")
         self.FlowLogDescription = params.get("FlowLogDescription")
         memeber_set = set(params.keys())

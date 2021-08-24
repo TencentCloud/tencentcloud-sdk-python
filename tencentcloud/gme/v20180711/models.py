@@ -18,6 +18,70 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AgeDetectTask(AbstractModel):
+    """年龄语音识别子任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataId: 数据唯一ID
+        :type DataId: str
+        :param Url: 数据文件的url，为 urlencode 编码,音频文件格式支持的类型：.wav、.m4a、.amr、.mp3、.aac、.wma、.ogg
+        :type Url: str
+        """
+        self.DataId = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgeDetectTaskResult(AbstractModel):
+    """年龄语音任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataId: 数据唯一ID
+        :type DataId: str
+        :param Url: 数据文件的url
+        :type Url: str
+        :param Status: 任务状态，0: 已创建，1:运行中，2:正常结束，3:异常结束，4:运行超时
+        :type Status: int
+        :param Age: 任务结果：0: 成年，1:未成年，100:未知
+        :type Age: int
+        """
+        self.DataId = None
+        self.Url = None
+        self.Status = None
+        self.Age = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.Url = params.get("Url")
+        self.Status = params.get("Status")
+        self.Age = params.get("Age")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppStatisticsItem(AbstractModel):
     """应用用量统计数据
 
@@ -180,6 +244,66 @@ class ApplicationDataStatistics(AbstractModel):
         
 
 
+class CreateAgeDetectTaskRequest(AbstractModel):
+    """CreateAgeDetectTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用id
+        :type BizId: int
+        :param Tasks: 语音检测子任务列表，列表最多支持100个检测子任务。结构体中包含：
+<li>DataId：数据的唯一ID</li>
+<li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+        :type Tasks: list of AgeDetectTask
+        :param Callback: 任务结束时gme后台会自动触发回调
+        :type Callback: str
+        """
+        self.BizId = None
+        self.Tasks = None
+        self.Callback = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = AgeDetectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAgeDetectTaskResponse(AbstractModel):
+    """CreateAgeDetectTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 本次任务提交后唯一id，用于获取任务运行结果
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp请求参数结构体
 
@@ -292,6 +416,68 @@ class CreateAppResponse(AbstractModel):
         if params.get("VoiceFilterConf") is not None:
             self.VoiceFilterConf = VoiceFilterConf()
             self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+
+
+class DescribeAgeDetectTaskRequest(AbstractModel):
+    """DescribeAgeDetectTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用id
+        :type BizId: int
+        :param TaskId: 创建年龄语音识别任务时返回的taskid
+        :type TaskId: str
+        """
+        self.BizId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgeDetectTaskResponse(AbstractModel):
+    """DescribeAgeDetectTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param Results: 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
+DataId： 请求中对应的 DataId。
+Url ：该请求中对应的 Url。
+Status ：子任务状态，0:已创建，1:运行中，2:已完成，3:任务异常，4:任务超时。
+Age ：子任务完成后的结果，0:成年人，1:未成年人，100:未知结果。
+        :type Results: list of AgeDetectTaskResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = AgeDetectTaskResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeAppStatisticsRequest(AbstractModel):
@@ -981,7 +1167,7 @@ class RealtimeSpeechConf(AbstractModel):
         r"""
         :param Status: 实时语音服务开关，取值：open/close
         :type Status: str
-        :param Quality: 实时语音音质类型，取值：high-高音质，ordinary-普通音质。默认高音质。普通音质仅白名单开放，如需要普通音质，请联系腾讯云商务。
+        :param Quality: 实时语音音质类型，取值：high-高音质
         :type Quality: str
         """
         self.Status = None

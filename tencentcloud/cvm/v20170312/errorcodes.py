@@ -266,6 +266,9 @@ INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
 # 参数值重复。
 INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 
+# 非GPU实例不允许转为GPU实例。
+INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = 'InvalidParameterValue.GPUInstanceFamily'
+
 # IP格式非法。
 INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = 'InvalidParameterValue.IPAddressMalformed'
 
@@ -658,6 +661,9 @@ UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = 'Unsupported
 
 # 指定机型不支持跨机型调整配置。
 UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedChangeInstanceFamily'
+
+# 非ARM机型不支持调整到ARM机型。
+UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOARM = 'UnsupportedOperation.UnsupportedChangeInstanceFamilyToARM'
 
 # 目标机型是SA3, 不支持变配。
 UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = 'UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3'

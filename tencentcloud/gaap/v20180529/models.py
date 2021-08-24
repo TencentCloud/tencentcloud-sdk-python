@@ -592,6 +592,8 @@ class CheckProxyCreateRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
         :type NetworkType: str
+        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.AccessRegion = None
         self.RealServerRegion = None
@@ -600,6 +602,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.GroupId = None
         self.IPAddressVersion = None
         self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -610,6 +613,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1288,6 +1292,8 @@ class CreateProxyGroupRequest(AbstractModel):
         :type AccessRegionSet: list of AccessConfiguration
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param PackageType: 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+        :type PackageType: str
         """
         self.ProjectId = None
         self.GroupName = None
@@ -1295,6 +1301,7 @@ class CreateProxyGroupRequest(AbstractModel):
         self.TagSet = None
         self.AccessRegionSet = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -1314,6 +1321,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2188,14 +2196,18 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         :type DestRegion: str
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.DestRegion = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
         self.DestRegion = params.get("DestRegion")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3367,37 +3379,38 @@ class DescribeProxyGroupListRequest(AbstractModel):
 0，默认项目
 其他值，指定的项目
         :type ProjectId: int
-        :param TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
-        :type TagSet: list of TagPair
         :param Filters: 过滤条件。   
 每次请求的Filter.Values的上限为5。
 RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
+PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
         :type Filters: list of Filter
+        :param TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
+最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+        :type TagSet: list of TagPair
         """
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
-        self.TagSet = None
         self.Filters = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProjectId = params.get("ProjectId")
-        if params.get("TagSet") is not None:
-            self.TagSet = []
-            for item in params.get("TagSet"):
-                obj = TagPair()
-                obj._deserialize(item)
-                self.TagSet.append(obj)
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3807,12 +3820,16 @@ class DescribeRegionAndPriceRequest(AbstractModel):
         r"""
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4987,6 +5004,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
         :type NetworkType: str
+        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -4997,6 +5016,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.BillingType = None
         self.IPAddressVersion = None
         self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -5009,6 +5029,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6304,6 +6325,9 @@ class ProxyGroupDetail(AbstractModel):
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
+        :param PackageType: 通道组类型，可取值：Thunder、Accelerator，默认值Thunder
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageType: str
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6322,6 +6346,7 @@ class ProxyGroupDetail(AbstractModel):
         self.Version = None
         self.ClientIPMethod = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -6349,6 +6374,7 @@ class ProxyGroupDetail(AbstractModel):
         self.Version = params.get("Version")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

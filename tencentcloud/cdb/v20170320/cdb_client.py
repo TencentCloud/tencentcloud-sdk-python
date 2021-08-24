@@ -2263,6 +2263,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAccountHost(self, request):
+        """本接口(ModifyAccountHost)用于修改云数据库账户的主机。
+
+        :param request: Request instance for ModifyAccountHost.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountHostRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAccountHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAccountHost", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccountHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAccountMaxUserConnections(self, request):
         """本接口(ModifyAccountMaxUserConnections)用于修改云数据库账户最大可用连接数。
 

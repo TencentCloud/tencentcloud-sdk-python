@@ -345,6 +345,7 @@ class CreateRecTaskRequest(AbstractModel):
 • 16k_en_edu 英文教育；
 • 16k_zh_medical  医疗；
 • 16k_th 泰语；
+• 16k_wuu-SH：16k 上海话方言；
         :type EngineModelType: str
         :param ChannelNum: 识别声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模）。注意：录音识别会自动将音频转码为填写的识别声道数
         :type ChannelNum: int

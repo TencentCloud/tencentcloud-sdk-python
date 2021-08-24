@@ -682,7 +682,7 @@ class DetectAuthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
+        :param RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
         :type RuleId: str
         :param TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
@@ -1707,6 +1707,19 @@ class GetFaceIdResultResponse(AbstractModel):
         :param Extra: 获取token时透传的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
+        :param DeviceInfoTag: 设备风险标签，仅错误码返回1007（设备疑似被劫持）时返回风险标签。标签说明：
+202、5001：设备疑似被Root
+203、5004：设备疑似被注入
+205：设备疑似被Hook
+206：设备疑似虚拟运行环境
+5007、1005：设备疑似摄像头被劫持
+8000：设备疑似存在异常篡改行为
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceInfoTag: str
+        :param RiskInfoTag: 行为风险标签，仅错误码返回1007（设备疑似被劫持）时返回风险标签。标签说明：
+02：攻击风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskInfoTag: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1718,6 +1731,8 @@ class GetFaceIdResultResponse(AbstractModel):
         self.VideoBase64 = None
         self.BestFrameBase64 = None
         self.Extra = None
+        self.DeviceInfoTag = None
+        self.RiskInfoTag = None
         self.RequestId = None
 
 
@@ -1730,6 +1745,8 @@ class GetFaceIdResultResponse(AbstractModel):
         self.VideoBase64 = params.get("VideoBase64")
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Extra = params.get("Extra")
+        self.DeviceInfoTag = params.get("DeviceInfoTag")
+        self.RiskInfoTag = params.get("RiskInfoTag")
         self.RequestId = params.get("RequestId")
 
 

@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 不能从Root单元删除成员。
 FAILEDOPERATION_DISABLEDELETEMEMBERFROMROOTNODE = 'FailedOperation.DisableDeleteMemberFromRootNode'
 

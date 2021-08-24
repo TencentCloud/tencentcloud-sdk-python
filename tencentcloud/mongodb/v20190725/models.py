@@ -2156,11 +2156,20 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type Volume: int
         :param OplogSize: 实例配置变更后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
         :type OplogSize: int
+        :param NodeNum: 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+        :type NodeNum: int
+        :param ReplicateSetNum: 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+        :type ReplicateSetNum: int
+        :param InMaintenance: 实例配置变更的切换时间，参数为：0(默认)、1。0-调整完成时，1-维护时间内。注：调整节点数和分片数不支持在【维护时间内】变更。
+        :type InMaintenance: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
         self.OplogSize = None
+        self.NodeNum = None
+        self.ReplicateSetNum = None
+        self.InMaintenance = None
 
 
     def _deserialize(self, params):
@@ -2168,6 +2177,9 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self.Memory = params.get("Memory")
         self.Volume = params.get("Volume")
         self.OplogSize = params.get("OplogSize")
+        self.NodeNum = params.get("NodeNum")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
+        self.InMaintenance = params.get("InMaintenance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
