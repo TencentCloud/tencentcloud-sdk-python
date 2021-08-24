@@ -24,7 +24,7 @@ class CreateSessionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientSession: 客户端session信息，从JSSDK请求中获得
         :type ClientSession: str
         :param GameId: 游戏ID
@@ -72,7 +72,7 @@ class CreateSessionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerSession: 服务端session信息，返回给JSSDK
         :type ServerSession: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -93,7 +93,7 @@ class DayStreamPlayInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bandwidth: 带宽（单位Mbps）。
         :type Bandwidth: float
         :param Flux: 流量 （单位MB）。
@@ -133,7 +133,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EndTime: 结束时间，北京时间，格式：2019-04-28 10:36:00
 结束时间 和 开始时间  必须在同一天内。
         :type EndTime: str
@@ -172,7 +172,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataInfoList: 统计信息列表。
         :type DataInfoList: list of DayStreamPlayInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -204,7 +204,7 @@ class DescribeWorkersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionDetail: 各个区域的机器情况
         :type RegionDetail: list of WorkerRegionInfo
         :param Idle: 空闲机器总数量
@@ -238,7 +238,7 @@ class ForbidLiveStreamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppName: 应用名称。
         :type AppName: str
         :param DomainName: 您的推流域名。
@@ -275,7 +275,7 @@ class ForbidLiveStreamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -292,7 +292,7 @@ class RegisterIMRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Nickname: 用户昵称
         :type Nickname: str
         :param UserId: 用户唯一ID，建议采用用户小程序OpenID加盐形式
@@ -328,7 +328,7 @@ class RegisterIMResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserKey: 用来传递给插件的关键字段
         :type UserKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -349,7 +349,7 @@ class StopGameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 游戏用户ID
         :type UserId: str
         """
@@ -373,7 +373,7 @@ class StopGameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -390,7 +390,7 @@ class WorkerRegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Idle: 该区域空闲机器数量
         :type Idle: int
         :param Region: 区域

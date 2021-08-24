@@ -24,7 +24,7 @@ class DismissRoomRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
         :type GameId: str
         :param RoomId: 表示游戏房间唯一ID。
@@ -52,7 +52,7 @@ class DismissRoomResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

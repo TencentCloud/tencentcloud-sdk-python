@@ -24,7 +24,7 @@ class ActivityDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: int
@@ -94,7 +94,7 @@ class ActivityJoinDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: int
@@ -194,7 +194,7 @@ class ChannelCodeInnerDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 渠道活码id
         :type Id: int
         :param Type: 欢迎语类型，0：普通欢迎语、1:渠道欢迎语
@@ -283,7 +283,7 @@ class ChatArchivingDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MsgId: 消息id
         :type MsgId: str
         :param Action: 动作名称，switch表示切换企微账号，send表示企微普通消息
@@ -349,7 +349,7 @@ class ChatArchivingMsgTypeVideo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlayLength: 视频时长，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlayLength: int
@@ -383,7 +383,7 @@ class CreateChannelCodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 欢迎语类型:0普通欢迎语,1渠道欢迎语
         :type Type: int
         :param UseUserId: 使用成员用户id集
@@ -456,7 +456,7 @@ class CreateChannelCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -473,7 +473,7 @@ class CreateCorpTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 标签组名称，最长为15个字符
         :type GroupName: str
         :param Tags: 标签信息数组
@@ -510,7 +510,7 @@ class CreateCorpTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagGroup: 标签组信息
         :type TagGroup: :class:`tencentcloud.wav.v20210129.models.TagGroup`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -533,7 +533,7 @@ class ExternalContact(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalUserId: 外部联系人的userId
         :type ExternalUserId: str
         :param Gender: 外部联系人性别 0-未知 1-男性 2-女性
@@ -579,7 +579,7 @@ class ExternalContactSimpleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalUserId: 外部联系人的userId
         :type ExternalUserId: str
         :param UserId: 添加了此外部联系人的企业成员userId
@@ -612,7 +612,7 @@ class ExternalContactTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 该成员添加此外部联系人所打标签的分组名称（标签功能需要企业微信升级到2.7.5及以上版本）
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
@@ -652,7 +652,7 @@ class ExternalUserMappingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CorpExternalUserId: 企业主体对应的外部联系人userId
         :type CorpExternalUserId: str
         :param ExternalUserId: 乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
@@ -681,7 +681,7 @@ class FollowUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 添加了此外部联系人的企业成员userid
         :type UserId: str
         :param Remark: 该成员对此外部联系人的备注
@@ -731,13 +731,68 @@ class FollowUser(AbstractModel):
         
 
 
+class LicenseInfo(AbstractModel):
+    """license相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param License: license编号
+        :type License: str
+        :param LicenseEdition: license版本；1-基础版，2-标准版，3-增值版
+        :type LicenseEdition: int
+        :param ResourceStartTime: 生效开始时间, 格式yyyy-MM-dd HH:mm:ss
+        :type ResourceStartTime: str
+        :param ResourceEndTime: 生效结束时间, 格式yyyy-MM-dd HH:mm:ss
+        :type ResourceEndTime: str
+        :param IsolationDeadline: 隔离截止时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolationDeadline: str
+        :param DestroyTime: 资源计划销毁时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: str
+        :param Status: 资源状态，1.正常，2.隔离，3.销毁
+        :type Status: int
+        :param Extra: 扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        """
+        self.License = None
+        self.LicenseEdition = None
+        self.ResourceStartTime = None
+        self.ResourceEndTime = None
+        self.IsolationDeadline = None
+        self.DestroyTime = None
+        self.Status = None
+        self.Extra = None
+
+
+    def _deserialize(self, params):
+        self.License = params.get("License")
+        self.LicenseEdition = params.get("LicenseEdition")
+        self.ResourceStartTime = params.get("ResourceStartTime")
+        self.ResourceEndTime = params.get("ResourceEndTime")
+        self.IsolationDeadline = params.get("IsolationDeadline")
+        self.DestroyTime = params.get("DestroyTime")
+        self.Status = params.get("Status")
+        self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveCodeDetail(AbstractModel):
     """活动活码详情
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param LiveCodeId: 活码id
         :type LiveCodeId: int
         :param LiveCodeName: 活码名称
@@ -800,7 +855,7 @@ class MiniAppCodeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 主键id
         :type Id: int
         :param MiniAppName: 小程序名称
@@ -848,7 +903,7 @@ class QueryActivityJoinListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动id
         :type ActivityId: int
         :param Cursor: 分页游标，对应结果返回的NextCursor,首次请求保持为空
@@ -880,7 +935,7 @@ class QueryActivityJoinListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -912,7 +967,7 @@ class QueryActivityListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cursor: 分页游标，对应结果返回的NextCursor,首次请求保持为空
         :type Cursor: str
         :param Limit: 单页数据限制
@@ -940,7 +995,7 @@ class QueryActivityListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -972,7 +1027,7 @@ class QueryActivityLiveCodeListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
         :type Cursor: str
         :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
@@ -1000,7 +1055,7 @@ class QueryActivityLiveCodeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -1032,7 +1087,7 @@ class QueryChannelCodeListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
         :type Cursor: str
         :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
@@ -1060,7 +1115,7 @@ class QueryChannelCodeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -1092,7 +1147,7 @@ class QueryChatArchivingListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
         :type Cursor: str
         :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
@@ -1120,7 +1175,7 @@ class QueryChatArchivingListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -1152,7 +1207,7 @@ class QueryExternalContactDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalUserId: 外部联系人的userid，注意不是企业成员的帐号
         :type ExternalUserId: str
         :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
@@ -1184,7 +1239,7 @@ class QueryExternalContactDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -1223,7 +1278,7 @@ class QueryExternalContactListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
         :type Cursor: str
         :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
@@ -1251,7 +1306,7 @@ class QueryExternalContactListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageData: 外部联系人信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of ExternalContactSimpleInfo
@@ -1283,7 +1338,7 @@ class QueryExternalUserMappingInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CorpExternalUserIdList: 企业主体对应的外部联系人id列表，列表长度限制最大为50。
         :type CorpExternalUserIdList: list of str
         """
@@ -1307,7 +1362,7 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalUserIdMapping: 外部联系人映射信息, 只返回映射成功的记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalUserIdMapping: list of ExternalUserMappingInfo
@@ -1328,13 +1383,61 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryLicenseInfoRequest(AbstractModel):
+    """QueryLicenseInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param License: license编号
+        :type License: str
+        """
+        self.License = None
+
+
+    def _deserialize(self, params):
+        self.License = params.get("License")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryLicenseInfoResponse(AbstractModel):
+    """QueryLicenseInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseInfo: license响应信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseInfo: :class:`tencentcloud.wav.v20210129.models.LicenseInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LicenseInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LicenseInfo") is not None:
+            self.LicenseInfo = LicenseInfo()
+            self.LicenseInfo._deserialize(params.get("LicenseInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryMiniAppCodeListRequest(AbstractModel):
     """QueryMiniAppCodeList请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
         :type Cursor: str
         :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
@@ -1362,7 +1465,7 @@ class QueryMiniAppCodeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
@@ -1394,7 +1497,7 @@ class TagDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagName: 标签名称
         :type TagName: str
         :param BizTagId: 标签业务ID
@@ -1434,7 +1537,7 @@ class TagGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 企微标签组id
         :type GroupId: str
         :param BizGroupId: 标签组业务id
@@ -1483,7 +1586,7 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagName: 标签名称, 最大长度限制15个字符
         :type TagName: str
         :param Sort: 标签组排序,值越大,排序越靠前
@@ -1511,7 +1614,7 @@ class WeComTagDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 标签分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str

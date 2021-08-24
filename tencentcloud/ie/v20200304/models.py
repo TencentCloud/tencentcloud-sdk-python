@@ -24,7 +24,7 @@ class ArtifactReduction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 去毛刺方式：weak,,strong
         :type Type: str
         :param Algorithm: 去毛刺算法，可选项：
@@ -56,7 +56,7 @@ class AudioEnhance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 音效增强种类，可选项：normal
         :type Type: str
         """
@@ -80,7 +80,7 @@ class AudioInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: 音频码率，取值范围：0 和 [26, 256]，单位：kbps。
 注意：当取值为 0，表示音频码率和原始音频保持一致。
         :type Bitrate: int
@@ -151,27 +151,22 @@ class AudioInfoResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Stream: 音频流的流id
+        r"""
+        :param Stream: 音频流的流id。
         :type Stream: int
         :param Sample: 音频采样率 。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sample: int
         :param Channel: 音频声道数。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Channel: int
         :param Codec: 编码格式，如aac, mp3等。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param Bitrate: 码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Duration: 音频时长，单位：ms。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         """
@@ -205,7 +200,7 @@ class CallbackInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 回调URL。
         :type Url: str
         """
@@ -229,7 +224,7 @@ class ClassificationEditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启视频分类识别。0为关闭，1为开启。其他非0非1值默认为0。
         :type Switch: int
         :param CustomInfo: 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
@@ -257,7 +252,7 @@ class ClassificationTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :type Status: int
@@ -301,7 +296,7 @@ class ClassificationTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Classification: 分类名称。
         :type Classification: str
         :param Confidence: 置信度，取值范围是 0 到 100。
@@ -329,7 +324,7 @@ class ColorEnhance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 颜色增强类型，可选项：
 1.  tra；
 2.  weak；
@@ -358,7 +353,7 @@ class CosAuthMode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 授权类型，可选值： 
 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271），否则会读写cos失败； 
 1：key托管，把cos的账号id和key托管于本服务，本服务会提供一个托管id； 
@@ -402,7 +397,7 @@ class CosInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: cos 区域值。例如：ap-beijing。
         :type Region: str
         :param Bucket: cos 存储桶，格式为BuketName-AppId。例如：test-123456。
@@ -442,7 +437,7 @@ class CoverEditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启智能封面。0为关闭，1为开启。其他非0非1值默认为0。
         :type Switch: int
         :param CustomInfo: 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
@@ -470,7 +465,7 @@ class CoverTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :type Status: int
@@ -514,7 +509,7 @@ class CoverTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CoverUrl: 智能封面地址。
         :type CoverUrl: str
         :param Confidence: 置信度，取值范围是 0 到 100。
@@ -542,7 +537,7 @@ class CreateEditingTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EditingInfo: 智能编辑任务参数。
         :type EditingInfo: :class:`tencentcloud.ie.v20200304.models.EditingInfo`
         :param DownInfo: 视频源信息。
@@ -586,7 +581,7 @@ class CreateEditingTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑任务 ID，可以通过该 ID 查询任务状态。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -607,7 +602,7 @@ class CreateMediaProcessTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MediaProcessInfo: 编辑处理任务参数。
         :type MediaProcessInfo: :class:`tencentcloud.ie.v20200304.models.MediaProcessInfo`
         :param SourceInfoSet: 编辑处理任务输入源列表。
@@ -660,7 +655,7 @@ class CreateMediaProcessTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑任务 ID，可以通过该 ID 查询任务状态和结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -682,7 +677,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownInfo: 源文件地址。
         :type DownInfo: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         :param TransInfo: 画质重生任务参数信息。
@@ -729,7 +724,7 @@ class CreateMediaQualityRestorationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 画质重生任务ID，可以通过该ID查询任务状态。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -750,7 +745,7 @@ class CreateQualityControlTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QualityControlInfo: 质检任务参数
         :type QualityControlInfo: :class:`tencentcloud.ie.v20200304.models.QualityControlInfo`
         :param DownInfo: 视频源信息
@@ -788,7 +783,7 @@ class CreateQualityControlTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 质检任务 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -810,7 +805,7 @@ class DarInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FillMode: 填充模式，可选值：
 1：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。
 2：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“。
@@ -837,7 +832,7 @@ class Denoise(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 音频降噪强度，可选项：
 1. weak
 2.normal，
@@ -865,7 +860,7 @@ class Denoising(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 去噪方式，可选项：
 templ：时域降噪；
 spatial：空域降噪,
@@ -903,7 +898,7 @@ class DescribeEditingTaskResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑任务 ID。
         :type TaskId: str
         """
@@ -927,7 +922,7 @@ class DescribeEditingTaskResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskResult: 编辑任务结果信息。
         :type TaskResult: :class:`tencentcloud.ie.v20200304.models.EditingTaskResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -950,7 +945,7 @@ class DescribeMediaProcessTaskResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑处理任务ID。
         :type TaskId: str
         """
@@ -974,7 +969,7 @@ class DescribeMediaProcessTaskResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskResult: 任务处理结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskResult: :class:`tencentcloud.ie.v20200304.models.MediaProcessTaskResult`
@@ -998,7 +993,7 @@ class DescribeMediaQualityRestorationTaskRusultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 画质重生任务ID
         :type TaskId: str
         """
@@ -1022,7 +1017,7 @@ class DescribeMediaQualityRestorationTaskRusultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskResult: 画质重生任务结果信息
         :type TaskResult: :class:`tencentcloud.ie.v20200304.models.MediaQualityRestorationTaskResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1045,7 +1040,7 @@ class DescribeQualityControlTaskResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 质检任务 ID
         :type TaskId: str
         """
@@ -1069,7 +1064,7 @@ class DescribeQualityControlTaskResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskResult: 质检任务结果信息
         :type TaskResult: :class:`tencentcloud.ie.v20200304.models.QualityControlInfoTaskResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1092,7 +1087,7 @@ class DownInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 下载类型，可选值： 
 0：UrlInfo； 
 1：CosInfo。
@@ -1130,7 +1125,7 @@ class EditInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 剪辑开始时间，单位：ms。
         :type StartTime: int
         :param EndTime: 剪辑结束时间，单位：ms
@@ -1158,7 +1153,7 @@ class EditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagEditingInfo: 视频标签识别任务参数，不填则不开启。
         :type TagEditingInfo: :class:`tencentcloud.ie.v20200304.models.TagEditingInfo`
         :param ClassificationEditingInfo: 视频分类识别任务参数，不填则不开启。
@@ -1214,7 +1209,7 @@ class EditingTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑任务 ID。
         :type TaskId: str
         :param Status: 编辑任务状态。 
@@ -1285,7 +1280,7 @@ class FaceProtect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceUsmRatio: 人脸区域增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
         :type FaceUsmRatio: float
         """
@@ -1309,29 +1304,23 @@ class FileInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSize: 任务结束后生成的文件大小。
-注意：此字段可能返回 null，表示取不到有效值 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         :param FileType: 任务结束后生成的文件格式，例如：mp4,flv等等。
-注意：此字段可能返回 null，表示取不到有效值 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         :param Bitrate: 任务结束后生成的文件整体码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Duration: 任务结束后生成的文件时长，单位：ms。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param VideoInfoResult: 任务结束后生成的文件视频信息。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoInfoResult: list of VideoInfoResultItem
         :param AudioInfoResult: 任务结束后生成的文件音频信息。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioInfoResult: list of AudioInfoResultItem
         """
@@ -1375,7 +1364,7 @@ class FrameTagItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartPts: 标签起始时间戳PTS(ms)
         :type StartPts: int
         :param EndPts: 语句结束时间戳PTS(ms)
@@ -1416,7 +1405,7 @@ class FrameTagRec(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagType: 标签类型：
 "Common": 通用类型
 "Game":游戏类型
@@ -1452,7 +1441,7 @@ class FrameTagResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrameTagItems: 帧标签结果数组
         :type FrameTagItems: list of FrameTagItem
         """
@@ -1481,7 +1470,7 @@ class HiddenMarkInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Path: 数字水印路径,，如果不从Cos拉取水印，则必填
         :type Path: str
         :param Frequency: 数字水印频率，可选值：[1,256]，默认值为30
@@ -1519,7 +1508,7 @@ class HighlightsEditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启智能集锦。0为关闭，1为开启。其他非0非1值默认为0。
         :type Switch: int
         :param CustomInfo: 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
@@ -1547,7 +1536,7 @@ class HighlightsTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :type Status: int
@@ -1591,7 +1580,7 @@ class HighlightsTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HighlightUrl: 智能集锦地址。
         :type HighlightUrl: str
         :param CovImgUrl: 智能集锦封面地址。
@@ -1636,7 +1625,7 @@ class HighlightsTaskResultItemSegment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 置信度，取值范围是 0 到 100。
         :type Confidence: float
         :param StartTimeOffset: 集锦片段起始的偏移时间，单位：秒。
@@ -1668,7 +1657,7 @@ class IntervalTime(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Interval: 间隔周期，单位ms
         :type Interval: int
         :param StartTime: 开始时间点，单位ms
@@ -1696,7 +1685,7 @@ class LoudnessInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Loudness: 音频整体响度
         :type Loudness: float
         :param LoudnessRange: 音频响度范围
@@ -1724,7 +1713,7 @@ class LowLightEnhance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 低光照增强类型，可选项：normal。
         :type Type: str
         """
@@ -1748,7 +1737,7 @@ class MediaCuttingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeInfo: 截取时间信息。
         :type TimeInfo: :class:`tencentcloud.ie.v20200304.models.MediaCuttingTimeInfo`
         :param TargetInfo: 输出结果信息。
@@ -1792,7 +1781,7 @@ class MediaCuttingOutForm(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 输出类型，可选值：
 Static：静态图；
 Dynamic：动态图；
@@ -1845,7 +1834,7 @@ class MediaCuttingTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListFile: 如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListFile: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
@@ -1891,7 +1880,7 @@ class MediaCuttingTimeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 时间类型，可选值：
 PointSet：时间点集合；
 IntervalPoint：周期采样点；
@@ -1937,7 +1926,7 @@ class MediaJoiningInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetInfo: 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
 其中Format只支持mp4.
         :type TargetInfo: :class:`tencentcloud.ie.v20200304.models.MediaTargetInfo`
@@ -1964,7 +1953,7 @@ class MediaJoiningTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param File: 拼接结果文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type File: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
@@ -1991,7 +1980,7 @@ class MediaProcessInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 编辑处理任务类型，可选值：
 MediaEditing：媒体编辑（待上线）；
 MediaCutting：媒体剪切；
@@ -2037,7 +2026,7 @@ class MediaProcessTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑处理任务ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -2116,7 +2105,7 @@ class MediaQualityRestorationTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 画质重生任务ID
         :type TaskId: str
         :param SubTaskResult: 画质重生处理后文件的详细信息。
@@ -2149,7 +2138,7 @@ class MediaRecognitionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrameTagRec: 帧标签识别
         :type FrameTagRec: :class:`tencentcloud.ie.v20200304.models.FrameTagRec`
         :param SubtitleRec: 语音字幕识别
@@ -2181,7 +2170,7 @@ class MediaRecognitionTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrameTagResults: 帧标签识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagResults: :class:`tencentcloud.ie.v20200304.models.FrameTagResult`
@@ -2215,7 +2204,7 @@ class MediaResultInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Duration: 媒体时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
@@ -2260,7 +2249,7 @@ class MediaSourceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownInfo: 媒体源资源下载信息。
         :type DownInfo: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         :param Id: 媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
@@ -2298,7 +2287,7 @@ class MediaTargetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
 
 注1：部分子服务支持占位符，形式为： {parameter}
@@ -2342,7 +2331,7 @@ class MuxInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteStream: 删除流，可选项：video,audio。
         :type DeleteStream: str
         :param FlvFlags: Flv 参数，目前支持add_keyframe_index
@@ -2370,7 +2359,7 @@ class OpeningEndingEditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启片头片尾识别。0为关闭，1为开启。其他非0非1值默认为0。
         :type Switch: int
         :param CustomInfo: 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
@@ -2398,7 +2387,7 @@ class OpeningEndingTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :type Status: int
@@ -2439,7 +2428,7 @@ class OpeningEndingTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpeningTimeOffset: 视频片头的结束时间点，单位：秒。
         :type OpeningTimeOffset: float
         :param OpeningConfidence: 片头识别置信度，取值范围是 0 到 100。
@@ -2475,7 +2464,7 @@ class PicMarkInfoItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PosX: 图片水印的X坐标。
         :type PosX: int
         :param PosY: 图片水印的Y坐标 。
@@ -2529,7 +2518,7 @@ class QualityControlInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Interval: 对流进行截图的间隔ms，默认1000ms
         :type Interval: int
         :param VideoShot: 是否保存截图
@@ -2601,7 +2590,7 @@ class QualityControlInfoTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 质检任务 ID
         :type TaskId: str
         :param Status: 质检任务状态。
@@ -2767,7 +2756,7 @@ class QualityControlItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 置信度，取值范围是 0 到 100
 注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: int
@@ -2805,7 +2794,7 @@ class QualityControlResultItems(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 异常类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
@@ -2839,7 +2828,7 @@ class RemoveReverb(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 去混响类型，可选项：normal
         :type Type: str
         """
@@ -2863,7 +2852,7 @@ class ResultAudioInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamId: 流在媒体文件中的流ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamId: int
@@ -2893,7 +2882,7 @@ class ResultVideoInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamId: 流在媒体文件中的流ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamId: int
@@ -2938,7 +2927,7 @@ class SaveInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 存储类型，可选值： 
 1：CosInfo。
         :type Type: int
@@ -2969,7 +2958,7 @@ class ScratchRepair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 去划痕方式，取值：normal。
         :type Type: str
         :param Ratio: 去划痕强度， 可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
@@ -2997,7 +2986,7 @@ class SectionTime(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间点，单位ms
         :type StartTime: int
         :param Duration: 时间区间时长，单位ms
@@ -3025,7 +3014,7 @@ class SegmentInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FragmentTime: 每个切片平均时长，默认10s。
         :type FragmentTime: int
         :param SegmentType: 切片类型，可选项：hls，不填时默认hls。
@@ -3059,7 +3048,7 @@ class Sharp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 细节增强方式,取值：normal。
         :type Type: str
         :param Ratio: 细节增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
@@ -3087,7 +3076,7 @@ class StopMediaProcessTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 编辑处理任务ID。
         :type TaskId: str
         """
@@ -3111,7 +3100,7 @@ class StopMediaProcessTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3128,7 +3117,7 @@ class StopMediaQualityRestorationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 要删除的画质重生任务ID。
         :type TaskId: str
         """
@@ -3152,7 +3141,7 @@ class StopMediaQualityRestorationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3169,7 +3158,7 @@ class StripEditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启智能拆条。0为关闭，1为开启。其他非0非1值默认为0。
         :type Switch: int
         :param CustomInfo: 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
@@ -3197,7 +3186,7 @@ class StripTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :type Status: int
@@ -3241,7 +3230,7 @@ class StripTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SegmentUrl: 视频拆条片段地址。
         :type SegmentUrl: str
         :param CovImgUrl: 拆条封面图片地址。
@@ -3281,9 +3270,8 @@ class SubTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskName: 子任务名称。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param StatusCode: 子任务状态。
@@ -3295,18 +3283,14 @@ class SubTaskResultItem(AbstractModel):
         :type StatusMsg: str
         :param ProgressRate: 子任务进度。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressRate: int
         :param DownloadUrl: 画质重生处理后文件的下载地址。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param Md5: 画质重生处理后文件的MD5。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param FileInfo: 画质重生处理后文件的详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfo: :class:`tencentcloud.ie.v20200304.models.FileInfo`
         """
@@ -3344,7 +3328,7 @@ class SubTaskTranscodeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskName: 子任务名称。
         :type TaskName: str
         :param TargetInfo: 目标文件信息。
@@ -3398,7 +3382,7 @@ class SubtitleItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 语音识别结果
         :type Id: str
         :param Zh: 中文翻译结果
@@ -3457,7 +3441,7 @@ class SubtitleRec(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsrDst: 语音识别：
 zh：中文
 en：英文
@@ -3489,7 +3473,7 @@ class SubtitleResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubtitleItems: 语音字幕数组
         :type SubtitleItems: list of SubtitleItem
         """
@@ -3518,7 +3502,7 @@ class TagEditingInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启视频标签识别。0为关闭，1为开启。其他非0非1值默认为0。
         :type Switch: int
         :param CustomInfo: 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
@@ -3546,7 +3530,7 @@ class TagItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标签内容
         :type Id: str
         :param Confidence: 结果的置信度（百分制）
@@ -3584,7 +3568,7 @@ class TagTaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 编辑任务状态。 
 1：执行中；2：成功；3：失败。
         :type Status: int
@@ -3628,7 +3612,7 @@ class TagTaskResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tag: 标签名称。
         :type Tag: str
         :param Confidence: 置信度，取值范围是 0 到 100。
@@ -3656,7 +3640,7 @@ class TargetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 目标文件名
         :type FileName: str
         :param SegmentInfo: 目标文件切片信息
@@ -3686,7 +3670,7 @@ class TargetVideoInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Width: 视频宽度，单位像素
         :type Width: int
         :param Height: 视频高度，单位像素
@@ -3718,7 +3702,7 @@ class TaskResultFile(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 文件链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
@@ -3749,13 +3733,61 @@ class TaskResultFile(AbstractModel):
         
 
 
+class TextMarkInfoItem(AbstractModel):
+    """画质重生子任务文字水印信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 文字内容。
+        :type Text: str
+        :param PosX: 文字水印X坐标。
+        :type PosX: int
+        :param PosY: 文字水印Y坐标。
+        :type PosY: int
+        :param FontSize: 文字大小
+        :type FontSize: int
+        :param FontFile: 字体，可选项：hei,song，simkai,arial；默认hei(黑体）。
+        :type FontFile: str
+        :param FontColor: 字体颜色，颜色见附录，不填默认black。
+        :type FontColor: str
+        :param FontAlpha: 文字透明度，可选值0-1。0：不透明，1：全透明。默认为0
+        :type FontAlpha: float
+        """
+        self.Text = None
+        self.PosX = None
+        self.PosY = None
+        self.FontSize = None
+        self.FontFile = None
+        self.FontColor = None
+        self.FontAlpha = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.PosX = params.get("PosX")
+        self.PosY = params.get("PosY")
+        self.FontSize = params.get("FontSize")
+        self.FontFile = params.get("FontFile")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UrlInfo(AbstractModel):
     """任务视频Url形式下载信息。
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 视频 URL。
 注意：编辑理解仅支持mp4、flv等格式的点播文件，不支持hls；
         :type Url: str
@@ -3791,7 +3823,7 @@ class VideoEnhance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ArtifactReduction: 去编码毛刺、伪影参数。
         :type ArtifactReduction: :class:`tencentcloud.ie.v20200304.models.ArtifactReduction`
         :param Denoising: 去噪声参数。
@@ -3875,7 +3907,7 @@ class VideoInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
 注意：当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
@@ -3916,8 +3948,7 @@ class VideoInfo(AbstractModel):
         :param VideoCodec: 编码器支持选项，可选值：
 h264,
 h265,
-av1
-。
+av1。
 不填默认h264。
         :type VideoCodec: str
         :param PicMarkInfo: 图片水印。
@@ -3933,6 +3964,8 @@ hlg。
         :type VideoEnhance: :class:`tencentcloud.ie.v20200304.models.VideoEnhance`
         :param HiddenMarkInfo: 数字水印参数信息。
         :type HiddenMarkInfo: :class:`tencentcloud.ie.v20200304.models.HiddenMarkInfo`
+        :param TextMarkInfo: 文本水印参数信息。
+        :type TextMarkInfo: list of TextMarkInfoItem
         """
         self.Fps = None
         self.Width = None
@@ -3947,6 +3980,7 @@ hlg。
         self.Hdr = None
         self.VideoEnhance = None
         self.HiddenMarkInfo = None
+        self.TextMarkInfo = None
 
 
     def _deserialize(self, params):
@@ -3974,6 +4008,12 @@ hlg。
         if params.get("HiddenMarkInfo") is not None:
             self.HiddenMarkInfo = HiddenMarkInfo()
             self.HiddenMarkInfo._deserialize(params.get("HiddenMarkInfo"))
+        if params.get("TextMarkInfo") is not None:
+            self.TextMarkInfo = []
+            for item in params.get("TextMarkInfo"):
+                obj = TextMarkInfoItem()
+                obj._deserialize(item)
+                self.TextMarkInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3989,39 +4029,31 @@ class VideoInfoResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Stream: 视频流的流id。
         :type Stream: int
         :param Width: 视频宽度。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Height: 视频高度。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Bitrate: 视频码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Fps: 视频帧率，用分数格式表示，如：25/1, 99/32等等。
-注意：此字段可能返回 null，表示取不到有效值 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: str
         :param Codec: 编码格式，如h264,h265等等 。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param Rotate: 播放旋转角度，可选值0-360。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rotate: int
         :param Duration: 视频时长，单位：ms 。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param PixFormat: 颜色空间，如yuv420p，yuv444p等等。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PixFormat: str
         """
@@ -4061,7 +4093,7 @@ class VideoRepair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 画质修复类型，可选值：weak，normal，strong;
 默认值: weak
         :type Type: str
@@ -4086,7 +4118,7 @@ class VideoSuperResolution(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 超分视频类型：可选值：lq,hq
 lq: 针对低清晰度有较多噪声视频的超分;
 hq: 针对高清晰度视频超分;

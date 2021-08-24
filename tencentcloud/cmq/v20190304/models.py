@@ -24,7 +24,7 @@ class ClearQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         """
@@ -48,7 +48,7 @@ class ClearQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -65,7 +65,7 @@ class ClearSubscriptionFilterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -93,7 +93,7 @@ class ClearSubscriptionFilterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -110,7 +110,7 @@ class CreateQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -190,7 +190,7 @@ class CreateQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 创建成功的queueId
         :type QueueId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -211,7 +211,7 @@ class CreateSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -263,7 +263,7 @@ class CreateSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionId: SubscriptionId
         :type SubscriptionId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -284,7 +284,7 @@ class CreateTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
@@ -324,7 +324,7 @@ class CreateTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: TopicName
         :type TopicId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -345,7 +345,7 @@ class DeadLetterPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeadLetterQueueName: 死信队列名字。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterQueueName: str
@@ -390,7 +390,7 @@ class DeadLetterSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 消息队列ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueId: str
@@ -420,7 +420,7 @@ class DeleteQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         """
@@ -444,7 +444,7 @@ class DeleteQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -461,7 +461,7 @@ class DeleteSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -489,7 +489,7 @@ class DeleteSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -506,7 +506,7 @@ class DeleteTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type TopicName: str
         """
@@ -530,7 +530,7 @@ class DeleteTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -547,7 +547,7 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeadLetterQueueName: 死信队列名称
         :type DeadLetterQueueName: str
         :param Limit: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
@@ -588,7 +588,7 @@ class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 满足本次条件的队列个数
         :type TotalCount: int
         :param QueueSet: 死信队列源队列
@@ -618,7 +618,7 @@ class DescribeQueueDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
         :type Offset: int
         :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
@@ -663,7 +663,7 @@ class DescribeQueueDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总队列数。
         :type TotalCount: int
         :param QueueSet: 队列详情列表。
@@ -693,7 +693,7 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param Offset: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
@@ -734,7 +734,7 @@ class DescribeSubscriptionDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param SubscriptionSet: Subscription属性集合
@@ -765,7 +765,7 @@ class DescribeTopicDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
         :type Offset: int
         :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
@@ -810,7 +810,7 @@ class DescribeTopicDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 主题列表总数。
         :type TotalCount: int
         :param TopicSet: 主题详情列表。
@@ -840,7 +840,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤参数的名字
         :type Name: str
         :param Values: 数值
@@ -868,7 +868,7 @@ class ModifyQueueAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -944,7 +944,7 @@ class ModifyQueueAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -961,7 +961,7 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -1007,7 +1007,7 @@ class ModifySubscriptionAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1024,7 +1024,7 @@ class ModifyTopicAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type TopicName: str
         :param MaxMsgSize: 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。
@@ -1060,7 +1060,7 @@ class ModifyTopicAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1077,7 +1077,7 @@ class QueueSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 消息队列ID。
         :type QueueId: str
         :param QueueName: 消息队列名字。
@@ -1234,7 +1234,7 @@ class RewindQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         :param StartConsumeTime: 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。
@@ -1262,7 +1262,7 @@ class RewindQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1279,7 +1279,7 @@ class Subscription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscriptionName: str
@@ -1363,7 +1363,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签Key
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
@@ -1393,7 +1393,7 @@ class TopicSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
@@ -1480,7 +1480,7 @@ class TransactionPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstQueryInterval: 第一次回查时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstQueryInterval: int
@@ -1510,7 +1510,7 @@ class UnbindDeadLetterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 死信策略源队列名称，调用本接口会清空该队列的死信队列策略。
         :type QueueName: str
         """
@@ -1534,7 +1534,7 @@ class UnbindDeadLetterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

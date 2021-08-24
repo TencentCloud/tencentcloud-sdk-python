@@ -24,7 +24,7 @@ class AddSignStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignId: 签名Id。
         :type SignId: int
         :param SignApplyId: 签名申请Id。
@@ -52,7 +52,7 @@ class AddSmsSignRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignName: 签名名称。
 注：不能重复申请已通过或待审核的签名。
         :type SignName: str
@@ -126,7 +126,7 @@ class AddSmsSignResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AddSignStatus: 添加签名响应
         :type AddSignStatus: :class:`tencentcloud.sms.v20190711.models.AddSignStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -149,7 +149,7 @@ class AddSmsTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateName: 模板名称。
         :type TemplateName: str
         :param TemplateContent: 模板内容。
@@ -191,7 +191,7 @@ class AddSmsTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AddTemplateStatus: 添加短信模板响应包体
         :type AddTemplateStatus: :class:`tencentcloud.sms.v20190711.models.AddTemplateStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -214,7 +214,7 @@ class AddTemplateStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板参数
         :type TemplateId: str
         """
@@ -238,7 +238,7 @@ class CallbackStatusStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallbackCount: 短信回执量统计。
         :type CallbackCount: int
         :param RequestSuccessCount: 短信提交成功量统计。
@@ -294,7 +294,7 @@ class CallbackStatusStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDateTime: 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
         :type StartDateTime: int
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
@@ -337,7 +337,7 @@ class CallbackStatusStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallbackStatusStatistics: 回执数据统计响应包体。
         :type CallbackStatusStatistics: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatistics`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -360,7 +360,7 @@ class DeleteSignStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteStatus: 删除状态信息。
         :type DeleteStatus: str
         :param DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
@@ -388,7 +388,7 @@ class DeleteSmsSignRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignId: 待删除的签名 ID。
         :type SignId: int
         """
@@ -412,7 +412,7 @@ class DeleteSmsSignResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteSignStatus: 删除签名响应
         :type DeleteSignStatus: :class:`tencentcloud.sms.v20190711.models.DeleteSignStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -435,7 +435,7 @@ class DeleteSmsTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 待删除的模板 ID。
         :type TemplateId: int
         """
@@ -459,7 +459,7 @@ class DeleteSmsTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteTemplateStatus: 删除模板响应
         :type DeleteTemplateStatus: :class:`tencentcloud.sms.v20190711.models.DeleteTemplateStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -482,7 +482,7 @@ class DeleteTemplateStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteStatus: 删除状态信息。
         :type DeleteStatus: str
         :param DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
@@ -510,7 +510,7 @@ class DescribeSignListStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignId: 签名Id
         :type SignId: int
         :param International: 是否国际/港澳台短信：
@@ -559,7 +559,7 @@ class DescribeSmsSignListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignIdSet: 签名 ID 数组。
         :type SignIdSet: list of int non-negative
         :param International: 是否国际/港澳台短信：
@@ -589,7 +589,7 @@ class DescribeSmsSignListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DescribeSignListStatusSet: 获取签名信息响应
         :type DescribeSignListStatusSet: list of DescribeSignListStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -615,7 +615,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateIdSet: 模板 ID 数组。
         :type TemplateIdSet: list of int non-negative
         :param International: 是否国际/港澳台短信：
@@ -645,7 +645,7 @@ class DescribeSmsTemplateListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DescribeTemplateStatusSet: 获取短信模板信息响应
         :type DescribeTemplateStatusSet: list of DescribeTemplateListStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -671,7 +671,7 @@ class DescribeTemplateListStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板Id
         :type TemplateId: int
         :param International: 是否国际/港澳台短信：
@@ -720,7 +720,7 @@ class ModifySignStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignId: 签名Id
         :type SignId: int
         :param SignApplyId: 签名修改申请Id
@@ -748,7 +748,7 @@ class ModifySmsSignRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignId: 待修改的签名 ID。
         :type SignId: int
         :param SignName: 签名名称。
@@ -826,7 +826,7 @@ class ModifySmsSignResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModifySignStatus: 修改签名响应
         :type ModifySignStatus: :class:`tencentcloud.sms.v20190711.models.ModifySignStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -849,7 +849,7 @@ class ModifySmsTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 待修改的模板的模板 ID。
         :type TemplateId: int
         :param TemplateName: 新的模板名称。
@@ -895,7 +895,7 @@ class ModifySmsTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModifyTemplateStatus: 修改模板参数响应
         :type ModifyTemplateStatus: :class:`tencentcloud.sms.v20190711.models.ModifyTemplateStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -918,7 +918,7 @@ class ModifyTemplateStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板参数
         :type TemplateId: int
         """
@@ -942,7 +942,7 @@ class PullSmsReplyStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExtendCode: 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
         :type ExtendCode: str
         :param NationCode: 国家（或地区）码。
@@ -990,7 +990,7 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）。
 注：最大可拉取当前时期7天前的数据。
         :type SendDateTime: int
@@ -1036,7 +1036,7 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PullSmsReplyStatusSet: 回复状态响应集合。
         :type PullSmsReplyStatusSet: list of PullSmsReplyStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1062,7 +1062,7 @@ class PullSmsReplyStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 拉取最大条数，最多100条。
         :type Limit: int
         :param SmsSdkAppid: 短信 SdkAppid 在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际 SdkAppid，例如1400006666。
@@ -1090,7 +1090,7 @@ class PullSmsReplyStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PullSmsReplyStatusSet: 回复状态响应集合。
         :type PullSmsReplyStatusSet: list of PullSmsReplyStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1116,7 +1116,7 @@ class PullSmsSendStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserReceiveTime: 用户实际接收到短信的时间。
         :type UserReceiveTime: str
         :param UserReceiveUnixTime: 用户实际接收到短信的时间，UNIX 时间戳（单位：秒）。
@@ -1168,7 +1168,7 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendDateTime: 拉取起始时间，UNIX 时间戳（时间：秒）。
 注：最大可拉取当前时期7天前的数据。
         :type SendDateTime: int
@@ -1214,7 +1214,7 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PullSmsSendStatusSet: 下发状态响应集合。
         :type PullSmsSendStatusSet: list of PullSmsSendStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1240,7 +1240,7 @@ class PullSmsSendStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 拉取最大条数，最多100条。
         :type Limit: int
         :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
@@ -1268,7 +1268,7 @@ class PullSmsSendStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PullSmsSendStatusSet: 下发状态响应集合。
         :type PullSmsSendStatusSet: list of PullSmsSendStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1294,7 +1294,7 @@ class SendSmsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumberSet: 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
         :type PhoneNumberSet: list of str
@@ -1347,7 +1347,7 @@ class SendSmsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendStatusSet: 短信发送状态。
         :type SendStatusSet: list of SendStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1373,7 +1373,7 @@ class SendStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SerialNo: 发送流水号。
         :type SerialNo: str
         :param PhoneNumber: 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
@@ -1421,7 +1421,7 @@ class SendStatusStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FeeCount: 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条。
         :type FeeCount: int
         :param RequestCount: 短信提交量统计。
@@ -1453,7 +1453,7 @@ class SendStatusStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDateTime: 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
         :type StartDateTime: int
         :param EndDataTime: 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
@@ -1496,7 +1496,7 @@ class SendStatusStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendStatusStatistics: 发送数据统计响应包体。
         :type SendStatusStatistics: :class:`tencentcloud.sms.v20190711.models.SendStatusStatistics`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1519,7 +1519,7 @@ class SmsPackagesStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PackageCreateTime: 套餐包创建时间，标准时间，例如：2019-10-08 17:18:37。
         :type PackageCreateTime: str
         :param PackageCreateUnixTime: 套餐包创建时间，UNIX 时间戳（单位：秒）。
@@ -1579,7 +1579,7 @@ class SmsPackagesStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SmsSdkAppid: 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
         :type SmsSdkAppid: str
         :param Limit: 最大上限(需要拉取的套餐包个数)。
@@ -1612,7 +1612,7 @@ class SmsPackagesStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SmsPackagesStatisticsSet: 发送数据统计响应包体。
         :type SmsPackagesStatisticsSet: list of SmsPackagesStatistics
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

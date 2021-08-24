@@ -24,23 +24,27 @@ class AccessConfiguration(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRegion: 加速地域。
         :type AccessRegion: str
         :param Bandwidth: 通道带宽上限，单位：Mbps。
         :type Bandwidth: int
         :param Concurrent: 通道并发量上限，表示同时在线的连接数，单位：万。
         :type Concurrent: int
+        :param NetworkType: 网络类型，可取值：normal、cn2，默认值为normal
+        :type NetworkType: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
         self.Concurrent = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
         self.AccessRegion = params.get("AccessRegion")
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -56,7 +60,7 @@ class AccessRegionDetial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 区域ID
         :type RegionId: str
         :param RegionName: 区域的中文或英文名称
@@ -92,7 +96,7 @@ class AccessRegionDomainConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 地域ID。
         :type RegionId: str
         :param NationCountryInnerList: 就近接入区域国家内部编码，编码列表可通过DescribeCountryAreaMapping接口获取。
@@ -120,7 +124,7 @@ class AddRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 源站对应的项目ID
         :type ProjectId: int
         :param RealServerIP: 源站对应的IP或域名
@@ -161,7 +165,7 @@ class AddRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerSet: 源站信息列表
         :type RealServerSet: list of NewRealServer
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -187,7 +191,7 @@ class BandwidthPriceGradient(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BandwidthRange: 带宽范围。
         :type BandwidthRange: list of int
         :param BandwidthUnitPrice: 在对应带宽范围内的单宽单价，单位：元/Mbps/天。
@@ -219,7 +223,7 @@ class BindListenerRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param RealServerBindSet: 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
@@ -252,7 +256,7 @@ class BindListenerRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -269,7 +273,7 @@ class BindRealServer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerId: 源站ID
         :type RealServerId: str
         :param RealServerIP: 源站IP或者域名
@@ -318,7 +322,7 @@ class BindRealServerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerIP: 源站的IP或域名
         :type RealServerIP: str
         :param RealServerId: 源站ID
@@ -364,7 +368,7 @@ class BindRuleRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleId: 转发规则ID
         :type RuleId: str
         :param RealServerBindSet: 需要绑定的源站信息列表。
@@ -400,7 +404,7 @@ class BindRuleRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -417,7 +421,7 @@ class Certificate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         :param CertificateName: 证书名称（旧参数，请使用CertificateAlias）。
@@ -478,7 +482,7 @@ class CertificateAliasInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         :param CertificateAlias: 证书别名
@@ -506,7 +510,7 @@ class CertificateDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID。
         :type CertificateId: str
         :param CertificateType: 证书类型。
@@ -573,7 +577,7 @@ class CheckProxyCreateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRegion: 通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到
         :type AccessRegion: str
         :param RealServerRegion: 通道的源站区域。取值可通过接口DescribeDestRegions获取到
@@ -586,6 +590,10 @@ class CheckProxyCreateRequest(AbstractModel):
         :type GroupId: str
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
+        :type NetworkType: str
+        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.AccessRegion = None
         self.RealServerRegion = None
@@ -593,6 +601,8 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Concurrent = None
         self.GroupId = None
         self.IPAddressVersion = None
+        self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -602,6 +612,8 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Concurrent = params.get("Concurrent")
         self.GroupId = params.get("GroupId")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -617,7 +629,7 @@ class CheckProxyCreateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CheckFlag: 查询能否创建给定配置的通道，1可以创建，0不可创建。
         :type CheckFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -638,7 +650,7 @@ class CloseProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: （旧参数，请切换到ProxyIds）通道的实例ID。
         :type InstanceIds: list of str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -671,7 +683,7 @@ class CloseProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvalidStatusInstanceSet: 非运行状态下的通道实例ID列表，不可开启。
         :type InvalidStatusInstanceSet: list of str
         :param OperationFailedInstanceSet: 开启操作失败的通道实例ID列表。
@@ -696,7 +708,7 @@ class CloseProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组的实例 ID。
         :type GroupId: str
         """
@@ -720,7 +732,7 @@ class CloseProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvalidStatusInstanceSet: 非运行状态下的通道实例ID列表，不可开启。
         :type InvalidStatusInstanceSet: list of str
         :param OperationFailedInstanceSet: 开启操作失败的通道实例ID列表。
@@ -745,7 +757,7 @@ class CloseSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 通道ID
         :type ProxyId: str
         :param PolicyId: 安全组策略ID
@@ -773,7 +785,7 @@ class CloseSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 异步流程ID，可以通过DescribeAsyncTaskStatus 查询流程执行进展和状态
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -794,7 +806,7 @@ class CountryAreaMap(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NationCountryName: 国家名称。
         :type NationCountryName: str
         :param NationCountryInnerCode: 国家编码。
@@ -838,7 +850,7 @@ class CreateCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateType: 证书类型。其中：
 0，表示基础认证配置；
 1，表示客户端CA证书；
@@ -881,7 +893,7 @@ class CreateCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -896,13 +908,63 @@ class CreateCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomHeaderRequest(AbstractModel):
+    """CreateCustomHeader请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则id
+        :type RuleId: str
+        :param Headers: 新增的header名称和内容列表， ‘’$remote_addr‘’会被解析替换成客户端ip，其他值原样透传到源站。
+        :type Headers: list of HttpHeaderParam
+        """
+        self.RuleId = None
+        self.Headers = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomHeaderResponse(AbstractModel):
+    """CreateCustomHeader返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDomainErrorPageInfoRequest(AbstractModel):
     """CreateDomainErrorPageInfo请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param Domain: 域名
@@ -955,7 +1017,7 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageId: 错误定制响应的配置ID
         :type ErrorPageId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -976,7 +1038,7 @@ class CreateDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID。
         :type ListenerId: str
         :param Domain: 需要创建的域名，一个监听器下最大支持100个域名。
@@ -1018,7 +1080,7 @@ class CreateDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1035,7 +1097,7 @@ class CreateHTTPListenerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerName: 监听器名称
         :type ListenerName: str
         :param Port: 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
@@ -1071,7 +1133,7 @@ class CreateHTTPListenerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 创建的监听器ID
         :type ListenerId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1092,7 +1154,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerName: 监听器名称
         :type ListenerName: str
         :param Port: 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
@@ -1151,7 +1213,7 @@ class CreateHTTPSListenerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 创建的监听器ID
         :type ListenerId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1172,7 +1234,7 @@ class CreateProxyGroupDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 需要开启域名的通道组ID。
         :type GroupId: str
         """
@@ -1196,7 +1258,7 @@ class CreateProxyGroupDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID。
         :type GroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1217,7 +1279,7 @@ class CreateProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 通道组所属项目ID
         :type ProjectId: int
         :param GroupName: 通道组别名
@@ -1230,6 +1292,8 @@ class CreateProxyGroupRequest(AbstractModel):
         :type AccessRegionSet: list of AccessConfiguration
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param PackageType: 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+        :type PackageType: str
         """
         self.ProjectId = None
         self.GroupName = None
@@ -1237,6 +1301,7 @@ class CreateProxyGroupRequest(AbstractModel):
         self.TagSet = None
         self.AccessRegionSet = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -1256,6 +1321,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1271,7 +1337,7 @@ class CreateProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID
         :type GroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1292,7 +1358,7 @@ class CreateProxyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 通道的项目ID。
         :type ProjectId: int
         :param ProxyName: 通道名称。
@@ -1319,6 +1385,8 @@ class CreateProxyRequest(AbstractModel):
         :type BillingType: int
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
+        :type NetworkType: str
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1332,6 +1400,7 @@ class CreateProxyRequest(AbstractModel):
         self.ClonedProxyId = None
         self.BillingType = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -1352,6 +1421,7 @@ class CreateProxyRequest(AbstractModel):
         self.ClonedProxyId = params.get("ClonedProxyId")
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1367,7 +1437,7 @@ class CreateProxyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 通道的实例ID。
         :type InstanceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1388,7 +1458,7 @@ class CreateRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 7层监听器ID
         :type ListenerId: str
         :param Domain: 转发规则的域名
@@ -1447,7 +1517,7 @@ class CreateRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleId: 创建转发规则成功返回规则ID
         :type RuleId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1468,7 +1538,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DefaultAction: 默认策略：ACCEPT或DROP
         :type DefaultAction: str
         :param ProxyId: 加速通道ID
@@ -1500,7 +1570,7 @@ class CreateSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 安全策略ID
         :type PolicyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1521,7 +1591,7 @@ class CreateSecurityRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 安全策略ID
         :type PolicyId: str
         :param RuleList: 访问规则列表
@@ -1554,7 +1624,7 @@ class CreateSecurityRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleIdList: 规则ID列表
         :type RuleIdList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1575,7 +1645,7 @@ class CreateTCPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerName: 监听器名称。
         :type ListenerName: str
         :param Ports: 监听器端口列表。
@@ -1651,7 +1721,7 @@ class CreateTCPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerIds: 返回监听器ID
         :type ListenerIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1672,7 +1742,7 @@ class CreateUDPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerName: 监听器名称
         :type ListenerName: str
         :param Ports: 监听器端口列表
@@ -1720,7 +1790,7 @@ class CreateUDPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerIds: 返回监听器ID
         :type ListenerIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1741,7 +1811,7 @@ class DeleteCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 需要删除的证书ID。
         :type CertificateId: str
         """
@@ -1765,7 +1835,7 @@ class DeleteCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1782,7 +1852,7 @@ class DeleteDomainErrorPageInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageId: 定制错误响应页的唯一ID，请参考CreateDomainErrorPageInfo的响应
         :type ErrorPageId: str
         """
@@ -1806,7 +1876,7 @@ class DeleteDomainErrorPageInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1823,7 +1893,7 @@ class DeleteDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param Domain: 需要删除的域名
@@ -1856,7 +1926,7 @@ class DeleteDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1873,7 +1943,7 @@ class DeleteListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerIds: 待删除的监听器ID列表
         :type ListenerIds: list of str
         :param Force: 已绑定源站的监听器是否允许强制删除，1：允许， 0：不允许
@@ -1909,7 +1979,7 @@ class DeleteListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OperationFailedListenerSet: 删除操作失败的监听器ID列表
         :type OperationFailedListenerSet: list of str
         :param OperationSucceedListenerSet: 删除操作成功的监听器ID列表
@@ -1938,7 +2008,7 @@ class DeleteProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 需要删除的通道组ID。
         :type GroupId: str
         :param Force: 强制删除标识。其中：
@@ -1969,7 +2039,7 @@ class DeleteProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1986,7 +2056,7 @@ class DeleteRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 7层监听器ID
         :type ListenerId: str
         :param RuleId: 转发规则ID
@@ -2018,7 +2088,7 @@ class DeleteRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2035,7 +2105,7 @@ class DeleteSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: str
         """
@@ -2059,7 +2129,7 @@ class DeleteSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2076,7 +2146,7 @@ class DeleteSecurityRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 安全策略ID
         :type PolicyId: str
         :param RuleIdList: 访问规则ID列表
@@ -2104,7 +2174,7 @@ class DeleteSecurityRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2121,19 +2191,23 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DestRegion: 源站区域：接口DescribeDestRegions返回DestRegionSet中的RegionId字段值
         :type DestRegion: str
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.DestRegion = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
         self.DestRegion = params.get("DestRegion")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2149,7 +2223,7 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可用加速区域数量
         :type TotalCount: int
         :param AccessRegionSet: 可用加速区域信息列表
@@ -2185,7 +2259,7 @@ class DescribeAccessRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 加速区域总数
         :type TotalCount: int
         :param AccessRegionSet: 加速区域详情列表
@@ -2209,13 +2283,41 @@ class DescribeAccessRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBlackHeaderRequest(AbstractModel):
+    """DescribeBlackHeader请求参数结构体
+
+    """
+
+
+class DescribeBlackHeaderResponse(AbstractModel):
+    """DescribeBlackHeader返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BlackHeaders: 禁用的自定义header列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackHeaders: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlackHeaders = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlackHeaders = params.get("BlackHeaders")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCertificateDetailRequest(AbstractModel):
     """DescribeCertificateDetail请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID。
         :type CertificateId: str
         """
@@ -2239,7 +2341,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateDetail: 证书详情。
         :type CertificateDetail: :class:`tencentcloud.gaap.v20180529.models.CertificateDetail`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2262,7 +2364,7 @@ class DescribeCertificatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateType: 证书类型。其中：
 0，表示基础认证配置；
 1，表示客户端CA证书；
@@ -2301,7 +2403,7 @@ class DescribeCertificatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateSet: 服务器证书列表，包括证书ID 和证书名称。
         :type CertificateSet: list of Certificate
         :param TotalCount: 满足查询条件的服务器证书总数量。
@@ -2337,7 +2439,7 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CountryAreaMappingList: 国家地区编码映射表。
         :type CountryAreaMappingList: list of CountryAreaMap
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2357,6 +2459,44 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCustomHeaderRequest(AbstractModel):
+    """DescribeCustomHeader请求参数结构体
+
+    """
+
+
+class DescribeCustomHeaderResponse(AbstractModel):
+    """DescribeCustomHeader返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param Headers: 自定义header列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of HttpHeaderParam
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.Headers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.Headers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDestRegionsRequest(AbstractModel):
     """DescribeDestRegions请求参数结构体
 
@@ -2369,7 +2509,7 @@ class DescribeDestRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 源站区域总数
         :type TotalCount: int
         :param DestRegionSet: 源站区域详情列表
@@ -2399,7 +2539,7 @@ class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageIds: 定制错误ID列表,最多支持10个
         :type ErrorPageIds: list of str
         """
@@ -2423,7 +2563,7 @@ class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageSet: 定制错误响应配置集
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPageSet: list of DomainErrorPageInfo
@@ -2450,7 +2590,7 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param Domain: 域名
@@ -2478,7 +2618,7 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageSet: 定制错误响应配置集
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPageSet: list of DomainErrorPageInfo
@@ -2505,7 +2645,7 @@ class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: int
         """
@@ -2529,7 +2669,7 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupSet: 可以统计的通道组信息
         :type GroupSet: list of GroupStatisticsInfo
         :param TotalCount: 通道组数量
@@ -2559,7 +2699,7 @@ class DescribeGroupDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID。
         :type GroupId: str
         """
@@ -2583,7 +2723,7 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRegionList: 域名解析就近接入配置列表。
         :type AccessRegionList: list of DomainAccessRegionDict
         :param DefaultDnsIp: 默认访问Ip。
@@ -2621,7 +2761,7 @@ class DescribeHTTPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 通道ID
         :type ProxyId: str
         :param ListenerId: 过滤条件，按照监听器ID进行精确查询
@@ -2673,7 +2813,7 @@ class DescribeHTTPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 监听器数量
         :type TotalCount: int
         :param ListenerSet: HTTP监听器列表
@@ -2703,7 +2843,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 过滤条件，通道ID
         :type ProxyId: str
         :param ListenerId: 过滤条件，根据监听器ID进行精确查询。
@@ -2755,7 +2895,7 @@ class DescribeHTTPSListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 监听器数量
         :type TotalCount: int
         :param ListenerSet: HTTPS监听器列表
@@ -2785,7 +2925,7 @@ class DescribeListenerRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         """
@@ -2809,7 +2949,7 @@ class DescribeListenerRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可绑定源站的个数
         :type TotalCount: int
         :param RealServerSet: 源站信息列表
@@ -2852,7 +2992,7 @@ class DescribeListenerStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param StartTime: 起始时间
@@ -2895,7 +3035,7 @@ class DescribeListenerStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatisticsData: 通道组统计数据
         :type StatisticsData: list of MetricStatisticsInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2921,7 +3061,7 @@ class DescribeProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: （旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
         :type InstanceIds: list of str
         :param Offset: 偏移量，默认为0。
@@ -2988,7 +3128,7 @@ class DescribeProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 通道个数。
         :type TotalCount: int
         :param InstanceSet: （旧参数，请切换到ProxySet）通道实例信息列表。
@@ -3027,7 +3167,7 @@ class DescribeProxiesStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: （旧参数，请切换到ProxyIds）通道ID列表。
         :type InstanceIds: list of str
         :param ProxyIds: （新参数）通道ID列表。
@@ -3055,7 +3195,7 @@ class DescribeProxiesStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceStatusSet: 通道状态列表。
         :type InstanceStatusSet: list of ProxyStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3081,7 +3221,7 @@ class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: int
         """
@@ -3105,7 +3245,7 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxySet: 可以统计的通道信息
         :type ProxySet: list of ProxySimpleInfo
         :param TotalCount: 通道数量
@@ -3135,7 +3275,7 @@ class DescribeProxyDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 需查询的通道ID。
         :type ProxyId: str
         """
@@ -3159,7 +3299,7 @@ class DescribeProxyDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyDetail: 通道详情信息。
         :type ProxyDetail: :class:`tencentcloud.gaap.v20180529.models.ProxyInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3182,7 +3322,7 @@ class DescribeProxyGroupDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID。
         :type GroupId: str
         """
@@ -3206,7 +3346,7 @@ class DescribeProxyGroupDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyGroupDetail: 通道组详细信息。
         :type ProxyGroupDetail: :class:`tencentcloud.gaap.v20180529.models.ProxyGroupDetail`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3229,7 +3369,7 @@ class DescribeProxyGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认值为0。
         :type Offset: int
         :param Limit: 返回数量，默认值为20，最大值为100。
@@ -3239,37 +3379,38 @@ class DescribeProxyGroupListRequest(AbstractModel):
 0，默认项目
 其他值，指定的项目
         :type ProjectId: int
-        :param TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
-        :type TagSet: list of TagPair
         :param Filters: 过滤条件。   
 每次请求的Filter.Values的上限为5。
 RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
+PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
         :type Filters: list of Filter
+        :param TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
+最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+        :type TagSet: list of TagPair
         """
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
-        self.TagSet = None
         self.Filters = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProjectId = params.get("ProjectId")
-        if params.get("TagSet") is not None:
-            self.TagSet = []
-            for item in params.get("TagSet"):
-                obj = TagPair()
-                obj._deserialize(item)
-                self.TagSet.append(obj)
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3285,7 +3426,7 @@ class DescribeProxyGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 通道组总数。
         :type TotalCount: int
         :param ProxyGroupList: 通道组列表。
@@ -3316,7 +3457,7 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID
         :type GroupId: str
         :param StartTime: 起始时间
@@ -3359,7 +3500,7 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatisticsData: 通道组统计数据
         :type StatisticsData: list of MetricStatisticsInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3385,7 +3526,7 @@ class DescribeProxyStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 通道ID
         :type ProxyId: str
         :param StartTime: 起始时间(2019-03-25 12:00:00)
@@ -3428,7 +3569,7 @@ class DescribeProxyStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatisticsData: 通道统计数据
         :type StatisticsData: list of MetricStatisticsInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3454,7 +3595,7 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerId: 源站ID
         :type RealServerId: str
         :param ListenerId: 监听器ID
@@ -3502,7 +3643,7 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatisticsData: 指定监听器的源站状态统计数据
         :type StatisticsData: list of StatisticsDataInfo
         :param RsStatisticsData: 多个源站状态统计数据
@@ -3537,7 +3678,7 @@ class DescribeRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 查询源站的所属项目ID，-1表示所有项目
         :type ProjectId: int
         :param SearchValue: 需要查询的源站IP或域名，支持模糊匹配
@@ -3592,7 +3733,7 @@ class DescribeRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerSet: 源站信息列表
         :type RealServerSet: list of BindRealServerInfo
         :param TotalCount: 查询得到的源站数量
@@ -3622,7 +3763,7 @@ class DescribeRealServersStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerIds: 源站ID列表
         :type RealServerIds: list of str
         """
@@ -3646,7 +3787,7 @@ class DescribeRealServersStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回源站查询结果的个数
         :type TotalCount: int
         :param RealServerStatusSet: 源站被绑定状态列表
@@ -3676,15 +3817,19 @@ class DescribeRegionAndPriceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3700,7 +3845,7 @@ class DescribeRegionAndPriceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 源站区域总数
         :type TotalCount: int
         :param DestRegionSet: 源站区域详情列表
@@ -3745,7 +3890,7 @@ class DescribeResourcesByTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键。
         :type TagKey: str
         :param TagValue: 标签值。
@@ -3781,7 +3926,7 @@ class DescribeResourcesByTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 资源总数
         :type TotalCount: int
         :param ResourceSet: 标签对应的资源列表
@@ -3811,7 +3956,7 @@ class DescribeRuleRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleId: 转发规则ID
         :type RuleId: str
         :param Offset: 偏移量，默认为0。
@@ -3843,7 +3988,7 @@ class DescribeRuleRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可绑定的源站个数
         :type TotalCount: int
         :param RealServerSet: 可绑定的源站信息列表
@@ -3886,7 +4031,7 @@ class DescribeRulesByRuleIdsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleIds: 规则ID列表。最多支持10个规则。
         :type RuleIds: list of str
         """
@@ -3910,7 +4055,7 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回的规则总个数。
         :type TotalCount: int
         :param RuleSet: 返回的规则列表。
@@ -3940,7 +4085,7 @@ class DescribeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 7层监听器Id。
         :type ListenerId: str
         """
@@ -3964,7 +4109,7 @@ class DescribeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainRuleSet: 按照域名分类的规则信息列表
         :type DomainRuleSet: list of DomainRuleSet
         :param TotalCount: 该监听器下的域名总数
@@ -3994,7 +4139,7 @@ class DescribeSecurityPolicyDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 安全策略ID
         :type PolicyId: str
         """
@@ -4018,7 +4163,7 @@ class DescribeSecurityPolicyDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 通道ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
@@ -4065,7 +4210,7 @@ class DescribeSecurityRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityRuleIds: 安全规则ID列表。总数不能超过20个。
         :type SecurityRuleIds: list of str
         """
@@ -4089,7 +4234,7 @@ class DescribeSecurityRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回的安全规则详情总数。
         :type TotalCount: int
         :param SecurityRuleSet: 返回的安全规则详情列表。
@@ -4119,7 +4264,7 @@ class DescribeTCPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 过滤条件，根据通道ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
         :type ProxyId: str
         :param ListenerId: 过滤条件，根据监听器ID精确查询。
@@ -4173,7 +4318,7 @@ class DescribeTCPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 满足条件的监听器总个数
         :type TotalCount: int
         :param ListenerSet: TCP监听器列表
@@ -4203,7 +4348,7 @@ class DescribeUDPListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 过滤条件，根据通道ID进行拉取，ProxyId/GroupId/ListenerId必须设置一个，但ProxyId和GroupId不能同时设置。
         :type ProxyId: str
         :param ListenerId: 过滤条件，根据监听器ID精确查询。
@@ -4257,7 +4402,7 @@ class DescribeUDPListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 监听器个数
         :type TotalCount: int
         :param ListenerSet: UDP监听器列表
@@ -4287,7 +4432,7 @@ class DestroyProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Force: 强制删除标识。
 1，强制删除该通道列表，无论是否已经绑定了源站；
 0，如果已绑定了源站，则无法删除。
@@ -4327,7 +4472,7 @@ class DestroyProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvalidStatusInstanceSet: 处于不可销毁状态下的通道实例ID列表。
         :type InvalidStatusInstanceSet: list of str
         :param OperationFailedInstanceSet: 销毁操作失败的通道实例ID列表。
@@ -4352,7 +4497,7 @@ class DomainAccessRegionDict(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NationCountryInnerList: 就近接入区域
         :type NationCountryInnerList: list of NationCountryInnerInfo
         :param ProxyList: 加速区域通道列表
@@ -4406,7 +4551,7 @@ class DomainErrorPageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorPageId: 错误定制响应的配置ID
         :type ErrorPageId: str
         :param ListenerId: 监听器ID
@@ -4472,7 +4617,7 @@ class DomainRuleSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 转发规则域名。
         :type Domain: str
         :param RuleSet: 该域名对应的转发规则列表。
@@ -4609,7 +4754,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤条件
         :type Name: str
         :param Values: 过滤值
@@ -4637,7 +4782,7 @@ class GroupStatisticsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID
         :type GroupId: str
         :param GroupName: 通道组名称
@@ -4674,7 +4819,7 @@ class HTTPListener(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ListenerName: 监听器名称
@@ -4723,7 +4868,7 @@ class HTTPSListener(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ListenerName: 监听器名称
@@ -4812,7 +4957,7 @@ class HttpHeaderParam(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HeaderName: HTTP头名
         :type HeaderName: str
         :param HeaderValue: HTTP头值
@@ -4840,7 +4985,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRegion: 加速区域名称。
         :type AccessRegion: str
         :param Bandwidth: 通道带宽上限，单位：Mbps。
@@ -4857,6 +5002,10 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type BillingType: int
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
+        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
+        :type NetworkType: str
+        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :type PackageType: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -4866,6 +5015,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrent = None
         self.BillingType = None
         self.IPAddressVersion = None
+        self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -4877,6 +5028,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.Concurrent = params.get("Concurrent")
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4892,7 +5045,7 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyDailyPrice: 通道基础费用价格，单位：元/天。
         :type ProxyDailyPrice: float
         :param BandwidthUnitPrice: 通道带宽费用梯度价格。
@@ -4908,6 +5061,12 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         :param DiscountFlowUnitPrice: 通道的流量费用折扣价格，单位:元/GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountFlowUnitPrice: float
+        :param Cn2BandwidthPrice: 精品BGP的带宽费用价格，单位: 元/Mbps/天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cn2BandwidthPrice: float
+        :param Cn2BandwidthPriceWithDiscount: 精品BGP的折后带宽费用价格，单位: 元/Mbps/天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cn2BandwidthPriceWithDiscount: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4917,6 +5076,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         self.Currency = None
         self.FlowUnitPrice = None
         self.DiscountFlowUnitPrice = None
+        self.Cn2BandwidthPrice = None
+        self.Cn2BandwidthPriceWithDiscount = None
         self.RequestId = None
 
 
@@ -4932,6 +5093,8 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         self.Currency = params.get("Currency")
         self.FlowUnitPrice = params.get("FlowUnitPrice")
         self.DiscountFlowUnitPrice = params.get("DiscountFlowUnitPrice")
+        self.Cn2BandwidthPrice = params.get("Cn2BandwidthPrice")
+        self.Cn2BandwidthPriceWithDiscount = params.get("Cn2BandwidthPriceWithDiscount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4941,7 +5104,7 @@ class ListenerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ListenerName: 监听器名称
@@ -4977,7 +5140,7 @@ class MetricStatisticsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetricName: 指标名称
         :type MetricName: str
         :param MetricData: 指标统计数据
@@ -5010,7 +5173,7 @@ class ModifyCertificateAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID。
         :type CertificateId: str
         :param CertificateAlias: 证书名字。长度不超过50个字符。
@@ -5038,7 +5201,7 @@ class ModifyCertificateAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5055,7 +5218,7 @@ class ModifyCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器实例ID
         :type ListenerId: str
         :param Domain: 需要修改证书的域名
@@ -5099,7 +5262,7 @@ class ModifyCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5116,7 +5279,7 @@ class ModifyDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 7层监听器ID
         :type ListenerId: str
         :param OldDomain: 修改前的域名信息
@@ -5169,7 +5332,7 @@ class ModifyDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5186,7 +5349,7 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组ID。
         :type GroupId: str
         :param DefaultDnsIp: 域名解析默认访问IP或域名。
@@ -5223,7 +5386,7 @@ class ModifyGroupDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5240,7 +5403,7 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 需要修改的监听器ID
         :type ListenerId: str
         :param ListenerName: 新的监听器名称
@@ -5272,7 +5435,7 @@ class ModifyHTTPListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5289,7 +5452,7 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ProxyId: 通道ID， 若为单通道监听器，此项必须填写
@@ -5337,7 +5500,7 @@ class ModifyHTTPSListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5354,7 +5517,7 @@ class ModifyProxiesAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
         :type InstanceIds: list of str
         :param ProxyName: 通道名称。可任意命名，但不得超过30个字符。
@@ -5391,7 +5554,7 @@ class ModifyProxiesAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5408,7 +5571,7 @@ class ModifyProxiesProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 需要修改到的项目ID。
         :type ProjectId: int
         :param InstanceIds: （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
@@ -5445,7 +5608,7 @@ class ModifyProxiesProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5462,7 +5625,7 @@ class ModifyProxyConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: （旧参数，请切换到ProxyId）通道的实例ID。
         :type InstanceId: str
         :param Bandwidth: 需要调整到的目标带宽，单位：Mbps。
@@ -5509,7 +5672,7 @@ class ModifyProxyConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5526,7 +5689,7 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 需要修改的通道组ID。
         :type GroupId: str
         :param GroupName: 修改后的通道组名称：不超过30个字符，超过部分会被截断。
@@ -5558,7 +5721,7 @@ class ModifyProxyGroupAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5575,7 +5738,7 @@ class ModifyRealServerNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerName: 源站名称
         :type RealServerName: str
         :param RealServerId: 源站ID
@@ -5603,7 +5766,7 @@ class ModifyRealServerNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5620,7 +5783,7 @@ class ModifyRuleAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param RuleId: 转发规则ID
@@ -5681,7 +5844,7 @@ class ModifyRuleAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5698,7 +5861,7 @@ class ModifySecurityRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleId: 规则ID
         :type RuleId: str
         :param AliasName: 规则名：不得超过30个字符，超过部分会被截断。
@@ -5750,7 +5913,7 @@ class ModifySecurityRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5767,7 +5930,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param GroupId: 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
@@ -5831,7 +5994,7 @@ class ModifyTCPListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5848,7 +6011,7 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param GroupId: 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
@@ -5888,7 +6051,7 @@ class ModifyUDPListenerAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5905,7 +6068,7 @@ class NationCountryInnerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NationCountryName: 国家名
         :type NationCountryName: str
         :param NationCountryInnerCode: 国家内部编码
@@ -5933,7 +6096,7 @@ class NewRealServer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerId: 源站ID
         :type RealServerId: str
         :param RealServerIP: 源站ip或域名
@@ -5961,7 +6124,7 @@ class OpenProxiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: （旧参数，请切换到ProxyIds）通道的实例ID列表。
         :type InstanceIds: list of str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -5994,7 +6157,7 @@ class OpenProxiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvalidStatusInstanceSet: 非关闭状态下的通道实例ID列表，不可开启。
         :type InvalidStatusInstanceSet: list of str
         :param OperationFailedInstanceSet: 开启操作失败的通道实例ID列表。
@@ -6019,7 +6182,7 @@ class OpenProxyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组实例 ID
         :type GroupId: str
         """
@@ -6043,7 +6206,7 @@ class OpenProxyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvalidStatusInstanceSet: 非关闭状态下的通道实例ID列表，不可开启。
         :type InvalidStatusInstanceSet: list of str
         :param OperationFailedInstanceSet: 开启操作失败的通道实例ID列表。
@@ -6068,7 +6231,7 @@ class OpenSecurityPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 需开启安全策略的通道ID
         :type ProxyId: str
         :param PolicyId: 安全策略ID
@@ -6096,7 +6259,7 @@ class OpenSecurityPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 异步流程ID，可以通过DescribeAsyncTaskStatus接口查询流程运行状态
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6117,7 +6280,7 @@ class ProxyGroupDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreateTime: 创建时间
         :type CreateTime: int
         :param ProjectId: 项目ID
@@ -6162,6 +6325,9 @@ class ProxyGroupDetail(AbstractModel):
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
+        :param PackageType: 通道组类型，可取值：Thunder、Accelerator，默认值Thunder
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageType: str
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6180,6 +6346,7 @@ class ProxyGroupDetail(AbstractModel):
         self.Version = None
         self.ClientIPMethod = None
         self.IPAddressVersion = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -6207,6 +6374,7 @@ class ProxyGroupDetail(AbstractModel):
         self.Version = params.get("Version")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6222,7 +6390,7 @@ class ProxyGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 通道组id
         :type GroupId: str
         :param Domain: 通道组域名
@@ -6299,7 +6467,7 @@ class ProxyIdDict(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 通道ID
         :type ProxyId: str
         """
@@ -6323,7 +6491,7 @@ class ProxyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: （旧参数，请使用ProxyId）通道实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
@@ -6396,7 +6564,7 @@ UNKNOWN表示未知状态。
         :param ModifyConfigTime: 配置变更时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyConfigTime: int
-        :param ProxyType: 通道类型，104表示新的银牌质量通道类型
+        :param ProxyType: 通道类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
         :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
@@ -6405,6 +6573,9 @@ UNKNOWN表示未知状态。
         :param IPAddressVersion: IP版本：IPv4、IPv6
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
+        :param NetworkType: 网络类型：normal、cn2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkType: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6434,6 +6605,7 @@ UNKNOWN表示未知状态。
         self.ProxyType = None
         self.ClientIPMethod = None
         self.IPAddressVersion = None
+        self.NetworkType = None
 
 
     def _deserialize(self, params):
@@ -6474,6 +6646,7 @@ UNKNOWN表示未知状态。
         self.ProxyType = params.get("ProxyType")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6489,7 +6662,7 @@ class ProxySimpleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyId: 通道ID
         :type ProxyId: str
         :param ProxyName: 通道名称
@@ -6526,7 +6699,7 @@ class ProxyStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 通道实例ID。
         :type InstanceId: str
         :param Status: 通道状态。
@@ -6565,7 +6738,7 @@ class RealServer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerIP: 源站的IP或域名
         :type RealServerIP: str
         :param RealServerId: 源站ID
@@ -6601,7 +6774,7 @@ class RealServerBindSetReq(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerId: 源站id
         :type RealServerId: str
         :param RealServerPort: 源站端口
@@ -6641,7 +6814,7 @@ class RealServerStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerId: 源站ID。
         :type RealServerId: str
         :param BindStatus: 0表示未被绑定 1表示被规则或者监听器绑定。
@@ -6673,7 +6846,7 @@ class RegionDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 区域ID
         :type RegionId: str
         :param RegionName: 区域英文名或中文名
@@ -6701,7 +6874,7 @@ class RemoveRealServersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServerIds: 源站Id列表
         :type RealServerIds: list of str
         """
@@ -6725,7 +6898,7 @@ class RemoveRealServersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6742,7 +6915,7 @@ class RuleCheckParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DelayLoop: 健康检查的时间间隔
         :type DelayLoop: int
         :param ConnectTimeout: 健康检查的响应超时时间
@@ -6802,7 +6975,7 @@ class RuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleId: 规则信息
         :type RuleId: str
         :param ListenerId: 监听器信息
@@ -6880,7 +7053,7 @@ class SecurityPolicyRuleIn(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceCidr: 请求来源IP或IP段。
         :type SourceCidr: str
         :param Action: 策略：允许（ACCEPT）或拒绝（DROP）
@@ -6924,7 +7097,7 @@ class SecurityPolicyRuleOut(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Action: 策略：允许（ACCEPT）或拒绝（DROP）
         :type Action: str
         :param SourceCidr: 请求来源Ip或Ip段
@@ -6975,7 +7148,7 @@ class SetAuthenticationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID。
         :type ListenerId: str
         :param Domain: 需要进行高级配置的域名，该域名为监听器下的转发规则的域名。
@@ -7044,7 +7217,7 @@ class SetAuthenticationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7061,7 +7234,7 @@ class StatisticsDataInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 对应的时间点
         :type Time: int
         :param Data: 统计数据值
@@ -7090,7 +7263,7 @@ class TCPListener(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ListenerName: 监听器名称
@@ -7200,7 +7373,7 @@ class TagPair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -7228,7 +7401,7 @@ class TagResourceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: 资源类型，其中：
 Proxy表示通道，
 ProxyGroup表示通道组，
@@ -7259,7 +7432,7 @@ class UDPListener(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ListenerName: 监听器名称

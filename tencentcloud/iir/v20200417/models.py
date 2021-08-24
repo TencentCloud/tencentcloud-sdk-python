@@ -24,7 +24,7 @@ class Location(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param XMin: 位置矩形框的左上角横坐标
         :type XMin: int
         :param YMin: 位置矩形框的左上角纵坐标
@@ -61,7 +61,7 @@ class ProductInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FindSKU: 1表示找到同款商品，以下字段为同款商品信息； 
 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目。  
 是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
@@ -119,7 +119,7 @@ class RecognizeProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
 建议先对图片进行压缩，以便提升处理速度。
         :type ImageUrl: str
@@ -150,7 +150,7 @@ class RecognizeProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionDetected: 检测到的图片中的商品位置和品类预测。 
 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 最多可以输出__3组__检测结果。
@@ -187,7 +187,7 @@ class RegionDetected(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Category: 商品的品类预测结果。 
 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
         :type Category: str

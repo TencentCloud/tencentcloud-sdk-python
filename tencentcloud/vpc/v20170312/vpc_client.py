@@ -173,7 +173,7 @@ class VpcClient(AbstractClient):
 
     def AssignIpv6Addresses(self, request):
         """本接口（AssignIpv6Addresses）用于弹性网卡申请`IPv6`地址。<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
         * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         * 可以指定`IPv6`地址申请，地址类型不能为主`IP`，`IPv6`地址暂时只支持作为辅助`IP`。
         * 地址必须要在弹性网卡所在子网内，而且不能被占用。
@@ -535,6 +535,8 @@ class VpcClient(AbstractClient):
         * 只有运行中或者已关机状态的云服务器才能绑定弹性网卡，查看云服务器状态详见<a href="https://cloud.tencent.com/document/api/213/9452#InstanceStatus">腾讯云服务器信息</a>。
         * 弹性网卡绑定的云服务器必须是私有网络的，而且云服务器所在可用区必须和弹性网卡子网的可用区相同。
 
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+
         :param request: Request instance for AttachNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachNetworkInterfaceRequest`
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachNetworkInterfaceResponse`
@@ -823,7 +825,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateBandwidthPackage(self, request):
-        """接口支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[IP带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+        """本接口 (CreateBandwidthPackage) 支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)和[IP带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)。
 
         :param request: Request instance for CreateBandwidthPackage.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateBandwidthPackageRequest`
@@ -2128,8 +2130,8 @@ class VpcClient(AbstractClient):
 
 
     def DeleteHaVip(self, request):
-        """本接口（DeleteHaVip）用于删除高可用虚拟IP（HAVIP）<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+        """本接口（DeleteHaVip）用于删除高可用虚拟IP（HAVIP）。<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for DeleteHaVip.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteHaVipRequest`
@@ -2358,6 +2360,8 @@ class VpcClient(AbstractClient):
         """本接口（DeleteNetworkInterface）用于删除弹性网卡。
         * 弹性网卡上绑定了云服务器时，不能被删除。
         * 删除指定弹性网卡，弹性网卡必须先和子机解绑才能删除。删除之后弹性网卡上所有内网IP都将被退还。
+
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for DeleteNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkInterfaceRequest`
@@ -4528,6 +4532,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpcTaskResult(self, request):
+        """本接口（DescribeVpcTaskResult）用于查询VPC任务执行结果。
+
+        :param request: Request instance for DescribeVpcTaskResult.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcTaskResultRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpcTaskResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpcTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcs(self, request):
         """本接口（DescribeVpcs）用于查询私有网络列表。
 
@@ -4727,6 +4759,7 @@ class VpcClient(AbstractClient):
 
     def DetachNetworkInterface(self, request):
         """本接口（DetachNetworkInterface）用于弹性网卡解绑云服务器。
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for DetachNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DetachNetworkInterfaceRequest`
@@ -5208,8 +5241,8 @@ class VpcClient(AbstractClient):
 
 
     def HaVipAssociateAddressIp(self, request):
-        """本接口（HaVipAssociateAddressIp）用于高可用虚拟IP（HAVIP）绑定弹性公网IP（EIP）<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+        """本接口（HaVipAssociateAddressIp）用于高可用虚拟IP（HAVIP）绑定弹性公网IP（EIP）。<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for HaVipAssociateAddressIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.HaVipAssociateAddressIpRequest`
@@ -5237,8 +5270,8 @@ class VpcClient(AbstractClient):
 
 
     def HaVipDisassociateAddressIp(self, request):
-        """本接口（HaVipDisassociateAddressIp）用于将高可用虚拟IP（HAVIP）已绑定的弹性公网IP（EIP）解除绑定<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+        """本接口（HaVipDisassociateAddressIp）用于将高可用虚拟IP（HAVIP）已绑定的弹性公网IP（EIP）解除绑定。<br />
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for HaVipDisassociateAddressIp.
         :type request: :class:`tencentcloud.vpc.v20170312.models.HaVipDisassociateAddressIpRequest`
@@ -5379,6 +5412,7 @@ class VpcClient(AbstractClient):
 
     def MigrateNetworkInterface(self, request):
         """本接口（MigrateNetworkInterface）用于弹性网卡迁移。
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for MigrateNetworkInterface.
         :type request: :class:`tencentcloud.vpc.v20170312.models.MigrateNetworkInterfaceRequest`
@@ -5407,9 +5441,10 @@ class VpcClient(AbstractClient):
 
     def MigratePrivateIpAddress(self, request):
         """本接口（MigratePrivateIpAddress）用于弹性网卡内网IP迁移。
-
         * 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
         * 迁移前后的弹性网卡必须在同一个子网内。
+
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for MigratePrivateIpAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.MigratePrivateIpAddressRequest`
@@ -6340,7 +6375,7 @@ class VpcClient(AbstractClient):
         """本接口（ModifySecurityGroupPolicies）用于重置安全组出站和入站规则（SecurityGroupPolicy）。
 
         <ul>
-        <li>接口是先删除当前所有的出入站规则，然后再添加 Egress 和 Ingress 规则，不支持自定义索引 PolicyIndex。</li>
+        <li>该接口不支持自定义索引 PolicyIndex。</li>
         <li>在 SecurityGroupPolicySet 参数中：<ul>
         	<li> 如果指定 SecurityGroupPolicySet.Version 为0, 表示清空所有规则，并忽略 Egress 和 Ingress。</li>
         	<li> 如果指定 SecurityGroupPolicySet.Version 不为0, 在添加出站和入站规则（Egress 和 Ingress）时：<ul>
@@ -7229,7 +7264,7 @@ class VpcClient(AbstractClient):
 
     def UnassignIpv6Addresses(self, request):
         """本接口（UnassignIpv6Addresses）用于释放弹性网卡`IPv6`地址。<br />
-        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for UnassignIpv6Addresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignIpv6AddressesRequest`
@@ -7317,6 +7352,8 @@ class VpcClient(AbstractClient):
     def UnassignPrivateIpAddresses(self, request):
         """本接口（UnassignPrivateIpAddresses）用于弹性网卡退还内网 IP。
         * 退还弹性网卡上的辅助内网IP，接口自动解关联弹性公网 IP。不能退还弹性网卡的主内网IP。
+
+        本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 
         :param request: Request instance for UnassignPrivateIpAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.UnassignPrivateIpAddressesRequest`

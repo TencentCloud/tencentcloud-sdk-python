@@ -24,7 +24,7 @@ class CreateBotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotName: 机器人名称
         :type BotName: str
         :param BotCnName: 机器人中文名称
@@ -52,7 +52,7 @@ class CreateBotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskRequestId: 任务ID
         :type TaskRequestId: str
         :param Msg: 任务信息
@@ -77,7 +77,7 @@ class ResetRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人标识
         :type BotId: str
         :param UserId: 子账户id，每个终端对应一个
@@ -113,7 +113,7 @@ class ResetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态。取值:"start"/"continue"/"complete"
 注意：此字段可能返回 null，表示取不到有效值。
         :type DialogStatus: str
@@ -179,7 +179,7 @@ class SlotInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SlotName: 槽位名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlotName: str
@@ -209,7 +209,7 @@ class TextProcessRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人标识，用于定义抽象机器人。
         :type BotId: str
         :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
@@ -249,7 +249,7 @@ class TextProcessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DialogStatus: str
@@ -306,7 +306,7 @@ class TextResetRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人标识，用于定义抽象机器人。
         :type BotId: str
         :param TerminalId: 终端标识，每个终端(或线程)对应一个，区分并发多用户。
@@ -338,7 +338,7 @@ class TextResetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态，取值："START"/"COUTINUE"/"COMPLETE"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DialogStatus: str

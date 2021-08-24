@@ -74,6 +74,9 @@ FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = 'FailedOperation.SnapshotSizeLess
 # 请求中指定的标签键为系统预留标签，禁止创建
 FAILEDOPERATION_TAGKEYRESERVED = 'FailedOperation.TagKeyReserved'
 
+# 镜像是公共镜像并且启用了自动化助手服务，但它不符合 Linux&x86_64。
+FAILEDOPERATION_TATAGENTNOTSUPPORT = 'FailedOperation.TatAgentNotSupport'
+
 # 实例无法退还。
 FAILEDOPERATION_UNRETURNABLE = 'FailedOperation.Unreturnable'
 
@@ -251,6 +254,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 请确认指定的带宽包是否存在。
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
 
+# 找不到对应的CHC物理服务器。
+INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = 'InvalidParameterValue.ChcHostsNotFound'
+
 # SSD云硬盘为数据盘时，购买大小不得小于100GB
 INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.CloudSsdDataDiskSizeTooSmall'
 
@@ -260,11 +266,20 @@ INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
 # 参数值重复。
 INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 
+# 非GPU实例不允许转为GPU实例。
+INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = 'InvalidParameterValue.GPUInstanceFamily'
+
 # IP格式非法。
 INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = 'InvalidParameterValue.IPAddressMalformed'
 
+# ipv6地址无效
+INVALIDPARAMETERVALUE_IPV6ADDRESSMALFORMED = 'InvalidParameterValue.IPv6AddressMalformed'
+
 # HostName参数值不合法
 INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
+
+# 传参格式不对。
+INVALIDPARAMETERVALUE_INCORRECTFORMAT = 'InvalidParameterValue.IncorrectFormat'
 
 # 指定机型不存在
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
@@ -281,13 +296,22 @@ INVALIDPARAMETERVALUE_INSUFFICIENTOFFERING = 'InvalidParameterValue.Insufficient
 # 竞价失败。
 INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = 'InvalidParameterValue.InsufficientPrice'
 
+# 无效的appid。
+INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = 'InvalidParameterValue.InvalidAppIdFormat'
+
 # 镜像ID不支持指定的实例机型。
 INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.InvalidImageForGivenInstanceType'
+
+# 当前镜像为RAW格式，无法创建CVM，建议您选择其他镜像。
+INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = 'InvalidParameterValue.InvalidImageFormat'
 
 # 镜像不允许执行该操作
 INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 
-# 镜像状态不合规范
+# 当前地域不支持指定镜像所包含的操作系统。
+INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = 'InvalidParameterValue.InvalidImageOsName'
+
+# 镜像被其他操作占用，请检查，并稍后重试。
 INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = 'InvalidParameterValue.InvalidImageState'
 
 # IP地址不符合规范
@@ -437,6 +461,9 @@ LIMITEXCEEDED_VPCSUBNETNUM = 'LimitExceeded.VpcSubnetNum'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 缺少必要参数，请至少提供一个参数。
+MISSINGPARAMETER_ATLEASTONE = 'MissingParameter.AtLeastOne'
+
 # DPDK实例机型要求VPC网络
 MISSINGPARAMETER_DPDKINSTANCETYPEREQUIREDVPC = 'MissingParameter.DPDKInstanceTypeRequiredVPC'
 
@@ -545,6 +572,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = 'UnsupportedOperatio
 # 请求不支持正在退出救援模式的实例
 UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = 'UnsupportedOperation.InstanceStateExitRescueMode'
 
+# 不支持状态为 `EXIT_SERVICE_LIVE_MIGRATE`.的实例 `ins-xxxxxx` 。
+UNSUPPORTEDOPERATION_INSTANCESTATEEXITSERVICELIVEMIGRATE = 'UnsupportedOperation.InstanceStateExitServiceLiveMigrate'
+
 # 请求不支持正在隔离状态的实例。
 UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = 'UnsupportedOperation.InstanceStateIsolating'
 
@@ -565,6 +595,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = 'UnsupportedOperation.Ins
 
 # 请求不支持隔离状态的实例
 UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = 'UnsupportedOperation.InstanceStateShutdown'
+
+# 实例开机中，不允许该操作。
+UNSUPPORTEDOPERATION_INSTANCESTATESTARTING = 'UnsupportedOperation.InstanceStateStarting'
 
 # 请求不支持已关机的实例
 UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = 'UnsupportedOperation.InstanceStateStopped'
@@ -590,6 +623,9 @@ UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = 'UnsupportedOperation.InvalidReg
 # 密钥不支持Windows操作系统
 UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = 'UnsupportedOperation.KeyPairUnsupportedWindows'
 
+# 机型数据盘全为本地盘不支持跨机型调整。
+UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = 'UnsupportedOperation.LocalDataDiskChangeInstanceFamily'
+
 # 绑定负载均衡的实例，不支持修改vpc属性。
 UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = 'UnsupportedOperation.ModifyVPCWithCLB'
 
@@ -601,6 +637,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTINSTANCEIMAGE = 'UnsupportedOperation.NotSupportI
 
 # 该操作仅支持预付费账户
 UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = 'UnsupportedOperation.OnlyForPrepaidAccount'
+
+# 当前镜像不支持对该实例的重装操作。
+UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = 'UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2'
 
 # 不支持该地域
 UNSUPPORTEDOPERATION_REGION = 'UnsupportedOperation.Region'
@@ -622,6 +661,12 @@ UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = 'Unsupported
 
 # 指定机型不支持跨机型调整配置。
 UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedChangeInstanceFamily'
+
+# 非ARM机型不支持调整到ARM机型。
+UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOARM = 'UnsupportedOperation.UnsupportedChangeInstanceFamilyToARM'
+
+# 目标机型是SA3, 不支持变配。
+UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = 'UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3'
 
 # 请求不支持国际版账号
 UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = 'UnsupportedOperation.UnsupportedInternationalUser'

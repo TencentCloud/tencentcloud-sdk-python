@@ -24,7 +24,7 @@ class Account(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一Uuid
@@ -82,7 +82,7 @@ class AccountStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Username: 用户名。
         :type Username: str
         :param MachineNum: 主机数量。
@@ -110,7 +110,7 @@ class AddLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rules: 白名单规则
         :type Rules: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
         """
@@ -136,7 +136,7 @@ class AddLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -153,7 +153,7 @@ class AddMachineTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quuid: 云服务器ID
         :type Quuid: str
         :param TagId: 标签ID
@@ -189,7 +189,7 @@ class AddMachineTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -206,7 +206,7 @@ class AgentVul(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 漏洞ID。
         :type Id: int
         :param MachineIp: 主机IP。
@@ -264,7 +264,7 @@ class BashEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID
         :type Id: int
         :param Uuid: 云镜ID
@@ -336,7 +336,7 @@ class BashRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -404,7 +404,7 @@ class BruteAttack(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 事件ID。
         :type Id: int
         :param MachineIp: 主机IP。
@@ -487,7 +487,7 @@ class ChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：
@@ -520,7 +520,7 @@ class CloseProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quuid: 主机唯一标识Uuid。
 黑石的InstanceId，CVM的Uuid
         :type Quuid: str
@@ -545,7 +545,7 @@ class CloseProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -562,7 +562,7 @@ class Component(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一Uuid。
@@ -616,7 +616,7 @@ class ComponentStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 组件ID。
         :type Id: int
         :param MachineNum: 主机数量。
@@ -658,7 +658,7 @@ class CreateBaselineStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StrategyName: 策略名称
         :type StrategyName: str
         :param ScanCycle: 检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
@@ -710,7 +710,7 @@ class CreateBaselineStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -727,7 +727,7 @@ class CreateOpenPortTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         """
@@ -751,7 +751,7 @@ class CreateOpenPortTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -768,7 +768,7 @@ class CreateProcessTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         """
@@ -792,7 +792,7 @@ class CreateProcessTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -809,7 +809,7 @@ class CreateUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuids: 云镜客户端UUID数组。
         :type Uuids: list of str
         :param Places: 登录地域信息数组。
@@ -842,7 +842,7 @@ class CreateUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -859,7 +859,7 @@ class DefendAttackLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 日志ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -935,7 +935,7 @@ class DeleteAttackLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 日志ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -959,7 +959,7 @@ class DeleteAttackLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -976,7 +976,7 @@ class DeleteBashEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1000,7 +1000,7 @@ class DeleteBashEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1017,7 +1017,7 @@ class DeleteBashRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1041,7 +1041,7 @@ class DeleteBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1058,7 +1058,7 @@ class DeleteBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 暴力破解事件Id数组。
         :type Ids: list of int non-negative
         """
@@ -1082,7 +1082,7 @@ class DeleteBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1099,7 +1099,7 @@ class DeleteLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 白名单ID
         :type Ids: list of int non-negative
         """
@@ -1123,7 +1123,7 @@ class DeleteLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1140,7 +1140,7 @@ class DeleteMachineRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端Uuid。
         :type Uuid: str
         """
@@ -1164,7 +1164,7 @@ class DeleteMachineResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1181,7 +1181,7 @@ class DeleteMachineTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rid: 关联的标签ID
         :type Rid: int
         """
@@ -1205,7 +1205,7 @@ class DeleteMachineTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1222,7 +1222,7 @@ class DeleteMaliciousRequestsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 恶意请求记录ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1246,7 +1246,7 @@ class DeleteMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1263,7 +1263,7 @@ class DeleteMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马记录ID数组
         :type Ids: list of int non-negative
         """
@@ -1287,7 +1287,7 @@ class DeleteMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1304,7 +1304,7 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 异地登录事件ID数组。
         :type Ids: list of int non-negative
         """
@@ -1328,7 +1328,7 @@ class DeleteNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1345,7 +1345,7 @@ class DeletePrivilegeEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1369,7 +1369,7 @@ class DeletePrivilegeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1386,7 +1386,7 @@ class DeletePrivilegeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1410,7 +1410,7 @@ class DeletePrivilegeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1427,7 +1427,7 @@ class DeleteReverseShellEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1451,7 +1451,7 @@ class DeleteReverseShellEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1468,7 +1468,7 @@ class DeleteReverseShellRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1492,7 +1492,7 @@ class DeleteReverseShellRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1509,7 +1509,7 @@ class DeleteTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 标签ID
         :type Ids: list of int non-negative
         """
@@ -1533,7 +1533,7 @@ class DeleteTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1550,7 +1550,7 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端Uuid
         :type Uuid: str
         :param CityIds: 已添加常用登录地城市ID数组
@@ -1578,7 +1578,7 @@ class DeleteUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1595,7 +1595,7 @@ class DescribeAccountStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -1633,7 +1633,7 @@ class DescribeAccountStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 帐号统计列表记录总数。
         :type TotalCount: int
         :param AccountStatistics: 帐号统计列表。
@@ -1663,7 +1663,7 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
         :type Uuid: str
         :param Username: 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
@@ -1711,7 +1711,7 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 帐号列表记录总数。
         :type TotalCount: int
         :param Accounts: 帐号数据列表。
@@ -1741,7 +1741,7 @@ class DescribeAgentVulsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulType: 漏洞类型。
 <li>WEB: Web应用漏洞</li>
 <li>SYSTEM：系统组件漏洞</li>
@@ -1790,7 +1790,7 @@ class DescribeAgentVulsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总数
         :type TotalCount: int
         :param AgentVuls: 主机漏洞信息
@@ -1826,7 +1826,7 @@ class DescribeAlarmAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offline: 防护软件离线告警状态：
 <li>OPEN：告警已开启</li>
 <li>CLOSE： 告警已关闭</li>
@@ -1867,7 +1867,7 @@ class DescribeAttackLogInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 日志ID
         :type Id: int
         """
@@ -1891,7 +1891,7 @@ class DescribeAttackLogInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 日志ID
         :type Id: int
         :param Quuid: 主机ID
@@ -1972,7 +1972,7 @@ class DescribeAttackLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2020,7 +2020,7 @@ class DescribeAttackLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttackLogs: 日志列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLogs: list of DefendAttackLog
@@ -2051,7 +2051,7 @@ class DescribeBashEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2089,7 +2089,7 @@ class DescribeBashEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总条数
         :type TotalCount: int
         :param List: 高危命令事件列表
@@ -2119,7 +2119,7 @@ class DescribeBashRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 0-系统规则; 1-用户规则
         :type Type: int
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -2161,7 +2161,7 @@ class DescribeBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of BashRule
         :param TotalCount: 总条数
@@ -2191,7 +2191,7 @@ class DescribeBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 客户端唯一Uuid。
         :type Uuid: str
         :param Offset: 偏移量，默认为0。
@@ -2234,7 +2234,7 @@ class DescribeBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 事件数量
         :type TotalCount: int
         :param BruteAttacks: 暴力破解事件列表
@@ -2264,7 +2264,7 @@ class DescribeComponentInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComponentId: 组件ID。
         :type ComponentId: int
         """
@@ -2288,7 +2288,7 @@ class DescribeComponentInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 组件ID。
         :type Id: int
         :param ComponentName: 组件名称。
@@ -2327,7 +2327,7 @@ class DescribeComponentStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2365,7 +2365,7 @@ class DescribeComponentStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 组件统计列表记录总数。
         :type TotalCount: int
         :param ComponentStatistics: 组件统计列表数据数组。
@@ -2395,7 +2395,7 @@ class DescribeComponentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。Uuid和ComponentId必填其一，使用Uuid表示，查询该主机列表信息。
         :type Uuid: str
         :param ComponentId: 组件ID。Uuid和ComponentId必填其一，使用ComponentId表示，查询该组件列表信息。
@@ -2442,7 +2442,7 @@ class DescribeComponentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 组件列表记录总数。
         :type TotalCount: int
         :param Components: 组件列表数据。
@@ -2472,7 +2472,7 @@ class DescribeHistoryAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -2514,7 +2514,7 @@ class DescribeHistoryAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 帐号变更历史列表记录总数。
         :type TotalCount: int
         :param HistoryAccounts: 帐号变更历史数据数组。
@@ -2544,7 +2544,7 @@ class DescribeImpactedHostsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulId: 漏洞种类ID。
         :type VulId: int
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -2586,7 +2586,7 @@ class DescribeImpactedHostsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总数
         :type TotalCount: int
         :param ImpactedHosts: 漏洞影响机器列表数组
@@ -2616,7 +2616,7 @@ class DescribeLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2654,7 +2654,7 @@ class DescribeLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总数
         :type TotalCount: int
         :param LoginWhiteLists: 异地登录白名单数组
@@ -2684,7 +2684,7 @@ class DescribeMachineInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         """
@@ -2708,7 +2708,7 @@ class DescribeMachineInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineIp: 机器ip。
         :type MachineIp: str
         :param ProtectDays: 受云镜保护天数。
@@ -2797,7 +2797,7 @@ class DescribeMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -2848,7 +2848,7 @@ class DescribeMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Machines: 主机列表
         :type Machines: list of Machine
         :param TotalCount: 主机数量
@@ -2878,7 +2878,7 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2922,7 +2922,7 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总数。
         :type TotalCount: int
         :param MaliciousRequests: 恶意请求记录数组。
@@ -2952,7 +2952,7 @@ class DescribeMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 客户端唯一Uuid。
         :type Uuid: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -2996,7 +2996,7 @@ class DescribeMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 木马总数。
         :type TotalCount: int
         :param Malwares: Malware数组。
@@ -3026,7 +3026,7 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 客户端唯一Uuid。
         :type Uuid: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -3069,7 +3069,7 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总数。
         :type TotalCount: int
         :param NonLocalLoginPlaces: 异地登录信息数组。
@@ -3099,7 +3099,7 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3137,7 +3137,7 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 端口统计列表总数
         :type TotalCount: int
         :param OpenPortStatistics: 端口统计数据列表
@@ -3167,7 +3167,7 @@ class DescribeOpenPortTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         """
@@ -3191,7 +3191,7 @@ class DescribeOpenPortTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态。
 <li>COMPLETE：完成（此时可以调用DescribeOpenPorts接口获取实时进程列表）</li>
 <li>AGENT_OFFLINE：云镜客户端离线</li>
@@ -3216,7 +3216,7 @@ class DescribeOpenPortsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。Port和Uuid必填其一，使用Uuid表示，查询该主机列表信息。
         :type Uuid: str
         :param Port: 开放端口号。Port和Uuid必填其一，使用Port表示查询该端口的列表信息。
@@ -3264,7 +3264,7 @@ class DescribeOpenPortsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 端口列表记录总数。
         :type TotalCount: int
         :param OpenPorts: 端口列表。
@@ -3300,7 +3300,7 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OnlineMachineNum: 服务器在线数。
         :type OnlineMachineNum: int
         :param ProVersionMachineNum: 专业服务器数。
@@ -3345,7 +3345,7 @@ class DescribePrivilegeEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3383,7 +3383,7 @@ class DescribePrivilegeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 数据列表
         :type List: list of PrivilegeEscalationProcess
         :param TotalCount: 总条数
@@ -3413,7 +3413,7 @@ class DescribePrivilegeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3451,7 +3451,7 @@ class DescribePrivilegeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of PrivilegeRule
         :param TotalCount: 总条数
@@ -3487,7 +3487,7 @@ class DescribeProVersionInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PostPayCost: 后付费昨日扣费
         :type PostPayCost: int
         :param IsAutoOpenProVersion: 新增主机是否自动开通专业版
@@ -3516,7 +3516,7 @@ class DescribeProcessStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3554,7 +3554,7 @@ class DescribeProcessStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 进程统计列表记录总数。
         :type TotalCount: int
         :param ProcessStatistics: 进程统计列表数据数组。
@@ -3584,7 +3584,7 @@ class DescribeProcessTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         """
@@ -3608,7 +3608,7 @@ class DescribeProcessTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态。
 <li>COMPLETE：完成（此时可以调用DescribeProcesses接口获取实时进程列表）</li>
 <li>AGENT_OFFLINE：云镜客户端离线</li>
@@ -3633,7 +3633,7 @@ class DescribeProcessesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。Uuid和ProcessName必填其一，使用Uuid表示，查询该主机列表信息。
         :type Uuid: str
         :param ProcessName: 进程名。Uuid和ProcessName必填其一，使用ProcessName表示，查询该进程列表信息。
@@ -3680,7 +3680,7 @@ class DescribeProcessesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 进程列表记录总数。
         :type TotalCount: int
         :param Processes: 进程列表数据数组。
@@ -3710,7 +3710,7 @@ class DescribeReverseShellEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3748,7 +3748,7 @@ class DescribeReverseShellEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of ReverseShell
         :param TotalCount: 总条数
@@ -3778,7 +3778,7 @@ class DescribeReverseShellRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3816,7 +3816,7 @@ class DescribeReverseShellRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of ReverseShellRule
         :param TotalCount: 总条数
@@ -3846,7 +3846,7 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3874,7 +3874,7 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityDynamics: 安全事件消息数组。
         :type SecurityDynamics: list of SecurityDynamic
         :param TotalCount: 记录总数。
@@ -3904,7 +3904,7 @@ class DescribeSecurityTrendsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 开始时间。
         :type BeginDate: str
         :param EndDate: 结束时间。
@@ -3932,7 +3932,7 @@ class DescribeSecurityTrendsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Malwares: 木马事件统计数据数组。
         :type Malwares: list of SecurityTrend
         :param NonLocalLoginPlaces: 异地登录事件统计数据数组。
@@ -4039,7 +4039,7 @@ class DescribeTagMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标签ID
         :type Id: int
         """
@@ -4063,7 +4063,7 @@ class DescribeTagMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表数据
         :type List: list of TagMachine
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4089,7 +4089,7 @@ class DescribeTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -4119,7 +4119,7 @@ class DescribeTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表信息
         :type List: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4145,7 +4145,7 @@ class DescribeUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端UUID
         :type Uuid: str
         """
@@ -4169,7 +4169,7 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UsualLoginPlaces: 常用登录地数组
         :type UsualLoginPlaces: list of UsualPlace
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4195,7 +4195,7 @@ class DescribeVulInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulId: 漏洞种类ID。
         :type VulId: int
         """
@@ -4219,7 +4219,7 @@ class DescribeVulInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulId: 漏洞种类ID。
         :type VulId: int
         :param VulName: 漏洞名称。
@@ -4274,7 +4274,7 @@ class DescribeVulScanResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulNum: 漏洞数量。
         :type VulNum: int
         :param ProVersionNum: 专业版机器数。
@@ -4311,7 +4311,7 @@ class DescribeVulsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulType: 漏洞类型。
 <li>WEB：Web应用漏洞</li>
 <li>SYSTEM：系统组件漏洞</li>
@@ -4358,7 +4358,7 @@ class DescribeVulsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 漏洞数量。
         :type TotalCount: int
         :param Vuls: 漏洞列表数组。
@@ -4388,7 +4388,7 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 专业周报开始时间。
         :type BeginDate: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -4420,7 +4420,7 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeeklyReportBruteAttacks: 专业周报密码破解数组。
         :type WeeklyReportBruteAttacks: list of WeeklyReportBruteAttack
         :param TotalCount: 记录总数。
@@ -4450,7 +4450,7 @@ class DescribeWeeklyReportInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 专业周报开始时间。
         :type BeginDate: str
         """
@@ -4474,7 +4474,7 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompanyName: 账号所属公司或个人名称。
         :type CompanyName: str
         :param MachineNum: 机器总数。
@@ -4546,7 +4546,7 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 专业周报开始时间。
         :type BeginDate: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -4578,7 +4578,7 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeeklyReportMalwares: 专业周报木马数据。
         :type WeeklyReportMalwares: list of WeeklyReportMalware
         :param TotalCount: 记录总数。
@@ -4608,7 +4608,7 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 专业周报开始时间。
         :type BeginDate: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -4640,7 +4640,7 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeeklyReportNonlocalLoginPlaces: 专业周报异地登录数据。
         :type WeeklyReportNonlocalLoginPlaces: list of WeeklyReportNonlocalLoginPlace
         :param TotalCount: 记录总数。
@@ -4670,7 +4670,7 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 专业版周报开始时间。
         :type BeginDate: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -4702,7 +4702,7 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeeklyReportVuls: 专业周报漏洞数据数组。
         :type WeeklyReportVuls: list of WeeklyReportVul
         :param TotalCount: 记录总数。
@@ -4732,7 +4732,7 @@ class DescribeWeeklyReportsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -4760,7 +4760,7 @@ class DescribeWeeklyReportsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeeklyReports: 专业周报列表数组。
         :type WeeklyReports: list of WeeklyReport
         :param TotalCount: 记录总数。
@@ -4790,7 +4790,7 @@ class EditBashRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 规则名称
         :type Name: str
         :param Level: 危险等级(1: 高危 2:中危 3: 低危)
@@ -4838,7 +4838,7 @@ class EditBashRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4855,7 +4855,7 @@ class EditPrivilegeRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID(新增时请留空)
         :type Id: int
         :param Uuid: 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
@@ -4899,7 +4899,7 @@ class EditPrivilegeRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4916,7 +4916,7 @@ class EditReverseShellRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID(新增时请留空)
         :type Id: int
         :param Uuid: 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
@@ -4964,7 +4964,7 @@ class EditReverseShellRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4981,7 +4981,7 @@ class EditTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 标签名
         :type Name: str
         :param Id: 标签ID
@@ -5013,7 +5013,7 @@ class EditTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5036,7 +5036,7 @@ class ExportAttackLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -5067,7 +5067,7 @@ class ExportBashEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5094,7 +5094,7 @@ class ExportBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5121,7 +5121,7 @@ class ExportMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5148,7 +5148,7 @@ class ExportMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5175,7 +5175,7 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -5206,7 +5206,7 @@ class ExportPrivilegeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5233,7 +5233,7 @@ class ExportReverseShellEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5260,7 +5260,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -5288,7 +5288,7 @@ class HistoryAccount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一Uuid。
@@ -5339,7 +5339,7 @@ class IgnoreImpactedHostsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 漏洞ID数组。
         :type Ids: list of int non-negative
         """
@@ -5363,7 +5363,7 @@ class IgnoreImpactedHostsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5380,7 +5380,7 @@ class ImpactedHost(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 漏洞ID。
         :type Id: int
         :param MachineIp: 主机IP。
@@ -5439,7 +5439,7 @@ class InquiryPriceOpenProVersionPrepaidRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChargePrepaid: 预付费模式(包年包月)参数设置。
         :type ChargePrepaid: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
         :param Machines: 需要开通专业版机器列表数组。
@@ -5474,7 +5474,7 @@ class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 预支费用的原价，单位：元。
         :type OriginalPrice: float
         :param DiscountPrice: 预支费用的折扣价，单位：元。
@@ -5499,7 +5499,7 @@ class LoginWhiteLists(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 记录ID
         :type Id: int
         :param Uuid: 云镜客户端ID
@@ -5572,7 +5572,7 @@ class LoginWhiteListsRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Places: 加白地域
         :type Places: list of Place
         :param SrcIp: 加白源IP，支持网段，多个IP以逗号隔开
@@ -5629,7 +5629,7 @@ class Machine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineName: 主机名称。
         :type MachineName: str
         :param MachineOs: 主机系统。
@@ -5734,7 +5734,7 @@ class MachineTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rid: 关联标签ID
         :type Rid: int
         :param Name: 标签名
@@ -5766,7 +5766,7 @@ class MaliciousRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 记录ID。
         :type Id: int
         :param Uuid: 云镜客户端UUID。
@@ -5850,7 +5850,7 @@ class Malware(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 事件ID。
         :type Id: int
         :param MachineIp: 主机IP。
@@ -5908,7 +5908,7 @@ class MisAlarmNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 异地登录事件Id数组。
         :type Ids: list of int non-negative
         """
@@ -5932,7 +5932,7 @@ class MisAlarmNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5949,7 +5949,7 @@ class ModifyAlarmAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Attribute: 告警项目。
 <li>Offline：防护软件离线</li>
 <li>Malware：发现木马文件</li>
@@ -5983,7 +5983,7 @@ class ModifyAlarmAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6000,7 +6000,7 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 设置自动开通状态。
 <li>CLOSE：关闭</li>
 <li>OPEN：打开</li>
@@ -6026,7 +6026,7 @@ class ModifyAutoOpenProVersionConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6043,7 +6043,7 @@ class ModifyLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rules: 白名单规则
         :type Rules: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
         """
@@ -6069,7 +6069,7 @@ class ModifyLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6086,7 +6086,7 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RenewFlag: 自动续费标识。取值范围：
 <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
 <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
@@ -6117,7 +6117,7 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6134,7 +6134,7 @@ class NonLocalLoginPlace(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 事件ID。
         :type Id: int
         :param MachineIp: 主机IP。
@@ -6200,7 +6200,7 @@ class OpenPort(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一UUID。
@@ -6256,7 +6256,7 @@ class OpenPortStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Port: 端口号
         :type Port: int
         :param MachineNum: 主机数量
@@ -6284,7 +6284,7 @@ class OpenProVersionPrepaidRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChargePrepaid: 购买相关参数。
         :type ChargePrepaid: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
         :param Machines: 需要开通专业版主机信息数组。
@@ -6319,7 +6319,7 @@ class OpenProVersionPrepaidResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealIds: 订单ID列表。
         :type DealIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6340,7 +6340,7 @@ class OpenProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -6380,7 +6380,7 @@ class OpenProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6397,7 +6397,7 @@ class Place(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CityId: 城市 ID。
         :type CityId: int
         :param ProvinceId: 省份 ID。
@@ -6429,7 +6429,7 @@ class PrivilegeEscalationProcess(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 数据ID
         :type Id: int
         :param Uuid: 云镜ID
@@ -6521,7 +6521,7 @@ class PrivilegeRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -6581,7 +6581,7 @@ class ProVersionMachine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 主机类型。
 <li>CVM: 虚拟主机</li>
 <li>BM: 黑石物理机</li>
@@ -6617,7 +6617,7 @@ class Process(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一UUID。
@@ -6685,7 +6685,7 @@ class ProcessStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProcessName: 进程名。
         :type ProcessName: str
         :param MachineNum: 主机数量。
@@ -6713,7 +6713,7 @@ class RecoverMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马Id数组,单次最大删除不能超过200条
         :type Ids: list of int non-negative
         """
@@ -6737,7 +6737,7 @@ class RecoverMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessIds: 恢复成功id数组
         :type SuccessIds: list of int non-negative
         :param FailedIds: 恢复失败id数组
@@ -6762,7 +6762,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域标志，如 ap-guangzhou，ap-shanghai，ap-beijing
         :type Region: str
         :param RegionName: 地域中文名，如华南地区（广州），华东地区（上海金融），华北地区（北京）
@@ -6798,7 +6798,7 @@ class RenewProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChargePrepaid: 购买相关参数。
         :type ChargePrepaid: :class:`tencentcloud.yunjing.v20180228.models.ChargePrepaid`
         :param Quuid: 主机唯一ID，对应CVM的uuid、BM的InstanceId。
@@ -6828,7 +6828,7 @@ class RenewProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6845,7 +6845,7 @@ class RescanImpactedHostRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 漏洞ID。
         :type Id: int
         """
@@ -6869,7 +6869,7 @@ class RescanImpactedHostResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6886,7 +6886,7 @@ class ReverseShell(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID
         :type Id: int
         :param Uuid: 云镜UUID
@@ -6982,7 +6982,7 @@ class ReverseShellRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -7046,7 +7046,7 @@ class SecurityDynamic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端UUID。
         :type Uuid: str
         :param EventTime: 安全事件发生事件。
@@ -7095,7 +7095,7 @@ class SecurityTrend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 事件时间。
         :type Date: str
         :param EventNum: 事件数量。
@@ -7123,7 +7123,7 @@ class SeparateMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马事件ID数组。
         :type Ids: list of int non-negative
         """
@@ -7147,7 +7147,7 @@ class SeparateMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessIds: 隔离成功的id数组。
         :type SuccessIds: list of int non-negative
         :param FailedIds: 隔离失败的id数组。
@@ -7172,7 +7172,7 @@ class SetBashEventsStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         :param Status: 新状态(0-待处理 1-高危 2-正常)
@@ -7200,7 +7200,7 @@ class SetBashEventsStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7217,7 +7217,7 @@ class SwitchBashRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Disabled: 是否禁用
@@ -7245,7 +7245,7 @@ class SwitchBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7262,7 +7262,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标签ID
         :type Id: int
         :param Name: 标签名
@@ -7294,7 +7294,7 @@ class TagMachine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID
         :type Id: str
         :param Quuid: 主机ID
@@ -7342,7 +7342,7 @@ class TrustMaliciousRequestRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 恶意请求记录ID。
         :type Id: int
         """
@@ -7366,7 +7366,7 @@ class TrustMaliciousRequestResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7383,7 +7383,7 @@ class TrustMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马ID数组。
         :type Ids: list of int non-negative
         """
@@ -7407,7 +7407,7 @@ class TrustMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7424,7 +7424,7 @@ class UntrustMaliciousRequestRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 受信任记录ID。
         :type Id: int
         """
@@ -7448,7 +7448,7 @@ class UntrustMaliciousRequestResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7465,7 +7465,7 @@ class UntrustMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马ID数组，单次最大处理不能超过200条。
         :type Ids: list of int non-negative
         """
@@ -7489,7 +7489,7 @@ class UntrustMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7506,7 +7506,7 @@ class UsualPlace(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一标识UUID。
@@ -7546,7 +7546,7 @@ class Vul(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulId: 漏洞种类ID
         :type VulId: int
         :param VulName: 漏洞名称
@@ -7596,7 +7596,7 @@ class WeeklyReport(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginDate: 周报开始时间。
         :type BeginDate: str
         :param EndDate: 周报结束时间。
@@ -7624,7 +7624,7 @@ class WeeklyReportBruteAttack(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineIp: 主机IP。
         :type MachineIp: str
         :param Username: 被破解用户名。
@@ -7664,7 +7664,7 @@ class WeeklyReportMalware(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineIp: 主机IP。
         :type MachineIp: str
         :param FilePath: 木马文件路径。
@@ -7709,7 +7709,7 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineIp: 主机IP。
         :type MachineIp: str
         :param Username: 用户名。
@@ -7757,7 +7757,7 @@ class WeeklyReportVul(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineIp: 主机内网IP。
         :type MachineIp: str
         :param VulName: 漏洞名称。

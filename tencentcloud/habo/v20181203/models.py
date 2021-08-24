@@ -24,7 +24,7 @@ class DescribeStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pk: 购买服务后获得的授权帐号，用于保证请求有效性
         :type Pk: str
         :param Md5: 需要获取分析结果的样本md5
@@ -52,7 +52,7 @@ class DescribeStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 接口调用状态，1表示成功，非1表示失败
         :type Status: int
         :param Info: 成功时返回success，失败时返回具体的失败原因，如样本分析未完成
@@ -81,7 +81,7 @@ class StartAnalyseRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pk: 购买服务后获得的授权帐号，用于保证请求有效性
         :type Pk: str
         :param Md5: 样本md5，用于对下载获得的样本完整性进行校验
@@ -113,7 +113,7 @@ class StartAnalyseResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 接口调用状态，1表示成功，非1表示失败
         :type Status: int
         :param Info: 成功时返回success，失败时返回具体的失败原因

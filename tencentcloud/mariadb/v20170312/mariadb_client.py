@@ -54,6 +54,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelDcnJob(self, request):
+        """取消DCN同步
+
+        :param request: Request instance for CancelDcnJob.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.CancelDcnJobRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CancelDcnJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelDcnJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelDcnJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloneAccount(self, request):
         """本接口（CloneAccount）用于克隆实例账户。
 
@@ -926,7 +954,7 @@ class MariadbClient(AbstractClient):
 
 
     def DescribeUpgradePrice(self, request):
-        """本接口（DescribeUpgradePrice）用于在扩容云数据库实例时，查询扩容的价格。
+        """本接口（DescribeUpgradePrice）用于在扩容云数据库实例时，查询变配的价格。
 
         :param request: Request instance for DescribeUpgradePrice.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeUpgradePriceRequest`
@@ -1338,6 +1366,39 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLogFileRetentionPeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRealServerAccessStrategy(self, request):
+        """本接口(ModifyRealServerAccessStrategy)用于修改云数据库的VPCGW到RS的访问策略。
+
+        **注意**
+        - 修改策略后只对新建立的连接生效，老连接不受影响
+        - 就近访问只针对实例是跨可用区部署有用，单可用区部署实例就近与否并无作用
+        - DB每个Node对应一个proxy，如果开启就近访问，将会把连接集中到对应可用区的proxy上，可能造成热点问题，这种情况下如果是线上业务，请务必根据自己的业务请求量测试符合预期后再进行就近策略变更
+
+        :param request: Request instance for ModifyRealServerAccessStrategy.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyRealServerAccessStrategyRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyRealServerAccessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRealServerAccessStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRealServerAccessStrategyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

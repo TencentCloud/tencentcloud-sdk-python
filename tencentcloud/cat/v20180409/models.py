@@ -24,7 +24,7 @@ class AgentGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 拨测分组ID
         :type GroupId: int
         :param GroupName: 拨测分组名称
@@ -73,7 +73,7 @@ class AlarmInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ObjName: 告警对象的名称
         :type ObjName: str
         :param FirstOccurTime: 告警发生的时间
@@ -129,7 +129,7 @@ class AlarmTopic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题的ID
         :type TopicId: str
         :param TopicName: 主题的名称
@@ -157,7 +157,7 @@ class BindAlarmPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务Id
         :type TaskId: int
         :param PolicyGroupId: 告警策略组Id
@@ -193,7 +193,7 @@ class BindAlarmPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -210,7 +210,7 @@ class CatAgent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Province: 拨测结点所在的省份（拼音缩写）
         :type Province: str
         :param Isp: 拨测结点所在的运营商（英文缩写）
@@ -248,7 +248,7 @@ class CatLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 拨测时间点
         :type Time: str
         :param CatTypeName: 拨测类型
@@ -356,7 +356,7 @@ class CatReturnDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IspName: 运营商名称
         :type IspName: str
         :param Province: 省份全拼
@@ -408,7 +408,7 @@ class CatReturnSummary(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultCount: 拨测失败个数
         :type ResultCount: int
         :param ResultCode: 拨测失败返回码
@@ -440,7 +440,7 @@ class CatTaskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param TaskName: 任务名称
@@ -592,7 +592,7 @@ class CreateAgentGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 拨测分组名称，不超过32个字符
         :type GroupName: str
         :param IsDefault: 是否为默认分组，取值可为 0 或 1。取 1 时表示设置为默认分组
@@ -629,7 +629,7 @@ class CreateAgentGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 拨测分组Id
         :type GroupId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -650,7 +650,7 @@ class CreateTaskExRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CatTypeName: http, https, ping, tcp, ftp, smtp, udp, dns 之一
         :type CatTypeName: str
         :param Url: 拨测的URL， 例如：www.qq.com (URL域名解析需要能解析出具体的IP)
@@ -786,7 +786,7 @@ class CreateTaskExResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultId: 拨测结果查询ID。接下来可以使用查询拨测是否能够成功，验证能否通过。
         :type ResultId: int
         :param TaskId: 拨测任务ID。验证通过后，创建任务时使用，传递给CreateTask 接口。
@@ -811,7 +811,7 @@ class DataPoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogTime: 数据点的时间
         :type LogTime: str
         :param MetricValue: 数据值
@@ -839,7 +839,7 @@ class DataPointMetric(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetricName: 数据项
         :type MetricName: str
         :param Points: 数据点的时间和值
@@ -872,7 +872,7 @@ class DeleteAgentGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 拨测分组id
         :type GroupId: int
         """
@@ -896,7 +896,7 @@ class DeleteAgentGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -913,7 +913,7 @@ class DeleteTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskIds: 拨测任务id
         :type TaskIds: list of int non-negative
         """
@@ -937,7 +937,7 @@ class DeleteTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -960,7 +960,7 @@ class DescribeAgentGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SysDefaultGroup: 用户所属的系统默认拨测分组
         :type SysDefaultGroup: :class:`tencentcloud.cat.v20180409.models.AgentGroup`
         :param CustomGroups: 用户创建的拨测分组列表
@@ -998,7 +998,7 @@ class DescribeAgentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Agents: 本用户可选的拨测点列表
         :type Agents: list of CatAgent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1024,7 +1024,7 @@ class DescribeAlarmTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NeedAdd: 如果不存在拨测相关的主题，是否自动创建一个。取值可为0, 1，默认为0
         :type NeedAdd: int
         """
@@ -1048,7 +1048,7 @@ class DescribeAlarmTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 主题个数
         :type TotalCount: int
         :param Topics: 主题列表
@@ -1078,7 +1078,7 @@ class DescribeAlarmsByTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务Id
         :type TaskId: int
         :param Offset: 从第Offset 条开始查询。缺省值为0
@@ -1134,7 +1134,7 @@ class DescribeAlarmsByTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlarmInfos: 告警信息列表
         :type AlarmInfos: list of AlarmInfo
         :param FaultRatio: 故障率
@@ -1168,7 +1168,7 @@ class DescribeAlarmsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 从第Offset 条开始查询。缺省值为0
         :type Offset: int
         :param Limit: 本批次查询Limit 条记录。缺省值为20
@@ -1220,7 +1220,7 @@ class DescribeAlarmsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 告警总条数
         :type TotalCount: int
         :param AlarmInfos: 本批告警信息列表
@@ -1250,7 +1250,7 @@ class DescribeCatLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务Id
         :type TaskId: int
         :param Offset: 从第Offset 条开始查询。缺省值为0
@@ -1294,7 +1294,7 @@ class DescribeCatLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的总记录数
         :type TotalCount: int
         :param CatLogs: 拨测记录列表
@@ -1324,7 +1324,7 @@ class DescribeTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskIds: 拨测任务id 数组
         :type TaskIds: list of int non-negative
         """
@@ -1348,7 +1348,7 @@ class DescribeTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tasks: 拨测任务列表
         :type Tasks: list of CatTaskDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1374,7 +1374,7 @@ class DescribeTasksByTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 从第Offset 条开始查询。缺省值为0
         :type Offset: int
         :param Limit: 本批次查询Limit 条记录。缺省值为20
@@ -1406,7 +1406,7 @@ class DescribeTasksByTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的总任务数
         :type TotalCount: int
         :param Tasks: 任务列表
@@ -1442,7 +1442,7 @@ class DescribeUserLimitResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxTaskNum: 用户可建立的最大任务数
         :type MaxTaskNum: int
         :param MaxAgentNum: 用户可用的最大拨测结点数
@@ -1475,7 +1475,7 @@ class DimensionsDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Isp: 运营商列表
         :type Isp: list of str
         :param Province: 省份列表
@@ -1503,7 +1503,7 @@ class GetAvailRatioHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务Id
         :type TaskId: int
         :param TimeStamp: 具体时间点
@@ -1531,7 +1531,7 @@ class GetAvailRatioHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AvgAvailRatio: 整体平均可用率
         :type AvgAvailRatio: float
         :param LowestAvailRatio: 各省份最低可用率
@@ -1606,7 +1606,7 @@ class GetDailyAvailRatioRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务Id
         :type TaskId: int
         """
@@ -1630,7 +1630,7 @@ class GetDailyAvailRatioResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AvgAvailRatio: 整体平均可用率
         :type AvgAvailRatio: float
         :param LowestAvailRatio: 各省份最低可用率
@@ -1697,7 +1697,7 @@ class GetRealAvailRatioRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务Id
         :type TaskId: int
         """
@@ -1721,7 +1721,7 @@ class GetRealAvailRatioResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AvgAvailRatio: 国内平均可用率
         :type AvgAvailRatio: float
         :param LowestAvailRatio: 各省份最低可用率
@@ -1796,7 +1796,7 @@ class GetRespTimeTrendExRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 验证成功的拨测任务id
         :type TaskId: int
         :param Date: 统计数据的发生日期。格式如：2017-05-09
@@ -1838,7 +1838,7 @@ class GetRespTimeTrendExResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataPoints: 数据点集合，时延等走势数据
         :type DataPoints: list of DataPointMetric
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1864,7 +1864,7 @@ class GetResultSummaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskIds: 任务Id列表
         :type TaskIds: list of int non-negative
         """
@@ -1888,7 +1888,7 @@ class GetResultSummaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealData: 实时统计数据
         :type RealData: list of ResultSummary
         :param DayData: 按天的统计数据
@@ -1923,7 +1923,7 @@ class GetReturnCodeHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 正整数。验证成功的拨测任务id
         :type TaskId: int
         :param BeginTime: 开始时间点。格式如：2017-05-09 10:20:00。注意，BeginTime 和 EndTime 需要在同一天
@@ -1959,7 +1959,7 @@ class GetReturnCodeHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Details: 拨测失败详情列表
         :type Details: list of CatReturnDetail
         :param Summary: 拨测失败汇总列表
@@ -2002,7 +2002,7 @@ class GetReturnCodeInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 正整数。验证成功的拨测任务id
         :type TaskId: int
         :param BeginTime: 开始时间点。格式如：2017-05-09 10:20:00，最多拉群两天的数据
@@ -2038,7 +2038,7 @@ class GetReturnCodeInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Details: 拨测失败详情列表
         :type Details: list of CatReturnDetail
         :param Summary: 拨测失败汇总列表
@@ -2087,7 +2087,7 @@ class GetTaskTotalNumberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 拨测任务总数
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2108,7 +2108,7 @@ class IspDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IspName: 运营商名称
         :type IspName: str
         :param AvailRatio: 可用率
@@ -2141,7 +2141,7 @@ class ModifyAgentGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 拨测分组ID
         :type GroupId: int
         :param GroupName: 拨测分组名称
@@ -2182,7 +2182,7 @@ class ModifyAgentGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2199,7 +2199,7 @@ class ModifyTaskExRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CatTypeName: http, https, ping, tcp, ftp, smtp, udp, dns 之一
         :type CatTypeName: str
         :param Url: 拨测的URL，例如：www.qq.com (URL域名解析需要能解析出具体的IP)
@@ -2331,7 +2331,7 @@ class ModifyTaskExResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务ID。验证通过后，创建任务时使用，传递给CreateTask 接口。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2352,7 +2352,7 @@ class PauseTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 拨测任务id
         :type TaskId: int
         """
@@ -2376,7 +2376,7 @@ class PauseTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2393,7 +2393,7 @@ class ProvinceDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AvgAvailRatio: 可用率
         :type AvgAvailRatio: float
         :param ProvinceName: 省份名称
@@ -2446,7 +2446,7 @@ class ResultSummary(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogTime: 统计时间
         :type LogTime: str
         :param TaskId: 任务ID
@@ -2482,7 +2482,7 @@ class RunTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务Id
         :type TaskId: int
         """
@@ -2506,7 +2506,7 @@ class RunTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2523,7 +2523,7 @@ class TaskAlarm(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param TaskName: 任务名称
@@ -2583,7 +2583,7 @@ class VerifyResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultId: 要查询的拨测任务的结果id
         :type ResultId: int
         """
@@ -2607,7 +2607,7 @@ class VerifyResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorReason: 错误的原因
         :type ErrorReason: str
         :param ResultCode: 错误号

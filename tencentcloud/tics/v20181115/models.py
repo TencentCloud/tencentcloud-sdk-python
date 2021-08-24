@@ -24,7 +24,7 @@ class DescribeDomainInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 要查询的域名
         :type Key: str
         :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
@@ -52,7 +52,7 @@ class DescribeDomainInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
         :type ReturnCode: int
         :param Result: 判定结果，如：black、white、grey
@@ -123,7 +123,7 @@ class DescribeFileInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 要查询文件的MD5
         :type Key: str
         :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
@@ -151,7 +151,7 @@ class DescribeFileInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
         :type ReturnCode: int
         :param Result: 判定结果，如：black、white、grey
@@ -213,7 +213,7 @@ class DescribeIpInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 要查询的IP
         :type Key: str
         :param Option: 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
@@ -241,7 +241,7 @@ class DescribeIpInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
         :type ReturnCode: int
         :param Result: 判定结果，如：black、white、grey
@@ -312,7 +312,7 @@ class DescribeThreatInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 查询对象，域名或IP
         :type Key: str
         :param Type: 查询类型，当前取值为domain或ip
@@ -344,7 +344,7 @@ class DescribeThreatInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReturnCode: 是否有数据，0代表有数据，1代表没有数据
         :type ReturnCode: int
         :param Result: 判定结果，如：black、white、grey
@@ -411,7 +411,7 @@ class FileInfoType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectId: 判定渠道
         :type DetectId: str
         :param DetectPriority: 检测优先级
@@ -503,7 +503,7 @@ class IntelligenceType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Source: 来源
         :type Source: str
         :param Stamp: 标记
@@ -535,7 +535,7 @@ class TagType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tag: 标签
         :type Tag: str
         :param Desc: 标签对应的中文解释

@@ -24,7 +24,7 @@ class CertInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Hash: 证书sha1
         :type Hash: str
         :param CN: 证书通用名称
@@ -89,7 +89,7 @@ class ChartHistogram(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 项目名
         :type Name: str
         :param Children: 项目值
@@ -122,7 +122,7 @@ class ChartNameValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 图表项名称
         :type Name: str
         :param Value: 图表项值
@@ -150,7 +150,7 @@ class CreateDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerType: 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
         :type ServerType: int
         :param Domain: 添加的域名
@@ -194,7 +194,7 @@ class CreateDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -211,7 +211,7 @@ class DashboardResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityLevelPie: 安全等级图表
         :type SecurityLevelPie: list of ChartNameValue
         :param CertBrandsPie: 证书品牌图表
@@ -285,7 +285,7 @@ class DeleteDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名ID，可通过搜索域名接口获得
         :type DomainId: int
         """
@@ -309,7 +309,7 @@ class DeleteDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -332,7 +332,7 @@ class DescribeDashboardResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: dashboard面板数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.sslpod.v20190605.models.DashboardResult`
@@ -356,7 +356,7 @@ class DescribeDomainCertsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名ID，可通过搜索域名接口获得
         :type DomainId: int
         """
@@ -380,7 +380,7 @@ class DescribeDomainCertsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 证书信息
         :type Data: list of CertInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -412,7 +412,7 @@ class DescribeDomainTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: Tag数组
         :type Data: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -433,7 +433,7 @@ class DescribeDomains(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 列表数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of DomainSiteInfo
@@ -483,7 +483,7 @@ class DescribeDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 获取数量
@@ -543,7 +543,7 @@ class DescribeDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 列表数据
         :type Data: :class:`tencentcloud.sslpod.v20190605.models.DescribeDomains`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -572,7 +572,7 @@ class DescribeNoticeInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 通知信息结果
         :type Data: :class:`tencentcloud.sslpod.v20190605.models.NoticeInfoResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -595,31 +595,65 @@ class DomainSiteInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: ID
+        r"""
+        :param Id: ID标识
         :type Id: int
         :param Domain: 域名
         :type Domain: str
         :param Ip: IP地址
         :type Ip: str
-        :param AutoIP: 是否自动获取IP
+        :param AutoIP: 是否自动获取IP：true：是，false:否
         :type AutoIP: bool
-        :param ServerType: 监控服务类型
-        :type ServerType: int
+        :param Grade: 评级
+"A+"，
+ "A"，
+"A-"，
+"B"，
+"C"，
+"D"，
+ "E"，
+ "F"，
+"T"，
+        :type Grade: str
         :param Brand: 证书品牌
         :type Brand: str
-        :param Grade: 评级
-        :type Grade: str
+        :param ServerType: 监控服务类型
+0 :Web
+1: SMTP
+2: IMAP
+3: POP3
+        :type ServerType: int
         :param GradeCode: 评级Code
+0："unknown"，
+1："A+"，
+2： "A"，
+3："A-"，
+4："B"，
+5："C"，
+6："D"，
+7： "E"，
+8： "F"，
+9："T"，
         :type GradeCode: int
-        :param Notice: 是否监控告警
+        :param Notice: 是否监控告警；true：是，false:否
         :type Notice: bool
         :param AccountDomainId: 账号域名关系ID
         :type AccountDomainId: int
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
-        :param Status: 域名状态
+        :param Status: 域名状态:
+连接异常，
+证书已过期，
+证书已吊销，
+证书黑名单，
+证书域名不匹配，
+证书不可信，
+证书密钥弱，
+证书即将过期，少于7天，
+证书即将过期，少于30天，
+正常，
+部分异常
         :type Status: str
         :param Port: 域名端口
         :type Port: str
@@ -628,9 +662,9 @@ class DomainSiteInfo(AbstractModel):
         self.Domain = None
         self.Ip = None
         self.AutoIP = None
-        self.ServerType = None
-        self.Brand = None
         self.Grade = None
+        self.Brand = None
+        self.ServerType = None
         self.GradeCode = None
         self.Notice = None
         self.AccountDomainId = None
@@ -644,9 +678,9 @@ class DomainSiteInfo(AbstractModel):
         self.Domain = params.get("Domain")
         self.Ip = params.get("Ip")
         self.AutoIP = params.get("AutoIP")
-        self.ServerType = params.get("ServerType")
-        self.Brand = params.get("Brand")
         self.Grade = params.get("Grade")
+        self.Brand = params.get("Brand")
+        self.ServerType = params.get("ServerType")
         self.GradeCode = params.get("GradeCode")
         self.Notice = params.get("Notice")
         self.AccountDomainId = params.get("AccountDomainId")
@@ -668,8 +702,11 @@ class LimitInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Type: 通知类型
+        r"""
+        :param Type: 通知类型：
+limit_emai：邮件
+limit_wechat：微信
+limit_phone：手机
         :type Type: str
         :param Total: 总量
         :type Total: int
@@ -700,7 +737,7 @@ class ModifyDomainTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountDomainId: 账号下域名ID
         :type AccountDomainId: int
         :param Tags: 更新后的tag，多个以逗号隔开
@@ -728,7 +765,7 @@ class ModifyDomainTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -745,10 +782,10 @@ class NoticeInfoResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 通知ID
         :type Id: int
-        :param NoticeType: 通知开关信息
+        :param NoticeType: 通知开关信息；0：关闭；15开启
         :type NoticeType: int
         :param LimitInfos: 额度信息
         :type LimitInfos: list of LimitInfo
@@ -782,7 +819,7 @@ class RefreshDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名列表中的ID，可通过搜索域名接口获得
         :type DomainId: int
         """
@@ -806,7 +843,7 @@ class RefreshDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -823,7 +860,7 @@ class ResolveDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -847,7 +884,7 @@ class ResolveDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 响应数据
         :type Data: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

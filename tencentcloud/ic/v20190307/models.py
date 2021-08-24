@@ -24,7 +24,7 @@ class AppInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Appkey: 应用key
@@ -77,7 +77,7 @@ class CardInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Iccid: 卡片ID
         :type Iccid: str
         :param Msisdn: 卡电话号码
@@ -150,6 +150,9 @@ class CardInfo(AbstractModel):
         :param CertificationState: 实名认证 0:无 1:未实名 2:已实名
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificationState: int
+        :param OtherData: 其他流量信息,流量分离统计其他流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherData: float
         """
         self.Iccid = None
         self.Msisdn = None
@@ -178,6 +181,7 @@ class CardInfo(AbstractModel):
         self.NeedSms = None
         self.Provider = None
         self.CertificationState = None
+        self.OtherData = None
 
 
     def _deserialize(self, params):
@@ -208,6 +212,7 @@ class CardInfo(AbstractModel):
         self.NeedSms = params.get("NeedSms")
         self.Provider = params.get("Provider")
         self.CertificationState = params.get("CertificationState")
+        self.OtherData = params.get("OtherData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -223,7 +228,7 @@ class CardList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 卡片总数
         :type Total: str
         :param List: 卡片列表信息
@@ -257,7 +262,7 @@ class DescribeAppRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 物联卡应用ID
         :type Sdkappid: int
         """
@@ -281,7 +286,7 @@ class DescribeAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 应用信息详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.AppInfo`
@@ -305,7 +310,7 @@ class DescribeCardRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: int
         :param Iccid: 卡片ID
@@ -333,7 +338,7 @@ class DescribeCardResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 卡片详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.CardInfo`
@@ -357,7 +362,7 @@ class DescribeCardsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Offset: 偏移值
@@ -389,7 +394,7 @@ class DescribeCardsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 卡片列表信息
         :type Data: :class:`tencentcloud.ic.v20190307.models.CardList`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -412,7 +417,7 @@ class ModifyUserCardRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: int
         :param Iccid: 物联卡ICCID
@@ -444,7 +449,7 @@ class ModifyUserCardRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -461,7 +466,7 @@ class RenewCardsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: int
         :param Iccids: 续费的iccid
@@ -493,7 +498,7 @@ class RenewCardsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 续费成功的订单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.ResRenew`
@@ -517,7 +522,7 @@ class ResRenew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderIds: 每一张续费卡片的订单ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderIds: list of str
@@ -542,7 +547,7 @@ class SendMultiSmsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: str
         :param Iccids: 卡片列表
@@ -574,7 +579,7 @@ class SendMultiSmsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 短信流水数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SmsRet
@@ -601,7 +606,7 @@ class SendSmsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sdkappid: 应用ID
         :type Sdkappid: int
         :param Iccid: 卡片ID
@@ -633,7 +638,7 @@ class SendSmsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 短信流水信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ic.v20190307.models.SmsSid`
@@ -657,7 +662,7 @@ class SmsRet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 该iccid请求状态
         :type Code: str
         :param Msg: 短信发送返回信息
@@ -693,7 +698,7 @@ class SmsSid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Iccid: 卡片ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iccid: str

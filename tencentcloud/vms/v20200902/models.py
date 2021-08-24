@@ -24,7 +24,7 @@ class SendCodeVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CodeMessage: 验证码，仅支持填写数字，实际播报语音时，会自动在数字前补充语音文本"您的验证码是"。
         :type CodeMessage: str
         :param CalledNumber: 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
@@ -65,7 +65,7 @@ class SendCodeVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendStatus: 语音验证码发送状态。
         :type SendStatus: :class:`tencentcloud.vms.v20200902.models.SendStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -88,7 +88,7 @@ class SendStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallId: 标识本次发送 ID，标识一次下发记录。
         :type CallId: str
         :param SessionContext: 用户的 session 内容，腾讯 server 回包中会原样返回。
@@ -117,7 +117,7 @@ class SendTtsVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板 ID，在控制台审核通过的模板 ID。
         :type TemplateId: str
         :param CalledNumber: 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
@@ -163,7 +163,7 @@ class SendTtsVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendStatus: 语音通知发送状态。
         :type SendStatus: :class:`tencentcloud.vms.v20200902.models.SendStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -649,6 +649,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InvokeFunction(self, request):
+        """SCF同步调用函数接口
+
+        :param request: Request instance for InvokeFunction.
+        :type request: :class:`tencentcloud.scf.v20180416.models.InvokeFunctionRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.InvokeFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InvokeFunction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InvokeFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListAliases(self, request):
         """返回一个函数下的全部别名，可以根据特定函数版本过滤。
 

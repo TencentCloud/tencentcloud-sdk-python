@@ -24,7 +24,7 @@ class DeregisterMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         """
@@ -48,7 +48,7 @@ class DeregisterMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -65,7 +65,7 @@ class DescribeMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID，例如msp-jitoh33n
         :type TaskId: str
         """
@@ -89,7 +89,7 @@ class DescribeMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskStatus: 迁移详情列表
         :type TaskStatus: list of TaskStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -115,7 +115,7 @@ class DstInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 迁移目的地域
         :type Region: str
         :param Ip: 迁移目的Ip
@@ -151,7 +151,7 @@ class ListMigrationProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 记录起始数，默认值为0
         :type Offset: int
         :param Limit: 返回条数，默认值为500
@@ -179,7 +179,7 @@ class ListMigrationProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Projects: 项目列表
         :type Projects: list of Project
         :param TotalCount: 项目总数
@@ -209,7 +209,7 @@ class ListMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 记录起始数，默认值为0
         :type Offset: int
         :param Limit: 记录条数，默认值为10
@@ -241,7 +241,7 @@ class ListMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总条数
         :type TotalCount: int
         :param Tasks: 迁移任务列表
@@ -271,7 +271,7 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID，例如msp-jitoh33n
         :type TaskId: str
         :param ProjectId: 项目ID，例如10005
@@ -299,7 +299,7 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -316,7 +316,7 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
         :type Status: str
         :param TaskId: 任务ID，例如msp-jitoh33n
@@ -344,7 +344,7 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -361,7 +361,7 @@ class Project(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: int
         :param ProjectName: 项目名称
@@ -389,7 +389,7 @@ class RegisterMigrationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskType: 任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）
         :type TaskType: str
         :param TaskName: 任务名称
@@ -461,7 +461,7 @@ class RegisterMigrationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -482,7 +482,7 @@ class SrcInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 迁移源地域
         :type Region: str
         :param Ip: 迁移源Ip
@@ -518,7 +518,7 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务Id
         :type TaskId: str
         :param TaskName: 任务名称
@@ -584,7 +584,7 @@ class TaskStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 迁移状态
         :type Status: str
         :param Progress: 迁移进度
@@ -616,7 +616,7 @@ class TimeObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreateTime: 创建时间
         :type CreateTime: str
         :param EndTime: 结束时间

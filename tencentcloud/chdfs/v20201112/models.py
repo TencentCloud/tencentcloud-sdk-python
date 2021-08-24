@@ -24,7 +24,7 @@ class AccessGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroupId: 权限组ID
         :type AccessGroupId: str
         :param AccessGroupName: 权限组名称
@@ -68,7 +68,7 @@ class AccessRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRuleId: 权限规则ID
         :type AccessRuleId: int
         :param Address: 权限规则地址（网段或IP）
@@ -108,7 +108,7 @@ class AssociateAccessGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointId: 挂载点ID
         :type MountPointId: str
         :param AccessGroupIds: 权限组ID列表
@@ -136,7 +136,7 @@ class AssociateAccessGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -153,7 +153,7 @@ class CreateAccessGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroupName: 权限组名称
         :type AccessGroupName: str
         :param VpcType: VPC网络类型（1：CVM；2：黑石1.0）
@@ -189,7 +189,7 @@ class CreateAccessGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroup: 权限组
         :type AccessGroup: :class:`tencentcloud.chdfs.v20201112.models.AccessGroup`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -212,7 +212,7 @@ class CreateAccessRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRules: 多个权限规则，上限为10
         :type AccessRules: list of AccessRule
         :param AccessGroupId: 权限组ID
@@ -245,7 +245,7 @@ class CreateAccessRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -262,7 +262,7 @@ class CreateFileSystemRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemName: 文件系统名称
         :type FileSystemName: str
         :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
@@ -310,7 +310,7 @@ class CreateFileSystemResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystem: 文件系统
         :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -333,7 +333,7 @@ class CreateLifeCycleRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         :param LifeCycleRules: 多个生命周期规则，上限为10
@@ -366,7 +366,7 @@ class CreateLifeCycleRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -383,7 +383,7 @@ class CreateMountPointRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointName: 挂载点名称
         :type MountPointName: str
         :param FileSystemId: 文件系统ID
@@ -415,7 +415,7 @@ class CreateMountPointResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPoint: 挂载点
         :type MountPoint: :class:`tencentcloud.chdfs.v20201112.models.MountPoint`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -438,7 +438,7 @@ class CreateRestoreTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         :param RestoreTasks: 多个回热任务，上限为10
@@ -471,7 +471,7 @@ class CreateRestoreTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -488,7 +488,7 @@ class DeleteAccessGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroupId: 权限组ID
         :type AccessGroupId: str
         """
@@ -512,7 +512,7 @@ class DeleteAccessGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -529,7 +529,7 @@ class DeleteAccessRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRuleIds: 多个权限规则ID，上限为10
         :type AccessRuleIds: list of int non-negative
         """
@@ -553,7 +553,7 @@ class DeleteAccessRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -570,7 +570,7 @@ class DeleteFileSystemRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         """
@@ -594,7 +594,7 @@ class DeleteFileSystemResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -611,7 +611,7 @@ class DeleteLifeCycleRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifeCycleRuleIds: 多个生命周期规则ID，上限为10
         :type LifeCycleRuleIds: list of int non-negative
         """
@@ -635,7 +635,7 @@ class DeleteLifeCycleRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -652,7 +652,7 @@ class DeleteMountPointRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointId: 挂载点ID
         :type MountPointId: str
         """
@@ -676,7 +676,7 @@ class DeleteMountPointResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -693,7 +693,7 @@ class DescribeAccessGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroupId: 权限组ID
         :type AccessGroupId: str
         """
@@ -717,7 +717,7 @@ class DescribeAccessGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroup: 权限组
         :type AccessGroup: :class:`tencentcloud.chdfs.v20201112.models.AccessGroup`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -740,7 +740,7 @@ class DescribeAccessGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: VPC网络ID
 备注：入参只能指定VpcId和OwnerUin的其中一个
         :type VpcId: str
@@ -769,7 +769,7 @@ class DescribeAccessGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroups: 权限组列表
         :type AccessGroups: list of AccessGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -795,7 +795,7 @@ class DescribeAccessRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroupId: 权限组ID
         :type AccessGroupId: str
         """
@@ -819,7 +819,7 @@ class DescribeAccessRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRules: 权限规则列表
         :type AccessRules: list of AccessRule
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -845,7 +845,7 @@ class DescribeFileSystemRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         """
@@ -869,7 +869,7 @@ class DescribeFileSystemResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystem: 文件系统
         :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
         :param CapacityUsed: 已使用容量（byte），包括标准和归档存储
@@ -908,7 +908,7 @@ class DescribeFileSystemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystems: 文件系统列表
         :type FileSystems: list of FileSystem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -934,7 +934,7 @@ class DescribeLifeCycleRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         """
@@ -958,7 +958,7 @@ class DescribeLifeCycleRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifeCycleRules: 生命周期规则列表
         :type LifeCycleRules: list of LifeCycleRule
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -984,7 +984,7 @@ class DescribeMountPointRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointId: 挂载点ID
         :type MountPointId: str
         """
@@ -1008,7 +1008,7 @@ class DescribeMountPointResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPoint: 挂载点
         :type MountPoint: :class:`tencentcloud.chdfs.v20201112.models.MountPoint`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1031,7 +1031,7 @@ class DescribeMountPointsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
 备注：入参只能指定AccessGroupId、FileSystemId和OwnerUin的其中一个
         :type FileSystemId: str
@@ -1064,7 +1064,7 @@ class DescribeMountPointsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPoints: 挂载点列表
         :type MountPoints: list of MountPoint
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1090,7 +1090,7 @@ class DescribeResourceTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         """
@@ -1114,7 +1114,7 @@ class DescribeResourceTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tags: 资源标签列表
         :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1140,7 +1140,7 @@ class DescribeRestoreTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         """
@@ -1164,7 +1164,7 @@ class DescribeRestoreTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RestoreTasks: 回热任务列表
         :type RestoreTasks: list of RestoreTask
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1190,7 +1190,7 @@ class DisassociateAccessGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointId: 挂载点ID
         :type MountPointId: str
         :param AccessGroupIds: 权限组ID列表
@@ -1218,7 +1218,7 @@ class DisassociateAccessGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1235,7 +1235,7 @@ class FileSystem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: 资源所属用户AppId
         :type AppId: int
         :param FileSystemName: 文件系统名称
@@ -1299,7 +1299,7 @@ class LifeCycleRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifeCycleRuleId: 生命周期规则ID
         :type LifeCycleRuleId: int
         :param LifeCycleRuleName: 生命周期规则名称
@@ -1348,7 +1348,7 @@ class ModifyAccessGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessGroupId: 权限组ID
         :type AccessGroupId: str
         :param AccessGroupName: 权限组名称
@@ -1380,7 +1380,7 @@ class ModifyAccessGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1397,7 +1397,7 @@ class ModifyAccessRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessRules: 多个权限规则，上限为10
         :type AccessRules: list of AccessRule
         """
@@ -1426,7 +1426,7 @@ class ModifyAccessRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1443,7 +1443,7 @@ class ModifyFileSystemRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         :param FileSystemName: 文件系统名称
@@ -1488,7 +1488,7 @@ class ModifyFileSystemResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1505,7 +1505,7 @@ class ModifyLifeCycleRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifeCycleRules: 多个生命周期规则，上限为10
         :type LifeCycleRules: list of LifeCycleRule
         """
@@ -1534,7 +1534,7 @@ class ModifyLifeCycleRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1551,7 +1551,7 @@ class ModifyMountPointRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointId: 挂载点ID
         :type MountPointId: str
         :param MountPointName: 挂载点名称
@@ -1583,7 +1583,7 @@ class ModifyMountPointResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1600,7 +1600,7 @@ class ModifyResourceTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
         :param Tags: 多个资源标签，可以为空数组
@@ -1633,7 +1633,7 @@ class ModifyResourceTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1650,7 +1650,7 @@ class MountPoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MountPointId: 挂载点ID
         :type MountPointId: str
         :param MountPointName: 挂载点名称
@@ -1694,7 +1694,7 @@ class RestoreTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RestoreTaskId: 回热任务ID
         :type RestoreTaskId: int
         :param FilePath: 回热任务文件路径
@@ -1738,7 +1738,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键
         :type Key: str
         :param Value: 标签值
@@ -1766,7 +1766,7 @@ class Transition(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Days: 触发时间（单位天）
         :type Days: int
         :param Type: 转换类型（1：归档；2：删除）

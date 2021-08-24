@@ -866,6 +866,62 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNamespaceBundlesOpt(self, request):
+        """运营端获取命名空间bundle列表
+
+        :param request: Request instance for DescribeNamespaceBundlesOpt.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeNamespaceBundlesOptRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeNamespaceBundlesOptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNamespaceBundlesOpt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNamespaceBundlesOptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNodeHealthOpt(self, request):
+        """运营端获节点健康状态
+
+        :param request: Request instance for DescribeNodeHealthOpt.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeNodeHealthOptRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeNodeHealthOptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNodeHealthOpt", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNodeHealthOptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProducers(self, request):
         """获取生产者列表，仅显示在线的生产者
 

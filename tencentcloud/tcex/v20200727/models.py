@@ -24,7 +24,7 @@ class AlgorithmResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlgoId: 算法ID
         :type AlgoId: str
         :param AlgoName: 算法名称
@@ -88,7 +88,7 @@ class DescribeInvocationResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvokeId: 调用id，为调用InvokeService接口返回的RequestId
         :type InvokeId: str
         """
@@ -112,7 +112,7 @@ class DescribeInvocationResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 服务的调用结果
         :type Results: list of AlgorithmResult
         :param Status: 0:获取结果失败
@@ -144,7 +144,7 @@ class InvokeServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 待调用的服务ID。
         :type ServiceId: str
         :param ServiceStatus: 要调用服务的状态：0表示调试版本，1表示上线版本
@@ -180,7 +180,7 @@ class InvokeServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

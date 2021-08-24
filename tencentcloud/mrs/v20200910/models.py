@@ -24,7 +24,7 @@ class Advice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
@@ -49,7 +49,7 @@ class AspectRatio(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -88,148 +88,13 @@ class AspectRatio(AbstractModel):
         
 
 
-class Attribute(AbstractModel):
-    """提取属性内容
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 原文文本内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Value: 标准化提取值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        :param Index: 对应上级文本位置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Index: int
-        """
-        self.Text = None
-        self.Value = None
-        self.Index = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-        self.Value = params.get("Value")
-        self.Index = params.get("Index")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BasicInfo(AbstractModel):
-    """报告基本信息
-
-    """
-
-    def __init__(self):
-        """
-        :param HospitalName: 医院名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HospitalName: str
-        :param DepartmentName: 科室名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DepartmentName: str
-        :param ReportName: 报告名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReportName: str
-        :param ReportTime: 报告时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReportTime: str
-        :param OutpatientNum: 门诊号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OutpatientNum: str
-        :param InHospitalNum: 住院号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InHospitalNum: str
-        :param InspectionNum: 检查号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InspectionNum: str
-        :param ImageNum: 影像号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageNum: str
-        :param RadiationNum: 放射号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RadiationNum: str
-        :param PathologyNum: 病理号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PathologyNum: str
-        :param BedNum: 床位号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BedNum: str
-        :param InHospitalTime: 入院时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InHospitalTime: str
-        :param OutHospitalTime: 出院时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OutHospitalTime: str
-        :param CureDuration: 住院治疗时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CureDuration: str
-        :param HospitalizationTimes: 住院次数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HospitalizationTimes: str
-        :param InspectionTime: 送检检查时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InspectionTime: str
-        """
-        self.HospitalName = None
-        self.DepartmentName = None
-        self.ReportName = None
-        self.ReportTime = None
-        self.OutpatientNum = None
-        self.InHospitalNum = None
-        self.InspectionNum = None
-        self.ImageNum = None
-        self.RadiationNum = None
-        self.PathologyNum = None
-        self.BedNum = None
-        self.InHospitalTime = None
-        self.OutHospitalTime = None
-        self.CureDuration = None
-        self.HospitalizationTimes = None
-        self.InspectionTime = None
-
-
-    def _deserialize(self, params):
-        self.HospitalName = params.get("HospitalName")
-        self.DepartmentName = params.get("DepartmentName")
-        self.ReportName = params.get("ReportName")
-        self.ReportTime = params.get("ReportTime")
-        self.OutpatientNum = params.get("OutpatientNum")
-        self.InHospitalNum = params.get("InHospitalNum")
-        self.InspectionNum = params.get("InspectionNum")
-        self.ImageNum = params.get("ImageNum")
-        self.RadiationNum = params.get("RadiationNum")
-        self.PathologyNum = params.get("PathologyNum")
-        self.BedNum = params.get("BedNum")
-        self.InHospitalTime = params.get("InHospitalTime")
-        self.OutHospitalTime = params.get("OutHospitalTime")
-        self.CureDuration = params.get("CureDuration")
-        self.HospitalizationTimes = params.get("HospitalizationTimes")
-        self.InspectionTime = params.get("InspectionTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class BlockInfo(AbstractModel):
     """块信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -273,101 +138,13 @@ class BlockInfo(AbstractModel):
         
 
 
-class Case(AbstractModel):
-    """医疗事例
-
-    """
-
-    def __init__(self):
-        """
-        :param Time: 时间发生时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Time: str
-        :param Value: 事件提取值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: str
-        :param Type: 事件类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: str
-        :param Desc: 类型描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Desc: str
-        :param Text: 对应原文内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        """
-        self.Time = None
-        self.Value = None
-        self.Type = None
-        self.Desc = None
-        self.Text = None
-
-
-    def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Value = params.get("Value")
-        self.Type = params.get("Type")
-        self.Desc = params.get("Desc")
-        self.Text = params.get("Text")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CaseHistory(AbstractModel):
-    """病历资料
-
-    """
-
-    def __init__(self):
-        """
-        :param Treatment: 诊治信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Treatment: :class:`tencentcloud.mrs.v20200910.models.Treatment`
-        :param HealthHistory: 健康史信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HealthHistory: :class:`tencentcloud.mrs.v20200910.models.HealthHistory`
-        :param CaseHistoryList: 病例时间轴
-        :type CaseHistoryList: list of Case
-        """
-        self.Treatment = None
-        self.HealthHistory = None
-        self.CaseHistoryList = None
-
-
-    def _deserialize(self, params):
-        if params.get("Treatment") is not None:
-            self.Treatment = Treatment()
-            self.Treatment._deserialize(params.get("Treatment"))
-        if params.get("HealthHistory") is not None:
-            self.HealthHistory = HealthHistory()
-            self.HealthHistory._deserialize(params.get("HealthHistory"))
-        if params.get("CaseHistoryList") is not None:
-            self.CaseHistoryList = []
-            for item in params.get("CaseHistoryList"):
-                obj = Case()
-                obj._deserialize(item)
-                self.CaseHistoryList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Check(AbstractModel):
     """检查报告单
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Desc: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: :class:`tencentcloud.mrs.v20200910.models.Desc`
@@ -395,46 +172,13 @@ class Check(AbstractModel):
         
 
 
-class Conclusion(AbstractModel):
-    """检查报告结论，常见于病理检查报告
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 原文文本内容
-        :type Text: str
-        :param SymptomList: 病症列表
-        :type SymptomList: list of Symptom
-        """
-        self.Text = None
-        self.SymptomList = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-        if params.get("SymptomList") is not None:
-            self.SymptomList = []
-            for item in params.get("SymptomList"):
-                obj = Symptom()
-                obj._deserialize(item)
-                self.SymptomList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Desc(AbstractModel):
     """描述
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
@@ -479,7 +223,7 @@ class DiagCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Advice: 建议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Advice: :class:`tencentcloud.mrs.v20200910.models.Advice`
@@ -516,7 +260,7 @@ class DiagCertItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
@@ -551,7 +295,7 @@ class DischargeDiagnosis(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableIndex: 表格位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIndex: int
@@ -598,63 +342,13 @@ class DischargeDiagnosis(AbstractModel):
         
 
 
-class DiseaseHistory(AbstractModel):
-    """病史
-
-    """
-
-    def __init__(self):
-        """
-        :param Allergy: 过敏史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Allergy: str
-        :param Infect: 传染疾病史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Infect: str
-        :param MainDisease: 主要病史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MainDisease: str
-        :param Operation: 手术外伤史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Operation: str
-        :param Transfusion: 输血史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Transfusion: str
-        :param Disease: 疾病史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Disease: str
-        """
-        self.Allergy = None
-        self.Infect = None
-        self.MainDisease = None
-        self.Operation = None
-        self.Transfusion = None
-        self.Disease = None
-
-
-    def _deserialize(self, params):
-        self.Allergy = params.get("Allergy")
-        self.Infect = params.get("Infect")
-        self.MainDisease = params.get("MainDisease")
-        self.Operation = params.get("Operation")
-        self.Transfusion = params.get("Transfusion")
-        self.Disease = params.get("Disease")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DiseaseMedicalHistory(AbstractModel):
     """疾病史
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MainDiseaseHistory: 主病史
 注意：此字段可能返回 null，表示取不到有效值。
         :type MainDiseaseHistory: str
@@ -699,7 +393,7 @@ class Elastic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -738,48 +432,13 @@ class Elastic(AbstractModel):
         
 
 
-class FamilyHistory(AbstractModel):
-    """家族史
-
-    """
-
-    def __init__(self):
-        """
-        :param RelativeMember: 家族成员
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RelativeMember: str
-        :param RelativeCancer: 家族肿瘤史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RelativeCancer: str
-        :param Genetic: 家族遗传史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Genetic: str
-        """
-        self.RelativeMember = None
-        self.RelativeCancer = None
-        self.Genetic = None
-
-
-    def _deserialize(self, params):
-        self.RelativeMember = params.get("RelativeMember")
-        self.RelativeCancer = params.get("RelativeCancer")
-        self.Genetic = params.get("Genetic")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class FamilyMedicalHistory(AbstractModel):
     """家族疾病史
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param RelativeHistory: 家族成员史
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeHistory: str
@@ -808,48 +467,13 @@ class FamilyMedicalHistory(AbstractModel):
         
 
 
-class Finding(AbstractModel):
-    """检查所见内容，常见于病理，检查报告
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 原文文本内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param TuberList: 肿瘤结节列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TuberList: list of Tuber
-        """
-        self.Text = None
-        self.TuberList = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-        if params.get("TuberList") is not None:
-            self.TuberList = []
-            for item in params.get("TuberList"):
-                obj = Tuber()
-                obj._deserialize(item)
-                self.TuberList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class FirstPage(AbstractModel):
     """病案首页
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param DischargeDiagnosis: 出入院诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeDiagnosis: list of DischargeDiagnosis
@@ -893,7 +517,7 @@ class HandleParam(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OcrEngineType: ocr引擎
         :type OcrEngineType: int
         :param IsReturnText: 是否返回分行文本内容
@@ -939,68 +563,13 @@ class HandleParam(AbstractModel):
         
 
 
-class HealthHistory(AbstractModel):
-    """健康史信息
-
-    """
-
-    def __init__(self):
-        """
-        :param DiseaseHistory: 疾病史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiseaseHistory: :class:`tencentcloud.mrs.v20200910.models.DiseaseHistory`
-        :param FamilyHistory: 家族史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FamilyHistory: :class:`tencentcloud.mrs.v20200910.models.FamilyHistory`
-        :param MarryHistory: 婚育史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MarryHistory: :class:`tencentcloud.mrs.v20200910.models.MarryHistory`
-        :param PersonalHistory: 个人史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PersonalHistory: :class:`tencentcloud.mrs.v20200910.models.PersonalHistory`
-        :param MenstrualHistory: 月经史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MenstrualHistory: :class:`tencentcloud.mrs.v20200910.models.MenstrualHistory`
-        """
-        self.DiseaseHistory = None
-        self.FamilyHistory = None
-        self.MarryHistory = None
-        self.PersonalHistory = None
-        self.MenstrualHistory = None
-
-
-    def _deserialize(self, params):
-        if params.get("DiseaseHistory") is not None:
-            self.DiseaseHistory = DiseaseHistory()
-            self.DiseaseHistory._deserialize(params.get("DiseaseHistory"))
-        if params.get("FamilyHistory") is not None:
-            self.FamilyHistory = FamilyHistory()
-            self.FamilyHistory._deserialize(params.get("FamilyHistory"))
-        if params.get("MarryHistory") is not None:
-            self.MarryHistory = MarryHistory()
-            self.MarryHistory._deserialize(params.get("MarryHistory"))
-        if params.get("PersonalHistory") is not None:
-            self.PersonalHistory = PersonalHistory()
-            self.PersonalHistory._deserialize(params.get("PersonalHistory"))
-        if params.get("MenstrualHistory") is not None:
-            self.MenstrualHistory = MenstrualHistory()
-            self.MenstrualHistory._deserialize(params.get("MenstrualHistory"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class HistologyLevel(AbstractModel):
     """组织学等级
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Grade: 等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
@@ -1035,7 +604,7 @@ class HistologyType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Infiltration: 浸润
 注意：此字段可能返回 null，表示取不到有效值。
         :type Infiltration: str
@@ -1075,7 +644,7 @@ class Hospitalization(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AdmissionTime: 入院时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdmissionTime: str
@@ -1129,63 +698,13 @@ class Hospitalization(AbstractModel):
         
 
 
-class IHC(AbstractModel):
-    """免疫组化项目
-
-    """
-
-    def __init__(self):
-        """
-        :param Index: 索引位置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Index: list of int
-        :param Text: 原文
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Name: 名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Grade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Grade: str
-        :param Percent: 百分比
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Percent: str
-        :param Positive: 阴阳性
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Positive: str
-        """
-        self.Index = None
-        self.Text = None
-        self.Name = None
-        self.Grade = None
-        self.Percent = None
-        self.Positive = None
-
-
-    def _deserialize(self, params):
-        self.Index = params.get("Index")
-        self.Text = params.get("Text")
-        self.Name = params.get("Name")
-        self.Grade = params.get("Grade")
-        self.Percent = params.get("Percent")
-        self.Positive = params.get("Positive")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class IHCInfo(AbstractModel):
     """Ihc信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -1226,7 +745,7 @@ class ImageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 图片id
         :type Id: int
         :param Url: 图片url
@@ -1252,130 +771,13 @@ class ImageInfo(AbstractModel):
         
 
 
-class ImageReport(AbstractModel):
-    """报告内容
-
-    """
-
-    def __init__(self):
-        """
-        :param ImageText: 报告文本信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageText: :class:`tencentcloud.mrs.v20200910.models.ImageText`
-        :param KindSet: 报告类别信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KindSet: list of KindItem
-        :param BasicInfo: 基本信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BasicInfo: :class:`tencentcloud.mrs.v20200910.models.BasicInfo`
-        :param PersonalInfo: 个人隐私信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PersonalInfo: :class:`tencentcloud.mrs.v20200910.models.PersonalInfo`
-        :param TestList: 检验指标内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TestList: list of TestItem
-        :param Inspection: 检查报告内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Inspection: :class:`tencentcloud.mrs.v20200910.models.Inspection`
-        :param CaseHistory: 病历资料内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CaseHistory: :class:`tencentcloud.mrs.v20200910.models.CaseHistory`
-        :param Pathology: 病理报告内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Pathology: :class:`tencentcloud.mrs.v20200910.models.Pathology`
-        """
-        self.ImageText = None
-        self.KindSet = None
-        self.BasicInfo = None
-        self.PersonalInfo = None
-        self.TestList = None
-        self.Inspection = None
-        self.CaseHistory = None
-        self.Pathology = None
-
-
-    def _deserialize(self, params):
-        if params.get("ImageText") is not None:
-            self.ImageText = ImageText()
-            self.ImageText._deserialize(params.get("ImageText"))
-        if params.get("KindSet") is not None:
-            self.KindSet = []
-            for item in params.get("KindSet"):
-                obj = KindItem()
-                obj._deserialize(item)
-                self.KindSet.append(obj)
-        if params.get("BasicInfo") is not None:
-            self.BasicInfo = BasicInfo()
-            self.BasicInfo._deserialize(params.get("BasicInfo"))
-        if params.get("PersonalInfo") is not None:
-            self.PersonalInfo = PersonalInfo()
-            self.PersonalInfo._deserialize(params.get("PersonalInfo"))
-        if params.get("TestList") is not None:
-            self.TestList = []
-            for item in params.get("TestList"):
-                obj = TestItem()
-                obj._deserialize(item)
-                self.TestList.append(obj)
-        if params.get("Inspection") is not None:
-            self.Inspection = Inspection()
-            self.Inspection._deserialize(params.get("Inspection"))
-        if params.get("CaseHistory") is not None:
-            self.CaseHistory = CaseHistory()
-            self.CaseHistory._deserialize(params.get("CaseHistory"))
-        if params.get("Pathology") is not None:
-            self.Pathology = Pathology()
-            self.Pathology._deserialize(params.get("Pathology"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ImageText(AbstractModel):
-    """报告图片信息
-
-    """
-
-    def __init__(self):
-        """
-        :param Confidence: 文字内容可信度，0-100评分
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Confidence: int
-        :param Text: 图片文本内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param RotateAngle: 文本旋转角度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RotateAngle: float
-        """
-        self.Confidence = None
-        self.Text = None
-        self.RotateAngle = None
-
-
-    def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
-        self.Text = params.get("Text")
-        self.RotateAngle = params.get("RotateAngle")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ImageToClassRequest(AbstractModel):
     """ImageToClass请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的url或base64编码
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
@@ -1414,7 +816,7 @@ class ImageToClassResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextTypeList: 分类结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
@@ -1441,7 +843,7 @@ class ImageToObjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的url或base64编码
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
@@ -1485,7 +887,7 @@ class ImageToObjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Template: 报告结构化结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
@@ -1509,7 +911,7 @@ class Indicator(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Indicators: 检验指标项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Indicators: list of IndicatorItem
@@ -1539,7 +941,7 @@ class IndicatorItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 英文缩写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
@@ -1603,47 +1005,13 @@ class IndicatorItem(AbstractModel):
         
 
 
-class Inspection(AbstractModel):
-    """检查报告内容
-
-    """
-
-    def __init__(self):
-        """
-        :param Finding: 检查所见
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Finding: :class:`tencentcloud.mrs.v20200910.models.Finding`
-        :param Conclusion: 检查结论
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Conclusion: :class:`tencentcloud.mrs.v20200910.models.Conclusion`
-        """
-        self.Finding = None
-        self.Conclusion = None
-
-
-    def _deserialize(self, params):
-        if params.get("Finding") is not None:
-            self.Finding = Finding()
-            self.Finding._deserialize(params.get("Finding"))
-        if params.get("Conclusion") is not None:
-            self.Conclusion = Conclusion()
-            self.Conclusion._deserialize(params.get("Conclusion"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Invas(AbstractModel):
     """侵犯扩散
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -1679,84 +1047,13 @@ class Invas(AbstractModel):
         
 
 
-class Invasive(AbstractModel):
-    """侵犯扩散
-
-    """
-
-    def __init__(self):
-        """
-        :param Index: 索引
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Index: list of int
-        :param Text: 原文
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Part: str
-        :param Positive: 阴阳性
-        :type Positive: str
-        """
-        self.Index = None
-        self.Text = None
-        self.Part = None
-        self.Positive = None
-
-
-    def _deserialize(self, params):
-        self.Index = params.get("Index")
-        self.Text = params.get("Text")
-        self.Part = params.get("Part")
-        self.Positive = params.get("Positive")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class KindItem(AbstractModel):
-    """类型描述
-
-    """
-
-    def __init__(self):
-        """
-        :param Level: 等级，分为1，2，3级别，类型逐级细分
-        :type Level: int
-        :param ID: 类型编号，对应唯一的类型编号
-        :type ID: int
-        :param Name: 类型名称
-        :type Name: str
-        """
-        self.Level = None
-        self.ID = None
-        self.Name = None
-
-
-    def _deserialize(self, params):
-        self.Level = params.get("Level")
-        self.ID = params.get("ID")
-        self.Name = params.get("Name")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Lymph(AbstractModel):
     """淋巴
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Src: 原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
@@ -1797,43 +1094,13 @@ class Lymph(AbstractModel):
         
 
 
-class MarryHistory(AbstractModel):
-    """婚育史
-
-    """
-
-    def __init__(self):
-        """
-        :param Marriage: 结婚史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Marriage: str
-        :param Fertility: 生育史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Fertility: str
-        """
-        self.Marriage = None
-        self.Fertility = None
-
-
-    def _deserialize(self, params):
-        self.Marriage = params.get("Marriage")
-        self.Fertility = params.get("Fertility")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class MedDoc(AbstractModel):
     """医学资料
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Advice: 建议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Advice: :class:`tencentcloud.mrs.v20200910.models.Advice`
@@ -1907,7 +1174,7 @@ class MedicalRecordInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagnosisTime: 就诊日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnosisTime: str
@@ -1961,63 +1228,13 @@ class MedicalRecordInfo(AbstractModel):
         
 
 
-class MenstrualHistory(AbstractModel):
-    """月经史
-
-    """
-
-    def __init__(self):
-        """
-        :param IsOrNot: 是否来月经
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsOrNot: str
-        :param MenarcheAge: 月经初潮年龄
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MenarcheAge: str
-        :param LastTime: 末次月经时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastTime: str
-        :param Flow: 经量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Flow: str
-        :param Cycles: 月经周期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cycles: str
-        :param Duration: 行经天数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Duration: str
-        """
-        self.IsOrNot = None
-        self.MenarcheAge = None
-        self.LastTime = None
-        self.Flow = None
-        self.Cycles = None
-        self.Duration = None
-
-
-    def _deserialize(self, params):
-        self.IsOrNot = params.get("IsOrNot")
-        self.MenarcheAge = params.get("MenarcheAge")
-        self.LastTime = params.get("LastTime")
-        self.Flow = params.get("Flow")
-        self.Cycles = params.get("Cycles")
-        self.Duration = params.get("Duration")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class MenstrualMedicalHistory(AbstractModel):
     """月经史
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param LastMenstrualPeriod: 末次月经时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastMenstrualPeriod: str
@@ -2061,58 +1278,13 @@ class MenstrualMedicalHistory(AbstractModel):
         
 
 
-class Metastasis(AbstractModel):
-    """转移
-
-    """
-
-    def __init__(self):
-        """
-        :param Index: 索引位置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Index: int
-        :param Text: 原文
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Text: str
-        :param Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Part: str
-        :param TotalNum: 局部总数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalNum: str
-        :param TransferNum: 转移数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TransferNum: str
-        """
-        self.Index = None
-        self.Text = None
-        self.Part = None
-        self.TotalNum = None
-        self.TransferNum = None
-
-
-    def _deserialize(self, params):
-        self.Index = params.get("Index")
-        self.Text = params.get("Text")
-        self.Part = params.get("Part")
-        self.TotalNum = params.get("TotalNum")
-        self.TransferNum = params.get("TransferNum")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Multiple(AbstractModel):
     """多发
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -2157,7 +1329,7 @@ class NormPart(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Part: 部位值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Part: str
@@ -2202,7 +1374,7 @@ class NormSize(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Number: 数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Number: list of str
@@ -2237,7 +1409,7 @@ class ObstericalMedicalHistory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MarriageHistory: 婚史
 注意：此字段可能返回 null，表示取不到有效值。
         :type MarriageHistory: str
@@ -2267,7 +1439,7 @@ class Organ(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Part: 部位
 注意：此字段可能返回 null，表示取不到有效值。
         :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
@@ -2440,7 +1612,7 @@ class Part(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -2481,118 +1653,13 @@ class Part(AbstractModel):
         
 
 
-class Pathology(AbstractModel):
-    """病理内容
-
-    """
-
-    def __init__(self):
-        """
-        :param PathologicalType: 病理类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PathologicalType: str
-        :param InfiltrationDepth: 侵润深度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InfiltrationDepth: str
-        :param PTNM: PTNM分期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PTNM: str
-        :param DistanceMetastasis: 远处转移
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DistanceMetastasis: str
-        :param SummaryText: 影像诊断
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SummaryText: str
-        :param DescText: 影像所见
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DescText: str
-        :param HistologyType: 组织学类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HistologyType: str
-        :param HistologyLevel: 组织学等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HistologyLevel: str
-        :param SampleType: 标本类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SampleType: str
-        :param SamplePart: 标本部位
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SamplePart: str
-        :param SampleSize: 标本大小
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SampleSize: str
-        :param InvasiveList: 肿瘤扩散
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InvasiveList: list of Invasive
-        :param MetastasisList: 肿瘤转移
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MetastasisList: list of Metastasis
-        :param IHCList: 免疫组化信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IHCList: list of IHC
-        """
-        self.PathologicalType = None
-        self.InfiltrationDepth = None
-        self.PTNM = None
-        self.DistanceMetastasis = None
-        self.SummaryText = None
-        self.DescText = None
-        self.HistologyType = None
-        self.HistologyLevel = None
-        self.SampleType = None
-        self.SamplePart = None
-        self.SampleSize = None
-        self.InvasiveList = None
-        self.MetastasisList = None
-        self.IHCList = None
-
-
-    def _deserialize(self, params):
-        self.PathologicalType = params.get("PathologicalType")
-        self.InfiltrationDepth = params.get("InfiltrationDepth")
-        self.PTNM = params.get("PTNM")
-        self.DistanceMetastasis = params.get("DistanceMetastasis")
-        self.SummaryText = params.get("SummaryText")
-        self.DescText = params.get("DescText")
-        self.HistologyType = params.get("HistologyType")
-        self.HistologyLevel = params.get("HistologyLevel")
-        self.SampleType = params.get("SampleType")
-        self.SamplePart = params.get("SamplePart")
-        self.SampleSize = params.get("SampleSize")
-        if params.get("InvasiveList") is not None:
-            self.InvasiveList = []
-            for item in params.get("InvasiveList"):
-                obj = Invasive()
-                obj._deserialize(item)
-                self.InvasiveList.append(obj)
-        if params.get("MetastasisList") is not None:
-            self.MetastasisList = []
-            for item in params.get("MetastasisList"):
-                obj = Metastasis()
-                obj._deserialize(item)
-                self.MetastasisList.append(obj)
-        if params.get("IHCList") is not None:
-            self.IHCList = []
-            for item in params.get("IHCList"):
-                obj = IHC()
-                obj._deserialize(item)
-                self.IHCList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class PathologyReport(AbstractModel):
     """病理报告
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param CancerPart: 癌症部位
 注意：此字段可能返回 null，表示取不到有效值。
         :type CancerPart: :class:`tencentcloud.mrs.v20200910.models.Part`
@@ -2716,7 +1783,7 @@ class PatientInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 患者姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -2810,178 +1877,13 @@ class PatientInfo(AbstractModel):
         
 
 
-class PersonalHistory(AbstractModel):
-    """个人史
-
-    """
-
-    def __init__(self):
-        """
-        :param BirthPlace: 出生地
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BirthPlace: str
-        :param Job: 工作史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Job: str
-        :param LivePlace: 旅居史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LivePlace: str
-        :param Personal: 个人史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Personal: str
-        :param Smoke: 吸烟史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Smoke: str
-        :param Alcoholic: 饮酒史
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Alcoholic: str
-        """
-        self.BirthPlace = None
-        self.Job = None
-        self.LivePlace = None
-        self.Personal = None
-        self.Smoke = None
-        self.Alcoholic = None
-
-
-    def _deserialize(self, params):
-        self.BirthPlace = params.get("BirthPlace")
-        self.Job = params.get("Job")
-        self.LivePlace = params.get("LivePlace")
-        self.Personal = params.get("Personal")
-        self.Smoke = params.get("Smoke")
-        self.Alcoholic = params.get("Alcoholic")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PersonalInfo(AbstractModel):
-    """个人信息
-
-    """
-
-    def __init__(self):
-        """
-        :param Name: 姓名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Gender: 性别
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Gender: str
-        :param Age: 年龄
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Age: str
-        :param IDCard: 身份证号码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IDCard: str
-        :param HealthCardNum: 健康卡号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HealthCardNum: str
-        :param SocialSecurityCardNum: 社保号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SocialSecurityCardNum: str
-        :param Birthday: 出生日期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Birthday: str
-        :param Ethnicity: 民族
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ethnicity: str
-        :param Nationality: 国籍
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Nationality: str
-        :param Married: 婚姻状况
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Married: str
-        :param Profession: 职业
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Profession: str
-        :param EducationBackground: 教育程度
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EducationBackground: str
-        :param BirthPlace: 籍贯
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BirthPlace: str
-        :param MedicalInsuranceType: 医保卡类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MedicalInsuranceType: str
-        :param LinkPhone: 联系电话
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LinkPhone: str
-        :param LinkAddress: 联系地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LinkAddress: str
-        :param KinsfolkName: 家属姓名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KinsfolkName: str
-        :param KinsfolkRelation: 家属关系
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KinsfolkRelation: str
-        :param KinsfolkPhone: 家属联系电话
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KinsfolkPhone: str
-        """
-        self.Name = None
-        self.Gender = None
-        self.Age = None
-        self.IDCard = None
-        self.HealthCardNum = None
-        self.SocialSecurityCardNum = None
-        self.Birthday = None
-        self.Ethnicity = None
-        self.Nationality = None
-        self.Married = None
-        self.Profession = None
-        self.EducationBackground = None
-        self.BirthPlace = None
-        self.MedicalInsuranceType = None
-        self.LinkPhone = None
-        self.LinkAddress = None
-        self.KinsfolkName = None
-        self.KinsfolkRelation = None
-        self.KinsfolkPhone = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Gender = params.get("Gender")
-        self.Age = params.get("Age")
-        self.IDCard = params.get("IDCard")
-        self.HealthCardNum = params.get("HealthCardNum")
-        self.SocialSecurityCardNum = params.get("SocialSecurityCardNum")
-        self.Birthday = params.get("Birthday")
-        self.Ethnicity = params.get("Ethnicity")
-        self.Nationality = params.get("Nationality")
-        self.Married = params.get("Married")
-        self.Profession = params.get("Profession")
-        self.EducationBackground = params.get("EducationBackground")
-        self.BirthPlace = params.get("BirthPlace")
-        self.MedicalInsuranceType = params.get("MedicalInsuranceType")
-        self.LinkPhone = params.get("LinkPhone")
-        self.LinkAddress = params.get("LinkAddress")
-        self.KinsfolkName = params.get("KinsfolkName")
-        self.KinsfolkRelation = params.get("KinsfolkRelation")
-        self.KinsfolkPhone = params.get("KinsfolkPhone")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class PersonalMedicalHistory(AbstractModel):
     """个人史
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param BirthPlace: 出生史
 注意：此字段可能返回 null，表示取不到有效值。
         :type BirthPlace: str
@@ -3020,65 +1922,13 @@ class PersonalMedicalHistory(AbstractModel):
         
 
 
-class ReportImageStructuredRequest(AbstractModel):
-    """ReportImageStructured请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ImageURL: 医疗报告图片URL
-        :type ImageURL: str
-        :param ImageBase64: 医疗报告图片base64编码后内容
-        :type ImageBase64: str
-        """
-        self.ImageURL = None
-        self.ImageBase64 = None
-
-
-    def _deserialize(self, params):
-        self.ImageURL = params.get("ImageURL")
-        self.ImageBase64 = params.get("ImageBase64")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ReportImageStructuredResponse(AbstractModel):
-    """ReportImageStructured返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Report: 报告内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Report: :class:`tencentcloud.mrs.v20200910.models.ImageReport`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Report = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Report") is not None:
-            self.Report = ImageReport()
-            self.Report._deserialize(params.get("Report"))
-        self.RequestId = params.get("RequestId")
-
-
 class ReportInfo(AbstractModel):
     """报告基本信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Hospital: 医院名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hospital: str
@@ -3182,60 +2032,13 @@ class ReportInfo(AbstractModel):
         
 
 
-class ReportTextStructuredRequest(AbstractModel):
-    """ReportTextStructured请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Text: 报告文本内容
-        :type Text: str
-        """
-        self.Text = None
-
-
-    def _deserialize(self, params):
-        self.Text = params.get("Text")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ReportTextStructuredResponse(AbstractModel):
-    """ReportTextStructured返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Report: 报告内容
-        :type Report: :class:`tencentcloud.mrs.v20200910.models.TextReport`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Report = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Report") is not None:
-            self.Report = TextReport()
-            self.Report._deserialize(params.get("Report"))
-        self.RequestId = params.get("RequestId")
-
-
 class Size(AbstractModel):
     """大小
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
@@ -3277,7 +2080,7 @@ class Summary(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Symptom: 症状
 注意：此字段可能返回 null，表示取不到有效值。
         :type Symptom: list of SymptomInfo
@@ -3312,7 +2115,7 @@ class Surgery(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SurgeryHistory: 手术史
 注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryHistory: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistory`
@@ -3339,7 +2142,7 @@ class SurgeryAttr(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -3369,7 +2172,7 @@ class SurgeryHistory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SurgeryName: 手术名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryName: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
@@ -3425,64 +2228,13 @@ class SurgeryHistory(AbstractModel):
         
 
 
-class Symptom(AbstractModel):
-    """可见病症内容
-
-    """
-
-    def __init__(self):
-        """
-        :param Desc: 描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Desc: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Part: 部位
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Part: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Grade: 等级
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Grade: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param AttrList: 性质
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttrList: list of Attribute
-        """
-        self.Desc = None
-        self.Part = None
-        self.Grade = None
-        self.AttrList = None
-
-
-    def _deserialize(self, params):
-        if params.get("Desc") is not None:
-            self.Desc = Attribute()
-            self.Desc._deserialize(params.get("Desc"))
-        if params.get("Part") is not None:
-            self.Part = Attribute()
-            self.Part._deserialize(params.get("Part"))
-        if params.get("Grade") is not None:
-            self.Grade = Attribute()
-            self.Grade._deserialize(params.get("Grade"))
-        if params.get("AttrList") is not None:
-            self.AttrList = []
-            for item in params.get("AttrList"):
-                obj = Attribute()
-                obj._deserialize(item)
-                self.AttrList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SymptomInfo(AbstractModel):
     """病症描述信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Grade: 等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
@@ -3543,7 +2295,7 @@ class Template(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PatientInfo: 患者信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PatientInfo: :class:`tencentcloud.mrs.v20200910.models.PatientInfo`
@@ -3639,148 +2391,13 @@ class Template(AbstractModel):
         
 
 
-class TestItem(AbstractModel):
-    """检验指标内容
-
-    """
-
-    def __init__(self):
-        """
-        :param ID: 标准名称编号，利用该编号可以获取详细的指标含义和解释
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ID: int
-        :param Code: 英文名称或简称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Code: str
-        :param Name: 项目指标名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Result: 检验结果值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: str
-        :param Range: 正常结果范围
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Range: str
-        :param Util: 指标单位
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Util: str
-        :param IsNormal: 是否正常
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsNormal: bool
-        :param IsExceed: 是否超标
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsExceed: bool
-        """
-        self.ID = None
-        self.Code = None
-        self.Name = None
-        self.Result = None
-        self.Range = None
-        self.Util = None
-        self.IsNormal = None
-        self.IsExceed = None
-
-
-    def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.Code = params.get("Code")
-        self.Name = params.get("Name")
-        self.Result = params.get("Result")
-        self.Range = params.get("Range")
-        self.Util = params.get("Util")
-        self.IsNormal = params.get("IsNormal")
-        self.IsExceed = params.get("IsExceed")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TextReport(AbstractModel):
-    """文本类型报告返回结果
-
-    """
-
-    def __init__(self):
-        """
-        :param KindSet: 报告类别信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KindSet: list of KindItem
-        :param BasicInfo: 基本信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BasicInfo: :class:`tencentcloud.mrs.v20200910.models.BasicInfo`
-        :param PersonalInfo: 个人隐私信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PersonalInfo: :class:`tencentcloud.mrs.v20200910.models.PersonalInfo`
-        :param TestList: 检验指标表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TestList: list of TestItem
-        :param Inspection: 检查报告内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Inspection: :class:`tencentcloud.mrs.v20200910.models.Inspection`
-        :param CaseHistory: 病历资料
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CaseHistory: :class:`tencentcloud.mrs.v20200910.models.CaseHistory`
-        :param Pathology: 病理检查内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Pathology: :class:`tencentcloud.mrs.v20200910.models.Pathology`
-        """
-        self.KindSet = None
-        self.BasicInfo = None
-        self.PersonalInfo = None
-        self.TestList = None
-        self.Inspection = None
-        self.CaseHistory = None
-        self.Pathology = None
-
-
-    def _deserialize(self, params):
-        if params.get("KindSet") is not None:
-            self.KindSet = []
-            for item in params.get("KindSet"):
-                obj = KindItem()
-                obj._deserialize(item)
-                self.KindSet.append(obj)
-        if params.get("BasicInfo") is not None:
-            self.BasicInfo = BasicInfo()
-            self.BasicInfo._deserialize(params.get("BasicInfo"))
-        if params.get("PersonalInfo") is not None:
-            self.PersonalInfo = PersonalInfo()
-            self.PersonalInfo._deserialize(params.get("PersonalInfo"))
-        if params.get("TestList") is not None:
-            self.TestList = []
-            for item in params.get("TestList"):
-                obj = TestItem()
-                obj._deserialize(item)
-                self.TestList.append(obj)
-        if params.get("Inspection") is not None:
-            self.Inspection = Inspection()
-            self.Inspection._deserialize(params.get("Inspection"))
-        if params.get("CaseHistory") is not None:
-            self.CaseHistory = CaseHistory()
-            self.CaseHistory._deserialize(params.get("CaseHistory"))
-        if params.get("Pathology") is not None:
-            self.Pathology = Pathology()
-            self.Pathology._deserialize(params.get("Pathology"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class TextToClassRequest(AbstractModel):
     """TextToClass请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 报告文本
         :type Text: str
         """
@@ -3804,7 +2421,7 @@ class TextToClassResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextTypeList: 分类结果
         :type TextTypeList: list of TextType
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3830,7 +2447,7 @@ class TextToObjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 报告文本
         :type Text: str
         :param Type: 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
@@ -3863,7 +2480,7 @@ class TextToObjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Template: 报告结构化结果
         :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3886,7 +2503,7 @@ class TextType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 类别Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
@@ -3915,43 +2532,13 @@ class TextType(AbstractModel):
         
 
 
-class Treatment(AbstractModel):
-    """诊治信息
-
-    """
-
-    def __init__(self):
-        """
-        :param ChiefComplaint: 主诉
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChiefComplaint: str
-        :param AdmissionDiagnosis: 入院诊断
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AdmissionDiagnosis: str
-        """
-        self.ChiefComplaint = None
-        self.AdmissionDiagnosis = None
-
-
-    def _deserialize(self, params):
-        self.ChiefComplaint = params.get("ChiefComplaint")
-        self.AdmissionDiagnosis = params.get("AdmissionDiagnosis")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class TreatmentRecord(AbstractModel):
     """病历
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param DmissionCondition: 入院
 注意：此字段可能返回 null，表示取不到有效值。
         :type DmissionCondition: str
@@ -4100,148 +2687,13 @@ class TreatmentRecord(AbstractModel):
         
 
 
-class Tuber(AbstractModel):
-    """肿瘤结节
-
-    """
-
-    def __init__(self):
-        """
-        :param Part: 部位信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Part: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Type: 类型信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param SizeList: 大小信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SizeList: list of Attribute
-        :param Shape: 形态信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Shape: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Edge: 边缘信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Edge: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param CDFI: CDFI信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CDFI: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Metabolism: 代谢信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Metabolism: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param LymphGland: 淋巴结信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LymphGland: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param LymphDoor: 淋巴门信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LymphDoor: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param SkinMedulla: 皮髓质信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SkinMedulla: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param InnerEcho: 内部回声信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InnerEcho: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param RearEcho: 外部回声信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RearEcho: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Envelope: 包膜信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Envelope: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Calcification: 钙化信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Calcification: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param Enhancement: 强化信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Enhancement: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        :param AspectRatio: 纵横比信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AspectRatio: :class:`tencentcloud.mrs.v20200910.models.Attribute`
-        """
-        self.Part = None
-        self.Type = None
-        self.SizeList = None
-        self.Shape = None
-        self.Edge = None
-        self.CDFI = None
-        self.Metabolism = None
-        self.LymphGland = None
-        self.LymphDoor = None
-        self.SkinMedulla = None
-        self.InnerEcho = None
-        self.RearEcho = None
-        self.Envelope = None
-        self.Calcification = None
-        self.Enhancement = None
-        self.AspectRatio = None
-
-
-    def _deserialize(self, params):
-        if params.get("Part") is not None:
-            self.Part = Attribute()
-            self.Part._deserialize(params.get("Part"))
-        if params.get("Type") is not None:
-            self.Type = Attribute()
-            self.Type._deserialize(params.get("Type"))
-        if params.get("SizeList") is not None:
-            self.SizeList = []
-            for item in params.get("SizeList"):
-                obj = Attribute()
-                obj._deserialize(item)
-                self.SizeList.append(obj)
-        if params.get("Shape") is not None:
-            self.Shape = Attribute()
-            self.Shape._deserialize(params.get("Shape"))
-        if params.get("Edge") is not None:
-            self.Edge = Attribute()
-            self.Edge._deserialize(params.get("Edge"))
-        if params.get("CDFI") is not None:
-            self.CDFI = Attribute()
-            self.CDFI._deserialize(params.get("CDFI"))
-        if params.get("Metabolism") is not None:
-            self.Metabolism = Attribute()
-            self.Metabolism._deserialize(params.get("Metabolism"))
-        if params.get("LymphGland") is not None:
-            self.LymphGland = Attribute()
-            self.LymphGland._deserialize(params.get("LymphGland"))
-        if params.get("LymphDoor") is not None:
-            self.LymphDoor = Attribute()
-            self.LymphDoor._deserialize(params.get("LymphDoor"))
-        if params.get("SkinMedulla") is not None:
-            self.SkinMedulla = Attribute()
-            self.SkinMedulla._deserialize(params.get("SkinMedulla"))
-        if params.get("InnerEcho") is not None:
-            self.InnerEcho = Attribute()
-            self.InnerEcho._deserialize(params.get("InnerEcho"))
-        if params.get("RearEcho") is not None:
-            self.RearEcho = Attribute()
-            self.RearEcho._deserialize(params.get("RearEcho"))
-        if params.get("Envelope") is not None:
-            self.Envelope = Attribute()
-            self.Envelope._deserialize(params.get("Envelope"))
-        if params.get("Calcification") is not None:
-            self.Calcification = Attribute()
-            self.Calcification._deserialize(params.get("Calcification"))
-        if params.get("Enhancement") is not None:
-            self.Enhancement = Attribute()
-            self.Enhancement._deserialize(params.get("Enhancement"))
-        if params.get("AspectRatio") is not None:
-            self.AspectRatio = Attribute()
-            self.AspectRatio._deserialize(params.get("AspectRatio"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class TuberInfo(AbstractModel):
     """结节
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
@@ -4494,7 +2946,7 @@ class Value(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Grade: 等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str

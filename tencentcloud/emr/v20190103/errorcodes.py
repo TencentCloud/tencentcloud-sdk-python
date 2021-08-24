@@ -77,7 +77,7 @@ INTERNALERROR_VPCCGWERROR = 'InternalError.VpcCgwError'
 # 内部服务调用异常。
 INTERNALERROR_VPCERROR = 'InternalError.VpcError'
 
-# Woodpecker server调用出错。
+# 内部服务调用异常。
 INTERNALERROR_WOODSERVERERROR = 'InternalError.WoodServerError'
 
 # 参数错误。
@@ -122,7 +122,7 @@ INVALIDPARAMETER_INVALIDCOUNT = 'InvalidParameter.InvalidCount'
 # 同一请求只能扩容Task或者Core节点。
 INVALIDPARAMETER_INVALIDCOUNTNUM = 'InvalidParameter.InvalidCountNum'
 
-# 容器账号或容器参数校验错误。
+# 错误信息：Invalid PodParameter。
 INVALIDPARAMETER_INVALIDCUSTOMIZEDPODPARAM = 'InvalidParameter.InvalidCustomizedPodParam'
 
 # 无效的磁盘大小。
@@ -202,6 +202,9 @@ INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = 'InvalidParameter.InvalidSoftDeployInfo
 
 # 无效的SoftInfo。
 INVALIDPARAMETER_INVALIDSOFTINFO = 'InvalidParameter.InvalidSoftInfo'
+
+# 参数错误。
+INVALIDPARAMETER_INVALIDSOFTWARE = 'InvalidParameter.InvalidSoftWare'
 
 # 软件名无效。
 INVALIDPARAMETER_INVALIDSOFTWARENAME = 'InvalidParameter.InvalidSoftWareName'
@@ -301,6 +304,9 @@ RESOURCENOTFOUND_TKEPRECONDITIONNOTFOUND = 'ResourceNotFound.TKEPreconditionNotF
 
 # 没有查找到指定标签。
 RESOURCENOTFOUND_TAGSNOTFOUND = 'ResourceNotFound.TagsNotFound'
+
+# 当前资源规格不存在默认规格。
+RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpecNotDefaultSpec'
 
 # 当前资源规格不存在默认规格。
 RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpec_NotDefaultSpec'

@@ -24,7 +24,7 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DateKey: 时间
         :type DateKey: str
         :param AllStopCnt: 停止验证数量
@@ -60,7 +60,7 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DateKey: 时间
         :type DateKey: str
         :param MarketLoadTime: Market加载时间
@@ -92,7 +92,7 @@ class CaptchaOperDataRes(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OperDataLoadTimeUnitArray: 验证码加载耗时数据返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperDataLoadTimeUnitArray: list of CaptchaOperDataLoadTimeUnit
@@ -152,7 +152,7 @@ class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TryCount: 尝试次数
         :type TryCount: int
         :param UserCount: 用户请求数量
@@ -180,7 +180,7 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DateKey: 时间
         :type DateKey: str
         :param CntPerPass: 平均尝试次数
@@ -212,7 +212,7 @@ class CaptchaQueryData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cnt: 数量
         :type Cnt: int
         :param Date: 时间
@@ -240,7 +240,7 @@ class CaptchaTicketDataRes(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TicketAmountArray: 票据验证总量返回
         :type TicketAmountArray: list of TicketAmountUnit
         :param TicketThroughArray: 票据验证通过量返回
@@ -287,7 +287,7 @@ class CaptchaUserAllAppId(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param AppName: 注册应用名称
@@ -323,7 +323,7 @@ class DescribeCaptchaAppIdInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用注册APPID
         :type CaptchaAppId: int
         """
@@ -347,7 +347,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SchemeColor: 界面风格
         :type SchemeColor: str
         :param Language: 语言
@@ -426,7 +426,7 @@ class DescribeCaptchaDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间
@@ -462,7 +462,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 返回码 0 成功 其它失败
         :type CaptchaCode: int
         :param Data: 数据数组
@@ -498,7 +498,7 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间
@@ -530,7 +530,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GetSum: 请求总量
         :type GetSum: int
         :param VfySuccSum: 请求验证成功量
@@ -576,7 +576,7 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间 例如：2019112900
@@ -612,7 +612,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 返回码 0 成功 其它失败
         :type CaptchaCode: int
         :param Data: 数据数组
@@ -648,7 +648,7 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间
@@ -680,7 +680,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GetSum: 请求总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type GetSum: int
@@ -742,7 +742,7 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间
@@ -774,7 +774,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
         :param CaptchaMsg: 返回信息
@@ -807,12 +807,12 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaType: 固定填值：9（滑块验证码）
         :type CaptchaType: int
         :param Ticket: 验证码返回给用户的票据
         :type Ticket: str
-        :param UserIp: 透传业务侧获取到的验证码使用者的IP
+        :param UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
         :param CaptchaAppId: 验证码应用APPID
         :type CaptchaAppId: int
@@ -863,7 +863,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 1       ticket verification succeeded     票据验证成功
 7       CaptchaAppId does not match     票据与验证码应用APPID不匹配
 8       ticket expired     票据超时
@@ -897,12 +897,12 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaType: 固定填值：9（滑块验证码）
         :type CaptchaType: int
         :param Ticket: 验证码返回给用户的票据
         :type Ticket: str
-        :param UserIp: 用户操作来源的外网 IP
+        :param UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
         :param CaptchaAppId: 验证码应用APPID
         :type CaptchaAppId: int
@@ -961,7 +961,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 1 ticket verification succeeded 票据验证成功
 7 CaptchaAppId does not match 票据与验证码应用APPID不匹配
 8 ticket expired 票据超时
@@ -1005,7 +1005,7 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间
@@ -1037,7 +1037,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
         :param CaptchaMsg: 返回信息
@@ -1070,12 +1070,12 @@ class DescribeCaptchaResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
         :type CaptchaType: int
         :param Ticket: 前端回调函数返回的用户验证票据
         :type Ticket: str
-        :param UserIp: 透传业务侧获取到的验证码使用者的IP
+        :param UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
         :param Randstr: 前端回调函数返回的随机字符串
         :type Randstr: str
@@ -1134,7 +1134,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 1 OK 验证通过
 6 user code len error 验证码长度不匹配，请检查请求是否带Randstr参数，Randstr参数大小写是否有误
 7 captcha no match 验证码答案不匹配/Randstr参数不匹配，请重新生成Randstr、Ticket进行校验
@@ -1145,7 +1145,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
 12 sig len error 签名长度错误
 13 verify ip no match ip不匹配，非法请求，可能存在不规范接入
 15 decrypt fail 验证码签名解密失败，票据校验失败，请检查Ticket票据是否与前端返回Ticket一致
-16 appid no match 验证码强校验appid错误，请检查CaptchaAppId是否为控制台基础配置界面系统分配的APPID
+16 appid no match 验证码强校验appid错误，前端代码 data-appid 和后端 CaptchaAppId 所填写的值，必须和 验证码控制台 中【验证详情】>【基础配置】内的 AppID 一致,请检查CaptchaAppId是否为控制台基础配置界面系统分配的APPID
 17 cmd no much 验证码系统命令不匹配
 18 uin no match 号码不匹配
 19 seq redirect 重定向验证
@@ -1156,7 +1156,7 @@ class DescribeCaptchaResultResponse(AbstractModel):
 24 invalid pkg 非法请求包
 25 bad visitor 策略拦截
 26 system busy 系统内部错误
-100 param err appsecretkey 参数校验错误，请检查AppSecretKey是否与控制台基础配置界面系统分配的APPID、AppSecretKey相对应
+100 param err appsecretkey 参数校验错误，CaptchaAppId 与对应 AppSecretKey 不一致，需检查 AppSecretKey 参数是否有误。其中 CaptchaAppId、 AppSecretKey 在 验证码控制台 的【验证详情】>【基础配置】中获取
 104 Ticket Reuse 票据重复使用，同个票据验证多次，请重新生成Randstr、Ticket进行校验
         :type CaptchaCode: int
         :param CaptchaMsg: 状态描述及验证错误信息
@@ -1192,7 +1192,7 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param Start: 查询开始时间 例如：20200909
@@ -1220,7 +1220,7 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 成功返回 0 其它失败
         :type CaptchaCode: int
         :param CaptchaMsg: 返回信息
@@ -1259,7 +1259,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 用户注册的所有Appid和应用名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of CaptchaUserAllAppId
@@ -1295,7 +1295,7 @@ class OutputManageMarketingRiskValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 账号 ID。对应输入参数： AccountType 是 1 时，对应 QQ 的 OpenID。
 AccountType 是 2 时，对应微信的 OpenID/UnionID。
 AccountType 是 4 时，对应手机号。
@@ -1376,7 +1376,7 @@ class TicketAmountUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DateKey: 时间
         :type DateKey: str
         :param Amount: 票据验证总量
@@ -1404,7 +1404,7 @@ class TicketInterceptUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DateKey: 时间
         :type DateKey: str
         :param Intercept: 票据验证拦截量
@@ -1432,7 +1432,7 @@ class TicketThroughUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DateKey: 时间
         :type DateKey: str
         :param Through: 票据验证的通过量
@@ -1460,7 +1460,7 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
         :param AppName: 应用名
@@ -1532,7 +1532,7 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CaptchaCode: 返回码 0 成功，其它失败
         :type CaptchaCode: int
         :param CaptchaMsg: 返回操作信息

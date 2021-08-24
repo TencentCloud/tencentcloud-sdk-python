@@ -4,6 +4,7 @@ import os
 from tencentcloud.common import credential
 from tencentcloud.common.common_client import CommonClient
 
+
 def test_describe_instances():
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),

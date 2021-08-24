@@ -24,7 +24,7 @@ class AssessQualityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -60,7 +60,7 @@ class AssessQualityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LongImage: 取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
         :type LongImage: bool
         :param BlackAndWhite: 取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
@@ -105,7 +105,7 @@ class CarTagItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Serial: 车系
         :type Serial: str
         :param Brand: 车辆品牌
@@ -158,7 +158,7 @@ class Coord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 横坐标x
         :type X: int
         :param Y: 纵坐标y
@@ -186,7 +186,7 @@ class CropImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Width: 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例；
 输入数字请大于0、小于图片宽度的像素值；
         :type Width: int
@@ -234,7 +234,7 @@ class CropImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 裁剪区域左上角X坐标值
         :type X: int
         :param Y: 裁剪区域左上角Y坐标值
@@ -287,7 +287,7 @@ class DetectCelebrityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -323,7 +323,7 @@ class DetectCelebrityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Faces: 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
         :type Faces: list of Face
         :param Threshold: 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
@@ -359,7 +359,7 @@ class DetectDisgustRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -395,7 +395,7 @@ class DetectDisgustResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
         :type Confidence: float
         :param Type: 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
@@ -420,7 +420,7 @@ class DetectLabelBetaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -469,7 +469,7 @@ class DetectLabelBetaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
@@ -547,7 +547,7 @@ class DetectLabelItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 图片中的物体名称。
         :type Name: str
         :param Confidence: 算法对于Name的置信度，0-100之间，值越高，表示对于Name越确定。
@@ -583,7 +583,7 @@ class DetectLabelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -630,7 +630,7 @@ class DetectLabelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
@@ -688,7 +688,7 @@ class DetectMisbehaviorRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -724,7 +724,7 @@ class DetectMisbehaviorResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
         :type Confidence: float
         :param Type: 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
@@ -749,7 +749,7 @@ class DetectProductBetaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
 建议先对图片进行压缩，以便提升处理速度。
         :type ImageUrl: str
@@ -779,7 +779,7 @@ class DetectProductBetaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionDetected: 检测到的图片中的商品位置和品类预测。 
 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 最多可以输出__3组__检测结果。
@@ -824,7 +824,7 @@ class DetectProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -860,7 +860,7 @@ class DetectProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Products: 商品识别结果数组
         :type Products: list of Product
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -886,7 +886,7 @@ class EnhanceImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -922,7 +922,7 @@ class EnhanceImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnhancedImage: 增强后图片的base64编码。
         :type EnhancedImage: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -943,7 +943,7 @@ class Face(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 与图片中人脸最相似的公众人物的名字。
         :type Name: str
         :param Labels: 公众人物身份标签的数组，一个公众人物可能有多个身份标签。
@@ -1005,7 +1005,7 @@ class Labels(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstLabel: 公众人物身份标签的一级分类，例如体育明星、娱乐明星、政治人物等；
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstLabel: str
@@ -1035,7 +1035,7 @@ class Location(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param XMin: 位置矩形框的左上角横坐标
         :type XMin: int
         :param YMin: 位置矩形框的左上角纵坐标
@@ -1071,7 +1071,7 @@ class Product(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
         :type Name: str
         :param Parents: 三级商品分类对应的一级分类和二级分类，两级之间用“-”（中划线）隔开，例如商品名称是“硬盘”，那么Parents输出为“电脑、办公-电脑配件”
@@ -1120,7 +1120,7 @@ class ProductInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FindSKU: 1表示找到同款商品，以下字段为同款商品信息； 
 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目和参考图片（商品库中找到的最相似图片，供参考）。  
 是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
@@ -1178,7 +1178,7 @@ class RecognizeCarRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: 图片URL地址。 
 图片限制： 
 • 图片格式：PNG、JPG、JPEG。 
@@ -1215,7 +1215,7 @@ class RecognizeCarResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :type CarCoords: list of Coord
         :param CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
@@ -1252,7 +1252,7 @@ class RegionDetected(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Category: 商品的品类预测结果。 
 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
         :type Category: str
@@ -1290,7 +1290,7 @@ class Threshold(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FalseRate1Percent: 误识率在百分之一时的推荐阈值。
         :type FalseRate1Percent: int
         :param FalseRate5Permil: 误识率在千分之五时的推荐阈值。

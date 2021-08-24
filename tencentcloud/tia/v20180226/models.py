@@ -24,7 +24,7 @@ class CreateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名称
         :type Name: str
         :param Cluster: 运行任务的集群，详见 [使用集群](https://cloud.tencent.com/document/product/851/17317)
@@ -100,7 +100,7 @@ class CreateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Job: 训练任务信息
         :type Job: :class:`tencentcloud.tia.v20180226.models.Job`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -123,7 +123,7 @@ class CreateModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 模型名称
         :type Name: str
         :param Model: 要部署的模型文件路径名
@@ -179,7 +179,7 @@ class CreateModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Model: 模型的详细信息
         :type Model: :class:`tencentcloud.tia.v20180226.models.Model`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -202,7 +202,7 @@ class DeleteJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名称
         :type Name: str
         :param Cluster: 运行任务的集群
@@ -230,7 +230,7 @@ class DeleteJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -247,7 +247,7 @@ class DeleteModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 要删除的模型名称
         :type Name: str
         :param Cluster: 要删除的模型所在的集群名称，`集群模式` 必填
@@ -279,7 +279,7 @@ class DeleteModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -296,7 +296,7 @@ class DescribeJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名称
         :type Name: str
         :param Cluster: 运行任务的集群
@@ -324,7 +324,7 @@ class DescribeJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Job: 训练任务信息
         :type Job: :class:`tencentcloud.tia.v20180226.models.Job`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -347,7 +347,7 @@ class DescribeModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 模型名称
         :type Name: str
         :param Cluster: 模型所在集群名称，`集群模式` 必填
@@ -379,7 +379,7 @@ class DescribeModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Model: 模型信息
         :type Model: :class:`tencentcloud.tia.v20180226.models.Model`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -402,7 +402,7 @@ class InstallAgentRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cluster: 集群名称
         :type Cluster: str
         :param TiaVersion: Agent版本, 用于私有集群的agent安装，默认为“private-training”
@@ -434,7 +434,7 @@ class InstallAgentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TiaVersion: Agent版本, 用于私有集群的agent安装
         :type TiaVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -455,7 +455,7 @@ class Job(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名称
         :type Name: str
         :param CreateTime: 任务创建时间，格式为：2006-01-02 15:04:05.999999999 -0700 MST
@@ -567,7 +567,7 @@ class ListJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cluster: 运行任务的集群
         :type Cluster: str
         :param Limit: 分页参数，返回数量
@@ -599,7 +599,7 @@ class ListJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Jobs: 训练任务列表
         :type Jobs: list of Job
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -625,7 +625,7 @@ class ListModelsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cluster: 部署模型的集群， `集群模式` 必填
         :type Cluster: str
         :param Limit: 分页参数，返回数量上限
@@ -661,7 +661,7 @@ class ListModelsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Models: Model 数组，用以显示所有模型的信息
         :type Models: list of Model
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -687,7 +687,7 @@ class Log(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContainerName: 容器名
         :type ContainerName: str
         :param Log: 日志内容
@@ -744,7 +744,7 @@ class Model(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 模型名称
         :type Name: str
         :param Description: 模型描述
@@ -828,7 +828,7 @@ class QueryLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobName: 任务的名称
         :type JobName: str
         :param Cluster: 任务所在集群的名称
@@ -872,7 +872,7 @@ class QueryLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Context: 日志查询上下文，用于加载更多日志
         :type Context: str
         :param Logs: 日志内容列表

@@ -24,7 +24,7 @@ class AuthInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 主键
         :type Id: str
         :param Name: 授权人名称
@@ -64,7 +64,7 @@ class BatchDescribeOrderCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderIds: 要下载授权书的订单id
         :type OrderIds: list of str
         """
@@ -88,7 +88,7 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateUrls: 授权书的下载地址
         :type CertificateUrls: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -109,7 +109,7 @@ class BatchDescribeOrderImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderIds: 要下载图片的订单id
         :type OrderIds: list of str
         """
@@ -133,7 +133,7 @@ class BatchDescribeOrderImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrls: 图片的下载地址
         :type ImageUrls: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -154,7 +154,7 @@ class CreateOrderAndDownloadsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageInfos: ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
         :type ImageInfos: list of ImageInfo
         """
@@ -183,7 +183,7 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadInfos: 成功核销后可以获取图片基本信息和原图地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadInfos: list of DownloadInfo
@@ -214,7 +214,7 @@ class CreateOrderAndPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageId: 图片ID
         :type ImageId: int
         :param AuthUserId: 授权人ID
@@ -246,7 +246,7 @@ class CreateOrderAndPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单ID
         :type OrderId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -267,7 +267,7 @@ class DescribeAuthUsersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 分页大小
         :type Limit: int
         :param Offset: 页偏移量
@@ -295,7 +295,7 @@ class DescribeAuthUsersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Users: 授权人信息数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Users: list of AuthInfo
@@ -330,7 +330,7 @@ class DescribeDownloadInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 默认10
         :type Limit: int
         :param Offset: 默认0
@@ -370,7 +370,7 @@ class DescribeDownloadInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadInfos: 核销下载记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadInfos: list of DownloadInfo
@@ -401,7 +401,7 @@ class DescribeImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageId: 图片ID
         :type ImageId: int
         """
@@ -425,7 +425,7 @@ class DescribeImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageId: 图片ID
         :type ImageId: int
         :param Title: 图片标题
@@ -503,7 +503,7 @@ class DescribeImagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页偏移量
         :type Offset: int
         :param Limit: 页大小
@@ -547,7 +547,7 @@ class DescribeImagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页偏移量
         :type Offset: int
         :param Limit: 页大小
@@ -589,7 +589,7 @@ class DownloadInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageInfo: 图片基础信息
         :type ImageInfo: :class:`tencentcloud.ape.v20200513.models.ImageInfo`
         :param ImageUrl: 图片原图URL
@@ -647,7 +647,7 @@ class ImageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageId: 图片Id
         :type ImageId: int
         :param LicenseScopeId: 授权场景Id
@@ -695,7 +695,7 @@ class ImageItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageId: 图片ID
         :type ImageId: int
         :param Title: 图片标题
@@ -751,7 +751,7 @@ class ImageMarshal(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MarshalId: 售卖组合唯一标识
         :type MarshalId: int
         :param Height: 图片高度

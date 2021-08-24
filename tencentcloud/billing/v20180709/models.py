@@ -24,7 +24,7 @@ class ActionSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActionType: 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
         :type ActionType: str
         :param ActionTypeName: 交易类型名称
@@ -76,7 +76,7 @@ class BillDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCodeName: 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
         :type BusinessCodeName: str
         :param ProductCodeName: 子产品名称：云产品子类，如云服务器CVM-标准型S1
@@ -207,7 +207,7 @@ class BillDetailComponent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComponentCodeName: 组件类型:资源组件类型的名称，如内存、硬盘等
         :type ComponentCodeName: str
         :param ItemCodeName: 组件名称:资源组件的名称，如云数据库MySQL-内存等
@@ -306,7 +306,7 @@ class BillResourceSummary(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCodeName: 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
         :type BusinessCodeName: str
         :param ProductCodeName: 子产品：云产品子类，如云服务器CVM-标准型S1， 当没有获取到子产品名称时，返回"-"
@@ -464,7 +464,7 @@ class BillTagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 分账标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -492,7 +492,7 @@ class BillTransactionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActionType: 收支类型：deduct 扣费, recharge 充值, return 退费， block 冻结, unblock 解冻
         :type ActionType: str
         :param Amount: 流水金额，单位（分）；正数表示入账，负数表示出账
@@ -556,7 +556,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCode: 产品码
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
@@ -609,7 +609,7 @@ class BusinessSummaryTotal(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealTotalCost: 总花费
         :type RealTotalCost: str
         :param VoucherPayAmount: 代金券金额
@@ -645,7 +645,7 @@ class ConditionBusiness(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCode: 产品码
         :type BusinessCode: str
         :param BusinessCodeName: 产品名称
@@ -673,7 +673,7 @@ class ConditionPayMode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayMode: 付费模式
         :type PayMode: str
         :param PayModeName: 付费模式名称
@@ -701,7 +701,7 @@ class ConditionProject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -729,7 +729,7 @@ class ConditionRegion(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 地域ID
         :type RegionId: str
         :param RegionName: 地域名称
@@ -757,7 +757,7 @@ class Conditions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeRange: 只支持6和12两个值
         :type TimeRange: int
         :param BusinessCode: 产品编码
@@ -853,7 +853,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCode: 产品码
         :type BusinessCode: str
         :param BusinessCodeName: 产品名称
@@ -891,7 +891,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -938,7 +938,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 地域ID
         :type RegionId: str
         :param RegionName: 地域名称
@@ -985,7 +985,7 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Business: 产品列表
         :type Business: list of ConditionBusiness
         :param Project: 项目列表
@@ -1041,7 +1041,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param ResourceName: 资源名称
@@ -1113,7 +1113,7 @@ class ConsumptionSummaryTotal(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealTotalCost: 折后总价
         :type RealTotalCost: str
         """
@@ -1137,7 +1137,7 @@ class ConsumptionSummaryTrend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 趋势类型，upward上升/downward下降/none无
         :type Type: str
         :param Value: 趋势值，Type为none是该字段值为null
@@ -1166,7 +1166,7 @@ class CosDetailSets(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BucketName: 存储桶名称
         :type BucketName: str
         :param DosageBeginTime: 用量开始时间
@@ -1214,7 +1214,7 @@ class CostComponentSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComponentCodeName: 组件类型名称
         :type ComponentCodeName: str
         :param ItemCodeName: 组件名称
@@ -1282,7 +1282,7 @@ class CostDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayerUin: 支付者uin
         :type PayerUin: str
         :param BusinessCodeName: 业务名称
@@ -1372,7 +1372,7 @@ class Deal(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单号
         :type OrderId: str
         :param Status: 订单状态
@@ -1494,7 +1494,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Balance: 接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
         :type Balance: int
         :param Uin: 查询的用户Uin
@@ -1563,7 +1563,7 @@ class DescribeBillDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 数量，最大值为100
@@ -1632,7 +1632,7 @@ class DescribeBillDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetailSet: 详情列表
         :type DetailSet: list of BillDetail
         :param Total: 总记录数
@@ -1663,7 +1663,7 @@ class DescribeBillListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询范围的起始时间（包含）
         :type StartTime: str
         :param EndTime: 查询范围的结束时间（包含）
@@ -1674,7 +1674,30 @@ class DescribeBillListRequest(AbstractModel):
         :type Limit: int
         :param PayType: 交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
         :type PayType: list of str
-        :param SubPayType: 扣费模式，当所选的交易类型中包含扣费deduct时有意义： all所有扣费类型，trade预付费支付，hour_h按量小时结，hour_d按量日结，hour_m按量月结，decompensate调账扣费，other其他扣费
+        :param SubPayType: 扣费模式，
+当所选的交易类型为扣费deduct时： 
+all所有扣费类型;trade预付费支付;hour_h按量小时结;hour_d按量日结;hour_m按量月结;decompensate调账扣费;other第三方扣费;panshi 线下项目扣费;offline 线下产品扣费;
+
+当所选的交易类型为扣费recharge时： 
+online 在线充值;bank-enterprice 银企直连;offline 线下充值;transfer 分成充值
+
+当所选的交易类型为扣费cash时： 
+online 线上提现;offline 线下提现;panshi 赠送金清零
+
+当所选的交易类型为扣费advanced时： 
+advanced 垫付充值
+
+当所选的交易类型为扣费repay时： 
+panshi 垫付回款
+
+当所选的交易类型为扣费block时： 
+other 第三方冻结;hour 按量冻结;month按月冻结
+
+当所选的交易类型为扣费return时： 
+compensate 调账补偿;trade 预付费退款
+
+当所选的交易类型为扣费unblock时：
+other 第三方解冻;hour 按量解冻;month 按月解冻
         :type SubPayType: list of str
         :param WithZeroAmount: 是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回
         :type WithZeroAmount: int
@@ -1711,7 +1734,7 @@ class DescribeBillListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionList: 收支明细列表
         :type TransactionList: list of BillTransactionInfo
         :param Total: 总条数
@@ -1781,7 +1804,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 数量，最大值为1000
@@ -1834,7 +1857,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceSummarySet: 资源汇总列表
         :type ResourceSummarySet: list of BillResourceSummary
         :param Total: 资源汇总列表总数
@@ -1865,7 +1888,7 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -1897,7 +1920,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param SummaryOverview: 各付费模式花费分布详情
@@ -1928,7 +1951,7 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -1960,7 +1983,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param SummaryTotal: 总花费详情
@@ -1998,7 +2021,7 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2030,7 +2053,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param SummaryOverview: 各项目花费分布详情
@@ -2061,7 +2084,7 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2093,7 +2116,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param SummaryOverview: 各地域花费分布详情
@@ -2124,7 +2147,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2160,7 +2183,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param SummaryOverview: 各标签值花费分布详情
@@ -2191,7 +2214,7 @@ class DescribeCostDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 数量，最大值为100
         :type Limit: int
         :param Offset: 偏移量
@@ -2248,7 +2271,7 @@ class DescribeCostDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetailSet: 消耗明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailSet: list of CostDetail
@@ -2280,7 +2303,7 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2324,7 +2347,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param Total: 消耗详情
@@ -2366,7 +2389,7 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2410,7 +2433,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param Total: 消耗详情
@@ -2450,7 +2473,7 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2494,7 +2517,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param Total: 消耗详情
@@ -2535,7 +2558,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
@@ -2589,7 +2612,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ready: 数据是否准备好，0未准备好，1准备好
         :type Ready: int
         :param Total: 消耗详情
@@ -2639,7 +2662,7 @@ class DescribeDealsByCondRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间
         :type StartTime: str
         :param EndTime: 结束时间
@@ -2699,7 +2722,7 @@ class DescribeDealsByCondResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Deals: 订单列表
         :type Deals: list of Deal
         :param TotalCount: 订单总数
@@ -2729,7 +2752,7 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDate: 查询用量开始时间
         :type StartDate: str
         :param EndDate: 查询用量结束时间（与开始时间同月，不支持跨月查询）
@@ -2761,7 +2784,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetailSets: 用量数组
         :type DetailSets: list of CosDetailSets
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2787,7 +2810,7 @@ class DescribeDosageDetailByDateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDate: 查询账单开始日期，如 2019-01-01
         :type StartDate: str
         :param EndDate: 查询账单结束日期，如 2019-01-01， 时间跨度不超过7天
@@ -2848,7 +2871,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Unit: 计量单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
@@ -2890,7 +2913,7 @@ class DetailPoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间
         :type Time: str
         :param Value: 值
@@ -2918,7 +2941,7 @@ class DetailSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DetailPoints: 使用数据明细
@@ -2956,7 +2979,7 @@ class PayDealsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderIds: 需要支付的一个或者多个子订单号，与BigDealIds字段两者必须且仅传一个参数
         :type OrderIds: list of str
         :param AutoVoucher: 是否自动使用代金券,1:是,0否,默认0
@@ -2992,7 +3015,7 @@ class PayDealsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderIds: 此次操作支付成功的子订单号数组
         :type OrderIds: list of str
         :param ResourceIds: 此次操作支付成功的资源Id数组
@@ -3021,7 +3044,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayMode: 付费模式
         :type PayMode: str
         :param PayModeName: 付费模式名称
@@ -3078,7 +3101,7 @@ class ProductInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 商品详情名称标识
         :type Name: str
         :param Value: 商品详情
@@ -3106,7 +3129,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -3158,7 +3181,7 @@ class RegionSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 地域ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
@@ -3211,7 +3234,7 @@ class TagSummaryOverviewItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagValue: 标签值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str

@@ -24,7 +24,7 @@ class DeleteCertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
         :type Id: str
         :param ModuleType: 模块名称，应填 ssl。
@@ -52,7 +52,7 @@ class DeleteCertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -69,7 +69,7 @@ class DescribeCertListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModuleType: 模块名称，应填 ssl。
         :type ModuleType: str
         :param Offset: 页数，默认第一页。
@@ -121,7 +121,7 @@ class DescribeCertListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数量。
         :type TotalCount: int
         :param CertificateSet: 列表。
@@ -151,7 +151,7 @@ class SSLCertificate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 所属账户
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
@@ -303,7 +303,7 @@ class SSLProjectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
@@ -353,7 +353,7 @@ class UploadCertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cert: 证书内容。
         :type Cert: str
         :param CertType: 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
@@ -397,7 +397,7 @@ class UploadCertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 证书ID。
         :type Id: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

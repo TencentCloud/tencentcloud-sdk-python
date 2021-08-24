@@ -24,7 +24,7 @@ class CodeDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CodePosition: 二维码在图片中的位置，由边界点的坐标表示
         :type CodePosition: list of CodePosition
         :param CodeCharset: 二维码文本的编码格式
@@ -65,7 +65,7 @@ class CodeDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModerationDetail: 从图片中检测到的二维码，可能为多个
         :type ModerationDetail: list of CodeDetail
         :param ModerationCode: 检测是否成功，0：成功，-1：出错
@@ -98,7 +98,7 @@ class CodePosition(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FloatX: 二维码边界点X轴坐标
         :type FloatX: float
         :param FloatY: 二维码边界点Y轴坐标
@@ -126,7 +126,7 @@ class Coordinate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cx: 左上角横坐标
         :type Cx: int
         :param Cy: 左上角纵坐标
@@ -162,7 +162,7 @@ class CreateFileSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Contents: 文件类型结构数组
         :type Contents: list of FileSample
         :param EvilType: 恶意类型
@@ -212,7 +212,7 @@ class CreateFileSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态
 1：已完成
 2：处理中
@@ -235,7 +235,7 @@ class CreateTextSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Contents: 关键词数组
         :type Contents: list of str
         :param EvilType: 恶意类型
@@ -280,7 +280,7 @@ class CreateTextSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrMsg: 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码
         :type ErrMsg: str
         :param Progress: 任务状态
@@ -307,7 +307,7 @@ class CustomResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Keywords: 命中的自定义关键词
         :type Keywords: list of str
         :param LibId: 自定义库id
@@ -343,7 +343,7 @@ class DeleteFileSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 唯一标识数组
         :type Ids: list of str
         """
@@ -367,7 +367,7 @@ class DeleteFileSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态
 1：已完成
 2：处理中
@@ -390,7 +390,7 @@ class DeleteTextSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 唯一标识数组，目前暂时只支持单个删除
         :type Ids: list of str
         """
@@ -414,7 +414,7 @@ class DeleteTextSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态
 1：已完成
 2：处理中
@@ -437,7 +437,7 @@ class DescribeFileSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 支持通过标签值进行筛选
         :type Filters: list of Filter
         :param Limit: 数量限制，默认为20，最大值为100
@@ -482,7 +482,7 @@ class DescribeFileSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileSampleSet: 符合要求的样本的信息
         :type FileSampleSet: list of FileSampleInfo
         :param TotalCount: 符合要求的样本的数量
@@ -512,7 +512,7 @@ class DescribeTextSampleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 支持通过标签值进行筛选
         :type Filters: list of Filter
         :param Limit: 数量限制，默认为20，最大值为100
@@ -557,7 +557,7 @@ class DescribeTextSampleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextSampleSet: 符合要求的样本的信息
         :type TextSampleSet: list of TextSample
         :param TotalCount: 符合要求的样本的数量
@@ -587,7 +587,7 @@ class DetailResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
         :type EvilLabel: str
         :param EvilType: 恶意类型
@@ -630,7 +630,7 @@ class Device(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备指纹ID
         :type DeviceId: str
         :param IDFA: IOS设备，Identifier For Advertising（广告标识符）
@@ -678,7 +678,7 @@ class FileSample(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileMd5: 文件md5
         :type FileMd5: str
         :param FileName: 文件名称
@@ -714,7 +714,7 @@ class FileSampleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 处理错误码
         :type Code: int
         :param CreatedAt: 创建时间戳
@@ -792,7 +792,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段
         :type Name: str
         :param Value: 需要过滤字段的值
@@ -820,7 +820,7 @@ class ImageData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilFlag: 是否恶意 0：正常 1：可疑
         :type EvilFlag: int
         :param EvilType: 恶意类型
@@ -915,7 +915,7 @@ class ImageHotDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
 20103：性感
@@ -957,7 +957,7 @@ class ImageIllegalDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常 
 20006：涉毒违法
@@ -999,7 +999,7 @@ class ImageModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileContent: 文件内容 Base64,与FileUrl必须二填一
         :type FileContent: str
         :param FileMD5: 文件MD5值
@@ -1031,7 +1031,7 @@ class ImageModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 识别结果
         :type Data: :class:`tencentcloud.cms.v20190321.models.ImageData`
         :param BusinessCode: 业务返回码
@@ -1058,7 +1058,7 @@ class ImagePolityDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常 
 20001：政治
@@ -1113,7 +1113,7 @@ class ImagePornDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
 20002：色情
@@ -1155,7 +1155,7 @@ class ImageTerrorDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
 24001：暴恐
@@ -1197,7 +1197,7 @@ class Logo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RrectF: logo图标坐标信息
         :type RrectF: :class:`tencentcloud.cms.v20190321.models.RrectF`
         :param Confidence: logo图标置信度
@@ -1231,7 +1231,7 @@ class LogoDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppLogoDetail: 命中的Applogo详情
         :type AppLogoDetail: list of Logo
         """
@@ -1260,7 +1260,7 @@ class ManualReviewContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchId: 审核批次号
         :type BatchId: str
         :param Content: 审核内容
@@ -1334,7 +1334,7 @@ class ManualReviewData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchId: 人审内容批次号
         :type BatchId: str
         :param ContentId: 人审内容ID
@@ -1362,7 +1362,7 @@ class ManualReviewRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReviewContent: 人工审核信息
         :type ReviewContent: :class:`tencentcloud.cms.v20190321.models.ManualReviewContent`
         """
@@ -1388,7 +1388,7 @@ class ManualReviewResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 人审接口同步响应结果
         :type Data: :class:`tencentcloud.cms.v20190321.models.ManualReviewData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1411,7 +1411,7 @@ class OCRDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Item: 识别到的详细信息
         :type Item: list of OCRItem
         :param TextInfo: 识别到的文本信息
@@ -1444,7 +1444,7 @@ class OCRItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextPosition: 检测到的文本坐标信息
         :type TextPosition: :class:`tencentcloud.cms.v20190321.models.Coordinate`
         :param EvilLabel: 文本命中具体标签
@@ -1490,7 +1490,7 @@ class PhoneDetect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常
 21000：综合
@@ -1528,7 +1528,7 @@ class RiskDetails(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Keywords: 预留字段，暂时不使用
         :type Keywords: list of str
         :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
@@ -1564,7 +1564,7 @@ class RrectF(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cx: logo横坐标
         :type Cx: float
         :param Cy: logo纵坐标
@@ -1604,7 +1604,7 @@ class Similar(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 恶意类型
 100：正常 
 20001：政治
@@ -1642,7 +1642,7 @@ class TextData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilFlag: 是否恶意 0：正常 1：可疑
         :type EvilFlag: int
         :param EvilType: 恶意类型
@@ -1750,7 +1750,7 @@ class TextModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
         :type Content: str
         :param Device: 设备相关信息
@@ -1798,7 +1798,7 @@ class TextModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 识别结果
         :type Data: :class:`tencentcloud.cms.v20190321.models.TextData`
         :param BusinessCode: 业务返回码
@@ -1825,7 +1825,7 @@ class TextOutputComm(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppID: 接入业务的唯一ID
         :type AppID: int
         :param BUCtrlID: 接口唯一ID，旁路调用接口返回有该字段，标识唯一接口
@@ -1861,7 +1861,7 @@ class TextOutputID(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MsgID: 接入业务的唯一ID
         :type MsgID: str
         :param Uin: 用户账号uin，对应请求协议里的Content.User.Uin。旁路结果有回带，串联结果无该字段
@@ -1889,7 +1889,7 @@ class TextOutputRes(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Operator: 操作人,信安处理人企业微信ID
         :type Operator: str
         :param ResultCode: 恶意操作码，
@@ -1926,7 +1926,7 @@ class TextSample(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 处理错误码
         :type Code: int
         :param Content: 关键词
@@ -1985,7 +1985,7 @@ class User(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
         :type AccountType: int
         :param Age: 年龄 默认0 未知

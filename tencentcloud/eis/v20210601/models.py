@@ -24,7 +24,7 @@ class AbstractRuntimeMC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuntimeId: 运行时id
         :type RuntimeId: int
         :param DisplayName: 运行时名称，用户输入，同一uin内唯一
@@ -68,7 +68,7 @@ class GetRuntimeMCRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuntimeId: 运行时id
         :type RuntimeId: int
         :param Zone: 运行时地域
@@ -96,7 +96,7 @@ class GetRuntimeMCResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Runtime: 运行时详情
         :type Runtime: :class:`tencentcloud.eis.v20210601.models.RuntimeMC`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -119,7 +119,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuntimeId: 运行时id
         :type RuntimeId: int
         :param StartTime: 起始时间
@@ -163,7 +163,7 @@ class GetRuntimeResourceMonitorMetricMCResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetricType: 指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw
         :type MetricType: str
         :param Values: metric数值列表
@@ -199,7 +199,7 @@ class ListDeployableRuntimesMCResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Runtimes: 运行时列表
         :type Runtimes: list of AbstractRuntimeMC
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -225,7 +225,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuntimeId: 运行时id
         :type RuntimeId: int
         :param Limit: 最大请求数量
@@ -269,7 +269,7 @@ class ListRuntimeDeployedInstancesMCResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Instances: 运行时所部属的应用实例列表
         :type Instances: list of RuntimeDeployedInstanceMC
         :param TotalCount: 满足条件的记录总数，用于分页器
@@ -305,7 +305,7 @@ class ListRuntimesMCResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Runtimes: 运行时列表
         :type Runtimes: list of RuntimeMC
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -331,7 +331,7 @@ class MetricValueMC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Time: int
@@ -361,7 +361,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 项目id
         :type GroupId: int
         :param GroupName: 项目名称
@@ -421,7 +421,7 @@ class RuntimeMC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuntimeId: 运行时id
         :type RuntimeId: int
         :param Uin: 主账号uin

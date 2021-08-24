@@ -248,7 +248,7 @@ class CbsClient(AbstractClient):
         """本接口（DeleteSnapshots）用于删除快照。
 
         * 快照必须处于NORMAL状态，快照状态可以通过[DescribeSnapshots](/document/product/362/15647)接口查询，见输出参数中SnapshotState字段解释。
-        * 支持批量操作。如果多个快照存在无法删除的快照，则操作不执行，以返回特定的错误码返回。
+        * 支持批量操作。如果多个快照存在无法删除的快照，则操作不执行，以特定的错误码返回。
 
         :param request: Request instance for DeleteSnapshots.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DeleteSnapshotsRequest`
@@ -363,9 +363,7 @@ class CbsClient(AbstractClient):
 
 
     def DescribeDiskOperationLogs(self, request):
-        """本接口（DescribeDiskOperationLogs）用于查询云盘操作日志列表。
-
-        可根据云盘ID过滤。云盘ID形如：disk-a1kmcp13。
+        """查询云盘操作日志功能已迁移至LookUpEvents接口（https://cloud.tencent.com/document/product/629/12359），本接口（DescribeDiskOperationLogs）即将下线，后续不再提供调用，请知悉。
 
         :param request: Request instance for DescribeDiskOperationLogs.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskOperationLogsRequest`

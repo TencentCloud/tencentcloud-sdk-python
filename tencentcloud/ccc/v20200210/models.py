@@ -24,7 +24,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 实例ID
         :type SdkAppId: int
         :param StaffEmail: 坐席邮箱
@@ -56,7 +56,7 @@ class BindStaffSkillGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -67,13 +67,150 @@ class BindStaffSkillGroupListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CallInMetrics(AbstractModel):
+    """呼入实时指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IvrCount: IVR驻留数量
+        :type IvrCount: int
+        :param QueueCount: 排队中数量
+        :type QueueCount: int
+        :param RingCount: 振铃中数量
+        :type RingCount: int
+        :param AcceptCount: 接通中数量
+        :type AcceptCount: int
+        :param TransferOuterCount: 客服转接外线中数量
+        :type TransferOuterCount: int
+        :param MaxQueueDuration: 最大排队时长
+        :type MaxQueueDuration: int
+        :param AvgQueueDuration: 平均排队时长
+        :type AvgQueueDuration: int
+        :param MaxRingDuration: 最大振铃时长
+        :type MaxRingDuration: int
+        :param AvgRingDuration: 平均振铃时长
+        :type AvgRingDuration: int
+        :param MaxAcceptDuration: 最大接通时长
+        :type MaxAcceptDuration: int
+        :param AvgAcceptDuration: 平均接通时长
+        :type AvgAcceptDuration: int
+        """
+        self.IvrCount = None
+        self.QueueCount = None
+        self.RingCount = None
+        self.AcceptCount = None
+        self.TransferOuterCount = None
+        self.MaxQueueDuration = None
+        self.AvgQueueDuration = None
+        self.MaxRingDuration = None
+        self.AvgRingDuration = None
+        self.MaxAcceptDuration = None
+        self.AvgAcceptDuration = None
+
+
+    def _deserialize(self, params):
+        self.IvrCount = params.get("IvrCount")
+        self.QueueCount = params.get("QueueCount")
+        self.RingCount = params.get("RingCount")
+        self.AcceptCount = params.get("AcceptCount")
+        self.TransferOuterCount = params.get("TransferOuterCount")
+        self.MaxQueueDuration = params.get("MaxQueueDuration")
+        self.AvgQueueDuration = params.get("AvgQueueDuration")
+        self.MaxRingDuration = params.get("MaxRingDuration")
+        self.AvgRingDuration = params.get("AvgRingDuration")
+        self.MaxAcceptDuration = params.get("MaxAcceptDuration")
+        self.AvgAcceptDuration = params.get("AvgAcceptDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallInNumberMetrics(AbstractModel):
+    """呼入线路维度相关指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Number: 线路号码
+        :type Number: str
+        :param Metrics: 线路相关指标
+        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        :param SkillGroupMetrics: 所属技能组相关指标
+        :type SkillGroupMetrics: list of CallInSkillGroupMetrics
+        """
+        self.Number = None
+        self.Metrics = None
+        self.SkillGroupMetrics = None
+
+
+    def _deserialize(self, params):
+        self.Number = params.get("Number")
+        if params.get("Metrics") is not None:
+            self.Metrics = CallInMetrics()
+            self.Metrics._deserialize(params.get("Metrics"))
+        if params.get("SkillGroupMetrics") is not None:
+            self.SkillGroupMetrics = []
+            for item in params.get("SkillGroupMetrics"):
+                obj = CallInSkillGroupMetrics()
+                obj._deserialize(item)
+                self.SkillGroupMetrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallInSkillGroupMetrics(AbstractModel):
+    """呼入技能组相关指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param Metrics: 数据指标
+        :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        :param Name: 技能组名称
+        :type Name: str
+        """
+        self.SkillGroupId = None
+        self.Metrics = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.SkillGroupId = params.get("SkillGroupId")
+        if params.get("Metrics") is not None:
+            self.Metrics = CallInMetrics()
+            self.Metrics._deserialize(params.get("Metrics"))
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateSDKLoginTokenRequest(AbstractModel):
     """CreateSDKLoginToken请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID。
         :type SdkAppId: int
         :param SeatUserId: 坐席账号。
@@ -101,7 +238,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Token: SDK 登录 Token。
         :type Token: str
         :param ExpiredTime: 过期时间戳，Unix 时间戳。
@@ -130,7 +267,7 @@ class CreateStaffRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID
         :type SdkAppId: int
         :param Staffs: 客服信息，个数不超过 10
@@ -163,7 +300,7 @@ class CreateStaffResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorStaffList: 错误坐席列表及错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorStaffList: list of ErrStaffItem
@@ -184,13 +321,70 @@ class CreateStaffResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserSigRequest(AbstractModel):
+    """CreateUserSig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param Uid: 用户 ID
+        :type Uid: str
+        :param ExpiredTime: 有效期，单位秒，不超过 1 小时
+        :type ExpiredTime: int
+        :param ClientData: 用户签名数据
+        :type ClientData: str
+        """
+        self.SdkAppId = None
+        self.Uid = None
+        self.ExpiredTime = None
+        self.ClientData = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Uid = params.get("Uid")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.ClientData = params.get("ClientData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserSigResponse(AbstractModel):
+    """CreateUserSig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserSig: 签名结果
+        :type UserSig: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserSig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserSig = params.get("UserSig")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteStaffRequest(AbstractModel):
     """DeleteStaff请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 实例ID
         :type SdkAppId: int
         :param StaffList: 待删除客服邮箱列表
@@ -218,7 +412,7 @@ class DeleteStaffResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OnlineStaffList: 无法删除的状态为在线的客服列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineStaffList: list of str
@@ -234,13 +428,92 @@ class DeleteStaffResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCallInMetricsRequest(AbstractModel):
+    """DescribeCallInMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param EnabledSkillGroup: 是否返回技能组维度信息，默认“是”
+        :type EnabledSkillGroup: bool
+        :param EnabledNumber: 是否返回线路维度信息，默认“否”
+        :type EnabledNumber: bool
+        """
+        self.SdkAppId = None
+        self.EnabledSkillGroup = None
+        self.EnabledNumber = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.EnabledSkillGroup = params.get("EnabledSkillGroup")
+        self.EnabledNumber = params.get("EnabledNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCallInMetricsResponse(AbstractModel):
+    """DescribeCallInMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 时间戳
+        :type Timestamp: int
+        :param TotalMetrics: 总体指标
+        :type TotalMetrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
+        :param NumberMetrics: 线路维度指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberMetrics: list of CallInNumberMetrics
+        :param SkillGroupMetrics: 技能组维度指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupMetrics: list of CallInSkillGroupMetrics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Timestamp = None
+        self.TotalMetrics = None
+        self.NumberMetrics = None
+        self.SkillGroupMetrics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        if params.get("TotalMetrics") is not None:
+            self.TotalMetrics = CallInMetrics()
+            self.TotalMetrics._deserialize(params.get("TotalMetrics"))
+        if params.get("NumberMetrics") is not None:
+            self.NumberMetrics = []
+            for item in params.get("NumberMetrics"):
+                obj = CallInNumberMetrics()
+                obj._deserialize(item)
+                self.NumberMetrics.append(obj)
+        if params.get("SkillGroupMetrics") is not None:
+            self.SkillGroupMetrics = []
+            for item in params.get("SkillGroupMetrics"):
+                obj = CallInSkillGroupMetrics()
+                obj._deserialize(item)
+                self.SkillGroupMetrics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeChatMessagesRequest(AbstractModel):
     """DescribeChatMessages请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param CdrId: 服务记录ID
         :type CdrId: str
         :param InstanceId: 实例ID
@@ -284,7 +557,7 @@ class DescribeChatMessagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param Messages: 消息列表
@@ -314,7 +587,7 @@ class DescribeIMCdrsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimestamp: 起始时间
         :type StartTimestamp: int
         :param EndTimestamp: 结束时间
@@ -362,7 +635,7 @@ class DescribeIMCdrsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param IMCdrs: 服务记录列表
@@ -392,7 +665,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用 ID
         :type SdkAppId: int
         :param Offset: 数据偏移
@@ -424,7 +697,7 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 列表总条数
         :type Total: int
         :param Sessions: 列表内容
@@ -454,7 +727,7 @@ class DescribeSeatUserListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: int
         :param Offset: 偏移量
@@ -486,7 +759,7 @@ class DescribeSeatUserListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 此实例的坐席用户总数
         :type TotalCount: int
         :param SeatUsers: 坐席用户信息列表
@@ -516,7 +789,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID
         :type SdkAppId: int
         :param PageSize: 分页尺寸，上限 100
@@ -556,7 +829,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 技能组总数
         :type TotalCount: int
         :param SkillGroupList: 技能组信息列表
@@ -586,7 +859,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID
         :type SdkAppId: int
         :param PageSize: 分页尺寸，上限 100
@@ -626,7 +899,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 坐席用户总数
         :type TotalCount: int
         :param StaffList: 坐席用户信息列表
@@ -650,13 +923,67 @@ class DescribeStaffInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStaffStatusMetricsRequest(AbstractModel):
+    """DescribeStaffStatusMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffList: 筛选坐席列表，默认不传返回全部坐席信息
+        :type StaffList: list of str
+        """
+        self.SdkAppId = None
+        self.StaffList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffList = params.get("StaffList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStaffStatusMetricsResponse(AbstractModel):
+    """DescribeStaffStatusMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Metrics: 坐席状态实时信息
+        :type Metrics: list of StaffStatusMetrics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Metrics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = StaffStatusMetrics()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCallInfoRequest(AbstractModel):
     """DescribeTelCallInfo请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimeStamp: 起始时间戳，Unix 时间戳
         :type StartTimeStamp: int
         :param EndTimeStamp: 结束时间戳，Unix 时间戳，查询时间范围最大为90天
@@ -688,7 +1015,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TelCallOutCount: 电话呼出统计分钟数
         :type TelCallOutCount: int
         :param TelCallInCount: 电话呼入统计分钟数
@@ -717,7 +1044,7 @@ class DescribeTelCdrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimeStamp: 起始时间戳，Unix 时间戳
         :type StartTimeStamp: int
         :param EndTimeStamp: 结束时间戳，Unix 时间戳
@@ -773,7 +1100,7 @@ class DescribeTelCdrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 话单记录总数
         :type TotalCount: int
         :param TelCdrs: 话单记录
@@ -803,7 +1130,7 @@ class DescribeTelSessionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID
         :type SdkAppId: int
         :param SessionId: 会话ID
@@ -831,7 +1158,7 @@ class DescribeTelSessionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Session: 会话信息
         :type Session: :class:`tencentcloud.ccc.v20200210.models.PSTNSession`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -854,7 +1181,7 @@ class ErrStaffItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StaffEmail: 坐席邮箱地址
         :type StaffEmail: str
         :param Code: 错误码
@@ -886,7 +1213,7 @@ class IMCdrInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 服务记录ID
         :type Id: str
         :param Duration: 服务时长秒数
@@ -934,7 +1261,7 @@ class IVRKeyPressedElement(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 按键
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
@@ -964,7 +1291,7 @@ class Message(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 消息类型
         :type Type: str
         :param Content: 消息内容
@@ -992,7 +1319,7 @@ class MessageBody(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Timestamp: 消息时间戳
         :type Timestamp: int
         :param From: 发消息的用户ID
@@ -1029,7 +1356,7 @@ class PSTNSession(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionID: 会话 ID
         :type SessionID: str
         :param RoomID: 会话临时房间 ID
@@ -1105,7 +1432,7 @@ class PSTNSessionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionID: 会话 ID
         :type SessionID: str
         :param RoomID: 会话临时房间 ID
@@ -1169,7 +1496,7 @@ class SeatUserInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 坐席名称
         :type Name: str
         :param Mail: 坐席邮箱
@@ -1219,7 +1546,7 @@ class ServeParticipant(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mail: 坐席邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
@@ -1319,7 +1646,7 @@ class SkillGroupInfoItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SkillGroupId: 技能组ID
         :type SkillGroupId: int
         :param SkillGroupName: 技能组名称
@@ -1371,7 +1698,7 @@ class SkillGroupItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SkillGroupId: 技能组ID
         :type SkillGroupId: int
         :param SkillGroupName: 技能组名称
@@ -1407,7 +1734,7 @@ class StaffInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 坐席名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -1460,13 +1787,111 @@ class StaffInfo(AbstractModel):
         
 
 
+class StaffStatusExtra(AbstractModel):
+    """坐席状态补充信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: im - 文本 | tel - 电话 | all - 全媒体
+        :type Type: str
+        :param Direct: in - 呼入 | out - 呼出
+        :type Direct: str
+        """
+        self.Type = None
+        self.Direct = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Direct = params.get("Direct")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffStatusMetrics(AbstractModel):
+    """坐席状态相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Email: 坐席邮箱
+        :type Email: str
+        :param Status: 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+        :type Status: str
+        :param StatusExtra: 坐席状态补充信息
+        :type StatusExtra: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
+        :param OnlineDuration: 当天在线总时长
+        :type OnlineDuration: int
+        :param FreeDuration: 当天示闲总时长
+        :type FreeDuration: int
+        :param BusyDuration: 当天忙碌总时长
+        :type BusyDuration: int
+        :param NotReadyDuration: 当天示忙总时长
+        :type NotReadyDuration: int
+        :param RestDuration: 当天小休总时长
+        :type RestDuration: int
+        :param AfterCallWorkDuration: 当天话后调整总时长
+        :type AfterCallWorkDuration: int
+        :param Reason: 小休原因
+        :type Reason: str
+        :param ReserveRest: 是否预约小休
+        :type ReserveRest: bool
+        :param ReserveNotReady: 是否预约示忙
+        :type ReserveNotReady: bool
+        """
+        self.Email = None
+        self.Status = None
+        self.StatusExtra = None
+        self.OnlineDuration = None
+        self.FreeDuration = None
+        self.BusyDuration = None
+        self.NotReadyDuration = None
+        self.RestDuration = None
+        self.AfterCallWorkDuration = None
+        self.Reason = None
+        self.ReserveRest = None
+        self.ReserveNotReady = None
+
+
+    def _deserialize(self, params):
+        self.Email = params.get("Email")
+        self.Status = params.get("Status")
+        if params.get("StatusExtra") is not None:
+            self.StatusExtra = StaffStatusExtra()
+            self.StatusExtra._deserialize(params.get("StatusExtra"))
+        self.OnlineDuration = params.get("OnlineDuration")
+        self.FreeDuration = params.get("FreeDuration")
+        self.BusyDuration = params.get("BusyDuration")
+        self.NotReadyDuration = params.get("NotReadyDuration")
+        self.RestDuration = params.get("RestDuration")
+        self.AfterCallWorkDuration = params.get("AfterCallWorkDuration")
+        self.Reason = params.get("Reason")
+        self.ReserveRest = params.get("ReserveRest")
+        self.ReserveNotReady = params.get("ReserveNotReady")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TelCdrInfo(AbstractModel):
     """电话话单信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Caller: 主叫号码
         :type Caller: str
         :param Callee: 被叫号码
@@ -1651,7 +2076,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 实例ID
         :type SdkAppId: int
         :param StaffEmail: 客服邮箱
@@ -1683,7 +2108,7 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

@@ -24,7 +24,7 @@ class ImageRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Value: 图片翻译结果
         :type Value: list of ItemValue
         """
@@ -53,7 +53,7 @@ class ImageTranslateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionUuid: 唯一id，返回时原样返回
         :type SessionUuid: str
         :param Scene: doc:文档扫描
@@ -111,7 +111,7 @@ class ImageTranslateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionUuid: 请求的SessionUuid返回
         :type SessionUuid: str
         :param Source: 源语言
@@ -146,7 +146,7 @@ class ItemValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceText: 识别出的源文
         :type SourceText: str
         :param TargetText: 翻译后的译文
@@ -190,7 +190,7 @@ class LanguageDetectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待识别的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败。单次请求的文本长度需要低于2000。
         :type Text: str
         :param ProjectId: 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
@@ -218,7 +218,7 @@ class LanguageDetectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Lang: 识别出的语言种类，参考语言列表
 <li> zh : 中文 </li> <li> en : 英文 </li><li> jp : 日语 </li> <li> kr : 韩语 </li><li> de : 德语 </li><li> fr : 法语 </li><li> es : 西班牙文 </li> <li> it : 意大利文 </li><li> tr : 土耳其文 </li><li> ru : 俄文 </li><li> pt : 葡萄牙文 </li><li> vi : 越南文 </li><li> id : 印度尼西亚文 </li><li> ms : 马来西亚文 </li><li> th : 泰文 </li>
         :type Lang: str
@@ -240,7 +240,7 @@ class SpeechTranslateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionUuid: 一段完整的语音对应一个SessionUuid
         :type SessionUuid: str
         :param Source: 音频中的语言类型，支持语言列表<li> zh : 中文 </li> <li> en : 英文 </li>
@@ -300,7 +300,7 @@ class SpeechTranslateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionUuid: 请求的SessionUuid直接返回
         :type SessionUuid: str
         :param RecognizeStatus: 语音识别状态 1-进行中 0-完成
@@ -349,7 +349,7 @@ class TextTranslateBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Source: 源语言，支持： 
 auto：自动识别（识别为一种语言）
 zh：简体中文
@@ -423,7 +423,7 @@ class TextTranslateBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Source: 源语言，详见入参Target
         :type Source: str
         :param Target: 目标语言，详见入参Target
@@ -452,7 +452,7 @@ class TextTranslateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000。
         :type SourceText: str
         :param Source: 源语言，支持：
@@ -530,7 +530,7 @@ class TextTranslateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetText: 翻译后的文本
         :type TargetText: str
         :param Source: 源语言，详见入参Target

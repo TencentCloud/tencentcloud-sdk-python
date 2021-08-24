@@ -23,6 +23,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 部分失败（有一部分操作失败）。
+FAILEDOPERATION_PARTIALFAILURE = 'FailedOperation.PartialFailure'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -71,6 +74,12 @@ MISSINGPARAMETER = 'MissingParameter'
 # 缺少必要参数。
 MISSINGPARAMETER_PARAM = 'MissingParameter.Param'
 
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
+# 操作失败：资源被冻结。
+OPERATIONDENIED_RESOURCEFROZEN = 'OperationDenied.ResourceFrozen'
+
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -89,6 +98,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # 资源不可用-余额不足。
 RESOURCEUNAVAILABLE_BALANCENOTENOUGH = 'ResourceUnavailable.BalanceNotEnough'
 
+# 资源不可用，CDN冻结。
+RESOURCEUNAVAILABLE_CDNFREEZED = 'ResourceUnavailable.CDNFreezed'
+
 # 当前发票余额不足，无法退费。
 RESOURCEUNAVAILABLE_INVOICEAMOUNTLACK = 'ResourceUnavailable.InvoiceAmountLack'
 
@@ -103,6 +115,9 @@ UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = 'UnauthorizedOperation.CodeOAuthUn
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # 有正在进行中的任务。
 UNSUPPORTEDOPERATION_TASKEXISTED = 'UnsupportedOperation.TaskExisted'

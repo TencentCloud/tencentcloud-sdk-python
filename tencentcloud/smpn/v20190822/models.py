@@ -24,7 +24,7 @@ class CHPRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
@@ -48,7 +48,7 @@ class CHPResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagType: 标记类型
  0: 无标记
  50:骚扰电话
@@ -84,7 +84,7 @@ class CreateSmpnEpaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestData: 企业号码认证请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.EPARequest`
         :param ResourceId: 用于计费的资源ID
@@ -114,7 +114,7 @@ class CreateSmpnEpaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResponseData: 业号码认证回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.EPAResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -137,7 +137,7 @@ class DescribeSmpnChpRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 客户用于计费的资源Id
         :type ResourceId: str
         :param RequestData: 终端骚扰保护请求
@@ -167,7 +167,7 @@ class DescribeSmpnChpResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResponseData: 终端骚扰保护回应
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.CHPResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -190,7 +190,7 @@ class DescribeSmpnFnrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestData: 虚假号码识别请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.FNRRequest`
         :param ResourceId: 用于计费的资源ID
@@ -220,7 +220,7 @@ class DescribeSmpnFnrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResponseData: 虚假号码识别回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.FNRResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -243,7 +243,7 @@ class DescribeSmpnMhmRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestData: 号码营销监控请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.MHMRequest`
         :param ResourceId: 用于计费的资源ID
@@ -273,7 +273,7 @@ class DescribeSmpnMhmResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResponseData: 号码营销监控回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.MHMResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -296,7 +296,7 @@ class DescribeSmpnMrlRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestData: 恶意标记等级请求内容
         :type RequestData: :class:`tencentcloud.smpn.v20190822.models.MRLRequest`
         :param ResourceId: 用于计费的资源ID
@@ -326,7 +326,7 @@ class DescribeSmpnMrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResponseData: 恶意标记等级回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.MRLResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -349,7 +349,7 @@ class EPARequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumber: 电话号码
         :type PhoneNumber: str
         :param Name: 黄页名称
@@ -377,7 +377,7 @@ class EPAResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetCode: 0成功 其他失败
         :type RetCode: int
         """
@@ -401,7 +401,7 @@ class FNRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
@@ -425,7 +425,7 @@ class FNRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 虚假号码描述
         :type Status: int
         """
@@ -449,7 +449,7 @@ class MHMRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
@@ -473,7 +473,7 @@ class MHMResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagType: 标记类型
  0: 无标记
  50:骚扰电话
@@ -509,7 +509,7 @@ class MRLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumber: 电话号码
         :type PhoneNumber: str
         """
@@ -533,7 +533,7 @@ class MRLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DisturbLevel: 骚扰电话恶意标记等级
         :type DisturbLevel: int
         :param HouseAgentLevel: 房产中介恶意标记等级

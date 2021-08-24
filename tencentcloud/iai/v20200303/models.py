@@ -24,7 +24,7 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mode: 检测模式。0 为检测所有出现的人脸， 1 为检测面积最大的人脸。 
 默认为 0。 
 最多返回 5 张人脸的五官定位（人脸关键点）具体信息。
@@ -73,7 +73,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageWidth: 请求的图片宽度。
         :type ImageWidth: int
         :param ImageHeight: 请求的图片高度。
@@ -111,7 +111,7 @@ class AnalyzeFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mode: 检测模式。0 为检测所有出现的人脸， 1 为检测面积最大的人脸。默认为 0。最多返回 10 张人脸的五官定位（人脸关键点）具体信息。
         :type Mode: int
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -166,7 +166,7 @@ class AnalyzeFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageWidth: 请求的图片宽度。
         :type ImageWidth: int
         :param ImageHeight: 请求的图片高度。
@@ -204,7 +204,7 @@ class AttributeItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 属性值
         :type Type: int
         :param Probability: Type识别概率值，【0,1】,代表判断正确的概率。
@@ -232,7 +232,7 @@ class Candidate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID
         :type PersonId: str
         :param FaceId: 人脸ID
@@ -290,7 +290,7 @@ class CheckSimilarPersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 待整理的人员库列表。 
 人员库总人数不可超过200万，人员库个数不可超过10个。
 数组元素取值为创建人员库接口中的GroupId
@@ -322,7 +322,7 @@ class CheckSimilarPersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
         :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -343,7 +343,7 @@ class CompareFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -424,7 +424,7 @@ class CompareFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 两张图片中人脸的相似度分数。
 不同算法版本返回的相似度分数不同。 
 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
@@ -453,7 +453,7 @@ class CompareMaskFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -522,7 +522,7 @@ class CompareMaskFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 两张图片中人脸的相似度分数。
 不同算法版本返回的相似度分数不同。 
 若需要验证两张图片中人脸是否为同一人，3.0版本误识率千分之一对应分数为40分，误识率万分之一对应分数为50分，误识率十万分之一对应分数为60分。  一般超过50分则可认定为同一人。 
@@ -551,7 +551,7 @@ class CopyPersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param GroupIds: 待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId
@@ -579,7 +579,7 @@ class CopyPersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SucGroupNum: 成功加入的人员库数量
         :type SucGroupNum: int
         :param SucGroupIds: 成功加入的人员库列表
@@ -604,7 +604,7 @@ class CreateFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param Images: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -667,7 +667,7 @@ class CreateFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SucFaceNum: 加入成功的人脸数量
         :type SucFaceNum: int
         :param SucFaceIds: 加入成功的人脸ID列表
@@ -717,7 +717,7 @@ class CreateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 人员库名称，[1,60]个字符，可修改，不可重复。
         :type GroupName: str
         :param GroupId: 人员库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
@@ -771,7 +771,7 @@ class CreateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -792,7 +792,7 @@ class CreatePersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 待加入的人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param PersonName: 人员名称。[1，60]个字符，可修改，可重复。
@@ -880,7 +880,7 @@ class CreatePersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceId: 人脸图片唯一标识。
         :type FaceId: str
         :param FaceRect: 检测出的人脸框的位置。
@@ -917,7 +917,7 @@ class DeleteFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param FaceIds: 待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId
@@ -945,7 +945,7 @@ class DeleteFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SucDeletedNum: 删除成功的人脸数量
         :type SucDeletedNum: int
         :param SucFaceIds: 删除成功的人脸ID列表
@@ -970,7 +970,7 @@ class DeleteGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
@@ -994,7 +994,7 @@ class DeleteGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1011,7 +1011,7 @@ class DeletePersonFromGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
@@ -1039,7 +1039,7 @@ class DeletePersonFromGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1056,7 +1056,7 @@ class DeletePersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         """
@@ -1080,7 +1080,7 @@ class DeletePersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1097,7 +1097,7 @@ class DenseFaceShape(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人脸框左上角横坐标。
         :type X: int
         :param Y: 人脸框左上角纵坐标。
@@ -1259,7 +1259,7 @@ class DetectFaceAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxFaceNum: 最多处理的人脸数目。 
 默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
@@ -1319,7 +1319,7 @@ class DetectFaceAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageWidth: 请求的图片宽度。
         :type ImageWidth: int
         :param ImageHeight: 请求的图片高度。
@@ -1357,7 +1357,7 @@ class DetectFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxFaceNum: 最多处理的人脸数目。默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :type MaxFaceNum: int
@@ -1433,7 +1433,7 @@ class DetectFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageWidth: 请求的图片宽度。
         :type ImageWidth: int
         :param ImageHeight: 请求的图片高度。
@@ -1471,7 +1471,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
 图片的宽高比请接近 3:4，手机拍摄比例最佳。
@@ -1513,7 +1513,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 活体打分，取值范围 [0,100]，根据活体分数对应的阈值区间来判断是否为翻拍。目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。
         :type Score: float
         :param FaceModelVersion: 人脸识别所用的算法模型版本。
@@ -1538,7 +1538,7 @@ class DetectLiveFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。（图片的宽高比请接近3:4，不符合宽高比的图片返回的分值不具备参考意义）。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1586,7 +1586,7 @@ class DetectLiveFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 活体打分，取值范围 [0,100]，分数一般落于[80, 100]区间内，0分也为常见值。推荐相大于 87 时可判断为活体。可根据具体场景自行调整阈值。
 本字段当且仅当FaceModelVersion为2.0时才具备参考意义。
         :type Score: float
@@ -1617,7 +1617,7 @@ class EstimateCheckSimilarPersonCostTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 待整理的人员库列表。 
 人员库总人数不可超过200万，人员库个数不可超过10个。
 数组元素取值为创建人员库接口中的GroupId
@@ -1643,7 +1643,7 @@ class EstimateCheckSimilarPersonCostTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EstimatedTimeCost: 人员查重任务预估需要耗费时间。 单位为分钟。
         :type EstimatedTimeCost: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1664,7 +1664,7 @@ class Eye(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Glass: 识别是否佩戴眼镜。
 AttributeItem对应的Type为 —— 0：无眼镜，1：普通眼镜，2：墨镜
         :type Glass: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -1712,7 +1712,7 @@ class Eyebrow(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EyebrowDensity: 眉毛浓密。
 AttributeItem对应的Type为 —— 0：淡眉，1：浓眉。
         :type EyebrowDensity: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -1754,7 +1754,7 @@ class FaceAttributesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Gender: 性别[0~49]为女性，[50，100]为男性，越接近0和100表示置信度越高。NeedFaceAttributes 不为 1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Gender: int
         :param Age: 年龄 [0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
@@ -1835,7 +1835,7 @@ class FaceDetailAttributesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Age: 年龄 [0,65]，其中65代表“65岁及以上”。 
 FaceAttributesType 不为含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Age: int
@@ -1968,7 +1968,7 @@ class FaceDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceRect: 检测出的人脸框位置。
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         :param FaceDetailAttributesInfo: 人脸属性信息，根据 FaceAttributesType 输入的类型，返回年龄（Age）、颜值（Beauty） 
@@ -2004,7 +2004,7 @@ class FaceHairAttributesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Length: 0：光头，1：短发，2：中发，3：长发，4：绑发
 注意：此字段可能返回 null，表示取不到有效值。
         :type Length: int
@@ -2039,7 +2039,7 @@ class FaceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人脸框左上角横坐标。
 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 若需截取完整人脸，可以在完整分completeness满足需求的情况下，将负值坐标取0。
@@ -2093,7 +2093,7 @@ class FaceQualityCompleteness(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Eyebrow: 眉毛的遮挡分数[0,100]，分数越高遮挡越少。 
 参考范围：[0,80]表示发生遮挡。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2149,7 +2149,7 @@ class FaceQualityInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 质量分: [0,100]，综合评价图像质量是否适合人脸识别，分数越高质量越好。 
 正常情况，只需要使用Score作为质量分总体的判断标准即可。Sharpness、Brightness、Completeness等细项分仅供参考。
 参考范围：[0,40]较差，[40,60] 一般，[60,80]较好，[80,100]很好。 
@@ -2198,7 +2198,7 @@ class FaceRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人脸框左上角横坐标。 
 人脸框包含人脸五官位置并在此基础上进行一定的扩展，若人脸框超出图片范围，会导致坐标负值。 
 若需截取完整人脸，可以在完整分completess满足需求的情况下，将负值坐标取0。
@@ -2238,7 +2238,7 @@ class FaceShape(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceProfile: 描述脸型轮廓的 21 点。
         :type FaceProfile: list of Point
         :param LeftEye: 描述左侧眼睛轮廓的 8 点。
@@ -2339,7 +2339,7 @@ class GetCheckSimilarPersonJobIdListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始序号，默认值为0。
         :type Offset: int
         :param Limit: 返回数量，默认值为10，最大值为1000。
@@ -2367,7 +2367,7 @@ class GetCheckSimilarPersonJobIdListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobIdInfos: 人员查重任务信息列表。
         :type JobIdInfos: list of JobIdInfo
         :param JobIdNum: 查重任务总数量。
@@ -2397,7 +2397,7 @@ class GetGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库 ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
@@ -2421,7 +2421,7 @@ class GetGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 人员库名称
         :type GroupName: str
         :param GroupId: 人员库ID
@@ -2462,7 +2462,7 @@ class GetGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始序号，默认值为0
         :type Offset: int
         :param Limit: 返回数量，默认值为10，最大值为1000
@@ -2490,7 +2490,7 @@ class GetGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupInfos: 返回的人员库信息
         :type GroupInfos: list of GroupInfo
         :param GroupNum: 人员库总数量
@@ -2521,7 +2521,7 @@ class GetPersonBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，创建人员接口中的PersonId
         :type PersonId: str
         """
@@ -2545,7 +2545,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonName: 人员名称
         :type PersonName: str
         :param Gender: 人员性别，0代表未填写，1代表男性，2代表女性
@@ -2574,7 +2574,7 @@ class GetPersonGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param Offset: 起始序号，默认值为0
@@ -2606,7 +2606,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonGroupInfos: 包含此人员的人员库及描述字段内容列表
         :type PersonGroupInfos: list of PersonGroupInfo
         :param GroupNum: 人员库总数量
@@ -2642,7 +2642,7 @@ class GetPersonListNumRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         """
@@ -2666,7 +2666,7 @@ class GetPersonListNumResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonNum: 人员数量
         :type PersonNum: int
         :param FaceNum: 人脸数量
@@ -2691,7 +2691,7 @@ class GetPersonListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param Offset: 起始序号，默认值为0
@@ -2723,7 +2723,7 @@ class GetPersonListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonInfos: 返回的人员信息
         :type PersonInfos: list of PersonInfo
         :param PersonNum: 该人员库的人员数量
@@ -2764,7 +2764,7 @@ class GetSimilarPersonResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。取值为人员查重接口返回的JobId
         :type JobId: str
         """
@@ -2788,7 +2788,7 @@ class GetSimilarPersonResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 查重任务完成进度。取值[0.0，100.0]。当且仅当值为100时，SimilarPersons才有意义。
         :type Progress: float
         :param SimilarPersonsUrl: 疑似同一人的人员信息文件临时下载链接， 有效时间为5分钟，结果文件实际保存90天。
@@ -2814,7 +2814,7 @@ class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始序号，默认值为0。
         :type Offset: int
         :param Limit: 返回数量，默认值为10，最大值为1000。
@@ -2842,7 +2842,7 @@ class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobInfos: 人员库升级任务信息列表。
         :type JobInfos: list of UpgradeJobInfo
         :param JobNum: 升级任务总数量。
@@ -2872,7 +2872,7 @@ class GetUpgradeGroupFaceModelVersionResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 升级任务ID，用于查询、获取人员库升级的进度和结果。
         :type JobId: str
         """
@@ -2896,7 +2896,7 @@ class GetUpgradeGroupFaceModelVersionResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EndTimestamp: 人员升级任务预估结束时间。 StartTimestamp的值是自 Unix 纪元时间到人员查重任务预估结束的毫秒数。  
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
 如果为0表示这个任务已经执行完毕。
@@ -2950,7 +2950,7 @@ class GroupCandidate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库ID 。
         :type GroupId: str
         :param Candidates: 识别出的最相似候选人。
@@ -2983,7 +2983,7 @@ class GroupExDescriptionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupExDescriptionIndex: 人员库自定义描述字段Index，从0开始
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupExDescriptionIndex: int
@@ -3012,7 +3012,7 @@ class GroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 人员库名称
         :type GroupName: str
         :param GroupId: 人员库ID
@@ -3061,7 +3061,7 @@ class Hair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Length: 头发长度信息。
 AttributeItem对应的Type为 —— 0：光头，1：短发，2：中发，3：长发，4：绑发。
         :type Length: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3102,7 +3102,7 @@ class Hat(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Style: 帽子佩戴状态信息。
 AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
         :type Style: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3136,7 +3136,7 @@ class HeadPose(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pitch: 上下偏移[-30,30]。
         :type Pitch: int
         :param Yaw: 左右偏移[-30,30]。
@@ -3168,7 +3168,7 @@ class JobIdInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
         :type JobId: str
         :param StartTime: 查重起始时间。 
@@ -3203,7 +3203,7 @@ class ModifyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param GroupName: 人员库名称
@@ -3244,7 +3244,7 @@ class ModifyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3261,7 +3261,7 @@ class ModifyPersonBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param PersonName: 需要修改的人员名称
@@ -3293,7 +3293,7 @@ class ModifyPersonBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3310,7 +3310,7 @@ class ModifyPersonGroupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人员库ID，取值为创建人员库接口中的GroupId
         :type GroupId: str
         :param PersonId: 人员ID，取值为创建人员接口中的PersonId
@@ -3347,7 +3347,7 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3364,7 +3364,7 @@ class Mouth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MouthOpen: 是否张嘴信息。
 AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
         :type MouthOpen: :class:`tencentcloud.iai.v20200303.models.AttributeItem`
@@ -3391,7 +3391,7 @@ class PersonExDescriptionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonExDescriptionIndex: 人员描述字段Index，从0开始
 注意：此字段可能返回 null，表示取不到有效值。
         :type PersonExDescriptionIndex: int
@@ -3420,7 +3420,7 @@ class PersonGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 包含此人员的人员库ID
         :type GroupId: str
         :param PersonExDescriptions: 人员描述字段内容
@@ -3448,7 +3448,7 @@ class PersonInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonName: 人员名称
         :type PersonName: str
         :param PersonId: 人员Id
@@ -3493,7 +3493,7 @@ class Point(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: x坐标
         :type X: int
         :param Y: Y坐标
@@ -3521,7 +3521,7 @@ class Result(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Candidates: 识别出的最相似候选人
         :type Candidates: list of Candidate
         :param FaceRect: 检测出的人脸框位置
@@ -3561,7 +3561,7 @@ class ResultsReturnsByGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceRect: 检测出的人脸框位置。
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
         :param GroupCandidates: 识别结果。
@@ -3601,7 +3601,7 @@ class RevertGroupFaceModelVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 需要回滚的升级任务ID。
         :type JobId: str
         """
@@ -3625,7 +3625,7 @@ class RevertGroupFaceModelVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3642,7 +3642,7 @@ class SearchFacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
@@ -3721,7 +3721,7 @@ class SearchFacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 识别结果。
         :type Results: list of Result
         :param FaceNum: 搜索的人员库中包含的人脸数。
@@ -3755,7 +3755,7 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
@@ -3835,7 +3835,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceNum: 搜索的人员库中包含的人脸数。
         :type FaceNum: int
         :param ResultsReturnsByGroup: 识别结果。
@@ -3869,7 +3869,7 @@ class SearchPersonsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -3948,7 +3948,7 @@ class SearchPersonsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 识别结果。
         :type Results: list of Result
         :param PersonNum: 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
@@ -3983,7 +3983,7 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -4060,7 +4060,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonNum: 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
         :type PersonNum: int
         :param ResultsReturnsByGroup: 识别结果。
@@ -4094,7 +4094,7 @@ class UpgradeGroupFaceModelVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 需要升级的人员库ID。
         :type GroupId: str
         :param FaceModelVersion: 需要升级至的算法模型版本。默认为最新版本。不可逆向升级
@@ -4122,7 +4122,7 @@ class UpgradeGroupFaceModelVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 升级任务ID，用于查询、获取升级的进度和结果。
         :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4143,7 +4143,7 @@ class UpgradeJobInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 人员库升级任务ID，用于查询、获取升级的进度和结果。
         :type JobId: str
         :param GroupId: 人员库ID。
@@ -4190,7 +4190,7 @@ class VerifyFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :type PersonId: str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -4246,7 +4246,7 @@ class VerifyFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 给定的人脸图片与 PersonId 对应人脸的相似度。若 PersonId 下有多张人脸（Face），返回相似度最大的分数。
 
 不同算法版本返回的相似度分数不同。
@@ -4279,7 +4279,7 @@ class VerifyPersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
         :type PersonId: str
         :param Image: 图片 base64 数据。
@@ -4335,7 +4335,7 @@ class VerifyPersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
         :type Score: float
         :param IsMatch: 是否为同一人的判断。

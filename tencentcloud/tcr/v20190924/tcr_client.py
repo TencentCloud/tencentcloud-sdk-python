@@ -82,6 +82,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckInstance(self, request):
+        """用于校验企业版实例信息
+
+        :param request: Request instance for CheckInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckInstanceName(self, request):
         """检查待创建的实例名称是否符合规范
 

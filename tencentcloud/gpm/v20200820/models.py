@@ -24,7 +24,7 @@ class AttributeMap(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 属性字典 key [a-zA-Z0-9-\.]*
         :type Key: str
         :param Value: 属性字典 value
@@ -52,7 +52,7 @@ class CancelMatchingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配 Code
         :type MatchCode: str
         :param MatchTicketId: 要取消的匹配匹配票据 ID
@@ -80,7 +80,7 @@ class CancelMatchingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: 错误码
         :type ErrCode: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -101,7 +101,7 @@ class CreateMatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchName: 匹配名称，[a-zA-Z0-9-\.]* 长度128
         :type MatchName: str
         :param RuleCode: 规则code
@@ -183,7 +183,7 @@ class CreateMatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchInfo: 匹配信息
         :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -206,7 +206,7 @@ class CreateRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称，[a-zA-Z0-9-\.]* 长度128
         :type RuleName: str
         :param RuleScript: 规则脚本，长度65535
@@ -247,7 +247,7 @@ class CreateRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleInfo: 规则信息
         :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -270,7 +270,7 @@ class DeleteMatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配code
         :type MatchCode: str
         """
@@ -294,7 +294,7 @@ class DeleteMatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -311,7 +311,7 @@ class DeleteRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleCode: 规则code
         :type RuleCode: str
         """
@@ -335,7 +335,7 @@ class DeleteRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -352,7 +352,7 @@ class DescribeDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 起始时间，单位：秒
         :type StartTime: int
         :param EndTime: 截止时间，单位：秒
@@ -388,7 +388,7 @@ class DescribeDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OverviewData: 匹配概况
 注意：此字段可能返回 null，表示取不到有效值。
         :type OverviewData: :class:`tencentcloud.gpm.v20200820.models.ReportOverviewData`
@@ -419,7 +419,7 @@ class DescribeMatchCodesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，页码
         :type Offset: int
         :param Limit: 每页数量
@@ -451,7 +451,7 @@ class DescribeMatchCodesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCodes: 匹配Code
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchCodes: list of MatchCodeAttr
@@ -483,7 +483,7 @@ class DescribeMatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配code
         :type MatchCode: str
         """
@@ -507,7 +507,7 @@ class DescribeMatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchInfo: 匹配信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
@@ -531,7 +531,7 @@ class DescribeMatchesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNumber: 当前页号，不传则获取所有有权限的资源。
         :type PageNumber: int
         :param PageSize: 单页大小，不传则获取所有有权限的资源。
@@ -576,7 +576,7 @@ class DescribeMatchesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchInfoList: 匹配信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchInfoList: list of MatchInfo
@@ -623,7 +623,7 @@ class DescribeMatchingProgressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchTicketIds: 匹配票据 ID列表, 列表长度 12。
         :type MatchTicketIds: list of MTicket
         """
@@ -652,7 +652,7 @@ class DescribeMatchingProgressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchTickets: 匹配票据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchTickets: list of MatchTicket
@@ -684,7 +684,7 @@ class DescribeRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleCode: 规则code
         :type RuleCode: str
         """
@@ -708,7 +708,7 @@ class DescribeRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleInfo: 规则信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
@@ -732,7 +732,7 @@ class DescribeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNumber: 当前页号，不传则返回第一页
         :type PageNumber: int
         :param PageSize: 单页大小，最大 30，不填默认30
@@ -777,7 +777,7 @@ class DescribeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleInfoList: 规则信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleInfoList: list of RuleBriefInfo
@@ -824,7 +824,7 @@ class DescribeTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配code
         :type MatchCode: str
         """
@@ -848,7 +848,7 @@ class DescribeTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchToken: 当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchToken: str
@@ -875,7 +875,7 @@ class MTicket(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配Code
         :type MatchCode: str
         :param MatchTicketId: 匹配票据 ID
@@ -903,7 +903,7 @@ class MatchAttribute(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 属性名 长度 128 [a-zA-Z0-9-\.]*
         :type Name: str
         :param Type: 属性类型: 0 数值; 1 string; 默认 0
@@ -952,7 +952,7 @@ class MatchCodeAttr(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配code
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchCode: str
@@ -977,7 +977,7 @@ class MatchInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配code
         :type MatchCode: str
         :param MatchName: 匹配名称
@@ -1124,7 +1124,7 @@ class MatchTicket(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 匹配票据 ID长度 128 [a-zA-Z0-9-\.]*
         :type Id: str
         :param MatchCode: 匹配 Code
@@ -1194,7 +1194,7 @@ class ModifyMatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchName: 匹配名称，[a-zA-Z0-9-\.]* 长度128
         :type MatchName: str
         :param RuleCode: 规则code
@@ -1280,7 +1280,7 @@ class ModifyMatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchInfo: 匹配信息
         :type MatchInfo: :class:`tencentcloud.gpm.v20200820.models.MatchInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1303,7 +1303,7 @@ class ModifyRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleCode: 规则code
         :type RuleCode: str
         :param RuleName: 规则名称，只能包含数字、字母、. 和 -
@@ -1344,7 +1344,7 @@ class ModifyRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleInfo: 规则信息
         :type RuleInfo: :class:`tencentcloud.gpm.v20200820.models.RuleInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1367,7 +1367,7 @@ class ModifyTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配Code。
         :type MatchCode: str
         :param CompatibleSpan: 单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。
@@ -1399,7 +1399,7 @@ class ModifyTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchToken: 成功设置的Token。
         :type MatchToken: str
         :param CompatibleSpan: 当前Token被替换后，GPM将持续推送原Token的时间。
@@ -1425,7 +1425,7 @@ class Player(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*
         :type Id: str
         :param Name: 玩家昵称，长度 128
@@ -1483,7 +1483,7 @@ class RegionLatency(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域
 ap-beijing          华北地区(北京)
 ap-chengdu          西南地区(成都)
@@ -1526,7 +1526,7 @@ class ReportOverviewData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalTimes: 总次数
         :type TotalTimes: str
         :param SuccessPercent: 成功率
@@ -1566,7 +1566,7 @@ class ReportTrendData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalList: 总次数
         :type TotalList: list of str
         :param CancelList: 被取消次数
@@ -1610,7 +1610,7 @@ class RuleBriefInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称 [a-zA-Z\d-\.]*
         :type RuleName: str
         :param MatchCodeList: 关联匹配
@@ -1651,7 +1651,7 @@ class RuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称 [a-zA-Z0-9-\.]*
         :type RuleName: str
         :param CreateTime: 创建时间
@@ -1732,7 +1732,7 @@ class StartMatchingBackfillRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配code
         :type MatchCode: str
         :param Players: 玩家信息
@@ -1773,7 +1773,7 @@ class StartMatchingBackfillResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchTicket: 匹配票据
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchTicket: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`
@@ -1797,7 +1797,7 @@ class StartMatchingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchCode: 匹配 Code。
         :type MatchCode: str
         :param Players: 玩家信息 最多 200 条。
@@ -1834,7 +1834,7 @@ class StartMatchingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: 错误码。
         :type ErrCode: int
         :param MatchTicketId: 匹配票据 ID长度 128。
@@ -1859,7 +1859,7 @@ class StringKV(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 键
         :type Key: str
         :param Value: 值
@@ -1887,7 +1887,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值

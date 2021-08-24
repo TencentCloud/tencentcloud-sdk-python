@@ -24,7 +24,7 @@ class AddRecordBatch(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordType: 记录类型, 详见 DescribeRecordType 接口。
         :type RecordType: str
         :param Value: 记录值。
@@ -85,7 +85,7 @@ class BatchRecordInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: int
@@ -164,7 +164,7 @@ class CreateDomainAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainAlias: 域名别名
         :type DomainAlias: str
         :param Domain: 域名
@@ -196,7 +196,7 @@ class CreateDomainAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainAliasId: 域名别名ID
         :type DomainAliasId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -217,7 +217,7 @@ class CreateDomainBatchDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 见RecordInfoBatch
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of CreateDomainBatchRecord
@@ -276,7 +276,7 @@ class CreateDomainBatchRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubDomain: 子域名(主机记录)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubDomain: str
@@ -340,7 +340,7 @@ class CreateDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainList: 域名数组
         :type DomainList: list of str
         :param RecordValue: 每个域名添加 @ 和 www 的 A 记录值，记录值为IP，如果不传此参数或者传空，将只添加域名，不添加记录。
@@ -368,7 +368,7 @@ class CreateDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetailList: 批量添加域名信息
         :type DetailList: list of CreateDomainBatchDetail
         :param JobId: 批量任务的ID
@@ -398,7 +398,7 @@ class CreateDomainGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 域名分组
         :type GroupName: str
         """
@@ -422,7 +422,7 @@ class CreateDomainGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 域名分组ID
         :type GroupId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -443,7 +443,7 @@ class CreateDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param GroupId: 域名分组ID
@@ -475,7 +475,7 @@ class CreateDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainInfo: 域名信息
         :type DomainInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCreateInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -498,7 +498,7 @@ class CreateRecordBatchDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 见RecordInfoBatch
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of CreateRecordBatchRecord
@@ -562,7 +562,7 @@ class CreateRecordBatchRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubDomain: 子域名(主机记录)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubDomain: str
@@ -631,7 +631,7 @@ class CreateRecordBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainIdList: 域名ID，多个 domain_id 用英文逗号进行分割。
         :type DomainIdList: list of str
         :param RecordList: 记录数组
@@ -664,7 +664,7 @@ class CreateRecordBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetailList: 批量添加域名信息
         :type DetailList: list of CreateRecordBatchDetail
         :param JobId: 批量任务的ID
@@ -694,7 +694,7 @@ class CreateRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。
@@ -758,7 +758,7 @@ class CreateRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录ID
         :type RecordId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -779,7 +779,7 @@ class DeleteDomainAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainAliasId: 域名别名ID
         :type DomainAliasId: int
         :param Domain: 域名
@@ -811,7 +811,7 @@ class DeleteDomainAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -828,7 +828,7 @@ class DeleteDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
@@ -856,7 +856,7 @@ class DeleteDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -873,7 +873,7 @@ class DeleteRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordId: 记录 ID 。
@@ -905,7 +905,7 @@ class DeleteRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -922,7 +922,7 @@ class DeleteShareDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Account: 域名共享的账号
@@ -954,7 +954,7 @@ class DeleteShareDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -971,7 +971,7 @@ class DescribeBatchTaskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 见BatchRecordInfo
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of BatchRecordInfo
@@ -1035,7 +1035,7 @@ class DescribeBatchTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 任务ID
         :type JobId: int
         """
@@ -1059,7 +1059,7 @@ class DescribeBatchTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetailList: 批量任务详情
         :type DetailList: list of DescribeBatchTaskDetail
         :param TotalCount: 总任务条数
@@ -1105,7 +1105,7 @@ class DescribeDomainListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
         :type Type: str
         :param Offset: 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
@@ -1145,7 +1145,7 @@ class DescribeDomainListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainCountInfo: 列表页统计信息
         :type DomainCountInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`
         :param DomainList: 域名列表
@@ -1177,7 +1177,7 @@ class DescribeDomainLogListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
@@ -1213,7 +1213,7 @@ class DescribeDomainLogListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogList: 域名信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogList: list of str
@@ -1243,7 +1243,7 @@ class DescribeDomainPurviewRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
@@ -1271,7 +1271,7 @@ class DescribeDomainPurviewResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PurviewList: 域名权限列表
         :type PurviewList: list of PurviewInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1297,7 +1297,7 @@ class DescribeDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
@@ -1325,7 +1325,7 @@ class DescribeDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainInfo: 域名信息
         :type DomainInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1348,7 +1348,7 @@ class DescribeDomainShareInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
@@ -1376,7 +1376,7 @@ class DescribeDomainShareInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ShareList: 域名共享信息
         :type ShareList: list of DomainShareInfo
         :param Owner: 域名拥有者账号
@@ -1406,7 +1406,7 @@ class DescribeRecordLineListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名。
         :type Domain: str
         :param DomainGrade: 域名等级。
@@ -1440,7 +1440,7 @@ class DescribeRecordLineListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LineList: 线路列表。
         :type LineList: list of LineInfo
         :param LineGroupList: 线路分组列表。
@@ -1475,7 +1475,7 @@ class DescribeRecordListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 要获取的解析记录所属的域名
         :type Domain: str
         :param DomainId: 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数
@@ -1492,7 +1492,7 @@ class DescribeRecordListRequest(AbstractModel):
         :type GroupId: int
         :param Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
         :type Keyword: str
-        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。默认值为updated_on。
+        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。
         :type SortField: str
         :param SortType: 排序方式，正序：ASC，逆序：DESC。默认值为ASC。
         :type SortType: str
@@ -1543,7 +1543,7 @@ class DescribeRecordListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordCountInfo: 记录的数量统计信息
         :type RecordCountInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`
         :param RecordList: 获取的记录列表
@@ -1575,7 +1575,7 @@ class DescribeRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordId: 记录 ID 。
@@ -1607,7 +1607,7 @@ class DescribeRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordInfo: 记录信息
         :type RecordInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1630,7 +1630,7 @@ class DescribeRecordTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainGrade: 域名等级。
 + 旧套餐：D_FREE、D_PLUS、D_EXTRA、D_EXPERT、D_ULTRA 分别对应免费套餐、个人豪华、企业1、企业2、企业3。
 + 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。
@@ -1656,7 +1656,7 @@ class DescribeRecordTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TypeList: 记录类型列表
         :type TypeList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1683,7 +1683,7 @@ class DescribeUserDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserInfo: 帐户信息
         :type UserInfo: :class:`tencentcloud.dnspod.v20210323.models.UserInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1706,7 +1706,7 @@ class DomainCountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainTotal: 符合条件的域名数量
         :type DomainTotal: int
         :param AllTotal: 用户可以查看的所有域名数量
@@ -1774,7 +1774,7 @@ class DomainCreateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 域名ID
         :type Id: int
         :param Domain: 域名
@@ -1810,7 +1810,7 @@ class DomainInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名ID
         :type DomainId: int
         :param Status: 域名状态
@@ -1925,7 +1925,7 @@ class DomainListItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 系统分配给域名的唯一标识
         :type DomainId: int
         :param Name: 域名的原始格式
@@ -2033,7 +2033,7 @@ class DomainShareInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ShareTo: 域名共享对象的账号
         :type ShareTo: str
         :param Mode: 共享模式，“rw”：可读写。 “r”:：只读
@@ -2065,7 +2065,7 @@ class LineGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LineId: 线路分组ID
         :type LineId: str
         :param Name: 线路分组名称
@@ -2101,7 +2101,7 @@ class LineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 线路名称
         :type Name: str
         :param LineId: 线路ID
@@ -2129,7 +2129,7 @@ class LockInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名 ID
         :type DomainId: int
         :param LockCode: 域名解锁码
@@ -2161,7 +2161,7 @@ class ModifyDomainLockRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param LockDays: 域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。
@@ -2193,7 +2193,7 @@ class ModifyDomainLockResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LockInfo: 域名锁定信息
         :type LockInfo: :class:`tencentcloud.dnspod.v20210323.models.LockInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2216,7 +2216,7 @@ class ModifyDomainOwnerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Account: 域名需要转入的账号，支持Uin或者邮箱格式
@@ -2248,7 +2248,7 @@ class ModifyDomainOwnerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2265,7 +2265,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
@@ -2297,7 +2297,7 @@ class ModifyDomainRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2314,7 +2314,7 @@ class ModifyDomainStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Status: 域名状态，”enable” 、”disable” 分别代表启用和暂停
@@ -2346,7 +2346,7 @@ class ModifyDomainStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2363,7 +2363,7 @@ class ModifyDomainUnlockRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param LockCode: 域名解锁码，锁定的时候会返回。
@@ -2395,7 +2395,7 @@ class ModifyDomainUnlockResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2412,7 +2412,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordId: 记录ID。
@@ -2460,7 +2460,7 @@ class ModifyDynamicDNSResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录ID
         :type RecordId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2481,7 +2481,7 @@ class ModifyRecordBatchDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 见RecordInfoBatchModify
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of BatchRecordInfo
@@ -2545,7 +2545,7 @@ class ModifyRecordBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordIdList: 记录ID数组
         :type RecordIdList: list of int non-negative
         :param Change: 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
@@ -2585,7 +2585,7 @@ class ModifyRecordBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 批量任务ID
         :type JobId: int
         :param DetailList: 见modifyRecordBatchDetail
@@ -2615,7 +2615,7 @@ class ModifyRecordRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordId: 记录 ID 。
@@ -2651,7 +2651,7 @@ class ModifyRecordRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2668,7 +2668,7 @@ class ModifyRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordType: 记录类型，通过 API 记录类型获得，大写英文，比如：A 。
@@ -2736,7 +2736,7 @@ class ModifyRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录ID
         :type RecordId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2757,7 +2757,7 @@ class ModifyRecordStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param RecordId: 记录 ID 。
@@ -2793,7 +2793,7 @@ class ModifyRecordStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录ID。
         :type RecordId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2814,7 +2814,7 @@ class PurviewInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 权限名称
         :type Name: str
         :param Value: 权限值
@@ -2842,7 +2842,7 @@ class RecordCountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubdomainCount: 子域名数量
         :type SubdomainCount: int
         :param ListCount: 列表返回的记录数
@@ -2874,7 +2874,7 @@ class RecordInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 记录 ID 。
         :type Id: int
         :param SubDomain: 子域名(主机记录)。
@@ -2956,7 +2956,7 @@ class RecordListItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录Id
         :type RecordId: int
         :param Value: 记录值
@@ -3030,7 +3030,7 @@ class UserInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Nick: 用户昵称
         :type Nick: str
         :param Id: 用户ID

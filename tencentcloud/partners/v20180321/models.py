@@ -24,7 +24,7 @@ class AgentAuditedClient(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 代理商账号ID
         :type Uin: str
         :param ClientUin: 代客账号ID
@@ -111,7 +111,7 @@ class AgentBillElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 代理商账号ID
         :type Uin: str
         :param OrderId: 订单号，仅对预付费账单有意义
@@ -186,7 +186,7 @@ class AgentClientElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 代理商账号ID
         :type Uin: str
         :param ClientUin: 代客账号ID
@@ -253,7 +253,7 @@ class AgentDealElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealId: 订单自增 ID
         :type DealId: str
         :param DealName: 订单号
@@ -416,7 +416,7 @@ class AgentDealNewElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealId: 订单自增 ID
         :type DealId: str
         :param DealName: 订单号
@@ -579,7 +579,7 @@ class AgentPayDealsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 订单所有者uin
         :type OwnerUin: str
         :param AgentPay: 代付标志，1：代付；0：自付
@@ -611,7 +611,7 @@ class AgentPayDealsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -628,7 +628,7 @@ class AgentSalesmanElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 代理商账号ID
         :type Uin: str
         :param SalesUin: 业务员ID
@@ -664,7 +664,7 @@ class AgentTransferMoneyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户账号ID
         :type ClientUin: str
         :param Amount: 转账金额，单位分
@@ -692,7 +692,7 @@ class AgentTransferMoneyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -709,7 +709,7 @@ class AuditApplyClientRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 待审核客户账号ID
         :type ClientUin: str
         :param AuditResult: 审核结果，可能的取值：accept/reject
@@ -741,7 +741,7 @@ class AuditApplyClientResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 代理商账号ID
         :type Uin: str
         :param ClientUin: 客户账号ID
@@ -774,7 +774,7 @@ class ClientBaseElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentUin: 代客关联的代理商UIN
         :type AgentUin: str
         :param ClientUin: 代客UIN
@@ -814,7 +814,7 @@ class CreatePayRelationForClientRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户账号ID
         :type ClientUin: str
         """
@@ -838,7 +838,7 @@ class CreatePayRelationForClientResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -855,7 +855,7 @@ class DealGoodsPriceElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealTotalCost: 实付金额（单位：分）
         :type RealTotalCost: int
         :param OriginalTotalCost: 订单实际金额（不含折扣，单位：分）
@@ -883,7 +883,7 @@ class DealGoodsPriceNewElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealTotalCost: 实付金额（单位：分）
         :type RealTotalCost: int
         :param OriginalTotalCost: 原始金额（不含折扣，单位：分）
@@ -911,7 +911,7 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户账号ID
         :type ClientUin: str
         :param ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
@@ -983,7 +983,7 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentClientSet: 已审核代客列表
         :type AgentClientSet: list of AgentAuditedClient
         :param TotalCount: 符合条件的代客总数
@@ -1013,7 +1013,7 @@ class DescribeAgentBillsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SettleMonth: 支付月份，如2018-02
         :type SettleMonth: str
         :param ClientUin: 客户账号ID
@@ -1061,7 +1061,7 @@ class DescribeAgentBillsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合查询条件列表总数量
         :type TotalCount: int
         :param AgentBillSet: 业务明细列表
@@ -1091,7 +1091,7 @@ class DescribeAgentClientGradeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 代客uin
         :type ClientUin: str
         """
@@ -1115,7 +1115,7 @@ class DescribeAgentClientGradeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditStatus: 审核状态：0待审核，1，已审核
         :type AuditStatus: int
         :param AuthState: 实名认证状态：0，未实名认证，1实名认证
@@ -1148,7 +1148,7 @@ class DescribeAgentClientsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户账号ID
         :type ClientUin: str
         :param ClientName: 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
@@ -1200,7 +1200,7 @@ class DescribeAgentClientsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentClientSet: 待审核代客列表
         :type AgentClientSet: list of AgentClientElem
         :param TotalCount: 符合条件的代客总数
@@ -1230,7 +1230,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 限制数目
@@ -1286,7 +1286,7 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentDealSet: 订单数组
         :type AgentDealSet: list of AgentDealNewElem
         :param TotalCount: 符合条件的订单总数量
@@ -1316,7 +1316,7 @@ class DescribeAgentDealsCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 限制数目
@@ -1372,7 +1372,7 @@ class DescribeAgentDealsCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentDealSet: 订单数组
         :type AgentDealSet: list of AgentDealElem
         :param TotalCount: 符合条件的订单总数量
@@ -1402,7 +1402,7 @@ class DescribeAgentPayDealsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 限制数目
@@ -1454,7 +1454,7 @@ class DescribeAgentPayDealsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentPayDealSet: 订单数组
         :type AgentPayDealSet: list of AgentDealElem
         :param TotalCount: 符合条件的订单总数量
@@ -1484,7 +1484,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 限制数目
@@ -1536,7 +1536,7 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentPayDealSet: 订单数组
         :type AgentPayDealSet: list of AgentDealNewElem
         :param TotalCount: 符合条件的订单总数量
@@ -1566,7 +1566,7 @@ class DescribeAgentSelfPayDealsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 下单人账号ID
         :type OwnerUin: str
         :param Offset: 偏移量
@@ -1618,7 +1618,7 @@ class DescribeAgentSelfPayDealsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentPayDealSet: 订单数组
         :type AgentPayDealSet: list of AgentDealElem
         :param TotalCount: 符合条件的订单总数量
@@ -1648,7 +1648,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 下单人账号ID
         :type OwnerUin: str
         :param Offset: 偏移量
@@ -1700,7 +1700,7 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentPayDealSet: 订单数组
         :type AgentPayDealSet: list of AgentDealNewElem
         :param TotalCount: 符合条件的订单总数量
@@ -1730,7 +1730,7 @@ class DescribeClientBalanceNewRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户(代客)账号ID
         :type ClientUin: str
         """
@@ -1754,7 +1754,7 @@ class DescribeClientBalanceNewResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Balance: 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
         :type Balance: int
         :param Cash: 账户现金余额，单位分
@@ -1779,7 +1779,7 @@ class DescribeClientBalanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户(代客)账号ID
         :type ClientUin: str
         """
@@ -1803,7 +1803,7 @@ class DescribeClientBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Balance: 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
         :type Balance: int
         :param Cash: 账户现金余额，单位分
@@ -1828,7 +1828,7 @@ class DescribeClientBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 代客UIN
         :type ClientUin: str
         """
@@ -1852,7 +1852,7 @@ class DescribeClientBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientBaseSet: 代客基础信息数组
         :type ClientBaseSet: list of ClientBaseElem
         :param TotalCount: 符合条件的代客数
@@ -1882,7 +1882,7 @@ class DescribeRebateInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RebateMonth: 返佣月份，如2018-02
         :type RebateMonth: str
         :param Offset: 偏移量
@@ -1914,7 +1914,7 @@ class DescribeRebateInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RebateInfoSet: 返佣信息列表
         :type RebateInfoSet: list of RebateInfoElem
         :param TotalCount: 符合查询条件返佣信息数目
@@ -1944,7 +1944,7 @@ class DescribeSalesmansRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 限制数目
@@ -1984,7 +1984,7 @@ class DescribeSalesmansResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentSalesmanSet: 业务员列表
         :type AgentSalesmanSet: list of AgentSalesmanElem
         :param TotalCount: 符合条件的代客总数
@@ -2014,7 +2014,7 @@ class DescribeUnbindClientListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 解绑状态：0:所有,1:审核中,2已解绑
         :type Status: int
         :param Offset: 偏移量
@@ -2062,7 +2062,7 @@ class DescribeUnbindClientListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的解绑客户数量
         :type TotalCount: int
         :param UnbindClientList: 符合条件的解绑客户列表
@@ -2092,7 +2092,7 @@ class ModifyClientRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientRemark: 客户备注名称
         :type ClientRemark: str
         :param ClientUin: 客户账号ID
@@ -2120,7 +2120,7 @@ class ModifyClientRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2137,7 +2137,7 @@ class ProductInfoElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 产品属性
         :type Name: str
         :param Value: 产品属性值
@@ -2165,7 +2165,7 @@ class RebateInfoElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 代理商账号ID
         :type Uin: str
         :param RebateMonth: 返佣月份，如2018-02
@@ -2209,7 +2209,7 @@ class RemovePayRelationForClientRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientUin: 客户账号ID
         :type ClientUin: str
         """
@@ -2233,7 +2233,7 @@ class RemovePayRelationForClientResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2250,7 +2250,7 @@ class UnbindClientElem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 解绑账号ID
         :type Uin: str
         :param Name: 名称

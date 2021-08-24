@@ -52,3 +52,60 @@ class BaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGetAuthInfo(self, request):
+        """获取实名认证信息
+
+        :param request: Request instance for DescribeGetAuthInfo.
+        :type request: :class:`tencentcloud.ba.v20200720.models.DescribeGetAuthInfoRequest`
+        :rtype: :class:`tencentcloud.ba.v20200720.models.DescribeGetAuthInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGetAuthInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGetAuthInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncIcpOrderWebInfo(self, request):
+        """将备案ICP订单下的一个网站信息 同步给订单下其他网站，需要被同步的网站被检查通过(isCheck:true)；
+        只有指定的网站信息字段能被同步
+
+        :param request: Request instance for SyncIcpOrderWebInfo.
+        :type request: :class:`tencentcloud.ba.v20200720.models.SyncIcpOrderWebInfoRequest`
+        :rtype: :class:`tencentcloud.ba.v20200720.models.SyncIcpOrderWebInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SyncIcpOrderWebInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncIcpOrderWebInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

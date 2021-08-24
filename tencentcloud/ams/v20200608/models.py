@@ -24,7 +24,7 @@ class AmsDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 标签
         :type Label: list of str
         :param Duration: 时长(秒/s)
@@ -104,7 +104,7 @@ class AudioResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HitFlag: 是否命中
 0 未命中
 1 命中
@@ -193,7 +193,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 语言信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -238,7 +238,7 @@ class AudioResultDetailMoanResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 固定为Moan（呻吟）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -279,7 +279,7 @@ class AudioResultDetailTextResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -333,7 +333,7 @@ class AudioSegments(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
@@ -368,7 +368,7 @@ class BucketInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bucket: 腾讯云对象存储，存储桶名称
         :type Bucket: str
         :param Region: 地域
@@ -400,7 +400,7 @@ class CancelTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         """
@@ -424,7 +424,7 @@ class CancelTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -441,7 +441,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
         :type BizType: str
         :param Type: 审核类型，这里可选：AUDIO (点播音频)和 LIVE_AUDIO（直播音频）
@@ -486,7 +486,7 @@ class CreateAudioModerationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 任务创建结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
@@ -513,7 +513,7 @@ class CreateBizConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 业务类型，仅限英文字母、数字和下划线（_）组成，长度不超过8位
         :type BizType: str
         :param MediaModeration: 配置信息，
@@ -551,7 +551,7 @@ class CreateBizConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -568,7 +568,7 @@ class DescribeAmsListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageToken: 页码
         :type PageToken: str
         :param Limit: 过滤条件
@@ -609,7 +609,7 @@ class DescribeAmsListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AmsDetailSet: 返回列表数据----非必选，该参数暂未对外开放
         :type AmsDetailSet: list of AmsDetailInfo
         :param Total: 总条数
@@ -643,7 +643,7 @@ class DescribeAudioStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
         :type AuditType: int
         :param Filters: 查询条件
@@ -676,7 +676,7 @@ class DescribeAudioStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Overview: 识别结果统计
         :type Overview: :class:`tencentcloud.ams.v20200608.models.Overview`
         :param TrendCount: 识别量统计
@@ -717,7 +717,7 @@ class DescribeBizConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 审核业务类类型
         :type BizType: str
         """
@@ -741,7 +741,7 @@ class DescribeBizConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 业务类型
         :type BizType: str
         :param BizName: 业务名称
@@ -786,7 +786,7 @@ class DescribeTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID，创建任务后返回的TaskId字段
         :type TaskId: str
         :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
@@ -814,7 +814,7 @@ class DescribeTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -940,7 +940,7 @@ class EvilCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
         :param Count: 分布类型总量
@@ -968,7 +968,7 @@ class FileOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bucket: 存储的Bucket
         :type Bucket: str
         :param Region: Cos Region
@@ -1000,7 +1000,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -1028,7 +1028,7 @@ class Filters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 查询字段：
 策略BizType
 子账号SubUin
@@ -1059,7 +1059,7 @@ class ImageResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HitFlag: 违规标志
 0 未命中
 1 命中
@@ -1118,7 +1118,7 @@ class ImageResultResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景
 Porn 色情
 Sexy 性感
@@ -1194,7 +1194,7 @@ class ImageResultsResultDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Location: 位置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: list of ImageResultsResultDetailLocation
@@ -1268,7 +1268,7 @@ class ImageResultsResultDetailLocation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: x坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type X: float
@@ -1313,7 +1313,7 @@ class ImageSegments(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 画面截帧结果详情
         :type Result: :class:`tencentcloud.ams.v20200608.models.ImageResult`
         :param OffsetTime: 截帧时间。
@@ -1345,7 +1345,7 @@ class InputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 传入的类型可选：URL，COS
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -1382,7 +1382,7 @@ class MediaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Codecs: 编码格式
         :type Codecs: str
         :param Duration: 流检测时分片时长
@@ -1423,7 +1423,7 @@ class MediaModerationConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AudioFrequency: 音频截帧频率。默认一分钟
         :type AudioFrequency: int
         :param ImageFrequency: 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
@@ -1469,7 +1469,7 @@ class Overview(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
         :type TotalCount: int
         :param TotalHour: 总调用时长
@@ -1521,7 +1521,7 @@ class StorageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型 可选：
 URL 资源链接类型
 COS 腾讯云对象存储类型
@@ -1557,7 +1557,7 @@ class TaskInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 数据ID
         :type DataId: str
         :param Name: 任务名
@@ -1591,7 +1591,7 @@ class TaskLabel(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1628,7 +1628,7 @@ class TaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 请求时传入的DataId
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
@@ -1668,7 +1668,7 @@ class TrendCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
         :type TotalCount: int
         :param TotalHour: 总调用时长

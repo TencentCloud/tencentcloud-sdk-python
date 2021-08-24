@@ -24,7 +24,7 @@ class DataManipulationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpType: 操作类型，add或del
         :type OpType: str
         :param Encoding: 数据编码类型
@@ -60,7 +60,7 @@ class DataManipulationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 数据操作结果
         :type Data: :class:`tencentcloud.yunsou.v20191115.models.DataManipulationResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -83,7 +83,7 @@ class DataManipulationResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: 应用ID
         :type AppId: int
         :param Seq: 序号
@@ -130,7 +130,7 @@ class DataManipulationResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 结果
         :type Result: str
         :param DocId: 文档ID
@@ -162,7 +162,7 @@ class DataSearchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务
         :type ResourceId: int
         :param SearchQuery: 检索串
@@ -274,7 +274,7 @@ class DataSearchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 检索结果
         :type Data: :class:`tencentcloud.yunsou.v20191115.models.SearchResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -297,7 +297,7 @@ class SearchResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CostTime: 检索耗时，单位ms
         :type CostTime: int
         :param DisplayNum: 搜索最多可以展示的结果数，多页
@@ -357,7 +357,7 @@ class SearchResultItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DocAbs: 动态摘要信息
         :type DocAbs: str
         :param DocId: 检索文档id
@@ -397,7 +397,7 @@ class SearchResultSeg(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SegStr: 分词
         :type SegStr: str
         """

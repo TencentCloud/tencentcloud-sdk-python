@@ -24,7 +24,7 @@ class FlowProductRemindRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProviderUin: 服务商uin
         :type ProviderUin: str
         :param SignId: 服务商实例ID
@@ -68,7 +68,7 @@ class FlowProductRemindResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Success: 是否成功
         :type Success: str
         :param FlowId: 流水号
@@ -98,7 +98,7 @@ class GetUsagePlanUsageAmountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 用于查询实例的Id
         :type InstanceId: str
         """
@@ -122,7 +122,7 @@ class GetUsagePlanUsageAmountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxRequestNum: 最大调用量
         :type MaxRequestNum: int
         :param InUseRequestNum: 已经调用量

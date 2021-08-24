@@ -24,7 +24,7 @@ class EvaluationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 图片唯一标识，一张图片一个SessionId；
         :type SessionId: str
         :param Image: 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
@@ -96,7 +96,7 @@ class EvaluationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 图片唯一标识，一张图片一个SessionId；
         :type SessionId: str
         :param Items: 识别出的算式信息；
@@ -131,7 +131,7 @@ class Item(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Item: 识别的算式是否正确，算式运算结果: ‘YES’:正确 ‘NO’: 错误 ‘NA’: 非法参数
         :type Item: str
         :param ItemString: 识别出的算式，识别出的文本行字符串
@@ -184,7 +184,7 @@ class ItemCoord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Height: 算式高度
         :type Height: int
         :param Width: 算式宽度

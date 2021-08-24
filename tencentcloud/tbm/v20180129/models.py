@@ -24,7 +24,7 @@ class AgePortrait(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgeRange: 年龄区间
         :type AgeRange: str
         :param Percent: 百分比
@@ -52,7 +52,7 @@ class AgePortraitInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortraitSet: 用户年龄画像数组
         :type PortraitSet: list of AgePortrait
         """
@@ -81,7 +81,7 @@ class BrandReportArticle(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Title: 文章标题
         :type Title: str
         :param Url: 文章url地址
@@ -137,7 +137,7 @@ class Comment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 评论的日期
         :type Date: str
         :param NegCommentCount: 差评的个数
@@ -169,7 +169,7 @@ class CommentInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Comment: 用户评论内容
         :type Comment: str
         :param Date: 评论的时间
@@ -197,7 +197,7 @@ class DateCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 统计日期
         :type Date: str
         :param Count: 统计值
@@ -225,7 +225,7 @@ class DescribeBrandCommentCountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 查询开始日期
@@ -257,7 +257,7 @@ class DescribeBrandCommentCountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommentSet: 按天统计好评/差评数
         :type CommentSet: list of Comment
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -283,7 +283,7 @@ class DescribeBrandExposureRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 查询开始时间
@@ -315,7 +315,7 @@ class DescribeBrandExposureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 累计曝光量
         :type TotalCount: int
         :param DateCountSet: 按天计算的统计数据
@@ -345,7 +345,7 @@ class DescribeBrandMediaReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 查询开始时间
@@ -377,7 +377,7 @@ class DescribeBrandMediaReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 查询范围内文章总数
         :type TotalCount: int
         :param DateCountSet: 按天计算的每天文章数
@@ -407,7 +407,7 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 查询开始时间
@@ -447,7 +447,7 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandCommentSet: 评论列表
         :type BrandCommentSet: list of CommentInfo
         :param TotalComments: 总的差评个数
@@ -477,7 +477,7 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 查询开始时间
@@ -517,7 +517,7 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandCommentSet: 评论列表
         :type BrandCommentSet: list of CommentInfo
         :param TotalComments: 总的好评个数
@@ -547,7 +547,7 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 检索开始时间
@@ -591,7 +591,7 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ArticleCount: 文章总数
         :type ArticleCount: int
         :param FromCount: 来源统计总数
@@ -629,7 +629,7 @@ class DescribeBrandSocialReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         :param StartDate: 查询开始时间
@@ -661,7 +661,7 @@ class DescribeBrandSocialReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 累计统计数据
         :type TotalCount: int
         :param DateCountSet: 按天计算的统计数据
@@ -691,7 +691,7 @@ class DescribeIndustryNewsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IndustryId: 行业ID
         :type IndustryId: str
         :param StartDate: 查询开始时间
@@ -735,7 +735,7 @@ class DescribeIndustryNewsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NewsCount: 总计文章数量
         :type NewsCount: int
         :param FromCount: 总计来源数量
@@ -782,7 +782,7 @@ class DescribeUserPortraitRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BrandId: 品牌ID
         :type BrandId: str
         """
@@ -806,7 +806,7 @@ class DescribeUserPortraitResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Age: 年龄画像
         :type Age: :class:`tencentcloud.tbm.v20180129.models.AgePortraitInfo`
         :param Gender: 性别画像
@@ -853,7 +853,7 @@ class GenderPortrait(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Gender: 性别
         :type Gender: str
         :param Percent: 百分比
@@ -881,7 +881,7 @@ class GenderPortraitInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortraitSet: 用户性别画像数组
         :type PortraitSet: list of GenderPortrait
         """
@@ -910,7 +910,7 @@ class IndustryNews(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IndustryId: 行业报道ID
         :type IndustryId: str
         :param PubTime: 报道发表时间
@@ -966,7 +966,7 @@ class MoviePortrait(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 电影名称
         :type Name: str
         :param Percent: 百分比
@@ -994,7 +994,7 @@ class MoviePortraitInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortraitSet: 用户喜好电影画像数组
         :type PortraitSet: list of MoviePortrait
         """
@@ -1023,7 +1023,7 @@ class ProvincePortrait(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Province: 省份名称
         :type Province: str
         :param Percent: 百分比
@@ -1051,7 +1051,7 @@ class ProvincePortraitInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortraitSet: 用户省份画像数组
         :type PortraitSet: list of ProvincePortrait
         """
@@ -1080,7 +1080,7 @@ class StarPortrait(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 喜欢的明星名字
         :type Name: str
         :param Percent: 百分比
@@ -1108,7 +1108,7 @@ class StarPortraitInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortraitSet: 用户喜好的明星画像数组
         :type PortraitSet: list of StarPortrait
         """

@@ -59,6 +59,9 @@ INTERNALERROR_CLUSTERNOTFOUND = 'InternalError.ClusterNotFound'
 # 集群状态错误。
 INTERNALERROR_CLUSTERSTATE = 'InternalError.ClusterState'
 
+# 集群节点版本过低。
+INTERNALERROR_CLUSTERUPGRADENODEVERSION = 'InternalError.ClusterUpgradeNodeVersion'
+
 # 内部HTTP客户端错误。
 INTERNALERROR_COMPONENTCLIENTHTTP = 'InternalError.ComponentClientHttp'
 
@@ -203,6 +206,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 弹性伸缩组创建参数错误。
 INVALIDPARAMETER_ASCOMMONERROR = 'InvalidParameter.AsCommonError'
 
+# CIDR掩码超出范围(集群CIDR范围 最小值: 10 最大值: 24)。
+INVALIDPARAMETER_CIDRMASKSIZEOUTOFRANGE = 'InvalidParameter.CIDRMaskSizeOutOfRange'
+
 # CIDR和其他集群CIDR冲突。
 INVALIDPARAMETER_CIDRCONFLICTWITHOTHERCLUSTER = 'InvalidParameter.CidrConflictWithOtherCluster'
 
@@ -229,6 +235,9 @@ INVALIDPARAMETER_GATEWAYALREADYASSOCIATEDCIDR = 'InvalidParameter.GatewayAlready
 
 # 参数错误。
 INVALIDPARAMETER_PARAM = 'InvalidParameter.Param'
+
+# Prometheus未关联本集群。
+INVALIDPARAMETER_PROMCLUSTERNOTFOUND = 'InvalidParameter.PromClusterNotFound'
 
 # Prometheus实例不存在。
 INVALIDPARAMETER_PROMINSTANCENOTFOUND = 'InvalidParameter.PromInstanceNotFound'

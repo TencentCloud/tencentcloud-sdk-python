@@ -26,6 +26,34 @@ class TiwClient(AbstractClient):
     _service = 'tiw'
 
 
+    def CreateSnapshotTask(self, request):
+        """创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
+
+        :param request: Request instance for CreateSnapshotTask.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.CreateSnapshotTaskRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreateSnapshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSnapshotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSnapshotTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTranscode(self, request):
         """创建一个文档转码任务
 
@@ -152,6 +180,34 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQualityMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotTask(self, request):
+        """获取指定白板板书生成任务信息
+
+        :param request: Request instance for DescribeSnapshotTask.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeSnapshotTaskRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeSnapshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSnapshotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

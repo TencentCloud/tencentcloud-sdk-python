@@ -23,6 +23,9 @@ FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = 'FailedOperation.ApplicationCreat
 # 应用查询失败。
 FAILEDOPERATION_APPLICATIONQUERYFAILED = 'FailedOperation.ApplicationQueryFailed'
 
+# 创建集群，开通VPC网络权限失败。
+FAILEDOPERATION_CLUSTERCREATEVPCFAIL = 'FailedOperation.ClusterCreateVpcFail'
+
 # 查询集群失败。
 FAILEDOPERATION_CLUSTERQUERYFAILED = 'FailedOperation.ClusterQueryFailed'
 
@@ -73,6 +76,9 @@ FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = 'FailedOperation.LaneInfoGroupNotEmpty'
 
 # 泳道同步到consul失败。
 FAILEDOPERATION_LANEINFORELEASECONSULFAILED = 'FailedOperation.LaneInfoReleaseConsulFailed'
+
+# 泳道发布到mesh失败。
+FAILEDOPERATION_LANEINFORELEASEMESHFAILED = 'FailedOperation.LaneInfoReleaseMeshFailed'
 
 # 全链路灰度规则启用失败。
 FAILEDOPERATION_LANERULEENABLECONSULFAILED = 'FailedOperation.LaneRuleEnableConsulFailed'
@@ -131,6 +137,9 @@ FAILEDOPERATION_TSFASRESOURCESERVERERROR = 'FailedOperation.TsfAsResourceServerE
 # TSF权限模块异常，请联系系统管理员。。
 FAILEDOPERATION_TSFPRIVILEGEERROR = 'FailedOperation.TsfPrivilegeError'
 
+# 应用操作请求MASTER FEIGN失败。
+INTERNALERROR_APPLICATIONMASTERFEIGNERROR = 'InternalError.ApplicationMasterFeignError'
+
 # 应用操作请求MASTER 操作失败。
 INTERNALERROR_APPLICATIONMASTERNUKNOWNERROR = 'InternalError.ApplicationMasterNuknownError'
 
@@ -148,6 +157,9 @@ INTERNALERROR_CLOUDAPIPROXYERROR = 'InternalError.CloudApiProxyError'
 
 # 集群通用错误。
 INTERNALERROR_CLUSTERCOMMONERROR = 'InternalError.ClusterCommonError'
+
+# 虚拟机集群请求MASTER FEIGN失败。
+INTERNALERROR_CLUSTERMASTERFEIGNERROR = 'InternalError.ClusterMasterFeignError'
 
 # 无法找到部署组，或相应集群/命名空间/应用的权限不足。
 INTERNALERROR_CLUSTERNOTEXISTORPRIVILEGEERROR = 'InternalError.ClusterNotExistOrPrivilegeError'
@@ -169,9 +181,6 @@ INTERNALERROR_CPCLUSTERUNAVAILABLE = 'InternalError.CpClusterUnavailable'
 
 # 命令下放失败。
 INTERNALERROR_CVMCAEMASTERDISPATCHERROR = 'InternalError.CvmCaeMasterDispatchError'
-
-# TSF MASTER 内部执行错误。
-INTERNALERROR_CVMCAEMASTERINTERNALERROR = 'InternalError.CvmCaeMasterInternalError'
 
 # MASTER通道查询失败。
 INTERNALERROR_CVMCAEMASTERNONALIVE = 'InternalError.CvmCaeMasterNonAlive'
@@ -431,14 +440,8 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPNODEPORTINVALID = 'InvalidParameterValue.Con
 # 服务端口值非法。
 INVALIDPARAMETERVALUE_CONTAINERGROUPPORTINVALID = 'InvalidParameterValue.ContainergroupPortInvalid'
 
-# 服务端口不允许重复映射。
-INVALIDPARAMETERVALUE_CONTAINERGROUPPORTSREPEAT = 'InvalidParameterValue.ContainergroupPortsRepeat'
-
 # 协议值非法,限定:TCP/UDP。
 INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = 'InvalidParameterValue.ContainergroupProtocolInvalid'
-
-# 协议不能为空。
-INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLNULL = 'InvalidParameterValue.ContainergroupProtocolNull'
 
 # 协议端口不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = 'InvalidParameterValue.ContainergroupProtocolPortsNull'
@@ -446,23 +449,11 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = 'InvalidParameterValue.C
 # 镜像仓库名与应用名不匹配。
 INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = 'InvalidParameterValue.ContainergroupReponameInvalid'
 
-# agent 容器资源值非法 , %s。
-INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = 'InvalidParameterValue.ContainergroupResourceAgentValueInvalid'
-
-# istioProxy 容器资源值非法 , %s。
-INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEISTIOVALUEINVALID = 'InvalidParameterValue.ContainergroupResourceIstioValueInvalid'
-
-# 容器端口不允许重复映射。
-INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = 'InvalidParameterValue.ContainergroupTargetPortsRepeat'
-
 # 容器端口不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = 'InvalidParameterValue.ContainergroupTargetportNull'
 
 # 更新间隔不能为空或者数值非法。
 INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATEIVLINVALID = 'InvalidParameterValue.ContainergroupUpdateivlInvalid'
-
-# 找不到业务容器。
-INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = 'InvalidParameterValue.ContainergroupYamlUserContainerNotFound'
 
 # TSF MASTER 正在执行任务，请等待任务执行完成再下发新任务。
 INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = 'InvalidParameterValue.CvmCaeMasterAgentBusy'
@@ -475,6 +466,27 @@ INVALIDPARAMETERVALUE_CVMCAEMASTERGROUPNOAGENT = 'InvalidParameterValue.CvmCaeMa
 
 # 部署组不存在。
 INVALIDPARAMETERVALUE_DEPLOYGROUPNOTEXISTS = 'InvalidParameterValue.DeployGroupNotExists'
+
+# 文件配置项已经发布。
+INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = 'InvalidParameterValue.FileConfigAlreadyReleased'
+
+# 文件配置项已存在。
+INVALIDPARAMETERVALUE_FILECONFIGEXISTS = 'InvalidParameterValue.FileConfigExists'
+
+# 配置文件路径重复。
+INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATH = 'InvalidParameterValue.FileConfigExistsPath'
+
+# 其他用户已发布此配置文件路径。
+INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = 'InvalidParameterValue.FileConfigExistsPathOther'
+
+# 文件配置项文件路径不合规。
+INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = 'InvalidParameterValue.FileConfigFilePathInvalid'
+
+# 文件配置项名称不合规。
+INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = 'InvalidParameterValue.FileConfigNameInvalid'
+
+# 文件配置项版本描述不合规。
+INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = 'InvalidParameterValue.FileConfigVersionDescInvalid'
 
 # 请求参数异常:%s。
 INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = 'InvalidParameterValue.GatewayParameterError'
@@ -527,8 +539,8 @@ INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = 'InvalidParameterValue.Imagerep
 # 镜像仓库名不能为空。
 INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = 'InvalidParameterValue.ImagerepoReponameNull'
 
-# imageTags不能为空。
-INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = 'InvalidParameterValue.ImagerepoTagnameNull'
+# 重装系统，无效的镜像id。
+INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = 'InvalidParameterValue.InstanceInvalidImage'
 
 # 参数格式异常。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = 'InvalidParameterValue.InvalidParameterFormat'
@@ -664,6 +676,9 @@ MISSINGPARAMETER_CONFIGVALUEREQUIRED = 'MissingParameter.ConfigValueRequired'
 
 # 配置项版本未填写。
 MISSINGPARAMETER_CONFIGVERSIONREQUIRED = 'MissingParameter.ConfigVersionRequired'
+
+# 文件配置项文件内容未填写。
+MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = 'MissingParameter.FileConfigFileValueRequired'
 
 # 缺少请求参数:%s。
 MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = 'MissingParameter.GatewayParameterRequired'

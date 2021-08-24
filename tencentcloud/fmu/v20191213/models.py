@@ -24,7 +24,7 @@ class BeautifyPicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
@@ -77,7 +77,7 @@ class BeautifyPicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
         :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
@@ -102,7 +102,7 @@ class BeautifyVideoOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoUrl: 视频美颜输出的url
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoUrl: str
@@ -157,7 +157,7 @@ class BeautifyVideoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 视频url地址
         :type Url: str
         :param BeautyParam: 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
@@ -194,7 +194,7 @@ class BeautifyVideoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 视频美颜任务的Job id
         :type JobId: str
         :param EstimatedProcessTime: 预估处理时间，粒度为秒
@@ -219,7 +219,7 @@ class BeautyParam(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WhitenLevel: 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
         :type WhitenLevel: int
         :param SmoothingLevel: 磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值30。
@@ -255,7 +255,7 @@ class CancelBeautifyVideoJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 美颜视频的Job id
         :type JobId: str
         """
@@ -279,7 +279,7 @@ class CancelBeautifyVideoJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -296,7 +296,7 @@ class CreateModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LUTFile: 图片base64数据，用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
         :type LUTFile: str
         :param Description: 文件描述信息，可用于备注。
@@ -324,7 +324,7 @@ class CreateModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 唇色素材ID。
         :type ModelId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -345,7 +345,7 @@ class DeleteModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 素材ID。
         :type ModelId: str
         """
@@ -369,7 +369,7 @@ class DeleteModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -386,7 +386,7 @@ class FaceRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人脸框左上角横坐标。
         :type X: int
         :param Y: 人脸框左上角纵坐标。
@@ -422,7 +422,7 @@ class GetModelListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始序号，默认值为0。
         :type Offset: int
         :param Limit: 返回数量，默认值为10，最大值为100。
@@ -450,7 +450,7 @@ class GetModelListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelIdNum: 唇色素材总数量。
         :type ModelIdNum: int
         :param ModelInfos: 素材数据
@@ -481,7 +481,7 @@ class LipColorInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RGBA: 使用RGBA模型试唇色。
         :type RGBA: :class:`tencentcloud.fmu.v20191213.models.RGBAInfo`
         :param ModelId: 使用已注册的 LUT 文件试唇色。  
@@ -523,7 +523,7 @@ class ModelInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 唇色素材ID
         :type ModelId: str
         :param LUTFileUrl: 唇色素材 url 。 LUT 文件 url 5分钟有效。
@@ -555,7 +555,7 @@ class QueryBeautifyVideoJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 视频美颜Job id
         :type JobId: str
         """
@@ -579,7 +579,7 @@ class QueryBeautifyVideoJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobStatus: 当前任务状态：排队中、处理中、处理失败或者处理完成
         :type JobStatus: str
         :param BeautifyVideoOutput: 视频美颜输出的结果信息
@@ -607,7 +607,7 @@ class RGBAInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param R: R通道数值。[0,255]。
         :type R: int
         :param G: G通道数值。[0,255]。
@@ -643,7 +643,7 @@ class StyleImageProRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FilterType: 滤镜类型，取值如下： 
 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后；31.活力；32.朦胧；33.悦动；34.时尚；35.气泡；36.柠檬；37.棉花糖；38.小溪；39.丽人；40.咖啡；41.嫩芽；42.热情；43.渐暖；44.早餐；45.白茶；46.白嫩；47.圣代；48.森林；49.冲浪；50.奶咖；51.清澈；52.微风；53.日落；54.水光；55.日系；56.星光；57.阳光；58.落叶；59.生机；60.甜心；61.清逸；62.春意；63.罗马；64.青涩；65.清风；66.暖心；67.海水；68.神秘；69.旧调1；70.旧调2；71.雪顶；72.日光；73.浮云；74.流彩；75.胶片；76.回味；77.奶酪；78.蝴蝶。
         :type FilterType: int
@@ -689,7 +689,7 @@ class StyleImageProResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultImage: str
@@ -716,7 +716,7 @@ class StyleImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FilterType: 滤镜类型，取值如下： 
 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后。
         :type FilterType: int
@@ -762,7 +762,7 @@ class StyleImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultImage: str
@@ -789,7 +789,7 @@ class TryLipstickPicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LipColorInfos: 唇色信息。 
 您可以输入最多3个 LipColorInfo 来实现给一张图中的最多3张人脸试唇色。
         :type LipColorInfos: list of LipColorInfo
@@ -836,7 +836,7 @@ class TryLipstickPicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
         :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。

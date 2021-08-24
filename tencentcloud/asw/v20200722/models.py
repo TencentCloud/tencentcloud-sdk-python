@@ -24,7 +24,7 @@ class CreateFlowServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Definition: 定义文本（JSON格式）
         :type Definition: str
         :param FlowServiceName: 状态机所属服务名
@@ -80,7 +80,7 @@ class CreateFlowServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceResource: 状态机所属服务资源
         :type FlowServiceResource: str
         :param CreateDate: 生成日期
@@ -105,7 +105,7 @@ class DescribeExecutionHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionResourceName: 执行资源名
         :type ExecutionResourceName: str
         """
@@ -129,7 +129,7 @@ class DescribeExecutionHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Events: 执行的事件列表
         :type Events: list of ExecutionEvent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -155,7 +155,7 @@ class DescribeExecutionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionResourceName: 执行资源名
         :type ExecutionResourceName: str
         """
@@ -179,7 +179,7 @@ class DescribeExecutionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionResourceName: 执行资源名
         :type ExecutionResourceName: str
         :param Name: 资源名称
@@ -234,7 +234,7 @@ class DescribeExecutionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StateMachineResourceName: 状态机资源名
         :type StateMachineResourceName: str
         :param PageSize: 页大小，最大100
@@ -274,7 +274,7 @@ class DescribeExecutionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -291,7 +291,7 @@ class DescribeFlowServiceDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceResource: 状态机所属服务资源名
         :type FlowServiceResource: str
         """
@@ -315,7 +315,7 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceName: 状态机所属服务名
         :type FlowServiceName: str
         :param Status: 状态机状态
@@ -383,7 +383,7 @@ class DescribeFlowServicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
@@ -420,7 +420,7 @@ class DescribeFlowServicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceSet: 用户的状态机列表
         :type FlowServiceSet: list of StateMachine
         :param TotalCount: 用户的状态机总数
@@ -450,7 +450,7 @@ class ExecutionEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionResourceName: 执行资源名
         :type ExecutionResourceName: str
         :param EventId: 自增序号
@@ -503,7 +503,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤器名字
         :type Name: str
         :param Values: 过滤器值的数组
@@ -531,7 +531,7 @@ class ModifyFlowServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceResource: 状态机资源名
         :type FlowServiceResource: str
         :param Definition: 定义JSON
@@ -587,7 +587,7 @@ class ModifyFlowServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceResource: 状态机资源名
         :type FlowServiceResource: str
         :param UpdateDate: 更新时间
@@ -612,7 +612,7 @@ class StartExecutionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StateMachineResourceName: 状态机资源名
         :type StateMachineResourceName: str
         :param Input: 输入参数
@@ -644,7 +644,7 @@ class StartExecutionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionResourceName: 执行资源名
         :type ExecutionResourceName: str
         :param StartDate: 执行开始时间
@@ -669,7 +669,7 @@ class StateMachine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowServiceResource: 状态机资源
         :type FlowServiceResource: str
         :param Type: 状态机类型。EXPRESS，STANDARD
@@ -739,7 +739,7 @@ class StopExecutionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionQrn: 执行名称
         :type ExecutionQrn: str
         """
@@ -763,7 +763,7 @@ class StopExecutionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

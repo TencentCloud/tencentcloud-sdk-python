@@ -24,7 +24,7 @@ class Acct(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubAcctNo: STRING(50)，见证子账户的账号（可重复）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAcctNo: str
@@ -79,7 +79,7 @@ class AgencyClientInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgencyClientName: 经办人姓名，存在经办人必输
         :type AgencyClientName: str
         :param AgencyClientGlobalType: 经办人证件类型，存在经办人必输
@@ -115,7 +115,7 @@ class AgentTaxPayment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AnchorId: 主播银行账号
         :type AnchorId: str
         :param AnchorName: 主播姓名
@@ -163,7 +163,7 @@ class AgentTaxPaymentBatch(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusMsg: 状态消息
         :type StatusMsg: str
         :param BatchNum: 批次号
@@ -219,7 +219,7 @@ class AnchorContractInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AnchorId: 主播ID
         :type AnchorId: str
         :param AnchorName: 主播名称
@@ -259,7 +259,7 @@ class ApplyApplicationMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionId: 对接方汇出指令编号
         :type TransactionId: str
         :param DeclareId: 申报流水号
@@ -319,7 +319,7 @@ class ApplyApplicationMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 提交申报材料结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyDeclareResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -342,7 +342,7 @@ class ApplyDeclareData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TransactionId: 第三方指令编号
@@ -387,7 +387,7 @@ class ApplyDeclareResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 提交申报材料数据
@@ -417,7 +417,7 @@ class ApplyOutwardOrderData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TransactionId: 对接方汇出指令编号
@@ -449,7 +449,7 @@ class ApplyOutwardOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionId: 对接方汇出指令编号
         :type TransactionId: str
         :param PricingCurrency: 定价币种
@@ -551,7 +551,7 @@ class ApplyOutwardOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 汇出指令申请
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyOutwardOrderResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -574,7 +574,7 @@ class ApplyOutwardOrderResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 汇出指令申请数据
         :type Data: :class:`tencentcloud.cpdp.v20190820.models.ApplyOutwardOrderData`
         :param Code: 错误码
@@ -604,7 +604,7 @@ class ApplyPayerInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayerId: 付款人ID
         :type PayerId: str
         :param PayerType: 付款人类型 (个人: INDIVIDUAL, 企业: CORPORATE)
@@ -664,7 +664,7 @@ class ApplyPayerInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 付款人申请结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyPayerinfoResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -687,7 +687,7 @@ class ApplyPayerinfoData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param PayerId: 付款人ID
@@ -724,7 +724,7 @@ class ApplyPayerinfoResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 数据
@@ -754,7 +754,7 @@ class ApplyReWithdrawalRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessType: 聚鑫业务类型
         :type BusinessType: int
         :param MidasSecretId: 由平台客服提供的计费密钥Id
@@ -804,7 +804,7 @@ class ApplyReWithdrawalResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WithdrawOrderId: 重新提现业务订单号
         :type WithdrawOrderId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -825,7 +825,7 @@ class ApplyTradeData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TradeFileId: 贸易材料流水号
@@ -869,7 +869,7 @@ class ApplyTradeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TradeFileId: 贸易材料流水号
         :type TradeFileId: str
         :param TradeOrderId: 贸易材料订单号
@@ -951,7 +951,7 @@ class ApplyTradeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 提交贸易材料结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyTradeResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -974,7 +974,7 @@ class ApplyTradeResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 提交贸易材料数据
@@ -1004,7 +1004,7 @@ class ApplyWithdrawalRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -1098,7 +1098,7 @@ class ApplyWithdrawalResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1115,7 +1115,7 @@ class BankCardItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EiconBankBranchId: 超级网银行号
         :type EiconBankBranchId: str
         :param CnapsBranchId: 大小额行号
@@ -1182,13 +1182,84 @@ BindType==2时必填
         
 
 
+class BindAccountRequest(AbstractModel):
+    """BindAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播Id
+        :type AnchorId: str
+        :param TransferType: 1 微信企业付款 
+2 支付宝转账 
+3 平安银企直连代发转账
+        :type TransferType: int
+        :param AccountNo: 收款方标识。
+微信为open_id；
+支付宝为会员alipay_user_id;
+平安为收款方银行账号;
+        :type AccountNo: str
+        :param PhoneNum: 手机号
+        :type PhoneNum: str
+        """
+        self.AnchorId = None
+        self.TransferType = None
+        self.AccountNo = None
+        self.PhoneNum = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.TransferType = params.get("TransferType")
+        self.AccountNo = params.get("AccountNo")
+        self.PhoneNum = params.get("PhoneNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindAccountResponse(AbstractModel):
+    """BindAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 该字段为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class BindAcctRequest(AbstractModel):
     """BindAcct请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -1297,7 +1368,7 @@ class BindAcctResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1314,7 +1385,7 @@ class BindRelateAccReUnionPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param TranNetMemberCode: STRING(32)，交易网会员代码（若需要把一个待绑定账户关联到两个会员名下，此字段可上送两个会员的交易网代码，并且须用“|::|”（右侧）进行分隔）
@@ -1358,7 +1429,7 @@ class BindRelateAccReUnionPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrontSeqNo: STRING(52)，见证系统流水号
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrontSeqNo: str
@@ -1397,7 +1468,7 @@ class BindRelateAcctSmallAmountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param TranNetMemberCode: STRING(32)，交易网会员代码（若需要把一个待绑定账户关联到两个会员名下，此字段可上送两个会员的交易网代码，并且须用“|::|”(右侧)进行分隔）
@@ -1469,7 +1540,7 @@ class BindRelateAcctSmallAmountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -1503,7 +1574,7 @@ class BindRelateAcctUnionPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranNetMemberCode: STRING(32)，交易网会员代码（若需要把一个待绑定账户关联到两个会员名下，此字段可上送两个会员的交易网代码，并且须用“|::|”（右侧）进行分隔）
         :type TranNetMemberCode: str
         :param MemberName: STRING(150)，见证子账户的户名（首次绑定的情况下，此字段即为待绑定的提现账户的户名。非首次绑定的情况下，须注意带绑定的提现账户的户名须与留存在后台系统的会员户名一致）
@@ -1575,7 +1646,7 @@ class BindRelateAcctUnionPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReservedMsg: STRING(1027)，保留域（在同名子账户绑定的场景下，若返回"VERIFIED"则说明无需验证直接绑定成功）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedMsg: str
@@ -1609,7 +1680,7 @@ class ChannelContractInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OutContractCode: 外部合约协议号
         :type OutContractCode: str
         :param ChannelContractCode: 米大师内部生成的合约协议号
@@ -1637,7 +1708,7 @@ class ChannelReturnContractInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContractStatus: 平台合约状态
 协议状态，枚举值：
 CONTRACT_STATUS_SIGNED：已签约
@@ -1671,7 +1742,7 @@ class CheckAcctRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -1754,7 +1825,7 @@ class CheckAcctResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrontSeqNo: 前置流水号，请保存
         :type FrontSeqNo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1775,7 +1846,7 @@ class CheckAmountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param TranNetMemberCode: STRING(32)，交易网会员代码（若需要把一个待绑定账户关联到两个会员名下，此字段可上送两个会员的交易网代码，并且须用“|::|”(右侧)进行分隔）
@@ -1823,7 +1894,7 @@ class CheckAmountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -1860,7 +1931,7 @@ class ClearItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: STRING(8)，日期（格式: 20190101）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
@@ -1915,7 +1986,7 @@ class CloseOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param UserId: 用户ID，长度不小于5位， 仅支持字母和数字的组合
@@ -1967,7 +2038,7 @@ class CloseOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1978,13 +2049,77 @@ class CloseOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ConfirmOrderRequest(AbstractModel):
+    """ConfirmOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 分配给商户的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfirmOrderResponse(AbstractModel):
+    """ConfirmOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 分配给商户的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        :param Status: 订单确认状态。0-确认失败
+1-确认成功 
+2-可疑状态
+        :type Status: str
+        :param Description: 订单确认状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+        self.Status = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class ContractInfo(AbstractModel):
     """合约信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChannelContractMerchantId: 米大师内部签约商户号
         :type ChannelContractMerchantId: str
         :param ChannelContractSubMerchantId: 米大师内部签约子商户号
@@ -2056,7 +2191,7 @@ class ContractOrderInSubOrder(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubMchIncome: 子订单结算应收金额，单位： 分
         :type SubMchIncome: int
         :param PlatformIncome: 子订单平台应收金额，单位：分
@@ -2112,7 +2247,7 @@ class ContractOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CurrencyType: ISO 货币代码，CNY
         :type CurrencyType: str
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
@@ -2271,7 +2406,7 @@ class ContractOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalAmt: 支付金额，单位： 分
         :type TotalAmt: int
         :param OutTradeNo: 应用支付订单号
@@ -2308,7 +2443,7 @@ class ContractSyncInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalReturnContractInfo: 第三方渠道合约信息
         :type ExternalReturnContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ExternalReturnContractInfo`
         :param ExternalContractUserInfo: 第三方渠道用户信息
@@ -2360,7 +2495,7 @@ class ContractUserInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserType: USER_ID: 用户ID
 ANONYMOUS: 匿名类型用户ID
         :type UserType: str
@@ -2389,7 +2524,7 @@ class CreateAcctRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫平台分配的支付MidasAppId
         :type MidasAppId: str
         :param SubMchId: 业务平台的子商户ID，唯一
@@ -2507,7 +2642,7 @@ class CreateAcctResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
         :param SubAcctNo: 银行生成的子商户账户
@@ -2532,7 +2667,7 @@ class CreateAgentTaxPaymentInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentId: 代理商ID
         :type AgentId: str
         :param Channel: 平台渠道
@@ -2585,7 +2720,7 @@ class CreateAgentTaxPaymentInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentTaxPaymentBatch: 代理商完税证明批次信息
         :type AgentTaxPaymentBatch: :class:`tencentcloud.cpdp.v20190820.models.AgentTaxPaymentBatch`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2602,13 +2737,229 @@ class CreateAgentTaxPaymentInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateBatchPaymentBatchData(AbstractModel):
+    """CreateBatchPayment接口BatchInfo对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param TradeSerialNo: 交易流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeSerialNo: str
+        :param Status: 交易状态。
+0 处理中  
+1 预占成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+5 预占额度失败
+6 提交成功
+7 提交失败
+8 订单重复提交
+99 未知系统异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
+        """
+        self.OrderId = None
+        self.TradeSerialNo = None
+        self.Status = None
+        self.StatusDesc = None
+        self.AgentId = None
+        self.AgentName = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentData(AbstractModel):
+    """CreateBatchPayment接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次号
+        :type BatchId: str
+        :param BatchInfoList: 批次列表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchInfoList: list of CreateBatchPaymentBatchData
+        """
+        self.BatchId = None
+        self.BatchInfoList = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        if params.get("BatchInfoList") is not None:
+            self.BatchInfoList = []
+            for item in params.get("BatchInfoList"):
+                obj = CreateBatchPaymentBatchData()
+                obj._deserialize(item)
+                self.BatchInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentRecipient(AbstractModel):
+    """CreateBatchPayment转账明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferAmount: 转账金额
+        :type TransferAmount: int
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param AnchorId: 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+        :type AnchorId: str
+        :param Uid: 主播业务ID（与主播业务ID不能同时为空，两者都填取主播ID）
+        :type Uid: str
+        :param AnchorName: 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+        :type AnchorName: str
+        :param Remark: 业务备注
+        :type Remark: str
+        :param ReqReserved: 子单请求预留字段
+        :type ReqReserved: str
+        """
+        self.TransferAmount = None
+        self.OrderId = None
+        self.AnchorId = None
+        self.Uid = None
+        self.AnchorName = None
+        self.Remark = None
+        self.ReqReserved = None
+
+
+    def _deserialize(self, params):
+        self.TransferAmount = params.get("TransferAmount")
+        self.OrderId = params.get("OrderId")
+        self.AnchorId = params.get("AnchorId")
+        self.Uid = params.get("Uid")
+        self.AnchorName = params.get("AnchorName")
+        self.Remark = params.get("Remark")
+        self.ReqReserved = params.get("ReqReserved")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentRequest(AbstractModel):
+    """CreateBatchPayment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferType: 1 微信企业付款 
+2 支付宝转账 
+3 平安银企直连代发转账
+        :type TransferType: int
+        :param RecipientList: 转账详情
+        :type RecipientList: list of CreateBatchPaymentRecipient
+        :param ReqReserved: 请求预留字段
+        :type ReqReserved: str
+        :param NotifyUrl: 回调Url
+        :type NotifyUrl: str
+        """
+        self.TransferType = None
+        self.RecipientList = None
+        self.ReqReserved = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TransferType = params.get("TransferType")
+        if params.get("RecipientList") is not None:
+            self.RecipientList = []
+            for item in params.get("RecipientList"):
+                obj = CreateBatchPaymentRecipient()
+                obj._deserialize(item)
+                self.RecipientList.append(obj)
+        self.ReqReserved = params.get("ReqReserved")
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchPaymentResponse(AbstractModel):
+    """CreateBatchPayment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateBatchPaymentData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateBatchPaymentData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCustAcctIdRequest(AbstractModel):
     """CreateCustAcctId请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionFlag: STRING(2)，功能标志（1: 开户; 3: 销户）
         :type FunctionFlag: str
         :param FundSummaryAcctNo: STRING(50)，资金汇总账号（即收单资金归集入账的账号）
@@ -2688,7 +3039,7 @@ class CreateCustAcctIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubAcctNo: STRING(50)，见证子账户的账号（平台需要记录下来，后续所有接口交互都会用到）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAcctNo: str
@@ -2721,13 +3072,109 @@ class CreateCustAcctIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateExternalAnchorData(AbstractModel):
+    """CreateExternalAnchor接口返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播Id
+        :type AnchorId: str
+        """
+        self.AnchorId = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExternalAnchorRequest(AbstractModel):
+    """CreateExternalAnchor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uid: 平台业务系统唯一标示的主播id
+        :type Uid: str
+        :param Name: 主播名称
+        :type Name: str
+        :param IdNo: 身份证号
+        :type IdNo: str
+        :param IdCardFront: 身份证正面图片下载链接
+        :type IdCardFront: str
+        :param IdCardReverse: 身份证反面图片下载链接
+        :type IdCardReverse: str
+        """
+        self.Uid = None
+        self.Name = None
+        self.IdNo = None
+        self.IdCardFront = None
+        self.IdCardReverse = None
+
+
+    def _deserialize(self, params):
+        self.Uid = params.get("Uid")
+        self.Name = params.get("Name")
+        self.IdNo = params.get("IdNo")
+        self.IdCardFront = params.get("IdCardFront")
+        self.IdCardReverse = params.get("IdCardReverse")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExternalAnchorResponse(AbstractModel):
+    """CreateExternalAnchor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateExternalAnchorData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateExternalAnchorData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInvoiceItem(AbstractModel):
     """发票开具明细
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 商品名称
         :type Name: str
         :param TaxCode: 税收商品编码
@@ -2808,7 +3255,7 @@ class CreateInvoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID。0：高灯，1：票易通
         :type InvoicePlatformId: int
         :param TitleType: 抬头类型：1：个人/政府事业单位；2：企业
@@ -2983,7 +3430,7 @@ class CreateInvoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 发票开具结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3006,7 +3453,7 @@ class CreateInvoiceResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Message: 错误消息
         :type Message: str
         :param Code: 错误码
@@ -3041,7 +3488,7 @@ class CreateInvoiceResultData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param State: 开票状态
         :type State: int
         :param InvoiceId: 发票ID
@@ -3073,7 +3520,7 @@ class CreateInvoiceResultV2(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceId: 发票ID
         :type InvoiceId: str
         """
@@ -3097,7 +3544,7 @@ class CreateInvoiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID。0：高灯，1：票易通
         :type InvoicePlatformId: int
         :param TitleType: 抬头类型：1：个人/政府事业单位；2：企业
@@ -3272,7 +3719,7 @@ class CreateInvoiceV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 发票开具结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceResultV2`
@@ -3304,7 +3751,7 @@ class CreateMerchantRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID
         :type InvoicePlatformId: int
         :param TaxpayerName: 企业名称
@@ -3412,7 +3859,7 @@ class CreateMerchantResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 商户注册结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateMerchantResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3435,7 +3882,7 @@ class CreateMerchantResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 状态码
         :type Code: int
         :param Message: 响应消息
@@ -3470,7 +3917,7 @@ class CreateMerchantResultData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaxpayerName: 企业名称
         :type TaxpayerName: str
         :param SerialNo: 请求流水号
@@ -3496,13 +3943,152 @@ class CreateMerchantResultData(AbstractModel):
         
 
 
+class CreateOrderRequest(AbstractModel):
+    """CreateOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelCode: 渠道编号。ZSB2B：招商银行B2B。
+        :type ChannelCode: str
+        :param MerchantAppId: 进件成功后返给商户方的 AppId。
+        :type MerchantAppId: str
+        :param Amount: 交易金额。单位：元
+        :type Amount: str
+        :param TraceNo: 商户流水号。商户唯一订单号由字母或数字组成。
+        :type TraceNo: str
+        :param NotifyUrl: 通知地址。商户接收交易结果的通知地址。
+        :type NotifyUrl: str
+        :param ReturnUrl: 返回地址。支付成功后，页面将跳 转返回到商户的该地址。
+        :type ReturnUrl: str
+        """
+        self.ChannelCode = None
+        self.MerchantAppId = None
+        self.Amount = None
+        self.TraceNo = None
+        self.NotifyUrl = None
+        self.ReturnUrl = None
+
+
+    def _deserialize(self, params):
+        self.ChannelCode = params.get("ChannelCode")
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.Amount = params.get("Amount")
+        self.TraceNo = params.get("TraceNo")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.ReturnUrl = params.get("ReturnUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrderResponse(AbstractModel):
+    """CreateOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param TraceNo: 商户流水号，商户唯一订单号由字母或数字组成。
+        :type TraceNo: str
+        :param OrderNo: 平台流水号，若下单成功则返回。
+        :type OrderNo: str
+        :param PayUrl: 支付页面跳转地址，若下单成功则返回。
+        :type PayUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.TraceNo = None
+        self.OrderNo = None
+        self.PayUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.TraceNo = params.get("TraceNo")
+        self.OrderNo = params.get("OrderNo")
+        self.PayUrl = params.get("PayUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePayMerchantRequest(AbstractModel):
+    """CreatePayMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlatformCode: 平台编号
+        :type PlatformCode: str
+        :param ChannelMerchantNo: 渠道方收款商户编号，由渠道方(银行)提 供。
+        :type ChannelMerchantNo: str
+        :param ChannelCheckFlag: 是否需要向渠道进行 商户信息验证 1:验证
+0:不验证
+        :type ChannelCheckFlag: str
+        :param MerchantName: 收款商户名称
+        :type MerchantName: str
+        :param BusinessPayFlag: 是否开通 B2B 支付 1:开通 0:不开通 缺省:1
+        :type BusinessPayFlag: str
+        """
+        self.PlatformCode = None
+        self.ChannelMerchantNo = None
+        self.ChannelCheckFlag = None
+        self.MerchantName = None
+        self.BusinessPayFlag = None
+
+
+    def _deserialize(self, params):
+        self.PlatformCode = params.get("PlatformCode")
+        self.ChannelMerchantNo = params.get("ChannelMerchantNo")
+        self.ChannelCheckFlag = params.get("ChannelCheckFlag")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessPayFlag = params.get("BusinessPayFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePayMerchantResponse(AbstractModel):
+    """CreatePayMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 分配给商户的 AppId。该 AppId 为后续各项 交易的商户标识。
+        :type MerchantAppId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRedInvoiceItem(AbstractModel):
     """创建红票明细
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单号
         :type OrderId: str
         :param CallbackUrl: 发票结果回传地址
@@ -3542,7 +4128,7 @@ class CreateRedInvoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID
         :type InvoicePlatformId: int
         :param Invoices: 红冲明细
@@ -3583,7 +4169,7 @@ class CreateRedInvoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 红冲结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3606,7 +4192,7 @@ class CreateRedInvoiceResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Message: 错误消息
         :type Message: str
         :param Code: 错误码
@@ -3644,7 +4230,7 @@ class CreateRedInvoiceResultData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 红冲状态码
         :type Code: int
         :param Message: 红冲状态消息
@@ -3680,7 +4266,7 @@ class CreateRedInvoiceResultV2(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceId: 红票ID
         :type InvoiceId: str
         """
@@ -3704,7 +4290,7 @@ class CreateRedInvoiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID
         :type InvoicePlatformId: int
         :param OrderId: 订单号
@@ -3740,7 +4326,7 @@ class CreateRedInvoiceV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 红冲结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceResultV2`
@@ -3772,7 +4358,7 @@ class CreateSinglePayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SerialNumber: 业务流水号，历史唯一
         :type SerialNumber: str
         :param PayAccountNumber: 付方账户号
@@ -3864,7 +4450,7 @@ class CreateSinglePayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateSinglePayResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3887,7 +4473,7 @@ class CreateSinglePayResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HandleStatus: 受理状态（S：处理成功；F：处理失败）
         :type HandleStatus: str
         :param HandleMsg: 受理状态描述
@@ -3934,13 +4520,125 @@ class CreateSinglePayResult(AbstractModel):
         
 
 
+class CreateSinglePaymentData(AbstractModel):
+    """CreateSinglePayment接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TradeSerialNo: 平台交易流水号，唯一
+        :type TradeSerialNo: str
+        """
+        self.TradeSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSinglePaymentRequest(AbstractModel):
+    """CreateSinglePayment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferType: 转账类型
+        :type TransferType: int
+        :param OrderId: 订单流水号
+        :type OrderId: str
+        :param TransferAmount: 转账金额
+        :type TransferAmount: int
+        :param AnchorId: 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+        :type AnchorId: str
+        :param ReqReserved: 请求预留字段，原样透传返回
+        :type ReqReserved: str
+        :param Remark: 业务备注
+        :type Remark: str
+        :param AnchorName: 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+        :type AnchorName: str
+        :param Uid: 主播业务ID（与主播ID不能同时为空，两者都填取主播ID）
+        :type Uid: str
+        :param NotifyUrl: 转账结果回调通知URL。若不填，则不进行回调。
+        :type NotifyUrl: str
+        """
+        self.TransferType = None
+        self.OrderId = None
+        self.TransferAmount = None
+        self.AnchorId = None
+        self.ReqReserved = None
+        self.Remark = None
+        self.AnchorName = None
+        self.Uid = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.TransferType = params.get("TransferType")
+        self.OrderId = params.get("OrderId")
+        self.TransferAmount = params.get("TransferAmount")
+        self.AnchorId = params.get("AnchorId")
+        self.ReqReserved = params.get("ReqReserved")
+        self.Remark = params.get("Remark")
+        self.AnchorName = params.get("AnchorName")
+        self.Uid = params.get("Uid")
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSinglePaymentResponse(AbstractModel):
+    """CreateSinglePayment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码
+        :type ErrCode: str
+        :param ErrMessage: 响应消息
+        :type ErrMessage: str
+        :param Result: 返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateSinglePaymentData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateSinglePaymentData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTransferBatchRequest(AbstractModel):
     """CreateTransferBatch请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号。
 示例值：129284394
         :type MerchantId: str
@@ -4019,7 +4717,7 @@ class CreateTransferBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantBatchNo: 商家批次单号。
 商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
 示例值：plfk2020042013
@@ -4053,7 +4751,7 @@ class DeleteAgentTaxPaymentInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchNum: 批次号
         :type BatchNum: int
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -4081,7 +4779,7 @@ class DeleteAgentTaxPaymentInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4098,7 +4796,7 @@ class DeleteAgentTaxPaymentInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchNum: 批次号
         :type BatchNum: int
         """
@@ -4122,7 +4820,7 @@ class DeleteAgentTaxPaymentInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4139,7 +4837,7 @@ class DescribeChargeDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型
         :type RequestType: str
         :param MerchantCode: 商户号
@@ -4215,7 +4913,7 @@ class DescribeChargeDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderStatus: 交易状态 （0：成功，1：失败，2：异常,3:冲正，5：待处理）
         :type OrderStatus: str
         :param OrderAmount: 交易金额
@@ -4284,7 +4982,7 @@ class DescribeOrderStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型，此接口固定填：QueryOrderStatusReq
         :type RequestType: str
         :param MerchantCode: 商户号
@@ -4368,7 +5066,7 @@ class DescribeOrderStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderStatus: 交易状态 （0：成功，1：失败，2：待确认, 5：待处理，6：处理中）
         :type OrderStatus: str
         :param OrderAmount: 交易金额
@@ -4421,7 +5119,7 @@ class DownloadBillRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StateDate: 请求下载对账单日期
         :type StateDate: str
         :param MidasAppId: 聚鑫分配的MidasAppId
@@ -4465,7 +5163,7 @@ class DownloadBillResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 账单文件名
         :type FileName: str
         :param FileMD5: 账单文件的MD5值
@@ -4494,7 +5192,7 @@ class ExecuteMemberTransactionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型此接口固定填：MemberTransactionReq
         :type RequestType: str
         :param MerchantCode: 银行注册商户号
@@ -4617,7 +5315,7 @@ class ExecuteMemberTransactionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型
         :type RequestType: str
         :param FrontSequenceNumber: 银行流水号
@@ -4647,7 +5345,7 @@ class ExternalContractUserInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalUserType: 第三方用户类型，例如:  WX_OPENID, WX_SUB_OPENID,WX_PAYER_OPENID
         :type ExternalUserType: str
         :param ExternalUserId: 第三方用户ID
@@ -4675,7 +5373,7 @@ class ExternalReturnContractInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalReturnAgreementId: 第三方渠道协议id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalReturnAgreementId: str
@@ -4749,7 +5447,7 @@ class FileItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: STRING(256)，文件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
@@ -4789,7 +5487,7 @@ class MerchantManagementList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaxpayerName: 企业名称。
         :type TaxpayerName: str
         :param TaxpayerNum: 纳税人识别号(税号)	。
@@ -4825,7 +5523,7 @@ class MerchantManagementResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数。
         :type Total: int
         :param List: 商户列表。
@@ -4858,7 +5556,7 @@ class MigrateOrderRefundQueryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param PayChannel: 支付渠道，ALIPAY对应支付宝渠道；UNIONPAY对应银联渠道
@@ -4898,7 +5596,7 @@ class MigrateOrderRefundQueryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 请求成功状态
         :type IsSuccess: bool
         :param TradeSerialNo: 交易流水号
@@ -4936,7 +5634,7 @@ class MigrateOrderRefundRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户代码
         :type MerchantId: str
         :param PayChannel: 支付渠道，ALIPAY对应支付宝渠道；UNIONPAY对应银联渠道
@@ -4992,7 +5690,7 @@ class MigrateOrderRefundResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 请求成功状态
         :type IsSuccess: bool
         :param TradeSerialNo: 退款流水号
@@ -5021,7 +5719,7 @@ class ModifyAgentTaxPaymentInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchNum: 批次号
         :type BatchNum: int
         :param RawElectronicCertUrl: 新源电子凭证地址
@@ -5057,7 +5755,7 @@ class ModifyAgentTaxPaymentInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentTaxPaymentBatch: 代理商完税证明批次信息
         :type AgentTaxPaymentBatch: :class:`tencentcloud.cpdp.v20190820.models.AgentTaxPaymentBatch`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5074,13 +5772,133 @@ class ModifyAgentTaxPaymentInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBindedAccountRequest(AbstractModel):
+    """ModifyBindedAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播Id
+        :type AnchorId: str
+        :param TransferType: 1 微信企业付款 
+2 支付宝转账 
+3 平安银企直连代发转账
+        :type TransferType: int
+        :param AccountNo: 收款方标识。
+微信为open_id；
+支付宝为会员alipay_user_id;
+平安为收款方银行账号;
+        :type AccountNo: str
+        :param PhoneNum: 手机号
+        :type PhoneNum: str
+        """
+        self.AnchorId = None
+        self.TransferType = None
+        self.AccountNo = None
+        self.PhoneNum = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.TransferType = params.get("TransferType")
+        self.AccountNo = params.get("AccountNo")
+        self.PhoneNum = params.get("PhoneNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBindedAccountResponse(AbstractModel):
+    """ModifyBindedAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 该字段为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMerchantRequest(AbstractModel):
+    """ModifyMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户的AppId
+        :type MerchantAppId: str
+        :param MerchantName: 收款商户名称
+        :type MerchantName: str
+        :param BusinessPayFlag: B2B 支付标志。是否开通 B2B支付， 1:开通 0:不开通。
+        :type BusinessPayFlag: str
+        """
+        self.MerchantAppId = None
+        self.MerchantName = None
+        self.BusinessPayFlag = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessPayFlag = params.get("BusinessPayFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMerchantResponse(AbstractModel):
+    """ModifyMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMntMbrBindRelateAcctBankCodeRequest(AbstractModel):
     """ModifyMntMbrBindRelateAcctBankCode请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param SubAcctNo: STRING(50)，见证子账户的账号
@@ -5132,7 +5950,7 @@ class ModifyMntMbrBindRelateAcctBankCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -5166,7 +5984,7 @@ class Order(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AmountHasTax: 含税金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type AmountHasTax: float
@@ -5241,7 +6059,7 @@ class OrderItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AmountHasTax: 明细金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type AmountHasTax: float
@@ -5306,7 +6124,7 @@ class OrganizationInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrganizationName: 公司名称，个体工商户必输
         :type OrganizationName: str
         :param OrganizationType: 公司证件类型，个体工商户必输，证件类型仅支持73
@@ -5352,7 +6170,7 @@ class QueryAcctBindingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -5403,7 +6221,7 @@ class QueryAcctBindingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总行数
         :type TotalCount: int
         :param BankCardItems: 银行卡信息列表
@@ -5433,7 +6251,7 @@ class QueryAcctInfoListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param QueryAcctBeginTime: 查询开始时间(以开户时间为准)
@@ -5492,7 +6310,7 @@ class QueryAcctInfoListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultCount: 本次交易返回查询结果记录数
         :type ResultCount: int
         :param TotalCount: 符合业务查询条件的记录总数
@@ -5526,7 +6344,7 @@ class QueryAcctInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫平台分配的支付MidasAppId
         :type MidasAppId: str
         :param SubMchId: 业务平台的子商户Id，唯一
@@ -5577,7 +6395,7 @@ class QueryAcctInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
         :param SubMchName: 子商户名称
@@ -5648,7 +6466,7 @@ class QueryAcctItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubMchType: 子商户类型：
 个人: personal
 企业：enterprise
@@ -5722,7 +6540,7 @@ class QueryAgentStatementsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 结算单日期，月结算单填每月1日
         :type Date: str
         :param Type: 日结算单:daily
@@ -5751,7 +6569,7 @@ class QueryAgentStatementsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileUrl: 文件下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
@@ -5773,7 +6591,7 @@ class QueryAgentTaxPaymentBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchNum: 批次号
         :type BatchNum: int
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -5801,7 +6619,7 @@ class QueryAgentTaxPaymentBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgentTaxPaymentBatch: 代理商完税证明批次信息
         :type AgentTaxPaymentBatch: :class:`tencentcloud.cpdp.v20190820.models.AgentTaxPaymentBatch`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5824,7 +6642,7 @@ class QueryAnchorContractInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginTime: 起始时间，格式为yyyy-MM-dd
         :type BeginTime: str
         :param EndTime: 起始时间，格式为yyyy-MM-dd
@@ -5852,7 +6670,7 @@ class QueryAnchorContractInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AnchorContractInfoList: 签约主播数据
         :type AnchorContractInfoList: list of AnchorContractInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5878,7 +6696,7 @@ class QueryApplicationMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeclareId: 申报流水号
         :type DeclareId: str
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -5906,7 +6724,7 @@ class QueryApplicationMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功申报材料查询结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryDeclareResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5929,7 +6747,7 @@ class QueryBalanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -5982,7 +6800,7 @@ class QueryBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultCount: 本次交易返回查询结果记录数
         :type ResultCount: str
         :param StartRecordOffset: 起始记录号
@@ -6024,7 +6842,7 @@ class QueryBankClearRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（1: 全部; 2: 指定时间段）
@@ -6072,7 +6890,7 @@ class QueryBankClearResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -6136,7 +6954,7 @@ class QueryBankTransactionDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（1: 当日; 2: 历史）
@@ -6192,7 +7010,7 @@ class QueryBankTransactionDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -6256,7 +7074,7 @@ class QueryBankWithdrawCashDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（1: 当日; 2: 历史）
@@ -6312,7 +7130,7 @@ class QueryBankWithdrawCashDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -6370,13 +7188,188 @@ class QueryBankWithdrawCashDetailsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryBatchPaymentResultData(AbstractModel):
+    """QueryBatchPaymentResult接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param TotalAmount: 批次总额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalAmount: int
+        :param TotalCount: 批次总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ReqReserved: 批次预留字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReqReserved: str
+        :param Remark: 批次备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param TransferType: 渠道类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferType: int
+        :param TransferInfoList: 转账明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferInfoList: list of QueryBatchPaymentResultDataInfo
+        """
+        self.BatchId = None
+        self.TotalAmount = None
+        self.TotalCount = None
+        self.ReqReserved = None
+        self.Remark = None
+        self.TransferType = None
+        self.TransferInfoList = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.TotalAmount = params.get("TotalAmount")
+        self.TotalCount = params.get("TotalCount")
+        self.ReqReserved = params.get("ReqReserved")
+        self.Remark = params.get("Remark")
+        self.TransferType = params.get("TransferType")
+        if params.get("TransferInfoList") is not None:
+            self.TransferInfoList = []
+            for item in params.get("TransferInfoList"):
+                obj = QueryBatchPaymentResultDataInfo()
+                obj._deserialize(item)
+                self.TransferInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryBatchPaymentResultDataInfo(AbstractModel):
+    """QueryBatchPaymentResultData复杂类型中的TransferInfoList
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
+        :param Status: 交易状态。
+0 处理中  
+1 预占成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+5 预占额度失败
+6 提交成功
+7 提交失败
+8 订单重复提交
+99 未知系统异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param TransferAmount: 转账金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferAmount: int
+        """
+        self.OrderId = None
+        self.AgentId = None
+        self.AgentName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.TransferAmount = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.TransferAmount = params.get("TransferAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryBatchPaymentResultRequest(AbstractModel):
+    """QueryBatchPaymentResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次号
+        :type BatchId: str
+        """
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryBatchPaymentResultResponse(AbstractModel):
+    """QueryBatchPaymentResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryBatchPaymentResultData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryBatchPaymentResultData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryBillDownloadURLData(AbstractModel):
     """智能代发-单笔代发转账对账单返回数据
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param BillDownloadURL: 统一对账单下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillDownloadURL: str
@@ -6406,7 +7399,7 @@ class QueryBillDownloadURLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TransferType: 代发类型：
@@ -6441,7 +7434,7 @@ class QueryBillDownloadURLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
         :type ErrCode: str
         :param ErrMessage: 响应消息
@@ -6473,7 +7466,7 @@ class QueryCommonTransferRechargeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（1为查询当日数据，0查询历史数据）
@@ -6521,7 +7514,7 @@ class QueryCommonTransferRechargeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -6585,7 +7578,7 @@ class QueryContractRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
@@ -6621,6 +7614,10 @@ development: 开发环境
 ANONYMOUS: 匿名类型 USER_ID
 默认值为 USER_ID
         :type UserType: str
+        :param MigrateMode: 签约代扣穿透查询存量数据迁移模式
+        :type MigrateMode: str
+        :param ContractMethod: 签约方式
+        :type ContractMethod: str
         """
         self.MidasAppId = None
         self.UserId = None
@@ -6635,6 +7632,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.ExternalContractData = None
         self.MidasEnvironment = None
         self.UserType = None
+        self.MigrateMode = None
+        self.ContractMethod = None
 
 
     def _deserialize(self, params):
@@ -6651,6 +7650,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.ExternalContractData = params.get("ExternalContractData")
         self.MidasEnvironment = params.get("MidasEnvironment")
         self.UserType = params.get("UserType")
+        self.MigrateMode = params.get("MigrateMode")
+        self.ContractMethod = params.get("ContractMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6666,7 +7667,7 @@ class QueryContractResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContractData: 签约数据
         :type ContractData: :class:`tencentcloud.cpdp.v20190820.models.ResponseQueryContract`
         :param Msg: 请求处理信息
@@ -6693,7 +7694,7 @@ class QueryCustAcctIdBalanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param QueryFlag: STRING(4)，查询标志（2: 普通会员子账号; 3: 功能子账号）
@@ -6737,7 +7738,7 @@ class QueryCustAcctIdBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -6801,7 +7802,7 @@ class QueryDeclareData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TransactionId: 对接方汇出指令编号
@@ -6869,7 +7870,7 @@ class QueryDeclareResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 成功申报材料查询数据
         :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryDeclareData`
         :param Code: 错误码
@@ -6893,13 +7894,70 @@ class QueryDeclareResult(AbstractModel):
         
 
 
+class QueryDownloadBillURLRequest(AbstractModel):
+    """QueryDownloadBillURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 分配给商户的AppId。进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param ChannelCode: 渠道编号。固定值：ZSB2B
+        :type ChannelCode: str
+        :param BillDate: 对账单日期，格式yyyyMMdd
+        :type BillDate: str
+        """
+        self.MerchantAppId = None
+        self.ChannelCode = None
+        self.BillDate = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.ChannelCode = params.get("ChannelCode")
+        self.BillDate = params.get("BillDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryDownloadBillURLResponse(AbstractModel):
+    """QueryDownloadBillURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 分配给商户的AppId。进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param DownloadUrl: 对账单下载地址。
+        :type DownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class QueryExchangeRateRequest(AbstractModel):
     """QueryExchangeRate请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceCurrency: 源币种 (默认CNY)
         :type SourceCurrency: str
         :param TargetCurrency: 目的币种 (见常见问题-汇出币种)
@@ -6931,7 +7989,7 @@ class QueryExchangeRateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 查询汇率结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryExchangerateResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6954,7 +8012,7 @@ class QueryExchangerateData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rate: 汇率
         :type Rate: str
         :param SourceCurrency: 源币种
@@ -6994,7 +8052,7 @@ class QueryExchangerateResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 查询汇率数据数组
@@ -7027,7 +8085,7 @@ class QueryInvoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID
         :type InvoicePlatformId: int
         :param OrderId: 订单号
@@ -7077,7 +8135,7 @@ class QueryInvoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 发票查询结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7100,7 +8158,7 @@ class QueryInvoiceResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Message: 错误消息
         :type Message: str
         :param Code: 错误码
@@ -7142,7 +8200,7 @@ class QueryInvoiceResultData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单号
         :type OrderId: str
         :param OrderSn: 业务开票号
@@ -7214,7 +8272,7 @@ class QueryInvoiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID
         :type InvoicePlatformId: int
         :param OrderId: 订单号
@@ -7260,7 +8318,7 @@ class QueryInvoiceV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 发票查询结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceResultData`
@@ -7292,7 +8350,7 @@ class QueryItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubAcctNo: 子商户账户
         :type SubAcctNo: str
         :param SubAcctProperty: 子账户属性 
@@ -7345,7 +8403,7 @@ class QueryMemberBindRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param QueryFlag: STRING(4)，查询标志（1: 全部会员; 2: 单个会员; 3: 单个会员的证件信息）
@@ -7389,7 +8447,7 @@ class QueryMemberBindResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultNum: STRING (10)，本次交易返回查询结果记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultNum: str
@@ -7453,7 +8511,7 @@ class QueryMemberTransactionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（1: 下单预支付; 2: 确认并付款; 3: 退款; 6: 直接支付T+1; 9: 直接支付T+0）
@@ -7545,7 +8603,7 @@ class QueryMemberTransactionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -7584,7 +8642,7 @@ class QueryMerchantBalanceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Currency: 余额币种
         :type Currency: str
         :param Balance: 账户余额
@@ -7616,7 +8674,7 @@ class QueryMerchantBalanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Currency: 余额币种
         :type Currency: str
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -7644,7 +8702,7 @@ class QueryMerchantBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 对接方账户余额查询结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantBalanceResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7667,7 +8725,7 @@ class QueryMerchantBalanceResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 对接账户余额查询数据
@@ -7697,7 +8755,7 @@ class QueryMerchantInfoForManagementRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoicePlatformId: 开票平台ID
         :type InvoicePlatformId: int
         :param Offset: 页码
@@ -7733,7 +8791,7 @@ class QueryMerchantInfoForManagementResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 商户结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.MerchantManagementResult`
@@ -7751,13 +8809,123 @@ class QueryMerchantInfoForManagementResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryMerchantOrderRequest(AbstractModel):
+    """QueryMerchantOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。平台唯一订单号。
+        :type OrderNo: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMerchantOrderResponse(AbstractModel):
+    """QueryMerchantOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。平台唯一订单号。
+        :type OrderNo: str
+        :param Status: 订单支付状态。0-下单失败 1-下单成功未支付 2-支付成功 3-支付失败 4-退款中 5-退款成功 6-退款失败 7-待付款 8-待确认。
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryMerchantRequest(AbstractModel):
+    """QueryMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户方的 AppId
+        :type MerchantAppId: str
+        """
+        self.MerchantAppId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMerchantResponse(AbstractModel):
+    """QueryMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 分配给商户的 AppId，该 AppId 为后续各项 交易的商户标识。
+        :type MerchantAppId: str
+        :param MerchantName: 收款商户名称。
+        :type MerchantName: str
+        :param BusinessPayFlag: B2B 支付标志。是否开通 B2B 支付， 1:开通 0:不开通。
+        :type BusinessPayFlag: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.MerchantName = None
+        self.BusinessPayFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessPayFlag = params.get("BusinessPayFlag")
+        self.RequestId = params.get("RequestId")
+
+
 class QueryOrderOutOrderList(AbstractModel):
     """查询订单接口的出参，订单列表
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param Amt: 支付金额，单位：分
@@ -7879,7 +9047,7 @@ class QueryOrderOutSubOrderList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Amt: 子订单支付金额
         :type Amt: int
         :param SubMchIncome: 子订单结算应收金额，单位：分
@@ -7939,7 +9107,7 @@ class QueryOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主 MidasAppId
         :type MidasAppId: str
         :param UserId: 用户ID，长度不小于5位， 仅支持字母和数字的组合
@@ -8012,7 +9180,7 @@ class QueryOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 返回订单数
         :type TotalNum: int
         :param OrderList: 查询结果的订单列表
@@ -8042,7 +9210,7 @@ class QueryOutwardOrderData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TransactionId: 对接方汇出指令编号
@@ -8124,7 +9292,7 @@ class QueryOutwardOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionId: 对接方汇出指令编号
         :type TransactionId: str
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -8152,7 +9320,7 @@ class QueryOutwardOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 查询汇出结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOutwardOrderResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8175,7 +9343,7 @@ class QueryOutwardOrderResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 查询汇出数据
@@ -8205,7 +9373,7 @@ class QueryPayerInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayerId: 付款人ID
         :type PayerId: str
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -8233,7 +9401,7 @@ class QueryPayerInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 付款人查询结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryPayerinfoResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8256,7 +9424,7 @@ class QueryPayerinfoData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param PayerId: 付款人ID
@@ -8328,7 +9496,7 @@ class QueryPayerinfoResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Data: 付款人查询数据
@@ -8358,7 +9526,7 @@ class QueryReconciliationDocumentRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号
         :type MrchCode: str
         :param FileType: STRING(10)，文件类型（充值文件-CZ; 提现文件-TX; 交易文件-JY; 余额文件-YE; 合约文件-HY）
@@ -8398,7 +9566,7 @@ class QueryReconciliationDocumentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -8447,7 +9615,7 @@ class QueryRefundRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合。
         :type UserId: str
         :param RefundId: 退款订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合。
@@ -8495,7 +9663,7 @@ class QueryRefundResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param State: 退款状态码，退款提交成功后返回  1：退款中；  2：退款成功；  3：退款失败。
         :type State: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8516,7 +9684,7 @@ class QuerySinglePayItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayStatus: 付款状态（S：支付成功；P：支付处理中；F：支付失败）
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayStatus: str
@@ -8556,7 +9724,7 @@ class QuerySinglePayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SerialNumber: 业务流水号
         :type SerialNumber: str
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -8584,7 +9752,7 @@ class QuerySinglePayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QuerySinglePayResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8607,7 +9775,7 @@ class QuerySinglePayResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HandleStatus: 受理状态（S：处理成功；F：处理失败）
         :type HandleStatus: str
         :param HandleMsg: 受理状态描述
@@ -8644,13 +9812,137 @@ class QuerySinglePayResult(AbstractModel):
         
 
 
+class QuerySinglePaymentResultData(AbstractModel):
+    """QuerySinglePaymentResult接口返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TradeSerialNo: 平台交易流水号，唯一
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeSerialNo: str
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param TradeStatus: 交易状态。
+0 处理中  
+1 预占成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+5 预占额度失败
+6 提交成功
+7 提交失败
+8 订单重复提交
+99 未知系统异常
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeStatus: int
+        :param Remark: 业务备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
+        """
+        self.TradeSerialNo = None
+        self.OrderId = None
+        self.TradeStatus = None
+        self.Remark = None
+        self.AgentId = None
+        self.AgentName = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.OrderId = params.get("OrderId")
+        self.TradeStatus = params.get("TradeStatus")
+        self.Remark = params.get("Remark")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySinglePaymentResultRequest(AbstractModel):
+    """QuerySinglePaymentResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransferType: 转账类型
+        :type TransferType: int
+        :param TradeSerialNo: 交易流水流水号，唯一
+        :type TradeSerialNo: str
+        :param OrderId: 订单号，与TradeSerialNo不能同时为空
+        :type OrderId: str
+        """
+        self.TransferType = None
+        self.TradeSerialNo = None
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.TransferType = params.get("TransferType")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySinglePaymentResultResponse(AbstractModel):
+    """QuerySinglePaymentResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 返回响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QuerySinglePaymentResultData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QuerySinglePaymentResultData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QuerySingleTransactionStatusRequest(AbstractModel):
     """QuerySingleTransactionStatus请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（2: 会员间交易; 3: 提现; 4: 充值）
@@ -8698,7 +9990,7 @@ class QuerySingleTransactionStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -8772,7 +10064,7 @@ class QuerySmallAmountTransferRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param OldTranSeqNo: STRING(52)，原交易流水号（小额鉴权交易请求时的CnsmrSeqNo值）
@@ -8812,7 +10104,7 @@ class QuerySmallAmountTransferResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -8856,7 +10148,7 @@ class QueryTradeData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param TradeFileId: 贸易材料流水号
@@ -8948,7 +10240,7 @@ class QueryTradeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TradeFileId: 贸易材料流水号
         :type TradeFileId: str
         :param Profile: 接入环境。沙箱环境填sandbox
@@ -8976,7 +10268,7 @@ class QueryTradeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 贸易材料明细查询结果
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryTradeResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8999,7 +10291,7 @@ class QueryTradeResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 贸易材料明细查询数据
         :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryTradeData`
         :param Code: 错误码
@@ -9029,7 +10321,7 @@ class QueryTransferBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号。
 示例值：129284394
         :type MerchantId: str
@@ -9102,7 +10394,7 @@ class QueryTransferBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号。
 示例值：19300009329
         :type MerchantId: str
@@ -9238,7 +10530,7 @@ class QueryTransferDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号。
 示例值：129284394
         :type MerchantId: str
@@ -9296,7 +10588,7 @@ class QueryTransferDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号。
 示例值：19300009329
         :type MerchantId: str
@@ -9413,7 +10705,7 @@ class QueryTransferResultData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TradeSerialNo: 平台交易流水号
         :type TradeSerialNo: str
         :param OrderId: 订单号
@@ -9456,7 +10748,7 @@ class QueryTransferResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param MerchantAppId: 申请商户号的appid或者商户号绑定的appid
@@ -9502,7 +10794,7 @@ class QueryTransferResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
         :type ErrCode: str
         :param ErrMessage: 响应消息
@@ -9534,7 +10826,7 @@ class RechargeByThirdPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型 此接口固定填：MemberRechargeThirdPayReq
         :type RequestType: str
         :param MerchantCode: 商户号
@@ -9646,7 +10938,7 @@ class RechargeByThirdPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReservedMessage: 保留字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedMessage: str
@@ -9677,7 +10969,7 @@ class RechargeMemberThirdPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranNetMemberCode: STRING(32)，交易网会代码
         :type TranNetMemberCode: str
         :param MemberFillAmt: STRING(20)，会员充值金额
@@ -9760,7 +11052,7 @@ class RechargeMemberThirdPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -9809,7 +11101,7 @@ class RefundMemberTransactionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OutSubAccountName: 转出见证子账户的户名
         :type OutSubAccountName: str
         :param InSubAccountName: 转入见证子账户的户名
@@ -9926,7 +11218,7 @@ class RefundMemberTransactionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型
         :type RequestType: str
         :param FrontSequenceNumber: 银行流水号
@@ -9949,13 +11241,77 @@ class RefundMemberTransactionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RefundOrderRequest(AbstractModel):
+    """RefundOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户方的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefundOrderResponse(AbstractModel):
+    """RefundOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantAppId: 进件成功后返给商户方的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        :param Status: 订单退款状态。0-退款失败
+1-退款成功 
+2-可疑状态
+        :type Status: str
+        :param Description: 订单退款状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+        self.Status = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class RefundOutSubOrderRefundList(AbstractModel):
     """退款子订单列表
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlatformRefundAmt: 平台应退金额
         :type PlatformRefundAmt: int
         :param RefundAmt: 子订单退款金额
@@ -9995,7 +11351,7 @@ class RefundRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户ID，长度不小于5位， 仅支持字母和数字的组合
         :type UserId: str
         :param RefundId: 退款订单号，仅支持数字、 字母、下划线（_）、横杠字 符（-）、点（.）的组合
@@ -10072,7 +11428,7 @@ class RefundResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10089,7 +11445,7 @@ class RegisterBehaviorRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -10164,7 +11520,7 @@ class RegisterBehaviorResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReplenishSuccessFlag: 补录是否成功标志
 功能标志为2时存在。
 S：成功
@@ -10196,7 +11552,7 @@ class RegisterBillRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型此接口固定填：RegBillSupportWithdrawReq
         :type RequestType: str
         :param MerchantCode: 商户号
@@ -10292,7 +11648,7 @@ class RegisterBillResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrontSeqNo: 银行流水号
         :type FrontSeqNo: str
         :param ReservedMessage: 保留字段
@@ -10321,7 +11677,7 @@ class RegisterBillSupportWithdrawRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranNetMemberCode: STRING(32)，交易网会员代码
         :type TranNetMemberCode: str
         :param OrderNo: STRING(50)，订单号
@@ -10381,7 +11737,7 @@ class RegisterBillSupportWithdrawResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -10421,7 +11777,7 @@ class RegisterInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LegalPersonIdCode: 法人证件号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type LegalPersonIdCode: str
@@ -10471,7 +11827,7 @@ class ResponseQueryContract(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalReturnCode: 第三方渠道错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalReturnCode: str
@@ -10540,7 +11896,7 @@ class ResponseTerminateContract(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExternalReturnCode: 第三方渠道错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalReturnCode: str
@@ -10575,7 +11931,7 @@ class ReturnContractInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContractInfo: 合约信息
         :type ContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ContractInfo`
         :param ChannelReturnContractInfo: 米大师内部生成的合约信息
@@ -10613,7 +11969,7 @@ class RevResigterBillSupportWithdrawRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param TranNetMemberCode: STRING(32)，交易网会员代码
@@ -10673,7 +12029,7 @@ class RevResigterBillSupportWithdrawResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -10712,7 +12068,7 @@ class ReviseMbrPropertyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param SubAcctNo: STRING(50)，见证子账户的账号
@@ -10752,7 +12108,7 @@ class ReviseMbrPropertyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -10786,7 +12142,7 @@ class RevokeMemberRechargeThirdPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldFillFrontSeqNo: STRING(52)，原充值的前置流水号
         :type OldFillFrontSeqNo: str
         :param OldFillPayChannelType: STRING(20)，原充值的支付渠道类型
@@ -10854,7 +12210,7 @@ class RevokeMemberRechargeThirdPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -10898,7 +12254,7 @@ class RevokeRechargeByThirdPayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型此接口固定填：RevokeMemberRechargeThirdPayReq
         :type RequestType: str
         :param MerchantCode: 商户号
@@ -11002,7 +12358,7 @@ class RevokeRechargeByThirdPayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestType: 请求类型
         :type RequestType: str
         :param ReservedMessage: 保留域
@@ -11032,7 +12388,7 @@ class SceneInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocaleCode: 语言代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocaleCode: str
@@ -11067,7 +12423,7 @@ class SyncContractDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
@@ -11150,7 +12506,7 @@ class SyncContractDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Msg: 请求处理信息
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11171,7 +12527,7 @@ class TerminateContractRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
@@ -11209,6 +12565,10 @@ development: 开发环境
 ANONYMOUS: 匿名类型 USER_ID
 默认值为 USER_ID
         :type UserType: str
+        :param ContractMethod: 签约方式
+        :type ContractMethod: str
+        :param MigrateMode: 签约代扣穿透查询存量数据迁移模式
+        :type MigrateMode: str
         """
         self.MidasAppId = None
         self.UserId = None
@@ -11224,6 +12584,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.TerminationReason = None
         self.MidasEnvironment = None
         self.UserType = None
+        self.ContractMethod = None
+        self.MigrateMode = None
 
 
     def _deserialize(self, params):
@@ -11241,6 +12603,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.TerminationReason = params.get("TerminationReason")
         self.MidasEnvironment = params.get("MidasEnvironment")
         self.UserType = params.get("UserType")
+        self.ContractMethod = params.get("ContractMethod")
+        self.MigrateMode = params.get("MigrateMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11256,7 +12620,7 @@ class TerminateContractResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContractTerminateData: 解约数据
         :type ContractTerminateData: :class:`tencentcloud.cpdp.v20190820.models.ResponseTerminateContract`
         :param Msg: 请求处理信息
@@ -11284,7 +12648,7 @@ class TranItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FundSummaryAcctNo: STRING(50)，资金汇总账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type FundSummaryAcctNo: str
@@ -11364,7 +12728,7 @@ class TransactionItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BookingFlag: STRING(2)，记账标志（1: 转出; 2: 转入）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BookingFlag: str
@@ -11434,7 +12798,7 @@ class TransferDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantDetailNo: 商家明细单号。
 商户系统内部区分转账批次单下不同转账明细单的唯一标识，要求此参数只能由数字、大小写字母组成。
 示例值：x23zy545Bd5436
@@ -11483,7 +12847,7 @@ class TransferDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantDetailNo: 商家明细单号。
 商户系统内部的商家明细单号
 示例值：plfk2020042013
@@ -11523,7 +12887,7 @@ class TransferItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InAcctType: STRING(10)，入账类型（02: 会员充值; 03: 资金挂账）
 注意：此字段可能返回 null，表示取不到有效值。
         :type InAcctType: str
@@ -11598,7 +12962,7 @@ class TransferSinglePayData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TradeSerialNo: 平台交易流水号，唯一
         :type TradeSerialNo: str
         """
@@ -11622,7 +12986,7 @@ class TransferSinglePayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: 商户号
         :type MerchantId: str
         :param MerchantAppId: 微信申请商户号的appid或者商户号绑定的appid
@@ -11699,7 +13063,7 @@ class TransferSinglePayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
         :type ErrCode: str
         :param ErrMessage: 响应消息
@@ -11731,7 +13095,7 @@ class UnBindAcctRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
         :type MidasAppId: str
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
@@ -11787,7 +13151,7 @@ class UnBindAcctResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11804,7 +13168,7 @@ class UnbindRelateAcctRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param FunctionFlag: STRING(2)，功能标志（1: 解绑）
@@ -11848,7 +13212,7 @@ class UnbindRelateAcctResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -11887,7 +13251,7 @@ class UnifiedOrderInSubOrderList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubMchIncome: 子订单结算应收金额，单位： 分
         :type SubMchIncome: int
         :param PlatformIncome: 子订单平台应收金额，单位：分
@@ -11943,7 +13307,7 @@ class UnifiedOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CurrencyType: ISO 货币代码，CNY
         :type CurrencyType: str
         :param MidasAppId: 聚鑫分配的支付主MidasAppId
@@ -12078,7 +13442,7 @@ class UnifiedOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalAmt: 支付金额，单位： 分
         :type TotalAmt: int
         :param OutTradeNo: 应用支付订单号
@@ -12105,13 +13469,75 @@ class UnifiedOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UploadExternalAnchorInfoRequest(AbstractModel):
+    """UploadExternalAnchorInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播Id
+        :type AnchorId: str
+        :param IdCardFront: 身份证正面图片下载链接
+        :type IdCardFront: str
+        :param IdCardReverse: 身份证反面图片下载链接
+        :type IdCardReverse: str
+        """
+        self.AnchorId = None
+        self.IdCardFront = None
+        self.IdCardReverse = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.IdCardFront = params.get("IdCardFront")
+        self.IdCardReverse = params.get("IdCardReverse")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadExternalAnchorInfoResponse(AbstractModel):
+    """UploadExternalAnchorInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMessage: 响应消息。
+        :type ErrMessage: str
+        :param Result: 该字段为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class UploadTaxListRequest(AbstractModel):
     """UploadTaxList请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Channel: 平台渠道
         :type Channel: int
         :param BeginMonth: 起始月份，YYYY-MM
@@ -12147,7 +13573,7 @@ class UploadTaxListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaxId: 完税ID
         :type TaxId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12168,7 +13594,7 @@ class UploadTaxPaymentRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Channel: 平台渠道
         :type Channel: int
         :param TaxId: 完税ID
@@ -12200,7 +13626,7 @@ class UploadTaxPaymentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12217,7 +13643,7 @@ class WithdrawBill(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WithdrawOrderId: 业务提现订单号
         :type WithdrawOrderId: str
         :param Date: 提现日期
@@ -12269,7 +13695,7 @@ class WithdrawCashMembershipRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MrchCode: String(22)，商户号（签约客户号）
         :type MrchCode: str
         :param TranWebName: STRING(150)，交易网名称（市场名称）
@@ -12345,7 +13771,7 @@ class WithdrawCashMembershipResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxnReturnCode: String(20)，返回码
         :type TxnReturnCode: str
         :param TxnReturnMsg: String(100)，返回信息
@@ -12389,7 +13815,7 @@ class WithdrawItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BookingFlag: STRING(2)，记账标志（01: 提现; 02: 清分 ）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BookingFlag: str

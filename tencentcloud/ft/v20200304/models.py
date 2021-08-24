@@ -24,7 +24,7 @@ class AgeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Age: 变化到的人脸年龄 [10,80]。
         :type Age: int
         :param FaceRect: 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
@@ -55,7 +55,7 @@ class CancelFaceMorphJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 人像渐变任务Job id
         :type JobId: str
         """
@@ -79,7 +79,7 @@ class CancelFaceMorphJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -96,7 +96,7 @@ class ChangeAgePicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AgeInfos: 人脸变老变年轻信息。 
 您可以输入最多3个 AgeInfo 来实现给一张图中的最多3张人脸变老变年轻。
         :type AgeInfos: list of AgeInfo
@@ -143,7 +143,7 @@ class ChangeAgePicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
         :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
@@ -168,7 +168,7 @@ class FaceCartoonPicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
@@ -209,7 +209,7 @@ class FaceCartoonPicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: 结果图片Base64信息。
         :type ResultImage: str
         :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。(默认为base64)
@@ -234,7 +234,7 @@ class FaceMorphOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MorphUrl: 人像渐变输出的url
 注意：此字段可能返回 null，表示取不到有效值。
         :type MorphUrl: str
@@ -269,7 +269,7 @@ class FaceRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Y: 人脸框左上角纵坐标。
         :type Y: int
         :param X: 人脸框左上角横坐标。
@@ -305,7 +305,7 @@ class GenderInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Gender: 选择转换方向，0：男变女，1：女变男。
         :type Gender: int
         :param FaceRect: 人脸框位置。若不输入则选择 Image 或 Url 中面积最大的人脸。  
@@ -336,7 +336,7 @@ class GradientInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tempo: 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片0.5s。最大取值1s。
         :type Tempo: float
         :param MorphTime: 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s。最大取值1s。
@@ -364,7 +364,7 @@ class MorphFaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Images: 图片 base64 数据，base64 编码后大小不可超过5M。 
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
 人员人脸总数量至少2张，不可超过5张。 
@@ -426,7 +426,7 @@ class MorphFaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 人像渐变任务的Job id
         :type JobId: str
         :param EstimatedProcessTime: 预估处理时间，粒度为秒
@@ -451,7 +451,7 @@ class QueryFaceMorphJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 人像渐变任务Job id
         :type JobId: str
         """
@@ -475,7 +475,7 @@ class QueryFaceMorphJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobStatus: 当前任务状态：排队中、处理中、处理失败或者处理完成
         :type JobStatus: str
         :param FaceMorphOutput: 人像渐变输出的结果信息
@@ -503,7 +503,7 @@ class SwapGenderPicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GenderInfos: 人脸转化性别信息。 
 您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸转换性别。
         :type GenderInfos: list of GenderInfo
@@ -550,7 +550,7 @@ class SwapGenderPicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
         :type ResultImage: str
         :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。

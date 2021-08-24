@@ -24,7 +24,7 @@ class CallDetailItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataType: 数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)
         :type DataType: int
         :param ValidAmount: 有效数据量
@@ -56,7 +56,7 @@ class CallDetails(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的总条数
         :type TotalCount: int
         :param CallDetailSet: 调用明细数组
@@ -89,7 +89,7 @@ class CallStatItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 当前统计量的时间段
         :type Date: str
         :param Amount: 当前时间段的调用量
@@ -117,7 +117,7 @@ class GeneralStat(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TodayAmount: 今日调用量
         :type TodayAmount: int
         :param WeekAmount: 本周调用量
@@ -153,7 +153,7 @@ class GetTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 任务ID
         :type Id: int
         """
@@ -177,7 +177,7 @@ class GetTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskDetailDataList: 画像洞察任务TAG详细数据列表
         :type TaskDetailDataList: list of TaskDetailData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -203,7 +203,7 @@ class GetTaskListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNumber: 查询分页页码
         :type PageNumber: int
         :param PageSize: 查询分页大小
@@ -247,7 +247,7 @@ class GetTaskListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskListData: 任务列表对象
         :type TaskListData: :class:`tencentcloud.apcas.v20201127.models.TaskListData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -270,7 +270,7 @@ class LabelDetailData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Value: 标签数据对象
         :type Value: :class:`tencentcloud.apcas.v20201127.models.LabelValue`
         :param Label: 标签表述，如"汽车资讯"、"游戏#手游"等
@@ -300,7 +300,7 @@ class LabelValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Proportion: 标签覆盖率占比（在整个上传的ID列表中的覆盖率）
         :type Proportion: float
         :param Market: 标签大盘覆盖率占比
@@ -332,7 +332,7 @@ class ListModel(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ID: 任务ID
         :type ID: int
         :param TaskName: 任务名称
@@ -376,7 +376,7 @@ class PredictRatingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
         :type Type: int
         :param Id: 请求唯一标志ID
@@ -404,7 +404,7 @@ class PredictRatingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RatingData: 意向评级
         :type RatingData: :class:`tencentcloud.apcas.v20201127.models.RatingData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -427,7 +427,7 @@ class QueryCallDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
         :type Type: int
         :param StartTime: 开始时间戳（毫秒）
@@ -467,7 +467,7 @@ class QueryCallDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallDetails: 调用明细
         :type CallDetails: :class:`tencentcloud.apcas.v20201127.models.CallDetails`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -490,7 +490,7 @@ class QueryCallStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
         :type Type: int
         :param StartTime: 开始时间戳（毫秒）
@@ -522,7 +522,7 @@ class QueryCallStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallSet: 调用量数组
         :type CallSet: list of CallStatItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -548,7 +548,7 @@ class QueryGeneralStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计
         :type Type: int
         """
@@ -572,7 +572,7 @@ class QueryGeneralStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GeneralStat: 调用量信息
         :type GeneralStat: :class:`tencentcloud.apcas.v20201127.models.GeneralStat`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -595,7 +595,7 @@ class RatingData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rank: 线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）
         :type Rank: int
         """
@@ -619,7 +619,7 @@ class TaskData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 画像洞察任务ID
         :type Id: int
         """
@@ -643,7 +643,7 @@ class TaskDetailData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagId: 画像TAG ID
         :type TagId: int
         :param TagDesc: 画像TAG描述（如“省份分布”）
@@ -680,7 +680,7 @@ class TaskListData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNumber: 查询分页页码
         :type PageNumber: int
         :param PageSize: 查询分页大小
@@ -721,7 +721,7 @@ class UploadIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
         :type Type: int
         :param TaskName: 任务名称
@@ -753,7 +753,7 @@ class UploadIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskData: 画像洞察任务ID等信息
         :type TaskData: :class:`tencentcloud.apcas.v20201127.models.TaskData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

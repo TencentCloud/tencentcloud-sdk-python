@@ -24,7 +24,7 @@ class BRIRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Service: 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
         :type Service: str
         :param QQ: QQ号 (业务名为bri_social时必填, 除非已填Wechat)
@@ -101,7 +101,7 @@ class BRIResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 风险分值，取值[0,100], 分值越高风险越高
         :type Score: float
         :param Tags: 当Service为bri_num时,返回的风险标签有:
@@ -153,7 +153,7 @@ class DescribeBRIRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestData: 业务风险情报请求体
         :type RequestData: :class:`tencentcloud.bri.v20190328.models.BRIRequest`
         :param ResourceId: 客户用于计费的资源ID
@@ -183,7 +183,7 @@ class DescribeBRIResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResponseData: 业务风险情报响应体
         :type ResponseData: :class:`tencentcloud.bri.v20190328.models.BRIResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

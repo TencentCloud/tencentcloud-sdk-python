@@ -24,7 +24,7 @@ class DetectFraudKOLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputKolBspData`
         """
@@ -50,7 +50,7 @@ class DetectFraudKOLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 回包数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputKolData`
@@ -74,7 +74,7 @@ class EnhanceTaDegreeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputTaBspData`
         """
@@ -100,7 +100,7 @@ class EnhanceTaDegreeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 回包数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputTaData`
@@ -124,7 +124,7 @@ class InputKolBspData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataList: BspData
         :type DataList: list of InputKolDataList
         """
@@ -153,7 +153,7 @@ class InputKolDataList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 账号类型[1：微信；2：qq；3：微博]
         :type Type: int
         :param Id: KOL账号ID[比如微信公众号ID]
@@ -199,7 +199,7 @@ class InputRecognizeTargetAudience(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uid: 设备ID，AccountType指定的类型
         :type Uid: str
         :param AccountType: 设备号类型，1.imei 2.imeiMd5（小写后转MD5转小写）3.idfa， 4.idfaMd5（大写后转MD5转小写），5.手机号,256.其它
@@ -371,7 +371,7 @@ class InputSendTrafficSecuritySmsMsg(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 投放任务ID
         :type TaskId: str
         :param Mobiles: 手机号码列表（号码量<=200）
@@ -399,7 +399,7 @@ class InputTaBspData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Seq: 请求序列号
         :type Seq: int
         :param OsType: 操作系统类型[0：未知；1：android；2：ios；3：windows]
@@ -519,7 +519,7 @@ class OutputKolData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码[0:成功；非0：失败的错误码]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
@@ -559,7 +559,7 @@ class OutputKolValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: KOL账号ID[比如微信公众号ID]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
@@ -599,7 +599,7 @@ class OutputRecognizeEffectiveFlow(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 返回码。0表示成功，非0标识失败错误码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
@@ -636,7 +636,7 @@ class OutputRecognizeEffectiveFlowValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Lable: 返回标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lable: str
@@ -666,7 +666,7 @@ class OutputRecognizeTargetAudience(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 返回码（0，成功，其他失败）
         :type Code: int
         :param Message: 返回码对应的信息
@@ -705,7 +705,7 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelId: int
@@ -740,7 +740,7 @@ class OutputSendTrafficSecuritySmsMsg(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 返回码（0：接口调用成功 非0：接口调用失败）
         :type Code: int
         :param Message: 返回码对应的信息
@@ -774,7 +774,7 @@ class OutputTaData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码[0:成功；非0：失败的错误码]
         :type Code: int
         :param Message: 错误信息
@@ -810,7 +810,7 @@ class OutputTaValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsCheck: 是否查得[0：未查得；1：查得]
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCheck: int
@@ -840,7 +840,7 @@ class RecognizeCustomizedAudienceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BspData: 业务入参
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
         """
@@ -866,7 +866,7 @@ class RecognizeCustomizedAudienceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 业务出参
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeTargetAudience`
@@ -890,7 +890,7 @@ class RecognizeEffectiveFlowRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessSecurityData: 业务入参
         :type BusinessSecurityData: :class:`tencentcloud.taf.v20200210.models.InputRecognizeEffectiveFlow`
         """
@@ -916,7 +916,7 @@ class RecognizeEffectiveFlowResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 业务出参
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeEffectiveFlow`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -939,7 +939,7 @@ class RecognizePreciseTargetAudienceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
         """
@@ -965,7 +965,7 @@ class RecognizePreciseTargetAudienceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 回包数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeTargetAudience`
@@ -989,7 +989,7 @@ class RecognizeTargetAudienceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
         """
@@ -1015,7 +1015,7 @@ class RecognizeTargetAudienceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 回包数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeTargetAudience`
@@ -1039,7 +1039,7 @@ class SendTrafficSecuritySmsMessageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BspData: 业务入参
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputSendTrafficSecuritySmsMsg`
         """
@@ -1065,7 +1065,7 @@ class SendTrafficSecuritySmsMessageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.taf.v20200210.models.OutputSendTrafficSecuritySmsMsg`

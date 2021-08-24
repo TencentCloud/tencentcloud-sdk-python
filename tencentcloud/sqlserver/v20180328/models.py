@@ -24,7 +24,7 @@ class AccountCreateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserName: 实例用户名
         :type UserName: str
         :param Password: 实例密码
@@ -69,7 +69,7 @@ class AccountDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 账户名
         :type Name: str
         :param Remark: 账户备注
@@ -130,7 +130,7 @@ class AccountPassword(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserName: 用户名
         :type UserName: str
         :param Password: 密码
@@ -158,7 +158,7 @@ class AccountPrivilege(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserName: 数据库用户名
         :type UserName: str
         :param Privilege: 数据库权限。ReadWrite表示可读写，ReadOnly表示只读
@@ -186,7 +186,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserName: 数据库用户名
         :type UserName: str
         :param DBPrivileges: 账号权限变更信息
@@ -219,7 +219,7 @@ class AccountRemark(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserName: 账户名
         :type UserName: str
         :param Remark: 对应账户新的备注信息
@@ -247,7 +247,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityGroupId: 安全组ID。
         :type SecurityGroupId: str
         :param InstanceIdSet: 实例ID 列表，一个或者多个实例ID组成的数组。多个实例必须是同一个地域，同一个可用区，同一个项目下的。
@@ -275,7 +275,7 @@ class AssociateSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -292,7 +292,7 @@ class Backup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 文件名
         :type FileName: str
         :param Size: 文件大小，单位 KB
@@ -360,7 +360,7 @@ class CloneDBRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param RenameRestore: 按照ReNameRestoreDatabase中的库进行克隆，并重命名，新库名称必须指定
@@ -393,7 +393,7 @@ class CloneDBResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -414,7 +414,7 @@ class CompleteExpansionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         """
@@ -438,7 +438,7 @@ class CompleteExpansionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程ID，可通过接口DescribeFlowStatus查询立即切换升级任务的状态。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -459,7 +459,7 @@ class CompleteMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         """
@@ -483,7 +483,7 @@ class CompleteMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 完成迁移流程发起后，返回的流程id
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -504,7 +504,7 @@ class CosUploadBackupFile(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 备份名称
         :type FileName: str
         :param Size: 备份大小
@@ -532,7 +532,7 @@ class CreateAccountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         :param Accounts: 数据库实例账户信息
@@ -565,7 +565,7 @@ class CreateAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -586,7 +586,7 @@ class CreateBackupMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param RecoveryType: 迁移任务恢复类型，FULL-全量备份恢复，FULL_LOG-全量备份+事务日志恢复，FULL_DIFF-全量备份+差异备份恢复
@@ -626,7 +626,7 @@ class CreateBackupMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BackupMigrationId: 备份导入任务ID
         :type BackupMigrationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -647,7 +647,7 @@ class CreateBackupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Strategy: 备份策略(0-实例备份 1-多库备份)
         :type Strategy: int
         :param DBNames: 需要备份库名的列表(多库备份才填写)
@@ -683,7 +683,7 @@ class CreateBackupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 异步任务ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -704,7 +704,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
         :type Zone: str
         :param Cpu: 实例的CPU核心数
@@ -809,7 +809,7 @@ class CreateBasicDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealName: 订单名称
         :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -830,7 +830,7 @@ class CreateDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
         :type Zone: str
         :param Memory: 实例内存大小，单位GB
@@ -935,7 +935,7 @@ class CreateDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealName: 订单名称
         :type DealName: str
         :param DealNames: 订单名称数组
@@ -960,7 +960,7 @@ class CreateDBRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param DBs: 数据库创建信息
@@ -993,7 +993,7 @@ class CreateDBResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1014,7 +1014,7 @@ class CreateIncrementalMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -1050,7 +1050,7 @@ class CreateIncrementalMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IncrementalMigrationId: 增量备份导入任务ID
         :type IncrementalMigrationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1071,7 +1071,7 @@ class CreateMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateName: 迁移任务的名称
         :type MigrateName: str
         :param MigrateType: 迁移类型（1:结构迁移 2:数据迁移 3:增量同步）
@@ -1133,7 +1133,7 @@ class CreateMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1154,7 +1154,7 @@ class CreatePublishSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublishInstanceId: 发布实例ID，形如mssql-j8kv137v
         :type PublishInstanceId: str
         :param SubscribeInstanceId: 订阅实例ID，形如mssql-j8kv137v
@@ -1195,7 +1195,7 @@ class CreatePublishSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程ID，可通过接口DescribeFlowStatus查询立即切换升级任务的状态。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1216,7 +1216,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         :param Zone: 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
@@ -1321,7 +1321,7 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealNames: 订单名称数组
         :type DealNames: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1342,7 +1342,7 @@ class DBCreateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBName: 数据库名
         :type DBName: str
         :param Charset: 字符集。可通过接口DescribeDBCharsets查到支持的字符集，不填默认为Chinese_PRC_CI_AS。
@@ -1383,7 +1383,7 @@ class DBDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 数据库名称
         :type Name: str
         :param Charset: 字符集
@@ -1436,7 +1436,7 @@ class DBInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Name: 实例名称
@@ -1614,7 +1614,7 @@ class DBPrivilege(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBName: 数据库名
         :type DBName: str
         :param Privilege: 数据库权限，ReadWrite表示可读写，ReadOnly表示只读
@@ -1642,7 +1642,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBName: 数据库名
         :type DBName: str
         :param Privilege: 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限
@@ -1670,7 +1670,7 @@ class DBRemark(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 数据库名称
         :type Name: str
         :param Remark: 备注信息
@@ -1698,7 +1698,7 @@ class DatabaseTuple(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublishDatabase: 发布数据库名称
         :type PublishDatabase: str
         :param SubscribeDatabase: 订阅数据库名称
@@ -1726,7 +1726,7 @@ class DatabaseTupleStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublishDatabase: 发布数据库名称
         :type PublishDatabase: str
         :param SubscribeDatabase: 订阅数据库名称
@@ -1756,13 +1756,105 @@ class DatabaseTupleStatus(AbstractModel):
         
 
 
+class DbNormalDetail(AbstractModel):
+    """数据库配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsSubscribed: 是否已订阅 0：否 1：是
+        :type IsSubscribed: str
+        :param CollationName: 数据库排序规则
+        :type CollationName: str
+        :param IsAutoCleanupOn: 开启CT之后是否自动清理 0：否 1：是
+        :type IsAutoCleanupOn: str
+        :param IsBrokerEnabled: 是否已启用代理  0：否 1：是
+        :type IsBrokerEnabled: str
+        :param IsCdcEnabled: 是否已开启/关闭CDC 0：关闭 1：开启
+        :type IsCdcEnabled: str
+        :param IsDbChainingOn: 是否已启用/ 禁用CT 0：禁用 1：启用
+        :type IsDbChainingOn: str
+        :param IsEncrypted: 是否加密 0：否 1：是
+        :type IsEncrypted: str
+        :param IsFulltextEnabled: 是否全文启用 0：否 1：是
+        :type IsFulltextEnabled: str
+        :param IsMirroring: 是否是镜像 0：否 1：是
+        :type IsMirroring: str
+        :param IsPublished: 是否已发布 0：否 1：是
+        :type IsPublished: str
+        :param IsReadCommittedSnapshotOn: 是否开启快照 0：否 1：是
+        :type IsReadCommittedSnapshotOn: str
+        :param IsTrustworthyOn: 是否可信任 0：否 1：是
+        :type IsTrustworthyOn: str
+        :param MirroringState: 镜像状态
+        :type MirroringState: str
+        :param Name: 数据库名称
+        :type Name: str
+        :param RecoveryModelDesc: 恢复模式
+        :type RecoveryModelDesc: str
+        :param RetentionPeriod: 保留天数
+        :type RetentionPeriod: str
+        :param StateDesc: 数据库状态
+        :type StateDesc: str
+        :param UserAccessDesc: 用户类型
+        :type UserAccessDesc: str
+        """
+        self.IsSubscribed = None
+        self.CollationName = None
+        self.IsAutoCleanupOn = None
+        self.IsBrokerEnabled = None
+        self.IsCdcEnabled = None
+        self.IsDbChainingOn = None
+        self.IsEncrypted = None
+        self.IsFulltextEnabled = None
+        self.IsMirroring = None
+        self.IsPublished = None
+        self.IsReadCommittedSnapshotOn = None
+        self.IsTrustworthyOn = None
+        self.MirroringState = None
+        self.Name = None
+        self.RecoveryModelDesc = None
+        self.RetentionPeriod = None
+        self.StateDesc = None
+        self.UserAccessDesc = None
+
+
+    def _deserialize(self, params):
+        self.IsSubscribed = params.get("IsSubscribed")
+        self.CollationName = params.get("CollationName")
+        self.IsAutoCleanupOn = params.get("IsAutoCleanupOn")
+        self.IsBrokerEnabled = params.get("IsBrokerEnabled")
+        self.IsCdcEnabled = params.get("IsCdcEnabled")
+        self.IsDbChainingOn = params.get("IsDbChainingOn")
+        self.IsEncrypted = params.get("IsEncrypted")
+        self.IsFulltextEnabled = params.get("IsFulltextEnabled")
+        self.IsMirroring = params.get("IsMirroring")
+        self.IsPublished = params.get("IsPublished")
+        self.IsReadCommittedSnapshotOn = params.get("IsReadCommittedSnapshotOn")
+        self.IsTrustworthyOn = params.get("IsTrustworthyOn")
+        self.MirroringState = params.get("MirroringState")
+        self.Name = params.get("Name")
+        self.RecoveryModelDesc = params.get("RecoveryModelDesc")
+        self.RetentionPeriod = params.get("RetentionPeriod")
+        self.StateDesc = params.get("StateDesc")
+        self.UserAccessDesc = params.get("UserAccessDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DbRollbackTimeInfo(AbstractModel):
     """数据库可回档时间范围信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBName: 数据库名称
         :type DBName: str
         :param StartTime: 可回档开始时间
@@ -1794,7 +1886,7 @@ class DealInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealName: 订单名
         :type DealName: str
         :param Count: 商品数量
@@ -1838,7 +1930,7 @@ class DeleteAccountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         :param UserNames: 实例用户名数组
@@ -1866,7 +1958,7 @@ class DeleteAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1887,7 +1979,7 @@ class DeleteBackupMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 目标实例ID，由DescribeBackupMigration接口返回
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由DescribeBackupMigration接口返回
@@ -1915,7 +2007,7 @@ class DeleteBackupMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1932,7 +2024,7 @@ class DeleteDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7 或 mssqlro-3l3fgqn7
         :type InstanceId: str
         """
@@ -1956,7 +2048,7 @@ class DeleteDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1973,7 +2065,7 @@ class DeleteDBRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-rljoi3bf
         :type InstanceId: str
         :param Names: 数据库名数组
@@ -2001,7 +2093,7 @@ class DeleteDBResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2022,12 +2114,12 @@ class DeleteIncrementalMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 目标实例ID
         :type InstanceId: str
-        :param BackupMigrationId: 备份导入任务ID
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
         :type BackupMigrationId: str
-        :param IncrementalMigrationId: 增量备份导入任务ID
+        :param IncrementalMigrationId: 增量备份导入任务ID，由CreateIncrementalMigration接口返回
         :type IncrementalMigrationId: str
         """
         self.InstanceId = None
@@ -2054,7 +2146,7 @@ class DeleteIncrementalMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2071,7 +2163,7 @@ class DeleteMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         """
@@ -2095,7 +2187,7 @@ class DeleteMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2112,7 +2204,7 @@ class DeletePublishSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublishSubscribeId: 发布订阅ID，可通过DescribePublishSubscribe接口获得
         :type PublishSubscribeId: int
         :param DatabaseTupleSet: 待删除的数据库的订阅发布关系集合
@@ -2145,7 +2237,7 @@ class DeletePublishSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2162,7 +2254,7 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
@@ -2194,7 +2286,7 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Accounts: 账户信息列表
@@ -2228,7 +2320,7 @@ class DescribeBackupByFlowIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         :param FlowId: 创建备份流程ID，可通过 [CreateBackup](https://cloud.tencent.com/document/product/238/19946) 接口获取
@@ -2256,7 +2348,7 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 备份文件唯一标识，RestoreInstance接口会用到该字段
         :type Id: int
         :param FileName: 存储文件名
@@ -2321,7 +2413,7 @@ class DescribeBackupCommandRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BackupFileType: 备份文件类型，FULL-全量备份，FULL_LOG-全量备份需要日志增量，FULL_DIFF-全量备份需要差异增量，LOG-日志备份，DIFF-差异备份
         :type BackupFileType: str
         :param DataBaseName: 数据库名称
@@ -2357,7 +2449,7 @@ class DescribeBackupCommandResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Command: 创建备份命令
         :type Command: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2378,7 +2470,7 @@ class DescribeBackupMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -2393,13 +2485,13 @@ class DescribeBackupMigrationRequest(AbstractModel):
         :type RecoveryType: str
         :param UploadType: COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
         :type UploadType: str
-        :param Limit: 分页，页大小
+        :param Limit: 分页，页大小，默认值：100
         :type Limit: int
-        :param Offset: 分页，页数
+        :param Offset: 分页，页数，默认值：0
         :type Offset: int
-        :param OrderBy: 排序字段，name,createTime,startTime,endTime
+        :param OrderBy: 排序字段，name；createTime；startTime；endTime，默认按照createTime递增排序。
         :type OrderBy: str
-        :param OrderByType: 排序方式，desc,asc
+        :param OrderByType: 排序方式，desc-递减排序，asc-递增排序。默认按照asc排序，且在OrderBy为有效值时，本参数有效
         :type OrderByType: str
         """
         self.InstanceId = None
@@ -2442,7 +2534,7 @@ class DescribeBackupMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 迁移任务总数
         :type TotalCount: int
         :param BackupMigrationSet: 迁移任务集合
@@ -2472,7 +2564,7 @@ class DescribeBackupUploadSizeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -2504,7 +2596,7 @@ class DescribeBackupUploadSizeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosUploadBackupFileSet: 已上传的备份的信息
         :type CosUploadBackupFileSet: list of CosUploadBackupFile
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2530,7 +2622,7 @@ class DescribeBackupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间(yyyy-MM-dd HH:mm:ss)
         :type StartTime: str
         :param EndTime: 结束时间(yyyy-MM-dd HH:mm:ss)
@@ -2590,7 +2682,7 @@ class DescribeBackupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 备份总数量
         :type TotalCount: int
         :param Backups: 备份列表详情
@@ -2620,7 +2712,7 @@ class DescribeCrossRegionZoneRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         """
@@ -2644,7 +2736,7 @@ class DescribeCrossRegionZoneResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 备机所在地域的字符串ID，形如：ap-guangzhou
         :type Region: str
         :param Zone: 备机所在可用区的字符串ID，形如：ap-guangzhou-1
@@ -2669,7 +2761,7 @@ class DescribeDBCharsetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         """
@@ -2693,7 +2785,7 @@ class DescribeDBCharsetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DatabaseCharsets: 数据库字符集列表
         :type DatabaseCharsets: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2714,7 +2806,7 @@ class DescribeDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: int
         :param Status: 实例状态。取值范围：
@@ -2802,7 +2894,7 @@ class DescribeDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的实例总数。分页返回的话，这个值指的是所有符合条件的实例的个数，而非当前根据Limit和Offset值返回的实例个数
         :type TotalCount: int
         :param DBInstances: 实例列表
@@ -2832,7 +2924,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssql-c1nl9rpv或者mssqlro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
         """
@@ -2856,7 +2948,7 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityGroupSet: 安全组详情。
         :type SecurityGroupSet: list of SecurityGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2876,13 +2968,67 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBsNormalRequest(AbstractModel):
+    """DescribeDBsNormal请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，形如mssql-7vfv3rk3
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBsNormalResponse(AbstractModel):
+    """DescribeDBsNormal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 表示当前实例下的数据库总个数
+        :type TotalCount: int
+        :param DBList: 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
+        :type DBList: list of DbNormalDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DBList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBList") is not None:
+            self.DBList = []
+            for item in params.get("DBList"):
+                obj = DbNormalDetail()
+                obj._deserialize(item)
+                self.DBList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBsRequest(AbstractModel):
     """DescribeDBs请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIdSet: 实例ID
         :type InstanceIdSet: list of str
         :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
@@ -2914,7 +3060,7 @@ class DescribeDBsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 数据库数量
         :type TotalCount: int
         :param DBInstances: 实例数据库列表
@@ -2944,7 +3090,7 @@ class DescribeFlowStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程ID
         :type FlowId: int
         """
@@ -2968,7 +3114,7 @@ class DescribeFlowStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 流程状态，0：成功，1：失败，2：运行中
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2989,7 +3135,7 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
         :type BackupMigrationId: str
         :param InstanceId: 导入目标实例ID
@@ -2998,15 +3144,15 @@ class DescribeIncrementalMigrationRequest(AbstractModel):
         :type BackupFileName: str
         :param StatusSet: 导入任务状态集合
         :type StatusSet: list of int
-        :param Limit: 分页，页大小
+        :param Limit: 分页，页大小，默认值：100
         :type Limit: int
-        :param Offset: 分页，页数
+        :param Offset: 分页，页数，默认值：0
         :type Offset: int
-        :param OrderBy: 排序字段，name,createTime,startTime,endTime
+        :param OrderBy: 排序字段，name；createTime；startTime；endTime，默认按照createTime递增排序。
         :type OrderBy: str
-        :param OrderByType: 排序方式，desc,asc
+        :param OrderByType: 排序方式，desc-递减排序，asc-递增排序。默认按照asc排序，且在OrderBy为有效值时，本参数有效
         :type OrderByType: str
-        :param IncrementalMigrationId: 增量备份导入任务ID
+        :param IncrementalMigrationId: 增量备份导入任务ID，由CreateIncrementalMigration接口返回
         :type IncrementalMigrationId: str
         """
         self.BackupMigrationId = None
@@ -3045,7 +3191,7 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 增量导入任务总数
         :type TotalCount: int
         :param IncrementalMigrationSet: 增量导入任务集合
@@ -3069,13 +3215,129 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceParamRecordsRequest(AbstractModel):
+    """DescribeInstanceParamRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：mssql-dj5i29c5n，与云数据库控制台页面中显示的实例 ID 相同，可使用 DescribeDBInstances 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        :param Offset: 分页，页数，默认0
+        :type Offset: int
+        :param Limit: 分页，页大小，默认20，最大不超过100
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamRecordsResponse(AbstractModel):
+    """DescribeInstanceParamRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的记录数
+        :type TotalCount: int
+        :param Items: 参数修改记录
+        :type Items: list of ParamRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamRecord()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：mssql-dj5i29c5n，与云数据库控制台页面中显示的实例 ID 相同，可使用 DescribeDBInstances 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 实例的参数总数
+        :type TotalCount: int
+        :param Items: 参数详情
+        :type Items: list of ParameterDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMaintenanceSpanRequest(AbstractModel):
     """DescribeMaintenanceSpan请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-k8voqdlz
         :type InstanceId: str
         """
@@ -3099,7 +3361,7 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Weekly: 以周为单位，表示周几允许维护，例如：[1,2,3,4,5,6,7]表示周一到周日均为可维护日。
         :type Weekly: list of int
         :param StartTime: 每天可维护的开始时间，例如：10:24标识可维护时间窗10点24分开始。
@@ -3128,7 +3390,7 @@ class DescribeMigrationDatabasesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 迁移源实例的ID，格式如：mssql-si2823jyl
         :type InstanceId: str
         :param UserName: 迁移源实例用户名
@@ -3160,7 +3422,7 @@ class DescribeMigrationDatabasesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Amount: 数据库数量
         :type Amount: int
         :param MigrateDBSet: 数据库名称数组
@@ -3185,7 +3447,7 @@ class DescribeMigrationDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         """
@@ -3209,7 +3471,7 @@ class DescribeMigrationDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         :param MigrateName: 迁移任务名称
@@ -3291,7 +3553,7 @@ class DescribeMigrationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusSet: 状态集合。只要符合集合中某一状态的迁移任务，就会查出来
         :type StatusSet: list of int
         :param MigrateName: 迁移任务的名称，模糊匹配
@@ -3335,7 +3597,7 @@ class DescribeMigrationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 查询结果的总数
         :type TotalCount: int
         :param MigrateTaskSet: 查询结果的列表
@@ -3365,7 +3627,7 @@ class DescribeOrdersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealNames: 订单数组。发货时会返回订单名字，利用该订单名字调用DescribeOrders接口查询发货情况
         :type DealNames: list of str
         """
@@ -3389,7 +3651,7 @@ class DescribeOrdersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Deals: 订单信息数组
         :type Deals: list of DealInfo
         :param TotalCount: 返回多少个订单的信息
@@ -3419,7 +3681,7 @@ class DescribeProductConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区英文ID，形如ap-guangzhou-1
         :type Zone: str
         :param InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-基础版本型
@@ -3447,7 +3709,7 @@ class DescribeProductConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpecInfoList: 规格信息数组
         :type SpecInfoList: list of SpecInfo
         :param TotalCount: 返回总共多少条数据
@@ -3477,7 +3739,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID，可通过控制台项目管理中查看
         :type ProjectId: int
         """
@@ -3501,7 +3763,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityGroupSet: 安全组详情。
         :type SecurityGroupSet: list of SecurityGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3527,7 +3789,7 @@ class DescribePublishSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param PubOrSubInstanceId: 订阅/发布实例ID，与InstanceId是发布实例还是订阅实例有关；当InstanceId为发布实例时，本字段按照订阅实例ID做筛选；当InstanceId为订阅实例时，本字段按照发布实例ID做筛选；
@@ -3583,7 +3845,7 @@ class DescribePublishSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param PublishSubscribeSet: 发布订阅列表
@@ -3613,7 +3875,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssqlro-3l3fgqn7
         :type InstanceId: str
         """
@@ -3637,7 +3899,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadOnlyGroupId: 只读组ID
         :type ReadOnlyGroupId: str
         :param ReadOnlyGroupName: 只读组名称
@@ -3702,7 +3964,7 @@ class DescribeReadOnlyGroupDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         :param ReadOnlyGroupId: 只读组ID，格式如：mssqlrg-3l3fgqn7
@@ -3730,7 +3992,7 @@ class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadOnlyGroupId: 只读组ID
         :type ReadOnlyGroupId: str
         :param ReadOnlyGroupName: 只读组名称
@@ -3808,7 +4070,7 @@ class DescribeReadOnlyGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         """
@@ -3832,7 +4094,7 @@ class DescribeReadOnlyGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadOnlyGroupSet: 只读组列表
         :type ReadOnlyGroupSet: list of ReadOnlyGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3864,7 +4126,7 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回地域信息总的条目
         :type TotalCount: int
         :param RegionSet: 地域信息数组
@@ -3894,7 +4156,7 @@ class DescribeRollbackTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param DBs: 需要查询的数据库列表
@@ -3922,7 +4184,7 @@ class DescribeRollbackTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Details: 数据库可回档实例信息
         :type Details: list of DbRollbackTimeInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3948,7 +4210,7 @@ class DescribeSlowlogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-k8voqdlz
         :type InstanceId: str
         :param StartTime: 查询开始时间
@@ -3988,7 +4250,7 @@ class DescribeSlowlogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 查询总数
         :type TotalCount: int
         :param Slowlogs: 慢查询日志信息列表
@@ -4018,7 +4280,7 @@ class DescribeUploadBackupInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -4046,7 +4308,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BucketName: 存储桶名称
         :type BucketName: str
         :param Region: 存储桶地域信息
@@ -4095,7 +4357,7 @@ class DescribeUploadIncrementalInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -4127,7 +4389,7 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BucketName: 存储桶名称
         :type BucketName: str
         :param Region: 存储桶地域信息
@@ -4182,7 +4444,7 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回多少个可用区信息
         :type TotalCount: int
         :param ZoneSet: 可用区数组
@@ -4212,7 +4474,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityGroupId: 安全组ID。
         :type SecurityGroupId: str
         :param InstanceIdSet: 实例ID 列表，一个或者多个实例ID组成的数组。多个实例必须是同一个地域，同一个可用区，同一个项目下的。
@@ -4240,7 +4502,7 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4257,7 +4519,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
         :type Zone: str
         :param Memory: 内存大小，单位：GB
@@ -4317,7 +4579,7 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 未打折前价格，其值除以100表示多少钱。例如10010表示100.10元
         :type OriginalPrice: int
         :param Price: 实际需要支付的价格，其值除以100表示多少钱。例如10010表示100.10元
@@ -4342,7 +4604,7 @@ class InquiryPriceRenewDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Period: 续费周期。按月续费最多48个月。默认查询续费一个月的价格
@@ -4374,7 +4636,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
         :type OriginalPrice: int
         :param Price: 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
@@ -4399,7 +4661,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         :param Memory: 实例升级后的内存大小，单位GB，其值不能比当前实例内存小
@@ -4435,7 +4697,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
         :type OriginalPrice: int
         :param Price: 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
@@ -4460,7 +4722,7 @@ class InstanceDBDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param DBDetails: 数据库信息列表
@@ -4493,7 +4755,7 @@ class InstanceRenewInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param RenewFlag: 实例续费标记。0：正常续费，1：自动续费，2：到期不续
@@ -4521,7 +4783,7 @@ class MigrateDB(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DBName: 迁移数据库的名称
         :type DBName: str
         """
@@ -4545,7 +4807,7 @@ class MigrateDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepName: 当前环节的名称
         :type StepName: str
         :param Progress: 当前环节的进度（单位是%）
@@ -4573,7 +4835,7 @@ class MigrateSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 迁移源实例的ID，MigrateType=1(TencentDB for SQLServers)时使用，格式如：mssql-si2823jyl
         :type InstanceId: str
         :param CvmId: 迁移源Cvm的ID，MigrateType=2(云服务器自建SQLServer数据库)时使用
@@ -4633,7 +4895,7 @@ class MigrateTarget(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 迁移目标实例的ID，格式如：mssql-si2823jyl
         :type InstanceId: str
         :param UserName: 迁移目标实例的用户名
@@ -4665,7 +4927,7 @@ class MigrateTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         :param MigrateName: 迁移任务名称
@@ -4739,7 +5001,7 @@ class Migration(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrationId: 备份导入任务ID 或 增量导入任务ID
         :type MigrationId: str
         :param MigrationName: 备份导入名称，增量导入任务该字段为空
@@ -4829,7 +5091,7 @@ class MigrationAction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AllAction: 支持的所有操作，值包括：view(查看任务) ，modify(修改任务)， start(启动任务)，incremental(创建增量任务)，delete(删除任务)，upload(获取上传权限)。
         :type AllAction: list of str
         :param AllowedAction: 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
@@ -4857,7 +5119,7 @@ class MigrationDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepAll: 总步骤数
         :type StepAll: int
         :param StepNow: 当前步骤
@@ -4899,7 +5161,7 @@ class MigrationStep(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepNo: 步骤序列
         :type StepNo: int
         :param StepName: 步骤展现名称
@@ -4935,7 +5197,7 @@ class ModifyAccountPrivilegeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         :param Accounts: 账号权限变更信息
@@ -4968,7 +5230,7 @@ class ModifyAccountPrivilegeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 异步任务流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4989,7 +5251,7 @@ class ModifyAccountRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param Accounts: 修改备注的账户信息
@@ -5022,7 +5284,7 @@ class ModifyAccountRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5039,7 +5301,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -5083,7 +5345,7 @@ class ModifyBackupMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BackupMigrationId: 备份导入任务ID
         :type BackupMigrationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5104,7 +5366,7 @@ class ModifyBackupNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         :param BackupId: 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
@@ -5136,7 +5398,7 @@ class ModifyBackupNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5153,7 +5415,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param BackupType: 备份类型，当前只支持按天备份，取值为daily
@@ -5189,7 +5451,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Errno: 返回错误码
         :type Errno: int
         :param Msg: 返回错误信息
@@ -5214,7 +5476,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         :param InstanceName: 新的数据库实例名字
@@ -5242,7 +5504,7 @@ class ModifyDBInstanceNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5259,7 +5521,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例id
         :type InstanceId: str
         :param NewVpcId: 新VPC网络Id
@@ -5295,7 +5557,7 @@ class ModifyDBInstanceNetworkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 实例转网流程id，可通过[DescribeFlowStatus](https://cloud.tencent.com/document/product/238/19967)接口查询流程状态
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5316,7 +5578,7 @@ class ModifyDBInstanceProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIdSet: 实例ID数组，形如mssql-j8kv137v
         :type InstanceIdSet: list of str
         :param ProjectId: 项目ID，为0的话表示默认项目
@@ -5344,7 +5606,7 @@ class ModifyDBInstanceProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Count: 修改成功的实例个数
         :type Count: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5365,7 +5627,7 @@ class ModifyDBInstanceRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RenewFlags: 实例续费状态标记信息
         :type RenewFlags: list of InstanceRenewInfo
         """
@@ -5394,7 +5656,7 @@ class ModifyDBInstanceRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Count: 修改成功的个数
         :type Count: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5415,7 +5677,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID，格式如：mssql-c1nl9rpv 或者 mssqlro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         :param SecurityGroupIdSet: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
@@ -5443,7 +5705,7 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5460,7 +5722,7 @@ class ModifyDBNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param OldDBName: 旧数据库名
@@ -5492,7 +5754,7 @@ class ModifyDBNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5513,7 +5775,7 @@ class ModifyDBRemarkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-rljoi3bf
         :type InstanceId: str
         :param DBRemarks: 数据库名称及备注数组，每个元素包含数据库名和对应的备注
@@ -5546,7 +5808,7 @@ class ModifyDBRemarkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5557,20 +5819,179 @@ class ModifyDBRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDatabaseCDCRequest(AbstractModel):
+    """ModifyDatabaseCDC请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param ModifyType: 开启、关闭数据库CDC功能 enable；开启，disable：关闭
+        :type ModifyType: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.DBNames = None
+        self.ModifyType = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.ModifyType = params.get("ModifyType")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseCDCResponse(AbstractModel):
+    """ModifyDatabaseCDC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseCTRequest(AbstractModel):
+    """ModifyDatabaseCT请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param ModifyType: 启用、禁用数据库CT功能 enable；启用，disable：禁用
+        :type ModifyType: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ChangeRetentionDay: 启用CT时额外保留天数，默认保留3天，最小3天，最大30天
+        :type ChangeRetentionDay: int
+        """
+        self.DBNames = None
+        self.ModifyType = None
+        self.InstanceId = None
+        self.ChangeRetentionDay = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.ModifyType = params.get("ModifyType")
+        self.InstanceId = params.get("InstanceId")
+        self.ChangeRetentionDay = params.get("ChangeRetentionDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseCTResponse(AbstractModel):
+    """ModifyDatabaseCT返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseMdfRequest(AbstractModel):
+    """ModifyDatabaseMdf请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.DBNames = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseMdfResponse(AbstractModel):
+    """ModifyDatabaseMdf返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIncrementalMigrationRequest(AbstractModel):
     """ModifyIncrementalMigration请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
         :type BackupMigrationId: str
-        :param IncrementalMigrationId: 增量导入任务ID
+        :param IncrementalMigrationId: 增量导入任务ID，由CreateIncrementalMigration接口返回
         :type IncrementalMigrationId: str
-        :param IsRecovery: 是否需要恢复，NO-不需要，YES-需要
+        :param IsRecovery: 是否需要恢复，NO-不需要，YES-需要，默认不修改增量备份导入任务是否需要恢复的属性。
         :type IsRecovery: str
         :param BackupFiles: UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
         :type BackupFiles: list of str
@@ -5603,7 +6024,7 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IncrementalMigrationId: 增量备份导入任务ID
         :type IncrementalMigrationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5618,13 +6039,67 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceParamRequest(AbstractModel):
+    """ModifyInstanceParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例短 ID 列表
+        :type InstanceIds: list of str
+        :param ParamList: 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改的值。<b>注意</b>：如果修改的参数需要<b>重启</b>实例，那么您的实例将会在执行修改时<b>重启</b>。您可以通过DescribeInstanceParams接口查询修改参数时是否会重启实例，以免导致您的实例不符合预期重启。
+        :type ParamList: list of Parameter
+        :param WaitSwitch: 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行。
+        :type WaitSwitch: int
+        """
+        self.InstanceIds = None
+        self.ParamList = None
+        self.WaitSwitch = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        self.WaitSwitch = params.get("WaitSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceParamResponse(AbstractModel):
+    """ModifyInstanceParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMaintenanceSpanRequest(AbstractModel):
     """ModifyMaintenanceSpan请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-k8voqdlz
         :type InstanceId: str
         :param Weekly: 以周为单位，表示允许周几维护，例如：[1,2,3,4,5,6,7]表示周一到周日均为可维护日，本参数不填，则不修改此值。
@@ -5660,7 +6135,7 @@ class ModifyMaintenanceSpanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5677,7 +6152,7 @@ class ModifyMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         :param MigrateName: 新的迁移任务的名称，若不填则不修改
@@ -5734,7 +6209,7 @@ class ModifyMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5755,7 +6230,7 @@ class ModifyPublishSubscribeNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublishSubscribeId: 发布订阅ID
         :type PublishSubscribeId: int
         :param PublishSubscribeName: 待修改的发布订阅名称
@@ -5783,7 +6258,7 @@ class ModifyPublishSubscribeNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5800,7 +6275,7 @@ class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
         :param ReadOnlyGroupId: 只读组ID
@@ -5861,7 +6336,7 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5872,13 +6347,145 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ParamRecord(AbstractModel):
+    """实例参数修改记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param OldValue: 参数修改前的值
+        :type OldValue: str
+        :param NewValue: 参数修改后的值
+        :type NewValue: str
+        :param Status: 参数修改状态，1-初始化等待被执行，2-执行成功，3-执行失败，4-参数修改中
+        :type Status: int
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.InstanceId = None
+        self.ParamName = None
+        self.OldValue = None
+        self.NewValue = None
+        self.Status = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ParamName = params.get("ParamName")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        self.Status = params.get("Status")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Parameter(AbstractModel):
+    """数据库实例参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名称
+        :type Name: str
+        :param CurrentValue: 参数值
+        :type CurrentValue: str
+        """
+        self.Name = None
+        self.CurrentValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CurrentValue = params.get("CurrentValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterDetail(AbstractModel):
+    """实例参数的详细描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名称
+        :type Name: str
+        :param ParamType: 参数类型，integer-整型，enum-枚举型
+        :type ParamType: str
+        :param Default: 参数默认值
+        :type Default: str
+        :param Description: 参数描述
+        :type Description: str
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param NeedReboot: 修改参数后，是否需要重启数据库以使参数生效，0-不需要重启，1-需要重启
+        :type NeedReboot: int
+        :param Max: 参数允许的最大值
+        :type Max: int
+        :param Min: 参数允许的最小值
+        :type Min: int
+        :param EnumValue: 参数允许的枚举类型
+        :type EnumValue: list of str
+        :param Status: 参数状态 0-状态正常 1-在修改中
+        :type Status: int
+        """
+        self.Name = None
+        self.ParamType = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ParamType = params.get("ParamType")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublishSubscribe(AbstractModel):
     """发布订阅对象
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 发布订阅ID
         :type Id: int
         :param Name: 发布订阅名称
@@ -5939,7 +6546,7 @@ class QueryMigrationCheckProcessRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         """
@@ -5963,7 +6570,7 @@ class QueryMigrationCheckProcessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalStep: 总步骤数量
         :type TotalStep: int
         :param CurrentStep: 当前步骤编号，从1开始
@@ -5997,7 +6604,7 @@ class ReadOnlyGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadOnlyGroupId: 只读组ID
         :type ReadOnlyGroupId: str
         :param ReadOnlyGroupName: 只读组名称
@@ -6078,7 +6685,7 @@ class ReadOnlyInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 只读副本ID，格式如：mssqlro-3l3fgqn7
         :type InstanceId: str
         :param Name: 只读副本名称
@@ -6200,7 +6807,7 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadOnlyInstanceId: 只读实例ID，格式如：mssqlro-3l3fgqn7
         :type ReadOnlyInstanceId: str
         :param ReadOnlyWeight: 只读实例权重 ，范围是0-100
@@ -6228,7 +6835,7 @@ class RecycleDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         """
@@ -6252,7 +6859,7 @@ class RecycleDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程id
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6273,7 +6880,7 @@ class RecycleReadOnlyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 主实例的ID
         :type InstanceId: str
         :param ReadOnlyGroupId: 只读组的ID
@@ -6301,7 +6908,7 @@ class RecycleReadOnlyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 任务流ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6322,7 +6929,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域英文ID，类似ap-guanghou
         :type Region: str
         :param RegionName: 地域中文名称
@@ -6358,7 +6965,7 @@ class RemoveBackupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param BackupNames: 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
@@ -6386,7 +6993,7 @@ class RemoveBackupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6403,7 +7010,7 @@ class RenameRestoreDatabase(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldName: 库的名字，如果oldName不存在则返回失败。
 在用于离线迁移任务时可不填。
         :type OldName: str
@@ -6432,7 +7039,7 @@ class RenewDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param Period: 续费多少个月，取值范围为1-48，默认为1
@@ -6468,7 +7075,7 @@ class RenewDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealName: 订单名称
         :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6489,7 +7096,7 @@ class RenewPostpaidDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7 或 mssqlro-3l3fgqn7
         :type InstanceId: str
         """
@@ -6513,7 +7120,7 @@ class RenewPostpaidDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6530,7 +7137,7 @@ class ResetAccountPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         :param Accounts: 更新后的账户密码信息数组
@@ -6563,7 +7170,7 @@ class ResetAccountPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 修改帐号密码的异步任务流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6584,7 +7191,7 @@ class ResourceTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签key
         :type TagKey: str
         :param TagValue: 标签value
@@ -6612,7 +7219,7 @@ class RestartDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库实例ID，形如mssql-njj2mtpl
         :type InstanceId: str
         """
@@ -6636,7 +7243,7 @@ class RestartDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 异步任务流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6657,7 +7264,7 @@ class RestoreInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param BackupId: 备份文件ID，该ID可以通过DescribeBackups接口返回数据中的Id字段获得
@@ -6698,7 +7305,7 @@ class RestoreInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6719,7 +7326,7 @@ class RollbackInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Type: 回档类型，0-回档的数据库覆盖原库；1-回档的数据库以重命名的形式生成，不覆盖原库
@@ -6768,7 +7375,7 @@ class RollbackInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 异步任务ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6789,7 +7396,7 @@ class RunMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         """
@@ -6813,7 +7420,7 @@ class RunMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 迁移流程启动后，返回流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6834,7 +7441,7 @@ class SecurityGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: int
         :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
@@ -6892,7 +7499,7 @@ class SecurityGroupPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Action: 策略，ACCEPT 或者 DROP
         :type Action: str
         :param CidrIp: 目的 IP 或 IP 段，例如172.16.0.0/12
@@ -6932,7 +7539,7 @@ class SlowlogInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 慢查询日志文件唯一标识
         :type Id: int
         :param StartTime: 文件生成的开始时间
@@ -6985,7 +7592,7 @@ class SpecInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpecId: 实例规格ID，利用DescribeZones返回的SpecId，结合DescribeProductConfig返回的可售卖规格信息，可获悉某个可用区下可购买什么规格的实例
         :type SpecId: int
         :param MachineType: 机型ID
@@ -7070,7 +7677,7 @@ class StartBackupMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -7098,7 +7705,7 @@ class StartBackupMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7119,7 +7726,7 @@ class StartIncrementalMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 导入目标实例ID
         :type InstanceId: str
         :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
@@ -7151,7 +7758,7 @@ class StartIncrementalMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7172,7 +7779,7 @@ class StartMigrationCheckRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务id
         :type MigrateId: int
         """
@@ -7196,7 +7803,7 @@ class StartMigrationCheckResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 迁移检查流程发起后，返回的流程id
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7217,7 +7824,7 @@ class StepDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Msg: 具体步骤返回信息
         :type Msg: str
         :param Status: 当前步骤状态，0成功，-2未开始
@@ -7249,7 +7856,7 @@ class StopMigrationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MigrateId: 迁移任务ID
         :type MigrateId: int
         """
@@ -7273,7 +7880,7 @@ class StopMigrationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 中止迁移流程发起后，返回的流程id
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7294,7 +7901,7 @@ class TerminateDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIdSet: 主动销毁的实例ID列表，格式如：[mssql-3l3fgqn7]。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIdSet: list of str
         """
@@ -7318,7 +7925,7 @@ class TerminateDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7335,7 +7942,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
         :param Memory: 实例升级后内存大小，单位GB，其值不能小于当前实例内存大小
@@ -7391,7 +7998,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealName: 订单名称
         :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7412,7 +8019,7 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区英文ID，形如ap-guangzhou-1，表示广州一区
         :type Zone: str
         :param ZoneName: 可用区中文名称

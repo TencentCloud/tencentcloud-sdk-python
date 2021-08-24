@@ -24,7 +24,7 @@ class Application(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApplicationId: 审批单号
         :type ApplicationId: str
         :param ApplicationType: 申请类型
@@ -119,7 +119,7 @@ class ApplyResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApplicationId: 申请单id
         :type ApplicationId: str
         :param ApplicationType: 申请类型
@@ -164,7 +164,7 @@ class ApplyStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApplicationId: 集群id-申请单id
         :type ApplicationId: str
         :param ApplicationStatus: 处理状态-1-撤回 1-通过 2-驳回，非0状态的申请单不可改变状态。
@@ -200,7 +200,7 @@ class ClearTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表所属集群实例ID
         :type ClusterId: str
         :param SelectedTables: 待清理表信息列表
@@ -233,7 +233,7 @@ class ClearTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 清除表结果数量
         :type TotalCount: int
         :param TableResults: 清除表结果列表
@@ -263,7 +263,7 @@ class ClusterInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterName: 集群名称
         :type ClusterName: str
         :param ClusterId: 集群ID
@@ -399,7 +399,7 @@ class CompareIdlFilesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待修改表格所在集群ID
         :type ClusterId: str
         :param SelectedTables: 待修改表格列表
@@ -450,7 +450,7 @@ class CompareIdlFilesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdlFiles: 本次上传校验所有的IDL文件信息列表
         :type IdlFiles: list of IdlFileInfo
         :param TotalCount: 本次校验合法的表格数量
@@ -489,7 +489,7 @@ class CompareTablesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcTableClusterId: 源表格的集群id
         :type SrcTableClusterId: str
         :param SrcTableGroupId: 源表格的表格组id
@@ -541,7 +541,7 @@ class CreateBackupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待创建备份表所属集群ID
         :type ClusterId: str
         :param SelectedTables: 待创建备份表信息列表
@@ -578,7 +578,7 @@ class CreateBackupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskIds: 创建的备份任务ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
@@ -605,7 +605,7 @@ class CreateClusterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdlType: 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
         :type IdlType: str
         :param ClusterName: 集群名称，可使用中文或英文字符，最大长度32个字符
@@ -680,7 +680,7 @@ class CreateClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -701,7 +701,7 @@ class CreateSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属集群id
         :type ClusterId: str
         :param SelectedTables: 快照列表
@@ -734,7 +734,7 @@ class CreateSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 批量创建的快照数量
         :type TotalCount: int
         :param TableResults: 批量创建的快照结果列表
@@ -764,7 +764,7 @@ class CreateTableGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格组所属集群ID
         :type ClusterId: str
         :param TableGroupName: 表格组名称，可以采用中文、英文或数字字符，最大长度32个字符
@@ -805,7 +805,7 @@ class CreateTableGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 创建成功的表格组ID
         :type TableGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -826,7 +826,7 @@ class CreateTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待创建表格所属集群ID
         :type ClusterId: str
         :param IdlFiles: 用户选定的建表格IDL文件列表
@@ -877,7 +877,7 @@ class CreateTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 批量创建表格结果数量
         :type TotalCount: int
         :param TableResults: 批量创建表格结果列表
@@ -907,7 +907,7 @@ class DeleteClusterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待删除的集群ID
         :type ClusterId: str
         """
@@ -931,7 +931,7 @@ class DeleteClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 删除集群生成的任务ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -952,7 +952,7 @@ class DeleteIdlFilesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: IDL所属集群ID
         :type ClusterId: str
         :param IdlFiles: 待删除的IDL文件信息列表
@@ -985,7 +985,7 @@ class DeleteIdlFilesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果记录数量
         :type TotalCount: int
         :param IdlFileInfos: 删除结果
@@ -1015,7 +1015,7 @@ class DeleteSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属集群id
         :type ClusterId: str
         :param SelectedTables: 删除的快照列表
@@ -1048,7 +1048,7 @@ class DeleteSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 批量删除的快照数量
         :type TotalCount: int
         :param TableResults: 批量删除的快照结果
@@ -1078,7 +1078,7 @@ class DeleteTableGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格组所属的集群ID
         :type ClusterId: str
         :param TableGroupId: 表格组ID
@@ -1106,7 +1106,7 @@ class DeleteTableGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 删除表格组所创建的任务ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1127,7 +1127,7 @@ class DeleteTableIndexRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属集群实例ID
         :type ClusterId: str
         :param SelectedTables: 待删除分布式索引的表格列表
@@ -1160,7 +1160,7 @@ class DeleteTableIndexResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 删除表格分布式索引结果数量
         :type TotalCount: int
         :param TableResults: 删除表格分布式索引结果列表
@@ -1190,7 +1190,7 @@ class DeleteTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待删除表所在集群ID
         :type ClusterId: str
         :param SelectedTables: 待删除表信息列表
@@ -1223,7 +1223,7 @@ class DeleteTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 删除表结果数量
         :type TotalCount: int
         :param TableResults: 删除表结果详情列表
@@ -1253,7 +1253,7 @@ class DescribeApplicationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群ID，用于获取指定集群的单据
         :type ClusterId: str
         :param Limit: 分页
@@ -1305,7 +1305,7 @@ class DescribeApplicationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Applications: 申请单列表
         :type Applications: list of Application
         :param TotalCount: 申请单个数
@@ -1335,7 +1335,7 @@ class DescribeClusterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterIds: 集群ID列表
         :type ClusterIds: list of str
         """
@@ -1359,7 +1359,7 @@ class DescribeClusterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rows: 集群标签信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TagsInfoOfCluster
@@ -1391,7 +1391,7 @@ class DescribeClustersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterIds: 指定查询的集群ID列表
         :type ClusterIds: list of str
         :param Filters: 查询过滤条件
@@ -1436,7 +1436,7 @@ class DescribeClustersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 集群实例数
         :type TotalCount: int
         :param Clusters: 集群实例列表
@@ -1466,7 +1466,7 @@ class DescribeIdlFileInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 文件所属集群ID
         :type ClusterId: str
         :param TableGroupIds: 文件所属表格组ID
@@ -1506,7 +1506,7 @@ class DescribeIdlFileInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 文件数量
         :type TotalCount: int
         :param IdlFileInfos: 文件详情列表
@@ -1536,7 +1536,7 @@ class DescribeMachineRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ipv6Enable: 不为0，表示查询支持ipv6的机器
         :type Ipv6Enable: int
         """
@@ -1560,7 +1560,7 @@ class DescribeMachineResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PoolList: 独占机器资源列表
         :type PoolList: list of PoolInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1592,7 +1592,7 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可用区详情结果数量
         :type TotalCount: int
         :param RegionInfos: 可用区详情结果列表
@@ -1622,7 +1622,7 @@ class DescribeSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属集群id
         :type ClusterId: str
         :param TableGroupId: 所属表格组ID
@@ -1658,7 +1658,7 @@ class DescribeSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 快照数量
         :type TotalCount: int
         :param TableResults: 快照结果列表
@@ -1688,7 +1688,7 @@ class DescribeTableGroupTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待查询标签表格组所属集群ID
         :type ClusterId: str
         :param TableGroupIds: 待查询标签表格组ID列表
@@ -1716,7 +1716,7 @@ class DescribeTableGroupTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rows: 表格组标签信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of TagsInfoOfTableGroup
@@ -1748,7 +1748,7 @@ class DescribeTableGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格组所属集群ID
         :type ClusterId: str
         :param TableGroupIds: 表格组ID列表
@@ -1793,7 +1793,7 @@ class DescribeTableGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 表格组数量
         :type TotalCount: int
         :param TableGroups: 表格组信息列表
@@ -1823,7 +1823,7 @@ class DescribeTableTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属集群ID
         :type ClusterId: str
         :param SelectedTables: 表格列表
@@ -1856,7 +1856,7 @@ class DescribeTableTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回结果总数
         :type TotalCount: int
         :param Rows: 表格标签信息列表
@@ -1886,7 +1886,7 @@ class DescribeTablesInRecycleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待查询表格所属集群ID
         :type ClusterId: str
         :param TableGroupIds: 待查询表格所属表格组ID列表
@@ -1931,7 +1931,7 @@ class DescribeTablesInRecycleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 表格数量
         :type TotalCount: int
         :param TableInfos: 表格详情结果列表
@@ -1961,7 +1961,7 @@ class DescribeTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待查询表格所属集群ID
         :type ClusterId: str
         :param TableGroupIds: 待查询表格所属表格组ID列表
@@ -2015,7 +2015,7 @@ class DescribeTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 表格数量
         :type TotalCount: int
         :param TableInfos: 表格详情结果列表
@@ -2045,7 +2045,7 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterIds: 需要查询任务所属的集群ID列表
         :type ClusterIds: list of str
         :param TaskIds: 需要查询的任务ID列表
@@ -2090,7 +2090,7 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 任务数量
         :type TotalCount: int
         :param TaskInfos: 查询到的任务详情列表
@@ -2126,7 +2126,7 @@ class DescribeUinInWhitelistResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 查询结果：`FALSE` 否；`TRUE` 是
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2147,7 +2147,7 @@ class DisableRestProxyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 对应appid
         :type ClusterId: str
         """
@@ -2171,7 +2171,7 @@ class DisableRestProxyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
         :type RestProxyStatus: int
         :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
@@ -2196,7 +2196,7 @@ class EnableRestProxyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 对应于appid
         :type ClusterId: str
         """
@@ -2220,7 +2220,7 @@ class EnableRestProxyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
         :type RestProxyStatus: int
         :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
@@ -2245,7 +2245,7 @@ class ErrorInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 错误码
         :type Code: str
         :param Message: 错误信息
@@ -2273,7 +2273,7 @@ class FieldInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FieldName: 表格字段名称
         :type FieldName: str
         :param IsPrimaryKey: 字段是否是主键字段
@@ -2309,7 +2309,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤字段名
         :type Name: str
         :param Value: 过滤字段值
@@ -2341,7 +2341,7 @@ class IdlFileInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 文件名称，不包含扩展名
         :type FileName: str
         :param FileType: 数据描述语言（IDL）类型
@@ -2387,7 +2387,7 @@ class IdlFileInfoWithoutContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 文件名称，不包含扩展名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
@@ -2439,7 +2439,7 @@ class ImportSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属的集群id
         :type ClusterId: str
         :param Snapshots: 用于导入的快照信息
@@ -2491,7 +2491,7 @@ class ImportSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -2513,7 +2513,7 @@ class KeyFile(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: key文件名称
         :type FileName: str
         :param FileExtType: key文件扩展名
@@ -2549,7 +2549,7 @@ class MachineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 机器类型
         :type MachineType: str
         :param MachineNum: 机器数量
@@ -2577,7 +2577,7 @@ class MergeTableResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -2620,7 +2620,7 @@ class MergeTablesDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SelectedTables: 选取的表格
         :type SelectedTables: list of MergeTablesInfo
         :param IsOnlyCompare: true只做对比，false既对比又执行
@@ -2653,7 +2653,7 @@ class MergeTablesDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 合服结果集
         :type Results: list of MergeTableResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2679,7 +2679,7 @@ class MergeTablesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MergeTables: 合服的表格信息
         :type MergeTables: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
         :param CheckIndex: 是否检查索引
@@ -2709,7 +2709,7 @@ class ModifyCensorshipRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群id
         :type ClusterId: str
         :param Censorship: 集群是否开启审核 0-关闭 1-开启
@@ -2741,7 +2741,7 @@ class ModifyCensorshipResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群id
         :type ClusterId: str
         :param Uins: 已加入审批人的uin
@@ -2771,7 +2771,7 @@ class ModifyClusterMachineRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群id
         :type ClusterId: str
         :param ServerList: svr占用的机器
@@ -2817,7 +2817,7 @@ class ModifyClusterMachineResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群id
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2838,7 +2838,7 @@ class ModifyClusterNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 需要修改名称的集群ID
         :type ClusterId: str
         :param ClusterName: 需要修改的集群名称，可使用中文或英文字符，最大长度32个字符
@@ -2866,7 +2866,7 @@ class ModifyClusterNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2883,7 +2883,7 @@ class ModifyClusterPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 需要修改密码的集群ID
         :type ClusterId: str
         :param OldPassword: 集群旧密码
@@ -2923,7 +2923,7 @@ class ModifyClusterPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2940,7 +2940,7 @@ class ModifyClusterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待修改标签的集群ID
         :type ClusterId: str
         :param ReplaceTags: 待增加或修改的标签列表
@@ -2982,7 +2982,7 @@ class ModifyClusterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -3004,7 +3004,7 @@ class ModifySnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格所属集群id
         :type ClusterId: str
         :param SelectedTables: 快照列表
@@ -3037,7 +3037,7 @@ class ModifySnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 批量创建的快照数量
         :type TotalCount: int
         :param TableResults: 批量创建的快照结果列表
@@ -3067,7 +3067,7 @@ class ModifyTableGroupNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表格组所属的集群ID
         :type ClusterId: str
         :param TableGroupId: 待修改名称的表格组ID
@@ -3099,7 +3099,7 @@ class ModifyTableGroupNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3116,7 +3116,7 @@ class ModifyTableGroupTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待修改标签表格组所属集群ID
         :type ClusterId: str
         :param TableGroupId: 待修改标签表格组ID
@@ -3162,7 +3162,7 @@ class ModifyTableGroupTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -3184,7 +3184,7 @@ class ModifyTableMemosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表所属集群实例ID
         :type ClusterId: str
         :param TableMemos: 选定表详情列表
@@ -3217,7 +3217,7 @@ class ModifyTableMemosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 表备注修改结果数量
         :type TotalCount: int
         :param TableResults: 表备注修改结果列表
@@ -3247,7 +3247,7 @@ class ModifyTableQuotasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 带扩缩容表所属集群ID
         :type ClusterId: str
         :param TableQuotas: 已选中待修改的表配额列表
@@ -3280,7 +3280,7 @@ class ModifyTableQuotasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 扩缩容结果数量
         :type TotalCount: int
         :param TableResults: 扩缩容结果列表
@@ -3310,7 +3310,7 @@ class ModifyTableTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待修改标签表格所属集群ID
         :type ClusterId: str
         :param SelectedTables: 待修改标签表格列表
@@ -3361,7 +3361,7 @@ class ModifyTableTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回结果总数
         :type TotalCount: int
         :param TableResults: 返回结果
@@ -3391,7 +3391,7 @@ class ModifyTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待修改表格所在集群ID
         :type ClusterId: str
         :param IdlFiles: 选中的改表IDL文件
@@ -3433,7 +3433,7 @@ class ModifyTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 修改表结果数量
         :type TotalCount: int
         :param TableResults: 修改表结果列表
@@ -3463,7 +3463,7 @@ class ParsedTableInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableIdlType: 表格描述语言类型：`PROTO`或`TDR`
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIdlType: str
@@ -3575,7 +3575,7 @@ class PoolInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PoolUid: 唯一id
         :type PoolUid: int
         :param Ipv6Enable: 是否支持ipv6
@@ -3625,7 +3625,7 @@ class ProxyDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyUid: proxy的唯一id
         :type ProxyUid: str
         :param MachineType: 机器类型
@@ -3665,7 +3665,7 @@ class ProxyMachineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyUid: 唯一id
         :type ProxyUid: str
         :param MachineType: 机器类型
@@ -3693,7 +3693,7 @@ class RecoverRecycleTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表所在集群ID
         :type ClusterId: str
         :param SelectedTables: 待恢复表信息
@@ -3726,7 +3726,7 @@ class RecoverRecycleTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 恢复表结果数量
         :type TotalCount: int
         :param TableResults: 恢复表信息列表
@@ -3756,7 +3756,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionName: 地域Ap-Code
         :type RegionName: str
         :param RegionAbbr: 地域缩写
@@ -3792,7 +3792,7 @@ class RollbackTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待回档表格所在集群ID
         :type ClusterId: str
         :param SelectedTables: 待回档表格列表
@@ -3833,7 +3833,7 @@ class RollbackTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 表格回档任务结果数量
         :type TotalCount: int
         :param TableResults: 表格回档任务结果列表
@@ -3863,7 +3863,7 @@ class SelectedTableInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 表所属表格组ID
         :type TableGroupId: str
         :param TableName: 表格名称
@@ -3939,7 +3939,7 @@ class SelectedTableWithField(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 表所属表格组ID
         :type TableGroupId: str
         :param TableName: 表格名称
@@ -3992,7 +3992,7 @@ class ServerDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerUid: svr唯一id
         :type ServerUid: str
         :param MachineType: 机器类型
@@ -4036,7 +4036,7 @@ class ServerMachineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerUid: 机器唯一id
         :type ServerUid: str
         :param MachineType: 机器类型
@@ -4064,7 +4064,7 @@ class SetTableIndexRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 表所属集群实例ID
         :type ClusterId: str
         :param SelectedTables: 待创建分布式索引表格列表
@@ -4097,7 +4097,7 @@ class SetTableIndexResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 表格分布式索引创建结果数量
         :type TotalCount: int
         :param TableResults: 表格分布式索引创建结果列表
@@ -4127,7 +4127,7 @@ class SnapshotInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 所属表格组ID
         :type TableGroupId: str
         :param TableName: 表名称
@@ -4167,7 +4167,7 @@ class SnapshotInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 所属表格组ID
         :type TableGroupId: str
         :param TableName: 表名称
@@ -4203,7 +4203,7 @@ class SnapshotResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 表格所属表格组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableGroupId: str
@@ -4275,7 +4275,7 @@ class TableGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableGroupId: 表格组ID
         :type TableGroupId: str
         :param TableGroupName: 表格组名称
@@ -4315,7 +4315,7 @@ class TableInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableName: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
@@ -4477,7 +4477,7 @@ class TableResultNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
@@ -4544,7 +4544,7 @@ class TableRollbackResultNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableInstanceId: 表格实例ID，形如：tcaplus-3be64cbb
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
@@ -4621,7 +4621,7 @@ class TagInfoUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -4650,7 +4650,7 @@ class TagsInfoOfCluster(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
@@ -4692,7 +4692,7 @@ class TagsInfoOfTable(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableInstanceId: 表格实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableInstanceId: str
@@ -4744,7 +4744,7 @@ class TagsInfoOfTableGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
@@ -4791,7 +4791,7 @@ class TaskInfoNew(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         :param TaskType: 任务类型
@@ -4851,7 +4851,7 @@ class UpdateApplyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApplyStatus: 申请单状态
         :type ApplyStatus: list of ApplyStatus
         """
@@ -4880,7 +4880,7 @@ class UpdateApplyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApplyResults: 已更新的申请单列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyResults: list of ApplyResult
@@ -4911,7 +4911,7 @@ class VerifyIdlFilesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 待创建表格的集群ID
         :type ClusterId: str
         :param TableGroupId: 待创建表格的表格组ID
@@ -4957,7 +4957,7 @@ class VerifyIdlFilesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdlFiles: 本次上传校验所有的IDL文件信息列表
         :type IdlFiles: list of IdlFileInfo
         :param TotalCount: 读取IDL描述文件后解析出的合法表数量，不包含已经创建的表

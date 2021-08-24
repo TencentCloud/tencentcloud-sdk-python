@@ -146,6 +146,9 @@ INVALIDPARAMETERVALUE_DUPLICATERS = 'InvalidParameterValue.DuplicateRS'
 # 监听器端口已存在。
 INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = 'InvalidParameterValue.DuplicatedListenerPort'
 
+# header黑名单限制。
+INVALIDPARAMETERVALUE_HITBLACKLIST = 'InvalidParameterValue.HitBlacklist'
+
 # 带宽值不在可选范围内。
 INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = 'InvalidParameterValue.InvalidBandwidth'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETERVALUE_UNKNOWNACCESSREGION = 'InvalidParameterValue.UnknownAccess
 
 # 未找到或无权限访问的源站区域。
 INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = 'InvalidParameterValue.UnknownDestRegion'
+
+# 超过配额限制。
+LIMITEXCEEDED = 'LimitExceeded'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'

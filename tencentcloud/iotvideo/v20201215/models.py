@@ -24,7 +24,7 @@ class AIModelApplication(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductName: 产品名称
@@ -56,7 +56,7 @@ class AIModelInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductName: 产品名称
@@ -104,7 +104,7 @@ class AIModelUsageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreateTime: 开通时间
         :type CreateTime: int
         :param Total: 资源总量
@@ -136,7 +136,7 @@ class ActionHistory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceName: 设备名称
         :type DeviceName: str
         :param ActionId: 动作Id
@@ -198,7 +198,7 @@ class ApplyAIModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: AI模型ID
         :type ModelId: str
         :param ProductId: 产品ID
@@ -226,7 +226,7 @@ class ApplyAIModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -243,7 +243,7 @@ class BalanceTransaction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型：1-设备接入 2-云存。
         :type AccountType: int
         :param Operation: 账户变更类型：Rechareg-充值；CreateOrder-新购。
@@ -287,7 +287,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件新版本号
@@ -339,7 +339,7 @@ class BatchUpdateFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -354,13 +354,62 @@ class BatchUpdateFirmwareResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindCloudStorageUserRequest(AbstractModel):
+    """BindCloudStorageUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param UserId: 用户ID
+        :type UserId: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindCloudStorageUserResponse(AbstractModel):
+    """BindCloudStorageUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CancelAIModelApplicationRequest(AbstractModel):
     """CancelAIModelApplication请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: AI模型ID
         :type ModelId: str
         :param ProductId: 产品ID
@@ -388,7 +437,7 @@ class CancelAIModelApplicationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -405,7 +454,7 @@ class CancelDeviceFirmwareTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param DeviceName: 设备名称
@@ -441,7 +490,7 @@ class CancelDeviceFirmwareTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -458,10 +507,10 @@ class CheckForwardAuthRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Skey: 控制台Skey
         :type Skey: str
-        :param QueueType: 队列类型
+        :param QueueType: 队列类型 0.CMQ  1.Ckafka
         :type QueueType: int
         """
         self.Skey = None
@@ -486,7 +535,7 @@ class CheckForwardAuthResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Endpoint: 腾讯云账号
         :type Endpoint: str
         :param Result: 结果
@@ -495,7 +544,7 @@ class CheckForwardAuthResponse(AbstractModel):
         :type Productid: str
         :param ErrMsg: 错误消息
         :type ErrMsg: str
-        :param QueueType: 队列类型
+        :param QueueType: 队列类型 0.CMQ  1.Ckafka
         :type QueueType: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -523,7 +572,7 @@ class CloudStorageEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 事件起始时间（Unix 时间戳，秒级
         :type StartTime: int
         :param EndTime: 事件结束时间（Unix 时间戳，秒级
@@ -559,7 +608,7 @@ class CloudStorageTimeData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeList: 云存时间轴信息列表
         :type TimeList: list of CloudStorageTimeInfo
         :param VideoURL: 播放地址
@@ -592,7 +641,7 @@ class CloudStorageTimeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间
         :type StartTime: int
         :param EndTime: 结束时间
@@ -614,13 +663,37 @@ class CloudStorageTimeInfo(AbstractModel):
         
 
 
+class CloudStorageUserInfo(AbstractModel):
+    """云存用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户ID
+        :type UserId: str
+        """
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ControlDeviceDataRequest(AbstractModel):
     """ControlDeviceData请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -660,7 +733,7 @@ class ControlDeviceDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回信息
         :type Data: str
         :param Result: JSON字符串， 返回下发控制的结果信息, 
@@ -687,7 +760,7 @@ class CreateAIDetectionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -727,7 +800,7 @@ class CreateAIDetectionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -744,7 +817,7 @@ class CreateBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DevNum: 批次创建的设备数量
@@ -776,7 +849,7 @@ class CreateBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchId: 批次ID
         :type BatchId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -797,7 +870,7 @@ class CreateCOSCredentialsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -825,7 +898,7 @@ class CreateCOSCredentialsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StorageBucket: COS存储桶名称
         :type StorageBucket: str
         :param StorageRegion: COS存储桶区域
@@ -870,7 +943,7 @@ class CreateCloudStorageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -920,7 +993,56 @@ class CreateCloudStorageResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDataForwardRequest(AbstractModel):
+    """CreateDataForward请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param ForwardAddr: 转发地址。
+        :type ForwardAddr: str
+        :param DataChose: 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
+        :type DataChose: int
+        """
+        self.ProductId = None
+        self.ForwardAddr = None
+        self.DataChose = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ForwardAddr = params.get("ForwardAddr")
+        self.DataChose = params.get("DataChose")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataForwardResponse(AbstractModel):
+    """CreateDataForward返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -937,7 +1059,7 @@ class CreateForwardRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param MsgType: 消息类型
@@ -946,7 +1068,7 @@ class CreateForwardRuleRequest(AbstractModel):
         :type Skey: str
         :param QueueRegion: 队列区域
         :type QueueRegion: str
-        :param QueueType: 队列类型
+        :param QueueType: 队列类型 0.CMQ  1.Ckafka
         :type QueueType: int
         :param Consecretid: 临时密钥
         :type Consecretid: str
@@ -997,7 +1119,7 @@ class CreateForwardRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Endpoint: 腾讯云账号
         :type Endpoint: str
         :param QueueName: 队列名
@@ -1062,16 +1184,16 @@ class CreateProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductName: 产品名称
         :type ProductName: str
-        :param DeviceType: 产品设备类型
+        :param DeviceType: 产品设备类型 1.普通设备 2.NVR设备
         :type DeviceType: int
         :param ProductVaildYears: 产品有效期
         :type ProductVaildYears: int
-        :param Features: 设备功能码
+        :param Features: 设备功能码 ypsxth音频双向通话 spdxth视频单向通话
         :type Features: list of str
-        :param ChipOs: 设备操作系统
+        :param ChipOs: 设备操作系统 Linux
         :type ChipOs: str
         :param ChipManufactureId: 芯片厂商id
         :type ChipManufactureId: str
@@ -1079,7 +1201,7 @@ class CreateProductRequest(AbstractModel):
         :type ChipId: str
         :param ProductDescription: 产品描述信息
         :type ProductDescription: str
-        :param EncryptionType: 认证方式。2 PSK
+        :param EncryptionType: 认证方式 只支持取值为2 psk认证
         :type EncryptionType: int
         """
         self.ProductName = None
@@ -1118,7 +1240,7 @@ class CreateProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 产品详情
         :type Data: :class:`tencentcloud.iotvideo.v20201215.models.VideoProduct`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1141,7 +1263,7 @@ class CreateTaskFileUrlRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1165,7 +1287,7 @@ class CreateTaskFileUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 任务文件上传链接
         :type Url: str
         :param FileName: 任务文件名
@@ -1184,13 +1306,58 @@ class CreateTaskFileUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataForward(AbstractModel):
+    """数据转发描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param ForwardAddr: 转发地址。
+        :type ForwardAddr: str
+        :param Status: 转发状态。
+        :type Status: int
+        :param CreateTime: 创建时间。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间。
+        :type UpdateTime: int
+        :param DataChose: 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataChose: int
+        """
+        self.ProductId = None
+        self.ForwardAddr = None
+        self.Status = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.DataChose = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ForwardAddr = params.get("ForwardAddr")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.DataChose = params.get("DataChose")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteDeviceRequest(AbstractModel):
     """DeleteDevice请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID。
         :type ProductId: str
         :param DeviceName: 设备名称。
@@ -1218,7 +1385,7 @@ class DeleteDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1235,7 +1402,7 @@ class DeleteFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本
@@ -1263,7 +1430,7 @@ class DeleteFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1280,7 +1447,7 @@ class DeleteForwardRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param Skey: 控制台Skey
@@ -1316,14 +1483,14 @@ class DeleteForwardRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Endpoint: 腾讯云账号
         :type Endpoint: str
         :param QueueName: 队列名称
         :type QueueName: str
         :param ProductID: 产品ID
         :type ProductID: str
-        :param Result: 删除结果
+        :param Result: 删除结果 0成功 其他不成功
         :type Result: int
         :param ErrMsg: 错误消息
         :type ErrMsg: str
@@ -1353,7 +1520,7 @@ class DeleteProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1377,7 +1544,7 @@ class DeleteProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1394,7 +1561,7 @@ class DescribeAIModelApplicationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
         :type ModelId: str
         :param Limit: 分页的大小，最大100
@@ -1430,7 +1597,7 @@ class DescribeAIModelApplicationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 申请记录数量
         :type TotalCount: int
         :param Applications: 申请记录数组
@@ -1460,7 +1627,7 @@ class DescribeAIModelChannelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
         :type ModelId: str
         :param ProductId: 产品ID
@@ -1488,7 +1655,7 @@ class DescribeAIModelChannelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 推送类型。ckafka：消息队列；forward：http/https推送
         :type Type: str
         :param ForwardAddress: 第三方推送地址
@@ -1534,7 +1701,7 @@ class DescribeAIModelUsageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
         :type ModelId: str
         :param ProductId: 产品ID
@@ -1570,7 +1737,7 @@ class DescribeAIModelUsageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: AI模型资源包总量
         :type TotalCount: int
         :param UsageInfo: AI模型资源包信息数组
@@ -1600,7 +1767,7 @@ class DescribeAIModelsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
         :type ModelId: str
         :param Status: 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
@@ -1636,7 +1803,7 @@ class DescribeAIModelsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: AI模型数量
         :type TotalCount: int
         :param Models: AI模型信息数组
@@ -1666,7 +1833,7 @@ class DescribeBalanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型：1-设备接入；2-云存。
         :type AccountType: int
         """
@@ -1690,7 +1857,7 @@ class DescribeBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Balance: 账户余额，单位：分（人民币）。
         :type Balance: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1711,14 +1878,14 @@ class DescribeBalanceTransactionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型：1-设备接入；2-云存。
         :type AccountType: int
         :param Offset: 分页游标开始，默认为0开始拉取第一条。
         :type Offset: int
         :param Limit: 分页每页数量。
         :type Limit: int
-        :param Operation: 流水类型：All-全部类型；Recharge-充值；CreateOrder-新购。
+        :param Operation: 流水类型：All-全部类型；Recharge-充值；CreateOrder-新购。默认为All
         :type Operation: str
         """
         self.AccountType = None
@@ -1747,7 +1914,7 @@ class DescribeBalanceTransactionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 账户流水总数。
         :type TotalCount: int
         :param Transactions: 账户流水详情数组。
@@ -1777,7 +1944,7 @@ class DescribeBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BatchId: 批次ID
         :type BatchId: int
         """
@@ -1801,7 +1968,7 @@ class DescribeBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 批次详情
         :type Data: :class:`tencentcloud.iotvideo.v20201215.models.VideoBatch`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1824,7 +1991,7 @@ class DescribeBatchsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param Limit: 分页的大小，最大100
@@ -1856,7 +2023,7 @@ class DescribeBatchsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 批次数量
         :type TotalCount: int
         :param Data: 批次列表详情
@@ -1886,7 +2053,7 @@ class DescribeCategoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: Category ID。
         :type Id: int
         """
@@ -1910,7 +2077,7 @@ class DescribeCategoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: Category详情
         :type Data: :class:`tencentcloud.iotvideo.v20201215.models.ProductTemplate`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1933,19 +2100,23 @@ class DescribeCloudStorageDateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
+        :param UserId: 用户ID
+        :type UserId: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1961,7 +2132,7 @@ class DescribeCloudStorageDateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 云存日期数组，["2021-01-05","2021-01-06"]
         :type Data: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1982,7 +2153,7 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -1997,6 +2168,8 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
         :type Size: int
         :param EventId: 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
         :type EventId: str
+        :param UserId: 用户ID
+        :type UserId: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -2005,6 +2178,7 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
         self.Context = None
         self.Size = None
         self.EventId = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
@@ -2015,6 +2189,7 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
         self.Context = params.get("Context")
         self.Size = params.get("Size")
         self.EventId = params.get("EventId")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2030,7 +2205,7 @@ class DescribeCloudStorageEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Events: 云存事件列表
         :type Events: list of CloudStorageEvent
         :param Context: 请求上下文, 用作查询游标
@@ -2072,19 +2247,23 @@ class DescribeCloudStorageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
+        :param UserId: 云存用户ID
+        :type UserId: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2100,7 +2279,7 @@ class DescribeCloudStorageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 云存开启状态，1为开启，0为未开启或已过期
         :type Status: int
         :param Type: 云存类型，1为全时云存，2为事件云存
@@ -2109,6 +2288,9 @@ class DescribeCloudStorageResponse(AbstractModel):
         :type ExpireTime: int
         :param ShiftDuration: 云存回看时长
         :type ShiftDuration: int
+        :param UserId: 云存用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2116,6 +2298,7 @@ class DescribeCloudStorageResponse(AbstractModel):
         self.Type = None
         self.ExpireTime = None
         self.ShiftDuration = None
+        self.UserId = None
         self.RequestId = None
 
 
@@ -2124,6 +2307,7 @@ class DescribeCloudStorageResponse(AbstractModel):
         self.Type = params.get("Type")
         self.ExpireTime = params.get("ExpireTime")
         self.ShiftDuration = params.get("ShiftDuration")
+        self.UserId = params.get("UserId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2133,7 +2317,7 @@ class DescribeCloudStorageThumbnailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -2165,7 +2349,7 @@ class DescribeCloudStorageThumbnailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ThumbnailURL: 缩略图访问地址
         :type ThumbnailURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2186,23 +2370,35 @@ class DescribeCloudStorageTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
         :param Date: 云存日期，例如"2020-01-05"
         :type Date: str
+        :param StartTime: 开始时间，unix时间
+        :type StartTime: int
+        :param EndTime: 结束时间，unix时间
+        :type EndTime: int
+        :param UserId: 用户ID
+        :type UserId: str
         """
         self.ProductId = None
         self.DeviceName = None
         self.Date = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
         self.Date = params.get("Date")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2218,7 +2414,7 @@ class DescribeCloudStorageTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 接口返回数据
         :type Data: :class:`tencentcloud.iotvideo.v20201215.models.CloudStorageTimeData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2235,13 +2431,130 @@ class DescribeCloudStorageTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageUsersRequest(AbstractModel):
+    """DescribeCloudStorageUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Limit: 分页拉取数量
+        :type Limit: int
+        :param Offset: 分页拉取偏移
+        :type Offset: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageUsersResponse(AbstractModel):
+    """DescribeCloudStorageUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 用户总数
+        :type TotalCount: int
+        :param Users: 用户信息
+        :type Users: list of CloudStorageUserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Users = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = CloudStorageUserInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataForwardListRequest(AbstractModel):
+    """DescribeDataForwardList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductIds: 产品ID列表
+        :type ProductIds: str
+        """
+        self.ProductIds = None
+
+
+    def _deserialize(self, params):
+        self.ProductIds = params.get("ProductIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataForwardListResponse(AbstractModel):
+    """DescribeDataForwardList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataForwardList: 数据转发列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataForwardList: list of DataForward
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataForwardList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataForwardList") is not None:
+            self.DataForwardList = []
+            for item in params.get("DataForwardList"):
+                obj = DataForward()
+                obj._deserialize(item)
+                self.DataForwardList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceActionHistoryRequest(AbstractModel):
     """DescribeDeviceActionHistory请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品Id
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -2252,7 +2565,7 @@ class DescribeDeviceActionHistoryRequest(AbstractModel):
         :type MaxTime: int
         :param ActionId: 动作Id
         :type ActionId: str
-        :param Limit: 查询条数
+        :param Limit: 查询条数 默认为0 最大不超过500
         :type Limit: int
         :param Context: 游标，标识查询位置。
         :type Context: str
@@ -2289,7 +2602,7 @@ class DescribeDeviceActionHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCounts: 总条数
         :type TotalCounts: int
         :param ActionHistories: 动作历史
@@ -2330,20 +2643,20 @@ class DescribeDeviceCommLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param MinTime: 开始时间
+        r"""
+        :param MinTime: 开始时间 13位时间戳 单位毫秒
         :type MinTime: int
-        :param MaxTime: 结束时间
+        :param MaxTime: 结束时间 13位时间戳 单位毫秒
         :type MaxTime: int
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param Limit: 返回条数
+        :param Limit: 返回条数 默认为50
         :type Limit: int
         :param Context: 检索上下文
         :type Context: str
-        :param Type: 类型：shadow 下行，device 上行
+        :param Type: 类型：shadow 下行，device 上行 默认为空则全部查询
         :type Type: str
         """
         self.MinTime = None
@@ -2378,7 +2691,7 @@ class DescribeDeviceCommLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Listover: 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
         :type Listover: bool
         :param Context: 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
@@ -2412,7 +2725,7 @@ class DescribeDeviceDataHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MinTime: 区间开始时间（Unix 时间戳，毫秒级）
         :type MinTime: int
         :param MaxTime: 区间结束时间（Unix 时间戳，毫秒级）
@@ -2460,7 +2773,7 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FieldName: 属性字段名称，对应数据模板中功能属性的标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type FieldName: str
@@ -2502,7 +2815,7 @@ class DescribeDeviceDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -2530,7 +2843,7 @@ class DescribeDeviceDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备数据
         :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2551,7 +2864,7 @@ class DescribeDeviceEventHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -2603,7 +2916,7 @@ class DescribeDeviceEventHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Context: 搜索上下文, 用作查询游标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
@@ -2645,7 +2958,7 @@ class DescribeDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名
@@ -2673,7 +2986,7 @@ class DescribeDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceName: 设备名
         :type DeviceName: str
         :param Online: 设备是否在线，0不在线，1在线，2获取失败，3未激活
@@ -2686,6 +2999,9 @@ class DescribeDeviceResponse(AbstractModel):
         :type EnableState: int
         :param ExpireTime: 设备过期时间
         :type ExpireTime: int
+        :param LogLevel: 设备的sdk日志等级，0：关闭，1：错误，2：告警，3：信息，4：调试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2695,6 +3011,7 @@ class DescribeDeviceResponse(AbstractModel):
         self.DevicePsk = None
         self.EnableState = None
         self.ExpireTime = None
+        self.LogLevel = None
         self.RequestId = None
 
 
@@ -2705,6 +3022,93 @@ class DescribeDeviceResponse(AbstractModel):
         self.DevicePsk = params.get("DevicePsk")
         self.EnableState = params.get("EnableState")
         self.ExpireTime = params.get("ExpireTime")
+        self.LogLevel = params.get("LogLevel")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceStatusLogRequest(AbstractModel):
+    """DescribeDeviceStatusLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinTime: 开始时间（毫秒）
+        :type MinTime: int
+        :param MaxTime: 结束时间（毫秒）
+        :type MaxTime: int
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Limit: 返回条数
+        :type Limit: int
+        :param Context: 检索上下文
+        :type Context: str
+        """
+        self.MinTime = None
+        self.MaxTime = None
+        self.ProductId = None
+        self.DeviceName = None
+        self.Limit = None
+        self.Context = None
+
+
+    def _deserialize(self, params):
+        self.MinTime = params.get("MinTime")
+        self.MaxTime = params.get("MaxTime")
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Limit = params.get("Limit")
+        self.Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceStatusLogResponse(AbstractModel):
+    """DescribeDeviceStatusLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Listover: 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listover: bool
+        :param Context: 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        :param Results: 日志数据结果数组，返回对应时间点及取值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of DeviceStatusLogItem
+        :param TotalCount: 日志数据结果总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Listover = None
+        self.Context = None
+        self.Results = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Listover = params.get("Listover")
+        self.Context = params.get("Context")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = DeviceStatusLogItem()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2714,7 +3118,7 @@ class DescribeDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 需要查看设备列表的产品 ID
         :type ProductId: str
         :param Offset: 偏移量，Offset从0开始
@@ -2750,7 +3154,7 @@ class DescribeDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 设备总数
         :type TotalCount: int
         :param Devices: 设备详细信息列表
@@ -2780,7 +3184,7 @@ class DescribeFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -2808,7 +3212,7 @@ class DescribeFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 固件版本号
         :type Version: str
         :param ProductId: 产品ID
@@ -2857,16 +3261,16 @@ class DescribeFirmwareTaskDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本
         :type FirmwareVersion: str
         :param Filters: 筛选条件
         :type Filters: list of SearchKeyword
-        :param Offset: 查询偏移量
+        :param Offset: 查询偏移量 默认为0
         :type Offset: int
-        :param Limit: 查询的数量
+        :param Limit: 查询的数量 默认为50
         :type Limit: int
         """
         self.ProductID = None
@@ -2902,7 +3306,7 @@ class DescribeFirmwareTaskDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 固件升级任务的设备总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
@@ -2933,7 +3337,7 @@ class DescribeFirmwareTaskDistributionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -2965,7 +3369,7 @@ class DescribeFirmwareTaskDistributionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusInfos: 固件升级任务状态分布信息
         :type StatusInfos: list of StatusStatistic
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2991,7 +3395,7 @@ class DescribeFirmwareTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -3023,7 +3427,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 固件任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
@@ -3080,7 +3484,7 @@ class DescribeFirmwareTaskStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -3108,7 +3512,7 @@ class DescribeFirmwareTaskStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessTotal: 升级成功的设备总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessTotal: int
@@ -3140,7 +3544,7 @@ class DescribeFirmwareTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -3185,7 +3589,7 @@ class DescribeFirmwareTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskInfos: 固件升级任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskInfos: list of FirmwareTaskInfo
@@ -3217,7 +3621,7 @@ class DescribeForwardRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param Skey: 控制台Skey
@@ -3253,16 +3657,16 @@ class DescribeForwardRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Endpoint: 腾讯云账号
         :type Endpoint: str
         :param QueueName: 队列名称
         :type QueueName: str
         :param ProductID: 产品ID
         :type ProductID: str
-        :param MsgType: 消息类型
+        :param MsgType: 消息类型 1设备上报信息 2设备状态变化通知 3为全选
         :type MsgType: int
-        :param Result: 结果
+        :param Result: 结果 2表示禁用 其他为成功
         :type Result: int
         :param RoleName: 角色名
         :type RoleName: str
@@ -3318,7 +3722,7 @@ class DescribeModelDefinitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -3342,7 +3746,7 @@ class DescribeModelDefinitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Model: 产品数据模板
         :type Model: :class:`tencentcloud.iotvideo.v20201215.models.ProductModelDefinition`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3365,7 +3769,7 @@ class DescribeProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品id
         :type ProductId: str
         """
@@ -3389,7 +3793,7 @@ class DescribeProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 产品详情
         :type Data: :class:`tencentcloud.iotvideo.v20201215.models.VideoProduct`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3412,7 +3816,7 @@ class DescribeProductsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 分页的大小，最大100
         :type Limit: int
         :param Offset: 偏移量，Offset从0开始
@@ -3440,7 +3844,7 @@ class DescribeProductsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param Data: 产品详情列表
@@ -3464,13 +3868,91 @@ class DescribeProductsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSDKLogRequest(AbstractModel):
+    """DescribeSDKLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinTime: 日志开始时间
+        :type MinTime: int
+        :param MaxTime: 日志结束时间
+        :type MaxTime: int
+        :param Keywords: 查询关键字，可以同时支持键值查询和文本查询，
+例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。
+键值或文本可以包含多个，以空格隔开。
+其中可以索引的key包括：productid、devicename、loglevel
+一个典型的查询示例：productid:7JK1G72JNE devicename:name publish loglevel:WARN一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW publish
+        :type Keywords: str
+        :param Context: 日志检索上下文
+        :type Context: str
+        :param MaxNum: 查询条数
+        :type MaxNum: int
+        """
+        self.MinTime = None
+        self.MaxTime = None
+        self.Keywords = None
+        self.Context = None
+        self.MaxNum = None
+
+
+    def _deserialize(self, params):
+        self.MinTime = params.get("MinTime")
+        self.MaxTime = params.get("MaxTime")
+        self.Keywords = params.get("Keywords")
+        self.Context = params.get("Context")
+        self.MaxNum = params.get("MaxNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSDKLogResponse(AbstractModel):
+    """DescribeSDKLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Context: 日志检索上下文
+        :type Context: str
+        :param Listover: 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+        :type Listover: bool
+        :param Results: 日志列表
+        :type Results: list of SDKLogItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Context = None
+        self.Listover = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.Listover = params.get("Listover")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = SDKLogItem()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeviceCommLogItem(AbstractModel):
     """设备通讯日志查询返回条目
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间
         :type Time: str
         :param Type: 日志类型，device 设备上行，shadow 服务端下行。
@@ -3502,7 +3984,7 @@ class DeviceDataHistoryItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间点，毫秒时间戳
         :type Time: str
         :param Value: 字段取值
@@ -3530,7 +4012,7 @@ class DeviceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceName: 设备名
         :type DeviceName: str
         :param Online: 设备是否在线，0不在线，1在线，2获取失败，3未激活
@@ -3539,7 +4021,7 @@ class DeviceInfo(AbstractModel):
         :type LoginTime: int
         :param DevicePsk: 设备密钥
         :type DevicePsk: str
-        :param EnableState: 设备启用状态
+        :param EnableState: 设备启用状态 0为停用 1为可用
         :type EnableState: int
         :param ExpireTime: 设备过期时间
         :type ExpireTime: int
@@ -3568,13 +4050,45 @@ class DeviceInfo(AbstractModel):
         
 
 
+class DeviceStatusLogItem(AbstractModel):
+    """设备上下线日志记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 时间
+        :type Time: str
+        :param Type: 状态类型： Online 上线，Offline 下线
+        :type Type: str
+        :param Data: 日志信息
+        :type Data: str
+        """
+        self.Time = None
+        self.Type = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Type = params.get("Type")
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeviceUpdateStatus(AbstractModel):
     """设备固件更新状态
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceName: 设备名
         :type DeviceName: str
         :param LastProcessTime: 最后处理时间
@@ -3633,7 +4147,7 @@ class EditFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID。
         :type ProductID: str
         :param FirmwareVersion: 固件版本号。
@@ -3669,7 +4183,7 @@ class EditFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3686,7 +4200,7 @@ class EventHistoryItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeStamp: 事件的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeStamp: int
@@ -3736,7 +4250,7 @@ class FirmwareInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 固件版本
         :type Version: str
         :param Md5sum: 固件MD5值
@@ -3784,7 +4298,7 @@ class FirmwareTaskInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
@@ -3824,7 +4338,7 @@ class GenerateSignedVideoURLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoURL: 视频播放原始URL地址
         :type VideoURL: str
         :param ExpireTime: 播放链接过期时间
@@ -3852,7 +4366,7 @@ class GenerateSignedVideoURLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignedVideoURL: 视频防盗链播放URL
         :type SignedVideoURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3873,7 +4387,7 @@ class GetAllFirmwareVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         """
@@ -3897,8 +4411,8 @@ class GetAllFirmwareVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Version: 无
+        r"""
+        :param Version: 固件可用版本列表
         :type Version: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3918,7 +4432,7 @@ class GetFirmwareURLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本
@@ -3946,7 +4460,7 @@ class GetFirmwareURLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 固件URL
         :type Url: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3967,7 +4481,7 @@ class ImportModelDefinitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ModelSchema: 数据模板定义
@@ -3995,7 +4509,60 @@ class ImportModelDefinitionResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class InheritCloudStorageUserRequest(AbstractModel):
+    """InheritCloudStorageUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param UserId: 原始用户ID
+        :type UserId: str
+        :param ToUserId: 目标用户ID
+        :type ToUserId: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.UserId = None
+        self.ToUserId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.UserId = params.get("UserId")
+        self.ToUserId = params.get("ToUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InheritCloudStorageUserResponse(AbstractModel):
+    """InheritCloudStorageUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4012,7 +4579,7 @@ class ListFirmwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNum: 获取的页数
         :type PageNum: int
         :param PageSize: 分页的大小
@@ -4053,7 +4620,7 @@ class ListFirmwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 固件总数
         :type TotalCount: int
         :param Firmwares: 固件列表
@@ -4077,13 +4644,156 @@ class ListFirmwaresResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDataForwardRequest(AbstractModel):
+    """ModifyDataForward请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param ForwardAddr: 转发地址。
+        :type ForwardAddr: str
+        :param DataChose: 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
+        :type DataChose: int
+        """
+        self.ProductId = None
+        self.ForwardAddr = None
+        self.DataChose = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ForwardAddr = params.get("ForwardAddr")
+        self.DataChose = params.get("DataChose")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataForwardResponse(AbstractModel):
+    """ModifyDataForward返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDataForwardStatusRequest(AbstractModel):
+    """ModifyDataForwardStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param Status: 转发状态，1启用，0禁用。
+        :type Status: int
+        """
+        self.ProductId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataForwardStatusResponse(AbstractModel):
+    """ModifyDataForwardStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDeviceLogLevelRequest(AbstractModel):
+    """ModifyDeviceLogLevel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param LogLevel: 日志级别，0：关闭，1：错误，2：告警，3：信息，4：调试
+        :type LogLevel: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.LogLevel = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.LogLevel = params.get("LogLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceLogLevelResponse(AbstractModel):
+    """ModifyDeviceLogLevel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDeviceRequest(AbstractModel):
     """ModifyDevice请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 设备所属产品id
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -4115,7 +4825,7 @@ class ModifyDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4132,7 +4842,7 @@ class ModifyForwardRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param MsgType: 消息类型
@@ -4141,7 +4851,7 @@ class ModifyForwardRuleRequest(AbstractModel):
         :type Skey: str
         :param QueueRegion: 队列区域
         :type QueueRegion: str
-        :param QueueType: 队列类型
+        :param QueueType: 队列类型 0.CMQ 1.CKafka
         :type QueueType: int
         :param Consecretid: 临时密钥
         :type Consecretid: str
@@ -4192,7 +4902,7 @@ class ModifyForwardRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Endpoint: 腾讯云账号
         :type Endpoint: str
         :param ProductID: 产品ID
@@ -4201,7 +4911,7 @@ class ModifyForwardRuleResponse(AbstractModel):
         :type Result: int
         :param ErrMsg: 错误信息
         :type ErrMsg: str
-        :param QueueType: 队列类型
+        :param QueueType: 队列类型 0.CMQ 1.CKafka
         :type QueueType: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4229,7 +4939,7 @@ class ModifyModelDefinitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ModelSchema: 数据模板定义
@@ -4257,7 +4967,7 @@ class ModifyModelDefinitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4274,12 +4984,12 @@ class ModifyProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品id
         :type ProductId: str
-        :param ProductName: 修改的产品名称
+        :param ProductName: 修改的产品名称 （支持中文、英文、数字、下划线组合，最多不超过20个字符）
         :type ProductName: str
-        :param ProductDescription: 修改的产品描述
+        :param ProductDescription: 修改的产品描述 （最多不超过128个字符）
         :type ProductDescription: str
         """
         self.ProductId = None
@@ -4306,7 +5016,7 @@ class ModifyProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4323,7 +5033,7 @@ class ProductModelDefinition(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ModelDefine: 模型定义
@@ -4369,7 +5079,7 @@ class ProductTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 实体ID
         :type Id: int
         :param CategoryKey: 分类字段
@@ -4424,7 +5134,7 @@ class PublishMessageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -4468,7 +5178,7 @@ class PublishMessageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4485,7 +5195,7 @@ class ReportAliveDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -4513,7 +5223,7 @@ class ReportAliveDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4530,7 +5240,7 @@ class ResetCloudStorageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -4558,7 +5268,7 @@ class ResetCloudStorageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4575,7 +5285,7 @@ class RetryDeviceFirmwareTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param DeviceName: 设备名称
@@ -4611,7 +5321,7 @@ class RetryDeviceFirmwareTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4622,13 +5332,53 @@ class RetryDeviceFirmwareTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SDKLogItem(AbstractModel):
+    """SDK日志项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Level: 日志等级
+        :type Level: str
+        :param DateTime: 日志时间
+        :type DateTime: str
+        :param Content: 日志内容
+        :type Content: str
+        """
+        self.ProductID = None
+        self.DeviceName = None
+        self.Level = None
+        self.DateTime = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        self.Level = params.get("Level")
+        self.DateTime = params.get("DateTime")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchKeyword(AbstractModel):
     """搜索关键词
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 搜索条件的Key
         :type Key: str
         :param Value: 搜索条件的值
@@ -4656,10 +5406,10 @@ class SetForwardAuthRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Skey: 控制台Skey
         :type Skey: str
-        :param QueueType: 消息队列类型
+        :param QueueType: 消息队列类型  0.CMQ 1.CKafka
         :type QueueType: int
         """
         self.Skey = None
@@ -4684,7 +5434,7 @@ class SetForwardAuthResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Endpoint: 腾讯云账号
         :type Endpoint: str
         :param Result: 结果
@@ -4693,7 +5443,7 @@ class SetForwardAuthResponse(AbstractModel):
         :type RoleName: str
         :param RoleID: 角色ID
         :type RoleID: int
-        :param QueueType: 消息队列类型
+        :param QueueType: 消息队列类型  0.CMQ 1.CKafka
         :type QueueType: int
         :param ErrMsg: 错误消息
         :type ErrMsg: str
@@ -4725,7 +5475,7 @@ class StatusStatistic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
@@ -4755,7 +5505,7 @@ class TransferCloudStorageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 已开通云存的设备名称
@@ -4787,7 +5537,7 @@ class TransferCloudStorageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4804,7 +5554,7 @@ class UpdateAIModelChannelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
         :type ModelId: str
         :param ProductId: 产品ID
@@ -4856,7 +5606,7 @@ class UpdateAIModelChannelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ForwardKey: 第三方推送密钥，如果选择自动生成则会返回此字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardKey: str
@@ -4878,7 +5628,7 @@ class UploadFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -4922,7 +5672,7 @@ class UploadFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4939,7 +5689,7 @@ class VideoBatch(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 批次ID
         :type Id: int
         :param UserId: 用户ID
@@ -4999,7 +5749,7 @@ class VideoProduct(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductName: 产品名称
@@ -5055,3 +5805,48 @@ class VideoProduct(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class WakeUpDeviceRequest(AbstractModel):
+    """WakeUpDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WakeUpDeviceResponse(AbstractModel):
+    """WakeUpDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

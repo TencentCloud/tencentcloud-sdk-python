@@ -24,7 +24,7 @@ class Capacity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CTCCToken: 电信鉴权的Token。要加速的电信手机终端访问 http://qos.189.cn/qos-api/getToken?appid=TencentCloud 页面，获取返回结果中result的值
         :type CTCCToken: str
         :param Province: 终端所处在的省份，建议不填写由服务端自动获取，若需填写请填写带有省、市、自治区、特别行政区等后缀的省份中文全称
@@ -52,7 +52,7 @@ class CreateQosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcAddressInfo: 加速业务源地址信息，SrcIpv6和（SrcIpv4+SrcPublicIpv4）二选一，目前Ipv6不可用，全部填写以Ipv4参数为准。
         :type SrcAddressInfo: :class:`tencentcloud.mna.v20210119.models.SrcAddressInfo`
         :param DestAddressInfo: 加速业务目标地址信息
@@ -74,6 +74,8 @@ BU4M：上行带宽保障4Mbps
         :type Duration: int
         :param Capacity: 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
         :type Capacity: :class:`tencentcloud.mna.v20210119.models.Capacity`
+        :param TemplateId: 应用模板ID
+        :type TemplateId: str
         """
         self.SrcAddressInfo = None
         self.DestAddressInfo = None
@@ -81,6 +83,7 @@ BU4M：上行带宽保障4Mbps
         self.DeviceInfo = None
         self.Duration = None
         self.Capacity = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -98,6 +101,7 @@ BU4M：上行带宽保障4Mbps
         if params.get("Capacity") is not None:
             self.Capacity = Capacity()
             self.Capacity._deserialize(params.get("Capacity"))
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -113,7 +117,7 @@ class CreateQosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 单次加速唯一 Id
         :type SessionId: str
         :param Duration: 当前加速剩余时长（单位秒）
@@ -138,7 +142,7 @@ class DeleteQosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 单次加速唯一 Id
         :type SessionId: str
         """
@@ -162,7 +166,7 @@ class DeleteQosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 单次加速唯一 Id
         :type SessionId: str
         :param Duration: 本次加速会话持续时间（单位秒）
@@ -187,7 +191,7 @@ class DestAddressInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DestIp: 加速业务目标 ip 地址数组
         :type DestIp: list of str
         """
@@ -211,7 +215,7 @@ class DeviceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Vendor: 运营商
 1：移动 
 2：电信
@@ -265,7 +269,7 @@ class SrcAddressInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcIpv4: 用户私网 ipv4 地址
         :type SrcIpv4: str
         :param SrcPublicIpv4: 用户公网 ipv4 地址

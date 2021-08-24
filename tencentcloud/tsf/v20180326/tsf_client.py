@@ -390,6 +390,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFileConfig(self, request):
+        """创建文件配置项
+
+        :param request: Request instance for CreateFileConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFileConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFileConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateGatewayApi(self, request):
         """批量导入API至api分组(也支持新建API到分组)
 
@@ -1932,6 +1960,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFileConfigs(self, request):
+        """查询文件配置项列表
+
+        :param request: Request instance for DescribeFileConfigs.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFileConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlowLastBatchState(self, request):
         """查询工作流最新一个批次的状态信息
 
@@ -2114,6 +2170,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupRelease(self, request):
+        """查询部署组相关的发布信息
+
+        :param request: Request instance for DescribeGroupRelease.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupReleaseRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupRelease", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupReleaseResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3754,6 +3838,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def OperateApplicationTcrBinding(self, request):
+        """绑定解绑tcr仓库
+
+        :param request: Request instance for OperateApplicationTcrBinding.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.OperateApplicationTcrBindingRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.OperateApplicationTcrBindingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OperateApplicationTcrBinding", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OperateApplicationTcrBindingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RedoTask(self, request):
         """重新执行任务
 
@@ -3908,6 +4020,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseFileConfig(self, request):
+        """发布文件配置
+
+        :param request: Request instance for ReleaseFileConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseFileConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleaseFileConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseFileConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseFileConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

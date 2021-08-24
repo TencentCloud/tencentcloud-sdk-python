@@ -71,6 +71,9 @@ FAILEDOPERATION_TAGDRYRUNERROR = 'FailedOperation.TagDryRunError'
 # 实例安全组信息更新失败。
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
 
+# VPC更新路由失败。
+FAILEDOPERATION_VPCUPDATEROUTEFAILED = 'FailedOperation.VpcUpdateRouteFailed'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -85,6 +88,9 @@ INTERNALERROR_COSCONFIGURATION = 'InternalError.CosConfiguration'
 
 # 备份文件签名失败。
 INTERNALERROR_COSSIGNURL = 'InternalError.CosSignUrl'
+
+# 创建任务流程失败。
+INTERNALERROR_CREATEFLOWFAILED = 'InternalError.CreateFlowFailed'
 
 # DB影响行数为0错误。
 INTERNALERROR_DBROWSAFFECTEDERROR = 'InternalError.DBRowsAffectedError'
@@ -220,6 +226,9 @@ INVALIDPARAMETER_SPECNOTFOUND = 'InvalidParameter.SpecNotFound'
 
 # 找不到指定的虚拟私有网络子网。
 INVALIDPARAMETER_SUBNETNOTFOUND = 'InvalidParameter.SubnetNotFound'
+
+# snat子网不支持申请IP。
+INVALIDPARAMETER_SUBNETUNAVAILABLE = 'InvalidParameter.SubnetUnavailable'
 
 # 找不到指定的虚拟私有网络。
 INVALIDPARAMETER_VPCNOTFOUND = 'InvalidParameter.VpcNotFound'

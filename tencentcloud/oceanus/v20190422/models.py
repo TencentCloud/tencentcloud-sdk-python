@@ -24,7 +24,7 @@ class CreateJobConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业Id
         :type JobId: str
         :param EntrypointClass: 主类
@@ -102,7 +102,7 @@ class CreateJobConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 作业配置版本号
         :type Version: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -123,7 +123,7 @@ class CreateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 作业名称，允许输入长度小于等于50个字符的中文、英文、数字、-（横线）、_（下划线）、.（点），且符号必须半角字符。注意作业名不能和现有作业同名
         :type Name: str
         :param JobType: 作业的类型，1 表示 SQL 作业，2 表示 JAR 作业
@@ -136,6 +136,8 @@ class CreateJobRequest(AbstractModel):
         :type CuMem: int
         :param Remark: 作业的备注信息，可以随意设置
         :type Remark: str
+        :param FolderId: 作业名所属文件夹ID，根目录为"root"
+        :type FolderId: str
         """
         self.Name = None
         self.JobType = None
@@ -143,6 +145,7 @@ class CreateJobRequest(AbstractModel):
         self.ClusterId = None
         self.CuMem = None
         self.Remark = None
+        self.FolderId = None
 
 
     def _deserialize(self, params):
@@ -152,6 +155,7 @@ class CreateJobRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.CuMem = params.get("CuMem")
         self.Remark = params.get("Remark")
+        self.FolderId = params.get("FolderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -167,7 +171,7 @@ class CreateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业Id
         :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -188,7 +192,7 @@ class CreateResourceConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param ResourceLoc: 位置信息
@@ -226,7 +230,7 @@ class CreateResourceConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 资源版本ID
         :type Version: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -247,7 +251,7 @@ class CreateResourceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceLoc: 资源位置
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
         :param Name: 资源名称
@@ -289,7 +293,7 @@ class CreateResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param Version: 资源版本
@@ -314,7 +318,7 @@ class DeleteResourceConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param ResourceConfigVersions: 资源版本数组
@@ -342,7 +346,7 @@ class DeleteResourceConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -359,7 +363,7 @@ class DeleteResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceIds: 待删除资源ID列表
         :type ResourceIds: list of str
         """
@@ -383,7 +387,7 @@ class DeleteResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -400,7 +404,7 @@ class DeleteTableConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param DebugId: 调试作业ID
@@ -432,7 +436,7 @@ class DeleteTableConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -449,7 +453,7 @@ class DescribeJobConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业Id
         :type JobId: str
         :param JobConfigVersions: 作业配置版本
@@ -498,7 +502,7 @@ class DescribeJobConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总的配置版本数量
         :type TotalCount: int
         :param JobConfigSet: 作业配置列表
@@ -528,7 +532,7 @@ class DescribeJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
         :type JobIds: list of str
         :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
@@ -569,7 +573,7 @@ class DescribeJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 作业总数
         :type TotalCount: int
         :param JobSet: 作业列表
@@ -599,7 +603,7 @@ class DescribeResourceConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param Offset: 偏移量，仅当设置 Limit 时该参数有效
@@ -643,7 +647,7 @@ class DescribeResourceConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceConfigSet: 资源配置描述数组
         :type ResourceConfigSet: list of ResourceConfigItem
         :param TotalCount: 资源配置数量
@@ -673,7 +677,7 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param DESCByJobConfigCreateTime: 默认0;   1： 按照作业版本创建时间降序
@@ -709,7 +713,7 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param RefJobInfos: 关联作业信息
@@ -739,7 +743,7 @@ class DescribeResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceIds: 需要查询的资源ID数组，数量不超过100个。如果填写了该参数则忽略Filters参数。
         :type ResourceIds: list of str
         :param Offset: 偏移量，仅当设置 Limit 参数时有效
@@ -781,7 +785,7 @@ class DescribeResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceSet: 资源详细信息集合
         :type ResourceSet: list of ResourceItem
         :param TotalCount: 总数量
@@ -811,7 +815,7 @@ class DescribeSystemResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceIds: 需要查询的资源ID数组
         :type ResourceIds: list of str
         :param Offset: 偏移量，仅当设置 Limit 参数时有效
@@ -856,7 +860,7 @@ class DescribeSystemResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceSet: 资源详细信息集合
         :type ResourceSet: list of SystemResourceItem
         :param TotalCount: 总数量
@@ -886,7 +890,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 要过滤的字段
         :type Name: str
         :param Values: 字段的过滤值
@@ -914,7 +918,7 @@ class JobConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业Id
         :type JobId: str
         :param EntrypointClass: 主类
@@ -1021,7 +1025,7 @@ class JobV1(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
@@ -1181,7 +1185,7 @@ class Property(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 系统配置的Key
         :type Key: str
         :param Value: 系统配置的Value
@@ -1209,7 +1213,7 @@ class ResourceConfigItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param ResourceType: 资源类型
@@ -1281,7 +1285,7 @@ class ResourceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param Name: 资源名称
@@ -1362,7 +1366,7 @@ class ResourceLoc(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StorageType: 资源位置的存储类型，目前只支持1:COS
         :type StorageType: int
         :param Param: 描述资源位置的json
@@ -1392,7 +1396,7 @@ class ResourceLocParam(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bucket: 资源bucket
         :type Bucket: str
         :param Path: 资源路径
@@ -1425,7 +1429,7 @@ class ResourceRef(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param Version: 资源版本ID，-1表示使用最新版本
@@ -1457,7 +1461,7 @@ class ResourceRefDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源id
         :type ResourceId: str
         :param Version: 资源版本，-1表示使用最新版本
@@ -1497,7 +1501,7 @@ class ResourceRefJobInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: Job id
         :type JobId: str
         :param JobConfigVersion: Job配置版本
@@ -1529,7 +1533,7 @@ class RunJobDescription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业Id
         :type JobId: str
         :param RunType: 运行类型，1：启动，2：恢复
@@ -1565,7 +1569,7 @@ class RunJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RunJobDescriptions: 批量启动作业的描述信息
         :type RunJobDescriptions: list of RunJobDescription
         """
@@ -1594,7 +1598,7 @@ class RunJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1611,7 +1615,7 @@ class StopJobDescription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业Id
         :type JobId: str
         :param StopType: 停止类型，1 停止 2 暂停
@@ -1639,7 +1643,7 @@ class StopJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StopJobDescriptions: 批量停止作业的描述信息
         :type StopJobDescriptions: list of StopJobDescription
         """
@@ -1668,7 +1672,7 @@ class StopJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1685,7 +1689,7 @@ class SystemResourceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源ID
         :type ResourceId: str
         :param Name: 资源名称

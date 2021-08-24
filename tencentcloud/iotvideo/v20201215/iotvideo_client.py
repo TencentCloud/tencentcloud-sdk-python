@@ -82,6 +82,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindCloudStorageUser(self, request):
+        """绑定云存用户
+
+        :param request: Request instance for BindCloudStorageUser.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.BindCloudStorageUserRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.BindCloudStorageUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindCloudStorageUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindCloudStorageUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelAIModelApplication(self, request):
         """取消AI模型申请
 
@@ -292,6 +320,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCloudStorageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDataForward(self, request):
+        """创建数据转发
+
+        :param request: Request instance for CreateDataForward.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.CreateDataForwardRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.CreateDataForwardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDataForward", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDataForwardResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -894,6 +950,62 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudStorageUsers(self, request):
+        """拉取云存用户列表
+
+        :param request: Request instance for DescribeCloudStorageUsers.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageUsersRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudStorageUsers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageUsersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataForwardList(self, request):
+        """获取数据转发列表
+
+        :param request: Request instance for DescribeDataForwardList.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeDataForwardListRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeDataForwardListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataForwardList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataForwardListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDevice(self, request):
         """查看设备详情
 
@@ -1048,6 +1160,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceEventHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceStatusLog(self, request):
+        """获取设备上下线日志
+
+        :param request: Request instance for DescribeDeviceStatusLog.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeDeviceStatusLogRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeDeviceStatusLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceStatusLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceStatusLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1370,6 +1510,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSDKLog(self, request):
+        """获取设备sdk日志
+
+        :param request: Request instance for DescribeSDKLog.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeSDKLogRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeSDKLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSDKLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSDKLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EditFirmware(self, request):
         """本接口用于编辑固件信息
 
@@ -1510,6 +1678,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InheritCloudStorageUser(self, request):
+        """继承云存用户
+
+        :param request: Request instance for InheritCloudStorageUser.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.InheritCloudStorageUserRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.InheritCloudStorageUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InheritCloudStorageUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InheritCloudStorageUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListFirmwares(self, request):
         """本接口（ListFirmwares）用于获取固件列表
 
@@ -1538,6 +1734,62 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDataForward(self, request):
+        """修改数据转发
+
+        :param request: Request instance for ModifyDataForward.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.ModifyDataForwardRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.ModifyDataForwardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDataForward", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDataForwardResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDataForwardStatus(self, request):
+        """设置数据转发状态
+
+        :param request: Request instance for ModifyDataForwardStatus.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.ModifyDataForwardStatusRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.ModifyDataForwardStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDataForwardStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDataForwardStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDevice(self, request):
         """修改设备信息
 
@@ -1552,6 +1804,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDeviceLogLevel(self, request):
+        """更新设备日志级别
+
+        :param request: Request instance for ModifyDeviceLogLevel.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.ModifyDeviceLogLevelRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.ModifyDeviceLogLevelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDeviceLogLevel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDeviceLogLevelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1860,6 +2140,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def WakeUpDevice(self, request):
+        """设备唤醒
+
+        :param request: Request instance for WakeUpDevice.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.WakeUpDeviceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.WakeUpDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("WakeUpDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.WakeUpDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

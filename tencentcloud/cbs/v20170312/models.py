@@ -24,7 +24,7 @@ class ApplySnapshotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
         :type SnapshotId: str
         :param DiskId: 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
@@ -52,7 +52,7 @@ class ApplySnapshotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -69,7 +69,7 @@ class AttachDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param AttachedDiskCount: 实例已挂载数据盘的数量。
@@ -101,7 +101,7 @@ class AttachDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
         :type InstanceId: str
         :param DiskIds: 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
@@ -137,7 +137,7 @@ class AttachDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -154,7 +154,7 @@ class AutoSnapshotPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoSnapshotPolicyId: 定期快照策略ID。
         :type AutoSnapshotPolicyId: str
         :param AutoSnapshotPolicyName: 定期快照策略名称。
@@ -219,7 +219,7 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoSnapshotPolicyId: 要绑定的定期快照策略ID。
         :type AutoSnapshotPolicyId: str
         :param DiskIds: 要绑定的云硬盘ID列表，一次请求最多绑定80块云盘。
@@ -247,7 +247,7 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -264,7 +264,7 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Policy: 定期快照的执行策略。
         :type Policy: list of Policy
         :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
@@ -313,7 +313,7 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoSnapshotPolicyId: 新创建的定期快照策略ID。
         :type AutoSnapshotPolicyId: str
         :param NextTriggerTime: 首次开始备份的时间。
@@ -338,72 +338,76 @@ class CreateDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
-        :type DiskType: str
-        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
-        :type DiskChargeType: str
+        r"""
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
+        :type DiskChargeType: str
+        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+        :type DiskType: str
         :param DiskName: 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
         :type DiskName: str
-        :param DiskCount: 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
-        :type DiskCount: int
-        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
-        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param DiskSize: 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
-        :type DiskSize: int
+        :param Tags: 云盘绑定的标签。
+        :type Tags: list of Tag
         :param SnapshotId: 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
         :type SnapshotId: str
+        :param DiskCount: 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
+        :type DiskCount: int
+        :param ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+        :type ThroughputPerformance: int
+        :param DiskSize: 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        :type DiskSize: int
+        :param Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
+        :type Shareable: bool
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
         :param Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
         :type Encrypt: str
-        :param Tags: 云盘绑定的标签。
-        :type Tags: list of Tag
-        :param Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
-        :type Shareable: bool
-        :param ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
-        :type ThroughputPerformance: int
+        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        :param DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        :type DeleteSnapshot: int
         """
-        self.DiskType = None
-        self.DiskChargeType = None
         self.Placement = None
+        self.DiskChargeType = None
+        self.DiskType = None
         self.DiskName = None
-        self.DiskCount = None
-        self.DiskChargePrepaid = None
-        self.DiskSize = None
+        self.Tags = None
         self.SnapshotId = None
+        self.DiskCount = None
+        self.ThroughputPerformance = None
+        self.DiskSize = None
+        self.Shareable = None
         self.ClientToken = None
         self.Encrypt = None
-        self.Tags = None
-        self.Shareable = None
-        self.ThroughputPerformance = None
+        self.DiskChargePrepaid = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskChargeType = params.get("DiskChargeType")
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
+        self.DiskChargeType = params.get("DiskChargeType")
+        self.DiskType = params.get("DiskType")
         self.DiskName = params.get("DiskName")
-        self.DiskCount = params.get("DiskCount")
-        if params.get("DiskChargePrepaid") is not None:
-            self.DiskChargePrepaid = DiskChargePrepaid()
-            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
-        self.DiskSize = params.get("DiskSize")
-        self.SnapshotId = params.get("SnapshotId")
-        self.ClientToken = params.get("ClientToken")
-        self.Encrypt = params.get("Encrypt")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        self.Shareable = params.get("Shareable")
+        self.SnapshotId = params.get("SnapshotId")
+        self.DiskCount = params.get("DiskCount")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.DiskSize = params.get("DiskSize")
+        self.Shareable = params.get("Shareable")
+        self.ClientToken = params.get("ClientToken")
+        self.Encrypt = params.get("Encrypt")
+        if params.get("DiskChargePrepaid") is not None:
+            self.DiskChargePrepaid = DiskChargePrepaid()
+            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -419,7 +423,7 @@ class CreateDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIdSet: 创建的云硬盘ID列表。
         :type DiskIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -440,7 +444,7 @@ class CreateSnapshotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param SnapshotName: 快照名称，不传则新快照名称默认为“未命名”。
@@ -472,7 +476,7 @@ class CreateSnapshotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 新创建的快照ID。
         :type SnapshotId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -493,7 +497,7 @@ class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoSnapshotPolicyIds: 要删除的定期快照策略ID列表。
         :type AutoSnapshotPolicyIds: list of str
         """
@@ -517,7 +521,7 @@ class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -534,15 +538,19 @@ class DeleteSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotIds: 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
         :type SnapshotIds: list of str
+        :param DeleteBindImages: 是否强制删除快照关联的镜像
+        :type DeleteBindImages: bool
         """
         self.SnapshotIds = None
+        self.DeleteBindImages = None
 
 
     def _deserialize(self, params):
         self.SnapshotIds = params.get("SnapshotIds")
+        self.DeleteBindImages = params.get("DeleteBindImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -558,7 +566,7 @@ class DeleteSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -575,7 +583,7 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoSnapshotPolicyIds: 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
         :type AutoSnapshotPolicyIds: list of str
         :param Filters: 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
@@ -624,7 +632,7 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 有效的定期快照策略数量。
         :type TotalCount: int
         :param AutoSnapshotPolicySet: 定期快照策略列表。
@@ -654,7 +662,7 @@ class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskId: 要查询的云硬盘ID。
         :type DiskId: str
         """
@@ -678,7 +686,7 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 云盘绑定的定期快照数量。
         :type TotalCount: int
         :param AutoSnapshotPolicySet: 云盘绑定的定期快照列表。
@@ -708,7 +716,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InquiryType: 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
         :type InquiryType: str
         :param Zones: 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
@@ -760,7 +768,7 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskConfigSet: 云盘配置列表。
         :type DiskConfigSet: list of DiskConfig
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -786,18 +794,18 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。支持以下条件：
 <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
         :type Filters: list of Filter
-        :param BeginTime: 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-        :type BeginTime: str
         :param EndTime: 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
         :type EndTime: str
+        :param BeginTime: 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+        :type BeginTime: str
         """
         self.Filters = None
-        self.BeginTime = None
         self.EndTime = None
+        self.BeginTime = None
 
 
     def _deserialize(self, params):
@@ -807,8 +815,8 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -824,7 +832,7 @@ class DescribeDiskOperationLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskOperationLogSet: 云盘的操作日志列表。
         :type DiskOperationLogSet: list of DiskOperationLog
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -850,7 +858,7 @@ class DescribeDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
@@ -903,7 +911,7 @@ class DescribeDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的云硬盘数量。
         :type TotalCount: int
         :param DiskSet: 云硬盘的详细信息列表。
@@ -933,7 +941,7 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
         :type InstanceIds: list of str
         """
@@ -957,7 +965,7 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttachDetail: 各个云服务器已挂载和可挂载弹性云盘的数量。
         :type AttachDetail: list of AttachDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -983,7 +991,7 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。支持以下条件：
 <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
         :type Filters: list of Filter
@@ -1021,7 +1029,7 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotOperationLogSet: 快照操作日志列表。
         :type SnapshotOperationLogSet: list of SnapshotOperationLog
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1047,7 +1055,7 @@ class DescribeSnapshotSharePermissionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 要查询快照的ID。可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
         :type SnapshotId: str
         """
@@ -1071,7 +1079,7 @@ class DescribeSnapshotSharePermissionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SharePermissionSet: 快照的分享信息的集合
         :type SharePermissionSet: list of SharePermission
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1097,7 +1105,7 @@ class DescribeSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotIds: 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
         :type SnapshotIds: list of str
         :param Filters: 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
@@ -1148,7 +1156,7 @@ class DescribeSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 快照的数量。
         :type TotalCount: int
         :param SnapshotSet: 快照的详情列表。
@@ -1178,7 +1186,7 @@ class DetachDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
         :type DiskIds: list of str
         :param InstanceId: 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
@@ -1206,7 +1214,7 @@ class DetachDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1223,7 +1231,7 @@ class Disk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteWithInstance: 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
@@ -1403,7 +1411,7 @@ class DiskChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
@@ -1435,7 +1443,7 @@ class DiskConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Available: 配置是否可用。
         :type Available: bool
         :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
@@ -1493,7 +1501,14 @@ class DiskOperationLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
+        :param OperationState: 操作的状态。取值范围：
+SUCCESS :表示操作成功 
+FAILED :表示操作失败 
+PROCESSING :表示操作中。
+        :type OperationState: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
         :param Operator: 操作者的UIN。
         :type Operator: str
         :param Operation: 操作类型。取值范围：
@@ -1507,33 +1522,26 @@ CBS_OPERATION_MODIFY：修改云硬盘属性
 ASP_OPERATION_BIND：关联定期快照策略
 ASP_OPERATION_UNBIND：取消关联定期快照策略
         :type Operation: str
-        :param DiskId: 操作的云盘ID。
-        :type DiskId: str
-        :param OperationState: 操作的状态。取值范围：
-SUCCESS :表示操作成功 
-FAILED :表示操作失败 
-PROCESSING :表示操作中。
-        :type OperationState: str
-        :param StartTime: 开始时间。
-        :type StartTime: str
         :param EndTime: 结束时间。
         :type EndTime: str
+        :param DiskId: 操作的云盘ID。
+        :type DiskId: str
         """
-        self.Operator = None
-        self.Operation = None
-        self.DiskId = None
         self.OperationState = None
         self.StartTime = None
+        self.Operator = None
+        self.Operation = None
         self.EndTime = None
+        self.DiskId = None
 
 
     def _deserialize(self, params):
-        self.Operator = params.get("Operator")
-        self.Operation = params.get("Operation")
-        self.DiskId = params.get("DiskId")
         self.OperationState = params.get("OperationState")
         self.StartTime = params.get("StartTime")
+        self.Operator = params.get("Operator")
+        self.Operation = params.get("Operation")
         self.EndTime = params.get("EndTime")
+        self.DiskId = params.get("DiskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1549,7 +1557,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Values: 一个或者多个过滤值。
         :type Values: list of str
         :param Name: 过滤键的名称。
@@ -1583,7 +1591,7 @@ class GetSnapOverviewResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalSize: 用户快照总大小
         :type TotalSize: float
         :param RealTradeSize: 用户快照总大小（用于计费）
@@ -1616,7 +1624,7 @@ class Image(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageId: 镜像实例ID。
         :type ImageId: str
         :param ImageName: 镜像名称。
@@ -1644,7 +1652,7 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
@@ -1672,7 +1680,7 @@ class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskPrice: 描述了调整云盘额外性能时对应的价格。
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1695,7 +1703,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
         :param DiskSize: 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
@@ -1745,7 +1753,7 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskPrice: 描述了新购云盘的价格。
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1768,7 +1776,7 @@ class InquiryPriceRenewDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskIds: list of str
         :param DiskChargePrepaids: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
@@ -1809,7 +1817,7 @@ class InquiryPriceRenewDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskPrice: 描述了续费云盘的价格。
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1832,7 +1840,7 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param DiskSize: 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
@@ -1864,7 +1872,7 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskPrice: 描述了扩容云盘的价格。
         :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1887,7 +1895,7 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoSnapshotPolicyId: 定期快照策略ID。
         :type AutoSnapshotPolicyId: str
         :param Policy: 定期快照的执行策略。
@@ -1936,7 +1944,7 @@ class ModifyAutoSnapshotPolicyAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1953,7 +1961,7 @@ class ModifyDiskAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
         :type DiskIds: list of str
         :param ProjectId: 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
@@ -1997,7 +2005,7 @@ class ModifyDiskAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2014,7 +2022,7 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
@@ -2042,7 +2050,7 @@ class ModifyDiskExtraPerformanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2059,7 +2067,7 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
         :type DiskIds: list of str
         :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
@@ -2093,7 +2101,7 @@ class ModifyDisksChargeTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2110,7 +2118,7 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 一个或多个待操作的云硬盘ID。
         :type DiskIds: list of str
         :param RenewFlag: 云盘的续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
@@ -2138,7 +2146,7 @@ class ModifyDisksRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2155,7 +2163,7 @@ class ModifySnapshotAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
         :type SnapshotId: str
         :param SnapshotName: 新的快照名称。最长为60个字符。
@@ -2191,7 +2199,7 @@ class ModifySnapshotAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2208,7 +2216,7 @@ class ModifySnapshotsSharePermissionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountIds: 接收分享快照的账号Id列表，array型参数的格式可以参考[API简介](https://cloud.tencent.com/document/api/213/568)。帐号ID不同于QQ号，查询用户帐号ID请查看[帐号信息](https://console.cloud.tencent.com/developer)中的帐号ID栏。
         :type AccountIds: list of str
         :param Permission: 操作，包括 SHARE，CANCEL。其中SHARE代表分享操作，CANCEL代表取消分享操作。
@@ -2240,7 +2248,7 @@ class ModifySnapshotsSharePermissionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2257,7 +2265,7 @@ class Placement(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
         :param CageId: 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
@@ -2304,7 +2312,7 @@ class Policy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DayOfWeek: 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
         :type DayOfWeek: list of int non-negative
         :param Hour: 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
@@ -2332,7 +2340,7 @@ class PrepayPrice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 预付费云盘或快照预支费用的原价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
@@ -2397,7 +2405,7 @@ class Price(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 预付费云盘预支费用的原价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalPrice: float
@@ -2462,7 +2470,7 @@ class RenewDiskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的续费时长。<br>在云盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云盘会按对齐到实例续费后的到期时间来续费。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
@@ -2492,7 +2500,7 @@ class RenewDiskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2509,7 +2517,7 @@ class ResizeDiskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
         :param DiskSize: 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
@@ -2537,7 +2545,7 @@ class ResizeDiskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2554,7 +2562,7 @@ class SharePermission(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreatedTime: 快照分享的时间
         :type CreatedTime: str
         :param AccountId: 分享的账号Id
@@ -2582,7 +2590,7 @@ class Snapshot(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照ID。
         :type SnapshotId: str
         :param Placement: 快照所在的位置。
@@ -2685,7 +2693,7 @@ class SnapshotOperationLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Operator: 操作者的UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
@@ -2740,7 +2748,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签健。
         :type Key: str
         :param Value: 标签值。
@@ -2768,7 +2776,7 @@ class TerminateDisksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 需退还的云盘ID列表。
         :type DiskIds: list of str
         """
@@ -2792,7 +2800,7 @@ class TerminateDisksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2809,7 +2817,7 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskIds: 要解绑定期快照策略的云盘ID列表。
         :type DiskIds: list of str
         :param AutoSnapshotPolicyId: 要解绑的定期快照策略ID。
@@ -2837,7 +2845,7 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

@@ -24,7 +24,7 @@ class CheckVcodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名VerifyCode
         :type Module: str
         :param Operation: 操作名CheckVcode
@@ -64,7 +64,7 @@ class CheckVcodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -81,7 +81,7 @@ class CreateContractByUploadRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名ContractMng
         :type Module: str
         :param Operation: 操作名CreateContractByUpload
@@ -138,7 +138,7 @@ class CreateContractByUploadResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -159,7 +159,7 @@ class CreateEnterpriseAccountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名AccountMng
         :type Module: str
         :param Operation: 操作名CreateEnterpriseAccount
@@ -223,7 +223,7 @@ class CreateEnterpriseAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountResId: 帐号ID
         :type AccountResId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -244,7 +244,7 @@ class CreatePersonalAccountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名AccountMng
         :type Module: str
         :param Operation: 操作名CreatePersonalAccount
@@ -288,7 +288,7 @@ class CreatePersonalAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountResId: 账号ID
         :type AccountResId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -309,7 +309,7 @@ class CreateSealRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名SealMng
         :type Module: str
         :param Operation: 操作名CreateSeal
@@ -349,7 +349,7 @@ class CreateSealResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SealResId: 签章ID
         :type SealResId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -370,7 +370,7 @@ class DeleteAccountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名AccountMng
         :type Module: str
         :param Operation: 操作名DeleteAccount
@@ -402,7 +402,7 @@ class DeleteAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DelSuccessList: 删除成功帐号ID列表
         :type DelSuccessList: list of str
         :param DelFailedList: 删除失败帐号ID列表
@@ -427,7 +427,7 @@ class DeleteSealRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名SealMng
         :type Module: str
         :param Operation: 操作名DeleteSeal
@@ -463,7 +463,7 @@ class DeleteSealResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SealResId: 签章ID
         :type SealResId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -484,7 +484,7 @@ class DescribeTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名CommonMng
         :type Module: str
         :param Operation: 操作名DescribeTaskStatus
@@ -516,7 +516,7 @@ class DescribeTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskResult: 任务结果
         :type TaskResult: str
         :param TaskType: 任务类型，010代表合同上传结果，020代表合同下载结果
@@ -541,7 +541,7 @@ class DownloadContractRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名ContractMng
         :type Module: str
         :param Operation: 操作名DownloadContract
@@ -573,7 +573,7 @@ class DownloadContractResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -594,7 +594,7 @@ class SendVcodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名VerifyCode
         :type Module: str
         :param Operation: 操作名SendVcode
@@ -630,7 +630,7 @@ class SendVcodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -647,7 +647,7 @@ class SignContractByCoordinateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名ContractMng
         :type Module: str
         :param Operation: 操作名SignContractByCoordinate
@@ -712,7 +712,7 @@ class SignContractByCoordinateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -729,7 +729,7 @@ class SignContractByKeywordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名ContractMng
         :type Module: str
         :param Operation: 操作名SignContractByKeyword
@@ -791,7 +791,7 @@ class SignContractByKeywordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -808,7 +808,7 @@ class SignInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountResId: 账户ID
         :type AccountResId: str
         :param AuthorizationTime: 授权时间（上传合同可不传该参数）
@@ -856,7 +856,7 @@ class SignKeyword(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Keyword: 关键字
         :type Keyword: str
         :param OffsetCoordX: X轴偏移坐标
@@ -896,7 +896,7 @@ class SignLocation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignOnPage: 签名域页数
         :type SignOnPage: str
         :param SignLocationLBX: 签名域左下角X轴坐标轴

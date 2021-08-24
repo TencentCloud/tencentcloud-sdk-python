@@ -24,7 +24,7 @@ class AgentShell(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Token: 鉴权token
 注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
@@ -90,7 +90,7 @@ class DescribeAgentShellResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 接入信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsw.v20200924.models.AgentShell`

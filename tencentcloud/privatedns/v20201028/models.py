@@ -24,7 +24,7 @@ class AuditLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 日志类型
         :type Resource: str
         :param Metric: 日志表名
@@ -65,7 +65,7 @@ class AuditLogInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 时间
         :type Date: str
         :param OperatorUin: 操作人uin
@@ -97,7 +97,7 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID
         :type ZoneId: str
         :param RecordType: 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
@@ -145,7 +145,7 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录Id
         :type RecordId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -166,7 +166,7 @@ class CreatePrivateZoneRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名，格式必须是标准的TLD
         :type Domain: str
         :param TagSet: 创建私有域的同时，为其打上标签
@@ -225,7 +225,7 @@ class CreatePrivateZoneResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID, zone-xxxxxx
         :type ZoneId: str
         :param Domain: 私有域名
@@ -250,7 +250,7 @@ class DatePoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 时间
         :type Date: str
         :param Value: 值
@@ -278,7 +278,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID
         :type ZoneId: str
         :param RecordId: 记录ID
@@ -310,7 +310,7 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -327,7 +327,7 @@ class DeletePrivateZoneRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID
         :type ZoneId: str
         :param ZoneIdSet: 私有域ID数组，ZoneId 优先
@@ -355,7 +355,7 @@ class DeletePrivateZoneResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -372,7 +372,7 @@ class DescribeAuditLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeRangeBegin: 请求量统计起始时间
         :type TimeRangeBegin: str
         :param Filters: 筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
@@ -417,7 +417,7 @@ class DescribeAuditLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 操作日志列表
         :type Data: list of AuditLog
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -449,7 +449,7 @@ class DescribeDashboardResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneTotal: 私有域解析总数
         :type ZoneTotal: int
         :param ZoneVpcCount: 私有域关联VPC数量
@@ -487,7 +487,7 @@ class DescribePrivateZoneListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页偏移量，从0开始
         :type Offset: int
         :param Limit: 分页限制数目， 最大100，默认20
@@ -524,7 +524,7 @@ class DescribePrivateZoneListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 私有域数量
         :type TotalCount: int
         :param PrivateZoneSet: 私有域列表
@@ -554,7 +554,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID: zone-xxxxxx
         :type ZoneId: str
         :param Filters: 过滤参数
@@ -595,7 +595,7 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 解析记录数量
         :type TotalCount: int
         :param RecordSet: 解析记录列表
@@ -625,7 +625,7 @@ class DescribePrivateZoneRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 域名，格式必须是标准的TLD
         :type ZoneId: str
         """
@@ -649,7 +649,7 @@ class DescribePrivateZoneResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PrivateZone: 私有域详情
         :type PrivateZone: :class:`tencentcloud.privatedns.v20201028.models.PrivateZone`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -678,7 +678,7 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceStatus: 私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
         :type ServiceStatus: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -699,7 +699,7 @@ class DescribeRequestDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeRangeBegin: 请求量统计起始时间，格式：2020-11-22 00:00:00
         :type TimeRangeBegin: str
         :param Filters: 筛选参数：
@@ -736,7 +736,7 @@ class DescribeRequestDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 请求量统计表
         :type Data: list of MetricData
         :param Interval: 请求量单位时间: Day：天，Hour：小时
@@ -766,7 +766,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 参数名
         :type Name: str
         :param Values: 参数值数组
@@ -794,7 +794,7 @@ class FlowUsage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowType: 流量包类型：ZONE 私有域；TRAFFIC 解析流量包
         :type FlowType: str
         :param TotalQuantity: 流量包总额度
@@ -826,7 +826,7 @@ class MetricData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 资源描述
         :type Resource: str
         :param Metric: 表名
@@ -863,7 +863,7 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID
         :type ZoneId: str
         :param RecordId: 记录ID
@@ -915,7 +915,7 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -932,7 +932,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID
         :type ZoneId: str
         :param Remark: 备注
@@ -964,7 +964,7 @@ class ModifyPrivateZoneResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -981,7 +981,7 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID
         :type ZoneId: str
         :param VpcSet: 私有域关联的全部VPC列表
@@ -1014,7 +1014,7 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域ID, zone-xxxxxx
         :type ZoneId: str
         :param VpcSet: 解析域关联的VPC列表
@@ -1044,7 +1044,7 @@ class PrivateZone(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 私有域id: zone-xxxxxxxx
         :type ZoneId: str
         :param OwnerUin: 域名所有者uin
@@ -1119,7 +1119,7 @@ class PrivateZoneRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordId: 记录id
         :type RecordId: str
         :param ZoneId: 私有域id: zone-xxxxxxxx
@@ -1196,7 +1196,7 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceStatus: 私有域解析服务开通状态
         :type ServiceStatus: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1217,7 +1217,7 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1245,7 +1245,7 @@ class VpcInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UniqVpcId: VpcId： vpc-xadsafsdasd
         :type UniqVpcId: str
         :param Region: Vpc所属地区: ap-guangzhou, ap-shanghai

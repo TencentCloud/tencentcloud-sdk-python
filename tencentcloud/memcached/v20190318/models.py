@@ -24,7 +24,7 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例ID组成的数组，数组下标从0开始
         :type InstanceIds: list of str
         :param InstanceNames: 实例名称组成的数组，数组下标从0开始
@@ -88,7 +88,7 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceList: 实例详细信息列表
         :type InstanceList: list of InstanceListInfo
         :param TotalNum: 实例数量
@@ -118,7 +118,7 @@ class InstanceListInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tags: 实例关联的标签信息
         :type Tags: list of TagInfo
         :param AddTimeStamp: 实例创建时间
@@ -239,7 +239,7 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值

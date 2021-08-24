@@ -24,7 +24,7 @@ class Album(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlbumName: 专辑名
         :type AlbumName: str
         :param ImagePathMap: 专辑图片大小及类别
@@ -58,7 +58,7 @@ class Artist(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ArtistName: 歌手名
         :type ArtistName: str
         """
@@ -82,7 +82,7 @@ class AuthInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubjectName: 主体名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectName: str
@@ -136,7 +136,7 @@ class DataInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: Song Name
         :type Name: str
         :param Version: 歌曲版本
@@ -147,12 +147,15 @@ class DataInfo(AbstractModel):
         :type AuditionBegin: int
         :param AuditionEnd: 试听结束时间
         :type AuditionEnd: int
+        :param TagNames: 标签名称
+        :type TagNames: list of str
         """
         self.Name = None
         self.Version = None
         self.Duration = None
         self.AuditionBegin = None
         self.AuditionEnd = None
+        self.TagNames = None
 
 
     def _deserialize(self, params):
@@ -161,6 +164,7 @@ class DataInfo(AbstractModel):
         self.Duration = params.get("Duration")
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
+        self.TagNames = params.get("TagNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -176,7 +180,7 @@ class DescribeAuthInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量：Offset=Offset+Limit
         :type Offset: int
         :param Limit: 数据条数
@@ -208,7 +212,7 @@ class DescribeAuthInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuthInfo: 授权项目列表
         :type AuthInfo: list of AuthInfo
         :param TotalCount: 总数
@@ -238,7 +242,7 @@ class DescribeCloudMusicPurchasedRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuthInfoId: 授权项目Id
         :type AuthInfoId: str
         """
@@ -262,7 +266,7 @@ class DescribeCloudMusicPurchasedResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicOpenDetail: 云音乐列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MusicOpenDetail: list of MusicOpenDetail
@@ -289,7 +293,7 @@ class DescribeCloudMusicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicId: 歌曲Id
         :type MusicId: str
         :param MusicType: 歌曲类型，可选值有：
@@ -321,7 +325,7 @@ class DescribeCloudMusicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicId: 歌曲Id
         :type MusicId: str
         :param MusicName: 歌曲名称
@@ -365,7 +369,7 @@ class DescribeItemByIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemIDs: 歌曲ID，目前暂不支持批量查询
         :type ItemIDs: str
         """
@@ -389,7 +393,7 @@ class DescribeItemByIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Items: 歌曲信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of Item
@@ -416,7 +420,7 @@ class DescribeItemsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: offset (Default = 0)，(当前页-1) * Limit
         :type Offset: int
         :param Limit: 条数，必须大于0，最大值为30
@@ -452,7 +456,7 @@ class DescribeItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页偏移量
         :type Offset: int
         :param Size: 当前页歌曲数量
@@ -496,7 +500,7 @@ class DescribeKTVMusicDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicId: 曲目 Id
         :type MusicId: str
         """
@@ -520,7 +524,7 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KTVMusicBaseInfo: 歌曲基础信息
         :type KTVMusicBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
         :param PlayToken: 播放凭证
@@ -545,16 +549,140 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVPlaylistDetailRequest(AbstractModel):
+    """DescribeKTVPlaylistDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlaylistId: 歌单Id
+        :type PlaylistId: str
+        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Limit: int
+        """
+        self.PlaylistId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.PlaylistId = params.get("PlaylistId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVPlaylistDetailResponse(AbstractModel):
+    """DescribeKTVPlaylistDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KTVMusicInfoSet: 歌曲基础信息列表
+        :type KTVMusicInfoSet: list of KTVMusicBaseInfo
+        :param PlaylistBaseInfo: 歌单基础信息
+        :type PlaylistBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVPlaylistBaseInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KTVMusicInfoSet = None
+        self.PlaylistBaseInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVMusicInfoSet") is not None:
+            self.KTVMusicInfoSet = []
+            for item in params.get("KTVMusicInfoSet"):
+                obj = KTVMusicBaseInfo()
+                obj._deserialize(item)
+                self.KTVMusicInfoSet.append(obj)
+        if params.get("PlaylistBaseInfo") is not None:
+            self.PlaylistBaseInfo = KTVPlaylistBaseInfo()
+            self.PlaylistBaseInfo._deserialize(params.get("PlaylistBaseInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKTVPlaylistsRequest(AbstractModel):
+    """DescribeKTVPlaylists请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVPlaylistsResponse(AbstractModel):
+    """DescribeKTVPlaylists返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlaylistBaseInfoSet: 推荐歌单列表
+        :type PlaylistBaseInfoSet: list of KTVPlaylistBaseInfo
+        :param TotalCount: 推荐歌单列表总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlaylistBaseInfoSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlaylistBaseInfoSet") is not None:
+            self.PlaylistBaseInfoSet = []
+            for item in params.get("PlaylistBaseInfoSet"):
+                obj = KTVPlaylistBaseInfo()
+                obj._deserialize(item)
+                self.PlaylistBaseInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLyricRequest(AbstractModel):
     """DescribeLyric请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 歌曲ID
         :type ItemId: str
-        :param SubItemType: 歌词格式，可选项，可不填写，目前填写只能填LRC-LRC。该字段为预留的扩展字段。后续如果不填，会返回歌曲的所有格式的歌词。如果填写某个正确的格式，则只返回该格式的歌词。
+        :param SubItemType: 格式，可选项，可不填写，默认值为：LRC-LRC。
+<li>LRC-LRC：歌词；</li>
+<li>JSON-ST：波形图。</li>
         :type SubItemType: str
         """
         self.ItemId = None
@@ -579,8 +707,8 @@ class DescribeLyricResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Lyric: 歌词详情
+        r"""
+        :param Lyric: 歌词或者波形图详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Lyric: :class:`tencentcloud.ame.v20190916.models.Lyric`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -603,7 +731,7 @@ class DescribeMusicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 歌曲ID
         :type ItemId: str
         :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
@@ -641,7 +769,7 @@ class DescribeMusicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Music: 音乐相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Music: :class:`tencentcloud.ame.v20190916.models.Music`
@@ -665,7 +793,7 @@ class DescribePackageItemsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单id，从获取已购曲库包列表中获取
         :type OrderId: str
         :param Offset: 默认0，Offset=Offset+Length
@@ -697,7 +825,7 @@ class DescribePackageItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PackageItems: 已核销歌曲信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageItems: list of PackageItem
@@ -724,7 +852,7 @@ class DescribePackagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 默认0，Offset=Offset+Length
         :type Offset: int
         :param Length: 默认20
@@ -752,7 +880,7 @@ class DescribePackagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Packages: 已购曲库包列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Packages: list of Package
@@ -779,7 +907,7 @@ class DescribeStationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 条数，必须大于0
         :type Limit: int
         :param Offset: offset (Default = 0)，Offset=Offset+Limit
@@ -807,7 +935,7 @@ class DescribeStationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数量
         :type Total: int
         :param Offset: 分页偏移量
@@ -850,7 +978,7 @@ class ImagePath(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: station图片大小及类别
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
@@ -880,7 +1008,7 @@ class Item(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemID: Song ID
         :type ItemID: str
         :param DataInfo: Song info
@@ -933,7 +1061,7 @@ class KTVMusicBaseInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicId: 歌曲 Id
         :type MusicId: str
         :param Name: 歌曲名称
@@ -946,6 +1074,8 @@ class KTVMusicBaseInfo(AbstractModel):
         :type ComposerSet: list of str
         :param TagSet: 标签列表
         :type TagSet: list of str
+        :param Duration: 歌曲时长
+        :type Duration: int
         """
         self.MusicId = None
         self.Name = None
@@ -953,6 +1083,7 @@ class KTVMusicBaseInfo(AbstractModel):
         self.LyricistSet = None
         self.ComposerSet = None
         self.TagSet = None
+        self.Duration = None
 
 
     def _deserialize(self, params):
@@ -962,6 +1093,43 @@ class KTVMusicBaseInfo(AbstractModel):
         self.LyricistSet = params.get("LyricistSet")
         self.ComposerSet = params.get("ComposerSet")
         self.TagSet = params.get("TagSet")
+        self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVPlaylistBaseInfo(AbstractModel):
+    """推荐歌单基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlaylistId: 歌单Id
+        :type PlaylistId: str
+        :param Title: 歌单标题
+        :type Title: str
+        :param Description: 歌单介绍
+        :type Description: str
+        :param MusicNum: 歌曲数量
+        :type MusicNum: int
+        """
+        self.PlaylistId = None
+        self.Title = None
+        self.Description = None
+        self.MusicNum = None
+
+
+    def _deserialize(self, params):
+        self.PlaylistId = params.get("PlaylistId")
+        self.Title = params.get("Title")
+        self.Description = params.get("Description")
+        self.MusicNum = params.get("MusicNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -977,7 +1145,7 @@ class Lyric(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 歌词cdn地址
         :type Url: str
         :param FileNameExt: 歌词后缀名
@@ -1009,7 +1177,7 @@ class ModifyMusicOnShelvesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicDetailInfos: 歌曲变更信息
         :type MusicDetailInfos: :class:`tencentcloud.ame.v20190916.models.MusicDetailInfo`
         :param AmeKey: ame对接资源方密钥
@@ -1039,7 +1207,7 @@ class ModifyMusicOnShelvesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1056,7 +1224,7 @@ class Music(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
         :type Url: str
         :param FileSize: 音频文件大小
@@ -1103,7 +1271,7 @@ class MusicDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicId: 资源方音乐Id
         :type MusicId: str
         :param AmeId: 资源方识别信息
@@ -1171,7 +1339,7 @@ class MusicOpenDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicId: 音乐Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type MusicId: str
@@ -1199,6 +1367,9 @@ class MusicOpenDetail(AbstractModel):
         :param LyricUrl: 歌词url
 注意：此字段可能返回 null，表示取不到有效值。
         :type LyricUrl: str
+        :param WaveformUrl: 波形图url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaveformUrl: str
         """
         self.MusicId = None
         self.AlbumName = None
@@ -1209,6 +1380,7 @@ class MusicOpenDetail(AbstractModel):
         self.Duration = None
         self.Tags = None
         self.LyricUrl = None
+        self.WaveformUrl = None
 
 
     def _deserialize(self, params):
@@ -1221,6 +1393,7 @@ class MusicOpenDetail(AbstractModel):
         self.Duration = params.get("Duration")
         self.Tags = params.get("Tags")
         self.LyricUrl = params.get("LyricUrl")
+        self.WaveformUrl = params.get("WaveformUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1236,7 +1409,7 @@ class Package(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单id
         :type OrderId: str
         :param Name: 曲库包名称
@@ -1305,7 +1478,7 @@ class PackageItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单id
         :type OrderId: str
         :param TrackName: 歌曲名
@@ -1353,7 +1526,7 @@ class PutMusicOnTheShelvesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicIds: 资源方歌曲Id
         :type MusicIds: list of str
         """
@@ -1377,7 +1550,7 @@ class PutMusicOnTheShelvesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessNum: 操作成功数量
         :type SuccessNum: int
         :param FailedNum: 操作失败数量
@@ -1407,7 +1580,7 @@ class ReportDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReportData: 上报数据
 注:reportData为客户端压缩后的上报数据进行16进制转换的字符串数据
 压缩说明：
@@ -1443,7 +1616,7 @@ class ReportDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1460,7 +1633,7 @@ class SearchKTVMusicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyWord: 搜索关键词
         :type KeyWord: str
         :param Offset: 分页游标
@@ -1492,7 +1665,7 @@ class SearchKTVMusicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param KTVMusicInfoSet: KTV 曲目列表
@@ -1522,7 +1695,7 @@ class Station(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CategoryID: StationID
         :type CategoryID: str
         :param CategoryCode: Station MCCode
@@ -1571,7 +1744,7 @@ class TakeMusicOffShelves(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MusicIds: 资源方对应音乐Id
         :type MusicIds: str
         :param SaleStatus: 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
@@ -1600,7 +1773,7 @@ class TakeMusicOffShelvesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TakeMusicOffShelves: 资源方下架必传结构
         :type TakeMusicOffShelves: list of TakeMusicOffShelves
         """
@@ -1629,7 +1802,7 @@ class TakeMusicOffShelvesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessNum: 返回成功数量
         :type SuccessNum: int
         :param FailedNum: 返回失败数量
@@ -1659,7 +1832,7 @@ class UseRange(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UseRangeId: 用途id
         :type UseRangeId: int
         :param Name: 用途范围名称

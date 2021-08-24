@@ -30,7 +30,7 @@ class DescribeSdkAppidResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppids: 表示 appid 对应的 SdkAppid 的数据
         :type SdkAppids: list of int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

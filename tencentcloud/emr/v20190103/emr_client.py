@@ -27,7 +27,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """创建EMR实例
+        """创建EMR集群实例
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
@@ -68,6 +68,34 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCvmQuota(self, request):
+        """获取账户的CVM配额
+
+        :param request: Request instance for DescribeCvmQuota.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCvmQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCvmQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -348,6 +376,34 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScaleOutInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncPodState(self, request):
+        """EMR同步TKE中POD状态
+
+        :param request: Request instance for SyncPodState.
+        :type request: :class:`tencentcloud.emr.v20190103.models.SyncPodStateRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.SyncPodStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SyncPodState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncPodStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

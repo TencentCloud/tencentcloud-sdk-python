@@ -323,12 +323,6 @@ RESOURCEINUSE_TCBHOSTEXISTS = 'ResourceInUse.TcbHostExists'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
-# 标签键不存在。
-RESOURCENOTFOUND_CAMTAGKEYNOTEXIST = 'ResourceNotFound.CamTagKeyNotExist'
-
-# 标签不存在。
-RESOURCENOTFOUND_CAMTAGNOTEXIST = 'ResourceNotFound.CamTagNotExist'
-
 # 账号下无此域名，请确认后重试。
 RESOURCENOTFOUND_CDNHOSTNOTEXISTS = 'ResourceNotFound.CdnHostNotExists'
 
@@ -370,6 +364,9 @@ RESOURCEUNAVAILABLE_CDNHOSTEXISTSINTCB = 'ResourceUnavailable.CdnHostExistsInTcb
 
 # 域名被锁定。
 RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = 'ResourceUnavailable.CdnHostIsLocked'
+
+# 域名不安全或为恶意域名，不可接入。
+RESOURCEUNAVAILABLE_CDNHOSTISMALICIOUS = 'ResourceUnavailable.CdnHostIsMalicious'
 
 # 域名未下线。
 RESOURCEUNAVAILABLE_CDNHOSTISNOTOFFLINE = 'ResourceUnavailable.CdnHostIsNotOffline'

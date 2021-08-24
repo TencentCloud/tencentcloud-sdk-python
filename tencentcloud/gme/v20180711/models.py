@@ -18,13 +18,77 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AgeDetectTask(AbstractModel):
+    """年龄语音识别子任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataId: 数据唯一ID
+        :type DataId: str
+        :param Url: 数据文件的url，为 urlencode 编码,音频文件格式支持的类型：.wav、.m4a、.amr、.mp3、.aac、.wma、.ogg
+        :type Url: str
+        """
+        self.DataId = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgeDetectTaskResult(AbstractModel):
+    """年龄语音任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataId: 数据唯一ID
+        :type DataId: str
+        :param Url: 数据文件的url
+        :type Url: str
+        :param Status: 任务状态，0: 已创建，1:运行中，2:正常结束，3:异常结束，4:运行超时
+        :type Status: int
+        :param Age: 任务结果：0: 成年，1:未成年，100:未知
+        :type Age: int
+        """
+        self.DataId = None
+        self.Url = None
+        self.Status = None
+        self.Age = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.Url = params.get("Url")
+        self.Status = params.get("Status")
+        self.Age = params.get("Age")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppStatisticsItem(AbstractModel):
     """应用用量统计数据
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealtimeSpeechStatisticsItem: 实时语音统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealtimeSpeechStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
@@ -69,7 +133,7 @@ class ApplicationDataStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID
         :type BizId: int
         :param DauDataNum: Dau统计项数目
@@ -180,13 +244,73 @@ class ApplicationDataStatistics(AbstractModel):
         
 
 
+class CreateAgeDetectTaskRequest(AbstractModel):
+    """CreateAgeDetectTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用id
+        :type BizId: int
+        :param Tasks: 语音检测子任务列表，列表最多支持100个检测子任务。结构体中包含：
+<li>DataId：数据的唯一ID</li>
+<li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+        :type Tasks: list of AgeDetectTask
+        :param Callback: 任务结束时gme后台会自动触发回调
+        :type Callback: str
+        """
+        self.BizId = None
+        self.Tasks = None
+        self.Callback = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = AgeDetectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAgeDetectTaskResponse(AbstractModel):
+    """CreateAgeDetectTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 本次任务提交后唯一id，用于获取任务运行结果
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppName: 应用名称
         :type AppName: str
         :param ProjectId: 腾讯云项目ID，默认为0，表示默认项目
@@ -249,7 +373,7 @@ class CreateAppResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID，由后台自动生成。
         :type BizId: int
         :param AppName: 应用名称，透传输入参数的AppName
@@ -294,13 +418,75 @@ class CreateAppResponse(AbstractModel):
             self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
 
 
+class DescribeAgeDetectTaskRequest(AbstractModel):
+    """DescribeAgeDetectTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用id
+        :type BizId: int
+        :param TaskId: 创建年龄语音识别任务时返回的taskid
+        :type TaskId: str
+        """
+        self.BizId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgeDetectTaskResponse(AbstractModel):
+    """DescribeAgeDetectTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param Results: 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
+DataId： 请求中对应的 DataId。
+Url ：该请求中对应的 Url。
+Status ：子任务状态，0:已创建，1:运行中，2:已完成，3:任务异常，4:任务超时。
+Age ：子任务完成后的结果，0:成年人，1:未成年人，100:未知结果。
+        :type Results: list of AgeDetectTaskResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = AgeDetectTaskResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAppStatisticsRequest(AbstractModel):
     """DescribeAppStatistics请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: GME应用ID
         :type BizId: int
         :param StartDate: 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
@@ -336,7 +522,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppStatistics: 应用用量统计数据
         :type AppStatistics: list of AppStatisticsItem
         """
@@ -358,7 +544,7 @@ class DescribeApplicationDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID
         :type BizId: int
         :param StartDate: 数据开始时间，格式为 年-月-日，如: 2018-07-13
@@ -390,7 +576,7 @@ class DescribeApplicationDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 应用统计数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -413,7 +599,7 @@ class DescribeFilterResultListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID
         :type BizId: int
         :param StartDate: 开始时间，格式为 年-月-日，如: 2018-07-11
@@ -453,7 +639,7 @@ class DescribeFilterResultListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 过滤结果总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -485,7 +671,7 @@ class DescribeFilterResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID
         :type BizId: int
         :param FileId: 文件ID
@@ -513,7 +699,7 @@ class DescribeFilterResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 过滤结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.gme.v20180711.models.VoiceFilterInfo`
@@ -537,7 +723,7 @@ class DescribeRoomInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type SdkAppId: int
         :param RoomIds: 房间号列表，最大不能超过10个
@@ -565,7 +751,7 @@ class DescribeRoomInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 操作结果, 0成功, 非0失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
@@ -597,7 +783,7 @@ class DescribeScanResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 业务返回码
         :type Code: int
         :param DataId: 数据唯一 ID
@@ -675,7 +861,7 @@ class DescribeScanResultListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用 ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
         :param TaskIdList: 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
@@ -707,7 +893,7 @@ class DescribeScanResultListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 要查询的语音检测任务的结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DescribeScanResult
@@ -734,7 +920,7 @@ class DescribeUserInAndOutTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID
         :type BizId: int
         :param RoomId: 房间ID
@@ -766,7 +952,7 @@ class DescribeUserInAndOutTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InOutList: 用户在房间得进出时间列表
         :type InOutList: list of InOutTimeInfo
         :param Duration: 用户在房间中总时长
@@ -796,7 +982,7 @@ class InOutTimeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 进入房间时间
         :type StartTime: int
         :param EndTime: 退出房间时间
@@ -824,7 +1010,7 @@ class ModifyAppStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID，创建应用后由后台生成并返回。
         :type BizId: int
         :param Status: 应用状态，取值：open/close
@@ -852,7 +1038,7 @@ class ModifyAppStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: GME应用ID
         :type BizId: int
         :param Status: 应用状态，取值：open/close
@@ -873,7 +1059,7 @@ class ModifyRoomInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type SdkAppId: int
         :param RoomId: 房间id
@@ -907,7 +1093,7 @@ class ModifyRoomInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 操作结果, 0成功, 非0失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
@@ -934,7 +1120,7 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MainLandDau: 大陆地区DAU
         :type MainLandDau: int
         :param MainLandPcu: 大陆地区PCU
@@ -978,10 +1164,10 @@ class RealtimeSpeechConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 实时语音服务开关，取值：open/close
         :type Status: str
-        :param Quality: 实时语音音质类型，取值：high-高音质，ordinary-普通音质。默认高音质。普通音质仅白名单开放，如需要普通音质，请联系腾讯云商务。
+        :param Quality: 实时语音音质类型，取值：high-高音质
         :type Quality: str
         """
         self.Status = None
@@ -1006,7 +1192,7 @@ class RoomUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoomId: 房间id
         :type RoomId: int
         :param Uins: 房间里用户uin列表
@@ -1035,7 +1221,7 @@ class ScanDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 违规场景，参照<a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>定义
         :type Label: str
         :param Rate: 该场景下概率[0.00,100.00],分值越大违规概率越高
@@ -1075,7 +1261,7 @@ class ScanPiece(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DumpUrl: 流检测时返回，音频转存地址，保留30min
 注意：此字段可能返回 null，表示取不到有效值。
         :type DumpUrl: str
@@ -1148,7 +1334,7 @@ class ScanVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
         :param Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
@@ -1195,7 +1381,7 @@ class ScanVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
 <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
         :type Data: list of ScanVoiceResult
@@ -1222,7 +1408,7 @@ class ScanVoiceResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 数据ID
         :type DataId: str
         :param TaskId: 任务ID
@@ -1250,7 +1436,7 @@ class StatisticsItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatDate: 日期，格式为年-月-日，如2018-07-13
         :type StatDate: str
         :param Data: 统计值
@@ -1278,7 +1464,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
@@ -1308,7 +1494,7 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 数据的唯一ID
         :type DataId: str
         :param Url: 数据文件的url，为 urlencode 编码，流式则为拉流地址
@@ -1344,7 +1530,7 @@ class VoiceFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 过滤类型，1：政治，2：色情，3：涉毒，4：谩骂
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
@@ -1374,7 +1560,7 @@ class VoiceFilterConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 语音过滤服务开关，取值：open/close
         :type Status: str
         """
@@ -1398,7 +1584,7 @@ class VoiceFilterInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizId: int
@@ -1453,7 +1639,7 @@ class VoiceFilterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 应用ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
         :param FileId: 文件ID，表示文件唯一ID
@@ -1497,7 +1683,7 @@ class VoiceFilterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1514,7 +1700,7 @@ class VoiceFilterStatisticsItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Duration: 语音过滤总时长
         :type Duration: int
         """
@@ -1538,7 +1724,7 @@ class VoiceMessageConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 离线语音服务开关，取值：open/close
         :type Status: str
         :param Language: 离线语音支持语种，取值： all-全部，cnen-中英文。默认为中英文
@@ -1566,7 +1752,7 @@ class VoiceMessageStatisticsItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Dau: 离线语音DAU
         :type Dau: int
         """

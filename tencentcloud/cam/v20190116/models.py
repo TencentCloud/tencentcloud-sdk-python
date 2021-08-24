@@ -24,7 +24,7 @@ class AccessKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessKeyId: 访问密钥标识
         :type AccessKeyId: str
         :param Status: 密钥状态，激活（Active）或未激活（Inactive）
@@ -56,7 +56,7 @@ class AddUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 子用户用户名
         :type Name: str
         :param Remark: 子用户备注
@@ -112,7 +112,7 @@ class AddUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 子用户 UIN
         :type Uin: int
         :param Name: 子用户用户名
@@ -153,7 +153,7 @@ class AddUserToGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Info: 添加的子用户 UID 和用户组 ID 关联关系
         :type Info: list of GroupIdOfUidInfo
         """
@@ -182,7 +182,7 @@ class AddUserToGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -199,7 +199,7 @@ class AttachEntityOfPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 实体ID
         :type Id: str
         :param Name: 实体名称
@@ -242,7 +242,7 @@ class AttachGroupPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略 id
         :type PolicyId: int
         :param AttachGroupId: 用户组 id
@@ -270,7 +270,7 @@ class AttachGroupPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -287,7 +287,7 @@ class AttachPolicyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略id
         :type PolicyId: int
         :param PolicyName: 策略名称
@@ -361,7 +361,7 @@ class AttachRolePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
         :param AttachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
@@ -397,7 +397,7 @@ class AttachRolePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -414,7 +414,7 @@ class AttachUserPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略 id
         :type PolicyId: int
         :param AttachUin: 子账号 uin
@@ -442,7 +442,7 @@ class AttachUserPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -459,7 +459,7 @@ class AttachedPolicyOfRole(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         :param PolicyName: 策略名称
@@ -515,7 +515,7 @@ class ConsumeCustomMFATokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MFAToken: 自定义多因子验证Token
         :type MFAToken: str
         """
@@ -539,7 +539,7 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -556,7 +556,7 @@ class CreateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 用户组名
         :type GroupName: str
         :param Remark: 用户组描述
@@ -584,7 +584,7 @@ class CreateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID
         :type GroupId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -605,7 +605,7 @@ class CreatePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyName: 策略名
         :type PolicyName: str
         :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
@@ -637,7 +637,7 @@ class CreatePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 新增策略ID
         :type PolicyId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -658,7 +658,7 @@ class CreatePolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         :param PolicyDocument: 策略文本信息
@@ -690,7 +690,7 @@ class CreatePolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 策略版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
@@ -712,7 +712,7 @@ class CreateRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleName: 角色名称
         :type RoleName: str
         :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
@@ -752,7 +752,7 @@ class CreateRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: 角色ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleId: str
@@ -774,7 +774,7 @@ class CreateSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: SAML身份提供商名称
         :type Name: str
         :param Description: SAML身份提供商描述
@@ -806,7 +806,7 @@ class CreateSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProviderArn: SAML身份提供商资源描述符
         :type ProviderArn: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -827,7 +827,7 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QCSServiceName: 授权服务，附加了此角色的腾讯云服务主体。
         :type QCSServiceName: list of str
         :param CustomSuffix: 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
@@ -859,7 +859,7 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: 角色ID
         :type RoleId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -880,7 +880,7 @@ class DeleteGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID
         :type GroupId: int
         """
@@ -904,7 +904,7 @@ class DeleteGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -921,7 +921,7 @@ class DeletePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 数组，数组成员是策略 id，支持批量删除策略
         :type PolicyId: list of int non-negative
         """
@@ -945,7 +945,7 @@ class DeletePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -962,7 +962,7 @@ class DeletePolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         :param VersionId: 策略版本号
@@ -990,7 +990,7 @@ class DeletePolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1007,7 +1007,7 @@ class DeleteRolePermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: 角色ID（与角色名至少填一个）
         :type RoleId: str
         :param RoleName: 角色名（与角色ID至少填一个）
@@ -1035,7 +1035,7 @@ class DeleteRolePermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1052,7 +1052,7 @@ class DeleteRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
         :param RoleName: 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
@@ -1080,7 +1080,7 @@ class DeleteRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1097,7 +1097,7 @@ class DeleteSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: SAML身份提供商名称
         :type Name: str
         """
@@ -1121,7 +1121,7 @@ class DeleteSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1138,7 +1138,7 @@ class DeleteServiceLinkedRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleName: 要删除的服务相关角色的名称。
         :type RoleName: str
         """
@@ -1162,7 +1162,7 @@ class DeleteServiceLinkedRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeletionTaskId: 删除任务ID，可用于检查删除服务相关角色状态。
         :type DeletionTaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1183,7 +1183,7 @@ class DeleteUserPermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetUin: 子账号Uin
         :type TargetUin: int
         """
@@ -1207,7 +1207,7 @@ class DeleteUserPermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1224,7 +1224,7 @@ class DeleteUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 子用户用户名
         :type Name: str
         :param Force: 是否强制删除该子用户，默认入参为0。0：若该用户存在未删除API密钥，则不删除用户；1：若该用户存在未删除API密钥，则先删除密钥后删除用户。删除密钥需要您拥有cam:DeleteApiKey权限，您将可以删除该用户下启用或禁用状态的所有密钥，无权限则删除密钥和用户失败
@@ -1252,7 +1252,7 @@ class DeleteUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1269,7 +1269,7 @@ class DescribeRoleListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Page: 页码，从1开始
         :type Page: int
         :param Rp: 每页行数，不能大于200
@@ -1297,7 +1297,7 @@ class DescribeRoleListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 角色详情列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of RoleInfo
@@ -1328,7 +1328,7 @@ class DescribeSafeAuthFlagCollRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubUin: 子账号
         :type SubUin: int
         """
@@ -1352,7 +1352,7 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoginFlag: 登录保护设置
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param ActionFlag: 敏感操作保护设置
@@ -1381,6 +1381,47 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSafeAuthFlagIntlRequest(AbstractModel):
+    """DescribeSafeAuthFlagIntl请求参数结构体
+
+    """
+
+
+class DescribeSafeAuthFlagIntlResponse(AbstractModel):
+    """DescribeSafeAuthFlagIntl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoginFlag: 登录保护设置
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param ActionFlag: 敏感操作保护设置
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param OffsiteFlag: 异地登录保护设置
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlagIntl()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlagIntl()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSafeAuthFlagRequest(AbstractModel):
     """DescribeSafeAuthFlag请求参数结构体
 
@@ -1393,7 +1434,7 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoginFlag: 登录保护设置
         :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param ActionFlag: 敏感操作保护设置
@@ -1428,7 +1469,7 @@ class DescribeSubAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FilterSubAccountUin: 子用户UIN列表，最多支持50个UIN
         :type FilterSubAccountUin: list of int non-negative
         """
@@ -1452,7 +1493,7 @@ class DescribeSubAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubAccounts: 子用户列表
         :type SubAccounts: list of SubAccountUser
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1478,7 +1519,7 @@ class DetachGroupPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略 id
         :type PolicyId: int
         :param DetachGroupId: 用户组 id
@@ -1506,7 +1547,7 @@ class DetachGroupPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1523,7 +1564,7 @@ class DetachRolePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
         :param DetachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
@@ -1559,7 +1600,7 @@ class DetachRolePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1576,7 +1617,7 @@ class DetachUserPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略 id
         :type PolicyId: int
         :param DetachUin: 子账号 uin
@@ -1604,7 +1645,7 @@ class DetachUserPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1615,13 +1656,60 @@ class DetachUserPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetAccountSummaryRequest(AbstractModel):
+    """GetAccountSummary请求参数结构体
+
+    """
+
+
+class GetAccountSummaryResponse(AbstractModel):
+    """GetAccountSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Policies: 策略数
+        :type Policies: int
+        :param Roles: 角色数
+        :type Roles: int
+        :param Idps: 身份提供商数
+        :type Idps: int
+        :param User: 子账户数
+        :type User: int
+        :param Group: 分组数
+        :type Group: int
+        :param Member: 分组用户总数
+        :type Member: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Policies = None
+        self.Roles = None
+        self.Idps = None
+        self.User = None
+        self.Group = None
+        self.Member = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Policies = params.get("Policies")
+        self.Roles = params.get("Roles")
+        self.Idps = params.get("Idps")
+        self.User = params.get("User")
+        self.Group = params.get("Group")
+        self.Member = params.get("Member")
+        self.RequestId = params.get("RequestId")
+
+
 class GetCustomMFATokenInfoRequest(AbstractModel):
     """GetCustomMFATokenInfo请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MFAToken: 自定义多因子验证Token
         :type MFAToken: str
         """
@@ -1645,7 +1733,7 @@ class GetCustomMFATokenInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 自定义多因子验证Token对应的帐号Id
         :type Uin: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1666,7 +1754,7 @@ class GetGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID
         :type GroupId: int
         """
@@ -1690,7 +1778,7 @@ class GetGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID
         :type GroupId: int
         :param GroupName: 用户组名称
@@ -1736,7 +1824,7 @@ class GetPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略Id
         :type PolicyId: int
         """
@@ -1760,7 +1848,7 @@ class GetPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyName: 策略名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyName: str
@@ -1817,7 +1905,7 @@ class GetPolicyVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         :param VersionId: 策略版本号
@@ -1845,7 +1933,7 @@ class GetPolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyVersion: 策略版本详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyVersion: :class:`tencentcloud.cam.v20190116.models.PolicyVersionDetail`
@@ -1869,7 +1957,7 @@ class GetRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
         :type RoleId: str
         :param RoleName: 角色名，用于指定角色，入参 RoleId 与 RoleName 二选一
@@ -1897,7 +1985,7 @@ class GetRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleInfo: 角色详情
         :type RoleInfo: :class:`tencentcloud.cam.v20190116.models.RoleInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1920,7 +2008,7 @@ class GetSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: SAML身份提供商名称
         :type Name: str
         """
@@ -1944,7 +2032,7 @@ class GetSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: SAML身份提供商名称
         :type Name: str
         :param Description: SAML身份提供商描述
@@ -1980,6 +2068,24 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param SecretIdList: 查询密钥ID列表
+        :type SecretIdList: list of str
+        """
+        self.SecretIdList = None
+
+
+    def _deserialize(self, params):
+        self.SecretIdList = params.get("SecretIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetSecurityLastUsedResponse(AbstractModel):
     """GetSecurityLastUsed返回参数结构体
@@ -1987,14 +2093,23 @@ class GetSecurityLastUsedResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
+        :param SecretIdLastUsedRows: 密钥ID最近访问列表
+        :type SecretIdLastUsedRows: list of SecretIdLastUsed
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SecretIdLastUsedRows = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("SecretIdLastUsedRows") is not None:
+            self.SecretIdLastUsedRows = []
+            for item in params.get("SecretIdLastUsedRows"):
+                obj = SecretIdLastUsed()
+                obj._deserialize(item)
+                self.SecretIdLastUsedRows.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2004,7 +2119,7 @@ class GetServiceLinkedRoleDeletionStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeletionTaskId: 删除任务ID
         :type DeletionTaskId: str
         """
@@ -2028,7 +2143,7 @@ class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
         :type Status: str
         :param Reason: 失败原因
@@ -2063,7 +2178,7 @@ class GetUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 子用户用户名
         :type Name: str
         """
@@ -2087,7 +2202,7 @@ class GetUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 子用户用户 UIN
         :type Uin: int
         :param Name: 子用户用户名
@@ -2136,7 +2251,7 @@ class GroupIdOfUidInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uid: 子用户 UID
         :type Uid: int
         :param GroupId: 用户组 ID
@@ -2164,7 +2279,7 @@ class GroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID。
         :type GroupId: int
         :param GroupName: 用户组名称。
@@ -2200,7 +2315,7 @@ class GroupMemberInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uid: 子用户 Uid。
         :type Uid: int
         :param Uin: 子用户 Uin。
@@ -2264,7 +2379,7 @@ class ListAccessKeysRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetUin: 指定用户Uin，不填默认列出当前用户访问密钥
         :type TargetUin: int
         """
@@ -2288,7 +2403,7 @@ class ListAccessKeysResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessKeys: 访问密钥列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKeys: list of AccessKey
@@ -2315,23 +2430,27 @@ class ListAttachedGroupPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 用户组ID
         :type TargetGroupId: int
         :param Page: 页码，默认值是 1，从 1 开始
         :type Page: int
         :param Rp: 每页大小，默认值是 20
         :type Rp: int
+        :param Keyword: 搜索关键字
+        :type Keyword: str
         """
         self.TargetGroupId = None
         self.Page = None
         self.Rp = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
         self.TargetGroupId = params.get("TargetGroupId")
         self.Page = params.get("Page")
         self.Rp = params.get("Rp")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2347,7 +2466,7 @@ class ListAttachedGroupPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 策略总数
         :type TotalNum: int
         :param List: 策略列表
@@ -2377,7 +2496,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Page: 页码，从 1 开始
         :type Page: int
         :param Rp: 每页行数，不能大于200
@@ -2388,12 +2507,15 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
         :type RoleName: str
         :param PolicyType: 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
         :type PolicyType: str
+        :param Keyword: 搜索关键字
+        :type Keyword: str
         """
         self.Page = None
         self.Rp = None
         self.RoleId = None
         self.RoleName = None
         self.PolicyType = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
@@ -2402,6 +2524,7 @@ class ListAttachedRolePoliciesRequest(AbstractModel):
         self.RoleId = params.get("RoleId")
         self.RoleName = params.get("RoleName")
         self.PolicyType = params.get("PolicyType")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2417,7 +2540,7 @@ class ListAttachedRolePoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 角色关联的策略列表
         :type List: list of AttachedPolicyOfRole
         :param TotalNum: 角色关联的策略总数
@@ -2447,7 +2570,7 @@ class ListAttachedUserPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetUin: 子账号 uin
         :type TargetUin: int
         :param Page: 页码，默认值是 1，从 1 开始
@@ -2479,7 +2602,7 @@ class ListAttachedUserPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 策略总数
         :type TotalNum: int
         :param List: 策略列表
@@ -2509,7 +2632,7 @@ class ListCollaboratorsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 分页条数，缺省为20
         :type Limit: int
         :param Offset: 分页起始值，缺省为0
@@ -2537,7 +2660,7 @@ class ListCollaboratorsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 总数
         :type TotalNum: int
         :param Data: 协作者信息
@@ -2567,7 +2690,7 @@ class ListEntitiesForPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略 id
         :type PolicyId: int
         :param Page: 页码，默认值是 1，从 1 开始
@@ -2603,7 +2726,7 @@ class ListEntitiesForPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 实体总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
@@ -2635,7 +2758,7 @@ class ListGrantServiceAccessActionNode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 接口名
         :type Name: str
         :param Description: 接口描述
@@ -2663,7 +2786,7 @@ class ListGrantServiceAccessNode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Service: 服务
         :type Service: :class:`tencentcloud.cam.v20190116.models.ListGrantServiceAccessService`
         :param Action: 接口信息
@@ -2707,7 +2830,7 @@ class ListGrantServiceAccessPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: str
         :param PolicyName: 策略名
@@ -2743,7 +2866,7 @@ class ListGrantServiceAccessService(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 服务
         :type ServiceType: str
         :param ServiceName: 服务名
@@ -2771,7 +2894,7 @@ class ListGroupsForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uid: 子用户 UID
         :type Uid: int
         :param Rp: 每页数量。默认为20。
@@ -2807,7 +2930,7 @@ class ListGroupsForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 子用户加入的用户组总数
         :type TotalNum: int
         :param GroupInfo: 用户组信息
@@ -2837,7 +2960,7 @@ class ListGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Page: 页码。默认为1。
         :type Page: int
         :param Rp: 每页数量。默认为20。
@@ -2869,7 +2992,7 @@ class ListGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 用户组总数。
         :type TotalNum: int
         :param GroupInfo: 用户组数组信息。
@@ -2899,7 +3022,7 @@ class ListPoliciesGrantingServiceAccessRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetUin: 子账号uin，与RoleId、GroupId三选一必传
         :type TargetUin: int
         :param RoleId: 角色ID，与TargetUin、GroupId三选一必传
@@ -2935,7 +3058,7 @@ class ListPoliciesGrantingServiceAccessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表
         :type List: list of ListGrantServiceAccessNode
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2961,7 +3084,7 @@ class ListPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rp: 每页数量，默认值是 20，必须大于 0 且小于或等于 200
         :type Rp: int
         :param Page: 页码，默认值是 1，从 1开始，不能大于 200
@@ -2997,7 +3120,7 @@ class ListPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 策略总数
         :type TotalNum: int
         :param List: 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
@@ -3041,7 +3164,7 @@ class ListPolicyVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         """
@@ -3065,7 +3188,7 @@ class ListPolicyVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Versions: 策略版本列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of PolicyVersionItem
@@ -3098,7 +3221,7 @@ class ListSAMLProvidersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: SAML身份提供商总数
         :type TotalCount: int
         :param SAMLProviderSet: SAML身份提供商列表
@@ -3128,7 +3251,7 @@ class ListUsersForGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID。
         :type GroupId: int
         :param Page: 页码。默认为1。
@@ -3160,7 +3283,7 @@ class ListUsersForGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 用户组关联的用户总数。
         :type TotalNum: int
         :param UserInfo: 子用户信息。
@@ -3196,7 +3319,7 @@ class ListUsersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 子用户信息
         :type Data: list of SubAccountInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3222,7 +3345,7 @@ class ListWeChatWorkSubAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 限制数目
@@ -3250,7 +3373,7 @@ class ListWeChatWorkSubAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 企业微信子用户列表。
         :type Data: list of WeChatWorkSubAccount
         :param TotalCount: 总数目。
@@ -3280,7 +3403,7 @@ class LoginActionFlag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Phone: 手机
         :type Phone: int
         :param Token: 硬token
@@ -3314,13 +3437,57 @@ class LoginActionFlag(AbstractModel):
         
 
 
+class LoginActionFlagIntl(AbstractModel):
+    """登录和敏感操作flag
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Phone: 手机
+        :type Phone: int
+        :param Token: 硬token
+        :type Token: int
+        :param Stoken: 软token
+        :type Stoken: int
+        :param Wechat: 微信
+        :type Wechat: int
+        :param Custom: 自定义
+        :type Custom: int
+        :param Mail: 邮件
+        :type Mail: int
+        """
+        self.Phone = None
+        self.Token = None
+        self.Stoken = None
+        self.Wechat = None
+        self.Custom = None
+        self.Mail = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Token = params.get("Token")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+        self.Custom = params.get("Custom")
+        self.Mail = params.get("Mail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoginActionMfaFlag(AbstractModel):
     """登录和敏感操作flag
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Phone: 手机
         :type Phone: int
         :param Stoken: 软token
@@ -3352,7 +3519,7 @@ class OffsiteFlag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VerifyFlag: 验证标识
         :type VerifyFlag: int
         :param NotifyPhone: 手机通知
@@ -3392,7 +3559,7 @@ class PolicyVersionDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 策略版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
@@ -3432,7 +3599,7 @@ class PolicyVersionItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 策略版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
@@ -3467,7 +3634,7 @@ class PutRolePermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         :param RoleId: 角色ID（与角色名至少填一个）
@@ -3499,7 +3666,7 @@ class PutRolePermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3516,7 +3683,7 @@ class PutUserPermissionsBoundaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetUin: 子账号Uin
         :type TargetUin: int
         :param PolicyId: 策略ID
@@ -3544,7 +3711,7 @@ class PutUserPermissionsBoundaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3561,7 +3728,7 @@ class RemoveUserFromGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Info: 要删除的用户 UID和用户组 ID对应数组
         :type Info: list of GroupIdOfUidInfo
         """
@@ -3590,7 +3757,7 @@ class RemoveUserFromGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3607,7 +3774,7 @@ class RoleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleId: 角色ID
         :type RoleId: str
         :param RoleName: 角色名称
@@ -3670,7 +3837,7 @@ class SAMLProviderInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: SAML身份提供商名称
         :type Name: str
         :param Description: SAML身份提供商描述
@@ -3700,13 +3867,42 @@ class SAMLProviderInfo(AbstractModel):
         
 
 
+class SecretIdLastUsed(AbstractModel):
+    """密钥最后使用时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretId: 密钥ID
+        :type SecretId: str
+        :param LastUsedDate: 最后访问日期(有1天延迟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUsedDate: str
+        """
+        self.SecretId = None
+        self.LastUsedDate = None
+
+
+    def _deserialize(self, params):
+        self.SecretId = params.get("SecretId")
+        self.LastUsedDate = params.get("LastUsedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetDefaultPolicyVersionRequest(AbstractModel):
     """SetDefaultPolicyVersion请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
         :param VersionId: 策略版本号
@@ -3734,7 +3930,7 @@ class SetDefaultPolicyVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3751,7 +3947,7 @@ class SetMfaFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpUin: 设置用户的uin
         :type OpUin: int
         :param LoginFlag: 登录保护设置
@@ -3787,7 +3983,7 @@ class SetMfaFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3804,7 +4000,7 @@ class StrategyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID。
         :type PolicyId: int
         :param PolicyName: 策略名称。
@@ -3836,6 +4032,15 @@ class StrategyInfo(AbstractModel):
         :param IsServiceLinkedPolicy: 是否是服务相关角色策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedPolicy: int
+        :param AttachEntityCount: 关联策略实体数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachEntityCount: int
+        :param AttachEntityBoundaryCount: 关联权限边界实体数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachEntityBoundaryCount: int
+        :param UpdateTime: 最后编辑时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -3849,6 +4054,9 @@ class StrategyInfo(AbstractModel):
         self.Deactived = None
         self.DeactivedDetail = None
         self.IsServiceLinkedPolicy = None
+        self.AttachEntityCount = None
+        self.AttachEntityBoundaryCount = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -3864,6 +4072,9 @@ class StrategyInfo(AbstractModel):
         self.Deactived = params.get("Deactived")
         self.DeactivedDetail = params.get("DeactivedDetail")
         self.IsServiceLinkedPolicy = params.get("IsServiceLinkedPolicy")
+        self.AttachEntityCount = params.get("AttachEntityCount")
+        self.AttachEntityBoundaryCount = params.get("AttachEntityBoundaryCount")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3879,7 +4090,7 @@ class SubAccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 子用户用户 ID
         :type Uin: int
         :param Name: 子用户用户名
@@ -3936,7 +4147,7 @@ class SubAccountUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 子用户用户 ID
         :type Uin: int
         :param Name: 子用户用户名
@@ -3948,7 +4159,7 @@ class SubAccountUser(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param UserType: 用户类型(1:主账号;2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
+        :param UserType: 用户类型(2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
         :type UserType: int
         :param LastLoginIp: 最近登录IP
         :type LastLoginIp: str
@@ -3990,7 +4201,7 @@ class UpdateAssumeRolePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
         :type PolicyDocument: str
         :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
@@ -4022,7 +4233,7 @@ class UpdateAssumeRolePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4039,7 +4250,7 @@ class UpdateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 用户组 ID
         :type GroupId: int
         :param GroupName: 用户组名
@@ -4071,7 +4282,7 @@ class UpdateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4088,7 +4299,7 @@ class UpdatePolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略ID，与PolicyName二选一必填
         :type PolicyId: int
         :param PolicyName: 策略名，与PolicyId二选一必填
@@ -4128,7 +4339,7 @@ class UpdatePolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 策略id，入参是PolicyName时，才会返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
@@ -4150,7 +4361,7 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConsoleLogin: 是否可登录，可登录：1，不可登录：0
         :type ConsoleLogin: int
         :param RoleId: 角色ID
@@ -4182,7 +4393,7 @@ class UpdateRoleConsoleLoginResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4199,7 +4410,7 @@ class UpdateRoleDescriptionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Description: 角色描述
         :type Description: str
         :param RoleId: 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
@@ -4231,7 +4442,7 @@ class UpdateRoleDescriptionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4248,7 +4459,7 @@ class UpdateSAMLProviderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: SAML身份提供商名称
         :type Name: str
         :param Description: SAML身份提供商描述
@@ -4280,7 +4491,7 @@ class UpdateSAMLProviderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4297,7 +4508,7 @@ class UpdateUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 子用户用户名
         :type Name: str
         :param Remark: 子用户备注
@@ -4349,7 +4560,7 @@ class UpdateUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4366,7 +4577,7 @@ class WeChatWorkSubAccount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uin: 子用户用户 ID
         :type Uin: int
         :param Name: 子用户用户名

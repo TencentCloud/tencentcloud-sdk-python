@@ -24,7 +24,7 @@ class DescribeImageStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
         :type AuditType: int
         :param Filters: 查询条件
@@ -57,7 +57,7 @@ class DescribeImageStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Overview: 识别结果统计
         :type Overview: :class:`tencentcloud.ims.v20200713.models.Overview`
         :param TrendCount: 识别量统计
@@ -99,7 +99,7 @@ class DescribeImsListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageIndex: 分页 页索引
         :type PageIndex: int
         :param PageSize: 分页条数
@@ -136,7 +136,7 @@ class DescribeImsListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImsDetailSet: 返回列表数据----非必选，该参数暂未对外开放
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImsDetailSet: list of ImsDetail
@@ -167,7 +167,7 @@ class Device(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: 发表消息设备IP
         :type Ip: str
         :param Mac: Mac地址
@@ -219,7 +219,7 @@ class EvilCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
         :param Count: 分布类型总量
@@ -247,7 +247,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -275,7 +275,7 @@ class Filters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 查询字段：
 策略BizType
 子账号SubUin
@@ -306,7 +306,7 @@ class ImageModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
         :type BizType: str
         :param DataId: 数据ID，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
@@ -362,7 +362,7 @@ class ImageModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HitFlag: 数据是否属于恶意类型。
 0：正常，1：可疑；
         :type HitFlag: int
@@ -458,7 +458,7 @@ class ImsDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 文本内容
         :type Content: str
         :param DataSource: 数据方式， 0：我审，1：人审
@@ -510,7 +510,7 @@ class LabelDetailItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 序号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
@@ -545,7 +545,7 @@ class LabelResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景识别结果
         :type Scene: str
         :param Suggestion: 建议您拿到判断结果后的执行操作。
@@ -598,7 +598,7 @@ class LibDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 序号
         :type Id: int
         :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
@@ -649,7 +649,7 @@ class LibResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景识别结果
         :type Scene: str
         :param Suggestion: 建议您拿到判断结果后的执行操作。
@@ -702,7 +702,7 @@ class Location(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 左上角横坐标
         :type X: float
         :param Y: 左上角纵坐标
@@ -742,7 +742,7 @@ class ObjectDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 序号
         :type Id: int
         :param Name: 标签名称
@@ -785,7 +785,7 @@ class ObjectResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景识别结果
         :type Scene: str
         :param Suggestion: 建议您拿到判断结果后的执行操作。
@@ -843,7 +843,7 @@ class OcrResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景识别结果
         :type Scene: str
         :param Suggestion: 建议您拿到判断结果后的执行操作。
@@ -898,7 +898,7 @@ class OcrTextDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: OCR文本内容
         :type Text: str
         :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
@@ -953,7 +953,7 @@ class Overview(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
         :type TotalCount: int
         :param TotalHour: 总调用时长
@@ -1005,7 +1005,7 @@ class TrendCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -1070,7 +1070,7 @@ class User(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
         :type UserId: str
         :param AccountType: 业务用户ID类型 "1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"

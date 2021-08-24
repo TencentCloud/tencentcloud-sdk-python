@@ -24,7 +24,7 @@ class DescribeEntityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EntityName: 实体名称
         :type EntityName: str
         """
@@ -48,7 +48,7 @@ class DescribeEntityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回查询实体相关信息
         :type Content: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -69,7 +69,7 @@ class DescribeRelationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LeftEntityName: 输入第一个实体
         :type LeftEntityName: str
         :param RightEntityName: 输入第二个实体
@@ -97,7 +97,7 @@ class DescribeRelationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回查询实体间的关系
         :type Content: list of EntityRelationContent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -123,7 +123,7 @@ class DescribeTripleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TripleCondition: 三元组查询条件
         :type TripleCondition: str
         """
@@ -147,7 +147,7 @@ class DescribeTripleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回三元组信息
         :type Content: list of TripleContent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -173,7 +173,7 @@ class EntityRelationContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Object: 实体关系查询返回关系的object
         :type Object: list of EntityRelationObject
         :param Subject: 实体关系查询返回关系的subject
@@ -215,7 +215,7 @@ class EntityRelationObject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: object对应id
         :type Id: list of str
         :param Name: object对应name
@@ -247,7 +247,7 @@ class EntityRelationSubject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: Subject对应id
         :type Id: list of str
         :param Name: Subject对应name
@@ -279,7 +279,7 @@ class TripleContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 实体id
         :type Id: str
         :param Name: 实体名称

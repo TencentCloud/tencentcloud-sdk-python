@@ -879,6 +879,62 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCustomizedConfigAssociateList(self, request):
+        """拉取配置绑定的 server 或 location，如果 domain 存在，结果将根据 domain 过滤。或拉取配置绑定的 loadbalancer。
+
+        :param request: Request instance for DescribeCustomizedConfigAssociateList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigAssociateListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigAssociateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomizedConfigAssociateList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomizedConfigAssociateListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomizedConfigList(self, request):
+        """拉取个性化配置列表，返回用户 AppId 下指定类型的配置。
+
+        :param request: Request instance for DescribeCustomizedConfigList.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigListRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeCustomizedConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomizedConfigList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomizedConfigListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExclusiveClusters(self, request):
         """查询集群信息列表，支持以集群类型、集群唯一ID、集群名字、集群标签、集群内vip、集群内负载均衡唯一id、集群网络类型、可用区等条件进行检索
 
@@ -1749,6 +1805,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceCertForLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetCustomizedConfigForLoadBalancer(self, request):
+        """负载均衡维度的个性化配置相关操作：创建、删除、修改、绑定、解绑
+
+        :param request: Request instance for SetCustomizedConfigForLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.SetCustomizedConfigForLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.SetCustomizedConfigForLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetCustomizedConfigForLoadBalancer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetCustomizedConfigForLoadBalancerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

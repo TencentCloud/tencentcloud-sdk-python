@@ -24,7 +24,7 @@ class AsyncRecognitionTaskInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param Url: 音频流Url
@@ -52,7 +52,7 @@ class AsyncRecognitionTasks(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tasks: 任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of AsyncRecognitionTaskInfo
@@ -82,7 +82,7 @@ class CloseAsyncRecognitionTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 语音流异步识别任务的唯一标识，在创建任务时会返回
         :type TaskId: int
         """
@@ -106,7 +106,7 @@ class CloseAsyncRecognitionTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -123,7 +123,7 @@ class CreateAsrVocabRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 热词表名称，长度在1-255之间
         :type Name: str
         :param Description: 热词表描述，长度在0-1000之间
@@ -165,7 +165,7 @@ class CreateAsrVocabResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 词表ID，可用于获取词表信息
         :type VocabId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -186,7 +186,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EngineType: 引擎模型类型。
 • 16k_zh：16k 中文普通话通用；
 • 16k_zh_video：16k 音视频领域；
@@ -250,7 +250,7 @@ class CreateAsyncRecognitionTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 请求返回结果，包含本次的任务ID(TaskId)
         :type Data: :class:`tencentcloud.asr.v20190614.models.Task`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -273,7 +273,7 @@ class CreateCustomizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelName: 自学习模型名称，需在1-20字符之间
         :type ModelName: str
         :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
@@ -309,7 +309,7 @@ class CreateCustomizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 模型ID
         :type ModelId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -330,7 +330,7 @@ class CreateRecTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EngineModelType: 引擎模型类型。
 电话场景：
 • 8k_en：电话 8k 英语；
@@ -345,6 +345,7 @@ class CreateRecTaskRequest(AbstractModel):
 • 16k_en_edu 英文教育；
 • 16k_zh_medical  医疗；
 • 16k_th 泰语；
+• 16k_wuu-SH：16k 上海话方言；
         :type EngineModelType: str
         :param ChannelNum: 识别声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模）。注意：录音识别会自动将音频转码为填写的识别声道数
         :type ChannelNum: int
@@ -428,7 +429,7 @@ class CreateRecTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 录音文件识别的请求返回结果，包含结果查询需要的TaskId
         :type Data: :class:`tencentcloud.asr.v20190614.models.Task`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -451,7 +452,7 @@ class DeleteAsrVocabRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 热词表Id
         :type VocabId: str
         """
@@ -475,7 +476,7 @@ class DeleteAsrVocabResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -492,7 +493,7 @@ class DeleteCustomizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 要删除的模型ID
         :type ModelId: str
         """
@@ -516,7 +517,7 @@ class DeleteCustomizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -539,7 +540,7 @@ class DescribeAsyncRecognitionTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.asr.v20190614.models.AsyncRecognitionTasks`
@@ -563,7 +564,7 @@ class DescribeTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 从CreateRecTask接口获取的TaskId，用于获取任务状态与结果。
         :type TaskId: int
         """
@@ -587,7 +588,7 @@ class DescribeTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 录音文件识别的请求返回结果。
         :type Data: :class:`tencentcloud.asr.v20190614.models.TaskStatus`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -610,7 +611,7 @@ class DownloadAsrVocabRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 词表ID。
         :type VocabId: str
         """
@@ -634,7 +635,7 @@ class DownloadAsrVocabResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 词表ID。
         :type VocabId: str
         :param WordWeightStr: 词表权重文件形式的base64值。
@@ -659,7 +660,7 @@ class DownloadCustomizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 自学习模型ID
         :type ModelId: str
         """
@@ -683,7 +684,7 @@ class DownloadCustomizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 下载地址
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -704,7 +705,7 @@ class GetAsrVocabListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagInfos: 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
         :type TagInfos: list of str
         :param Offset: 分页Offset
@@ -736,7 +737,7 @@ class GetAsrVocabListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabList: 热词表列表
         :type VocabList: list of Vocab
         :param TotalCount: 热词列表总数
@@ -766,7 +767,7 @@ class GetAsrVocabRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 热词表ID
         :type VocabId: str
         """
@@ -790,7 +791,7 @@ class GetAsrVocabResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 热词表名称
         :type Name: str
         :param Description: 热词表描述
@@ -840,7 +841,7 @@ class GetCustomizationListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagInfos: 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
         :type TagInfos: list of str
         :param Limit: 分页大小，默认1000
@@ -872,7 +873,7 @@ class GetCustomizationListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 自学习模型数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of Model
@@ -904,7 +905,7 @@ class HotWord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Word: 热词
         :type Word: str
         :param Weight: 权重
@@ -932,7 +933,7 @@ class Model(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelName: 模型名称
         :type ModelName: str
         :param DictName: 模型文件名称
@@ -985,7 +986,7 @@ class ModifyCustomizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 要修改的模型ID
         :type ModelId: str
         :param ModelName: 要修改的模型名称，长度需在1-20个字符之间
@@ -1021,7 +1022,7 @@ class ModifyCustomizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1038,7 +1039,7 @@ class ModifyCustomizationStateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 自学习模型ID
         :type ModelId: str
         :param ToState: 想要变换的模型状态，-1代表下线，1代表上线
@@ -1066,7 +1067,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModelId: 自学习模型ID
         :type ModelId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1087,7 +1088,7 @@ class SentenceDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FinalSentence: 单句最终识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalSentence: str
@@ -1147,7 +1148,7 @@ class SentenceRecognitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
         :type ProjectId: int
         :param SubServiceType: 子服务类型。2： 一句话识别。
@@ -1170,9 +1171,9 @@ class SentenceRecognitionRequest(AbstractModel):
         :type VoiceFormat: str
         :param UsrAudioKey: 用户端对此任务的唯一标识，用户自助生成，用于用户查找识别结果。
         :type UsrAudioKey: str
-        :param Url: 语音 URL，公网可下载。当 SourceType 值为 0（语音 URL上传） 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时间长度要小于60s。
+        :param Url: 语音 URL，公网可下载。当 SourceType 值为 0（语音 URL上传） 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时长不能超过60s，音频文件大小不能超过3MB。
         :type Url: str
-        :param Data: 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据长度要小于3MB（Base64后）。
+        :param Data: 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
         :type Data: str
         :param DataLen: 数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
@@ -1237,7 +1238,7 @@ class SentenceRecognitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 识别结果。
         :type Result: str
         :param AudioDuration: 请求的音频时长，单位为ms
@@ -1277,7 +1278,7 @@ class SentenceWord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Word: 词结果
         :type Word: str
         :param StartTime: 词在音频中的开始时间
@@ -1309,7 +1310,7 @@ class SentenceWords(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Word: 词文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Word: str
@@ -1344,7 +1345,7 @@ class SetVocabStateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 热词表ID。
         :type VocabId: str
         :param State: 热词表状态，1：设为默认状态；0：设为非默认状态。
@@ -1372,7 +1373,7 @@ class SetVocabStateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 热词表ID
         :type VocabId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1393,7 +1394,7 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID，可通过此ID在轮询接口获取识别状态与结果。注意：TaskId数据类型为uint64
         :type TaskId: int
         """
@@ -1417,7 +1418,7 @@ class TaskStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务标识。
         :type TaskId: int
         :param Status: 任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
@@ -1467,7 +1468,7 @@ class UpdateAsrVocabRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 热词表ID
         :type VocabId: str
         :param Name: 热词表名称，长度在1-255之间
@@ -1513,7 +1514,7 @@ class UpdateAsrVocabResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VocabId: 热词表ID
         :type VocabId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1534,7 +1535,7 @@ class Vocab(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 热词表名称
         :type Name: str
         :param Description: 热词表描述

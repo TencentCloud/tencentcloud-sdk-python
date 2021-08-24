@@ -24,7 +24,7 @@ class DataManipulationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpType: 操作类型，add或del
         :type OpType: str
         :param Encoding: 数据编码类型
@@ -60,7 +60,7 @@ class DataManipulationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetMsg: 返回信息
         :type RetMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -81,7 +81,7 @@ class DataSearchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 云搜的业务ID，用以表明当前数据请求的业务
         :type ResourceId: int
         :param SearchQuery: 检索串
@@ -193,7 +193,7 @@ class DataSearchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetMsg: 数据返回信息
         :type RetMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

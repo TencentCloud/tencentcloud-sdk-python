@@ -24,7 +24,7 @@ class BatchModifyDomainInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 批量修改的域名。
         :type Domains: list of str
         :param TemplateId: 模板ID。
@@ -58,7 +58,7 @@ class BatchModifyDomainInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -79,7 +79,7 @@ class BatchStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 批量任务id
         :type LogId: int
         :param Status: 批量任务状态  doing：进行中  success：成功  failed：失败  partial_success：部分成功
@@ -111,7 +111,7 @@ class CertificateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateCode: 证件号码。
         :type CertificateCode: str
         :param CertificateType: 证件类型。
@@ -171,7 +171,7 @@ class CheckBatchStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogIds: 操作日志 ID数组，最多 200 个
         :type LogIds: list of int non-negative
         """
@@ -195,7 +195,7 @@ class CheckBatchStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusSet: 批量任务状态集
         :type StatusSet: list of BatchStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -221,7 +221,7 @@ class CheckDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainName: 所查询域名名称
         :type DomainName: str
         :param Period: 年限。该参数为空时无法查询溢价词域名
@@ -249,7 +249,7 @@ class CheckDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainName: 所查询域名名称
         :type DomainName: str
         :param Available: 是否能够注册
@@ -322,7 +322,7 @@ class ContactInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrganizationNameCN: 注册人（中文）
         :type OrganizationNameCN: str
         :param OrganizationName: 注册人（英文）
@@ -406,7 +406,7 @@ class CreateDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
         :type TemplateId: str
         :param Period: 购买域名的年限，可选值：[1-10]
@@ -452,7 +452,7 @@ class CreateDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 批量日志ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogId: int
@@ -474,7 +474,7 @@ class CreateTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContactInfo: 联系人信息
         :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
         :param CertificateInfo: 证件信息
@@ -506,7 +506,7 @@ class CreateTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Template: 模板信息
         :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -529,7 +529,7 @@ class DeleteTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板ID
         :type TemplateId: str
         """
@@ -553,7 +553,7 @@ class DeleteTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -570,7 +570,7 @@ class DescribeBatchOperationLogDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID。
         :type LogId: int
         :param Offset: 偏移量，默认为0。
@@ -602,7 +602,7 @@ class DescribeBatchOperationLogDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数量。
         :type TotalCount: int
         :param DomainBatchDetailSet: 日志详情列表。
@@ -633,7 +633,7 @@ class DescribeBatchOperationLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为200。
@@ -661,7 +661,7 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数量
         :type TotalCount: int
         :param DomainBatchLogSet: 日志列表
@@ -692,7 +692,7 @@ class DescribeDomainBaseInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -716,7 +716,7 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainInfo: 域名信息
         :type DomainInfo: :class:`tencentcloud.domain.v20180808.models.DomainBaseInfo`
         :param Uin: 用户Uin
@@ -744,7 +744,7 @@ class DescribeDomainNameListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0
         :type Offset: int
         :param Limit: 返回数量，默认为20，取值范围[1,100]
@@ -772,7 +772,7 @@ class DescribeDomainNameListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainSet: 域名信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainSet: list of DomainList
@@ -803,7 +803,7 @@ class DescribeDomainPriceListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TldList: 查询价格的后缀列表。默认则为全部后缀
         :type TldList: list of str
         :param Year: 查询购买的年份，默认会列出所有年份的价格
@@ -835,7 +835,7 @@ class DescribeDomainPriceListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PriceList: 域名价格列表
         :type PriceList: list of PriceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -861,7 +861,7 @@ class DescribeTemplateListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
@@ -901,7 +901,7 @@ class DescribeTemplateListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 模板数量。
         :type TotalCount: int
         :param TemplateSet: 模板详细信息列表。
@@ -931,7 +931,7 @@ class DescribeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板ID
         :type TemplateId: str
         """
@@ -955,7 +955,7 @@ class DescribeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Template: 模板信息
         :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -978,7 +978,7 @@ class DomainBaseInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名资源ID。
         :type DomainId: str
         :param DomainName: 域名名称。
@@ -988,6 +988,7 @@ NotUpload：未实名认证
 InAudit：实名审核中
 Approved：实名审核通过
 Reject：实名审核失败
+NoAudit: 无需实名认证
         :type RealNameAuditStatus: str
         :param RealNameAuditUnpassReason: 域名实名认证不通过原因。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1095,7 +1096,7 @@ class DomainBatchDetailSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 详情ID
         :type Id: int
         :param Domain: 域名
@@ -1143,7 +1144,7 @@ class DomainBatchLogSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID
         :type LogId: int
         :param Number: 数量
@@ -1181,7 +1182,7 @@ class DomainList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsPremium: 是否是溢价域名：
 ture 是    
 false 不是
@@ -1253,7 +1254,7 @@ class ModifyDomainDNSBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 批量操作的域名。
         :type Domains: list of str
         :param Dns: 域名DNS 数组。
@@ -1281,7 +1282,7 @@ class ModifyDomainDNSBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID。
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1302,19 +1303,23 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 要过户的域名。
         :type Domains: list of str
         :param NewOwnerUin: 转入账户的uin。
         :type NewOwnerUin: str
+        :param TransferDns: 是否同时转移对应的 DNS 解析域名，默认false
+        :type TransferDns: bool
         """
         self.Domains = None
         self.NewOwnerUin = None
+        self.TransferDns = None
 
 
     def _deserialize(self, params):
         self.Domains = params.get("Domains")
         self.NewOwnerUin = params.get("NewOwnerUin")
+        self.TransferDns = params.get("TransferDns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1330,7 +1335,7 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志id
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1351,7 +1356,7 @@ class PriceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tld: 域名后缀，例如.com
         :type Tld: str
         :param Year: 购买年限，范围[1-10]
@@ -1391,7 +1396,7 @@ class RenewDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 域名续费的年限。
         :type Period: int
         :param Domains: 批量续费的域名。
@@ -1430,7 +1435,7 @@ class RenewDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 操作日志ID。
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1451,7 +1456,7 @@ class SetDomainAutoRenewRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainId: 域名ID。
         :type DomainId: str
         :param AutoRenew: AutoRenew 有三个可选值：
@@ -1482,7 +1487,7 @@ class SetDomainAutoRenewResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1499,7 +1504,7 @@ class TemplateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板ID
         :type TemplateId: str
         :param AuditStatus: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
@@ -1567,7 +1572,7 @@ class TransferInDomainBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 转入的域名名称数组。
         :type Domains: list of str
         :param PassWords: 域名转移码数组。
@@ -1615,7 +1620,7 @@ class TransferInDomainBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1636,7 +1641,7 @@ class TransferProhibitionBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 批量操作的域名。
         :type Domains: list of str
         :param Status: 是否开启禁止域名转移。
@@ -1666,7 +1671,7 @@ class TransferProhibitionBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1687,7 +1692,7 @@ class UpdateProhibitionBatchRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 批量操作的域名。
         :type Domains: list of str
         :param Status: 是否开启禁止域名更新。
@@ -1717,7 +1722,7 @@ class UpdateProhibitionBatchResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogId: 日志ID
         :type LogId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1738,7 +1743,7 @@ class UploadImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageFile: 资质照片，照片的base64编码。
         :type ImageFile: str
         """
@@ -1762,7 +1767,7 @@ class UploadImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessUrl: 资质照片地址。
         :type AccessUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

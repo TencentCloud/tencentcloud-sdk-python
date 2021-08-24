@@ -54,6 +54,34 @@ class CiiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStructureTaskTest(self, request):
+        """本接口(CreateStructureTaskTest)基于提供的客户及保单信息，创建并启动结构化识别任务。用于路由到测试环境。
+
+        :param request: Request instance for CreateStructureTaskTest.
+        :type request: :class:`tencentcloud.cii.v20210408.models.CreateStructureTaskTestRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.CreateStructureTaskTestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStructureTaskTest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStructureTaskTestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStructCompareData(self, request):
         """结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
 
@@ -124,6 +152,34 @@ class CiiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStructureTaskResultTest(self, request):
+        """依据任务ID获取结构化结果接口，该接口用于路由到测试环境。
+
+        :param request: Request instance for DescribeStructureTaskResultTest.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureTaskResultTestRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeStructureTaskResultTestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStructureTaskResultTest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStructureTaskResultTestResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

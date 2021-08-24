@@ -24,7 +24,7 @@ class AdvertiseOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -56,7 +56,7 @@ class AdvertiseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of AdvertiseTextDetection
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -82,7 +82,7 @@ class AdvertiseTextDetection(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
         :param Confidence: 置信度 0 ~100
@@ -124,7 +124,7 @@ class ArithmeticOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -183,7 +183,7 @@ class ArithmeticOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextArithmetic
         :param Angle: 图片横屏的角度(90度或270度)
@@ -213,7 +213,7 @@ class BankCardOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -267,7 +267,7 @@ class BankCardOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CardNo: 卡号
         :type CardNo: str
         :param BankInfo: 银行信息
@@ -293,7 +293,7 @@ class BankCardOCRResponse(AbstractModel):
 （告警码可以同时存在多个）
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarningCode: list of int
-        :param QualityValue: 图片质量分数，请求enable_quality_value时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
+        :param QualityValue: 图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityValue: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -330,7 +330,7 @@ class BankSlipInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
         :type Name: str
@@ -365,7 +365,7 @@ class BankSlipOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -395,7 +395,7 @@ class BankSlipOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BankSlipInfos: 银行回单识别结果，具体内容请点击左侧链接。
         :type BankSlipInfos: list of BankSlipInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -425,7 +425,7 @@ class BizLicenseOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -460,7 +460,7 @@ class BizLicenseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegNum: 统一社会信用代码（三合一之前为注册号）
         :type RegNum: str
         :param Name: 公司名称
@@ -529,7 +529,7 @@ class BizLicenseVerifyResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegNum: “0“：一致
 “-1”：此号未查询到结果
         :type RegNum: str
@@ -566,7 +566,7 @@ class BusInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市。
         :type Name: str
@@ -601,7 +601,7 @@ class BusInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -636,7 +636,7 @@ class BusInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusInvoiceInfos: 汽车票识别结果，具体内容请点击左侧链接。
         :type BusInvoiceInfos: list of BusInvoiceInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -666,7 +666,7 @@ class BusinessCardInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称（关键字，可能重复，比如多个手机），能识别的字段名为：
 姓名、英文姓名、英文地址、公司、英文公司、职位、英文职位、部门、英文部门、手机、电话、传真、社交帐号、QQ、MSN、微信、微博、邮箱、邮编、网址、公司账号、其他。
         :type Name: str
@@ -701,7 +701,7 @@ class BusinessCardOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -748,7 +748,7 @@ class BusinessCardOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessCardInfos: 名片识别结果，具体内容请点击左侧链接。
         :type BusinessCardInfos: list of BusinessCardInfo
         :param RetImageBase64: 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
@@ -782,7 +782,7 @@ class CandWord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CandWords: 候选字符集的单词信息（包括单词Character和单词置信度confidence）
         :type CandWords: list of Words
         """
@@ -811,7 +811,7 @@ class CarInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
         :type Name: str
@@ -854,7 +854,7 @@ class CarInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -889,7 +889,7 @@ class CarInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CarInvoiceInfos: 购车发票识别结果，具体内容请点击左侧链接。
         :type CarInvoiceInfos: list of CarInvoiceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -915,7 +915,7 @@ class CellContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ParagNo: 段落编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParagNo: int
@@ -945,7 +945,7 @@ class ClassifyDetectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 分类名称，包括：身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照
         :type Name: str
         :param Type: 分类类型
@@ -980,7 +980,7 @@ class ClassifyDetectOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -1037,7 +1037,7 @@ class ClassifyDetectOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClassifyDetectInfos: 智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
         :type ClassifyDetectInfos: list of ClassifyDetectInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1063,7 +1063,7 @@ class Coord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 横坐标
         :type X: int
         :param Y: 纵坐标
@@ -1091,7 +1091,7 @@ class Detail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 企业四要素核验结果状态码
         :type Result: int
         :param Desc: 企业四要素核验结果描述
@@ -1119,7 +1119,7 @@ class DetectedWordCoordPoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WordCoordinate: 单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
         :type WordCoordinate: list of Coord
         """
@@ -1148,7 +1148,7 @@ class DetectedWords(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 置信度 0 ~100
         :type Confidence: int
         :param Character: 候选字Character
@@ -1176,7 +1176,7 @@ class DriverLicenseOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -1212,7 +1212,7 @@ class DriverLicenseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名
         :type Name: str
         :param Sex: 性别
@@ -1297,7 +1297,7 @@ class DutyPaidProofInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
         :type Name: str
@@ -1332,7 +1332,7 @@ class DutyPaidProofOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -1367,7 +1367,7 @@ class DutyPaidProofOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DutyPaidProofInfos: 完税证明识别结果，具体内容请点击左侧链接。
         :type DutyPaidProofInfos: list of DutyPaidProofInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -1397,7 +1397,7 @@ class EduPaperOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -1442,7 +1442,7 @@ class EduPaperOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EduPaperInfos: 检测到的文本信息，具体内容请点击左侧链接。
         :type EduPaperInfos: list of TextEduPaper
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
@@ -1481,7 +1481,7 @@ class EnglishOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -1530,7 +1530,7 @@ class EnglishOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetectionEn
         :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
@@ -1560,7 +1560,7 @@ class EnterpriseLicenseInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称（关键字），不同证件类型可能不同，证件类型包含企业登记证书、许可证书、企业执照、三证合一类证书；
 支持以下字段：统一社会信用代码、法定代表人、公司名称、公司地址、注册资金、企业关型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等；
         :type Name: str
@@ -1589,7 +1589,7 @@ class EnterpriseLicenseOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -1624,7 +1624,7 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnterpriseLicenseInfos: 企业证照识别结果，具体内容请点击左侧链接。
         :type EnterpriseLicenseInfos: list of EnterpriseLicenseInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -1654,7 +1654,7 @@ class EstateCertOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
@@ -1689,7 +1689,7 @@ class EstateCertOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Obligee: 权利人
         :type Obligee: str
         :param Ownership: 共有情况
@@ -1754,7 +1754,7 @@ class FinanBillInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 【进账单】
 日期、出票全称、出票账号、出票开户行、收款人全称、收款人账号、收款开户行、大写金额、小写金额、票据种类、票据张数、票据号码；
@@ -1788,7 +1788,7 @@ class FinanBillOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -1823,7 +1823,7 @@ class FinanBillOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FinanBillInfos: 金融票据整单识别结果，具体内容请点击左侧链接。
         :type FinanBillInfos: list of FinanBillInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1849,7 +1849,7 @@ class FinanBillSliceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 大写金额、小写金额、账号、票号1、票号2、收款人、大写日期、同城交换号、地址-省份、地址-城市、付款行全称、支票密码、支票用途。
         :type Name: str
@@ -1878,7 +1878,7 @@ class FinanBillSliceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
@@ -1913,7 +1913,7 @@ class FinanBillSliceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FinanBillSliceInfos: 金融票据切片识别结果，具体内容请点击左侧链接。
         :type FinanBillSliceInfos: list of FinanBillSliceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1939,7 +1939,7 @@ class FlightInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
         :type Name: str
@@ -1972,7 +1972,7 @@ class FlightInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2007,7 +2007,7 @@ class FlightInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlightInvoiceInfos: 机票行程单识别结果，具体内容请点击左侧链接。
         :type FlightInvoiceInfos: list of FlightInvoiceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2033,7 +2033,7 @@ class FormulaOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2068,7 +2068,7 @@ class FormulaOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
         :type Angle: int
         :param FormulaInfos: 检测到的文本信息，具体内容请点击左侧链接。
@@ -2098,7 +2098,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -2134,7 +2134,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
         :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
@@ -2164,7 +2164,7 @@ class GeneralBasicOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片/PDF的 Base64 值。
 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -2178,18 +2178,29 @@ class GeneralBasicOCRRequest(AbstractModel):
         :param LanguageType: 识别语言类型。
 支持自动识别语言类型，同时支持自选语言种类，默认中英文混合(zh)，各种语言均支持与英文混合的文字识别。
 可选值：
-zh\auto\jap\kor\
-spa\fre\ger\por\
-vie\may\rus\ita\
-hol\swe\fin\dan\
-nor\hun\tha\lat\ara
-可选值分别表示：
-中英文混合、自动识别、日语、韩语、
-西班牙语、法语、德语、葡萄牙语、
-越南语、马来语、俄语、意大利语、
-荷兰语、瑞典语、芬兰语、丹麦语、
-挪威语、匈牙利语、泰语、拉丁语系、
-阿拉伯语。
+zh：中英混合
+zh_rare：支持英文、数字、中文生僻字、繁体字，特殊符号等
+auto：自动
+mix：混合语种
+jap：日语
+kor：韩语
+spa：西班牙语
+fre：法语
+ger：德语
+por：葡萄牙语
+vie：越语
+may：马来语
+rus：俄语
+ita：意大利语
+hol：荷兰语
+swe：瑞典语
+fin：芬兰语
+dan：丹麦语
+nor：挪威语
+hun：匈牙利语
+tha：泰语
+hi：印地语
+ara：阿拉伯语
         :type LanguageType: str
         :param IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :type IsPdf: bool
@@ -2230,7 +2241,7 @@ class GeneralBasicOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
         :param Language: 检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
@@ -2268,7 +2279,7 @@ class GeneralEfficientOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -2300,7 +2311,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
         :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
@@ -2330,7 +2341,7 @@ class GeneralFastOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2373,7 +2384,7 @@ class GeneralFastOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextDetection
         :param Language: 检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
@@ -2412,7 +2423,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2456,7 +2467,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextGeneralHandwriting
         :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
@@ -2486,7 +2497,7 @@ class HKIDCardOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectFake: 是否鉴伪。
         :type DetectFake: bool
         :param ReturnHeadImage: 是否返回人像照片。
@@ -2528,7 +2539,7 @@ class HKIDCardOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CnName: 中文姓名
         :type CnName: str
         :param EnName: 英文姓名
@@ -2609,7 +2620,7 @@ class HmtResidentPermitOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2650,7 +2661,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 证件姓名
         :type Name: str
         :param Sex: 性别
@@ -2708,7 +2719,7 @@ class IDCardOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -2764,7 +2775,7 @@ class IDCardOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名（人像面）
         :type Name: str
         :param Sex: 性别（人像面）
@@ -2832,7 +2843,7 @@ class InstitutionOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2867,7 +2878,7 @@ class InstitutionOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegId: 注册号
         :type RegId: str
         :param ValidDate: 有效期
@@ -2904,7 +2915,7 @@ class InsuranceBillInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 【病案首页】
 姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
@@ -2940,7 +2951,7 @@ class InsuranceBillOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -2975,7 +2986,7 @@ class InsuranceBillOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InsuranceBillInfos: 保险单据识别结果，具体内容请点击左侧链接。
         :type InsuranceBillInfos: list of InsuranceBillInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3001,7 +3012,7 @@ class InvoiceDetectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Angle: 识别出的图片在混贴票据图片中的旋转角度。
         :type Angle: float
         :param Type: 识别出的图片所属的票据类型。
@@ -3056,7 +3067,7 @@ class InvoiceGeneralInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章。
         :type Name: str
@@ -3091,7 +3102,7 @@ class InvoiceGeneralOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3126,7 +3137,7 @@ class InvoiceGeneralOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceGeneralInfos: 通用机打发票识别结果，具体内容请点击左侧链接。
         :type InvoiceGeneralInfos: list of InvoiceGeneralInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -3156,7 +3167,7 @@ class ItemCoord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 左上角x
         :type X: int
         :param Y: 左上角y
@@ -3192,7 +3203,7 @@ class LicensePlateOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3227,7 +3238,7 @@ class LicensePlateOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Number: 识别出的车牌号码。
         :type Number: str
         :param Confidence: 置信度，0 - 100 之间。
@@ -3258,7 +3269,7 @@ class MLIDCardOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3296,7 +3307,7 @@ class MLIDCardOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ID: 身份证号
         :type ID: str
         :param Name: 姓名
@@ -3367,7 +3378,7 @@ class MLIDPassportOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
         :type ImageBase64: str
         :param RetImage: 是否返回图片，默认false
@@ -3395,7 +3406,7 @@ class MLIDPassportOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ID: 护照ID
         :type ID: str
         :param Name: 姓名
@@ -3463,7 +3474,7 @@ class MainlandPermitOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3502,7 +3513,7 @@ class MainlandPermitOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 中文姓名
         :type Name: str
         :param EnglishName: 英文姓名
@@ -3563,7 +3574,7 @@ class MixedInvoiceDetectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReturnImage: 是否需要返回裁剪后的图片。
         :type ReturnImage: bool
         :param ImageBase64: 图片的 Base64 值。
@@ -3602,7 +3613,7 @@ class MixedInvoiceDetectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceDetectInfos: 检测出的票据类型列表，具体内容请点击左侧链接。
         :type InvoiceDetectInfos: list of InvoiceDetectInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3628,7 +3639,7 @@ class MixedInvoiceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 识别结果。
 OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
 FailedOperation.UnKnowError：表示识别失败；
@@ -3690,7 +3701,7 @@ class MixedInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3740,7 +3751,7 @@ class MixedInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MixedInvoiceItems: 混贴票据识别结果，具体内容请点击左侧链接。
         :type MixedInvoiceItems: list of MixedInvoiceItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3766,7 +3777,7 @@ class OrgCodeCertOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3801,7 +3812,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrgCode: 代码
         :type OrgCode: str
         :param Name: 机构名称
@@ -3834,7 +3845,7 @@ class PassportOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -3869,7 +3880,7 @@ class PassportOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Country: 国家码
         :type Country: str
         :param PassportNo: 护照号
@@ -3946,7 +3957,7 @@ class PermitOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -3981,7 +3992,7 @@ class PermitOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名
         :type Name: str
         :param EnglishName: 英文姓名
@@ -4031,7 +4042,7 @@ class Polygon(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LeftTop: 左上顶点坐标
         :type LeftTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
         :param RightTop: 右上顶点坐标
@@ -4075,7 +4086,7 @@ class ProductDataRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductName: 产品名称
         :type ProductName: str
         :param EnName: 产品名称(英文)
@@ -4174,7 +4185,7 @@ class PropOwnerCertOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -4209,7 +4220,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Owner: 房地产权利人
         :type Owner: str
         :param Possession: 共有情况
@@ -4250,7 +4261,7 @@ class QrcodeImgSize(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Wide: 宽
         :type Wide: int
         :param High: 高
@@ -4278,7 +4289,7 @@ class QrcodeOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，支持PNG、JPG、JPEG格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -4308,7 +4319,7 @@ class QrcodeOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CodeResults: 二维码/条形码识别结果信息，具体内容请点击左侧链接。
         :type CodeResults: list of QrcodeResultsInfo
         :param ImgSize: 图片大小，具体内容请点击左侧链接。
@@ -4340,7 +4351,7 @@ class QrcodePositionObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LeftTop: 左上顶点坐标（如果是条形码，X和Y都为-1）
         :type LeftTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
         :param RightTop: 右上顶点坐标（如果是条形码，X和Y都为-1）
@@ -4384,7 +4395,7 @@ class QrcodeResultsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TypeName: 类型（二维码、条形码）
         :type TypeName: str
         :param Url: 二维码/条形码包含的地址
@@ -4418,7 +4429,7 @@ class QueryBarCodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BarCode: 条形码
         :type BarCode: str
         """
@@ -4442,7 +4453,7 @@ class QueryBarCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BarCode: 条码
         :type BarCode: str
         :param ProductDataRecords: 条码信息数组
@@ -4472,7 +4483,7 @@ class QuestionBlockObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QuestionArr: 数学试题识别结构化信息数组
         :type QuestionArr: list of QuestionObj
         :param QuestionBboxCoord: 题目主体区域检测框在图片中的像素坐标
@@ -4507,7 +4518,7 @@ class QuestionObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QuestionTextNo: 题号
         :type QuestionTextNo: str
         :param QuestionTextType: 题型：
@@ -4559,7 +4570,7 @@ class QuotaInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
@@ -4594,7 +4605,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceNum: 发票号码
         :type InvoiceNum: str
         :param InvoiceCode: 发票代码
@@ -4646,7 +4657,7 @@ class RecognizeTableOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片/PDF的 Base64 值。
 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
@@ -4690,7 +4701,7 @@ class RecognizeTableOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TableDetections: list of TableDetectInfo
         :param Data: Base64 编码后的 Excel 数据。
@@ -4728,7 +4739,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -4758,7 +4769,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ID: 身份证号码
         :type ID: str
         :param ThaiName: 泰文姓名
@@ -4807,7 +4818,7 @@ class Rect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 左上角x
         :type X: int
         :param Y: 左上角y
@@ -4843,7 +4854,7 @@ class ResidenceBookletOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -4878,7 +4889,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HouseholdNumber: 户号
         :type HouseholdNumber: str
         :param Name: 姓名
@@ -4943,7 +4954,7 @@ class RideHailingDriverLicenseOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -4973,7 +4984,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名
         :type Name: str
         :param LicenseNumber: 证号，对应网约车驾驶证字段：证号/从业资格证号/驾驶员证号/身份证号
@@ -5010,7 +5021,7 @@ class RideHailingTransportLicenseOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -5040,7 +5051,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OperationLicenseNumber: 交运管许可字号。
         :type OperationLicenseNumber: str
         :param VehicleOwner: 车辆所有人，对应网约车运输证字段：车辆所有人/车主名称/业户名称。
@@ -5081,7 +5092,7 @@ class SealOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -5111,7 +5122,7 @@ class SealOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SealBody: 印章内容
         :type SealBody: str
         :param Location: 印章坐标
@@ -5142,7 +5153,7 @@ class ShipInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种。
         :type Name: str
@@ -5177,7 +5188,7 @@ class ShipInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -5212,7 +5223,7 @@ class ShipInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ShipInvoiceInfos: 轮船票识别结果，具体内容请点击左侧链接。
         :type ShipInvoiceInfos: list of ShipInvoiceInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -5242,7 +5253,7 @@ class SingleInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
@@ -5270,7 +5281,7 @@ class TableCell(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ColTl: 单元格左上角的列索引
         :type ColTl: int
         :param RowTl: 单元格左上角的行索引
@@ -5341,7 +5352,7 @@ class TableDetectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cells: 单元格内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cells: list of TableCell
@@ -5399,7 +5410,7 @@ class TableOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
@@ -5434,7 +5445,7 @@ class TableOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接
         :type TextDetections: list of TextTable
         :param Data: Base64 编码后的 Excel 数据。
@@ -5464,7 +5475,7 @@ class TableTitle(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 表格名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
@@ -5489,7 +5500,7 @@ class TaxiInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -5524,7 +5535,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceNum: 发票代码
         :type InvoiceNum: str
         :param InvoiceCode: 发票号码
@@ -5591,7 +5602,7 @@ class TextArithmetic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
         :param Result: 算式运算结果，true-正确   false-错误或非法参数
@@ -5662,7 +5673,7 @@ class TextDetectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -5697,7 +5708,7 @@ class TextDetectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HasText: 图片中是否包含文字。
         :type HasText: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5718,7 +5729,7 @@ class TextDetection(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
         :param Confidence: 置信度 0 ~100
@@ -5785,7 +5796,7 @@ class TextDetectionEn(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectedText: 识别出的文本行内容。
         :type DetectedText: str
         :param Confidence: 置信度 0 ~100。
@@ -5854,7 +5865,7 @@ class TextEduPaper(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Item: 识别出的字段名称（关键字）
         :type Item: str
         :param DetectedText: 识别出的字段名称对应的值，也就是字段Item对应的字符串结果
@@ -5888,7 +5899,7 @@ class TextFormula(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
         """
@@ -5912,7 +5923,7 @@ class TextGeneralHandwriting(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
         :param Confidence: 置信度 0 - 100
@@ -5965,7 +5976,7 @@ class TextTable(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ColTl: 单元格左上角的列索引
         :type ColTl: int
         :param RowTl: 单元格左上角的行索引
@@ -6026,7 +6037,7 @@ class TextVatInvoice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称（关键字）。支持以下字段的识别：
 发票代码、 发票号码、 打印发票代码、 打印发票号码、 开票日期、 购买方识别号、 小写金额、 价税合计(大写)、 销售方识别号、 校验码、 购买方名称、 销售方名称、 税额、 复核、 联次名称、 备注、 联次、 密码区、 开票人、 收款人、 （货物或应税劳务、服务名称）、省、 市、 服务类型、 通行费标志、 是否代开、 是否收购、 合计金额、 是否有公司印章、 发票消费类型、 车船税、 机器编号、 成品油标志、 税率、 合计税额、 （购买方地址、电话）、 （销售方地址、电话）、 单价、 金额、 销售方开户行及账号、 购买方开户行及账号、 规格型号、 发票名称、 单位、 数量、 校验码备选、 校验码后六位备选、发票号码备选、车牌号、类型、通行日期起、通行日期止、发票类型。
         :type Name: str
@@ -6063,7 +6074,7 @@ class TextVehicleBack(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlateNo: 号牌号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateNo: str
@@ -6133,7 +6144,7 @@ class TextVehicleFront(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlateNo: 号牌号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateNo: str
@@ -6208,7 +6219,7 @@ class TextWaybill(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecName: 收件人姓名
         :type RecName: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         :param RecNum: 收件人手机号
@@ -6270,7 +6281,7 @@ class TollInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称（关键字）。支持以下字段的识别：
 发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志。
         :type Name: str
@@ -6305,7 +6316,7 @@ class TollInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -6340,7 +6351,7 @@ class TollInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TollInvoiceInfos: 过路过桥费发票识别结果，具体内容请点击左侧链接。
         :type TollInvoiceInfos: list of TollInvoiceInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -6370,7 +6381,7 @@ class TrainTicketOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -6405,7 +6416,7 @@ class TrainTicketOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TicketNum: 编号
         :type TicketNum: str
         :param StartStation: 出发站
@@ -6426,10 +6437,26 @@ class TrainTicketOCRResponse(AbstractModel):
         :type SeatCategory: str
         :param ID: 身份证号
         :type ID: str
-        :param InvoiceType: 发票消费类型
+        :param InvoiceType: 发票消费类型：交通
         :type InvoiceType: str
         :param SerialNumber: 序列号
         :type SerialNumber: str
+        :param AdditionalCost: 加收票价
+        :type AdditionalCost: str
+        :param HandlingFee: 手续费
+        :type HandlingFee: str
+        :param LegalAmount: 大写金额（票面有大写金额该字段才有值）
+        :type LegalAmount: str
+        :param TicketStation: 售票站
+        :type TicketStation: str
+        :param OriginalPrice: 原票价（一般有手续费的才有原始票价字段）
+        :type OriginalPrice: str
+        :param InvoiceStyle: 发票类型：火车票、火车票补票、火车票退票凭证
+        :type InvoiceStyle: str
+        :param ReceiptNumber: 收据号码
+        :type ReceiptNumber: str
+        :param IsReceipt: 仅供报销使用：1为是，0为否
+        :type IsReceipt: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6445,6 +6472,14 @@ class TrainTicketOCRResponse(AbstractModel):
         self.ID = None
         self.InvoiceType = None
         self.SerialNumber = None
+        self.AdditionalCost = None
+        self.HandlingFee = None
+        self.LegalAmount = None
+        self.TicketStation = None
+        self.OriginalPrice = None
+        self.InvoiceStyle = None
+        self.ReceiptNumber = None
+        self.IsReceipt = None
         self.RequestId = None
 
 
@@ -6461,7 +6496,131 @@ class TrainTicketOCRResponse(AbstractModel):
         self.ID = params.get("ID")
         self.InvoiceType = params.get("InvoiceType")
         self.SerialNumber = params.get("SerialNumber")
+        self.AdditionalCost = params.get("AdditionalCost")
+        self.HandlingFee = params.get("HandlingFee")
+        self.LegalAmount = params.get("LegalAmount")
+        self.TicketStation = params.get("TicketStation")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.InvoiceStyle = params.get("InvoiceStyle")
+        self.ReceiptNumber = params.get("ReceiptNumber")
+        self.IsReceipt = params.get("IsReceipt")
         self.RequestId = params.get("RequestId")
+
+
+class UsedVehicleInvoiceInfo(AbstractModel):
+    """二手车销售统一发票信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaxBureau: 所属税局
+        :type TaxBureau: str
+        :param Buyer: 买方单位/个人
+        :type Buyer: str
+        :param BuyerNo: 买方单位代码/身份证号码
+        :type BuyerNo: str
+        :param BuyerAddress: 买方单位/个人地址
+        :type BuyerAddress: str
+        :param BuyerTel: 买方单位电话
+        :type BuyerTel: str
+        :param Seller: 卖方单位/个人
+        :type Seller: str
+        :param SellerNo: 卖方单位代码/身份证号码
+        :type SellerNo: str
+        :param SellerAddress: 卖方单位/个人地址
+        :type SellerAddress: str
+        :param SellerTel: 卖方单位电话
+        :type SellerTel: str
+        :param VehicleLicenseNo: 车牌照号
+        :type VehicleLicenseNo: str
+        :param RegisterNo: 登记证号
+        :type RegisterNo: str
+        :param VehicleIdentifyNo: 车架号/车辆识别代码
+        :type VehicleIdentifyNo: str
+        :param ManagementOffice: 转入地车辆管理所名称
+        :type ManagementOffice: str
+        :param VehicleTotalPrice: 车价合计
+        :type VehicleTotalPrice: str
+        :param Auctioneer: 经营、拍卖单位
+        :type Auctioneer: str
+        :param AuctioneerAddress: 经营、拍卖单位地址
+        :type AuctioneerAddress: str
+        :param AuctioneerTaxpayerNum: 经营、拍卖单位纳税人识别号
+        :type AuctioneerTaxpayerNum: str
+        :param AuctioneerBankAccount: 经营、拍卖单位开户银行、账号
+        :type AuctioneerBankAccount: str
+        :param AuctioneerTel: 经营、拍卖单位电话
+        :type AuctioneerTel: str
+        :param Market: 二手车市场
+        :type Market: str
+        :param MarketTaxpayerNum: 二手车市场纳税人识别号
+        :type MarketTaxpayerNum: str
+        :param MarketAddress: 二手车市场地址
+        :type MarketAddress: str
+        :param MarketBankAccount: 二手车市场开户银行账号
+        :type MarketBankAccount: str
+        :param MarketTel: 二手车市场电话
+        :type MarketTel: str
+        """
+        self.TaxBureau = None
+        self.Buyer = None
+        self.BuyerNo = None
+        self.BuyerAddress = None
+        self.BuyerTel = None
+        self.Seller = None
+        self.SellerNo = None
+        self.SellerAddress = None
+        self.SellerTel = None
+        self.VehicleLicenseNo = None
+        self.RegisterNo = None
+        self.VehicleIdentifyNo = None
+        self.ManagementOffice = None
+        self.VehicleTotalPrice = None
+        self.Auctioneer = None
+        self.AuctioneerAddress = None
+        self.AuctioneerTaxpayerNum = None
+        self.AuctioneerBankAccount = None
+        self.AuctioneerTel = None
+        self.Market = None
+        self.MarketTaxpayerNum = None
+        self.MarketAddress = None
+        self.MarketBankAccount = None
+        self.MarketTel = None
+
+
+    def _deserialize(self, params):
+        self.TaxBureau = params.get("TaxBureau")
+        self.Buyer = params.get("Buyer")
+        self.BuyerNo = params.get("BuyerNo")
+        self.BuyerAddress = params.get("BuyerAddress")
+        self.BuyerTel = params.get("BuyerTel")
+        self.Seller = params.get("Seller")
+        self.SellerNo = params.get("SellerNo")
+        self.SellerAddress = params.get("SellerAddress")
+        self.SellerTel = params.get("SellerTel")
+        self.VehicleLicenseNo = params.get("VehicleLicenseNo")
+        self.RegisterNo = params.get("RegisterNo")
+        self.VehicleIdentifyNo = params.get("VehicleIdentifyNo")
+        self.ManagementOffice = params.get("ManagementOffice")
+        self.VehicleTotalPrice = params.get("VehicleTotalPrice")
+        self.Auctioneer = params.get("Auctioneer")
+        self.AuctioneerAddress = params.get("AuctioneerAddress")
+        self.AuctioneerTaxpayerNum = params.get("AuctioneerTaxpayerNum")
+        self.AuctioneerBankAccount = params.get("AuctioneerBankAccount")
+        self.AuctioneerTel = params.get("AuctioneerTel")
+        self.Market = params.get("Market")
+        self.MarketTaxpayerNum = params.get("MarketTaxpayerNum")
+        self.MarketAddress = params.get("MarketAddress")
+        self.MarketBankAccount = params.get("MarketBankAccount")
+        self.MarketTel = params.get("MarketTel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VatInvoice(AbstractModel):
@@ -6470,7 +6629,7 @@ class VatInvoice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 发票代码
         :type Code: str
         :param Number: 发票号码
@@ -6598,7 +6757,7 @@ class VatInvoiceGoodsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Item: 项目名称
         :type Item: str
         :param Specification: 规格型号
@@ -6650,7 +6809,7 @@ class VatInvoiceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LineNo: 行号
         :type LineNo: str
         :param Name: 名称
@@ -6706,7 +6865,7 @@ class VatInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片/PDF的 Base64 值。
 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片/PDF大小：所下载文件经Base64编码后不超过 7M。文件下载时间不超过 3 秒。
@@ -6749,7 +6908,7 @@ class VatInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VatInvoiceInfos: 检测到的文本信息，具体内容请点击左侧链接。
         :type VatInvoiceInfos: list of TextVatInvoice
         :param Items: 明细条目。VatInvoiceInfos中关于明细项的具体条目。
@@ -6792,7 +6951,7 @@ class VatInvoiceUserInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名称
         :type Name: str
         :param TaxId: 纳税人识别号
@@ -6828,7 +6987,7 @@ class VatInvoiceVerifyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvoiceCode: 发票代码， 一张发票一天只能查询5次。
         :type InvoiceCode: str
         :param InvoiceNo: 发票号码（8位）。
@@ -6869,13 +7028,19 @@ class VatInvoiceVerifyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Invoice: 增值税发票信息，详情请点击左侧链接。
         :type Invoice: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
+        :param VehicleInvoiceInfo: 机动车销售统一发票信息
+        :type VehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
+        :param UsedVehicleInvoiceInfo: 二手车销售统一发票信息
+        :type UsedVehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Invoice = None
+        self.VehicleInvoiceInfo = None
+        self.UsedVehicleInvoiceInfo = None
         self.RequestId = None
 
 
@@ -6883,6 +7048,12 @@ class VatInvoiceVerifyResponse(AbstractModel):
         if params.get("Invoice") is not None:
             self.Invoice = VatInvoice()
             self.Invoice._deserialize(params.get("Invoice"))
+        if params.get("VehicleInvoiceInfo") is not None:
+            self.VehicleInvoiceInfo = VehicleInvoiceInfo()
+            self.VehicleInvoiceInfo._deserialize(params.get("VehicleInvoiceInfo"))
+        if params.get("UsedVehicleInvoiceInfo") is not None:
+            self.UsedVehicleInvoiceInfo = UsedVehicleInvoiceInfo()
+            self.UsedVehicleInvoiceInfo._deserialize(params.get("UsedVehicleInvoiceInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6892,7 +7063,7 @@ class VatRollInvoiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、服务类型、品名、种类。
         :type Name: str
@@ -6927,7 +7098,7 @@ class VatRollInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -6962,7 +7133,7 @@ class VatRollInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VatRollInvoiceInfos: 增值税发票（卷票）识别结果，具体内容请点击左侧链接。
         :type VatRollInvoiceInfos: list of VatRollInvoiceInfo
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
@@ -6986,13 +7157,97 @@ class VatRollInvoiceOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class VehicleInvoiceInfo(AbstractModel):
+    """机动车销售统一发票信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CarType: 车辆类型
+        :type CarType: str
+        :param PlateModel: 厂牌型号
+        :type PlateModel: str
+        :param ProduceAddress: 产地
+        :type ProduceAddress: str
+        :param CertificateNo: 合格证号
+        :type CertificateNo: str
+        :param ImportNo: 进口证明书号
+        :type ImportNo: str
+        :param VinNo: LSVCA2NP9HN0xxxxx
+        :type VinNo: str
+        :param PayTaxesNo: 完税证书号
+        :type PayTaxesNo: str
+        :param Tonnage: 吨位
+        :type Tonnage: str
+        :param LimitCount: 限乘人数
+        :type LimitCount: str
+        :param EngineNo: 发动机号码
+        :type EngineNo: str
+        :param BizCheckFormNo: 商检单号
+        :type BizCheckFormNo: str
+        :param TaxtationOrgCode: 主管税务机关代码
+        :type TaxtationOrgCode: str
+        :param TaxtationOrgName: 主管税务机关名称
+        :type TaxtationOrgName: str
+        :param MotorTaxRate: 税率
+        :type MotorTaxRate: str
+        :param MotorBankName: 开户行
+        :type MotorBankName: str
+        :param MotorBankAccount: 账号
+        :type MotorBankAccount: str
+        """
+        self.CarType = None
+        self.PlateModel = None
+        self.ProduceAddress = None
+        self.CertificateNo = None
+        self.ImportNo = None
+        self.VinNo = None
+        self.PayTaxesNo = None
+        self.Tonnage = None
+        self.LimitCount = None
+        self.EngineNo = None
+        self.BizCheckFormNo = None
+        self.TaxtationOrgCode = None
+        self.TaxtationOrgName = None
+        self.MotorTaxRate = None
+        self.MotorBankName = None
+        self.MotorBankAccount = None
+
+
+    def _deserialize(self, params):
+        self.CarType = params.get("CarType")
+        self.PlateModel = params.get("PlateModel")
+        self.ProduceAddress = params.get("ProduceAddress")
+        self.CertificateNo = params.get("CertificateNo")
+        self.ImportNo = params.get("ImportNo")
+        self.VinNo = params.get("VinNo")
+        self.PayTaxesNo = params.get("PayTaxesNo")
+        self.Tonnage = params.get("Tonnage")
+        self.LimitCount = params.get("LimitCount")
+        self.EngineNo = params.get("EngineNo")
+        self.BizCheckFormNo = params.get("BizCheckFormNo")
+        self.TaxtationOrgCode = params.get("TaxtationOrgCode")
+        self.TaxtationOrgName = params.get("TaxtationOrgName")
+        self.MotorTaxRate = params.get("MotorTaxRate")
+        self.MotorBankName = params.get("MotorBankName")
+        self.MotorBankAccount = params.get("MotorBankAccount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VehicleLicenseOCRRequest(AbstractModel):
     """VehicleLicenseOCR请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
@@ -7028,7 +7283,7 @@ class VehicleLicenseOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrontInfo: 行驶证主页正面的识别结果，CardSide 为 FRONT。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrontInfo: :class:`tencentcloud.ocr.v20181119.models.TextVehicleFront`
@@ -7075,7 +7330,7 @@ class VehicleRegCertInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
 【注册登记页】
 车辆型号、车辆识别代号/车架号、发动机号、制造厂名称、轴距、轮胎数、总质量、外廓尺寸、轴数、车辆出厂日期、发证日期、使用性质、车辆获得方式、车辆类型、国产/进口、燃料种类、车身颜色、发动机型号、车辆品牌、编号、转向形式、
@@ -7114,7 +7369,7 @@ class VehicleRegCertOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -7149,7 +7404,7 @@ class VehicleRegCertOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VehicleRegCertInfos: 机动车登记证书识别结果，具体内容请点击左侧链接。
         :type VehicleRegCertInfos: list of VehicleRegCertInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7175,7 +7430,7 @@ class VerifyBasicBizLicenseRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -7237,7 +7492,7 @@ class VerifyBasicBizLicenseResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 状态码，成功时返回0
         :type ErrorCode: int
         :param CreditCode: 统一社会信用代码
@@ -7328,7 +7583,7 @@ class VerifyBizLicenseRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -7382,7 +7637,7 @@ class VerifyBizLicenseResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 状态码
         :type ErrorCode: int
         :param CreditCode: 统一社会信用代码
@@ -7537,7 +7792,7 @@ class VerifyEnterpriseFourFactorsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealName: 姓名
         :type RealName: str
         :param IdCard: 证件号码（公司注册证件号）
@@ -7573,8 +7828,8 @@ class VerifyEnterpriseFourFactorsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param State: 核验一致性（1:一致，2:不一致）
+        r"""
+        :param State: 核验一致性（1:一致，2:不一致，3:查询无记录）
         :type State: int
         :param Detail: 返回不一致时，返回明细，-22：姓名不一致，-23：证件号码不一致，-24：企业名称不一致，-25：企业标识不一致
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7601,7 +7856,7 @@ class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OfdFileUrl: OFD文件的 Url 地址。
         :type OfdFileUrl: str
         :param OfdFileBase64: OFD文件的 Base64 值。
@@ -7630,7 +7885,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 发票类型
 026:增值税电子普通发票
 028:增值税电子专用发票
@@ -7726,7 +7981,7 @@ class VinOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -7761,7 +8016,7 @@ class VinOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Vin: 检测到的车辆 VIN 码。
         :type Vin: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7782,7 +8037,7 @@ class WaybillOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -7821,7 +8076,7 @@ class WaybillOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: :class:`tencentcloud.ocr.v20181119.models.TextWaybill`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7844,7 +8099,7 @@ class WaybillObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 识别出的文本行内容
         :type Text: str
         """
@@ -7868,7 +8123,7 @@ class WordCoordPoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WordCoordinate: 英文OCR识别出的每个单词在原图中的四点坐标。
         :type WordCoordinate: list of Coord
         """
@@ -7897,7 +8152,7 @@ class Words(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 置信度 0 ~100
         :type Confidence: int
         :param Character: 候选字Character

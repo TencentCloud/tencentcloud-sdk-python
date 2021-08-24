@@ -17,6 +17,9 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 存在未结束故障单，操作失败。
+FAILEDOPERATION_EXISTREPAIRTASK = 'FailedOperation.ExistRepairTask'
+
 # Tsc Agent不在线。
 FAILEDOPERATION_TSCAGENTOFFLINE = 'FailedOperation.TscAgentOffline'
 

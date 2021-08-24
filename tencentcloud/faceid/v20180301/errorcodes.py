@@ -209,9 +209,6 @@ FAILEDOPERATION_VERIFICATIONFAIL = 'FailedOperation.VerificationFail'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
-# 比对失败。
-INTERNALERROR_COMPAREFAIL = 'InternalError.CompareFail'
-
 # 加密失败。
 INTERNALERROR_ENCRYPTSYSTEMERROR = 'InternalError.EncryptSystemError'
 
@@ -244,6 +241,12 @@ INVALIDPARAMETERVALUE_RULEIDNOTEXIST = 'InvalidParameterValue.RuleIdNotExist'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 服务开通异常。
+UNAUTHORIZEDOPERATION_ACTIVATEERROR = 'UnauthorizedOperation.ActivateError'
+
+# 服务开通中。
+UNAUTHORIZEDOPERATION_ACTIVATING = 'UnauthorizedOperation.Activating'
 
 # 帐号已欠费。
 UNAUTHORIZEDOPERATION_ARREARS = 'UnauthorizedOperation.Arrears'

@@ -24,7 +24,7 @@ class ApplyStackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 资源栈ID
         :type StackId: str
         :param VersionId: 待执行apply事件的版本ID
@@ -52,7 +52,7 @@ class ApplyStackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 执行的事件ID
         :type EventId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -73,7 +73,7 @@ class CreateStackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackName: 资源栈名称，不得超过60个字符
         :type StackName: str
         :param StackRegion: 资源栈所在地域
@@ -109,7 +109,7 @@ class CreateStackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 创建得到的资源栈ID
         :type StackId: str
         :param VersionId: 资源栈版本ID
@@ -134,7 +134,7 @@ class CreateStackVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 待增加版本的资源栈ID
         :type StackId: str
         :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
@@ -170,7 +170,7 @@ class CreateStackVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 新创建的版本ID
         :type VersionId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -191,7 +191,7 @@ class DeleteStackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 待删除的资源栈ID
         :type StackId: str
         """
@@ -215,7 +215,7 @@ class DeleteStackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -232,7 +232,7 @@ class DeleteStackVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 待删除的版本ID
         :type VersionId: str
         """
@@ -256,7 +256,7 @@ class DeleteStackVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -273,7 +273,7 @@ class DescribeStackEventRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 事件ID
         :type EventId: str
         """
@@ -297,7 +297,7 @@ class DescribeStackEventResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 事件ID
         :type EventId: str
         :param VersionId: 版本ID
@@ -346,7 +346,7 @@ class DescribeStackEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventIds: 按照⼀个或者多个事件ID查询
         :type EventIds: list of str
         :param Filters: <li>**VersionId**</li>
@@ -401,7 +401,7 @@ class DescribeStackEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的事件数量
         :type TotalCount: int
         :param Events: 事件详细信息列表
@@ -431,7 +431,7 @@ class DescribeStackVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionIds: 按照⼀个或者多个版本ID查询
         :type VersionIds: list of str
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
@@ -482,7 +482,7 @@ class DescribeStackVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的版本数量
         :type TotalCount: int
         :param Versions: 版本详细信息列表
@@ -512,7 +512,7 @@ class DescribeStacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackIds: 按照⼀个或者多个资源栈ID查询
         :type StackIds: list of str
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -544,7 +544,7 @@ class DescribeStacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的资源栈数量
         :type TotalCount: int
         :param Stacks: 资源栈详细信息列表
@@ -574,7 +574,7 @@ class DestroyStackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 资源栈ID
         :type StackId: str
         :param VersionId: 待执行destroy事件的版本ID
@@ -602,7 +602,7 @@ class DestroyStackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 事件ID
         :type EventId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -623,7 +623,7 @@ class EventInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 事件ID
         :type EventId: str
         :param VersionId: 版本ID
@@ -671,7 +671,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 条件名字
         :type Name: str
         :param Values: 匹配的值，可以有多个
@@ -699,7 +699,7 @@ class PlanStackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 资源栈ID
         :type StackId: str
         :param VersionId: 待执行plan事件的版本ID
@@ -727,7 +727,7 @@ class PlanStackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 执行的事件ID
         :type EventId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -748,7 +748,7 @@ class StackInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 资源栈ID
         :type StackId: str
         :param StackName: 资源栈名称
@@ -792,7 +792,7 @@ class UpdateStackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StackId: 待更新的资源栈ID
         :type StackId: str
         :param StackName: 资源栈名称，不得超过60个字符
@@ -824,7 +824,7 @@ class UpdateStackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -841,7 +841,7 @@ class UpdateStackVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 待更新的版本ID
         :type VersionId: str
         :param TemplateUrl: 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
@@ -877,7 +877,7 @@ class UpdateStackVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -894,7 +894,7 @@ class VersionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionId: 版本ID
         :type VersionId: str
         :param VersionName: 版本名称

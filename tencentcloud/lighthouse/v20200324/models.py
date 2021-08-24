@@ -24,7 +24,7 @@ class ApplyInstanceSnapshotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param SnapshotId: 快照 ID。
@@ -52,7 +52,7 @@ class ApplyInstanceSnapshotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -69,7 +69,7 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyIds: 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
         :type KeyIds: list of str
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
@@ -97,7 +97,48 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AttachCcnRequest(AbstractModel):
+    """AttachCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachCcnResponse(AbstractModel):
+    """AttachCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -114,7 +155,7 @@ class Blueprint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintId: 镜像 ID  ，是 Blueprint 的唯一标识。
         :type BlueprintId: str
         :param DisplayTitle: 镜像对外展示标题。
@@ -147,6 +188,9 @@ class Blueprint(AbstractModel):
         :type SupportAutomationTools: bool
         :param RequiredMemorySize: 镜像所需内存大小, 单位: GB
         :type RequiredMemorySize: int
+        :param ImageId: CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -163,6 +207,7 @@ class Blueprint(AbstractModel):
         self.BlueprintName = None
         self.SupportAutomationTools = None
         self.RequiredMemorySize = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
@@ -181,6 +226,7 @@ class Blueprint(AbstractModel):
         self.BlueprintName = params.get("BlueprintName")
         self.SupportAutomationTools = params.get("SupportAutomationTools")
         self.RequiredMemorySize = params.get("RequiredMemorySize")
+        self.ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -196,7 +242,7 @@ class BlueprintInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Blueprint: 镜像信息。
         :type Blueprint: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
         :param SoftwareSet: 软件列表。
@@ -235,7 +281,7 @@ class BlueprintPrice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalBlueprintPrice: 镜像单价，原价。单位元。
         :type OriginalBlueprintPrice: float
         :param OriginalPrice: 镜像总价，原价。单位元。
@@ -271,7 +317,7 @@ class Bundle(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BundleId: 套餐 ID。
         :type BundleId: str
         :param Memory: 内存大小，单位 GB。
@@ -351,13 +397,64 @@ class Bundle(AbstractModel):
         
 
 
+class CcnAttachedInstance(AbstractModel):
+    """云联网关联的实例列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CcnId: 云联网ID。
+        :type CcnId: str
+        :param CidrBlock: 关联实例CIDR。
+        :type CidrBlock: list of str
+        :param State: 关联实例状态：
+
+•  PENDING：申请中
+•  ACTIVE：已连接
+•  EXPIRED：已过期
+•  REJECTED：已拒绝
+•  DELETED：已删除
+•  FAILED：失败的（2小时后将异步强制解关联）
+•  ATTACHING：关联中
+•  DETACHING：解关联中
+•  DETACHFAILED：解关联失败（2小时后将异步强制解关联）
+        :type State: str
+        :param AttachedTime: 关联时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedTime: str
+        :param Description: 备注
+        :type Description: str
+        """
+        self.CcnId = None
+        self.CidrBlock = None
+        self.State = None
+        self.AttachedTime = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.State = params.get("State")
+        self.AttachedTime = params.get("AttachedTime")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBlueprintRequest(AbstractModel):
     """CreateBlueprint请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintName: 镜像名称。最大长度60。
         :type BlueprintName: str
         :param Description: 镜像描述。最大长度60。
@@ -389,7 +486,7 @@ class CreateBlueprintResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintId: 自定义镜像ID。
         :type BlueprintId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -410,7 +507,7 @@ class CreateFirewallRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param FirewallRules: 防火墙规则列表。
@@ -447,7 +544,7 @@ class CreateFirewallRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -464,7 +561,7 @@ class CreateInstanceSnapshotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 需要创建快照的实例 ID。
         :type InstanceId: str
         :param SnapshotName: 快照名称，最长为 60 个字符。
@@ -492,7 +589,7 @@ class CreateInstanceSnapshotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照 ID。
         :type SnapshotId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -513,7 +610,7 @@ class CreateKeyPairRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
         :type KeyName: str
         """
@@ -537,7 +634,7 @@ class CreateKeyPairResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyPair: 密钥对信息。
         :type KeyPair: :class:`tencentcloud.lighthouse.v20200324.models.KeyPair`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -560,7 +657,7 @@ class DeleteBlueprintsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintIds: 镜像ID列表。镜像ID，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintIds: list of str
         """
@@ -584,7 +681,7 @@ class DeleteBlueprintsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -601,7 +698,7 @@ class DeleteFirewallRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param FirewallRules: 防火墙规则列表。
@@ -638,7 +735,7 @@ class DeleteFirewallRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -655,7 +752,7 @@ class DeleteKeyPairsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyIds: 密钥对 ID 列表，每次请求批量密钥对的上限为 10。
         :type KeyIds: list of str
         """
@@ -679,7 +776,7 @@ class DeleteKeyPairsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -696,7 +793,7 @@ class DeleteSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotIds: 要删除的快照 ID 列表，可通过 DescribeSnapshots 查询。
         :type SnapshotIds: list of str
         """
@@ -720,7 +817,7 @@ class DeleteSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -737,7 +834,7 @@ class DeniedAction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Action: 限制操作名。
         :type Action: str
         :param Code: 限制操作消息码。
@@ -769,7 +866,7 @@ class DescribeBlueprintInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表，当前最多支持 1 个。
         :type InstanceIds: list of str
         """
@@ -793,7 +890,7 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的镜像实例数量。
         :type TotalCount: int
         :param BlueprintInstanceSet: 镜像实例列表信息。
@@ -823,7 +920,7 @@ class DescribeBlueprintsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintIds: 镜像 ID 列表。
         :type BlueprintIds: list of str
         :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -835,13 +932,20 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值：APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
+取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
 类型：String
 必选：否
+<li>blueprint-name</li>按照【镜像名称】进行过滤。
+类型：String
+必选：否
+<li>blueprint-state</li>按照【镜像状态】进行过滤。
+类型：String
+必选：否
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
         :type Filters: list of Filter
         """
@@ -876,7 +980,7 @@ class DescribeBlueprintsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的镜像数量。
         :type TotalCount: int
         :param BlueprintSet: 镜像详细信息列表。
@@ -906,7 +1010,7 @@ class DescribeBundleDiscountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BundleId: 套餐 ID。
         :type BundleId: str
         """
@@ -930,7 +1034,7 @@ class DescribeBundleDiscountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Currency: 币种：CNY人民币，USD 美元。
         :type Currency: str
         :param DiscountDetail: 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
@@ -960,7 +1064,7 @@ class DescribeBundlesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BundleIds: 套餐 ID 列表。
         :type BundleIds: list of str
         :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -1013,7 +1117,7 @@ class DescribeBundlesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BundleSet: 套餐详细信息列表。
         :type BundleSet: list of Bundle
         :param TotalCount: 符合要求的套餐总数，用于分页展示。
@@ -1037,13 +1141,46 @@ class DescribeBundlesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCcnAttachedInstancesRequest(AbstractModel):
+    """DescribeCcnAttachedInstances请求参数结构体
+
+    """
+
+
+class DescribeCcnAttachedInstancesResponse(AbstractModel):
+    """DescribeCcnAttachedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CcnAttachedInstanceSet: 云联网关联的实例列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnAttachedInstanceSet: list of CcnAttachedInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CcnAttachedInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CcnAttachedInstanceSet") is not None:
+            self.CcnAttachedInstanceSet = []
+            for item in params.get("CcnAttachedInstanceSet"):
+                obj = CcnAttachedInstance()
+                obj._deserialize(item)
+                self.CcnAttachedInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFirewallRulesRequest(AbstractModel):
     """DescribeFirewallRules请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param Offset: 偏移量，默认为 0。
@@ -1075,7 +1212,7 @@ class DescribeFirewallRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的防火墙规则数量。
         :type TotalCount: int
         :param FirewallRuleSet: 防火墙规则详细信息列表。
@@ -1115,7 +1252,7 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的防火墙规则数量。
         :type TotalCount: int
         :param FirewallRuleSet: 防火墙规则详细信息列表。
@@ -1145,7 +1282,7 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceNames: 资源名列表，取值为：USER_KEY_PAIR、INSTANCE、SNAPSHOT。
         :type ResourceNames: list of str
         """
@@ -1169,7 +1306,7 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GeneralResourceQuotaSet: 通用资源配额详细信息列表。
         :type GeneralResourceQuotaSet: list of GeneralResourceQuota
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1195,7 +1332,7 @@ class DescribeInstanceLoginKeyPairAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         """
@@ -1219,7 +1356,7 @@ class DescribeInstanceLoginKeyPairAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PermitLogin: 是否允许使用默认密钥对登录，YES：允许登录 NO：禁止登录。
         :type PermitLogin: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1240,7 +1377,7 @@ class DescribeInstanceVncUrlRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
         """
@@ -1264,7 +1401,7 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceVncUrl: 实例的管理终端地址。
         :type InstanceVncUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1285,7 +1422,7 @@ class DescribeInstancesDeniedActionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
@@ -1309,7 +1446,7 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceDeniedActionSet: 实例操作限制列表详细信息。
         :type InstanceDeniedActionSet: list of InstanceDeniedActions
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1335,7 +1472,7 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
         :type InstanceIds: list of str
         :param Filters: 过滤器列表。
@@ -1386,7 +1523,7 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的实例数量。
         :type TotalCount: int
         :param InstanceSet: 实例详细信息列表。
@@ -1416,7 +1553,7 @@ class DescribeInstancesReturnableRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         :param Offset: 偏移量，默认为 0。
@@ -1448,7 +1585,7 @@ class DescribeInstancesReturnableResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的实例数量。
         :type TotalCount: int
         :param InstanceReturnableSet: 可退还实例详细信息列表。
@@ -1478,7 +1615,7 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         :param Offset: 偏移量，默认为 0。
@@ -1510,7 +1647,7 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的实例流量包详情数量。
         :type TotalCount: int
         :param InstanceTrafficPackageSet: 实例流量包详情列表。
@@ -1540,14 +1677,21 @@ class DescribeKeyPairsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyIds: 密钥对 ID 列表。
         :type KeyIds: list of str
         :param Offset: 偏移量，默认为 0。
         :type Offset: int
         :param Limit: 返回数量，默认为 20，最大值为 100。
         :type Limit: int
-        :param Filters: 过滤条件，每次请求的 Filters 的上限为10， Filters.Values 的上限为5。参数不可以同时指定 KeyIds 和 Filters 。详细的过滤条件如下： key-id - String - 是否必填： 否 - （过滤条件）按照KeyID进行过滤; key-name - String - 是否必填： 否 - （过滤条件）按照KeyName进行过滤。
+        :param Filters: 过滤器列表。
+<li>key-id</li>按照【密钥对ID】进行过滤。
+类型：String
+必选：否
+<li>key-name</li>按照【密钥对名称】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
         :type Filters: list of Filter
         """
         self.KeyIds = None
@@ -1581,7 +1725,7 @@ class DescribeKeyPairsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的密钥对数量。
         :type TotalCount: int
         :param KeyPairSet: 密钥对详细信息列表。
@@ -1611,7 +1755,7 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param Filters: 过滤器列表。
@@ -1660,7 +1804,7 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的套餐数量。
         :type TotalCount: int
         :param ModifyBundleSet: 变更套餐详细信息。
@@ -1696,7 +1840,7 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 地域数量。
         :type TotalCount: int
         :param RegionSet: 地域信息列表。
@@ -1726,7 +1870,7 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -1738,13 +1882,20 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
+取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
 类型：String
 必选：否
+<li>blueprint-name</li>按照【镜像名称】进行过滤。
+类型：String
+必选：否
+<li>blueprint-state</li>按照【镜像状态】进行过滤。
+类型：String
+必选：否
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
         :type Filters: list of Filter
         """
@@ -1779,7 +1930,7 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的镜像数量。
         :type TotalCount: int
         :param ResetInstanceBlueprintSet: 镜像重置信息列表
@@ -1809,7 +1960,7 @@ class DescribeSnapshotsDeniedActionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotIds: 快照 ID 列表, 可通过 DescribeSnapshots 查询。
         :type SnapshotIds: list of str
         """
@@ -1833,7 +1984,7 @@ class DescribeSnapshotsDeniedActionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotDeniedActionSet: 快照操作限制列表详细信息。
         :type SnapshotDeniedActionSet: list of SnapshotDeniedActions
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1859,7 +2010,7 @@ class DescribeSnapshotsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotIds: 要查询快照的 ID 列表。
 参数不支持同时指定 SnapshotIds 和 Filters。
         :type SnapshotIds: list of str
@@ -1914,7 +2065,7 @@ class DescribeSnapshotsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 快照的数量。
         :type TotalCount: int
         :param SnapshotSet: 快照的详情列表。
@@ -1950,7 +2101,7 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可用区数量
         :type TotalCount: int
         :param ZoneInfoSet: 可用区详细信息列表
@@ -1974,13 +2125,54 @@ class DescribeZonesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachCcnRequest(AbstractModel):
+    """DetachCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachCcnResponse(AbstractModel):
+    """DetachCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
     """DisassociateInstancesKeyPairs请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyIds: 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
         :type KeyIds: list of str
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
@@ -2008,7 +2200,7 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2025,7 +2217,7 @@ class DiscountDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeSpan: 计费时长。
         :type TimeSpan: int
         :param TimeUnit: 计费单元。
@@ -2081,7 +2273,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段。
         :type Name: str
         :param Values: 字段的过滤值。
@@ -2109,7 +2301,7 @@ class FirewallRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Protocol: 协议，取值：TCP，UDP，ICMP，ALL。
         :type Protocol: str
         :param Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
@@ -2149,7 +2341,7 @@ class FirewallRuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppType: 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
         :type AppType: str
         :param Protocol: 协议，取值：TCP，UDP，ICMP，ALL。
@@ -2194,7 +2386,7 @@ class GeneralResourceQuota(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceName: 资源名称。
         :type ResourceName: str
         :param ResourceQuotaAvailable: 资源当前可用数量。
@@ -2226,7 +2418,7 @@ class ImportKeyPairRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
         :type KeyName: str
         :param PublicKey: 密钥对的公钥内容， OpenSSH RSA 格式。
@@ -2254,7 +2446,7 @@ class ImportKeyPairResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyId: 密钥对 ID。
         :type KeyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2275,7 +2467,7 @@ class InquirePriceCreateBlueprintRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintCount: 自定义镜像的个数。默认值为1。
         :type BlueprintCount: int
         """
@@ -2299,7 +2491,7 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintPrice: 自定义镜像的价格参数。
         :type BlueprintPrice: :class:`tencentcloud.lighthouse.v20200324.models.BlueprintPrice`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2322,7 +2514,7 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BundleId: 实例的套餐 ID。
         :type BundleId: str
         :param InstanceCount: 创建数量，默认为 1。
@@ -2360,7 +2552,7 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Price: 询价信息。
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2383,7 +2575,7 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 待续费的实例。
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
@@ -2413,7 +2605,7 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Price: 询价信息。
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2436,7 +2628,7 @@ class Instance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param BundleId: 套餐 ID。
@@ -2579,7 +2771,7 @@ class InstanceChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_AUTO_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
@@ -2607,7 +2799,7 @@ class InstanceDeniedActions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
@@ -2641,7 +2833,7 @@ class InstancePrice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalBundlePrice: 套餐单价原价。
         :type OriginalBundlePrice: float
         :param OriginalPrice: 原价。
@@ -2677,7 +2869,7 @@ class InstanceReturnable(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param IsReturnable: 实例是否可退还。
@@ -2713,7 +2905,7 @@ class InstanceTrafficPackage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param TrafficPackageSet: 流量包详情列表。
@@ -2746,7 +2938,7 @@ class InternetAccessible(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InternetChargeType: 网络计费类型，取值范围：
 <li>按流量包付费：TRAFFIC_POSTPAID_BY_HOUR</li>
 <li>按带宽付费： BANDWIDTH_POSTPAID_BY_HOUR</li>
@@ -2780,7 +2972,7 @@ class KeyPair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyId: 密钥对 ID ，是密钥对的唯一标识。
         :type KeyId: str
         :param KeyName: 密钥对名称。
@@ -2827,7 +3019,7 @@ class LoginSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyIds: 密钥 ID 列表。关联密钥后，就可以通过对应的私钥来访问实例。注意：此字段可能返回 []，表示取不到有效值。
         :type KeyIds: list of str
         """
@@ -2851,7 +3043,7 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintId: 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintId: str
         :param BlueprintName: 设置新的镜像名称。最大长度60。
@@ -2883,7 +3075,7 @@ class ModifyBlueprintAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2900,7 +3092,7 @@ class ModifyBundle(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModifyPrice: 更改实例套餐后需要补的差价。
         :type ModifyPrice: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param ModifyBundleState: 变更套餐状态。取值：
@@ -2939,7 +3131,7 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param FirewallRule: 防火墙规则。
@@ -2973,7 +3165,7 @@ class ModifyFirewallRuleDescriptionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2990,7 +3182,7 @@ class ModifyFirewallRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
         :param FirewallRules: 防火墙规则列表。
@@ -3027,7 +3219,7 @@ class ModifyFirewallRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3044,7 +3236,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         :param InstanceName: 实例名称。可任意命名，但不得超过 60 个字符。
@@ -3072,7 +3264,7 @@ class ModifyInstancesAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3089,7 +3281,7 @@ class ModifyInstancesLoginKeyPairAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
         :type InstanceIds: list of str
         :param PermitLogin: 是否允许使用默认密钥对登录，YES：允许登录；NO：禁止登录
@@ -3117,7 +3309,7 @@ class ModifyInstancesLoginKeyPairAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3134,7 +3326,7 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
@@ -3162,7 +3354,7 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3179,7 +3371,7 @@ class ModifySnapshotAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照 ID, 可通过 DescribeSnapshots 查询。
         :type SnapshotId: str
         :param SnapshotName: 新的快照名称，最长为 60 个字符。
@@ -3207,7 +3399,7 @@ class ModifySnapshotAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3224,7 +3416,7 @@ class PolicyDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserDiscount: 用户折扣。
         :type UserDiscount: int
         :param CommonDiscount: 公共折扣。
@@ -3256,7 +3448,7 @@ class Price(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstancePrice: 实例价格。
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
         """
@@ -3282,7 +3474,7 @@ class RebootInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
@@ -3306,7 +3498,7 @@ class RebootInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3323,7 +3515,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域名称，例如，ap-guangzhou。
         :type Region: str
         :param RegionName: 地域描述，例如，华南地区(广州)。
@@ -3353,13 +3545,54 @@ class RegionInfo(AbstractModel):
         
 
 
+class ResetAttachCcnRequest(AbstractModel):
+    """ResetAttachCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetAttachCcnResponse(AbstractModel):
+    """ResetAttachCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetInstanceBlueprint(AbstractModel):
     """描述了镜像重置信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlueprintInfo: 镜像详细信息
         :type BlueprintInfo: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
         :param IsResettable: 实例镜像是否可重置为目标镜像
@@ -3393,7 +3626,7 @@ class ResetInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
         :param BlueprintId: 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
@@ -3421,7 +3654,7 @@ class ResetInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3438,11 +3671,11 @@ class ResetInstancesPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
         :type InstanceIds: list of str
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
-`LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
+`LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/</li>
 `WINDOWS` 实例密码必须 12-30 位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字： 0-9<br><li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<br><li>如果实例即包含 `LINUX_UNIX` 实例又包含 `WINDOWS` 实例，则密码复杂度限制按照 `WINDOWS` 实例的限制。
         :type Password: str
         :param UserName: 待重置密码的实例操作系统用户名。不得超过 64 个字符。
@@ -3472,7 +3705,7 @@ class ResetInstancesPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3489,7 +3722,7 @@ class Snapshot(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照 ID。
         :type SnapshotId: str
         :param DiskUsage: 创建此快照的磁盘类型。取值：<li>SYSTEM_DISK：系统盘</li>
@@ -3564,7 +3797,7 @@ class SnapshotDeniedActions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SnapshotId: 快照 ID。
         :type SnapshotId: str
         :param DeniedActions: 操作限制列表。
@@ -3597,7 +3830,7 @@ class Software(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 软件名称。
         :type Name: str
         :param Version: 软件版本。
@@ -3642,7 +3875,7 @@ class SoftwareDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 详情唯一键。
         :type Key: str
         :param Title: 详情标题。
@@ -3674,7 +3907,7 @@ class StartInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
@@ -3698,7 +3931,7 @@ class StartInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3715,7 +3948,7 @@ class StopInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
@@ -3739,7 +3972,7 @@ class StopInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3756,7 +3989,7 @@ class SystemDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskType: 系统盘类型。
 取值范围： 
 <li> LOCAL_BASIC：本地硬盘</li><li> LOCAL_SSD：本地 SSD 硬盘</li><li> CLOUD_BASIC：普通云硬盘</li><li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
@@ -3791,7 +4024,7 @@ class TerminateInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
@@ -3815,7 +4048,7 @@ class TerminateInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3832,7 +4065,7 @@ class TrafficPackage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TrafficPackageId: 流量包ID。
         :type TrafficPackageId: str
         :param TrafficUsed: 流量包生效周期内已使用流量，单位字节。
@@ -3896,19 +4129,23 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区
         :type Zone: str
         :param ZoneName: 可用区中文名称
         :type ZoneName: str
+        :param InstanceDisplayLabel: 实例购买页可用区展示标签
+        :type InstanceDisplayLabel: str
         """
         self.Zone = None
         self.ZoneName = None
+        self.InstanceDisplayLabel = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
+        self.InstanceDisplayLabel = params.get("InstanceDisplayLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

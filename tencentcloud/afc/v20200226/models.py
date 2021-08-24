@@ -24,7 +24,7 @@ class QueryAntiFraudVipRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PhoneNumber: 电话号码(五选二)
         :type PhoneNumber: str
         :param IdNumber: Id号(五选二)
@@ -146,7 +146,7 @@ class QueryAntiFraudVipResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Found: 表示该条记录能否查到：1为能查到，-1为查不到
         :type Found: int
         :param IdFound: 表示该条Id能否查到：1为能查到，-1为查不到
@@ -190,7 +190,7 @@ class RiskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RiskCode: 风险码
         :type RiskCode: int
         """

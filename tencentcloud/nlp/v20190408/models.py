@@ -24,7 +24,7 @@ class AutoSummarizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待处理的文本（仅支持UTF-8格式，不超过2000字）
         :type Text: str
         :param Length: 指定摘要的长度上限（默认值为200）
@@ -53,7 +53,7 @@ class AutoSummarizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Summary: 文本摘要结果
         :type Summary: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -74,7 +74,7 @@ class CCIToken(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Word: 错别字内容
         :type Word: str
         :param BeginOffset: 错别字的起始位置，从0开始
@@ -106,7 +106,7 @@ class ChatBotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Query: 用户请求的query
         :type Query: str
         :param OpenId: 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
@@ -138,7 +138,7 @@ class ChatBotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Reply: 闲聊回复
         :type Reply: str
         :param Confidence: 对于当前输出回复的自信度
@@ -163,7 +163,7 @@ class ClassificationResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstClassName: 一级分类名称
         :type FirstClassName: str
         :param SecondClassName: 二级分类名称
@@ -231,7 +231,7 @@ class CreateDictRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 自定义词库名称，不超过20字。
         :type Name: str
         :param Description: 自定义词库描述，不超过100字。
@@ -259,7 +259,7 @@ class CreateDictResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 创建的自定义词库ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DictId: str
@@ -281,7 +281,7 @@ class CreateWordItemsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 自定义词库ID。
         :type DictId: str
         :param WordItems: 待添加的词条集合。
@@ -314,7 +314,7 @@ class CreateWordItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -331,7 +331,7 @@ class DeleteDictRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 要删除的自定义词库ID。
         :type DictId: str
         """
@@ -355,7 +355,7 @@ class DeleteDictResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -372,7 +372,7 @@ class DeleteWordItemsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 自定义词库ID。
         :type DictId: str
         :param WordItems: 待删除的词条集合。
@@ -405,7 +405,7 @@ class DeleteWordItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -422,7 +422,7 @@ class DependencyParsingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
         :type Text: str
         """
@@ -446,7 +446,7 @@ class DependencyParsingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DpTokens: 句法依存分析结果，其中句法依存关系的类型包括：
 <li>主谓关系，eg: 我送她一束花 (我 <-- 送)
 <li>动宾关系，eg: 我送她一束花 (送 --> 花)
@@ -487,7 +487,7 @@ class DescribeDictRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 自定义词库ID。
         :type DictId: str
         :param Name: 自定义词库名称，模糊搜索。
@@ -515,7 +515,7 @@ class DescribeDictResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Dicts: 查询到的词库信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Dicts: list of DictInfo
@@ -542,7 +542,7 @@ class DescribeDictsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 每页数据量，范围为1~100，默认为10。
         :type Limit: int
         :param Offset: 分页偏移量，从0开始，默认为0。
@@ -570,7 +570,7 @@ class DescribeDictsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总条数。
         :type TotalCount: int
         :param Dicts: 自定义词库信息列表。
@@ -601,7 +601,7 @@ class DescribeEntityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EntityName: 实体名称
         :type EntityName: str
         """
@@ -625,7 +625,7 @@ class DescribeEntityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回查询实体相关信息
         :type Content: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -646,7 +646,7 @@ class DescribeRelationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LeftEntityName: 输入第一个实体
         :type LeftEntityName: str
         :param RightEntityName: 输入第二个实体
@@ -674,7 +674,7 @@ class DescribeRelationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回查询实体间的关系
         :type Content: list of EntityRelationContent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -700,7 +700,7 @@ class DescribeTripleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TripleCondition: 三元组查询条件
         :type TripleCondition: str
         """
@@ -724,7 +724,7 @@ class DescribeTripleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回三元组信息
         :type Content: list of TripleContent
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -750,7 +750,7 @@ class DescribeWordItemsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 自定义词库ID。
         :type DictId: str
         :param Offset: 分页偏移量，从0开始，默认为0。
@@ -786,7 +786,7 @@ class DescribeWordItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 词条记录总条数。
         :type TotalCount: int
         :param WordItems: 词条信息列表。
@@ -817,7 +817,7 @@ class DictInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 自定义词库名称。
         :type Name: str
         :param Id: 自定义词库ID。
@@ -860,7 +860,7 @@ class DpToken(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Relation: 句法依存关系的类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
@@ -900,7 +900,7 @@ class EntityRelationContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Object: 实体关系查询返回关系的object
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: list of EntityRelationObject
@@ -945,7 +945,7 @@ class EntityRelationObject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Popular: object对应popular值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Popular: list of int
@@ -980,7 +980,7 @@ class EntityRelationSubject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Popular: Subject对应popular
         :type Popular: list of int
         :param Id: Subject对应id
@@ -1012,7 +1012,7 @@ class Keyword(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 权重
         :type Score: float
         :param Word: 关键词
@@ -1040,8 +1040,8 @@ class KeywordsExtractionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Text: 待处理的文本（仅支持UTF-8格式，不超过10000字）
+        r"""
+        :param Text: 待处理的文本（仅支持UTF-8格式，不超过10000字符）
         :type Text: str
         :param Num: 指定关键词个数上限（默认值为5）
         :type Num: int
@@ -1068,7 +1068,7 @@ class KeywordsExtractionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Keywords: 关键词提取结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of Keyword
@@ -1095,7 +1095,7 @@ class LexicalAnalysisRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过500字）
         :type Text: str
         :param DictId: 指定要加载的自定义词库ID。
@@ -1129,7 +1129,7 @@ class LexicalAnalysisResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NerTokens: 命名实体识别结果。取值范围：
 <li>PER：表示人名，如刘德华、贝克汉姆</li>
 <li>LOC：表示地名，如北京、华山</li>
@@ -1169,7 +1169,7 @@ class NerToken(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Word: 基础词
         :type Word: str
         :param Length: 长度
@@ -1205,7 +1205,7 @@ class PosToken(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Word: 基础词
         :type Word: str
         :param Length: 长度
@@ -1241,7 +1241,7 @@ class SearchResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 被搜索的词条文本。
         :type Text: str
         :param IsExist: 0表示词条不存在，1表示存在。
@@ -1279,7 +1279,7 @@ class SearchWordItemsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 自定义词库ID。
         :type DictId: str
         :param WordItems: 待检索的词条集合。
@@ -1312,7 +1312,7 @@ class SearchWordItemsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 词条检索结果集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of SearchResult
@@ -1339,7 +1339,7 @@ class SentenceEmbeddingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 输入的文本（仅支持UTF-8格式，不超过500字）
         :type Text: str
         """
@@ -1363,7 +1363,7 @@ class SentenceEmbeddingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Vector: 句向量数组
         :type Vector: list of float
         :param Dimension: 句向量的维度
@@ -1388,7 +1388,7 @@ class SentimentAnalysisRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）
         :type Text: str
         :param Flag: 待分析文本所属的类型，仅当输入参数Mode取值为2class时有效（默认取4值）：
@@ -1426,7 +1426,7 @@ class SentimentAnalysisResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Positive: 正面情感概率
         :type Positive: float
         :param Neutral: 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
@@ -1463,7 +1463,7 @@ class SimilarWordsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 输入的词语（仅支持UTF-8格式，不超过20字）
         :type Text: str
         :param WordNumber: 相似词个数；取值范围：1-200，默认为10；
@@ -1491,7 +1491,7 @@ class SimilarWordsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SimilarWords: 相似词数组
         :type SimilarWords: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1512,7 +1512,7 @@ class Similarity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 目标文本句子
         :type Text: str
         :param Score: 相似度分数
@@ -1540,7 +1540,7 @@ class TextClassificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待分类的文本（仅支持UTF-8格式，不超过10000字）
         :type Text: str
         :param Flag: 领域分类体系（默认取1值）：
@@ -1570,7 +1570,7 @@ class TextClassificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Classes: 文本分类结果（文本分类映射表请参见附录）
         :type Classes: list of ClassificationResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1596,7 +1596,7 @@ class TextCorrectionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 待纠错的文本（仅支持UTF-8格式，不超过2000字符）
         :type Text: str
         """
@@ -1620,7 +1620,7 @@ class TextCorrectionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CCITokens: 纠错详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type CCITokens: list of CCIToken
@@ -1651,10 +1651,10 @@ class TextSimilarityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
         :type SrcText: str
-        :param TargetText: 目标句子
+        :param TargetText: 目标句子（以句子数量为单位消耗资源包）
         :type TargetText: list of str
         """
         self.SrcText = None
@@ -1679,7 +1679,7 @@ class TextSimilarityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
         :type Similarity: list of Similarity
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1705,7 +1705,7 @@ class TripleContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Popular: 实体流行度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Popular: int
@@ -1745,7 +1745,7 @@ class UpdateDictRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DictId: 自定义词库ID。
         :type DictId: str
         :param Description: 词库描述，不超过100字。
@@ -1777,7 +1777,7 @@ class UpdateDictResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1794,7 +1794,7 @@ class WordEmbeddingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 输入的词语（仅支持UTF-8格式，不超过20字）
         :type Text: str
         """
@@ -1818,7 +1818,7 @@ class WordEmbeddingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Vector: 词向量数组
         :type Vector: list of float
         :param Dimension: 词向量的维度
@@ -1843,7 +1843,7 @@ class WordItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 词条文本内容。
         :type Text: str
         :param CreateTime: 词条创建时间。
@@ -1876,7 +1876,7 @@ class WordSimilarityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcWord: 计算相似度的源词（仅支持UTF-8格式，不超过20字）
         :type SrcWord: str
         :param TargetWord: 计算相似度的目标词（仅支持UTF-8格式，不超过20字）
@@ -1904,7 +1904,7 @@ class WordSimilarityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Similarity: 两个词语的相似度
         :type Similarity: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -24,7 +24,7 @@ class Activity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param ActivityId: 伸缩活动ID。
@@ -115,7 +115,7 @@ class ActivtyRelatedInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param InstanceStatus: 实例在伸缩活动中的状态。取值如下：
@@ -147,7 +147,7 @@ class AttachInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param InstanceIds: CVM实例ID列表
@@ -175,7 +175,7 @@ class AttachInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -196,7 +196,7 @@ class AutoScalingGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: 伸缩组名称
@@ -251,6 +251,21 @@ class AutoScalingGroup(AbstractModel):
 <br><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。
 <br><li> EQUALITY：每次选择当前实例数最少的可用区/子网进行扩容，使得每个可用区/子网都有机会发生扩容，多次扩容出的实例会打散到多个可用区/子网。
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: 伸缩组实例健康检查类型，取值如下：<br><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)<br><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: CLB健康检查宽限期
+        :type LoadBalancerHealthCheckGracePeriod: int
+        :param InstanceAllocationPolicy: 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
+<br><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。
+<br><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。
+        :type InstanceAllocationPolicy: str
+        :param SpotMixedAllocationPolicy: 竞价混合模式下，各计费类型实例的分配策略。
+仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时才会返回有效值。
+        :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        :param CapacityRebalance: 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+        :type CapacityRebalance: bool
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -278,6 +293,11 @@ class AutoScalingGroup(AbstractModel):
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
+        self.InstanceAllocationPolicy = None
+        self.SpotMixedAllocationPolicy = None
+        self.CapacityRebalance = None
 
 
     def _deserialize(self, params):
@@ -319,6 +339,13 @@ class AutoScalingGroup(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
+        self.InstanceAllocationPolicy = params.get("InstanceAllocationPolicy")
+        if params.get("SpotMixedAllocationPolicy") is not None:
+            self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
+            self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
+        self.CapacityRebalance = params.get("CapacityRebalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -334,7 +361,7 @@ class AutoScalingGroupAbstract(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: 伸缩组名称。
@@ -362,7 +389,7 @@ class AutoScalingNotification(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param NotificationUserGroupIds: 用户组ID列表。
@@ -398,20 +425,30 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationId: 启动配置ID。
         :type LaunchConfigurationId: str
         :param ClearDataDisks: 是否清空数据盘信息，非必填，默认为 false。
 填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
         :type ClearDataDisks: bool
+        :param ClearHostNameSettings: 是否清空云服务器主机名相关设置信息，非必填，默认为 false。
+填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。
+        :type ClearHostNameSettings: bool
+        :param ClearInstanceNameSettings: 是否清空云服务器实例名相关设置信息，非必填，默认为 false。
+填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
+        :type ClearInstanceNameSettings: bool
         """
         self.LaunchConfigurationId = None
         self.ClearDataDisks = None
+        self.ClearHostNameSettings = None
+        self.ClearInstanceNameSettings = None
 
 
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.ClearDataDisks = params.get("ClearDataDisks")
+        self.ClearHostNameSettings = params.get("ClearHostNameSettings")
+        self.ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -427,7 +464,7 @@ class ClearLaunchConfigurationAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -444,7 +481,7 @@ class CompleteLifecycleActionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookId: 生命周期挂钩ID
         :type LifecycleHookId: str
         :param LifecycleActionResult: 生命周期动作的结果，取值范围为“CONTINUE”或“ABANDON”
@@ -480,7 +517,7 @@ class CompleteLifecycleActionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -497,7 +534,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupName: 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
         :type AutoScalingGroupName: str
         :param InstanceId: 实例ID
@@ -541,7 +578,7 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -562,7 +599,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupName: 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
         :type AutoScalingGroupName: str
         :param LaunchConfigurationId: 启动配置ID
@@ -623,6 +660,19 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type HealthCheckType: str
         :param LoadBalancerHealthCheckGracePeriod: CLB健康检查宽限期，当扩容的实例进入`IN_SERVICE`后，在宽限期时间范围内将不会被标记为不健康`CLB_UNHEALTHY`。<br>默认值：0。取值范围[0, 7200]，单位：秒。
         :type LoadBalancerHealthCheckGracePeriod: int
+        :param InstanceAllocationPolicy: 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED，默认取 LAUNCH_CONFIGURATION。
+<br><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。
+<br><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。
+        :type InstanceAllocationPolicy: str
+        :param SpotMixedAllocationPolicy: 竞价混合模式下，各计费类型实例的分配策略。
+仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
+        :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        :param CapacityRebalance: 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+
+默认取 FALSE。
+        :type CapacityRebalance: bool
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -645,6 +695,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.MultiZoneSubnetPolicy = None
         self.HealthCheckType = None
         self.LoadBalancerHealthCheckGracePeriod = None
+        self.InstanceAllocationPolicy = None
+        self.SpotMixedAllocationPolicy = None
+        self.CapacityRebalance = None
 
 
     def _deserialize(self, params):
@@ -681,6 +734,11 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
         self.HealthCheckType = params.get("HealthCheckType")
         self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
+        self.InstanceAllocationPolicy = params.get("InstanceAllocationPolicy")
+        if params.get("SpotMixedAllocationPolicy") is not None:
+            self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
+            self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
+        self.CapacityRebalance = params.get("CapacityRebalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -696,7 +754,7 @@ class CreateAutoScalingGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -717,7 +775,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type LaunchConfigurationName: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
@@ -861,7 +919,7 @@ class CreateLaunchConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationId: 当通过本接口来创建启动配置时会返回该参数，表示启动配置ID。
         :type LaunchConfigurationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -882,7 +940,7 @@ class CreateLifecycleHookRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param LifecycleHookName: 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字节。
@@ -936,7 +994,7 @@ class CreateLifecycleHookResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookId: 生命周期挂钩ID
         :type LifecycleHookId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -957,7 +1015,7 @@ class CreateNotificationConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param NotificationTypes: 通知类型，即为需要订阅的通知类型集合，取值范围如下：
@@ -995,7 +1053,7 @@ class CreateNotificationConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingNotificationId: 通知ID。
         :type AutoScalingNotificationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1016,7 +1074,7 @@ class CreatePaiInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainName: PAI实例的域名。
         :type DomainName: str
         :param InternetAccessible: 公网带宽相关信息设置。
@@ -1086,7 +1144,7 @@ class CreatePaiInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIdSet: 当通过本接口来创建实例时会返回该参数，表示一个或多个实例`ID`。返回实例`ID`列表并不代表实例创建成功，可根据 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询返回的InstancesSet中对应实例的`ID`的状态来判断创建是否完成；如果实例状态由“准备中”变为“正在运行”，则为创建成功。
         :type InstanceIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1107,7 +1165,7 @@ class CreateScalingPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param ScalingPolicyName: 告警触发策略名称。
@@ -1157,7 +1215,7 @@ class CreateScalingPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingPolicyId: 告警触发策略ID。
         :type AutoScalingPolicyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1178,7 +1236,7 @@ class CreateScheduledActionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param ScheduledActionName: 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
@@ -1230,7 +1288,7 @@ class CreateScheduledActionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScheduledActionId: 定时任务ID
         :type ScheduledActionId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1251,8 +1309,8 @@ class DataDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+        r"""
+        :param DiskType: 数据盘类型。数据盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
@@ -1286,7 +1344,7 @@ class DeleteAutoScalingGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         """
@@ -1310,7 +1368,7 @@ class DeleteAutoScalingGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1327,7 +1385,7 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationId: 需要删除的启动配置ID。
         :type LaunchConfigurationId: str
         """
@@ -1351,7 +1409,7 @@ class DeleteLaunchConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1368,7 +1426,7 @@ class DeleteLifecycleHookRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookId: 生命周期挂钩ID
         :type LifecycleHookId: str
         """
@@ -1392,7 +1450,7 @@ class DeleteLifecycleHookResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1409,7 +1467,7 @@ class DeleteNotificationConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingNotificationId: 待删除的通知ID。
         :type AutoScalingNotificationId: str
         """
@@ -1433,7 +1491,7 @@ class DeleteNotificationConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1450,7 +1508,7 @@ class DeleteScalingPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingPolicyId: 待删除的告警策略ID。
         :type AutoScalingPolicyId: str
         """
@@ -1474,7 +1532,7 @@ class DeleteScalingPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1491,7 +1549,7 @@ class DeleteScheduledActionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScheduledActionId: 待删除的定时任务ID。
         :type ScheduledActionId: str
         """
@@ -1515,7 +1573,7 @@ class DeleteScheduledActionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1538,7 +1596,7 @@ class DescribeAccountLimitsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxNumberOfLaunchConfigurations: 用户账户被允许创建的启动配置最大数量
         :type MaxNumberOfLaunchConfigurations: int
         :param NumberOfLaunchConfigurations: 用户账户启动配置的当前数量
@@ -1571,7 +1629,7 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityIds: 按照一个或者多个伸缩活动ID查询。伸缩活动ID形如：`asa-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`ActivityIds`和`Filters`。
         :type ActivityIds: list of str
         :param Filters: 过滤条件。
@@ -1625,7 +1683,7 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的伸缩活动数量。
         :type TotalCount: int
         :param ActivitySet: 符合条件的伸缩活动信息集合。
@@ -1655,7 +1713,7 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupIds: 伸缩组ID列表
         :type AutoScalingGroupIds: list of str
         """
@@ -1679,7 +1737,7 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivitySet: 符合条件的伸缩活动信息集合。说明：伸缩组伸缩活动不存在的则不返回，如传50个伸缩组ID，返回45条数据，说明其中有5个伸缩组伸缩活动不存在。
         :type ActivitySet: list of Activity
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1705,7 +1763,7 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupIds: 按照一个或者多个伸缩组ID查询。伸缩组ID形如：`asg-nkdwoui0`。每次请求的上限为100。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
         :type AutoScalingGroupIds: list of str
         :param Filters: 过滤条件。
@@ -1754,7 +1812,7 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupSet: 伸缩组详细信息列表。
         :type AutoScalingGroupSet: list of AutoScalingGroup
         :param TotalCount: 符合条件的伸缩组数量。
@@ -1784,7 +1842,7 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 待查询云服务器（CVM）的实例ID。参数不支持同时指定InstanceIds和Filters。
         :type InstanceIds: list of str
         :param Filters: 过滤条件。
@@ -1828,7 +1886,7 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingInstanceSet: 实例详细信息列表。
         :type AutoScalingInstanceSet: list of Instance
         :param TotalCount: 符合条件的实例数量。
@@ -1858,7 +1916,7 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationIds: 按照一个或者多个启动配置ID查询。启动配置ID形如：`asc-ouy1ax38`。每次请求的上限为100。参数不支持同时指定`LaunchConfigurationIds`和`Filters`
         :type LaunchConfigurationIds: list of str
         :param Filters: 过滤条件。
@@ -1903,7 +1961,7 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的启动配置数量。
         :type TotalCount: int
         :param LaunchConfigurationSet: 启动配置详细信息列表。
@@ -1933,7 +1991,7 @@ class DescribeLifecycleHooksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookIds: 按照一个或者多个生命周期挂钩ID查询。生命周期挂钩ID形如：`ash-8azjzxcl`。每次请求的上限为100。参数不支持同时指定`LifecycleHookIds`和`Filters`。
         :type LifecycleHookIds: list of str
         :param Filters: 过滤条件。
@@ -1982,7 +2040,7 @@ class DescribeLifecycleHooksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookSet: 生命周期挂钩数组
         :type LifecycleHookSet: list of LifecycleHook
         :param TotalCount: 总体数量
@@ -2012,7 +2070,7 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingNotificationIds: 按照一个或者多个通知ID查询。实例ID形如：asn-2sestqbr。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
         :type AutoScalingNotificationIds: list of str
         :param Filters: 过滤条件。
@@ -2056,7 +2114,7 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的通知数量。
         :type TotalCount: int
         :param AutoScalingNotificationSet: 弹性伸缩事件通知详细信息列表。
@@ -2086,7 +2144,7 @@ class DescribePaiInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 依据PAI实例的实例ID进行查询。
         :type InstanceIds: list of str
         :param Filters: 过滤条件。
@@ -2127,7 +2185,7 @@ class DescribePaiInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的PAI实例数量
         :type TotalCount: int
         :param PaiInstanceSet: PAI实例详细信息
@@ -2157,7 +2215,7 @@ class DescribeScalingPoliciesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingPolicyIds: 按照一个或者多个告警策略ID查询。告警策略ID形如：asp-i9vkg894。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
         :type AutoScalingPolicyIds: list of str
         :param Filters: 过滤条件。
@@ -2202,7 +2260,7 @@ class DescribeScalingPoliciesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScalingPolicySet: 弹性伸缩告警触发策略详细信息列表。
         :type ScalingPolicySet: list of ScalingPolicy
         :param TotalCount: 符合条件的通知数量。
@@ -2232,7 +2290,7 @@ class DescribeScheduledActionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScheduledActionIds: 按照一个或者多个定时任务ID查询。实例ID形如：asst-am691zxo。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
         :type ScheduledActionIds: list of str
         :param Filters: 过滤条件。
@@ -2276,7 +2334,7 @@ class DescribeScheduledActionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的定时任务数量。
         :type TotalCount: int
         :param ScheduledActionSet: 定时任务详细信息列表。
@@ -2306,7 +2364,7 @@ class DetachInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param InstanceIds: CVM实例ID列表
@@ -2334,7 +2392,7 @@ class DetachInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2355,7 +2413,7 @@ class DisableAutoScalingGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         """
@@ -2379,7 +2437,7 @@ class DisableAutoScalingGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2396,7 +2454,7 @@ class EnableAutoScalingGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         """
@@ -2420,7 +2478,7 @@ class EnableAutoScalingGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2437,7 +2495,7 @@ class EnhancedService(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
         :type SecurityService: :class:`tencentcloud.autoscaling.v20180419.models.RunSecurityServiceEnabled`
         :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
@@ -2469,7 +2527,7 @@ class ExecuteScalingPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingPolicyId: 告警伸缩策略ID
         :type AutoScalingPolicyId: str
         :param HonorCooldown: 是否检查伸缩组活动处于冷却时间内，默认值为false
@@ -2501,7 +2559,7 @@ class ExecuteScalingPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2533,7 +2591,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段。
         :type Name: str
         :param Values: 字段的过滤值。
@@ -2561,7 +2619,7 @@ class ForwardLoadBalancer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡器ID
         :type LoadBalancerId: str
         :param ListenerId: 应用型负载均衡监听器 ID
@@ -2606,7 +2664,7 @@ class HostNameSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HostName: 云服务器的主机名。
 <br><li> 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。
 <br><li> 不支持 Windows 实例。
@@ -2641,7 +2699,7 @@ class Instance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param AutoScalingGroupId: 伸缩组ID
@@ -2726,7 +2784,7 @@ class InstanceChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
@@ -2754,7 +2812,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpotOptions: 竞价相关选项
         :type SpotOptions: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
         :param MarketType: 市场选项类型，当前只支持取值：spot
@@ -2785,20 +2843,17 @@ class InstanceNameSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceName: 云服务器的实例名。
 
 点号（.）和短横线（-）不能作为 InstanceName 的首尾字符，不能连续使用。
-
-其他类型（Linux 等）实例：字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。
-注意：此字段可能返回 null，表示取不到有效值。
+字符长度为[2, 40]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。不允许为纯数字。
         :type InstanceName: str
         :param InstanceNameStyle: 云服务器实例名的风格，取值范围包括 ORIGINAL 和 UNIQUE，默认为 ORIGINAL。
 
 ORIGINAL，AS 直接将入参中所填的 InstanceName 传递给 CVM，CVM 可能会对 InstanceName 追加序列号，伸缩组中实例的 InstanceName 会出现冲突的情况。
 
 UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会对其进行拓展，伸缩组中实例的 InstanceName 可以保证唯一。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNameStyle: str
         """
         self.InstanceName = None
@@ -2823,7 +2878,7 @@ class InstanceTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键
         :type Key: str
         :param Value: 标签值
@@ -2851,7 +2906,7 @@ class InternetAccessible(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：TRAFFIC_POSTPAID_BY_HOUR。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
@@ -2891,7 +2946,7 @@ class LaunchConfiguration(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 实例所属项目ID。
         :type ProjectId: int
         :param LaunchConfigurationId: 启动配置ID。
@@ -3056,7 +3111,7 @@ class LifecycleActionResultInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookId: 生命周期挂钩标识。
         :type LifecycleHookId: str
         :param InstanceId: 实例标识。
@@ -3096,7 +3151,7 @@ class LifecycleHook(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookId: 生命周期挂钩ID
         :type LifecycleHookId: str
         :param LifecycleHookName: 生命周期挂钩名称
@@ -3158,7 +3213,7 @@ class LimitedLoginSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyIds: 密钥ID列表。
         :type KeyIds: list of str
         """
@@ -3182,7 +3237,7 @@ class LoginSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
@@ -3216,7 +3271,7 @@ class MetricAlarm(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComparisonOperator: 比较运算符，可选值：<br><li>GREATER_THAN：大于</li><li>GREATER_THAN_OR_EQUAL_TO：大于或等于</li><li>LESS_THAN：小于</li><li> LESS_THAN_OR_EQUAL_TO：小于或等于</li><li> EQUAL_TO：等于</li> <li>NOT_EQUAL_TO：不等于</li>
         :type ComparisonOperator: str
         :param MetricName: 指标名称，可选字段如下：<br><li>CPU_UTILIZATION：CPU利用率</li><li>MEM_UTILIZATION：内存利用率</li><li>LAN_TRAFFIC_OUT：内网出带宽</li><li>LAN_TRAFFIC_IN：内网入带宽</li><li>WAN_TRAFFIC_OUT：外网出带宽</li><li>WAN_TRAFFIC_IN：外网入带宽</li>
@@ -3260,7 +3315,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
@@ -3317,6 +3372,17 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type HealthCheckType: str
         :param LoadBalancerHealthCheckGracePeriod: CLB健康检查宽限期。
         :type LoadBalancerHealthCheckGracePeriod: int
+        :param InstanceAllocationPolicy: 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
+<br><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。
+<br><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。
+        :type InstanceAllocationPolicy: str
+        :param SpotMixedAllocationPolicy: 竞价混合模式下，各计费类型实例的分配策略。
+仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
+        :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        :param CapacityRebalance: 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+        :type CapacityRebalance: bool
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -3337,6 +3403,9 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.MultiZoneSubnetPolicy = None
         self.HealthCheckType = None
         self.LoadBalancerHealthCheckGracePeriod = None
+        self.InstanceAllocationPolicy = None
+        self.SpotMixedAllocationPolicy = None
+        self.CapacityRebalance = None
 
 
     def _deserialize(self, params):
@@ -3361,6 +3430,11 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
         self.HealthCheckType = params.get("HealthCheckType")
         self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
+        self.InstanceAllocationPolicy = params.get("InstanceAllocationPolicy")
+        if params.get("SpotMixedAllocationPolicy") is not None:
+            self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
+            self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
+        self.CapacityRebalance = params.get("CapacityRebalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3376,7 +3450,7 @@ class ModifyAutoScalingGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3393,7 +3467,7 @@ class ModifyDesiredCapacityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param DesiredCapacity: 期望实例数
@@ -3421,7 +3495,7 @@ class ModifyDesiredCapacityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3438,13 +3512,13 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationId: 启动配置ID
         :type LaunchConfigurationId: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
         :param InstanceTypes: 实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-启动配置，通过 InstanceType 表示单一实例类型，通过 InstanceTypes 表示多实例类型。指定 InstanceTypes 成功启动配置后，原有的 InstanceType 自动失效。
+InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。
         :type InstanceTypes: list of str
         :param InstanceTypesCheckPolicy: 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
 <br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
@@ -3455,13 +3529,13 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type InstanceTypesCheckPolicy: str
         :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type LaunchConfigurationName: str
-        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串
+        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。
         :type UserData: str
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
 若指定该参数，请至少提供一个安全组，列表顺序有先后。
         :type SecurityGroupIds: list of str
         :param InternetAccessible: 公网带宽相关信息设置。
-本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
+当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param InstanceChargeType: 实例计费类型。具体取值范围如下：
 <br><li>POSTPAID_BY_HOUR：按小时后付费
@@ -3470,11 +3544,13 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
-本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
+当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。
+当修改本字段时，当前付费模式必须为预付费。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数。
 若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
-本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
+当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。
+当修改本字段时，当前付费模式必须为竞价付费。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param DiskTypePolicy: 云盘类型选择策略，取值范围：
 <br><li>ORIGINAL：使用设置的云盘类型。
@@ -3482,8 +3558,18 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type DiskTypePolicy: str
         :param SystemDisk: 实例系统盘配置信息。
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: 实例数据盘配置信息。最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+        :param DataDisks: 实例数据盘配置信息。
+最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+数据盘类型默认与系统盘类型保持一致。
         :type DataDisks: list of DataDisk
+        :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
+不支持windows实例设置主机名。
+新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        :param InstanceNameSettings: 云服务器（InstanceName）实例名的相关设置。 
+如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
+新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3499,6 +3585,8 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         self.DiskTypePolicy = None
         self.SystemDisk = None
         self.DataDisks = None
+        self.HostNameSettings = None
+        self.InstanceNameSettings = None
 
 
     def _deserialize(self, params):
@@ -3529,6 +3617,12 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        if params.get("HostNameSettings") is not None:
+            self.HostNameSettings = HostNameSettings()
+            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
+        if params.get("InstanceNameSettings") is not None:
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3544,7 +3638,7 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3561,7 +3655,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
@@ -3604,7 +3698,7 @@ class ModifyLoadBalancersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3625,7 +3719,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingNotificationId: 待修改的通知ID。
         :type AutoScalingNotificationId: str
         :param NotificationTypes: 通知类型，即为需要订阅的通知类型集合，取值范围如下：
@@ -3663,7 +3757,7 @@ class ModifyNotificationConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3680,7 +3774,7 @@ class ModifyScalingPolicyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingPolicyId: 告警策略ID。
         :type AutoScalingPolicyId: str
         :param ScalingPolicyName: 告警策略名称。
@@ -3731,7 +3825,7 @@ class ModifyScalingPolicyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3748,7 +3842,7 @@ class ModifyScheduledActionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScheduledActionId: 待修改的定时任务ID
         :type ScheduledActionId: str
         :param ScheduledActionName: 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
@@ -3800,7 +3894,7 @@ class ModifyScheduledActionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3817,7 +3911,7 @@ class NotificationTarget(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetType: 目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`。
 <li> CMQ_QUEUE，指腾讯云消息队列-队列模型。</li>
 <li> CMQ_TOPIC，指腾讯云消息队列-主题模型。</li>
@@ -3851,7 +3945,7 @@ class PaiInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param DomainName: 实例域名
@@ -3883,7 +3977,7 @@ class PreviewPaiDomainNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainNameType: 域名类型
         :type DomainNameType: str
         """
@@ -3907,7 +4001,7 @@ class PreviewPaiDomainNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainName: 可用的PAI域名
         :type DomainName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3928,7 +4022,7 @@ class RemoveInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param InstanceIds: CVM实例ID列表
@@ -3956,7 +4050,7 @@ class RemoveInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3977,7 +4071,7 @@ class RunMonitorServiceEnabled(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 是否开启[云监控](https://cloud.tencent.com/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
@@ -4002,7 +4096,7 @@ class RunSecurityServiceEnabled(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 是否开启[云安全](https://cloud.tencent.com/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
@@ -4027,7 +4121,7 @@ class ScaleInInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param ScaleInNumber: 希望缩容的实例数量。
@@ -4055,7 +4149,7 @@ class ScaleInInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID。
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4076,7 +4170,7 @@ class ScaleOutInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param ScaleOutNumber: 希望扩容的实例数量。
@@ -4104,7 +4198,7 @@ class ScaleOutInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID。
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4125,7 +4219,7 @@ class ScalingPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param AutoScalingPolicyId: 告警触发策略ID。
@@ -4179,7 +4273,7 @@ class ScheduledAction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScheduledActionId: 定时任务ID。
         :type ScheduledActionId: str
         :param ScheduledActionName: 定时任务名称。
@@ -4239,7 +4333,7 @@ class ServiceSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReplaceMonitorUnhealthy: 开启监控不健康替换服务。若开启则对于云监控标记为不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
         :type ReplaceMonitorUnhealthy: bool
         :param ScalingMode: 取值范围： 
@@ -4274,7 +4368,7 @@ class SetInstancesProtectionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
         :param InstanceIds: 实例ID。
@@ -4306,7 +4400,7 @@ class SetInstancesProtectionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4323,7 +4417,7 @@ class SpotMarketOptions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxPrice: 竞价出价，例如“1.05”
         :type MaxPrice: str
         :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
@@ -4346,13 +4440,60 @@ class SpotMarketOptions(AbstractModel):
         
 
 
+class SpotMixedAllocationPolicy(AbstractModel):
+    """竞价混合模式下，各计费类型实例的分配策略。包括按量计费实例和竞价计费实例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BaseCapacity: 混合模式下，基础容量的大小，基础容量部分固定为按量计费实例。默认值 0，最大不可超过伸缩组的最大实例数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseCapacity: int
+        :param OnDemandPercentageAboveBaseCapacity: 超出基础容量部分，按量计费实例所占的比例。取值范围 [0, 100]，0 代表超出基础容量的部分仅生产竞价实例，100 代表仅生产按量实例，默认值为 70。按百分比计算按量实例数时，向上取整。
+比如，总期望实例数取 3，基础容量取 1，超基础部分按量百分比取 1，则最终按量 2 台（1 台来自基础容量，1 台按百分比向上取整得到），竞价 1台。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnDemandPercentageAboveBaseCapacity: int
+        :param SpotAllocationStrategy: 混合模式下，竞价实例的分配策略。取值包括 COST_OPTIMIZED 和 CAPACITY_OPTIMIZED，默认取 COST_OPTIMIZED。
+<br><li> COST_OPTIMIZED，成本优化策略。对于启动配置内的所有机型，按照各机型在各可用区的每核单价由小到大依次尝试。优先尝试购买每核单价最便宜的，如果购买失败则尝试购买次便宜的，以此类推。
+<br><li> CAPACITY_OPTIMIZED，容量优化策略。对于启动配置内的所有机型，按照各机型在各可用区的库存情况由大到小依次尝试。优先尝试购买剩余库存最大的机型，这样可尽量降低竞价实例被动回收的发生概率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpotAllocationStrategy: str
+        :param CompensateWithBaseInstance: 按量实例替补功能。取值范围：
+<br><li> TRUE，开启该功能，当所有竞价机型因库存不足等原因全部购买失败后，尝试购买按量实例。
+<br><li> FALSE，不开启该功能，伸缩组在需要扩容竞价实例时仅尝试所配置的竞价机型。
+
+默认取值： TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompensateWithBaseInstance: bool
+        """
+        self.BaseCapacity = None
+        self.OnDemandPercentageAboveBaseCapacity = None
+        self.SpotAllocationStrategy = None
+        self.CompensateWithBaseInstance = None
+
+
+    def _deserialize(self, params):
+        self.BaseCapacity = params.get("BaseCapacity")
+        self.OnDemandPercentageAboveBaseCapacity = params.get("OnDemandPercentageAboveBaseCapacity")
+        self.SpotAllocationStrategy = params.get("SpotAllocationStrategy")
+        self.CompensateWithBaseInstance = params.get("CompensateWithBaseInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartAutoScalingInstancesRequest(AbstractModel):
     """StartAutoScalingInstances请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param InstanceIds: 待开启的CVM实例ID列表
@@ -4380,7 +4521,7 @@ class StartAutoScalingInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4401,7 +4542,7 @@ class StopAutoScalingInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
         :param InstanceIds: 待关闭的CVM实例ID列表
@@ -4436,7 +4577,7 @@ class StopAutoScalingInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 伸缩活动ID
         :type ActivityId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4457,8 +4598,8 @@ class SystemDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+        r"""
+        :param DiskType: 系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：CLOUD_PREMIUM。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 系统盘大小，单位：GB。默认值为 50
@@ -4487,7 +4628,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键
         :type Key: str
         :param Value: 标签值
@@ -4520,7 +4661,7 @@ class TargetAttribute(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Port: 端口
         :type Port: int
         :param Weight: 权重
@@ -4548,7 +4689,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LaunchConfigurationId: 启动配置ID。
         :type LaunchConfigurationId: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
@@ -4688,7 +4829,7 @@ class UpgradeLaunchConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4705,7 +4846,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LifecycleHookId: 生命周期挂钩ID
         :type LifecycleHookId: str
         :param LifecycleHookName: 生命周期挂钩名称
@@ -4759,7 +4900,7 @@ class UpgradeLifecycleHookResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

@@ -24,7 +24,7 @@ class DetailResults(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param Suggestion: 该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -78,7 +78,7 @@ class Device(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IP: 该字段表示业务用户对应设备的IP地址。<br>
 备注:目前仅支持IPv4地址记录，不支持IPv6地址记录。
         :type IP: str
@@ -128,7 +128,7 @@ class RiskDetails(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 该字段用于返回账号信息检测对应的风险类别，取值为：**RiskAccount**（账号存在风险）、**RiskIP**（IP地址存在风险）、**RiskIMEI**（移动设备识别码存在风险）。
         :type Label: str
         :param Level: 该字段用于返回账号信息检测对应的风险等级，取值为：**1**（疑似存在风险）和**2**（存在恶意风险）。
@@ -156,16 +156,16 @@ class TextModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Content: 该字段表示待检测文本内容的Base64编码，文本原文长度不能超过**15000字节**或**5000个汉字** （以先达到者为准）；若超出长度限制，接口将会报错。<br>备注：目前仅支持中文、英文、数字的检测与审核。
+        r"""
+        :param Content: 文本内容Base64编码，限制原文长度不能超过10000个unicode字符
         :type Content: str
-        :param BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+        :param BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
         :type BizType: str
-        :param DataId: 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        :param DataId: 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
         :type DataId: str
-        :param User: 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户。
+        :param User: 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
         :type User: :class:`tencentcloud.tms.v20201229.models.User`
-        :param Device: 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备。
+        :param Device: 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
         :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
         """
         self.Content = None
@@ -200,28 +200,28 @@ class TextModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BizType: 该字段用于返回请求参数中的BizType参数。
+        r"""
+        :param BizType: 该字段用于返回请求参数中的BizType参数
         :type BizType: str
-        :param Label: 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param Label: 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型
         :type Label: str
         :param Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :type Suggestion: str
-        :param Keywords: 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。
+        :param Keywords: 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+        :param Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
         :type Score: int
-        :param DetailResults: 该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述。
+        :param DetailResults: 该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailResults: list of DetailResults
-        :param RiskDetails: 该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述。
+        :param RiskDetails: 该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetails: list of RiskDetails
-        :param Extra: 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+        :param Extra: 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param DataId: 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应。
+        :param DataId: 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -268,7 +268,7 @@ class User(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
 备注：该字段可传入微信openid、QQopenid、字符串等账号信息，与账号类别参数（AccountType）配合使用可确定唯一账号。
         :type UserId: str
@@ -289,6 +289,11 @@ class User(AbstractModel):
         :param Phone: 该字段表示业务用户对应账号的手机号信息，支持全球各地区手机号的记录。<br>
 备注：请保持手机号格式的统一，如区号格式（086/+86）等。
         :type Phone: str
+        :param HeadUrl: 该字段表示业务用户头像图片的访问链接(URL)，支持PNG、JPG、JPEG、BMP、GIF、WEBP格式。
+备注：头像图片大小不超过5MB，建议分辨率不低于256x256；图片下载时间限制为3秒，超过则会返回下载超时。
+        :type HeadUrl: str
+        :param Desc: 该字段表示业务用户的简介信息，支持汉字、英文及特殊符号，长度不超过5000个汉字字符。
+        :type Desc: str
         """
         self.UserId = None
         self.Nickname = None
@@ -297,6 +302,8 @@ class User(AbstractModel):
         self.Age = None
         self.Level = None
         self.Phone = None
+        self.HeadUrl = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
@@ -307,6 +314,8 @@ class User(AbstractModel):
         self.Age = params.get("Age")
         self.Level = params.get("Level")
         self.Phone = params.get("Phone")
+        self.HeadUrl = params.get("HeadUrl")
+        self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

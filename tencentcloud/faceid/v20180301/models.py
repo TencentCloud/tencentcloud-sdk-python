@@ -24,19 +24,25 @@ class BankCard2EVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名
         :type Name: str
         :param BankCard: 银行卡
         :type BankCard: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Name = None
         self.BankCard = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.BankCard = params.get("BankCard")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -52,7 +58,7 @@ class BankCard2EVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码
 计费结果码：
   '0': '认证通过'
@@ -96,7 +102,7 @@ class BankCard4EVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名
         :type Name: str
         :param BankCard: 银行卡
@@ -143,7 +149,7 @@ class BankCard4EVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码
 收费结果码：
 '0': '认证通过'
@@ -189,7 +195,7 @@ class BankCardVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
         :param Name: 姓名
@@ -232,7 +238,7 @@ class BankCardVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码
 收费结果码：
 '0': '认证通过'
@@ -277,15 +283,21 @@ class CheckBankCardInformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BankCard: 银行卡号。
         :type BankCard: str
+        :param Encryption: 敏感数据加密信息。对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.BankCard = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.BankCard = params.get("BankCard")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -301,7 +313,7 @@ class CheckBankCardInformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码，收费情况如下。
 收费结果码：
 0: 查询成功
@@ -340,7 +352,7 @@ class CheckEidTokenStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
         """
@@ -364,7 +376,7 @@ class CheckEidTokenStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 枚举：
 init：token未验证
 doing: 验证中
@@ -389,7 +401,7 @@ class CheckIdCardInformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 身份证人像面的 Base64 值
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。
@@ -415,16 +427,21 @@ Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
 API 3.0 Explorer 设置方式参考：
 Config = {"CopyWarn":true,"ReshootWarn":true}
         :type Config: str
+        :param IsEncrypt: 是否需要对返回中的敏感信息进行加密。默认false。
+其中敏感信息包括：Response.IdNum、Response.Name
+        :type IsEncrypt: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Config = None
+        self.IsEncrypt = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Config = params.get("Config")
+        self.IsEncrypt = params.get("IsEncrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -440,7 +457,7 @@ class CheckIdCardInformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
@@ -474,6 +491,9 @@ class CheckIdCardInformationResponse(AbstractModel):
         :type Warnings: str
         :param Quality: 图片质量分数，当请求Config中配置图片模糊告警该参数才有意义，取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
         :type Quality: float
+        :param Encryption: 敏感数据加密信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -489,6 +509,7 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.Portrait = None
         self.Warnings = None
         self.Quality = None
+        self.Encryption = None
         self.RequestId = None
 
 
@@ -505,6 +526,86 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.Portrait = params.get("Portrait")
         self.Warnings = params.get("Warnings")
         self.Quality = params.get("Quality")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
+        self.RequestId = params.get("RequestId")
+
+
+class CheckIdNameDateRequest(AbstractModel):
+    """CheckIdNameDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 姓名
+        :type Name: str
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param ValidityBegin: 身份证有效期开始时间，格式：YYYYMMDD。如：20210701
+        :type ValidityBegin: str
+        :param ValidityEnd: 身份证有效期到期时间，格式：YYYYMMDD，长期用“00000000”代替；如：20210701
+        :type ValidityEnd: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self.Name = None
+        self.IdCard = None
+        self.ValidityBegin = None
+        self.ValidityEnd = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.IdCard = params.get("IdCard")
+        self.ValidityBegin = params.get("ValidityBegin")
+        self.ValidityEnd = params.get("ValidityEnd")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckIdNameDateResponse(AbstractModel):
+    """CheckIdNameDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 一致
+-1: 不一致
+不收费结果码：
+-2: 非法身份证号（长度、校验位等不正确）
+-3: 非法姓名（长度、格式等不正确）
+-4: 非法有效期（长度、格式等不正确）
+-5: 身份信息无效
+-6: 证件库服务异常
+-7: 证件库中无此身份证记录
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -514,19 +615,25 @@ class CheckPhoneAndNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mobile: ⼿机号
         :type Mobile: str
         :param Name: 姓名
         :type Name: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Mobile = None
         self.Name = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.Mobile = params.get("Mobile")
         self.Name = params.get("Name")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -542,7 +649,7 @@ class CheckPhoneAndNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码，收费情况如下。
 收费结果码：
 0: 验证结果一致
@@ -574,8 +681,8 @@ class DetectAuthRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
+        r"""
+        :param RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
         :type RuleId: str
         :param TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
@@ -630,7 +737,7 @@ class DetectAuthResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 用于发起核身流程的URL，仅微信H5场景使用。
         :type Url: str
         :param BizToken: 一次核身流程的标识，有效时间为7,200秒；
@@ -656,7 +763,7 @@ class DetectDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReqTime: 请求时间戳。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReqTime: str
@@ -745,7 +852,7 @@ class DetectInfoBestFrame(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BestFrame: 活体比对最佳帧。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrame: str
@@ -775,7 +882,7 @@ class DetectInfoIdCardData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OcrFront: OCR正面照片的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFront: str
@@ -820,7 +927,7 @@ class DetectInfoText(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrCode: 本次流程最终验证结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
@@ -959,7 +1066,7 @@ class DetectInfoVideoData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LivenessVideo: 活体视频的base64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessVideo: str
@@ -984,7 +1091,7 @@ class EidInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EidCode: 商户方 appeIDcode 的数字证书
         :type EidCode: str
         :param EidSign: eID 中心针对商户方EidCode的电子签名
@@ -1012,7 +1119,7 @@ class EncryptedPhoneVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证号，加密方式以EncryptionMode为准
         :type IdCard: str
         :param Name: 姓名，加密方式以EncryptionMode为准
@@ -1051,7 +1158,7 @@ class EncryptedPhoneVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码:
 【收费结果码】
 0: 认证通过
@@ -1084,7 +1191,7 @@ class Encryption(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
         :type CiphertextBlob: str
         :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
@@ -1116,7 +1223,7 @@ class GetActionSequenceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActionType: 默认不需要使用
         :type ActionType: str
         """
@@ -1140,7 +1247,7 @@ class GetActionSequenceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActionSequence: 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
         :type ActionSequence: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1161,7 +1268,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
         :type BizToken: str
         :param RuleId: 用于细分客户使用场景，由腾讯侧在线下对接时分配。
@@ -1211,7 +1318,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 文本类信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
@@ -1263,7 +1370,7 @@ class GetDetectInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
         :type BizToken: str
         :param RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
@@ -1297,7 +1404,7 @@ class GetDetectInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DetectInfo: JSON字符串。
 {
   // 文本类信息
@@ -1366,7 +1473,7 @@ class GetEidResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
         :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
@@ -1400,7 +1507,7 @@ class GetEidResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 文本类信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
@@ -1445,7 +1552,7 @@ class GetEidTokenConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InputType: 姓名身份证输入方式。
 1：传身份证正反面OCR   
 2：传身份证正面OCR  
@@ -1475,7 +1582,7 @@ class GetEidTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MerchantId: EID商户id，字段长度最长50位。
         :type MerchantId: str
         :param IdCard: 身份标识（未使用OCR服务时，必须传入）。
@@ -1522,7 +1629,7 @@ class GetEidTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EidToken: 一次核身流程的标识，有效时间为600秒；
 完成核身后，可用该标识获取验证结果信息。
         :type EidToken: str
@@ -1548,7 +1655,7 @@ class GetFaceIdResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceIdToken: SDK人脸核身流程的标识，调用GetFaceIdToken接口时生成。
         :type FaceIdToken: str
         :param IsNeedVideo: 是否需要拉取视频，默认false不需要
@@ -1580,7 +1687,7 @@ class GetFaceIdResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证
         :type IdCard: str
         :param Name: 姓名
@@ -1600,6 +1707,19 @@ class GetFaceIdResultResponse(AbstractModel):
         :param Extra: 获取token时透传的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
+        :param DeviceInfoTag: 设备风险标签，仅错误码返回1007（设备疑似被劫持）时返回风险标签。标签说明：
+202、5001：设备疑似被Root
+203、5004：设备疑似被注入
+205：设备疑似被Hook
+206：设备疑似虚拟运行环境
+5007、1005：设备疑似摄像头被劫持
+8000：设备疑似存在异常篡改行为
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceInfoTag: str
+        :param RiskInfoTag: 行为风险标签，仅错误码返回1007（设备疑似被劫持）时返回风险标签。标签说明：
+02：攻击风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskInfoTag: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1611,6 +1731,8 @@ class GetFaceIdResultResponse(AbstractModel):
         self.VideoBase64 = None
         self.BestFrameBase64 = None
         self.Extra = None
+        self.DeviceInfoTag = None
+        self.RiskInfoTag = None
         self.RequestId = None
 
 
@@ -1623,6 +1745,8 @@ class GetFaceIdResultResponse(AbstractModel):
         self.VideoBase64 = params.get("VideoBase64")
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Extra = params.get("Extra")
+        self.DeviceInfoTag = params.get("DeviceInfoTag")
+        self.RiskInfoTag = params.get("RiskInfoTag")
         self.RequestId = params.get("RequestId")
 
 
@@ -1632,7 +1756,7 @@ class GetFaceIdTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompareLib: 本地上传照片(LOCAL)、商业库(BUSINESS)
         :type CompareLib: str
         :param IdCard: CompareLib为商业库时必传。
@@ -1677,7 +1801,7 @@ class GetFaceIdTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceIdToken: 有效期 10分钟。只能完成1次核身。
         :type FaceIdToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1704,7 +1828,7 @@ class GetLiveCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LiveCode: 数字验证码，如：1234
         :type LiveCode: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1725,7 +1849,7 @@ class GetRealNameAuthResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuthToken: 实名认证凭证
         :type AuthToken: str
         """
@@ -1749,7 +1873,7 @@ class GetRealNameAuthResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultType: 认证结果码，收费情况如下：
 
 收费码：
@@ -1778,7 +1902,7 @@ class GetRealNameAuthTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 姓名
         :type Name: str
         :param IDCard: 身份证号
@@ -1810,7 +1934,7 @@ class GetRealNameAuthTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuthToken: 查询实名认证结果的唯一凭证
         :type AuthToken: str
         :param RedirectURL: 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权，仅能在微信环境下打开。
@@ -1835,7 +1959,7 @@ class IdCardOCRVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证号
 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
         :type IdCard: str
@@ -1884,7 +2008,7 @@ class IdCardOCRVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码，收费情况如下。
 收费结果码：
 0: 姓名和身份证号一致
@@ -1945,19 +2069,25 @@ class IdCardVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证号
         :type IdCard: str
         :param Name: 姓名
         :type Name: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.IdCard = params.get("IdCard")
         self.Name = params.get("Name")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1973,7 +2103,7 @@ class IdCardVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码，收费情况如下。
 收费结果码：
 0: 姓名和身份证号一致
@@ -2006,7 +2136,7 @@ class ImageRecognitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证号
         :type IdCard: str
         :param Name: 姓名。中文请使用UTF-8编码。
@@ -2017,11 +2147,14 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         :type ImageBase64: str
         :param Optional: 本接口不需要传递此参数。
         :type Optional: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
         self.ImageBase64 = None
         self.Optional = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -2029,6 +2162,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         self.Name = params.get("Name")
         self.ImageBase64 = params.get("ImageBase64")
         self.Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2044,7 +2180,7 @@ class ImageRecognitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
         :type Sim: float
         :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
@@ -2073,7 +2209,7 @@ class LivenessCompareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageBase64: 用于人脸比对的照片，图片的Base64值；
 Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
@@ -2123,7 +2259,7 @@ class LivenessCompareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
@@ -2162,7 +2298,7 @@ class LivenessRecognitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证号
         :type IdCard: str
         :param Name: 姓名。中文请使用UTF-8编码。
@@ -2182,6 +2318,8 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 }
         :type Optional: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
@@ -2189,6 +2327,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
         self.LivenessType = None
         self.ValidateData = None
         self.Optional = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -2198,6 +2337,9 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
         self.LivenessType = params.get("LivenessType")
         self.ValidateData = params.get("ValidateData")
         self.Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2213,7 +2355,7 @@ class LivenessRecognitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
@@ -2252,7 +2394,7 @@ class LivenessRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
 BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
         :type VideoBase64: str
@@ -2295,7 +2437,7 @@ class LivenessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BestFrameBase64: 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
@@ -2330,7 +2472,7 @@ class MinorsVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 参与校验的参数类型。
 0：使用手机号进行校验；
 1：使用姓名与身份证号进行校验。
@@ -2376,7 +2518,7 @@ class MinorsVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 结果码，收费情况如下。
 收费结果码：
 0: 成年
@@ -2421,7 +2563,7 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mobile: 手机号码
         :type Mobile: str
         :param Encryption: 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
@@ -2451,7 +2593,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码，收费情况如下。
 收费结果码：
 0: 成功
@@ -2488,7 +2630,7 @@ class MobileStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mobile: 手机号码
         :type Mobile: str
         :param Encryption: 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
@@ -2518,7 +2660,7 @@ class MobileStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码，收费情况如下。
 收费结果码：
 0：成功
@@ -2559,7 +2701,7 @@ class PhoneVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdCard: 身份证号
         :type IdCard: str
         :param Name: 姓名
@@ -2603,7 +2745,7 @@ class PhoneVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 认证结果码:
 收费结果码
 0: 认证通过

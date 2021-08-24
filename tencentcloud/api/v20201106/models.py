@@ -24,7 +24,7 @@ class DescribeRegionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 待查询产品的名称，例如cvm、vpc
         :type Product: str
         """
@@ -48,7 +48,7 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 地域数量
         :type TotalCount: int
         :param RegionSet: 地域列表信息
@@ -78,7 +78,7 @@ class DescribeZonesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 待查询产品的名称，例如cvm、vpc
         :type Product: str
         """
@@ -102,7 +102,7 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可用区数量。
         :type TotalCount: int
         :param ZoneSet: 可用区列表信息。
@@ -132,7 +132,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域名称，例如，ap-guangzhou
         :type Region: str
         :param RegionName: 地域描述，例如，华南地区(广州)
@@ -164,7 +164,7 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区名称，例如，ap-guangzhou-3
 全网可用区名称如下：
 <li> ap-chongqing-1 </li>

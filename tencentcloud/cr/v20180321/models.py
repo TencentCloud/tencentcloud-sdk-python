@@ -24,7 +24,7 @@ class ApplyBlackListDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，AiApi
         :type Module: str
         :param Operation: 操作名，ApplyBlackListData
@@ -61,7 +61,7 @@ class ApplyBlackListDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -78,7 +78,7 @@ class ApplyBlackListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：account
         :type Module: str
         :param Operation: 操作名，本接口取值：ApplyBlackList
@@ -119,7 +119,7 @@ class ApplyBlackListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -136,7 +136,7 @@ class ApplyCreditAuditRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Credit
         :type Module: str
         :param Operation: 操作名，本接口取值：Apply
@@ -184,7 +184,7 @@ class ApplyCreditAuditResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestDate: 请求日期
         :type RequestDate: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -205,7 +205,7 @@ class BlackListData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlackType: 黑名单类型，01代表手机号码。
         :type BlackType: str
         :param OperType: 操作类型，A为新增，D为删除。
@@ -257,7 +257,7 @@ class BotFileData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileType: 文件类型 A 拨打结果 T 记录详情
         :type FileType: str
         :param CosUrl: 文件地址
@@ -285,7 +285,7 @@ class BotFlow(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotFlowId: 对话流ID
         :type BotFlowId: str
         :param BotFlowName: 对话流名称
@@ -322,7 +322,7 @@ class BotInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人ID
         :type BotId: str
         :param BotName: 机器人名称
@@ -354,7 +354,7 @@ class CallInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizDate: 业务日期
         :type BizDate: str
         :param Status: 状态 WAIT：待执行；DOING：执行中；ERROR：执行错误；DONE：已完成；
@@ -399,7 +399,7 @@ class CallTimeDict(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Monday: 周一
         :type Monday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
         :param Tuesday: 周二
@@ -461,7 +461,7 @@ class CallTimeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 产品开始拨打时间，HHmmss格式,默认090000
         :type StartTime: str
         :param EndTime: 产品结束拨打时间，HHmmss格式.默认200000
@@ -489,7 +489,7 @@ class ChangeBotCallStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：ChangeBotCallStatus
@@ -538,7 +538,7 @@ class ChangeBotCallStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -555,7 +555,7 @@ class ChangeBotTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：ChangeBotTaskStatus
@@ -596,7 +596,7 @@ class ChangeBotTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -613,7 +613,7 @@ class CreateBotTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：CreateTask
@@ -707,7 +707,7 @@ class CreateBotTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人任务Id
         :type BotId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -728,7 +728,7 @@ class DescribeBotFlowRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：GetFlow
@@ -756,7 +756,7 @@ class DescribeBotFlowResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotFlowList: 机器人对话流列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotFlowList: list of BotFlow
@@ -803,7 +803,7 @@ class DescribeCreditResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Credit
         :type Module: str
         :param Operation: 操作名，本接口取值：Get
@@ -847,7 +847,7 @@ class DescribeCreditResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultCode: <p>呼叫结果，取值范围：</p><ul style="margin-bottom:0px;"><li>NON：接通</li><li>DBU：号码忙</li><li>DRF：不在服务区</li><li>ANA：欠费未接听</li><li>REJ：拒接</li><li>SHU：关机</li><li>NAN：空号</li><li>HAL：停机</li><li>DAD：未接听</li><li>EXE：其他异常</li></ul>
         :type ResultCode: str
         :param ClientCode: 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
@@ -891,7 +891,7 @@ class DescribeFileModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：DescribeFileModel
@@ -931,7 +931,7 @@ class DescribeFileModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosUrl: 模板下载链接
         :type CosUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -952,7 +952,7 @@ class DescribeRecordsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Record
         :type Module: str
         :param Operation: 操作名，本接口取值：List
@@ -1012,7 +1012,7 @@ class DescribeRecordsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 录音列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordList: list of SingleRecord
@@ -1043,7 +1043,7 @@ class DescribeTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Task
         :type Module: str
         :param Operation: 操作名，本接口取值：DescribeTaskStatus
@@ -1079,7 +1079,7 @@ class DescribeTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskResult: <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>
         :type TaskResult: str
         :param TaskType: <p>任务类型：</p><ul style="margin-bottom:0px;"><li>到期/逾期提醒数据上传：002</li><li>到期/逾期提醒停拨数据上传：003</li><li>回访数据上传：004</li><li>回访停拨数据上传：005</li></ul>
@@ -1109,7 +1109,7 @@ class DownloadBotRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块：AiApi
         :type Module: str
         :param Operation: 操作：DownloadRecord
@@ -1141,7 +1141,7 @@ class DownloadBotRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordCosUrl: 录音地址。请求后30分钟内有效
         :type RecordCosUrl: str
         :param TextCosUrl: 文本地址。请求后30分钟内有效
@@ -1166,7 +1166,7 @@ class DownloadDialogueTextRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Report
         :type Module: str
         :param Operation: 操作名，本接口取值：DownloadTextReport
@@ -1202,7 +1202,7 @@ class DownloadDialogueTextResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextReportUrl: 对话文本下载地址
         :type TextReportUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1223,7 +1223,7 @@ class DownloadRecordListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Record
         :type Module: str
         :param Operation: 操作名，本接口取值：DownloadList
@@ -1259,7 +1259,7 @@ class DownloadRecordListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordListUrl: 录音列表下载地址
         :type RecordListUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1280,7 +1280,7 @@ class DownloadReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Report
         :type Module: str
         :param Operation: 操作名，本接口取值：DownloadReport
@@ -1316,7 +1316,7 @@ class DownloadReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DailyReportUrl: 到期/逾期提醒日报下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type DailyReportUrl: str
@@ -1363,7 +1363,7 @@ class ExportBotDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：ExportBotData
@@ -1403,7 +1403,7 @@ class ExportBotDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 导出文件列表
         :type Data: list of BotFileData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1429,7 +1429,7 @@ class PhonePool(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PoolId: 号码组ID
         :type PoolId: str
         :param PoolName: 号码组名称
@@ -1457,7 +1457,7 @@ class ProductQueryInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品Id
         :type ProductId: str
         :param ProductName: 产品名称
@@ -1500,7 +1500,7 @@ class QueryBlackListDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块:AiApi
         :type Module: str
         :param Operation: 操作:QueryBlackListData
@@ -1548,7 +1548,7 @@ class QueryBlackListDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数。
         :type TotalCount: int
         :param Data: 黑名单列表
@@ -1579,7 +1579,7 @@ class QueryBotListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名：AiApi
         :type Module: str
         :param Operation: 操作名：QueryBotList
@@ -1607,7 +1607,7 @@ class QueryBotListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotList: 任务列表。
         :type BotList: list of BotInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1633,7 +1633,7 @@ class QueryCallListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：QueryCallList
@@ -1677,7 +1677,7 @@ class QueryCallListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallList: 任务作业状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallList: list of CallInfo
@@ -1704,7 +1704,7 @@ class QueryInstantDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Data
         :type Module: str
         :param Operation: 操作名，本接口取值：Query
@@ -1748,7 +1748,7 @@ class QueryInstantDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -1775,7 +1775,7 @@ class QueryProductsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：Product
         :type Module: str
         :param Operation: 操作名。默认值（固定）：QueryProducts
@@ -1807,7 +1807,7 @@ class QueryProductsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductList: 产品信息。
         :type ProductList: list of ProductQueryInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1833,7 +1833,7 @@ class QueryRecordListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。AiApi
         :type Module: str
         :param Operation: 操作名。QueryRecordList
@@ -1889,7 +1889,7 @@ class QueryRecordListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordList: 录音列表。
         :type RecordList: list of RecordInfo
         :param TotalCount: 总数
@@ -1919,7 +1919,7 @@ class RecordInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 任务Id
         :type BotId: str
         :param BotName: 任务名称
@@ -1975,7 +1975,7 @@ class SingleBlackApply(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlackType: 黑名单类型，01代表手机号码。
         :type BlackType: str
         :param OperationType: 操作类型，A为新增，D为删除。
@@ -2015,7 +2015,7 @@ class SingleRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountNum: 案件编号。
         :type AccountNum: str
         :param BizDate: 外呼日期。
@@ -2069,7 +2069,7 @@ class SmsSign(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignId: 短信签名ID
         :type SignId: str
         :param SignName: 短信签名名称
@@ -2097,7 +2097,7 @@ class SmsTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 短信模板ID
         :type TemplateId: str
         :param TemplateName: 短信模板名称
@@ -2125,7 +2125,7 @@ class UpdateBotTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：UpdateTask
@@ -2207,7 +2207,7 @@ class UpdateBotTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2224,7 +2224,7 @@ class UploadBotDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：UploadData
@@ -2264,7 +2264,7 @@ class UploadBotDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2281,7 +2281,7 @@ class UploadBotFileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名。默认值（固定）：AiApi
         :type Module: str
         :param Operation: 操作名。默认值（固定）：Upload
@@ -2329,7 +2329,7 @@ class UploadBotFileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2346,7 +2346,7 @@ class UploadDataFileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Data
         :type Module: str
         :param Operation: 操作名，本接口取值：Upload
@@ -2394,7 +2394,7 @@ class UploadDataFileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataResId: 数据ID
         :type DataResId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2415,7 +2415,7 @@ class UploadDataJsonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：Data
         :type Module: str
         :param Operation: 操作名，本接口取值：UploadJson
@@ -2455,7 +2455,7 @@ class UploadDataJsonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 响应报文信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -2477,7 +2477,7 @@ class UploadFileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名
         :type Module: str
         :param Operation: 操作名
@@ -2517,7 +2517,7 @@ class UploadFileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -24,7 +24,7 @@ class ChatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 聊天输入文本
         :type Text: str
         :param ProjectId: 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
@@ -56,7 +56,7 @@ class ChatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Answer: 聊天输出文本
         :type Answer: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -77,7 +77,7 @@ class SentenceRecognitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
         :type ProjectId: int
         :param SubServiceType: 子服务类型。2，一句话识别。
@@ -133,7 +133,7 @@ class SentenceRecognitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 识别结果。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -154,7 +154,7 @@ class SimultaneousInterpretingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 腾讯云项目 ID，可填 0，总长度不超过 1024 字节。
         :type ProjectId: int
         :param SubServiceType: 子服务类型。0：离线语音识别。1：实时流式识别，2，一句话识别。3：同传。
@@ -222,7 +222,7 @@ class SimultaneousInterpretingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsrText: 语音识别的结果
         :type AsrText: str
         :param NmtText: 机器翻译的结果
@@ -247,7 +247,7 @@ class TextToVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 合成语音的源文本，按UTF-8编码统一计算。
 中文最大支持100个汉字（全角标点符号算一个汉字）；英文最大支持400个字母（半角标点符号算一个字母）。包含空格等字符时需要url encode再传输。
         :type Text: str
@@ -309,7 +309,7 @@ class TextToVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Audio: base64编码的wav/mp3音频数据
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId

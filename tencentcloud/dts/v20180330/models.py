@@ -24,7 +24,7 @@ class ActivateSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 订阅实例ID。
         :type SubscribeId: str
         :param InstanceId: 数据库实例ID
@@ -70,7 +70,7 @@ class ActivateSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 配置数据订阅任务ID。
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -91,7 +91,7 @@ class CompleteMigrateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         :param CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
@@ -119,7 +119,7 @@ class CompleteMigrateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -136,7 +136,7 @@ class ConsistencyParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SelectRowsPerTable: 数据内容检测参数。表中选出用来数据对比的行，占表的总行数的百分比。取值范围是整数[1-100]
         :type SelectRowsPerTable: int
         :param TablesSelectAll: 数据内容检测参数。迁移库表中，要进行数据内容检测的表，占所有表的百分比。取值范围是整数[1-100]
@@ -168,7 +168,7 @@ class CreateMigrateCheckJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         """
@@ -192,7 +192,7 @@ class CreateMigrateCheckJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -209,7 +209,7 @@ class CreateMigrateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobName: 数据迁移任务名称
         :type JobName: str
         :param MigrateOption: 迁移任务配置选项
@@ -279,7 +279,7 @@ class CreateMigrateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -300,7 +300,7 @@ class CreateSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 订阅的数据库类型，目前支持的有 mysql
         :type Product: str
         :param PayType: 实例付费类型，1小时计费，0包年包月
@@ -349,7 +349,7 @@ class CreateSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeIds: 数据订阅实例的ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeIds: list of str
@@ -371,7 +371,7 @@ class CreateSyncCheckJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 灾备同步任务ID
         :type JobId: str
         """
@@ -395,7 +395,7 @@ class CreateSyncCheckJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -412,7 +412,7 @@ class CreateSyncJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobName: 灾备同步任务名
         :type JobName: str
         :param SyncOption: 灾备同步任务配置选项
@@ -476,7 +476,7 @@ class CreateSyncJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 灾备同步任务ID
         :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -497,7 +497,7 @@ class DeleteMigrateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         """
@@ -521,7 +521,7 @@ class DeleteMigrateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -538,7 +538,7 @@ class DeleteSyncJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 待删除的灾备同步任务ID
         :type JobId: str
         """
@@ -562,7 +562,7 @@ class DeleteSyncJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -579,7 +579,7 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 任务 ID
         :type AsyncRequestId: str
         """
@@ -603,7 +603,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Info: 任务执行结果信息
         :type Info: str
         :param Status: 任务执行状态，可能的值有：success，failed，running
@@ -628,7 +628,7 @@ class DescribeMigrateCheckJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         """
@@ -652,7 +652,7 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 校验任务状态：unavailable(当前不可用), starting(开始中)，running(校验中)，finished(校验完成)
         :type Status: str
         :param ErrorCode: 任务的错误码
@@ -689,7 +689,7 @@ class DescribeMigrateJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         :param JobName: 数据迁移任务名称
@@ -733,7 +733,7 @@ class DescribeMigrateJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 任务数目
         :type TotalCount: int
         :param JobList: 任务详情数组
@@ -769,7 +769,7 @@ class DescribeRegionConfResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可售卖地域的数量
         :type TotalCount: int
         :param Items: 可售卖地域详情
@@ -799,7 +799,7 @@ class DescribeSubscribeConfRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 订阅实例ID
         :type SubscribeId: str
         """
@@ -823,7 +823,7 @@ class DescribeSubscribeConfResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 订阅实例ID
         :type SubscribeId: str
         :param SubscribeName: 订阅实例名称
@@ -956,7 +956,7 @@ class DescribeSubscribesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅的实例ID
         :type SubscribeId: str
         :param SubscribeName: 数据订阅的实例名称
@@ -1033,7 +1033,7 @@ class DescribeSubscribesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合查询条件的实例总数
         :type TotalCount: int
         :param Items: 数据订阅实例的信息列表
@@ -1063,7 +1063,7 @@ class DescribeSyncCheckJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 要查询的灾备同步任务ID
         :type JobId: str
         """
@@ -1087,7 +1087,7 @@ class DescribeSyncCheckJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务校验状态： starting(开始中)，running(校验中)，finished(校验完成)
         :type Status: str
         :param ErrorCode: 任务校验结果代码
@@ -1129,7 +1129,7 @@ class DescribeSyncJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 灾备同步任务ID
         :type JobId: str
         :param JobName: 灾备同步任务名
@@ -1173,7 +1173,7 @@ class DescribeSyncJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 任务数目
         :type TotalCount: int
         :param JobList: 任务详情数组
@@ -1203,7 +1203,7 @@ class DstInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 目标实例ID，如cdb-jd92ijd8
         :type InstanceId: str
         :param Region: 目标实例地域，如ap-guangzhou
@@ -1251,7 +1251,7 @@ class ErrorInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorLog: 具体的报错日志, 包含错误码和错误信息
         :type ErrorLog: str
         :param HelpDoc: 报错对应的帮助文档Ur
@@ -1279,7 +1279,7 @@ class IsolateSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 订阅实例ID
         :type SubscribeId: str
         """
@@ -1303,7 +1303,7 @@ class IsolateSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1320,7 +1320,7 @@ class MigrateDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepAll: 总步骤数
         :type StepAll: int
         :param StepNow: 当前步骤
@@ -1373,7 +1373,7 @@ class MigrateJobInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         :param JobName: 数据迁移任务名称
@@ -1470,7 +1470,7 @@ class MigrateOption(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RunMode: 任务运行模式，值包括：1-立即执行，2-定时执行
         :type RunMode: int
         :param ExpectTime: 期望执行时间，当runMode=2时，该字段必填，时间格式：yyyy-mm-dd hh:mm:ss
@@ -1539,7 +1539,7 @@ class MigrateStepDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepNo: 步骤序列
         :type StepNo: int
         :param StepName: 步骤展现名称
@@ -1580,7 +1580,7 @@ class ModifyMigrateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 待修改的数据迁移任务ID
         :type JobId: str
         :param JobName: 数据迁移任务名称
@@ -1645,7 +1645,7 @@ class ModifyMigrateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1662,7 +1662,7 @@ class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 订阅实例ID，例如：subs-8uey736k
         :type SubscribeId: str
         :param AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费
@@ -1690,7 +1690,7 @@ class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1707,7 +1707,7 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         :param ConsumeStartTime: 消费时间起点，也即是指定订阅数据的时间起点，时间格式如：Y-m-d h:m:s，取值范围为过去24小时之内
@@ -1735,7 +1735,7 @@ class ModifySubscribeConsumeTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1752,7 +1752,7 @@ class ModifySubscribeNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         :param SubscribeName: 数据订阅实例的名称，长度限制为[1,60]
@@ -1780,7 +1780,7 @@ class ModifySubscribeNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1797,7 +1797,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         :param SubscribeObjectType: 数据订阅的类型，可选的值有：0 - 全实例订阅；1 - 数据订阅；2 - 结构订阅；3 - 数据订阅+结构订阅
@@ -1834,7 +1834,7 @@ class ModifySubscribeObjectsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 异步任务的ID
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1855,7 +1855,7 @@ class ModifySubscribeVipVportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         :param DstUniqSubnetId: 指定目的子网，如果传此参数，DstIp必须在目的子网内
@@ -1891,7 +1891,7 @@ class ModifySubscribeVipVportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1908,7 +1908,7 @@ class ModifySyncJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 待修改的灾备同步任务ID
         :type JobId: str
         :param JobName: 灾备同步任务名称
@@ -1948,7 +1948,7 @@ class ModifySyncJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1965,7 +1965,7 @@ class OfflineIsolatedSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         """
@@ -1989,7 +1989,7 @@ class OfflineIsolatedSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2006,7 +2006,7 @@ class ResetSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅实例的ID
         :type SubscribeId: str
         """
@@ -2030,7 +2030,7 @@ class ResetSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2047,7 +2047,7 @@ class SrcInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessKey: 阿里云AccessKey。源库是阿里云RDS5.6适用
         :type AccessKey: str
         :param Ip: 实例的IP地址
@@ -2132,7 +2132,7 @@ class StartMigrateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         """
@@ -2156,7 +2156,7 @@ class StartMigrateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2173,7 +2173,7 @@ class StartSyncJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 灾备同步任务ID
         :type JobId: str
         """
@@ -2197,7 +2197,7 @@ class StartSyncJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2214,7 +2214,7 @@ class StopMigrateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
         """
@@ -2238,7 +2238,7 @@ class StopMigrateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2255,7 +2255,7 @@ class SubscribeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscribeId: 数据订阅的实例ID
         :type SubscribeId: str
         :param SubscribeName: 数据订阅实例的名称
@@ -2379,7 +2379,7 @@ class SubscribeObject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ObjectsType: 数据订阅对象的类型，0-数据库，1-数据库内的表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectsType: int
@@ -2414,7 +2414,7 @@ class SubscribeRegionConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionName: 地域名称，如广州
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
@@ -2459,7 +2459,7 @@ class SwitchDrToMasterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DstInfo: 灾备实例的信息
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.SyncInstanceInfo`
         :param DatabaseType: 数据库的类型  （如 mysql）
@@ -2489,7 +2489,7 @@ class SwitchDrToMasterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 后台异步任务请求id
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2510,7 +2510,7 @@ class SyncCheckStepInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepNo: 步骤序列
         :type StepNo: int
         :param StepName: 步骤展现名称
@@ -2546,7 +2546,7 @@ class SyncDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepAll: 总步骤数
         :type StepAll: int
         :param StepNow: 当前步骤
@@ -2599,7 +2599,7 @@ class SyncInstanceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域英文名，如：ap-guangzhou
         :type Region: str
         :param InstanceId: 实例短ID
@@ -2627,7 +2627,7 @@ class SyncJobInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 灾备任务id
         :type JobId: str
         :param JobName: 灾备任务名
@@ -2715,7 +2715,7 @@ class SyncOption(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SyncObject: 同步对象，1-整个实例，2-指定库表
         :type SyncObject: int
         :param RunMode: 同步开始设置，1-立即开始
@@ -2751,7 +2751,7 @@ class SyncStepDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StepNo: 步骤编号
         :type StepNo: int
         :param StepName: 步骤名
@@ -2787,7 +2787,7 @@ class TagFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键值
         :type TagKey: str
         :param TagValue: 标签值
@@ -2815,7 +2815,7 @@ class TagItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键值
         :type TagKey: str
         :param TagValue: 标签值

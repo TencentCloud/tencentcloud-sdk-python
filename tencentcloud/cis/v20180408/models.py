@@ -24,7 +24,7 @@ class Container(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Command: 容器启动命令
         :type Command: str
         :param Args: 容器启动参数
@@ -101,7 +101,7 @@ class ContainerInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 容器实例ID
         :type InstanceId: str
         :param InstanceName: 容器实例名称
@@ -186,7 +186,7 @@ class ContainerLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 容器名称
         :type Name: str
         :param Log: 日志
@@ -218,7 +218,7 @@ class ContainerState(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 容器运行开始时间
         :type StartTime: str
         :param State: 容器状态
@@ -258,7 +258,7 @@ class CreateContainerInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区
         :type Zone: str
         :param VpcId: vpcId
@@ -307,7 +307,7 @@ class CreateContainerInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 容器实例ID
         :type InstanceId: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -328,7 +328,7 @@ class DeleteContainerInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceName: 容器实例名称
         :type InstanceName: str
         """
@@ -352,7 +352,7 @@ class DeleteContainerInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Msg: 操作信息
         :type Msg: str
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -373,7 +373,7 @@ class DescribeContainerInstanceEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceName: 容器实例名称
         :type InstanceName: str
         """
@@ -397,7 +397,7 @@ class DescribeContainerInstanceEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventList: 容器实例事件列表
         :type EventList: list of Event
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -423,7 +423,7 @@ class DescribeContainerInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceName: 容器实例名称
         :type InstanceName: str
         """
@@ -447,7 +447,7 @@ class DescribeContainerInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContainerInstance: 容器实例详细信息
         :type ContainerInstance: :class:`tencentcloud.cis.v20180408.models.ContainerInstance`
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -470,7 +470,7 @@ class DescribeContainerInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0
         :type Offset: int
         :param Limit: 返回数量，默认为10
@@ -510,7 +510,7 @@ class DescribeContainerInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContainerInstanceList: 容器实例列表
         :type ContainerInstanceList: list of ContainerInstance
         :param TotalCount: 容器实例总数
@@ -540,7 +540,7 @@ class DescribeContainerLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceName: 容器实例名称
         :type InstanceName: str
         :param ContainerName: 容器名称
@@ -576,7 +576,7 @@ class DescribeContainerLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContainerLogList: 容器日志数组
         :type ContainerLogList: list of ContainerLog
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -602,7 +602,7 @@ class EnvironmentVar(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 环境变量名
         :type Name: str
         :param Value: 环境变量值
@@ -630,7 +630,7 @@ class Event(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstSeen: 事件首次出现时间
         :type FirstSeen: str
         :param LastSeen: 事件上次出现时间
@@ -674,7 +674,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤字段，可选值 - Zone，VpcId，InstanceName
         :type Name: str
         :param ValueList: 过滤值列表
@@ -702,7 +702,7 @@ class InquiryPriceCreateCisRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区
         :type Zone: str
         :param Cpu: CPU，单位：核
@@ -734,7 +734,7 @@ class InquiryPriceCreateCisResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Price: 价格
         :type Price: :class:`tencentcloud.cis.v20180408.models.Price`
         :param RequestId: 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
@@ -757,7 +757,7 @@ class Price(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiscountPrice: 原价，单位：元
         :type DiscountPrice: float
         :param OriginalPrice: 折扣价，单位：元

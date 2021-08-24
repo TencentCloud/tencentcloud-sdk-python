@@ -194,6 +194,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckIdNameDate(self, request):
+        """本接口用于校验姓名、身份证号、身份证有效期的真实性和一致性。
+
+        :param request: Request instance for CheckIdNameDate.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckIdNameDateRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckIdNameDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckIdNameDate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckIdNameDateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckPhoneAndName(self, request):
         """手机号二要素核验接口用于校验手机号和姓名的真实性和一致性，支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
 

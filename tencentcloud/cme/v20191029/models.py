@@ -24,7 +24,7 @@ class AccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户 Id。
         :type UserId: str
         :param Phone: 用户手机号码。
@@ -62,7 +62,7 @@ class AddMemberInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MemberId: 团队成员 ID。
         :type MemberId: str
         :param Remark: 团队成员备注。
@@ -96,7 +96,7 @@ class AddTeamMemberRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TeamId: 团队 ID。
@@ -137,7 +137,7 @@ class AddTeamMemberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -154,7 +154,7 @@ class AudioMaterial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetaData: 素材元信息。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
         :param MaterialUrl: 素材媒体文件的播放 URL 地址。
@@ -203,7 +203,7 @@ class AudioStreamInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: 码率，单位：bps。
         :type Bitrate: int
         :param SamplingRate: 采样率，单位：hz。
@@ -235,7 +235,7 @@ class AudioTrackItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceType: 音频媒体来源类型，取值有：
 <ul>
 <li>VOD ：素材来源于云点播文件 ；</li>
@@ -243,14 +243,16 @@ class AudioTrackItem(AbstractModel):
 <li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
 </ul>
         :type SourceType: str
-        :param SourceMedia: 音频片段的媒体来源，可以是：
+        :param SourceMedia: 音频媒体，可取值为：
 <ul>
-<li>当 SourceType 为 VOD 时，为云点播的媒体文件 FileId ，会默认将该 FileId 导入到项目中 ；</li>
-<li>当 SourceType 为 CME 时，为制作云的媒体 ID，项目归属者必须对该云媒资有访问权限；</li>
-<li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
+<li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
+<li>当 SourceType 为 CME 时，参数填云剪媒体 Id；</li>
+<li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp3`)，参数填写规则请参见注意事项。</li>
 </ul>
 
-注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉 'https://'；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉 'http://'。
+注意：
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `https` 时(如：`https://www.example.com/a.mp3`)，参数为：`1000000:www.example.com/a.mp3`。</li>
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `http` 时(如：`http://www.example.com/b.mp3`)，参数为：`1000001:www.example.com/b.mp3`。</li>
         :type SourceMedia: str
         :param SourceMediaStartTime: 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。
         :type SourceMediaStartTime: float
@@ -283,7 +285,7 @@ class AuthorizationInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Authorizee: 被授权者实体。
         :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param PermissionSet: 详细授权值。 取值有：
@@ -317,7 +319,7 @@ class Authorizer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 授权者类型，取值有：
 <li>PERSON：个人。</li>
 <li>TEAM：团队。</li>
@@ -347,7 +349,7 @@ class CMEExportInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Owner: 导出媒体归属，个人或团队。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Name: 导出的媒体名称，不得超过30个字符。
@@ -398,7 +400,7 @@ class ClassInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param ClassPath: 分类路径。
@@ -422,13 +424,76 @@ class ClassInfo(AbstractModel):
         
 
 
+class CopyProjectRequest(AbstractModel):
+    """CopyProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param ProjectId: 被复制的项目 ID。
+        :type ProjectId: str
+        :param Name: 复制后的项目名称，不填为原项目名称+"(副本)"。
+        :type Name: str
+        :param Owner: 复制后的项目归属者，不填为原项目归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.ProjectId = None
+        self.Name = None
+        self.Owner = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.ProjectId = params.get("ProjectId")
+        self.Name = params.get("Name")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyProjectResponse(AbstractModel):
+    """CopyProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 复制后的项目 ID。
+        :type ProjectId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProjectId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RequestId = params.get("RequestId")
+
+
 class CosPublishInputInfo(AbstractModel):
     """COS 发布信息。
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bucket: 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
         :type Bucket: str
         :param Region: 发布生成的对象存储文件所在的 COS Bucket 所属园区，如 ap-chongqing。
@@ -464,7 +529,7 @@ class CreateClassRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 归属者。
@@ -502,7 +567,7 @@ class CreateClassResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -519,7 +584,7 @@ class CreateLinkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Type: 链接类型，取值有:
@@ -579,7 +644,7 @@ class CreateLinkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialId: 新建链接的媒体 Id。
         :type MaterialId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -600,7 +665,7 @@ class CreateProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Name: 项目名称，不可超过30个字符。
@@ -695,7 +760,7 @@ class CreateProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目 Id。
         :type ProjectId: str
         :param RtmpPushInputInfoSet: 输入源推流信息。
@@ -726,7 +791,7 @@ class CreateTeamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Name: 团队名称，限30个字符。
@@ -766,7 +831,7 @@ class CreateTeamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TeamId: 创建的团队 ID。
         :type TeamId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -787,7 +852,7 @@ class DeleteClassRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 归属者。
@@ -825,7 +890,7 @@ class DeleteClassResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -842,7 +907,7 @@ class DeleteLoginStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。
@@ -870,7 +935,7 @@ class DeleteLoginStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -887,7 +952,7 @@ class DeleteMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param MaterialId: 媒体 Id。
@@ -919,7 +984,7 @@ class DeleteMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -936,7 +1001,7 @@ class DeleteProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 项目 Id。
@@ -968,7 +1033,7 @@ class DeleteProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -985,7 +1050,7 @@ class DeleteTeamMembersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TeamId: 团队 ID。
@@ -1021,7 +1086,7 @@ class DeleteTeamMembersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1038,7 +1103,7 @@ class DeleteTeamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问平台。
         :type Platform: str
         :param TeamId: 要删除的团队  ID。
@@ -1070,7 +1135,7 @@ class DeleteTeamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1087,7 +1152,7 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台唯一标识。
         :type Platform: str
         :param Phone: 手机号码。
@@ -1123,7 +1188,7 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合搜索条件的记录总数。
         :type TotalCount: int
         :param AccountInfoSet: 账号信息列表。
@@ -1153,7 +1218,7 @@ class DescribeClassRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 归属者。
@@ -1187,7 +1252,7 @@ class DescribeClassResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClassInfoSet: 分类信息列表。
         :type ClassInfoSet: list of ClassInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1213,7 +1278,7 @@ class DescribeJoinTeamsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param MemberId: 团队成员　ID。
@@ -1249,7 +1314,7 @@ class DescribeJoinTeamsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
         :param TeamSet: 团队列表
@@ -1279,7 +1344,7 @@ class DescribeLoginStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。
@@ -1307,7 +1372,7 @@ class DescribeLoginStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoginStatusInfoSet: 用户登录状态列表。
         :type LoginStatusInfoSet: list of LoginStatusInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1333,7 +1398,7 @@ class DescribeMaterialsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param MaterialIds: 媒体 ID 列表，N 从 0 开始取值，最大 19。
@@ -1373,7 +1438,7 @@ class DescribeMaterialsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialInfoSet: 媒体列表信息。
         :type MaterialInfoSet: list of MaterialInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1399,7 +1464,7 @@ class DescribePlatformsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platforms: 平台集合。
         :type Platforms: list of str
         :param LicenseIds: 平台绑定的 license Id 集合。
@@ -1435,7 +1500,7 @@ class DescribePlatformsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合搜索条件的记录总数。
         :type TotalCount: int
         :param PlatformInfoSet: 平台信息列表。
@@ -1465,7 +1530,7 @@ class DescribeProjectsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectIds: 项目 Id 列表，N 从 0 开始取值，最大 19。
@@ -1539,7 +1604,7 @@ class DescribeProjectsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
         :param ProjectInfoSet: 项目信息列表。
@@ -1569,7 +1634,7 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 归属者。
@@ -1609,7 +1674,7 @@ class DescribeResourceAuthorizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的资源授权记录总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -1640,7 +1705,7 @@ class DescribeSharedSpaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Authorizee: 被授权目标,，个人或团队。
@@ -1674,7 +1739,7 @@ class DescribeSharedSpaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 查询到的共享空间总数。
         :type TotalCount: int
         :param AuthorizerSet: 各个共享空间对应的授权者信息。
@@ -1705,7 +1770,7 @@ class DescribeTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TaskId: 任务 Id。
@@ -1737,7 +1802,7 @@ class DescribeTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，取值有：
 <li>PROCESSING：处理中：</li>
 <li>SUCCESS：成功；</li>
@@ -1791,7 +1856,7 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 项目 Id。
@@ -1843,7 +1908,7 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合搜索条件的记录总数。
         :type TotalCount: int
         :param TaskBaseInfoSet: 任务基础信息列表。
@@ -1873,7 +1938,7 @@ class DescribeTeamMembersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TeamId: 团队 ID。
@@ -1917,7 +1982,7 @@ class DescribeTeamMembersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
         :param MemberSet: 团队成员列表。
@@ -1947,7 +2012,7 @@ class DescribeTeamsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TeamIds: 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
@@ -1983,7 +2048,7 @@ class DescribeTeamsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
         :param TeamSet: 团队列表。
@@ -2013,7 +2078,7 @@ class EmptyTrackItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Duration: 持续时间，单位为秒。
         :type Duration: float
         """
@@ -2037,7 +2102,7 @@ class Entity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型，取值有：
 <li>PERSON：个人。</li>
 <li>TEAM：团队。</li>
@@ -2067,7 +2132,7 @@ class EventContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventType: 事件类型，可取值为：
 <li>Storage.NewFileCreated：新文件产生；</li>
 <li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>
@@ -2105,7 +2170,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
@@ -2119,6 +2184,8 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type ExportDestination: str
         :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
         :type TrackData: str
+        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+        :type CoverData: str
         :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
@@ -2130,6 +2197,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self.Definition = None
         self.ExportDestination = None
         self.TrackData = None
+        self.CoverData = None
         self.CMEExportInfo = None
         self.VODExportInfo = None
         self.Operator = None
@@ -2140,6 +2208,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self.Definition = params.get("Definition")
         self.ExportDestination = params.get("ExportDestination")
         self.TrackData = params.get("TrackData")
+        self.CoverData = params.get("CoverData")
         if params.get("CMEExportInfo") is not None:
             self.CMEExportInfo = CMEExportInfo()
             self.CMEExportInfo._deserialize(params.get("CMEExportInfo"))
@@ -2162,7 +2231,7 @@ class ExportVideoByEditorTrackDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务 Id。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2183,7 +2252,7 @@ class ExportVideoByTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TemplateId: 视频编辑模板  Id。
@@ -2249,7 +2318,7 @@ class ExportVideoByTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 导出任务 Id。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2270,7 +2339,7 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 视频拆条项目 Id 。
@@ -2335,7 +2404,7 @@ class ExportVideoByVideoSegmentationDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务 Id。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2356,7 +2425,7 @@ class ExportVideoEditProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 项目 Id。
@@ -2417,7 +2486,7 @@ class ExportVideoEditProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务 Id。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2438,14 +2507,15 @@ class ExternalMediaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Definition: 媒资绑定模板 ID，可取值为：
 <li>1000000：媒体文件为 URL，且 URL Scheme 为 https；</li>
 <li>1000001：媒体文件为 URL，且 URL Scheme 为 http。</li>
 
 注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。
         :type Definition: int
-        :param MediaKey: 媒资绑定媒体路径或文件 ID，如果要绑定 URL 类型的媒体，请将 URL 的 'https://' 或者 'http://' 去掉。
+        :param MediaKey: 媒资绑定媒体路径或文件 ID。如果要绑定 URL 类型的媒体，请将 URL 的 <code>'https://'</code> 或者 <code>'http://'</code> 去掉，例如：
+原始媒体 URL 为 `https://www.example.com/a.mp4`，则 MediaKey 为 `www.example.com/a.mp4`。
         :type MediaKey: str
         """
         self.Definition = None
@@ -2470,7 +2540,7 @@ class FlattenListMediaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
@@ -2516,7 +2586,7 @@ class FlattenListMediaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
         :param MaterialInfoSet: 该分类路径下及其子分类下的所有媒体基础信息列表。
@@ -2546,7 +2616,7 @@ class GenerateVideoSegmentationSchemeByAiRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 视频拆条项目 Id 。
@@ -2578,7 +2648,7 @@ class GenerateVideoSegmentationSchemeByAiResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 视频智能拆条任务 Id 。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2599,7 +2669,7 @@ class GrantResourceAuthorizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 资源归属者，个人或者团队。
@@ -2659,7 +2729,7 @@ class GrantResourceAuthorizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2676,7 +2746,7 @@ class HandleStreamConnectProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 云转推项目Id 。
@@ -2730,7 +2800,7 @@ class HandleStreamConnectProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamInputRtmpPushUrl: 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
         :type StreamInputRtmpPushUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2751,7 +2821,7 @@ class ImageMaterial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Height: 图片高度，单位：px。
         :type Height: int
         :param Width: 图片宽度，单位：px。
@@ -2795,7 +2865,7 @@ class ImportMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 媒体归属者，团队或个人。
@@ -2860,7 +2930,7 @@ class ImportMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialId: 媒体 Id。
         :type MaterialId: str
         :param PreProcessTaskId: 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
@@ -2885,7 +2955,7 @@ class ImportMediaToProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 项目 Id。
@@ -2945,7 +3015,7 @@ class ImportMediaToProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialId: 媒体 Id。
         :type MaterialId: str
         :param TaskId: 媒体预处理任务 ID，如果未指定发起预处理任务则为空。
@@ -2970,7 +3040,7 @@ class IntegerRange(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LowerBound: 按整形代表值的下限检索。
         :type LowerBound: int
         :param UpperBound: 按整形代表值的上限检索。
@@ -2998,12 +3068,12 @@ class JoinTeamInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TeamId: 团队 ID。
         :type TeamId: str
         :param Name: 团队名称。
         :type Name: str
-        :param MemberCount: 团队成员个数
+        :param MemberCount: 团队成员个数。
         :type MemberCount: int
         :param Role: 成员在团队中的角色，取值有：
 <li>Owner：团队所有者，添加团队成员及修改团队成员解决时不能填此角色；</li>
@@ -3037,7 +3107,7 @@ class KuaishouPublishInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Title: 视频发布标题，限30个字符。
         :type Title: str
         """
@@ -3061,7 +3131,7 @@ class LinkMaterial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LinkType: 链接类型取值:
 <li>CLASS: 分类链接;</li>
 <li> MATERIAL：素材链接。</li>
@@ -3107,7 +3177,7 @@ class LinkMaterialInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BasicInfo: 素材基本信息。
         :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
         :param VideoMaterial: 视频素材信息。
@@ -3154,7 +3224,7 @@ class ListMediaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
@@ -3200,7 +3270,7 @@ class ListMediaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialTotalCount: 符合条件的媒体记录总数。
         :type MaterialTotalCount: int
         :param MaterialInfoSet: 浏览分类路径下的媒体列表信息。
@@ -3239,7 +3309,7 @@ class LivePullInputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InputUrl: 直播拉流地址。
         :type InputUrl: str
         """
@@ -3263,7 +3333,7 @@ class LiveStreamClipProjectInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 直播流播放地址，目前仅支持 HLS 和 FLV 格式。
         :type Url: str
         :param StreamRecordDuration: 直播流录制时长，单位为秒，最大值为 7200。
@@ -3291,7 +3361,7 @@ class LoginStatusInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户 Id。
         :type UserId: str
         :param Status: 用户登录状态。
@@ -3321,7 +3391,7 @@ class MaterialBasicInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialId: 媒体 Id。
         :type MaterialId: str
         :param MaterialType: 媒体类型，取值为：
@@ -3404,7 +3474,7 @@ class MaterialInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BasicInfo: 媒体基本信息。
         :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
         :param VideoMaterial: 视频媒体信息。
@@ -3472,7 +3542,7 @@ class MaterialStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EditorUsableStatus: 素材编辑可用状态，取值有：
 <li>NORMAL：正常，可直接用于编辑；</li>
 <li>ABNORMAL : 异常，不可用于编辑；</li>
@@ -3499,7 +3569,7 @@ class MaterialTagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 标签类型，取值为：
 <li>PRESET：预置标签；</li>
         :type Type: str
@@ -3532,7 +3602,7 @@ class MediaImageSpriteInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Height: 雪碧图小图的高度。
         :type Height: int
         :param Width: 雪碧图小图的宽度。
@@ -3572,7 +3642,7 @@ class MediaMetaData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Size: 大小。
         :type Size: int
         :param Container: 容器类型。
@@ -3632,25 +3702,77 @@ class MediaMetaData(AbstractModel):
         
 
 
+class MediaPreprocessOperation(AbstractModel):
+    """媒体处理视频合成任务的预处理操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 预处理操作的类型，取值范围：
+<li>ImageTextMask：图片文字遮罩。</li>
+        :type Type: str
+        :param Args: 预处理操作参数。
+当 Type 取值 ImageTextMask 时，参数为要保留的文字。
+        :type Args: list of str
+        """
+        self.Type = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Args = params.get("Args")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaReplacementInfo(AbstractModel):
     """媒体替换信息。
 
     """
 
     def __init__(self):
-        """
-        :param MaterialId: 素材 ID。
+        r"""
+        :param MediaType: 替换的媒体类型，取值有：
+<li>CMEMaterialId：替换的媒体类型为媒体 ID；</li>
+<li>ImageUrl：替换的媒体类型为图片 URL；</li>
+
+注：默认为 CMEMaterialId 。
+        :type MediaType: str
+        :param MaterialId: 媒体 ID。
+当媒体类型取值为 CMEMaterialId 时有效。
         :type MaterialId: str
+        :param MediaUrl: 媒体 URL。
+当媒体类型取值为 ImageUrl 时有效，
+图片仅支持 jpg、png 格式，且大小不超过 2M 。
+        :type MediaUrl: str
         :param StartTimeOffset: 替换媒体选取的开始时间，单位为秒，默认为 0。
         :type StartTimeOffset: float
+        :param PreprocessOperation: 预处理操作。
+注：目前该功能暂不支持，请勿使用。
+        :type PreprocessOperation: :class:`tencentcloud.cme.v20191029.models.MediaPreprocessOperation`
         """
+        self.MediaType = None
         self.MaterialId = None
+        self.MediaUrl = None
         self.StartTimeOffset = None
+        self.PreprocessOperation = None
 
 
     def _deserialize(self, params):
+        self.MediaType = params.get("MediaType")
         self.MaterialId = params.get("MaterialId")
+        self.MediaUrl = params.get("MediaUrl")
         self.StartTimeOffset = params.get("StartTimeOffset")
+        if params.get("PreprocessOperation") is not None:
+            self.PreprocessOperation = MediaPreprocessOperation()
+            self.PreprocessOperation._deserialize(params.get("PreprocessOperation"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3666,7 +3788,7 @@ class MediaTrack(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 轨道类型，取值有：
 <ul>
 <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li><li>MediaTransitionItem</li></ul> </li>
@@ -3703,7 +3825,7 @@ class MediaTrackItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 片段类型。取值有：
 <li>Video：视频片段；</li>
 <li>Audio：音频片段；</li>
@@ -3756,7 +3878,7 @@ class MediaTransitionItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransitionId: 转场 Id 。暂只支持一个转场。
         :type TransitionId: str
         :param Duration: 转场持续时间，单位为秒，默认为2秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
@@ -3784,7 +3906,7 @@ class ModifyMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param MaterialId: 媒体 Id。
@@ -3830,7 +3952,7 @@ class ModifyMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3847,7 +3969,7 @@ class ModifyProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param ProjectId: 项目 Id。
@@ -3898,7 +4020,7 @@ class ModifyProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3915,7 +4037,7 @@ class ModifyTeamMemberRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TeamId: 团队 ID。
@@ -3961,7 +4083,7 @@ class ModifyTeamMemberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3978,7 +4100,7 @@ class ModifyTeamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param TeamId: 团队 ID。
@@ -4014,7 +4136,7 @@ class ModifyTeamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4031,7 +4153,7 @@ class MoveClassRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 归属者。
@@ -4073,7 +4195,7 @@ class MoveClassResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4090,7 +4212,7 @@ class MoveResourceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param SourceResource: 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
@@ -4130,7 +4252,7 @@ class MoveResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4147,7 +4269,7 @@ class OtherMaterial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialUrl: 素材媒体文件的播放 URL 地址。
         :type MaterialUrl: str
         :param VodFileId: 云点播媒资 FileId。
@@ -4175,7 +4297,7 @@ class ParseEventRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param EventContent: 回调事件内容。
@@ -4203,7 +4325,7 @@ class ParseEventResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventContent: 事件内容。
         :type EventContent: :class:`tencentcloud.cme.v20191029.models.EventContent`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4226,7 +4348,7 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Title: 视频发布标题。
         :type Title: str
         :param Description: 视频发布描述信息。
@@ -4262,7 +4384,7 @@ class PlatformInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称。
         :type Platform: str
         :param Description: 平台描述。
@@ -4306,7 +4428,7 @@ class PresetTagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标签 Id 。
         :type Id: str
         :param Name: 标签名称。
@@ -4338,7 +4460,7 @@ class ProjectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目 Id。
         :type ProjectId: str
         :param Name: 项目名称。
@@ -4404,7 +4526,7 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目 Id。
         :type ProjectId: str
         :param Status: 项目状态，取值有：
@@ -4434,7 +4556,7 @@ class RecordReplayProjectInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PullStreamUrl: 录制拉流地址。
         :type PullStreamUrl: str
         :param MaterialOwner: 录制文件归属者。
@@ -4472,7 +4594,7 @@ class Resource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型，取值有：
 <li>MATERIAL：素材。</li>
 <li>CLASS：分类。</li>
@@ -4502,7 +4624,7 @@ class ResourceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 媒资和分类资源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
@@ -4535,7 +4657,7 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param Owner: 资源所属实体。
@@ -4595,7 +4717,7 @@ class RevokeResourceAuthorizationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4612,7 +4734,7 @@ class RtmpPushInputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExpiredSecond: 直播推流地址有效期，单位：秒 。
         :type ExpiredSecond: int
         :param PushUrl: 直播推流地址，入参不填默认由云剪生成。
@@ -4640,7 +4762,7 @@ class SearchMaterialRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
         :param SearchScopes: 指定搜索空间，数组长度不得超过5。
@@ -4722,7 +4844,7 @@ class SearchMaterialResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合记录总条数。
         :type TotalCount: int
         :param MaterialInfoSet: 媒体信息，仅返回基础信息。
@@ -4752,7 +4874,7 @@ class SearchScope(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Owner: 分类路径归属。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param ClassPath: 按分类路径检索。 不填则默认按根分类路径检索。
@@ -4782,7 +4904,7 @@ class SlotInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 卡槽 Id。
         :type Id: int
         :param Type: 素材类型，同素材素材，可取值有：
@@ -4821,7 +4943,7 @@ class SlotReplacementInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 卡槽 Id。
         :type Id: int
         :param ReplacementType: 替换类型，可取值有：
@@ -4866,7 +4988,7 @@ class SortBy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Field: 排序字段。
         :type Field: str
         :param Order: 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
@@ -4894,7 +5016,7 @@ class StorageNewFileCreatedEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileId: 云点播文件  Id。
         :type FileId: str
         :param MaterialId: 媒体 Id。
@@ -4943,7 +5065,7 @@ class StreamConnectOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
         :type Id: str
         :param Name: 云转推输出源名称。
@@ -4981,7 +5103,7 @@ class StreamConnectOutputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamConnectOutput: 输出源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamConnectOutput: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
@@ -5014,7 +5136,7 @@ class StreamConnectProjectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 转推项目状态，取值有：
 <li>Working ：转推中；</li>
 <li>Idle ：空闲中。</li>
@@ -5081,7 +5203,7 @@ class StreamConnectProjectInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MainInput: 云转推主输入源信息。
         :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
         :param BackupInput: 云转推备输入源信息。
@@ -5122,7 +5244,7 @@ class StreamInputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InputType: 流输入类型，取值：
 <li>VodPull ： 点播拉流；</li>
 <li>LivePull ：直播拉流；</li>
@@ -5170,7 +5292,7 @@ class SwitcherPgmOutputConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 导播台输出模板 ID，可取值：
 <li>10001：分辨率为1080 P；</li>
 <li>10002：分辨率为720 P；</li>
@@ -5213,7 +5335,7 @@ class SwitcherProjectInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StopTime: 导播台停止时间，格式按照 ISO 8601 标准表示。若不填，该值默认为当前时间加七天。
         :type StopTime: str
         :param PgmOutputConfig: 导播台主监输出配置信息。若不填，默认输出 720P。
@@ -5243,7 +5365,7 @@ class TaskBaseInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务 Id。
         :type TaskId: str
         :param TaskType: 任务类型，取值有：
@@ -5297,7 +5419,7 @@ class TeamInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TeamId: 团队 ID。
         :type TeamId: str
         :param Name: 团队名称。
@@ -5337,7 +5459,7 @@ class TeamMemberInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MemberId: 团队成员 ID。
         :type MemberId: str
         :param Remark: 团队成员备注。
@@ -5372,7 +5494,7 @@ class TextReplacementInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 替换的文本信息。
         :type Text: str
         """
@@ -5396,7 +5518,7 @@ class ThirdPartyPublishInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChannelMaterialId: 发布通道  ID。
         :type ChannelMaterialId: str
         :param PenguinMediaPlatformPublishInfo: 企鹅号发布信息，如果使用的发布通道为企鹅号时必填。
@@ -5444,7 +5566,7 @@ class TimeRange(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间，使用 ISO 日期格式。
         :type StartTime: str
         :param EndTime: 结束时间，使用 ISO 日期格式。
@@ -5472,7 +5594,7 @@ class VODExportInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 导出的媒资名称。
         :type Name: str
         :param ClassId: 导出的媒资分类 Id。
@@ -5509,7 +5631,7 @@ class VideoEditProjectInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AspectRatio: 画布宽高比，取值有：
 <li>16:9；</li>
 <li>9:16；</li>
@@ -5551,7 +5673,7 @@ class VideoEditProjectOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaterialId: 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。
         :type MaterialId: str
         :param VodFileId: 云点播媒资 FileId。
@@ -5590,7 +5712,7 @@ class VideoEditTemplateMaterial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AspectRatio: 视频编辑模板宽高比。
         :type AspectRatio: str
         :param SlotSet: 卡槽信息。
@@ -5627,7 +5749,7 @@ class VideoMaterial(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetaData: 素材元信息。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
         :param ImageSpriteInfo: 雪碧图信息。
@@ -5686,7 +5808,7 @@ class VideoSegmentationProjectInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AspectRatio: 画布宽高比，取值有：
 <li>16:9；</li>
 <li>9:16；</li>
@@ -5724,7 +5846,7 @@ class VideoStreamInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: 码率，单位：bps。
         :type Bitrate: int
         :param Height: 高度，单位：px。
@@ -5764,7 +5886,7 @@ class VideoTrackItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceType: 视频媒体来源类型，取值有：
 <ul>
 <li>VOD ：媒体来源于云点播文件 。</li>
@@ -5772,14 +5894,16 @@ class VideoTrackItem(AbstractModel):
 <li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
 </ul>
         :type SourceType: str
-        :param SourceMedia: 视频片段的媒体文件来源，取值为：
+        :param SourceMedia: 视频媒体，可取值为：
 <ul>
-<li>当 SourceType 为 VOD 时，为云点播的媒体文件 FileId ，会默认将该 FileId 导入到项目中；</li>
-<li>当 SourceType 为 CME 时，为制作云的媒体 ID，项目归属者必须对该云媒资有访问权限；</li>
-<li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
+<li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
+<li>当 SourceType 为 CME 时，参数填云剪媒体 Id；</li>
+<li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp4`)，参数填写规则请参见注意事项。</li>
 </ul>
 
-注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉 'https://'；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉 'http://'。
+注意：
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `https` 时(如：`https://www.example.com/a.mp4`)，参数为：`1000000:www.example.com/a.mp4`。</li>
+<li>当 SourceType 为 EXTERNAL 并且媒体 URL Scheme 为 `http` 时(如：`http://www.example.com/b.mp4`)，参数为：`1000001:www.example.com/b.mp4`。</li>
         :type SourceMedia: str
         :param SourceMediaStartTime: 视频片段取自媒体文件的起始时间，单位为秒。默认为0。
         :type SourceMediaStartTime: float
@@ -5850,7 +5974,7 @@ class VodPullInputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InputUrls: 点播输入拉流 URL 。
         :type InputUrls: list of str
         :param LoopTimes: 播放次数，取值有：
@@ -5882,7 +6006,7 @@ class WeiboPublishInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Title: 视频发布标题。
         :type Title: str
         :param Description: 视频发布描述信息。

@@ -24,7 +24,7 @@ class DescribeHSMBySubnetIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubnetId: Subnet标识符
         :type SubnetId: str
         """
@@ -48,7 +48,7 @@ class DescribeHSMBySubnetIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: HSM数量
         :type TotalCount: int
         :param SubnetId: 作为查询条件的SubnetId
@@ -73,7 +73,7 @@ class DescribeHSMByVpcIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: VPC标识符
         :type VpcId: str
         """
@@ -97,7 +97,7 @@ class DescribeHSMByVpcIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: HSM数量
         :type TotalCount: int
         :param VpcId: 作为查询条件的VpcId
@@ -122,7 +122,7 @@ class DescribeSubnetRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量。
         :type Limit: int
         :param Offset: 偏移量。
@@ -158,7 +158,7 @@ class DescribeSubnetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回的子网数量。
         :type TotalCount: int
         :param SubnetList: 返回的子网实例列表。
@@ -195,7 +195,7 @@ class DescribeSupportedHsmResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceTypes: 当前地域所支持的设备列表
         :type DeviceTypes: list of DeviceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -221,7 +221,7 @@ class DescribeUsgRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
         :type Offset: int
         :param Limit: 返回量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
@@ -253,7 +253,7 @@ class DescribeUsgResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SgList: 用户的安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgList: list of SgUnit
@@ -284,7 +284,7 @@ class DescribeUsgRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SgIds: 根据安全组Id获取安全组详情
         :type SgIds: list of str
         """
@@ -308,7 +308,7 @@ class DescribeUsgRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SgRules: 安全组详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgRules: list of UsgRuleDetail
@@ -340,7 +340,7 @@ class DescribeVpcRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 返回偏移量。
         :type Offset: int
         :param Limit: 返回数量。
@@ -372,7 +372,7 @@ class DescribeVpcResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 可查询到的所有Vpc实例总数。
         :type TotalCount: int
         :param VpcList: Vpc对象列表
@@ -403,7 +403,7 @@ class DescribeVsmAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源Id
         :type ResourceId: str
         """
@@ -427,7 +427,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源Id
         :type ResourceId: str
         :param ResourceName: 资源名称
@@ -558,7 +558,7 @@ class DescribeVsmsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移
         :type Offset: int
         :param Limit: 最大数量
@@ -603,7 +603,7 @@ class DescribeVsmsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 获取实例的总个数
         :type TotalCount: int
         :param VsmList: 资源信息
@@ -634,7 +634,7 @@ class DeviceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Manufacturer: 厂商名称
         :type Manufacturer: str
         :param HsmTypes: 此厂商旗下的设备信息列表
@@ -667,7 +667,7 @@ class HsmInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Model: 加密机型号
         :type Model: str
         :param VsmTypes: 此类型的加密机所支持的VSM类型列表
@@ -700,7 +700,7 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GoodsNum: 需购买实例的数量
         :type GoodsNum: int
         :param PayMode: 付费模式：0表示按需计费/后付费，1表示预付费
@@ -744,7 +744,7 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCost: 原始总金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
@@ -786,7 +786,7 @@ class ModifyVsmAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源Id
         :type ResourceId: str
         :param Type: UpdateResourceName-修改资源名称,
@@ -833,7 +833,7 @@ class ModifyVsmAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -850,7 +850,7 @@ class ResourceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
@@ -990,7 +990,7 @@ class SgUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SgId: 安全组Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgId: str
@@ -1030,7 +1030,7 @@ class Subnet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: VPC实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
@@ -1095,7 +1095,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1123,7 +1123,7 @@ class TagFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1151,7 +1151,7 @@ class UsgPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: cidr格式地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
@@ -1211,7 +1211,7 @@ class UsgRuleDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InBound: 入站规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type InBound: list of UsgPolicy
@@ -1276,7 +1276,7 @@ class Vpc(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcName: Vpc名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
@@ -1316,7 +1316,7 @@ class VsmInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TypeName: VSM类型名称
         :type TypeName: str
         :param TypeID: VSM类型值

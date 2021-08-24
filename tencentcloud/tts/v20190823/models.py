@@ -24,7 +24,7 @@ class CreateTtsTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
         :type Text: str
         :param ModelType: 模型类型，1-默认模型。
@@ -36,7 +36,7 @@ class CreateTtsTaskRequest(AbstractModel):
         :type Speed: float
         :param ProjectId: 项目id，用户自定义，默认为0。
         :type ProjectId: int
-        :param VoiceType: 标准音色<li>1001-智瑜，情感女声(默认)</li><li>1002-智聆，通用女声</li><li>1003-智美，客服女声</li><li>1006-智云，通用男声</li><li>1050-WeJack，英文男声</li><li>1051-WeRose，英文女声</li>精品音色<br>精品音色拟真度更高，价格不同于普通音色，查看[购买指南](https://cloud.tencent.com/product/tts/pricing)<br><li>101001-智瑜，情感女声（精品）</li><li>101002-智聆，通用女声（精品）</li><li>101003-智美，客服女声（精品）</li><li>101004-智云，通用男声</li><li>101005-智莉，通用女声</li><li>101006-智言，助手女声</li><li>101007-智娜，客服女声</li><li>101008-智琪，客服女声</li><li>101009-智芸，知性女声</li><li>101010-智华，通用男声</li><li>101011-智燕，新闻女声</li><li>101012-智丹，新闻女声</li><li>101013-智辉，新闻男声</li><li>101014-智宁，新闻男声</li><li>101015-智萌，男童声</li><li>101016-智甜，女童声</li><li>101017-智蓉，情感女声</li><li>101018-智靖，情感男声</li><li>101019-智彤，粤语女声</li><li>101050-WeJack，英文男声（精品）</li><li>101051-WeRose，英文女声（精品）</li>
+        :param VoiceType: 标准音色<li>10510000-智逍遥，旁对白阅读风格男声</li><li>1001-智瑜，情感女声</li><li>1002-智聆，通用女声</li><li>1003-智美，客服女声</li><li>1004-智云，通用男声</li><li>1005-智莉，通用女声</li><li>1007-智娜，客服女声</li><li>1008-智琪，客服女声</li><li>1009-智芸，知性女声</li><li>1010-智华，通用男声</li><li>1017-智蓉，情感女声</li><li>1018-智靖，情感男声</li><li>1050-WeJack，英文男声</li><li>1051-WeRose，英文女声</li>精品音色<br>精品音色拟真度更高，价格不同于标准音色，查看[购买指南](https://cloud.tencent.com/product/tts/pricing)<br><li>100510000-智逍遥，旁对白阅读风格男声（精品）</li><li>101001-智瑜，情感女声（精品）</li><li>101002-智聆，通用女声（精品）</li><li>101003-智美，客服女声（精品）</li><li>101004-智云，通用男声（精品）</li><li>101005-智莉，通用女声（精品）</li><li>101006-智言，助手女声</li><li>101007-智娜，客服女声（精品）</li><li>101008-智琪，客服女声（精品）</li><li>101009-智芸，知性女声（精品）</li><li>101010-智华，通用男声（精品）</li><li>101011-智燕，新闻女声</li><li>101012-智丹，新闻女声</li><li>101013-智辉，新闻男声</li><li>101014-智宁，新闻男声</li><li>101015-智萌，男童声</li><li>101016-智甜，女童声</li><li>101017-智蓉，情感女声（精品）</li><li>101018-智靖，情感男声（精品）</li><li>101019-智彤，粤语女声</li><li>101050-WeJack，英文男声（精品）</li><li>101051-WeRose，英文女声（精品）</li>
         :type VoiceType: int
         :param PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
@@ -46,6 +46,8 @@ class CreateTtsTaskRequest(AbstractModel):
         :type Codec: str
         :param CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
         :type CallbackUrl: str
+        :param VoiceoverDialogueSplit: 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色），默认 false
+        :type VoiceoverDialogueSplit: bool
         """
         self.Text = None
         self.ModelType = None
@@ -57,6 +59,7 @@ class CreateTtsTaskRequest(AbstractModel):
         self.SampleRate = None
         self.Codec = None
         self.CallbackUrl = None
+        self.VoiceoverDialogueSplit = None
 
 
     def _deserialize(self, params):
@@ -70,6 +73,7 @@ class CreateTtsTaskRequest(AbstractModel):
         self.SampleRate = params.get("SampleRate")
         self.Codec = params.get("Codec")
         self.CallbackUrl = params.get("CallbackUrl")
+        self.VoiceoverDialogueSplit = params.get("VoiceoverDialogueSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -85,7 +89,7 @@ class CreateTtsTaskRespData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID，可通过此ID在轮询接口获取合成状态与结果。注意：TaskId数据类型为string
         :type TaskId: str
         """
@@ -109,7 +113,7 @@ class CreateTtsTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 任务 id
         :type Data: :class:`tencentcloud.tts.v20190823.models.CreateTtsTaskRespData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -132,7 +136,7 @@ class DescribeTtsTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务id
         :type TaskId: str
         """
@@ -156,7 +160,7 @@ class DescribeTtsTaskStatusRespData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务标识。
         :type TaskId: str
         :param Status: 任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
@@ -196,7 +200,7 @@ class DescribeTtsTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 任务状态返回
         :type Data: :class:`tencentcloud.tts.v20190823.models.DescribeTtsTaskStatusRespData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -219,9 +223,9 @@ class TextToVoiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 合成语音的源文本，按UTF-8编码统一计算。
-中文最大支持110个汉字（全角标点符号算一个汉字）；英文最大支持350个字母（半角标点符号算一个字母）。
+中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
         :type Text: str
         :param SessionId: 一次请求对应一个SessionId，会原样返回，建议传入类似于uuid的字符串防止重复。
         :type SessionId: str
@@ -234,7 +238,7 @@ class TextToVoiceRequest(AbstractModel):
         :type Speed: float
         :param ProjectId: 项目id，用户自定义，默认为0。
         :type ProjectId: int
-        :param VoiceType: 普通音色<li>0-云小宁，亲和女声(默认)</li><li>1-云小奇，亲和男声</li><li>2-云小晚，成熟男声</li><li>4-云小叶，温暖女声</li><li>5-云小欣，情感女声</li><li>6-云小龙，情感男声</li><li>7-云小曼，客服女声</li><li>1001-智瑜，情感女声</li><li>1002-智聆，通用女声</li><li>1003-智美，客服女声</li><li>1050-WeJack，英文男声</li><li>1051-WeRose，英文女声</li>精品音色<br>精品音色拟真度更高，价格不同于普通音色，查看[购买指南](https://cloud.tencent.com/product/tts/pricing)<br><li>101001-智瑜，情感女声（精品）</li><li>101002-智聆，通用女声（精品）</li><li>101003-智美，客服女声（精品）</li><li>101004-智云，通用男声</li><li>101005-智莉，通用女声</li><li>101006-智言，助手女声</li><li>101007-智娜，客服女声</li><li>101008-智琪，客服女声</li><li>101009-智芸，知性女声</li><li>101010-智华，通用男声</li><li>101011-智燕，新闻女声</li><li>101012-智丹，新闻女声</li><li>101013-智辉，新闻男声</li><li>101014-智宁，新闻男声</li><li>101015-智萌，男童声</li><li>101016-智甜，女童声</li><li>101017-智蓉，情感女声</li><li>101018-智靖，情感男声</li><li>101019-智彤，粤语女声</li><li>101050-WeJack，英文男声（精品）</li><li>101051-WeRose，英文女声（精品）</li><li>102000-贝蕾，客服女声</li><li>102001-贝果，客服女声</li><li>102002-贝紫，粤语女声</li><li>102003-贝雪，新闻女声</li>
+        :param VoiceType: 标准音色<li>10510000-智逍遥，阅读男声</li><li>1001-智瑜，情感女声</li><li>1002-智聆，通用女声</li><li>1003-智美，客服女声</li><li>1004-智云，通用男声</li><li>1005-智莉，通用女声</li><li>1007-智娜，客服女声</li><li>1008-智琪，客服女声</li><li>1009-智芸，知性女声</li><li>1010-智华，通用男声</li><li>1017-智蓉，情感女声</li><li>1018-智靖，情感男声</li><li>1050-WeJack，英文男声</li><li>1051-WeRose，英文女声</li>精品音色<br>精品音色拟真度更高，价格不同于标准音色，查看[购买指南](https://cloud.tencent.com/product/tts/pricing)<br><li>100510000-智逍遥，阅读男声（精品）</li><li>101001-智瑜，情感女声（精品）</li><li>101002-智聆，通用女声（精品）</li><li>101003-智美，客服女声（精品）</li><li>101004-智云，通用男声（精品）</li><li>101005-智莉，通用女声（精品）</li><li>101006-智言，助手女声</li><li>101007-智娜，客服女声（精品）</li><li>101008-智琪，客服女声（精品）</li><li>101009-智芸，知性女声（精品）</li><li>101010-智华，通用男声（精品）</li><li>101011-智燕，新闻女声</li><li>101012-智丹，新闻女声</li><li>101013-智辉，新闻男声</li><li>101014-智宁，新闻男声</li><li>101015-智萌，男童声</li><li>101016-智甜，女童声</li><li>101017-智蓉，情感女声（精品）</li><li>101018-智靖，情感男声（精品）</li><li>101019-智彤，粤语女声</li><li>101050-WeJack，英文男声（精品）</li><li>101051-WeRose，英文女声（精品）</li>
         :type VoiceType: int
         :param PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
         :type PrimaryLanguage: int
@@ -281,7 +285,7 @@ class TextToVoiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Audio: base64编码的wav/mp3音频数据
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId

@@ -26,6 +26,34 @@ class RedisClient(AbstractClient):
     _service = 'redis'
 
 
+    def ApplyParamsTemplate(self, request):
+        """应用参数模板到实例
+
+        :param request: Request instance for ApplyParamsTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ApplyParamsTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ApplyParamsTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyParamsTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyParamsTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
 
@@ -194,6 +222,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateParamTemplate(self, request):
+        """创建参数模板
+
+        :param request: Request instance for CreateParamTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteInstanceAccount(self, request):
         """删除实例子账号
 
@@ -208,6 +264,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteParamTemplate(self, request):
+        """删除参数模板
+
+        :param request: Request instance for DeleteParamTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DeleteParamTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DeleteParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteParamTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -894,6 +978,62 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeParamTemplateInfo(self, request):
+        """查询参数模板详情
+
+        :param request: Request instance for DescribeParamTemplateInfo.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeParamTemplateInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamTemplateInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeParamTemplates(self, request):
+        """查询参数模板列表
+
+        :param request: Request instance for DescribeParamTemplates.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeParamTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProductInfo(self, request):
         """本接口查询指定可用区和实例类型下 Redis 的售卖规格， 如果用户不在购买白名单中，将不能查询该可用区或该类型的售卖规格详情。申请购买某地域白名单可以提交工单
 
@@ -1342,6 +1482,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def KillMasterGroup(self, request):
+        """模拟故障
+
+        :param request: Request instance for KillMasterGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.KillMasterGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.KillMasterGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("KillMasterGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.KillMasterGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ManualBackupInstance(self, request):
         """手动备份Redis实例
 
@@ -1608,6 +1776,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetworkConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyParamTemplate(self, request):
+        """修改参数模板
+
+        :param request: Request instance for ModifyParamTemplate.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyParamTemplateRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyParamTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyParamTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

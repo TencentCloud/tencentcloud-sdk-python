@@ -24,7 +24,7 @@ class Group(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContentType: 消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。
         :type ContentType: str
         :param Url: 返回内容以链接形式提供。
@@ -58,7 +58,7 @@ class ResponseMessage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupList: 消息组列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupList: list of Group
@@ -88,7 +88,7 @@ class SlotInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SlotName: 槽位名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlotName: str
@@ -118,7 +118,7 @@ class TextProcessRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人标识，用于定义抽象机器人。
         :type BotId: str
         :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
@@ -166,7 +166,7 @@ class TextProcessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DialogStatus: str
@@ -230,7 +230,7 @@ class TextResetRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BotId: 机器人标识，用于定义抽象机器人。
         :type BotId: str
         :param BotEnv: 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
@@ -270,7 +270,7 @@ class TextResetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DialogStatus: 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DialogStatus: str

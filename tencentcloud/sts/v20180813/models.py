@@ -24,7 +24,7 @@ class ApiKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretId: 密钥ID
         :type SecretId: str
         :param CreateTime: 创建时间(时间戳)
@@ -56,7 +56,7 @@ class AssumeRoleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoleArn: 角色的资源描述，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
 普通角色：
 qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName
@@ -106,7 +106,7 @@ class AssumeRoleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Credentials: 临时安全证书
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
         :param ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒
@@ -137,7 +137,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SAMLAssertion: base64 编码的 SAML 断言信息
         :type SAMLAssertion: str
         :param PrincipalArn: 扮演者访问描述名
@@ -177,7 +177,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Credentials: 对象里面包含 Token，TmpSecretId，TmpSecretKey 三元组
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
         :param ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒
@@ -208,7 +208,7 @@ class Credentials(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Token: token。token长度和绑定的策略有关，最长不超过4096字节。
         :type Token: str
         :param TmpSecretId: 临时证书密钥ID。最长不超过1024字节。
@@ -240,7 +240,7 @@ class GetFederationTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 您可以自定义调用方英文名称，由字母组成。
         :type Name: str
         :param Policy: 授予该临时证书权限的CAM策略
@@ -276,7 +276,7 @@ class GetFederationTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Credentials: 临时证书
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
         :param ExpiredTime: 临时证书有效的时间，返回 Unix 时间戳，精确到秒
@@ -308,7 +308,7 @@ class QueryApiKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetUin: 待查询的账号(不填默认查当前账号)
         :type TargetUin: int
         """
@@ -332,7 +332,7 @@ class QueryApiKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdKeys: 密钥ID列表
         :type IdKeys: list of ApiKey
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

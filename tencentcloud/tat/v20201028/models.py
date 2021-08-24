@@ -24,7 +24,7 @@ class AutomationAgentInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param Version: Agent 版本号。
@@ -66,7 +66,7 @@ class Command(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandId: 命令ID。
         :type CommandId: str
         :param CommandName: 命令名称。
@@ -95,6 +95,8 @@ class Command(AbstractModel):
         :type CreatedBy: str
         :param Tags: 命令关联的标签列表。
         :type Tags: list of Tag
+        :param Username: 在实例上执行命令的用户名。
+        :type Username: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -110,6 +112,7 @@ class Command(AbstractModel):
         self.FormattedDescription = None
         self.CreatedBy = None
         self.Tags = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -132,6 +135,7 @@ class Command(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -147,7 +151,7 @@ class CommandDocument(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: Base64 编码后的执行命令。
         :type Content: str
         :param CommandType: 命令类型。
@@ -156,11 +160,14 @@ class CommandDocument(AbstractModel):
         :type Timeout: int
         :param WorkingDirectory: 执行路径。
         :type WorkingDirectory: str
+        :param Username: 执行用户。
+        :type Username: str
         """
         self.Content = None
         self.CommandType = None
         self.Timeout = None
         self.WorkingDirectory = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -168,6 +175,7 @@ class CommandDocument(AbstractModel):
         self.CommandType = params.get("CommandType")
         self.Timeout = params.get("Timeout")
         self.WorkingDirectory = params.get("WorkingDirectory")
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -183,7 +191,7 @@ class CreateCommandRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandName: 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type CommandName: str
         :param Content: Base64编码后的命令内容，长度不可超过64KB。
@@ -208,6 +216,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :type DefaultParameters: str
         :param Tags: 为命令关联的标签，列表长度不超过10。
         :type Tags: list of Tag
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+        :type Username: str
         """
         self.CommandName = None
         self.Content = None
@@ -218,6 +229,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.EnableParameter = None
         self.DefaultParameters = None
         self.Tags = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -235,6 +247,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -250,7 +263,7 @@ class CreateCommandResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandId: 命令ID。
         :type CommandId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -271,7 +284,7 @@ class DeleteCommandRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandId: 待删除的命令ID。
         :type CommandId: str
         """
@@ -295,7 +308,7 @@ class DeleteCommandResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -312,7 +325,7 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 待查询的实例ID列表。
         :type InstanceIds: list of str
         :param Filters: 过滤条件。<br> <li> agent-status - String - 是否必填：否 -（过滤条件）按照agent状态过滤，取值：Online 在线，Offline 离线。<br> <li> environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
@@ -353,7 +366,7 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AutomationAgentSet: Agent 信息列表。
         :type AutomationAgentSet: list of AutomationAgentInfo
         :param TotalCount: 符合条件的 Agent 总数。
@@ -383,7 +396,7 @@ class DescribeCommandsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandIds: 命令ID列表，每次请求的上限为100。参数不支持同时指定 `CommandIds` 和 `Filters` 。
         :type CommandIds: list of str
         :param Filters: 过滤条件。
@@ -432,7 +445,7 @@ class DescribeCommandsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的命令总数。
         :type TotalCount: int
         :param CommandSet: 命令详情列表。
@@ -462,7 +475,7 @@ class DescribeInvocationTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvocationTaskIds: 执行任务ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationTaskIds` 和 `Filters`。
         :type InvocationTaskIds: list of str
         :param Filters: 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
@@ -507,7 +520,7 @@ class DescribeInvocationTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的执行任务总数。
         :type TotalCount: int
         :param InvocationTaskSet: 执行任务列表。
@@ -537,7 +550,7 @@ class DescribeInvocationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvocationIds: 执行活动ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationIds` 和 `Filters`。
         :type InvocationIds: list of str
         :param Filters: 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> 
@@ -582,7 +595,7 @@ class DescribeInvocationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的执行活动总数。
         :type TotalCount: int
         :param InvocationSet: 执行活动列表。
@@ -618,7 +631,7 @@ class DescribeRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 地域数量
         :type TotalCount: int
         :param RegionSet: 地域信息列表
@@ -659,7 +672,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段。
         :type Name: str
         :param Values: 字段的过滤值。
@@ -687,7 +700,7 @@ class Invocation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvocationId: 执行活动ID。
         :type InvocationId: str
         :param CommandId: 命令ID。
@@ -718,6 +731,10 @@ class Invocation(AbstractModel):
         :type DefaultParameters: str
         :param InstanceKind: 执行命令的实例类型，取值范围：CVM、LIGHTHOUSE。
         :type InstanceKind: str
+        :param Username: 在实例上执行命令时使用的用户名。
+        :type Username: str
+        :param InvocationSource: 调用来源。
+        :type InvocationSource: str
         """
         self.InvocationId = None
         self.CommandId = None
@@ -731,6 +748,8 @@ class Invocation(AbstractModel):
         self.Parameters = None
         self.DefaultParameters = None
         self.InstanceKind = None
+        self.Username = None
+        self.InvocationSource = None
 
 
     def _deserialize(self, params):
@@ -751,6 +770,8 @@ class Invocation(AbstractModel):
         self.Parameters = params.get("Parameters")
         self.DefaultParameters = params.get("DefaultParameters")
         self.InstanceKind = params.get("InstanceKind")
+        self.Username = params.get("Username")
+        self.InvocationSource = params.get("InvocationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -766,7 +787,7 @@ class InvocationTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvocationId: 执行活动ID。
         :type InvocationId: str
         :param InvocationTaskId: 执行任务ID。
@@ -778,9 +799,10 @@ class InvocationTask(AbstractModel):
 <li> DELIVERING：下发中
 <li> DELIVER_DELAYED：延时下发 
 <li> DELIVER_FAILED：下发失败
+<li> START_FAILED：命令启动失败
 <li> RUNNING：命令运行中
 <li> SUCCESS：命令成功
-<li> FAILED：命令失败
+<li> FAILED：命令执行失败，执行完退出码不为 0
 <li> TIMEOUT：命令超时
 <li> TASK_TIMEOUT：执行任务超时
         :type TaskStatus: str
@@ -798,6 +820,10 @@ class InvocationTask(AbstractModel):
         :type UpdatedTime: str
         :param CommandDocument: 执行任务所执行的命令详情。
         :type CommandDocument: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
+        :param ErrorInfo: 执行任务失败时的错误信息。
+        :type ErrorInfo: str
+        :param InvocationSource: 调用来源。
+        :type InvocationSource: str
         """
         self.InvocationId = None
         self.InvocationTaskId = None
@@ -810,6 +836,8 @@ class InvocationTask(AbstractModel):
         self.CreatedTime = None
         self.UpdatedTime = None
         self.CommandDocument = None
+        self.ErrorInfo = None
+        self.InvocationSource = None
 
 
     def _deserialize(self, params):
@@ -828,6 +856,8 @@ class InvocationTask(AbstractModel):
         if params.get("CommandDocument") is not None:
             self.CommandDocument = CommandDocument()
             self.CommandDocument._deserialize(params.get("CommandDocument"))
+        self.ErrorInfo = params.get("ErrorInfo")
+        self.InvocationSource = params.get("InvocationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -843,7 +873,7 @@ class InvocationTaskBasicInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvocationTaskId: 执行任务ID。
         :type InvocationTaskId: str
         :param TaskStatus: 执行任务状态。取值范围：
@@ -884,10 +914,10 @@ class InvokeCommandRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandId: 待触发的命令ID。
         :type CommandId: str
-        :param InstanceIds: 待执行命令的实例ID列表。
+        :param InstanceIds: 待执行命令的实例ID列表，上限100。
         :type InstanceIds: list of str
         :param Parameters: Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
 key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
@@ -895,16 +925,29 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type Parameters: str
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。若不填，默认以 Command 配置的 Username 执行。
+        :type Username: str
+        :param WorkingDirectory: 命令执行路径, 默认以Command配置的WorkingDirectory执行。
+        :type WorkingDirectory: str
+        :param Timeout: 命令超时时间，取值范围[1, 86400]。默认以Command配置的Timeout执行。
+        :type Timeout: int
         """
         self.CommandId = None
         self.InstanceIds = None
         self.Parameters = None
+        self.Username = None
+        self.WorkingDirectory = None
+        self.Timeout = None
 
 
     def _deserialize(self, params):
         self.CommandId = params.get("CommandId")
         self.InstanceIds = params.get("InstanceIds")
         self.Parameters = params.get("Parameters")
+        self.Username = params.get("Username")
+        self.WorkingDirectory = params.get("WorkingDirectory")
+        self.Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -920,7 +963,7 @@ class InvokeCommandResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvocationId: 执行活动ID。
         :type InvocationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -941,7 +984,7 @@ class ModifyCommandRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandId: 命令ID。
         :type CommandId: str
         :param CommandName: 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
@@ -963,6 +1006,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type DefaultParameters: str
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+        :type Username: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -972,6 +1018,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.WorkingDirectory = None
         self.Timeout = None
         self.DefaultParameters = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -983,6 +1030,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Timeout = params.get("Timeout")
         self.DefaultParameters = params.get("DefaultParameters")
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -998,7 +1046,7 @@ class ModifyCommandResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1015,7 +1063,7 @@ class PreviewReplacedCommandContentRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Parameters: 本次预览采用的自定义参数。字段类型为 json encoded string，如：{\"varA\": \"222\"}。
 key 为自定义参数名称，value 为该参数的取值。kv 均为字符串型。
 自定义参数最多 20 个。
@@ -1053,7 +1101,7 @@ class PreviewReplacedCommandContentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReplacedContent: 自定义参数替换后的，经Base64编码的命令内容。
         :type ReplacedContent: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1074,7 +1122,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域名称，例如，ap-guangzhou
         :type Region: str
         :param RegionName: 地域描述，例如: 广州
@@ -1106,10 +1154,10 @@ class RunCommandRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: Base64编码后的命令内容，长度不可超过64KB。
         :type Content: str
-        :param InstanceIds: 待执行命令的实例ID列表。 支持实例类型：
+        :param InstanceIds: 待执行命令的实例ID列表，上限100。支持实例类型：
 <li> CVM
 <li> LIGHTHOUSE
         :type InstanceIds: list of str
@@ -1146,6 +1194,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :type Parameters: str
         :param Tags: 如果保存命令，可为命令设置标签。列表长度不超过10。
         :type Tags: list of Tag
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+        :type Username: str
         """
         self.Content = None
         self.InstanceIds = None
@@ -1159,6 +1210,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.DefaultParameters = None
         self.Parameters = None
         self.Tags = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -1179,6 +1231,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1194,7 +1247,7 @@ class RunCommandResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommandId: 命令ID。
         :type CommandId: str
         :param InvocationId: 执行活动ID。
@@ -1219,7 +1272,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键。
         :type Key: str
         :param Value: 标签值。
@@ -1247,7 +1300,7 @@ class TaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExitCode: 命令执行ExitCode。
         :type ExitCode: int
         :param Output: Base64编码后的命令输出。最大长度24KB。

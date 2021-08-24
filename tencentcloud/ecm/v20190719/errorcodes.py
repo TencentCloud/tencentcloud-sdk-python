@@ -350,6 +350,9 @@ LIMITEXCEEDED_SECURITYGROUPINSTANCELIMITEXCEEDED = 'LimitExceeded.SecurityGroupI
 # 安全组可关联模块数目限制。
 LIMITEXCEEDED_SECURITYGROUPMODULELIMITEXCEEDED = 'LimitExceeded.SecurityGroupModuleLimitExceeded'
 
+# 安全组规则数量超过上限。
+LIMITEXCEEDED_SECURITYGROUPPOLICYSET = 'LimitExceeded.SecurityGroupPolicySet'
+
 # 申请的cpu核数超限。
 LIMITEXCEEDED_VCPULIMITEXCEEDED = 'LimitExceeded.VcpuLimitExceeded'
 

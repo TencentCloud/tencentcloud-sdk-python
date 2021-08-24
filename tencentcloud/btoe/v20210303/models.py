@@ -24,7 +24,7 @@ class CreateAudioDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
         :param FileName: 对应数据Base64文件名称
@@ -76,7 +76,7 @@ class CreateAudioDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -102,7 +102,7 @@ class CreateDataDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceInfo: 业务数据明文(json格式字符串)，最大256kb
         :type EvidenceInfo: str
         :param EvidenceName: 存证名称(长度最大30)
@@ -146,7 +146,7 @@ class CreateDataDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -172,7 +172,7 @@ class CreateDocDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
         :param FileName: 对应数据Base64文件名称
@@ -224,7 +224,7 @@ class CreateDocDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -250,7 +250,7 @@ class CreateHashDepositNoCertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceHash: 数据hash
         :type EvidenceHash: str
         :param BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
@@ -286,7 +286,7 @@ class CreateHashDepositNoCertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 透传字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -324,7 +324,7 @@ class CreateHashDepositNoSealRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceHash: 数据hash
         :type EvidenceHash: str
         :param BusinessId: 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
@@ -360,7 +360,7 @@ class CreateHashDepositNoSealResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 透传字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -398,7 +398,7 @@ class CreateHashDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
         :param EvidenceHash: 数据hash
@@ -438,7 +438,7 @@ class CreateHashDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 透传字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -464,7 +464,7 @@ class CreateImageDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
         :param FileName: 对应数据Base64文件名称 test.png
@@ -516,7 +516,7 @@ class CreateImageDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -542,7 +542,7 @@ class CreateVideoDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
         :param FileName: 对应数据Base64文件名称
@@ -594,7 +594,7 @@ class CreateVideoDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -620,7 +620,7 @@ class CreateWebpageDepositRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceName: 存证名称(长度最大30)
         :type EvidenceName: str
         :param EvidenceUrl: 网页链接
@@ -660,7 +660,7 @@ class CreateWebpageDepositResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID 透传 长度最大不超过64
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessId: str
@@ -686,7 +686,7 @@ class GetDepositCertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceId: 存证编码
         :type EvidenceId: str
         """
@@ -710,7 +710,7 @@ class GetDepositCertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceId: 存证编码
         :type EvidenceId: str
         :param EvidenceCert: 存证证书文件临时链接
@@ -735,7 +735,7 @@ class GetDepositFileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceId: 存证编码
         :type EvidenceId: str
         """
@@ -759,7 +759,7 @@ class GetDepositFileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceId: 存证编号
         :type EvidenceId: str
         :param EvidenceFile: 存证文件临时链接
@@ -784,7 +784,7 @@ class GetDepositInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceId: 存证编码
         :type EvidenceId: str
         """
@@ -808,7 +808,7 @@ class GetDepositInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvidenceId: 存证编号
         :type EvidenceId: str
         :param EvidenceTime: 上链时间

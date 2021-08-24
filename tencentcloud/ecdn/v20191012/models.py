@@ -24,7 +24,7 @@ class AddEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名。
         :type Domain: str
         :param Origin: 源站配置。
@@ -119,7 +119,7 @@ class AddEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -136,7 +136,7 @@ class Cache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheRules: 缓存配置规则数组。
         :type CacheRules: list of CacheRule
         :param FollowOrigin: 遵循源站 Cache-Control: max-age 配置，白名单功能。
@@ -173,7 +173,7 @@ class CacheKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FullUrlCache: 是否开启全路径缓存，on或off。
         :type FullUrlCache: str
         """
@@ -197,7 +197,7 @@ class CacheRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheType: 缓存类型，支持all，file，directory，path，index，分别表示全部文件，后缀类型，目录，完整路径，首页。
         :type CacheType: str
         :param CacheContents: 缓存内容列表。
@@ -229,7 +229,7 @@ class ClientCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Certificate: 客户端证书，pem格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: str
@@ -269,7 +269,7 @@ class CreateVerifyRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 要取回的域名
         :type Domain: str
         """
@@ -293,7 +293,7 @@ class CreateVerifyRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubDomain: 子解析
         :type SubDomain: str
         :param Record: 解析值
@@ -322,7 +322,7 @@ class DeleteEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 待删除域名。
         :type Domain: str
         """
@@ -346,7 +346,7 @@ class DeleteEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -363,7 +363,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页查询的偏移地址，默认0。
         :type Offset: int
         :param Limit: 分页查询的域名个数，默认100。
@@ -406,7 +406,7 @@ class DescribeDomainsConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 域名列表。
         :type Domains: list of DomainDetailInfo
         :param TotalCount: 符合查询条件的域名总数，用于分页查询。
@@ -436,7 +436,7 @@ class DescribeDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页查询的偏移地址，默认0。
         :type Offset: int
         :param Limit: 分页查询的域名个数，默认100，最大支持1000。
@@ -473,7 +473,7 @@ class DescribeDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 域名信息列表。
         :type Domains: list of DomainBriefInfo
         :param TotalCount: 域名总个数。
@@ -503,7 +503,7 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 待查询域名。
         :type Domain: str
         :param StartTime: 日志起始时间。如：2019-10-01 00:00:00
@@ -543,7 +543,7 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainLogs: 日志链接列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainLogs: list of DomainLogs
@@ -574,7 +574,7 @@ class DescribeEcdnDomainStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2019-12-13 00:00:00。
 起止时间不超过90天。
         :type StartTime: str
@@ -636,7 +636,7 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 域名数据
         :type Data: list of DomainData
         :param TotalCount: 数量
@@ -666,7 +666,7 @@ class DescribeEcdnStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2019-12-13 00:00:00
         :type StartTime: str
         :param EndTime: 查询结束时间，如：2019-12-13 23:59:59
@@ -732,7 +732,7 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 指定条件查询得到的数据明细
         :type Data: list of ResourceData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -758,7 +758,7 @@ class DescribeIpStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 加速域名
         :type Domain: str
         :param Area: 查询区域：
@@ -789,7 +789,7 @@ class DescribeIpStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ips: 节点列表
         :type Ips: list of IpStatus
         :param TotalCount: 节点总个数
@@ -825,7 +825,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UrlPurge: Url刷新用量及配额。
         :type UrlPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`
         :param PathPurge: 目录刷新用量及配额。
@@ -854,7 +854,7 @@ class DescribePurgeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PurgeType: 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
         :type PurgeType: str
         :param StartTime: 开始时间，如2018-08-08 00:00:00。
@@ -906,7 +906,7 @@ class DescribePurgeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PurgeLogs: 刷新历史记录。
         :type PurgeLogs: list of PurgeTask
         :param TotalCount: 任务总数，用于分页。
@@ -936,7 +936,7 @@ class DetailData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 数据类型的名称
         :type Name: str
         :param Value: 数据值
@@ -964,7 +964,7 @@ class DomainBriefInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 域名ID。
         :type ResourceId: str
         :param AppId: 腾讯云账号ID。
@@ -1034,7 +1034,7 @@ class DomainData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 域名
         :type Resource: str
         :param DetailData: 结果详情
@@ -1067,7 +1067,7 @@ class DomainDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 域名ID。
         :type ResourceId: str
         :param AppId: 腾讯云账号ID。
@@ -1207,7 +1207,7 @@ class DomainFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤字段名，支持的列表如下：
 - origin：主源站。
 - domain：域名。
@@ -1250,7 +1250,7 @@ class DomainLogs(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 日志起始时间。
         :type StartTime: str
         :param EndTime: 日志结束时间。
@@ -1282,7 +1282,7 @@ class EcdnData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Metrics: 查询指定的指标名称：Bandwidth，Flux，Request，Delay，状态码，LogBandwidth，LogFlux，LogRequest
         :type Metrics: list of str
         :param DetailData: 明细数据组合
@@ -1315,7 +1315,7 @@ class ForceRedirect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 访问协议强制跳转配置开关，on或off。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -1350,7 +1350,7 @@ class Hsts(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启，on或off。
         :type Switch: str
         :param MaxAge: MaxAge数值。
@@ -1384,7 +1384,7 @@ class HttpHeaderPathRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HeaderMode: http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
 请求头部暂不支持set。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1430,7 +1430,7 @@ class Https(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: https配置开关，on或off。开启https配置的域名在部署中状态，开关保持off。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -1501,7 +1501,7 @@ class IpFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: IP黑白名单开关，on或off。
         :type Switch: str
         :param FilterType: IP黑白名单类型，whitelist或blacklist。
@@ -1535,7 +1535,7 @@ class IpFreqLimit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: IP限频配置开关，on或off。
         :type Switch: str
         :param Qps: 每秒请求数。
@@ -1564,7 +1564,7 @@ class IpStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: 节点 IP
         :type Ip: str
         :param District: 节点所属区域
@@ -1610,7 +1610,7 @@ class Origin(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Origins: 主源站列表，IP与域名源站不可混填。配置源站端口["origin1:port1", "origin2:port2"]，配置回源权重["origin1::weight1", "origin2::weight2"]，同时配置端口与权重 ["origin1:port1:weight1", "origin2:port2:weight2"]，权重值有效范围为0-100。
         :type Origins: list of str
         :param OriginType: 主源站类型，支持domain，ip，分别表示域名源站，ip源站。
@@ -1661,7 +1661,7 @@ class PurgePathCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Paths: 要刷新的目录列表，必须包含协议头部。
         :type Paths: list of str
         :param FlushType: 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
@@ -1689,7 +1689,7 @@ class PurgePathCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1710,7 +1710,7 @@ class PurgeTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 刷新任务ID。
         :type TaskId: str
         :param Url: 刷新Url。
@@ -1754,7 +1754,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 要刷新的Url列表，必须包含协议头部。
         :type Urls: list of str
         """
@@ -1778,7 +1778,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1799,7 +1799,7 @@ class Quota(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Batch: 单次批量提交配额上限。
         :type Batch: int
         :param Total: 每日提交配额上限。
@@ -1831,7 +1831,7 @@ class ResourceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 资源名称，根据查询条件不同分为以下几类：
 具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
@@ -1865,7 +1865,7 @@ class ResponseHeader(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 自定义响应头开关，on或off。
         :type Switch: str
         :param HeaderRules: 自定义响应头规则数组。
@@ -1899,7 +1899,7 @@ class ServerCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertId: 服务器证书id，当证书为腾讯云托管证书时必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
@@ -1954,7 +1954,7 @@ class Sort(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 排序字段，当前支持：
 createTime，域名创建时间
 certExpireTime，证书过期时间
@@ -1984,7 +1984,7 @@ class StartEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 待启用域名。
         :type Domain: str
         """
@@ -2008,7 +2008,7 @@ class StartEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2025,7 +2025,7 @@ class StopEcdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 待停用域名。
         :type Domain: str
         """
@@ -2049,7 +2049,7 @@ class StopEcdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2066,7 +2066,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
@@ -2096,7 +2096,7 @@ class TimestampData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 数据统计时间点，采用向前汇总模式
 以 5 分钟粒度为例，13:35:00 时间点代表的统计数据区间为 13:35:00 至 13:39:59
         :type Time: str
@@ -2125,7 +2125,7 @@ class UpdateDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名。
         :type Domain: str
         :param Origin: 源站配置。
@@ -2211,7 +2211,7 @@ class UpdateDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2228,7 +2228,7 @@ class WebSocket(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
 
 * WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.

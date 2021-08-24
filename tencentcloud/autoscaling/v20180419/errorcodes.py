@@ -26,11 +26,32 @@ FAILEDOPERATION_NOACTIVITYTOGENERATE = 'FailedOperation.NoActivityToGenerate'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# Cmq 接口调用失败。
+INTERNALERROR_CALLCMQERROR = 'InternalError.CallCmqError'
+
+# Cns 接口调用失败。
+INTERNALERROR_CALLCNSERROR = 'InternalError.CallCnsError'
+
+# 内部接口调用失败。
+INTERNALERROR_CALLERROR = 'InternalError.CallError'
+
 # LB 接口调用失败。
 INTERNALERROR_CALLLBERROR = 'InternalError.CallLbError'
 
 # Monitor接口调用失败。
 INTERNALERROR_CALLMONITORERROR = 'InternalError.CallMonitorError'
+
+# 通知服务接口调用失败。
+INTERNALERROR_CALLNOTIFICATIONERROR = 'InternalError.CallNotificationError'
+
+# STS 接口调用失败。
+INTERNALERROR_CALLSTSERROR = 'InternalError.CallStsError'
+
+# Tag 接口调用失败。
+INTERNALERROR_CALLTAGERROR = 'InternalError.CallTagError'
+
+# Tvpc 接口调用失败。
+INTERNALERROR_CALLTVPCERROR = 'InternalError.CallTvpcError'
 
 # VPC接口调用失败。
 INTERNALERROR_CALLVPCERROR = 'InternalError.CallVpcError'
@@ -46,12 +67,6 @@ INVALIDLAUNCHCONFIGURATION = 'InvalidLaunchConfiguration'
 
 # 启动配置ID无效。
 INVALIDLAUNCHCONFIGURATIONID = 'InvalidLaunchConfigurationId'
-
-# 启动配置正在使用中。
-INVALIDLAUNCHCONFIGURATIONID_INUSE = 'InvalidLaunchConfigurationId.InUse'
-
-# 未找到该启动配置。
-INVALIDLAUNCHCONFIGURATIONID_NOTFOUND = 'InvalidLaunchConfigurationId.NotFound'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
@@ -79,6 +94,9 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 指定的基础容量过大，需小于等于最大实例数。
+INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = 'InvalidParameterValue.BaseCapacityTooLarge'
 
 # 在应当指定传统型负载均衡器的参数中，错误地指定了一个非传统型的负载均衡器。
 INVALIDPARAMETERVALUE_CLASSICLB = 'InvalidParameterValue.ClassicLb'
@@ -109,6 +127,12 @@ INVALIDPARAMETERVALUE_FORWARDLB = 'InvalidParameterValue.ForwardLb'
 
 # 伸缩组名称重复。
 INVALIDPARAMETERVALUE_GROUPNAMEDUPLICATED = 'InvalidParameterValue.GroupNameDuplicated'
+
+# 主机名不合法。
+INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = 'InvalidParameterValue.HostNameIllegal'
+
+# 指定的镜像不存在。
+INVALIDPARAMETERVALUE_IMAGENOTFOUND = 'InvalidParameterValue.ImageNotFound'
 
 # 设置的实例名称不合法。
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
@@ -142,6 +166,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEID = 'InvalidParameterValue.InvalidInstance
 
 # 实例机型无效。
 INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = 'InvalidParameterValue.InvalidInstanceType'
+
+# 输入的启动配置无效。
+INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATION = 'InvalidParameterValue.InvalidLaunchConfiguration'
 
 # 启动配置ID无效。
 INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = 'InvalidParameterValue.InvalidLaunchConfigurationId'
@@ -206,9 +233,6 @@ INVALIDPARAMETERVALUE_SIZE = 'InvalidParameterValue.Size'
 # 定时任务设置的开始时间在当前时间之前。
 INVALIDPARAMETERVALUE_STARTTIMEBEFORECURRENTTIME = 'InvalidParameterValue.StartTimeBeforeCurrentTime'
 
-# 关机实例不允许添加到伸缩组。
-INVALIDPARAMETERVALUE_STOPPEDINSTANCENOTALLOWATTACH = 'InvalidParameterValue.StoppedInstanceNotAllowAttach'
-
 # 子网信息不合法。
 INVALIDPARAMETERVALUE_SUBNETIDS = 'InvalidParameterValue.SubnetIds'
 
@@ -230,11 +254,11 @@ INVALIDPARAMETERVALUE_USERDATASIZEEXCEEDED = 'InvalidParameterValue.UserDataSize
 # 用户组不存在。
 INVALIDPARAMETERVALUE_USERGROUPIDNOTFOUND = 'InvalidParameterValue.UserGroupIdNotFound'
 
+# 指定的可用区与地域不匹配。
+INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = 'InvalidParameterValue.ZoneMismatchRegion'
+
 # 账户不支持该操作。
 INVALIDPERMISSION = 'InvalidPermission'
-
-# 启动配置配额超过限制。
-LAUNCHCONFIGURATIONQUOTALIMITEXCEEDED = 'LaunchConfigurationQuotaLimitExceeded'
 
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
@@ -247,6 +271,9 @@ LIMITEXCEEDED_DESIREDCAPACITYLIMITEXCEEDED = 'LimitExceeded.DesiredCapacityLimit
 
 # 特定过滤器的值过多。
 LIMITEXCEEDED_FILTERVALUESTOOLONG = 'LimitExceeded.FilterValuesTooLong'
+
+# 启动配置配额不足。
+LIMITEXCEEDED_LAUNCHCONFIGURATIONQUOTANOTENOUGH = 'LimitExceeded.LaunchConfigurationQuotaNotEnough'
 
 # 最大实例数大于限制。
 LIMITEXCEEDED_MAXSIZELIMITEXCEEDED = 'LimitExceeded.MaxSizeLimitExceeded'
@@ -299,6 +326,9 @@ RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = 'ResourceNotFound.AutoScalingGroupNo
 # 通知不存在。
 RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScalingNotificationNotFound'
 
+# 指定的 CMQ queue 不存在。
+RESOURCENOTFOUND_CMQQUEUENOTFOUND = 'ResourceNotFound.CmqQueueNotFound'
+
 # 指定的实例不存在。
 RESOURCENOTFOUND_INSTANCESNOTFOUND = 'ResourceNotFound.InstancesNotFound'
 
@@ -338,6 +368,9 @@ RESOURCEUNAVAILABLE_AUTOSCALINGGROUPDISABLED = 'ResourceUnavailable.AutoScalingG
 # 伸缩组正在活动中。
 RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = 'ResourceUnavailable.AutoScalingGroupInActivity'
 
+# 指定的 CMQ Topic 无订阅者。
+RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = 'ResourceUnavailable.CmqTopicHasNoSubscriber'
+
 # 实例和伸缩组Vpc不一致。
 RESOURCEUNAVAILABLE_CVMVPCINCONSISTENT = 'ResourceUnavailable.CvmVpcInconsistent'
 
@@ -367,3 +400,9 @@ RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = 'ResourceUnavailable.LoadBalancerI
 
 # 项目不一致。
 RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = 'ResourceUnavailable.ProjectInconsistent'
+
+# 关机实例不允许添加到伸缩组。
+RESOURCEUNAVAILABLE_STOPPEDINSTANCENOTALLOWATTACH = 'ResourceUnavailable.StoppedInstanceNotAllowAttach'
+
+# 指定的可用区不可用。
+RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = 'ResourceUnavailable.ZoneUnavailable'

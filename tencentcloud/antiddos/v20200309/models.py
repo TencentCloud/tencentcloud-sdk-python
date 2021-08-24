@@ -24,7 +24,7 @@ class AssociateDDoSEipAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
         :type InstanceId: str
         :param Eip: 资源实例ID对应的高防弹性公网IP。
@@ -60,7 +60,60 @@ class AssociateDDoSEipAddressResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AssociateDDoSEipLoadBalancerRequest(AbstractModel):
+    """AssociateDDoSEipLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
+        :type InstanceId: str
+        :param Eip: 资源实例ID对应的高防弹性公网IP。
+        :type Eip: str
+        :param LoadBalancerID: 要绑定的负载均衡ID。负载均衡 ID 形如：lb-0000002i。可通过登录控制台查询，也可通过 DescribeLoadBalancers 接口返回值中的LoadBalancerId获取。
+        :type LoadBalancerID: str
+        :param LoadBalancerRegion: Clb所在地域，例如：ap-hongkong。
+        :type LoadBalancerRegion: str
+        """
+        self.InstanceId = None
+        self.Eip = None
+        self.LoadBalancerID = None
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Eip = params.get("Eip")
+        self.LoadBalancerID = params.get("LoadBalancerID")
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateDDoSEipLoadBalancerResponse(AbstractModel):
+    """AssociateDDoSEipLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -77,7 +130,7 @@ class BGPIPInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceDetail: 资产实例的详细信息
         :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`
         :param SpecificationLimit: 资产实例的规格信息
@@ -108,7 +161,7 @@ class BGPIPInstance(AbstractModel):
 注意：当资产实例不是三网套餐包的实例时，此字段为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type StaticPackRelation: :class:`tencentcloud.antiddos.v20200309.models.StaticPackRelation`
-        :param ZoneId: 区分高防IP海外线路
+        :param ZoneId: 区分高防IP境外线路
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
         :param Tgw: 区分集群
@@ -128,6 +181,9 @@ class BGPIPInstance(AbstractModel):
 注意：当资产实例不是高防弹性公网IP实例时，此字段为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddressInfo: :class:`tencentcloud.antiddos.v20200309.models.EipAddressRelation`
+        :param Domain: 建议客户接入的域名，客户可使用域名接入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -145,6 +201,7 @@ class BGPIPInstance(AbstractModel):
         self.EipFlag = None
         self.EipAddressPackRelation = None
         self.EipAddressInfo = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -180,6 +237,7 @@ class BGPIPInstance(AbstractModel):
         if params.get("EipAddressInfo") is not None:
             self.EipAddressInfo = EipAddressRelation()
             self.EipAddressInfo._deserialize(params.get("EipAddressInfo"))
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -195,8 +253,8 @@ class BGPIPInstanceSpecification(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param ProtectBandwidth: 保底防护峰值，单位Gbps
+        r"""
+        :param ProtectBandwidth: 保底防护峰值，单位Mbps
         :type ProtectBandwidth: int
         :param ProtectCCQPS: CC防护峰值，单位qps
         :type ProtectCCQPS: int
@@ -217,7 +275,7 @@ class BGPIPInstanceSpecification(AbstractModel):
 99：第三方合作线路
 ]
         :type Line: int
-        :param ElasticBandwidth: 弹性防护峰值，单位Gbps
+        :param ElasticBandwidth: 弹性防护峰值，单位Mbps
         :type ElasticBandwidth: int
         """
         self.ProtectBandwidth = None
@@ -252,7 +310,7 @@ class BGPIPInstanceUsages(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortRulesUsage: 已使用的端口规则数，单位条
         :type PortRulesUsage: int
         :param DomainRulesUsage: 已使用的域名规则数，单位条
@@ -284,7 +342,7 @@ class BGPInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceDetail: 资产实例的详细信息
         :type InstanceDetail: :class:`tencentcloud.antiddos.v20200309.models.InstanceRelation`
         :param SpecificationLimit: 资产实例的规格信息
@@ -383,7 +441,7 @@ class BGPInstanceSpecification(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtectBandwidth: 保底防护峰值，单位Gbps
         :type ProtectBandwidth: int
         :param ProtectCountLimit: 防护次数，单位次
@@ -422,7 +480,7 @@ class BGPInstanceUsages(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtectCountUsage: 已使用的防护次数，单位次
         :type ProtectCountUsage: int
         :param ProtectIPNumberUsage: 已防护的IP数，单位个
@@ -454,7 +512,7 @@ class BlackWhiteIpRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: IP地址
         :type Ip: str
         :param Type: IP类型，取值[black(黑IP)，white(白IP)]
@@ -495,7 +553,7 @@ class BoundIpInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: IP地址
         :type Ip: str
         :param BizType: 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
@@ -535,7 +593,7 @@ class CertIdInsL7Rules(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param L7Rules: 使用证书的规则列表
         :type L7Rules: list of InsL7Rules
         :param CertId: 证书ID
@@ -568,7 +626,7 @@ class CreateBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param IpList: IP列表
@@ -600,7 +658,7 @@ class CreateBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -617,7 +675,7 @@ class CreateBoundIPRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
         :type Business: str
         :param Id: 资源实例ID
@@ -667,7 +725,7 @@ class CreateBoundIPResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Success: 成功码
         :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -690,7 +748,7 @@ class CreateDDoSAIRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIdList: 资源实例ID列表
         :type InstanceIdList: list of str
         :param DDoSAI: AI防护开关，取值[
@@ -721,7 +779,7 @@ class CreateDDoSAIResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -738,7 +796,7 @@ class CreateDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID请为空
@@ -768,7 +826,7 @@ class CreateDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -785,7 +843,7 @@ class CreateDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID请为空
@@ -815,7 +873,7 @@ class CreateDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -832,7 +890,7 @@ class CreateDefaultAlarmThresholdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DefaultAlarmConfig: 默认告警阈值配置
         :type DefaultAlarmConfig: :class:`tencentcloud.antiddos.v20200309.models.DefaultAlarmThreshold`
         :param InstanceType: 产品类型，取值[
@@ -865,7 +923,7 @@ class CreateDefaultAlarmThresholdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -882,7 +940,7 @@ class CreateIPAlarmThresholdConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IpAlarmThresholdConfigList: IP告警阈值配置列表
         :type IpAlarmThresholdConfigList: list of IPAlarmThresholdRelation
         """
@@ -911,7 +969,7 @@ class CreateIPAlarmThresholdConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -928,7 +986,7 @@ class CreateL7RuleCertsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertId: SSL证书ID
         :type CertId: str
         :param L7Rules: L7域名转发规则列表
@@ -961,7 +1019,7 @@ class CreateL7RuleCertsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Success: 成功码
         :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -984,7 +1042,7 @@ class CreatePacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param PacketFilterConfig: 特征过滤规则
@@ -1014,7 +1072,7 @@ class CreatePacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1031,7 +1089,7 @@ class CreateProtocolBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param ProtocolBlockConfig: 协议封禁配置
@@ -1061,7 +1119,7 @@ class CreateProtocolBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1084,7 +1142,7 @@ class CreateSchedulingDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 新创建的域名
         :type Domain: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1105,7 +1163,7 @@ class CreateWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param WaterPrintConfig: 水印防护配置
@@ -1135,7 +1193,7 @@ class CreateWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1152,7 +1210,7 @@ class CreateWaterPrintKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         """
@@ -1176,7 +1234,7 @@ class CreateWaterPrintKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1193,7 +1251,7 @@ class DDoSAIRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DDoSAI: AI防护开关，取值[
 on(开启)
 off(关闭)
@@ -1229,7 +1287,7 @@ class DDoSGeoIPBlockConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionType: 区域类型，取值[
 oversea(海外)
 china(国内)
@@ -1272,7 +1330,7 @@ class DDoSGeoIPBlockConfigRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GeoIPBlockConfig: DDoS区域封禁配置
         :type GeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSGeoIPBlockConfig`
         :param InstanceDetailList: 配置所属的资源实例
@@ -1307,7 +1365,7 @@ class DDoSSpeedLimitConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mode: 限速模式，取值[
 1(基于源IP限速)
 2(基于目的端口限速)
@@ -1371,7 +1429,7 @@ class DDoSSpeedLimitConfigRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpeedLimitConfig: DDoS访问限速配置
         :type SpeedLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.DDoSSpeedLimitConfig`
         :param InstanceDetailList: 配置所属的资源实例
@@ -1406,7 +1464,7 @@ class DefaultAlarmThreshold(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlarmType: 告警阈值类型，取值[
 1(入流量告警阈值)
 2(攻击清洗流量告警阈值)
@@ -1437,7 +1495,7 @@ class DeleteBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param IpList: IP列表
@@ -1469,7 +1527,7 @@ class DeleteBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1486,7 +1544,7 @@ class DeleteDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID不能为空
@@ -1516,7 +1574,7 @@ class DeleteDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1533,7 +1591,7 @@ class DeleteDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID不能为空
@@ -1563,7 +1621,7 @@ class DeleteDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1580,7 +1638,7 @@ class DeletePacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param PacketFilterConfig: 特征过滤配置
@@ -1610,7 +1668,7 @@ class DeletePacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1627,7 +1685,7 @@ class DeleteWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         """
@@ -1651,7 +1709,7 @@ class DeleteWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1668,7 +1726,7 @@ class DeleteWaterPrintKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param KeyId: 水印密钥ID
@@ -1696,7 +1754,7 @@ class DeleteWaterPrintKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1707,13 +1765,152 @@ class DeleteWaterPrintKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBasicDeviceStatusRequest(AbstractModel):
+    """DescribeBasicDeviceStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpList: IP 资源列表
+        :type IpList: list of str
+        """
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBasicDeviceStatusResponse(AbstractModel):
+    """DescribeBasicDeviceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 返回资源及状态，状态码：
+1 - 封堵状态
+2 - 正常状态
+3 - 攻击状态
+        :type Data: list of KeyValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBizTrendRequest(AbstractModel):
+    """DescribeBizTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
+        :type Statistics: str
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒
+        :type Period: int
+        :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
+        :type StartTime: str
+        :param EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”
+        :type EndTime: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps
+        :type MetricName: str
+        :param Domain: 统计纬度为qps时，可选特定域名查询
+        :type Domain: str
+        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+        :type ProtoInfo: list of ProtocolPort
+        """
+        self.Statistics = None
+        self.Business = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Id = None
+        self.MetricName = None
+        self.Domain = None
+        self.ProtoInfo = None
+
+
+    def _deserialize(self, params):
+        self.Statistics = params.get("Statistics")
+        self.Business = params.get("Business")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.Domain = params.get("Domain")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBizTrendResponse(AbstractModel):
+    """DescribeBizTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataList: 曲线图各个时间点的值
+        :type DataList: list of float
+        :param MetricName: 统计纬度
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataList = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlackWhiteIpListRequest(AbstractModel):
     """DescribeBlackWhiteIpList请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         """
@@ -1737,7 +1934,7 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlackIpList: 黑名单IP列表
         :type BlackIpList: list of str
         :param WhiteIpList: 白名单IP列表
@@ -1756,13 +1953,221 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCTrendRequest(AbstractModel):
+    """DescribeCCTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+        :type MetricName: str
+        :param Domain: 域名，可选
+        :type Domain: str
+        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+        :type Id: str
+        """
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Domain = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Domain = params.get("Domain")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCTrendResponse(AbstractModel):
+    """DescribeCCTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 值个数
+        :type Count: int
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param Data: 值数组
+        :type Data: list of int non-negative
+        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.Id = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Data = params.get("Data")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSTrendRequest(AbstractModel):
+    """DescribeDDoSTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源实例的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+        :type MetricName: str
+        :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+        :type Id: str
+        """
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSTrendResponse(AbstractModel):
+    """DescribeDDoSTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 值个数
+        :type Count: int
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :type Business: str
+        :param Ip: 资源的IP
+        :type Ip: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
+        :type Data: list of int non-negative
+        :param Id: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Business = None
+        self.Ip = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.Id = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Business = params.get("Business")
+        self.Ip = params.get("Ip")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Data = params.get("Data")
+        self.Id = params.get("Id")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDefaultAlarmThresholdRequest(AbstractModel):
     """DescribeDefaultAlarmThreshold请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceType: 产品类型，取值[
 bgp(表示高防包产品)
 bgpip(表示高防IP产品)
@@ -1796,7 +2201,7 @@ class DescribeDefaultAlarmThresholdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DefaultAlarmConfigList: 默认告警阈值配置
         :type DefaultAlarmConfigList: list of DefaultAlarmThreshold
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1822,7 +2227,7 @@ class DescribeL7RulesBySSLCertIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 域名状态，可取bindable, binded, opened, closed, all，all表示全部状态
         :type Status: str
         :param CertIds: 证书ID列表
@@ -1850,7 +2255,7 @@ class DescribeL7RulesBySSLCertIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertSet: 证书规则集合
         :type CertSet: list of CertIdInsL7Rules
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1876,7 +2281,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100
@@ -1938,7 +2343,7 @@ class DescribeListBGPIPInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param InstanceList: 高防IP资产实例列表
@@ -1968,7 +2373,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100
@@ -2016,7 +2421,7 @@ class DescribeListBGPInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param InstanceList: 高防包资产实例列表
@@ -2046,7 +2451,7 @@ class DescribeListBlackWhiteIpListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2082,7 +2487,7 @@ class DescribeListBlackWhiteIpListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param IpList: 黑白IP列表
@@ -2112,7 +2517,7 @@ class DescribeListDDoSAIRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2148,7 +2553,7 @@ class DescribeListDDoSAIResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: AI防护开关列表
@@ -2178,7 +2583,7 @@ class DescribeListDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2214,7 +2619,7 @@ class DescribeListDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: DDoS区域封禁配置列表
@@ -2244,7 +2649,7 @@ class DescribeListDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2280,7 +2685,7 @@ class DescribeListDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: 访问限速配置列表
@@ -2310,7 +2715,7 @@ class DescribeListIPAlarmConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2353,7 +2758,7 @@ class DescribeListIPAlarmConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: IP告警阈值配置列表
@@ -2389,7 +2794,7 @@ class DescribeListListenerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Layer4Listeners: 4层转发监听器列表
         :type Layer4Listeners: list of Layer4Rule
         :param Layer7Listeners: 7层转发监听器列表
@@ -2424,7 +2829,7 @@ class DescribeListPacketFilterConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2460,7 +2865,7 @@ class DescribeListPacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: 特征过滤配置
@@ -2490,7 +2895,7 @@ class DescribeListProtectThresholdConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2499,7 +2904,7 @@ class DescribeListProtectThresholdConfigRequest(AbstractModel):
         :type FilterInstanceId: str
         :param FilterIp: IP搜索
         :type FilterIp: str
-        :param FilterDomain: 域名搜索（查询域名与协议的CC防护阈值时使用）
+        :param FilterDomain: 域名搜索(查询域名与协议的CC防护阈值时使用）
         :type FilterDomain: str
         :param FilterProtocol: 协议搜索(查询域名与协议的CC防护阈值时使用）
         :type FilterProtocol: str
@@ -2534,7 +2939,7 @@ class DescribeListProtectThresholdConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总记录数
         :type Total: int
         :param ConfigList: 防护阈值配置列表
@@ -2564,7 +2969,7 @@ class DescribeListProtocolBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2600,7 +3005,7 @@ class DescribeListProtocolBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: 协议封禁配置
@@ -2630,7 +3035,7 @@ class DescribeListSchedulingDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为20;最大取值为100
@@ -2662,7 +3067,7 @@ class DescribeListSchedulingDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param DomainList: 调度域名信息列表
@@ -2692,7 +3097,7 @@ class DescribeListWaterPrintConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
         :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
@@ -2728,7 +3133,7 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param ConfigList: 水印配置列表
@@ -2758,7 +3163,7 @@ class DisassociateDDoSEipAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
         :type InstanceId: str
         :param Eip: 资源实例ID对应的高防弹性公网IP。
@@ -2786,7 +3191,7 @@ class DisassociateDDoSEipAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2803,7 +3208,7 @@ class EipAddressPackRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IpCount: 套餐IP数量
         :type IpCount: int
         :param AutoRenewFlag: 自动续费标记
@@ -2835,7 +3240,7 @@ class EipAddressRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EipAddressRegion: 高防弹性公网IP绑定的实例地区，例如hk代表香港
 注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddressRegion: str
@@ -2880,7 +3285,7 @@ class EipProductInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: IP地址
         :type Ip: str
         :param BizType: 云产品类型，取值[
@@ -2926,22 +3331,26 @@ class ForwardListener(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param FrontendPort: 转发监听端口，取值1~65535
+        r"""
+        :param FrontendPort: 转发监听端口下限，取值1~65535
         :type FrontendPort: int
         :param ForwardProtocol: 转发协议，取值[
 TCP
 UDP
 ]
         :type ForwardProtocol: str
+        :param FrontendPortEnd: 转发监听端口上限，取值1~65535
+        :type FrontendPortEnd: int
         """
         self.FrontendPort = None
         self.ForwardProtocol = None
+        self.FrontendPortEnd = None
 
 
     def _deserialize(self, params):
         self.FrontendPort = params.get("FrontendPort")
         self.ForwardProtocol = params.get("ForwardProtocol")
+        self.FrontendPortEnd = params.get("FrontendPortEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2957,7 +3366,7 @@ class IPAlarmThresholdRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AlarmType: 告警阈值类型，取值[
 1(入流量告警阈值)
 2(攻击清洗流量告警阈值)
@@ -2997,7 +3406,7 @@ class IPLineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: IP线路类型，取值[
 "bgp"：BGP线路IP
 "ctcc"：电信线路IP
@@ -3031,7 +3440,7 @@ class InsL7Rules(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中
         :type Status: int
         :param Domain: 域名
@@ -3079,7 +3488,7 @@ class InstanceRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EipList: 资源实例的IP
         :type EipList: list of str
         :param InstanceId: 资源实例的ID
@@ -3101,13 +3510,180 @@ class InstanceRelation(AbstractModel):
         
 
 
+class KeyValue(AbstractModel):
+    """字段值，K-V形式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 字段名称
+        :type Key: str
+        :param Value: 字段取值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L4RuleSource(AbstractModel):
+    """L4规则回源列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Source: 回源IP或域名
+        :type Source: str
+        :param Weight: 权重值，取值[0,100]
+        :type Weight: int
+        """
+        self.Source = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.Source = params.get("Source")
+        self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L7RuleEntry(AbstractModel):
+    """L7规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeepTime: 会话保持时间，单位秒
+        :type KeepTime: int
+        :param Domain: 转发域名
+        :type Domain: str
+        :param Protocol: 转发协议，取值[http, https]
+        :type Protocol: str
+        :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
+        :type SourceType: int
+        :param LbType: 负载均衡方式，取值[1(加权轮询)]
+        :type LbType: int
+        :param SourceList: 回源列表
+        :type SourceList: list of L4RuleSource
+        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+        :type KeepEnable: int
+        :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type Status: int
+        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+        :type RuleId: str
+        :param CCThreshold: HTTPS协议的CC防护阈值
+        :type CCThreshold: int
+        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type PrivateKey: str
+        :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
+        :type CCEnable: int
+        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsToHttpEnable: int
+        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+        :type CertType: int
+        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type Cert: str
+        :param CCLevel: HTTPS协议的CC防护等级
+        :type CCLevel: str
+        :param RuleName: 规则描述
+        :type RuleName: str
+        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
+        :type CCStatus: int
+        :param VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPort: int
+        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+        :type SSLId: str
+        :param Id: 同ruleId
+        :type Id: str
+        """
+        self.KeepTime = None
+        self.Domain = None
+        self.Protocol = None
+        self.SourceType = None
+        self.LbType = None
+        self.SourceList = None
+        self.KeepEnable = None
+        self.Status = None
+        self.RuleId = None
+        self.CCThreshold = None
+        self.PrivateKey = None
+        self.CCEnable = None
+        self.HttpsToHttpEnable = None
+        self.CertType = None
+        self.Cert = None
+        self.CCLevel = None
+        self.RuleName = None
+        self.CCStatus = None
+        self.VirtualPort = None
+        self.SSLId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.KeepTime = params.get("KeepTime")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.SourceType = params.get("SourceType")
+        self.LbType = params.get("LbType")
+        if params.get("SourceList") is not None:
+            self.SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self.SourceList.append(obj)
+        self.KeepEnable = params.get("KeepEnable")
+        self.Status = params.get("Status")
+        self.RuleId = params.get("RuleId")
+        self.CCThreshold = params.get("CCThreshold")
+        self.PrivateKey = params.get("PrivateKey")
+        self.CCEnable = params.get("CCEnable")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.CertType = params.get("CertType")
+        self.Cert = params.get("Cert")
+        self.CCLevel = params.get("CCLevel")
+        self.RuleName = params.get("RuleName")
+        self.CCStatus = params.get("CCStatus")
+        self.VirtualPort = params.get("VirtualPort")
+        self.SSLId = params.get("SSLId")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Layer4Rule(AbstractModel):
     """4层转发规则
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param BackendPort: 源站端口，取值1~65535
         :type BackendPort: int
         :param FrontendPort: 转发端口，取值1~65535
@@ -3160,7 +3736,7 @@ class Layer7Rule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param ProxyTypeList: 转发类型列表
@@ -3211,7 +3787,7 @@ class ListenerCcThreholdConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Protocol: 协议（可取值htttps）
@@ -3247,7 +3823,7 @@ class ModifyDDoSGeoIPBlockConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param DDoSGeoIPBlockConfig: DDoS区域封禁配置，填写参数时配置ID不能为空
@@ -3277,7 +3853,7 @@ class ModifyDDoSGeoIPBlockConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3294,7 +3870,7 @@ class ModifyDDoSSpeedLimitConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param DDoSSpeedLimitConfig: 访问限速配置，填写参数时配置ID不能为空
@@ -3324,7 +3900,7 @@ class ModifyDDoSSpeedLimitConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3341,7 +3917,7 @@ class ModifyDomainUsrNameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainName: 用户CNAME
         :type DomainName: str
         :param DomainUserName: 域名名称
@@ -3369,7 +3945,7 @@ class ModifyDomainUsrNameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3380,13 +3956,70 @@ class ModifyDomainUsrNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyL7RulesEdgeRequest(AbstractModel):
+    """ModifyL7RulesEdge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（edge表示边界防护产品）
+        :type Business: str
+        :param Id: 资源ID
+        :type Id: str
+        :param Rule: 规则
+        :type Rule: :class:`tencentcloud.antiddos.v20200309.models.L7RuleEntry`
+        """
+        self.Business = None
+        self.Id = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("Rule") is not None:
+            self.Rule = L7RuleEntry()
+            self.Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL7RulesEdgeResponse(AbstractModel):
+    """ModifyL7RulesEdge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPacketFilterConfigRequest(AbstractModel):
     """ModifyPacketFilterConfig请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 资源实例ID
         :type InstanceId: str
         :param PacketFilterConfig: 特征过滤配置
@@ -3416,7 +4049,7 @@ class ModifyPacketFilterConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3433,7 +4066,7 @@ class PackInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PackType: 套餐包的类型，取值[
 staticpack：高防IP三网套餐包
 insurance：保险套餐包
@@ -3464,7 +4097,7 @@ class PacketFilterConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Protocol: 协议，取值[tcp udp icmp all]
         :type Protocol: str
         :param SportStart: 起始源端口，取值0~65535
@@ -3501,7 +4134,7 @@ pcre(正则表达式)
 ]
         :type MatchType: str
         :param Str: 检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，其中要填写16进制字节码时请以\x开头，例如\x313233对应的是字符串"123"的16进制字节码;
+当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 当检测类型为pcre时, 请填写正则表达式字符串;
 ]
         :type Str: str
@@ -3530,7 +4163,7 @@ pcre(正则表达式)
 ]
         :type MatchType2: str
         :param Str2: 第二个检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，其中要填写16进制字节码时请以\x开头，例如\x313233对应的是字符串"123"的16进制字节码;
+当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 当检测类型为pcre时, 请填写正则表达式字符串;
 ]
         :type Str2: str
@@ -3608,7 +4241,7 @@ class PacketFilterRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PacketFilterConfig: 特征过滤配置
         :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
         :param InstanceDetailList: 特征过滤配置所属的实例
@@ -3643,7 +4276,7 @@ class PortSegment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BeginPort: 起始端口，取值1~65535
         :type BeginPort: int
         :param EndPort: 结束端口，取值1~65535，必须不小于起始端口
@@ -3671,7 +4304,7 @@ class ProtectThresholdRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DDoSLevel: DDoS防护等级，取值[
 low(宽松)
 middle(适中)
@@ -3739,7 +4372,7 @@ class ProtocolBlockConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DropTcp: TCP封禁，取值[0(封禁关)，1(封禁开)]
         :type DropTcp: int
         :param DropUdp: UDP封禁，取值[0(封禁关)，1(封禁开)]
@@ -3779,7 +4412,7 @@ class ProtocolBlockRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtocolBlockConfig: 协议封禁配置
         :type ProtocolBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.ProtocolBlockConfig`
         :param InstanceDetailList: 协议封禁配置所属的实例
@@ -3808,13 +4441,41 @@ class ProtocolBlockRelation(AbstractModel):
         
 
 
+class ProtocolPort(AbstractModel):
+    """Protocol、Port参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Protocol: 协议（tcp；udp）
+        :type Protocol: str
+        :param Port: 端口
+        :type Port: int
+        """
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyTypeInfo(AbstractModel):
     """转发类型
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProxyPorts: 转发监听端口列表，端口取值1~65535
         :type ProxyPorts: list of int
         :param ProxyType: 转发协议，取值[
@@ -3845,7 +4506,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域名称，例如，ap-guangzhou
         :type Region: str
         """
@@ -3869,7 +4530,7 @@ class SchedulingDomainInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 调度域名
         :type Domain: str
         :param LineIPList: 线路IP列表
@@ -3931,7 +4592,7 @@ class SourceServer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RealServer: 源站的地址（IP或者域名）
         :type RealServer: str
         :param RsType: 源站的地址类型，取值[
@@ -3966,7 +4627,7 @@ class SpeedValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 限速值类型，取值[
 1(包速率pps)
 2(带宽bps)
@@ -3997,7 +4658,7 @@ class StaticPackRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtectBandwidth: 保底带宽
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectBandwidth: int
@@ -4042,7 +4703,7 @@ class SuccessCode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Message: 描述
         :type Message: str
         :param Code: 成功/错误码
@@ -4064,13 +4725,58 @@ class SuccessCode(AbstractModel):
         
 
 
+class SwitchWaterPrintConfigRequest(AbstractModel):
+    """SwitchWaterPrintConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param OpenStatus: 水印开启/关闭状态，1表示开启；0表示关闭
+        :type OpenStatus: int
+        """
+        self.InstanceId = None
+        self.OpenStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OpenStatus = params.get("OpenStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchWaterPrintConfigResponse(AbstractModel):
+    """SwitchWaterPrintConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class WaterPrintConfig(AbstractModel):
     """水印防护配置
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 水印偏移量，取值范围[0, 100)
         :type Offset: int
         :param OpenStatus: 是否开启，取值[
@@ -4082,11 +4788,17 @@ class WaterPrintConfig(AbstractModel):
         :type Listeners: list of ForwardListener
         :param Keys: 水印添加成功后生成的水印密钥列表，一条水印最少1个密钥，最多2个密钥
         :type Keys: list of WaterPrintKey
+        :param Verify: 水印检查模式, 取值[
+checkall（普通模式）
+shortfpcheckall（精简模式）
+]
+        :type Verify: str
         """
         self.Offset = None
         self.OpenStatus = None
         self.Listeners = None
         self.Keys = None
+        self.Verify = None
 
 
     def _deserialize(self, params):
@@ -4104,6 +4816,7 @@ class WaterPrintConfig(AbstractModel):
                 obj = WaterPrintKey()
                 obj._deserialize(item)
                 self.Keys.append(obj)
+        self.Verify = params.get("Verify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4119,7 +4832,7 @@ class WaterPrintKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyVersion: 密钥版本号
         :type KeyVersion: str
         :param KeyContent: 密钥内容
@@ -4159,7 +4872,7 @@ class WaterPrintRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WaterPrintConfig: 水印配置
         :type WaterPrintConfig: :class:`tencentcloud.antiddos.v20200309.models.WaterPrintConfig`
         :param InstanceDetailList: 水印配置所属的资源实例

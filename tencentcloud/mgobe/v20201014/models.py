@@ -24,7 +24,7 @@ class ChangeRoomPlayerProfileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏资源Id。
         :type GameId: str
         :param PlayerId: 发起修改的玩家Id。
@@ -56,7 +56,7 @@ class ChangeRoomPlayerProfileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Room: 房间信息。
         :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -79,7 +79,7 @@ class ChangeRoomPlayerStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏资源Id。
         :type GameId: str
         :param CustomStatus: 玩家自定义状态。
@@ -111,7 +111,7 @@ class ChangeRoomPlayerStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Room: 房间信息
         :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -134,7 +134,7 @@ class DescribePlayerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏资源Id。
         :type GameId: str
         :param OpenId: 玩家OpenId。
@@ -166,7 +166,7 @@ class DescribePlayerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Player: 玩家信息。
         :type Player: :class:`tencentcloud.mgobe.v20201014.models.Player`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -189,7 +189,7 @@ class DescribeRoomRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏资源Id。
         :type GameId: str
         :param PlayerId: 玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。
@@ -221,7 +221,7 @@ class DescribeRoomResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Room: 房间信息。
         :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -244,7 +244,7 @@ class DismissRoomRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
         :type GameId: str
         :param RoomId: 表示游戏房间唯一ID。
@@ -272,7 +272,7 @@ class DismissRoomResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -289,7 +289,7 @@ class ModifyRoomRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏资源Id。
         :type GameId: str
         :param RoomId: 房间ID。
@@ -353,7 +353,7 @@ class ModifyRoomResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Room: 房间信息
         :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -376,7 +376,7 @@ class Player(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpenId: 玩家 OpenId。最长不超过64个字符。
         :type OpenId: str
         :param Name: 玩家昵称。最长不超过32个字符。
@@ -424,7 +424,7 @@ class RemoveRoomPlayerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏资源Id。
         :type GameId: str
         :param RemovePlayerId: 被踢出房间的玩家Id。
@@ -452,7 +452,7 @@ class RemoveRoomPlayerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Room: 房间信息
         :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -475,7 +475,7 @@ class Room(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 表示房间名称。最长不超过32个字符。
         :type Name: str
         :param MaxPlayers: 表示房间最大玩家数量。最大不超过100人。
@@ -573,7 +573,7 @@ class Team(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 队伍ID。最长不超过16个字符。
         :type Id: str
         :param Name: 队伍名称。最长不超过32个字符。

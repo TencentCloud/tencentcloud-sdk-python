@@ -24,7 +24,7 @@ class AudioResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HitFlag: 是否命中
 0 未命中
 1 命中
@@ -126,7 +126,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 语种
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -171,7 +171,7 @@ class AudioResultDetailMoanResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 固定为Moan
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -212,7 +212,7 @@ class AudioResultDetailTextResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -267,7 +267,7 @@ class AudioSegments(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
@@ -302,7 +302,7 @@ class BucketInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bucket: 腾讯云对象存储，存储桶名称
         :type Bucket: str
         :param Region: 地域
@@ -334,7 +334,7 @@ class CancelTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         """
@@ -358,7 +358,7 @@ class CancelTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -375,7 +375,7 @@ class CreateBizConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
         :type BizType: str
         :param MediaModeration: 审核分类信息
@@ -413,7 +413,7 @@ class CreateBizConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -430,7 +430,7 @@ class CreateVideoModerationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
         :type BizType: str
         :param Type: 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
@@ -479,7 +479,7 @@ class CreateVideoModerationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Results: 任务创建结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
@@ -506,7 +506,7 @@ class DescribeTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID，创建任务后返回的TaskId字段
         :type TaskId: str
         :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
@@ -534,7 +534,7 @@ class DescribeTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
@@ -668,7 +668,7 @@ class DescribeVideoStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
         :type AuditType: int
         :param Filters: 查询条件
@@ -701,7 +701,7 @@ class DescribeVideoStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Overview: 识别结果统计
         :type Overview: :class:`tencentcloud.vm.v20200709.models.Overview`
         :param TrendCount: 识别量统计
@@ -742,7 +742,7 @@ class EvilCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: 违规类型：
 Terror	24001
 Porn	20002
@@ -778,7 +778,7 @@ class FileOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bucket: 存储的Bucket
         :type Bucket: str
         :param Region: Cos Region
@@ -810,7 +810,7 @@ class Filters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 查询字段：
 策略BizType
 子账号SubUin
@@ -841,7 +841,7 @@ class ImageResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HitFlag: 违规标志
 0 未命中
 1 命中
@@ -913,7 +913,7 @@ class ImageResultResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景
 Porn 色情
 Sexy 性感
@@ -995,7 +995,7 @@ class ImageResultsResultDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -1067,7 +1067,7 @@ class ImageResultsResultDetailLocation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: x坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type X: float
@@ -1112,7 +1112,7 @@ class ImageSegments(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OffsetTime: 截帧时间。
 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 直播流：该值为时间戳，例如：1594650717
@@ -1144,7 +1144,7 @@ class InputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 传入的类型可选：URL，COS
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -1179,7 +1179,7 @@ class MediaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Codecs: 编码格式
         :type Codecs: str
         :param Duration: 流检测时分片时长
@@ -1216,7 +1216,7 @@ class MediaModerationConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UseOCR: 是否使用OCR，默认为true
         :type UseOCR: bool
         :param UseAudio: 是否使用音频，默认为true。视频场景下，默认为 false
@@ -1262,7 +1262,7 @@ class Overview(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
         :type TotalCount: int
         :param TotalHour: 总调用时长
@@ -1314,7 +1314,7 @@ class StorageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型 可选：
 URL 资源链接类型
 COS 腾讯云对象存储类型
@@ -1350,7 +1350,7 @@ class TaskInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 数据ID
         :type DataId: str
         :param Name: 任务名
@@ -1384,7 +1384,7 @@ class TaskLabel(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 命中的标签
 Porn 色情
 Sexy 性感
@@ -1429,7 +1429,7 @@ class TaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 请求时传入的DataId
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
@@ -1469,7 +1469,7 @@ class TrendCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
         :type TotalCount: int
         :param TotalHour: 总调用时长

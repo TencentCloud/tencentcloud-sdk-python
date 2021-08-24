@@ -24,7 +24,7 @@ class CallDeviceActionAsyncRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品Id
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -60,7 +60,7 @@ class CallDeviceActionAsyncResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientToken: 调用Id
         :type ClientToken: str
         :param Status: 异步调用状态
@@ -85,7 +85,7 @@ class CallDeviceActionSyncRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品Id
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -121,7 +121,7 @@ class CallDeviceActionSyncResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientToken: 调用Id
         :type ClientToken: str
         :param OutputParams: 输出参数
@@ -151,7 +151,7 @@ class ControlDeviceDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -195,7 +195,7 @@ class ControlDeviceDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回信息
         :type Data: str
         :param Result: JSON字符串， 返回下发控制的结果信息, 
@@ -222,7 +222,7 @@ class CreateDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID。
         :type ProductId: str
         :param DeviceName: 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
@@ -237,6 +237,8 @@ class CreateDeviceRequest(AbstractModel):
         :type AppSKey: str
         :param NwkSKey: LoRaWAN 网络会话密钥
         :type NwkSKey: str
+        :param DefinedPsk: 手动指定设备的PSK密钥
+        :type DefinedPsk: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -245,6 +247,7 @@ class CreateDeviceRequest(AbstractModel):
         self.DevEUI = None
         self.AppSKey = None
         self.NwkSKey = None
+        self.DefinedPsk = None
 
 
     def _deserialize(self, params):
@@ -255,6 +258,7 @@ class CreateDeviceRequest(AbstractModel):
         self.DevEUI = params.get("DevEUI")
         self.AppSKey = params.get("AppSKey")
         self.NwkSKey = params.get("NwkSKey")
+        self.DefinedPsk = params.get("DefinedPsk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -270,7 +274,7 @@ class CreateDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备参数描述。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -293,7 +297,7 @@ class CreateLoRaFrequencyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreqName: 频点配置名称
         :type FreqName: str
         :param ChannelsDataUp: 数据上行信道
@@ -345,7 +349,7 @@ class CreateLoRaFrequencyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: LoRa频点信息
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -368,7 +372,7 @@ class CreateLoRaGatewayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GatewayId: LoRa 网关Id
         :type GatewayId: str
         :param Name: 网关名称
@@ -422,7 +426,7 @@ class CreateLoRaGatewayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Gateway: LoRa 网关信息
         :type Gateway: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayItem`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -445,7 +449,7 @@ class CreateProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectName: 项目名称
         :type ProjectName: str
         :param ProjectDesc: 项目描述
@@ -477,7 +481,7 @@ class CreateProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Project: 返回信息
         :type Project: :class:`tencentcloud.iotexplorer.v20190423.models.ProjectEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -500,7 +504,7 @@ class CreateStudioProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductName: 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
         :type ProductName: str
         :param CategoryId: 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
@@ -552,7 +556,7 @@ class CreateStudioProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 产品描述
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -575,7 +579,7 @@ class CreateTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称
         :type RuleName: str
         :param TopicRulePayload: 规则内容
@@ -605,7 +609,7 @@ class CreateTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -622,19 +626,23 @@ class DeleteDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID。
         :type ProductId: str
         :param DeviceName: 设备名称。
         :type DeviceName: str
+        :param ForceDelete: 是否删除绑定设备
+        :type ForceDelete: bool
         """
         self.ProductId = None
         self.DeviceName = None
+        self.ForceDelete = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.ForceDelete = params.get("ForceDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -650,7 +658,7 @@ class DeleteDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultCode: 删除的结果代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultCode: str
@@ -677,7 +685,7 @@ class DeleteLoRaFrequencyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreqId: 频点唯一ID
         :type FreqId: str
         """
@@ -701,7 +709,7 @@ class DeleteLoRaFrequencyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -718,7 +726,7 @@ class DeleteLoRaGatewayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GatewayId: LoRa 网关 Id
         :type GatewayId: str
         """
@@ -742,7 +750,7 @@ class DeleteLoRaGatewayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -759,7 +767,7 @@ class DeleteProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         """
@@ -783,7 +791,7 @@ class DeleteProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -800,7 +808,7 @@ class DeleteStudioProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -824,7 +832,7 @@ class DeleteStudioProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -841,7 +849,7 @@ class DeleteTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名
         :type RuleName: str
         """
@@ -865,7 +873,7 @@ class DeleteTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -882,7 +890,7 @@ class DescribeDeviceDataHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MinTime: 区间开始时间（Unix 时间戳，毫秒级）
         :type MinTime: int
         :param MaxTime: 区间结束时间（Unix 时间戳，毫秒级）
@@ -930,7 +938,7 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FieldName: 属性字段名称，对应数据模板中功能属性的标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type FieldName: str
@@ -972,7 +980,7 @@ class DescribeDeviceDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -1004,7 +1012,7 @@ class DescribeDeviceDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备数据
         :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1025,7 +1033,7 @@ class DescribeDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名
@@ -1057,7 +1065,7 @@ class DescribeDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Device: 设备信息
         :type Device: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1080,7 +1088,7 @@ class DescribeFirmwareTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -1112,7 +1120,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 固件任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
@@ -1169,7 +1177,7 @@ class DescribeLoRaFrequencyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreqId: 频点唯一ID
         :type FreqId: str
         """
@@ -1193,7 +1201,7 @@ class DescribeLoRaFrequencyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回详情项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
@@ -1217,7 +1225,7 @@ class DescribeModelDefinitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1241,7 +1249,7 @@ class DescribeModelDefinitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Model: 产品数据模板
         :type Model: :class:`tencentcloud.iotexplorer.v20190423.models.ProductModelDefinition`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1264,7 +1272,7 @@ class DescribeProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         """
@@ -1288,7 +1296,7 @@ class DescribeProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Project: 返回信息
         :type Project: :class:`tencentcloud.iotexplorer.v20190423.models.ProjectEntryEx`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1311,7 +1319,7 @@ class DescribeStudioProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1335,7 +1343,7 @@ class DescribeStudioProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 产品详情
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1358,7 +1366,7 @@ class DescribeTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称。
         :type RuleName: str
         """
@@ -1382,7 +1390,7 @@ class DescribeTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rule: 规则描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRule`
@@ -1406,7 +1414,7 @@ class DeviceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceCert: 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCert: str
@@ -1446,7 +1454,7 @@ class DeviceDataHistoryItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间点，毫秒时间戳
         :type Time: str
         :param Value: 字段取值
@@ -1474,7 +1482,7 @@ class DeviceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceName: 设备名
         :type DeviceName: str
         :param Status: 0: 离线, 1: 在线, 2: 获取失败, 3 未激活
@@ -1572,7 +1580,7 @@ class DisableTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称
         :type RuleName: str
         """
@@ -1596,7 +1604,7 @@ class DisableTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1613,7 +1621,7 @@ class EnableTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称
         :type RuleName: str
         """
@@ -1637,7 +1645,7 @@ class EnableTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1654,7 +1662,7 @@ class EventHistoryItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeStamp: 事件的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeStamp: int
@@ -1704,7 +1712,7 @@ class FirmwareInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 固件版本
         :type Version: str
         :param Md5sum: 固件MD5值
@@ -1771,7 +1779,7 @@ class GetCOSURLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本
@@ -1803,7 +1811,7 @@ class GetCOSURLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 固件URL
         :type Url: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1824,7 +1832,7 @@ class GetDeviceListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 需要查看设备列表的产品 ID
         :type ProductId: str
         :param Offset: 分页偏移
@@ -1864,7 +1872,7 @@ class GetDeviceListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Devices: 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
 注意：此字段可能返回 null，表示取不到有效值。
         :type Devices: list of DeviceInfo
@@ -1896,7 +1904,7 @@ class GetLoRaGatewayListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsCommunity: 是否是社区网关
         :type IsCommunity: bool
         :param Offset: 偏移量
@@ -1928,7 +1936,7 @@ class GetLoRaGatewayListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回总数
         :type Total: int
         :param Gateways: 返回详情项
@@ -1959,7 +1967,7 @@ class GetProjectListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 个数限制
@@ -2007,7 +2015,7 @@ class GetProjectListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Projects: 项目列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Projects: list of ProjectEntryEx
@@ -2039,7 +2047,7 @@ class GetStudioProductListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param DevStatus: 产品DevStatus
@@ -2075,7 +2083,7 @@ class GetStudioProductListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Products: 产品列表
         :type Products: list of ProductEntry
         :param Total: 产品数量
@@ -2105,7 +2113,7 @@ class GetTopicRuleListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNum: 请求的页数
         :type PageNum: int
         :param PageSize: 分页的大小
@@ -2133,7 +2141,7 @@ class GetTopicRuleListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCnt: 规则总数量
         :type TotalCnt: int
         :param Rules: 规则列表
@@ -2163,7 +2171,7 @@ class ListEventHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -2215,7 +2223,7 @@ class ListEventHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Context: 搜索上下文, 用作查询游标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
@@ -2257,7 +2265,7 @@ class ListFirmwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNum: 获取的页数
         :type PageNum: int
         :param PageSize: 分页的大小
@@ -2298,7 +2306,7 @@ class ListFirmwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 固件总数
         :type TotalCount: int
         :param Firmwares: 固件列表
@@ -2328,7 +2336,7 @@ class LoRaFrequencyEntry(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreqId: 频点唯一ID
         :type FreqId: str
         :param FreqName: 频点名称
@@ -2388,7 +2396,7 @@ class LoRaGatewayItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GatewayId: LoRa 网关Id
         :type GatewayId: str
         :param IsPublic: 是否是公开网关
@@ -2454,7 +2462,7 @@ class LoRaGatewayLocation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Accuracy: 准确度
         :type Accuracy: float
         :param Altitude: 海拔
@@ -2490,7 +2498,7 @@ class ModifyLoRaFrequencyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreqId: 频点唯一ID
         :type FreqId: str
         :param FreqName: 频点名称
@@ -2546,7 +2554,7 @@ class ModifyLoRaFrequencyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 频点信息
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2569,7 +2577,7 @@ class ModifyLoRaGatewayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Description: 描述信息
         :type Description: str
         :param GatewayId: LoRa网关Id
@@ -2623,7 +2631,7 @@ class ModifyLoRaGatewayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Gateway: 返回网关数据
         :type Gateway: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayItem`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2646,7 +2654,7 @@ class ModifyModelDefinitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ModelSchema: 数据模板定义
@@ -2674,7 +2682,7 @@ class ModifyModelDefinitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2691,7 +2699,7 @@ class ModifyProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -2723,7 +2731,7 @@ class ModifyProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Project: 项目详情
         :type Project: :class:`tencentcloud.iotexplorer.v20190423.models.ProjectEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2746,7 +2754,7 @@ class ModifyStudioProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductName: 产品名称
@@ -2786,7 +2794,7 @@ class ModifyStudioProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 产品描述
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2809,7 +2817,7 @@ class ModifyTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称
         :type RuleName: str
         :param TopicRulePayload: 替换的规则包体
@@ -2839,7 +2847,7 @@ class ModifyTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2856,7 +2864,7 @@ class ProductEntry(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductName: 产品名称
@@ -2947,7 +2955,7 @@ class ProductModelDefinition(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ModelDefine: 模型定义
@@ -2993,7 +3001,7 @@ class ProjectEntry(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -3033,7 +3041,7 @@ class ProjectEntryEx(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -3100,7 +3108,7 @@ class PublishMessageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
@@ -3144,7 +3152,7 @@ class PublishMessageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3161,7 +3169,7 @@ class ReleaseStudioProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param DevStatus: 产品DevStatus
@@ -3189,7 +3197,7 @@ class ReleaseStudioProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3206,7 +3214,7 @@ class SearchKeyword(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 搜索条件的Key
         :type Key: str
         :param Value: 搜索条件的值
@@ -3234,7 +3242,7 @@ class SearchStudioProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProductName: 产品名称
@@ -3278,7 +3286,7 @@ class SearchStudioProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Products: 产品列表
         :type Products: list of ProductEntry
         :param Total: 产品数量
@@ -3308,7 +3316,7 @@ class SearchTopicRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名
         :type RuleName: str
         """
@@ -3332,7 +3340,7 @@ class SearchTopicRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCnt: 搜索到的规则总数
         :type TotalCnt: int
         :param Rules: 规则信息列表
@@ -3362,7 +3370,7 @@ class TopicRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称。
         :type RuleName: str
         :param Sql: 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
@@ -3405,7 +3413,7 @@ class TopicRuleInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称
         :type RuleName: str
         :param Description: 规则描述
@@ -3441,7 +3449,7 @@ class TopicRulePayload(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sql: 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
         :type Sql: str
         :param Actions: 行为的JSON字符串，大部分种类举例如下：
@@ -3525,7 +3533,7 @@ class UpdateFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param DeviceName: 设备名
@@ -3565,7 +3573,7 @@ class UpdateFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3582,7 +3590,7 @@ class UploadFirmwareRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductID: 产品ID
         :type ProductID: str
         :param FirmwareVersion: 固件版本号
@@ -3630,7 +3638,7 @@ class UploadFirmwareResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

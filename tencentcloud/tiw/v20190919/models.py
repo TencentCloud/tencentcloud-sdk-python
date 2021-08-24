@@ -24,7 +24,7 @@ class Canvas(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayoutParams: 混流画布宽高配置
         :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
         :param BackgroundColor: 背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
@@ -54,7 +54,7 @@ class Concat(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 是否开启拼接功能
 在开启了视频拼接功能的情况下，实时录制服务会把同一个用户因为暂停导致的多段视频拼接成一个视频
         :type Enabled: bool
@@ -77,13 +77,78 @@ class Concat(AbstractModel):
         
 
 
+class CreateSnapshotTaskRequest(AbstractModel):
+    """CreateSnapshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Whiteboard: 白板相关参数
+        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.SnapshotWhiteboard`
+        :param SdkAppId: 白板房间SdkAppId
+        :type SdkAppId: int
+        :param RoomId: 白板房间号
+        :type RoomId: int
+        :param CallbackURL: 白板板书生成结果通知回调地址
+        :type CallbackURL: str
+        :param COS: 白板板书文件COS存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
+        :type COS: :class:`tencentcloud.tiw.v20190919.models.SnapshotCOS`
+        """
+        self.Whiteboard = None
+        self.SdkAppId = None
+        self.RoomId = None
+        self.CallbackURL = None
+        self.COS = None
+
+
+    def _deserialize(self, params):
+        if params.get("Whiteboard") is not None:
+            self.Whiteboard = SnapshotWhiteboard()
+            self.Whiteboard._deserialize(params.get("Whiteboard"))
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.CallbackURL = params.get("CallbackURL")
+        if params.get("COS") is not None:
+            self.COS = SnapshotCOS()
+            self.COS._deserialize(params.get("COS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSnapshotTaskResponse(AbstractModel):
+    """CreateSnapshotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskID: 白板板书生成任务ID，只有任务创建成功的时候才会返回此字段
+        :type TaskID: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTranscodeRequest(AbstractModel):
     """CreateTranscode请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param Url: 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
@@ -104,9 +169,11 @@ tar.gz： 生成`.tar.gz`压缩包
         :type CompressFileType: str
         :param ExtraData: 内部参数
         :type ExtraData: str
-        :param Priority: 文档转码优先级，支持填入以下值：<br/>
-- low: 低优先级转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
+        :param Priority: 文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br/>
+- low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
 - 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
+<br/>
+注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB
         :type Priority: str
         """
         self.SdkAppId = None
@@ -143,7 +210,7 @@ class CreateTranscodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -164,7 +231,7 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OnlineRecordTaskId: 录制任务的TaskId
         :type OnlineRecordTaskId: str
         :param SdkAppId: 客户的SdkAppId
@@ -228,7 +295,7 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 视频生成的任务Id
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -249,7 +316,7 @@ class CustomLayout(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Canvas: 混流画布参数
         :type Canvas: :class:`tencentcloud.tiw.v20190919.models.Canvas`
         :param InputStreamList: 流布局参数，每路流的布局不能超出画布区域
@@ -284,7 +351,7 @@ class DescribeOnlineRecordCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         """
@@ -308,7 +375,7 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Callback: 实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
         :type Callback: str
         :param CallbackKey: 实时录制回调鉴权密钥
@@ -333,7 +400,7 @@ class DescribeOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 实时录制任务Id
@@ -361,7 +428,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FinishReason: 录制结束原因，
 - AUTO: 房间内长时间没有音视频上行及白板操作导致自动停止录制
 - USER_CALL: 主动调用了停止录制接口
@@ -398,6 +465,9 @@ class DescribeOnlineRecordResponse(AbstractModel):
         :param ReplayUrl: 回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplayUrl: str
+        :param Interrupts: 视频流在录制过程中断流次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interrupts: list of Interrupt
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -414,6 +484,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
         self.OmittedDurations = None
         self.VideoInfos = None
         self.ReplayUrl = None
+        self.Interrupts = None
         self.RequestId = None
 
 
@@ -441,6 +512,12 @@ class DescribeOnlineRecordResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VideoInfos.append(obj)
         self.ReplayUrl = params.get("ReplayUrl")
+        if params.get("Interrupts") is not None:
+            self.Interrupts = []
+            for item in params.get("Interrupts"):
+                obj = Interrupt()
+                obj._deserialize(item)
+                self.Interrupts.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -450,7 +527,7 @@ class DescribeQualityMetricsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 白板应用的SdkAppId
         :type SdkAppId: int
         :param StartTime: 开始时间，Unix时间戳，单位秒，时间跨度不能超过7天
@@ -501,7 +578,7 @@ class DescribeQualityMetricsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Metric: 输入的查询指标
         :type Metric: str
         :param Content: 时间序列
@@ -525,13 +602,87 @@ class DescribeQualityMetricsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSnapshotTaskRequest(AbstractModel):
+    """DescribeSnapshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskID: 查询任务ID
+        :type TaskID: str
+        :param SdkAppId: 任务SdkAppId
+        :type SdkAppId: int
+        """
+        self.TaskID = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotTaskResponse(AbstractModel):
+    """DescribeSnapshotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskID: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskID: str
+        :param Status: 任务状态
+Running - 任务执行中
+Finished - 任务已结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param CreateTime: 任务创建时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param FinishTime: 任务完成时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: int
+        :param Result: 任务结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tiw.v20190919.models.SnapshotResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskID = None
+        self.Status = None
+        self.CreateTime = None
+        self.FinishTime = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.FinishTime = params.get("FinishTime")
+        if params.get("Result") is not None:
+            self.Result = SnapshotResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTranscodeCallbackRequest(AbstractModel):
     """DescribeTranscodeCallback请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         """
@@ -555,7 +706,7 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Callback: 文档转码回调地址
         :type Callback: str
         :param CallbackKey: 文档转码回调鉴权密钥
@@ -580,7 +731,7 @@ class DescribeTranscodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 文档转码任务的唯一标识Id
@@ -608,7 +759,7 @@ class DescribeTranscodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pages: 文档的总页数
         :type Pages: int
         :param Progress: 转码的当前进度,取值范围为0~100
@@ -674,7 +825,7 @@ class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         """
@@ -698,7 +849,7 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Callback: 录制视频生成回调地址
         :type Callback: str
         :param CallbackKey: 录制视频生成回调鉴权密钥
@@ -723,7 +874,7 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 录制视频生成的任务Id
@@ -751,7 +902,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 任务对应的群组Id
         :type GroupId: str
         :param RoomId: 任务对应的房间号
@@ -810,7 +961,7 @@ class DescribeWhiteboardPushCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         """
@@ -834,7 +985,7 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Callback: 白板推流事件回调地址，如果未设置回调地址，该字段为空字符串
         :type Callback: str
         :param CallbackKey: 白板推流回调鉴权密钥
@@ -859,7 +1010,7 @@ class DescribeWhiteboardPushRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 白板推流任务Id
@@ -887,7 +1038,7 @@ class DescribeWhiteboardPushResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FinishReason: 推流结束原因，
 - AUTO: 房间内长时间没有音视频上行及白板操作导致自动停止推流
 - USER_CALL: 主动调用了停止推流接口
@@ -949,13 +1100,43 @@ class DescribeWhiteboardPushResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Interrupt(AbstractModel):
+    """实时录制中出现的用户视频流断流次数统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param Count: 视频流断流次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.UserId = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LayoutParams(AbstractModel):
     """自定义混流配置布局参数
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Width: 流画面宽，取值范围[2,3000]
         :type Width: int
         :param Height: 流画面高，取值范围[2,3000]
@@ -996,7 +1177,7 @@ class MixStream(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 是否开启混流
         :type Enabled: bool
         :param DisableAudio: 是否禁用音频混流
@@ -1042,7 +1223,7 @@ class OmittedDuration(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoTime: 录制暂停时间戳对应的视频播放时间(单位: 毫秒)
         :type VideoTime: int
         :param PauseTime: 录制暂停时间戳(单位: 毫秒)
@@ -1074,7 +1255,7 @@ class PauseOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 实时录制任务 Id
@@ -1102,7 +1283,7 @@ class PauseOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1119,7 +1300,7 @@ class RecordControl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 设置是否开启录制控制参数，只有设置为true的时候，录制控制参数才生效。
         :type Enabled: bool
         :param DisableRecord: 设置是否禁用录制的全局控制参数。一般与`StreamControls`参数配合使用。
@@ -1179,7 +1360,7 @@ class ResumeOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 恢复录制的实时录制任务 Id
@@ -1207,7 +1388,7 @@ class ResumeOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1224,7 +1405,7 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         :param CallbackKey: 设置实时录制回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
@@ -1252,7 +1433,7 @@ class SetOnlineRecordCallbackKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1269,7 +1450,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param Callback: 实时录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
@@ -1297,7 +1478,7 @@ class SetOnlineRecordCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1314,7 +1495,7 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         :param CallbackKey: 设置文档转码回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
@@ -1342,7 +1523,7 @@ class SetTranscodeCallbackKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1359,7 +1540,7 @@ class SetTranscodeCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param Callback: 文档转码进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
@@ -1388,7 +1569,7 @@ class SetTranscodeCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1405,7 +1586,7 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         :param CallbackKey: 设置视频生成回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
@@ -1433,7 +1614,7 @@ class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1450,7 +1631,7 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param Callback: 课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
@@ -1478,7 +1659,7 @@ class SetVideoGenerationTaskCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1495,7 +1676,7 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的SdkAppId
         :type SdkAppId: int
         :param CallbackKey: 设置白板推流回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
@@ -1523,7 +1704,7 @@ class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1540,7 +1721,7 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param Callback: 白板推流任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
@@ -1568,7 +1749,7 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1579,13 +1760,125 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SnapshotCOS(AbstractModel):
+    """板书文件存储cos参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: cos所在腾讯云帐号uin
+        :type Uin: int
+        :param Region: cos所在地区
+        :type Region: str
+        :param Bucket: cos存储桶名称
+        :type Bucket: str
+        :param TargetDir: 板书文件存储根目录
+        :type TargetDir: str
+        :param Domain: CDN加速域名
+        :type Domain: str
+        """
+        self.Uin = None
+        self.Region = None
+        self.Bucket = None
+        self.TargetDir = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        self.TargetDir = params.get("TargetDir")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotResult(AbstractModel):
+    """白板板书结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 任务执行错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: str
+        :param ErrorMessage: 任务执行错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param Total: 快照生成图片总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Snapshots: 快照图片链接列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Snapshots: list of str
+        """
+        self.ErrorCode = None
+        self.ErrorMessage = None
+        self.Total = None
+        self.Snapshots = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.Total = params.get("Total")
+        self.Snapshots = params.get("Snapshots")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotWhiteboard(AbstractModel):
+    """生成白板板书时的白板参数，例如白板宽高等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Width: 白板宽度大小，默认为1280，有效取值范围[0，2560]
+        :type Width: int
+        :param Height: 白板高度大小，默认为720，有效取值范围[0，2560]
+        :type Height: int
+        :param InitParams: 白板初始化参数的JSON转义字符串，透传到白板 SDK
+        :type InitParams: str
+        """
+        self.Width = None
+        self.Height = None
+        self.InitParams = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.InitParams = params.get("InitParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartOnlineRecordRequest(AbstractModel):
     """StartOnlineRecord请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param RoomId: 需要录制的房间号，取值范围: (1, 4294967295)
@@ -1686,7 +1979,7 @@ class StartOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 录制任务Id
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1707,7 +2000,7 @@ class StartWhiteboardPushRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param RoomId: 需要推流白板的房间号，取值范围: (1, 4294967295)
@@ -1831,7 +2124,7 @@ class StartWhiteboardPushResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 推流任务Id
         :type TaskId: str
         :param Backup: 备份任务结果参数
@@ -1857,7 +2150,7 @@ class StopOnlineRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 需要停止录制的任务 Id
@@ -1885,7 +2178,7 @@ class StopOnlineRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1902,7 +2195,7 @@ class StopWhiteboardPushRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param TaskId: 需要停止的白板推流任务 Id
@@ -1930,7 +2223,7 @@ class StopWhiteboardPushResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Backup: 备份任务相关参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Backup: str
@@ -1952,7 +2245,7 @@ class StreamControl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamId: 视频流ID
 视频流ID的取值含义如下：
 1. tic_record_user - 表示白板视频流
@@ -2009,7 +2302,7 @@ class StreamLayout(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayoutParams: 流布局配置参数
         :type LayoutParams: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
         :param InputStreamId: 视频流ID
@@ -2055,7 +2348,7 @@ class TimeValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: Unix时间戳，单位秒
         :type Time: int
         :param Value: 查询指标对应当前时间的值
@@ -2083,7 +2376,7 @@ class VideoInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoPlayTime: 视频开始播放的时间（单位：毫秒）
         :type VideoPlayTime: int
         :param VideoSize: 视频大小（字节）
@@ -2148,7 +2441,7 @@ class Whiteboard(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Width: 实时录制结果里白板视频宽，默认为1280
         :type Width: int
         :param Height: 实时录制结果里白板视频高，默认为960
@@ -2180,7 +2473,7 @@ class WhiteboardPushBackupParam(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PushUserId: 用于白板推流服务进房的用户ID，
 该ID必须是一个单独的未在SDK中使用的ID，白板推流服务将使用这个用户ID进入房间进行白板推流，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常推流。
         :type PushUserId: str

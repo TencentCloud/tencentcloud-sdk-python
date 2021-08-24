@@ -24,7 +24,7 @@ class Aspect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 维度名字
         :type Name: str
         :param Score: 维度得分
@@ -56,7 +56,7 @@ class CompostionContext(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 作文内容
         :type Content: str
         :param CorrectData: 批改结果
@@ -97,7 +97,7 @@ class CorrectData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Score: 总得分
         :type Score: float
         :param ScoreCat: 各项得分详情
@@ -140,7 +140,7 @@ class CorrectMultiImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片的url链接或base64数据。每张图片数据作为数组的一个元素，数组个数与图片个数保持一致。存放类别依据InputType而定，url与base64编码不能混合使用。
         :type Image: list of str
         :param InputType: 输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据。
@@ -204,7 +204,7 @@ class CorrectMultiImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 接口返回数据
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -227,7 +227,7 @@ class DescribeTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务 ID
         :type TaskId: str
         :param EccAppid: 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数（暂时无需传入）。
@@ -255,7 +255,7 @@ class DescribeTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 作文识别文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
@@ -288,7 +288,7 @@ class ECCRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 作文文本，必填
         :type Content: str
         :param Title: 作文题目，可选参数
@@ -344,7 +344,7 @@ class ECCResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 整体的批改结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
@@ -373,7 +373,7 @@ class EHOCRRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片所在的url或base64编码后的图像数据，依据InputType而定
         :type Image: str
         :param InputType: 输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据
@@ -437,7 +437,7 @@ class EHOCRResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 接口返回数据
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -460,7 +460,7 @@ class ErrorCoordinate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Coordinate: 维度单词坐标
         :type Coordinate: list of int
         """
@@ -484,7 +484,7 @@ class ScoreCategory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Words: 词汇维度
         :type Words: :class:`tencentcloud.ecc.v20181213.models.Aspect`
         :param Sentences: 句子维度
@@ -536,7 +536,7 @@ class SentenceCom(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Suggestions: 句子错误纠正信息
         :type Suggestions: list of SentenceSuggest
         :param Sentence: 句子信息
@@ -571,7 +571,7 @@ class SentenceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sentence: 英语句子
         :type Sentence: str
         :param ParaID: 段落id
@@ -603,7 +603,7 @@ class SentenceSuggest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型
         :type Type: str
         :param ErrorType: 错误类型

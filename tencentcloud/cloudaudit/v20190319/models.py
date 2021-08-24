@@ -24,7 +24,7 @@ class AttributeKeyDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LabelType: 输入框类型
         :type LabelType: str
         :param Starter: 初始化展示
@@ -64,7 +64,7 @@ class AuditSummary(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditStatus: 跟踪集状态，1：开启，0：关闭
         :type AuditStatus: int
         :param CosBucketName: COS存储桶名称
@@ -100,7 +100,7 @@ class CmqRegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CmqRegionName: 地域描述
         :type CmqRegionName: str
         :param CmqRegion: cmq地域
@@ -128,7 +128,7 @@ class CosRegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosRegion: cos地域
         :type CosRegion: str
         :param CosRegionName: 地域描述
@@ -156,7 +156,7 @@ class CreateAuditRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :type IsEnableCmqNotify: int
         :param ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
@@ -228,7 +228,7 @@ class CreateAuditResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 是否创建成功。
         :type IsSuccess: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -249,7 +249,7 @@ class DeleteAuditRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditName: 跟踪集名称
         :type AuditName: str
         """
@@ -273,7 +273,7 @@ class DeleteAuditResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 是否删除成功
         :type IsSuccess: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -294,7 +294,7 @@ class DescribeAuditRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditName: 跟踪集名称
         :type AuditName: str
         """
@@ -318,7 +318,7 @@ class DescribeAuditResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。
         :type IsEnableCmqNotify: int
         :param ReadWriteAttribute: 管理事件读写属性，1：只读，2：只写，3：全部
@@ -387,7 +387,7 @@ class DescribeEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 起始时间戳（单位秒，不超过当前时间 90 天）
         :type StartTime: int
         :param EndTime: 结束时间戳（单位秒，查询时间跨度小于 30 天）
@@ -436,7 +436,7 @@ class DescribeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListOver: 日志集合是否结束
         :type ListOver: bool
         :param NextToken: 查看更多日志的凭证
@@ -471,7 +471,7 @@ class Event(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 日志ID
         :type EventId: str
         :param Username: 用户名
@@ -563,7 +563,7 @@ class GetAttributeKeyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WebsiteType: 网站类型，取值范围是zh和en。如果不传值默认zh
         :type WebsiteType: str
         """
@@ -587,7 +587,7 @@ class GetAttributeKeyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttributeKeyDetails: AttributeKey的有效取值范围
         :type AttributeKeyDetails: list of AttributeKeyDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -619,7 +619,7 @@ class InquireAuditCreditResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditAmount: 可创建跟踪集的数量
         :type AuditAmount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -640,7 +640,7 @@ class KeyMetadata(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名
         :type Alias: str
         :param KeyId: CMK的全局唯一标识
@@ -674,7 +674,7 @@ class ListAuditsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditSummarys: 查询跟踪集概要集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditSummarys: list of AuditSummary
@@ -701,7 +701,7 @@ class ListCmqEnableRegionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WebsiteType: 站点类型。zh表示中国区，en表示国际区。默认中国区。
         :type WebsiteType: str
         """
@@ -725,7 +725,7 @@ class ListCmqEnableRegionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnableRegions: 云审计支持的cmq的可用区
         :type EnableRegions: list of CmqRegionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -751,7 +751,7 @@ class ListCosEnableRegionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WebsiteType: 站点类型。zh表示中国区，en表示国际区。默认中国区。
         :type WebsiteType: str
         """
@@ -775,7 +775,7 @@ class ListCosEnableRegionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnableRegions: 云审计支持的cos可用区
         :type EnableRegions: list of CosRegionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -801,7 +801,7 @@ class ListKeyAliasByRegionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KmsRegion: Kms地域
         :type KmsRegion: str
         :param Limit: 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
@@ -833,7 +833,7 @@ class ListKeyAliasByRegionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: CMK的总数量
         :type TotalCount: int
         :param KeyMetadatas: 密钥别名
@@ -863,7 +863,7 @@ class LookUpEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间
         :type StartTime: int
         :param EndTime: 结束时间
@@ -912,7 +912,7 @@ class LookUpEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NextToken: 查看更多日志的凭证
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
@@ -949,7 +949,7 @@ class LookupAttribute(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttributeKey: str
@@ -979,7 +979,7 @@ class Resource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: 资源类型
         :type ResourceType: str
         :param ResourceName: 资源名称
@@ -1008,7 +1008,7 @@ class StartLoggingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditName: 跟踪集名称
         :type AuditName: str
         """
@@ -1032,7 +1032,7 @@ class StartLoggingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 是否开启成功
         :type IsSuccess: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1053,7 +1053,7 @@ class StopLoggingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditName: 跟踪集名称
         :type AuditName: str
         """
@@ -1077,7 +1077,7 @@ class StopLoggingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 是否关闭成功
         :type IsSuccess: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1098,7 +1098,7 @@ class UpdateAuditRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditName: 跟踪集名称
         :type AuditName: str
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
@@ -1170,7 +1170,7 @@ class UpdateAuditResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSuccess: 是否更新成功
         :type IsSuccess: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

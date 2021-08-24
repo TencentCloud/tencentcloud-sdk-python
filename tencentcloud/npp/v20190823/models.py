@@ -24,7 +24,7 @@ class CallBackCdr(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallId: 呼叫通话 ID
         :type CallId: str
         :param Src: 主叫号码
@@ -111,7 +111,7 @@ class CallBackPhoneCode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Nation: 国家码，统一以 00 开头
         :type Nation: str
         :param Phone: 号码（固话区号前加 0，如075586013388）
@@ -139,7 +139,7 @@ class CreateCallBackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param Src: 主叫号码(必须为 11 位手机号，号码前加 0086，如 008613631686024)
@@ -222,7 +222,7 @@ class CreateCallBackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallId: 话单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallId: str
@@ -263,7 +263,7 @@ class DelVirtualNumRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param BindId: 双方号码 + 中间号绑定 ID，该 ID 全局唯一
@@ -295,7 +295,7 @@ class DelVirtualNumResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 错误码
         :type ErrorCode: str
         :param Msg: 错误信息
@@ -331,7 +331,7 @@ class DeleteCallBackRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param CallId: 回拨请求响应中返回的 callId
@@ -363,7 +363,7 @@ class DeleteCallBackResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 错误码
         :type ErrorCode: str
         :param Msg: 错误原因
@@ -394,7 +394,7 @@ class DescribeCallBackCdrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param CallId: 回拨请求响应中返回的 callId，按 callId 查询该话单详细信息
@@ -434,7 +434,7 @@ class DescribeCallBackCdrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cdr: 话单列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cdr: list of CallBackCdr
@@ -476,7 +476,7 @@ class DescribeCallBackStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param CallId: 回拨请求响应中返回的 callId
@@ -516,7 +516,7 @@ class DescribeCallBackStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 错误码
         :type ErrorCode: str
         :param Msg: 错误信息
@@ -561,7 +561,7 @@ class DescribeCallerDisplayListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         """
@@ -585,7 +585,7 @@ class DescribeCallerDisplayListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: appid
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
@@ -626,7 +626,7 @@ class Get400CdrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param CallId: 通话唯一标识 callId，即直拨呼叫响应中返回的 callId
@@ -666,7 +666,7 @@ class Get400CdrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 错误码
         :type ErrorCode: str
         :param Msg: 错误原因
@@ -707,7 +707,7 @@ class GetVirtualNumRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizAppId: 业务appid
         :type BizAppId: str
         :param Dst: 被叫号码(号码前加 0086，如 008613631686024)
@@ -795,7 +795,7 @@ class GetVirtualNumResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 错误码
         :type ErrorCode: str
         :param BindId: 绑定 ID，该 ID 全局唯一
@@ -836,7 +836,7 @@ class KeyList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 用户按键（0-9、*、#、A-D)
         :type Key: str
         :param Operate: 1: 呼通被叫 2：interruptPrompt 重播提示 3：拆线
@@ -864,7 +864,7 @@ class RreCallerHandle(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReadPrompt: 呼叫主叫以后，给主叫用户的语音提示，播放该提示时用户所有按键无效
         :type ReadPrompt: str
         :param InterruptPrompt: 可中断提示，播放该提示时，用户可以按键
@@ -913,7 +913,7 @@ class VirturalNumCdr(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallId: 呼叫通话 ID
         :type CallId: str
         :param BindId: 双方号码 + 中间号绑定 ID，该 ID 全局唯一

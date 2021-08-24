@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreatePicture(self, request):
-        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
+        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁新增自定义背景图或水印，可通过此接口上传新的图片素材。无需频繁新增图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
         :param request: Request instance for CreatePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreatePictureRequest`
@@ -83,7 +83,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeletePicture(self, request):
-        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
+        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁删除自定义背景图或水印，可通过此接口删除已上传的图片。无需频繁删除图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
         :param request: Request instance for DeletePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeletePictureRequest`
@@ -140,7 +140,7 @@ class TrtcClient(AbstractClient):
 
     def DescribeCallDetail(self, request):
         """查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询实时数据时，查询起止时间不超过1个小时，每次查询用户不超过6个，支持跨天查询。DataType，UserIds为null时，默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
-        注意：不建议依赖接口做实时类业务逻辑处理
+        **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
@@ -224,7 +224,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribePicture(self, request):
-        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
+        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁查找自定义背景图或水印信息，可通过此接口查找已上传的图片信息。无需频繁查找图片信息的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中查看。
 
         :param request: Request instance for DescribePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribePictureRequest`
@@ -370,7 +370,7 @@ class TrtcClient(AbstractClient):
 
     def DescribeRoomInformation(self, request):
         """查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
-        注意：不建议依赖接口做实时类业务逻辑处理
+        **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 
         :param request: Request instance for DescribeRoomInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationRequest`
@@ -463,7 +463,7 @@ class TrtcClient(AbstractClient):
 
     def DescribeUserInformation(self, request):
         """查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。
-        注意：不建议依赖接口做实时类业务逻辑处理
+        **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 
         :param request: Request instance for DescribeUserInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInformationRequest`
@@ -547,7 +547,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyPicture(self, request):
-        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
+        """如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁修改自定义背景图或水印素材，可通过此接口修改已上传的图片。无需频繁修改图片素材的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
         :param request: Request instance for ModifyPicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureRequest`
@@ -648,7 +648,9 @@ class TrtcClient(AbstractClient):
         - 画中画模板：适用于混合大小两路视频画面和其他用户混音，或者混合一路大画面和其他用户混音的场景。小画面悬浮于大画面之上，可以指定大小画面的用户以及小画面的显示位置，最多支持2个画面。
         - 自定义模板：适用于在混流中指定用户的画面位置，或者预设视频画面位置的场景。当预设位置指定用户时，排版引擎会该用户预留位置；当预设位置未指定用户时，排版引擎会根据进房间顺序自动填充。预设位置填满时，不再混合其他用户的画面和声音。自定义模板启用占位图功能时（LayoutParams中的PlaceHolderMode设置成1），在预设位置的用户没有上行视频时可显示对应的占位图（PlaceImageId）。
 
-        注意：2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+        注意：
+        1、2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+        2、客户端混流和服务端混流不能混用。
 
         :param request: Request instance for StartMCUMixTranscode.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeRequest`
@@ -693,7 +695,9 @@ class TrtcClient(AbstractClient):
         - 画中画模板：适用于混合大小两路视频画面和其他用户混音，或者混合一路大画面和其他用户混音的场景。小画面悬浮于大画面之上，可以指定大小画面的用户以及小画面的显示位置。
         - 自定义模板：适用于在混流中指定用户的画面位置，或者预设视频画面位置的场景。当预设位置指定用户时，排版引擎会该用户预留位置；当预设位置未指定用户时，排版引擎会根据进房间顺序自动填充。预设位置填满时，不再混合其他用户的画面和声音。自定义模板启用占位图功能时（LayoutParams中的PlaceHolderMode设置成1），在预设位置的用户没有上行视频时可显示对应的占位图（PlaceImageId）。
 
-        注意：2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+        注意：
+        1、2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+        2、客户端混流和服务端混流不能混用。
 
         :param request: Request instance for StartMCUMixTranscodeByStrRoomId.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StartMCUMixTranscodeByStrRoomIdRequest`

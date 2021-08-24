@@ -24,7 +24,7 @@ class CosToken(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID
         :type RequestId: str
         :param Bucket: 存储桶桶名
@@ -80,7 +80,7 @@ class CreateCosTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务ID
         :type ServiceId: str
         :param VersionId: 服务版本ID
@@ -120,7 +120,7 @@ class CreateCosTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为CosToken对象，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`
@@ -144,7 +144,7 @@ class CreateCosTokenV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务ID
         :type ServiceId: str
         :param PkgName: 包名
@@ -184,7 +184,7 @@ class CreateCosTokenV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为CosToken对象，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tem.v20201221.models.CosToken`
@@ -208,7 +208,7 @@ class CreateNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceName: 命名空间名称
         :type NamespaceName: str
         :param Vpc: 私有网络名称
@@ -256,7 +256,7 @@ class CreateNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为命名空间ID，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
@@ -278,7 +278,7 @@ class CreateResourceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: 命名空间 Id
         :type NamespaceId: str
         :param ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
@@ -314,7 +314,7 @@ class CreateResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功与否
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
@@ -336,7 +336,7 @@ class CreateServiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceName: 服务名
         :type ServiceName: str
         :param Description: 描述
@@ -405,7 +405,7 @@ class CreateServiceV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 服务code
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -426,7 +426,7 @@ class DeleteIngressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: tem NamespaceId
         :type NamespaceId: str
         :param EksNamespace: eks namespace 名
@@ -462,7 +462,7 @@ class DeleteIngressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 是否删除成功
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -483,7 +483,7 @@ class DeployServiceV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务ID
         :type ServiceId: str
         :param ContainerPort: 容器端口
@@ -548,6 +548,16 @@ class DeployServiceV2Request(AbstractModel):
         :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
         :param VersionId: 要回滚到的历史版本id
         :type VersionId: str
+        :param PostStart: 启动后执行的脚本
+        :type PostStart: str
+        :param PreStop: 停止前执行的脚本
+        :type PreStop: str
+        :param DeployStrategyConf: 分批发布策略配置
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20201221.models.DeployStrategyConf`
+        :param Liveness: 存活探针配置
+        :type Liveness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
+        :param Readiness: 就绪探针配置
+        :type Readiness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -578,6 +588,11 @@ class DeployServiceV2Request(AbstractModel):
         self.SettingConfs = None
         self.EksService = None
         self.VersionId = None
+        self.PostStart = None
+        self.PreStop = None
+        self.DeployStrategyConf = None
+        self.Liveness = None
+        self.Readiness = None
 
 
     def _deserialize(self, params):
@@ -641,6 +656,17 @@ class DeployServiceV2Request(AbstractModel):
             self.EksService = EksService()
             self.EksService._deserialize(params.get("EksService"))
         self.VersionId = params.get("VersionId")
+        self.PostStart = params.get("PostStart")
+        self.PreStop = params.get("PreStop")
+        if params.get("DeployStrategyConf") is not None:
+            self.DeployStrategyConf = DeployStrategyConf()
+            self.DeployStrategyConf._deserialize(params.get("DeployStrategyConf"))
+        if params.get("Liveness") is not None:
+            self.Liveness = HealthCheckConfig()
+            self.Liveness._deserialize(params.get("Liveness"))
+        if params.get("Readiness") is not None:
+            self.Readiness = HealthCheckConfig()
+            self.Readiness._deserialize(params.get("Readiness"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -656,7 +682,7 @@ class DeployServiceV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 版本ID（前端可忽略）
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -671,13 +697,49 @@ class DeployServiceV2Response(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeployStrategyConf(AbstractModel):
+    """分批发布策略配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalBatchCount: 总分批数
+        :type TotalBatchCount: int
+        :param BetaBatchNum: beta分批实例数
+        :type BetaBatchNum: int
+        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，beta分批一定是手动的，这里的策略指定的是剩余批次
+        :type DeployStrategyType: int
+        :param BatchInterval: 每批暂停间隔
+        :type BatchInterval: int
+        """
+        self.TotalBatchCount = None
+        self.BetaBatchNum = None
+        self.DeployStrategyType = None
+        self.BatchInterval = None
+
+
+    def _deserialize(self, params):
+        self.TotalBatchCount = params.get("TotalBatchCount")
+        self.BetaBatchNum = params.get("BetaBatchNum")
+        self.DeployStrategyType = params.get("DeployStrategyType")
+        self.BatchInterval = params.get("BatchInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeIngressRequest(AbstractModel):
     """DescribeIngress请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: tem namespaceId
         :type NamespaceId: str
         :param EksNamespace: eks namespace 名
@@ -713,7 +775,7 @@ class DescribeIngressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: Ingress 规则配置
         :type Result: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -736,7 +798,7 @@ class DescribeIngressesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: namespace id
         :type NamespaceId: str
         :param EksNamespace: namespace
@@ -772,7 +834,7 @@ class DescribeIngressesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: ingress 数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of IngressInfo
@@ -799,7 +861,7 @@ class DescribeNamespacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 分页limit
         :type Limit: int
         :param Offset: 分页下标
@@ -831,7 +893,7 @@ class DescribeNamespacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
         :type Result: :class:`tencentcloud.tem.v20201221.models.NamespacePage`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -854,7 +916,7 @@ class DescribeRelatedIngressesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: 环境 id
         :type NamespaceId: str
         :param EksNamespace: EKS namespace
@@ -890,7 +952,7 @@ class DescribeRelatedIngressesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: ingress 数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of IngressInfo
@@ -917,7 +979,7 @@ class DescribeRunPodPage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页下标
         :type Offset: int
         :param Limit: 单页条数
@@ -962,7 +1024,7 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: 环境id
         :type NamespaceId: str
         :param ServiceId: 服务名id
@@ -1013,7 +1075,7 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
         :type Result: :class:`tencentcloud.tem.v20201221.models.DescribeRunPodPage`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1036,7 +1098,7 @@ class EksService(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: service name
         :type Name: str
         :param Ports: 可用端口
@@ -1116,7 +1178,7 @@ class EsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MinAliveInstances: 最小实例数
         :type MinAliveInstances: int
         :param MaxAliveInstances: 最大实例数
@@ -1156,7 +1218,7 @@ class GenerateDownloadUrlRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务ID
         :type ServiceId: str
         :param PkgName: 包名
@@ -1192,7 +1254,7 @@ class GenerateDownloadUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 包下载临时链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
@@ -1208,13 +1270,65 @@ class GenerateDownloadUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HealthCheckConfig(AbstractModel):
+    """健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 支持的健康检查类型，如 HttpGet，TcpSocket，Exec
+        :type Type: str
+        :param Protocol: 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS
+        :type Protocol: str
+        :param Path: 仅当健康检查类型为 HttpGet 时有效，表示请求路径
+        :type Path: str
+        :param Exec: 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容
+        :type Exec: str
+        :param Port: 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径
+        :type Port: int
+        :param InitialDelaySeconds: 检查延迟开始时间，单位为秒，默认为 0
+        :type InitialDelaySeconds: int
+        :param TimeoutSeconds: 超时时间，单位为秒，默认为 1
+        :type TimeoutSeconds: int
+        :param PeriodSeconds: 间隔时间，单位为秒，默认为 10
+        :type PeriodSeconds: int
+        """
+        self.Type = None
+        self.Protocol = None
+        self.Path = None
+        self.Exec = None
+        self.Port = None
+        self.InitialDelaySeconds = None
+        self.TimeoutSeconds = None
+        self.PeriodSeconds = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Protocol = params.get("Protocol")
+        self.Path = params.get("Path")
+        self.Exec = params.get("Exec")
+        self.Port = params.get("Port")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.TimeoutSeconds = params.get("TimeoutSeconds")
+        self.PeriodSeconds = params.get("PeriodSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IngressInfo(AbstractModel):
     """Ingress 配置
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: tem namespaceId
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
@@ -1294,7 +1408,7 @@ class IngressRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Http: ingress rule value
         :type Http: :class:`tencentcloud.tem.v20201221.models.IngressRuleValue`
         :param Host: host 地址
@@ -1329,7 +1443,7 @@ class IngressRuleBackend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceName: eks service 名
         :type ServiceName: str
         :param ServicePort: eks service 端口
@@ -1357,7 +1471,7 @@ class IngressRulePath(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Path: path 信息
         :type Path: str
         :param Backend: backend 配置
@@ -1387,7 +1501,7 @@ class IngressRuleValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Paths: rule 整体配置
         :type Paths: list of IngressRulePath
         """
@@ -1416,7 +1530,7 @@ class IngressTls(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Hosts: host 数组, 空数组表示全部域名的默认证书
         :type Hosts: list of str
         :param SecretName: secret name，如使用证书，则填空字符串
@@ -1448,7 +1562,7 @@ class LogOutputConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OutputType: 日志消费端类型
         :type OutputType: str
         :param ClsLogsetName: cls日志集
@@ -1488,7 +1602,7 @@ class ModifyIngressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ingress: Ingress 规则配置
         :type Ingress: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
         :param SourceChannel: 来源渠道
@@ -1518,7 +1632,7 @@ class ModifyIngressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
@@ -1540,7 +1654,7 @@ class ModifyNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: 环境id
         :type NamespaceId: str
         :param NamespaceName: 命名空间名称
@@ -1584,7 +1698,7 @@ class ModifyNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功时为命名空间ID，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
@@ -1606,7 +1720,7 @@ class ModifyServiceInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务ID
         :type ServiceId: str
         :param Description: 描述
@@ -1638,7 +1752,7 @@ class ModifyServiceInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 成功与否
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
@@ -1660,7 +1774,7 @@ class MountedSettingConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConfigDataName: 配置名称
         :type ConfigDataName: str
         :param MountedPath: 挂载路径
@@ -1697,7 +1811,7 @@ class NamespacePage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Records: 分页内容
         :type Records: list of TemNamespaceInfo
         :param Total: 总数
@@ -1738,7 +1852,7 @@ class Pair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 建
         :type Key: str
         :param Value: 值
@@ -1766,7 +1880,7 @@ class PortMapping(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Port: 端口
         :type Port: int
         :param TargetPort: 映射端口
@@ -1798,7 +1912,7 @@ class RestartServiceRunPodRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: 环境id
         :type NamespaceId: str
         :param ServiceId: 服务名id
@@ -1846,7 +1960,7 @@ class RestartServiceRunPodResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
@@ -1868,7 +1982,7 @@ class RunVersionPod(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Webshell: shell地址
         :type Webshell: str
         :param PodId: pod的id
@@ -1885,6 +1999,9 @@ class RunVersionPod(AbstractModel):
         :param DeployVersion: 部署版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployVersion: str
+        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
         """
         self.Webshell = None
         self.PodId = None
@@ -1893,6 +2010,7 @@ class RunVersionPod(AbstractModel):
         self.PodIp = None
         self.Zone = None
         self.DeployVersion = None
+        self.RestartCount = None
 
 
     def _deserialize(self, params):
@@ -1903,6 +2021,7 @@ class RunVersionPod(AbstractModel):
         self.PodIp = params.get("PodIp")
         self.Zone = params.get("Zone")
         self.DeployVersion = params.get("DeployVersion")
+        self.RestartCount = params.get("RestartCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1918,7 +2037,7 @@ class StorageConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StorageVolName: 存储卷名称
         :type StorageVolName: str
         :param StorageVolPath: 存储卷路径
@@ -1951,7 +2070,7 @@ class StorageMountConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VolumeName: 数据卷名
         :type VolumeName: str
         :param MountPath: 数据卷绑定路径
@@ -1979,7 +2098,7 @@ class TemNamespaceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespaceId: 命名空间id
         :type NamespaceId: str
         :param Channel: 渠道

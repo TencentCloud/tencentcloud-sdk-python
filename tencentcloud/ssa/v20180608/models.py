@@ -24,7 +24,7 @@ class AggregationObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型
         :type Type: str
         :param Bucket: 数组
@@ -57,7 +57,7 @@ class Asset(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AssetType: 资产类型
         :type AssetType: str
         :param Name: 名字
@@ -220,7 +220,7 @@ class AssetDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AssetType: 资产类型
         :type AssetType: str
         :param Name: 名字
@@ -458,7 +458,7 @@ class AssetList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 总数
         :type Total: int
         :param List: 资产数组
@@ -491,7 +491,7 @@ class Bucket(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: key
         :type Key: str
         :param Count: 数量
@@ -519,7 +519,7 @@ class CheckAssetItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项下资产组ID
         :type Id: int
         :param Instid: 资产组实例id
@@ -592,7 +592,7 @@ class CheckConfigDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项Id
         :type Id: str
         :param CheckName: 检查项名称
@@ -668,7 +668,7 @@ class ComplianceCheckDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项ID
         :type Id: str
         :param Category: 检查项类别
@@ -787,7 +787,7 @@ class DataAssetMapping(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AssetIp: 资产主IP地址(公网IP)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetIp: str
@@ -902,7 +902,7 @@ class DataCheck(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项唯一标识符uuid
         :type Id: str
         :param Name: 检查项名称
@@ -969,7 +969,7 @@ class DataCompliance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 等保唯一标识符
         :type Id: str
         :param CheckItemId: 检查项唯一标识符
@@ -1066,7 +1066,7 @@ class DataEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldIdMd5: Md5值
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldIdMd5: str
@@ -1164,6 +1164,12 @@ class DataEvent(AbstractModel):
         :param SsaEventId: 事件Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SsaEventId: str
+        :param IsNewCfwEvent: 是否新接入的云防事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewCfwEvent: bool
+        :param Direction: 出入站方向
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Direction: str
         """
         self.OldIdMd5 = None
         self.EventName = None
@@ -1198,6 +1204,8 @@ class DataEvent(AbstractModel):
         self.SoarPlaybookType = None
         self.SoarRunId = None
         self.SsaEventId = None
+        self.IsNewCfwEvent = None
+        self.Direction = None
 
 
     def _deserialize(self, params):
@@ -1234,6 +1242,8 @@ class DataEvent(AbstractModel):
         self.SoarPlaybookType = params.get("SoarPlaybookType")
         self.SoarRunId = params.get("SoarRunId")
         self.SsaEventId = params.get("SsaEventId")
+        self.IsNewCfwEvent = params.get("IsNewCfwEvent")
+        self.Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1249,7 +1259,7 @@ class DescribeAssetDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Params: 查询过滤参数
         :type Params: str
         """
@@ -1273,7 +1283,7 @@ class DescribeAssetDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 资产详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ssa.v20180608.models.AssetDetail`
@@ -1297,7 +1307,7 @@ class DescribeAssetListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Params: 查询过滤参数
         :type Params: str
         """
@@ -1321,7 +1331,7 @@ class DescribeAssetListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AssetList: 资产列表
         :type AssetList: :class:`tencentcloud.ssa.v20180608.models.AssetList`
         :param AggregationData: 聚合数据
@@ -1357,7 +1367,7 @@ class DescribeAssetsMappingListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Params: 请求参数
         :type Params: str
         """
@@ -1381,7 +1391,7 @@ class DescribeAssetsMappingListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 资产测绘列表
         :type Data: list of DataAssetMapping
         :param TotalCount: 资产测绘总数
@@ -1416,7 +1426,7 @@ class DescribeCheckConfigAssetListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项UUID
         :type Id: str
         :param Offset: 页码
@@ -1466,7 +1476,7 @@ class DescribeCheckConfigAssetListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 资产列表总数
         :type Total: int
         :param CheckAssetsList: 资产列表项
@@ -1497,7 +1507,7 @@ class DescribeCheckConfigDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项ID
         :type Id: str
         """
@@ -1521,7 +1531,7 @@ class DescribeCheckConfigDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CheckConfigDetail: 检查项详情
         :type CheckConfigDetail: :class:`tencentcloud.ssa.v20180608.models.CheckConfigDetail`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1544,7 +1554,7 @@ class DescribeComplianceAssetListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 页码
         :type Offset: int
         :param Limit: 每页数量
@@ -1594,7 +1604,7 @@ class DescribeComplianceAssetListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CheckAssetsList: 资产组列表
         :type CheckAssetsList: list of CheckAssetItem
         :param Total: 资产组列表总数
@@ -1624,7 +1634,7 @@ class DescribeComplianceDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 检查项uuid
         :type Id: str
         """
@@ -1648,7 +1658,7 @@ class DescribeComplianceDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CheckConfigDetail: 合规管理检查项详情
         :type CheckConfigDetail: :class:`tencentcloud.ssa.v20180608.models.ComplianceCheckDetail`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1671,7 +1681,7 @@ class DescribeComplianceListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filter: 搜索过滤条件
         :type Filter: str
         """
@@ -1695,7 +1705,7 @@ class DescribeComplianceListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 检查项列表
         :type Data: list of DataCompliance
         :param AssetTotalNum: 总检查资产数
@@ -1731,7 +1741,7 @@ class DescribeConfigListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filter: 搜索过滤条件
         :type Filter: str
         """
@@ -1755,7 +1765,7 @@ class DescribeConfigListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 检查项列表
         :type Data: list of DataCheck
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1781,7 +1791,7 @@ class DescribeEventDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Index: 事件索引名
         :type Index: str
         :param Id: 事件id
@@ -1821,7 +1831,7 @@ class DescribeEventDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 事件详情
         :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1842,7 +1852,7 @@ class DescribeLeakDetectionListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 筛选条件
         :type Filters: list of Filter
         :param Limit: 每页数量
@@ -1887,7 +1897,7 @@ class DescribeLeakDetectionListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param List: 数据列表
@@ -1912,7 +1922,7 @@ class DescribeSafetyEventListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filter: 搜索过滤查询参数
         :type Filter: str
         :param Limit: 限制数目
@@ -1964,7 +1974,7 @@ class DescribeSafetyEventListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 事件列表
         :type List: list of DataEvent
         :param Total: 事件总条数
@@ -1988,13 +1998,43 @@ class DescribeSafetyEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSocCspmComplianceRequest(AbstractModel):
+    """DescribeSocCspmCompliance请求参数结构体
+
+    """
+
+
+class DescribeSocCspmComplianceResponse(AbstractModel):
+    """DescribeSocCspmCompliance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.SocComplianceInfoResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = SocComplianceInfoResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVulDetailRequest(AbstractModel):
     """DescribeVulDetail请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param UniqId: 漏洞唯一标识符
         :type UniqId: str
         :param Source: 查看详情来源
@@ -2022,7 +2062,7 @@ class DescribeVulDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulType: 漏洞类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulType: int
@@ -2144,7 +2184,7 @@ class DescribeVulListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Params: 查询过滤参数
         :type Params: str
         """
@@ -2168,7 +2208,7 @@ class DescribeVulListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 漏洞列表
         :type Data: :class:`tencentcloud.ssa.v20180608.models.VulList`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2194,7 +2234,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -2226,7 +2266,7 @@ class SaDivulgeDataQueryPub(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: Id
         :type Id: str
         :param Uin: Uin
@@ -2310,7 +2350,7 @@ class SaDivulgeDataQueryPubList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Count: Count
         :type Count: int
         :param List: List
@@ -2343,7 +2383,7 @@ class SaDivulgeDataQueryPubRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueryKey: 模糊查询字段
         :type QueryKey: str
         :param EventName: 安全事件名称
@@ -2411,7 +2451,7 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 结果
         :type Data: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubList`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2428,13 +2468,188 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SocCheckItem(AbstractModel):
+    """SocCheckItem类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param LevelId: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelId: str
+        :param SuccessCount: 成功数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param FailCount: 失败数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailCount: int
+        """
+        self.Name = None
+        self.LevelId = None
+        self.SuccessCount = None
+        self.FailCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.LevelId = params.get("LevelId")
+        self.SuccessCount = params.get("SuccessCount")
+        self.FailCount = params.get("FailCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocComplianceInfoResp(AbstractModel):
+    """返回结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 合格项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of SocComplianceItem
+        """
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SocComplianceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocComplianceItem(AbstractModel):
+    """soc合规信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Item: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param StandardItem: 分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardItem: str
+        :param Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param Suggestion: 建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: str
+        :param ProStr: 产品字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProStr: str
+        :param Production: 产品数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Production: list of SocProductionItem
+        :param CheckItems: 配置项数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckItems: list of SocCheckItem
+        """
+        self.Item = None
+        self.Description = None
+        self.StandardItem = None
+        self.Result = None
+        self.Suggestion = None
+        self.ProStr = None
+        self.Production = None
+        self.CheckItems = None
+
+
+    def _deserialize(self, params):
+        self.Item = params.get("Item")
+        self.Description = params.get("Description")
+        self.StandardItem = params.get("StandardItem")
+        self.Result = params.get("Result")
+        self.Suggestion = params.get("Suggestion")
+        self.ProStr = params.get("ProStr")
+        if params.get("Production") is not None:
+            self.Production = []
+            for item in params.get("Production"):
+                obj = SocProductionItem()
+                obj._deserialize(item)
+                self.Production.append(obj)
+        if params.get("CheckItems") is not None:
+            self.CheckItems = []
+            for item in params.get("CheckItems"):
+                obj = SocCheckItem()
+                obj._deserialize(item)
+                self.CheckItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocProductionItem(AbstractModel):
+    """soc产品购买信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Index: 标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.Name = None
+        self.Index = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Index = params.get("Index")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """标签
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Fid: 数据库标识
         :type Fid: int
         :param Fname: 标签名称
@@ -2462,7 +2677,7 @@ class VulItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标识
         :type Id: str
         :param VulName: 漏洞名称
@@ -2621,7 +2836,7 @@ class VulList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表
         :type List: list of VulItem
         :param Total: 总数

@@ -54,6 +54,34 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAccessExport(self, request):
+        """本接口用于创建访问日志导出
+
+        :param request: Request instance for CreateAccessExport.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateAccessExportRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateAccessExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAccessExport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccessExportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAttackDownloadTask(self, request):
         """创建攻击日志下载任务
 
@@ -68,6 +96,34 @@ class WafClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAttackDownloadTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAccessExport(self, request):
+        """本接口用于删除访问日志导出
+
+        :param request: Request instance for DeleteAccessExport.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAccessExportRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteAccessExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAccessExport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAccessExportResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -166,6 +222,90 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAccessExports(self, request):
+        """本接口用于获取访问日志导出列表
+
+        :param request: Request instance for DescribeAccessExports.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessExportsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessExportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccessExports", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccessExportsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccessFastAnalysis(self, request):
+        """本接口用于访问日志的快速分析
+
+        :param request: Request instance for DescribeAccessFastAnalysis.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessFastAnalysisRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessFastAnalysisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccessFastAnalysis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccessFastAnalysisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccessIndex(self, request):
+        """本接口用于获取访问日志索引配置信息
+
+        :param request: Request instance for DescribeAccessIndex.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessIndexRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccessIndex", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccessIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCustomRules(self, request):
         """获取防护配置中的自定义策略列表
 
@@ -250,6 +390,34 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAccessPeriod(self, request):
+        """本接口用于修改访问日志保存期限
+
+        :param request: Request instance for ModifyAccessPeriod.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAccessPeriodRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyAccessPeriodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAccessPeriod", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccessPeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCustomRuleStatus(self, request):
         """开启或禁用自定义策略
 
@@ -264,6 +432,34 @@ class WafClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomRuleStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchAccessLog(self, request):
+        """本接口用于搜索WAF访问日志
+
+        :param request: Request instance for SearchAccessLog.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SearchAccessLogRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SearchAccessLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchAccessLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchAccessLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

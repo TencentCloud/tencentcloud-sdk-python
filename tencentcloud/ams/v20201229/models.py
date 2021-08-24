@@ -19,43 +19,40 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AudioResult(AbstractModel):
-    """音频输出参数
+    """音频审核输出参数
 
     """
 
     def __init__(self):
-        """
-        :param HitFlag: 是否命中
-0 未命中
-1 命中
+        r"""
+        :param HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及其他令人反感、不安全或不适宜的内容类型。
+        :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
-建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+        :param Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 得分，0-100
+        :param Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Text: 音频ASR文本
+        :param Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param Url: 音频片段存储URL，有效期为1天
+        :param Url: 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Duration: 音频时长
+        :param Duration: 该字段用于返回音频文件的时长，单位为秒。
         :type Duration: str
-        :param Extra: 拓展字段
+        :param Extra: 该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
         :type Extra: str
-        :param TextResults: 文本识别结果
+        :param TextResults: 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :type TextResults: list of AudioResultDetailTextResult
-        :param MoanResults: 音频呻吟检测结果
+        :param MoanResults: 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
         :type MoanResults: list of AudioResultDetailMoanResult
-        :param LanguageResults: 音频语言检测结果
+        :param LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :type LanguageResults: list of AudioResultDetailLanguageResult
         """
         self.HitFlag = None
@@ -108,25 +105,25 @@ class AudioResult(AbstractModel):
 
 
 class AudioResultDetailLanguageResult(AbstractModel):
-    """音频小语种检测结果
+    """音频语言种类检测结果
 
     """
 
     def __init__(self):
-        """
-        :param Label: 语言信息
+        r"""
+        :param Label: 该字段用于返回对应的语言种类信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 得分
+        :param Score: 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param StartTime: 开始时间
+        :param StartTime: 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为毫秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: float
-        :param EndTime: 结束时间
+        :param EndTime: 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为毫秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
-        :param SubLabelCode: 子标签码
+        :param SubLabelCode: *内测中，敬请期待*
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabelCode: str
         """
@@ -158,17 +155,17 @@ class AudioResultDetailMoanResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Label: 固定为Moan（呻吟）
+        r"""
+        :param Label: 该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 分数
+        :param Score: 该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
         :type Score: int
-        :param StartTime: 开始时间
+        :param StartTime: 该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为毫秒。
         :type StartTime: float
-        :param EndTime: 结束时间
+        :param EndTime: 该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为毫秒。
         :type EndTime: float
-        :param SubLabelCode: 子标签码
+        :param SubLabelCode: *内测中，敬请期待*
         :type SubLabelCode: str
         """
         self.Label = None
@@ -199,26 +196,27 @@ class AudioResultDetailTextResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Label: 标签
+        r"""
+        :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Keywords: 命中的关键词
+        :param Keywords: 该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param LibId: 命中的LibId
+        :param LibId: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 命中的LibName
+        :param LibName: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
-        :param Score: 得分
+        :param Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param Suggestion: 审核建议
+        :param Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param LibType: 词库类型 1 黑白库 2 自定义库
+        :param LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
         :type LibType: int
         """
         self.Label = None
@@ -248,18 +246,16 @@ class AudioResultDetailTextResult(AbstractModel):
 
 
 class AudioSegments(AbstractModel):
-    """声音段信息
+    """表示声音段信息
 
     """
 
     def __init__(self):
-        """
-        :param OffsetTime: 截帧时间, 单位：秒
-点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
-直播流：该值为时间戳，例如：1594650717
+        r"""
+        :param OffsetTime: 该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetTime: str
-        :param Result: 结果集
+        :param Result: 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ams.v20201229.models.AudioResult`
         """
@@ -288,12 +284,12 @@ class BucketInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Bucket: 腾讯云对象存储，存储桶名称
+        r"""
+        :param Bucket: 该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
         :type Bucket: str
-        :param Region: 地域
+        :param Region: 该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
         :type Region: str
-        :param Object: 对象Key
+        :param Object: 该字段用于标识腾讯云对象存储的对象Key,对象z作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
         :type Object: str
         """
         self.Bucket = None
@@ -320,8 +316,8 @@ class CancelTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: 任务ID
+        r"""
+        :param TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
         :type TaskId: str
         """
         self.TaskId = None
@@ -344,7 +340,7 @@ class CancelTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -361,7 +357,7 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
         :type BizType: str
         :param DataId: 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
@@ -408,7 +404,7 @@ class CreateAudioModerationSyncTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DataId: 请求接口时传入的数据标识
         :type DataId: str
         :param Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
@@ -477,16 +473,16 @@ class CreateAudioModerationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Tasks: 输入的任务信息，最多可以同时创建10个任务
+        r"""
+        :param Tasks: 该字段表示输入的音频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
         :type Tasks: list of TaskInput
-        :param BizType: 默认为：default，客户可以在音频审核控制台配置自己的BizType
+        :param BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
-        :param Type: 审核类型，这里可选：AUDIO (点播音频)和 LIVE_AUDIO（直播音频），默认为 AUDIIO
+        :param Type: 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
         :type Type: str
-        :param Seed: （可选）回调签名key，具体可以查看 回调签名示例
+        :param Seed: 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
         :type Seed: str
-        :param CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
+        :param CallbackUrl: 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
         :type CallbackUrl: str
         """
         self.Tasks = None
@@ -522,8 +518,8 @@ class CreateAudioModerationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Results: 任务创建结果
+        r"""
+        :param Results: 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -549,10 +545,11 @@ class DescribeTaskDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: 任务ID，创建任务后返回的TaskId字段
+        r"""
+        :param TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+<br>备注：查询接口单次最大查询量为**20条每次**。
         :type TaskId: str
-        :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
+        :param ShowAllSegments: 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
         :type ShowAllSegments: bool
         """
         self.TaskId = None
@@ -577,59 +574,51 @@ class DescribeTaskDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param TaskId: 任务ID
+        r"""
+        :param TaskId: 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param DataId: 审核时传入的数据Id
+        :param DataId: 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param BizType: 业务类型，用户可以在控制台查看自己配置的BizType
+        :param BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param Name: 任务名称
+        :param Name: 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Status: 查询内容审核任务的状态，可选值：
-FINISH 已完成
-PENDING 等待中
-RUNNING 进行中
-ERROR 出错
-CANCELLED 已取消
+        :param Status: 该字段用于返回所查询内容的任务状态。
+<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Type: 任务类型：可选AUDIO（点播音频），LIVE_AUDIO（直播音频）
+        :param Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
-Pass 建议通过；
-Reveiw 建议复审；
-Block 建议屏蔽；
+        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Labels: 智能审核服务对于内容违规类型的判断，详见返回值列表
-如：Label：Porn（色情）；
+        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param InputInfo: 输入的媒体信息
+        :param InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
-        :param AudioText: 音频文本，备注：这里的文本最大只返回前1000个字符
+        :param AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioText: str
-        :param AudioSegments: 音频片段审核信息
+        :param AudioSegments: 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
-        :param ErrorType: 错误类型，如果任务状态为Error，则该字段不为空
+        :param ErrorType: 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorType: str
-        :param ErrorDescription: 错误描述，如果任务状态为Error，则该字段不为空
+        :param ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDescription: str
-        :param CreatedAt: 任务创建时间，格式为 ISO 8601
+        :param CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 任务最后更新时间，格式为 ISO 8601
+        :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -690,16 +679,16 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Limit: 每页展示多少条。（默认展示10条）
+        r"""
+        :param Limit: 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
         :type Limit: int
-        :param Filter: 过滤参数
+        :param Filter: 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
         :type Filter: :class:`tencentcloud.ams.v20201229.models.TaskFilter`
-        :param PageToken: 翻页token，在向前或向后翻页时需要
+        :param PageToken: 该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
         :type PageToken: str
-        :param StartTime: 开始时间。默认是最近3天。
+        :param StartTime: 该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :type StartTime: str
-        :param EndTime: 结束时间。默认为空
+        :param EndTime: 该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :type EndTime: str
         """
         self.Limit = None
@@ -732,14 +721,14 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Total: 任务总量，为 int 字符串
+        r"""
+        :param Total: 该字段用于返回当前查询的任务总量，格式为int字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
-        :param Data: 当前页数据
+        :param Data: 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TaskData
-        :param PageToken: 翻页Token，当已经到最后一页时，该字段为空
+        :param PageToken: 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -769,14 +758,14 @@ class InputInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Type: 传入的类型可选：URL，COS
+        r"""
+        :param Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Url: Url地址
+        :param Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param BucketInfo: 桶信息。当输入当时COS时，该字段不为空
+        :param BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketInfo: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
@@ -806,17 +795,16 @@ class MediaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Codecs: 编码格式
+        r"""
+        :param Codecs: 该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
         :type Codecs: str
-        :param Duration: 流检测时分片时长
-注意：此字段可能返回 0，表示取不到有效值。
+        :param Duration: 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为秒。**默认值为15秒**，支持用户自定义配置。
         :type Duration: int
-        :param Width: 宽，单位为像素
+        :param Width: *内测中，敬请期待*
         :type Width: int
-        :param Height: 高，单位为像素
+        :param Height: *内测中，敬请期待*
         :type Height: int
-        :param Thumbnail: 缩略图
+        :param Thumbnail: *内测中，敬请期待*
         :type Thumbnail: str
         """
         self.Codecs = None
@@ -847,7 +835,7 @@ class MoanResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
@@ -885,19 +873,17 @@ class MoanResult(AbstractModel):
 
 
 class StorageInfo(AbstractModel):
-    """数据存储信息
+    """用于表示数据存储的相关信息
 
     """
 
     def __init__(self):
-        """
-        :param Type: 类型 可选：
-URL 资源链接类型
-COS 腾讯云对象存储类型
+        r"""
+        :param Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
         :type Type: str
-        :param Url: 资源链接
+        :param Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空，该参数与BucketInfo参数须传入其中之一
         :type Url: str
-        :param BucketInfo: 腾讯云存储桶信息
+        :param BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空，该参数与Url参数须传入其中之一。
         :type BucketInfo: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
         self.Type = None
@@ -926,35 +912,36 @@ class TaskData(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DataId: 输入的数据ID
+        r"""
+        :param DataId: 该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param TaskId: 任务ID
+        :param TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
         :type TaskId: str
-        :param Status: 状态，可选：PENDING，RUNNING，ERROR，FINISH，CANCELLED
+        :param Status: 该字段用于返回所查询内容的任务状态。
+<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
         :type Status: str
-        :param Name: 任务名称
+        :param Name: 该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param BizType: 业务类型
+        :param BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param Type: 任务类型
+        :param Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 建议。可选：Pass，Block，Review
+        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param MediaInfo: 输入信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
-        :param Labels: 任务违规标签
+        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param CreatedAt: 创建时间（ iso 8601 格式）
+        :param CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
         :type CreatedAt: str
-        :param UpdatedAt: 更新时间（ iso 8601 格式）
+        :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         """
@@ -1005,14 +992,14 @@ class TaskFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BizType: 任务业务类型
+        r"""
+        :param BizType: 该字段用于传入任务对应的业务类型供筛选器进行筛选。Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与审核策略，调用前请确认正确的Biztype。Biztype仅为**数字、字母与下划线的组合**，长度为3-32个字符。<br>备注：在不传入该参数时筛选器默认不筛选业务类型。
         :type BizType: str
-        :param Type: 任务类型，可选：VIDEO，AUDIO， LIVE_VIDEO, LIVE_AUDIO
+        :param Type: 该字段用于传入音频审核对应的任务类型供筛选器进行筛选，取值为：**VIDEO**（点播视频审核），**AUDIO**（点播音频审核）， **LIVE_VIDEO**（直播视频审核）, **LIVE_AUDIO**（直播音频审核）。<br>备注：在不传入该参数时筛选器默认不筛选任务类型。
         :type Type: str
-        :param Suggestion: 建议，可选：Pass, Review,Block
+        :param Suggestion: 该字段用于传入音频审核对应的建议操作供筛选器进行筛选，取值为：**Block**：建议屏蔽，**Review**：建议人工复审，**Pass**：建议通过。<br>备注：在不传入该参数时筛选器默认不筛选建议操作。
         :type Suggestion: str
-        :param TaskStatus: 状态，可选：PENDING，RUNNING，ERROR，FINISH，CANCELLED
+        :param TaskStatus: 该字段用于传入审核任务的任务状态供筛选器进行筛选，取值为：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。<br>备注：在不传入该参数时筛选器默认不筛选任务状态。
         :type TaskStatus: str
         """
         self.BizType = None
@@ -1036,17 +1023,17 @@ class TaskFilter(AbstractModel):
 
 
 class TaskInput(AbstractModel):
-    """音视频任务结构
+    """音视频任务数据结构
 
     """
 
     def __init__(self):
-        """
-        :param DataId: 数据ID
+        r"""
+        :param DataId: 选填参数，该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
         :type DataId: str
-        :param Name: 任务名
+        :param Name: 选填参数，该字段表示音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
         :type Name: str
-        :param Input: 任务输入
+        :param Input: 必填参数，该字段表示审核文件的访问参数，用于获取审核媒体文件，该参数内包括访问类型和访问地址。
         :type Input: :class:`tencentcloud.ams.v20201229.models.StorageInfo`
         """
         self.DataId = None
@@ -1070,21 +1057,19 @@ class TaskInput(AbstractModel):
 
 
 class TaskLabel(AbstractModel):
-    """任务输出标签
+    """用于返回审核任务输出的标签
 
     """
 
     def __init__(self):
-        """
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及其他令人反感、不安全或不适宜的内容类型。
+        r"""
+        :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
-建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+        :param Suggestion: 该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Score: 得分，分数是 0 ～ 100
+        :param Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         """
@@ -1112,17 +1097,17 @@ class TaskResult(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param DataId: 请求时传入的DataId
+        r"""
+        :param DataId: 该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param TaskId: TaskId，任务ID
+        :param TaskId: 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param Code: 错误码。如果code为OK，则表示创建成功，其他则参考公共错误码
+        :param Code: 该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Message: 如果错误，该字段表示错误详情
+        :param Message: **仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
@@ -1152,7 +1137,7 @@ class TextResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及其他令人反感、不安全或不适宜的内容类型。
 

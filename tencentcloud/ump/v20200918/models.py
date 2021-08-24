@@ -24,7 +24,7 @@ class BunkZone(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 点位ID
         :type ZoneId: int
         :param ZoneName: 点位名称
@@ -56,7 +56,7 @@ class CameraConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -148,7 +148,7 @@ class CameraState(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CameraId: 相机ID
         :type CameraId: int
         :param State: 相机状态:
@@ -183,7 +183,7 @@ class CameraZones(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CameraId: 摄像头ID
         :type CameraId: int
         :param CameraName: 摄像头名称
@@ -255,7 +255,7 @@ class Config(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CameraProducer: 摄像头厂商:
 H: 海康
 D: 大华
@@ -343,7 +343,7 @@ class CreateCameraAlertAlert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -395,7 +395,7 @@ class CreateCameraAlertsCoverAlert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cover: 是否遮挡
         :type Cover: bool
         :param CoverConfidence: 是否移动置信度
@@ -423,7 +423,7 @@ class CreateCameraAlertsMoveAlert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Move: 是否移动
         :type Move: bool
         :param MoveConfidence: 是否移动置信度
@@ -451,7 +451,7 @@ class CreateCameraAlertsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Alerts: 告警信息列表
         :type Alerts: list of CreateCameraAlertAlert
         """
@@ -480,7 +480,7 @@ class CreateCameraAlertsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -497,7 +497,7 @@ class CreateCameraStateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -534,7 +534,7 @@ class CreateCameraStateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -551,7 +551,7 @@ class CreateCaptureRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 原始抓拍报文
         :type Data: str
         """
@@ -575,7 +575,7 @@ class CreateCaptureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RspData: 原始应答报文
 注意：此字段可能返回 null，表示取不到有效值。
         :type RspData: str
@@ -597,7 +597,7 @@ class CreateMultiBizAlertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -657,7 +657,7 @@ class CreateMultiBizAlertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -674,7 +674,7 @@ class CreateProgramStateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param ProgramStateItems: 进程监控信息列表
@@ -711,7 +711,7 @@ class CreateProgramStateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -728,7 +728,7 @@ class CreateServerStateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param ServerStateItems: 服务器监控信息列表
@@ -769,7 +769,7 @@ class CreateServerStateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -786,7 +786,7 @@ class DeleteMultiBizAlertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -833,7 +833,7 @@ class DeleteMultiBizAlertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -850,7 +850,7 @@ class DeleteTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -882,7 +882,7 @@ class DeleteTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -899,7 +899,7 @@ class DescribeCamerasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -927,7 +927,7 @@ class DescribeCamerasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cameras: 摄像头列表
         :type Cameras: list of CameraZones
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -953,7 +953,7 @@ class DescribeConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 会话ID
         :type SessionId: str
         :param CameraSign: 摄像头签名
@@ -1001,7 +1001,7 @@ class DescribeConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SessionId: 会话ID
         :type SessionId: str
         :param Version: 配置版本号
@@ -1035,7 +1035,7 @@ class DescribeImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1067,7 +1067,7 @@ class DescribeImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: cos 临时 url，异步上传图片，client需要轮询
         :type ImageUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1088,7 +1088,7 @@ class DescribeMultiBizBaseImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1124,7 +1124,7 @@ class DescribeMultiBizBaseImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImageUrl: cos 临时 url
         :type ImageUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1145,7 +1145,7 @@ class DescribeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1178,7 +1178,7 @@ class DescribeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tasks: 任务列表
         :type Tasks: list of Task
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1204,7 +1204,7 @@ class DescribeZonesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1232,7 +1232,7 @@ class DescribeZonesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zones: 点位列表
         :type Zones: list of ZoneConfig
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1258,7 +1258,7 @@ class DiskInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskName: 硬盘名字
         :type DiskName: str
         :param Usage: 硬盘使用率
@@ -1286,7 +1286,7 @@ class ModifyMultiBizConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1331,7 +1331,7 @@ class ModifyMultiBizConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1348,7 +1348,7 @@ class MultiBizWarning(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 编号
         :type Id: int
         :param MonitoringArea: 监控区域
@@ -1390,7 +1390,7 @@ class MultiBizWarningInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WarningType: 告警类型：
 0: 无变化
 1: 侵占
@@ -1436,7 +1436,7 @@ class Point(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: X坐标
         :type X: int
         :param Y: Y坐标
@@ -1464,7 +1464,7 @@ class Polygon(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Points: 标注列表
         :type Points: list of Point
         """
@@ -1493,7 +1493,7 @@ class ProgramStateItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerIp: 服务器IP
         :type ServerIp: str
         :param ProgramName: 进程名字
@@ -1536,7 +1536,7 @@ class ReportServiceRegisterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1585,7 +1585,7 @@ class ReportServiceRegisterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1602,7 +1602,7 @@ class SearchImageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupCode: 集团编码
         :type GroupCode: str
         :param MallId: 广场ID
@@ -1638,7 +1638,7 @@ class SearchImageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceId: face id
         :type FaceId: str
         :param Results: 搜索结果列表
@@ -1668,7 +1668,7 @@ class SearchResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片base64数据
         :type Image: str
         :param PersonId: 身份ID
@@ -1700,7 +1700,7 @@ class ServerStateItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerState: 服务器状态
 1: 在线
 2: 离线
@@ -1740,7 +1740,7 @@ class ServiceRegisterInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CgiUrl: 当前服务的回调地址
         :type CgiUrl: str
         :param ServiceType: 当前服务类型:
@@ -1771,7 +1771,7 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: int
         :param GroupCode: 集团编码
@@ -1814,7 +1814,7 @@ class TaskContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CameraId: 摄像头ID
         :type CameraId: int
         :param RTSP: rtsp 地址
@@ -1846,7 +1846,7 @@ class ZoneArea(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 点位ID
         :type ZoneId: int
         :param ShopArea: 店门标注
@@ -1879,7 +1879,7 @@ class ZoneConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 点位ID
         :type ZoneId: int
         :param ZoneName: 点位名称

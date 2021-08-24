@@ -24,7 +24,7 @@ class CreateSessionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClientSession: 客户端session信息，从JSSDK请求中获得
         :type ClientSession: str
         :param UserId: 游戏用户ID
@@ -112,7 +112,7 @@ class CreateSessionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerSession: 服务端session信息，返回给JSSDK
         :type ServerSession: str
         :param RoleNumber: 【已废弃】
@@ -141,7 +141,7 @@ class DescribeInstancesCountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GameId: 游戏ID
         :type GameId: str
         :param GroupId: 实例分组ID
@@ -169,7 +169,7 @@ class DescribeInstancesCountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 客户的实例总数
         :type Total: int
         :param Running: 客户的实例运行数
@@ -194,7 +194,7 @@ class SaveGameArchiveRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 游戏用户ID
         :type UserId: str
         :param GameId: 游戏ID
@@ -222,7 +222,7 @@ class SaveGameArchiveResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -239,7 +239,7 @@ class StopGameRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 游戏用户ID
         :type UserId: str
         :param HostUserId: 【多人游戏】游戏主机用户ID
@@ -267,7 +267,7 @@ class StopGameResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -284,7 +284,7 @@ class SwitchGameArchiveRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 游戏用户ID
         :type UserId: str
         :param GameId: 游戏ID
@@ -320,7 +320,7 @@ class SwitchGameArchiveResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -337,7 +337,7 @@ class TrylockWorkerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 游戏用户ID
         :type UserId: str
         :param GameId: 游戏ID
@@ -346,7 +346,7 @@ class TrylockWorkerRequest(AbstractModel):
         :type GameRegion: str
         :param SetNo: 【废弃】资源池编号
         :type SetNo: int
-        :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
+        :param UserIp: 【必选】用户IP，用于就近调度，不填将严重影响用户体验
         :type UserIp: str
         :param GroupId: 分组ID
         :type GroupId: str
@@ -381,7 +381,7 @@ class TrylockWorkerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

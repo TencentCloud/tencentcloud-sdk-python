@@ -50,6 +50,9 @@ FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = 'FailedOperation.GetStreamResolutionE
 # 无在线流。
 FAILEDOPERATION_HASNOTLIVINGSTREAM = 'FailedOperation.HasNotLivingStream'
 
+# 域名数量超过限制(100个）。
+FAILEDOPERATION_HOSTOUTLIMIT = 'FailedOperation.HostOutLimit'
+
 # 操作 CDN 接口失败。
 FAILEDOPERATION_INVOKECDNAPIFAIL = 'FailedOperation.InvokeCdnApiFail'
 
@@ -271,6 +274,9 @@ INVALIDPARAMETER_DOMAINALREADYEXIST = 'InvalidParameter.DomainAlreadyExist'
 
 # 域名格式错误，请输入合法格式域名。
 INVALIDPARAMETER_DOMAINFORMATERROR = 'InvalidParameter.DomainFormatError'
+
+# 当前域名在黑名单中。
+INVALIDPARAMETER_DOMAINHITBLACKLIST = 'InvalidParameter.DomainHitBlackList'
 
 # 使用黑名单域名。
 INVALIDPARAMETER_DOMAINISFAMOUS = 'InvalidParameter.DomainIsFamous'

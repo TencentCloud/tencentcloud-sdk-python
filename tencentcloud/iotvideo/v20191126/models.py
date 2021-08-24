@@ -24,7 +24,7 @@ class BindDevInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param DeviceName: 设备名称
@@ -61,7 +61,7 @@ class BindUsrInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: IotVideo平台分配给终端用户的用户id
         :type AccessId: str
         :param Role: 用户角色，owner：主人，guest：访客
@@ -89,7 +89,7 @@ class ClearDeviceActiveCodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID列表，0<元素数量<=100
         :type Tids: list of str
         """
@@ -113,7 +113,7 @@ class ClearDeviceActiveCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -130,7 +130,7 @@ class Contents(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param En: 英文，长度不超过300个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type En: str
@@ -170,7 +170,7 @@ class CreateAnonymousAccessTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TtlMinutes: Token的TTL(time to alive)分钟数,最大值1440(即24小时)
         :type TtlMinutes: int
         :param Tid: 设备ID。创建Token时, 此参数为必须项
@@ -202,7 +202,7 @@ class CreateAnonymousAccessTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param AccessToken: IoT Video平台的AccessToken
@@ -231,7 +231,7 @@ class CreateAppUsrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CunionId: 标识用户的唯一ID，防止同一个用户多次注册
         :type CunionId: str
         :param Mobile: 用于小程序关联手机号
@@ -259,7 +259,7 @@ class CreateAppUsrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CunionId: 厂商云标识用户的唯一ID
         :type CunionId: str
         :param AccessId: 客户的终端用户在IoT Video上的唯一标识ID
@@ -288,7 +288,7 @@ class CreateBindingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param Tid: 设备TID
@@ -332,7 +332,7 @@ class CreateBindingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessToken: 访问设备的AccessToken
         :type AccessToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -353,7 +353,7 @@ class CreateDevTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 客户的终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param Tids: 设备TID列表,0<元素数量<=100
@@ -385,7 +385,7 @@ class CreateDevTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回的用户token列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DevTokenInfo
@@ -412,7 +412,7 @@ class CreateDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param Number: 创建设备的数量，数量范围1-100
@@ -448,7 +448,7 @@ class CreateDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 新创建设备的认证信息
         :type Data: list of DeviceCertificate
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -474,7 +474,7 @@ class CreateGencodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param Revision: 物模型发布版本号,-1代表未发布的，保存的是草稿箱的版本。1代表已发布的物模型。
@@ -502,7 +502,7 @@ class CreateGencodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZipCode: 生成的源代码(zip压缩后的base64编码)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZipCode: str
@@ -524,7 +524,7 @@ class CreateIotDataTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IotDataType: 用户自定义数据类型，json格式的字符串
         :type IotDataType: str
         """
@@ -548,7 +548,7 @@ class CreateIotDataTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -565,7 +565,7 @@ class CreateIotModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param IotModel: 物模型json串
@@ -593,7 +593,7 @@ class CreateIotModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -610,7 +610,7 @@ class CreateProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductModel: 产器型号(APP产品,为APP包名)
         :type ProductModel: str
         :param ProductName: 产品名称
@@ -682,7 +682,7 @@ class CreateProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 产品详细信息
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.ProductBase`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -705,7 +705,7 @@ class CreateStorageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PkgId: 云存套餐ID
         :type PkgId: str
         :param Tid: 设备TID
@@ -737,7 +737,7 @@ class CreateStorageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -754,7 +754,7 @@ class CreateStorageServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PkgId: 云存套餐ID：
 yc1m3d ： 全时3天存储月套餐。
 yc1m7d ： 全时7天存储月套餐。
@@ -816,7 +816,7 @@ class CreateStorageServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsRenew: 标志是否为续订
         :type IsRenew: bool
         :param ServiceId: 云存服务ID
@@ -882,7 +882,7 @@ class CreateTraceIdsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID列表
         :type Tids: list of str
         """
@@ -906,7 +906,7 @@ class CreateTraceIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -923,7 +923,7 @@ class CreateUploadPathRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param FileName: 固件文件名
@@ -951,7 +951,7 @@ class CreateUploadPathResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 固件上传地址URL，用户可将本地的固件文件通过该URL以PUT的请求方式上传。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -973,7 +973,7 @@ class CreateUsrTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param UniqueId: 终端唯一ID，用于区分同一个用户的多个终端
@@ -1009,7 +1009,7 @@ class CreateUsrTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param AccessToken: IoT Video平台的AccessToken
@@ -1042,7 +1042,7 @@ class Data(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Protocol: 直播协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
@@ -1087,7 +1087,7 @@ class DeleteAppUsrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 客户的终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         """
@@ -1111,7 +1111,7 @@ class DeleteAppUsrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1128,7 +1128,7 @@ class DeleteBindingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         :param Tid: 设备TID
@@ -1160,7 +1160,7 @@ class DeleteBindingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1177,7 +1177,7 @@ class DeleteDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID列表
         :type Tids: list of str
         """
@@ -1201,7 +1201,7 @@ class DeleteDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1218,7 +1218,7 @@ class DeleteIotDataTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TypeId: 自定义数据类型的标识符
         :type TypeId: str
         """
@@ -1242,7 +1242,7 @@ class DeleteIotDataTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1259,7 +1259,7 @@ class DeleteMessageQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1283,7 +1283,7 @@ class DeleteMessageQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1300,7 +1300,7 @@ class DeleteOtaVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param OtaVersion: 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
@@ -1332,7 +1332,7 @@ class DeleteOtaVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1349,7 +1349,7 @@ class DeleteProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1373,7 +1373,7 @@ class DeleteProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1390,7 +1390,7 @@ class DeleteTraceIdsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID列表
         :type Tids: list of str
         """
@@ -1414,7 +1414,7 @@ class DeleteTraceIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1431,7 +1431,7 @@ class DeliverStorageServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcServiceId: 待转移的源云存服务ID
         :type SrcServiceId: str
         :param Tid: 设备TID
@@ -1467,7 +1467,7 @@ class DeliverStorageServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SrcServiceId: 被转出的云存服务ID
         :type SrcServiceId: str
         :param ServiceId: 被转入的云存服务ID
@@ -1533,7 +1533,7 @@ class DescribeAccountBalanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型 1:设备接入 2:云存
         :type AccountType: int
         """
@@ -1557,7 +1557,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型 1=设备接入;2=云存。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountType: int
@@ -1594,7 +1594,7 @@ class DescribeBindDevRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 终端用户在IoT Video上的唯一标识ID
         :type AccessId: str
         """
@@ -1618,7 +1618,7 @@ class DescribeBindDevResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 绑定的设备列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of BindDevInfo
@@ -1645,7 +1645,7 @@ class DescribeBindUsrRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param AccessId: 设备主人的AccessId
@@ -1673,7 +1673,7 @@ class DescribeBindUsrResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 具有绑定关系的终端用户信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of BindUsrInfo
@@ -1700,7 +1700,7 @@ class DescribeDeviceModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Branch: 物模型的分支路径
@@ -1728,7 +1728,7 @@ class DescribeDeviceModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备物模型信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.DeviceModelData`
@@ -1752,7 +1752,7 @@ class DescribeDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         """
@@ -1776,7 +1776,7 @@ class DescribeDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.DeviceData`
@@ -1800,7 +1800,7 @@ class DescribeDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ReturnModel: 是否返回全量数据
@@ -1845,7 +1845,7 @@ class DescribeDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备信息 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DevicesData
@@ -1876,7 +1876,7 @@ class DescribeIotDataTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TypeId: 自定义数据类型的标识符，为空则返回全量自定义类型的列表
         :type TypeId: str
         """
@@ -1900,7 +1900,7 @@ class DescribeIotDataTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 自定义数据类型，json格式的字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of str
@@ -1922,7 +1922,7 @@ class DescribeIotModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param Revision: 物模型版本号， -1表示最新编辑的（未发布）
@@ -1950,7 +1950,7 @@ class DescribeIotModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 物模型定义，json格式的字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -1972,7 +1972,7 @@ class DescribeIotModelsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -1996,7 +1996,7 @@ class DescribeIotModelsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 历史版本列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of IotModelData
@@ -2023,7 +2023,7 @@ class DescribeLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Limit: 当前分页的最大条数,0<取值范围<=100
@@ -2071,7 +2071,7 @@ class DescribeLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备日志信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of LogData
@@ -2102,7 +2102,7 @@ class DescribeMessageQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -2126,7 +2126,7 @@ class DescribeMessageQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 消息队列配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.MsgQueueData`
@@ -2150,7 +2150,7 @@ class DescribeModelDataRetRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         """
@@ -2174,7 +2174,7 @@ class DescribeModelDataRetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备响应结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -2202,7 +2202,7 @@ class DescribeOsListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 系统类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.SystemType`
@@ -2226,7 +2226,7 @@ class DescribeOtaVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页偏移量
         :type Offset: int
         :param Limit: 每页数量，0<取值范围<=100
@@ -2266,7 +2266,7 @@ class DescribeOtaVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 版本数量
         :type TotalCount: int
         :param Data: 版本详细信息
@@ -2297,7 +2297,7 @@ class DescribeProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -2321,7 +2321,7 @@ class DescribeProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 产品详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.ProductData`
@@ -2345,7 +2345,7 @@ class DescribeProductsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 分页大小，当前页面中显示的最大数量，值范围 1-100
         :type Limit: int
         :param Offset: 分页偏移，Offset从0开始
@@ -2385,7 +2385,7 @@ class DescribeProductsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 产品详细信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ProductData
@@ -2416,7 +2416,7 @@ class DescribePubVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         """
@@ -2440,7 +2440,7 @@ class DescribePubVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 历史发布的版本列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of OtaPubHistory
@@ -2467,7 +2467,7 @@ class DescribeRechargeRecordsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型 1:设备接入 2:云存。
         :type AccountType: int
         :param Offset: 从第几条记录开始显示, 默认值为0。
@@ -2499,7 +2499,7 @@ class DescribeRechargeRecordsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 账户类型 1:设备接入 2:云存
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountType: int
@@ -2531,7 +2531,7 @@ class DescribeRegistrationStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CunionIds: 终端用户的唯一ID列表，0<元素数量<=100
         :type CunionIds: list of str
         """
@@ -2555,7 +2555,7 @@ class DescribeRegistrationStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 终端用户注册状态列表
         :type Data: list of RegisteredStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2581,7 +2581,7 @@ class DescribeRunLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         """
@@ -2605,7 +2605,7 @@ class DescribeRunLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备运行日志文本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -2627,7 +2627,7 @@ class DescribeStorageServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 云存服务ID
         :type ServiceId: str
         :param GetFinishedOrder: 是否返回已结束的订单信息(已过期/已退订/已转移)
@@ -2655,7 +2655,7 @@ class DescribeStorageServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 云存服务ID
         :type ServiceId: str
         :param StorageRegion: 云存服务所在的区域
@@ -2717,7 +2717,7 @@ class DescribeStreamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param AccessId: 终端用户ID
@@ -2757,7 +2757,7 @@ class DescribeStreamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回参数结构
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotvideo.v20191126.models.Data`
@@ -2787,7 +2787,7 @@ class DescribeTraceIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备TID列表，列表元素之间以“,”分隔
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -2809,7 +2809,7 @@ class DescribeTraceStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID列表
         :type Tids: list of str
         """
@@ -2833,7 +2833,7 @@ class DescribeTraceStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备追踪状态列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TraceStatus
@@ -2860,7 +2860,7 @@ class DevTokenInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessId: 客户的终端用户在IotVideo上的唯一标识id
         :type AccessId: str
         :param Tid: 设备TID
@@ -2896,7 +2896,7 @@ class DeviceCertificate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Certificate: 设备初始证书信息，base64编码
@@ -2928,7 +2928,7 @@ class DeviceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tid: str
@@ -3008,7 +3008,7 @@ class DeviceModelData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Branch: 物模型分支路径
@@ -3042,7 +3042,7 @@ class DevicesData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param DeviceName: 设备名称
@@ -3102,7 +3102,7 @@ class DisableDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID ≤100
         :type Tids: list of str
         """
@@ -3126,7 +3126,7 @@ class DisableDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3143,7 +3143,7 @@ class DisableDeviceStreamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID列表
         :type Tids: list of str
         """
@@ -3167,7 +3167,7 @@ class DisableDeviceStreamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3184,7 +3184,7 @@ class DisableOtaVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param OtaVersion: 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
@@ -3216,7 +3216,7 @@ class DisableOtaVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3233,7 +3233,7 @@ class IotModelData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Revision: 版本号
         :type Revision: int
         :param ReleaseTime: 发布时间
@@ -3261,7 +3261,7 @@ class LogData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Occurtime: 发生时间 UNIX时间戳，单位秒
         :type Occurtime: int
         :param LogType: 日志类型 1在线状态变更 2FP变更 3SP变更 4CO控制 5ST变更 6EV事件
@@ -3304,7 +3304,7 @@ class ModifyDeviceActionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Wakeup: 如果设备处于休眠状态，是否唤醒设备
@@ -3344,7 +3344,7 @@ class ModifyDeviceActionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备端的响应结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -3372,7 +3372,7 @@ class ModifyDevicePropertyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Wakeup: 如果设备处于休眠状态，是否唤醒设备
@@ -3412,7 +3412,7 @@ class ModifyDevicePropertyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3429,7 +3429,7 @@ class ModifyDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备ID
         :type Tid: str
         :param AccessId: 用户ID
@@ -3461,7 +3461,7 @@ class ModifyDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3478,7 +3478,7 @@ class ModifyProductRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductName: 产品名称
@@ -3518,7 +3518,7 @@ class ModifyProductResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3535,7 +3535,7 @@ class ModifyVerContentRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品id
         :type ProductId: str
         :param OtaVersion: 需要修改的版本号
@@ -3577,7 +3577,7 @@ class ModifyVerContentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3594,7 +3594,7 @@ class MsgQueueData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MsgQueueType: 消息队列类型 1：CMQ 2：kafka
         :type MsgQueueType: int
         :param MsgType: 消息类型列表，整型值（0-31）之间以“,”分隔
@@ -3634,7 +3634,7 @@ class OsData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChipId: 芯片型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChipId: str
@@ -3664,7 +3664,7 @@ class OtaPubHistory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OtaVersion: 版本名称
         :type OtaVersion: str
         :param PublishTime: 发布时间，unix时间戳，单位：秒
@@ -3692,7 +3692,7 @@ class ProductBase(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param ProductModel: 产器型号(APP产品,为APP包名)
@@ -3767,7 +3767,7 @@ class ProductData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
@@ -3863,7 +3863,7 @@ class RechargeRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WaterId: 流水记录号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaterId: int
@@ -3903,7 +3903,7 @@ class RefundStorageServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 云存服务ID
         :type ServiceId: str
         :param OrderId: 云存子订单ID。如果指定子订单ID,则仅退订该子订单，如果未指定子定单ID，则退订所有子订单
@@ -3931,7 +3931,7 @@ class RefundStorageServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 云存服务ID
         :type ServiceId: str
         :param StorageRegion: 云存服务所在的区域
@@ -3993,7 +3993,7 @@ class RegisteredStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CunionId: 终端用户的唯一ID
         :type CunionId: str
         :param IsRegisted: 注册状态
@@ -4021,7 +4021,7 @@ class RunDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: TID列表 ≤100
         :type Tids: list of str
         """
@@ -4045,7 +4045,7 @@ class RunDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4062,7 +4062,7 @@ class RunDeviceStreamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tids: 设备TID 列表
         :type Tids: list of str
         """
@@ -4086,7 +4086,7 @@ class RunDeviceStreamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4103,7 +4103,7 @@ class RunIotModelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param IotModel: 物模型定义，json格式的字符串
@@ -4131,7 +4131,7 @@ class RunIotModelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4148,7 +4148,7 @@ class RunOtaVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param OtaVersion: 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
@@ -4198,7 +4198,7 @@ class RunOtaVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4215,7 +4215,7 @@ class RunTestOtaVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param OtaVersion: 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
@@ -4255,7 +4255,7 @@ class RunTestOtaVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4272,7 +4272,7 @@ class SendOnlineMsgRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param Wakeup: 如果设备处于休眠状态，是否唤醒设备
@@ -4315,7 +4315,7 @@ class SendOnlineMsgResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 若返回此项则表明需要用户用此taskID进行查询请求是否成功(只有waitresp不等于0的情况下才可能会返回该taskID项)
         :type TaskId: str
         :param Data: 设备响应信息
@@ -4340,7 +4340,7 @@ class SetMessageQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param MsgQueueType: 消息队列类型 1-CMQ; 2-Ckafka
@@ -4391,7 +4391,7 @@ class SetMessageQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4408,7 +4408,7 @@ class StorageOrder(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 定单唯一性ID
         :type OrderId: str
         :param PkgId: 云存套餐ID
@@ -4454,7 +4454,7 @@ class SystemType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Android: 安卓系统
 注意：此字段可能返回 null，表示取不到有效值。
         :type Android: list of OsData
@@ -4504,7 +4504,7 @@ class TraceStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param IsExist: 设备追踪状态
@@ -4532,7 +4532,7 @@ class UpgradeDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 设备TID
         :type Tid: str
         :param OtaVersion: 固件版本号
@@ -4564,7 +4564,7 @@ class UpgradeDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备端返回的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -4586,7 +4586,7 @@ class UploadOtaVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
         :type ProductId: str
         :param OtaVersion: 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
@@ -4640,7 +4640,7 @@ class UploadOtaVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4657,7 +4657,7 @@ class VersionData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str

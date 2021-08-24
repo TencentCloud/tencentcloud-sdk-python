@@ -24,7 +24,7 @@ class AssignProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
         :param ProjectId: 项目ID
@@ -52,7 +52,7 @@ class AssignProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowIds: 返回的异步任务ID列表
         :type FlowIds: list of int non-negative
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -73,7 +73,7 @@ class ClientConnection(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IP: 连接的客户端IP
         :type IP: str
         :param Count: 对应客户端IP的连接数
@@ -101,7 +101,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Memory: 实例内存大小，单位：GB
         :type Memory: int
         :param Volume: 实例硬盘大小，单位：GB
@@ -181,7 +181,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealId: 订单ID
         :type DealId: str
         :param InstanceIds: 创建的实例ID列表
@@ -206,7 +206,7 @@ class CreateDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecondaryNum: 每个副本集内从节点个数
         :type SecondaryNum: int
         :param Memory: 实例内存大小，单位：GB
@@ -278,7 +278,7 @@ class CreateDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealId: 订单ID
         :type DealId: str
         :param InstanceIds: 创建的实例ID列表
@@ -303,7 +303,7 @@ class DescribeClientConnectionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
         """
@@ -327,7 +327,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Clients: list of ClientConnection
@@ -354,7 +354,7 @@ class DescribeDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
         :param InstanceType: 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
@@ -418,7 +418,7 @@ class DescribeDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合查询条件的实例总数
         :type TotalCount: int
         :param InstanceDetails: 实例详细信息
@@ -448,7 +448,7 @@ class DescribeSlowLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
         :param StartTime: 慢日志起始时间，格式：yyyy-mm-dd hh:mm:ss，如：2019-06-01 10:00:00。查询起止时间间隔不能超过24小时，只允许查询最近7天内慢日志。
@@ -492,7 +492,7 @@ class DescribeSlowLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合查询条件的慢查询日志总数。
         :type TotalCount: int
         :param SlowLogList: 符合查询条件的慢查询日志详情。
@@ -517,7 +517,7 @@ class DescribeSpecInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区
         :type Zone: str
         """
@@ -541,7 +541,7 @@ class DescribeSpecInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpecInfoList: 实例售卖规格信息列表
         :type SpecInfoList: list of SpecificationInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -567,7 +567,7 @@ class MongoDBInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param Region: 地域信息
@@ -595,7 +595,7 @@ class MongoDBInstanceDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param InstanceName: 实例名称
@@ -799,7 +799,7 @@ class MongodbShardInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UsedVolume: 分片已使用容量
         :type UsedVolume: float
         :param ReplicaSetId: 分片ID
@@ -851,7 +851,7 @@ class RenameInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
         :param NewName: 实例名称
@@ -879,7 +879,7 @@ class RenameInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -896,7 +896,7 @@ class SetAutoRenewRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
         :param AutoRenewFlag: 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
@@ -924,7 +924,7 @@ class SetAutoRenewResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -941,7 +941,7 @@ class SetPasswordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
         :param UserName: 实例账户名称
@@ -973,7 +973,7 @@ class SetPasswordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 返回的异步任务ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -994,7 +994,7 @@ class SpecItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpecCode: 规格信息标识
         :type SpecCode: str
         :param Status: 规格有效标志，取值：0-停止售卖，1-开放售卖
@@ -1098,7 +1098,7 @@ class SpecificationInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域信息
         :type Region: str
         :param Zone: 可用区信息
@@ -1135,7 +1135,7 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签Key值
         :type TagKey: str
         :param TagValue: 标签值
@@ -1163,7 +1163,7 @@ class TerminateDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。
         :type InstanceId: str
         """
@@ -1187,7 +1187,7 @@ class TerminateDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 订单ID，表示注销实例成功
         :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1208,7 +1208,7 @@ class UpgradeDBInstanceHourRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5
         :type InstanceId: str
         :param Memory: 升级后的内存大小，单位：GB
@@ -1244,7 +1244,7 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealId: 订单ID
         :type DealId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1265,7 +1265,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
         :param Memory: 升级后的内存大小，单位：GB
@@ -1301,7 +1301,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealId: 订单ID
         :type DealId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

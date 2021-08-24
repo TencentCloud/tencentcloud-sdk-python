@@ -38,6 +38,12 @@ FAILEDOPERATION_OTHERUPDATETASKEXIST = 'FailedOperation.OtherUpdateTaskExist'
 # 转发已经停止。
 FAILEDOPERATION_RULEALREADYDISABLED = 'FailedOperation.RuleAlreadyDisabled'
 
+# 该规则已被启用。
+FAILEDOPERATION_RULEALREADYENABLED = 'FailedOperation.RuleAlreadyEnabled'
+
+# 超过时间。
+FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -85,6 +91,9 @@ INVALIDPARAMETERVALUE_APPNOPERMISSION = 'InvalidParameterValue.AppNoPermission'
 
 # App不存在。
 INVALIDPARAMETERVALUE_APPNOTEXISTS = 'InvalidParameterValue.AppNotExists'
+
+# 检查第三方URL超时或失败。
+INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = 'InvalidParameterValue.CheckForwardURLFail'
 
 # 创建的设备名已存在。
 INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = 'InvalidParameterValue.DeviceAlreadyExist'
@@ -199,6 +208,12 @@ LIMITEXCEEDED_DEVICEEXCEEDLIMIT = 'LimitExceeded.DeviceExceedLimit'
 
 # 固件数量超出限制。
 LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = 'LimitExceeded.FirmwareExceedLimit'
+
+# 消息数量超过限制。
+LIMITEXCEEDED_MESSAGESAVED = 'LimitExceeded.MessageSaved'
+
+# 超过产品数量限制。
+LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = 'LimitExceeded.ProductExceedLimit'
 
 # 项目数量超出限制。
 LIMITEXCEEDED_PROJECTEXCEEDLIMIT = 'LimitExceeded.ProjectExceedLimit'

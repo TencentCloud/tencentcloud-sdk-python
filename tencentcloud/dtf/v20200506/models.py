@@ -24,7 +24,7 @@ class DescribeTransactionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 事务分组ID
         :type GroupId: str
         :param TransactionBeginFrom: 事务开始时间查询起始时间戳，UTC，精确到毫秒
@@ -76,7 +76,7 @@ class DescribeTransactionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 主事务分页列表
         :type Result: :class:`tencentcloud.dtf.v20200506.models.PagedTransaction`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -99,7 +99,7 @@ class PagedTransaction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总条数，特定在该接口中总是会返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -133,7 +133,7 @@ class Transaction(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionId: 主事务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransactionId: int

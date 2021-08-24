@@ -24,7 +24,7 @@ class AuthTestTidRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备端SDK填入测试TID参数后生成的加密数据串
         :type Data: str
         """
@@ -48,7 +48,7 @@ class AuthTestTidResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pass: 认证结果
         :type Pass: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -69,7 +69,7 @@ class BurnTidNotifyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单编号
         :type OrderId: str
         :param Tid: TID编号
@@ -97,7 +97,7 @@ class BurnTidNotifyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: 接收回执成功的TID
         :type Tid: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -118,7 +118,7 @@ class DeliverTidNotifyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单编号
         :type OrderId: str
         :param Tid: TID编号
@@ -146,7 +146,7 @@ class DeliverTidNotifyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RemaindCount: 剩余空发数量
         :type RemaindCount: int
         :param Tid: 已回执的TID编码
@@ -175,7 +175,7 @@ class DeliverTidsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单ID
         :type OrderId: str
         :param Quantity: 数量，1~100
@@ -203,7 +203,7 @@ class DeliverTidsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TidSet: 空发的TID信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TidSet: list of TidKeysInfo
@@ -234,7 +234,7 @@ class DescribeAvailableLibCountRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单编号
         :type OrderId: str
         """
@@ -258,7 +258,7 @@ class DescribeAvailableLibCountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quantity: 可空发的白盒密钥数量
         :type Quantity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -285,7 +285,7 @@ class DescribePermissionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnterpriseUser: 企业用户
         :type EnterpriseUser: bool
         :param DownloadPermission: 下载控制台权限
@@ -314,7 +314,7 @@ class DownloadTidsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: 订单编号
         :type OrderId: str
         :param Quantity: 下载数量：1~10
@@ -342,7 +342,7 @@ class DownloadTidsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TidSet: 下载的TID信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TidSet: list of TidKeysInfo
@@ -369,7 +369,7 @@ class TidKeysInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tid: TID号码
         :type Tid: str
         :param PublicKey: 公钥
@@ -413,7 +413,7 @@ class UploadDeviceUniqueCodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CodeSet: 硬件唯一标识码
         :type CodeSet: list of str
         :param OrderId: 硬件标识码绑定的申请编号
@@ -441,7 +441,7 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Count: 本次已上传数量
         :type Count: int
         :param ExistedCodeSet: 重复的硬件唯一标识码
@@ -476,7 +476,7 @@ class VerifyChipBurnInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 验证数据
         :type Data: str
         """
@@ -500,7 +500,7 @@ class VerifyChipBurnInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pass: 验证结果
         :type Pass: bool
         :param VerifiedTimes: 已验证次数

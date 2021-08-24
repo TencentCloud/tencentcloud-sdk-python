@@ -24,7 +24,7 @@ class CosBackup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsAutoBackup: 是否开启cos自动备份
         :type IsAutoBackup: bool
         :param BackupTime: 自动备份执行时间（精确到小时）, e.g. "22:00"
@@ -52,7 +52,7 @@ class CreateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区
         :type Zone: str
         :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"、"7.10.1"）
@@ -213,7 +213,7 @@ class CreateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -234,7 +234,7 @@ class DeleteInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         """
@@ -258,7 +258,7 @@ class DeleteInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -275,7 +275,7 @@ class DescribeInstanceLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 集群实例ID
         :type InstanceId: str
         :param LogType: 日志类型，默认值为1
@@ -333,7 +333,7 @@ class DescribeInstanceLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回的日志条数
         :type TotalCount: int
         :param InstanceLogList: 日志详细信息列表
@@ -363,7 +363,7 @@ class DescribeInstanceOperationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 集群实例ID
         :type InstanceId: str
         :param StartTime: 起始时间, e.g. "2019-03-07 16:30:39"
@@ -403,7 +403,7 @@ class DescribeInstanceOperationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 操作记录总数
         :type TotalCount: int
         :param Operations: 操作记录
@@ -433,7 +433,7 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 集群实例所属可用区，不传则默认所有可用区
         :type Zone: str
         :param InstanceIds: 集群实例ID列表
@@ -494,7 +494,7 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回的实例个数
         :type TotalCount: int
         :param InstanceList: 实例详细信息列表
@@ -524,7 +524,7 @@ class DiagnoseInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: ES实例ID
         :type InstanceId: str
         :param DiagnoseJobs: 需要触发的诊断项
@@ -556,7 +556,7 @@ class DiagnoseInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -573,7 +573,7 @@ class DictInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 词典键值
         :type Key: str
         :param Name: 词典名称
@@ -605,7 +605,7 @@ class EsAcl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlackIpList: kibana访问黑名单
         :type BlackIpList: list of str
         :param WhiteIpList: kibana访问白名单
@@ -633,7 +633,7 @@ class EsDictionaryInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MainDict: 启用词词典列表
         :type MainDict: list of DictInfo
         :param Stopwords: 停用词词典列表
@@ -693,7 +693,7 @@ class EsPublicAcl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlackIpList: 访问黑名单
         :type BlackIpList: list of str
         :param WhiteIpList: 访问白名单
@@ -721,7 +721,7 @@ class GetRequestTargetNodeTypesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         """
@@ -745,7 +745,7 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetNodeTypes: 接收请求的目标节点类型列表
         :type TargetNodeTypes: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -766,7 +766,7 @@ class InstanceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param InstanceName: 实例名称
@@ -896,6 +896,12 @@ class InstanceInfo(AbstractModel):
         :param KibanaNodeInfo: Kibana节点信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
+        :param WebNodeTypeInfo: 可视化节点配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param Jdk: JDK类型，oracle或kona
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Jdk: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -952,6 +958,8 @@ class InstanceInfo(AbstractModel):
         self.SceneType = None
         self.KibanaConfig = None
         self.KibanaNodeInfo = None
+        self.WebNodeTypeInfo = None
+        self.Jdk = None
 
 
     def _deserialize(self, params):
@@ -1037,6 +1045,10 @@ class InstanceInfo(AbstractModel):
         if params.get("KibanaNodeInfo") is not None:
             self.KibanaNodeInfo = KibanaNodeInfo()
             self.KibanaNodeInfo._deserialize(params.get("KibanaNodeInfo"))
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.Jdk = params.get("Jdk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1052,7 +1064,7 @@ class InstanceLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 日志时间
         :type Time: str
         :param Level: 日志级别
@@ -1088,7 +1100,7 @@ class KeyValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 键
         :type Key: str
         :param Value: 值
@@ -1116,7 +1128,7 @@ class KibanaNodeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KibanaNodeType: Kibana节点规格
         :type KibanaNodeType: str
         :param KibanaNodeNum: Kibana节点个数
@@ -1160,7 +1172,7 @@ class LocalDiskInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocalDiskType: 本地盘类型<li>LOCAL_SATA：大数据型</li><li>NVME_SSD：高IO型</li>
         :type LocalDiskType: str
         :param LocalDiskSize: 本地盘单盘大小
@@ -1192,7 +1204,7 @@ class MasterNodeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnableDedicatedMaster: 是否启用了专用主节点
         :type EnableDedicatedMaster: bool
         :param MasterNodeType: 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
@@ -1240,7 +1252,7 @@ class NodeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NodeNum: 节点数量
         :type NodeNum: int
         :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
@@ -1248,7 +1260,6 @@ class NodeInfo(AbstractModel):
         :param Type: 节点类型<li>hotData: 热数据节点</li>
 <li>warmData: 冷数据节点</li>
 <li>dedicatedMaster: 专用主节点</li>
-<li>kibana: Kibana节点</li>
 默认值为hotData
         :type Type: str
         :param DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
@@ -1299,7 +1310,7 @@ class Operation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 操作唯一id
         :type Id: int
         :param StartTime: 操作开始时间
@@ -1354,7 +1365,7 @@ class OperationDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldInfo: 实例原始配置信息
         :type OldInfo: list of KeyValue
         :param NewInfo: 实例更新后配置信息
@@ -1392,19 +1403,23 @@ class RestartInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param ForceRestart: 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
         :type ForceRestart: bool
+        :param RestartMode: 重启模式：0 滚动重启； 1 全量重启
+        :type RestartMode: int
         """
         self.InstanceId = None
         self.ForceRestart = None
+        self.RestartMode = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ForceRestart = params.get("ForceRestart")
+        self.RestartMode = params.get("RestartMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1420,7 +1435,7 @@ class RestartInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1437,7 +1452,7 @@ class RestartKibanaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: ES实例ID
         :type InstanceId: str
         """
@@ -1461,7 +1476,7 @@ class RestartKibanaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1478,7 +1493,7 @@ class RestartNodesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 集群实例ID
         :type InstanceId: str
         :param NodeNames: 节点名称列表
@@ -1510,7 +1525,7 @@ class RestartNodesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1527,7 +1542,7 @@ class SubTaskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 子任务名
         :type Name: str
         :param Result: 子任务结果
@@ -1579,7 +1594,7 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1607,7 +1622,7 @@ class TaskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名
         :type Name: str
         :param Progress: 任务进度
@@ -1648,7 +1663,7 @@ class UpdateDiagnoseSettingsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: ES实例ID
         :type InstanceId: str
         :param Status: 0：开启智能运维；-1：关闭智能运维
@@ -1680,7 +1695,7 @@ class UpdateDiagnoseSettingsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1697,7 +1712,7 @@ class UpdateInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
@@ -1752,6 +1767,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type SceneType: int
         :param KibanaConfig: Kibana配置项（JSON格式字符串）
         :type KibanaConfig: str
+        :param WebNodeTypeInfo: 可视化节点配置
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1777,6 +1794,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.MultiZoneInfo = None
         self.SceneType = None
         self.KibanaConfig = None
+        self.WebNodeTypeInfo = None
 
 
     def _deserialize(self, params):
@@ -1820,6 +1838,9 @@ class UpdateInstanceRequest(AbstractModel):
                 self.MultiZoneInfo.append(obj)
         self.SceneType = params.get("SceneType")
         self.KibanaConfig = params.get("KibanaConfig")
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1835,7 +1856,7 @@ class UpdateInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1852,7 +1873,7 @@ class UpdatePluginsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param InstallPluginList: 需要安装的插件名列表
@@ -1892,7 +1913,7 @@ class UpdatePluginsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1909,7 +1930,7 @@ class UpdateRequestTargetNodeTypesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param TargetNodeTypes: 接收请求的目标节点类型列表
@@ -1937,7 +1958,7 @@ class UpdateRequestTargetNodeTypesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1954,7 +1975,7 @@ class UpgradeInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param EsVersion: 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1"
@@ -1998,7 +2019,7 @@ class UpgradeInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2015,7 +2036,7 @@ class UpgradeLicenseRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
@@ -2059,7 +2080,7 @@ class UpgradeLicenseResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2076,7 +2097,7 @@ class WebNodeTypeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NodeNum: 可视化节点个数，固定为1
         :type NodeNum: int
         :param NodeType: 可视化节点规格
@@ -2104,7 +2125,7 @@ class ZoneDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区
         :type Zone: str
         :param SubnetId: 子网ID

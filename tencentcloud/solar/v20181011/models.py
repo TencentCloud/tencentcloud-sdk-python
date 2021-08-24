@@ -24,7 +24,7 @@ class ActivityInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 活动使用模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
@@ -79,7 +79,7 @@ class CheckStaffChUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 员工ID
         :type UserId: list of str
         :param OperateType: 渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用
@@ -107,7 +107,7 @@ class CheckStaffChUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -124,7 +124,7 @@ class CopyActivityChannelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动ID
         :type ActivityId: str
         :param ChannelFrom: 来源渠道ID
@@ -156,7 +156,7 @@ class CopyActivityChannelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -173,7 +173,7 @@ class CreateProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectName: 项目名称
         :type ProjectName: str
         :param ProjectOrg: 项目机构
@@ -213,7 +213,7 @@ class CreateProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -234,7 +234,7 @@ class CreateSubProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 所属项目id
         :type ProjectId: str
         :param SubProjectName: 子项目名称
@@ -262,7 +262,7 @@ class CreateSubProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubProjectId: 子项目id
         :type SubProjectId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -283,7 +283,7 @@ class CustomerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Activity: 总活跃度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Activity: int
@@ -402,7 +402,7 @@ class DeleteProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         """
@@ -426,7 +426,7 @@ class DeleteProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -443,7 +443,7 @@ class DescribeCustomerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户ID
         :type UserId: str
         """
@@ -467,7 +467,7 @@ class DescribeCustomerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AddressList: 地址列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressList: list of str
@@ -629,7 +629,7 @@ class DescribeCustomersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueryType: 查询类型，0.个人，1负责部门，2.指定部门
         :type QueryType: str
         :param GroupId: 分组ID
@@ -701,7 +701,7 @@ class DescribeCustomersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录条数
         :type TotalCount: int
         :param UserList: 数据列表
@@ -732,7 +732,7 @@ class DescribeProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         """
@@ -756,7 +756,7 @@ class DescribeProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目id
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -811,7 +811,7 @@ class DescribeProjectStockRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubProjectId: 子项目id
         :type SubProjectId: str
         """
@@ -835,7 +835,7 @@ class DescribeProjectStockResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectStocks: 项目库存列表
         :type ProjectStocks: list of ProjectStock
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -861,7 +861,7 @@ class DescribeProjectsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PageNo: 页码
         :type PageNo: int
         :param PageSize: 页面大小
@@ -903,7 +903,7 @@ class DescribeProjectsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectList: 项目列表
         :type ProjectList: list of ProjectInfo
         :param TotalCount: 项目数
@@ -933,7 +933,7 @@ class DescribeResourceTemplateHeadersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WxAppId: 微信公众号appId
         :type WxAppId: str
         """
@@ -957,7 +957,7 @@ class DescribeResourceTemplateHeadersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录条数
         :type TotalCount: int
         :param TmplList: 模板列表
@@ -988,7 +988,7 @@ class DescribeSubProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubProjectId: 子项目id
         :type SubProjectId: str
         """
@@ -1012,7 +1012,7 @@ class DescribeSubProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductInfo: 作品信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: :class:`tencentcloud.solar.v20181011.models.ProductInfo`
@@ -1078,7 +1078,7 @@ class ExpireFlowRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FlowId: 工单ID
         :type FlowId: str
         """
@@ -1102,7 +1102,7 @@ class ExpireFlowResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1119,7 +1119,7 @@ class Filters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 过滤类型, 0: 默认(可见部门+自创) 1: 自创 2: 指定部门(部门在可见范围内)
         :type Type: int
         :param DeptIds: 指定部门Id, 类型2使用
@@ -1151,7 +1151,7 @@ class ModifyProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -1195,7 +1195,7 @@ class ModifyProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1212,7 +1212,7 @@ class OffLineProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         """
@@ -1236,7 +1236,7 @@ class OffLineProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1253,7 +1253,7 @@ class ProductInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
@@ -1308,7 +1308,7 @@ class ProjectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectId: 项目ID
         :type ProjectId: str
         :param ProjectName: 项目名称
@@ -1361,7 +1361,7 @@ class ProjectStock(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PrizeId: 奖品id
         :type PrizeId: str
         :param PrizeBat: 奖品批次
@@ -1409,7 +1409,7 @@ class ReplenishProjectStockRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubProjectId: 项目id
         :type SubProjectId: str
         :param PrizeId: 奖品id
@@ -1449,7 +1449,7 @@ class ReplenishProjectStockResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1466,7 +1466,7 @@ class ResourceTemplateHeader(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 模板预览区内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
@@ -1510,7 +1510,7 @@ class SendWxTouchTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 客户分组ID
         :type GroupId: str
         :param DistinctFlag: 去除今日已发送的客户
@@ -1578,7 +1578,7 @@ class SendWxTouchTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1595,7 +1595,7 @@ class SubProjectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubProjectId: 子项目id
         :type SubProjectId: str
         :param SubProjectName: 子项目名称

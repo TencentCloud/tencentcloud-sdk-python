@@ -24,7 +24,7 @@ class AccountTipoffAccessRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReportedAccount: 被举报账号，长度低于 128 个字符
         :type ReportedAccount: str
         :param ReportedAccountType: 被举报账号类型(1-手机号 2-QQ号 3-微信号 4-QQ群号 5-微信openid 6-QQopenid 0-其它)
@@ -72,7 +72,7 @@ class AccountTipoffAccessResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 举报接口响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.tms.v20200713.models.TipoffResponse`
@@ -96,7 +96,7 @@ class DescribeTextLibRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StrategyType: 内容类型 text: 1; image: 2; audio: 3; video: 4
         :type StrategyType: int
         """
@@ -120,7 +120,7 @@ class DescribeTextLibResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TextLib: 文本库id和name列表
         :type TextLib: list of TextLib
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -146,7 +146,7 @@ class DescribeTextStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
         :type AuditType: int
         :param Filters: 查询条件
@@ -179,7 +179,7 @@ class DescribeTextStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Overview: 识别结果统计
         :type Overview: :class:`tencentcloud.tms.v20200713.models.Overview`
         :param TrendCount: 识别量统计
@@ -221,7 +221,7 @@ class DetailResults(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
 以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
@@ -277,7 +277,7 @@ class Device(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IP: 用户IP
         :type IP: str
         :param Mac: Mac地址
@@ -325,7 +325,7 @@ class EvilCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
         :param Count: 分布类型总量
@@ -353,7 +353,7 @@ class Filters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 查询字段：
 策略BizType
 子账号SubUin
@@ -384,7 +384,7 @@ class Overview(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
         :type TotalCount: int
         :param TotalHour: 总调用时长
@@ -436,7 +436,7 @@ class RiskDetails(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
         :type Label: str
         :param Level: 风险等级，1:疑似，2：恶意
@@ -464,7 +464,7 @@ class TextLib(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LibId: 库id
         :type LibId: int
         :param LibName: 库名
@@ -492,16 +492,16 @@ class TextModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+        r"""
+        :param Content: 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
         :type Content: str
-        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
+        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
         :type BizType: str
         :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
         :type DataId: str
-        :param User: 账号相关信息字段，填入后可识别违规风险账号。
+        :param User: 账号相关信息字段，填入后可识别违规风险账号
         :type User: :class:`tencentcloud.tms.v20200713.models.User`
-        :param Device: 设备相关信息字段，填入后可识别违规风险设备。
+        :param Device: 设备相关信息字段，填入后可识别违规风险设备
         :type Device: :class:`tencentcloud.tms.v20200713.models.Device`
         """
         self.Content = None
@@ -536,32 +536,30 @@ class TextModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BizType: 您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
+        r"""
+        :param BizType: 您在入参时所填入的Biztype参数
         :type BizType: str
-        :param EvilFlag: 数据是否属于恶意类型。
- 0：正常 1：可疑
+        :param EvilFlag: 数据是否属于恶意类型，0：正常 1：可疑
         :type EvilFlag: int
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
         :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+        :param Suggestion: 建议您拿到判断结果后的执行操作
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
         :param Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
-如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值。
+如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
         :param Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
         :type Score: int
-        :param DetailResults: 接口识别样本后返回的详细结果。
+        :param DetailResults: 接口识别样本后返回的详细结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailResults: list of DetailResults
-        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果。
+        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetails: list of RiskDetails
-        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
+        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param DataId: 请求参数中的DataId
@@ -613,7 +611,7 @@ class TipoffResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultCode: 举报结果， "0-举报数据提交成功  99-举报数据提交失败"
         :type ResultCode: int
         :param ResultMsg: 结果描述
@@ -641,7 +639,7 @@ class TrendCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总调用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -706,7 +704,7 @@ class User(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户账号ID，如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
         :type UserId: str
         :param Nickname: 用户昵称

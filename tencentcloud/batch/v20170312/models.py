@@ -24,7 +24,7 @@ class Activity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivityId: 活动ID
         :type ActivityId: str
         :param ComputeNodeId: 计算节点ID
@@ -86,7 +86,7 @@ class AgentRunningMode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 场景类型，支持WINDOWS
         :type Scene: str
         :param User: 运行Agent的User
@@ -118,7 +118,7 @@ class AnonymousComputeEnv(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvType: 计算环境管理类型
         :type EnvType: str
         :param EnvData: 计算环境具体参数
@@ -163,7 +163,7 @@ class Application(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Command: 任务执行命令
         :type Command: str
         :param DeliveryForm: 应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
@@ -201,7 +201,7 @@ class AttachInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param Instances: 加入计算环境实例列表
@@ -234,7 +234,7 @@ class AttachInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -251,7 +251,7 @@ class Authentication(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 授权场景，例如COS
         :type Scene: str
         :param SecretId: SecretId
@@ -283,7 +283,7 @@ class ComputeEnvCreateInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境 ID
         :type EnvId: str
         :param EnvName: 计算环境名称
@@ -381,7 +381,7 @@ class ComputeEnvData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceTypes: CVM实例类型列表
         :type InstanceTypes: list of str
         """
@@ -405,7 +405,7 @@ class ComputeEnvView(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param EnvName: 计算环境名称
@@ -479,7 +479,7 @@ class ComputeNode(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComputeNodeId: 计算节点ID
         :type ComputeNodeId: str
         :param ComputeNodeInstanceId: 计算节点实例ID，对于CVM场景，即为CVM的InstanceId
@@ -548,7 +548,7 @@ class ComputeNodeMetrics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubmittedCount: 已经完成提交的计算节点数量
         :type SubmittedCount: int
         :param CreatingCount: 创建中的计算节点数量
@@ -596,7 +596,7 @@ class CpmVirtualPrivateCloud(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: 黑石私有网络ID
         :type VpcId: str
         :param SubnetId: 黑石子网ID
@@ -624,7 +624,7 @@ class CreateComputeEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComputeEnv: 计算环境信息
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.NamedComputeEnv`
         :param Placement: 位置信息
@@ -660,7 +660,7 @@ class CreateComputeEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -681,7 +681,7 @@ class CreateCpmComputeEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComputeEnv: 计算环境信息
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.NamedCpmComputeEnv`
         :param Placement: 位置信息
@@ -717,7 +717,7 @@ class CreateCpmComputeEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -738,7 +738,7 @@ class CreateTaskTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateName: 任务模板名称
         :type TaskTemplateName: str
         :param TaskTemplateInfo: 任务模板内容，参数要求与任务一致
@@ -781,7 +781,7 @@ class CreateTaskTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateId: 任务模板ID
         :type TaskTemplateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -802,7 +802,7 @@ class DataDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
         :type DiskSize: int
         :param DiskType: 数据盘类型。数据盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>LOCAL_NVME：本地NVME硬盘，与InstanceType强相关，不支持指定<br><li>LOCAL_PRO：本地HDD硬盘，与InstanceType强相关，不支持指定<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_HSSD：增强型SSD云硬盘<br><li>CLOUD_TSSD：极速型SSD云硬盘<br><br>默认取值：LOCAL_BASIC。<br><br>该参数对`ResizeInstanceDisk`接口无效。
@@ -874,7 +874,7 @@ class DeleteComputeEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         """
@@ -898,7 +898,7 @@ class DeleteComputeEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -915,7 +915,7 @@ class DeleteJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         """
@@ -939,7 +939,7 @@ class DeleteJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -956,7 +956,7 @@ class DeleteTaskTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateIds: 用于删除任务模板信息
         :type TaskTemplateIds: list of str
         """
@@ -980,7 +980,7 @@ class DeleteTaskTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -997,7 +997,7 @@ class Dependence(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTask: 依赖关系的起点任务名称
         :type StartTask: str
         :param EndTask: 依赖关系的终点任务名称
@@ -1025,7 +1025,7 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。
 <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
@@ -1056,7 +1056,7 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceTypeConfigSet: 机型配置数组
         :type InstanceTypeConfigSet: list of InstanceTypeConfig
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1082,7 +1082,7 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param Offset: 偏移量
@@ -1121,7 +1121,7 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ActivitySet: 计算环境中的活动列表
         :type ActivitySet: list of Activity
         :param TotalCount: 活动数量
@@ -1151,7 +1151,7 @@ class DescribeComputeEnvCreateInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         """
@@ -1175,7 +1175,7 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境 ID
         :type EnvId: str
         :param EnvName: 计算环境名称
@@ -1265,7 +1265,7 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvIds: 计算环境ID列表，与Filters参数不能同时指定。
         :type EnvIds: list of str
         :param Filters: 过滤条件
@@ -1310,7 +1310,7 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 计算环境数量
         :type TotalCount: int
         :param ComputeEnvCreateInfoSet: 计算环境创建信息列表
@@ -1340,7 +1340,7 @@ class DescribeComputeEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         """
@@ -1364,7 +1364,7 @@ class DescribeComputeEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param EnvName: 计算环境名称
@@ -1444,7 +1444,7 @@ class DescribeComputeEnvsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvIds: 计算环境ID列表，与Filters参数不能同时指定。
         :type EnvIds: list of str
         :param Filters: 过滤条件
@@ -1493,7 +1493,7 @@ class DescribeComputeEnvsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ComputeEnvSet: 计算环境列表
         :type ComputeEnvSet: list of ComputeEnvView
         :param TotalCount: 计算环境数量
@@ -1523,7 +1523,7 @@ class DescribeCpmOsInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceClassCode: 黑石设备类型代号。 可以从[DescribeDeviceClass](https://cloud.tencent.com/document/api/386/32911)查询设备类型列表。
         :type DeviceClassCode: str
         """
@@ -1547,7 +1547,7 @@ class DescribeCpmOsInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OsInfoSet: 操作系统信息列表。
         :type OsInfoSet: list of OsInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1573,7 +1573,7 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。
 <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
 <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
@@ -1606,7 +1606,7 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceTypeQuotaSet: 可用区机型配置列表。
         :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1638,7 +1638,7 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceCategorySet: CVM实例分类列表
         :type InstanceCategorySet: list of InstanceCategoryItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1664,7 +1664,7 @@ class DescribeJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业标识
         :type JobId: str
         """
@@ -1688,7 +1688,7 @@ class DescribeJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param JobName: 作业名称
@@ -1782,7 +1782,7 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         """
@@ -1806,7 +1806,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param JobName: 作业名称
@@ -1867,7 +1867,7 @@ class DescribeJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobIds: 作业ID列表，与Filters参数不能同时指定。
         :type JobIds: list of str
         :param Filters: 过滤条件
@@ -1916,7 +1916,7 @@ class DescribeJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobSet: 作业列表
         :type JobSet: list of JobView
         :param TotalCount: 符合条件的作业数量
@@ -1946,7 +1946,7 @@ class DescribeTaskLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param TaskName: 任务名称
@@ -1986,7 +1986,7 @@ class DescribeTaskLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 任务实例总数
         :type TotalCount: int
         :param TaskInstanceLogSet: 任务实例日志详情集合
@@ -2016,7 +2016,7 @@ class DescribeTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param TaskName: 任务名称
@@ -2062,7 +2062,7 @@ class DescribeTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param TaskName: 任务名称
@@ -2118,7 +2118,7 @@ class DescribeTaskTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateIds: 任务模板ID列表，与Filters参数不能同时指定。
         :type TaskTemplateIds: list of str
         :param Filters: 过滤条件
@@ -2164,7 +2164,7 @@ class DescribeTaskTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateSet: 任务模板列表
         :type TaskTemplateSet: list of TaskTemplateView
         :param TotalCount: 任务模板数量
@@ -2194,7 +2194,7 @@ class DetachInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param InstanceIds: 实例ID列表
@@ -2222,7 +2222,7 @@ class DetachInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2239,7 +2239,7 @@ class Docker(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param User: Docker Hub 用户名或 Tencent Registry 用户名
         :type User: str
         :param Password: Docker Hub 密码或 Tencent Registry 密码
@@ -2275,14 +2275,17 @@ class EnhancedService(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
         :type SecurityService: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
         :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
         :type MonitorService: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
+        :param AutomationService: 开启云自动化助手服务。若不指定该参数，则默认不开启云自动化助手服务。
+        :type AutomationService: :class:`tencentcloud.batch.v20170312.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.AutomationService = None
 
 
     def _deserialize(self, params):
@@ -2292,6 +2295,9 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("AutomationService") is not None:
+            self.AutomationService = RunAutomationServiceEnabled()
+            self.AutomationService._deserialize(params.get("AutomationService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2307,7 +2313,7 @@ class EnvData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceType: CVM实例类型，不能与InstanceTypes和InstanceTypeOptions同时出现。
         :type InstanceType: str
         :param ImageId: CVM镜像ID
@@ -2415,7 +2421,7 @@ class EnvDataCpm(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zones: 黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
         :type Zones: list of str
         :param InstanceTypes: 购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
@@ -2524,7 +2530,7 @@ class EnvVar(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 环境变量名称
         :type Name: str
         :param Value: 环境变量取值
@@ -2552,7 +2558,7 @@ class EventConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventName: 事件类型，包括：<br/><li>“JOB_RUNNING”：作业运行，适用于"SubmitJob"。</li><li>“JOB_SUCCEED”：作业成功，适用于"SubmitJob"。</li><li>“JOB_FAILED”：作业失败，适用于"SubmitJob"。</li><li>“JOB_FAILED_INTERRUPTED”：作业失败，保留实例，适用于"SubmitJob"。</li><li>“TASK_RUNNING”：任务运行，适用于"SubmitJob"。</li><li>“TASK_SUCCEED”：任务成功，适用于"SubmitJob"。</li><li>“TASK_FAILED”：任务失败，适用于"SubmitJob"。</li><li>“TASK_FAILED_INTERRUPTED”：任务失败，保留实例，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_RUNNING”：任务实例运行，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_SUCCEED”：任务实例成功，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_FAILED”：任务实例失败，适用于"SubmitJob"。</li><li>“TASK_INSTANCE_FAILED_INTERRUPTED”：任务实例失败，保留实例，适用于"SubmitJob"。</li><li>“COMPUTE_ENV_CREATED”：计算环境已创建，适用于"CreateComputeEnv"。</li><li>“COMPUTE_ENV_DELETED”：计算环境已删除，适用于"CreateComputeEnv"。</li><li>“COMPUTE_NODE_CREATED”：计算节点已创建，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_CREATION_FAILED”：计算节点创建失败，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_RUNNING”：计算节点运行中，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_ABNORMAL”：计算节点异常，适用于"CreateComputeEnv"和"SubmitJob"。</li><li>“COMPUTE_NODE_DELETING”：计算节点已删除，适用于"CreateComputeEnv"和"SubmitJob"。</li>
         :type EventName: str
         :param EventVars: 自定义键值对
@@ -2585,7 +2591,7 @@ class EventVar(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 自定义键
         :type Name: str
         :param Value: 自定义值
@@ -2613,7 +2619,7 @@ class Externals(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReleaseAddress: 释放地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseAddress: bool
@@ -2661,7 +2667,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段。
         :type Name: str
         :param Values: 字段的过滤值。
@@ -2689,7 +2695,7 @@ class InputMapping(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourcePath: 源端路径
         :type SourcePath: str
         :param DestinationPath: 目的端路径
@@ -2721,7 +2727,7 @@ class Instance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param ImageId: 镜像ID
@@ -2755,7 +2761,7 @@ class InstanceCategoryItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceCategory: 实例类型名
         :type InstanceCategory: str
         :param InstanceFamilySet: 实例族列表
@@ -2783,7 +2789,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SpotOptions: 竞价相关选项
         :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
         :param MarketType: 市场选项类型，当前只支持取值：spot
@@ -2813,7 +2819,7 @@ class InstanceTypeConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mem: 内存容量，单位：`GB`。
         :type Mem: int
         :param Cpu: CPU核数，单位：核。
@@ -2853,7 +2859,7 @@ class InstanceTypeOptions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CPU: CPU核数。
         :type CPU: int
         :param Memory: 内存值，单位GB。
@@ -2885,7 +2891,7 @@ class InstanceTypeQuotaItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 可用区。
         :type Zone: str
         :param InstanceType: 实例机型。
@@ -2996,7 +3002,7 @@ class InternetAccessible(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InternetChargeType: 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算<br><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费<br><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费<br><li>BANDWIDTH_PACKAGE：带宽包用户<br>默认取值：非带宽包用户默认与子机付费类型保持一致。
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见[购买网络带宽](https://cloud.tencent.com/document/product/213/12523)。
@@ -3032,7 +3038,7 @@ class ItemPrice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UnitPrice: 后续合计费用的原价，后付费模式使用，单位：元。<br><li>如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
@@ -3156,7 +3162,7 @@ class Job(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tasks: 任务信息
         :type Tasks: list of Task
         :param JobName: 作业名称
@@ -3232,7 +3238,7 @@ class JobView(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param JobName: 作业名称
@@ -3300,7 +3306,7 @@ class LocalDiskType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 本地磁盘类型。
         :type Type: str
         :param PartitionType: 本地磁盘属性。
@@ -3340,7 +3346,7 @@ class LoginSettings(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到16位，至少包括两项[a-z，A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? \/ ]中的特殊符号。<br><li>Windows实例密码必须12到16位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & * - + = { } [ ] : ; ' , . ? \/]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
         :type Password: str
         :param KeyIds: 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
@@ -3372,7 +3378,7 @@ class ModifyComputeEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param DesiredComputeNodeCount: 计算节点期望个数
@@ -3414,7 +3420,7 @@ class ModifyComputeEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3431,7 +3437,7 @@ class ModifyTaskTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateId: 任务模板ID
         :type TaskTemplateId: str
         :param TaskTemplateName: 任务模板名称
@@ -3469,7 +3475,7 @@ class ModifyTaskTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3486,7 +3492,7 @@ class MountDataDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocalPath: 挂载点，Linux系统合法路径，或Windows系统盘符,比如"H:\\"
         :type LocalPath: str
         :param FileSystemType: 文件系统类型，Linux系统下支持"EXT3"和"EXT4"两种，默认"EXT3"；Windows系统下仅支持"NTFS"
@@ -3514,7 +3520,7 @@ class NamedComputeEnv(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvName: 计算环境名称
         :type EnvName: str
         :param DesiredComputeNodeCount: 计算节点期望个数
@@ -3612,7 +3618,7 @@ class NamedCpmComputeEnv(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvName: 计算环境名称
         :type EnvName: str
         :param EnvData: 计算环境具体参数
@@ -3695,7 +3701,7 @@ class Notification(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: CMQ主题名字，要求主题名有效且关联订阅
         :type TopicName: str
         :param EventConfigs: 事件配置
@@ -3728,7 +3734,7 @@ class OsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OsTypeId: 操作系统ID。
         :type OsTypeId: int
         :param OsName: 操作系统名称。
@@ -3776,7 +3782,7 @@ class OutputMapping(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourcePath: 源端路径
         :type SourcePath: str
         :param DestinationPath: 目的端路径
@@ -3804,7 +3810,7 @@ class OutputMappingConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 存储类型，仅支持COS
         :type Scene: str
         :param WorkerNum: 并行worker数量
@@ -3836,7 +3842,7 @@ class Placement(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Zone: 实例所属的可用区ID。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
@@ -3876,7 +3882,7 @@ class RedirectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StdoutRedirectPath: 标准输出重定向路径
         :type StdoutRedirectPath: str
         :param StderrRedirectPath: 标准错误重定向路径
@@ -3912,7 +3918,7 @@ class RedirectLocalInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StdoutLocalPath: 标准输出重定向本地路径
         :type StdoutLocalPath: str
         :param StderrLocalPath: 标准错误重定向本地路径
@@ -3948,7 +3954,7 @@ class RetryJobsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobIds: 作业ID列表。
         :type JobIds: list of str
         """
@@ -3972,7 +3978,7 @@ class RetryJobsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3983,13 +3989,19 @@ class RetryJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RunAutomationServiceEnabled(AbstractModel):
+    """描述了 “云自动化助手” 服务相关的信息
+
+    """
+
+
 class RunMonitorServiceEnabled(AbstractModel):
     """描述了 “云监控” 服务相关的信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
         :type Enabled: bool
         """
@@ -4013,7 +4025,7 @@ class RunSecurityServiceEnabled(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enabled: 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
         :type Enabled: bool
         """
@@ -4037,7 +4049,7 @@ class SpotMarketOptions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxPrice: 竞价出价
         :type MaxPrice: str
         :param SpotInstanceType: 竞价请求类型，当前仅支持类型：one-time
@@ -4065,7 +4077,7 @@ class StorageBlock(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: HDD本地存储类型，值为：LOCAL_PRO.
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -4100,7 +4112,7 @@ class SubmitJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Placement: 作业所提交的位置信息。通过该参数可以指定作业关联CVM所属可用区等信息。
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
         :param Job: 作业信息
@@ -4136,7 +4148,7 @@ class SubmitJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 当通过本接口来提交作业时会返回该参数，表示一个作业ID。返回作业ID列表并不代表作业解析/运行成功，可根据 DescribeJob 接口查询其状态。
         :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4157,7 +4169,7 @@ class SystemDisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><br>默认取值：当前有库存的硬盘类型。
         :type DiskType: str
         :param DiskId: 系统盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID。暂时不支持该参数。
@@ -4193,7 +4205,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
@@ -4223,7 +4235,7 @@ class Task(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Application: 应用程序信息
         :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
         :param TaskName: 任务名称，在一个作业内部唯一
@@ -4348,7 +4360,7 @@ class TaskInstanceLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskInstanceIndex: 任务实例
         :type TaskInstanceIndex: int
         :param StdoutLog: 标准输出日志（Base64编码，解码后最大日志长度2048字节）
@@ -4402,7 +4414,7 @@ class TaskInstanceMetrics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubmittedCount: Submitted个数
         :type SubmittedCount: int
         :param PendingCount: Pending个数
@@ -4454,7 +4466,7 @@ class TaskInstanceView(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskInstanceIndex: 任务实例索引
         :type TaskInstanceIndex: int
         :param TaskInstanceState: 任务实例状态
@@ -4525,7 +4537,7 @@ class TaskMetrics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubmittedCount: Submitted个数
         :type SubmittedCount: int
         :param PendingCount: Pending个数
@@ -4577,7 +4589,7 @@ class TaskTemplateView(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskTemplateId: 任务模板ID
         :type TaskTemplateId: str
         :param TaskTemplateName: 任务模板名称
@@ -4629,7 +4641,7 @@ class TaskView(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskName: 任务名称
         :type TaskName: str
         :param TaskState: 任务状态
@@ -4666,7 +4678,7 @@ class TerminateComputeNodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param ComputeNodeId: 计算节点ID
@@ -4694,7 +4706,7 @@ class TerminateComputeNodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4711,7 +4723,7 @@ class TerminateComputeNodesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 计算环境ID
         :type EnvId: str
         :param ComputeNodeIds: 计算节点ID列表
@@ -4739,7 +4751,7 @@ class TerminateComputeNodesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4756,7 +4768,7 @@ class TerminateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         """
@@ -4780,7 +4792,7 @@ class TerminateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4797,7 +4809,7 @@ class TerminateTaskInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 作业ID
         :type JobId: str
         :param TaskName: 任务名称
@@ -4829,7 +4841,7 @@ class TerminateTaskInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4846,7 +4858,7 @@ class VirtualPrivateCloud(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
         :type VpcId: str
         :param SubnetId: 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。

@@ -24,7 +24,7 @@ class CompareMetricsData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ShortStructAccuracy: 短文准确率
         :type ShortStructAccuracy: str
         :param ShortStructRecall: 短文召回率
@@ -68,7 +68,7 @@ class CreateStructureTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 保单号
         :type PolicyId: str
         :param CustomerId: 客户号
@@ -123,7 +123,7 @@ class CreateStructureTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 本次结构化任务的ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -144,7 +144,7 @@ class DescribeStructCompareDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 结构化任务ID
         :type TaskId: str
         """
@@ -168,7 +168,7 @@ class DescribeStructCompareDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PolicyId: 保单号
         :type PolicyId: str
         :param TaskId: 结构化任务ID
@@ -227,7 +227,7 @@ class DescribeStructureTaskResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 结构化任务ID
         :type TaskId: str
         """
@@ -251,7 +251,7 @@ class DescribeStructureTaskResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 结果状态：
 0：返回成功
 1：结果未生成
@@ -285,7 +285,7 @@ class ResultObject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quality: 图片质量分
         :type Quality: float
         :param StructureResult: 由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议

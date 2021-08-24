@@ -24,7 +24,7 @@ class Candidate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 识别出人脸对应的候选人数组。当前返回相似度最高的候选人。
         :type Name: str
         :param Confidence: 相似度，0-100之间。
@@ -52,7 +52,7 @@ class DescribeVideoTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VodTaskId: 需要查询的视频审核的任务ID
         :type VodTaskId: str
         """
@@ -76,7 +76,7 @@ class DescribeVideoTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，取值：
 WAITING：等待中；
 PROCESSING：处理中；
@@ -156,7 +156,7 @@ class DisgustResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 该识别场景的错误码：
 0表示成功，
 -1表示系统错误，
@@ -198,7 +198,7 @@ class FaceRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人脸区域左上角横坐标。
         :type X: int
         :param Y: 人脸区域左上角纵坐标。
@@ -234,7 +234,7 @@ class FaceResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FaceRect: 检测出的人脸框位置。
         :type FaceRect: :class:`tencentcloud.ticm.v20181127.models.FaceRect`
         :param Candidates: 候选人列表。当前返回相似度最高的候选人。
@@ -269,7 +269,7 @@ class ImageModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scenes: 本次调用支持的识别场景，可选值如下：
 1. PORN，即色情识别
 2. TERRORISM，即暴恐识别
@@ -320,7 +320,7 @@ class ImageModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Suggestion: 识别场景的审核结论：
 PASS：正常
 REVIEW：疑似
@@ -376,7 +376,7 @@ class PoliticsResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 该识别场景的错误码：
 0表示成功，
 -1表示系统错误，
@@ -445,7 +445,7 @@ class PornResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 该识别场景的错误码：
 0表示成功，
 -1表示系统错误，
@@ -496,7 +496,7 @@ class TerrorismResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 该识别场景的错误码：
 0表示成功，
 -1表示系统错误，
@@ -564,7 +564,7 @@ class VideoModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoUrl: 需要审核的视频的URL地址
         :type VideoUrl: str
         :param DeveloperId: 开发者标识
@@ -600,7 +600,7 @@ class VideoModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VodTaskId: 视频审核任务ID
         :type VodTaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -621,7 +621,7 @@ class VodAsrTextSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
@@ -670,7 +670,7 @@ class VodAudioStreamItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: 音频流的码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
@@ -705,7 +705,7 @@ class VodMetaData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Size: 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
@@ -790,7 +790,7 @@ class VodOcrTextSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
@@ -844,7 +844,7 @@ class VodPoliticalAsrReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param Code: 错误码，0：成功，其他值：失败。
@@ -907,7 +907,7 @@ class VodPoliticalOcrReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param Code: 错误码，0：成功，其他值：失败。
@@ -962,7 +962,7 @@ class VodPoliticalReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param Code: 错误码，0：成功，其他值：失败。
@@ -1028,7 +1028,7 @@ class VodPoliticalReviewSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
@@ -1098,7 +1098,7 @@ class VodPornAsrReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param Code: 错误码，0：成功，其他值：失败。
@@ -1156,7 +1156,7 @@ class VodPornOcrResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param Code: 错误码，0：成功，其他值：失败。
@@ -1214,7 +1214,7 @@ class VodPornReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
         :param Code: 错误码，0：成功，其他值：失败。
@@ -1282,7 +1282,7 @@ class VodPornReviewSegmentItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: float
@@ -1342,7 +1342,7 @@ class VodTerrorismReviewResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 视频暴恐评分，分值为0到100。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: float
@@ -1414,7 +1414,7 @@ class VodVideoStreamItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Bitrate: 视频流的码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int

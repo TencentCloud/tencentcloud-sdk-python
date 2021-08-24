@@ -24,7 +24,7 @@ class AddResourceTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -56,7 +56,7 @@ class AddResourceTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -73,7 +73,7 @@ class AttachResourcesTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param ResourceIds: 资源ID数组，资源个数最多为50
@@ -117,7 +117,7 @@ class AttachResourcesTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -134,7 +134,7 @@ class CreateTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -162,7 +162,7 @@ class CreateTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -179,7 +179,7 @@ class DeleteResourceTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
@@ -207,7 +207,7 @@ class DeleteResourceTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -224,7 +224,7 @@ class DeleteTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 需要删除的标签键
         :type TagKey: str
         :param TagValue: 需要删除的标签值
@@ -252,7 +252,7 @@ class DeleteTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -269,7 +269,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 业务类型
         :type ServiceType: str
         :param ResourcePrefix: 资源前缀
@@ -313,7 +313,7 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -351,7 +351,7 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 业务类型
         :type ServiceType: str
         :param ResourcePrefix: 资源前缀
@@ -395,7 +395,7 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -433,7 +433,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 业务类型
         :type ServiceType: str
         :param ResourcePrefix: 资源前缀
@@ -481,7 +481,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -519,7 +519,7 @@ class DescribeResourceTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreateUin: 创建者uin
         :type CreateUin: int
         :param ResourceRegion: 资源所在地域
@@ -571,7 +571,7 @@ class DescribeResourceTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -610,7 +610,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagFilters: 标签过滤数组
         :type TagFilters: list of TagFilter
         :param CreateUin: 创建标签者uin
@@ -667,7 +667,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -706,7 +706,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagFilters: 标签过滤数组
         :type TagFilters: list of TagFilter
         :param CreateUin: 创建标签者uin
@@ -763,7 +763,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -801,7 +801,7 @@ class DescribeTagKeysRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :type CreateUin: int
         :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -837,7 +837,7 @@ class DescribeTagKeysResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -870,7 +870,7 @@ class DescribeTagValuesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKeys: 标签键列表
         :type TagKeys: list of str
         :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
@@ -906,7 +906,7 @@ class DescribeTagValuesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -944,7 +944,7 @@ class DescribeTagValuesSeqRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKeys: 标签键列表
         :type TagKeys: list of str
         :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
@@ -980,7 +980,7 @@ class DescribeTagValuesSeqResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -1018,7 +1018,7 @@ class DescribeTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
         :type TagKey: str
         :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
@@ -1066,7 +1066,7 @@ class DescribeTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -1104,7 +1104,7 @@ class DescribeTagsSeqRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
         :type TagKey: str
         :param TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
@@ -1152,7 +1152,7 @@ class DescribeTagsSeqResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 结果总数
         :type TotalCount: int
         :param Offset: 数据位移偏量
@@ -1190,7 +1190,7 @@ class DetachResourcesTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param ResourceIds: 资源ID数组，资源个数最多为50
@@ -1230,7 +1230,7 @@ class DetachResourcesTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1247,7 +1247,7 @@ class ModifyResourceTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
         :type Resource: str
         :param ReplaceTags: 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
@@ -1289,7 +1289,7 @@ class ModifyResourceTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1306,7 +1306,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param ResourceIds: 资源ID数组，资源个数最多为50
@@ -1350,7 +1350,7 @@ class ModifyResourcesTagValueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1367,7 +1367,7 @@ class ResourceIdTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
@@ -1402,7 +1402,7 @@ class ResourceTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceRegion: 资源所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
@@ -1452,7 +1452,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1480,7 +1480,7 @@ class TagFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值数组 多个值的话是或的关系
@@ -1508,7 +1508,7 @@ class TagKeyObject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         """
@@ -1532,7 +1532,7 @@ class TagResource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1577,7 +1577,7 @@ class TagWithDelete(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -1609,7 +1609,7 @@ class UpdateResourceTagValueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 资源关联的标签键
         :type TagKey: str
         :param TagValue: 修改后的标签值
@@ -1641,7 +1641,7 @@ class UpdateResourceTagValueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

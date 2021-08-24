@@ -24,7 +24,7 @@ class CdsAuditInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param AppId: 用户AppId
@@ -112,7 +112,7 @@ class DbauditTypesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceVersionName: 规格描述
         :type InstanceVersionName: str
         :param InstanceVersionKey: 规格名称
@@ -166,7 +166,7 @@ class DescribeDasbImageIdsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BaseImageId: 基础镜像ID
         :type BaseImageId: str
         :param AiImageId: AI镜像ID
@@ -197,7 +197,7 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DbauditTypesSet: 数据安全审计产品规格信息列表
         :type DbauditTypesSet: list of DbauditTypesInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -223,7 +223,7 @@ class DescribeDbauditInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SearchRegion: 查询条件地域
         :type SearchRegion: str
         :param Limit: 限制数目，默认10， 最大50
@@ -255,7 +255,7 @@ class DescribeDbauditInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总实例数
         :type TotalCount: int
         :param CdsAuditInstanceSet: 数据安全审计实例信息列表
@@ -291,7 +291,7 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionSet: 可售卖地域信息列表
         :type RegionSet: list of RegionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -317,7 +317,7 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceVersion: 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
         :type InstanceVersion: str
         :param InquiryType: 询价类型： renew，续费；newbuy，新购
@@ -357,7 +357,7 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalPrice: 总价，单位：元
         :type TotalPrice: float
         :param RealTotalCost: 真实价钱，预支费用的折扣价，单位：元
@@ -382,7 +382,7 @@ class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
         :param AutoRenewFlag: 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
@@ -410,7 +410,7 @@ class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -427,7 +427,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 地域ID
         :type RegionId: int
         :param Region: 地域名称

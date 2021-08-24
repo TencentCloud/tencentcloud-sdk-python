@@ -5,7 +5,9 @@ import sys
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 
-from tencentcloud.ocr.v20181119  import ocr_client, models
+from tencentcloud.ocr.v20181119 import ocr_client
+from tencentcloud.ocr.v20181119 import models
+
 
 def test_iai_create_person():
     cred = credential.Credential(

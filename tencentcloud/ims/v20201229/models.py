@@ -24,7 +24,7 @@ class Device(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: 该字段表示业务用户对应设备的IP地址，同时**支持IPv4和IPv6**地址的记录；需要与IpType参数配合使用。
         :type Ip: str
         :param Mac: 该字段表示业务用户对应的MAC地址，以方便设备识别与管理；其格式与取值与标准MAC地址一致。
@@ -77,7 +77,7 @@ class ImageModerationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
         :param DataId: 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
@@ -133,7 +133,7 @@ class ImageModerationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Suggestion: 该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
         :type Suggestion: str
         :param Label: 该字段用于返回检测结果（LabelResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
@@ -223,7 +223,7 @@ class ImageRecognitionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Channel: 渠道ID，必须与主调账号一致，由天御分配并与API调用账号绑定
         :type Channel: int
         :param CustomAppId: 产品侧腾讯云用户账号AppId
@@ -299,7 +299,7 @@ class ImageRecognitionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
@@ -394,7 +394,7 @@ class LabelDetailItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 该字段用于返回识别对象的ID以方便识别和区分。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
@@ -429,7 +429,7 @@ class LabelResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 该字段用于返回模型识别出的场景结果，如广告、色情、有害内容等场景。
         :type Scene: str
         :param Suggestion: 该字段用于返回针对当前恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -479,7 +479,7 @@ class LibDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 该字段用于返回识别对象的ID以方便识别和区分。
         :type Id: int
         :param LibId: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
@@ -529,7 +529,7 @@ class LibResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 该字段表示模型的场景识别结果，默认取值为Similar。
         :type Scene: str
         :param Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -580,7 +580,7 @@ class Location(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 该参数用于返回检测框**左上角位置的横坐标**（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
         :type X: float
         :param Y: 该参数用于返回检测框**左上角位置的纵坐标**（y）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
@@ -620,7 +620,7 @@ class ObjectDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 该参数用于返回识别对象的ID以方便识别和区分。
         :type Id: int
         :param Name: 该参数用于返回命中的实体标签。
@@ -662,7 +662,7 @@ class ObjectResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 该字段用于返回实体识别出的实体场景结果，如二维码、logo、图片OCR等场景。
         :type Scene: str
         :param Suggestion: 该字段用于返回针对当前恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -718,7 +718,7 @@ class OcrResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scene: 该字段表示识别场景，取值默认为OCR（图片OCR识别）。
         :type Scene: str
         :param Suggestion: 该字段用于返回优先级最高的恶意标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -772,7 +772,7 @@ class OcrTextDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Text: 该字段用于返回OCR识别出的文本内容。<br>备注：OCR文本识别上限在**5000字节内**。
         :type Text: str
         :param Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
@@ -826,7 +826,7 @@ class User(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
 备注：该字段可传入微信openid、QQopenid、字符串等账号信息，与账号类别参数（AccountType）配合使用可确定唯一账号。
         :type UserId: str

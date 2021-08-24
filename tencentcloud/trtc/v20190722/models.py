@@ -24,7 +24,7 @@ class AbnormalEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AbnormalEventId: 异常事件ID，具体值查看附录：异常体验ID映射表：https://cloud.tencent.com/document/product/647/44916
         :type AbnormalEventId: int
         :param PeerId: 远端用户ID,""：表示异常事件不是由远端用户产生
@@ -53,7 +53,7 @@ class AbnormalExperience(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户ID
         :type UserId: str
         :param ExperienceId: 异常体验ID
@@ -98,7 +98,7 @@ class CreatePictureRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用id
         :type SdkAppId: int
         :param Content: 图片内容经base64编码后的string格式
@@ -146,7 +146,7 @@ class CreatePictureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PictureId: 图片id
         :type PictureId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -167,7 +167,7 @@ class CreateTroubleInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用的ID
         :type SdkAppId: str
         :param RoomId: 房间ID
@@ -227,7 +227,7 @@ class CreateTroubleInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -244,7 +244,7 @@ class DeletePictureRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PictureId: 图片id
         :type PictureId: int
         :param SdkAppId: 应用id
@@ -272,7 +272,7 @@ class DeletePictureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -289,12 +289,12 @@ class DescribeAbnormalEventRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
         :type SdkAppId: str
-        :param StartTime: 查询开始时间
+        :param StartTime: 查询开始时间,本地unix时间戳（1592448600s）
         :type StartTime: int
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间,本地unix时间戳（1592449080s）
         :type EndTime: int
         :param RoomId: 房间号，查询房间内任意20条以内异常体验事件
         :type RoomId: str
@@ -325,7 +325,7 @@ class DescribeAbnormalEventResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回的数据总条数
         :type Total: int
         :param AbnormalExperienceList: 异常体验列表
@@ -355,14 +355,14 @@ class DescribeCallDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
         :type CommId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588031999s）
+        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1590065777s），查询实时数据时，查询起止时间不超过1个小时。
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
+        :param EndTime: 查询结束时间，本地unix时间戳（1590065877s）
         :type EndTime: int
-        :param SdkAppId: 用户SDKAppID（1400188366）
+        :param SdkAppId: 用户SDKAppID（1400353843）
         :type SdkAppId: str
         :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
         :type UserIds: list of str
@@ -420,7 +420,7 @@ class DescribeCallDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回的用户总条数
         :type Total: int
         :param UserList: 用户信息列表
@@ -461,12 +461,12 @@ class DescribeDetailEventRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
         :type CommId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588031999s）
+        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588055615s）
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
+        :param EndTime: 查询结束时间，本地unix时间戳（1588058615s）
         :type EndTime: int
         :param UserId: 用户id
         :type UserId: str
@@ -501,8 +501,8 @@ class DescribeDetailEventResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Data: 返回的事件列表
+        r"""
+        :param Data: 返回的事件列表，若没有数据，会返回空数组。
         :type Data: list of EventList
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -527,12 +527,12 @@ class DescribeHistoryScaleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SdkAppId: 用户sdkappid
+        r"""
+        :param SdkAppId: 用户sdkappid(1400188366)
         :type SdkAppId: str
-        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1588031999s）
+        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1587571000s）
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
+        :param EndTime: 查询结束时间，本地unix时间戳（1588034999s）
         :type EndTime: int
         """
         self.SdkAppId = None
@@ -559,7 +559,7 @@ class DescribeHistoryScaleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回的数据条数
         :type Total: int
         :param ScaleList: 返回的数据
@@ -590,7 +590,7 @@ class DescribePictureRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 应用ID
         :type SdkAppId: int
         :param PictureId: 图片ID，不填时返回该应用下所有图片
@@ -626,7 +626,7 @@ class DescribePictureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回的图片记录数
         :type Total: int
         :param PictureInfo: 图片信息列表
@@ -656,7 +656,7 @@ class DescribeRealtimeNetworkRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询开始时间，24小时内，本地unix时间戳（1588031999s）
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
@@ -694,7 +694,7 @@ class DescribeRealtimeNetworkResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 查询返回的数据
         :type Data: list of RealtimeData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -720,7 +720,7 @@ class DescribeRealtimeQualityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询开始时间，24小时内。本地unix时间戳（1588031999s）
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
@@ -760,7 +760,7 @@ class DescribeRealtimeQualityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回的数据类型
         :type Data: list of RealtimeData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -786,7 +786,7 @@ class DescribeRealtimeScaleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询开始时间，24小时内。本地unix时间戳（1588031999s）
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
@@ -824,7 +824,7 @@ class DescribeRealtimeScaleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回的数据数组
         :type Data: list of RealtimeData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -850,7 +850,7 @@ class DescribeRecordStatisticRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询开始日期，格式为YYYY-MM-DD。
         :type StartTime: str
         :param EndTime: 查询结束日期，格式为YYYY-MM-DD。
@@ -883,7 +883,7 @@ class DescribeRecordStatisticResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppIdUsages: 应用的用量信息数组。
         :type SdkAppIdUsages: list of SdkAppIdRecordUsage
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -909,12 +909,12 @@ class DescribeRoomInformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: 用户sdkappid
         :type SdkAppId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588031999s）
+        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588031999）
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
+        :param EndTime: 查询结束时间，本地unix时间戳（1588034999）
         :type EndTime: int
         :param RoomId: 字符串房间号
         :type RoomId: str
@@ -953,7 +953,7 @@ class DescribeRoomInformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回当页数据总数
         :type Total: int
         :param RoomList: 房间信息列表
@@ -983,7 +983,7 @@ class DescribeTrtcInteractiveTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询开始时间，格式为YYYY-MM-DD。
         :type StartTime: str
         :param EndTime: 查询结束时间，格式为YYYY-MM-DD。
@@ -1016,7 +1016,7 @@ class DescribeTrtcInteractiveTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Usages: 应用的用量信息数组。
         :type Usages: list of OneSdkAppIdUsagesInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1042,7 +1042,7 @@ class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询开始时间，格式为YYYY-MM-DD。
         :type StartTime: str
         :param EndTime: 查询结束时间，格式为YYYY-MM-DD。
@@ -1075,7 +1075,7 @@ class DescribeTrtcMcuTranscodeTimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Usages: 应用的用量信息数组。
         :type Usages: list of OneSdkAppIdTranscodeTimeUsagesInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1101,14 +1101,14 @@ class DescribeUserInformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
         :type CommId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588031999s）
+        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1590065777）
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
+        :param EndTime: 查询结束时间，本地unix时间戳（1590065877）
         :type EndTime: int
-        :param SdkAppId: 用户SDKAppID（1400188366）
+        :param SdkAppId: 用户SDKAppID（1400353843）
         :type SdkAppId: str
         :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
         :type UserIds: list of str
@@ -1149,7 +1149,7 @@ class DescribeUserInformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 返回的用户总条数
         :type Total: int
         :param UserList: 用户信息列表
@@ -1180,7 +1180,7 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param RoomId: 房间号。
@@ -1208,7 +1208,7 @@ class DismissRoomByStrRoomIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1225,7 +1225,7 @@ class DismissRoomRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param RoomId: 房间号。
@@ -1253,7 +1253,7 @@ class DismissRoomResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1270,7 +1270,7 @@ class EncodeParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AudioSampleRate: 混流-输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
         :type AudioSampleRate: int
         :param AudioBitrate: 混流-输出流音频码率。取值范围[8,500]，单位为kbps。
@@ -1341,7 +1341,7 @@ class EventList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 数据内容
         :type Content: list of EventMessage
         :param PeerId: 发送端的userId
@@ -1374,7 +1374,7 @@ class EventMessage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 视频流类型：
 0：与视频无关的事件；
 2：视频为大画面；
@@ -1418,7 +1418,7 @@ class LayoutParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Template: 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板;4为自定义模板。
         :type Template: int
         :param MainVideoUserId: 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的用户ID。
@@ -1487,7 +1487,7 @@ class ModifyPictureRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PictureId: 图片id
         :type PictureId: int
         :param SdkAppId: 应用id
@@ -1531,7 +1531,7 @@ class ModifyPictureResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1548,7 +1548,7 @@ class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppIdTranscodeTimeUsages: 旁路转码时长查询结果数组
         :type SdkAppIdTranscodeTimeUsages: list of SdkAppIdTrtcMcuTranscodeTimeUsage
         :param TotalNum: 查询记录数量
@@ -1585,7 +1585,7 @@ class OneSdkAppIdUsagesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalNum: 该 SdkAppId 对应的用量记录数长度
         :type TotalNum: int
         :param SdkAppIdTrtcTimeUsages: 用量数组
@@ -1622,7 +1622,7 @@ class OutputParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StreamId: 直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同。
         :type StreamId: str
         :param PureAudioStream: 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
@@ -1658,7 +1658,7 @@ class PictureInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Height: 图片长度
         :type Height: int
         :param Width: 图片宽度
@@ -1702,7 +1702,7 @@ class PresetLayoutConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 指定显示在该画面上的用户ID。如果不指定用户ID，会按照用户加入房间的顺序自动匹配PresetLayoutConfig中的画面设置。
         :type UserId: str
         :param StreamType: 当该画面指定用户时，代表用户的流类型。0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
@@ -1762,7 +1762,7 @@ class PublishCdnParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BizId: 腾讯云直播BizId。
         :type BizId: int
         :param PublishCdnUrls: 第三方CDN转推的目的地址，同时只支持转推一个第三方CDN地址。
@@ -1790,7 +1790,7 @@ class QualityData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 数据内容
         :type Content: list of TimeValue
         :param UserId: 用户ID
@@ -1832,7 +1832,7 @@ class RealtimeData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: 返回的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of TimeValue
@@ -1866,7 +1866,7 @@ class RecordUsage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeKey: 本组数据对应的时间点，格式如:2020-09-07或2020-09-07 00:05:05。
         :type TimeKey: str
         :param Class1VideoTime: 视频时长-标清SD，单位：秒。
@@ -1906,7 +1906,7 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param RoomId: 房间号。
@@ -1938,7 +1938,7 @@ class RemoveUserByStrRoomIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1955,7 +1955,7 @@ class RemoveUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param RoomId: 房间号。
@@ -1987,7 +1987,7 @@ class RemoveUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2004,7 +2004,7 @@ class RoomState(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CommId: 通话ID（唯一标识一次通话）
         :type CommId: str
         :param RoomString: 房间号
@@ -2048,7 +2048,7 @@ class ScaleInfomation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 每天开始的时间
         :type Time: int
         :param UserNumber: 房间人数，用户重复进入同一个房间为1次
@@ -2087,7 +2087,7 @@ class SdkAppIdRecordUsage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: SdkAppId的值。
         :type SdkAppId: str
         :param Usages: 统计的时间点数据。
@@ -2121,7 +2121,7 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeKey: 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
         :type TimeKey: str
         :param AudioTime: 语音时长，单位：秒。
@@ -2162,7 +2162,7 @@ class SdkAppIdTrtcUsage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimeKey: 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
         :type TimeKey: str
         :param AudioTime: 语音时长，单位：秒。
@@ -2207,7 +2207,7 @@ class SmallVideoLayoutParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 代表小画面对应的用户ID。
         :type UserId: str
         :param StreamType: 代表小画面对应的流类型，0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
@@ -2251,7 +2251,7 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param StrRoomId: 字符串房间号。
@@ -2303,7 +2303,7 @@ class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2320,7 +2320,7 @@ class StartMCUMixTranscodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param RoomId: 房间号。
@@ -2372,7 +2372,7 @@ class StartMCUMixTranscodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2389,7 +2389,7 @@ class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param StrRoomId: 字符串房间号。
@@ -2417,7 +2417,7 @@ class StopMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2434,7 +2434,7 @@ class StopMCUMixTranscodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
         :param RoomId: 房间号。
@@ -2462,7 +2462,7 @@ class StopMCUMixTranscodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2479,7 +2479,7 @@ class TimeValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间，unix时间戳（1590065877s)
         :type Time: int
         :param Value: 当前时间返回参数取值，如（bigvCapFps在1590065877取值为0，则Value：0 ）
@@ -2507,7 +2507,7 @@ class UserInformation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RoomStr: 房间号
         :type RoomStr: str
         :param UserId: 用户Id
@@ -2559,7 +2559,7 @@ class WaterMarkParams(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WaterMarkId: 混流-水印图片ID。取值为实时音视频控制台上传的图片ID。
         :type WaterMarkId: int
         :param WaterMarkWidth: 混流-水印宽。单位为像素值。

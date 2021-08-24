@@ -18,11 +18,18 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 logger = logging.getLogger("tencentcloud_sdk_common")
 
 
+def _get_proxy_from_env(host, varname="HTTPS_PROXY"):
+    no_proxy = os.environ.get("NO_PROXY") or os.environ.get("no_proxy")
+    if no_proxy and host in no_proxy:
+        return None
+    return os.environ.get(varname.lower()) or os.environ.get(varname.upper())
+
+
 class ProxyHTTPSConnection(HTTPSConnection):
     def __init__(self, host, port=None, timeout=60, proxy=None):
         self.has_proxy = False
         self.request_host = host
-        proxy = proxy or os.environ.get('https_proxy') or os.environ.get('HTTPS_PROXY')
+        proxy = proxy or _get_proxy_from_env(host, varname="HTTPS_PROXY")
         if proxy:
             url = urlparse(proxy)
             if not url.hostname:
@@ -50,7 +57,7 @@ class ProxyHTTPConnection(HTTPConnection):
         self.request_length = 0
         self.has_proxy = False
         self.request_host = host
-        proxy = proxy or os.environ.get('http_proxy') or os.environ.get('HTTP_PROXY')
+        proxy = proxy or _get_proxy_from_env(host, varname="HTTP_PROXY")
         if proxy:
             url = urlparse(proxy)
             if not url.hostname:

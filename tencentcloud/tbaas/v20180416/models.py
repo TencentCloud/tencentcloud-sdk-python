@@ -24,7 +24,7 @@ class ApplyUserCertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：cert_mng
         :type Module: str
         :param Operation: 操作名，固定字段：cert_apply_for_user
@@ -80,7 +80,7 @@ class ApplyUserCertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertId: 证书ID
         :type CertId: int
         :param CertDn: 证书DN
@@ -105,7 +105,7 @@ class BcosBlockObj(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlockHash: 区块哈希
         :type BlockHash: str
         :param BlockNumber: 区块高度
@@ -157,7 +157,7 @@ class BcosTransInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlockNumber: 所属区块高度
         :type BlockNumber: int
         :param BlockTimestamp: 区块时间戳
@@ -205,7 +205,7 @@ class Block(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlockNum: 区块编号
         :type BlockNum: int
         :param DataHash: 区块数据Hash数值
@@ -245,7 +245,7 @@ class BlockByNumberHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：block
         :type Module: str
         :param Operation: 操作名，固定字段：block_by_number
@@ -281,7 +281,7 @@ class BlockByNumberHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlockJson: 返回区块json字符串
         :type BlockJson: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -296,13 +296,121 @@ class BlockByNumberHandlerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChainMakerContractResult(AbstractModel):
+    """长安链合约执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 交易结果码
+        :type Code: int
+        :param CodeMessage: 交易结果码含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeMessage: str
+        :param TxId: 交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxId: str
+        :param GasUsed: Gas使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GasUsed: int
+        :param Message: 合约返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Result: 合约函数返回，base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        """
+        self.Code = None
+        self.CodeMessage = None
+        self.TxId = None
+        self.GasUsed = None
+        self.Message = None
+        self.Result = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.CodeMessage = params.get("CodeMessage")
+        self.TxId = params.get("TxId")
+        self.GasUsed = params.get("GasUsed")
+        self.Message = params.get("Message")
+        self.Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChainMakerTransactionResult(AbstractModel):
+    """长安链交易查询结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 交易结果码
+        :type Code: int
+        :param CodeMessage: 交易结果码含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeMessage: str
+        :param TxId: 交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxId: str
+        :param GasUsed: Gas使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GasUsed: int
+        :param BlockHeight: 区块高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockHeight: int
+        :param ContractEvent: 合约执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContractEvent: str
+        :param Message: 合约返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Timestamp: 交易时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        """
+        self.Code = None
+        self.CodeMessage = None
+        self.TxId = None
+        self.GasUsed = None
+        self.BlockHeight = None
+        self.ContractEvent = None
+        self.Message = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.CodeMessage = params.get("CodeMessage")
+        self.TxId = params.get("TxId")
+        self.GasUsed = params.get("GasUsed")
+        self.BlockHeight = params.get("BlockHeight")
+        self.ContractEvent = params.get("ContractEvent")
+        self.Message = params.get("Message")
+        self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelDetailForUser(AbstractModel):
     """通道详情信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChannelName: 通道名称
         :type ChannelName: str
         :param PeerList: 当前组织加入通道的节点列表
@@ -335,7 +443,7 @@ class ClusterDetailForUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID
         :type ClusterId: str
         :param GroupList: 组织列表
@@ -372,7 +480,7 @@ class CreateChaincodeAndInstallForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：chaincode_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：chaincode_create_and_install_for_user
@@ -432,7 +540,7 @@ class CreateChaincodeAndInstallForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -449,7 +557,7 @@ class DeployDynamicBcosContractRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
         :param GroupId: 群组编号，可在群组列表中获取
@@ -493,7 +601,7 @@ class DeployDynamicBcosContractResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContractAddress: 部署成功返回的合约地址
         :type ContractAddress: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -514,7 +622,7 @@ class DeployDynamicContractHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：contract
         :type Module: str
         :param Operation: 操作名，固定字段：deploy_dynamic_contract
@@ -562,7 +670,7 @@ class DeployDynamicContractHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContractAddress: 部署成功返回的合约地址
         :type ContractAddress: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -583,7 +691,7 @@ class DownloadUserCertRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：cert_mng
         :type Module: str
         :param Operation: 操作名，固定字段：cert_download_for_user
@@ -627,7 +735,7 @@ class DownloadUserCertResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertName: 证书名称
         :type CertName: str
         :param CertCtx: 证书内容
@@ -652,7 +760,7 @@ class EndorserGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EndorserGroupName: 背书组织名称
         :type EndorserGroupName: str
         :param EndorserPeerList: 背书节点列表
@@ -680,7 +788,7 @@ class GetBcosBlockByNumberRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
         :param GroupId: 群组编号，可在群组列表中获取
@@ -712,7 +820,7 @@ class GetBcosBlockByNumberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlockJson: 返回区块json字符串
         :type BlockJson: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -733,7 +841,7 @@ class GetBcosBlockListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
         :param GroupId: 群组编号，可在群组列表中获取
@@ -777,7 +885,7 @@ class GetBcosBlockListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param List: 返回数据列表
@@ -807,7 +915,7 @@ class GetBcosTransByHashRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
         :param GroupId: 群组编号，可在群组列表中获取
@@ -839,7 +947,7 @@ class GetBcosTransByHashResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionJson: 交易信息json字符串
         :type TransactionJson: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -860,7 +968,7 @@ class GetBcosTransListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
         :param GroupId: 群组编号，可在群组列表中获取
@@ -904,7 +1012,7 @@ class GetBcosTransListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param List: 返回数据列表
@@ -934,7 +1042,7 @@ class GetBlockListHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：block
         :type Module: str
         :param Operation: 操作名，固定字段：get_block_list
@@ -978,7 +1086,7 @@ class GetBlockListHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param GroupPk: 当前群组编号
@@ -1012,7 +1120,7 @@ class GetBlockListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名称，固定字段：block
         :type Module: str
         :param Operation: 操作名称，固定字段：block_list
@@ -1068,7 +1176,7 @@ class GetBlockListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 区块数量
         :type TotalCount: int
         :param BlockList: 区块列表
@@ -1098,7 +1206,7 @@ class GetBlockTransactionListForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：block_transaction_list_for_user
@@ -1150,7 +1258,7 @@ class GetBlockTransactionListForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 交易总数量
         :type TotalCount: int
         :param TransactionList: 交易列表
@@ -1180,7 +1288,7 @@ class GetChaincodeCompileLogForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：chaincode_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：chaincode_compile_log_for_user
@@ -1236,7 +1344,7 @@ class GetChaincodeCompileLogForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 日志总行数，上限2000条日志
         :type TotalCount: int
         :param CompileLogList: 日志列表
@@ -1266,7 +1374,7 @@ class GetChaincodeInitializeResultForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：chaincode_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：chaincode_init_result_for_user
@@ -1318,7 +1426,7 @@ class GetChaincodeInitializeResultForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InitResult: 实例化结果：0，实例化中；1，实例化成功；2，实例化失败
         :type InitResult: int
         :param InitMessage: 实例化信息
@@ -1343,7 +1451,7 @@ class GetChaincodeLogForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：chaincode_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：chaincode_log_for_user
@@ -1399,7 +1507,7 @@ class GetChaincodeLogForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回日志总行数，不会超过入参的RowNum
         :type TotalCount: int
         :param ChaincodeLogList: 日志列表
@@ -1429,7 +1537,7 @@ class GetChannelListForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：channel_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：channel_list_for_user
@@ -1473,7 +1581,7 @@ class GetChannelListForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 通道总数量
         :type TotalCount: int
         :param ChannelList: 通道列表
@@ -1503,7 +1611,7 @@ class GetClusterListForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：cluster_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：cluster_list_for_user
@@ -1539,7 +1647,7 @@ class GetClusterListForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 网络总数量
         :type TotalCount: int
         :param ClusterList: 网络列表
@@ -1569,7 +1677,7 @@ class GetClusterSummaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名称，固定字段：cluster_mng
         :type Module: str
         :param Operation: 操作名称，固定字段：cluster_summary
@@ -1609,7 +1717,7 @@ class GetClusterSummaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalChannelCount: 网络通道总数量
         :type TotalChannelCount: int
         :param MyChannelCount: 当前组织创建的通道数量
@@ -1686,7 +1794,7 @@ class GetInvokeTxRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：query_txid
@@ -1738,7 +1846,7 @@ class GetInvokeTxResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TxValidationCode: 交易执行状态码
         :type TxValidationCode: int
         :param TxValidationMsg: 交易执行消息
@@ -1767,7 +1875,7 @@ class GetLatesdTransactionListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名称，固定字段：transaction
         :type Module: str
         :param Operation: 操作名称，固定字段：latest_transaction_list
@@ -1827,7 +1935,7 @@ class GetLatesdTransactionListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 交易总数量
         :type TotalCount: int
         :param TransactionList: 交易列表
@@ -1857,7 +1965,7 @@ class GetPeerLogForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：peer_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：peer_log_for_user
@@ -1905,7 +2013,7 @@ class GetPeerLogForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 返回日志总行数，不会超过入参的RowNum
         :type TotalCount: int
         :param PeerLogList: 日志列表
@@ -1935,7 +2043,7 @@ class GetTransByHashHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：get_trans_by_hash
@@ -1971,7 +2079,7 @@ class GetTransByHashHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionJson: 交易信息json字符串
         :type TransactionJson: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1992,7 +2100,7 @@ class GetTransListHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：get_trans_list
@@ -2036,7 +2144,7 @@ class GetTransListHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param GroupPk: 当前群组编号
@@ -2070,7 +2178,7 @@ class GetTransactionDetailForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：transaction_detail_for_user
@@ -2118,7 +2226,7 @@ class GetTransactionDetailForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionId: 交易ID
         :type TransactionId: str
         :param TransactionHash: 交易hash
@@ -2192,7 +2300,7 @@ class GroupDetailForUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 组织名称
         :type GroupName: str
         :param GroupMSPId: 组织MSP Identity
@@ -2220,7 +2328,7 @@ class InitializeChaincodeForUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，本接口取值：chaincode_mng
         :type Module: str
         :param Operation: 操作名，本接口取值：chaincode_init_for_user
@@ -2276,7 +2384,7 @@ class InitializeChaincodeForUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 实例化任务ID，用于查询实例化结果
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2297,7 +2405,7 @@ class InvokeBcosTransRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
         :param GroupId: 群组编号，可在群组列表中获取
@@ -2345,7 +2453,7 @@ class InvokeBcosTransResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionRsp: 交易结果json字符串
         :type TransactionRsp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2360,13 +2468,81 @@ class InvokeBcosTransResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InvokeChainMakerContractRequest(AbstractModel):
+    """InvokeChainMakerContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param ContractName: 合约名称，可在合约管理中获取
+        :type ContractName: str
+        :param FuncName: 合约方法名
+        :type FuncName: str
+        :param FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :type FuncParam: str
+        :param AsyncFlag: 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
+        :type AsyncFlag: int
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.ContractName = None
+        self.FuncName = None
+        self.FuncParam = None
+        self.AsyncFlag = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.ContractName = params.get("ContractName")
+        self.FuncName = params.get("FuncName")
+        self.FuncParam = params.get("FuncParam")
+        self.AsyncFlag = params.get("AsyncFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeChainMakerContractResponse(AbstractModel):
+    """InvokeChainMakerContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ChainMakerContractResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：invoke
@@ -2431,7 +2607,7 @@ class InvokeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Txid: 交易ID
         :type Txid: str
         :param Events: 交易执行结果
@@ -2456,7 +2632,7 @@ class LogDetailForUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LineNumber: 日志行号
         :type LineNumber: int
         :param LogMessage: 日志详情
@@ -2484,7 +2660,7 @@ class PeerDetailForUser(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PeerName: 节点名称
         :type PeerName: str
         """
@@ -2508,7 +2684,7 @@ class PeerSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PeerName: 节点名称
         :type PeerName: str
         :param OrgName: 组织名称
@@ -2530,13 +2706,205 @@ class PeerSet(AbstractModel):
         
 
 
+class QueryChainMakerBlockTransactionRequest(AbstractModel):
+    """QueryChainMakerBlockTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param BlockHeight: 区块高度，-1表示最新区块
+        :type BlockHeight: int
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.BlockHeight = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.BlockHeight = params.get("BlockHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryChainMakerBlockTransactionResponse(AbstractModel):
+    """QueryChainMakerBlockTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 区块交易
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of ChainMakerTransactionResult
+        :param BlockHeight: 区块高度
+        :type BlockHeight: int
+        :param TxCount: 交易数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxCount: int
+        :param BlockTimestamp: 区块时间戳
+        :type BlockTimestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.BlockHeight = None
+        self.TxCount = None
+        self.BlockTimestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ChainMakerTransactionResult()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.BlockHeight = params.get("BlockHeight")
+        self.TxCount = params.get("TxCount")
+        self.BlockTimestamp = params.get("BlockTimestamp")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryChainMakerContractRequest(AbstractModel):
+    """QueryChainMakerContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param ContractName: 合约名称，可在合约管理中获取
+        :type ContractName: str
+        :param FuncName: 合约方法名
+        :type FuncName: str
+        :param FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :type FuncParam: str
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.ContractName = None
+        self.FuncName = None
+        self.FuncParam = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.ContractName = params.get("ContractName")
+        self.FuncName = params.get("FuncName")
+        self.FuncParam = params.get("FuncParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryChainMakerContractResponse(AbstractModel):
+    """QueryChainMakerContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ChainMakerContractResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryChainMakerTransactionRequest(AbstractModel):
+    """QueryChainMakerTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param TxID: 交易ID，通过调用合约的返回值获取
+        :type TxID: str
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.TxID = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.TxID = params.get("TxID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryChainMakerTransactionResponse(AbstractModel):
+    """QueryChainMakerTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ChainMakerTransactionResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryRequest(AbstractModel):
     """Query请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：query
@@ -2597,7 +2965,7 @@ class QueryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 查询结果数据
         :type Data: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2618,7 +2986,7 @@ class SendTransactionHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：send_transaction
@@ -2662,7 +3030,7 @@ class SendTransactionHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionRsp: 交易结果json字符串
         :type TransactionRsp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2683,7 +3051,7 @@ class SrvInvokeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Service: 服务类型，iss或者dam
         :type Service: str
         :param Method: 服务接口，要调用的方法函数名
@@ -2715,7 +3083,7 @@ class SrvInvokeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetCode: 返回码
         :type RetCode: int
         :param RetMsg: 返回消息
@@ -2744,7 +3112,7 @@ class TransByDynamicContractHandlerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Module: 模块名，固定字段：transaction
         :type Module: str
         :param Operation: 操作名，固定字段：trans_by_dynamic_contract
@@ -2796,7 +3164,7 @@ class TransByDynamicContractHandlerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionRsp: 交易结果json字符串
         :type TransactionRsp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2817,7 +3185,7 @@ class TransactionItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TransactionId: 交易ID
         :type TransactionId: str
         :param TransactionHash: 交易hash

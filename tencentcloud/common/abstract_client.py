@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright 1999-2017 Tencent Ltd.
+# Copyright 2017-2021 Tencent Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ except ImportError:
 
 import tencentcloud
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.common.exception import TencentCloudSDKException as SDKError
 from tencentcloud.common.http.request import ApiRequest
 from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile
@@ -43,6 +44,7 @@ from tencentcloud.common.sign import Sign
 _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
+_octet_stream = "application/octet-stream"
 
 
 class EmptyHandler(logging.Handler):
@@ -163,13 +165,16 @@ class AbstractClient(object):
         options = options or {}
         if options.get("IsMultipart"):
             content_type = _multipart_content
+        if options.get("IsOctetStream"):
+            content_type = _octet_stream
         req.header["Content-Type"] = content_type
 
-        endpoint = self._get_endpoint()
-        service = endpoint.split('.')[0]
-        timestamp = int(time.time())
-        date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
+        if req.method == "GET" and content_type == _multipart_content:
+            raise SDKError("ClientError",
+                           "Invalid request method GET for multipart.")
 
+        endpoint = self._get_endpoint()
+        timestamp = int(time.time())
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self._sdkVersion
@@ -184,41 +189,40 @@ class AbstractClient(object):
         if self.profile.language:
             req.header['X-TC-Language'] = self.profile.language
 
+        if req.method == 'GET':
+            params = copy.deepcopy(self._fix_params(params))
+            req.data = urlencode(params)
+        elif content_type == _json_content:
+            req.data = json.dumps(params)
+        elif content_type == _multipart_content:
+            boundary = uuid.uuid4().hex
+            req.header["Content-Type"] = content_type + "; boundary=" + boundary
+            req.data = self._get_multipart_body(params, boundary, options)
+
+        service = endpoint.split('.')[0]
+        date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
         signature = self._get_tc3_signature(params, req, date, service, options)
 
-        auth = "TC3-HMAC-SHA256"
-        auth += " Credential=%s/%s/%s/tc3_request" % (self.credential.secretId, date, service)
-        auth += ", SignedHeaders=content-type;host, Signature=%s" % signature
+        auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
+            self.credential.secretId, date, service, signature)
         req.header["Authorization"] = auth
 
     def _get_tc3_signature(self, params, req, date, service, options=None):
         options = options or {}
         canonical_uri = req.uri
-        canonical_querystring = ''
+        canonical_querystring = ""
+        payload = req.data
 
-        if req.method == 'GET' and options.get("IsMultipart") is not True:
-            params = copy.deepcopy(self._fix_params(params))
-            req.data = urlencode(params)
+        if req.method == 'GET':
             canonical_querystring = req.data
             payload = ""
-        else:
-            ct = req.header["Content-Type"]
-            if ct == _json_content:
-                req.data = json.dumps(params)
-            elif ct == _multipart_content:
-                boundary = uuid.uuid4().hex
-                req.header["Content-Type"] = ct + "; boundary=" + boundary
-                req.data = self._get_multipart_body(params, boundary, options)
-            else:
-                raise Exception("Unsupported content type: %s" % ct)
-
-            payload = req.data
 
         if req.header.get("X-TC-Content-SHA256") == "UNSIGNED-PAYLOAD":
             payload = "UNSIGNED-PAYLOAD"
 
         if sys.version_info[0] == 3 and isinstance(payload, type("")):
             payload = payload.encode("utf8")
+
         payload_hash = hashlib.sha256(payload).hexdigest()
 
         canonical_headers = 'content-type:%s\nhost:%s\n' % (
@@ -241,8 +245,7 @@ class AbstractClient(object):
                                           credential_scope,
                                           digest)
 
-        signature = Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
-        return signature
+        return Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
 
     # it must return bytes instead of string
     def _get_multipart_body(self, params, boundary, options=None):
@@ -293,14 +296,12 @@ class AbstractClient(object):
         return endpoint
 
     def call(self, action, params, options=None):
-        endpoint = self._get_endpoint()
+        req = RequestInternal(self._get_endpoint(),
+                              self.profile.httpProfile.reqMethod,
+                              self._requestPath)
+        self._build_req_inter(action, params, req, options)
 
-        req_inter = RequestInternal(endpoint,
-                                    self.profile.httpProfile.reqMethod,
-                                    self._requestPath)
-        self._build_req_inter(action, params, req_inter, options)
-
-        resp_inter = self.request.send_request(req_inter)
+        resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
         data = resp_inter.data
         if sys.version_info[0] > 2:
@@ -308,6 +309,52 @@ class AbstractClient(object):
         else:
             data = data.decode('UTF-8')
         return data
+
+    def call_octet_stream(self, action, headers, body):
+        """
+        Invoke API with application/ocet-stream content-type.
+
+        Note:
+        1. only specific API can be invoked in such manner.
+        2. only TC3-HMAC-SHA256 signature method can be specified.
+        3. only POST request method can be specified
+
+        :type action: str
+        :param action: Specific API action name.
+        :type headers: dict
+        :param headers: Header parameters for this API.
+        :type body: bytes
+        :param body: Bytes of requested body
+        """
+        if self.profile.signMethod != "TC3-HMAC-SHA256":
+            raise SDKError("ClientError", "Invalid signature method.")
+        if self.profile.httpProfile.reqMethod != "POST":
+            raise SDKError("ClientError", "Invalid request method.")
+
+        req = RequestInternal(self._get_endpoint(),
+                              self.profile.httpProfile.reqMethod,
+                              self._requestPath)
+        for key in headers:
+            req.header[key] = headers[key]
+        req.data = body
+        options = {"IsOctetStream": True}
+        self._build_req_inter(action, None, req, options)
+
+        resp = self.request.send_request(req)
+        self._check_status(resp)
+        data = resp.data
+        if sys.version_info[0] > 2:
+            data = data.decode()
+        else:
+            data = data.decode('UTF-8')
+
+        json_rsp = json.loads(data)
+        if "Error" in json_rsp["Response"]:
+            code = json_rsp["Response"]["Error"]["Code"]
+            message = json_rsp["Response"]["Error"]["Message"]
+            reqid = json_rsp["Response"]["RequestId"]
+            raise TencentCloudSDKException(code, message, reqid)
+        return json_rsp
 
     def call_json(self, action, params):
         """

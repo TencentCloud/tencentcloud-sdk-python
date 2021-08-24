@@ -24,10 +24,10 @@ class AddUserContactRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Name: 联系人姓名，大小写字母+数字+下划线，最小 2 位最大 60 位的长度， 不能以"_"开头，且联系人名保持唯一。
+        r"""
+        :param Name: 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
         :type Name: str
-        :param ContactInfo: 邮箱地址，大小写字母、数字及下划线组成， 不能以"_"开头。
+        :param ContactInfo: 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
         :type ContactInfo: str
         :param Product: 服务产品类型，固定值："mysql"。
         :type Product: str
@@ -56,7 +56,7 @@ class AddUserContactResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 添加成功的联系人id。
         :type Id: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -77,7 +77,7 @@ class ContactItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 联系人id。
         :type Id: int
         :param Name: 联系人姓名。
@@ -109,7 +109,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param StartTime: 开始时间，如“2020-11-08T14:00:00+08:00”。
@@ -157,7 +157,7 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
@@ -179,7 +179,7 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param AsyncRequestId: 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
@@ -211,7 +211,7 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReportUrl: 健康报告浏览地址。
         :type ReportUrl: str
         :param ExpireTime: 健康报告浏览地址到期时间戳（秒）。
@@ -236,7 +236,7 @@ class CreateMailProfileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProfileInfo: 邮件配置内容。
         :type ProfileInfo: :class:`tencentcloud.dbbrain.v20210527.models.ProfileInfo`
         :param ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
@@ -282,7 +282,7 @@ class CreateMailProfileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -299,7 +299,7 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeekConfiguration: 取值范围1-7，分别代表周一至周日。
         :type WeekConfiguration: list of int
         :param ProfileInfo: 邮件配置内容。
@@ -341,7 +341,7 @@ class CreateSchedulerMailProfileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -358,7 +358,7 @@ class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
         :param StartTime: 导出日志开始时间，例如2020-12-28 00:00:00。
@@ -398,7 +398,7 @@ class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 日志导出任务Id。
         :type AsyncRequestId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -419,7 +419,7 @@ class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
         :param AsyncRequestIds: 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
@@ -451,7 +451,7 @@ class DeleteSecurityAuditLogExportTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -468,7 +468,7 @@ class DescribeAllUserContactRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 服务产品类型，固定值：mysql。
         :type Product: str
         :param Names: 联系人名数组，支持模糊搜索。
@@ -496,7 +496,7 @@ class DescribeAllUserContactResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 联系人的总数量。
         :type TotalCount: int
         :param Contacts: 联系人的信息。
@@ -527,7 +527,7 @@ class DescribeAllUserGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Product: 服务产品类型，固定值：mysql。
         :type Product: str
         :param Names: 联系组名称数组，支持模糊搜索。
@@ -555,7 +555,7 @@ class DescribeAllUserGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 组总数。
         :type TotalCount: int
         :param Groups: 组信息。
@@ -586,7 +586,7 @@ class DescribeDBDiagEventRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
@@ -618,16 +618,16 @@ class DescribeDBDiagEventResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagItem: 诊断项。
         :type DiagItem: str
         :param DiagType: 诊断类型。
         :type DiagType: str
         :param EventId: 事件 ID 。
         :type EventId: int
-        :param Explanation: 事件详情。
+        :param Explanation: 诊断事件详情，若无附加解释信息则输出为空。
         :type Explanation: str
-        :param Outline: 概要。
+        :param Outline: 诊断概要。
         :type Outline: str
         :param Problem: 诊断出的问题。
         :type Problem: str
@@ -635,7 +635,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :type Severity: int
         :param StartTime: 开始时间
         :type StartTime: str
-        :param Suggestions: 建议。
+        :param Suggestions: 诊断建议，若无建议则输出为空。
         :type Suggestions: str
         :param Metric: 保留字段。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -680,7 +680,7 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
@@ -716,7 +716,7 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Events: 事件描述。
         :type Events: list of DiagHistoryEventItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -742,7 +742,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
         :type StartTime: str
         :param EndTime: 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
@@ -798,7 +798,7 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 任务总数目。
         :type TotalCount: int
         :param Tasks: 任务列表。
@@ -828,7 +828,7 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param RangeDays: 时间段天数，截止日期为当日，默认为7天。
@@ -860,7 +860,7 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Growth: 磁盘增长量(MB)。
         :type Growth: int
         :param Remain: 磁盘剩余(MB)。
@@ -893,7 +893,7 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsSupported: 是否是DBbrain支持的实例，固定传 true。
         :type IsSupported: bool
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
@@ -941,7 +941,7 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 实例总数。
         :type TotalCount: int
         :param DbScanStatus: 全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
@@ -975,10 +975,10 @@ class DescribeHealthScoreRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 需要获取健康得分的实例ID。
         :type InstanceId: str
-        :param Time: 获取健康得分的时间。
+        :param Time: 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
         :type Time: str
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
@@ -1007,7 +1007,7 @@ class DescribeHealthScoreResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 健康得分以及异常扣分项。
         :type Data: :class:`tencentcloud.dbbrain.v20210527.models.HealthScoreInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1030,7 +1030,7 @@ class DescribeMailProfileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
         :type ProfileType: str
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
@@ -1070,7 +1070,7 @@ class DescribeMailProfileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProfileList: 邮件配置详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileList: list of UserProfile
@@ -1102,7 +1102,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param ID: 线程的ID，用于筛选线程列表。
@@ -1166,7 +1166,7 @@ class DescribeMySqlProcessListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProcessList: 实时线程列表。
         :type ProcessList: list of MySqlProcess
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1192,7 +1192,7 @@ class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
         :param AsyncRequestId: 异步任务Id。
@@ -1224,7 +1224,7 @@ class DescribeSecurityAuditLogDownloadUrlsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
         :type Urls: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1245,7 +1245,7 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecAuditGroupId: 安全审计组Id。
         :type SecAuditGroupId: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
@@ -1285,7 +1285,7 @@ class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Tasks: 安全审计日志导出任务列表。
         :type Tasks: list of SecLogExportTaskInfo
         :param TotalCount: 安全审计日志导出任务总数。
@@ -1315,7 +1315,7 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
@@ -1351,7 +1351,7 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 柱间单位时间间隔，单位为秒。
         :type Period: int
         :param TimeSeries: 单位时间间隔内慢日志数量统计。
@@ -1387,7 +1387,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
@@ -1448,7 +1448,7 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
         :param Rows: 慢日志 top sql 列表
@@ -1478,7 +1478,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param StartTime: 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
@@ -1487,11 +1487,14 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         :type EndTime: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
+        :param Md5: SOL模板的MD5值
+        :type Md5: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
         self.Product = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -1499,6 +1502,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Product = params.get("Product")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1514,7 +1518,7 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 来源地址数目。
         :type TotalCount: int
         :param Items: 各来源地址的慢日志占比详情列表。
@@ -1544,7 +1548,7 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param Limit: 返回的Top库数量，最大值为100，默认为20。
@@ -1588,7 +1592,7 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopSpaceSchemaTimeSeries: 返回的Top库空间统计信息的时序数据列表。
         :type TopSpaceSchemaTimeSeries: list of SchemaSpaceTimeSeries
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1614,7 +1618,7 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param Limit: 返回的Top库数量，最大值为100，默认为20。
@@ -1650,7 +1654,7 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopSpaceSchemas: 返回的Top库空间统计信息列表。
         :type TopSpaceSchemas: list of SchemaSpaceData
         :param Timestamp: 采集库空间数据的时间戳（秒）。
@@ -1680,7 +1684,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param Limit: 返回的Top表数量，最大值为100，默认为20。
@@ -1724,7 +1728,7 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopSpaceTableTimeSeries: 返回的Top表空间统计信息的时序数据列表。
         :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1750,7 +1754,7 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
         :param Limit: 返回的Top表数量，最大值为100，默认为20。
@@ -1786,7 +1790,7 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopSpaceTables: 返回的Top表空间统计信息列表。
         :type TopSpaceTables: list of TableSpaceData
         :param Timestamp: 采集表空间数据的时间戳（秒）。
@@ -1816,7 +1820,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param SqlText: SQL语句。
@@ -1848,10 +1852,10 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Advices: SQL优化建议，可解析为JSON数组。
+        r"""
+        :param Advices: SQL优化建议，可解析为JSON数组，无需优化时输出为空。
         :type Advices: str
-        :param Comments: SQL优化建议备注，可解析为String数组。
+        :param Comments: SQL优化建议备注，可解析为String数组，无需优化时输出为空。
         :type Comments: str
         :param SqlText: SQL语句。
         :type SqlText: str
@@ -1859,9 +1863,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
         :type Schema: str
         :param Tables: 相关表的DDL信息，可解析为JSON数组。
         :type Tables: str
-        :param SqlPlan: SQL执行计划，可解析为JSON。
+        :param SqlPlan: SQL执行计划，可解析为JSON，无需优化时输出为空。
         :type SqlPlan: str
-        :param Cost: SQL优化后的成本节约详情，可解析为JSON。
+        :param Cost: SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
         :type Cost: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1893,29 +1897,27 @@ class DiagHistoryEventItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagType: 诊断类型。
         :type DiagType: str
         :param EndTime: 结束时间。
         :type EndTime: str
         :param StartTime: 开始时间。
         :type StartTime: str
-        :param EventId: 事件 ID 。
+        :param EventId: 事件唯一ID 。
         :type EventId: int
         :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
-        :param Outline: 概要。
+        :param Outline: 诊断概要。
         :type Outline: str
-        :param DiagItem: 诊断项。
+        :param DiagItem: 诊断项说明。
         :type DiagItem: str
         :param InstanceId: 实例 ID 。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param Metric: 保留字段
+        :param Metric: 保留字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
-        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Region: 地域。
         :type Region: str
         """
         self.DiagType = None
@@ -1956,7 +1958,7 @@ class EventInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventId: 事件 ID 。
         :type EventId: int
         :param DiagType: 诊断类型。
@@ -2012,7 +2014,7 @@ class GroupItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 组id。
         :type Id: int
         :param Name: 组名称。
@@ -2044,7 +2046,7 @@ class HealthReportTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 异步任务请求 ID。
         :type AsyncRequestId: int
         :param Source: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
@@ -2100,7 +2102,7 @@ class HealthScoreInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IssueTypes: 异常详情。
         :type IssueTypes: list of IssueTypeInfo
         :param EventsTotalCount: 异常事件总数。
@@ -2141,7 +2143,7 @@ class HealthStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HealthScore: 健康分数，满分100。
         :type HealthScore: int
         :param HealthLevel: 健康等级，取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK"- 危险；"HIGH_RISK" - 高危。
@@ -2183,7 +2185,7 @@ class InstanceBasicInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param InstanceName: 实例名称。
@@ -2227,7 +2229,7 @@ class InstanceConfs(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DailyInspection: 数据库巡检开关, Yes/No。
         :type DailyInspection: str
         :param OverviewDisplay: 实例概览开关，Yes/No。
@@ -2255,7 +2257,7 @@ class InstanceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
         :param InstanceName: 实例名称。
@@ -2389,7 +2391,7 @@ class IssueTypeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IssueType: 指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
         :type IssueType: str
         :param Events: 异常事件。
@@ -2426,7 +2428,7 @@ class MailConfiguration(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendMail: 是否开启邮件发送: 0, 否; 1, 是。
         :type SendMail: int
         :param Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模版，配置需要发送巡检邮件的地域；订阅的邮件发送模版，配置当前订阅实例的所属地域。
@@ -2466,7 +2468,7 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceConfs: 实例配置，包括巡检、概览开关等。
         :type InstanceConfs: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
         :param Regions: 生效实例地域，取值为"All"，代表全地域。
@@ -2504,7 +2506,7 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2521,7 +2523,7 @@ class MonitorFloatMetric(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Metric: 指标名称。
         :type Metric: str
         :param Unit: 指标单位。
@@ -2554,7 +2556,7 @@ class MonitorFloatMetricSeriesData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Series: 监控指标。
         :type Series: list of MonitorFloatMetric
         :param Timestamp: 监控指标对应的时间戳。
@@ -2587,7 +2589,7 @@ class MonitorMetric(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Metric: 指标名称。
         :type Metric: str
         :param Unit: 指标单位。
@@ -2620,7 +2622,7 @@ class MonitorMetricSeriesData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Series: 监控指标。
         :type Series: list of MonitorMetric
         :param Timestamp: 监控指标对应的时间戳。
@@ -2653,7 +2655,7 @@ class MySqlProcess(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ID: 线程ID。
         :type ID: str
         :param User: 线程的操作账号名。
@@ -2705,7 +2707,7 @@ class ProfileInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Language: 语言, 如"zh"。
         :type Language: str
         :param MailConfiguration: 邮件模板的内容。
@@ -2735,7 +2737,7 @@ class SchemaItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Schema: 数据库名称
         :type Schema: str
         """
@@ -2759,7 +2761,7 @@ class SchemaSpaceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableSchema: 库名。
         :type TableSchema: str
         :param DataLength: 数据空间（MB）。
@@ -2812,7 +2814,7 @@ class SchemaSpaceTimeSeries(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableSchema: 库名
         :type TableSchema: str
         :param SeriesData: 单位时间间隔内的空间指标数据。
@@ -2842,7 +2844,7 @@ class ScoreDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IssueType: 扣分项分类，取值包括：可用性、可维护性、性能及可靠性。
         :type IssueType: str
         :param ScoreLost: 扣分总分。
@@ -2884,7 +2886,7 @@ class ScoreItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagItem: 异常诊断项名称。
         :type DiagItem: str
         :param IssueType: 诊断项分类，取值包括：可用性、可维护性、性能及可靠性。
@@ -2924,7 +2926,7 @@ class SecLogExportTaskInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncRequestId: 异步任务Id。
         :type AsyncRequestId: int
         :param StartTime: 任务开始时间。
@@ -2990,7 +2992,7 @@ class SlowLogHost(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserHost: 来源地址。
         :type UserHost: str
         :param Ratio: 该来源地址的慢日志数目占总数目的比例，单位%。
@@ -3022,7 +3024,7 @@ class SlowLogTopSqlItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LockTime: sql总锁等待时间，单位秒
         :type LockTime: float
         :param LockTimeMax: 最大锁等待时间，单位秒
@@ -3071,6 +3073,8 @@ class SlowLogTopSqlItem(AbstractModel):
         :type LockTimeAvg: float
         :param RowsExaminedAvg: 平均扫描行数
         :type RowsExaminedAvg: float
+        :param Md5: SOL模板的MD5值
+        :type Md5: str
         """
         self.LockTime = None
         self.LockTimeMax = None
@@ -3096,6 +3100,7 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = None
         self.LockTimeAvg = None
         self.RowsExaminedAvg = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -3123,6 +3128,7 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = params.get("RowsSentAvg")
         self.LockTimeAvg = params.get("LockTimeAvg")
         self.RowsExaminedAvg = params.get("RowsExaminedAvg")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3138,7 +3144,7 @@ class TableSpaceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableName: 表名。
         :type TableName: str
         :param TableSchema: 库名。
@@ -3198,7 +3204,7 @@ class TableSpaceTimeSeries(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TableName: 表名。
         :type TableName: str
         :param TableSchema: 库名。
@@ -3236,7 +3242,7 @@ class TimeSlice(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Count: 总数
         :type Count: int
         :param Timestamp: 统计开始时间
@@ -3264,14 +3270,14 @@ class UserProfile(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProfileId: 配置的id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileId: str
-        :param ProfileType: 配置类型。
+        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileType: str
-        :param ProfileLevel: 配置级别，"User"或"Instance"。
+        :param ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileLevel: str
         :param ProfileName: 配置名称。

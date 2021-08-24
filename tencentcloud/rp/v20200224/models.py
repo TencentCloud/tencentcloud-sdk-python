@@ -24,7 +24,7 @@ class QueryRegisterProtectionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegisterIp: 注册来源的外网 IP。
         :type RegisterIp: str
         :param Uid: 用户 ID 不同的 accountType 对应不同的用户 ID。如果是 QQ，则填入对应的 openid，微信用户则填入对应的 openid/unionid，手机号则填入对应真实用户手机号（如13123456789）。
@@ -178,7 +178,7 @@ class QueryRegisterProtectionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CodeDesc: 业务侧错误码，成功时返回 Success，错误时返回具体业务错误原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeDesc: str

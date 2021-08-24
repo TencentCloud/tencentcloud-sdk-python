@@ -24,7 +24,7 @@ class AllDeviceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
@@ -55,6 +55,15 @@ class AllDeviceInfo(AbstractModel):
         :param Recordable: 该设备是否可录制
 注意：此字段可能返回 null，表示取不到有效值。
         :type Recordable: int
+        :param Protocol: 设备接入协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param GroupId: 组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self.DeviceId = None
         self.DeviceType = None
@@ -66,6 +75,9 @@ class AllDeviceInfo(AbstractModel):
         self.DeviceCode = None
         self.IsRecord = None
         self.Recordable = None
+        self.Protocol = None
+        self.GroupId = None
+        self.GroupName = None
 
 
     def _deserialize(self, params):
@@ -79,6 +91,9 @@ class AllDeviceInfo(AbstractModel):
         self.DeviceCode = params.get("DeviceCode")
         self.IsRecord = params.get("IsRecord")
         self.Recordable = params.get("Recordable")
+        self.Protocol = params.get("Protocol")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -94,7 +109,7 @@ class BindGroupDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 分组ID
         :type GroupId: str
         :param DeviceList: 设备唯一标识列表
@@ -122,7 +137,7 @@ class BindGroupDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -139,7 +154,7 @@ class ControlDevicePTZRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         :param Command: PTZ控制命令类型：
@@ -159,14 +174,18 @@ irisOut - 光圈放大
 focusIn - 焦距变近
 focusOut - 焦距变远
         :type Command: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         """
         self.DeviceId = None
         self.Command = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
         self.Command = params.get("Command")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -182,7 +201,61 @@ class ControlDevicePTZResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ControlRecordStreamRequest(AbstractModel):
+    """ControlRecordStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备Id，设备的唯一标识
+        :type DeviceId: str
+        :param StreamId: 流Id，流的唯一标识
+        :type StreamId: str
+        :param Command: |控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
+| Offset  | uint  |否|拖动播放时的时间偏移量（相对于起始时间）,单位：秒
+        :type Command: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        """
+        self.DeviceId = None
+        self.StreamId = None
+        self.Command = None
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.StreamId = params.get("StreamId")
+        self.Command = params.get("Command")
+        self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlRecordStreamResponse(AbstractModel):
+    """ControlRecordStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -199,7 +272,7 @@ class CreateDeviceGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 分组名称
         :type GroupName: str
         :param ParentId: 父分组ID
@@ -231,7 +304,7 @@ class CreateDeviceGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 响应结果，“OK”为成功，其他为失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -258,7 +331,7 @@ class CreateDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NickName: 设备名称
         :type NickName: str
         :param PassWord: 设备密码
@@ -294,7 +367,7 @@ class CreateDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceCode: 设备编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCode: str
@@ -326,7 +399,7 @@ class CreateRecordPlanRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 计划名称
         :type Name: str
         :param TimeTemplateId: 时间模板ID
@@ -335,11 +408,14 @@ class CreateRecordPlanRequest(AbstractModel):
         :type EventId: int
         :param Devices: 该录制计划绑定的设备列表
         :type Devices: list of DeviceItem
+        :param RecordStorageTime: 存储周期
+        :type RecordStorageTime: int
         """
         self.Name = None
         self.TimeTemplateId = None
         self.EventId = None
         self.Devices = None
+        self.RecordStorageTime = None
 
 
     def _deserialize(self, params):
@@ -352,6 +428,7 @@ class CreateRecordPlanRequest(AbstractModel):
                 obj = DeviceItem()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        self.RecordStorageTime = params.get("RecordStorageTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -367,7 +444,7 @@ class CreateRecordPlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlanId: 录制计划ID
         :type PlanId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -388,7 +465,7 @@ class CreateTimeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 时间模板名称
         :type Name: str
         :param IsAllWeek: 是否为每周全时录制（即7*24h录制），0：非全时录制，1；全时录制，默认0
@@ -425,7 +502,7 @@ class CreateTimeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 时间模板ID
         :type TemplateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -446,7 +523,7 @@ class DeleteDeviceGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 分组ID
         :type GroupId: str
         """
@@ -470,7 +547,7 @@ class DeleteDeviceGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 响应结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -492,7 +569,7 @@ class DeleteDeviceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         """
@@ -516,7 +593,7 @@ class DeleteDeviceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -538,7 +615,7 @@ class DeleteRecordPlanRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlanId: 录制计划ID
         :type PlanId: str
         """
@@ -562,7 +639,7 @@ class DeleteRecordPlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果，OK：成功，其他：失败
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -583,7 +660,7 @@ class DeleteTimeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 时间模板ID
         :type TemplateId: str
         """
@@ -607,7 +684,7 @@ class DeleteTimeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果，OK：成功，其他：失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -629,7 +706,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认0
         :type Offset: int
         :param Limit: 限制，默认200
@@ -638,11 +715,14 @@ class DescribeAllDeviceListRequest(AbstractModel):
         :type NickName: str
         :param DeviceIds: DeviceId列表，需要精确查找设备时为必填
         :type DeviceIds: list of str
+        :param DeviceTypes: 设备类型过滤
+        :type DeviceTypes: list of int
         """
         self.Offset = None
         self.Limit = None
         self.NickName = None
         self.DeviceIds = None
+        self.DeviceTypes = None
 
 
     def _deserialize(self, params):
@@ -650,6 +730,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.NickName = params.get("NickName")
         self.DeviceIds = params.get("DeviceIds")
+        self.DeviceTypes = params.get("DeviceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -665,7 +746,7 @@ class DescribeAllDeviceListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 设备总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -697,7 +778,7 @@ class DescribeDeviceGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceIds: 设备唯一标识列表
         :type DeviceIds: list of str
         """
@@ -721,7 +802,7 @@ class DescribeDeviceGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DevGroups: 设备所在分组信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DevGroups: list of DevGroupInfo
@@ -748,7 +829,7 @@ class DescribeDevicePassWordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         """
@@ -772,7 +853,7 @@ class DescribeDevicePassWordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PassWord: 设备密码
         :type PassWord: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -793,7 +874,7 @@ class DescribeDeviceStreamsData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RtspAddr: rtsp地址
         :type RtspAddr: str
         :param RtmpAddr: rtmp地址
@@ -829,19 +910,23 @@ class DescribeDeviceStreamsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         :param ExpireTime: 流地址失效时间
         :type ExpireTime: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         """
         self.DeviceId = None
         self.ExpireTime = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
         self.ExpireTime = params.get("ExpireTime")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -857,7 +942,7 @@ class DescribeDeviceStreamsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 设备实时流地址列表
         :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -880,7 +965,7 @@ class DescribeGroupByIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 分组ID
         :type GroupId: str
         """
@@ -904,7 +989,7 @@ class DescribeGroupByIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Group: 分组信息详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Group: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
@@ -928,7 +1013,7 @@ class DescribeGroupByPathRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupPath: 分组路径，格式为/aaa(/bbb/ccc)
         :type GroupPath: str
         """
@@ -952,7 +1037,7 @@ class DescribeGroupByPathResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Group: 分组信息详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Group: :class:`tencentcloud.iotvideoindustry.v20201201.models.GroupItem`
@@ -976,7 +1061,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 分组ID
         :type GroupId: str
         :param Offset: 偏移量，默认0
@@ -987,12 +1072,15 @@ class DescribeGroupDevicesRequest(AbstractModel):
         :type NickName: str
         :param Recordable: 过滤不可录制设备
         :type Recordable: int
+        :param DeviceTypes: 当Group是普通组的时候，支持根据deviceTypes筛选类型
+        :type DeviceTypes: list of int
         """
         self.GroupId = None
         self.Offset = None
         self.Limit = None
         self.NickName = None
         self.Recordable = None
+        self.DeviceTypes = None
 
 
     def _deserialize(self, params):
@@ -1001,6 +1089,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.NickName = params.get("NickName")
         self.Recordable = params.get("Recordable")
+        self.DeviceTypes = params.get("DeviceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1016,7 +1105,7 @@ class DescribeGroupDevicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 分组绑定的设备数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -1048,7 +1137,7 @@ class DescribeGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupIds: 分组ID列表
         :type GroupIds: list of str
         """
@@ -1072,7 +1161,7 @@ class DescribeGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Groups: 分组详细信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupInfo
@@ -1099,7 +1188,7 @@ class DescribeRecordStreamData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RtspAddr: Rtsp地址
         :type RtspAddr: str
         :param RtmpAddr: Rtmp地址
@@ -1139,7 +1228,7 @@ class DescribeRecordStreamRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备Id
         :type DeviceId: str
         :param ExpireTime: 流失效时间
@@ -1150,12 +1239,15 @@ class DescribeRecordStreamRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 录像流结束时间，当录像文件Id为空时有效
         :type EndTime: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         """
         self.DeviceId = None
         self.ExpireTime = None
         self.RecordId = None
         self.StartTime = None
         self.EndTime = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
@@ -1164,6 +1256,7 @@ class DescribeRecordStreamRequest(AbstractModel):
         self.RecordId = params.get("RecordId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1179,7 +1272,7 @@ class DescribeRecordStreamResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 结果
         :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1208,7 +1301,7 @@ class DescribeSIPServerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: SIP服务器相关配置项
         :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.ServerConfiguration`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1231,7 +1324,7 @@ class DescribeStatisticDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDate: 开始日期，格式【YYYY-MM-DD】
         :type StartDate: str
         :param EndDate: 结束日期，格式【YYYY-MM-DD】
@@ -1241,6 +1334,8 @@ class DescribeStatisticDetailsRequest(AbstractModel):
 2.非录制设备数：NonRecordingDevice
 3.观看流量总数：WatchFlux
 4.已用存储容量总数：StorageUsage
+5. X-P2P分享流量: P2PFluxTotal
+6. X-P2P峰值带宽: P2PPeakValue
         :type StatisticField: str
         """
         self.StartDate = None
@@ -1267,7 +1362,7 @@ class DescribeStatisticDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 统计详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of StatisticItem
@@ -1294,7 +1389,7 @@ class DescribeStatisticSummaryRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 指定日期。格式【YYYY-MM-DD】
         :type Date: str
         """
@@ -1318,7 +1413,7 @@ class DescribeStatisticSummaryResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordingDevice: 录制设备总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordingDevice: int
@@ -1331,6 +1426,12 @@ class DescribeStatisticSummaryResponse(AbstractModel):
         :param StorageUsage: 累计有效存储容量总数。单位：GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageUsage: float
+        :param P2PFluxTotal: X-P2P分享流量。单位 Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P2PFluxTotal: float
+        :param P2PPeakValue: X-P2P峰值带宽。 单位bps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P2PPeakValue: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1338,6 +1439,8 @@ class DescribeStatisticSummaryResponse(AbstractModel):
         self.NonRecordingDevice = None
         self.WatchFlux = None
         self.StorageUsage = None
+        self.P2PFluxTotal = None
+        self.P2PPeakValue = None
         self.RequestId = None
 
 
@@ -1346,6 +1449,8 @@ class DescribeStatisticSummaryResponse(AbstractModel):
         self.NonRecordingDevice = params.get("NonRecordingDevice")
         self.WatchFlux = params.get("WatchFlux")
         self.StorageUsage = params.get("StorageUsage")
+        self.P2PFluxTotal = params.get("P2PFluxTotal")
+        self.P2PPeakValue = params.get("P2PPeakValue")
         self.RequestId = params.get("RequestId")
 
 
@@ -1355,7 +1460,7 @@ class DescribeSubGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 分组ID
         :type GroupId: str
         :param GroupName: 分组名称，根据名称模糊匹配子分组时为必填
@@ -1395,7 +1500,7 @@ class DescribeSubGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupList: 子分组详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupList: list of GroupItem
@@ -1427,7 +1532,7 @@ class DescribeVideoListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间戳，秒级
         :type StartTime: int
         :param EndTime: 结束时间戳，秒级
@@ -1467,7 +1572,7 @@ class DescribeVideoListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param VideoList: 已废弃
@@ -1503,7 +1608,7 @@ class DevGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         :param GroupId: 分组ID
@@ -1543,16 +1648,21 @@ class DeviceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
         """
         self.DeviceId = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1568,23 +1678,31 @@ class GetRecordDatesByDevRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         :param Offset: 偏移量，默认0
         :type Offset: int
         :param Limit: 限制量，默认200
         :type Limit: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Type: 1: 云端录制 2: 本地录制
+        :type Type: int
         """
         self.DeviceId = None
         self.Offset = None
         self.Limit = None
+        self.ChannelId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ChannelId = params.get("ChannelId")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1600,7 +1718,7 @@ class GetRecordDatesByDevResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Dates: 含有录像文件的日期列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Dates: list of str
@@ -1622,7 +1740,7 @@ class GetRecordPlanByDevRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         """
@@ -1646,7 +1764,7 @@ class GetRecordPlanByDevResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Plan: 录制计划详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Plan: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
@@ -1670,7 +1788,7 @@ class GetRecordPlanByIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlanId: 录制计划ID
         :type PlanId: str
         """
@@ -1694,7 +1812,7 @@ class GetRecordPlanByIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Plan: 录制计划详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Plan: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanItem`
@@ -1724,7 +1842,7 @@ class GetRecordPlansResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Plans: 录制计划详情·列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Plans: list of RecordPlanItem
@@ -1756,7 +1874,7 @@ class GetTimeTemplateByIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 时间模板ID
         :type TemplateId: str
         """
@@ -1780,7 +1898,7 @@ class GetTimeTemplateByIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Template: 时间模板详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.iotvideoindustry.v20201201.models.TimeTemplateItem`
@@ -1810,7 +1928,7 @@ class GetTimeTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Templates: 时间模板列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Templates: list of TimeTemplateItem
@@ -1841,7 +1959,7 @@ class GetVideoListByConRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         :param Offset: 偏移量，默认0
@@ -1853,12 +1971,18 @@ class GetVideoListByConRequest(AbstractModel):
         :param Date: 指定某天。取值【YYYY-MM-DD】
 当LatestDay为空或为0时，本参数不允许为空。
         :type Date: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Type: 1: 云端录制 2: 本地录制
+        :type Type: int
         """
         self.DeviceId = None
         self.Offset = None
         self.Limit = None
         self.LatestDay = None
         self.Date = None
+        self.ChannelId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -1867,6 +1991,8 @@ class GetVideoListByConRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.LatestDay = params.get("LatestDay")
         self.Date = params.get("Date")
+        self.ChannelId = params.get("ChannelId")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1882,7 +2008,7 @@ class GetVideoListByConResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoList: 录像详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoList: list of RecordTaskItem
@@ -1914,7 +2040,7 @@ class GroupDeviceItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
@@ -1942,6 +2068,9 @@ class GroupDeviceItem(AbstractModel):
         :param Recordable: 该设备是否可录制
 注意：此字段可能返回 null，表示取不到有效值。
         :type Recordable: int
+        :param Protocol: 设备接入协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
         """
         self.DeviceId = None
         self.NickName = None
@@ -1952,6 +2081,7 @@ class GroupDeviceItem(AbstractModel):
         self.DeviceCode = None
         self.IsRecord = None
         self.Recordable = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -1964,6 +2094,7 @@ class GroupDeviceItem(AbstractModel):
         self.DeviceCode = params.get("DeviceCode")
         self.IsRecord = params.get("IsRecord")
         self.Recordable = params.get("Recordable")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1979,7 +2110,7 @@ class GroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 分组ID
         :type GroupId: str
         :param GroupName: 分组名称
@@ -2041,7 +2172,7 @@ class GroupItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 分组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
@@ -2116,7 +2247,7 @@ class ModifyDeviceDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
         :param NickName: 设备名称
@@ -2144,7 +2275,7 @@ class ModifyDeviceDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果,“OK”表示成功，其他表示失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -2166,7 +2297,7 @@ class RecordPlanItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlanId: 计划ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
@@ -2221,7 +2352,7 @@ class RecordTaskItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RecordTaskId: 录像任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordTaskId: str
@@ -2276,7 +2407,7 @@ class ServerConfiguration(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Host: SIP服务器地址
         :type Host: str
         :param Port: SIP服务器端口
@@ -2312,7 +2443,7 @@ class StatisticItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 日期。格式【YYYY-MM-DD】
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
@@ -2342,7 +2473,7 @@ class TimeTemplateItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 时间模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
@@ -2392,7 +2523,7 @@ class TimeTemplateSpec(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DayofWeek: 一周中的周几
 注意：此字段可能返回 null，表示取不到有效值。
         :type DayofWeek: int
@@ -2427,7 +2558,7 @@ class UpdateDeviceGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 分组名称
         :type GroupName: str
         :param GroupId: 分组ID
@@ -2463,7 +2594,7 @@ class UpdateDeviceGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2480,7 +2611,7 @@ class UpdateDevicePassWordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PassWord: 设备密码
         :type PassWord: str
         :param DeviceId: 设备唯一标识
@@ -2508,7 +2639,7 @@ class UpdateDevicePassWordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果，“OK”表示成功，其他表示失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -2530,7 +2661,7 @@ class UpdateRecordPlanRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlanId: 录制计划ID
         :type PlanId: str
         :param Name: 计划名称
@@ -2581,7 +2712,7 @@ class UpdateRecordPlanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2602,7 +2733,7 @@ class UpdateTimeTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateId: 时间模板ID
         :type TemplateId: str
         :param Name: 时间模板名称
@@ -2644,7 +2775,7 @@ class UpdateTimeTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作结果，“OK”表示成功，其他表示失败。
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

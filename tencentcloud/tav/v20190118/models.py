@@ -24,7 +24,7 @@ class GetLocalEngineRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 购买服务后获得的授权信息，用于保证请求有效性
         :type Key: str
         """
@@ -48,7 +48,7 @@ class GetLocalEngineResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 接口调用状态，成功返回200，失败返回400
         :type Status: int
         :param Info: 接口调用描述信息，成功返回"scan success"，失败返回"scan error"
@@ -77,7 +77,7 @@ class GetScanResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 购买服务后获得的授权信息，用于保证请求有效性
         :type Key: str
         :param Md5: 需要获取扫描接口的md5（只允许单个md5）
@@ -105,7 +105,7 @@ class GetScanResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 接口调用状态，成功返回200，失败返回400
         :type Status: int
         :param Info: 接口调用描述信息，成功返回"scan success"，失败返回"scan error"
@@ -135,7 +135,7 @@ class ScanFileHashRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 购买服务后获得的授权信息，用于保证请求有效性
         :type Key: str
         :param Md5s: 需要查询的md5值（支持单个和多个，多个md5间用逗号分格）
@@ -171,7 +171,7 @@ class ScanFileHashResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 接口调用状态，成功返回200，失败返回400
         :type Status: int
         :param Info: 接口调用描述信息，成功返回"scan success"，失败返回"scan error"
@@ -202,7 +202,7 @@ class ScanFileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 购买服务后获得的授权信息，用于保证请求有效性
         :type Key: str
         :param Sample: 文件下载url地址
@@ -234,7 +234,7 @@ class ScanFileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 接口调用状态，成功返回200，失败返回400
         :type Status: int
         :param Info: 接口调用描述信息，成功返回"success"，失败返回"invalid request"

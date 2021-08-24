@@ -24,7 +24,7 @@ class Account(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一Uuid
@@ -82,7 +82,7 @@ class AccountStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Username: 用户名。
         :type Username: str
         :param MachineNum: 主机数量。
@@ -104,160 +104,6 @@ class AccountStatistics(AbstractModel):
         
 
 
-class AddLoginWhiteListRequest(AbstractModel):
-    """AddLoginWhiteList请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Rules: 白名单规则
-        :type Rules: :class:`tencentcloud.cwp.v20180228.models.LoginWhiteListsRule`
-        """
-        self.Rules = None
-
-
-    def _deserialize(self, params):
-        if params.get("Rules") is not None:
-            self.Rules = LoginWhiteListsRule()
-            self.Rules._deserialize(params.get("Rules"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AddLoginWhiteListResponse(AbstractModel):
-    """AddLoginWhiteList返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class AddMachineTagRequest(AbstractModel):
-    """AddMachineTag请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Quuid: 云服务器ID
-        :type Quuid: str
-        :param TagId: 标签ID
-        :type TagId: int
-        :param MRegion: 云服务器地区
-        :type MRegion: str
-        :param MArea: 云服务器类型(CVM|BM)
-        :type MArea: str
-        """
-        self.Quuid = None
-        self.TagId = None
-        self.MRegion = None
-        self.MArea = None
-
-
-    def _deserialize(self, params):
-        self.Quuid = params.get("Quuid")
-        self.TagId = params.get("TagId")
-        self.MRegion = params.get("MRegion")
-        self.MArea = params.get("MArea")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AddMachineTagResponse(AbstractModel):
-    """AddMachineTag返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class AgentVul(AbstractModel):
-    """主机漏洞信息
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 漏洞ID。
-        :type Id: int
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param VulName: 漏洞名称。
-        :type VulName: str
-        :param VulLevel: 漏洞危害等级。
-<li>HIGH：高危</li>
-<li>MIDDLE：中危</li>
-<li>LOW：低危</li>
-<li>NOTICE：提示</li>
-        :type VulLevel: str
-        :param LastScanTime: 最后扫描时间。
-        :type LastScanTime: str
-        :param Description: 漏洞描述。
-        :type Description: str
-        :param VulId: 漏洞种类ID。
-        :type VulId: int
-        :param VulStatus: 漏洞状态。
-<li>UN_OPERATED : 待处理</li>
-<li>FIXED : 已修复</li>
-        :type VulStatus: str
-        """
-        self.Id = None
-        self.MachineIp = None
-        self.VulName = None
-        self.VulLevel = None
-        self.LastScanTime = None
-        self.Description = None
-        self.VulId = None
-        self.VulStatus = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.MachineIp = params.get("MachineIp")
-        self.VulName = params.get("VulName")
-        self.VulLevel = params.get("VulLevel")
-        self.LastScanTime = params.get("LastScanTime")
-        self.Description = params.get("Description")
-        self.VulId = params.get("VulId")
-        self.VulStatus = params.get("VulStatus")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AssetFilters(AbstractModel):
     """容器安全
     描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
@@ -267,7 +113,7 @@ class AssetFilters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -299,7 +145,7 @@ class AssetKeyVal(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签
         :type Key: str
         :param Value: 数量
@@ -332,7 +178,7 @@ class BashEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 数据ID
         :type Id: int
         :param Uuid: 云镜ID
@@ -434,7 +280,7 @@ class BashRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -511,96 +357,13 @@ class BashRule(AbstractModel):
         
 
 
-class BruteAttack(AbstractModel):
-    """暴力破解列表
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 事件ID。
-        :type Id: int
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param Status: 破解事件状态
-<li>BRUTEATTACK_FAIL_ACCOUNT： 暴力破解事件-失败(存在帐号)  </li>
-<li>BRUTEATTACK_FAIL_NOACCOUNT：暴力破解事件-失败(帐号不存在)</li>
-<li>BRUTEATTACK_SUCCESS：暴力破解事件-成功</li>
-        :type Status: str
-        :param UserName: 用户名称。
-        :type UserName: str
-        :param City: 城市ID。
-        :type City: int
-        :param Country: 国家ID。
-        :type Country: int
-        :param Province: 省份ID。
-        :type Province: int
-        :param SrcIp: 来源IP。
-        :type SrcIp: str
-        :param Count: 尝试破解次数。
-        :type Count: int
-        :param CreateTime: 发生时间。
-        :type CreateTime: str
-        :param MachineName: 主机名称。
-        :type MachineName: str
-        :param Uuid: 云镜客户端唯一标识UUID。
-        :type Uuid: str
-        :param IsProVersion: 是否专业版。
-        :type IsProVersion: bool
-        :param BanStatus: 阻断状态。
-        :type BanStatus: str
-        :param Quuid: 机器UUID
-        :type Quuid: str
-        """
-        self.Id = None
-        self.MachineIp = None
-        self.Status = None
-        self.UserName = None
-        self.City = None
-        self.Country = None
-        self.Province = None
-        self.SrcIp = None
-        self.Count = None
-        self.CreateTime = None
-        self.MachineName = None
-        self.Uuid = None
-        self.IsProVersion = None
-        self.BanStatus = None
-        self.Quuid = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.MachineIp = params.get("MachineIp")
-        self.Status = params.get("Status")
-        self.UserName = params.get("UserName")
-        self.City = params.get("City")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.SrcIp = params.get("SrcIp")
-        self.Count = params.get("Count")
-        self.CreateTime = params.get("CreateTime")
-        self.MachineName = params.get("MachineName")
-        self.Uuid = params.get("Uuid")
-        self.IsProVersion = params.get("IsProVersion")
-        self.BanStatus = params.get("BanStatus")
-        self.Quuid = params.get("Quuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class BruteAttackInfo(AbstractModel):
     """密码破解列表实体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一Id
         :type Id: int
         :param Uuid: 云镜客户端唯一标识UUID
@@ -618,7 +381,7 @@ class BruteAttackInfo(AbstractModel):
         :param SrcIp: 来源ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcIp: str
-        :param Status: 失败：FAILED；成功：SUCCESS
+        :param Status: SUCCESS：破解成功；FAILED：破解失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param Country: 国家id
@@ -633,7 +396,7 @@ class BruteAttackInfo(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param BanStatus: 阻断状态：0-未阻断；1-已阻断；2-阻断失败；3-内网攻击暂不支持阻断；4-安平暂不支持阻断
+        :param BanStatus: 阻断状态：1-阻断成功；非1-阻断失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: int
         :param EventType: 事件类型
@@ -657,6 +420,9 @@ class BruteAttackInfo(AbstractModel):
         :param ModifyTime: 最近攻击时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.Id = None
         self.Uuid = None
@@ -677,6 +443,7 @@ class BruteAttackInfo(AbstractModel):
         self.Protocol = None
         self.Port = None
         self.ModifyTime = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -699,6 +466,7 @@ class BruteAttackInfo(AbstractModel):
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
         self.ModifyTime = params.get("ModifyTime")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -714,7 +482,7 @@ class ChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：
@@ -747,7 +515,7 @@ class CloseProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quuid: 主机唯一标识Uuid。
 黑石的InstanceId，CVM的Uuid
         :type Quuid: str
@@ -772,7 +540,7 @@ class CloseProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -783,67 +551,13 @@ class CloseProVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class Component(AbstractModel):
-    """组件列表数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 唯一ID。
-        :type Id: int
-        :param Uuid: 云镜客户端唯一Uuid。
-        :type Uuid: str
-        :param MachineIp: 主机内网IP。
-        :type MachineIp: str
-        :param MachineName: 主机名。
-        :type MachineName: str
-        :param ComponentVersion: 组件版本号。
-        :type ComponentVersion: str
-        :param ComponentType: 组件类型。
-<li>SYSTEM：系统组件</li>
-<li>WEB：Web组件</li>
-        :type ComponentType: str
-        :param ComponentName: 组件名称。
-        :type ComponentName: str
-        :param ModifyTime: 组件检测更新时间。
-        :type ModifyTime: str
-        """
-        self.Id = None
-        self.Uuid = None
-        self.MachineIp = None
-        self.MachineName = None
-        self.ComponentVersion = None
-        self.ComponentType = None
-        self.ComponentName = None
-        self.ModifyTime = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.MachineIp = params.get("MachineIp")
-        self.MachineName = params.get("MachineName")
-        self.ComponentVersion = params.get("ComponentVersion")
-        self.ComponentType = params.get("ComponentType")
-        self.ComponentName = params.get("ComponentName")
-        self.ModifyTime = params.get("ModifyTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ComponentStatistics(AbstractModel):
     """组件统计数据。
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 组件ID。
         :type Id: int
         :param MachineNum: 主机数量。
@@ -885,7 +599,7 @@ class CreateBaselineStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StrategyName: 策略名称
         :type StrategyName: str
         :param ScanCycle: 检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
@@ -937,89 +651,7 @@ class CreateBaselineStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class CreateOpenPortTaskRequest(AbstractModel):
-    """CreateOpenPortTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。
-        :type Uuid: str
-        """
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOpenPortTaskResponse(AbstractModel):
-    """CreateOpenPortTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class CreateProcessTaskRequest(AbstractModel):
-    """CreateProcessTask请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。
-        :type Uuid: str
-        """
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateProcessTaskResponse(AbstractModel):
-    """CreateProcessTask返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1036,7 +668,7 @@ class CreateProtectServerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtectDir: 防护目录地址
         :type ProtectDir: str
         :param ProtectHostConfig: 防护机器 信息
@@ -1069,7 +701,7 @@ class CreateProtectServerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1086,7 +718,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScanPattern: 扫描模式 0 全盘扫描, 1 快速扫描
         :type ScanPattern: int
         :param HostType: 服务器分类：1:专业版服务器；2:自选服务器
@@ -1122,7 +754,7 @@ class CreateScanMalwareSettingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1139,7 +771,7 @@ class CreateSearchLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SearchContent: 搜索内容
         :type SearchContent: str
         """
@@ -1163,7 +795,7 @@ class CreateSearchLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 0：成功，非0：失败
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1184,7 +816,7 @@ class CreateSearchTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SearchTemplate: 搜索模板
         :type SearchTemplate: :class:`tencentcloud.cwp.v20180228.models.SearchTemplate`
         """
@@ -1210,7 +842,7 @@ class CreateSearchTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 0：成功，非0：失败
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1225,63 +857,13 @@ class CreateSearchTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateUsualLoginPlacesRequest(AbstractModel):
-    """CreateUsualLoginPlaces请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuids: 云镜客户端UUID数组。
-        :type Uuids: list of str
-        :param Places: 登录地域信息数组。
-        :type Places: list of Place
-        """
-        self.Uuids = None
-        self.Places = None
-
-
-    def _deserialize(self, params):
-        self.Uuids = params.get("Uuids")
-        if params.get("Places") is not None:
-            self.Places = []
-            for item in params.get("Places"):
-                obj = Place()
-                obj._deserialize(item)
-                self.Places.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateUsualLoginPlacesResponse(AbstractModel):
-    """CreateUsualLoginPlaces返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DefendAttackLog(AbstractModel):
     """网络攻击日志
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 日志ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -1357,7 +939,7 @@ class DeleteAttackLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 日志ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1381,7 +963,7 @@ class DeleteAttackLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1398,7 +980,7 @@ class DeleteBashEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1422,7 +1004,7 @@ class DeleteBashEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1439,7 +1021,7 @@ class DeleteBashRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1463,7 +1045,7 @@ class DeleteBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1480,7 +1062,7 @@ class DeleteBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 暴力破解事件Id数组。
         :type Ids: list of int non-negative
         """
@@ -1504,7 +1086,7 @@ class DeleteBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1521,7 +1103,7 @@ class DeleteLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 白名单ID
         :type Ids: list of int non-negative
         """
@@ -1545,7 +1127,7 @@ class DeleteLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1562,7 +1144,7 @@ class DeleteMachineRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端Uuid。
         :type Uuid: str
         """
@@ -1586,7 +1168,7 @@ class DeleteMachineResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1603,7 +1185,7 @@ class DeleteMachineTagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rid: 关联的标签ID
         :type Rid: int
         """
@@ -1627,7 +1209,7 @@ class DeleteMachineTagResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1644,7 +1226,7 @@ class DeleteMaliciousRequestsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 恶意请求记录ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1668,7 +1250,7 @@ class DeleteMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1685,8 +1267,8 @@ class DeleteMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Ids: 木马记录ID数组
+        r"""
+        :param Ids: 木马记录ID数组 (最大100条)
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -1709,7 +1291,7 @@ class DeleteMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1726,7 +1308,7 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DelType: 删除异地登录事件的方式，可选值："Ids"、"Ip"、"All"，默认为Ids
         :type DelType: str
         :param Ids: 异地登录事件ID数组。DelType为Ids或DelType未填时此项必填
@@ -1762,7 +1344,7 @@ class DeleteNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1779,7 +1361,7 @@ class DeletePrivilegeEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1803,7 +1385,7 @@ class DeletePrivilegeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1820,7 +1402,7 @@ class DeletePrivilegeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1844,7 +1426,7 @@ class DeletePrivilegeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1861,7 +1443,7 @@ class DeleteReverseShellEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1885,7 +1467,7 @@ class DeleteReverseShellEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1902,7 +1484,7 @@ class DeleteReverseShellRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         """
@@ -1926,7 +1508,7 @@ class DeleteReverseShellRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1943,7 +1525,7 @@ class DeleteSearchTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 模板ID
         :type Id: int
         """
@@ -1967,7 +1549,7 @@ class DeleteSearchTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 0：成功，非0：失败
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1988,7 +1570,7 @@ class DeleteTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 标签ID
         :type Ids: list of int non-negative
         """
@@ -2012,52 +1594,7 @@ class DeleteTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteUsualLoginPlacesRequest(AbstractModel):
-    """DeleteUsualLoginPlaces请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端Uuid
-        :type Uuid: str
-        :param CityIds: 已添加常用登录地城市ID数组
-        :type CityIds: list of int non-negative
-        """
-        self.Uuid = None
-        self.CityIds = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.CityIds = params.get("CityIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteUsualLoginPlacesResponse(AbstractModel):
-    """DeleteUsualLoginPlaces返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2080,7 +1617,7 @@ class DeleteWebPageEventLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2097,7 +1634,7 @@ class DescribeAccountStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2135,7 +1672,7 @@ class DescribeAccountStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 帐号统计列表记录总数。
         :type TotalCount: int
         :param AccountStatistics: 帐号统计列表。
@@ -2165,7 +1702,7 @@ class DescribeAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
         :type Uuid: str
         :param Username: 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
@@ -2213,7 +1750,7 @@ class DescribeAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 帐号列表记录总数。
         :type TotalCount: int
         :param Accounts: 帐号数据列表。
@@ -2237,132 +1774,6 @@ class DescribeAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAgentVulsRequest(AbstractModel):
-    """DescribeAgentVuls请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param VulType: 漏洞类型。
-<li>WEB: Web应用漏洞</li>
-<li>SYSTEM：系统组件漏洞</li>
-<li>BASELINE：安全基线</li>
-        :type VulType: str
-        :param Uuid: 客户端UUID。
-        :type Uuid: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
-        :type Filters: list of Filter
-        """
-        self.VulType = None
-        self.Uuid = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.VulType = params.get("VulType")
-        self.Uuid = params.get("Uuid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAgentVulsResponse(AbstractModel):
-    """DescribeAgentVuls返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 记录总数
-        :type TotalCount: int
-        :param AgentVuls: 主机漏洞信息
-        :type AgentVuls: list of AgentVul
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.AgentVuls = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("AgentVuls") is not None:
-            self.AgentVuls = []
-            for item in params.get("AgentVuls"):
-                obj = AgentVul()
-                obj._deserialize(item)
-                self.AgentVuls.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAlarmAttributeRequest(AbstractModel):
-    """DescribeAlarmAttribute请求参数结构体
-
-    """
-
-
-class DescribeAlarmAttributeResponse(AbstractModel):
-    """DescribeAlarmAttribute返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Offline: 防护软件离线告警状态：
-<li>OPEN：告警已开启</li>
-<li>CLOSE： 告警已关闭</li>
-        :type Offline: str
-        :param Malware: 发现木马告警状态：
-<li>OPEN：告警已开启</li>
-<li>CLOSE： 告警已关闭</li>
-        :type Malware: str
-        :param NonlocalLogin: 发现异地登录告警状态：
-<li>OPEN：告警已开启</li>
-<li>CLOSE： 告警已关闭</li>
-        :type NonlocalLogin: str
-        :param CrackSuccess: 被暴力破解成功告警状态：
-<li>OPEN：告警已开启</li>
-<li>CLOSE： 告警已关闭</li>
-        :type CrackSuccess: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Offline = None
-        self.Malware = None
-        self.NonlocalLogin = None
-        self.CrackSuccess = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Offline = params.get("Offline")
-        self.Malware = params.get("Malware")
-        self.NonlocalLogin = params.get("NonlocalLogin")
-        self.CrackSuccess = params.get("CrackSuccess")
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeAssetInfoRequest(AbstractModel):
     """DescribeAssetInfo请求参数结构体
 
@@ -2375,7 +1786,7 @@ class DescribeAssetInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineCount: 主机数
         :type MachineCount: int
         :param AccountCount: 账号数
@@ -2432,10 +1843,10 @@ class DescribeAssetRecentMachineInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BeginDate: 开始时间。
+        r"""
+        :param BeginDate: 开始时间，如：2020-09-22
         :type BeginDate: str
-        :param EndDate: 结束时间。
+        :param EndDate: 结束时间，如：2020-09-22
         :type EndDate: str
         """
         self.BeginDate = None
@@ -2460,7 +1871,7 @@ class DescribeAssetRecentMachineInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalList: 总数量列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalList: list of AssetKeyVal
@@ -2517,7 +1928,7 @@ class DescribeAttackLogInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 日志ID
         :type Id: int
         """
@@ -2541,7 +1952,7 @@ class DescribeAttackLogInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 日志ID
         :type Id: int
         :param Quuid: 主机ID
@@ -2622,7 +2033,7 @@ class DescribeAttackLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2674,7 +2085,7 @@ class DescribeAttackLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttackLogs: 日志列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLogs: list of DefendAttackLog
@@ -2711,7 +2122,7 @@ class DescribeAttackVulTypeListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 威胁类型列表
         :type List: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2732,7 +2143,7 @@ class DescribeBashEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2770,7 +2181,7 @@ class DescribeBashEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总条数
         :type TotalCount: int
         :param List: 高危命令事件列表
@@ -2800,7 +2211,7 @@ class DescribeBashRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 0-系统规则; 1-用户规则
         :type Type: int
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -2842,7 +2253,7 @@ class DescribeBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of BashRule
         :param TotalCount: 总条数
@@ -2872,7 +2283,7 @@ class DescribeBruteAttackListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -2916,7 +2327,7 @@ class DescribeBruteAttackListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -2942,149 +2353,13 @@ class DescribeBruteAttackListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeBruteAttacksRequest(AbstractModel):
-    """DescribeBruteAttacks请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 客户端唯一Uuid。
-        :type Uuid: str
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 -  查询关键字</li>
-<li>Status - String - 是否必填：否 -  查询状态（FAILED：破解失败 |SUCCESS：破解成功）</li>
-        :type Filters: list of Filter
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        """
-        self.Uuid = None
-        self.Offset = None
-        self.Filters = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBruteAttacksResponse(AbstractModel):
-    """DescribeBruteAttacks返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 事件数量
-        :type TotalCount: int
-        :param BruteAttacks: 暴力破解事件列表
-        :type BruteAttacks: list of BruteAttack
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.BruteAttacks = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("BruteAttacks") is not None:
-            self.BruteAttacks = []
-            for item in params.get("BruteAttacks"):
-                obj = BruteAttack()
-                obj._deserialize(item)
-                self.BruteAttacks.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeComponentInfoRequest(AbstractModel):
-    """DescribeComponentInfo请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ComponentId: 组件ID。
-        :type ComponentId: int
-        """
-        self.ComponentId = None
-
-
-    def _deserialize(self, params):
-        self.ComponentId = params.get("ComponentId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeComponentInfoResponse(AbstractModel):
-    """DescribeComponentInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 组件ID。
-        :type Id: int
-        :param ComponentName: 组件名称。
-        :type ComponentName: str
-        :param ComponentType: 组件类型。
-<li>WEB：web组件</li>
-<li>SYSTEM：系统组件</li>
-        :type ComponentType: str
-        :param Homepage: 组件官网。
-        :type Homepage: str
-        :param Description: 组件描述。
-        :type Description: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Id = None
-        self.ComponentName = None
-        self.ComponentType = None
-        self.Homepage = None
-        self.Description = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.ComponentName = params.get("ComponentName")
-        self.ComponentType = params.get("ComponentType")
-        self.Homepage = params.get("Homepage")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeComponentStatisticsRequest(AbstractModel):
     """DescribeComponentStatistics请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3122,7 +2397,7 @@ class DescribeComponentStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 组件统计列表记录总数。
         :type TotalCount: int
         :param ComponentStatistics: 组件统计列表数据数组。
@@ -3146,90 +2421,13 @@ class DescribeComponentStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeComponentsRequest(AbstractModel):
-    """DescribeComponents请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。Uuid和ComponentId必填其一，使用Uuid表示，查询该主机列表信息。
-        :type Uuid: str
-        :param ComponentId: 组件ID。Uuid和ComponentId必填其一，使用ComponentId表示，查询该组件列表信息。
-        :type ComponentId: int
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>ComponentVersion - String - 是否必填：否 - 组件版本号</li>
-<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-        :type Filters: list of Filter
-        """
-        self.Uuid = None
-        self.ComponentId = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.ComponentId = params.get("ComponentId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeComponentsResponse(AbstractModel):
-    """DescribeComponents返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 组件列表记录总数。
-        :type TotalCount: int
-        :param Components: 组件列表数据。
-        :type Components: list of Component
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Components = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Components") is not None:
-            self.Components = []
-            for item in params.get("Components"):
-                obj = Component()
-                obj._deserialize(item)
-                self.Components.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeESAggregationsRequest(AbstractModel):
     """DescribeESAggregations请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Query: ES聚合条件JSON
         :type Query: str
         """
@@ -3253,7 +2451,7 @@ class DescribeESAggregationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: ES聚合结果JSON
         :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3274,7 +2472,7 @@ class DescribeESHitsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Query: ES查询条件JSON
         :type Query: str
         :param Offset: 偏移量，默认为0。
@@ -3306,7 +2504,7 @@ class DescribeESHitsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: ES查询结果JSON
         :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3327,7 +2525,7 @@ class DescribeExportMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -3382,7 +2580,7 @@ class DescribeExportMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务id
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3403,7 +2601,7 @@ class DescribeGeneralStatRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -3433,7 +2631,7 @@ class DescribeGeneralStatResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachinesAll: 云主机总数
         :type MachinesAll: int
         :param MachinesUninstalled: 云主机没有安装主机安全客户端的总数
@@ -3486,7 +2684,7 @@ class DescribeHistoryAccountsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -3528,7 +2726,7 @@ class DescribeHistoryAccountsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 帐号变更历史列表记录总数。
         :type TotalCount: int
         :param HistoryAccounts: 帐号变更历史数据数组。
@@ -3564,7 +2762,7 @@ class DescribeHistoryServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BuyStatus: 1 可购买 2 只能升降配 3 只能跳到续费管理页
         :type BuyStatus: int
         :param InquireNum: 用户已购容量 单位 G
@@ -3599,85 +2797,13 @@ class DescribeHistoryServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeImpactedHostsRequest(AbstractModel):
-    """DescribeImpactedHosts请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param VulId: 漏洞种类ID。
-        :type VulId: int
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED：待处理 | FIXED：已修复）</li>
-        :type Filters: list of Filter
-        """
-        self.VulId = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.VulId = params.get("VulId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeImpactedHostsResponse(AbstractModel):
-    """DescribeImpactedHosts返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 记录总数
-        :type TotalCount: int
-        :param ImpactedHosts: 漏洞影响机器列表数组
-        :type ImpactedHosts: list of ImpactedHost
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.ImpactedHosts = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("ImpactedHosts") is not None:
-            self.ImpactedHosts = []
-            for item in params.get("ImpactedHosts"):
-                obj = ImpactedHost()
-                obj._deserialize(item)
-                self.ImpactedHosts.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeImportMachineInfoRequest(AbstractModel):
     """DescribeImportMachineInfo请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineList: 服务器内网IP（默认）/ 服务器名称 / 服务器ID 数组
         :type MachineList: list of str
         :param ImportType: 批量导入的数据类型：Ip、Name、Id 三选一
@@ -3709,7 +2835,7 @@ class DescribeImportMachineInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EffectiveMachineInfoList: 有效的机器信息列表：机器名称、机器公网/内网ip、机器标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type EffectiveMachineInfoList: list of EffectiveMachineInfo
@@ -3747,7 +2873,7 @@ class DescribeIndexListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: ES 索引信息
         :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3774,7 +2900,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalSize: 总容量（单位：GB）
         :type TotalSize: int
         :param UsedSize: 已使用容量（单位：GB）
@@ -3799,7 +2925,7 @@ class DescribeLoginWhiteListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -3837,7 +2963,7 @@ class DescribeLoginWhiteListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录总数
         :type TotalCount: int
         :param LoginWhiteLists: 异地登录白名单数组
@@ -3867,7 +2993,7 @@ class DescribeMachineInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
         :param Quuid: cvm id， quuid、uuid必填一个
@@ -3895,7 +3021,7 @@ class DescribeMachineInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineIp: 机器ip。
         :type MachineIp: str
         :param ProtectDays: 受云镜保护天数。
@@ -3996,7 +3122,7 @@ class DescribeMachineListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -4047,7 +3173,7 @@ class DescribeMachineListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Machines: 主机列表
         :type Machines: list of Machine
         :param TotalCount: 主机数量
@@ -4083,7 +3209,7 @@ class DescribeMachineOsListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 操作系统列表
         :type List: list of OsName
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4115,7 +3241,7 @@ class DescribeMachineRegionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CVM: CVM 云服务器地域列表
         :type CVM: list of RegionInfo
         :param BM: BM 黑石机器地域列表
@@ -4177,7 +3303,7 @@ class DescribeMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -4234,7 +3360,7 @@ class DescribeMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Machines: 主机列表
         :type Machines: list of Machine
         :param TotalCount: 主机数量
@@ -4258,87 +3384,13 @@ class DescribeMachinesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMaliciousRequestsRequest(AbstractModel):
-    """DescribeMaliciousRequests请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
-<li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
-<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-        :type Filters: list of Filter
-        :param Uuid: 云镜客户端唯一UUID。
-        :type Uuid: str
-        """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeMaliciousRequestsResponse(AbstractModel):
-    """DescribeMaliciousRequests返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param MaliciousRequests: 恶意请求记录数组。
-        :type MaliciousRequests: list of MaliciousRequest
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.MaliciousRequests = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("MaliciousRequests") is not None:
-            self.MaliciousRequests = []
-            for item in params.get("MaliciousRequests"):
-                obj = MaliciousRequest()
-                obj._deserialize(item)
-                self.MaliciousRequests.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeMalwareInfoRequest(AbstractModel):
     """DescribeMalwareInfo请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID
         :type Id: int
         """
@@ -4362,7 +3414,7 @@ class DescribeMalwareInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MalwareInfo: 恶意文件详情信息
         :type MalwareInfo: :class:`tencentcloud.cwp.v20180228.models.MalwareInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4391,7 +3443,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CheckPattern: 检测模式 0 全盘检测  1快速检测
         :type CheckPattern: int
         :param StartTime: 检测周期 开始时间
@@ -4413,9 +3465,9 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type Id: int
         :param RealTimeMonitoring: 实时监控0 关闭 1开启
         :type RealTimeMonitoring: int
-        :param AutoIsolation: 是否自动隔离
+        :param AutoIsolation: 是否自动隔离：1-是，0-否
         :type AutoIsolation: int
-        :param ClickTimeout: 一键扫描超时
+        :param ClickTimeout: 一键扫描超时时长，如：1800秒（s）
         :type ClickTimeout: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4451,160 +3503,13 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeMalwaresRequest(AbstractModel):
-    """DescribeMalwares请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 客户端唯一Uuid。
-        :type Uuid: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-<li>Status - String - 是否必填：否 - 木马状态（UN_OPERATED: 未处理 | SEGREGATED: 已隔离|TRUSTED：信任）</li>
-每个过滤条件只支持一个值，暂不支持多个值“或”关系查询。
-        :type Filters: list of Filter
-        """
-        self.Uuid = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeMalwaresResponse(AbstractModel):
-    """DescribeMalwares返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 木马总数。
-        :type TotalCount: int
-        :param Malwares: 木马相关信息。
-        :type Malwares: list of Malware
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Malwares = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Malwares") is not None:
-            self.Malwares = []
-            for item in params.get("Malwares"):
-                obj = Malware()
-                obj._deserialize(item)
-                self.Malwares.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeNonlocalLoginPlacesRequest(AbstractModel):
-    """DescribeNonlocalLoginPlaces请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 客户端唯一Uuid。
-        :type Uuid: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 -  查询关键字</li>
-<li>Status - String - 是否必填：否 -  登录状态（NON_LOCAL_LOGIN: 异地登录 | NORMAL_LOGIN : 正常登录）</li>
-        :type Filters: list of Filter
-        """
-        self.Uuid = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeNonlocalLoginPlacesResponse(AbstractModel):
-    """DescribeNonlocalLoginPlaces返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param NonLocalLoginPlaces: 异地登录信息数组。
-        :type NonLocalLoginPlaces: list of NonLocalLoginPlace
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.NonLocalLoginPlaces = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("NonLocalLoginPlaces") is not None:
-            self.NonLocalLoginPlaces = []
-            for item in params.get("NonLocalLoginPlaces"):
-                obj = NonLocalLoginPlace()
-                obj._deserialize(item)
-                self.NonLocalLoginPlaces.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeOpenPortStatisticsRequest(AbstractModel):
     """DescribeOpenPortStatistics请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -4642,7 +3547,7 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 端口统计列表总数
         :type TotalCount: int
         :param OpenPortStatistics: 端口统计数据列表
@@ -4666,133 +3571,6 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeOpenPortTaskStatusRequest(AbstractModel):
-    """DescribeOpenPortTaskStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。
-        :type Uuid: str
-        """
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeOpenPortTaskStatusResponse(AbstractModel):
-    """DescribeOpenPortTaskStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Status: 任务状态。
-<li>COMPLETE：完成（此时可以调用DescribeOpenPorts接口获取实时进程列表）</li>
-<li>AGENT_OFFLINE：云镜客户端离线</li>
-<li>COLLECTING：端口获取中</li>
-<li>FAILED：进程获取失败</li>
-        :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeOpenPortsRequest(AbstractModel):
-    """DescribeOpenPorts请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。Port和Uuid必填其一，使用Uuid表示，查询该主机列表信息。
-        :type Uuid: str
-        :param Port: 开放端口号。Port和Uuid必填其一，使用Port表示查询该端口的列表信息。
-        :type Port: int
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Port - Uint64 - 是否必填：否 - 端口号</li>
-<li>ProcessName - String - 是否必填：否 - 进程名</li>
-<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-        :type Filters: list of Filter
-        """
-        self.Uuid = None
-        self.Port = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.Port = params.get("Port")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeOpenPortsResponse(AbstractModel):
-    """DescribeOpenPorts返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 端口列表记录总数。
-        :type TotalCount: int
-        :param OpenPorts: 端口列表。
-        :type OpenPorts: list of OpenPort
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.OpenPorts = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("OpenPorts") is not None:
-            self.OpenPorts = []
-            for item in params.get("OpenPorts"):
-                obj = OpenPort()
-                obj._deserialize(item)
-                self.OpenPorts.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeOverviewStatisticsRequest(AbstractModel):
     """DescribeOverviewStatistics请求参数结构体
 
@@ -4805,7 +3583,7 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OnlineMachineNum: 服务器在线数。
         :type OnlineMachineNum: int
         :param ProVersionMachineNum: 专业服务器数。
@@ -4850,7 +3628,7 @@ class DescribePrivilegeEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -4888,7 +3666,7 @@ class DescribePrivilegeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 数据列表
         :type List: list of PrivilegeEscalationProcess
         :param TotalCount: 总条数
@@ -4918,7 +3696,7 @@ class DescribePrivilegeRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -4956,7 +3734,7 @@ class DescribePrivilegeRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of PrivilegeRule
         :param TotalCount: 总条数
@@ -4992,7 +3770,7 @@ class DescribeProVersionInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PostPayCost: 后付费昨日扣费
         :type PostPayCost: int
         :param IsAutoOpenProVersion: 新增主机是否自动开通专业版
@@ -5021,7 +3799,7 @@ class DescribeProcessStatisticsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -5059,7 +3837,7 @@ class DescribeProcessStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 进程统计列表记录总数。
         :type TotalCount: int
         :param ProcessStatistics: 进程统计列表数据数组。
@@ -5083,139 +3861,13 @@ class DescribeProcessStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProcessTaskStatusRequest(AbstractModel):
-    """DescribeProcessTaskStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。
-        :type Uuid: str
-        """
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProcessTaskStatusResponse(AbstractModel):
-    """DescribeProcessTaskStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Status: 任务状态。
-<li>COMPLETE：完成（此时可以调用DescribeProcesses接口获取实时进程列表）</li>
-<li>AGENT_OFFLINE：云镜客户端离线</li>
-<li>COLLECTING：进程获取中</li>
-<li>FAILED：进程获取失败</li>
-        :type Status: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeProcessesRequest(AbstractModel):
-    """DescribeProcesses请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Uuid: 云镜客户端唯一Uuid。Uuid和ProcessName必填其一，使用Uuid表示，查询该主机列表信息。
-        :type Uuid: str
-        :param ProcessName: 进程名。Uuid和ProcessName必填其一，使用ProcessName表示，查询该进程列表信息。
-        :type ProcessName: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>ProcessName - String - 是否必填：否 - 进程名</li>
-<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-        :type Filters: list of Filter
-        """
-        self.Uuid = None
-        self.ProcessName = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.ProcessName = params.get("ProcessName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProcessesResponse(AbstractModel):
-    """DescribeProcesses返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 进程列表记录总数。
-        :type TotalCount: int
-        :param Processes: 进程列表数据数组。
-        :type Processes: list of Process
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Processes = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Processes") is not None:
-            self.Processes = []
-            for item in params.get("Processes"):
-                obj = Process()
-                obj._deserialize(item)
-                self.Processes.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeReverseShellEventsRequest(AbstractModel):
     """DescribeReverseShellEvents请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -5253,7 +3905,7 @@ class DescribeReverseShellEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of ReverseShell
         :param TotalCount: 总条数
@@ -5283,7 +3935,7 @@ class DescribeReverseShellRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -5321,7 +3973,7 @@ class DescribeReverseShellRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表内容
         :type List: list of ReverseShellRule
         :param TotalCount: 总条数
@@ -5351,7 +4003,7 @@ class DescribeRiskDnsListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -5401,7 +4053,7 @@ class DescribeRiskDnsListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RiskDnsList: 恶意请求列表数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDnsList: list of RiskDnsList
@@ -5438,7 +4090,7 @@ class DescribeScanMalwareScheduleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Schedule: 扫描进度（单位：%）
         :type Schedule: int
         :param RiskFileNumber: 风险文件数,当进度满了以后才有该值
@@ -5471,7 +4123,7 @@ class DescribeScanTaskDetailsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModuleType: 模块类型 当前提供 Malware 木马 , Vul 漏洞 , Baseline 基线
         :type ModuleType: str
         :param TaskId: 任务ID
@@ -5516,7 +4168,7 @@ class DescribeScanTaskDetailsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScanTaskDetailList: 扫描任务信息列表
         :type ScanTaskDetailList: list of ScanTaskDetails
         :param TotalCount: 总数
@@ -5609,16 +4261,16 @@ class DescribeScanVulSettingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文逗号分隔)
         :type VulCategories: str
         :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文逗号分隔)
         :type VulLevels: str
         :param TimerInterval: 定期检测间隔时间（天）
         :type TimerInterval: int
-        :param TimerTime: 定期检测时间
+        :param TimerTime: 定期检测时间，如：00:00
         :type TimerTime: str
-        :param VulEmergency: 是否紧急漏洞
+        :param VulEmergency: 是否紧急漏洞：0-否 1-是
         :type VulEmergency: int
         :param StartTime: 开始时间
         :type StartTime: str
@@ -5626,7 +4278,7 @@ class DescribeScanVulSettingResponse(AbstractModel):
         :type EnableScan: int
         :param EndTime: 结束时间
         :type EndTime: str
-        :param ClickTimeout: 一键扫描超时时长
+        :param ClickTimeout: 一键扫描超时时长，如：1800秒（s）
         :type ClickTimeout: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5662,7 +4314,7 @@ class DescribeSearchExportListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Query: ES查询条件JSON
         :type Query: str
         """
@@ -5686,7 +4338,7 @@ class DescribeSearchExportListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 导出的任务号
         :type TaskId: int
         :param DownloadUrl: 下载地址
@@ -5717,7 +4369,7 @@ class DescribeSearchLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 历史搜索记录
         :type Data: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5738,7 +4390,7 @@ class DescribeSearchTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 返回数量，默认为10，最大值为100。
@@ -5766,7 +4418,7 @@ class DescribeSearchTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param List: 模板列表
@@ -5796,7 +4448,7 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
@@ -5824,7 +4476,7 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityDynamics: 安全事件消息数组。
         :type SecurityDynamics: list of SecurityDynamic
         :param TotalCount: 记录总数。
@@ -5860,7 +4512,7 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Malware: 木马文件相关风险事件
         :type Malware: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
         :param HostLogin: 登录审计相关风险事件
@@ -5885,6 +4537,10 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
         :type BaseLine: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
         :param AttackLogs: 攻击检测相关风险事件
         :type AttackLogs: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param EffectMachineCount: 受影响机器数
+        :type EffectMachineCount: int
+        :param EventsCount: 所有事件总数
+        :type EventsCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5900,6 +4556,8 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
         self.EmergencyVul = None
         self.BaseLine = None
         self.AttackLogs = None
+        self.EffectMachineCount = None
+        self.EventsCount = None
         self.RequestId = None
 
 
@@ -5940,6 +4598,8 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
         if params.get("AttackLogs") is not None:
             self.AttackLogs = SecurityEventInfo()
             self.AttackLogs._deserialize(params.get("AttackLogs"))
+        self.EffectMachineCount = params.get("EffectMachineCount")
+        self.EventsCount = params.get("EventsCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5949,10 +4609,10 @@ class DescribeSecurityTrendsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param BeginDate: 开始时间。
+        r"""
+        :param BeginDate: 开始时间，如：2021-07-10
         :type BeginDate: str
-        :param EndDate: 结束时间。
+        :param EndDate: 结束时间，如：2021-07-10
         :type EndDate: str
         """
         self.BeginDate = None
@@ -5977,7 +4637,7 @@ class DescribeSecurityTrendsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Malwares: 木马事件统计数据数组。
         :type Malwares: list of SecurityTrend
         :param NonLocalLoginPlaces: 异地登录事件统计数据数组。
@@ -6084,7 +4744,7 @@ class DescribeTagMachinesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标签ID
         :type Id: int
         """
@@ -6108,7 +4768,7 @@ class DescribeTagMachinesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表数据
         :type List: list of TagMachine
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6134,7 +4794,7 @@ class DescribeTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -6179,7 +4839,7 @@ class DescribeTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param List: 列表信息
         :type List: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6205,7 +4865,7 @@ class DescribeUsualLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端UUID
         :type Uuid: str
         """
@@ -6229,7 +4889,7 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UsualLoginPlaces: 常用登录地数组
         :type UsualLoginPlaces: list of UsualPlace
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6249,199 +4909,6 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeVulInfoRequest(AbstractModel):
-    """DescribeVulInfo请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param VulId: 漏洞种类ID。
-        :type VulId: int
-        """
-        self.VulId = None
-
-
-    def _deserialize(self, params):
-        self.VulId = params.get("VulId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeVulInfoResponse(AbstractModel):
-    """DescribeVulInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param VulId: 漏洞种类ID。
-        :type VulId: int
-        :param VulName: 漏洞名称。
-        :type VulName: str
-        :param VulLevel: 漏洞等级。
-        :type VulLevel: str
-        :param VulType: 漏洞类型。
-        :type VulType: str
-        :param Description: 漏洞描述。
-        :type Description: str
-        :param RepairPlan: 修复方案。
-        :type RepairPlan: str
-        :param CveId: 漏洞CVE。
-        :type CveId: str
-        :param Reference: 参考链接。
-        :type Reference: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.VulId = None
-        self.VulName = None
-        self.VulLevel = None
-        self.VulType = None
-        self.Description = None
-        self.RepairPlan = None
-        self.CveId = None
-        self.Reference = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.VulId = params.get("VulId")
-        self.VulName = params.get("VulName")
-        self.VulLevel = params.get("VulLevel")
-        self.VulType = params.get("VulType")
-        self.Description = params.get("Description")
-        self.RepairPlan = params.get("RepairPlan")
-        self.CveId = params.get("CveId")
-        self.Reference = params.get("Reference")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeVulScanResultRequest(AbstractModel):
-    """DescribeVulScanResult请求参数结构体
-
-    """
-
-
-class DescribeVulScanResultResponse(AbstractModel):
-    """DescribeVulScanResult返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param VulNum: 漏洞数量。
-        :type VulNum: int
-        :param ProVersionNum: 专业版机器数。
-        :type ProVersionNum: int
-        :param ImpactedHostNum: 受影响的专业版主机数。
-        :type ImpactedHostNum: int
-        :param HostNum: 主机总数。
-        :type HostNum: int
-        :param BasicVersionNum: 基础版机器数。
-        :type BasicVersionNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.VulNum = None
-        self.ProVersionNum = None
-        self.ImpactedHostNum = None
-        self.HostNum = None
-        self.BasicVersionNum = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.VulNum = params.get("VulNum")
-        self.ProVersionNum = params.get("ProVersionNum")
-        self.ImpactedHostNum = params.get("ImpactedHostNum")
-        self.HostNum = params.get("HostNum")
-        self.BasicVersionNum = params.get("BasicVersionNum")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeVulsRequest(AbstractModel):
-    """DescribeVuls请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param VulType: 漏洞类型。
-<li>WEB：Web应用漏洞</li>
-<li>SYSTEM：系统组件漏洞</li>
-<li>BASELINE：安全基线</li>
-        :type VulType: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        :param Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
-
-Status过滤条件值只能取其一，不能是“或”逻辑。
-        :type Filters: list of Filter
-        """
-        self.VulType = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.VulType = params.get("VulType")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeVulsResponse(AbstractModel):
-    """DescribeVuls返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param TotalCount: 漏洞数量。
-        :type TotalCount: int
-        :param Vuls: 漏洞列表数组。
-        :type Vuls: list of Vul
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Vuls = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Vuls") is not None:
-            self.Vuls = []
-            for item in params.get("Vuls"):
-                obj = Vul()
-                obj._deserialize(item)
-                self.Vuls.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeWebPageGeneralizeRequest(AbstractModel):
     """DescribeWebPageGeneralize请求参数结构体
 
@@ -6454,7 +4921,7 @@ class DescribeWebPageGeneralizeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProtectMonitor: 防护监测 0 未开启 1 已开启 2 异常
         :type ProtectMonitor: int
         :param ProtectDirNum: 防护目录数
@@ -6465,7 +4932,7 @@ class DescribeWebPageGeneralizeResponse(AbstractModel):
         :type TamperFileNum: int
         :param TamperNum: 篡改数
         :type TamperNum: int
-        :param ProtectToday: 今日防护
+        :param ProtectToday: 今日防护数
         :type ProtectToday: int
         :param ProtectHostNum: 防护主机数
         :type ProtectHostNum: int
@@ -6493,480 +4960,13 @@ class DescribeWebPageGeneralizeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
-    """DescribeWeeklyReportBruteAttacks请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BeginDate: 专业周报开始时间。
-        :type BeginDate: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        """
-        self.BeginDate = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
-    """DescribeWeeklyReportBruteAttacks返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param WeeklyReportBruteAttacks: 专业周报密码破解数组。
-        :type WeeklyReportBruteAttacks: list of WeeklyReportBruteAttack
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.WeeklyReportBruteAttacks = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("WeeklyReportBruteAttacks") is not None:
-            self.WeeklyReportBruteAttacks = []
-            for item in params.get("WeeklyReportBruteAttacks"):
-                obj = WeeklyReportBruteAttack()
-                obj._deserialize(item)
-                self.WeeklyReportBruteAttacks.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeWeeklyReportInfoRequest(AbstractModel):
-    """DescribeWeeklyReportInfo请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BeginDate: 专业周报开始时间。
-        :type BeginDate: str
-        """
-        self.BeginDate = None
-
-
-    def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWeeklyReportInfoResponse(AbstractModel):
-    """DescribeWeeklyReportInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param CompanyName: 账号所属公司或个人名称。
-        :type CompanyName: str
-        :param MachineNum: 机器总数。
-        :type MachineNum: int
-        :param OnlineMachineNum: 云镜客户端在线数。
-        :type OnlineMachineNum: int
-        :param OfflineMachineNum: 云镜客户端离线数。
-        :type OfflineMachineNum: int
-        :param ProVersionMachineNum: 开通云镜专业版数量。
-        :type ProVersionMachineNum: int
-        :param BeginDate: 周报开始时间。
-        :type BeginDate: str
-        :param EndDate: 周报结束时间。
-        :type EndDate: str
-        :param Level: 安全等级。
-<li>HIGH：高</li>
-<li>MIDDLE：中</li>
-<li>LOW：低</li>
-        :type Level: str
-        :param MalwareNum: 木马记录数。
-        :type MalwareNum: int
-        :param NonlocalLoginNum: 异地登录数。
-        :type NonlocalLoginNum: int
-        :param BruteAttackSuccessNum: 密码破解成功数。
-        :type BruteAttackSuccessNum: int
-        :param VulNum: 漏洞数。
-        :type VulNum: int
-        :param DownloadUrl: 导出文件下载地址。
-        :type DownloadUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.CompanyName = None
-        self.MachineNum = None
-        self.OnlineMachineNum = None
-        self.OfflineMachineNum = None
-        self.ProVersionMachineNum = None
-        self.BeginDate = None
-        self.EndDate = None
-        self.Level = None
-        self.MalwareNum = None
-        self.NonlocalLoginNum = None
-        self.BruteAttackSuccessNum = None
-        self.VulNum = None
-        self.DownloadUrl = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.CompanyName = params.get("CompanyName")
-        self.MachineNum = params.get("MachineNum")
-        self.OnlineMachineNum = params.get("OnlineMachineNum")
-        self.OfflineMachineNum = params.get("OfflineMachineNum")
-        self.ProVersionMachineNum = params.get("ProVersionMachineNum")
-        self.BeginDate = params.get("BeginDate")
-        self.EndDate = params.get("EndDate")
-        self.Level = params.get("Level")
-        self.MalwareNum = params.get("MalwareNum")
-        self.NonlocalLoginNum = params.get("NonlocalLoginNum")
-        self.BruteAttackSuccessNum = params.get("BruteAttackSuccessNum")
-        self.VulNum = params.get("VulNum")
-        self.DownloadUrl = params.get("DownloadUrl")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeWeeklyReportMalwaresRequest(AbstractModel):
-    """DescribeWeeklyReportMalwares请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BeginDate: 专业周报开始时间。
-        :type BeginDate: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        """
-        self.BeginDate = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWeeklyReportMalwaresResponse(AbstractModel):
-    """DescribeWeeklyReportMalwares返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param WeeklyReportMalwares: 专业周报木马数据。
-        :type WeeklyReportMalwares: list of WeeklyReportMalware
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.WeeklyReportMalwares = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("WeeklyReportMalwares") is not None:
-            self.WeeklyReportMalwares = []
-            for item in params.get("WeeklyReportMalwares"):
-                obj = WeeklyReportMalware()
-                obj._deserialize(item)
-                self.WeeklyReportMalwares.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
-    """DescribeWeeklyReportNonlocalLoginPlaces请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BeginDate: 专业周报开始时间。
-        :type BeginDate: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        """
-        self.BeginDate = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
-    """DescribeWeeklyReportNonlocalLoginPlaces返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param WeeklyReportNonlocalLoginPlaces: 专业周报异地登录数据。
-        :type WeeklyReportNonlocalLoginPlaces: list of WeeklyReportNonlocalLoginPlace
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.WeeklyReportNonlocalLoginPlaces = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("WeeklyReportNonlocalLoginPlaces") is not None:
-            self.WeeklyReportNonlocalLoginPlaces = []
-            for item in params.get("WeeklyReportNonlocalLoginPlaces"):
-                obj = WeeklyReportNonlocalLoginPlace()
-                obj._deserialize(item)
-                self.WeeklyReportNonlocalLoginPlaces.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeWeeklyReportVulsRequest(AbstractModel):
-    """DescribeWeeklyReportVuls请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param BeginDate: 专业版周报开始时间。
-        :type BeginDate: str
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        """
-        self.BeginDate = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWeeklyReportVulsResponse(AbstractModel):
-    """DescribeWeeklyReportVuls返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param WeeklyReportVuls: 专业周报漏洞数据数组。
-        :type WeeklyReportVuls: list of WeeklyReportVul
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.WeeklyReportVuls = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("WeeklyReportVuls") is not None:
-            self.WeeklyReportVuls = []
-            for item in params.get("WeeklyReportVuls"):
-                obj = WeeklyReportVul()
-                obj._deserialize(item)
-                self.WeeklyReportVuls.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeWeeklyReportsRequest(AbstractModel):
-    """DescribeWeeklyReports请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Limit: 返回数量，默认为10，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        """
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWeeklyReportsResponse(AbstractModel):
-    """DescribeWeeklyReports返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param WeeklyReports: 专业周报列表数组。
-        :type WeeklyReports: list of WeeklyReport
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.WeeklyReports = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("WeeklyReports") is not None:
-            self.WeeklyReports = []
-            for item in params.get("WeeklyReports"):
-                obj = WeeklyReport()
-                obj._deserialize(item)
-                self.WeeklyReports.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
-class EditBashRuleRequest(AbstractModel):
-    """EditBashRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Name: 规则名称
-        :type Name: str
-        :param Level: 危险等级(1: 高危 2:中危 3: 低危)
-        :type Level: int
-        :param Rule: 正则表达式
-        :type Rule: str
-        :param Id: 规则ID(新增时不填)
-        :type Id: int
-        :param Uuid: 客户端ID(IsGlobal为0时，Uuid或Hostip必填一个)
-        :type Uuid: str
-        :param Hostip: 主机IP(IsGlobal为0时，Uuid或Hostip必填一个)
-        :type Hostip: str
-        :param IsGlobal: 是否全局规则(默认否)
-        :type IsGlobal: int
-        """
-        self.Name = None
-        self.Level = None
-        self.Rule = None
-        self.Id = None
-        self.Uuid = None
-        self.Hostip = None
-        self.IsGlobal = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Level = params.get("Level")
-        self.Rule = params.get("Rule")
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.Hostip = params.get("Hostip")
-        self.IsGlobal = params.get("IsGlobal")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EditBashRuleResponse(AbstractModel):
-    """EditBashRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class EditBashRulesRequest(AbstractModel):
     """EditBashRules请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 规则名称
         :type Name: str
         :param Rule: 正则表达式
@@ -6979,7 +4979,7 @@ class EditBashRulesRequest(AbstractModel):
         :type HostIp: str
         :param Level: 危险等级(0:无，1: 高危 2:中危 3: 低危)
         :type Level: int
-        :param IsGlobal: 是否全局规则(默认否)
+        :param IsGlobal: 是否全局规则(默认否)：1-全局，0-非全局
         :type IsGlobal: int
         :param White: 0=黑名单， 1=白名单
         :type White: int
@@ -7026,133 +5026,7 @@ class EditBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class EditPrivilegeRuleRequest(AbstractModel):
-    """EditPrivilegeRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 规则ID(新增时请留空)
-        :type Id: int
-        :param Uuid: 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-        :type Uuid: str
-        :param Hostip: 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-        :type Hostip: str
-        :param ProcessName: 进程名
-        :type ProcessName: str
-        :param SMode: 是否S权限进程
-        :type SMode: int
-        :param IsGlobal: 是否全局规则(默认否)
-        :type IsGlobal: int
-        """
-        self.Id = None
-        self.Uuid = None
-        self.Hostip = None
-        self.ProcessName = None
-        self.SMode = None
-        self.IsGlobal = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.Hostip = params.get("Hostip")
-        self.ProcessName = params.get("ProcessName")
-        self.SMode = params.get("SMode")
-        self.IsGlobal = params.get("IsGlobal")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EditPrivilegeRuleResponse(AbstractModel):
-    """EditPrivilegeRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class EditReverseShellRuleRequest(AbstractModel):
-    """EditReverseShellRule请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 规则ID(新增时请留空)
-        :type Id: int
-        :param Uuid: 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
-        :type Uuid: str
-        :param Hostip: 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
-        :type Hostip: str
-        :param DestIp: 目标IP
-        :type DestIp: str
-        :param DestPort: 目标端口
-        :type DestPort: str
-        :param ProcessName: 进程名
-        :type ProcessName: str
-        :param IsGlobal: 是否全局规则(默认否)
-        :type IsGlobal: int
-        """
-        self.Id = None
-        self.Uuid = None
-        self.Hostip = None
-        self.DestIp = None
-        self.DestPort = None
-        self.ProcessName = None
-        self.IsGlobal = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.Hostip = params.get("Hostip")
-        self.DestIp = params.get("DestIp")
-        self.DestPort = params.get("DestPort")
-        self.ProcessName = params.get("ProcessName")
-        self.IsGlobal = params.get("IsGlobal")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EditReverseShellRuleResponse(AbstractModel):
-    """EditReverseShellRule返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7169,7 +5043,7 @@ class EditTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 标签名
         :type Name: str
         :param Id: 标签ID
@@ -7201,7 +5075,7 @@ class EditTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7218,7 +5092,7 @@ class EffectiveMachineInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineName: 机器名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineName: str
@@ -7273,7 +5147,7 @@ class ExportAssetCoreModuleListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。
 <li>Name- string - 是否必填：否 - 包名</li>
 <li>User- string - 是否必填：否 - 用户</li>
@@ -7320,7 +5194,7 @@ class ExportAssetCoreModuleListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 异步下载任务ID，需要配合ExportTasks接口使用
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7341,7 +5215,7 @@ class ExportAttackLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件。
 <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
 <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
@@ -7385,7 +5259,7 @@ class ExportAttackLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -7410,7 +5284,7 @@ class ExportBashEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤参数
         :type Filters: list of Filters
         """
@@ -7439,7 +5313,7 @@ class ExportBashEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -7464,7 +5338,7 @@ class ExportBruteAttacksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤参数
         :type Filters: list of Filters
         """
@@ -7493,7 +5367,7 @@ class ExportBruteAttacksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -7518,7 +5392,7 @@ class ExportMaliciousRequestsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤参数
         :type Filters: list of Filters
         """
@@ -7547,7 +5421,7 @@ class ExportMaliciousRequestsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7568,7 +5442,7 @@ class ExportMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 限制条数,默认10
         :type Limit: int
         :param Offset: 偏移量 默认0
@@ -7611,7 +5485,7 @@ class ExportMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 任务id
@@ -7636,7 +5510,7 @@ class ExportNonlocalLoginPlacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: <li>Status - int - 是否必填：否 - 状态筛选1:正常登录；2：异地登录</li>
         :type Filters: list of Filter
         """
@@ -7665,7 +5539,7 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -7690,7 +5564,7 @@ class ExportPrivilegeEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤参数
         :type Filters: list of Filters
         """
@@ -7719,7 +5593,7 @@ class ExportPrivilegeEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 导出任务ID
@@ -7744,7 +5618,7 @@ class ExportReverseShellEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤参数
         :type Filters: list of Filters
         """
@@ -7773,7 +5647,7 @@ class ExportReverseShellEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
         :param TaskId: 任务id
@@ -7798,7 +5672,7 @@ class ExportTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务ID
         :type TaskId: str
         """
@@ -7822,7 +5696,7 @@ class ExportTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况
         :type Status: str
         :param DownloadUrl: 下载链接
@@ -7847,7 +5721,7 @@ class ExportVulDetectionExcelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 本次漏洞检测任务id（不同于出参的导出本次漏洞检测Excel的任务Id）
         :type TaskId: int
         """
@@ -7871,7 +5745,7 @@ class ExportVulDetectionExcelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址
         :type DownloadUrl: str
         :param TaskId: 导出本次漏洞检测Excel的任务Id（不同于入参的本次漏洞检测任务id）
@@ -7896,7 +5770,7 @@ class ExportVulDetectionReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 漏洞扫描任务id（不同于出参的导出检测报告的任务Id）
         :type TaskId: int
         :param Filters: 过滤参数
@@ -7937,7 +5811,7 @@ class ExportVulDetectionReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DownloadUrl: 导出文件下载链接地址
         :type DownloadUrl: str
         :param TaskId: 导出检测报告的任务Id（不同于入参的漏洞扫描任务id）
@@ -7968,7 +5842,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -8003,7 +5877,7 @@ class Filters(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -8035,7 +5909,7 @@ class HistoryAccount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 唯一ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一Uuid。
@@ -8086,7 +5960,7 @@ class IgnoreImpactedHostsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 漏洞ID数组。
         :type Ids: list of int non-negative
         """
@@ -8110,7 +5984,7 @@ class IgnoreImpactedHostsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8121,72 +5995,13 @@ class IgnoreImpactedHostsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ImpactedHost(AbstractModel):
-    """受影响主机信息
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 漏洞ID。
-        :type Id: int
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param MachineName: 主机名称。
-        :type MachineName: str
-        :param LastScanTime: 最后检测时间。
-        :type LastScanTime: str
-        :param VulStatus: 漏洞状态。
-<li>UN_OPERATED ：待处理</li>
-<li>SCANING : 扫描中</li>
-<li>FIXED : 已修复</li>
-        :type VulStatus: str
-        :param Uuid: 云镜客户端唯一标识UUID。
-        :type Uuid: str
-        :param Description: 漏洞描述。
-        :type Description: str
-        :param VulId: 漏洞种类ID。
-        :type VulId: int
-        :param IsProVersion: 是否为专业版。
-        :type IsProVersion: bool
-        """
-        self.Id = None
-        self.MachineIp = None
-        self.MachineName = None
-        self.LastScanTime = None
-        self.VulStatus = None
-        self.Uuid = None
-        self.Description = None
-        self.VulId = None
-        self.IsProVersion = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.MachineIp = params.get("MachineIp")
-        self.MachineName = params.get("MachineName")
-        self.LastScanTime = params.get("LastScanTime")
-        self.VulStatus = params.get("VulStatus")
-        self.Uuid = params.get("Uuid")
-        self.Description = params.get("Description")
-        self.VulId = params.get("VulId")
-        self.IsProVersion = params.get("IsProVersion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class InquiryPriceOpenProVersionPrepaidRequest(AbstractModel):
     """InquiryPriceOpenProVersionPrepaid请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChargePrepaid: 预付费模式(包年包月)参数设置。
         :type ChargePrepaid: :class:`tencentcloud.cwp.v20180228.models.ChargePrepaid`
         :param Machines: 需要开通专业版机器列表数组。
@@ -8221,7 +6036,7 @@ class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OriginalPrice: 预支费用的原价，单位：元。
         :type OriginalPrice: float
         :param DiscountPrice: 预支费用的折扣价，单位：元。
@@ -8246,7 +6061,7 @@ class LoginWhiteLists(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 记录ID
         :type Id: int
         :param Uuid: 云镜客户端ID
@@ -8313,70 +6128,13 @@ class LoginWhiteLists(AbstractModel):
         
 
 
-class LoginWhiteListsRule(AbstractModel):
-    """白名单规则
-
-    """
-
-    def __init__(self):
-        """
-        :param Places: 加白地域
-        :type Places: list of Place
-        :param SrcIp: 加白源IP，支持网段，多个IP以逗号隔开
-        :type SrcIp: str
-        :param UserName: 加白用户名，多个用户名以逗号隔开
-        :type UserName: str
-        :param IsGlobal: 是否对全局生效
-        :type IsGlobal: bool
-        :param HostIp: 白名单生效的机器
-        :type HostIp: str
-        :param Id: 规则ID，用于更新规则
-        :type Id: int
-        :param StartTime: 起始时间
-        :type StartTime: str
-        :param EndTime: 结束时间
-        :type EndTime: str
-        """
-        self.Places = None
-        self.SrcIp = None
-        self.UserName = None
-        self.IsGlobal = None
-        self.HostIp = None
-        self.Id = None
-        self.StartTime = None
-        self.EndTime = None
-
-
-    def _deserialize(self, params):
-        if params.get("Places") is not None:
-            self.Places = []
-            for item in params.get("Places"):
-                obj = Place()
-                obj._deserialize(item)
-                self.Places.append(obj)
-        self.SrcIp = params.get("SrcIp")
-        self.UserName = params.get("UserName")
-        self.IsGlobal = params.get("IsGlobal")
-        self.HostIp = params.get("HostIp")
-        self.Id = params.get("Id")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Machine(AbstractModel):
     """主机列表
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineName: 主机名称。
         :type MachineName: str
         :param MachineOs: 主机系统。
@@ -8423,12 +6181,14 @@ class Machine(AbstractModel):
         :type RegionInfo: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
         :param InstanceState: 实例状态 TERMINATED_PRO_VERSION 已销毁
         :type InstanceState: str
-        :param LicenseStatus: 授权状态 1 授权 0 未授权
+        :param LicenseStatus: 防篡改 授权状态 1 授权 0 未授权
         :type LicenseStatus: int
         :param ProjectId: 项目ID
         :type ProjectId: int
         :param HasAssetScan: 是否有资产扫描接口，0无，1有
         :type HasAssetScan: int
+        :param MachineType: 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        :type MachineType: str
         """
         self.MachineName = None
         self.MachineOs = None
@@ -8451,6 +6211,7 @@ class Machine(AbstractModel):
         self.LicenseStatus = None
         self.ProjectId = None
         self.HasAssetScan = None
+        self.MachineType = None
 
 
     def _deserialize(self, params):
@@ -8482,6 +6243,7 @@ class Machine(AbstractModel):
         self.LicenseStatus = params.get("LicenseStatus")
         self.ProjectId = params.get("ProjectId")
         self.HasAssetScan = params.get("HasAssetScan")
+        self.MachineType = params.get("MachineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8497,7 +6259,7 @@ class MachineTag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Rid: 关联标签ID
         :type Rid: int
         :param Name: 标签名
@@ -8523,155 +6285,13 @@ class MachineTag(AbstractModel):
         
 
 
-class MaliciousRequest(AbstractModel):
-    """恶意请求数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 记录ID。
-        :type Id: int
-        :param Uuid: 云镜客户端UUID。
-        :type Uuid: str
-        :param MachineIp: 主机内网IP。
-        :type MachineIp: str
-        :param MachineName: 主机名。
-        :type MachineName: str
-        :param Domain: 恶意请求域名。
-        :type Domain: str
-        :param Count: 恶意请求数。
-        :type Count: int
-        :param ProcessName: 进程名。
-        :type ProcessName: str
-        :param Status: 记录状态。
-<li>UN_OPERATED：待处理</li>
-<li>TRUSTED：已信任</li>
-<li>UN_TRUSTED：已取消信任</li>
-        :type Status: str
-        :param Description: 恶意请求域名描述。
-        :type Description: str
-        :param Reference: 参考地址。
-        :type Reference: str
-        :param CreateTime: 发现时间。
-        :type CreateTime: str
-        :param MergeTime: 记录合并时间。
-        :type MergeTime: str
-        :param ProcessMd5: 进程MD5
-值。
-        :type ProcessMd5: str
-        :param CmdLine: 执行命令行。
-        :type CmdLine: str
-        :param Pid: 进程PID。
-        :type Pid: int
-        """
-        self.Id = None
-        self.Uuid = None
-        self.MachineIp = None
-        self.MachineName = None
-        self.Domain = None
-        self.Count = None
-        self.ProcessName = None
-        self.Status = None
-        self.Description = None
-        self.Reference = None
-        self.CreateTime = None
-        self.MergeTime = None
-        self.ProcessMd5 = None
-        self.CmdLine = None
-        self.Pid = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.MachineIp = params.get("MachineIp")
-        self.MachineName = params.get("MachineName")
-        self.Domain = params.get("Domain")
-        self.Count = params.get("Count")
-        self.ProcessName = params.get("ProcessName")
-        self.Status = params.get("Status")
-        self.Description = params.get("Description")
-        self.Reference = params.get("Reference")
-        self.CreateTime = params.get("CreateTime")
-        self.MergeTime = params.get("MergeTime")
-        self.ProcessMd5 = params.get("ProcessMd5")
-        self.CmdLine = params.get("CmdLine")
-        self.Pid = params.get("Pid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Malware(AbstractModel):
-    """木马相关信息
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 事件ID。
-        :type Id: int
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param Status: 当前木马状态。
-<li>UN_OPERATED：未处理</li><li>SEGREGATED：已隔离</li><li>TRUSTED：已信任</li>
-<li>SEPARATING：隔离中</li><li>RECOVERING：恢复中</li>
-        :type Status: str
-        :param FilePath: 木马所在的路径。
-        :type FilePath: str
-        :param Description: 木马描述。
-        :type Description: str
-        :param MachineName: 主机名称。
-        :type MachineName: str
-        :param FileCreateTime: 木马文件创建时间。
-        :type FileCreateTime: str
-        :param ModifyTime: 木马文件修改时间。
-        :type ModifyTime: str
-        :param Uuid: 云镜客户端唯一标识UUID。
-        :type Uuid: str
-        """
-        self.Id = None
-        self.MachineIp = None
-        self.Status = None
-        self.FilePath = None
-        self.Description = None
-        self.MachineName = None
-        self.FileCreateTime = None
-        self.ModifyTime = None
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.MachineIp = params.get("MachineIp")
-        self.Status = params.get("Status")
-        self.FilePath = params.get("FilePath")
-        self.Description = params.get("Description")
-        self.MachineName = params.get("MachineName")
-        self.FileCreateTime = params.get("FileCreateTime")
-        self.ModifyTime = params.get("ModifyTime")
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class MalwareInfo(AbstractModel):
     """恶意文件详情
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param VirusName: 病毒名称
         :type VirusName: str
         :param FileSize: 文件大小
@@ -8712,6 +6332,8 @@ class MalwareInfo(AbstractModel):
         :type CreateTime: str
         :param LatestScanTime: 最近扫描时间
         :type LatestScanTime: str
+        :param Reference: 参考链接
+        :type Reference: str
         """
         self.VirusName = None
         self.FileSize = None
@@ -8732,6 +6354,7 @@ class MalwareInfo(AbstractModel):
         self.FileName = None
         self.CreateTime = None
         self.LatestScanTime = None
+        self.Reference = None
 
 
     def _deserialize(self, params):
@@ -8754,6 +6377,7 @@ class MalwareInfo(AbstractModel):
         self.FileName = params.get("FileName")
         self.CreateTime = params.get("CreateTime")
         self.LatestScanTime = params.get("LatestScanTime")
+        self.Reference = params.get("Reference")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8761,98 +6385,6 @@ class MalwareInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class MisAlarmNonlocalLoginPlacesRequest(AbstractModel):
-    """MisAlarmNonlocalLoginPlaces请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Ids: 异地登录事件Id数组。
-        :type Ids: list of int non-negative
-        """
-        self.Ids = None
-
-
-    def _deserialize(self, params):
-        self.Ids = params.get("Ids")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class MisAlarmNonlocalLoginPlacesResponse(AbstractModel):
-    """MisAlarmNonlocalLoginPlaces返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyAlarmAttributeRequest(AbstractModel):
-    """ModifyAlarmAttribute请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Attribute: 告警项目。
-<li>Offline：防护软件离线</li>
-<li>Malware：发现木马文件</li>
-<li>NonlocalLogin：发现异地登录行为</li>
-<li>CrackSuccess：被暴力破解成功</li>
-        :type Attribute: str
-        :param Value: 告警项目属性。
-<li>CLOSE：关闭</li>
-<li>OPEN：打开</li>
-        :type Value: str
-        """
-        self.Attribute = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Attribute = params.get("Attribute")
-        self.Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyAlarmAttributeResponse(AbstractModel):
-    """ModifyAlarmAttribute返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
 
 
 class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
@@ -8861,7 +6393,7 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 设置自动开通状态。
 <li>CLOSE：关闭</li>
 <li>OPEN：打开</li>
@@ -8887,50 +6419,7 @@ class ModifyAutoOpenProVersionConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyLoginWhiteListRequest(AbstractModel):
-    """ModifyLoginWhiteList请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Rules: 白名单规则
-        :type Rules: :class:`tencentcloud.cwp.v20180228.models.LoginWhiteListsRule`
-        """
-        self.Rules = None
-
-
-    def _deserialize(self, params):
-        if params.get("Rules") is not None:
-            self.Rules = LoginWhiteListsRule()
-            self.Rules._deserialize(params.get("Rules"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyLoginWhiteListResponse(AbstractModel):
-    """ModifyLoginWhiteList返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8947,7 +6436,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CheckPattern: 检测模式 0 全盘检测  1快速检测
         :type CheckPattern: int
         :param StartTime: 检测周期 开始时间，如：02:00:00
@@ -9007,7 +6496,7 @@ class ModifyMalwareTimingScanSettingsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9024,7 +6513,7 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RenewFlag: 自动续费标识。取值范围：
 <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
 <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
@@ -9055,7 +6544,53 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWarningSettingRequest(AbstractModel):
+    """ModifyWarningSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WarningObjects: 告警设置的修改内容
+        :type WarningObjects: list of WarningObject
+        """
+        self.WarningObjects = None
+
+
+    def _deserialize(self, params):
+        if params.get("WarningObjects") is not None:
+            self.WarningObjects = []
+            for item in params.get("WarningObjects"):
+                obj = WarningObject()
+                obj._deserialize(item)
+                self.WarningObjects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWarningSettingResponse(AbstractModel):
+    """ModifyWarningSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9072,7 +6607,7 @@ class ModifyWebPageProtectSettingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModifyType: 需要操作的类型1 目录名称 2 防护文件类型
         :type ModifyType: int
         :param Value: 提交值
@@ -9104,7 +6639,7 @@ class ModifyWebPageProtectSettingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9115,135 +6650,13 @@ class ModifyWebPageProtectSettingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class NonLocalLoginPlace(AbstractModel):
-    """异地登录
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 事件ID。
-        :type Id: int
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param Status: 登录状态
-<li>NON_LOCAL_LOGIN：异地登录</li>
-<li>NORMAL_LOGIN：正常登录</li>
-        :type Status: str
-        :param UserName: 用户名。
-        :type UserName: str
-        :param City: 城市ID。
-        :type City: int
-        :param Country: 国家ID。
-        :type Country: int
-        :param Province: 省份ID。
-        :type Province: int
-        :param SrcIp: 登录IP。
-        :type SrcIp: str
-        :param MachineName: 机器名称。
-        :type MachineName: str
-        :param LoginTime: 登录时间。
-        :type LoginTime: str
-        :param Uuid: 云镜客户端唯一标识Uuid。
-        :type Uuid: str
-        """
-        self.Id = None
-        self.MachineIp = None
-        self.Status = None
-        self.UserName = None
-        self.City = None
-        self.Country = None
-        self.Province = None
-        self.SrcIp = None
-        self.MachineName = None
-        self.LoginTime = None
-        self.Uuid = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.MachineIp = params.get("MachineIp")
-        self.Status = params.get("Status")
-        self.UserName = params.get("UserName")
-        self.City = params.get("City")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.SrcIp = params.get("SrcIp")
-        self.MachineName = params.get("MachineName")
-        self.LoginTime = params.get("LoginTime")
-        self.Uuid = params.get("Uuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OpenPort(AbstractModel):
-    """端口列表
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 唯一ID。
-        :type Id: int
-        :param Uuid: 云镜客户端唯一UUID。
-        :type Uuid: str
-        :param Port: 开放端口号。
-        :type Port: int
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param MachineName: 主机名。
-        :type MachineName: str
-        :param ProcessName: 端口对应进程名。
-        :type ProcessName: str
-        :param Pid: 端口对应进程Pid。
-        :type Pid: int
-        :param CreateTime: 记录创建时间。
-        :type CreateTime: str
-        :param ModifyTime: 记录更新时间。
-        :type ModifyTime: str
-        """
-        self.Id = None
-        self.Uuid = None
-        self.Port = None
-        self.MachineIp = None
-        self.MachineName = None
-        self.ProcessName = None
-        self.Pid = None
-        self.CreateTime = None
-        self.ModifyTime = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.Port = params.get("Port")
-        self.MachineIp = params.get("MachineIp")
-        self.MachineName = params.get("MachineName")
-        self.ProcessName = params.get("ProcessName")
-        self.Pid = params.get("Pid")
-        self.CreateTime = params.get("CreateTime")
-        self.ModifyTime = params.get("ModifyTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class OpenPortStatistics(AbstractModel):
     """端口统计列表
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Port: 端口号
         :type Port: int
         :param MachineNum: 主机数量
@@ -9271,7 +6684,7 @@ class OpenProVersionPrepaidRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChargePrepaid: 购买相关参数。
         :type ChargePrepaid: :class:`tencentcloud.cwp.v20180228.models.ChargePrepaid`
         :param Machines: 需要开通专业版主机信息数组。
@@ -9306,7 +6719,7 @@ class OpenProVersionPrepaidResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealIds: 订单ID列表。
         :type DealIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9327,7 +6740,7 @@ class OpenProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 云主机类型。
 <li>CVM：表示虚拟主机</li>
 <li>BM:  表示黑石物理机</li>
@@ -9367,7 +6780,7 @@ class OpenProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9384,7 +6797,7 @@ class OsName(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 系统名称
         :type Name: str
         :param MachineOSType: 操作系统类型枚举值
@@ -9412,23 +6825,27 @@ class Place(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CityId: 城市 ID。
         :type CityId: int
         :param ProvinceId: 省份 ID。
         :type ProvinceId: int
         :param CountryId: 国家ID，暂只支持国内：1。
         :type CountryId: int
+        :param Location: 位置名称
+        :type Location: str
         """
         self.CityId = None
         self.ProvinceId = None
         self.CountryId = None
+        self.Location = None
 
 
     def _deserialize(self, params):
         self.CityId = params.get("CityId")
         self.ProvinceId = params.get("ProvinceId")
         self.CountryId = params.get("CountryId")
+        self.Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9444,7 +6861,7 @@ class PrivilegeEscalationProcess(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 数据ID
         :type Id: int
         :param Uuid: 云镜ID
@@ -9475,7 +6892,7 @@ class PrivilegeEscalationProcess(AbstractModel):
         :type ParentProcPath: str
         :param ProcTree: 进程树
         :type ProcTree: str
-        :param Status: 处理状态
+        :param Status: 处理状态：0-待处理 2-白名单
         :type Status: int
         :param CreateTime: 发生时间
         :type CreateTime: str
@@ -9536,7 +6953,7 @@ class PrivilegeRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -9596,16 +7013,19 @@ class ProVersionMachine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MachineType: 主机类型。
-<li>CVM: 虚拟主机</li>
+<li>CVM: 云服务器</li>
 <li>BM: 黑石物理机</li>
+<li>ECM: 边缘计算服务器</li>
+<li>LH: 轻量应用服务器</li>
+<li>Other: 混合云机器</li>
         :type MachineType: str
         :param MachineRegion: 主机所在地域。
 如：ap-guangzhou、ap-beijing
         :type MachineRegion: str
-        :param Quuid: 主机唯一标识Uuid。
-黑石的InstanceId，CVM的Uuid
+        :param Quuid: 主机唯一标识Uuid数组。
+黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
         :type Quuid: str
         """
         self.MachineType = None
@@ -9626,81 +7046,13 @@ class ProVersionMachine(AbstractModel):
         
 
 
-class Process(AbstractModel):
-    """进程信息数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 唯一ID。
-        :type Id: int
-        :param Uuid: 云镜客户端唯一UUID。
-        :type Uuid: str
-        :param MachineIp: 主机内网IP。
-        :type MachineIp: str
-        :param MachineName: 主机名。
-        :type MachineName: str
-        :param Pid: 进程Pid。
-        :type Pid: int
-        :param Ppid: 进程Ppid。
-        :type Ppid: int
-        :param ProcessName: 进程名。
-        :type ProcessName: str
-        :param Username: 进程用户名。
-        :type Username: str
-        :param Platform: 所属平台。
-<li>WIN32：windows32位</li>
-<li>WIN64：windows64位</li>
-<li>LINUX32：Linux32位</li>
-<li>LINUX64：Linux64位</li>
-        :type Platform: str
-        :param FullPath: 进程路径。
-        :type FullPath: str
-        :param CreateTime: 创建时间。
-        :type CreateTime: str
-        """
-        self.Id = None
-        self.Uuid = None
-        self.MachineIp = None
-        self.MachineName = None
-        self.Pid = None
-        self.Ppid = None
-        self.ProcessName = None
-        self.Username = None
-        self.Platform = None
-        self.FullPath = None
-        self.CreateTime = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Uuid = params.get("Uuid")
-        self.MachineIp = params.get("MachineIp")
-        self.MachineName = params.get("MachineName")
-        self.Pid = params.get("Pid")
-        self.Ppid = params.get("Ppid")
-        self.ProcessName = params.get("ProcessName")
-        self.Username = params.get("Username")
-        self.Platform = params.get("Platform")
-        self.FullPath = params.get("FullPath")
-        self.CreateTime = params.get("CreateTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ProcessStatistics(AbstractModel):
     """进程数据统计数据。
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProcessName: 进程名。
         :type ProcessName: str
         :param MachineNum: 主机数量。
@@ -9728,7 +7080,7 @@ class ProtectHostConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Quuid: 机器唯一ID
         :type Quuid: str
         :param ProtectSwitch: 防护开关 0  关闭 1开启
@@ -9760,8 +7112,8 @@ class RecoverMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Ids: 木马Id数组（单次最大恢复不超过100条）
+        r"""
+        :param Ids: 木马Id数组（最大100条）
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -9784,10 +7136,10 @@ class RecoverMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SuccessIds: 恢复成功id数组
+        r"""
+        :param SuccessIds: 恢复成功id数组，若无则返回空数组
         :type SuccessIds: list of int non-negative
-        :param FailedIds: 恢复失败id数组
+        :param FailedIds: 恢复失败id数组，若无则返回空数组
         :type FailedIds: list of int non-negative
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9809,7 +7161,7 @@ class RegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域标志，如 ap-guangzhou，ap-shanghai，ap-beijing
         :type Region: str
         :param RegionName: 地域中文名，如华南地区（广州），华东地区（上海金融），华北地区（北京）
@@ -9849,7 +7201,7 @@ class RenewProVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ChargePrepaid: 购买相关参数。
         :type ChargePrepaid: :class:`tencentcloud.cwp.v20180228.models.ChargePrepaid`
         :param Quuid: 主机唯一ID，对应CVM的uuid、BM的InstanceId。
@@ -9879,7 +7231,7 @@ class RenewProVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9896,7 +7248,7 @@ class RescanImpactedHostRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 漏洞ID。
         :type Id: int
         """
@@ -9920,7 +7272,7 @@ class RescanImpactedHostResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9937,8 +7289,8 @@ class ReverseShell(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Id: ID
+        r"""
+        :param Id: ID 主键
         :type Id: int
         :param Uuid: 云镜UUID
         :type Uuid: str
@@ -9968,7 +7320,7 @@ class ReverseShell(AbstractModel):
         :type ParentProcGroup: str
         :param ParentProcPath: 父进程路径
         :type ParentProcPath: str
-        :param Status: 处理状态
+        :param Status: 处理状态：0-待处理 2-白名单
         :type Status: int
         :param CreateTime: 产生时间
         :type CreateTime: str
@@ -9976,6 +7328,8 @@ class ReverseShell(AbstractModel):
         :type MachineName: str
         :param ProcTree: 进程树
         :type ProcTree: str
+        :param DetectBy: 检测方法
+        :type DetectBy: int
         """
         self.Id = None
         self.Uuid = None
@@ -9996,6 +7350,7 @@ class ReverseShell(AbstractModel):
         self.CreateTime = None
         self.MachineName = None
         self.ProcTree = None
+        self.DetectBy = None
 
 
     def _deserialize(self, params):
@@ -10018,6 +7373,7 @@ class ReverseShell(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.MachineName = params.get("MachineName")
         self.ProcTree = params.get("ProcTree")
+        self.DetectBy = params.get("DetectBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10033,7 +7389,7 @@ class ReverseShellRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Uuid: 客户端ID
@@ -10097,7 +7453,7 @@ class RiskDnsList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 对外访问域名
         :type Url: str
         :param AccessCount: 访问次数
@@ -10191,13 +7547,63 @@ class RiskDnsList(AbstractModel):
         
 
 
+class ScanAssetRequest(AbstractModel):
+    """ScanAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssetTypeIds: 资产指纹类型id列表
+        :type AssetTypeIds: list of int non-negative
+        :param Quuids: Quuid列表
+        :type Quuids: list of str
+        """
+        self.AssetTypeIds = None
+        self.Quuids = None
+
+
+    def _deserialize(self, params):
+        self.AssetTypeIds = params.get("AssetTypeIds")
+        self.Quuids = params.get("Quuids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanAssetResponse(AbstractModel):
+    """ScanAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ScanTaskDetails(AbstractModel):
     """扫描任务详情列表信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param HostIp: 服务器IP
         :type HostIp: str
         :param HostName: 服务器名称
@@ -10265,7 +7671,7 @@ class ScanVulAgainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventIds: 漏洞事件id串，多个用英文逗号分隔
         :type EventIds: str
         :param Uuids: 重新检查的机器uuid,多个逗号分隔
@@ -10293,7 +7699,7 @@ class ScanVulAgainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10310,7 +7716,7 @@ class ScanVulRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文;分隔)
         :type VulCategories: str
         :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文;分隔)
@@ -10358,7 +7764,7 @@ class ScanVulResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
@@ -10380,20 +7786,20 @@ class ScanVulSettingRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TimerInterval: 定期检测间隔时间（天）
         :type TimerInterval: int
         :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞, 以数组方式传参[1,2]
         :type VulCategories: list of int non-negative
         :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重,以数组方式传参[1,2,3]
         :type VulLevels: list of int non-negative
-        :param TimerTime: 定期检测时间
+        :param TimerTime: 定期检测时间，如：02:10:50
         :type TimerTime: str
         :param VulEmergency: 是否是应急漏洞 0 否 1 是
         :type VulEmergency: int
-        :param StartTime: 扫描开始时间
+        :param StartTime: 扫描开始时间，如：00:00
         :type StartTime: str
-        :param EndTime: 扫描结束时间
+        :param EndTime: 扫描结束时间，如：08:00
         :type EndTime: str
         :param EnableScan: 是否开启扫描 1开启 0不开启
         :type EnableScan: int
@@ -10432,7 +7838,7 @@ class ScanVulSettingResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10449,7 +7855,7 @@ class SearchTemplate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 检索名称
         :type Name: str
         :param LogType: 检索索引类型
@@ -10501,10 +7907,10 @@ class SecurityDynamic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Uuid: 云镜客户端UUID。
         :type Uuid: str
-        :param EventTime: 安全事件发生事件。
+        :param EventTime: 安全事件发生时间。
         :type EventTime: str
         :param EventType: 安全事件类型。
 <li>MALWARE：木马事件</li>
@@ -10550,7 +7956,7 @@ class SecurityEventInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EventCnt: 安全事件数
         :type EventCnt: int
         :param UuidCnt: 受影响机器数
@@ -10578,7 +7984,7 @@ class SecurityTrend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Date: 事件时间。
         :type Date: str
         :param EventNum: 事件数量。
@@ -10606,8 +8012,8 @@ class SeparateMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param Ids: 木马事件ID数组。
+        r"""
+        :param Ids: 木马事件ID数组。(最大100条)
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -10630,10 +8036,10 @@ class SeparateMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param SuccessIds: 隔离成功的id数组。
+        r"""
+        :param SuccessIds: 隔离成功的id数组，若无则返回空数组
         :type SuccessIds: list of int non-negative
-        :param FailedIds: 隔离失败的id数组。
+        :param FailedIds: 隔离失败的id数组，若无则返回空数组
         :type FailedIds: list of int non-negative
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10655,7 +8061,7 @@ class SetBashEventsStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: ID数组，最大100条。
         :type Ids: list of int non-negative
         :param Status: 新状态(0-待处理 1-高危 2-正常)
@@ -10683,7 +8089,7 @@ class SetBashEventsStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10700,7 +8106,7 @@ class SwitchBashRulesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 规则ID
         :type Id: int
         :param Disabled: 是否禁用
@@ -10728,7 +8134,7 @@ class SwitchBashRulesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10745,7 +8151,7 @@ class SyncAssetScanRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Sync: 是否同步
         :type Sync: bool
         """
@@ -10769,7 +8175,7 @@ class SyncAssetScanResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10786,7 +8192,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 标签ID
         :type Id: int
         :param Name: 标签名
@@ -10818,7 +8224,7 @@ class TagMachine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID
         :type Id: str
         :param Quuid: 主机ID
@@ -10860,54 +8266,13 @@ class TagMachine(AbstractModel):
         
 
 
-class TrustMaliciousRequestRequest(AbstractModel):
-    """TrustMaliciousRequest请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 恶意请求记录ID。
-        :type Id: int
-        """
-        self.Id = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TrustMaliciousRequestResponse(AbstractModel):
-    """TrustMaliciousRequest返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class TrustMalwaresRequest(AbstractModel):
     """TrustMalwares请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马ID数组（单次不超过的最大条数：100）
         :type Ids: list of int non-negative
         """
@@ -10931,48 +8296,7 @@ class TrustMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class UntrustMaliciousRequestRequest(AbstractModel):
-    """UntrustMaliciousRequest请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param Id: 受信任记录ID。
-        :type Id: int
-        """
-        self.Id = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UntrustMaliciousRequestResponse(AbstractModel):
-    """UntrustMaliciousRequest返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10989,7 +8313,7 @@ class UntrustMalwaresRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ids: 木马ID数组，单次最大处理不能超过200条。
         :type Ids: list of int non-negative
         """
@@ -11013,7 +8337,7 @@ class UntrustMalwaresResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11030,7 +8354,7 @@ class UpdateBaselineStrategyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StrategyId: 策略id
         :type StrategyId: int
         :param StrategyName: 策略名称
@@ -11086,7 +8410,7 @@ class UpdateBaselineStrategyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11103,7 +8427,7 @@ class UsualPlace(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID。
         :type Id: int
         :param Uuid: 云镜客户端唯一标识UUID。
@@ -11137,63 +8461,13 @@ class UsualPlace(AbstractModel):
         
 
 
-class Vul(AbstractModel):
-    """漏洞列表数据
-
-    """
-
-    def __init__(self):
-        """
-        :param VulId: 漏洞种类ID
-        :type VulId: int
-        :param VulName: 漏洞名称
-        :type VulName: str
-        :param VulLevel: 漏洞危害等级:
-HIGH：高危
-MIDDLE：中危
-LOW：低危
-NOTICE：提示
-        :type VulLevel: str
-        :param LastScanTime: 最后扫描时间
-        :type LastScanTime: str
-        :param ImpactedHostNum: 受影响机器数量
-        :type ImpactedHostNum: int
-        :param VulStatus: 漏洞状态
-* UN_OPERATED : 待处理
-* FIXED : 已修复
-        :type VulStatus: str
-        """
-        self.VulId = None
-        self.VulName = None
-        self.VulLevel = None
-        self.LastScanTime = None
-        self.ImpactedHostNum = None
-        self.VulStatus = None
-
-
-    def _deserialize(self, params):
-        self.VulId = params.get("VulId")
-        self.VulName = params.get("VulName")
-        self.VulLevel = params.get("VulLevel")
-        self.LastScanTime = params.get("LastScanTime")
-        self.ImpactedHostNum = params.get("ImpactedHostNum")
-        self.VulStatus = params.get("VulStatus")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class VulDetailInfo(AbstractModel):
     """漏洞详细信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulId: 漏洞ID
         :type VulId: int
         :param Level: 漏洞级别
@@ -11251,208 +8525,37 @@ class VulDetailInfo(AbstractModel):
         
 
 
-class WeeklyReport(AbstractModel):
-    """周报列表。
+class WarningObject(AbstractModel):
+    """告警更新或插入的参数
 
     """
 
     def __init__(self):
+        r"""
+        :param Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线
+        :type Type: int
+        :param DisablePhoneWarning: 1: 关闭告警 0: 开启告警
+        :type DisablePhoneWarning: int
+        :param BeginTime: 开始时间，格式: HH:mm
+        :type BeginTime: str
+        :param EndTime: 结束时间，格式: HH:mm
+        :type EndTime: str
+        :param ControlBits: 漏洞等级控制位二进制，每一位对应页面漏洞等级的开启关闭：低中高（0:关闭；1：开启），例如：101 → 同时勾选低+高；01→(登录审计)疑似不告警，高危告警
+        :type ControlBits: str
         """
-        :param BeginDate: 周报开始时间。
-        :type BeginDate: str
-        :param EndDate: 周报结束时间。
-        :type EndDate: str
-        """
-        self.BeginDate = None
-        self.EndDate = None
+        self.Type = None
+        self.DisablePhoneWarning = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.ControlBits = None
 
 
     def _deserialize(self, params):
-        self.BeginDate = params.get("BeginDate")
-        self.EndDate = params.get("EndDate")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WeeklyReportBruteAttack(AbstractModel):
-    """专业周报密码破解数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param Username: 被破解用户名。
-        :type Username: str
-        :param SrcIp: 源IP。
-        :type SrcIp: str
-        :param Count: 尝试次数。
-        :type Count: int
-        :param AttackTime: 攻击时间。
-        :type AttackTime: str
-        """
-        self.MachineIp = None
-        self.Username = None
-        self.SrcIp = None
-        self.Count = None
-        self.AttackTime = None
-
-
-    def _deserialize(self, params):
-        self.MachineIp = params.get("MachineIp")
-        self.Username = params.get("Username")
-        self.SrcIp = params.get("SrcIp")
-        self.Count = params.get("Count")
-        self.AttackTime = params.get("AttackTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WeeklyReportMalware(AbstractModel):
-    """专业周报木马数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param FilePath: 木马文件路径。
-        :type FilePath: str
-        :param Md5: 木马文件MD5值。
-        :type Md5: str
-        :param FindTime: 木马发现时间。
-        :type FindTime: str
-        :param Status: 当前木马状态。
-<li>UN_OPERATED：未处理</li>
-<li>SEGREGATED：已隔离</li>
-<li>TRUSTED：已信任</li>
-<li>SEPARATING：隔离中</li>
-<li>RECOVERING：恢复中</li>
-        :type Status: str
-        """
-        self.MachineIp = None
-        self.FilePath = None
-        self.Md5 = None
-        self.FindTime = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.MachineIp = params.get("MachineIp")
-        self.FilePath = params.get("FilePath")
-        self.Md5 = params.get("Md5")
-        self.FindTime = params.get("FindTime")
-        self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WeeklyReportNonlocalLoginPlace(AbstractModel):
-    """专业周报异地登录数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param MachineIp: 主机IP。
-        :type MachineIp: str
-        :param Username: 用户名。
-        :type Username: str
-        :param SrcIp: 源IP。
-        :type SrcIp: str
-        :param Country: 国家ID。
-        :type Country: int
-        :param Province: 省份ID。
-        :type Province: int
-        :param City: 城市ID。
-        :type City: int
-        :param LoginTime: 登录时间。
-        :type LoginTime: str
-        """
-        self.MachineIp = None
-        self.Username = None
-        self.SrcIp = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.LoginTime = None
-
-
-    def _deserialize(self, params):
-        self.MachineIp = params.get("MachineIp")
-        self.Username = params.get("Username")
-        self.SrcIp = params.get("SrcIp")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.LoginTime = params.get("LoginTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WeeklyReportVul(AbstractModel):
-    """专业版周报漏洞数据。
-
-    """
-
-    def __init__(self):
-        """
-        :param MachineIp: 主机内网IP。
-        :type MachineIp: str
-        :param VulName: 漏洞名称。
-        :type VulName: str
-        :param VulType: 漏洞类型。
-<li> WEB : Web漏洞</li>
-<li> SYSTEM :系统组件漏洞</li>
-<li> BASELINE : 安全基线</li>
-        :type VulType: str
-        :param Description: 漏洞描述。
-        :type Description: str
-        :param VulStatus: 漏洞状态。
-<li> UN_OPERATED : 待处理</li>
-<li> SCANING : 扫描中</li>
-<li> FIXED : 已修复</li>
-        :type VulStatus: str
-        :param LastScanTime: 最后扫描时间。
-        :type LastScanTime: str
-        """
-        self.MachineIp = None
-        self.VulName = None
-        self.VulType = None
-        self.Description = None
-        self.VulStatus = None
-        self.LastScanTime = None
-
-
-    def _deserialize(self, params):
-        self.MachineIp = params.get("MachineIp")
-        self.VulName = params.get("VulName")
-        self.VulType = params.get("VulType")
-        self.Description = params.get("Description")
-        self.VulStatus = params.get("VulStatus")
-        self.LastScanTime = params.get("LastScanTime")
+        self.Type = params.get("Type")
+        self.DisablePhoneWarning = params.get("DisablePhoneWarning")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.ControlBits = params.get("ControlBits")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -24,7 +24,7 @@ class Data(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PostTime: 操作时间戳，单位秒
         :type PostTime: int
         :param Uid: 用户ID 
@@ -64,7 +64,7 @@ class MarketingValueJudgementRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 手机账号类型填写4
         :type AccountType: int
         :param Uid: 填写手机号码，如15317537488
@@ -108,7 +108,7 @@ class MarketingValueJudgementResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 返回数据
         :type Data: :class:`tencentcloud.mvj.v20190926.models.Data`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

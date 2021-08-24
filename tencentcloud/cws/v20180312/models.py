@@ -24,7 +24,7 @@ class CreateMonitorsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 站点的url列表
         :type Urls: list of str
         :param Name: 任务名称
@@ -68,7 +68,7 @@ class CreateMonitorsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -85,7 +85,7 @@ class CreateSitesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 站点的url列表
         :type Urls: list of str
         :param UserAgent: 访问网站的客户端标识
@@ -113,7 +113,7 @@ class CreateSitesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Number: 新增站点数。
         :type Number: int
         :param Sites: 站点数组
@@ -143,7 +143,7 @@ class CreateSitesScansRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteIds: 站点的ID列表
         :type SiteIds: list of int non-negative
         :param ScannerType: 扫描模式，normal-正常扫描；deep-深度扫描
@@ -175,7 +175,7 @@ class CreateSitesScansResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -192,7 +192,7 @@ class CreateVulsMisinformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulIds: 漏洞ID列表
         :type VulIds: list of int non-negative
         """
@@ -216,7 +216,7 @@ class CreateVulsMisinformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -233,7 +233,7 @@ class CreateVulsReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteId: 站点ID
         :type SiteId: int
         :param MonitorId: 监控任务ID
@@ -261,7 +261,7 @@ class CreateVulsReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReportFileUrl: 报告下载地址
         :type ReportFileUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -282,7 +282,7 @@ class DeleteMonitorsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MonitorIds: 监控任务ID列表
         :type MonitorIds: list of int non-negative
         """
@@ -306,7 +306,7 @@ class DeleteMonitorsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -323,7 +323,7 @@ class DeleteSitesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteIds: 站点ID列表
         :type SiteIds: list of int non-negative
         """
@@ -347,7 +347,7 @@ class DeleteSitesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -370,7 +370,7 @@ class DescribeConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NoticeLevel: 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示。
         :type NoticeLevel: str
         :param Id: 配置ID。
@@ -411,7 +411,7 @@ class DescribeMonitorsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MonitorIds: 监控任务ID列表
         :type MonitorIds: list of int non-negative
         :param Filters: 过滤条件
@@ -452,7 +452,7 @@ class DescribeMonitorsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Monitors: 监控任务列表。
         :type Monitors: list of MonitorsDetail
         :param TotalCount: 监控任务数量。
@@ -488,7 +488,7 @@ class DescribeSiteQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 已购买的扫描次数。
         :type Total: int
         :param Used: 已使用的扫描次数。
@@ -517,7 +517,7 @@ class DescribeSitesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteIds: 站点ID列表
         :type SiteIds: list of int non-negative
         :param Filters: 过滤条件
@@ -558,7 +558,7 @@ class DescribeSitesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 站点数量。
         :type TotalCount: int
         :param Sites: 站点信息列表。
@@ -588,7 +588,7 @@ class DescribeSitesVerificationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 站点的url列表
         :type Urls: list of str
         """
@@ -612,7 +612,7 @@ class DescribeSitesVerificationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 验证信息数量。
         :type TotalCount: int
         :param SitesVerification: 验证信息列表。
@@ -648,7 +648,7 @@ class DescribeVulsNumberResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ImpactSiteNumber: 受影响的网站总数。
         :type ImpactSiteNumber: int
         :param SiteNumber: 已验证的网站总数。
@@ -717,7 +717,7 @@ class DescribeVulsNumberTimelineResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 统计数据记录数量。
         :type TotalCount: int
         :param VulsTimeline: 用户漏洞数随时间变化统计数据。
@@ -747,7 +747,7 @@ class DescribeVulsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteId: 站点ID
         :type SiteId: int
         :param MonitorId: 监控任务ID
@@ -792,7 +792,7 @@ class DescribeVulsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 漏洞数量。
         :type TotalCount: int
         :param Vuls: 漏洞信息列表。
@@ -825,7 +825,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤键的名称。
         :type Name: str
         :param Values: 一个或者多个过滤值。
@@ -853,7 +853,7 @@ class MiniSite(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteId: 站点ID。
         :type SiteId: int
         :param Url: 站点Url。
@@ -881,7 +881,7 @@ class ModifyConfigAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NoticeLevel: 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示
         :type NoticeLevel: str
         """
@@ -905,7 +905,7 @@ class ModifyConfigAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -922,7 +922,7 @@ class ModifyMonitorAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MonitorId: 监测任务ID
         :type MonitorId: int
         :param Urls: 站点的url列表
@@ -974,7 +974,7 @@ class ModifyMonitorAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -991,7 +991,7 @@ class ModifySiteAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteId: 站点ID
         :type SiteId: int
         :param Name: 站点名称
@@ -1039,7 +1039,7 @@ class ModifySiteAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1056,7 +1056,7 @@ class Monitor(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 监控任务ID。
         :type Id: int
         :param Name: 监控名称。
@@ -1136,7 +1136,7 @@ class MonitorMiniSite(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SiteId: 站点ID。
         :type SiteId: int
         :param Url: 站点Url。
@@ -1164,7 +1164,7 @@ class MonitorsDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Basic: 监控任务基础信息。
         :type Basic: :class:`tencentcloud.cws.v20180312.models.Monitor`
         :param Sites: 监控任务包含的站点列表。
@@ -1244,7 +1244,7 @@ class Site(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 站点ID。
         :type Id: int
         :param MonitorId: 监控任务ID，为0时表示未加入监控任务。
@@ -1400,7 +1400,7 @@ class SitesVerification(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 根域名。
         :type Domain: str
         :param TxtName: txt解析域名验证的name。
@@ -1464,7 +1464,7 @@ class VerifySitesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 站点的url列表
         :type Urls: list of str
         """
@@ -1488,7 +1488,7 @@ class VerifySitesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessNumber: 验证成功的根域名数量。
         :type SuccessNumber: int
         :param FailNumber: 验证失败的根域名数量。
@@ -1513,7 +1513,7 @@ class Vul(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 漏洞ID。
         :type Id: int
         :param SiteId: 站点ID。
@@ -1605,7 +1605,7 @@ class VulsTimeline(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID。
         :type Id: int
         :param Appid: 云用户appid。

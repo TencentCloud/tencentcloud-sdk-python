@@ -24,7 +24,7 @@ class AdInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Spots: 插播广告列表
         :type Spots: list of PluginInfo
         :param BoutiqueRecommands: 精品推荐广告列表
@@ -98,7 +98,7 @@ class AppDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppName: app的名称
         :type AppName: str
         :param AppPkgName: app的包名
@@ -146,7 +146,7 @@ class AppInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppUrl: app的url，必须保证不用权限校验就可以下载
         :type AppUrl: str
         :param AppMd5: app的md5，需要正确传递
@@ -198,7 +198,7 @@ class AppScanSet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 任务唯一标识
         :type ItemId: str
         :param AppName: app的名称
@@ -270,7 +270,7 @@ class AppSetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 任务唯一标识
         :type ItemId: str
         :param AppName: app的名称
@@ -350,7 +350,7 @@ class BindInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppIconUrl: app的icon的url
         :type AppIconUrl: str
         :param AppName: app的名称
@@ -382,7 +382,7 @@ class CreateBindInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源id，全局唯一
         :type ResourceId: str
         :param AppIconUrl: app的icon的url
@@ -418,7 +418,7 @@ class CreateBindInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -439,7 +439,7 @@ class CreateCosSecKeyInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosRegion: 地域信息，例如广州：ap-guangzhou，上海：ap-shanghai，默认为广州。
         :type CosRegion: str
         :param Duration: 密钥有效时间，默认为1小时。
@@ -467,7 +467,7 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosAppid: COS密钥对应的AppId
         :type CosAppid: int
         :param CosBucket: COS密钥对应的存储桶名
@@ -516,7 +516,7 @@ class CreateResourceInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pid: 资源类型id。13624：加固专业版。
         :type Pid: int
         :param TimeUnit: 时间单位，取值为d，m，y，分别表示天，月，年。
@@ -552,7 +552,7 @@ class CreateResourceInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceSet: 新创建的资源列表。
         :type ResourceSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -573,7 +573,7 @@ class CreateScanInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppInfos: 待扫描的app信息列表，一次最多提交20个
         :type AppInfos: list of AppInfo
         :param ScanInfo: 扫描信息
@@ -608,7 +608,7 @@ class CreateScanInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 任务唯一标识
         :type ItemId: str
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
@@ -645,7 +645,7 @@ class CreateShieldInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppInfo: 待加固的应用信息
         :type AppInfo: :class:`tencentcloud.ms.v20180408.models.AppInfo`
         :param ServiceInfo: 加固服务信息
@@ -677,7 +677,7 @@ class CreateShieldInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
         :param ItemId: 任务唯一标识
@@ -702,7 +702,7 @@ class CreateShieldPlanInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源id
         :type ResourceId: str
         :param PlanName: 策略名称
@@ -736,7 +736,7 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlanId: 策略id
         :type PlanId: int
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
@@ -761,7 +761,7 @@ class DeleteScanInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppSids: 删除一个或多个扫描的app，最大支持20个
         :type AppSids: list of str
         """
@@ -785,7 +785,7 @@ class DeleteScanInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -806,7 +806,7 @@ class DeleteShieldInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemIds: 任务唯一标识ItemId的列表
         :type ItemIds: list of str
         """
@@ -830,7 +830,7 @@ class DeleteShieldInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -851,7 +851,7 @@ class DescribeResourceInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Pids: 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
         :type Pids: list of int non-negative
         :param Filters: 支持通过资源id，pid进行查询
@@ -900,7 +900,7 @@ class DescribeResourceInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合要求的资源数量
         :type TotalCount: int
         :param ResourceSet: 符合要求的资源数组
@@ -930,7 +930,7 @@ class DescribeScanInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 支持通过app名称，app包名进行筛选
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
@@ -979,7 +979,7 @@ class DescribeScanInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合要求的app数量
         :type TotalCount: int
         :param ScanSet: 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
@@ -1009,7 +1009,7 @@ class DescribeScanResultsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 任务唯一标识
         :type ItemId: str
         :param AppMd5s: 批量查询一个或者多个app的扫描结果，如果不传表示查询该任务下所提交的所有app
@@ -1037,7 +1037,7 @@ class DescribeScanResultsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ScanSet: 批量扫描的app结果集
         :type ScanSet: list of ScanSetInfo
         :param TotalCount: 批量扫描结果的个数
@@ -1067,7 +1067,7 @@ class DescribeShieldInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
@@ -1116,7 +1116,7 @@ class DescribeShieldInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 符合要求的app数量
         :type TotalCount: int
         :param AppSet: 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
@@ -1146,7 +1146,7 @@ class DescribeShieldPlanInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 资源id
         :type ResourceId: str
         :param Pid: 服务类别id
@@ -1174,7 +1174,7 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BindInfo: 绑定资源信息
         :type BindInfo: :class:`tencentcloud.ms.v20180408.models.BindInfo`
         :param ShieldPlanInfo: 加固策略信息
@@ -1209,7 +1209,7 @@ class DescribeShieldResultRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ItemId: 任务唯一标识
         :type ItemId: str
         """
@@ -1233,7 +1233,7 @@ class DescribeShieldResultResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskStatus: 任务状态: 0-请返回,1-已完成,2-处理中,3-处理出错,4-处理超时
         :type TaskStatus: int
         :param AppDetailInfo: app加固前的详细信息
@@ -1280,7 +1280,7 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserUin: 用户uin信息
         :type UserUin: int
         :param UserAppid: 用户APPID信息
@@ -1309,7 +1309,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段
         :type Name: str
         :param Value: 需要过滤字段的值
@@ -1337,7 +1337,7 @@ class PlanDetailInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsDefault: 默认策略，1为默认，0为非默认
         :type IsDefault: int
         :param PlanId: 策略id
@@ -1375,7 +1375,7 @@ class PlanInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ApkSizeOpt: apk大小优化，0关闭，1开启
         :type ApkSizeOpt: int
         :param Dex: Dex加固，0关闭，1开启
@@ -1461,7 +1461,7 @@ class PluginInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PluginType: 插件类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
         :type PluginType: int
         :param PluginName: 插件名称
@@ -1493,7 +1493,7 @@ class ResourceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 用户购买的资源id，全局唯一
         :type ResourceId: str
         :param Pid: 资源的pid，MTP加固-12767，应用加固-12750 MTP反作弊-12766 源代码混淆-12736
@@ -1543,7 +1543,7 @@ class ResourceServiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreateTime: 创建时间戳
         :type CreateTime: int
         :param ExpireTime: 到期时间戳
@@ -1575,7 +1575,7 @@ class ScanInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CallbackUrl: 任务处理完成后的反向通知回调地址,批量提交app每扫描完成一个会通知一次,通知为POST请求，post信息{ItemId:
         :type CallbackUrl: str
         :param ScanTypes: VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，PERMISSION-系统权限信息，SENSITIVE-敏感词信息，可以自由组合
@@ -1603,7 +1603,7 @@ class ScanPermissionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Permission: 系统权限
         :type Permission: str
         """
@@ -1627,7 +1627,7 @@ class ScanPermissionList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PermissionList: 系统权限信息
         :type PermissionList: list of ScanPermissionInfo
         """
@@ -1656,7 +1656,7 @@ class ScanSensitiveInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WordList: 敏感词
         :type WordList: list of str
         :param FilePath: 敏感词对应的文件信息
@@ -1688,7 +1688,7 @@ class ScanSensitiveList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SensitiveList: 敏感词列表
         :type SensitiveList: list of ScanSensitiveInfo
         """
@@ -1717,7 +1717,7 @@ class ScanSetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskStatus: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type TaskStatus: int
         :param AppDetailInfo: app信息
@@ -1793,7 +1793,7 @@ class ServiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceEdition: 服务版本，基础版basic，专业版professional，企业版enterprise。
         :type ServiceEdition: str
         :param CallbackUrl: 任务处理完成后的反向通知回调地址，如果不需要通知请传递空字符串。通知为POST请求，post包体数据示例{"Response":{"ItemId":"4cdad8fb86f036b06bccb3f58971c306","ShieldCode":0,"ShieldMd5":"78701576793c4a5f04e1c9660de0aa0b","ShieldSize":11997354,"TaskStatus":1,"TaskTime":1539148141}}，调用方需要返回如下信息，{"Result":"ok","Reason":"xxxxx"}，如果Result字段值不等于ok会继续回调。
@@ -1829,7 +1829,7 @@ class ShieldInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ShieldCode: 加固结果的返回码
         :type ShieldCode: int
         :param ShieldSize: 加固后app的大小
@@ -1877,7 +1877,7 @@ class ShieldPlanInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 加固策略数量
         :type TotalCount: int
         :param PlanSet: 加固策略具体信息数组
@@ -1910,7 +1910,7 @@ class SoInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SoFileNames: so文件列表
         :type SoFileNames: list of str
         """
@@ -1934,7 +1934,7 @@ class VirusInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SafeType: 软件安全类型，分别为0-未知、 1-安全软件、2-风险软件、3-病毒软件
         :type SafeType: int
         :param VirusName: 病毒名称， utf8编码，非病毒时值为空
@@ -1966,7 +1966,7 @@ class VulInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulList: 漏洞列表
         :type VulList: list of VulList
         :param VulFileScore: 漏洞文件评分
@@ -1999,7 +1999,7 @@ class VulList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VulId: 漏洞id
         :type VulId: str
         :param VulName: 漏洞名称

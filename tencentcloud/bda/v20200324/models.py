@@ -25,7 +25,7 @@ class Age(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 人体年龄信息，返回值为以下集合中的一个{小孩,青年,中年,老年}。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -55,7 +55,7 @@ class AttributesOptions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Age: 返回年龄信息
         :type Age: bool
         :param Bag: 返回随身挎包信息
@@ -100,7 +100,7 @@ class Bag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 挎包信息，返回值为以下集合中的一个{双肩包, 斜挎包, 手拎包, 无包}。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -128,7 +128,7 @@ class BodyAttributeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Age: 人体年龄信息。 
 AttributesType 不含 Age 或检测超过 5 个人体时，此参数仍返回，但不具备参考意义。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -196,7 +196,7 @@ class BodyDetectResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Confidence: 检测出的人体置信度。 
 误识率百分之十对应的阈值是0.14；误识率百分之五对应的阈值是0.32；误识率百分之二对应的阈值是0.62；误识率百分之一对应的阈值是0.81。 
 通常情况建议使用阈值0.32，可适用大多数情况。
@@ -234,7 +234,7 @@ class BodyJointsResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BoundBox: 图中检测出来的人体框。
         :type BoundBox: :class:`tencentcloud.bda.v20200324.models.BoundRect`
         :param BodyJoints: 14个人体关键点的坐标，人体关键点详见KeyPointInfo。
@@ -273,7 +273,7 @@ class BodyRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人体框左上角横坐标。
         :type X: int
         :param Y: 人体框左上角纵坐标。
@@ -309,7 +309,7 @@ class BoundRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 人体框左上角横坐标。
         :type X: int
         :param Y: 人体框左上角纵坐标。
@@ -345,7 +345,7 @@ class Candidate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID。
         :type PersonId: str
         :param TraceId: 人体轨迹ID。
@@ -382,7 +382,7 @@ class CreateGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 人体库名称，[1,60]个字符，可修改，不可重复。
         :type GroupName: str
         :param GroupId: 人体库 ID，不可修改，不可重复。支持英文、数字、-%@#&_，长度限制64B。
@@ -420,7 +420,7 @@ class CreateGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -437,7 +437,7 @@ class CreatePersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 待加入的人员库ID。
         :type GroupId: str
         :param PersonName: 人员名称。[1，60]个字符，可修改，可重复。
@@ -476,7 +476,7 @@ class CreatePersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TraceId: 人员轨迹唯一标识。
         :type TraceId: str
         :param BodyModelVersion: 人体识别所用的算法模型版本。
@@ -513,7 +513,7 @@ class CreateSegmentationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VideoUrl: 需要分割的视频URL，可外网访问。
         :type VideoUrl: str
         :param BackgroundImageUrl: 背景图片URL。 
@@ -547,7 +547,7 @@ class CreateSegmentationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskID: 任务标识ID,可以用与追溯任务状态，查看任务结果
         :type TaskID: str
         :param EstimatedProcessingTime: 预估处理时间，单位为秒
@@ -572,7 +572,7 @@ class CreateTraceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID。
         :type PersonId: str
         :param Trace: 人体轨迹信息。
@@ -602,7 +602,7 @@ class CreateTraceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TraceId: 人员轨迹唯一标识。
         :type TraceId: str
         :param BodyModelVersion: 人体识别所用的算法模型版本。
@@ -638,7 +638,7 @@ class DeleteGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人体库ID。
         :type GroupId: str
         """
@@ -662,7 +662,7 @@ class DeleteGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -679,7 +679,7 @@ class DeletePersonRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID。
         :type PersonId: str
         """
@@ -703,7 +703,7 @@ class DeletePersonResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -720,7 +720,7 @@ class DescribeSegmentationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskID: 在提交分割任务成功时返回的任务标识ID。
         :type TaskID: str
         """
@@ -744,7 +744,7 @@ class DescribeSegmentationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskStatus: 当前任务状态：
 QUEUING 排队中
 PROCESSING 处理中
@@ -790,7 +790,7 @@ class DetectBodyJointsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。  
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
@@ -823,7 +823,7 @@ class DetectBodyJointsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BodyJointsResults: 图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
         :type BodyJointsResults: list of BodyJointsResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -849,7 +849,7 @@ class DetectBodyRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 人体图片 Base64 数据。
 图片 base64 编码后大小不可超过5M。
 图片分辨率不得超过 1920 * 1080 。
@@ -901,7 +901,7 @@ class DetectBodyResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BodyDetectResults: 图中检测出来的人体框。
         :type BodyDetectResults: list of BodyDetectResult
         :param BodyModelVersion: 人体识别所用的算法模型版本。
@@ -932,7 +932,7 @@ class Gender(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 性别信息，返回值为以下集合中的一个 {男性, 女性}
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -960,7 +960,7 @@ class GetGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始序号，默认值为0。
         :type Offset: int
         :param Limit: 返回数量，默认值为10，最大值为1000。
@@ -988,7 +988,7 @@ class GetGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupInfos: 返回的人体库信息。
         :type GroupInfos: list of GroupInfo
         :param GroupNum: 人体库总数量。
@@ -1018,7 +1018,7 @@ class GetPersonListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人体库ID。
         :type GroupId: str
         :param Offset: 起始序号，默认值为0。
@@ -1050,7 +1050,7 @@ class GetPersonListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonInfos: 返回的人员信息。
         :type PersonInfos: list of PersonInfo
         :param PersonNum: 该人体库的人员数量。
@@ -1084,7 +1084,7 @@ class GroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupName: 人体库名称。
         :type GroupName: str
         :param GroupId: 人体库ID。
@@ -1125,7 +1125,7 @@ class ImageRect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param X: 左上角横坐标。
         :type X: int
         :param Y: 左上角纵坐标。
@@ -1165,7 +1165,7 @@ class KeyPointInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyPointType: 代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
         :type KeyPointType: str
         :param X: 人体关键点横坐标
@@ -1197,7 +1197,7 @@ class LowerBodyCloth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Color: 下衣颜色信息。
         :type Color: :class:`tencentcloud.bda.v20200324.models.LowerBodyClothColor`
         :param Length: 下衣长度信息 。
@@ -1235,7 +1235,7 @@ class LowerBodyClothColor(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 下衣颜色信息，返回值为以下集合中的一个{ 黑色系, 灰白色系, 彩色} 。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -1263,7 +1263,7 @@ class LowerBodyClothLength(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 下衣长度信息，返回值为以下集合中的一个，{长, 短} 。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -1291,7 +1291,7 @@ class LowerBodyClothType(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 下衣类型，返回值为以下集合中的一个 {裤子,裙子} 。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -1319,7 +1319,7 @@ class ModifyGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 人体库ID。
         :type GroupId: str
         :param GroupName: 人体库名称。
@@ -1351,7 +1351,7 @@ class ModifyGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1368,7 +1368,7 @@ class ModifyPersonInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonId: 人员ID。
         :type PersonId: str
         :param PersonName: 人员名称。
@@ -1396,7 +1396,7 @@ class ModifyPersonInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1414,7 +1414,7 @@ class Orientation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 人体朝向信息，返回值为以下集合中的一个 {正向, 背向, 左, 右}。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -1442,7 +1442,7 @@ class PersonInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PersonName: 人员名称。
         :type PersonName: str
         :param PersonId: 人员ID。
@@ -1479,7 +1479,7 @@ class SearchTraceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GroupId: 希望搜索的人体库ID。
         :type GroupId: str
         :param Trace: 人体轨迹信息。
@@ -1520,7 +1520,7 @@ class SearchTraceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Candidates: 识别出的最相似候选人。
         :type Candidates: list of Candidate
         :param InputRetCode: 输入的人体轨迹图片中的合法性校验结果。
@@ -1561,7 +1561,7 @@ class SegmentCustomizedPortraitPicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SegmentationOptions: 此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
         :type SegmentationOptions: :class:`tencentcloud.bda.v20200324.models.SegmentationOptions`
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
@@ -1602,7 +1602,7 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PortraitImage: 根据指定标签分割输出的透明背景人像图片的 base64 数据。
         :type PortraitImage: str
         :param MaskImage: 指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
@@ -1637,7 +1637,7 @@ class SegmentPortraitPicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 图片分辨率须小于2000*2000。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -1672,7 +1672,7 @@ class SegmentPortraitPicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResultImage: 处理后的图片 base64 数据，透明背景图
         :type ResultImage: str
         :param ResultMask: 一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
@@ -1697,7 +1697,7 @@ class SegmentationOptions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Background: 分割选项-背景
         :type Background: bool
         :param Hair: 分割选项-头发
@@ -1801,7 +1801,7 @@ class TerminateSegmentationTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskID: 在提交分割任务成功时返回的任务标识ID。
         :type TaskID: str
         """
@@ -1825,7 +1825,7 @@ class TerminateSegmentationTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1842,7 +1842,7 @@ class Trace(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Images: 人体轨迹图片 Base64 数组。 
 数组长度最小为1最大为5。 
 单个图片 base64 编码后大小不可超过2M。 
@@ -1891,7 +1891,7 @@ class TraceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TraceId: 人体轨迹ID。
         :type TraceId: str
         :param BodyIds: 包含的人体轨迹图片Id列表。
@@ -1919,7 +1919,7 @@ class UpperBodyCloth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Texture: 上衣纹理信息。
         :type Texture: :class:`tencentcloud.bda.v20200324.models.UpperBodyClothTexture`
         :param Color: 上衣颜色信息。
@@ -1957,7 +1957,7 @@ class UpperBodyClothColor(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 上衣颜色信息，返回值为以下集合中的一个 {红色系, 黄色系, 绿色系, 蓝色系, 黑色系, 灰白色系。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -1985,7 +1985,7 @@ class UpperBodyClothSleeve(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 上衣衣袖信息, 返回值为以下集合中的一个 {长袖, 短袖}。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0],代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -2013,7 +2013,7 @@ class UpperBodyClothTexture(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 上衣纹理信息，返回值为以下集合中的一个, {纯色, 格子, 大色块}。
         :type Type: str
         :param Probability: Type识别概率值，[0.0,1.0], 代表判断正确的概率。如0.8则代表有Type值有80%概率正确。
@@ -2041,7 +2041,7 @@ class VideoBasicInformation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FrameWidth: 视频宽度
         :type FrameWidth: int
         :param FrameHeight: 视频高度

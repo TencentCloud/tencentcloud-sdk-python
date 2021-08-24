@@ -24,7 +24,7 @@ class AccessInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Host: 域名
         :type Host: str
         :param Vip: VIP
@@ -52,7 +52,7 @@ class Alias(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionVersion: 别名指向的主版本
         :type FunctionVersion: str
         :param Name: 别名的名称
@@ -102,14 +102,14 @@ class AsyncEvent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InvokeRequestId: 调用请求id
         :type InvokeRequestId: str
         :param InvokeType: 调用类型
         :type InvokeType: str
         :param Qualifier: 函数版本
         :type Qualifier: str
-        :param Status: 事件状态
+        :param Status: 事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败
         :type Status: str
         :param StartTime: 调用开始时间，格式: "%Y-%m-%d %H:%M:%S.%f"
         :type StartTime: str
@@ -146,7 +146,7 @@ class AsyncTriggerConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetryConfig: 用户错误的异步重试重试配置
         :type RetryConfig: list of RetryConfig
         :param MsgTTL: 消息保留时间
@@ -179,7 +179,7 @@ class CfsConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CfsInsList: 文件系统信息列表
         :type CfsInsList: list of CfsInsInfo
         """
@@ -208,7 +208,7 @@ class CfsInsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 用户id
         :type UserId: str
         :param UserGroupId: 用户组id
@@ -270,7 +270,7 @@ class Code(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosBucketName: 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
         :type CosBucketName: str
         :param CosObjectName: 对象存储对象路径
@@ -346,7 +346,7 @@ class CopyFunctionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 要复制的函数的名称
         :type FunctionName: str
         :param NewFunctionName: 新函数的名称
@@ -403,7 +403,7 @@ class CopyFunctionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -420,7 +420,7 @@ class CreateAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 别名的名称，在函数级别中唯一，只能包含字母、数字、'_'和‘-’，且必须以字母开头，长度限制为1-64
         :type Name: str
         :param FunctionName: 函数名称
@@ -466,7 +466,7 @@ class CreateAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -483,7 +483,7 @@ class CreateFunctionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 创建的函数名称，函数名称支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度2-60
         :type FunctionName: str
         :param Code: 函数代码. 注意：不能同时指定Cos、ZipFile或 DemoId。
@@ -617,7 +617,7 @@ class CreateFunctionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -634,7 +634,7 @@ class CreateNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Namespace: 命名空间名称
         :type Namespace: str
         :param Description: 命名空间描述
@@ -662,7 +662,7 @@ class CreateNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -679,7 +679,7 @@ class CreateTriggerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 新建触发器绑定的函数名称
         :type FunctionName: str
         :param TriggerName: 新建触发器名称。如果是定时触发器，名称支持英文字母、数字、连接符和下划线，最长100个字符；如果是cos触发器，需要是对应cos存储桶适用于XML API的访问域名(例如:5401-5ff414-12345.cos.ap-shanghai.myqcloud.com);如果是其他触发器，见具体触发器绑定参数的说明
@@ -731,7 +731,7 @@ class CreateTriggerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TriggerInfo: 触发器信息
         :type TriggerInfo: :class:`tencentcloud.scf.v20180416.models.Trigger`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -754,7 +754,7 @@ class DeadLetterConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 死信队列模式
         :type Type: str
         :param Name: 死信队列名称
@@ -786,7 +786,7 @@ class DeleteAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Name: 别名的名称
@@ -818,7 +818,7 @@ class DeleteAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -835,7 +835,7 @@ class DeleteFunctionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 要删除的函数名称
         :type FunctionName: str
         :param Namespace: 函数所属命名空间
@@ -867,7 +867,7 @@ class DeleteFunctionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -884,7 +884,7 @@ class DeleteLayerVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerName: 层名称
         :type LayerName: str
         :param LayerVersion: 版本号
@@ -912,7 +912,7 @@ class DeleteLayerVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -929,7 +929,7 @@ class DeleteNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Namespace: 命名空间名称
         :type Namespace: str
         """
@@ -953,7 +953,7 @@ class DeleteNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -970,7 +970,7 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要删除预置并发的函数的名称
         :type FunctionName: str
         :param Qualifier: 函数的版本号
@@ -1002,7 +1002,7 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1019,7 +1019,7 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要删除预置并发的函数的名称
         :type FunctionName: str
         :param Namespace: 函数所属命名空间，默认为default
@@ -1047,7 +1047,7 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1064,7 +1064,7 @@ class DeleteTriggerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数的名称
         :type FunctionName: str
         :param TriggerName: 要删除的触发器名称
@@ -1108,7 +1108,7 @@ class DeleteTriggerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1125,7 +1125,7 @@ class EipConfigIn(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EipStatus: Eip开启状态，取值['ENABLE','DISABLE']
         :type EipStatus: str
         """
@@ -1149,7 +1149,7 @@ class EipConfigOut(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EipStatus: 是否是固定IP，["ENABLE","DISABLE"]
         :type EipStatus: str
         :param EipAddress: IP列表
@@ -1178,7 +1178,7 @@ class EipOutConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EipFixed: 是否是固定IP，["TRUE","FALSE"]
         :type EipFixed: str
         :param Eips: IP列表
@@ -1206,7 +1206,7 @@ class Environment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Variables: 环境变量数组
         :type Variables: list of Variable
         """
@@ -1237,7 +1237,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段。
         :type Name: str
         :param Values: 字段的过滤值。
@@ -1265,7 +1265,7 @@ class Function(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModTime: 修改时间
         :type ModTime: str
         :param AddTime: 创建时间
@@ -1353,7 +1353,7 @@ class FunctionLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数的名称
         :type FunctionName: str
         :param RetMsg: 函数执行完成后的返回值
@@ -1425,7 +1425,7 @@ class FunctionVersion(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 函数版本名称
         :type Version: str
         :param Description: 版本描述信息
@@ -1470,7 +1470,7 @@ class GetAccountResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountUsage: 命名空间已使用的信息
         :type AccountUsage: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
         :param AccountLimit: 命名空间限制的信息
@@ -1499,7 +1499,7 @@ class GetAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Name: 别名的名称
@@ -1531,7 +1531,7 @@ class GetAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionVersion: 别名指向的主版本
         :type FunctionVersion: str
         :param Name: 别名的名称
@@ -1577,7 +1577,7 @@ class GetFunctionAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数的名称
         :type FunctionName: str
         :param Qualifier: 函数的版本
@@ -1609,7 +1609,7 @@ class GetFunctionAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 函数的Cos地址
         :type Url: str
         :param CodeSha256: 函数的SHA256编码
@@ -1634,7 +1634,7 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Namespace: 函数所属命名空间，默认为default
@@ -1666,7 +1666,7 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncTriggerConfig: 异步重试配置信息
         :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1689,7 +1689,7 @@ class GetFunctionLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数的名称。
 - 为保证[获取函数运行日志](https://cloud.tencent.com/document/product/583/18583)接口`GetFunctionLogs`兼容性，输入参数`FunctionName`仍为非必填项，但建议填写该参数，否则可能导致日志获取失败。
 - 函数关联日志服务后，建议使用[日志服务](https://cloud.tencent.com/document/product/614/16875)相关接口以获得最佳日志检索体验。
@@ -1763,7 +1763,7 @@ class GetFunctionLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 函数日志的总数
         :type TotalCount: int
         :param Data: 函数日志信息
@@ -1799,7 +1799,7 @@ class GetFunctionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要获取详情的函数名称
         :type FunctionName: str
         :param Qualifier: 函数的版本号
@@ -1835,7 +1835,7 @@ class GetFunctionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModTime: 函数的最后修改时间
         :type ModTime: str
         :param CodeInfo: 函数的代码
@@ -1922,6 +1922,12 @@ class GetFunctionResponse(AbstractModel):
         :param StatusReasons: 函数状态失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReasons: list of StatusReason
+        :param AsyncRunEnable: 是否开启异步属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRunEnable: str
+        :param TraceEnable: 是否开启事件追踪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceEnable: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1965,6 +1971,8 @@ class GetFunctionResponse(AbstractModel):
         self.Qualifier = None
         self.InitTimeout = None
         self.StatusReasons = None
+        self.AsyncRunEnable = None
+        self.TraceEnable = None
         self.RequestId = None
 
 
@@ -2043,6 +2051,8 @@ class GetFunctionResponse(AbstractModel):
                 obj = StatusReason()
                 obj._deserialize(item)
                 self.StatusReasons.append(obj)
+        self.AsyncRunEnable = params.get("AsyncRunEnable")
+        self.TraceEnable = params.get("TraceEnable")
         self.RequestId = params.get("RequestId")
 
 
@@ -2052,7 +2062,7 @@ class GetLayerVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerName: 层名称
         :type LayerName: str
         :param LayerVersion: 版本号
@@ -2080,7 +2090,7 @@ class GetLayerVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompatibleRuntimes: 适配的运行时
         :type CompatibleRuntimes: list of str
         :param CodeSha256: 层中版本文件的SHA256编码
@@ -2137,7 +2147,7 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要获取预置并发详情的函数名称。
         :type FunctionName: str
         :param Namespace: 函数所在的命名空间，默认为default。
@@ -2169,7 +2179,7 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UnallocatedConcurrencyNum: 该函数剩余可配置的预置并发数。
         :type UnallocatedConcurrencyNum: int
         :param Allocated: 函数已预置的并发配置详情。
@@ -2199,7 +2209,7 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要获取预置并发详情的函数名称。
         :type FunctionName: str
         :param Namespace: 函数所在的命名空间，默认为default。
@@ -2227,7 +2237,7 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReservedMem: 该函数的保留并发内存。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReservedMem: int
@@ -2243,13 +2253,80 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InvokeFunctionRequest(AbstractModel):
+    """InvokeFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Qualifier: 触发函数的版本号或别名，默认值为$DEFAULT
+        :type Qualifier: str
+        :param Event: 运行函数时的参数，以json格式传入，最大支持的参数长度是 6MB
+        :type Event: str
+        :param LogType: 返回值会包含4KB的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
+        :type LogType: str
+        :param Namespace: 命名空间，不填默认为 default
+        :type Namespace: str
+        :param RoutingKey: 函数灰度流量控制调用，以json格式传入，例如{"k":"v"}，注意kv都需要是字符串类型，最大支持的参数长度是1024字节
+        :type RoutingKey: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.Event = None
+        self.LogType = None
+        self.Namespace = None
+        self.RoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.Event = params.get("Event")
+        self.LogType = params.get("LogType")
+        self.Namespace = params.get("Namespace")
+        self.RoutingKey = params.get("RoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeFunctionResponse(AbstractModel):
+    """InvokeFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 函数执行结果
+        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Result()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param InvocationType: RequestResponse(同步) 和 Event(异步)，默认为同步
@@ -2297,7 +2374,7 @@ class InvokeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 函数执行结果
         :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2320,7 +2397,7 @@ class LayerVersionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompatibleRuntimes: 版本适用的运行时
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompatibleRuntimes: list of str
@@ -2371,7 +2448,7 @@ class LayerVersionSimple(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerName: layer名称
         :type LayerName: str
         :param LayerVersion: 版本号
@@ -2399,7 +2476,7 @@ class LimitsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespacesCount: 命名空间个数限制
         :type NamespacesCount: int
         :param Namespace: 命名空间限制信息
@@ -2432,7 +2509,7 @@ class ListAliasesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Namespace: 函数所在的命名空间
@@ -2472,7 +2549,7 @@ class ListAliasesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Aliases: 别名列表
         :type Aliases: list of Alias
         :param TotalCount: 别名总数
@@ -2503,7 +2580,7 @@ class ListAsyncEventsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Namespace: 命名空间
@@ -2575,7 +2652,7 @@ class ListAsyncEventsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 满足过滤条件的事件总数
         :type TotalCount: int
         :param EventList: 异步事件列表
@@ -2605,7 +2682,7 @@ class ListFunctionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
         :type Order: str
         :param Orderby: 根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime, FunctionName
@@ -2665,7 +2742,7 @@ class ListFunctionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Functions: 函数列表
         :type Functions: list of Function
         :param TotalCount: 总数
@@ -2695,7 +2772,7 @@ class ListLayerVersionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerName: 层名称
         :type LayerName: str
         :param CompatibleRuntime: 适配的运行时
@@ -2723,7 +2800,7 @@ class ListLayerVersionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerVersions: 层版本列表
         :type LayerVersions: list of LayerVersionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2749,7 +2826,7 @@ class ListLayersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompatibleRuntime: 适配的运行时
         :type CompatibleRuntime: str
         :param Offset: 偏移位置
@@ -2785,7 +2862,7 @@ class ListLayersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Layers: 层列表
         :type Layers: list of LayerVersionInfo
         :param TotalCount: 层总数
@@ -2815,7 +2892,7 @@ class ListNamespacesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回数据长度，默认值为 20
         :type Limit: int
         :param Offset: 数据的偏移量，默认值为 0
@@ -2824,11 +2901,14 @@ class ListNamespacesRequest(AbstractModel):
         :type Orderby: str
         :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
         :type Order: str
+        :param SearchKey: 关键字匹配搜索，Key 可选值为 Namespace 和 Description，多个搜索条件之间是与的关系
+        :type SearchKey: list of SearchKey
         """
         self.Limit = None
         self.Offset = None
         self.Orderby = None
         self.Order = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -2836,6 +2916,12 @@ class ListNamespacesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Orderby = params.get("Orderby")
         self.Order = params.get("Order")
+        if params.get("SearchKey") is not None:
+            self.SearchKey = []
+            for item in params.get("SearchKey"):
+                obj = SearchKey()
+                obj._deserialize(item)
+                self.SearchKey.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2851,7 +2937,7 @@ class ListNamespacesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Namespaces: namespace详情
         :type Namespaces: list of Namespace
         :param TotalCount: 返回的namespace数量
@@ -2881,7 +2967,7 @@ class ListTriggersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Namespace: 命名空间，默认是default
@@ -2935,7 +3021,7 @@ class ListTriggersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 触发器总数
         :type TotalCount: int
         :param Triggers: 触发器列表
@@ -2965,7 +3051,7 @@ class ListVersionByFunctionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名
         :type FunctionName: str
         :param Namespace: 函数所在命名空间
@@ -3009,7 +3095,7 @@ class ListVersionByFunctionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionVersion: 函数版本。
         :type FunctionVersion: list of str
         :param Versions: 函数版本列表。
@@ -3045,7 +3131,7 @@ class LogFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetCode: filter.RetCode的取值有：
 not0 表示只返回错误日志，
 is0 表示只返回正确日志，
@@ -3075,7 +3161,7 @@ class LogSearchContext(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: str
         :param Limit: 日志条数
@@ -3111,7 +3197,7 @@ class Namespace(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModTime: 命名空间创建时间
         :type ModTime: str
         :param AddTime: 命名空间修改时间
@@ -3151,7 +3237,7 @@ class NamespaceLimit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionsCount: 函数总数
         :type FunctionsCount: int
         :param Trigger: Trigger信息
@@ -3214,7 +3300,7 @@ class NamespaceUsage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Functions: 函数数组
         :type Functions: list of str
         :param Namespace: 命名空间名称
@@ -3246,7 +3332,7 @@ class PublicNetConfigIn(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublicNetStatus: 是否开启公网访问能力取值['DISABLE','ENABLE']
         :type PublicNetStatus: str
         :param EipConfig: Eip配置
@@ -3276,7 +3362,7 @@ class PublicNetConfigOut(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PublicNetStatus: 是否开启公网访问能力取值['DISABLE','ENABLE']
         :type PublicNetStatus: str
         :param EipConfig: Eip配置
@@ -3306,7 +3392,7 @@ class PublishLayerVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerName: 层名称，支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度1-64
         :type LayerName: str
         :param CompatibleRuntimes: 层适用的运行时，可多选，可选的值对应函数的 Runtime 可选值。
@@ -3348,7 +3434,7 @@ class PublishLayerVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LayerVersion: 本次创建的层的版本号
         :type LayerVersion: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3369,7 +3455,7 @@ class PublishVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 发布函数的名称
         :type FunctionName: str
         :param Description: 函数的描述
@@ -3401,7 +3487,7 @@ class PublishVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionVersion: 函数的版本
         :type FunctionVersion: str
         :param CodeSize: 代码大小
@@ -3450,7 +3536,7 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要设置预置并发的函数的名称
         :type FunctionName: str
         :param Qualifier: 函数的版本号，注：$LATEST版本不支持预置并发
@@ -3486,7 +3572,7 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3503,7 +3589,7 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 需要设置预置并发的函数的名称
         :type FunctionName: str
         :param ReservedConcurrencyMem: 函数保留并发内存，注：函数的保留并发内存总和上限：用户总并发内存配额 - 12800
@@ -3535,7 +3621,7 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3552,7 +3638,7 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalConcurrencyMem: 账号并发内存配额，注：账号并发内存配额下限：用户已用并发内存总额 + 12800
         :type TotalConcurrencyMem: int
         :param Namespace: 命名空间，默认为default
@@ -3580,7 +3666,7 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3597,7 +3683,7 @@ class Result(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Log: 表示执行过程中的日志输出，异步调用返回为空
         :type Log: str
         :param RetMsg: 表示执行函数的返回，异步调用返回为空
@@ -3649,7 +3735,7 @@ class RetryConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RetryNum: 重试次数
         :type RetryNum: int
         """
@@ -3673,7 +3759,7 @@ class RoutingConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AdditionalVersionWeights: 随机权重路由附加版本
         :type AdditionalVersionWeights: list of VersionWeight
         :param AddtionVersionMatchs: 规则路由附加版本
@@ -3705,13 +3791,41 @@ class RoutingConfig(AbstractModel):
         
 
 
+class SearchKey(AbstractModel):
+    """包含搜索关键字和对应的内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 搜索关键字
+        :type Key: str
+        :param Value: 搜索内容
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StatusReason(AbstractModel):
     """状态原因描述
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorCode: 错误码
         :type ErrorCode: str
         :param ErrorMessage: 错误描述
@@ -3739,7 +3853,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签的key
         :type Key: str
         :param Value: 标签的value
@@ -3767,7 +3881,7 @@ class TerminateAsyncEventRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param InvokeRequestId: 终止的调用请求id
@@ -3799,7 +3913,7 @@ class TerminateAsyncEventResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3816,7 +3930,7 @@ class TimeInterval(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Start: 起始时间（包括在内），格式"%Y-%m-%d %H:%M:%S"
         :type Start: str
         :param End: 结束时间（不包括在内），格式"%Y-%m-%d %H:%M:%S"
@@ -3844,7 +3958,7 @@ class Trigger(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ModTime: 触发器最后修改时间
         :type ModTime: str
         :param Type: 触发器类型
@@ -3912,7 +4026,7 @@ class TriggerCount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cos: Cos触发器数量
         :type Cos: int
         :param Timer: Timer触发器数量
@@ -3976,7 +4090,7 @@ class TriggerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Enable: 使能开关
         :type Enable: int
         :param Qualifier: 函数版本或别名
@@ -4045,7 +4159,7 @@ class UpdateAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 函数名称
         :type FunctionName: str
         :param Name: 别名的名称
@@ -4091,7 +4205,7 @@ class UpdateAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4108,7 +4222,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 要修改的函数名称
         :type FunctionName: str
         :param Handler: 函数处理方法名称。名称格式支持“文件名称.函数名称”形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求 2-60 个字符
@@ -4174,7 +4288,7 @@ class UpdateFunctionCodeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4191,7 +4305,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FunctionName: 要修改的函数名称
         :type FunctionName: str
         :param Description: 函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文
@@ -4298,7 +4412,7 @@ class UpdateFunctionConfigurationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4315,7 +4429,7 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AsyncTriggerConfig: 异步重试配置信息
         :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
         :param FunctionName: 函数名称
@@ -4349,7 +4463,7 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4366,7 +4480,7 @@ class UpdateNamespaceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Namespace: 命名空间名称
         :type Namespace: str
         :param Description: 命名空间描述
@@ -4394,7 +4508,7 @@ class UpdateNamespaceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4411,7 +4525,7 @@ class UsageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param NamespacesCount: 命名空间个数
         :type NamespacesCount: int
         :param Namespace: 命名空间详情
@@ -4456,7 +4570,7 @@ class Variable(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 变量的名称
         :type Key: str
         :param Value: 变量的值
@@ -4484,7 +4598,7 @@ class VersionMatch(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 函数版本名称
         :type Version: str
         :param Key: 匹配规则的key，调用时通过传key来匹配规则路由到指定版本
@@ -4527,7 +4641,7 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AllocatedProvisionedConcurrencyNum: 设置的预置并发数。
         :type AllocatedProvisionedConcurrencyNum: int
         :param AvailableProvisionedConcurrencyNum: 当前已完成预置的并发数。
@@ -4567,7 +4681,7 @@ class VersionWeight(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Version: 函数版本名称
         :type Version: str
         :param Weight: 该版本的权重
@@ -4595,7 +4709,7 @@ class VpcConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: 私有网络 的 Id
         :type VpcId: str
         :param SubnetId: 子网的 Id

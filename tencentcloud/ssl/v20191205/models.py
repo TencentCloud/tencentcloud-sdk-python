@@ -24,7 +24,7 @@ class ApplyCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DvAuthMethod: 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
         :type DvAuthMethod: str
         :param DomainName: 域名。
@@ -92,7 +92,7 @@ class ApplyCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -113,7 +113,7 @@ class CancelCertificateOrderRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
@@ -137,7 +137,7 @@ class CancelCertificateOrderResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 取消订单成功的证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -158,7 +158,7 @@ class CertificateExtra(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainNumber: 证书可配置域名数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNumber: str
@@ -203,7 +203,7 @@ class Certificates(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
@@ -382,7 +382,7 @@ class CheckCertificateChainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateChain: 待检查的证书链
         :type CertificateChain: str
         """
@@ -406,7 +406,7 @@ class CheckCertificateChainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsValid: true为通过检查，false为未通过检查。
         :type IsValid: bool
         :param IsTrustedCA: true为可信CA，false为不可信CA。
@@ -435,7 +435,7 @@ class CommitCertificateInformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
@@ -459,7 +459,7 @@ class CommitCertificateInformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OrderId: CA机构侧订单号。
         :type OrderId: str
         :param Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
@@ -484,7 +484,7 @@ class CompanyInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompanyName: 公司名称
         :type CompanyName: str
         :param CompanyId: 公司ID
@@ -532,7 +532,7 @@ class CompleteCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         """
@@ -556,7 +556,7 @@ class CompleteCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -577,7 +577,7 @@ class CreateCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProductId: 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
         :type ProductId: int
         :param DomainNum: 证书包含的域名数量
@@ -609,7 +609,7 @@ class CreateCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateIds: 证书ID列表
         :type CertificateIds: list of str
         :param DealIds: 订单号列表
@@ -634,7 +634,7 @@ class DeleteCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
@@ -658,7 +658,7 @@ class DeleteCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeleteResult: 删除结果（true：删除成功，false：删除失败）
         :type DeleteResult: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -679,7 +679,7 @@ class DeleteManagerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         """
@@ -703,7 +703,7 @@ class DeleteManagerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -724,7 +724,7 @@ class DescribeCertificateDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
@@ -748,7 +748,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
@@ -946,7 +946,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 请求日志数量，默认为20。
@@ -982,7 +982,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AllTotal: 当前查询条件日志总数。
         :type AllTotal: int
         :param TotalCount: 本次请求返回的日志数量。
@@ -1017,7 +1017,7 @@ class DescribeCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
@@ -1041,7 +1041,7 @@ class DescribeCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OwnerUin: 用户 UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
@@ -1229,7 +1229,7 @@ class DescribeCertificatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页偏移量，从0开始。
         :type Offset: int
         :param Limit: 每页数量，默认20。
@@ -1246,6 +1246,10 @@ class DescribeCertificatesRequest(AbstractModel):
         :type CertificateStatus: list of int non-negative
         :param Deployable: 是否可部署，可选值：1 = 可部署，0 =  不可部署。
         :type Deployable: int
+        :param Upload: 是否筛选上传托管的 1筛选，0不筛选
+        :type Upload: int
+        :param Renew: 是否筛选可续期证书 1筛选 0不筛选
+        :type Renew: int
         """
         self.Offset = None
         self.Limit = None
@@ -1255,6 +1259,8 @@ class DescribeCertificatesRequest(AbstractModel):
         self.ExpirationSort = None
         self.CertificateStatus = None
         self.Deployable = None
+        self.Upload = None
+        self.Renew = None
 
 
     def _deserialize(self, params):
@@ -1266,6 +1272,8 @@ class DescribeCertificatesRequest(AbstractModel):
         self.ExpirationSort = params.get("ExpirationSort")
         self.CertificateStatus = params.get("CertificateStatus")
         self.Deployable = params.get("Deployable")
+        self.Upload = params.get("Upload")
+        self.Renew = params.get("Renew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1281,7 +1289,7 @@ class DescribeCertificatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -1313,7 +1321,7 @@ class DescribeManagerDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         :param Limit: 分页每页数量
@@ -1345,7 +1353,7 @@ class DescribeManagerDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
         :type Status: str
         :param ManagerFirstName: 管理人姓名
@@ -1438,7 +1446,7 @@ class DescribeManagersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CompanyId: 公司ID
         :type CompanyId: int
         :param Offset: 分页偏移量
@@ -1489,7 +1497,7 @@ class DescribeManagersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Managers: 公司管理人列表
         :type Managers: list of ManagerInfo
         :param TotalCount: 公司管理人总数
@@ -1519,7 +1527,7 @@ class DownloadCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         """
@@ -1543,7 +1551,7 @@ class DownloadCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Content: ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
@@ -1570,7 +1578,7 @@ class DvAuthDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DvAuthKey: DV 认证密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthKey: str
@@ -1625,7 +1633,7 @@ class DvAuths(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DvAuthKey: DV 认证密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthKey: str
@@ -1675,7 +1683,7 @@ class ManagerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
         :type Status: str
         :param ManagerFirstName: 管理人姓名
@@ -1755,7 +1763,7 @@ class ModifyCertificateAliasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param Alias: 备注名称。
@@ -1783,7 +1791,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 修改成功的证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1804,7 +1812,7 @@ class ModifyCertificateProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateIdList: 需要修改所属项目的证书 ID 集合，最多100个证书。
         :type CertificateIdList: list of str
         :param ProjectId: 项目 ID。
@@ -1832,7 +1840,7 @@ class ModifyCertificateProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessCertificates: 修改所属项目成功的证书集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessCertificates: list of str
@@ -1859,7 +1867,7 @@ class OperationLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Action: 操作证书动作。
         :type Action: str
         :param CreatedOn: 操作时间。
@@ -1887,7 +1895,7 @@ class ProjectInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectName: 项目名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
@@ -1937,7 +1945,7 @@ class ReplaceCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param ValidType: 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
@@ -1981,7 +1989,7 @@ class ReplaceCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2002,7 +2010,7 @@ class RevokeCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param Reason: 吊销证书原因。
@@ -2030,7 +2038,7 @@ class RevokeCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RevokeDomainValidateAuths: 吊销证书域名验证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RevokeDomainValidateAuths: list of RevokeDomainValidateAuths
@@ -2057,7 +2065,7 @@ class RevokeDomainValidateAuths(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainValidateAuthPath: DV 认证值路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainValidateAuthPath: str
@@ -2097,7 +2105,7 @@ class SubmitAuditManagerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         """
@@ -2121,7 +2129,7 @@ class SubmitAuditManagerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2142,7 +2150,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param CsrType: CSR 生成方式：online = 在线生成, parse = 手动上传。
@@ -2266,7 +2274,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2287,7 +2295,7 @@ class SubmittedData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CsrType: CSR 类型，（online = 在线生成CSR，parse = 粘贴 CSR）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CsrType: str
@@ -2432,7 +2440,7 @@ class Tags(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
         :type TagKey: str
         :param TagValue: 标签值
@@ -2460,7 +2468,7 @@ class UploadCertificateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificatePublicKey: 证书内容。
         :type CertificatePublicKey: str
         :param CertificatePrivateKey: 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
@@ -2504,7 +2512,7 @@ class UploadCertificateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2525,7 +2533,7 @@ class UploadConfirmLetterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         :param ConfirmLetter: base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
@@ -2553,7 +2561,7 @@ class UploadConfirmLetterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书ID
         :type CertificateId: str
         :param IsSuccess: 是否成功
@@ -2578,7 +2586,7 @@ class UploadRevokeLetterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param RevokeLetter: base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
@@ -2606,7 +2614,7 @@ class UploadRevokeLetterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
         :param IsSuccess: 是否成功。
@@ -2631,7 +2639,7 @@ class VerifyManagerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         """
@@ -2655,7 +2663,7 @@ class VerifyManagerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ManagerId: 管理人ID
         :type ManagerId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

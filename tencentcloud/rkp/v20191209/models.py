@@ -24,7 +24,7 @@ class DevInfoQ(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpenId: devid
         :type OpenId: str
         :param RiskScore: 风险值
@@ -66,7 +66,7 @@ class GetOpenIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeviceToken: dev临时token，通过sdk接口获取
         :type DeviceToken: str
         :param BusinessId: 业务ID
@@ -106,7 +106,7 @@ class GetOpenIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OpenId: 设备ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
@@ -138,7 +138,7 @@ class GetTokenRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessId: 业务ID
         :type BusinessId: int
         :param Scene: 业务子场景
@@ -182,7 +182,7 @@ class GetTokenResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Token: 返回token
         :type Token: str
         :param ExpireTime: 过期时间
@@ -207,7 +207,7 @@ class QueryDevAndRiskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DevType: 设备类型 0表示Android， 1表示IOS
         :type DevType: int
         :param Imei: Android Imei号
@@ -323,7 +323,7 @@ class QueryDevAndRiskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Found: 是否查得
         :type Found: int
         :param AllCnt: 匹配数量级别
@@ -359,7 +359,7 @@ class RiskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RiskCode: 风险码
         :type RiskCode: int
         :param RiskCodeValue: 风险详情
@@ -388,7 +388,7 @@ class RiskInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 风险码
         :type Key: int
         :param Value: 风险详情

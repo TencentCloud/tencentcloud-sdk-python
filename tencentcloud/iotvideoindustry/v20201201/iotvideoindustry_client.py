@@ -82,6 +82,34 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ControlRecordStream(self, request):
+        """对回放流进行控制，包括暂停、播放、拉动、结束等
+
+        :param request: Request instance for ControlRecordStream.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlRecordStreamRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlRecordStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ControlRecordStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ControlRecordStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDevice(self, request):
         """本接口(CreateDevice) 用于创建设备。
 

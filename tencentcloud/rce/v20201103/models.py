@@ -24,7 +24,7 @@ class AccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountType: 用户账号类型（默认开通 QQ 开放账号、手机号，手机 MD5 账号类型查询。如需使用微信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信开放账号）：
 1：QQ开放账号。
 2：微信开放账号。
@@ -74,7 +74,7 @@ class InputDetails(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FieldName: 字段名称
         :type FieldName: str
         :param FieldValue: 字段值
@@ -102,7 +102,7 @@ class InputManageMarketingRisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Account: 账号信息。
         :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
         :param SceneCode: 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
@@ -284,7 +284,7 @@ class ManageMarketingRiskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BusinessSecurityData: 业务入参
         :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputManageMarketingRisk`
         """
@@ -310,7 +310,7 @@ class ManageMarketingRiskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 业务出参
         :type Data: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRisk`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -333,7 +333,7 @@ class OnlineScamInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContentLabel: 内容标签。
         :type ContentLabel: str
         :param ContentRiskLevel: 内容风险等级：
@@ -379,7 +379,7 @@ class OtherAccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountId: 其它账号信息：
 AccountType是4时，填入真实的手机号（如13123456789）。
 AccountType是8时，支持 imei、idfa、imeiMD5、idfaMD5 入参。
@@ -416,7 +416,7 @@ class OutputManageMarketingRisk(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 返回码。0表示成功，非0标识失败错误码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
@@ -458,7 +458,7 @@ class OutputManageMarketingRiskValue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UserId: 账号ID。对应输入参数：
 AccountType是1时，对应QQ的OpenID。
 AccountType是2时，对应微信的OpenID/UnionID。
@@ -542,7 +542,7 @@ class QQAccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QQOpenId: QQ的OpenID。
         :type QQOpenId: str
         :param AppIdUser: QQ分配给网站或应用的AppId，用来唯一标识网站或应用。
@@ -582,7 +582,7 @@ class SponsorInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SponsorOpenId: 助力场景建议填写：活动发起人微信OpenID。
         :type SponsorOpenId: str
         :param SponsorDeviceNumber: 助力场景建议填写：发起人设备号。
@@ -622,7 +622,7 @@ class WeChatAccountInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WeChatOpenId: 微信的OpenID/UnionID 。
         :type WeChatOpenId: str
         :param WeChatSubType: 微信开放账号类型：

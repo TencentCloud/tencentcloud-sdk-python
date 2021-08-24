@@ -24,7 +24,7 @@ class AcknowledgeMessageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: 用作标识消息的唯一的ID（可从 receiveMessage 的返回值中获得）
         :type MessageId: str
         :param AckTopic: Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
@@ -56,7 +56,7 @@ class AcknowledgeMessageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ErrorMsg: 如果为“”，则说明没有错误返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
@@ -78,7 +78,7 @@ class BindCluster(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterName: 物理集群的名称
         :type ClusterName: str
         """
@@ -96,13 +96,19 @@ class BindCluster(AbstractModel):
         
 
 
+class BundleSetOpt(AbstractModel):
+    """运营端命名空间bundle实体
+
+    """
+
+
 class ClearCmqQueueRequest(AbstractModel):
     """ClearCmqQueue请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         """
@@ -126,7 +132,7 @@ class ClearCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -143,7 +149,7 @@ class ClearCmqSubscriptionFilterTagsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -171,7 +177,7 @@ class ClearCmqSubscriptionFilterTagsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -188,7 +194,7 @@ class Cluster(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群Id。
         :type ClusterId: str
         :param ClusterName: 集群名称。
@@ -216,6 +222,18 @@ class Cluster(AbstractModel):
         :type MessageRetentionTime: int
         :param MaxStorageCapacity: 最大存储容量
         :type MaxStorageCapacity: int
+        :param Version: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param PublicEndPoint: 公网访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicEndPoint: str
+        :param VpcEndPoint: VPC访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcEndPoint: str
+        :param NamespaceNum: 命名空间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceNum: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -230,6 +248,10 @@ class Cluster(AbstractModel):
         self.MaxQps = None
         self.MessageRetentionTime = None
         self.MaxStorageCapacity = None
+        self.Version = None
+        self.PublicEndPoint = None
+        self.VpcEndPoint = None
+        self.NamespaceNum = None
 
 
     def _deserialize(self, params):
@@ -246,6 +268,10 @@ class Cluster(AbstractModel):
         self.MaxQps = params.get("MaxQps")
         self.MessageRetentionTime = params.get("MessageRetentionTime")
         self.MaxStorageCapacity = params.get("MaxStorageCapacity")
+        self.Version = params.get("Version")
+        self.PublicEndPoint = params.get("PublicEndPoint")
+        self.VpcEndPoint = params.get("VpcEndPoint")
+        self.NamespaceNum = params.get("NamespaceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -261,7 +287,7 @@ class CmqDeadLetterPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeadLetterQueue: 死信队列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterQueue: str
@@ -301,7 +327,7 @@ class CmqDeadLetterSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 消息队列ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueId: str
@@ -331,7 +357,7 @@ class CmqQueue(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 消息队列ID。
         :type QueueId: str
         :param QueueName: 消息队列名字。
@@ -497,7 +523,7 @@ class CmqSubscription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscriptionName: str
@@ -581,7 +607,7 @@ class CmqTopic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
@@ -678,7 +704,7 @@ class CmqTransactionPolicy(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FirstQueryInterval: 第一次回查时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstQueryInterval: int
@@ -708,7 +734,7 @@ class Connection(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Address: 生产者地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
@@ -763,7 +789,7 @@ class Consumer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConnectedSince: 消费者开始连接的时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectedSince: str
@@ -803,7 +829,7 @@ class ConsumersSchedule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Partitions: 当前分区id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Partitions: int
@@ -851,7 +877,7 @@ class CreateClusterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
         :type ClusterName: str
         :param BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
@@ -892,7 +918,7 @@ class CreateClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -913,7 +939,7 @@ class CreateCmqQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -993,7 +1019,7 @@ class CreateCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueId: 创建成功的queueId
         :type QueueId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1014,7 +1040,7 @@ class CreateCmqSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -1066,7 +1092,7 @@ class CreateCmqSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionId: 订阅id
         :type SubscriptionId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1087,7 +1113,7 @@ class CreateCmqTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
@@ -1127,7 +1153,7 @@ class CreateCmqTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题id
         :type TopicId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1148,7 +1174,7 @@ class CreateEnvironmentRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒，最小60，最大1296000，（15天）。
@@ -1157,11 +1183,14 @@ class CreateEnvironmentRequest(AbstractModel):
         :type Remark: str
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param RetentionPolicy: 消息保留策略
+        :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
         self.ClusterId = None
+        self.RetentionPolicy = None
 
 
     def _deserialize(self, params):
@@ -1169,6 +1198,9 @@ class CreateEnvironmentRequest(AbstractModel):
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
         self.ClusterId = params.get("ClusterId")
+        if params.get("RetentionPolicy") is not None:
+            self.RetentionPolicy = RetentionPolicy()
+            self.RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1184,7 +1216,7 @@ class CreateEnvironmentResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒。
@@ -1218,7 +1250,7 @@ class CreateSubscriptionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
@@ -1233,6 +1265,8 @@ class CreateSubscriptionRequest(AbstractModel):
         :type ClusterId: str
         :param AutoCreatePolicyTopic: 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
         :type AutoCreatePolicyTopic: bool
+        :param PostFixPattern: 指定死信和重试主题名称规范，LEGACY表示历史命名规则，COMMUNITY表示Pulsar社区命名规范
+        :type PostFixPattern: str
         """
         self.EnvironmentId = None
         self.TopicName = None
@@ -1241,6 +1275,7 @@ class CreateSubscriptionRequest(AbstractModel):
         self.Remark = None
         self.ClusterId = None
         self.AutoCreatePolicyTopic = None
+        self.PostFixPattern = None
 
 
     def _deserialize(self, params):
@@ -1251,6 +1286,7 @@ class CreateSubscriptionRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.ClusterId = params.get("ClusterId")
         self.AutoCreatePolicyTopic = params.get("AutoCreatePolicyTopic")
+        self.PostFixPattern = params.get("PostFixPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1266,7 +1302,7 @@ class CreateSubscriptionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建结果。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1287,7 +1323,7 @@ class CreateTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
@@ -1298,8 +1334,7 @@ class CreateTopicRequest(AbstractModel):
 1 ：全局顺序消息；
 2 ：局部顺序消息；
 3 ：重试队列；
-4 ：死信队列；
-5 ：事务消息。
+4 ：死信队列。
         :type TopicType: int
         :param Remark: 备注，128字符以内。
         :type Remark: str
@@ -1336,7 +1371,7 @@ class CreateTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名。
@@ -1380,7 +1415,7 @@ class DeleteClusterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群Id，传入需要删除的集群Id。
         :type ClusterId: str
         """
@@ -1404,7 +1439,7 @@ class DeleteClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群的ID
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1425,7 +1460,7 @@ class DeleteCmqQueueRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         """
@@ -1449,7 +1484,7 @@ class DeleteCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1466,7 +1501,7 @@ class DeleteCmqSubscribeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -1494,7 +1529,7 @@ class DeleteCmqSubscribeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1511,7 +1546,7 @@ class DeleteCmqTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type TopicName: str
         """
@@ -1535,7 +1570,7 @@ class DeleteCmqTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1552,7 +1587,7 @@ class DeleteEnvironmentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentIds: 环境（命名空间）数组，每次最多删除20个。
         :type EnvironmentIds: list of str
         :param ClusterId: Pulsar 集群的ID
@@ -1580,7 +1615,7 @@ class DeleteEnvironmentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentIds: 成功删除的环境（命名空间）数组。
         :type EnvironmentIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1601,17 +1636,20 @@ class DeleteSubscriptionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionTopicSets: 订阅关系集合，每次最多删除20个。
         :type SubscriptionTopicSets: list of SubscriptionTopic
         :param ClusterId: pulsar集群Id。
         :type ClusterId: str
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
+        :param Force: 是否强制删除，默认为false
+        :type Force: bool
         """
         self.SubscriptionTopicSets = None
         self.ClusterId = None
         self.EnvironmentId = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -1623,6 +1661,7 @@ class DeleteSubscriptionsRequest(AbstractModel):
                 self.SubscriptionTopicSets.append(obj)
         self.ClusterId = params.get("ClusterId")
         self.EnvironmentId = params.get("EnvironmentId")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1638,7 +1677,7 @@ class DeleteSubscriptionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionTopicSets: 成功删除的订阅关系数组。
         :type SubscriptionTopicSets: list of SubscriptionTopic
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1664,17 +1703,20 @@ class DeleteTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicSets: 主题集合，每次最多删除20个。
         :type TopicSets: list of TopicRecord
         :param ClusterId: pulsar集群Id。
         :type ClusterId: str
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
+        :param Force: 是否强制删除，默认为false
+        :type Force: bool
         """
         self.TopicSets = None
         self.ClusterId = None
         self.EnvironmentId = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -1686,6 +1728,7 @@ class DeleteTopicsRequest(AbstractModel):
                 self.TopicSets.append(obj)
         self.ClusterId = params.get("ClusterId")
         self.EnvironmentId = params.get("EnvironmentId")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1701,7 +1744,7 @@ class DeleteTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicSets: 被删除的主题数组。
         :type TopicSets: list of TopicRecord
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1733,7 +1776,7 @@ class DescribeBindClustersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 专享集群的数量
         :type TotalCount: int
         :param ClusterSet: 专享集群的列表
@@ -1763,7 +1806,7 @@ class DescribeBindVpcsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为20。
@@ -1795,7 +1838,7 @@ class DescribeBindVpcsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录数。
         :type TotalCount: int
         :param VpcSets: Vpc集合。
@@ -1825,7 +1868,7 @@ class DescribeClusterDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群的ID
         :type ClusterId: str
         """
@@ -1849,7 +1892,7 @@ class DescribeClusterDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterSet: 集群的详细信息
         :type ClusterSet: :class:`tencentcloud.tdmq.v20200217.models.Cluster`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1872,7 +1915,7 @@ class DescribeClustersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为20。
@@ -1900,7 +1943,7 @@ class DescribeClustersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 集群列表数量
         :type TotalCount: int
         :param ClusterSet: 集群信息列表
@@ -1930,7 +1973,7 @@ class DescribeCmqDeadLetterSourceQueuesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DeadLetterQueueName: 死信队列名称
         :type DeadLetterQueueName: str
         :param Limit: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0。
@@ -1966,7 +2009,7 @@ class DescribeCmqDeadLetterSourceQueuesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 满足本次条件的队列个数
         :type TotalCount: int
         :param QueueSet: 死信队列源队列
@@ -1996,7 +2039,7 @@ class DescribeCmqQueueDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 精确匹配QueueName
         :type QueueName: str
         """
@@ -2020,7 +2063,7 @@ class DescribeCmqQueueDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueDescribe: 队列详情列表。
         :type QueueDescribe: :class:`tencentcloud.tdmq.v20200217.models.CmqQueue`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2043,7 +2086,7 @@ class DescribeCmqQueuesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
         :type Offset: int
         :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
@@ -2075,7 +2118,7 @@ class DescribeCmqQueuesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 数量
         :type TotalCount: int
         :param QueueList: 队列列表
@@ -2106,7 +2149,7 @@ class DescribeCmqSubscriptionDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param Offset: 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
@@ -2142,7 +2185,7 @@ class DescribeCmqSubscriptionDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 总数
         :type TotalCount: int
         :param SubscriptionSet: Subscription属性集合
@@ -2173,7 +2216,7 @@ class DescribeCmqTopicDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 精确匹配TopicName。
         :type TopicName: str
         """
@@ -2197,7 +2240,7 @@ class DescribeCmqTopicDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicDescribe: 主题详情
         :type TopicDescribe: :class:`tencentcloud.tdmq.v20200217.models.CmqTopic`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2220,7 +2263,7 @@ class DescribeCmqTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页时本页获取队列列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
         :type Offset: int
         :param Limit: 分页时本页获取队列的个数，如果不传递该参数，则该参数默认为20，最大值为50。
@@ -2252,7 +2295,7 @@ class DescribeCmqTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicList: 主题列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicList: list of CmqTopic
@@ -2283,7 +2326,7 @@ class DescribeEnvironmentAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param ClusterId: Pulsar 集群的ID
@@ -2311,7 +2354,7 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000（15天）。
         :type MsgTTL: int
         :param RateInByte: 消费速率限制，单位：byte/秒，0：不限速。
@@ -2360,7 +2403,7 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param Offset: 起始下标，不填默认为0。
@@ -2371,12 +2414,18 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
         :type ClusterId: str
         :param RoleName: 角色名称
         :type RoleName: str
+        :param Filters: * RoleName
+按照角色名进行过滤，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
         """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
         self.ClusterId = None
         self.RoleName = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -2385,6 +2434,12 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.ClusterId = params.get("ClusterId")
         self.RoleName = params.get("RoleName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2400,7 +2455,7 @@ class DescribeEnvironmentRolesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 记录数。
         :type TotalCount: int
         :param EnvironmentRoleSets: 命名空间角色集合。
@@ -2430,7 +2485,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 命名空间名称，模糊搜索。
         :type EnvironmentId: str
         :param Offset: 起始下标，不填默认为0。
@@ -2478,7 +2533,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 命名空间记录数。
         :type TotalCount: int
         :param EnvironmentSet: 命名空间集合数组。
@@ -2502,13 +2557,136 @@ class DescribeEnvironmentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNamespaceBundlesOptRequest(AbstractModel):
+    """DescribeNamespaceBundlesOpt请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterName: 物理集群名
+        :type ClusterName: str
+        :param TenantId: 虚拟集群（租户）ID
+        :type TenantId: str
+        :param NamespaceName: 命名空间名
+        :type NamespaceName: str
+        :param NeedMetrics: 是否需要监控指标，若传false，则不需要传Limit和Offset分页参数
+        :type NeedMetrics: bool
+        :param Limit: 查询限制条数
+        :type Limit: int
+        :param Offset: 查询偏移量
+        :type Offset: int
+        """
+        self.ClusterName = None
+        self.TenantId = None
+        self.NamespaceName = None
+        self.NeedMetrics = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ClusterName = params.get("ClusterName")
+        self.TenantId = params.get("TenantId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.NeedMetrics = params.get("NeedMetrics")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNamespaceBundlesOptResponse(AbstractModel):
+    """DescribeNamespaceBundlesOpt返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录条数
+        :type TotalCount: int
+        :param BundleSet: bundle列表
+        :type BundleSet: list of BundleSetOpt
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BundleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BundleSet") is not None:
+            self.BundleSet = []
+            for item in params.get("BundleSet"):
+                obj = BundleSetOpt()
+                obj._deserialize(item)
+                self.BundleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNodeHealthOptRequest(AbstractModel):
+    """DescribeNodeHealthOpt请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 节点实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeHealthOptResponse(AbstractModel):
+    """DescribeNodeHealthOpt返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeState: 0-异常；1-正常
+        :type NodeState: int
+        :param LatestHealthCheckTime: 最近一次健康检查的时间
+        :type LatestHealthCheckTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodeState = None
+        self.LatestHealthCheckTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodeState = params.get("NodeState")
+        self.LatestHealthCheckTime = params.get("LatestHealthCheckTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProducersRequest(AbstractModel):
     """DescribeProducers请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名。
@@ -2552,7 +2730,7 @@ class DescribeProducersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProducerSets: 生产者集合数组。
         :type ProducerSets: list of Producer
         :param TotalCount: 记录总数。
@@ -2582,7 +2760,7 @@ class DescribeSubscriptionsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
@@ -2635,7 +2813,7 @@ class DescribeSubscriptionsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubscriptionSets: 订阅者集合数组。
         :type SubscriptionSets: list of Subscription
         :param TotalCount: 数量。
@@ -2665,7 +2843,7 @@ class DescribeTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名模糊匹配。
@@ -2727,7 +2905,7 @@ class DescribeTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicSets: 主题集合数组。
         :type TopicSets: list of Topic
         :param TotalCount: 主题数量。
@@ -2757,7 +2935,7 @@ class Environment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 命名空间名称
         :type EnvironmentId: str
         :param Remark: 说明
@@ -2772,6 +2950,9 @@ class Environment(AbstractModel):
         :type NamespaceId: str
         :param NamespaceName: 命名空间名称
         :type NamespaceName: str
+        :param TopicNum: Topic数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNum: int
         """
         self.EnvironmentId = None
         self.Remark = None
@@ -2780,6 +2961,7 @@ class Environment(AbstractModel):
         self.UpdateTime = None
         self.NamespaceId = None
         self.NamespaceName = None
+        self.TopicNum = None
 
 
     def _deserialize(self, params):
@@ -2790,6 +2972,7 @@ class Environment(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.NamespaceId = params.get("NamespaceId")
         self.NamespaceName = params.get("NamespaceName")
+        self.TopicNum = params.get("TopicNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2805,7 +2988,7 @@ class EnvironmentRole(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）。
         :type EnvironmentId: str
         :param RoleName: 角色名称。
@@ -2849,7 +3032,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤参数的名字
         :type Name: str
         :param Values: 数值
@@ -2877,7 +3060,7 @@ class FilterSubscription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConsumerHasCount: 是否仅展示包含真实消费者的订阅。
         :type ConsumerHasCount: bool
         :param ConsumerHasBacklog: 是否仅展示消息堆积的订阅。
@@ -2913,7 +3096,7 @@ class ModifyClusterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: Pulsar 集群的ID，需要更新的集群Id。
         :type ClusterId: str
         :param ClusterName: 更新后的集群名称。
@@ -2945,7 +3128,7 @@ class ModifyClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2966,7 +3149,7 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -3046,7 +3229,7 @@ class ModifyCmqQueueAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3063,7 +3246,7 @@ class ModifyCmqSubscriptionAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
         :type TopicName: str
         :param SubscriptionName: 订阅名字，在单个地域同一帐号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -3109,7 +3292,7 @@ class ModifyCmqSubscriptionAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3126,7 +3309,7 @@ class ModifyCmqTopicAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type TopicName: str
         :param MaxMsgSize: 消息最大长度。取值范围1024 - 65536 Byte（即1 - 64K），默认值65536。
@@ -3162,7 +3345,7 @@ class ModifyCmqTopicAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3179,7 +3362,7 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000。
@@ -3188,11 +3371,14 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type Remark: str
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param RetentionPolicy: 消息保留策略
+        :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
         self.ClusterId = None
+        self.RetentionPolicy = None
 
 
     def _deserialize(self, params):
@@ -3200,6 +3386,9 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
         self.ClusterId = params.get("ClusterId")
+        if params.get("RetentionPolicy") is not None:
+            self.RetentionPolicy = RetentionPolicy()
+            self.RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3215,7 +3404,7 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒。
@@ -3250,7 +3439,7 @@ class ModifyTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名。
@@ -3290,7 +3479,7 @@ class ModifyTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Partitions: 分区数
         :type Partitions: int
         :param Remark: 备注，128字符以内。
@@ -3315,7 +3504,7 @@ class PartitionsTopic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AverageMsgSize: 最后一次间隔内发布消息的平均byte大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AverageMsgSize: str
@@ -3400,7 +3589,7 @@ class Producer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
@@ -3443,7 +3632,7 @@ class PublishCmqMsgRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名
         :type TopicName: str
         :param MsgContent: 消息内容
@@ -3475,7 +3664,7 @@ class PublishCmqMsgResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: true表示发送成功
         :type Result: bool
         :param MsgId: 消息id
@@ -3500,7 +3689,7 @@ class ReceiveMessageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Topic: 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，即：tenant/namespace/topic。默认使用的是：public/default
         :type Topic: str
         :param SubscriptionName: 订阅者的名字
@@ -3536,7 +3725,7 @@ class ReceiveMessageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageID: 用作标识消息的唯一主键
         :type MessageID: str
         :param MessagePayload: 接收消息的内容
@@ -3575,7 +3764,7 @@ class ResetMsgSubOffsetByTimestampRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
@@ -3615,7 +3804,7 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
@@ -3631,13 +3820,41 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RetentionPolicy(AbstractModel):
+    """消息保留策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeInMinutes: 消息保留时长
+        :type TimeInMinutes: int
+        :param SizeInMB: 消息保留大小
+        :type SizeInMB: int
+        """
+        self.TimeInMinutes = None
+        self.SizeInMB = None
+
+
+    def _deserialize(self, params):
+        self.TimeInMinutes = params.get("TimeInMinutes")
+        self.SizeInMB = params.get("SizeInMB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RewindCmqQueueRequest(AbstractModel):
     """RewindCmqQueue请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
         :type QueueName: str
         :param StartConsumeTime: 设定该时间，则（Batch）receiveMessage接口，会按照生产消息的先后顺序消费该时间戳以后的消息。
@@ -3665,7 +3882,7 @@ class RewindCmqQueueResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3682,7 +3899,7 @@ class SendBatchMessagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
         :type Topic: str
         :param Payload: 需要发送消息的内容
@@ -3738,7 +3955,7 @@ class SendBatchMessagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: 消息的唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageId: str
@@ -3765,7 +3982,7 @@ class SendCmqMsgRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QueueName: 队列名
         :type QueueName: str
         :param MsgContent: 消息内容
@@ -3797,7 +4014,7 @@ class SendCmqMsgResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: true表示发送成功
         :type Result: bool
         :param MsgId: 消息id
@@ -3822,7 +4039,7 @@ class SendMessagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
         :type Topic: str
         :param Payload: 要发送的消息的内容
@@ -3866,7 +4083,7 @@ class SendMessagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: 消息的messageID, 是全局唯一的，用来标识消息的元数据信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageId: str
@@ -3893,7 +4110,7 @@ class SendMsgRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称，如果是分区topic需要指定具体分区，如果没有指定则默认发到0分区，例如：my_topic-partition-0。
@@ -3929,7 +4146,7 @@ class SendMsgResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3946,7 +4163,7 @@ class Subscription(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 主题名称。
         :type TopicName: str
         :param EnvironmentId: 环境（命名空间）名称。
@@ -4059,7 +4276,7 @@ class SubscriptionTopic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
@@ -4091,7 +4308,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签的key的值
         :type TagKey: str
         :param TagValue: 标签的Value的值
@@ -4119,7 +4336,7 @@ class Topic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AverageMsgSize: 最后一次间隔内发布消息的平均byte大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AverageMsgSize: str
@@ -4255,7 +4472,7 @@ class TopicRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
@@ -4283,7 +4500,7 @@ class UnbindCmqDeadLetterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceQueueName: 死信策略源队列名称，调用本接口会清空该队列的死信队列策略。
         :type SourceQueueName: str
         """
@@ -4307,7 +4524,7 @@ class UnbindCmqDeadLetterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4324,7 +4541,7 @@ class VpcBindRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UniqueVpcId: 租户Vpc Id
         :type UniqueVpcId: str
         :param UniqueSubnetId: 租户Vpc子网Id

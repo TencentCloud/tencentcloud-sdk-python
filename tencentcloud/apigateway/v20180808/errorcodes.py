@@ -92,6 +92,9 @@ FAILEDOPERATION_DOMAINALREADYBINDOTHERSERVICE = 'FailedOperation.DomainAlreadyBi
 # 该域名已经绑定该服务。
 FAILEDOPERATION_DOMAINALREADYBINDSERVICE = 'FailedOperation.DomainAlreadyBindService'
 
+# 当前域名不满足合规要求，无法进行接入。
+FAILEDOPERATION_DOMAININBLACKLIST = 'FailedOperation.DomainInBlackList'
+
 # 该域名还未在腾讯云备案，请备案之后再绑定域名。
 FAILEDOPERATION_DOMAINNEEDBEIAN = 'FailedOperation.DomainNeedBeian'
 
@@ -131,6 +134,9 @@ FAILEDOPERATION_SCFERROR = 'FailedOperation.ScfError'
 # 服务相关的错误。
 FAILEDOPERATION_SERVICEERROR = 'FailedOperation.ServiceError'
 
+# 当前Service正在操作中, 请稍后再试。
+FAILEDOPERATION_SERVICEINOPERATION = 'FailedOperation.ServiceInOperation'
+
 # 服务不存在。
 FAILEDOPERATION_SERVICENOTEXIST = 'FailedOperation.ServiceNotExist'
 
@@ -151,6 +157,9 @@ INTERNALERROR = 'InternalError'
 
 # API网关内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 INTERNALERROR_APIGWEXCEPTION = 'InternalError.ApigwException'
+
+# CAuth内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
+INTERNALERROR_CAUTHEXCEPTION = 'InternalError.CauthException'
 
 # oss内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
@@ -196,6 +205,12 @@ INVALIDPARAMETERVALUE_INVALIDCLB = 'InvalidParameterValue.InvalidClb'
 
 # 不合法的常量参数。
 INVALIDPARAMETERVALUE_INVALIDCONSTANTPARAMETERS = 'InvalidParameterValue.InvalidConstantParameters'
+
+# 参数Env取值错误，取值范围为（release, prepub, test）。
+INVALIDPARAMETERVALUE_INVALIDENV = 'InvalidParameterValue.InvalidEnv'
+
+# 服务当前环境状态，不支持此操作。
+INVALIDPARAMETERVALUE_INVALIDENVSTATUS = 'InvalidParameterValue.InvalidEnvStatus'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = 'InvalidParameterValue.InvalidFilterNotSupportedName'
@@ -281,6 +296,9 @@ LIMITEXCEEDED = 'LimitExceeded'
 # API文档数量超出限制。
 LIMITEXCEEDED_APIDOCLIMITEXCEEDED = 'LimitExceeded.APIDocLimitExceeded'
 
+# 应用数量超过限制。
+LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = 'LimitExceeded.ApiAppCountLimitExceeded'
+
 # API数量超过限制。
 LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = 'LimitExceeded.ApiCountLimitExceeded'
 
@@ -298,6 +316,9 @@ LIMITEXCEEDED_IPSTRATEGYLIMITEXCEEDED = 'LimitExceeded.IpStrategyLimitExceeded'
 
 # 请求频率超限制，请稍等再试。
 LIMITEXCEEDED_REQUESTLIMITEXCEEDED = 'LimitExceeded.RequestLimitExceeded'
+
+# 插件绑定的服务数量超出限制，请解绑服务或提升限额后重试。
+LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = 'LimitExceeded.ServiceCountForPluginLimitExceeded'
 
 # 服务数量超过限制，请删除服务或提升限额后重试。
 LIMITEXCEEDED_SERVICECOUNTLIMITEXCEEDED = 'LimitExceeded.ServiceCountLimitExceeded'
@@ -328,6 +349,9 @@ RESOURCENOTFOUND_INVALIDACCESSKEYID = 'ResourceNotFound.InvalidAccessKeyId'
 
 # ApiId错误。
 RESOURCENOTFOUND_INVALIDAPI = 'ResourceNotFound.InvalidApi'
+
+# 应用ID错误。
+RESOURCENOTFOUND_INVALIDAPIAPP = 'ResourceNotFound.InvalidApiApp'
 
 # API文档不存在。
 RESOURCENOTFOUND_INVALIDAPIDOC = 'ResourceNotFound.InvalidApiDoc'
@@ -386,6 +410,9 @@ UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = 'UnsupportedOperation.InvalidServiceT
 # 当前密钥状态不支持此操作。
 UNSUPPORTEDOPERATION_INVALIDSTATUS = 'UnsupportedOperation.InvalidStatus'
 
+# 不支持修改EIAM类型授权API。
+UNSUPPORTEDOPERATION_MODIFYEIAMAUTHAPI = 'UnsupportedOperation.ModifyEIAMAuthApi'
+
 # 前端协议类型不支持修改。
 UNSUPPORTEDOPERATION_MODIFYPROTOCOL = 'UnsupportedOperation.ModifyProtocol'
 
@@ -410,8 +437,14 @@ UNSUPPORTEDOPERATION_UNSUPPORTEDBINDAPIKEY = 'UnsupportedOperation.UnsupportedBi
 # 不支持绑定环境。
 UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = 'UnsupportedOperation.UnsupportedBindEnvironment'
 
+# 当前API已绑定业务API，请先解绑再试。
+UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = 'UnsupportedOperation.UnsupportedDeleteApi'
+
 # 服务使用中，不能被删除。
 UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = 'UnsupportedOperation.UnsupportedDeleteService'
+
+# 不支持网络类型。
+UNSUPPORTEDOPERATION_UNSUPPORTEDNETTYPE = 'UnsupportedOperation.UnsupportedNetType'
 
 # 不支持解绑环境，存在未绑定使用计划的API。
 UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = 'UnsupportedOperation.UnsupportedUnBindEnvironment'

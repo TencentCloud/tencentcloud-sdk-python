@@ -24,7 +24,7 @@ class AssociateTargetGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Associations: 绑定的关系数组。
         :type Associations: list of TargetGroupAssociation
         """
@@ -53,7 +53,7 @@ class AssociateTargetGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -70,7 +70,7 @@ class AssociationItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 关联到的负载均衡ID
         :type LoadBalancerId: str
         :param ListenerId: 关联到的监听器ID
@@ -129,7 +129,7 @@ class AutoRewriteRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: HTTPS:443监听器的ID。
@@ -169,7 +169,7 @@ class AutoRewriteResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -186,7 +186,7 @@ class Backend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 后端服务的类型，可取：CVM、ENI
         :type Type: str
         :param InstanceId: 后端服务的唯一 ID，如 ins-abcd1234
@@ -247,7 +247,7 @@ class BasicTargetGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID
         :type TargetGroupId: str
         :param TargetGroupName: 目标组名称
@@ -275,7 +275,7 @@ class BatchDeregisterTargetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡ID。
         :type LoadBalancerId: str
         :param Targets: 解绑目标。
@@ -308,7 +308,7 @@ class BatchDeregisterTargetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FailListenerIdSet: 解绑失败的监听器ID。
         :type FailListenerIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -329,7 +329,7 @@ class BatchModifyTargetWeightRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param ModifyList: 要批量修改权重的列表。
@@ -362,7 +362,7 @@ class BatchModifyTargetWeightResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -379,7 +379,7 @@ class BatchRegisterTargetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡ID。
         :type LoadBalancerId: str
         :param Targets: 绑定目标。
@@ -412,7 +412,7 @@ class BatchRegisterTargetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FailListenerIdSet: 绑定失败的监听器ID，如为空表示全部绑定成功。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailListenerIdSet: list of str
@@ -434,7 +434,7 @@ class BatchTarget(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器 ID。
         :type ListenerId: str
         :param Port: 绑定端口。
@@ -473,13 +473,77 @@ class BatchTarget(AbstractModel):
         
 
 
+class BindDetailItem(AbstractModel):
+    """绑定关系，包含监听器名字、协议、url、vport。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 配置绑定的CLB ID
+        :type LoadBalancerId: str
+        :param ListenerId: 配置绑定的监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Domain: 配置绑定的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param LocationId: 配置绑定的规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocationId: str
+        :param ListenerName: 监听器名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param Protocol: 监听器协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Vport: 监听器端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param Url: location的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param UconfigId: 配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UconfigId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Domain = None
+        self.LocationId = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.Vport = None
+        self.Url = None
+        self.UconfigId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.Domain = params.get("Domain")
+        self.LocationId = params.get("LocationId")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.Vport = params.get("Vport")
+        self.Url = params.get("Url")
+        self.UconfigId = params.get("UconfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockedIP(AbstractModel):
     """加入了12306黑名单的IP
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param IP: 黑名单IP
         :type IP: str
         :param CreateTime: 加入黑名单的时间
@@ -511,7 +575,7 @@ class CertIdRelatedWithLoadBalancers(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertId: 证书ID
         :type CertId: str
         :param LoadBalancers: 与证书关联的负载均衡实例列表
@@ -545,7 +609,7 @@ class CertificateInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
         :param CertId: 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent，CertKey，CertName。
@@ -597,7 +661,7 @@ class CertificateOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
         :param CertId: 服务端证书的 ID。
@@ -630,7 +694,7 @@ class ClassicalHealth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IP: 后端服务的内网 IP
         :type IP: str
         :param Port: 后端服务的端口
@@ -670,7 +734,7 @@ class ClassicalListener(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 负载均衡监听器ID
         :type ListenerId: str
         :param ListenerPort: 负载均衡监听器端口
@@ -762,7 +826,7 @@ class ClassicalLoadBalancerInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 后端实例ID
         :type InstanceId: str
         :param LoadBalancerIds: 负载均衡实例ID列表
@@ -791,7 +855,7 @@ class ClassicalTarget(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 后端服务的类型，可取值：CVM、ENI（即将支持）
         :type Type: str
         :param InstanceId: 后端服务的唯一 ID，可通过 DescribeInstances 接口返回字段中的 unInstanceId 字段获取
@@ -844,7 +908,7 @@ class ClassicalTargetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 后端实例ID
         :type InstanceId: str
         :param Weight: 权重，取值范围 [0, 100]
@@ -872,7 +936,7 @@ class Cluster(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群唯一ID
         :type ClusterId: str
         :param ClusterName: 集群名称
@@ -998,7 +1062,7 @@ class ClusterItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群唯一ID
         :type ClusterId: str
         :param ClusterName: 集群名称
@@ -1032,7 +1096,7 @@ class ClusterResource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterId: 集群唯一ID，如tgw-12345678。
         :type ClusterId: str
         :param Vip: ip地址。
@@ -1045,12 +1109,16 @@ class ClusterResource(AbstractModel):
         :type Idle: str
         :param ClusterName: 集群名称。
         :type ClusterName: str
+        :param Isp: 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isp: str
         """
         self.ClusterId = None
         self.Vip = None
         self.LoadBalancerId = None
         self.Idle = None
         self.ClusterName = None
+        self.Isp = None
 
 
     def _deserialize(self, params):
@@ -1059,6 +1127,7 @@ class ClusterResource(AbstractModel):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.Idle = params.get("Idle")
         self.ClusterName = params.get("ClusterName")
+        self.Isp = params.get("Isp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1074,7 +1143,7 @@ class ClustersZone(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MasterZone: 集群所在的主可用区。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MasterZone: list of str
@@ -1098,13 +1167,58 @@ class ClustersZone(AbstractModel):
         
 
 
+class ConfigListItem(AbstractModel):
+    """配置内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UconfigId: 配置ID
+        :type UconfigId: str
+        :param ConfigType: 配置类型
+        :type ConfigType: str
+        :param ConfigName: 配置名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigContent: 配置内容
+        :type ConfigContent: str
+        :param CreateTimestamp: 增加配置时间
+        :type CreateTimestamp: str
+        :param UpdateTimestamp: 修改配置时间
+        :type UpdateTimestamp: str
+        """
+        self.UconfigId = None
+        self.ConfigType = None
+        self.ConfigName = None
+        self.ConfigContent = None
+        self.CreateTimestamp = None
+        self.UpdateTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.UconfigId = params.get("UconfigId")
+        self.ConfigType = params.get("ConfigType")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigContent = params.get("ConfigContent")
+        self.CreateTimestamp = params.get("CreateTimestamp")
+        self.UpdateTimestamp = params.get("UpdateTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateClsLogSetRequest(AbstractModel):
     """CreateClsLogSet请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Period: 日志集的保存周期，单位：天，最大 90。
         :type Period: int
         :param LogsetName: 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
@@ -1136,7 +1250,7 @@ class CreateClsLogSetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 日志集的 ID。
         :type LogsetId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1157,7 +1271,7 @@ class CreateListenerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param Ports: 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
@@ -1238,7 +1352,7 @@ class CreateListenerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerIds: 创建的监听器的唯一标识数组。
         :type ListenerIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1259,7 +1373,7 @@ class CreateLoadBalancerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerType: 负载均衡实例的网络类型：
 OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerType: str
@@ -1268,13 +1382,13 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
         :type LoadBalancerName: str
-        :param VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 DescribeVpcEx 接口获取。 不传此参数则默认为基础网络（"0"）。
+        :param VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 [DescribeVpcEx](https://cloud.tencent.com/document/product/215/1372) 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。
         :type VpcId: str
-        :param SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。
+        :param SubnetId: 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填。
         :type SubnetId: str
-        :param ProjectId: 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。不传此参数则视为默认项目。
+        :param ProjectId: 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/product/378/4400) 接口获取。不填此参数则视为默认项目。
         :type ProjectId: int
-        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，默认值 IPV4。
+        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
         :type AddressIPVersion: str
         :param Number: 创建负载均衡的个数，默认值 1。
         :type Number: int
@@ -1287,13 +1401,16 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param VipIsp: 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
         :type VipIsp: str
-        :param Tags: 购买负载均衡同时，给负载均衡打上标签。
+        :param Tags: 购买负载均衡的同时，给负载均衡打上标签。
         :type Tags: list of TagInfo
-        :param Vip: 指定Vip申请负载均衡。
+        :param Vip: 指定VIP申请负载均衡。指定此参数后：
+<ul><li>若创建共享型集群的公网负载均衡实例，则上述的VpcId选填，若实例是IPv6类型的，则SubnetId必填；若是IPv4、IPv6 NAT64类型，则SubnetId不填。</li>
+<li>若创建独占型集群的公网负载均衡实例，则上述的VpcId选填，若实例是IPv6类型的，则SubnetId必填；若是IPv4、IPv6 NAT64类型，则SubnetId不填。
+</li></ul>
         :type Vip: str
         :param BandwidthPackageId: 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
         :type BandwidthPackageId: str
-        :param ExclusiveCluster: 独占集群信息。
+        :param ExclusiveCluster: 独占集群信息。若创建独占集群负载均衡实例，则此参数必填。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
@@ -1385,7 +1502,7 @@ class CreateLoadBalancerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
         :type LoadBalancerIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1406,7 +1523,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡唯一性ID，例如：lb-12345678。
         :type LoadBalancerId: str
         :param SnatIps: 添加SnatIp信息，可指定IP申请，或者指定子网自动申请。
@@ -1439,7 +1556,7 @@ class CreateLoadBalancerSnatIpsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1456,7 +1573,7 @@ class CreateRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param ListenerId: 监听器 ID。
@@ -1493,7 +1610,7 @@ class CreateRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocationIds: 创建的转发规则的唯一标识数组。
         :type LocationIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1514,7 +1631,7 @@ class CreateTargetGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupName: 目标组名称，限定50个字符
         :type TargetGroupName: str
         :param VpcId: 目标组的vpcid属性，不填则使用默认vpc
@@ -1555,7 +1672,7 @@ class CreateTargetGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 创建目标组后生成的id
         :type TargetGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1576,7 +1693,7 @@ class CreateTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 日志主题的名称。
         :type TopicName: str
         :param PartitionCount: 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
@@ -1608,7 +1725,7 @@ class CreateTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 日志主题的 ID。
         :type TopicId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1629,7 +1746,7 @@ class DeleteListenerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 要删除的监听器ID。
@@ -1657,7 +1774,7 @@ class DeleteListenerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1674,7 +1791,7 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerIds: 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器。
@@ -1702,7 +1819,7 @@ class DeleteLoadBalancerListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1719,7 +1836,7 @@ class DeleteLoadBalancerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerIds: 要删除的负载均衡实例 ID数组，数组大小最大支持20。
         :type LoadBalancerIds: list of str
         """
@@ -1743,7 +1860,7 @@ class DeleteLoadBalancerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1760,7 +1877,7 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡唯一ID，例如：lb-12345678。
         :type LoadBalancerId: str
         :param Ips: 删除SnatIp地址数组。
@@ -1788,7 +1905,7 @@ class DeleteLoadBalancerSnatIpsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1805,7 +1922,7 @@ class DeleteRewriteRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param SourceListenerId: 源监听器ID。
@@ -1846,7 +1963,7 @@ class DeleteRewriteResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1863,7 +1980,7 @@ class DeleteRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -1907,7 +2024,7 @@ class DeleteRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1924,7 +2041,7 @@ class DeleteTargetGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupIds: 目标组的ID数组。
         :type TargetGroupIds: list of str
         """
@@ -1948,7 +2065,7 @@ class DeleteTargetGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1965,7 +2082,7 @@ class DeregisterTargetGroupInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID。
         :type TargetGroupId: str
         :param TargetGroupInstances: 待解绑的服务器信息。
@@ -1998,7 +2115,7 @@ class DeregisterTargetGroupInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2015,7 +2132,7 @@ class DeregisterTargetsFromClassicalLBRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param InstanceIds: 后端服务的实例ID列表。
@@ -2043,7 +2160,7 @@ class DeregisterTargetsFromClassicalLBResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2060,7 +2177,7 @@ class DeregisterTargetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID，格式如 lb-12345678。
         :type LoadBalancerId: str
         :param ListenerId: 监听器 ID，格式如 lbl-12345678。
@@ -2109,7 +2226,7 @@ class DeregisterTargetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2126,7 +2243,7 @@ class DescribeBlockIPListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param Offset: 数据偏移量，默认为 0。
@@ -2158,7 +2275,7 @@ class DescribeBlockIPListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlockedIPCount: 返回的IP的数量
         :type BlockedIPCount: int
         :param ClientIPField: 获取用户真实IP的字段
@@ -2192,7 +2309,7 @@ class DescribeBlockIPTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: ModifyBlockIPList 接口返回的异步任务的ID。
         :type TaskId: str
         """
@@ -2216,7 +2333,7 @@ class DescribeBlockIPTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 1 running，2 fail，6 succ
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2237,7 +2354,7 @@ class DescribeClassicalLBByInstanceIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceIds: 后端实例ID列表。
         :type InstanceIds: list of str
         """
@@ -2261,7 +2378,7 @@ class DescribeClassicalLBByInstanceIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerInfoList: 负载均衡相关信息列表。
         :type LoadBalancerInfoList: list of ClassicalLoadBalancerInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2287,7 +2404,7 @@ class DescribeClassicalLBHealthStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -2315,7 +2432,7 @@ class DescribeClassicalLBHealthStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HealthList: 后端健康状态列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthList: list of ClassicalHealth
@@ -2342,7 +2459,7 @@ class DescribeClassicalLBListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerIds: 负载均衡监听器ID列表。
@@ -2382,7 +2499,7 @@ class DescribeClassicalLBListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Listeners: 监听器列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ClassicalListener
@@ -2409,7 +2526,7 @@ class DescribeClassicalLBTargetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         """
@@ -2433,7 +2550,7 @@ class DescribeClassicalLBTargetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Targets: 后端服务列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of ClassicalTarget
@@ -2466,7 +2583,7 @@ class DescribeClsLogSetResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 日志集的 ID。
         :type LogsetId: str
         :param HealthLogsetId: 健康检查日志集的 ID。
@@ -2491,7 +2608,7 @@ class DescribeClusterResourcesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回集群中资源列表数目，默认为20，最大值为100。
         :type Limit: int
         :param Offset: 返回集群中资源列表起始偏移量，默认为0。
@@ -2532,7 +2649,7 @@ class DescribeClusterResourcesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterResourceSet: 集群中资源列表。
         :type ClusterResourceSet: list of ClusterResource
         :param TotalCount: 集群中资源总数。
@@ -2556,13 +2673,160 @@ class DescribeClusterResourcesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCustomizedConfigAssociateListRequest(AbstractModel):
+    """DescribeCustomizedConfigAssociateList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UconfigId: 配置ID
+        :type UconfigId: str
+        :param Offset: 拉取绑定关系列表开始位置，默认值 0
+        :type Offset: int
+        :param Limit: 拉取绑定关系列表数目，默认值 20
+        :type Limit: int
+        :param Domain: 搜索域名
+        :type Domain: str
+        """
+        self.UconfigId = None
+        self.Offset = None
+        self.Limit = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.UconfigId = params.get("UconfigId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomizedConfigAssociateListResponse(AbstractModel):
+    """DescribeCustomizedConfigAssociateList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BindList: 绑定关系列表
+        :type BindList: list of BindDetailItem
+        :param TotalCount: 绑定关系总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BindList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BindList") is not None:
+            self.BindList = []
+            for item in params.get("BindList"):
+                obj = BindDetailItem()
+                obj._deserialize(item)
+                self.BindList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomizedConfigListRequest(AbstractModel):
+    """DescribeCustomizedConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigType: 配置类型:CLB 负载均衡维度。 SERVER 域名维度。 LOCATION 规则维度。
+        :type ConfigType: str
+        :param Offset: 拉取页偏移，默认值0
+        :type Offset: int
+        :param Limit: 拉取数目，默认值20
+        :type Limit: int
+        :param ConfigName: 拉取指定配置名字，模糊匹配。
+        :type ConfigName: str
+        :param UconfigIds: 配置ID
+        :type UconfigIds: list of str
+        :param Filters: 过滤条件如下：
+<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
+<li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+        :type Filters: list of Filter
+        """
+        self.ConfigType = None
+        self.Offset = None
+        self.Limit = None
+        self.ConfigName = None
+        self.UconfigIds = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ConfigType = params.get("ConfigType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ConfigName = params.get("ConfigName")
+        self.UconfigIds = params.get("UconfigIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomizedConfigListResponse(AbstractModel):
+    """DescribeCustomizedConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigList: 配置列表
+        :type ConfigList: list of ConfigListItem
+        :param TotalCount: 配置数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ConfigList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigList") is not None:
+            self.ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = ConfigListItem()
+                obj._deserialize(item)
+                self.ConfigList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExclusiveClustersRequest(AbstractModel):
     """DescribeExclusiveClusters请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回集群列表数目，默认值为20，最大值为100。
         :type Limit: int
         :param Offset: 返回集群列表起始偏移量，默认为0。
@@ -2608,7 +2872,7 @@ class DescribeExclusiveClustersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterSet: 集群列表。
         :type ClusterSet: list of Cluster
         :param TotalCount: 集群总数量。
@@ -2638,7 +2902,7 @@ class DescribeListenersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param ListenerIds: 要查询的负载均衡监听器 ID 数组，最大为100个。
@@ -2674,7 +2938,7 @@ class DescribeListenersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Listeners: 监听器列表。
         :type Listeners: list of Listener
         :param TotalCount: 总的监听器个数（根据端口、协议、监听器ID过滤后）。
@@ -2705,7 +2969,7 @@ class DescribeLoadBalancerListByCertIdRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertIds: 服务端证书的ID，或客户端证书的ID
         :type CertIds: list of str
         """
@@ -2729,7 +2993,7 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertSet: 证书ID，以及与该证书ID关联的负载均衡实例列表
         :type CertSet: list of CertIdRelatedWithLoadBalancers
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2755,7 +3019,7 @@ class DescribeLoadBalancerTrafficRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerRegion: 负载均衡所在地域，不传默认返回所有地域负载均衡。
         :type LoadBalancerRegion: str
         """
@@ -2779,7 +3043,7 @@ class DescribeLoadBalancerTrafficResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerTraffic: 按出带宽从高到低排序后的负载均衡信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerTraffic: list of LoadBalancerTraffic
@@ -2806,7 +3070,7 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 返回负载均衡列表数目，默认20，最大值100。
         :type Limit: int
         :param Offset: 返回负载均衡列表起始偏移量，默认0。
@@ -2861,7 +3125,7 @@ class DescribeLoadBalancersDetailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 负载均衡详情列表总数。
         :type TotalCount: int
         :param LoadBalancerDetailSet: 负载均衡详情列表。
@@ -2892,7 +3156,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerIds: 负载均衡实例ID。
         :type LoadBalancerIds: list of str
         :param LoadBalancerType: 负载均衡实例的网络类型：
@@ -3002,7 +3266,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
         :type TotalCount: int
         :param LoadBalancerSet: 返回的负载均衡实例数组。
@@ -3038,7 +3302,7 @@ class DescribeQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QuotaSet: 配额列表
         :type QuotaSet: list of Quota
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3064,7 +3328,7 @@ class DescribeRewriteRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param SourceListenerIds: 负载均衡监听器ID数组。
@@ -3096,7 +3360,7 @@ class DescribeRewriteResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RewriteSet: 重定向转发规则构成的数组，若无重定向规则，则返回空数组。
         :type RewriteSet: list of RuleOutput
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3122,7 +3386,7 @@ class DescribeTargetGroupInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤
         :type Filters: list of Filter
         :param Limit: 显示数量限制，默认20
@@ -3159,7 +3423,7 @@ class DescribeTargetGroupInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 本次查询的结果数量
         :type TotalCount: int
         :param TargetGroupInstanceSet: 绑定的服务器信息
@@ -3193,7 +3457,7 @@ class DescribeTargetGroupListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupIds: 目标组ID数组。
         :type TargetGroupIds: list of str
         :param Filters: 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
@@ -3234,7 +3498,7 @@ class DescribeTargetGroupListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 显示的结果数量。
         :type TotalCount: int
         :param TargetGroupSet: 显示的目标组信息集合。
@@ -3264,7 +3528,7 @@ class DescribeTargetGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupIds: 目标组ID，与Filters互斥。
         :type TargetGroupIds: list of str
         :param Limit: 显示条数限制，默认为20。
@@ -3305,7 +3569,7 @@ class DescribeTargetGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 显示的结果数量。
         :type TotalCount: int
         :param TargetGroupSet: 显示的目标组信息集合。
@@ -3335,7 +3599,7 @@ class DescribeTargetHealthRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerIds: 要查询的负载均衡实例ID列表。
         :type LoadBalancerIds: list of str
         """
@@ -3359,7 +3623,7 @@ class DescribeTargetHealthResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancers: 负载均衡实例列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancers: list of LoadBalancerHealth
@@ -3386,7 +3650,7 @@ class DescribeTargetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param ListenerIds: 监听器 ID 列表。ID 数量上限为20个。
@@ -3422,7 +3686,7 @@ class DescribeTargetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Listeners: 监听器后端绑定的机器信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Listeners: list of ListenerBackend
@@ -3449,7 +3713,7 @@ class DescribeTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 请求ID，即接口返回的 RequestId 参数。
         :type TaskId: str
         """
@@ -3473,7 +3737,7 @@ class DescribeTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务的当前状态。 0：成功，1：失败，2：进行中。
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3494,7 +3758,7 @@ class DisassociateTargetGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Associations: 待解绑的规则关系数组。
         :type Associations: list of TargetGroupAssociation
         """
@@ -3523,7 +3787,7 @@ class DisassociateTargetGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3540,7 +3804,7 @@ class ExclusiveCluster(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param L4Clusters: 4层独占集群列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type L4Clusters: list of ClusterItem
@@ -3587,7 +3851,7 @@ class ExtraInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZhiTong: 是否开通VIP直通
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZhiTong: bool
@@ -3617,7 +3881,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤器的名称
         :type Name: str
         :param Values: 过滤器的值数组
@@ -3646,7 +3910,7 @@ class HealthCheck(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）。
         :type HealthSwitch: int
         :param TimeOut: 健康检查的响应超时时间（仅适用于四层监听器），可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
@@ -3741,7 +4005,7 @@ class InternetAccessible(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;
 BANDWIDTH_PACKAGE 按带宽包计费;
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3777,7 +4041,7 @@ class LBChargePrepaid(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RenewFlag: 续费类型：AUTO_RENEW 自动续费，  MANUAL_RENEW 手动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
@@ -3807,7 +4071,7 @@ class Listener(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 负载均衡监听器 ID
         :type ListenerId: str
         :param Protocol: 监听器协议
@@ -3925,7 +4189,7 @@ class ListenerBackend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器 ID
         :type ListenerId: str
         :param Protocol: 监听器的协议
@@ -3982,7 +4246,7 @@ class ListenerHealth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 监听器ID
         :type ListenerId: str
         :param ListenerName: 监听器名称
@@ -4029,7 +4293,7 @@ class LoadBalancer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡实例的名称。
@@ -4328,7 +4592,7 @@ class LoadBalancerDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡实例的名称。
@@ -4425,6 +4689,9 @@ Public：公网属性， Private：内网属性。
         :param LoadBalancerPassToTarget: 负载均衡安全组上移特性是否开启标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerPassToTarget: int
+        :param TargetHealth: 后端目标健康状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHealth: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4458,6 +4725,7 @@ Public：公网属性， Private：内网属性。
         self.Isolation = None
         self.SecurityGroup = None
         self.LoadBalancerPassToTarget = None
+        self.TargetHealth = None
 
 
     def _deserialize(self, params):
@@ -4504,6 +4772,7 @@ Public：公网属性， Private：内网属性。
         self.Isolation = params.get("Isolation")
         self.SecurityGroup = params.get("SecurityGroup")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.TargetHealth = params.get("TargetHealth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4519,7 +4788,7 @@ class LoadBalancerHealth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡实例名称
@@ -4558,7 +4827,7 @@ class LoadBalancerTraffic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡ID
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡名字
@@ -4598,7 +4867,7 @@ class ManualRewriteRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param SourceListenerId: 源监听器 ID。
@@ -4639,7 +4908,7 @@ class ManualRewriteResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4656,7 +4925,7 @@ class ModifyBlockIPListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerIds: 负载均衡实例ID
         :type LoadBalancerIds: list of str
         :param Type: 操作类型，可取：
@@ -4706,7 +4975,7 @@ class ModifyBlockIPListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JodId: 异步任务的ID
         :type JodId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4727,7 +4996,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -4781,7 +5050,7 @@ class ModifyDomainAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4798,7 +5067,7 @@ class ModifyDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器 ID
@@ -4834,7 +5103,7 @@ class ModifyDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4851,7 +5120,7 @@ class ModifyListenerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -4916,7 +5185,7 @@ class ModifyListenerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4933,7 +5202,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡的唯一ID
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡实例名称
@@ -4981,7 +5250,7 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DealName: 切换负载均衡计费方式时，可用此参数查询切换任务是否成功。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
@@ -5003,7 +5272,7 @@ class ModifyRuleRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器 ID。
@@ -5066,7 +5335,7 @@ class ModifyRuleResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5083,7 +5352,7 @@ class ModifyTargetGroupAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组的ID。
         :type TargetGroupId: str
         :param TargetGroupName: 目标组的新名称。
@@ -5115,7 +5384,7 @@ class ModifyTargetGroupAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5132,7 +5401,7 @@ class ModifyTargetGroupInstancesPortRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID。
         :type TargetGroupId: str
         :param TargetGroupInstances: 待修改端口的服务器数组。
@@ -5165,7 +5434,7 @@ class ModifyTargetGroupInstancesPortResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5182,7 +5451,7 @@ class ModifyTargetGroupInstancesWeightRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID。
         :type TargetGroupId: str
         :param TargetGroupInstances: 待修改权重的服务器数组。
@@ -5215,7 +5484,7 @@ class ModifyTargetGroupInstancesWeightResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5232,7 +5501,7 @@ class ModifyTargetPortRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -5285,7 +5554,7 @@ class ModifyTargetPortResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5302,7 +5571,7 @@ class ModifyTargetWeightRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -5355,7 +5624,7 @@ class ModifyTargetWeightResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5372,7 +5641,7 @@ class Quota(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QuotaId: 配额名称，取值范围：
 <li> TOTAL_OPEN_CLB_QUOTA: 用户当前地域下的公网LB配额 </li>
 <li> TOTAL_INTERNAL_CLB_QUOTA: 用户当前地域下的内网LB配额 </li>
@@ -5410,7 +5679,7 @@ class RegisterTargetGroupInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID
         :type TargetGroupId: str
         :param TargetGroupInstances: 服务器实例数组
@@ -5443,7 +5712,7 @@ class RegisterTargetGroupInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5460,7 +5729,7 @@ class RegisterTargetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
@@ -5509,7 +5778,7 @@ class RegisterTargetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5526,7 +5795,7 @@ class RegisterTargetsWithClassicalLBRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
         :param Targets: 后端服务信息。
@@ -5559,7 +5828,7 @@ class RegisterTargetsWithClassicalLBResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5576,7 +5845,7 @@ class ReplaceCertForLoadBalancersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param OldCertificateId: 需要被替换的证书的ID，可以是服务端证书或客户端证书
         :type OldCertificateId: str
         :param Certificate: 新证书的内容等相关信息
@@ -5606,7 +5875,7 @@ class ReplaceCertForLoadBalancersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5623,7 +5892,7 @@ class RewriteLocationMap(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SourceLocationId: 源转发规则ID
         :type SourceLocationId: str
         :param TargetLocationId: 重定向至的目标转发规则ID
@@ -5663,7 +5932,7 @@ class RewriteTarget(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetListenerId: 重定向目标的监听器ID
 注意：此字段可能返回 null，表示无重定向。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5710,7 +5979,7 @@ class RsWeightRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ListenerId: 负载均衡监听器 ID。
         :type ListenerId: str
         :param Targets: 要修改权重的后端机器列表。
@@ -5759,7 +6028,7 @@ class RuleHealth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocationId: 转发规则ID
         :type LocationId: str
         :param Domain: 转发规则的域名
@@ -5803,7 +6072,7 @@ class RuleInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 转发规则的域名。长度限制为：1~80。
         :type Domain: str
         :param Url: 转发规则的路径。长度限制为：1~200。
@@ -5880,7 +6149,7 @@ class RuleOutput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocationId: 转发规则的 ID
         :type LocationId: str
         :param Domain: 转发规则的域名。
@@ -6002,7 +6271,7 @@ class RuleTargets(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LocationId: 转发规则的 ID
         :type LocationId: str
         :param Domain: 转发规则的域名
@@ -6038,13 +6307,74 @@ class RuleTargets(AbstractModel):
         
 
 
+class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
+    """SetCustomizedConfigForLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OperationType: 操作类型：'ADD', 'DELETE', 'UPDATE', 'BIND', 'UNBIND'
+        :type OperationType: str
+        :param UconfigId: 除了创建个性化配置外，必传此字段，如：pz-1234abcd
+        :type UconfigId: str
+        :param ConfigContent: 创建个性化配置或修改个性化配置的内容时，必传此字段
+        :type ConfigContent: str
+        :param ConfigName: 创建个性化配置或修改个性化配置的名字时，必传此字段
+        :type ConfigName: str
+        :param LoadBalancerIds: 绑定解绑时，必传此字段
+        :type LoadBalancerIds: list of str
+        """
+        self.OperationType = None
+        self.UconfigId = None
+        self.ConfigContent = None
+        self.ConfigName = None
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.OperationType = params.get("OperationType")
+        self.UconfigId = params.get("UconfigId")
+        self.ConfigContent = params.get("ConfigContent")
+        self.ConfigName = params.get("ConfigName")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetCustomizedConfigForLoadBalancerResponse(AbstractModel):
+    """SetCustomizedConfigForLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 个性化配置ID，如：pz-1234abcd
+        :type ConfigId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ConfigId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
+
+
 class SetLoadBalancerClsLogRequest(AbstractModel):
     """SetLoadBalancerClsLog请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
         :param LogSetId: 日志服务(CLS)的日志集ID。
@@ -6080,7 +6410,7 @@ class SetLoadBalancerClsLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6097,7 +6427,7 @@ class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡实例 ID
         :type LoadBalancerId: str
         :param SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组。
@@ -6125,7 +6455,7 @@ class SetLoadBalancerSecurityGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6142,7 +6472,7 @@ class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecurityGroup: 安全组ID，如 sg-12345678
         :type SecurityGroup: str
         :param OperationType: ADD 绑定安全组；
@@ -6175,7 +6505,7 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6192,7 +6522,7 @@ class SnatIp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubnetId: 私有网络子网的唯一性id，如subnet-12345678
         :type SubnetId: str
         :param Ip: IP地址，如192.168.0.1
@@ -6220,7 +6550,7 @@ class TagInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签的键
         :type TagKey: str
         :param TagValue: 标签的值
@@ -6248,7 +6578,7 @@ class Target(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Port: 后端服务的监听端口。
 注意：绑定CVM（云服务器）或ENI（弹性网卡）时必传此参数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6295,7 +6625,7 @@ class TargetGroupAssociation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoadBalancerId: 负载均衡ID
         :type LoadBalancerId: str
         :param ListenerId: 监听器ID
@@ -6331,7 +6661,7 @@ class TargetGroupBackend(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID
         :type TargetGroupId: str
         :param Type: 后端服务的类型，可取：CVM、ENI（即将支持）
@@ -6401,7 +6731,7 @@ class TargetGroupInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TargetGroupId: 目标组ID
         :type TargetGroupId: str
         :param VpcId: 目标组的vpcid
@@ -6456,7 +6786,7 @@ class TargetGroupInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BindIP: 目标组实例的内网IP
         :type BindIP: str
         :param Port: 目标组实例的端口
@@ -6492,7 +6822,7 @@ class TargetHealth(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IP: Target的内网IP
         :type IP: str
         :param Port: Target绑定的端口
@@ -6532,7 +6862,7 @@ class TargetRegionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: Target所属地域，如 ap-guangzhou
         :type Region: str
         :param VpcId: Target所属网络，私有网络格式如 vpc-abcd1234，如果是基础网络，则为"0"
@@ -6560,7 +6890,7 @@ class ZoneInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ZoneId: 可用区数值形式的唯一ID，如：100001
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int

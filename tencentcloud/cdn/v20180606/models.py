@@ -24,7 +24,7 @@ class AccessControl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off 是否启用请求头部及请求url访问控制
         :type Switch: str
         :param AccessControlRules: 请求头部及请求url访问规则
@@ -63,7 +63,7 @@ class AccessControlRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleType: requestHeader ：对请求头部进行访问控制
 url ： 对访问url进行访问控制
 注意：此字段可能返回 null，表示取不到有效值。
@@ -105,7 +105,7 @@ class AddCdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param ServiceType: 加速域名业务类型
@@ -182,6 +182,10 @@ global：全球加速
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param AwsPrivateAccess: 回源S3私有鉴权
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 回源OSS私有鉴权
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Domain = None
         self.ServiceType = None
@@ -217,6 +221,8 @@ global：全球加速
         self.Ipv6Access = None
         self.OfflineCache = None
         self.Quic = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -317,6 +323,12 @@ global：全球加速
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -332,7 +344,7 @@ class AddCdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -349,7 +361,7 @@ class AdvanceCacheRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
@@ -395,7 +407,7 @@ class AdvanceConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 高级配置名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -427,7 +439,7 @@ class AdvancedAuthentication(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 防盗链配置开关，on或off，开启时必须且只能配置一种模式，其余模式为null。
         :type Switch: str
         :param TypeA: 时间戳防盗链高级版模式A配置。
@@ -493,7 +505,7 @@ class AdvancedAuthenticationTypeA(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
         :type SecretKey: str
         :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
@@ -557,7 +569,7 @@ class AdvancedAuthenticationTypeB(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyAlpha: alpha键名。
         :type KeyAlpha: str
         :param KeyBeta: beta键名。
@@ -617,7 +629,7 @@ class AdvancedAuthenticationTypeC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessKey: 访问密钥。
         :type AccessKey: str
         :param SecretKey: 鉴权密钥。
@@ -645,7 +657,7 @@ class AdvancedAuthenticationTypeD(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
         :type SecretKey: str
         :param BackupSecretKey: 备份密钥，当使用SecretKey鉴权失败时会使用该密钥重新鉴权。
@@ -689,7 +701,7 @@ class AdvancedAuthenticationTypeE(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
@@ -739,7 +751,7 @@ class AdvancedAuthenticationTypeF(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignParam: str
@@ -779,13 +791,12 @@ class AdvancedAuthenticationTypeF(AbstractModel):
 
 
 class AdvancedCache(AbstractModel):
-    """缓存过期配置高级版（功能灰度中，尚未全量）
-    注意：该版本不支持设置首页缓存规则
+    """缓存过期配置高级版，注意：此字段已经弃用，请使用RuleCache
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheRules: 缓存过期规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheRules: list of AdvanceCacheRule
@@ -832,7 +843,7 @@ class Authentication(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 防盗链配置开关
 on：开启
 off：关闭
@@ -892,7 +903,7 @@ class AuthenticationTypeA(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
@@ -938,7 +949,7 @@ class AuthenticationTypeB(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
@@ -982,7 +993,7 @@ class AuthenticationTypeC(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1033,7 +1044,7 @@ class AuthenticationTypeD(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 计算签名的密钥
 仅允许大小写字母与数字，长度 6~32 位
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1090,7 +1101,7 @@ class AwsPrivateAccess(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 开关，on/off。
         :type Switch: str
         :param AccessKey: 访问ID。
@@ -1124,7 +1135,7 @@ class BandwidthAlert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 带宽封顶配置开关
 on：开启
 off：关闭
@@ -1167,7 +1178,7 @@ class BotCookie(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off
         :type Switch: str
         :param RuleType: 规则类型，当前只有all
@@ -1213,7 +1224,7 @@ class BotJavaScript(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off
         :type Switch: str
         :param RuleType: 规则类型，当前只有file
@@ -1259,7 +1270,7 @@ class BriefDomain(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 域名 ID
         :type ResourceId: str
         :param AppId: 腾讯云账号 ID
@@ -1308,6 +1319,8 @@ mainland：中国境内锁定
 overseas：中国境外锁定
 global：全球锁定
         :type Readonly: str
+        :param Product: 域名所属产品，cdn/ecdn
+        :type Product: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -1322,6 +1335,7 @@ global：全球锁定
         self.Disable = None
         self.Area = None
         self.Readonly = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -1340,6 +1354,7 @@ global：全球锁定
         self.Disable = params.get("Disable")
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1357,7 +1372,7 @@ class Cache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SimpleCache: 基础缓存过期时间配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SimpleCache: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`
@@ -1401,7 +1416,7 @@ class CacheConfigCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 缓存配置开关
 on：开启
 off：关闭
@@ -1458,7 +1473,7 @@ class CacheConfigFollowOrigin(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 遵循源站配置开关
 on：开启
 off：关闭
@@ -1484,7 +1499,7 @@ class CacheConfigNoCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 不缓存配置开关
 on：开启
 off：关闭
@@ -1514,15 +1529,15 @@ off：关闭
 
 
 class CacheKey(AbstractModel):
-    """缓存键配置（过滤参数配置）
+    """缓存键配置（忽略参数配置）
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param FullUrlCache: 是否开启全路径缓存
-on：开启全路径缓存（即关闭参数过滤）
-off：关闭全路径缓存（即开启参数过滤）
+on：开启全路径缓存（即关闭参数忽略）
+off：关闭全路径缓存（即开启参数忽略）
         :type FullUrlCache: str
         :param IgnoreCase: 是否忽略大小写缓存
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1595,7 +1610,7 @@ class CacheOptResult(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SuccessUrls: 成功的url列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessUrls: list of str
@@ -1625,7 +1640,7 @@ class CacheTagKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否使用CacheTag作为CacheKey的一部分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -1655,7 +1670,7 @@ class CappingRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
@@ -1695,7 +1710,7 @@ class CdnData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Metric: 查询指定的指标名称：
 flux：流量，单位为 byte
 bandwidth：带宽，单位为 bps
@@ -1744,7 +1759,7 @@ class CdnIp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: 指定查询的 IP
         :type Ip: str
         :param Platform: IP 归属：
@@ -1800,7 +1815,7 @@ class CdnIpHistory(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 操作类型
 online：节点上线
 offline：节点下线
@@ -1832,7 +1847,7 @@ class ClientCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Certificate: 客户端证书
 PEM 格式，需要进行 Base 64 编码
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1875,7 +1890,7 @@ class ClientInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProvName: 省份。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProvName: str
@@ -1915,7 +1930,7 @@ class ClsLogObject(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题ID
         :type TopicId: str
         :param TopicName: 主题名字
@@ -1959,7 +1974,7 @@ class ClsSearchLogs(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Context: 获取更多检索结果的游标
         :type Context: str
         :param Listover: 搜索结果是否已经全部返回
@@ -1996,7 +2011,7 @@ class Compatibility(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Code: 兼容标志状态码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
@@ -2021,7 +2036,7 @@ class Compression(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 智能压缩配置开关
 on：开启
 off：关闭
@@ -2057,7 +2072,7 @@ class CompressionRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Compress: true：需要设置为 ture，启用压缩
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compress: bool
@@ -2106,7 +2121,7 @@ class CookieKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off 是否使用Cookie作为Cache的一部分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -2136,7 +2151,7 @@ class CreateClsLogTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicName: 日志主题名称
         :type TopicName: str
         :param LogsetId: 日志集ID
@@ -2177,7 +2192,7 @@ class CreateClsLogTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
@@ -2199,7 +2214,7 @@ class CreateDiagnoseUrlRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: 需诊断的url，形如：http://www.test.com/test.txt。
         :type Url: str
         """
@@ -2223,7 +2238,7 @@ class CreateDiagnoseUrlResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagnoseLink: 系统生成的诊断链接，一个诊断链接最多可访问10次，有效期为24h。
         :type DiagnoseLink: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2244,7 +2259,7 @@ class CreateEdgePackTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CosBucket: apk 所在的 cos 存储桶, 如 edgepack-xxxxxxxx
         :type CosBucket: str
         :param CosUriFrom: apk 源文件的存储路径, 如 /apk/xxxx.apk
@@ -2280,7 +2295,7 @@ class CreateEdgePackTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2291,13 +2306,88 @@ class CreateEdgePackTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScdnDomainRequest(AbstractModel):
+    """CreateScdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Waf: Web 攻击防护（WAF）配置
+        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
+        :param Acl: 自定义防护策略配置
+        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
+        :param CC: CC 防护配置，目前 CC 防护默认开启
+        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
+        :param Ddos: DDOS 防护配置，目前 DDoS 防护默认开启
+        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
+        :param Bot: BOT 防护配置
+        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
+        """
+        self.Domain = None
+        self.Waf = None
+        self.Acl = None
+        self.CC = None
+        self.Ddos = None
+        self.Bot = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("Waf") is not None:
+            self.Waf = ScdnWafConfig()
+            self.Waf._deserialize(params.get("Waf"))
+        if params.get("Acl") is not None:
+            self.Acl = ScdnAclConfig()
+            self.Acl._deserialize(params.get("Acl"))
+        if params.get("CC") is not None:
+            self.CC = ScdnConfig()
+            self.CC._deserialize(params.get("CC"))
+        if params.get("Ddos") is not None:
+            self.Ddos = ScdnDdosConfig()
+            self.Ddos._deserialize(params.get("Ddos"))
+        if params.get("Bot") is not None:
+            self.Bot = ScdnBotConfig()
+            self.Bot._deserialize(params.get("Bot"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScdnDomainResponse(AbstractModel):
+    """CreateScdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 创建结果，Success表示成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScdnFailedLogTaskRequest(AbstractModel):
     """CreateScdnFailedLogTask请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 重试失败任务的taskID
         :type TaskId: str
         :param Area: 地域：mainland或overseas
@@ -2325,7 +2415,7 @@ class CreateScdnFailedLogTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建结果, 
 "0" -> 创建成功
         :type Result: str
@@ -2347,7 +2437,7 @@ class CreateScdnLogTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mode: 防护类型
 Mode 映射如下：
   waf = "Web攻击"
@@ -2447,7 +2537,7 @@ class CreateScdnLogTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建结果, 
 "0" -> 创建成功
         :type Result: str
@@ -2469,7 +2559,7 @@ class CreateVerifyRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 要取回的域名
         :type Domain: str
         """
@@ -2493,7 +2583,7 @@ class CreateVerifyRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubDomain: 子解析
         :type SubDomain: str
         :param Record: 解析值
@@ -2522,7 +2612,7 @@ class DeleteCdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
 域名状态需要为【已停用】
         :type Domain: str
@@ -2547,7 +2637,7 @@ class DeleteCdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2564,7 +2654,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 日志主题ID
         :type TopicId: str
         :param LogsetId: 日志集ID
@@ -2596,7 +2686,7 @@ class DeleteClsLogTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2613,7 +2703,7 @@ class DeleteScdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -2637,7 +2727,7 @@ class DeleteScdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建结果，Success表示成功
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2658,7 +2748,7 @@ class DescribeBillingDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 根据指定时间粒度参数不同，会进行向前取整，如指定起始时间为 2018-09-04 10:40:00 按小时粒度查询，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
@@ -2694,6 +2784,8 @@ flux：计费流量
 bandwidth：计费带宽
 默认为 bandwidth
         :type Metric: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2703,6 +2795,7 @@ bandwidth：计费带宽
         self.Area = None
         self.District = None
         self.Metric = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -2714,6 +2807,7 @@ bandwidth：计费带宽
         self.Area = params.get("Area")
         self.District = params.get("District")
         self.Metric = params.get("Metric")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2729,7 +2823,7 @@ class DescribeBillingDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Interval: 时间粒度，根据查询时传递参数指定：
 min：1 分钟粒度
 5min：5 分钟粒度
@@ -2763,7 +2857,7 @@ class DescribeCdnDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
@@ -2774,7 +2868,11 @@ class DescribeCdnDataRequest(AbstractModel):
         :type EndTime: str
         :param Metric: 指定查询指标，支持的类型有：
 flux：流量，单位为 byte
+fluxIn：上行流量，单位为 byte，该指标仅ecdn支持查询
+fluxOut：下行流量，单位为 byte，该指标仅ecdn支持查询
 bandwidth：带宽，单位为 bps
+bandwidthIn：上行带宽，单位为 bps，该指标仅ecdn支持查询
+bandwidthOut：下行带宽，单位为 bps，该指标仅ecdn支持查询
 request：请求数，单位为 次
 hitRequest：命中请求数，单位为 次
 requestHitRate：请求命中率，单位为 %，保留小数点后两位
@@ -2788,7 +2886,9 @@ statusCode：状态码，返回 2xx、3xx、4xx、5xx 汇总数据，单位为 �
 支持指定具体状态码查询，若未产生过，则返回为空
         :type Metric: str
         :param Domains: 指定查询域名列表
-最多可一次性查询 30 个加速域名明细
+查询单域名：指定单个域名
+查询多个域名：指定多个域名，最多可一次性查询 30 个
+查询账号下所有域名：不传参，默认查询账号维度
         :type Domains: list of str
         :param Project: 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
@@ -2833,6 +2933,8 @@ overseas：指定查询中国境外 CDN 数据
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据
         :type AreaType: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2848,6 +2950,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         self.IpProtocol = None
         self.Area = None
         self.AreaType = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -2865,6 +2968,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         self.IpProtocol = params.get("IpProtocol")
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2880,7 +2984,7 @@ class DescribeCdnDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Interval: 返回数据的时间粒度，查询时指定：
 min：1 分钟粒度
 5min：5 分钟粒度
@@ -2914,7 +3018,7 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 指定域名查询
         :type Domain: str
         :param StartTime: 开始时间，如 2019-09-04 00:00:00
@@ -2967,7 +3071,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainLogs: 日志包下载链接
         :type DomainLogs: list of DomainLog
         :param TotalCount: 查询到的总条数
@@ -2997,7 +3101,7 @@ class DescribeCdnIpRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ips: 需要查询的 IP 列表
         :type Ips: list of str
         """
@@ -3021,7 +3125,7 @@ class DescribeCdnIpResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ips: 查询的节点归属详情。
         :type Ips: list of CdnIp
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3053,7 +3157,7 @@ class DescribeCdnOriginIpResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ips: 回源节点IP详情。
         :type Ips: list of OriginIp
         :param TotalCount: 回源节点IP总个数。
@@ -3083,15 +3187,23 @@ class DescribeCertDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cert: PEM格式证书Base64编码后的字符串
         :type Cert: str
+        :param CertId: 托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+        :type CertId: str
+        :param Product: 域名所属产品，cdn或ecdn，默认cdn。
+        :type Product: str
         """
         self.Cert = None
+        self.CertId = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.Cert = params.get("Cert")
+        self.CertId = params.get("CertId")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3107,7 +3219,7 @@ class DescribeCertDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 已接入CDN的域名列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domains: list of str
@@ -3134,7 +3246,7 @@ class DescribeDiagnoseReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ReportId: 报告ID
         :type ReportId: str
         """
@@ -3158,7 +3270,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BaskInfo: 诊断报告基础信息
         :type BaskInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         :param CnameInfo: CNAME检测信息
@@ -3223,7 +3335,7 @@ class DescribeDistrictIspDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 域名列表，最多支持20个域名
         :type Domains: list of str
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
@@ -3294,7 +3406,7 @@ class DescribeDistrictIspDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 地区运营商数据明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DistrictIspInfo
@@ -3321,7 +3433,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
@@ -3364,7 +3476,7 @@ class DescribeDomainsConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 域名列表
         :type Domains: list of DetailDomain
         :param TotalNumber: 符合查询条件的域名总数
@@ -3395,7 +3507,7 @@ class DescribeDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
@@ -3432,7 +3544,7 @@ class DescribeDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 域名列表
         :type Domains: list of BriefDomain
         :param TotalNumber: 符合查询条件的域名总数
@@ -3463,7 +3575,7 @@ class DescribeImageConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -3487,7 +3599,7 @@ class DescribeImageConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WebpAdapter: WebpAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
@@ -3525,7 +3637,7 @@ class DescribeIpStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 加速域名
         :type Domain: str
         :param Layer: 节点类型：
@@ -3567,7 +3679,7 @@ class DescribeIpStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ips: 节点列表
         :type Ips: list of IpStatus
         :param TotalCount: 节点总个数
@@ -3597,7 +3709,7 @@ class DescribeIpVisitRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:10，返回结果大于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:10 在按 5 分钟的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:40:00
         :type StartTime: str
@@ -3642,7 +3754,7 @@ class DescribeIpVisitResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Interval: 数据统计的时间粒度，支持5min,  day，分别表示5分钟，1天的时间粒度。
         :type Interval: str
         :param Data: 各个资源的回源数据详情。
@@ -3672,7 +3784,7 @@ class DescribeMapInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 映射查询类别：
 isp：运营商映射查询
 district：省份（中国境内）、国家/地区（中国境外）映射查询
@@ -3698,7 +3810,7 @@ class DescribeMapInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MapInfoList: 映射关系数组。
         :type MapInfoList: list of MapInfo
         :param ServerRegionRelation: 服务端区域id和子区域id的映射关系。
@@ -3744,7 +3856,7 @@ class DescribeOriginDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 根据指定时间粒度不同，会进行向前归整，如 2018-09-04 10:40:00 在按 1 小时的时间粒度查询时，返回的第一个数据对应时间点为 2018-09-04 10:00:00
 起始时间与结束时间间隔小于等于 90 天
@@ -3820,7 +3932,7 @@ class DescribeOriginDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Interval: 数据统计的时间粒度，支持min, 5min, hour, day，分别表示1分钟，5分钟，1小时和1天的时间粒度。
         :type Interval: str
         :param Data: 各个资源的回源数据详情。
@@ -3850,18 +3962,22 @@ class DescribePayTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Area: 指定服务地域查询
 mainland：境内计费方式查询
 overseas：境外计费方式查询
 未填充时默认为 mainland
         :type Area: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.Area = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.Area = params.get("Area")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3877,22 +3993,22 @@ class DescribePayTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PayType: 计费类型：
 flux：流量计费
 bandwidth：带宽计费
+request：请求数计费
 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
         :type PayType: str
         :param BillingCycle: 计费周期：
 day：日结计费
 month：月结计费
         :type BillingCycle: str
-        :param StatType: 计费方式：
-monthMax：日峰值月平均计费，月结模式
-day95：日 95 带宽计费，月结模式
-month95：月95带宽计费，月结模式
-sum：总流量计费，日结与月结均有流量计费模式
-max：峰值带宽计费，日结模式
+        :param StatType: monthMax：日峰值月平均，月结模式
+day95：日 95 带宽，月结模式
+month95：月95带宽，月结模式
+sum：总流量/总请求数，日结或月结模式
+max：峰值带宽，日结模式
         :type StatType: str
         :param RegionType: 境外计费类型：
 all：全地区统一计费
@@ -3901,6 +4017,7 @@ multiple：分地区计费
         :param CurrentPayType: 当前生效计费类型：
 flux：流量计费
 bandwidth：带宽计费
+request：请求数计费
         :type CurrentPayType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3934,7 +4051,7 @@ class DescribePurgeQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UrlPurge: URL刷新用量及配额。
         :type UrlPurge: list of Quota
         :param PathPurge: 目录刷新用量及配额。
@@ -3969,7 +4086,7 @@ class DescribePurgeTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PurgeType: 指定刷新类型查询
 url：url 刷新记录
 path：目录刷新记录
@@ -4034,7 +4151,7 @@ class DescribePurgeTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PurgeLogs: 详细刷新记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type PurgeLogs: list of PurgeTask
@@ -4072,7 +4189,7 @@ class DescribePushQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UrlPush: Url预热用量及配额。
         :type UrlPush: list of Quota
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4098,7 +4215,7 @@ class DescribePushTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 开始时间，如2018-08-08 00:00:00。
         :type StartTime: str
         :param EndTime: 结束时间，如2018-08-08 23:59:59。
@@ -4121,6 +4238,7 @@ global：全球
 fail：预热失败
 done：预热成功
 process：预热中
+invalid: 预热无效(源站返回4xx或5xx状态码)
         :type Status: str
         """
         self.StartTime = None
@@ -4157,7 +4275,7 @@ class DescribePushTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PushLogs: 预热历史记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type PushLogs: list of PushTask
@@ -4189,7 +4307,7 @@ class DescribeReportDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间：yyyy-MM-dd
 当报表类型为daily，起始时间和结束时间必须为同一天
 当报表类型为weekly，起始时间须为周一，结束时间须为同一周的周日
@@ -4248,7 +4366,7 @@ class DescribeReportDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainReport: 域名维度数据详情
         :type DomainReport: list of ReportData
         :param ProjectReport: 项目维度数据详情
@@ -4283,7 +4401,7 @@ class DescribeScdnConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -4307,7 +4425,7 @@ class DescribeScdnConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Acl: 自定义防护策略配置
         :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
         :param Waf: Web 攻击防护（WAF）配置
@@ -4359,7 +4477,7 @@ class DescribeScdnTopDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
         :type StartTime: str
         :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
@@ -4437,7 +4555,7 @@ class DescribeScdnTopDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopTypeData: WAF 攻击类型统计
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopTypeData: list of ScdnTypeData
@@ -4488,7 +4606,7 @@ class DescribeTrafficPackagesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页查询起始地址，默认 0
         :type Offset: int
         :param Limit: 分页查询记录个数，默认100，最大1000
@@ -4516,7 +4634,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 流量包总个数
         :type TotalCount: int
         :param TrafficPackages: 流量包详情
@@ -4554,7 +4672,7 @@ class DescribeUrlViolationsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100
@@ -4586,7 +4704,7 @@ class DescribeUrlViolationsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UrlRecordList: 违规 URL 详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlRecordList: list of ViolationUrl
@@ -4617,7 +4735,7 @@ class DetailDomain(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 域名 ID
         :type ResourceId: str
         :param AppId: 腾讯云账号ID
@@ -4801,6 +4919,12 @@ off：不支持
         :param Quic: Quic配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param OssPrivateAccess: 回源OSS私有鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param WebSocket: WebSocket配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4858,6 +4982,8 @@ off：不支持
         self.OriginCombine = None
         self.PostMaxSize = None
         self.Quic = None
+        self.OssPrivateAccess = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -5007,6 +5133,12 @@ off：不支持
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5022,7 +5154,7 @@ class DiagnoseData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 诊断报告内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DiagnoseUnit
@@ -5060,7 +5192,7 @@ class DiagnoseInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagnoseUrl: 待诊断的URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnoseUrl: str
@@ -5120,7 +5252,7 @@ class DiagnoseList(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DiagnoseTag: 诊断任务标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiagnoseTag: str
@@ -5175,7 +5307,7 @@ class DiagnoseUnit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 内容单元英文名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
@@ -5215,7 +5347,7 @@ class DisableCachesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 禁用的 URL 列表（分协议生效，必须包含http://或https://）
 每次最多可提交 100 条，每日最多可提交 3000 条
         :type Urls: list of str
@@ -5240,14 +5372,18 @@ class DisableCachesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheOptResult: 提交结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CacheOptResult = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -5255,6 +5391,7 @@ class DisableCachesResponse(AbstractModel):
         if params.get("CacheOptResult") is not None:
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5264,7 +5401,7 @@ class DisableClsLogTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 日志集ID
         :type LogsetId: str
         :param TopicId: 日志主题ID
@@ -5296,7 +5433,7 @@ class DisableClsLogTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5313,7 +5450,7 @@ class DistrictIspInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Protocol: 协议类型
@@ -5381,7 +5518,7 @@ class DomainAreaConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Area: 地区列表，其中元素可为mainland/overseas
@@ -5409,7 +5546,7 @@ class DomainFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 过滤字段名，支持的列表如下：
 - origin：主源站。
 - domain：域名。
@@ -5417,7 +5554,7 @@ class DomainFilter(AbstractModel):
 - status：域名状态，online，offline或processing。
 - serviceType：业务类型，web，download或media。
 - projectId：项目ID。
-- domainType：主源站类型，cname表示自有源，cos表示cos接入。
+- domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储。
 - fullUrlCache：全路径缓存，on或off。
 - https：是否配置https，on，off或processing。
 - originPullProtocol：回源协议类型，支持http，follow或https。
@@ -5453,7 +5590,7 @@ class DomainLog(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 日志包起始时间
         :type StartTime: str
         :param EndTime: 日志包结束时间
@@ -5495,7 +5632,7 @@ class DownstreamCapping(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 下行速度配置开关
 on：开启
 off：关闭
@@ -5531,7 +5668,7 @@ class DuplicateDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 新增域名
         :type Domain: str
         :param ReferenceDomain: 被拷贝配置的域名
@@ -5559,7 +5696,7 @@ class DuplicateDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5576,7 +5713,7 @@ class EnableCachesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: 解封 URL 列表
         :type Urls: list of str
         :param Date: URL封禁日期
@@ -5604,7 +5741,7 @@ class EnableCachesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheOptResult: 结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
@@ -5628,7 +5765,7 @@ class EnableClsLogTopicRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 日志集ID
         :type LogsetId: str
         :param TopicId: 日志主题ID
@@ -5660,7 +5797,7 @@ class EnableClsLogTopicResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5672,12 +5809,12 @@ class EnableClsLogTopicResponse(AbstractModel):
 
 
 class ErrorPage(AbstractModel):
-    """状态码重定向配置，默认为关闭状态（功能灰度中，尚未全量）
+    """状态码重定向配置，默认为关闭状态
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 状态码重定向配置开关
 on：开启
 off：关闭
@@ -5714,7 +5851,7 @@ class ErrorPageRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusCode: 状态码
 支持 400、403、404、500
         :type StatusCode: int
@@ -5749,7 +5886,7 @@ class FollowRedirect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 回源跟随开关
 on：开启
 off：关闭
@@ -5775,7 +5912,7 @@ class ForceRedirect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 访问强制跳转配置开关
 on：开启
 off：关闭
@@ -5820,13 +5957,13 @@ class GetDisableRecordsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
+        :param Url: 指定 URL 查询
+        :type Url: str
         :param StartTime: 开始时间，如：2018-12-12 10:24:00。
         :type StartTime: str
         :param EndTime: 结束时间，如：2018-12-14 10:24:00。
         :type EndTime: str
-        :param Url: 指定 URL 查询
-        :type Url: str
         :param Status: URL 当前状态
 disable：当前仍为禁用状态，访问返回 403
 enable：当前为可用状态，已解禁，可正常访问
@@ -5835,22 +5972,26 @@ enable：当前为可用状态，已解禁，可正常访问
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为20。
         :type Limit: int
+        :param TaskId: 任务ID，任务ID和起始时间需要至少填写一项。
+        :type TaskId: str
         """
+        self.Url = None
         self.StartTime = None
         self.EndTime = None
-        self.Url = None
         self.Status = None
         self.Offset = None
         self.Limit = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
+        self.Url = params.get("Url")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.Url = params.get("Url")
         self.Status = params.get("Status")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5866,7 +6007,7 @@ class GetDisableRecordsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UrlRecordList: 封禁历史记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlRecordList: list of UrlRecord
@@ -5898,7 +6039,7 @@ class GuetzliAdapter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 开关，"on/off"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -5923,7 +6064,7 @@ class HeaderKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否组成Cachekey
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -5953,7 +6094,7 @@ class Hsts(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启，on或off。
         :type Switch: str
         :param MaxAge: MaxAge数值。
@@ -5987,7 +6128,7 @@ class HttpHeaderPathRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HeaderMode: http 头部设置方式
 set：设置。变更指定头部参数的取值为设置后的值；若设置的头部不存在，则会增加该头部；若存在多个重复的头部参数，则会全部变更，同时合并为一个头部。
 del：删除。删除指定的头部参数
@@ -6045,7 +6186,7 @@ class HttpHeaderRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param HeaderMode: http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
         :type HeaderMode: str
         :param HeaderName: http头部名称。
@@ -6077,7 +6218,7 @@ class Https(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: https 配置开关
 on：开启
 off：关闭
@@ -6171,7 +6312,7 @@ class ImageOptimization(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WebpAdapter: WebpAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebpAdapter: :class:`tencentcloud.cdn.v20180606.models.WebpAdapter`
@@ -6212,7 +6353,7 @@ class IpFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: IP 黑白名单配置开关
 on：开启
 off：关闭
@@ -6262,7 +6403,7 @@ class IpFilterPathRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FilterType: IP 黑白名单类型
 whitelist：白名单
 blacklist：黑名单
@@ -6314,7 +6455,7 @@ class IpFreqLimit(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: IP 限频配置开关
 on：开启
 off：关闭
@@ -6346,7 +6487,7 @@ class IpStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: 节点 IP
         :type Ip: str
         :param District: 节点所属区域
@@ -6388,7 +6529,7 @@ class Ipv6(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 域名是否开启ipv6功能，on或off。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -6413,7 +6554,7 @@ class Ipv6Access(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 域名是否开启ipv6访问功能，on或off。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -6438,7 +6579,7 @@ class KeyRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RulePaths: CacheType 对应类型下的匹配内容：
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
@@ -6454,8 +6595,8 @@ index：首页
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: str
         :param FullUrlCache: 是否开启全路径缓存
-on：开启全路径缓存（即关闭参数过滤）
-off：关闭全路径缓存（即开启参数过滤）
+on：开启全路径缓存（即关闭参数忽略）
+off：关闭全路径缓存（即开启参数忽略）
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullUrlCache: str
         :param IgnoreCase: 是否忽略大小写缓存
@@ -6500,7 +6641,7 @@ class ListClsLogTopicsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Channel: 接入渠道，默认值为cdn
         :type Channel: str
         """
@@ -6524,7 +6665,7 @@ class ListClsLogTopicsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Logset: 日志集信息
         :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
         :param Topics: 日志主题信息列表
@@ -6557,7 +6698,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 日志集ID
         :type LogsetId: str
         :param TopicId: 日志主题ID
@@ -6589,7 +6730,7 @@ class ListClsTopicDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: 开发者ID
         :type AppId: int
         :param Channel: 渠道
@@ -6640,7 +6781,7 @@ class ListDiagnoseReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param KeyWords: 用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
         :type KeyWords: str
         :param DiagnoseLink: 用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
@@ -6668,7 +6809,7 @@ class ListDiagnoseReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 诊断信息。
         :type Data: list of DiagnoseInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6694,7 +6835,7 @@ class ListScdnDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 分页起始地址
         :type Offset: int
         :param Limit: 列表分页记录条数，最大1000
@@ -6726,7 +6867,7 @@ class ListScdnDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DomainList: 域名列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainList: list of ScdnDomain
@@ -6758,7 +6899,7 @@ class ListScdnLogTasksRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Source: 产品来源 cdn/ecdn
         :type Source: str
         :param Area: 地域：mainland 或 overseas 为空表示查询所有地域
@@ -6786,7 +6927,7 @@ class ListScdnLogTasksResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskList: 日志下载任务详情
         :type TaskList: list of ScdnLogTaskDetail
         :param TotalCount: 查询到的下载任务的总数
@@ -6816,7 +6957,7 @@ class ListTopDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartTime: 查询起始日期：yyyy-MM-dd HH:mm:ss
 仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
 返回大于等于起始日期当天 00:00:00 点产生的数据
@@ -6868,6 +7009,8 @@ overseas：指定查询中国境外 CDN 数据，支持的 Metric 为 url、dist
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据，当 Metric 为 host 时仅支持 flux、request、bandwidth Filter
         :type AreaType: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6879,6 +7022,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         self.Code = None
         self.Area = None
         self.AreaType = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -6892,6 +7036,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         self.Code = params.get("Code")
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6907,7 +7052,7 @@ class ListTopDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Data: 各个资源的Top 访问数据详情。
         :type Data: list of TopData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6933,7 +7078,7 @@ class LogSetInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AppId: 开发者ID
         :type AppId: int
         :param Channel: 渠道
@@ -6992,7 +7137,7 @@ class MainlandConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Authentication: 时间戳防盗链配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
@@ -7178,7 +7323,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 日志集ID
         :type LogsetId: str
         :param TopicId: 日志主题ID
@@ -7219,7 +7364,7 @@ class ManageClsTopicDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7236,7 +7381,7 @@ class MapInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 对象 Id
         :type Id: int
         :param Name: 对象名称
@@ -7259,12 +7404,12 @@ class MapInfo(AbstractModel):
 
 
 class MaxAge(AbstractModel):
-    """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态（功能灰度中，尚未全量）
+    """浏览器缓存规则配置，用于设置 MaxAge 默认值，默认为关闭状态
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 浏览器缓存配置开关
 on：开启
 off：关闭
@@ -7301,7 +7446,7 @@ class MaxAgeRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxAgeType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
@@ -7350,7 +7495,7 @@ class ModifyPurgeFetchTaskStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExecutionTime: 执行时间
         :type ExecutionTime: str
         :param ExecutionStatus: 执行状态
@@ -7388,7 +7533,7 @@ class ModifyPurgeFetchTaskStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7405,7 +7550,7 @@ class OfflineCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off, 离线缓存是否开启
         :type Switch: str
         """
@@ -7436,7 +7581,7 @@ class Origin(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Origins: 主源站列表
 修改源站时，需要同时填充对应的 OriginType
 注意：此字段可能返回 null，表示取不到有效值。
@@ -7542,7 +7687,7 @@ class OriginAuthentication(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 鉴权开关，on或off
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -7574,7 +7719,7 @@ class OriginAuthenticationTypeA(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
@@ -7599,7 +7744,7 @@ class OriginCombine(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off 是否开启合并回源
         :type Switch: str
         """
@@ -7623,7 +7768,7 @@ class OriginIp(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ip: 回源IP段/回源IP，默认返回IP段信息。
         :type Ip: str
         """
@@ -7647,7 +7792,7 @@ class OriginPullOptimization(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 跨国回源优化配置开关
 on：开启
 off：关闭
@@ -7680,7 +7825,7 @@ class OriginPullTimeout(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ConnectTimeout: 回源建连超时时间，单位为秒，要求5~60之间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectTimeout: int
@@ -7704,6 +7849,40 @@ class OriginPullTimeout(AbstractModel):
         
 
 
+class OssPrivateAccess(AbstractModel):
+    """oss回源鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关， on/off。
+        :type Switch: str
+        :param AccessKey: 访问ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param SecretKey: 密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OverseaConfig(AbstractModel):
     """域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
     + Authentication
@@ -7716,7 +7895,7 @@ class OverseaConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Authentication: 时间戳防盗链配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
@@ -7902,7 +8081,7 @@ class PathBasedOriginRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleType: 规则类型：
 file：指定文件后缀生效
 directory：指定路径生效
@@ -7942,7 +8121,7 @@ class PathRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Regex: 是否开启通配符“*”匹配：
 false：关闭
 true：开启
@@ -7969,6 +8148,11 @@ OV：中国境外
         :param RequestHeaders: 路径匹配时回源的头部设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestHeaders: list of HttpHeaderRule
+        :param FullMatch: 当Regex为false时，Path是否开启完全匹配。
+false：关闭
+true：开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullMatch: bool
         """
         self.Regex = None
         self.Path = None
@@ -7977,6 +8161,7 @@ OV：中国境外
         self.OriginArea = None
         self.ForwardUri = None
         self.RequestHeaders = None
+        self.FullMatch = None
 
 
     def _deserialize(self, params):
@@ -7992,6 +8177,7 @@ OV：中国境外
                 obj = HttpHeaderRule()
                 obj._deserialize(item)
                 self.RequestHeaders.append(obj)
+        self.FullMatch = params.get("FullMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8007,7 +8193,7 @@ class PostSize(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是调整POST请求限制，平台默认为32MB。
 关闭：off，
 开启：on。
@@ -8037,7 +8223,7 @@ class PurgePathCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Paths: 目录列表，需要包含协议头部 http:// 或 https://
         :type Paths: list of str
         :param FlushType: 刷新类型
@@ -8071,7 +8257,7 @@ class PurgePathCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 刷新任务 ID，同一批次提交的目录共用一个任务 ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8092,7 +8278,7 @@ class PurgeTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 刷新任务 ID
         :type TaskId: str
         :param Url: 刷新 URL
@@ -8143,7 +8329,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: URL 列表，需要包含协议头部 http:// 或 https://
         :type Urls: list of str
         :param Area: 刷新区域
@@ -8179,7 +8365,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 刷新任务 ID，同一批次提交的 URL 共用一个任务 ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8200,7 +8386,7 @@ class PushTask(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 预热任务 ID
         :type TaskId: str
         :param Url: 预热 URL
@@ -8209,6 +8395,7 @@ class PushTask(AbstractModel):
 fail：预热失败
 done：预热成功
 process：预热中
+invalid：预热无效(源站返回4xx或5xx状态码)
         :type Status: str
         :param Percent: 预热进度百分比
         :type Percent: int
@@ -8255,7 +8442,7 @@ class PushUrlsCacheRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Urls: URL 列表，需要包含协议头部 http:// 或 https://
         :type Urls: list of str
         :param UserAgent: 指定预热请求回源时 HTTP 请求的 User-Agent 头部
@@ -8304,7 +8491,7 @@ class PushUrlsCacheResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TaskId: 此批提交的任务 ID
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8325,7 +8512,7 @@ class QueryStringKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off CacheKey是否由QueryString组成
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -8365,7 +8552,7 @@ class Quic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否启动Quic配置
         :type Switch: str
         """
@@ -8389,7 +8576,7 @@ class Quota(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Batch: 单次批量提交配额上限。
         :type Batch: int
         :param Total: 每日提交配额上限。
@@ -8425,7 +8612,7 @@ class RangeOriginPull(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 分片回源配置开关
 on：开启
 off：关闭
@@ -8451,7 +8638,7 @@ class Referer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: referer 黑白名单配置开关
 on：开启
 off：关闭
@@ -8487,7 +8674,7 @@ class RefererRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
@@ -8539,7 +8726,7 @@ class RegionMapRelation(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 区域ID。
         :type RegionId: int
         :param SubRegionIdList: 子区域ID列表
@@ -8567,7 +8754,7 @@ class ReportData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceId: 项目ID/域名ID。
         :type ResourceId: str
         :param Resource: 项目名称/域名。
@@ -8611,7 +8798,7 @@ class RequestHeader(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 自定义请求头配置开关
 on：开启
 off：关闭
@@ -8647,7 +8834,7 @@ class ResourceBillingData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 资源名称，根据查询条件不同分为以下几类：
 某一个具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
@@ -8684,12 +8871,12 @@ class ResourceData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 资源名称，根据查询条件不同分为以下几类：
-具体域名：表示该域名明细数据
-multiDomains：表示多域名汇总明细数据
-项目 ID：指定项目查询时，显示为项目 ID
-all：账号维度明细数据
+单域名：指定单域名查询，表示该域名明细数据，当传入参数 detail 指定为 true 时，显示该域名（ detail 参数默认为 false ）
+多域名：指定多个域名查询，表示多域名汇总明细数据，显示 multiDomains
+项目 ID：指定项目查询时，表示该项目下的域名汇总明细数据，显示该项目 ID
+all：账号维度明细数据，即账号下所有域名的汇总明细数据
         :type Resource: str
         :param CdnData: 资源对应的数据明细
         :type CdnData: list of CdnData
@@ -8721,7 +8908,7 @@ class ResourceOriginData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 资源名称，根据查询条件不同分为以下几类：
 具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
@@ -8758,7 +8945,7 @@ class ResponseHeader(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 自定义响应头开关
 on：开启
 off：关闭
@@ -8794,7 +8981,7 @@ class ResponseHeaderCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 源站头部缓存开关
 on：开启
 off：关闭
@@ -8820,7 +9007,7 @@ class Revalidate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off 是否总是回源校验
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -8852,7 +9039,7 @@ class RuleCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RulePaths: CacheType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
@@ -8899,7 +9086,7 @@ class RuleCacheConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cache: 缓存配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigCache`
@@ -8940,7 +9127,7 @@ class RuleQueryString(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off CacheKey是否由QueryString组成
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -8975,7 +9162,7 @@ class ScdnAclConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 是否开启，on | off
         :type Switch: str
         :param ScriptData: Acl规则组，switch为on时必填
@@ -9016,20 +9203,24 @@ class ScdnAclGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleName: 规则名称
         :type RuleName: str
         :param Configure: 具体配置
         :type Configure: list of ScdnAclRule
-        :param Result: 规则行为，一般为refuse
+        :param Result: 规则行为，一般为refuse，重定向redirect
         :type Result: str
         :param Status: 规则是否生效中active|inactive
         :type Status: str
+        :param ErrorPage: 错误页面配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
         """
         self.RuleName = None
         self.Configure = None
         self.Result = None
         self.Status = None
+        self.ErrorPage = None
 
 
     def _deserialize(self, params):
@@ -9042,6 +9233,9 @@ class ScdnAclGroup(AbstractModel):
                 self.Configure.append(obj)
         self.Result = params.get("Result")
         self.Status = params.get("Status")
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9057,7 +9251,7 @@ class ScdnAclRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MatchKey: 匹配关键字, params | url | ip | referer | user-agent
         :type MatchKey: str
         :param LogiOperator: 逻辑操作符，取值 exclude, include, notequal, equal, len-less, len-equal, len-more
@@ -9089,7 +9283,7 @@ class ScdnBotConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off
         :type Switch: str
         :param BotCookie: Bot cookie策略
@@ -9133,7 +9327,7 @@ class ScdnCCRules(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
@@ -9200,7 +9394,7 @@ class ScdnConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off
         :type Switch: str
         :param Rules: 自定义 cc 防护规则
@@ -9234,7 +9428,7 @@ class ScdnDdosConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off
         :type Switch: str
         """
@@ -9258,7 +9452,7 @@ class ScdnDomain(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Status: 当前状态，取值online | offline | process
@@ -9319,7 +9513,7 @@ class ScdnErrorPage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RedirectCode: 状态码
         :type RedirectCode: int
         :param RedirectUrl: 重定向url
@@ -9347,7 +9541,7 @@ class ScdnEventLogConditions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 匹配关键字，ip, attack_location
         :type Key: str
         :param Operator: 逻辑操作符，取值 exclude, include
@@ -9379,7 +9573,7 @@ class ScdnLogTaskDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: scdn域名
         :type Domain: str
         :param Mode: 防护类型
@@ -9483,7 +9677,7 @@ class ScdnTopData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 时间
         :type Time: str
         :param Value: 数值
@@ -9523,7 +9717,7 @@ class ScdnTopUrlData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Url: Top数据的URL
         :type Url: str
         :param Value: 数值
@@ -9560,7 +9754,7 @@ class ScdnTypeData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttackType: 攻击类型
         :type AttackType: str
         :param Value: 攻击值
@@ -9588,7 +9782,7 @@ class ScdnWafConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off
         :type Switch: str
         :param Mode: intercept|observe，默认intercept
@@ -9654,7 +9848,7 @@ class ScdnWafRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AttackType: 攻击类型
         :type AttackType: str
         :param Operate: 防护措施，observe
@@ -9682,7 +9876,7 @@ class SchemeKey(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on | off 是否使用scheme作为cache key的一部分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -9707,7 +9901,7 @@ class SearchClsLogRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetId: 需要查询的日志集ID
         :type LogsetId: str
         :param TopicIds: 需要查询的日志主题ID组合，以逗号分隔
@@ -9763,7 +9957,7 @@ class SearchClsLogResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Logs: 查询结果
         :type Logs: :class:`tencentcloud.cdn.v20180606.models.ClsSearchLogs`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9786,7 +9980,7 @@ class SecurityConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: on|off
         :type Switch: str
         """
@@ -9810,7 +10004,7 @@ class Seo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: SEO 配置开关
 on：开启
 off：关闭
@@ -9840,7 +10034,7 @@ class ServerCert(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CertId: 服务器证书 ID
 在 SSL 证书管理进行证书托管时自动生成
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9904,7 +10098,7 @@ class SimpleCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheRules: 缓存过期时间规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheRules: list of SimpleCacheRule
@@ -9974,7 +10168,7 @@ class SimpleCacheRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CacheType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
@@ -10017,7 +10211,7 @@ class Sort(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 排序字段，当前支持：
 createTime，域名创建时间
 certExpireTime，证书过期时间
@@ -10048,7 +10242,7 @@ class SpecificConfig(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Mainland: 国内特殊配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mainland: :class:`tencentcloud.cdn.v20180606.models.MainlandConfig`
@@ -10082,7 +10276,7 @@ class StartCdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
 域名状态需要为【已停用】
         :type Domain: str
@@ -10107,7 +10301,7 @@ class StartCdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10124,7 +10318,7 @@ class StartScdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -10148,7 +10342,7 @@ class StartScdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 开启结果，Success表示成功
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10169,7 +10363,7 @@ class StatusCodeCache(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 状态码缓存过期配置开关
 on：开启
 off：关闭
@@ -10206,7 +10400,7 @@ class StatusCodeCacheRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatusCode: http 状态码
 支持 403、404 状态码
         :type StatusCode: str
@@ -10235,7 +10429,7 @@ class StopCdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
 域名需要为【已启动】状态
         :type Domain: str
@@ -10260,7 +10454,7 @@ class StopCdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10277,7 +10471,7 @@ class StopScdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -10301,7 +10495,7 @@ class StopScdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 关闭结果，Success表示成功
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10322,7 +10516,7 @@ class SummarizedData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 汇总方式，存在以下几种：
 sum：累加求和
 max：最大值，带宽模式下，采用 5 分钟粒度汇总数据，计算峰值带宽
@@ -10353,7 +10547,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TagKey: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
@@ -10383,7 +10577,7 @@ class TimestampData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Time: 数据统计时间点，采用向前汇总模式
 以 5 分钟粒度为例，13:35:00 时间点代表的统计数据区间为 13:35:00 至 13:39:59
         :type Time: str
@@ -10412,7 +10606,7 @@ class TopData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Resource: 资源名称，根据查询条件不同分为以下几类：
 具体域名：表示该域名明细数据
 multiDomains：表示多域名汇总明细数据
@@ -10449,7 +10643,7 @@ class TopDetailData(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 数据类型的名称
         :type Name: str
         :param Value: 数据值
@@ -10477,7 +10671,7 @@ class TopicInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TopicId: 主题ID
         :type TopicId: str
         :param TopicName: 主题名字
@@ -10487,11 +10681,15 @@ class TopicInfo(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param Channel: 归属于cdn或ecdn
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Channel: str
         """
         self.TopicId = None
         self.TopicName = None
         self.Enabled = None
         self.CreateTime = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
@@ -10499,6 +10697,7 @@ class TopicInfo(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.Enabled = params.get("Enabled")
         self.CreateTime = params.get("CreateTime")
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10514,7 +10713,7 @@ class TpgAdapter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 开关，"on/off"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -10539,7 +10738,7 @@ class TrafficPackage(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 流量包 Id
         :type Id: int
         :param Type: 流量包类型
@@ -10622,7 +10821,7 @@ class UpdateDomainConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param ProjectId: 项目 ID
@@ -10710,6 +10909,10 @@ global：全球加速
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param OssPrivateAccess: 回源OSS私有鉴权
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param WebSocket: WebSocket配置
+        :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
         self.Domain = None
         self.ProjectId = None
@@ -10751,6 +10954,8 @@ global：全球加速
         self.OfflineCache = None
         self.OriginCombine = None
         self.Quic = None
+        self.OssPrivateAccess = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -10864,6 +11069,12 @@ global：全球加速
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10879,7 +11090,7 @@ class UpdateDomainConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10896,7 +11107,7 @@ class UpdateImageConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param WebpAdapter: WebpAdapter配置项
@@ -10938,7 +11149,7 @@ class UpdateImageConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10955,7 +11166,7 @@ class UpdatePayTypeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Area: 计费区域，mainland或overseas。
         :type Area: str
         :param PayType: 计费类型，flux或bandwidth。
@@ -10983,7 +11194,7 @@ class UpdatePayTypeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11000,7 +11211,7 @@ class UpdateScdnDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         :param Waf: Web 攻击防护（WAF）配置
@@ -11054,7 +11265,7 @@ class UpdateScdnDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 提交结果，Success表示成功
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11075,7 +11286,7 @@ class UrlRecord(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 状态(disable表示封禁，enable表示解封)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
@@ -11110,17 +11321,17 @@ class UrlRecord(AbstractModel):
 
 
 class UrlRedirect(AbstractModel):
-    """URL重定向配置
+    """访问URL重写配置
 
     """
 
     def __init__(self):
-        """
-        :param Switch: URL重定向配置开关
+        r"""
+        :param Switch: 访问URL重写配置开关
 on：开启
 off：关闭
         :type Switch: str
-        :param PathRules: URL重定向规则，当Switch为on时必填，规则数量最大为10个。
+        :param PathRules: 访问URL重写规则，当Switch为on时必填，规则数量最大为10个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathRules: list of UrlRedirectRule
         """
@@ -11151,7 +11362,7 @@ class UrlRedirectRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RedirectStatusCode: 重定向状态码，301 | 302
         :type RedirectStatusCode: int
         :param Pattern: 待匹配的Url，仅支持Url路径，不支持参数。默认完全匹配，支持通配符 *，最多支持5个通配符，最大长度1024字符。
@@ -11188,7 +11399,7 @@ class UserAgentFilter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 开关，on或off
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
@@ -11223,7 +11434,7 @@ class UserAgentFilterRule(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RuleType: 访问路径生效类型
 all: 所有访问路径生效
 file: 根据文件后缀类型生效
@@ -11267,7 +11478,7 @@ class VerifyDomainRecordRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domain: 域名
         :type Domain: str
         """
@@ -11291,7 +11502,7 @@ class VerifyDomainRecordResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 是否验证成功
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11312,7 +11523,7 @@ class VideoSeek(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 视频拖拽开关
 on：开启
 off：关闭
@@ -11338,7 +11549,7 @@ class ViolationUrl(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: ID
         :type Id: int
         :param RealUrl: 违规资源原始访问 URL
@@ -11387,7 +11598,7 @@ class WafSubRuleStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 子规则状态，on|off
         :type Switch: str
         :param SubIds: 规则id列表
@@ -11409,13 +11620,44 @@ class WafSubRuleStatus(AbstractModel):
         
 
 
+class WebSocket(AbstractModel):
+    """WebSocket配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+
+* WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
+        :type Switch: str
+        :param Timeout: 设置超时时间，单位为秒，最大超时时间65秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        """
+        self.Switch = None
+        self.Timeout = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class WebpAdapter(AbstractModel):
     """图片优化-WebpAdapter配置
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Switch: 开关，"on/off"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str

@@ -18,13 +18,53 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivityRecordItem(AbstractModel):
+    """活动详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param ActivityId: 活动id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: int
+        :param Status: 自定义状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param SubStatus: 自定义子状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubStatus: str
+        """
+        self.Uin = None
+        self.ActivityId = None
+        self.Status = None
+        self.SubStatus = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.ActivityId = params.get("ActivityId")
+        self.Status = params.get("Status")
+        self.SubStatus = params.get("SubStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthDomain(AbstractModel):
     """合法域名
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 域名ID
         :type Id: str
         :param Domain: 域名
@@ -66,6 +106,75 @@ class AuthDomain(AbstractModel):
         
 
 
+class BackendServiceInfo(AbstractModel):
+    """网关服务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceName: 服务名称
+        :type ServiceName: str
+        :param Status: 服务状态
+        :type Status: str
+        """
+        self.ServiceName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ServiceName = params.get("ServiceName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindEnvGatewayRequest(AbstractModel):
+    """BindEnvGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubEnvId: 子环境id
+        :type SubEnvId: str
+        """
+        self.SubEnvId = None
+
+
+    def _deserialize(self, params):
+        self.SubEnvId = params.get("SubEnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindEnvGatewayResponse(AbstractModel):
+    """BindEnvGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CheckTcbServiceRequest(AbstractModel):
     """CheckTcbService请求参数结构体
 
@@ -78,7 +187,7 @@ class CheckTcbServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Initialized: true表示已开通
         :type Initialized: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -100,7 +209,7 @@ class CloudBaseCapabilities(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Add: 启用安全能力项列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Add: list of str
@@ -130,7 +239,7 @@ class CloudBaseCodeRepoDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: repo的名字
         :type Name: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCodeRepoName`
         :param Url: repo的url
@@ -160,7 +269,7 @@ class CloudBaseCodeRepoName(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: repo的名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -190,7 +299,7 @@ class CloudBaseEsInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: es的id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
@@ -245,7 +354,7 @@ class CloudBaseProjectVersion(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 项目名
         :type Name: str
         :param Sam: SAM json
@@ -386,7 +495,7 @@ class CloudBaseRunEmptyDirVolumeSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnableEmptyDirVolume: 启用emptydir数据卷
         :type EnableEmptyDirVolume: bool
         :param Medium: "","Memory","HugePages"
@@ -418,7 +527,7 @@ class CloudBaseRunForGatewayConf(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IsZero: 是否缩容到0
         :type IsZero: bool
         :param Weight: 按百分比灰度的权重
@@ -490,7 +599,7 @@ class CloudBaseRunImageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RepositoryName: 镜像仓库名称
         :type RepositoryName: str
         :param IsPublic: 是否公有
@@ -530,7 +639,7 @@ class CloudBaseRunImageSecretInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegistryServer: 镜像地址
         :type RegistryServer: str
         :param UserName: 用户名
@@ -566,7 +675,7 @@ class CloudBaseRunNfsVolumeSource(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Server: NFS挂载Server
         :type Server: str
         :param Path: Server路径
@@ -606,7 +715,7 @@ class CloudBaseRunServiceVolumeMount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: Volume 名称
         :type Name: str
         :param MountPath: 挂载路径
@@ -646,7 +755,7 @@ class CloudBaseRunSideSpec(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ContainerImage: 容器镜像
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerImage: str
@@ -718,7 +827,7 @@ class CloudBaseRunVersionFlowItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionName: 版本名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
@@ -765,7 +874,7 @@ class CloudBaseRunVolumeMount(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 资源名
         :type Name: str
         :param MountPath: 挂载路径
@@ -806,7 +915,7 @@ class CloudBaseRunVpcInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: vpc的id
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
@@ -841,7 +950,7 @@ class CloudBaseRunVpcSubnet(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 子网id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
@@ -897,7 +1006,7 @@ class CloudBaseSecurityContext(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Capabilities: 安全特性
 注意：此字段可能返回 null，表示取不到有效值。
         :type Capabilities: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCapabilities`
@@ -924,7 +1033,7 @@ class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionName: 版本名
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
@@ -1093,7 +1202,7 @@ class CloudRunServiceVolume(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -1136,13 +1245,49 @@ class CloudRunServiceVolume(AbstractModel):
         
 
 
+class ClsInfo(AbstractModel):
+    """cls日志信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClsRegion: cls所属地域
+        :type ClsRegion: str
+        :param ClsLogsetId: cls日志集ID
+        :type ClsLogsetId: str
+        :param ClsTopicId: cls日志主题ID
+        :type ClsTopicId: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.ClsRegion = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ClsRegion = params.get("ClsRegion")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CodeSource(AbstractModel):
     """云开发项目来源
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 类型, 可能的枚举: "coding","package","package_url","github","gitlab","gitee","rawcode"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
@@ -1167,6 +1312,9 @@ class CodeSource(AbstractModel):
         :param Branch: 代码分支
 注意：此字段可能返回 null，表示取不到有效值。
         :type Branch: str
+        :param ProjectId: coding项目ID，type为coding时需要填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
         """
         self.Type = None
         self.Url = None
@@ -1176,6 +1324,7 @@ class CodeSource(AbstractModel):
         self.CodingPackageVersion = None
         self.RawCode = None
         self.Branch = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1187,6 +1336,7 @@ class CodeSource(AbstractModel):
         self.CodingPackageVersion = params.get("CodingPackageVersion")
         self.RawCode = params.get("RawCode")
         self.Branch = params.get("Branch")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1202,7 +1352,7 @@ class CommonServiceAPIRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Service: Service名，需要转发访问的接口名
         :type Service: str
         :param JSONData: 需要转发的云API参数，要转成JSON格式
@@ -1230,7 +1380,7 @@ class CommonServiceAPIResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JSONResp: json格式response
         :type JSONResp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1251,7 +1401,7 @@ class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 项目名
         :type Name: str
         :param Source: 来源
@@ -1330,7 +1480,7 @@ class CreateAndDeployCloudBaseProjectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnvId: str
@@ -1352,7 +1502,7 @@ class CreateAuthDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param Domains: 安全域名
@@ -1380,7 +1530,7 @@ class CreateAuthDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1397,7 +1547,7 @@ class CreateCloudBaseRunResourceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param VpcId: vpc的ID
@@ -1429,7 +1579,7 @@ class CreateCloudBaseRunResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回集群创建是否成功 succ为成功。并且中间无err
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
@@ -1451,7 +1601,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param UploadType: 枚举（package/repository/image)
@@ -1653,7 +1803,7 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 状态(creating/succ)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
@@ -1685,7 +1835,7 @@ class CreateHostingDomainRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param Domain: 域名
@@ -1717,7 +1867,7 @@ class CreateHostingDomainResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1734,7 +1884,7 @@ class CreatePostpayPackageRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID，需要系统自动创建环境时，此字段不传
         :type EnvId: str
         :param WxAppId: 微信 AppId，微信必传
@@ -1800,7 +1950,7 @@ class CreatePostpayPackageResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranId: 后付费订单号
         :type TranId: str
         :param EnvId: 环境ID
@@ -1820,13 +1970,78 @@ class CreatePostpayPackageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStandaloneGatewayRequest(AbstractModel):
+    """CreateStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayAlias: 网关名
+        :type GatewayAlias: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetIds: 子网ID
+        :type SubnetIds: list of str
+        :param GatewayDesc: 网关描述
+        :type GatewayDesc: str
+        :param PackageVersion: 网关套餐版本
+        :type PackageVersion: str
+        """
+        self.EnvId = None
+        self.GatewayAlias = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.GatewayDesc = None
+        self.PackageVersion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayAlias = params.get("GatewayAlias")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.GatewayDesc = params.get("GatewayDesc")
+        self.PackageVersion = params.get("PackageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStandaloneGatewayResponse(AbstractModel):
+    """CreateStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GatewayName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayName = params.get("GatewayName")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateStaticStoreRequest(AbstractModel):
     """CreateStaticStore请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param EnableUnion: 是否启用统一域名
@@ -1854,7 +2069,7 @@ class CreateStaticStoreResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 创建静态资源结果(succ/fail)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
@@ -1876,7 +2091,7 @@ class CreateWxCloudBaseRunEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param WxAppId: wx应用Id
         :type WxAppId: str
         :param Alias: 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
@@ -1922,7 +2137,7 @@ class CreateWxCloudBaseRunEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境Id
         :type EnvId: str
         :param TranId: 后付费订单号
@@ -1947,7 +2162,7 @@ class CreateWxCloudBaseRunServerDBClusterRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccountPassword: 账户密码
         :type AccountPassword: str
         :param EnvId: 环境ID
@@ -1979,7 +2194,7 @@ class CreateWxCloudBaseRunServerDBClusterResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1996,7 +2211,7 @@ class DatabasesInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 数据库唯一标识
         :type InstanceId: str
         :param Status: 状态。包含以下取值：
@@ -2033,19 +2248,23 @@ class DeleteCloudBaseProjectLatestVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         :param ProjectName: 项目名
         :type ProjectName: str
+        :param KeepResource: 是否保留资源
+        :type KeepResource: bool
         """
         self.EnvId = None
         self.ProjectName = None
+        self.KeepResource = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
         self.ProjectName = params.get("ProjectName")
+        self.KeepResource = params.get("KeepResource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2061,7 +2280,7 @@ class DeleteCloudBaseProjectLatestVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2072,13 +2291,79 @@ class DeleteCloudBaseProjectLatestVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCloudBaseRunServerVersionRequest(AbstractModel):
+    """DeleteCloudBaseRunServerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param IsDeleteServer: 是否删除服务，只有最后一个版本的时候，才生效。
+        :type IsDeleteServer: bool
+        :param IsDeleteImage: 只有删除服务的时候，才会起作用
+        :type IsDeleteImage: bool
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionName = None
+        self.IsDeleteServer = None
+        self.IsDeleteImage = None
+        self.OperatorRemark = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.IsDeleteServer = params.get("IsDeleteServer")
+        self.IsDeleteImage = params.get("IsDeleteImage")
+        self.OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudBaseRunServerVersionResponse(AbstractModel):
+    """DeleteCloudBaseRunServerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果，succ为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteEndUserRequest(AbstractModel):
     """DeleteEndUser请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param UserList: 用户列表，每一项都是uuid
@@ -2106,7 +2391,7 @@ class DeleteEndUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2123,7 +2408,7 @@ class DeleteWxGatewayRouteRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         :param GatewayRouteName: 服务名称
@@ -2151,7 +2436,7 @@ class DeleteWxGatewayRouteResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2162,13 +2447,79 @@ class DeleteWxGatewayRouteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeActivityRecordRequest(AbstractModel):
+    """DescribeActivityRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelToken: 渠道加密token
+        :type ChannelToken: str
+        :param Channel: 渠道来源，每个来源对应不同secretKey
+        :type Channel: str
+        :param ActivityIdList: 活动id列表
+        :type ActivityIdList: list of int
+        :param Status: 过滤状态码，已废弃
+        :type Status: int
+        :param Statuses: 状态码过滤数组，空数组时不过滤
+        :type Statuses: list of int
+        """
+        self.ChannelToken = None
+        self.Channel = None
+        self.ActivityIdList = None
+        self.Status = None
+        self.Statuses = None
+
+
+    def _deserialize(self, params):
+        self.ChannelToken = params.get("ChannelToken")
+        self.Channel = params.get("Channel")
+        self.ActivityIdList = params.get("ActivityIdList")
+        self.Status = params.get("Status")
+        self.Statuses = params.get("Statuses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeActivityRecordResponse(AbstractModel):
+    """DescribeActivityRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityRecords: 活动记录详情
+        :type ActivityRecords: list of ActivityRecordItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ActivityRecords") is not None:
+            self.ActivityRecords = []
+            for item in params.get("ActivityRecords"):
+                obj = ActivityRecordItem()
+                obj._deserialize(item)
+                self.ActivityRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAuthDomainsRequest(AbstractModel):
     """DescribeAuthDomains请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -2192,7 +2543,7 @@ class DescribeAuthDomainsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Domains: 安全域名列表列表
         :type Domains: list of AuthDomain
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2218,7 +2569,7 @@ class DescribeCloudBaseBuildServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         :param ServiceName: 服务名
@@ -2254,7 +2605,7 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UploadUrl: 上传url
         :type UploadUrl: str
         :param UploadHeaders: 上传heder
@@ -2312,7 +2663,7 @@ class DescribeCloudBaseProjectLatestVersionListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量
         :type Offset: int
         :param PageSize: 个数
@@ -2356,7 +2707,7 @@ class DescribeCloudBaseProjectLatestVersionListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectList: 项目列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectList: list of CloudBaseProjectVersion
@@ -2388,7 +2739,7 @@ class DescribeCloudBaseProjectVersionListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         :param ProjectName: 项目名称
@@ -2432,7 +2783,7 @@ class DescribeCloudBaseProjectVersionListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProjectVersions: 版本列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectVersions: list of CloudBaseProjectVersion
@@ -2464,7 +2815,7 @@ class DescribeCloudBaseRunConfForGateWayRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvID: 环境ID
         :type EnvID: str
         :param VpcID: vpc信息
@@ -2492,7 +2843,7 @@ class DescribeCloudBaseRunConfForGateWayResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LastUpTime: 最近更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpTime: str
@@ -2524,7 +2875,7 @@ class DescribeCloudBaseRunResourceForExtendRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -2548,7 +2899,7 @@ class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterStatus: 集群状态(creating/succ)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: str
@@ -2595,7 +2946,7 @@ class DescribeCloudBaseRunResourceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -2619,7 +2970,7 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ClusterStatus: 集群状态(creating/succ)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: str
@@ -2666,7 +3017,7 @@ class DescribeCloudBaseRunServerVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param ServerName: 服务名称
@@ -2698,7 +3049,7 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionName: 版本名称
         :type VersionName: str
         :param Remark: 备注
@@ -2866,7 +3217,7 @@ class DescribeCloudBaseRunVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param ServerName: 服务名称
@@ -2898,7 +3249,7 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VersionName: 版本名称
         :type VersionName: str
         :param Remark: 备注
@@ -3058,7 +3409,7 @@ class DescribeCloudBaseRunVersionSnapshotRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServerName: 服务名
         :type ServerName: str
         :param VersionName: 版本名
@@ -3102,7 +3453,7 @@ class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Snapshots: 版本历史
 注意：此字段可能返回 null，表示取不到有效值。
         :type Snapshots: list of CloudRunServiceSimpleVersionSnapshot
@@ -3123,13 +3474,113 @@ class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCurveDataRequest(AbstractModel):
+    """DescribeCurveData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param MetricName: <li> 指标名: </li>
+<li> StorageRead: 存储读请求次数 </li>
+<li> StorageWrite: 存储写请求次数 </li>
+<li> StorageCdnOriginFlux: CDN回源流量, 单位字节 </li>
+<li> CDNFlux: CDN回源流量, 单位字节 </li>
+<li> FunctionInvocation: 云函数调用次数 </li>
+<li> FunctionGBs: 云函数资源使用量, 单位Mb*Ms </li>
+<li> FunctionFlux: 云函数流量, 单位千字节(KB) </li>
+<li> FunctionError: 云函数调用错误次数 </li>
+<li> FunctionDuration: 云函数运行时间, 单位毫秒 </li>
+<li> DbRead: 数据库读请求数 </li>
+<li> DbWrite: 数据库写请求数 </li>
+<li> DbCostTime10ms: 数据库耗时在10ms~50ms请求数 </li>
+<li> DbCostTime50ms: 数据库耗时在50ms~100ms请求数 </li>
+<li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
+<li> TkeCpuRatio: 容器CPU占用率 </li>
+<li> TkeMemRatio: 容器内存占用率 </li>
+<li> TkeCpuUsed: 容器CPU使用量 </li>
+<li> TkeMemUsed: 容器内存使用量 </li>
+<li> TkeInvokeNum: 调用量 </li>
+        :type MetricName: str
+        :param StartTime: 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
+        :type StartTime: str
+        :param EndTime: 结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)..
+        :type EndTime: str
+        :param ResourceID: 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocation, FunctionGBs, FunctionFlux, FunctionError, FunctionDuration)、容器托管（服务名称）, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.如果想查询数据库某个集合相关信息，传入集合名称
+        :type ResourceID: str
+        """
+        self.EnvId = None
+        self.MetricName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.ResourceID = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.MetricName = params.get("MetricName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.ResourceID = params.get("ResourceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCurveDataResponse(AbstractModel):
+    """DescribeCurveData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间, 会根据数据的统计周期进行取整.
+        :type StartTime: str
+        :param EndTime: 结束时间, 会根据数据的统计周期进行取整.
+        :type EndTime: str
+        :param MetricName: 指标名.
+        :type MetricName: str
+        :param Period: 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
+        :type Period: int
+        :param Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+        :type Values: list of int
+        :param Time: 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
+        :type Time: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Period = None
+        self.Values = None
+        self.Time = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Period = params.get("Period")
+        self.Values = params.get("Values")
+        self.Time = params.get("Time")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabaseACLRequest(AbstractModel):
     """DescribeDatabaseACL请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param CollectionName: 集合名称
@@ -3157,7 +3608,7 @@ class DescribeDatabaseACLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AclTag: 权限标签。包含以下取值：
 <li> READONLY：所有用户可读，仅创建者和管理员可写</li>
 <li> PRIVATE：仅创建者及管理员可读写</li>
@@ -3182,8 +3633,8 @@ class DescribeDownloadFileRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param CodeUri: 代码uri
+        r"""
+        :param CodeUri: 代码uri，格式如：extension://abcdefhhxxx.zip，对应 DescribeExtensionUploadInfo 接口的返回值
         :type CodeUri: str
         """
         self.CodeUri = None
@@ -3206,11 +3657,11 @@ class DescribeDownloadFileResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
-        :param FilePath: 文件路径
+        r"""
+        :param FilePath: 文件路径，该字段已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
-        :param CustomKey: 加密key
+        :param CustomKey: 加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomKey: str
         :param DownloadUrl: 下载链接
@@ -3238,7 +3689,7 @@ class DescribeEndUserLoginStatisticRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         :param Source: 终端用户来源
@@ -3268,7 +3719,7 @@ class DescribeEndUserLoginStatisticResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LoginStatistics: 环境终端用户新增与登录统计
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoginStatistics: list of LoginStatistic
@@ -3295,7 +3746,7 @@ class DescribeEndUserStatisticRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         """
@@ -3319,7 +3770,7 @@ class DescribeEndUserStatisticResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PlatformStatistics: 终端用户各平台统计
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlatformStatistics: list of PlatformStatistic
@@ -3350,7 +3801,7 @@ class DescribeEndUsersRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 开发者的环境ID
         :type EnvId: str
         :param Offset: 可选参数，偏移量，默认 0
@@ -3386,7 +3837,7 @@ class DescribeEndUsersResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Total: 用户总数
         :type Total: int
         :param Users: 用户列表
@@ -3416,7 +3867,7 @@ class DescribeEnvFreeQuotaRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param ResourceTypes: 资源类型：可选值：CDN, COS, FLEXDB, HOSTING, SCF
@@ -3445,7 +3896,7 @@ class DescribeEnvFreeQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param QuotaItems: 免费抵扣配额详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaItems: list of PostpayEnvQuota
@@ -3478,7 +3929,7 @@ class DescribeEnvLimitResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxEnvNum: 环境总数上限
         :type MaxEnvNum: int
         :param CurrentEnvNum: 目前环境总数
@@ -3499,6 +3950,14 @@ class DescribeEnvLimitResponse(AbstractModel):
         :type MaxFreeTrialNum: int
         :param CurrentFreeTrialNum: 微信网关体验版已购买月份数
         :type CurrentFreeTrialNum: int
+        :param ChangePayTotal: 转支付限额总数
+        :type ChangePayTotal: int
+        :param CurrentChangePayTotal: 当前已用转支付次数
+        :type CurrentChangePayTotal: int
+        :param ChangePayMonthly: 转支付每月限额
+        :type ChangePayMonthly: int
+        :param CurrentChangePayMonthly: 本月已用转支付额度
+        :type CurrentChangePayMonthly: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3512,6 +3971,10 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.CurrentDeleteMonthly = None
         self.MaxFreeTrialNum = None
         self.CurrentFreeTrialNum = None
+        self.ChangePayTotal = None
+        self.CurrentChangePayTotal = None
+        self.ChangePayMonthly = None
+        self.CurrentChangePayMonthly = None
         self.RequestId = None
 
 
@@ -3526,6 +3989,73 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.CurrentDeleteMonthly = params.get("CurrentDeleteMonthly")
         self.MaxFreeTrialNum = params.get("MaxFreeTrialNum")
         self.CurrentFreeTrialNum = params.get("CurrentFreeTrialNum")
+        self.ChangePayTotal = params.get("ChangePayTotal")
+        self.CurrentChangePayTotal = params.get("CurrentChangePayTotal")
+        self.ChangePayMonthly = params.get("ChangePayMonthly")
+        self.CurrentChangePayMonthly = params.get("CurrentChangePayMonthly")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvPostpaidDeductRequest(AbstractModel):
+    """DescribeEnvPostpaidDeduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceTypes: 资源方列表
+        :type ResourceTypes: list of str
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.ResourceTypes = None
+        self.EnvId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceTypes = params.get("ResourceTypes")
+        self.EnvId = params.get("EnvId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvPostpaidDeductResponse(AbstractModel):
+    """DescribeEnvPostpaidDeduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PostPaidEnvDeductInfoList: 指标抵扣详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostPaidEnvDeductInfoList: list of PostPaidEnvDeductInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PostPaidEnvDeductInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PostPaidEnvDeductInfoList") is not None:
+            self.PostPaidEnvDeductInfoList = []
+            for item in params.get("PostPaidEnvDeductInfoList"):
+                obj = PostPaidEnvDeductInfo()
+                obj._deserialize(item)
+                self.PostPaidEnvDeductInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3535,7 +4065,7 @@ class DescribeEnvsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID，如果传了这个参数则只返回该环境的相关信息
         :type EnvId: str
         :param IsVisible: 指定Channels字段为可见渠道列表或不可见渠道列表
@@ -3568,7 +4098,7 @@ class DescribeEnvsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvList: 环境信息列表
         :type EnvList: list of EnvInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3594,7 +4124,7 @@ class DescribeExtensionUploadInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExtensionFiles: 待上传的文件
         :type ExtensionFiles: list of ExtensionFile
         """
@@ -3623,7 +4153,7 @@ class DescribeExtensionUploadInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FilesData: 待上传文件的信息数组
         :type FilesData: list of ExtensionFileInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3649,7 +4179,7 @@ class DescribeExtraPkgBillingInfoRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 已购买增值包的环境ID
         :type EnvId: str
         """
@@ -3673,7 +4203,7 @@ class DescribeExtraPkgBillingInfoResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvInfoList: 增值包计费信息列表
         :type EnvInfoList: list of EnvBillingInfoItem
         :param Total: 增值包数目
@@ -3703,7 +4233,7 @@ class DescribeHostingDomainTaskRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -3727,7 +4257,7 @@ class DescribeHostingDomainTaskResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: todo/doing/done/error
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3748,7 +4278,7 @@ class DescribePostpayFreeQuotasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -3772,7 +4302,7 @@ class DescribePostpayFreeQuotasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreequotaInfoList: 免费量资源信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreequotaInfoList: list of FreequotaInfo
@@ -3799,7 +4329,7 @@ class DescribePostpayPackageFreeQuotasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param FreeQuotaType: 免费额度类型标识
@@ -3827,7 +4357,7 @@ class DescribePostpayPackageFreeQuotasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param PackageFreeQuotaInfos: 免费量资源信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageFreeQuotaInfos: list of PackageFreeQuotaInfo
@@ -3854,7 +4384,7 @@ class DescribeQuotaDataRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param MetricName: <li> 指标名: </li>
@@ -3913,7 +4443,7 @@ class DescribeQuotaDataResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MetricName: 指标名
         :type MetricName: str
         :param Value: 指标的值
@@ -3943,7 +4473,7 @@ class DescribeSmsQuotasRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -3967,7 +4497,7 @@ class DescribeSmsQuotasResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SmsFreeQuotaList: 短信免费量信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmsFreeQuotaList: list of SmsFreeQuota
@@ -3988,13 +4518,192 @@ class DescribeSmsQuotasResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSpecialCostItemsRequest(AbstractModel):
+    """DescribeSpecialCostItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.EnvId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpecialCostItemsResponse(AbstractModel):
+    """DescribeSpecialCostItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecialCostItems: 1分钱抵扣详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecialCostItems: list of SpecialCostItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SpecialCostItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SpecialCostItems") is not None:
+            self.SpecialCostItems = []
+            for item in params.get("SpecialCostItems"):
+                obj = SpecialCostItem()
+                obj._deserialize(item)
+                self.SpecialCostItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStandaloneGatewayPackageRequest(AbstractModel):
+    """DescribeStandaloneGatewayPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param PackageVersion: 套餐版本，包含starter、basic、advanced、enterprise
+        :type PackageVersion: str
+        """
+        self.EnvId = None
+        self.PackageVersion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.PackageVersion = params.get("PackageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandaloneGatewayPackageResponse(AbstractModel):
+    """DescribeStandaloneGatewayPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param StandaloneGatewayPackageList: 套餐详情
+        :type StandaloneGatewayPackageList: list of StandaloneGatewayPackageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.StandaloneGatewayPackageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("StandaloneGatewayPackageList") is not None:
+            self.StandaloneGatewayPackageList = []
+            for item in params.get("StandaloneGatewayPackageList"):
+                obj = StandaloneGatewayPackageInfo()
+                obj._deserialize(item)
+                self.StandaloneGatewayPackageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStandaloneGatewayRequest(AbstractModel):
+    """DescribeStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param GatewayAlias: 网关别名
+        :type GatewayAlias: str
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.GatewayAlias = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.GatewayAlias = params.get("GatewayAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandaloneGatewayResponse(AbstractModel):
+    """DescribeStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StandaloneGatewayList: 独立网关信息列表
+        :type StandaloneGatewayList: list of StandaloneGatewayInfo
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StandaloneGatewayList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StandaloneGatewayList") is not None:
+            self.StandaloneGatewayList = []
+            for item in params.get("StandaloneGatewayList"):
+                obj = StandaloneGatewayInfo()
+                obj._deserialize(item)
+                self.StandaloneGatewayList.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWxCloudBaseRunEnvsRequest(AbstractModel):
     """DescribeWxCloudBaseRunEnvs请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param WxAppId: wx应用Id
         :type WxAppId: str
         """
@@ -4018,7 +4727,7 @@ class DescribeWxCloudBaseRunEnvsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvList: env列表
         :type EnvList: list of EnvInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4044,7 +4753,7 @@ class DescribeWxCloudBaseRunSubNetsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param VpcId: VPC id
         :type VpcId: str
         :param Limit: 查询个数限制，不填或小于等于0，等于不限制
@@ -4072,7 +4781,7 @@ class DescribeWxCloudBaseRunSubNetsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SubNetIds: 子网Id列表
         :type SubNetIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4093,7 +4802,7 @@ class DestroyEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境Id
         :type EnvId: str
         :param IsForce: 针对预付费 删除隔离中的环境时要传true 正常环境直接跳过隔离期删除
@@ -4125,7 +4834,7 @@ class DestroyEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4136,13 +4845,66 @@ class DestroyEnvResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestroyStandaloneGatewayRequest(AbstractModel):
+    """DestroyStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网名名称
+        :type GatewayName: str
+        :param IsForce: 是否强制释放
+        :type IsForce: bool
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.IsForce = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.IsForce = params.get("IsForce")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyStandaloneGatewayResponse(AbstractModel):
+    """DestroyStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 删除独立网关状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyStaticStoreRequest(AbstractModel):
     """DestroyStaticStore请求参数结构体
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param CdnDomain: cdn域名
@@ -4170,7 +4932,7 @@ class DestroyStaticStoreResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 条件任务结果(succ/fail)
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4191,7 +4953,7 @@ class EndUserInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param UUId: 用户唯一ID
         :type UUId: str
         :param WXOpenId: 微信ID
@@ -4267,7 +5029,7 @@ class EnvBillingInfoItem(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param PackageId: tcb产品套餐ID，参考DescribePackages接口的返回值。
@@ -4351,7 +5113,7 @@ class EnvInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 账户下该环境唯一标识
         :type EnvId: str
         :param Source: 环境来源。包含以下取值：
@@ -4406,6 +5168,9 @@ class EnvInfo(AbstractModel):
         :param Tags: 环境标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param CustomLogServices: 自定义日志服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLogServices: list of ClsInfo
         """
         self.EnvId = None
         self.Source = None
@@ -4426,6 +5191,7 @@ class EnvInfo(AbstractModel):
         self.IsDefault = None
         self.Region = None
         self.Tags = None
+        self.CustomLogServices = None
 
 
     def _deserialize(self, params):
@@ -4478,6 +5244,12 @@ class EnvInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("CustomLogServices") is not None:
+            self.CustomLogServices = []
+            for item in params.get("CustomLogServices"):
+                obj = ClsInfo()
+                obj._deserialize(item)
+                self.CustomLogServices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4493,7 +5265,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境id
         :type EnvId: str
         :param ServiceName: 服务名称
@@ -4573,7 +5345,7 @@ class EstablishCloudBaseRunServerResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4590,7 +5362,7 @@ class EstablishWxGatewayRouteRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param GatewayId: 网关id
         :type GatewayId: str
         :param GatewayRouteName: 服务名称
@@ -4630,7 +5402,7 @@ class EstablishWxGatewayRouteResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4647,7 +5419,7 @@ class ExtensionFile(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileType: 文件类型。枚举值
 <li>FUNCTION：函数代码</li>
 <li>STATIC：静态托管代码</li>
@@ -4678,7 +5450,7 @@ class ExtensionFileInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CodeUri: 模板里使用的地址
         :type CodeUri: str
         :param UploadUrl: 上传文件的临时地址，含签名
@@ -4714,7 +5486,7 @@ class FreequotaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: 资源类型
 <li>COS</li>
 <li>CDN</li>
@@ -4768,7 +5540,7 @@ class FunctionInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Namespace: 命名空间
         :type Namespace: str
         :param Region: 所属地域。
@@ -4797,7 +5569,7 @@ class KVPair(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 键
         :type Key: str
         :param Value: 值
@@ -4825,7 +5597,7 @@ class LogServiceInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param LogsetName: log名
         :type LogsetName: str
         :param LogsetId: log-id
@@ -4865,7 +5637,7 @@ class LoginStatistic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StatisticalType: 统计类型 新增NEWUSER 和登录 LOGIN
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticalType: str
@@ -4905,7 +5677,7 @@ class ModifyCloudBaseRunServerFlowConfRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param ServerName: 服务名称
@@ -4950,7 +5722,7 @@ class ModifyCloudBaseRunServerFlowConfResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: 返回结果，succ代表成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
@@ -4972,7 +5744,7 @@ class ModifyDatabaseACLRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param CollectionName: 集合名称
@@ -5008,7 +5780,7 @@ class ModifyDatabaseACLResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5025,7 +5797,7 @@ class ModifyEndUserRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param UUId: C端用户端的唯一ID
@@ -5059,7 +5831,7 @@ class ModifyEndUserResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5076,7 +5848,7 @@ class ModifyEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param Alias: 环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
@@ -5104,7 +5876,7 @@ class ModifyEnvResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5121,7 +5893,7 @@ class ObjectKV(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: object 的 key
         :type Key: str
         :param Value: object key 对应的 value
@@ -5149,7 +5921,7 @@ class OrderInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TranId: 订单号
         :type TranId: str
         :param PackageId: 订单要切换的套餐ID
@@ -5220,7 +5992,7 @@ class PackageFreeQuotaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: 资源类型
 <li>COS</li>
 <li>CDN</li>
@@ -5278,7 +6050,7 @@ class PlatformStatistic(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Platform: 终端用户从属平台
 注意：此字段可能返回 null，表示取不到有效值。
         :type Platform: str
@@ -5307,13 +6079,63 @@ class PlatformStatistic(AbstractModel):
         
 
 
+class PostPaidEnvDeductInfo(AbstractModel):
+    """后付费计费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceType: 资源方
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param ResQuota: 按量计费详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResQuota: float
+        :param PkgQuota: 资源包抵扣详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgQuota: float
+        :param FreeQuota: 免费额度抵扣详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuota: float
+        :param EnvId: 环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        """
+        self.ResourceType = None
+        self.MetricName = None
+        self.ResQuota = None
+        self.PkgQuota = None
+        self.FreeQuota = None
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.MetricName = params.get("MetricName")
+        self.ResQuota = params.get("ResQuota")
+        self.PkgQuota = params.get("PkgQuota")
+        self.FreeQuota = params.get("FreeQuota")
+        self.EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PostpayEnvQuota(AbstractModel):
     """按量付费免费配额信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceType: 资源类型
         :type ResourceType: str
         :param MetricName: 指标名
@@ -5355,7 +6177,7 @@ class ReinstateEnvRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         """
@@ -5379,7 +6201,64 @@ class ReinstateEnvResponse(AbstractModel):
     """
 
     def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
         """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReplaceActivityRecordRequest(AbstractModel):
+    """ReplaceActivityRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: 活动id
+        :type ActivityId: int
+        :param Status: 状态码
+        :type Status: int
+        :param SubStatus: 自定义子状态
+        :type SubStatus: str
+        :param ChannelToken: 鉴权token
+        :type ChannelToken: str
+        :param Channel: 渠道名，不同渠道对应不同secretKey
+        :type Channel: str
+        """
+        self.ActivityId = None
+        self.Status = None
+        self.SubStatus = None
+        self.ChannelToken = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.Status = params.get("Status")
+        self.SubStatus = params.get("SubStatus")
+        self.ChannelToken = params.get("ChannelToken")
+        self.Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceActivityRecordResponse(AbstractModel):
+    """ReplaceActivityRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5396,7 +6275,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EnvId: 环境ID
         :type EnvId: str
         :param VersionName: 要替换的版本名称，可以为latest
@@ -5461,6 +6340,8 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         :type OperatorRemark: str
         :param ServerPath: 服务路径（只会第一次生效）
         :type ServerPath: str
+        :param IsUpdateCls: 是否更新Cls
+        :type IsUpdateCls: bool
         """
         self.EnvId = None
         self.VersionName = None
@@ -5494,6 +6375,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EnableUnion = None
         self.OperatorRemark = None
         self.ServerPath = None
+        self.IsUpdateCls = None
 
 
     def _deserialize(self, params):
@@ -5538,6 +6420,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EnableUnion = params.get("EnableUnion")
         self.OperatorRemark = params.get("OperatorRemark")
         self.ServerPath = params.get("ServerPath")
+        self.IsUpdateCls = params.get("IsUpdateCls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5553,7 +6436,7 @@ class RollUpdateCloudBaseRunServerVersionResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Result: succ为成功
         :type Result: str
         :param VersionName: 滚动更新的VersionName
@@ -5584,7 +6467,7 @@ class SmsFreeQuota(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FreeQuota: 免费量总条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreeQuota: int
@@ -5623,13 +6506,147 @@ class SmsFreeQuota(AbstractModel):
         
 
 
+class SpecialCostItem(AbstractModel):
+    """1分钱计费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportDate: 上报日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportDate: str
+        :param Uin: 腾讯云uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param EnvId: 资源id:环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param Status: 上报任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.ReportDate = None
+        self.Uin = None
+        self.EnvId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ReportDate = params.get("ReportDate")
+        self.Uin = params.get("Uin")
+        self.EnvId = params.get("EnvId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandaloneGatewayInfo(AbstractModel):
+    """独立网关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayName: 独立网关名称
+        :type GatewayName: str
+        :param CPU: CPU核心数
+        :type CPU: float
+        :param Mem: 内存大小，单位MB
+        :type Mem: int
+        :param PackageVersion: 套餐包版本名称
+        :type PackageVersion: str
+        :param GatewayAlias: 网关别名
+        :type GatewayAlias: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetIds: 子网ID列表
+        :type SubnetIds: list of str
+        :param GatewayDesc: 网关描述
+        :type GatewayDesc: str
+        :param GateWayStatus: 网关状态
+        :type GateWayStatus: str
+        :param ServiceInfo: 服务信息
+        :type ServiceInfo: :class:`tencentcloud.tcb.v20180608.models.BackendServiceInfo`
+        """
+        self.GatewayName = None
+        self.CPU = None
+        self.Mem = None
+        self.PackageVersion = None
+        self.GatewayAlias = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.GatewayDesc = None
+        self.GateWayStatus = None
+        self.ServiceInfo = None
+
+
+    def _deserialize(self, params):
+        self.GatewayName = params.get("GatewayName")
+        self.CPU = params.get("CPU")
+        self.Mem = params.get("Mem")
+        self.PackageVersion = params.get("PackageVersion")
+        self.GatewayAlias = params.get("GatewayAlias")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.GatewayDesc = params.get("GatewayDesc")
+        self.GateWayStatus = params.get("GateWayStatus")
+        if params.get("ServiceInfo") is not None:
+            self.ServiceInfo = BackendServiceInfo()
+            self.ServiceInfo._deserialize(params.get("ServiceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandaloneGatewayPackageInfo(AbstractModel):
+    """小租户网关套餐配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CPU: CPU核心数
+        :type CPU: float
+        :param Mem: 内存大小，单位MB
+        :type Mem: int
+        :param PackageVersion: 套餐包版本名称
+        :type PackageVersion: str
+        """
+        self.CPU = None
+        self.Mem = None
+        self.PackageVersion = None
+
+
+    def _deserialize(self, params):
+        self.CPU = params.get("CPU")
+        self.Mem = params.get("Mem")
+        self.PackageVersion = params.get("PackageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StaticStorageInfo(AbstractModel):
     """静态CDN资源信息
 
     """
 
     def __init__(self):
-        """
+        r"""
         :param StaticDomain: 静态CDN域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type StaticDomain: str
@@ -5674,7 +6691,7 @@ class StorageInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 资源所属地域。
 当前支持ap-shanghai
         :type Region: str
@@ -5711,7 +6728,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键
         :type Key: str
         :param Value: 标签值
@@ -5731,3 +6748,109 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TurnOffStandaloneGatewayRequest(AbstractModel):
+    """TurnOffStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param ServiceNameList: 服务名称列表
+        :type ServiceNameList: list of str
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.ServiceNameList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.ServiceNameList = params.get("ServiceNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TurnOffStandaloneGatewayResponse(AbstractModel):
+    """TurnOffStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 关闭独立网关状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class TurnOnStandaloneGatewayRequest(AbstractModel):
+    """TurnOnStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param ServiceNameList: 服务名称列表
+        :type ServiceNameList: list of str
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.ServiceNameList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.ServiceNameList = params.get("ServiceNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TurnOnStandaloneGatewayResponse(AbstractModel):
+    """TurnOnStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 小租户网关开启状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")

@@ -24,7 +24,7 @@ class Conditions(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Reason: 原因
         :type Reason: str
         :param Count: 具有相同原因的副本个数
@@ -52,7 +52,7 @@ class Config(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: Id
         :type Id: str
         :param Name: 配置名
@@ -105,7 +105,7 @@ class CreateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 任务名称
         :type Name: str
         :param ResourceGroupId: 使用的资源组 Id，默认使用共享资源组
@@ -185,7 +185,7 @@ class CreateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Job: 任务
         :type Job: :class:`tencentcloud.tiems.v20190416.models.Job`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -208,7 +208,7 @@ class CreateRsgAsGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RsgId: 资源组 ID
         :type RsgId: str
         :param MaxSize: 伸缩组允许的最大节点数
@@ -256,7 +256,7 @@ class CreateRsgAsGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RsgAsGroup: 所创建的资源组的伸缩组
         :type RsgAsGroup: :class:`tencentcloud.tiems.v20190416.models.RsgAsGroup`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -279,7 +279,7 @@ class CreateRuntimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 全局唯一的运行环境名称
         :type Name: str
         :param Image: 运行环境镜像地址
@@ -319,7 +319,7 @@ class CreateRuntimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Runtime: 运行环境
         :type Runtime: :class:`tencentcloud.tiems.v20190416.models.Runtime`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -342,7 +342,7 @@ class CreateServiceConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 配置名称
         :type Name: str
         :param Runtime: 运行环境
@@ -378,7 +378,7 @@ class CreateServiceConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceConfig: 服务配置
         :type ServiceConfig: :class:`tencentcloud.tiems.v20190416.models.Config`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -401,7 +401,7 @@ class CreateServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Scaler: 扩缩容配置
         :type Scaler: :class:`tencentcloud.tiems.v20190416.models.Scaler`
         :param ServiceConfigId: 服务配置Id
@@ -479,7 +479,7 @@ class CreateServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Service: 服务
         :type Service: :class:`tencentcloud.tiems.v20190416.models.ModelService`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -502,7 +502,7 @@ class DeleteInstanceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 要删除的节点 ID
         :type InstanceId: str
         """
@@ -526,7 +526,7 @@ class DeleteInstanceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -543,7 +543,7 @@ class DeleteJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 任务 Id
         :type JobId: str
         """
@@ -567,7 +567,7 @@ class DeleteJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -584,7 +584,7 @@ class DeleteResourceGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ResourceGroupId: 要删除的资源组 ID
         :type ResourceGroupId: str
         """
@@ -608,7 +608,7 @@ class DeleteResourceGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -625,7 +625,7 @@ class DeleteRsgAsGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组 ID
         :type Id: str
         """
@@ -649,7 +649,7 @@ class DeleteRsgAsGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -666,7 +666,7 @@ class DeleteRuntimeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Runtime: 要删除的Runtime名
         :type Runtime: str
         """
@@ -690,7 +690,7 @@ class DeleteRuntimeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -707,7 +707,7 @@ class DeleteServiceConfigRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceConfigId: 服务配置Id
         :type ServiceConfigId: str
         :param ServiceConfigName: 服务配置名称
@@ -735,7 +735,7 @@ class DeleteServiceConfigResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -752,7 +752,7 @@ class DeleteServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务Id
         :type ServiceId: str
         """
@@ -776,7 +776,7 @@ class DeleteServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -793,7 +793,7 @@ class DescribeInstancesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 筛选选项
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
@@ -842,7 +842,7 @@ class DescribeInstancesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 资源组下节点总数
         :type TotalCount: int
         :param Instances: 资源组下节点列表
@@ -872,7 +872,7 @@ class DescribeResourceGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 筛选选项
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
@@ -917,7 +917,7 @@ class DescribeResourceGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 资源组总数
         :type TotalCount: int
         :param ResourceGroups: 资源组列表
@@ -948,7 +948,7 @@ class DescribeRsgAsGroupActivitiesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组 ID
         :type Id: str
         :param StartTime: 查询活动的开始时间
@@ -1005,7 +1005,7 @@ class DescribeRsgAsGroupActivitiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RsgAsGroupActivitySet: 伸缩组活动数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type RsgAsGroupActivitySet: list of RsgAsGroupActivity
@@ -1036,7 +1036,7 @@ class DescribeRsgAsGroupsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 筛选选项
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为 0
@@ -1081,7 +1081,7 @@ class DescribeRsgAsGroupsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RsgAsGroupSet: 所查询的伸缩组数组
         :type RsgAsGroupSet: list of RsgAsGroup
         :param TotalCount: 伸缩组数组总数目
@@ -1117,7 +1117,7 @@ class DescribeRuntimesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Runtimes: TIEMS支持的运行环境列表
         :type Runtimes: list of Runtime
         :param UserAccess: 用户对runtime对权限
@@ -1148,7 +1148,7 @@ class DescribeServiceConfigsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 筛选选项，支持按照name等进行筛选
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
@@ -1197,7 +1197,7 @@ class DescribeServiceConfigsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceConfigs: 服务配置
         :type ServiceConfigs: list of Config
         :param TotalCount: 服务配置总数
@@ -1227,7 +1227,7 @@ class DescribeServicesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 筛选选项，支持筛选的字段：id, region, zone, cluster, status, runtime, rsg_id
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
@@ -1272,7 +1272,7 @@ class DescribeServicesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Services: 服务列表
         :type Services: list of ModelService
         :param TotalCount: 服务总数
@@ -1302,7 +1302,7 @@ class DisableRsgAsGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组 ID
         :type Id: str
         """
@@ -1326,7 +1326,7 @@ class DisableRsgAsGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1343,7 +1343,7 @@ class EnableRsgAsGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组 ID
         :type Id: str
         """
@@ -1367,7 +1367,7 @@ class EnableRsgAsGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1384,7 +1384,7 @@ class ExposeInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ExposeType: 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
         :type ExposeType: str
         :param Ip: 暴露Ip。暴露方式为 EXTERNAL 为外网 Ip，暴露方式为 VPC 时为指定 Vpc 下的Vip
@@ -1437,7 +1437,7 @@ class ExposeServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务Id
         :type ServiceId: str
         :param ExposeType: 暴露方式，支持 EXTERNAL（外网暴露），VPC （VPC内网打通）
@@ -1473,7 +1473,7 @@ class ExposeServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Expose: 暴露方式
         :type Expose: :class:`tencentcloud.tiems.v20190416.models.ExposeInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1496,7 +1496,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名称
         :type Name: str
         :param Values: 取值
@@ -1524,7 +1524,7 @@ class Instance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 节点 ID
         :type Id: str
         :param Zone: 节点所在地区
@@ -1620,7 +1620,7 @@ class Job(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 任务 Id
         :type Id: str
         :param Cluster: 集群名
@@ -1766,7 +1766,7 @@ class JobStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Status: 任务状态
         :type Status: str
         :param Message: 错误时为错误描述
@@ -1820,7 +1820,7 @@ class ModelService(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 服务ID
         :type Id: str
         :param Cluster: 运行集群
@@ -1963,7 +1963,7 @@ class Option(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 名称
         :type Name: str
         :param Value: 取值
@@ -1991,7 +1991,7 @@ class PredictInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InputPath: 输入路径，支持 cos 格式路径文件夹或文件
         :type InputPath: str
         :param OutputPath: 输出路径，支持 cos 格式路径
@@ -2036,7 +2036,7 @@ class QuantizationInput(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InputPath: 量化输入路径
         :type InputPath: str
         :param OutputPath: 量化输出路径
@@ -2076,7 +2076,7 @@ class ReplicaInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 实例名称
         :type Name: str
         :param EniIp: 弹性网卡模式时，弹性网卡Ip
@@ -2128,7 +2128,7 @@ class ResourceGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 资源组 Id
         :type Id: str
         :param Region: 地域
@@ -2243,7 +2243,7 @@ class RsgAsActivityRelatedInstance(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 节点 ID
         :type InstanceId: str
         :param InstanceStatus: 节点状态
@@ -2271,7 +2271,7 @@ class RsgAsGroup(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组 ID
         :type Id: str
         :param Region: 伸缩组所在地域
@@ -2347,7 +2347,7 @@ class RsgAsGroupActivity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组活动 ID
         :type Id: str
         :param RsgAsGroupId: 关联的伸缩组 ID
@@ -2420,7 +2420,7 @@ class Runtime(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 运行环境名称
         :type Name: str
         :param Framework: 运行环境框架
@@ -2472,7 +2472,7 @@ class Scaler(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaxReplicas: 最大副本数，ScaleMode 为 MANUAL 时辞会此值会被置为 StartReplicas 取值
         :type MaxReplicas: int
         :param MinReplicas: 最小副本数，ScaleMode 为 MANUAL 时辞会此值会被置为 StartReplicas 取值
@@ -2513,7 +2513,7 @@ class ServiceStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DesiredReplicas: 预期副本数
         :type DesiredReplicas: int
         :param CurrentReplicas: 当前副本数
@@ -2575,7 +2575,7 @@ class UpdateJobRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param JobId: 任务 Id
         :type JobId: str
         :param JobAction: 任务更新动作，支持：Cancel
@@ -2607,7 +2607,7 @@ class UpdateJobResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Job: 任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type Job: :class:`tencentcloud.tiems.v20190416.models.Job`
@@ -2631,7 +2631,7 @@ class UpdateRsgAsGroupRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Id: 伸缩组 ID
         :type Id: str
         :param Name: 重命名名称
@@ -2671,7 +2671,7 @@ class UpdateRsgAsGroupResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RsgAsGroup: 资源组的伸缩组
         :type RsgAsGroup: :class:`tencentcloud.tiems.v20190416.models.RsgAsGroup`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2694,7 +2694,7 @@ class UpdateServiceRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ServiceId: 服务Id
         :type ServiceId: str
         :param Scaler: 扩缩容配置
@@ -2760,7 +2760,7 @@ class UpdateServiceResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Service: 服务
         :type Service: :class:`tencentcloud.tiems.v20190416.models.ModelService`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -24,7 +24,7 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 物理专线拥有者接受共享专用通道申请
         :type DirectConnectTunnelId: str
         """
@@ -48,7 +48,7 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -65,7 +65,7 @@ class AccessPoint(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessPointName: 接入点的名称。
         :type AccessPointName: str
         :param AccessPointId: 接入点唯一ID。
@@ -90,6 +90,9 @@ class AccessPoint(AbstractModel):
         :param Area: 接入点地域名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
+        :param AccessPointType: 接入点类型。VXLAN/QCPL/QCAR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPointType: str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -101,6 +104,7 @@ class AccessPoint(AbstractModel):
         self.Coordinate = None
         self.City = None
         self.Area = None
+        self.AccessPointType = None
 
 
     def _deserialize(self, params):
@@ -116,6 +120,7 @@ class AccessPoint(AbstractModel):
             self.Coordinate._deserialize(params.get("Coordinate"))
         self.City = params.get("City")
         self.Area = params.get("Area")
+        self.AccessPointType = params.get("AccessPointType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -131,7 +136,7 @@ class ApplyInternetAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MaskLen: CIDR地址掩码长度
         :type MaskLen: int
         :param AddrType: 0:BGP类型地址
@@ -167,7 +172,7 @@ class ApplyInternetAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 互联网公网地址ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
@@ -189,7 +194,7 @@ class BFDInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProbeFailedTimes: 健康检查次数
         :type ProbeFailedTimes: int
         :param Interval: 健康检查间隔
@@ -217,7 +222,7 @@ class BGPStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TencentAddressBgpState: 腾讯侧主互联IP BGP状态
         :type TencentAddressBgpState: str
         :param TencentBackupAddressBgpState: 腾讯侧备互联IP BGP状态
@@ -245,7 +250,7 @@ class BgpPeer(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Asn: 用户侧，BGP Asn
         :type Asn: int
         :param AuthKey: 用户侧BGP密钥
@@ -273,7 +278,7 @@ class Coordinate(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Lat: 纬度
         :type Lat: float
         :param Lng: 经度
@@ -301,7 +306,7 @@ class CreateDirectConnectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectName: 物理专线的名称。
         :type DirectConnectName: str
         :param AccessPointId: 物理专线所在的接入点。
@@ -390,7 +395,7 @@ class CreateDirectConnectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectIdSet: 物理专线的ID。
         :type DirectConnectIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -411,7 +416,7 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectId: 专线 ID，例如：dc-kd7d06of
         :type DirectConnectId: str
         :param DirectConnectTunnelName: 专用通道名称
@@ -511,7 +516,7 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelIdSet: 专用通道ID
         :type DirectConnectTunnelIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -532,7 +537,7 @@ class DeleteDirectConnectRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectId: 物理专线的ID。
         :type DirectConnectId: str
         """
@@ -556,7 +561,7 @@ class DeleteDirectConnectResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -573,7 +578,7 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         """
@@ -597,7 +602,7 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -614,7 +619,7 @@ class DescribeAccessPointsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RegionId: 接入点所在的地域。使用DescribeRegions查询
 
 您可以通过调用 DescribeRegions接口获取地域ID。
@@ -648,7 +653,7 @@ class DescribeAccessPointsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param AccessPointSet: 接入点信息。
         :type AccessPointSet: list of AccessPoint
         :param TotalCount: 符合接入点数量。
@@ -678,7 +683,7 @@ class DescribeDirectConnectTunnelExtraRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         """
@@ -702,7 +707,7 @@ class DescribeDirectConnectTunnelExtraResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelExtra: 专用通道扩展信息
         :type DirectConnectTunnelExtra: :class:`tencentcloud.dc.v20180410.models.DirectConnectTunnelExtra`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -725,7 +730,7 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件:
 参数不支持同时指定DirectConnectTunnelIds和Filters。
 <li> direct-connect-tunnel-name, 专用通道名称。</li>
@@ -770,7 +775,7 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelSet: 专用通道列表
         :type DirectConnectTunnelSet: list of DirectConnectTunnel
         :param TotalCount: 符合专用通道数量。
@@ -800,7 +805,7 @@ class DescribeDirectConnectsRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Filters: 过滤条件:
         :type Filters: list of Filter
         :param DirectConnectIds: 物理专线 ID数组
@@ -841,7 +846,7 @@ class DescribeDirectConnectsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectSet: 物理专线列表。
         :type DirectConnectSet: list of DirectConnect
         :param TotalCount: 符合物理专线列表数量。
@@ -882,7 +887,7 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Ipv6PrefixLen: IPv6互联网公网允许的最小前缀长度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6PrefixLen: int
@@ -924,7 +929,7 @@ class DescribeInternetAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Offset: 偏移量，默认为0
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值100
@@ -966,7 +971,7 @@ class DescribeInternetAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 互联网公网地址数量
         :type TotalCount: int
         :param Subnets: 互联网公网地址列表
@@ -1003,7 +1008,7 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TotalCount: 互联网公网地址统计信息数量
         :type TotalCount: int
         :param InternetAddressStatistics: 互联网公网地址统计信息列表
@@ -1034,7 +1039,7 @@ class DescribePublicDirectConnectTunnelRoutesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         :param Filters: 过滤条件：
@@ -1077,7 +1082,7 @@ class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Routes: 互联网通道路由列表
         :type Routes: list of DirectConnectTunnelRoute
         :param TotalCount: 记录总数
@@ -1107,7 +1112,7 @@ class DirectConnect(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectId: 物理专线ID。
         :type DirectConnectId: str
         :param DirectConnectName: 物理专线的名称。
@@ -1288,7 +1293,7 @@ class DirectConnectTunnel(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         :param DirectConnectId: 物理专线ID
@@ -1461,7 +1466,7 @@ class DirectConnectTunnelExtra(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         :param DirectConnectId: 物理专线ID
@@ -1673,7 +1678,7 @@ class DirectConnectTunnelRoute(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RouteId: 专用通道路由ID
         :type RouteId: str
         :param DestinationCidrBlock: 网段CIDR
@@ -1717,7 +1722,7 @@ class DisableInternetAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 公网互联网地址ID
         :type InstanceId: str
         """
@@ -1741,7 +1746,7 @@ class DisableInternetAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1758,7 +1763,7 @@ class EnableInternetAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 互联网公网地址ID
         :type InstanceId: str
         """
@@ -1782,7 +1787,7 @@ class EnableInternetAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1799,7 +1804,7 @@ class Filter(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Name: 需要过滤的字段。
         :type Name: str
         :param Values: 字段的过滤值。
@@ -1827,7 +1832,7 @@ class InternetAddressDetail(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 互联网地址ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
@@ -1911,7 +1916,7 @@ class InternetAddressStatistics(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
@@ -1941,7 +1946,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectId: 物理专线的ID。
         :type DirectConnectId: str
         :param DirectConnectName: 物理专线名称。
@@ -2013,7 +2018,7 @@ class ModifyDirectConnectAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2030,7 +2035,7 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         :param DirectConnectTunnelName: 专用通道名称
@@ -2089,7 +2094,7 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2106,7 +2111,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 专用通道ID
         :type DirectConnectTunnelId: str
         :param Vlan: 专用通道的Vlan
@@ -2206,7 +2211,7 @@ class ModifyDirectConnectTunnelExtraResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2223,7 +2228,7 @@ class NQAInfo(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param ProbeFailedTimes: 健康检查次数
         :type ProbeFailedTimes: int
         :param Interval: 健康检查间隔
@@ -2255,7 +2260,7 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DirectConnectTunnelId: 无
         :type DirectConnectTunnelId: str
         """
@@ -2279,7 +2284,7 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2296,7 +2301,7 @@ class ReleaseInternetAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param InstanceId: 公网互联网地址ID
         :type InstanceId: str
         """
@@ -2320,7 +2325,7 @@ class ReleaseInternetAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2337,7 +2342,7 @@ class RouteFilterPrefix(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Cidr: 用户侧网段地址
         :type Cidr: str
         """
@@ -2361,7 +2366,7 @@ class Tag(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Key: 标签键
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str

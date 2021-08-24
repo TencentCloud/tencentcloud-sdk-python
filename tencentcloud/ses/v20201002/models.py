@@ -24,7 +24,7 @@ class Attachment(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
         :type FileName: str
         :param Content: base64之后的附件内容，您可以发送的附件大小上限为5 MB。 注意：腾讯云api目前要求请求包大小不得超过10 MB。如果您要发送多个附件，那么这些附件的总大小不能超过10 MB。
@@ -52,7 +52,7 @@ class BlackEmailAddress(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BounceTime: 邮箱被拉黑时间
         :type BounceTime: str
         :param EmailAddress: 被拉黑的邮箱地址
@@ -80,7 +80,7 @@ class CreateEmailAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailAddress: 您的发信地址（发信地址总数上限为10个）
         :type EmailAddress: str
         :param EmailSenderName: 发件人别名
@@ -108,7 +108,7 @@ class CreateEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -125,7 +125,7 @@ class CreateEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
         :type EmailIdentity: str
         """
@@ -149,7 +149,7 @@ class CreateEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdentityType: 验证类型。固定值：DOMAIN
         :type IdentityType: str
         :param VerifiedForSendingStatus: 是否已通过验证
@@ -183,7 +183,7 @@ class CreateEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateName: 模板名称
         :type TemplateName: str
         :param TemplateContent: 模板内容
@@ -213,7 +213,7 @@ class CreateEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -230,7 +230,7 @@ class DNSAttributes(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Type: 记录类型 CNAME | A | TXT | MX
         :type Type: str
         :param SendDomain: 域名
@@ -270,7 +270,7 @@ class DeleteBlackListRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailAddressList: 需要清除的黑名单邮箱列表，数组长度至少为1
         :type EmailAddressList: list of str
         """
@@ -294,7 +294,7 @@ class DeleteBlackListResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -311,7 +311,7 @@ class DeleteEmailAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailAddress: 发信地址
         :type EmailAddress: str
         """
@@ -335,7 +335,7 @@ class DeleteEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -352,7 +352,7 @@ class DeleteEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailIdentity: 发信域名
         :type EmailIdentity: str
         """
@@ -376,7 +376,7 @@ class DeleteEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -393,7 +393,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateID: 模版ID
         :type TemplateID: int
         """
@@ -417,7 +417,7 @@ class DeleteEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -434,7 +434,7 @@ class EmailIdentity(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdentityName: 发信域名
         :type IdentityName: str
         :param IdentityType: 验证类型，固定为DOMAIN
@@ -466,7 +466,7 @@ class EmailSender(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailAddress: 发信地址
         :type EmailAddress: str
         :param EmailSenderName: 发信人别名
@@ -500,7 +500,7 @@ class GetEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailIdentity: 发信域名
         :type EmailIdentity: str
         """
@@ -524,7 +524,7 @@ class GetEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdentityType: 验证类型。固定值：DOMAIN
         :type IdentityType: str
         :param VerifiedForSendingStatus: 是否已通过验证
@@ -558,7 +558,7 @@ class GetEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateID: 模板ID
         :type TemplateID: int
         """
@@ -582,7 +582,7 @@ class GetEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateContent: 模板内容数据
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -605,7 +605,7 @@ class GetSendEmailStatusRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestDate: 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
         :type RequestDate: str
         :param Offset: 偏移量。默认为0
@@ -645,7 +645,7 @@ class GetSendEmailStatusResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailStatusList: 邮件发送状态列表
         :type EmailStatusList: list of SendEmailStatus
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -671,7 +671,7 @@ class GetStatisticsReportRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDate: 开始日期
         :type StartDate: str
         :param EndDate: 结束日期
@@ -707,7 +707,7 @@ class GetStatisticsReportResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param DailyVolumes: 发信统计报告，按天
         :type DailyVolumes: list of Volume
         :param OverallVolume: 发信统计报告，总览
@@ -739,7 +739,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param StartDate: 开始日期，格式为YYYY-MM-DD
         :type StartDate: str
         :param EndDate: 结束日期，格式为YYYY-MM-DD
@@ -783,7 +783,7 @@ class ListBlackEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param BlackList: 黑名单列表
         :type BlackList: list of BlackEmailAddress
         :param TotalCount: 黑名单总数
@@ -819,7 +819,7 @@ class ListEmailAddressResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailSenders: 发信地址列表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmailSenders: list of EmailSender
@@ -852,7 +852,7 @@ class ListEmailIdentitiesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailIdentities: 发信域名列表
         :type EmailIdentities: list of EmailIdentity
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -878,7 +878,7 @@ class ListEmailTemplatesRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Limit: 获取模版数据量，用于分页
         :type Limit: int
         :param Offset: 获取模版偏移值，用于分页
@@ -906,7 +906,7 @@ class ListEmailTemplatesResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplatesMetadata: 邮件模板列表
         :type TemplatesMetadata: list of TemplatesMetadata
         :param TotalCount: 模版总数量
@@ -936,7 +936,7 @@ class SendEmailRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照 
 发信人 &lt;邮件地址&gt; 的方式填写，例如：
 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
@@ -995,7 +995,7 @@ class SendEmailResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: 接受消息生成的唯一消息标识符。
         :type MessageId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1016,7 +1016,7 @@ class SendEmailStatus(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param MessageId: SendEmail返回的MessageId
         :type MessageId: str
         :param ToEmailAddress: 收件人邮箱
@@ -1111,7 +1111,7 @@ class Simple(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Html: base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
         :type Html: str
         :param Text: base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
@@ -1139,7 +1139,7 @@ class Template(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateID: 模板ID。如果没有模板，请先新建一个
         :type TemplateID: int
         :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
@@ -1167,7 +1167,7 @@ class TemplateContent(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param Html: base64之后的Html代码
         :type Html: str
         :param Text: base64之后的文本内容
@@ -1195,7 +1195,7 @@ class TemplatesMetadata(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param CreatedTimestamp: 创建时间
         :type CreatedTimestamp: int
         :param TemplateName: 模板名称
@@ -1235,7 +1235,7 @@ class UpdateEmailIdentityRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param EmailIdentity: 请求验证的域名
         :type EmailIdentity: str
         """
@@ -1259,7 +1259,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param IdentityType: 验证类型。固定值：DOMAIN
         :type IdentityType: str
         :param VerifiedForSendingStatus: 是否已通过验证
@@ -1293,7 +1293,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param TemplateContent: 模板内容
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param TemplateID: 模板ID
@@ -1327,7 +1327,7 @@ class UpdateEmailTemplateResponse(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1344,7 +1344,7 @@ class Volume(AbstractModel):
     """
 
     def __init__(self):
-        """
+        r"""
         :param SendDate: 日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendDate: str
