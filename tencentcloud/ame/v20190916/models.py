@@ -787,6 +787,60 @@ class DescribeMusicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMusicSaleStatusRequest(AbstractModel):
+    """DescribeMusicSaleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MusicIds: 歌曲Id集合，可传单个，也可传多个，上线查询单次50个
+        :type MusicIds: list of str
+        :param PurchaseType: 查询哪个渠道的数据，1为曲库包，2为单曲
+        :type PurchaseType: int
+        """
+        self.MusicIds = None
+        self.PurchaseType = None
+
+
+    def _deserialize(self, params):
+        self.MusicIds = params.get("MusicIds")
+        self.PurchaseType = params.get("PurchaseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMusicSaleStatusResponse(AbstractModel):
+    """DescribeMusicSaleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MusicStatusSet: musicId对应歌曲状态
+        :type MusicStatusSet: list of MusicStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MusicStatusSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MusicStatusSet") is not None:
+            self.MusicStatusSet = []
+            for item in params.get("MusicStatusSet"):
+                obj = MusicStatus()
+                obj._deserialize(item)
+                self.MusicStatusSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePackageItemsRequest(AbstractModel):
     """DescribePackageItems请求参数结构体
 
@@ -1394,6 +1448,34 @@ class MusicOpenDetail(AbstractModel):
         self.Tags = params.get("Tags")
         self.LyricUrl = params.get("LyricUrl")
         self.WaveformUrl = params.get("WaveformUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MusicStatus(AbstractModel):
+    """返回单曲页面歌曲是否在售状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MusicId: 歌曲Id
+        :type MusicId: str
+        :param SaleStatus: 在售状态,0为在售，1为临时下架，2为永久下架
+        :type SaleStatus: int
+        """
+        self.MusicId = None
+        self.SaleStatus = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.SaleStatus = params.get("SaleStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

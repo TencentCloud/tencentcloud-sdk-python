@@ -306,6 +306,34 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMusicSaleStatus(self, request):
+        """根据音乐信息查询音乐是否在售
+
+        :param request: Request instance for DescribeMusicSaleStatus.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeMusicSaleStatusRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeMusicSaleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMusicSaleStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMusicSaleStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePackageItems(self, request):
         """获取曲库包下已核销歌曲列表接口
 

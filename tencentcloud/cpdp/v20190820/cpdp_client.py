@@ -1042,6 +1042,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DownloadReconciliationUrl(self, request):
+        """获取对账中心账单下载地址的接口
+
+        :param request: Request instance for DownloadReconciliationUrl.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.DownloadReconciliationUrlRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.DownloadReconciliationUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadReconciliationUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadReconciliationUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExecuteMemberTransaction(self, request):
         """会员间交易接口
 

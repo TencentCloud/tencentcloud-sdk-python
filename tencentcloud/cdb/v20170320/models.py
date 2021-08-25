@@ -326,6 +326,10 @@ class AuditLogFilter(AbstractModel):
         :type ExecTime: int
         :param AffectRows: 影响行数。表示筛选影响行数大于该值的审计日志。
         :type AffectRows: int
+        :param SqlTypes: SQL 类型。支持多个类型同时查询。目前支持："SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE"。
+        :type SqlTypes: list of str
+        :param Sqls: SQL 语句。支持传递多个sql语句。
+        :type Sqls: list of str
         """
         self.Host = None
         self.User = None
@@ -336,6 +340,8 @@ class AuditLogFilter(AbstractModel):
         self.SqlType = None
         self.ExecTime = None
         self.AffectRows = None
+        self.SqlTypes = None
+        self.Sqls = None
 
 
     def _deserialize(self, params):
@@ -348,6 +354,8 @@ class AuditLogFilter(AbstractModel):
         self.SqlType = params.get("SqlType")
         self.ExecTime = params.get("ExecTime")
         self.AffectRows = params.get("AffectRows")
+        self.SqlTypes = params.get("SqlTypes")
+        self.Sqls = params.get("Sqls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

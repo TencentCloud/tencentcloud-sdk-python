@@ -134,6 +134,9 @@ FAILEDOPERATION_INVALIDREQUEST = 'FailedOperation.InvalidRequest'
 # 发票已提交。
 FAILEDOPERATION_INVOICEEXIST = 'FailedOperation.InvoiceExist'
 
+# 文件为空，未生成或者当天无数据。
+FAILEDOPERATION_ISEMPTY = 'FailedOperation.IsEmpty'
+
 # 序列化出错。
 FAILEDOPERATION_MARSHALERROR = 'FailedOperation.MarshalError'
 

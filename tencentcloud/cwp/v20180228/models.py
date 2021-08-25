@@ -5666,6 +5666,64 @@ class ExportReverseShellEventsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExportScanTaskDetailsRequest(AbstractModel):
+    """ExportScanTaskDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 本次检测的任务id（不同于出参的导出本次检测Excel的任务Id）
+        :type TaskId: int
+        :param ModuleType: 模块类型，当前提供：Malware 木马 , Vul 漏洞 , Baseline 基线
+        :type ModuleType: str
+        :param Filters: 过滤参数：ipOrAlias（服务器名/ip）
+        :type Filters: list of Filters
+        """
+        self.TaskId = None
+        self.ModuleType = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.ModuleType = params.get("ModuleType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportScanTaskDetailsResponse(AbstractModel):
+    """ExportScanTaskDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 导出本次检测Excel的任务Id（不同于入参的本次检测任务id）
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ExportTasksRequest(AbstractModel):
     """ExportTasks请求参数结构体
 

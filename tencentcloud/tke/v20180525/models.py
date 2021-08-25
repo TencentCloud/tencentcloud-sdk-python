@@ -5397,6 +5397,9 @@ class InstanceAdvancedSettings(AbstractModel):
         :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredPodNumber: int
+        :param PreStartUserScript: base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreStartUserScript: str
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -5406,6 +5409,7 @@ class InstanceAdvancedSettings(AbstractModel):
         self.DataDisks = None
         self.ExtraArgs = None
         self.DesiredPodNumber = None
+        self.PreStartUserScript = None
 
 
     def _deserialize(self, params):
@@ -5429,6 +5433,7 @@ class InstanceAdvancedSettings(AbstractModel):
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.DesiredPodNumber = params.get("DesiredPodNumber")
+        self.PreStartUserScript = params.get("PreStartUserScript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7543,6 +7548,24 @@ class RunAutomationServiceEnabled(AbstractModel):
     """描述了 “云自动化助手” 服务相关的信息
 
     """
+
+    def __init__(self):
+        r"""
+        :param Enabled: 是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务<br><li>FALSE：表示不开启云自动化助手服务<br><br>默认取值：FALSE。
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunInstancesForNode(AbstractModel):

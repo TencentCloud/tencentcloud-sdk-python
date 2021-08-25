@@ -2440,7 +2440,7 @@ class Task(AbstractModel):
 
 
 class TaskResponseInfo(AbstractModel):
-    """任务实例。
+    """任务实例
 
     """
 
@@ -2479,6 +2479,9 @@ class TaskResponseInfo(AbstractModel):
         :type OutputMessage: str
         :param TaskType: 执行SQL的引擎类型
         :type TaskType: str
+        :param ProgressDetail: 任务进度明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgressDetail: str
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -2496,6 +2499,7 @@ class TaskResponseInfo(AbstractModel):
         self.Percentage = None
         self.OutputMessage = None
         self.TaskType = None
+        self.ProgressDetail = None
 
 
     def _deserialize(self, params):
@@ -2515,6 +2519,7 @@ class TaskResponseInfo(AbstractModel):
         self.Percentage = params.get("Percentage")
         self.OutputMessage = params.get("OutputMessage")
         self.TaskType = params.get("TaskType")
+        self.ProgressDetail = params.get("ProgressDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

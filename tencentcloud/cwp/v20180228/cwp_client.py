@@ -2380,6 +2380,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportScanTaskDetails(self, request):
+        """根据任务id导出指定扫描任务详情
+
+        :param request: Request instance for ExportScanTaskDetails.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportScanTaskDetailsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportScanTaskDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportScanTaskDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportScanTaskDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportTasks(self, request):
         """用于异步导出数据量大的日志文件
 

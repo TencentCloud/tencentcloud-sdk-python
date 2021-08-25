@@ -1704,6 +1704,51 @@ path 时填充绝对路径，如 /xxx/test.html
         
 
 
+class CcTopData(AbstractModel):
+    """CC攻击Top数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 客户端Ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Url: 访问URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param UserAgent: 客户端UserAgent
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAgent: str
+        :param Value: 请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: int
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        """
+        self.Ip = None
+        self.Url = None
+        self.UserAgent = None
+        self.Value = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Url = params.get("Url")
+        self.UserAgent = params.get("UserAgent")
+        self.Value = params.get("Value")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdnData(AbstractModel):
     """访问明细数据类型
 
@@ -2604,6 +2649,34 @@ class CreateVerifyRecordResponse(AbstractModel):
         self.Record = params.get("Record")
         self.RecordType = params.get("RecordType")
         self.RequestId = params.get("RequestId")
+
+
+class DDoSTopData(AbstractModel):
+    """DDoS攻击Top数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttackType: 攻击类型
+        :type AttackType: str
+        :param Value: 攻击带宽，单位：bps
+        :type Value: int
+        """
+        self.AttackType = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.AttackType = params.get("AttackType")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteCdnDomainRequest(AbstractModel):
@@ -5540,6 +5613,54 @@ class DomainAreaConfig(AbstractModel):
         
 
 
+class DomainBotCount(AbstractModel):
+    """域名及其他指标Bot次数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Count: BOT次数
+        :type Count: int
+        :param Value: Top指标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Country: 国家/地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        :param Province: 省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param Isp: 运营商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isp: str
+        """
+        self.Domain = None
+        self.Count = None
+        self.Value = None
+        self.Country = None
+        self.Province = None
+        self.Isp = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Count = params.get("Count")
+        self.Value = params.get("Value")
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.Isp = params.get("Isp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DomainFilter(AbstractModel):
     """域名查询时过滤条件。
 
@@ -6951,6 +7072,224 @@ class ListScdnLogTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListTopBotDataRequest(AbstractModel):
+    """ListTopBotData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopCount: 获取Top量，取值范围[1-10]
+        :type TopCount: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Metric: session表示查询BOT会话的Top信息
+ip表示查询BOT客户端IP的Top信息
+
+不填代表获取会话信息
+        :type Metric: str
+        :param Domain: 域名，仅当Metric=ip时有效，不填写表示使用Domains参数
+        :type Domain: str
+        :param Domains: 域名，仅当Metric=ip，并且Domain为空时有效，不填写表示获取AppID信息
+        :type Domains: list of str
+        """
+        self.TopCount = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Metric = None
+        self.Domain = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.TopCount = params.get("TopCount")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Metric = params.get("Metric")
+        self.Domain = params.get("Domain")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopBotDataResponse(AbstractModel):
+    """ListTopBotData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 域名BOT次数列表
+        :type Data: list of DomainBotCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DomainBotCount()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListTopCcDataRequest(AbstractModel):
+    """ListTopCcData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询Top数据的开始时间，格式为：2020-01-01 00:00:00
+        :type StartTime: str
+        :param EndTime: 查询Top数据的结束时间，格式为：2020-01-01 23:59:59
+支持 90 天内数据查询，不传此参数，表示查当天数据
+时间跨度要小于等于7天
+        :type EndTime: str
+        :param Domain: 域名，不传此参数，表示查询账号级别数据
+        :type Domain: str
+        :param Metric: 统计指标：
+ip_url : Top IP+URL 默认值
+ua :  Top UA
+        :type Metric: str
+        :param Source: cdn表示CDN数据，默认值
+ecdn表示ECDN数据
+        :type Source: str
+        :param Domains: 域名列表，不传此参数，表示查询账号级别数据
+        :type Domains: list of str
+        :param ActionName: 执行动作，取值为：intercept/redirect/observe
+分别表示：拦截/重定向/观察
+为空表示查询所有执行动作数据
+        :type ActionName: str
+        :param Area: 地域：mainland或overseas，表示国内或海外，不填写默认表示国内
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Domain = None
+        self.Metric = None
+        self.Source = None
+        self.Domains = None
+        self.ActionName = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domain = params.get("Domain")
+        self.Metric = params.get("Metric")
+        self.Source = params.get("Source")
+        self.Domains = params.get("Domains")
+        self.ActionName = params.get("ActionName")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopCcDataResponse(AbstractModel):
+    """ListTopCcData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Top数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of CcTopData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CcTopData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListTopDDoSDataRequest(AbstractModel):
+    """ListTopDDoSData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询Top数据的开始时间，格式为：2020-01-01 00:00:00
+        :type StartTime: str
+        :param EndTime: 查询Top数据的结束时间，格式为：2020-01-01 23:59:59
+支持 90 天内数据查询，时间跨度要小于等于7天
+        :type EndTime: str
+        :param TopCount: 查询Top的数量，不填默认值为10
+        :type TopCount: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.TopCount = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TopCount = params.get("TopCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopDDoSDataResponse(AbstractModel):
+    """ListTopDDoSData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: DDoS Top数据
+        :type Data: list of DDoSTopData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DDoSTopData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListTopDataRequest(AbstractModel):
     """ListTopData请求参数结构体
 
@@ -7069,6 +7408,138 @@ class ListTopDataResponse(AbstractModel):
                 obj = TopData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListTopWafDataRequest(AbstractModel):
+    """ListTopWafData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        :type EndTime: str
+        :param Domain: 指定域名查询，不填写查询整个AppID下数据
+        :type Domain: str
+        :param AttackType: 指定攻击类型
+不填则查询所有攻击类型的数据总和
+AttackType 映射如下:
+"webshell" : Webshell检测防护
+"oa" : 常见OA漏洞防护
+"xss" : XSS跨站脚本攻击防护
+"xxe" : XXE攻击防护
+"webscan" : 扫描器攻击漏洞防护
+"cms" : 常见CMS漏洞防护
+"upload" : 恶意文件上传攻击防护
+"sql" : SQL注入攻击防护
+"cmd_inject": 命令/代码注入攻击防护
+"osc" : 开源组件漏洞防护
+"file_read" : 任意文件读取
+"ldap" : LDAP注入攻击防护
+"other" : 其它漏洞防护
+        :type AttackType: str
+        :param DefenceMode: 指定防御模式
+不填则查询所有防御模式的数据总和
+DefenceMode 映射如下：
+  observe = '观察模式'
+  intercept = '拦截模式'
+        :type DefenceMode: str
+        :param Metric: 排序对象，支持以下几种形式：
+url：攻击目标 url 排序
+ip：攻击源 IP 排序
+attackType：攻击类型排序
+domain：当查询整个AppID下数据时，按照域名请求量排序
+        :type Metric: str
+        :param Area: 地域：mainland 或 overseas
+        :type Area: str
+        :param AttackTypes: 指定攻击类型列表，取值参考AttackType
+        :type AttackTypes: list of str
+        :param Domains: 指定域名列表查询，不填写查询整个AppID下数据
+        :type Domains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Domain = None
+        self.AttackType = None
+        self.DefenceMode = None
+        self.Metric = None
+        self.Area = None
+        self.AttackTypes = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domain = params.get("Domain")
+        self.AttackType = params.get("AttackType")
+        self.DefenceMode = params.get("DefenceMode")
+        self.Metric = params.get("Metric")
+        self.Area = params.get("Area")
+        self.AttackTypes = params.get("AttackTypes")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopWafDataResponse(AbstractModel):
+    """ListTopWafData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopTypeData: 攻击类型统计
+        :type TopTypeData: list of ScdnTypeData
+        :param TopIpData: IP统计
+        :type TopIpData: list of ScdnTopData
+        :param TopUrlData: URL统计
+        :type TopUrlData: list of ScdnTopUrlData
+        :param TopDomainData: 域名统计
+        :type TopDomainData: list of ScdnTopDomainData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopTypeData = None
+        self.TopIpData = None
+        self.TopUrlData = None
+        self.TopDomainData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopTypeData") is not None:
+            self.TopTypeData = []
+            for item in params.get("TopTypeData"):
+                obj = ScdnTypeData()
+                obj._deserialize(item)
+                self.TopTypeData.append(obj)
+        if params.get("TopIpData") is not None:
+            self.TopIpData = []
+            for item in params.get("TopIpData"):
+                obj = ScdnTopData()
+                obj._deserialize(item)
+                self.TopIpData.append(obj)
+        if params.get("TopUrlData") is not None:
+            self.TopUrlData = []
+            for item in params.get("TopUrlData"):
+                obj = ScdnTopUrlData()
+                obj._deserialize(item)
+                self.TopUrlData.append(obj)
+        if params.get("TopDomainData") is not None:
+            self.TopDomainData = []
+            for item in params.get("TopDomainData"):
+                obj = ScdnTopDomainData()
+                obj._deserialize(item)
+                self.TopDomainData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9702,6 +10173,38 @@ class ScdnTopData(AbstractModel):
         self.Isp = params.get("Isp")
         self.Ip = params.get("Ip")
         self.District = params.get("District")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScdnTopDomainData(AbstractModel):
+    """SCDN攻击数据Top展示
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Value: 请求量
+        :type Value: int
+        :param Percent: 百分比
+        :type Percent: float
+        """
+        self.Domain = None
+        self.Value = None
+        self.Percent = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Value = params.get("Value")
+        self.Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

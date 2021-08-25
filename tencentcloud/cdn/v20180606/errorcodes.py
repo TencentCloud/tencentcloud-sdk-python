@@ -71,6 +71,9 @@ INTERNALERROR_SCDNUSERNOPACKAGE = 'InternalError.ScdnUserNoPackage'
 # 安全加速服务已停服，请重新购买套餐后开启。
 INTERNALERROR_SCDNUSERSUSPEND = 'InternalError.ScdnUserSuspend'
 
+# 内部服务错误，请联系腾讯云工程师进一步排查。
+INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
+
 # 标签内部错误，请重试或联系客服人员解决。
 INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
@@ -230,6 +233,9 @@ INVALIDPARAMETER_CLSTOPICCONFLICT = 'InvalidParameter.ClsTopicConflict'
 # 内部接口错误，请重试或联系客服人员解决。
 INVALIDPARAMETER_ECDNINTERFACEERROR = 'InvalidParameter.EcdnInterfaceError'
 
+# 参数错误。
+INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
+
 # 任务已过期,无法重试。
 INVALIDPARAMETER_SCDNLOGTASKEXPIRED = 'InvalidParameter.ScdnLogTaskExpired'
 
@@ -307,6 +313,9 @@ LIMITEXCEEDED_SCDNLOGTASKEXCEEDDAYLIMIT = 'LimitExceeded.ScdnLogTaskExceedDayLim
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
+
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # 域名与系统中已存在域名存在冲突。
 RESOURCEINUSE_CDNCONFLICTHOSTEXISTS = 'ResourceInUse.CdnConflictHostExists'
@@ -463,6 +472,9 @@ UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = 'UnauthorizedOperation.OperationTooOft
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # 不允许操作。
 UNSUPPORTEDOPERATION_CLSNOTALLOWED = 'UnsupportedOperation.ClsNotAllowed'

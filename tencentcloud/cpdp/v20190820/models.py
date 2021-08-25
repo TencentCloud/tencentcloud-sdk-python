@@ -5186,6 +5186,72 @@ class DownloadBillResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadReconciliationUrlRequest(AbstractModel):
+    """DownloadReconciliationUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainAppId: 平台应用ID
+        :type MainAppId: str
+        :param AppCode: 平台代码
+        :type AppCode: str
+        :param BillDate: 账单日期，yyyy-MM-dd
+        :type BillDate: str
+        :param SubAppId: 商户或者代理商ID
+        :type SubAppId: str
+        """
+        self.MainAppId = None
+        self.AppCode = None
+        self.BillDate = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.MainAppId = params.get("MainAppId")
+        self.AppCode = params.get("AppCode")
+        self.BillDate = params.get("BillDate")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadReconciliationUrlResponse(AbstractModel):
+    """DownloadReconciliationUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: 下载地址
+        :type DownloadUrl: str
+        :param HashType: hash类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HashType: str
+        :param HashValue: hash值
+        :type HashValue: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.HashType = None
+        self.HashValue = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.HashType = params.get("HashType")
+        self.HashValue = params.get("HashValue")
+        self.RequestId = params.get("RequestId")
+
+
 class ExecuteMemberTransactionRequest(AbstractModel):
     """ExecuteMemberTransaction请求参数结构体
 

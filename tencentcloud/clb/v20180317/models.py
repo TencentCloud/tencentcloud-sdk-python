@@ -5215,6 +5215,8 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerPassToTarget: bool
         :param SnatPro: 是否开启SnatPro
         :type SnatPro: bool
+        :param DeleteProtect: 是否开启删除保护
+        :type DeleteProtect: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5222,6 +5224,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self.InternetChargeInfo = None
         self.LoadBalancerPassToTarget = None
         self.SnatPro = None
+        self.DeleteProtect = None
 
 
     def _deserialize(self, params):
@@ -5235,6 +5238,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
             self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.SnatPro = params.get("SnatPro")
+        self.DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

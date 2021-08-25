@@ -1371,6 +1371,90 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListTopBotData(self, request):
+        """获取Bot攻击的Top信息
+
+        :param request: Request instance for ListTopBotData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopBotDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopBotDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTopBotData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTopBotDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListTopCcData(self, request):
+        """获取CC攻击Top数据
+
+        :param request: Request instance for ListTopCcData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopCcDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopCcDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTopCcData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTopCcDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListTopDDoSData(self, request):
+        """获取DDoS攻击Top数据
+
+        :param request: Request instance for ListTopDDoSData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopDDoSDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopDDoSDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTopDDoSData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTopDDoSDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListTopData(self, request):
         """ListTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
 
@@ -1393,6 +1477,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListTopWafData(self, request):
+        """获取Waf攻击Top数据
+
+        :param request: Request instance for ListTopWafData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopWafDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopWafDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTopWafData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTopWafDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
