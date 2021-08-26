@@ -1013,7 +1013,7 @@ class CreateDataForwardRequest(AbstractModel):
         r"""
         :param ProductId: 产品ID。
         :type ProductId: str
-        :param ForwardAddr: 转发地址。
+        :param ForwardAddr: 转发地址。如果有鉴权Token，则需要自行传入，例如 [{\"forward\":{\"api\":\"http://123.207.117.108:1080/sub.php\",\"token\":\"testtoken\"}}]
         :type ForwardAddr: str
         :param DataChose: 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
         :type DataChose: int
@@ -1193,11 +1193,11 @@ class CreateProductRequest(AbstractModel):
         :type ProductVaildYears: int
         :param Features: 设备功能码 ypsxth音频双向通话 spdxth视频单向通话
         :type Features: list of str
-        :param ChipOs: 设备操作系统 Linux
+        :param ChipOs: 设备操作系统，通用设备填default
         :type ChipOs: str
-        :param ChipManufactureId: 芯片厂商id
+        :param ChipManufactureId: 芯片厂商id，通用设备填default
         :type ChipManufactureId: str
-        :param ChipId: 芯片id
+        :param ChipId: 芯片id，通用设备填default
         :type ChipId: str
         :param ProductDescription: 产品描述信息
         :type ProductDescription: str
@@ -4653,7 +4653,7 @@ class ModifyDataForwardRequest(AbstractModel):
         r"""
         :param ProductId: 产品ID。
         :type ProductId: str
-        :param ForwardAddr: 转发地址。
+        :param ForwardAddr: 转发地址。如果有鉴权Token，则需要自行传入，例如 [{\"forward\":{\"api\":\"http://123.207.117.108:1080/sub.php\",\"token\":\"testtoken\"}}]
         :type ForwardAddr: str
         :param DataChose: 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
         :type DataChose: int

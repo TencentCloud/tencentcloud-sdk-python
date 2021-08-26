@@ -9404,7 +9404,7 @@ class RecordParam(AbstractModel):
         r"""
         :param RecordInterval: 录制间隔。
 单位秒，默认：1800。
-取值范围：60-7200。
+取值范围：30-7200。
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
         :type RecordInterval: int
         :param StorageTime: 录制存储时长。

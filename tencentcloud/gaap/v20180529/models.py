@@ -6325,7 +6325,7 @@ class ProxyGroupDetail(AbstractModel):
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
-        :param PackageType: 通道组类型，可取值：Thunder、Accelerator，默认值Thunder
+        :param PackageType: 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         """
@@ -6576,6 +6576,9 @@ UNKNOWN表示未知状态。
         :param NetworkType: 网络类型：normal、cn2
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
+        :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageType: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6606,6 +6609,7 @@ UNKNOWN表示未知状态。
         self.ClientIPMethod = None
         self.IPAddressVersion = None
         self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -6647,6 +6651,7 @@ UNKNOWN表示未知状态。
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7315,6 +7320,12 @@ lc表示最小连接数。
         :param UnhealthyThreshold: 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnhealthyThreshold: int
+        :param FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailoverSwitch: int
+        :param SessionPersist: 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionPersist: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7333,6 +7344,8 @@ lc表示最小连接数。
         self.ClientIPMethod = None
         self.HealthyThreshold = None
         self.UnhealthyThreshold = None
+        self.FailoverSwitch = None
+        self.SessionPersist = None
 
 
     def _deserialize(self, params):
@@ -7358,6 +7371,8 @@ lc表示最小连接数。
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.HealthyThreshold = params.get("HealthyThreshold")
         self.UnhealthyThreshold = params.get("UnhealthyThreshold")
+        self.FailoverSwitch = params.get("FailoverSwitch")
+        self.SessionPersist = params.get("SessionPersist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7461,6 +7476,9 @@ class UDPListener(AbstractModel):
         :type RealServerSet: list of BindRealServer
         :param CreateTime: 监听器创建时间，Unix时间戳
         :type CreateTime: int
+        :param SessionPersist: 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionPersist: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7473,6 +7491,7 @@ class UDPListener(AbstractModel):
         self.BindStatus = None
         self.RealServerSet = None
         self.CreateTime = None
+        self.SessionPersist = None
 
 
     def _deserialize(self, params):
@@ -7492,6 +7511,7 @@ class UDPListener(AbstractModel):
                 obj._deserialize(item)
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.SessionPersist = params.get("SessionPersist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

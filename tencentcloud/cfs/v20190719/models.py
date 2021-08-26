@@ -182,19 +182,19 @@ class CreateCfsFileSystemRequest(AbstractModel):
         r"""
         :param Zone: 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
         :type Zone: str
-        :param NetInterface: 网络类型，值为 VPC，BASIC；其中 VPC 为私有网络，BASIC 为基础网络
+        :param NetInterface: 网络类型，可选值为 VPC，BASIC，CCN；其中 VPC 为私有网络，BASIC 为基础网络, CCN 为云联网，Turbo系列当前必须选择云联网。目前基础网络已逐渐淘汰，不推荐使用。
         :type NetInterface: str
-        :param PGroupId: 权限组 ID
+        :param PGroupId: 权限组 ID，通用标准型和性能型必填，turbo系列请填写pgroupbasic
         :type PGroupId: str
-        :param Protocol: 文件系统协议类型， 值为 NFS、CIFS; 若留空则默认为 NFS协议
+        :param Protocol: 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
         :type Protocol: str
-        :param StorageType: 文件系统存储类型，值为 SD ；其中 SD 为标准型存储， HP为性能存储。
+        :param StorageType: 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :type StorageType: str
         :param VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
         :type VpcId: str
         :param SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。
         :type SubnetId: str
-        :param MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP
+        :param MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
         :type MountIP: str
         :param FsName: 用户自定义文件系统名称
         :type FsName: str
@@ -202,6 +202,12 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
         :type ClientToken: str
+        :param CcnId: 云联网ID， 若网络类型选择的是CCN，该字段为必填
+        :type CcnId: str
+        :param CidrBlock: 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
+        :type CidrBlock: str
+        :param Capacity: 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
+        :type Capacity: int
         """
         self.Zone = None
         self.NetInterface = None
@@ -214,6 +220,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.FsName = None
         self.ResourceTags = None
         self.ClientToken = None
+        self.CcnId = None
+        self.CidrBlock = None
+        self.Capacity = None
 
 
     def _deserialize(self, params):
@@ -233,6 +242,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.ClientToken = params.get("ClientToken")
+        self.CcnId = params.get("CcnId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Capacity = params.get("Capacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -255,9 +267,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
         :type CreationToken: str
         :param FileSystemId: 文件系统 ID
         :type FileSystemId: str
-        :param LifeCycleState: 文件系统状态
+        :param LifeCycleState: 文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
         :type LifeCycleState: str
-        :param SizeByte: 文件系统已使用容量大小
+        :param SizeByte: 文件系统已使用容量大小，单位为 Byte
         :type SizeByte: int
         :param ZoneId: 可用区 ID
         :type ZoneId: int
@@ -1019,6 +1031,8 @@ class FileSystemInfo(AbstractModel):
         :type AppId: int
         :param BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
         :type BandwidthLimit: float
+        :param Capacity: 文件系统总容量
+        :type Capacity: int
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -1038,6 +1052,7 @@ class FileSystemInfo(AbstractModel):
         self.KmsKeyId = None
         self.AppId = None
         self.BandwidthLimit = None
+        self.Capacity = None
 
 
     def _deserialize(self, params):
@@ -1061,6 +1076,7 @@ class FileSystemInfo(AbstractModel):
         self.KmsKeyId = params.get("KmsKeyId")
         self.AppId = params.get("AppId")
         self.BandwidthLimit = params.get("BandwidthLimit")
+        self.Capacity = params.get("Capacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1097,6 +1113,10 @@ class MountInfo(AbstractModel):
         :type SubnetId: str
         :param SubnetName: 子网名称
         :type SubnetName: str
+        :param CcnID: CFS Turbo使用的云联网ID
+        :type CcnID: str
+        :param CidrBlock: 云联网中CFS Turbo使用的网段
+        :type CidrBlock: str
         """
         self.FileSystemId = None
         self.MountTargetId = None
@@ -1108,6 +1128,8 @@ class MountInfo(AbstractModel):
         self.VpcName = None
         self.SubnetId = None
         self.SubnetName = None
+        self.CcnID = None
+        self.CidrBlock = None
 
 
     def _deserialize(self, params):
@@ -1121,6 +1143,8 @@ class MountInfo(AbstractModel):
         self.VpcName = params.get("VpcName")
         self.SubnetId = params.get("SubnetId")
         self.SubnetName = params.get("SubnetName")
+        self.CcnID = params.get("CcnID")
+        self.CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

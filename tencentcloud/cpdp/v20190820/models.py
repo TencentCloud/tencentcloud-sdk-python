@@ -3113,12 +3113,15 @@ class CreateExternalAnchorRequest(AbstractModel):
         :type IdCardFront: str
         :param IdCardReverse: 身份证反面图片下载链接
         :type IdCardReverse: str
+        :param AgentId: 指定分配的代理商ID
+        :type AgentId: str
         """
         self.Uid = None
         self.Name = None
         self.IdNo = None
         self.IdCardFront = None
         self.IdCardReverse = None
+        self.AgentId = None
 
 
     def _deserialize(self, params):
@@ -3127,6 +3130,7 @@ class CreateExternalAnchorRequest(AbstractModel):
         self.IdNo = params.get("IdNo")
         self.IdCardFront = params.get("IdCardFront")
         self.IdCardReverse = params.get("IdCardReverse")
+        self.AgentId = params.get("AgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
