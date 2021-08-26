@@ -14,13 +14,16 @@
 # limitations under the License.
 
 import json
+import os
 import time
 try:
     # py3
+    import configparser
     from urllib.parse import urlencode
     from urllib.request import urlopen
 except ImportError:
     # py2
+    import ConfigParser as configparser
     from urllib import urlencode
     from urllib import urlopen
 
@@ -142,6 +145,13 @@ class CVMRoleCredential(object):
             # maybe we should validate token to None as well
             pass
 
+    def get_credential(self):
+        if self.secretId is None or self.secretKey is None or self._token is None:
+            return None
+        if len(self.secretId) == 0 or len(self.secretKey) == 0 or len(self.token) == 0:
+            return None
+        return self
+
 
 class STSAssumeRoleCredential(object):
     """使用STSAssumeRoleCredential，制动role，
@@ -239,3 +249,111 @@ class STSAssumeRoleCredential(object):
         self._tmp_secret_key = t_c["Response"]["Credentials"]["TmpSecretKey"]
         self._expired_time = t_c["Response"]["ExpiredTime"] - self._duration_seconds*0.9
 
+
+class EnvironmentVariableCredential():
+
+    def get_credential(self):
+        """Tencent Cloud EnvironmentVariableCredential.
+
+        Access https://console.cloud.tencent.com/cam/capi to manage your
+        credentials.
+
+        :param secret_id: The secret id of your credential, get by environment variable TENCENTCLOUD_SECRET_ID
+        :type secret_id: str
+        :param secret_key: The secret key of your credential. get by environment variable TENCENTCLOUD_SECRET_KEY
+        :type secret_key: str
+        """
+        self.secret_id = os.environ.get('TENCENTCLOUD_SECRET_ID')
+        self.secret_key = os.environ.get('TENCENTCLOUD_SECRET_KEY')
+
+        if self.secret_id is None or self.secret_key is None:
+            return None
+        if len(self.secret_id) == 0 or len(self.secret_key) == 0:
+            return None
+        return Credential(self.secret_id, self.secret_key)
+
+
+class ProfileCredential():
+
+    def get_credential(self):
+        """Tencent Cloud ProfileCredential.
+
+        Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
+
+        default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
+        such as:
+        [default]
+        secret_id=""
+        secret_key=""
+
+        :param secret_id: The secret id of your credential.
+        :type secret_id: str
+        :param secret_key: The secret key of your credential.
+        :type secret_key: str
+        """
+        if os.path.exists(os.environ['HOME'] + "/.tencentcloud/credentials"):
+            file_path = os.environ['HOME'] + "/.tencentcloud/credentials"
+        elif os.path.exists("/etc/tencentcloud/credentials"):
+            file_path = "/etc/tencentcloud/credentials"
+        else:
+            file_path = ""
+        if file_path:
+            # loads config
+            conf = configparser.ConfigParser()
+            conf.read(file_path)
+            ini_map = dict(conf._sections)
+            for k in dict(conf._sections):
+                option = dict(ini_map[k])
+                for key, value in dict(ini_map[k]).items():
+                    option[key] = value.strip()
+                ini_map[k] = option
+            if "default" in ini_map:
+                client_config = ini_map.get("default")
+                self.secret_id = client_config.get('secret_id', None)
+                self.secret_key = client_config.get('secret_key', None)
+                self.role_arn = client_config.get('role_arn', None)
+        else:
+            self.secret_id = None
+            self.secret_key = None
+            self.role_arn = None
+
+        if self.secret_id is None or self.secret_key is None:
+            return None
+        if len(self.secret_id) == 0 or len(self.secret_key) == 0:
+            return None
+        return Credential(self.secret_id, self.secret_key)
+
+
+class DefaultCredentialProvider(object):
+    """Tencent Cloud DefaultCredentialProvider.
+
+    DefaultCredentialProvider will search credential by order EnvironmentVariableCredential ProfileCredential
+    and CVMRoleCredential.
+    """
+
+    def __init__(self):
+        self.cred = None
+
+    def get_credentials(self):
+        if self.cred is not None:
+            return self.cred
+
+        env_cred_ins = EnvironmentVariableCredential()
+        env_cred = env_cred_ins.get_credential()
+        self.cred = env_cred
+        if self.cred is not None:
+            return self.cred
+
+        prof_cred_ins = ProfileCredential()
+        prof_cred = prof_cred_ins.get_credential()
+        self.cred = prof_cred
+        if self.cred is not None:
+            return self.cred
+
+        cvm_role_crd_ins = CVMRoleCredential()
+        cvm_role_crd = cvm_role_crd_ins.get_credential()
+        self.cred = cvm_role_crd
+        if self.cred is not None:
+            return self.cred
+
+        raise TencentCloudSDKException("ClientSideError", "no valid credentail.")
