@@ -240,19 +240,19 @@ class EnvironmentVariableCredential():
         Access https://console.cloud.tencent.com/cam/capi to manage your
         credentials.
 
-        :param secretId: The secret id of your credential, get by environment variable TENCENTCLOUD_SECRET_ID
-        :type secretId: str
-        :param secretKey: The secret key of your credential. get by environment variable TENCENTCLOUD_SECRET_KEY
-        :type secretKey: str
+        :param secret_id: The secret id of your credential, get by environment variable TENCENTCLOUD_SECRET_ID
+        :type secret_id: str
+        :param secret_key: The secret key of your credential. get by environment variable TENCENTCLOUD_SECRET_KEY
+        :type secret_key: str
         """
-        self.secretId = os.environ.get('TENCENTCLOUD_SECRET_ID')
-        self.secretKey = os.environ.get('TENCENTCLOUD_SECRET_KEY')
+        self.secret_id = os.environ.get('TENCENTCLOUD_SECRET_ID')
+        self.secret_key = os.environ.get('TENCENTCLOUD_SECRET_KEY')
 
-        if self.secretId is None or self.secretKey is None:
+        if self.secret_id is None or self.secret_key is None:
             return None
-        if len(self.secretId) == 0 or len(self.secretKey) == 0:
+        if len(self.secret_id) == 0 or len(self.secret_key) == 0:
             return None
-        return Credential(self.secretId, self.secretKey)
+        return Credential(self.secret_id, self.secret_key)
 
 
 class ProfileCredential():
@@ -268,10 +268,10 @@ class ProfileCredential():
         secret_id=""
         secret_key=""
 
-        :param secretId: The secret id of your credential.
-        :type secretId: str
-        :param secretKey: The secret key of your credential.
-        :type secretKey: str
+        :param secret_id: The secret id of your credential.
+        :type secret_id: str
+        :param secret_key: The secret key of your credential.
+        :type secret_key: str
         """
         if os.path.exists(os.environ['HOME'] + "/.tencentcloud/credentials"):
             file_path = os.environ['HOME'] + "/.tencentcloud/credentials"
@@ -291,19 +291,19 @@ class ProfileCredential():
                 ini_map[k] = option
             if "default" in ini_map:
                 client_config = ini_map.get("default")
-                self.secretId = client_config.get('secret_id', None)
-                self.secretKey = client_config.get('secret_key', None)
+                self.secret_id = client_config.get('secret_id', None)
+                self.secret_key = client_config.get('secret_key', None)
                 self.role_arn = client_config.get('role_arn', None)
         else:
-            self.secretId = None
-            self.secretKey = None
+            self.secret_id = None
+            self.secret_key = None
             self.role_arn = None
 
-        if self.secretId is None or self.secretKey is None:
+        if self.secret_id is None or self.secret_key is None:
             return None
-        if len(self.secretId) == 0 or len(self.secretKey) == 0:
+        if len(self.secret_id) == 0 or len(self.secret_key) == 0:
             return None
-        return Credential(self.secretId, self.secretKey)
+        return Credential(self.secret_id, self.secret_key)
 
 
 class DefaultCredentialProvider(object):
@@ -320,20 +320,20 @@ class DefaultCredentialProvider(object):
         if self.cred is not None:
             return self.cred
 
-        e_v_c_p = EnvironmentVariableCredential()
-        env_cred = e_v_c_p.get_credential()
+        env_cred_ins = EnvironmentVariableCredential()
+        env_cred = env_cred_ins.get_credential()
         self.cred = env_cred
         if self.cred is not None:
             return self.cred
 
-        p_c_p = ProfileCredential()
-        prof_cred = p_c_p.get_credential()
+        prof_cred_ins = ProfileCredential()
+        prof_cred = prof_cred_ins.get_credential()
         self.cred = prof_cred
         if self.cred is not None:
             return self.cred
 
-        c_r_c = CVMRoleCredential()
-        cvm_role_crd = c_r_c.get_credential()
+        cvm_role_crd_ins = CVMRoleCredential()
+        cvm_role_crd = cvm_role_crd_ins.get_credential()
         self.cred = cvm_role_crd
         if self.cred is not None:
             return self.cred
