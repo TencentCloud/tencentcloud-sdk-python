@@ -139,8 +139,8 @@ class AbstractClient(object):
         if self.credential.token:
             params['Token'] = self.credential.token
 
-        if self.credential.secretId:
-            params['SecretId'] = self.credential.secretId
+        if self.credential.secret_id:
+            params['SecretId'] = self.credential.secret_id
 
         if self.profile.signMethod:
             params['SignatureMethod'] = self.profile.signMethod
@@ -149,7 +149,7 @@ class AbstractClient(object):
             params['Language'] = self.profile.language
 
         signInParam = self._format_sign_string(params)
-        params['Signature'] = Sign.sign(str(self.credential.secretKey),
+        params['Signature'] = Sign.sign(str(self.credential.secret_key),
                                         str(signInParam),
                                         str(self.profile.signMethod))
 
@@ -204,7 +204,7 @@ class AbstractClient(object):
         signature = self._get_tc3_signature(params, req, date, service, options)
 
         auth = "TC3-HMAC-SHA256 Credential=%s/%s/%s/tc3_request, SignedHeaders=content-type;host, Signature=%s" % (
-            self.credential.secretId, date, service, signature)
+            self.credential.secret_id, date, service, signature)
         req.header["Authorization"] = auth
 
     def _get_tc3_signature(self, params, req, date, service, options=None):
@@ -245,7 +245,7 @@ class AbstractClient(object):
                                           credential_scope,
                                           digest)
 
-        return Sign.sign_tc3(self.credential.secretKey, date, service, string2sign)
+        return Sign.sign_tc3(self.credential.secret_key, date, service, string2sign)
 
     # it must return bytes instead of string
     def _get_multipart_body(self, params, boundary, options=None):

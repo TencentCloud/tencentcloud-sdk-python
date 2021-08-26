@@ -11,20 +11,20 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 class Sign(object):
 
     @staticmethod
-    def sign(secretKey, signStr, signMethod):
+    def sign(secret_key, sign_str, sign_method):
         if sys.version_info[0] > 2:
-            signStr = bytes(signStr, 'utf-8')
-            secretKey = bytes(secretKey, 'utf-8')
+            sign_str = bytes(sign_str, 'utf-8')
+            secret_key = bytes(secret_key, 'utf-8')
 
         digestmod = None
-        if signMethod == 'HmacSHA256':
+        if sign_method == 'HmacSHA256':
             digestmod = hashlib.sha256
-        elif signMethod == 'HmacSHA1':
+        elif sign_method == 'HmacSHA1':
             digestmod = hashlib.sha1
         else:
             raise TencentCloudSDKException("signMethod invalid", "signMethod only support (HmacSHA1, HmacSHA256)")
 
-        hashed = hmac.new(secretKey, signStr, digestmod)
+        hashed = hmac.new(secret_key, sign_str, digestmod)
         base64 = binascii.b2a_base64(hashed.digest())[:-1]
 
         if sys.version_info[0] > 2:

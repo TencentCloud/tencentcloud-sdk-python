@@ -85,6 +85,7 @@ def test_serialization():
                 "LatestOperation": "FailoverMigrateInstance",
                 "HpcClusterId": None,
                 "RdmaIpAddresses": None,
+                "IsolatedSource": None,
             }
         ],
         "TotalCount": 1,

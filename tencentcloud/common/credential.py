@@ -28,33 +28,41 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.common.common_client import CommonClient
 
 class Credential(object):
-    def __init__(self, secretId, secretKey, token=None):
+    def __init__(self, secret_id, secret_key, token=None):
         """Tencent Cloud Credentials.
 
         Access https://console.cloud.tencent.com/cam/capi to manage your
         credentials.
 
-        :param secretId: The secret id of your credential.
-        :type secretId: str
-        :param secretKey: The secret key of your credential.
-        :type secretKey: str
+        :param secret_id: The secret id of your credential.
+        :type secret_id: str
+        :param secret_key: The secret key of your credential.
+        :type secret_key: str
         :param token: The federation token of your credential, if this field
-                      is specified, secretId and secretKey should be set
+                      is specified, secret_id and secret_key should be set
                       accordingly, see: https://cloud.tencent.com/document/product/598/13896
         """
-        if secretId is None or secretId.strip() == "":
+        if secret_id is None or secret_id.strip() == "":
             raise TencentCloudSDKException("InvalidCredential", "secret id should not be none or empty")
-        if secretId.strip() != secretId:
+        if secret_id.strip() != secret_id:
             raise TencentCloudSDKException("InvalidCredential", "secret id should not contain spaces")
-        self.secretId = secretId
+        self.secret_id = secret_id
 
-        if secretKey is None or secretKey.strip() == "":
+        if secret_key is None or secret_key.strip() == "":
             raise TencentCloudSDKException("InvalidCredential", "secret key should not be none or empty")
-        if secretKey.strip() != secretKey:
+        if secret_key.strip() != secret_key:
             raise TencentCloudSDKException("InvalidCredential", "secret key should not contain spaces")
-        self.secretKey = secretKey
+        self.secret_key = secret_key
 
         self.token = token
+
+    @property
+    def secretId(self):
+        return self.secret_id
+
+    @property
+    def secretKey(self):
+        return self.secret_key
 
 
 class CVMRoleCredential(object):
@@ -179,6 +187,16 @@ class STSAssumeRoleCredential(object):
 
     @property
     def secretKey(self):
+        self._need_refresh()
+        return self._tmp_secret_key
+
+    @property
+    def secret_id(self):
+        self._need_refresh()
+        return self._tmp_secret_id
+
+    @property
+    def secret_key(self):
         self._need_refresh()
         return self._tmp_secret_key
 
