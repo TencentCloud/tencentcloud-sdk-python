@@ -146,9 +146,7 @@ class CVMRoleCredential(object):
             pass
 
     def get_credential(self):
-        if self.secretId is None or self.secretKey is None or self._token is None:
-            return None
-        if len(self.secretId) == 0 or len(self.secretKey) == 0 or len(self.token) == 0:
+        if not self.secret_id or not self.secret_key or not self.token:
             return None
         return self
 
@@ -239,15 +237,14 @@ class STSAssumeRoleCredential(object):
         params = {
             "RoleArn": self._role_arn,
             "RoleSessionName": self._role_session_name,
-            "DurationSeconds": self._duration_seconds
-
+            "DurationSeconds": self._duration_seconds,
         }
 
-        t_c = common_client.call_json("AssumeRole", params)
-        self._token = t_c["Response"]["Credentials"]["Token"]
-        self._tmp_secret_id = t_c["Response"]["Credentials"]["TmpSecretId"]
-        self._tmp_secret_key = t_c["Response"]["Credentials"]["TmpSecretKey"]
-        self._expired_time = t_c["Response"]["ExpiredTime"] - self._duration_seconds*0.9
+        rsp = common_client.call_json("AssumeRole", params)
+        self._token = rsp["Response"]["Credentials"]["Token"]
+        self._tmp_secret_id = rsp["Response"]["Credentials"]["TmpSecretId"]
+        self._tmp_secret_key = rsp["Response"]["Credentials"]["TmpSecretKey"]
+        self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.9
 
 
 class EnvironmentVariableCredential():
@@ -338,21 +335,15 @@ class DefaultCredentialProvider(object):
         if self.cred is not None:
             return self.cred
 
-        env_cred_ins = EnvironmentVariableCredential()
-        env_cred = env_cred_ins.get_credential()
-        self.cred = env_cred
+        self.cred = EnvironmentVariableCredential().get_credential()
         if self.cred is not None:
             return self.cred
 
-        prof_cred_ins = ProfileCredential()
-        prof_cred = prof_cred_ins.get_credential()
-        self.cred = prof_cred
+        self.cred = ProfileCredential().get_credential()
         if self.cred is not None:
             return self.cred
 
-        cvm_role_crd_ins = CVMRoleCredential()
-        cvm_role_crd = cvm_role_crd_ins.get_credential()
-        self.cred = cvm_role_crd
+        self.cred = CVMRoleCredential().get_credential()
         if self.cred is not None:
             return self.cred
 
