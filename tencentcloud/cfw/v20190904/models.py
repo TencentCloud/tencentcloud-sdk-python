@@ -1634,6 +1634,71 @@ class DescribeNatRuleOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceGroupNewRequest(AbstractModel):
+    """DescribeResourceGroupNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueryType: 查询类型 网络结构 vpc，业务识别- resource ，资源标签-tag
+        :type QueryType: str
+        :param GroupId: 资产组id  全部传0
+        :type GroupId: str
+        :param ShowType: all  包含子组 own自己
+        :type ShowType: str
+        """
+        self.QueryType = None
+        self.GroupId = None
+        self.ShowType = None
+
+
+    def _deserialize(self, params):
+        self.QueryType = params.get("QueryType")
+        self.GroupId = params.get("GroupId")
+        self.ShowType = params.get("ShowType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGroupNewResponse(AbstractModel):
+    """DescribeResourceGroupNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 返回树形结构
+        :type Data: str
+        :param UnResourceNum: 无
+        :type UnResourceNum: int
+        :param ReturnMsg: 无
+        :type ReturnMsg: str
+        :param ReturnCode: 无
+        :type ReturnCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.UnResourceNum = None
+        self.ReturnMsg = None
+        self.ReturnCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.UnResourceNum = params.get("UnResourceNum")
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.ReturnCode = params.get("ReturnCode")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceGroupRequest(AbstractModel):
     """DescribeResourceGroup请求参数结构体
 

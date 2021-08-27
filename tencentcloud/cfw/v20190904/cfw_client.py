@@ -726,6 +726,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceGroupNew(self, request):
+        """DescribeResourceGroupNew资产中心资产树信息
+
+        :param request: Request instance for DescribeResourceGroupNew.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeResourceGroupNewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeResourceGroupNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceGroupNew", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceGroupNewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRuleOverview(self, request):
         """查询规则列表概况
 

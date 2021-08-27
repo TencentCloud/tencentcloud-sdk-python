@@ -679,6 +679,62 @@ class DeleteDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDevicesRequest(AbstractModel):
+    """DeleteDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DevicesItems: 多个设备标识
+        :type DevicesItems: list of DevicesItem
+        """
+        self.DevicesItems = None
+
+
+    def _deserialize(self, params):
+        if params.get("DevicesItems") is not None:
+            self.DevicesItems = []
+            for item in params.get("DevicesItems"):
+                obj = DevicesItem()
+                obj._deserialize(item)
+                self.DevicesItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDevicesResponse(AbstractModel):
+    """DeleteDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResultCode: 删除的结果代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCode: str
+        :param ResultMessage: 删除的结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultCode = None
+        self.ResultMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultCode = params.get("ResultCode")
+        self.ResultMessage = params.get("ResultMessage")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLoRaFrequencyRequest(AbstractModel):
     """DeleteLoRaFrequency请求参数结构体
 
@@ -1574,6 +1630,34 @@ class DeviceInfo(AbstractModel):
         
 
 
+class DevicesItem(AbstractModel):
+    """ProductId -> DeviceName
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableTopicRuleRequest(AbstractModel):
     """DisableTopicRule请求参数结构体
 
@@ -1843,12 +1927,15 @@ class GetDeviceListRequest(AbstractModel):
         :type FirmwareVersion: str
         :param DeviceName: 需要过滤的设备名称
         :type DeviceName: str
+        :param ProjectId: 项目ID。产品 ID 为 -1 时，该参数必填
+        :type ProjectId: str
         """
         self.ProductId = None
         self.Offset = None
         self.Limit = None
         self.FirmwareVersion = None
         self.DeviceName = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1857,6 +1944,7 @@ class GetDeviceListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.FirmwareVersion = params.get("FirmwareVersion")
         self.DeviceName = params.get("DeviceName")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3525,6 +3613,66 @@ class TopicRulePayload(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateDevicesEnableStateRequest(AbstractModel):
+    """UpdateDevicesEnableState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DevicesItems: 多个设备标识
+        :type DevicesItems: list of DevicesItem
+        :param Status: 1：启用；0：禁用
+        :type Status: int
+        """
+        self.DevicesItems = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        if params.get("DevicesItems") is not None:
+            self.DevicesItems = []
+            for item in params.get("DevicesItems"):
+                obj = DevicesItem()
+                obj._deserialize(item)
+                self.DevicesItems.append(obj)
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDevicesEnableStateResponse(AbstractModel):
+    """UpdateDevicesEnableState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResultCode: 删除的结果代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCode: str
+        :param ResultMessage: 删除的结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultCode = None
+        self.ResultMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultCode = params.get("ResultCode")
+        self.ResultMessage = params.get("ResultMessage")
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateFirmwareRequest(AbstractModel):
