@@ -2191,6 +2191,69 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopicSyncReplicaRequest(AbstractModel):
+    """DescribeTopicSyncReplica请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param TopicName: 主题名称
+        :type TopicName: str
+        :param Offset: 偏移量，不填默认为0
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认10，最大值20。
+        :type Limit: int
+        :param OutOfSyncReplicaOnly: 仅筛选未同步副本
+        :type OutOfSyncReplicaOnly: bool
+        """
+        self.InstanceId = None
+        self.TopicName = None
+        self.Offset = None
+        self.Limit = None
+        self.OutOfSyncReplicaOnly = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OutOfSyncReplicaOnly = params.get("OutOfSyncReplicaOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicSyncReplicaResponse(AbstractModel):
+    """DescribeTopicSyncReplica返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回topic 副本详情
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicInSyncReplicaResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TopicInSyncReplicaResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserRequest(AbstractModel):
     """DescribeUser请求参数结构体
 
@@ -3994,6 +4057,95 @@ class TopicDetailResponse(AbstractModel):
                 obj = TopicDetail()
                 obj._deserialize(item)
                 self.TopicList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicInSyncReplicaInfo(AbstractModel):
+    """topic副本及详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partition: 分区名称
+        :type Partition: str
+        :param Leader: Leader Id
+        :type Leader: int
+        :param Replica: 副本集
+        :type Replica: str
+        :param InSyncReplica: ISR
+        :type InSyncReplica: str
+        :param BeginOffset: 起始Offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginOffset: int
+        :param EndOffset: 末端Offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndOffset: int
+        :param MessageCount: 消息数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageCount: int
+        :param OutOfSyncReplica: 未同步副本集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutOfSyncReplica: str
+        """
+        self.Partition = None
+        self.Leader = None
+        self.Replica = None
+        self.InSyncReplica = None
+        self.BeginOffset = None
+        self.EndOffset = None
+        self.MessageCount = None
+        self.OutOfSyncReplica = None
+
+
+    def _deserialize(self, params):
+        self.Partition = params.get("Partition")
+        self.Leader = params.get("Leader")
+        self.Replica = params.get("Replica")
+        self.InSyncReplica = params.get("InSyncReplica")
+        self.BeginOffset = params.get("BeginOffset")
+        self.EndOffset = params.get("EndOffset")
+        self.MessageCount = params.get("MessageCount")
+        self.OutOfSyncReplica = params.get("OutOfSyncReplica")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicInSyncReplicaResult(AbstractModel):
+    """Topic 副本及详情数据集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicInSyncReplicaList: Topic详情及副本合集
+        :type TopicInSyncReplicaList: list of TopicInSyncReplicaInfo
+        :param TotalCount: 总计个数
+        :type TotalCount: int
+        """
+        self.TopicInSyncReplicaList = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicInSyncReplicaList") is not None:
+            self.TopicInSyncReplicaList = []
+            for item in params.get("TopicInSyncReplicaList"):
+                obj = TopicInSyncReplicaInfo()
+                obj._deserialize(item)
+                self.TopicInSyncReplicaList.append(obj)
         self.TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
