@@ -104,6 +104,9 @@ LIMITEXCEEDED_ECDNPURGEURLEXCEEDBATCHLIMIT = 'LimitExceeded.EcdnPurgeUrlExceedBa
 # 刷新的Url数量超过每日限额。
 LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = 'LimitExceeded.EcdnPurgeUrlExceedDayLimit'
 
+# 接入域名数超出限制。
+LIMITEXCEEDED_ECDNUSERTOOMANYDOMAINS = 'LimitExceeded.EcdnUserTooManyDomains'
+
 # 域名已存在。
 RESOURCEINUSE_ECDNDOMAINEXISTS = 'ResourceInUse.EcdnDomainExists'
 

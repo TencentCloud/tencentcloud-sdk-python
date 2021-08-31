@@ -65,6 +65,9 @@ FAILEDOPERATION_MULTICARDERROR = 'FailedOperation.MultiCardError'
 # 非香港身份证。
 FAILEDOPERATION_NOHKIDCARD = 'FailedOperation.NoHKIDCard'
 
+# 非马来身份证。
+FAILEDOPERATION_NOMASIDCARD = 'FailedOperation.NoMASIDCard'
+
 # 非护照。
 FAILEDOPERATION_NOPASSPORT = 'FailedOperation.NoPassport'
 

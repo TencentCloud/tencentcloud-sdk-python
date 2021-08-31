@@ -164,6 +164,9 @@ RESOURCEUNAVAILABLE_TOOMANYCREATINGSNAPSHOT = 'ResourceUnavailable.TooManyCreati
 # 云硬盘类型错误，如尝试挂载系统盘至云服务器上。
 RESOURCEUNAVAILABLE_TYPEERROR = 'ResourceUnavailable.TypeError'
 
+# 云硬盘与实例不在同一可用区。
+RESOURCEUNAVAILABLE_ZONENOTMATCH = 'ResourceUnavailable.ZoneNotMatch'
+
 # 订单冲突。
 TRADEDEALCONFLICT = 'TradeDealConflict'
 

@@ -50,6 +50,9 @@ FAILEDOPERATION_INNERERROR = 'FailedOperation.InnerError'
 # 任务已撤销，请重新提交任务。
 FAILEDOPERATION_JOBHASBEENCANCELED = 'FailedOperation.JobHasBeenCanceled'
 
+# 任务不存在。
+FAILEDOPERATION_JOBNOTEXIST = 'FailedOperation.JobNotExist'
+
 # 任务已停止处理，请重新提交任务。
 FAILEDOPERATION_JOBSTOPPROCESSING = 'FailedOperation.JobStopProcessing'
 

@@ -356,7 +356,7 @@ class CMEExportInfo(AbstractModel):
         :type Name: str
         :param Description: 导出的媒体信息，不得超过50个字符。
         :type Description: str
-        :param ClassPath: 导出的媒体分类路径，长度不能超过15字符。
+        :param ClassPath: 导出的媒体分类路径，长度不能超过15字符。不存在默认创建。
         :type ClassPath: str
         :param TagSet: 导出的媒体标签，单个标签不得超过10个字符。
         :type TagSet: list of str

@@ -1090,6 +1090,47 @@ class DeleteAclRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRouteTriggerTimeRequest(AbstractModel):
+    """DeleteRouteTriggerTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DelayTime: 修改时间
+        :type DelayTime: str
+        """
+        self.DelayTime = None
+
+
+    def _deserialize(self, params):
+        self.DelayTime = params.get("DelayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRouteTriggerTimeResponse(AbstractModel):
+    """DeleteRouteTriggerTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTopicIpWhiteListRequest(AbstractModel):
     """DeleteTopicIpWhiteList请求参数结构体
 
@@ -1697,7 +1738,7 @@ class DescribeInstanceAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 实例属性返回结果对象
+        :param Result: 实例属性返回结果对象。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceAttributesResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2848,6 +2889,15 @@ class InstanceAttributesResponse(AbstractModel):
         :param RetentionTimeConfig: 动态消息保留策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        :param MaxConnection: 最大连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConnection: int
+        :param PublicNetwork: 公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetwork: int
+        :param DeleteRouteTimestamp: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteRouteTimestamp: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2878,6 +2928,9 @@ class InstanceAttributesResponse(AbstractModel):
         self.InstanceType = None
         self.Features = None
         self.RetentionTimeConfig = None
+        self.MaxConnection = None
+        self.PublicNetwork = None
+        self.DeleteRouteTimestamp = None
 
 
     def _deserialize(self, params):
@@ -2924,6 +2977,9 @@ class InstanceAttributesResponse(AbstractModel):
         if params.get("RetentionTimeConfig") is not None:
             self.RetentionTimeConfig = DynamicRetentionTime()
             self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
+        self.MaxConnection = params.get("MaxConnection")
+        self.PublicNetwork = params.get("PublicNetwork")
+        self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3340,6 +3396,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         :param RebalanceTime: 修改升配置rebalance时间
         :type RebalanceTime: int
+        :param PublicNetwork: 时间戳
+        :type PublicNetwork: int
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
@@ -3347,6 +3405,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self.Config = None
         self.DynamicRetentionConfig = None
         self.RebalanceTime = None
+        self.PublicNetwork = None
 
 
     def _deserialize(self, params):
@@ -3360,6 +3419,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self.DynamicRetentionConfig = DynamicRetentionTime()
             self.DynamicRetentionConfig._deserialize(params.get("DynamicRetentionConfig"))
         self.RebalanceTime = params.get("RebalanceTime")
+        self.PublicNetwork = params.get("PublicNetwork")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3541,7 +3601,7 @@ class OperateResponseData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: FlowId
+        :param FlowId: FlowId11
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: int
         """

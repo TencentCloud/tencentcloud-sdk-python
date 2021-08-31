@@ -449,11 +449,17 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = 'InvalidParameterValue.C
 # 镜像仓库名与应用名不匹配。
 INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = 'InvalidParameterValue.ContainergroupReponameInvalid'
 
+# 容器端口不允许重复映射。
+INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = 'InvalidParameterValue.ContainergroupTargetPortsRepeat'
+
 # 容器端口不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = 'InvalidParameterValue.ContainergroupTargetportNull'
 
 # 更新间隔不能为空或者数值非法。
 INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATEIVLINVALID = 'InvalidParameterValue.ContainergroupUpdateivlInvalid'
+
+# 找不到业务容器。
+INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = 'InvalidParameterValue.ContainergroupYamlUserContainerNotFound'
 
 # TSF MASTER 正在执行任务，请等待任务执行完成再下发新任务。
 INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = 'InvalidParameterValue.CvmCaeMasterAgentBusy'
@@ -538,6 +544,9 @@ INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = 'InvalidParameterValue.Imagerep
 
 # 镜像仓库名不能为空。
 INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = 'InvalidParameterValue.ImagerepoReponameNull'
+
+# imageTags不能为空。
+INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = 'InvalidParameterValue.ImagerepoTagnameNull'
 
 # 重装系统，无效的镜像id。
 INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = 'InvalidParameterValue.InstanceInvalidImage'
@@ -634,6 +643,9 @@ INVALIDPARAMETERVALUE_SERVICEDESCLENGTH = 'InvalidParameterValue.ServiceDescLeng
 
 # 服务名称重复。
 INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = 'InvalidParameterValue.ServiceNameRepeated'
+
+# 服务不存在或权限不足。
+INVALIDPARAMETERVALUE_SERVICENOTEXISTSORPERMISSIONDENIED = 'InvalidParameterValue.ServiceNotExistsOrPermissionDenied'
 
 # 无效请求参数。
 INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = 'InvalidParameterValue.TaskParameterInvalid'
@@ -736,6 +748,9 @@ RESOURCEINSUFFICIENT_PACKAGESPACEFULL = 'ResourceInsufficient.PackageSpaceFull'
 
 # 无法获取应用信息。
 RESOURCENOTFOUND_APPLICATIONNOTEXIST = 'ResourceNotFound.ApplicationNotExist'
+
+# 应用不存在或应用不属于当前项目。
+RESOURCENOTFOUND_APPLICATIONPROJECTNOTMATCH = 'ResourceNotFound.ApplicationProjectNotMatch'
 
 # 无法获取命名空间所属集群。
 RESOURCENOTFOUND_CLUSTERNOTEXIST = 'ResourceNotFound.ClusterNotExist'

@@ -8297,6 +8297,9 @@ class QueryInvoiceResultData(AbstractModel):
         :type IsRedWashed: int
         :param PdfUrl: pdf地址
         :type PdfUrl: str
+        :param ImageUrl: png地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
         """
         self.OrderId = None
         self.OrderSn = None
@@ -8311,6 +8314,7 @@ class QueryInvoiceResultData(AbstractModel):
         self.TaxAmount = None
         self.IsRedWashed = None
         self.PdfUrl = None
+        self.ImageUrl = None
 
 
     def _deserialize(self, params):
@@ -8327,6 +8331,7 @@ class QueryInvoiceResultData(AbstractModel):
         self.TaxAmount = params.get("TaxAmount")
         self.IsRedWashed = params.get("IsRedWashed")
         self.PdfUrl = params.get("PdfUrl")
+        self.ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

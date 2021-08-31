@@ -9266,12 +9266,20 @@ class ResetInstancesRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
         :param KeepData: 是否保留数据盘数据，取值"true"/"false"。默认为"true"
         :type KeepData: str
+        :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
+TRUE：表示保持镜像的登录设置
+FALSE：表示不保持镜像的登录设置
+
+默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepImageLogin: str
         """
         self.InstanceIdSet = None
         self.ImageId = None
         self.Password = None
         self.EnhancedService = None
         self.KeepData = None
+        self.KeepImageLogin = None
 
 
     def _deserialize(self, params):
@@ -9282,6 +9290,7 @@ class ResetInstancesRequest(AbstractModel):
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.KeepData = params.get("KeepData")
+        self.KeepImageLogin = params.get("KeepImageLogin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9666,6 +9675,13 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         :type InstanceChargeType: int
         :param KeyIds: 密钥对。
         :type KeyIds: list of str
+        :param KeepImageLogin: 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
+TRUE：表示保持镜像的登录设置
+FALSE：表示不保持镜像的登录设置
+
+默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepImageLogin: str
         """
         self.ZoneInstanceCountISPSet = None
         self.Password = None
@@ -9685,6 +9701,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.InternetMaxBandwidthIn = None
         self.InstanceChargeType = None
         self.KeyIds = None
+        self.KeepImageLogin = None
 
 
     def _deserialize(self, params):
@@ -9718,6 +9735,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.InternetMaxBandwidthIn = params.get("InternetMaxBandwidthIn")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.KeyIds = params.get("KeyIds")
+        self.KeepImageLogin = params.get("KeepImageLogin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

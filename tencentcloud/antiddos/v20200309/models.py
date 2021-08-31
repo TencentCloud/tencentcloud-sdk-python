@@ -3549,14 +3549,19 @@ class L4RuleSource(AbstractModel):
         :type Source: str
         :param Weight: 权重值，取值[0,100]
         :type Weight: int
+        :param Port: 8000
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
         """
         self.Source = None
         self.Weight = None
+        self.Port = None
 
 
     def _deserialize(self, params):
         self.Source = params.get("Source")
         self.Weight = params.get("Weight")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -113,6 +113,9 @@ FAILEDOPERATION_QCSROLENOTFOUND = 'FailedOperation.QcsRoleNotFound'
 # 当前函数已有保留并发设置任务处于进行中，请稍后重试。
 FAILEDOPERATION_RESERVEDINPROGRESS = 'FailedOperation.ReservedInProgress'
 
+# Topic不存在。
+FAILEDOPERATION_TOPICNOTEXIST = 'FailedOperation.TopicNotExist'
+
 # 用户并发内存配额设置任务处于进行中，请稍后重试。
 FAILEDOPERATION_TOTALCONCURRENCYMEMORYINPROGRESS = 'FailedOperation.TotalConcurrencyMemoryInProgress'
 
