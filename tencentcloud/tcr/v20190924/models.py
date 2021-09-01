@@ -4742,6 +4742,51 @@ class ModifyImmutableTagRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceRequest(AbstractModel):
+    """ModifyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param RegistryType: 实例的规格
+        :type RegistryType: str
+        """
+        self.RegistryId = None
+        self.RegistryType = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RegistryType = params.get("RegistryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceResponse(AbstractModel):
+    """ModifyInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceTokenRequest(AbstractModel):
     """ModifyInstanceToken请求参数结构体
 

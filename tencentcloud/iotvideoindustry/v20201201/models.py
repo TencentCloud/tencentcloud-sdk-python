@@ -1182,6 +1182,74 @@ class DescribeGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIPCChannelsRequest(AbstractModel):
+    """DescribeIPCChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param Limit: 限制，默认0
+        :type Limit: int
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        :param ChannelTypes: 通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
+        :type ChannelTypes: list of int non-negative
+        """
+        self.Offset = None
+        self.Limit = None
+        self.DeviceId = None
+        self.ChannelTypes = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelTypes = params.get("ChannelTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPCChannelsResponse(AbstractModel):
+    """DescribeIPCChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param DeviceList: 通道详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceList: list of GroupDeviceItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeviceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeviceList") is not None:
+            self.DeviceList = []
+            for item in params.get("DeviceList"):
+                obj = GroupDeviceItem()
+                obj._deserialize(item)
+                self.DeviceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRecordStreamData(AbstractModel):
     """DescribeRecordStreamData 复杂类型
 
@@ -1533,30 +1601,62 @@ class DescribeVideoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间戳，秒级
-        :type StartTime: int
-        :param EndTime: 结束时间戳，秒级
-        :type EndTime: int
         :param Offset: 偏移
         :type Offset: int
         :param Limit: 限制
         :type Limit: int
+        :param StartTime: 开始时间戳，秒级
+        :type StartTime: int
+        :param EndTime: 结束时间戳，秒级
+        :type EndTime: int
         :param DeviceId: 设备Id
         :type DeviceId: str
+        :param StartRecordTime: 开始录制范围 开始
+        :type StartRecordTime: int
+        :param EndRecordTime: 开始录制范围 结束
+        :type EndRecordTime: int
+        :param StartExpireTime: 过期时间范围 开始
+        :type StartExpireTime: int
+        :param EndExpireTime: 过期时间范围 结束
+        :type EndExpireTime: int
+        :param StartFileSize: 文件大小范围 开始 单位byte
+        :type StartFileSize: int
+        :param EndFileSize: 文件大小范围 结束 单位byte
+        :type EndFileSize: int
+        :param IsRecording: 录制状态 99: 录制方已经回写状态 1: 开始录制了，等待回写 2: 已经到了时间模板的停止时间，在等待录制方回写
+        :type IsRecording: int
+        :param ChannelId: 通道ID默认必传
+        :type ChannelId: str
         """
-        self.StartTime = None
-        self.EndTime = None
         self.Offset = None
         self.Limit = None
+        self.StartTime = None
+        self.EndTime = None
         self.DeviceId = None
+        self.StartRecordTime = None
+        self.EndRecordTime = None
+        self.StartExpireTime = None
+        self.EndExpireTime = None
+        self.StartFileSize = None
+        self.EndFileSize = None
+        self.IsRecording = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         self.DeviceId = params.get("DeviceId")
+        self.StartRecordTime = params.get("StartRecordTime")
+        self.EndRecordTime = params.get("EndRecordTime")
+        self.StartExpireTime = params.get("StartExpireTime")
+        self.EndExpireTime = params.get("EndExpireTime")
+        self.StartFileSize = params.get("StartFileSize")
+        self.EndFileSize = params.get("EndFileSize")
+        self.IsRecording = params.get("IsRecording")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

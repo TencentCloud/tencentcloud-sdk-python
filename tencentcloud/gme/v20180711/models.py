@@ -367,7 +367,7 @@ class CreateAppRequest(AbstractModel):
         
 
 
-class CreateAppResponse(AbstractModel):
+class CreateAppResp(AbstractModel):
     """CreateApp的输出参数
 
     """
@@ -416,6 +416,36 @@ class CreateAppResponse(AbstractModel):
         if params.get("VoiceFilterConf") is not None:
             self.VoiceFilterConf = VoiceFilterConf()
             self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAppResponse(AbstractModel):
+    """CreateApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 创建应用返回数据
+        :type Data: :class:`tencentcloud.gme.v20180711.models.CreateAppResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = CreateAppResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeAgeDetectTaskRequest(AbstractModel):
@@ -516,7 +546,7 @@ class DescribeAppStatisticsRequest(AbstractModel):
         
 
 
-class DescribeAppStatisticsResponse(AbstractModel):
+class DescribeAppStatisticsResp(AbstractModel):
     """获取应用用量统计数据输出参数
 
     """
@@ -536,6 +566,36 @@ class DescribeAppStatisticsResponse(AbstractModel):
                 obj = AppStatisticsItem()
                 obj._deserialize(item)
                 self.AppStatistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppStatisticsResponse(AbstractModel):
+    """DescribeAppStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 应用用量统计数据
+        :type Data: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeAppStatisticsResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeApplicationDataRequest(AbstractModel):
@@ -1032,7 +1092,7 @@ class ModifyAppStatusRequest(AbstractModel):
         
 
 
-class ModifyAppStatusResponse(AbstractModel):
+class ModifyAppStatusResp(AbstractModel):
     """ModifyAppStatus接口输出参数
 
     """
@@ -1051,6 +1111,36 @@ class ModifyAppStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAppStatusResponse(AbstractModel):
+    """ModifyAppStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 修改应用开关状态返回数据
+        :type Data: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ModifyAppStatusResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyRoomInfoRequest(AbstractModel):

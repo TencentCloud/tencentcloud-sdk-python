@@ -3861,6 +3861,87 @@ class DescribeEndUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnvDealRegionRequest(AbstractModel):
+    """DescribeEnvDealRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param DealType: 订单类型：
+ENV_PREPAY_MINIAPP= 预付费环境(微信小程序)
+ENV_PREPAY_CLOUD= 预付费环境(腾讯云)
+ENV_POSTPAY = 后付费环境
+HOSTING_PREPAY = 预付费静态托管
+PACKAGE=套餐包
+        :type DealType: str
+        :param DealAction: 下单类型：
+CREATE = 新购
+RENEW = 续费
+MODIFY = 套餐调整(升级/降级)
+REFUND = 退费
+        :type DealAction: str
+        :param DealRegion: 下单地域：
+ap-guangzhou = 广州地域
+ap-shanghai = 上海地域
+ap-beijing = 北京地域
+        :type DealRegion: str
+        """
+        self.EnvId = None
+        self.DealType = None
+        self.DealAction = None
+        self.DealRegion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.DealType = params.get("DealType")
+        self.DealAction = params.get("DealAction")
+        self.DealRegion = params.get("DealRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvDealRegionResponse(AbstractModel):
+    """DescribeEnvDealRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 下单region
+        :type Region: str
+        :param Zone: 下单zone
+        :type Zone: str
+        :param RegionId: 下单regionId
+        :type RegionId: int
+        :param ZoneId: 下单zoneId
+        :type ZoneId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Region = None
+        self.Zone = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvFreeQuotaRequest(AbstractModel):
     """DescribeEnvFreeQuota请求参数结构体
 

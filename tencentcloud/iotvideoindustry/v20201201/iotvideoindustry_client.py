@@ -559,6 +559,34 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIPCChannels(self, request):
+        """获取设备下属通道
+
+        :param request: Request instance for DescribeIPCChannels.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeIPCChannelsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeIPCChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIPCChannels", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIPCChannelsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRecordStream(self, request):
         """获取回放视频流(NVR录制用)
         RecordId和StartTime/EndTime互斥

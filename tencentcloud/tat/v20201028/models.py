@@ -735,6 +735,14 @@ class Invocation(AbstractModel):
         :type Username: str
         :param InvocationSource: 调用来源。
         :type InvocationSource: str
+        :param CommandContent: base64编码的命令内容
+        :type CommandContent: str
+        :param CommandType: 命令类型
+        :type CommandType: str
+        :param Timeout: 执行命令过期时间， 单位秒
+        :type Timeout: int
+        :param WorkingDirectory: 执行命令的工作路径
+        :type WorkingDirectory: str
         """
         self.InvocationId = None
         self.CommandId = None
@@ -750,6 +758,10 @@ class Invocation(AbstractModel):
         self.InstanceKind = None
         self.Username = None
         self.InvocationSource = None
+        self.CommandContent = None
+        self.CommandType = None
+        self.Timeout = None
+        self.WorkingDirectory = None
 
 
     def _deserialize(self, params):
@@ -772,6 +784,10 @@ class Invocation(AbstractModel):
         self.InstanceKind = params.get("InstanceKind")
         self.Username = params.get("Username")
         self.InvocationSource = params.get("InvocationSource")
+        self.CommandContent = params.get("CommandContent")
+        self.CommandType = params.get("CommandType")
+        self.Timeout = params.get("Timeout")
+        self.WorkingDirectory = params.get("WorkingDirectory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

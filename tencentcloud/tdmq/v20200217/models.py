@@ -234,6 +234,9 @@ class Cluster(AbstractModel):
         :param NamespaceNum: 命名空间数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceNum: int
+        :param UsedStorageBudget: 已使用存储限制，MB为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedStorageBudget: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -252,6 +255,7 @@ class Cluster(AbstractModel):
         self.PublicEndPoint = None
         self.VpcEndPoint = None
         self.NamespaceNum = None
+        self.UsedStorageBudget = None
 
 
     def _deserialize(self, params):
@@ -272,6 +276,7 @@ class Cluster(AbstractModel):
         self.PublicEndPoint = params.get("PublicEndPoint")
         self.VpcEndPoint = params.get("VpcEndPoint")
         self.NamespaceNum = params.get("NamespaceNum")
+        self.UsedStorageBudget = params.get("UsedStorageBudget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

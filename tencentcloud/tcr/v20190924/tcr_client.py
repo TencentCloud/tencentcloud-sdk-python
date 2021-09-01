@@ -2238,6 +2238,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstance(self, request):
+        """更新实例信息
+
+        :param request: Request instance for ModifyInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyInstanceToken(self, request):
         """更新实例内指定长期访问凭证的启用状态
 
