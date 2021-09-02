@@ -18,6 +18,66 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AppDeviceInfo(AbstractModel):
+    """云api直接绑定设备出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 产品ID/设备名
+        :type DeviceId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param AliasName: 设备别名
+        :type AliasName: str
+        :param IconUrl: icon地址
+        :type IconUrl: str
+        :param FamilyId: 家庭ID
+        :type FamilyId: str
+        :param RoomId: 房间ID
+        :type RoomId: str
+        :param DeviceType: 设备类型
+        :type DeviceType: int
+        :param CreateTime: 创建时间
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        """
+        self.DeviceId = None
+        self.ProductId = None
+        self.DeviceName = None
+        self.AliasName = None
+        self.IconUrl = None
+        self.FamilyId = None
+        self.RoomId = None
+        self.DeviceType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.AliasName = params.get("AliasName")
+        self.IconUrl = params.get("IconUrl")
+        self.FamilyId = params.get("FamilyId")
+        self.RoomId = params.get("RoomId")
+        self.DeviceType = params.get("DeviceType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallDeviceActionAsyncRequest(AbstractModel):
     """CallDeviceActionAsync请求参数结构体
 
@@ -1656,6 +1716,73 @@ class DevicesItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DirectBindDeviceInFamilyRequest(AbstractModel):
+    """DirectBindDeviceInFamily请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IotAppID: 小程序appid
+        :type IotAppID: str
+        :param UserID: 用户ID
+        :type UserID: str
+        :param FamilyId: 家庭ID
+        :type FamilyId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param RoomId: 房间ID
+        :type RoomId: str
+        """
+        self.IotAppID = None
+        self.UserID = None
+        self.FamilyId = None
+        self.ProductId = None
+        self.DeviceName = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.IotAppID = params.get("IotAppID")
+        self.UserID = params.get("UserID")
+        self.FamilyId = params.get("FamilyId")
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DirectBindDeviceInFamilyResponse(AbstractModel):
+    """DirectBindDeviceInFamily返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppDeviceInfo: 返回设备信息
+        :type AppDeviceInfo: :class:`tencentcloud.iotexplorer.v20190423.models.AppDeviceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AppDeviceInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AppDeviceInfo") is not None:
+            self.AppDeviceInfo = AppDeviceInfo()
+            self.AppDeviceInfo._deserialize(params.get("AppDeviceInfo"))
+        self.RequestId = params.get("RequestId")
 
 
 class DisableTopicRuleRequest(AbstractModel):

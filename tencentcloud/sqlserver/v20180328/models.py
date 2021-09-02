@@ -7048,11 +7048,14 @@ class RenewDBInstanceRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID数组，目前只支持使用1张代金券
         :type VoucherIds: list of str
+        :param AutoRenewFlag: 续费标记 0:正常续费 1:自动续费：只用于按量计费转包年包月时有效。
+        :type AutoRenewFlag: int
         """
         self.InstanceId = None
         self.Period = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -7060,6 +7063,7 @@ class RenewDBInstanceRequest(AbstractModel):
         self.Period = params.get("Period")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

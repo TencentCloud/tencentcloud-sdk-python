@@ -6654,6 +6654,10 @@ class StandaloneGatewayInfo(AbstractModel):
         :type GateWayStatus: str
         :param ServiceInfo: 服务信息
         :type ServiceInfo: :class:`tencentcloud.tcb.v20180608.models.BackendServiceInfo`
+        :param PublicClbIp: 公网CLBIP
+        :type PublicClbIp: str
+        :param InternalClbIp: 内网CLBIP
+        :type InternalClbIp: str
         """
         self.GatewayName = None
         self.CPU = None
@@ -6665,6 +6669,8 @@ class StandaloneGatewayInfo(AbstractModel):
         self.GatewayDesc = None
         self.GateWayStatus = None
         self.ServiceInfo = None
+        self.PublicClbIp = None
+        self.InternalClbIp = None
 
 
     def _deserialize(self, params):
@@ -6680,6 +6686,8 @@ class StandaloneGatewayInfo(AbstractModel):
         if params.get("ServiceInfo") is not None:
             self.ServiceInfo = BackendServiceInfo()
             self.ServiceInfo._deserialize(params.get("ServiceInfo"))
+        self.PublicClbIp = params.get("PublicClbIp")
+        self.InternalClbIp = params.get("InternalClbIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

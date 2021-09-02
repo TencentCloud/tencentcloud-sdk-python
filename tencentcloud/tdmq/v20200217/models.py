@@ -1925,14 +1925,18 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
+        :param ClusterIdList: 集群ID列表过滤
+        :type ClusterIdList: list of str
         """
         self.Offset = None
         self.Limit = None
+        self.ClusterIdList = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ClusterIdList = params.get("ClusterIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

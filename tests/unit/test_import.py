@@ -644,9 +644,19 @@ def test_import_organization():
     from tencentcloud.organization.v20181225 import models
 
 
+def test_import_organization():
+    from tencentcloud.organization.v20210331 import organization_client
+    from tencentcloud.organization.v20210331 import models
+
+
 def test_import_partners():
     from tencentcloud.partners.v20180321 import partners_client
     from tencentcloud.partners.v20180321 import models
+
+
+def test_import_pds():
+    from tencentcloud.pds.v20210701 import pds_client
+    from tencentcloud.pds.v20210701 import models
 
 
 def test_import_postgres():

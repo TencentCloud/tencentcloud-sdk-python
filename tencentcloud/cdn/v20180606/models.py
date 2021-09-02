@@ -1148,14 +1148,28 @@ RESOLVE_DNS_TO_ORIGIN：直接回源，仅自有源站域名支持
 RETURN_404：全部请求返回 404
 注意：此字段可能返回 null，表示取不到有效值。
         :type CounterMeasure: str
-        :param LastTriggerTime: 上次触发带宽封顶阈值的时间
+        :param LastTriggerTime: 境内区域上次触发带宽封顶阈值的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastTriggerTime: str
+        :param AlertSwitch: 带宽封顶提醒开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertSwitch: str
+        :param AlertPercentage: 带宽封顶阈值提醒百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertPercentage: int
+        :param LastTriggerTimeOverseas: 海外区域上次触发带宽封顶阈值的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTriggerTimeOverseas: str
         """
         self.Switch = None
         self.BpsThreshold = None
         self.CounterMeasure = None
         self.LastTriggerTime = None
+        self.AlertSwitch = None
+        self.AlertPercentage = None
+        self.LastTriggerTimeOverseas = None
 
 
     def _deserialize(self, params):
@@ -1163,6 +1177,9 @@ RETURN_404：全部请求返回 404
         self.BpsThreshold = params.get("BpsThreshold")
         self.CounterMeasure = params.get("CounterMeasure")
         self.LastTriggerTime = params.get("LastTriggerTime")
+        self.AlertSwitch = params.get("AlertSwitch")
+        self.AlertPercentage = params.get("AlertPercentage")
+        self.LastTriggerTimeOverseas = params.get("LastTriggerTimeOverseas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

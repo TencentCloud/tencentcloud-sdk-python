@@ -702,6 +702,8 @@ class DescribeMigrateJobsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回实例数量，默认20，有效区间[1,100]
         :type Limit: int
+        :param TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self.JobId = None
         self.JobName = None
@@ -709,6 +711,7 @@ class DescribeMigrateJobsRequest(AbstractModel):
         self.OrderSeq = None
         self.Offset = None
         self.Limit = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -718,6 +721,12 @@ class DescribeMigrateJobsRequest(AbstractModel):
         self.OrderSeq = params.get("OrderSeq")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1204,10 +1213,10 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 目标实例ID，如cdb-jd92ijd8
-        :type InstanceId: str
         :param Region: 目标实例地域，如ap-guangzhou
         :type Region: str
+        :param InstanceId: 目标实例ID，如cdb-jd92ijd8
+        :type InstanceId: str
         :param Ip: 目标实例vip。已废弃，无需填写
         :type Ip: str
         :param Port: 目标实例vport。已废弃，无需填写
@@ -1219,8 +1228,8 @@ class DstInfo(AbstractModel):
         :param Password: 目标数据库密码
         :type Password: str
         """
-        self.InstanceId = None
         self.Region = None
+        self.InstanceId = None
         self.Ip = None
         self.Port = None
         self.ReadOnly = None
@@ -1229,8 +1238,8 @@ class DstInfo(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
         self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.ReadOnly = params.get("ReadOnly")
@@ -1406,6 +1415,9 @@ class MigrateJobInfo(AbstractModel):
         :type Detail: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
         :param ErrorInfo: 任务错误信息提示，当任务发生错误时，不为null或者空值
         :type ErrorInfo: list of ErrorInfo
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagItem
         """
         self.JobId = None
         self.JobName = None
@@ -1423,6 +1435,7 @@ class MigrateJobInfo(AbstractModel):
         self.Status = None
         self.Detail = None
         self.ErrorInfo = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1455,6 +1468,12 @@ class MigrateJobInfo(AbstractModel):
                 obj = ErrorInfo()
                 obj._deserialize(item)
                 self.ErrorInfo.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

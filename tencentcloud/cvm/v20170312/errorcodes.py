@@ -254,6 +254,9 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 共享带宽包ID不合要求，请提供规范的共享带宽包ID，类似bwp-xxxxxxxx，字母x代表小写字符或者数字。
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.BandwidthPackageIdMalformed'
+
 # 请确认指定的带宽包是否存在。
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
 
@@ -280,9 +283,6 @@ INVALIDPARAMETERVALUE_IPV6ADDRESSMALFORMED = 'InvalidParameterValue.IPv6AddressM
 
 # HostName参数值不合法
 INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
-
-# 传参格式不对。
-INVALIDPARAMETERVALUE_INCORRECTFORMAT = 'InvalidParameterValue.IncorrectFormat'
 
 # 指定机型不存在
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'

@@ -488,6 +488,8 @@ class CreateAclRequest(AbstractModel):
         :type Host: str
         :param Principal: 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入时需要加 User: 前缀,如用户A则传入User:A。
         :type Principal: str
+        :param ResourceNameList: 资源名称列表,Json字符串格式。ResourceName和resourceNameList只能指定其中一个。
+        :type ResourceNameList: str
         """
         self.InstanceId = None
         self.ResourceType = None
@@ -496,6 +498,7 @@ class CreateAclRequest(AbstractModel):
         self.ResourceName = None
         self.Host = None
         self.Principal = None
+        self.ResourceNameList = None
 
 
     def _deserialize(self, params):
@@ -506,6 +509,7 @@ class CreateAclRequest(AbstractModel):
         self.ResourceName = params.get("ResourceName")
         self.Host = params.get("Host")
         self.Principal = params.get("Principal")
+        self.ResourceNameList = params.get("ResourceNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
