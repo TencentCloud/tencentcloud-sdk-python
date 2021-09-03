@@ -603,6 +603,9 @@ class ConfigInfo(AbstractModel):
         :type UpdateTime: str
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param UserDefineRule: 用户自定义解析字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefineRule: str
         """
         self.ConfigId = None
         self.LogFormat = None
@@ -613,6 +616,7 @@ class ConfigInfo(AbstractModel):
         self.Output = None
         self.UpdateTime = None
         self.CreateTime = None
+        self.UserDefineRule = None
 
 
     def _deserialize(self, params):
@@ -632,6 +636,7 @@ class ConfigInfo(AbstractModel):
         self.Output = params.get("Output")
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
+        self.UserDefineRule = params.get("UserDefineRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -993,6 +998,8 @@ class CreateConfigRequest(AbstractModel):
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         :param ExcludePaths: 采集黑名单路径列表
         :type ExcludePaths: list of ExcludePathInfo
+        :param UserDefineRule: 用户自定义采集规则，Json格式序列化的字符串
+        :type UserDefineRule: str
         """
         self.Name = None
         self.Output = None
@@ -1000,6 +1007,7 @@ class CreateConfigRequest(AbstractModel):
         self.LogType = None
         self.ExtractRule = None
         self.ExcludePaths = None
+        self.UserDefineRule = None
 
 
     def _deserialize(self, params):
@@ -1016,6 +1024,7 @@ class CreateConfigRequest(AbstractModel):
                 obj = ExcludePathInfo()
                 obj._deserialize(item)
                 self.ExcludePaths.append(obj)
+        self.UserDefineRule = params.get("UserDefineRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4538,6 +4547,8 @@ class ModifyConfigRequest(AbstractModel):
         :type ExcludePaths: list of ExcludePathInfo
         :param Output: 采集配置关联的日志主题（TopicId）
         :type Output: str
+        :param UserDefineRule: 用户自定义解析字符串，Json格式序列化的字符串
+        :type UserDefineRule: str
         """
         self.ConfigId = None
         self.Name = None
@@ -4546,6 +4557,7 @@ class ModifyConfigRequest(AbstractModel):
         self.ExtractRule = None
         self.ExcludePaths = None
         self.Output = None
+        self.UserDefineRule = None
 
 
     def _deserialize(self, params):
@@ -4563,6 +4575,7 @@ class ModifyConfigRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ExcludePaths.append(obj)
         self.Output = params.get("Output")
+        self.UserDefineRule = params.get("UserDefineRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

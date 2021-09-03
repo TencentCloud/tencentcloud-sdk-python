@@ -1078,6 +1078,41 @@ class GetPersonListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetSummaryInfoRequest(AbstractModel):
+    """GetSummaryInfo请求参数结构体
+
+    """
+
+
+class GetSummaryInfoResponse(AbstractModel):
+    """GetSummaryInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupCount: 人体库总数量。
+        :type GroupCount: int
+        :param PersonCount: 人员总数量
+        :type PersonCount: int
+        :param TraceCount: 人员轨迹总数量
+        :type TraceCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupCount = None
+        self.PersonCount = None
+        self.TraceCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupCount = params.get("GroupCount")
+        self.PersonCount = params.get("PersonCount")
+        self.TraceCount = params.get("TraceCount")
+        self.RequestId = params.get("RequestId")
+
+
 class GroupInfo(AbstractModel):
     """返回的人员库信息。
 

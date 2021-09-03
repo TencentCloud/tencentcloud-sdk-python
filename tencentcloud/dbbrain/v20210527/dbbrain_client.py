@@ -782,6 +782,34 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def KillMySqlThreads(self, request):
+        """根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。
+
+        :param request: Request instance for KillMySqlThreads.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.KillMySqlThreadsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.KillMySqlThreadsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("KillMySqlThreads", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.KillMySqlThreadsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDiagDBInstanceConf(self, request):
         """修改实例巡检开关。
 

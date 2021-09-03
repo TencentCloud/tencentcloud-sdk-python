@@ -936,12 +936,11 @@ class CynosdbInstance(AbstractModel):
 resume
 pause
         :type ServerlessStatus: str
-        :param StoragePayMode: 存储付费类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StoragePayMode: int
         :param StorageId: 预付费存储Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageId: str
+        :param StoragePayMode: 存储付费类型
+        :type StoragePayMode: int
         """
         self.Uin = None
         self.AppId = None
@@ -983,8 +982,8 @@ pause
         self.MinCpu = None
         self.MaxCpu = None
         self.ServerlessStatus = None
-        self.StoragePayMode = None
         self.StorageId = None
+        self.StoragePayMode = None
 
 
     def _deserialize(self, params):
@@ -1028,8 +1027,8 @@ pause
         self.MinCpu = params.get("MinCpu")
         self.MaxCpu = params.get("MaxCpu")
         self.ServerlessStatus = params.get("ServerlessStatus")
-        self.StoragePayMode = params.get("StoragePayMode")
         self.StorageId = params.get("StorageId")
+        self.StoragePayMode = params.get("StoragePayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

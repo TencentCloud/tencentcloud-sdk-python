@@ -354,6 +354,34 @@ class BdaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSummaryInfo(self, request):
+        """获取人体库汇总信息。
+
+        :param request: Request instance for GetSummaryInfo.
+        :type request: :class:`tencentcloud.bda.v20200324.models.GetSummaryInfoRequest`
+        :rtype: :class:`tencentcloud.bda.v20200324.models.GetSummaryInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSummaryInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSummaryInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyGroup(self, request):
         """修改人体库名称、备注。
 

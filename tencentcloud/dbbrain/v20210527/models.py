@@ -2422,6 +2422,72 @@ class IssueTypeInfo(AbstractModel):
         
 
 
+class KillMySqlThreadsRequest(AbstractModel):
+    """KillMySqlThreads请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Stage: kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
+        :type Stage: str
+        :param Threads: 需要kill的sql会话ID列表，此参数用于Prepare阶段。
+        :type Threads: list of int
+        :param SqlExecId: 执行ID，此参数用于Commit阶段。
+        :type SqlExecId: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Stage = None
+        self.Threads = None
+        self.SqlExecId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Stage = params.get("Stage")
+        self.Threads = params.get("Threads")
+        self.SqlExecId = params.get("SqlExecId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillMySqlThreadsResponse(AbstractModel):
+    """KillMySqlThreads返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Threads: kill完成的sql会话ID列表。
+        :type Threads: list of int
+        :param SqlExecId: 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlExecId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Threads = None
+        self.SqlExecId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Threads = params.get("Threads")
+        self.SqlExecId = params.get("SqlExecId")
+        self.RequestId = params.get("RequestId")
+
+
 class MailConfiguration(AbstractModel):
     """邮件发送配置
 

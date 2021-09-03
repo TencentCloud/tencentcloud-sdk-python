@@ -203,6 +203,9 @@ INVALIDPARAMETERVALUE_INVALIDBACKENDPATH = 'InvalidParameterValue.InvalidBackend
 # 不合法的clb。
 INVALIDPARAMETERVALUE_INVALIDCLB = 'InvalidParameterValue.InvalidClb'
 
+# 策略错误。
+INVALIDPARAMETERVALUE_INVALIDCONDITION = 'InvalidParameterValue.InvalidCondition'
+
 # 不合法的常量参数。
 INVALIDPARAMETERVALUE_INVALIDCONSTANTPARAMETERS = 'InvalidParameterValue.InvalidConstantParameters'
 
@@ -223,6 +226,9 @@ INVALIDPARAMETERVALUE_INVALIDIPADDRESS = 'InvalidParameterValue.InvalidIPAddress
 
 # 方法错误。仅支持 ANY, BEGIN, GET, POST, DELETE, HEAD, PUT, OPTIONS, TRACE, PATCH，请修改后重新操作。
 INVALIDPARAMETERVALUE_INVALIDMETHOD = 'InvalidParameterValue.InvalidMethod'
+
+# 插件定义参数取值错误，请修改后重新操作。
+INVALIDPARAMETERVALUE_INVALIDPLUGINCONFIG = 'InvalidParameterValue.InvalidPluginConfig'
 
 # 后端服务端口错误。
 INVALIDPARAMETERVALUE_INVALIDPORT = 'InvalidParameterValue.InvalidPort'
