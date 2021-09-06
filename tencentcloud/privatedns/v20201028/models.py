@@ -18,6 +18,77 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountVpcInfo(AbstractModel):
+    """私有域解析账号Vpc信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UniqVpcId: VpcId： vpc-xadsafsdasd
+        :type UniqVpcId: str
+        :param Region: Vpc所属地区: ap-guangzhou, ap-shanghai
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Uin: Vpc所属账号: 123456789
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param VpcName: vpc资源名称：testname
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        """
+        self.UniqVpcId = None
+        self.Region = None
+        self.Uin = None
+        self.VpcName = None
+
+
+    def _deserialize(self, params):
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Region = params.get("Region")
+        self.Uin = params.get("Uin")
+        self.VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccountVpcInfoOutput(AbstractModel):
+    """关联的VPC出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 关联账户的uin
+        :type Uin: str
+        :param UniqVpcId: vpcid
+        :type UniqVpcId: str
+        :param Region: 地域
+        :type Region: str
+        """
+        self.Uin = None
+        self.UniqVpcId = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLog(AbstractModel):
     """操作日志
 
@@ -179,6 +250,8 @@ class CreatePrivateZoneRequest(AbstractModel):
         :type DnsForwardStatus: str
         :param Vpcs: 创建私有域的同时，将其关联至VPC
         :type Vpcs: list of VpcInfo
+        :param AccountVpcSet: 创建私有域同时绑定关联账号的VPC
+        :type AccountVpcSet: list of AccountVpcInfo
         """
         self.Domain = None
         self.TagSet = None
@@ -186,6 +259,7 @@ class CreatePrivateZoneRequest(AbstractModel):
         self.Remark = None
         self.DnsForwardStatus = None
         self.Vpcs = None
+        self.AccountVpcSet = None
 
 
     def _deserialize(self, params):
@@ -210,6 +284,12 @@ class CreatePrivateZoneRequest(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.Vpcs.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -986,9 +1066,12 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
         :type ZoneId: str
         :param VpcSet: 私有域关联的全部VPC列表
         :type VpcSet: list of VpcInfo
+        :param AccountVpcSet: 私有域账号关联的全部VPC列表
+        :type AccountVpcSet: list of AccountVpcInfo
         """
         self.ZoneId = None
         self.VpcSet = None
+        self.AccountVpcSet = None
 
 
     def _deserialize(self, params):
@@ -999,6 +1082,12 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1019,11 +1108,14 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
         :type ZoneId: str
         :param VpcSet: 解析域关联的VPC列表
         :type VpcSet: list of VpcInfo
+        :param AccountVpcSet: 私有域账号关联的全部VPC列表
+        :type AccountVpcSet: list of AccountVpcInfoOutput
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ZoneId = None
         self.VpcSet = None
+        self.AccountVpcSet = None
         self.RequestId = None
 
 
@@ -1035,6 +1127,12 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfoOutput()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1068,6 +1166,9 @@ class PrivateZone(AbstractModel):
         :type DnsForwardStatus: str
         :param Tags: 标签键值对集合
         :type Tags: list of TagInfo
+        :param AccountVpcSet: 绑定的关联账号的vpc列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountVpcSet: list of AccountVpcInfoOutput
         """
         self.ZoneId = None
         self.OwnerUin = None
@@ -1080,6 +1181,7 @@ class PrivateZone(AbstractModel):
         self.Status = None
         self.DnsForwardStatus = None
         self.Tags = None
+        self.AccountVpcSet = None
 
 
     def _deserialize(self, params):
@@ -1104,6 +1206,12 @@ class PrivateZone(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self.AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfoOutput()
+                obj._deserialize(item)
+                self.AccountVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

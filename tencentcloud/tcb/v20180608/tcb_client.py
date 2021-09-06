@@ -502,6 +502,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeActivityInfo(self, request):
+        """查询活动信息
+
+        :param request: Request instance for DescribeActivityInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeActivityInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeActivityInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeActivityInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeActivityInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeActivityRecord(self, request):
         """查询活动记录信息
 
@@ -1387,6 +1415,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStandaloneGatewayPackageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserActivityInfo(self, request):
+        """查询用户活动信息
+
+        :param request: Request instance for DescribeUserActivityInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeUserActivityInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeUserActivityInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserActivityInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserActivityInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

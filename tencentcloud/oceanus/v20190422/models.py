@@ -1110,6 +1110,9 @@ class JobV1(AbstractModel):
         :param RunningCu: 细粒度下的运行的CU数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
+        :param FlinkVersion: 作业运行的 Flink 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlinkVersion: str
         """
         self.JobId = None
         self.Region = None
@@ -1139,6 +1142,7 @@ class JobV1(AbstractModel):
         self.SchedulerType = None
         self.ClusterStatus = None
         self.RunningCu = None
+        self.FlinkVersion = None
 
 
     def _deserialize(self, params):
@@ -1170,6 +1174,7 @@ class JobV1(AbstractModel):
         self.SchedulerType = params.get("SchedulerType")
         self.ClusterStatus = params.get("ClusterStatus")
         self.RunningCu = params.get("RunningCu")
+        self.FlinkVersion = params.get("FlinkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -60,6 +60,8 @@ class Activity(AbstractModel):
         :type StatusMessageSimplified: str
         :param LifecycleActionResultSet: 伸缩活动中生命周期挂钩的执行结果。
         :type LifecycleActionResultSet: list of LifecycleActionResultInfo
+        :param DetailedStatusMessageSet: 伸缩活动状态详细描述。
+        :type DetailedStatusMessageSet: list of DetailedStatusMessage
         """
         self.AutoScalingGroupId = None
         self.ActivityId = None
@@ -74,6 +76,7 @@ class Activity(AbstractModel):
         self.ActivityRelatedInstanceSet = None
         self.StatusMessageSimplified = None
         self.LifecycleActionResultSet = None
+        self.DetailedStatusMessageSet = None
 
 
     def _deserialize(self, params):
@@ -100,6 +103,12 @@ class Activity(AbstractModel):
                 obj = LifecycleActionResultInfo()
                 obj._deserialize(item)
                 self.LifecycleActionResultSet.append(obj)
+        if params.get("DetailedStatusMessageSet") is not None:
+            self.DetailedStatusMessageSet = []
+            for item in params.get("DetailedStatusMessageSet"):
+                obj = DetailedStatusMessage()
+                obj._deserialize(item)
+                self.DetailedStatusMessageSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2405,6 +2414,54 @@ class DetachInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+
+
+class DetailedStatusMessage(AbstractModel):
+    """伸缩活动状态详细描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 错误类型。
+        :type Code: str
+        :param Zone: 可用区信息。
+        :type Zone: str
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param InstanceChargeType: 实例计费类型。
+        :type InstanceChargeType: str
+        :param SubnetId: 子网ID。
+        :type SubnetId: str
+        :param Message: 错误描述。
+        :type Message: str
+        :param InstanceType: 实例类型。
+        :type InstanceType: str
+        """
+        self.Code = None
+        self.Zone = None
+        self.InstanceId = None
+        self.InstanceChargeType = None
+        self.SubnetId = None
+        self.Message = None
+        self.InstanceType = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Zone = params.get("Zone")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.SubnetId = params.get("SubnetId")
+        self.Message = params.get("Message")
+        self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DisableAutoScalingGroupRequest(AbstractModel):

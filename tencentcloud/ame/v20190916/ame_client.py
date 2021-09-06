@@ -223,7 +223,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVPlaylists(self, request):
-        """获取即时广播曲库推荐歌单列表。
+        """获取直播互动曲库推荐歌单列表。
 
         :param request: Request instance for DescribeKTVPlaylists.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVPlaylistsRequest`
@@ -376,6 +376,34 @@ class AmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePackagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePkgOfflineMusic(self, request):
+        """根据购买曲库包用户可查询已回退的歌曲信息
+
+        :param request: Request instance for DescribePkgOfflineMusic.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribePkgOfflineMusicRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribePkgOfflineMusicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePkgOfflineMusic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePkgOfflineMusicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -18,6 +18,50 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivityInfoItem(AbstractModel):
+    """活动信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: 活动id
+        :type ActivityId: int
+        :param CreateTime: 记录插入时间
+        :type CreateTime: str
+        :param UpdateTime: 记录最后一次变更时间
+        :type UpdateTime: str
+        :param StartTime: 活动开始时间
+        :type StartTime: str
+        :param ExpireTime: 活动结束时间
+        :type ExpireTime: str
+        :param Tag: 自定义备注信息
+        :type Tag: str
+        """
+        self.ActivityId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.StartTime = None
+        self.ExpireTime = None
+        self.Tag = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.StartTime = params.get("StartTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActivityRecordItem(AbstractModel):
     """活动详情
 
@@ -37,11 +81,19 @@ class ActivityRecordItem(AbstractModel):
         :param SubStatus: 自定义子状态码
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: str
+        :param SubStatusInt: 整型子状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubStatusInt: int
+        :param IsDeleted: 是否软删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDeleted: bool
         """
         self.Uin = None
         self.ActivityId = None
         self.Status = None
         self.SubStatus = None
+        self.SubStatusInt = None
+        self.IsDeleted = None
 
 
     def _deserialize(self, params):
@@ -49,6 +101,8 @@ class ActivityRecordItem(AbstractModel):
         self.ActivityId = params.get("ActivityId")
         self.Status = params.get("Status")
         self.SubStatus = params.get("SubStatus")
+        self.SubStatusInt = params.get("SubStatusInt")
+        self.IsDeleted = params.get("IsDeleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2447,6 +2501,56 @@ class DeleteWxGatewayRouteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeActivityInfoRequest(AbstractModel):
+    """DescribeActivityInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityIdList: 活动id列表
+        :type ActivityIdList: list of int
+        """
+        self.ActivityIdList = None
+
+
+    def _deserialize(self, params):
+        self.ActivityIdList = params.get("ActivityIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeActivityInfoResponse(AbstractModel):
+    """DescribeActivityInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityInfoList: 活动详情
+        :type ActivityInfoList: list of ActivityInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ActivityInfoList") is not None:
+            self.ActivityInfoList = []
+            for item in params.get("ActivityInfoList"):
+                obj = ActivityInfoItem()
+                obj._deserialize(item)
+                self.ActivityInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeActivityRecordRequest(AbstractModel):
     """DescribeActivityRecord请求参数结构体
 
@@ -2464,12 +2568,15 @@ class DescribeActivityRecordRequest(AbstractModel):
         :type Status: int
         :param Statuses: 状态码过滤数组，空数组时不过滤
         :type Statuses: list of int
+        :param IsDeletedList: 根据是否软删除进行过滤，[0]未删除, [1] 删除，不传不过滤
+        :type IsDeletedList: list of int
         """
         self.ChannelToken = None
         self.Channel = None
         self.ActivityIdList = None
         self.Status = None
         self.Statuses = None
+        self.IsDeletedList = None
 
 
     def _deserialize(self, params):
@@ -2478,6 +2585,7 @@ class DescribeActivityRecordRequest(AbstractModel):
         self.ActivityIdList = params.get("ActivityIdList")
         self.Status = params.get("Status")
         self.Statuses = params.get("Statuses")
+        self.IsDeletedList = params.get("IsDeletedList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4775,6 +4883,80 @@ class DescribeStandaloneGatewayResponse(AbstractModel):
                 obj._deserialize(item)
                 self.StandaloneGatewayList.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserActivityInfoRequest(AbstractModel):
+    """DescribeUserActivityInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: 活动id
+        :type ActivityId: int
+        :param ChannelToken: 渠道加密token
+        :type ChannelToken: str
+        :param Channel: 渠道来源，每个来源对应不同secretKey
+        :type Channel: str
+        :param GroupId: 团id, 1元钱裂变中活动团id不为空时根据团id来查询记录，为空时查询uin最新记录
+        :type GroupId: str
+        """
+        self.ActivityId = None
+        self.ChannelToken = None
+        self.Channel = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.ChannelToken = params.get("ChannelToken")
+        self.Channel = params.get("Channel")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserActivityInfoResponse(AbstractModel):
+    """DescribeUserActivityInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tag: 自定义标记，1元钱裂变需求中即代指`团id`
+        :type Tag: str
+        :param Notes: 自定义备注，1元钱裂变需求中返回`团列表`，uin列表通过","拼接
+        :type Notes: str
+        :param ActivityTimeLeft: 活动剩余时间，单位为s.1元钱裂变需求中即为 time(活动过期时间)-Now()), 过期后为0，即返回必为自然数
+        :type ActivityTimeLeft: int
+        :param GroupTimeLeft: 拼团剩余时间，单位为s.1元钱裂变需求中即为time(成团时间)+24H-Now()，过期后为0，即返回必为自然数
+        :type GroupTimeLeft: int
+        :param NickNameList: 昵称列表,通过","拼接， 1元钱裂变活动中与Notes中uin一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NickNameList: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tag = None
+        self.Notes = None
+        self.ActivityTimeLeft = None
+        self.GroupTimeLeft = None
+        self.NickNameList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Tag = params.get("Tag")
+        self.Notes = params.get("Notes")
+        self.ActivityTimeLeft = params.get("ActivityTimeLeft")
+        self.GroupTimeLeft = params.get("GroupTimeLeft")
+        self.NickNameList = params.get("NickNameList")
         self.RequestId = params.get("RequestId")
 
 

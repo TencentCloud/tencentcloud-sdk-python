@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# token校验失败。
+AUTHFAILURE_TOKENFAILURE = 'AuthFailure.TokenFailure'
+
 # DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 DRYRUNOPERATION = 'DryRunOperation'
 
@@ -155,6 +158,9 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
+# 角色未授权。
+UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = 'UnauthorizedOperation.RoleUnAuthorized'
+
 # 未实名账号。
 UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = 'UnauthorizedOperation.UnauthorizedAccount'
 
@@ -163,3 +169,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 账号未绑定。
+UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = 'UnsupportedOperation.AccountNotBound'

@@ -955,6 +955,68 @@ class DescribePackagesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePkgOfflineMusicRequest(AbstractModel):
+    """DescribePkgOfflineMusic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageOrderId: 订单id
+        :type PackageOrderId: str
+        :param Limit: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条(注：单次上限为100)。
+        :type Limit: int
+        :param Offset: 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Offset: int
+        """
+        self.PackageOrderId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.PackageOrderId = params.get("PackageOrderId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePkgOfflineMusicResponse(AbstractModel):
+    """DescribePkgOfflineMusic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OfflineMusicSet: 曲库包中不可用歌曲信息
+        :type OfflineMusicSet: list of OfflineMusicDetail
+        :param TotalCount: 返回总量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OfflineMusicSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("OfflineMusicSet") is not None:
+            self.OfflineMusicSet = []
+            for item in params.get("OfflineMusicSet"):
+                obj = OfflineMusicDetail()
+                obj._deserialize(item)
+                self.OfflineMusicSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStationsRequest(AbstractModel):
     """DescribeStations请求参数结构体
 
@@ -1476,6 +1538,42 @@ class MusicStatus(AbstractModel):
     def _deserialize(self, params):
         self.MusicId = params.get("MusicId")
         self.SaleStatus = params.get("SaleStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineMusicDetail(AbstractModel):
+    """曲库包已下架歌曲详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ItemId: 歌曲Id
+        :type ItemId: str
+        :param MusicName: 歌曲名称
+        :type MusicName: str
+        :param OffRemark: 不可用原因
+        :type OffRemark: str
+        :param OffTime: 不可用时间
+        :type OffTime: str
+        """
+        self.ItemId = None
+        self.MusicName = None
+        self.OffRemark = None
+        self.OffTime = None
+
+
+    def _deserialize(self, params):
+        self.ItemId = params.get("ItemId")
+        self.MusicName = params.get("MusicName")
+        self.OffRemark = params.get("OffRemark")
+        self.OffTime = params.get("OffTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
