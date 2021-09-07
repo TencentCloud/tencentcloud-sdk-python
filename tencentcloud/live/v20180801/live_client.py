@@ -1628,6 +1628,8 @@ class LiveClient(AbstractClient):
     def DescribeLiveForbidStreamList(self, request):
         """获取禁推流列表。
 
+        注意：该接口仅作为直播辅助查询接口，重要业务场景不可强依赖该接口。
+
         :param request: Request instance for DescribeLiveForbidStreamList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListRequest`
         :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveForbidStreamListResponse`
@@ -1937,7 +1939,9 @@ class LiveClient(AbstractClient):
     def DescribeLiveStreamEventList(self, request):
         """用于查询推断流事件。<br>
 
-        注意：该接口可通过使用IsFilter进行过滤，返回推流历史记录。
+        注意：
+        1. 该接口提供离线推断流记录查询功能，不可作为重要业务场景强依赖接口。
+        2. 该接口可通过使用IsFilter进行过滤，返回推流历史记录。
 
         :param request: Request instance for DescribeLiveStreamEventList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamEventListRequest`
@@ -1966,7 +1970,10 @@ class LiveClient(AbstractClient):
 
     def DescribeLiveStreamOnlineList(self, request):
         """返回正在直播中的流列表。适用于推流成功后查询在线流信息。
-        注意：该接口仅适用于流数少于2万路的情况，对于流数较大用户请联系售后。
+
+        注意：
+        1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
+        2. 该接口仅适用于流数少于2万路的情况，对于流数较大用户请联系售后。
 
         :param request: Request instance for DescribeLiveStreamOnlineList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamOnlineListRequest`
@@ -2051,7 +2058,15 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamState(self, request):
-        """返回直播中、无推流或者禁播等状态
+        """返回直播中、无推流或者禁播等状态。
+        注意：该接口仅提供辅助查询流状态功能，业务重要场景不要强依赖该接口！
+
+        使用建议：
+        1. 去除将该接口的返回结果作为开播、关播等重要业务场景的依赖。
+        2. 如业务需要该状态,可通过[推断流事件通知](/document/product/267/47025)进行存储维护直播间状态。
+        3. 自行维护的直播间状态,可通过定时(>1 min)[查询直播中的流接口](/document/product/267/20472),进行状态校准。
+        4. 如使用了流状态查询接口查询到流不活跃,可通过上述多种方案综合判定流状态。
+        5. 接口查询时,如发生访问异常或解析异常等,可默认为活跃,减少对业务影响。
 
         :param request: Request instance for DescribeLiveStreamState.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamStateRequest`

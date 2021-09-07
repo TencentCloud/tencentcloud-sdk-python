@@ -156,7 +156,9 @@ class CreateTranscodeRequest(AbstractModel):
         :param IsStaticPPT: 是否为静态PPT，默认为False；
 如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；
         :type IsStaticPPT: bool
-        :param MinResolution: 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
+        :param MinResolution: 注意: 该参数已废弃, 请使用 MinScaleResolution
+
+转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
 
 注意分辨率宽高中间为英文字母"xyz"的"x"
         :type MinResolution: str
@@ -175,6 +177,10 @@ tar.gz： 生成`.tar.gz`压缩包
 <br/>
 注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB
         :type Priority: str
+        :param MinScaleResolution: 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
+
+注意分辨率宽高中间为英文字母"xyz"的"x"
+        :type MinScaleResolution: str
         """
         self.SdkAppId = None
         self.Url = None
@@ -184,6 +190,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self.CompressFileType = None
         self.ExtraData = None
         self.Priority = None
+        self.MinScaleResolution = None
 
 
     def _deserialize(self, params):
@@ -195,6 +202,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self.CompressFileType = params.get("CompressFileType")
         self.ExtraData = params.get("ExtraData")
         self.Priority = params.get("Priority")
+        self.MinScaleResolution = params.get("MinScaleResolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

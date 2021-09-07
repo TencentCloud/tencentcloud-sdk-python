@@ -18,6 +18,35 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BoundK8SInfo(AbstractModel):
+    """服务治理引擎绑定的kubernetes信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BoundClusterId: 绑定的kubernetes集群ID
+        :type BoundClusterId: str
+        :param BoundClusterType: 绑定的kubernetes的集群类型，分tke和eks两种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoundClusterType: str
+        """
+        self.BoundClusterId = None
+        self.BoundClusterType = None
+
+
+    def _deserialize(self, params):
+        self.BoundClusterId = params.get("BoundClusterId")
+        self.BoundClusterType = params.get("BoundClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeSREInstanceAccessAddressRequest(AbstractModel):
     """DescribeSREInstanceAccessAddress请求参数结构体
 
@@ -328,6 +357,9 @@ class SREInstance(AbstractModel):
         :param VpcInfos: 私有网络列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcInfos: list of VpcInfo
+        :param ServiceGovernanceInfos: 服务治理相关信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGovernanceInfos: list of ServiceGovernanceInfo
         """
         self.InstanceId = None
         self.Name = None
@@ -348,6 +380,7 @@ class SREInstance(AbstractModel):
         self.EngineRegion = None
         self.EnableInternet = None
         self.VpcInfos = None
+        self.ServiceGovernanceInfos = None
 
 
     def _deserialize(self, params):
@@ -374,6 +407,54 @@ class SREInstance(AbstractModel):
                 self.EnvInfos.append(obj)
         self.EngineRegion = params.get("EngineRegion")
         self.EnableInternet = params.get("EnableInternet")
+        if params.get("VpcInfos") is not None:
+            self.VpcInfos = []
+            for item in params.get("VpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.VpcInfos.append(obj)
+        if params.get("ServiceGovernanceInfos") is not None:
+            self.ServiceGovernanceInfos = []
+            for item in params.get("ServiceGovernanceInfos"):
+                obj = ServiceGovernanceInfo()
+                obj._deserialize(item)
+                self.ServiceGovernanceInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceGovernanceInfo(AbstractModel):
+    """服务治理相关的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EngineRegion: 引擎所在的地域
+        :type EngineRegion: str
+        :param BoundK8SInfos: 服务治理引擎绑定的kubernetes集群信息
+        :type BoundK8SInfos: list of BoundK8SInfo
+        :param VpcInfos: 服务治理引擎绑定的网络信息
+        :type VpcInfos: list of VpcInfo
+        """
+        self.EngineRegion = None
+        self.BoundK8SInfos = None
+        self.VpcInfos = None
+
+
+    def _deserialize(self, params):
+        self.EngineRegion = params.get("EngineRegion")
+        if params.get("BoundK8SInfos") is not None:
+            self.BoundK8SInfos = []
+            for item in params.get("BoundK8SInfos"):
+                obj = BoundK8SInfo()
+                obj._deserialize(item)
+                self.BoundK8SInfos.append(obj)
         if params.get("VpcInfos") is not None:
             self.VpcInfos = []
             for item in params.get("VpcInfos"):

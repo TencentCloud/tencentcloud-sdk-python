@@ -4495,8 +4495,6 @@ class CreateVpnConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
-        :type VpcId: str
         :param VpnGatewayId: VPN网关实例ID。
         :type VpnGatewayId: str
         :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
@@ -4505,6 +4503,9 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type VpnConnectionName: str
         :param PreShareKey: 预共享密钥。
         :type PreShareKey: str
+        :param VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
+CCN VPN 形的通道 可以不传VPCID
+        :type VpcId: str
         :param SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
         :param IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议
@@ -4519,12 +4520,14 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type HealthCheckLocalIp: str
         :param HealthCheckRemoteIp: 健康检查对端地址
         :type HealthCheckRemoteIp: str
+        :param RouteType: 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
+        :type RouteType: str
         """
-        self.VpcId = None
         self.VpnGatewayId = None
         self.CustomerGatewayId = None
         self.VpnConnectionName = None
         self.PreShareKey = None
+        self.VpcId = None
         self.SecurityPolicyDatabases = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
@@ -4532,14 +4535,15 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.EnableHealthCheck = None
         self.HealthCheckLocalIp = None
         self.HealthCheckRemoteIp = None
+        self.RouteType = None
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
         self.VpnGatewayId = params.get("VpnGatewayId")
         self.CustomerGatewayId = params.get("CustomerGatewayId")
         self.VpnConnectionName = params.get("VpnConnectionName")
         self.PreShareKey = params.get("PreShareKey")
+        self.VpcId = params.get("VpcId")
         if params.get("SecurityPolicyDatabases") is not None:
             self.SecurityPolicyDatabases = []
             for item in params.get("SecurityPolicyDatabases"):
@@ -4561,6 +4565,7 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.EnableHealthCheck = params.get("EnableHealthCheck")
         self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
         self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
+        self.RouteType = params.get("RouteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
