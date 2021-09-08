@@ -3453,13 +3453,22 @@ class InquiryPriceTerminateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param InstanceRefundsSet: 退款详情。
+        :type InstanceRefundsSet: list of InstanceRefund
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.InstanceRefundsSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("InstanceRefundsSet") is not None:
+            self.InstanceRefundsSet = []
+            for item in params.get("InstanceRefundsSet"):
+                obj = InstanceRefund()
+                obj._deserialize(item)
+                self.InstanceRefundsSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3729,6 +3738,41 @@ class InstanceMarketOptionsRequest(AbstractModel):
             self.SpotOptions = SpotMarketOptions()
             self.SpotOptions._deserialize(params.get("SpotOptions"))
         self.MarketType = params.get("MarketType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceRefund(AbstractModel):
+    """描述退款详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Refunds: 退款数额。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Refunds: float
+        :param PriceDetail: 退款详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceDetail: str
+        """
+        self.InstanceId = None
+        self.Refunds = None
+        self.PriceDetail = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Refunds = params.get("Refunds")
+        self.PriceDetail = params.get("PriceDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -314,7 +314,7 @@ class ScfClient(AbstractClient):
 
 
     def DeleteReservedConcurrencyConfig(self, request):
-        """删除函数的保留并发配置。
+        """删除函数的最大独占配额配置。
 
         :param request: Request instance for DeleteReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.DeleteReservedConcurrencyConfigRequest`
@@ -594,7 +594,7 @@ class ScfClient(AbstractClient):
 
 
     def GetReservedConcurrencyConfig(self, request):
-        """获取函数的保留并发详情。
+        """获取函数的最大独占配额详情。
 
         :param request: Request instance for GetReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetReservedConcurrencyConfigRequest`
@@ -986,7 +986,7 @@ class ScfClient(AbstractClient):
 
 
     def PutReservedConcurrencyConfig(self, request):
-        """设置函数保留并发
+        """设置函数最大独占配额
 
         :param request: Request instance for PutReservedConcurrencyConfig.
         :type request: :class:`tencentcloud.scf.v20180416.models.PutReservedConcurrencyConfigRequest`

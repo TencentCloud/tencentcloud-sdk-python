@@ -2808,6 +2808,63 @@ class ModifyRecordStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySubdomainStatusRequest(AbstractModel):
+    """ModifySubdomainStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param RecordType: 记录类型。允许的值为A、CNAME、MX、TXT、NS、AAAA、SPF、SRV、CAA、URL、URL1。若要传多个，用英文逗号分隔，例如A,TXT,CNAME。
+        :type RecordType: str
+        :param Status: 记录状态。允许的值为disable。
+        :type Status: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        :param SubDomain: 主机记录，如 www，如果不传，默认为 @。
+        :type SubDomain: str
+        """
+        self.Domain = None
+        self.RecordType = None
+        self.Status = None
+        self.DomainId = None
+        self.SubDomain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.RecordType = params.get("RecordType")
+        self.Status = params.get("Status")
+        self.DomainId = params.get("DomainId")
+        self.SubDomain = params.get("SubDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySubdomainStatusResponse(AbstractModel):
+    """ModifySubdomainStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PurviewInfo(AbstractModel):
     """域名权限项
 

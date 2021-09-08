@@ -1635,7 +1635,7 @@ class CdnClient(AbstractClient):
 
     def PushUrlsCache(self, request):
         """PushUrlsCache 用于将指定 URL 资源列表加载至 CDN 节点，支持指定加速区域预热。
-        默认情况下境内、境外每日预热 URL 限额为各 1000 条，每次最多可提交 20 条。
+        默认情况下境内、境外每日预热 URL 限额为各 1000 条，每次最多可提交 20 条。注意：中国境外区域预热，资源默认加载至中国境外边缘节点，所产生的边缘层流量会计入计费流量。
 
         :param request: Request instance for PushUrlsCache.
         :type request: :class:`tencentcloud.cdn.v20180606.models.PushUrlsCacheRequest`

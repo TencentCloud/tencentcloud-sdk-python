@@ -855,12 +855,16 @@ class GetSSHKeyPairValueRequest(AbstractModel):
         r"""
         :param SecretName: 凭据名称，此凭据只能为SSH密钥对凭据类型。
         :type SecretName: str
+        :param SSHKeyId: 密钥对ID，是云服务器中密钥对的唯一标识。
+        :type SSHKeyId: str
         """
         self.SecretName = None
+        self.SSHKeyId = None
 
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
+        self.SSHKeyId = params.get("SSHKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1093,6 +1097,12 @@ class ListSecretsRequest(AbstractModel):
 1  -- 表示用户云产品凭据。
 2 -- 表示SSH密钥对凭据。
         :type SecretType: int
+        :param ProductName: 此参数仅在SecretType参数值为1时生效，
+当SecretType值为1时：
+如果ProductName值为空，则表示查询所有类型的云产品凭据
+如果ProductName值为Mysql，则表示查询Mysql数据库凭据
+如果ProductName值为Tdsql-mysql，则表示查询Tdsql（Mysql版本）的凭据
+        :type ProductName: str
         """
         self.Offset = None
         self.Limit = None
@@ -1101,6 +1111,7 @@ class ListSecretsRequest(AbstractModel):
         self.SearchSecretName = None
         self.TagFilters = None
         self.SecretType = None
+        self.ProductName = None
 
 
     def _deserialize(self, params):
@@ -1116,6 +1127,7 @@ class ListSecretsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
         self.SecretType = params.get("SecretType")
+        self.ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

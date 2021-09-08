@@ -892,3 +892,31 @@ class DnspodClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySubdomainStatus(self, request):
+        """暂停子域名的解析记录
+
+        :param request: Request instance for ModifySubdomainStatus.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifySubdomainStatusRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifySubdomainStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubdomainStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubdomainStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

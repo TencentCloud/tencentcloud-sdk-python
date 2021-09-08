@@ -1393,7 +1393,7 @@ class Cache(AbstractModel):
         :param SimpleCache: 基础缓存过期时间配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SimpleCache: :class:`tencentcloud.cdn.v20180606.models.SimpleCache`
-        :param AdvancedCache: 高级缓存过期时间配置（功能灰度中，尚未全量）
+        :param AdvancedCache: 高级缓存过期时间配置（已弃用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
         :param RuleCache: 高级路径缓存配置
@@ -8942,7 +8942,8 @@ overseas：预热至境外节点
 global：预热全球节点
 不填充情况下，默认为 mainland， URL 中域名必须在对应区域启用了加速服务才能提交对应区域的预热任务
         :type Area: str
-        :param Layer: 填写"middle"或不填充时预热至中间层节点
+        :param Layer: 填写"middle"或不填充时预热至中间层节点。
+注意：中国境外区域预热，资源默认加载至中国境外边缘节点，所产生的边缘层流量会计入计费流量。
         :type Layer: str
         :param ParseM3U8: 是否递归解析m3u8文件中的ts分片预热
 注意事项：

@@ -134,6 +134,9 @@ INVALIDPARAMETER_DOMAINNOTREGED = 'InvalidParameter.DomainNotReged'
 # 记录已经存在，无需再次添加。
 INVALIDPARAMETER_DOMAINRECORDEXIST = 'InvalidParameter.DomainRecordExist'
 
+# 域名自己无需进行复制。
+INVALIDPARAMETER_DOMAINSELFNOCOPY = 'InvalidParameter.DomainSelfNoCopy'
+
 # 没有提交任何域名。
 INVALIDPARAMETER_DOMAINSEMPTY = 'InvalidParameter.DomainsEmpty'
 
@@ -232,6 +235,9 @@ INVALIDPARAMETER_REQUESTIPLIMITED = 'InvalidParameter.RequestIpLimited'
 
 # 搜索结果大于500条，请增加关键字。
 INVALIDPARAMETER_RESULTMORETHAN500 = 'InvalidParameter.ResultMoreThan500'
+
+# 状态代码不正确。
+INVALIDPARAMETER_STATUSCODEINVALID = 'InvalidParameter.StatusCodeInvalid'
 
 # 子域名不正确。
 INVALIDPARAMETER_SUBDOMAININVALID = 'InvalidParameter.SubdomainInvalid'
