@@ -1348,6 +1348,13 @@ TaskExit：任务停止回调，
 VodSourceFileStart：从点播源文件开始拉流回调，
 VodSourceFileFinish：从点播源文件拉流结束回调，
 ResetTaskConfig：任务更新回调。
+
+TaskAlarm: 用于告警事件通知，AlarmType 示例:
+PullFileUnstable - 文件拉取不稳定，
+PushStreamUnstable - 推流不稳定，
+PullFileFailed - 文件拉取出错，
+PushStreamFailed - 推流出现失败，
+FileEndEarly - 文件提前结束。
         :type CallbackEvents: list of str
         :param VodLoopTimes: 点播拉流转推循环次数。默认：-1。
 -1：无限循环，直到任务结束。
@@ -4079,6 +4086,11 @@ class DescribeLiveDomainsRequest(AbstractModel):
         :type IsDelayLive: int
         :param DomainPrefix: 域名前缀。
         :type DomainPrefix: str
+        :param PlayType: 播放区域，只在 DomainType=1 时该参数有意义。
+1: 国内。
+2: 全球。
+3: 海外。
+        :type PlayType: int
         """
         self.DomainStatus = None
         self.DomainType = None
@@ -4086,6 +4098,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
         self.PageNum = None
         self.IsDelayLive = None
         self.DomainPrefix = None
+        self.PlayType = None
 
 
     def _deserialize(self, params):
@@ -4095,6 +4108,7 @@ class DescribeLiveDomainsRequest(AbstractModel):
         self.PageNum = params.get("PageNum")
         self.IsDelayLive = params.get("IsDelayLive")
         self.DomainPrefix = params.get("DomainPrefix")
+        self.PlayType = params.get("PlayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

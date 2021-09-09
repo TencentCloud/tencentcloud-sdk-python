@@ -1392,7 +1392,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type InstanceId: str
         :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
         :type StartTime: str
-        :param EndTime: 截止时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔最大可为7天。
+        :param EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
         :type EndTime: str
         :param SortBy: 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
         :type SortBy: str

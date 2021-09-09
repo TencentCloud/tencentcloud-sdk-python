@@ -98,6 +98,42 @@ class AclResponse(AbstractModel):
         
 
 
+class AclRuleInfo(AbstractModel):
+    """表示ACL 规则的四元组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operation: Acl操作方式，枚举值(所有操作: All, 读：Read，写：Write)
+        :type Operation: str
+        :param PermissionType: 权限类型，(Deny，Allow)
+        :type PermissionType: str
+        :param Host: 默认为*，表示任何host都可以访问，当前ckafka不支持host为*和ip网段
+        :type Host: str
+        :param Principal: 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
+        :type Principal: str
+        """
+        self.Operation = None
+        self.PermissionType = None
+        self.Host = None
+        self.Principal = None
+
+
+    def _deserialize(self, params):
+        self.Operation = params.get("Operation")
+        self.PermissionType = params.get("PermissionType")
+        self.Host = params.get("Host")
+        self.Principal = params.get("Principal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppIdResponse(AbstractModel):
     """AppId的查询结果
 
@@ -159,6 +195,68 @@ class Assignment(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class BatchCreateAclRequest(AbstractModel):
+    """BatchCreateAcl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ResourceType: Acl资源类型，(2:TOPIC）
+        :type ResourceType: int
+        :param ResourceNames: 资源列表数组
+        :type ResourceNames: list of str
+        :param RuleList: 设置的ACL规则列表
+        :type RuleList: list of AclRuleInfo
+        """
+        self.InstanceId = None
+        self.ResourceType = None
+        self.ResourceNames = None
+        self.RuleList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceNames = params.get("ResourceNames")
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = AclRuleInfo()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCreateAclResponse(AbstractModel):
+    """BatchCreateAcl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 状态码
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ClusterInfo(AbstractModel):

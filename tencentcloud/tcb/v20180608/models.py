@@ -1369,6 +1369,9 @@ class CodeSource(AbstractModel):
         :param ProjectId: coding项目ID，type为coding时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
+        :param ProjectName: coding项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
         """
         self.Type = None
         self.Url = None
@@ -1379,6 +1382,7 @@ class CodeSource(AbstractModel):
         self.RawCode = None
         self.Branch = None
         self.ProjectId = None
+        self.ProjectName = None
 
 
     def _deserialize(self, params):
@@ -1391,6 +1395,7 @@ class CodeSource(AbstractModel):
         self.RawCode = params.get("RawCode")
         self.Branch = params.get("Branch")
         self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1658,7 +1663,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         r"""
         :param EnvId: 环境ID
         :type EnvId: str
-        :param UploadType: 枚举（package/repository/image)
+        :param UploadType: 枚举（package/repository/image/jar/war)
         :type UploadType: str
         :param FlowRatio: 流量占比
         :type FlowRatio: int
@@ -1732,6 +1737,16 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type IsCreateJnsGw: int
         :param ServiceVolumeMounts: 数据卷挂载参数
         :type ServiceVolumeMounts: list of CloudBaseRunServiceVolumeMount
+        :param HasDockerfile: 是否有Dockerfile：0-default has, 1-has, 2-has not
+        :type HasDockerfile: int
+        :param BaseImage: 基础镜像
+        :type BaseImage: str
+        :param EntryPoint: 容器启动入口命令
+        :type EntryPoint: str
+        :param RepoLanguage: 仓库语言
+        :type RepoLanguage: str
+        :param UploadFilename: 用户实际上传文件名（仅UploadType为jar/war时必填）
+        :type UploadFilename: str
         """
         self.EnvId = None
         self.UploadType = None
@@ -1771,6 +1786,11 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.ServiceVolumes = None
         self.IsCreateJnsGw = None
         self.ServiceVolumeMounts = None
+        self.HasDockerfile = None
+        self.BaseImage = None
+        self.EntryPoint = None
+        self.RepoLanguage = None
+        self.UploadFilename = None
 
 
     def _deserialize(self, params):
@@ -1842,6 +1862,11 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
                 obj = CloudBaseRunServiceVolumeMount()
                 obj._deserialize(item)
                 self.ServiceVolumeMounts.append(obj)
+        self.HasDockerfile = params.get("HasDockerfile")
+        self.BaseImage = params.get("BaseImage")
+        self.EntryPoint = params.get("EntryPoint")
+        self.RepoLanguage = params.get("RepoLanguage")
+        self.UploadFilename = params.get("UploadFilename")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3245,6 +3270,18 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         :param MemSize: MEM 大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: float
+        :param HasDockerfile: 是否有Dockerfile：0-default has, 1-has, 2-has not
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasDockerfile: int
+        :param BaseImage: 基础镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseImage: str
+        :param EntryPoint: 容器启动入口命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntryPoint: str
+        :param RepoLanguage: 仓库语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoLanguage: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3280,6 +3317,10 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         self.ImageUrl = None
         self.CpuSize = None
         self.MemSize = None
+        self.HasDockerfile = None
+        self.BaseImage = None
+        self.EntryPoint = None
+        self.RepoLanguage = None
         self.RequestId = None
 
 
@@ -3316,6 +3357,10 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.CpuSize = params.get("CpuSize")
         self.MemSize = params.get("MemSize")
+        self.HasDockerfile = params.get("HasDockerfile")
+        self.BaseImage = params.get("BaseImage")
+        self.EntryPoint = params.get("EntryPoint")
+        self.RepoLanguage = params.get("RepoLanguage")
         self.RequestId = params.get("RequestId")
 
 
