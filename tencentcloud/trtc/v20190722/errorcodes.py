@@ -110,7 +110,7 @@ INVALIDPARAMETER_PRESETLAYOUTCONFIG = 'InvalidParameter.PresetLayoutConfig'
 # 纯音频推流参数错误。
 INVALIDPARAMETER_PUREAUDIOSTREAM = 'InvalidParameter.PureAudioStream'
 
-# 查询范围超过1个小时。
+# 查询范围超过文档限制。
 INVALIDPARAMETER_QUERYSCALEOVERSIZE = 'InvalidParameter.QueryScaleOversize'
 
 # 纯音频录制参数错误。
@@ -131,13 +131,13 @@ INVALIDPARAMETER_SMALLVIDEOLAYOUTPARAMS = 'InvalidParameter.SmallVideoLayoutPara
 # 小画面布局中流类型参数错误。
 INVALIDPARAMETER_SMALLVIDEOSTREAMTYPE = 'InvalidParameter.SmallVideoStreamType'
 
-# 查询开始时间超过24小时。
+# 查询开始时间超过文档限制。
 INVALIDPARAMETER_STARTTIMEEXPIRE = 'InvalidParameter.StartTimeExpire'
 
 # StartTs参数错误。
 INVALIDPARAMETER_STARTTS = 'InvalidParameter.StartTs'
 
-# 查询开始时间不在5天内。
+# 查询开始时间超过文档限制。
 INVALIDPARAMETER_STARTTSOVERSIZE = 'InvalidParameter.StartTsOversize'
 
 # StreamId参数错误。

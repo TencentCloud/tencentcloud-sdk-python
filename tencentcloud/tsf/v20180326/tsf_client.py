@@ -1820,7 +1820,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeContainerGroupDetail(self, request):
-        """容器部署组详情
+        """容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
 
         :param request: Request instance for DescribeContainerGroupDetail.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDetailRequest`

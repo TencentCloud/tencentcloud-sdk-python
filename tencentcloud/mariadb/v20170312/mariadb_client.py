@@ -223,6 +223,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDedicatedClusterDBInstance(self, request):
+        """创建独享集群Mariadb实例
+
+        :param request: Request instance for CreateDedicatedClusterDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateDedicatedClusterDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CreateDedicatedClusterDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDedicatedClusterDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDedicatedClusterDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTmpInstances(self, request):
         """本接口（CreateTmpInstances）用于创建临时实例。
 

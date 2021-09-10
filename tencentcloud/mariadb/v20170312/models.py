@@ -604,6 +604,153 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
+    """CreateDedicatedClusterDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsNum: 分配实例个数
+        :type GoodsNum: int
+        :param Memory: 內存大小，单位GB
+        :type Memory: int
+        :param Storage: 磁盘大小，单位GB
+        :type Storage: int
+        :param ClusterId: 独享集群集群uuid
+        :type ClusterId: str
+        :param Zone: （废弃）可用区
+        :type Zone: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param Pid: （废弃）Pid，可通过获取独享集群售卖配置接口得到
+        :type Pid: int
+        :param Machine: （废弃）机型
+        :type Machine: str
+        :param VpcId: 网络Id
+        :type VpcId: str
+        :param SubnetId: 子网Id
+        :type SubnetId: str
+        :param DbVersionId: db类型，不传默认0
+        :type DbVersionId: str
+        :param Manual: （废弃）是否手动指定一组服务器分配, 运维使用
+        :type Manual: int
+        :param DeviceNo: （废弃）DeviceNo参数
+        :type DeviceNo: str
+        :param SecurityGroupIds: 安全组ID
+        :type SecurityGroupIds: list of str
+        :param DcnInstanceId: DCN源实例ID
+        :type DcnInstanceId: str
+        :param DcnRegion: DCN源实例地域名
+        :type DcnRegion: str
+        :param InstanceName: 自定义实例名称
+        :type InstanceName: str
+        :param ResourceTags: 标签
+        :type ResourceTags: list of ResourceTag
+        :param Ipv6Flag: 支持IPv6标志：1 支持， 0 不支持
+        :type Ipv6Flag: int
+        :param InitParams: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+        :type InitParams: list of DBParamValue
+        :param NodeNum: 实例节点数
+        :type NodeNum: int
+        :param MasterHostId: 指定主节点uuid，不填随机分配
+        :type MasterHostId: str
+        :param SlaveHostIds: 指定从节点uuid，不填随机分配
+        :type SlaveHostIds: list of str
+        """
+        self.GoodsNum = None
+        self.Memory = None
+        self.Storage = None
+        self.ClusterId = None
+        self.Zone = None
+        self.ProjectId = None
+        self.Pid = None
+        self.Machine = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DbVersionId = None
+        self.Manual = None
+        self.DeviceNo = None
+        self.SecurityGroupIds = None
+        self.DcnInstanceId = None
+        self.DcnRegion = None
+        self.InstanceName = None
+        self.ResourceTags = None
+        self.Ipv6Flag = None
+        self.InitParams = None
+        self.NodeNum = None
+        self.MasterHostId = None
+        self.SlaveHostIds = None
+
+
+    def _deserialize(self, params):
+        self.GoodsNum = params.get("GoodsNum")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.ClusterId = params.get("ClusterId")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.Pid = params.get("Pid")
+        self.Machine = params.get("Machine")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DbVersionId = params.get("DbVersionId")
+        self.Manual = params.get("Manual")
+        self.DeviceNo = params.get("DeviceNo")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        self.DcnRegion = params.get("DcnRegion")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.NodeNum = params.get("NodeNum")
+        self.MasterHostId = params.get("MasterHostId")
+        self.SlaveHostIds = params.get("SlaveHostIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDedicatedClusterDBInstanceResponse(AbstractModel):
+    """CreateDedicatedClusterDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 分配资源ID数组
+        :type InstanceIds: list of str
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIds = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTmpInstancesRequest(AbstractModel):
     """CreateTmpInstances请求参数结构体
 

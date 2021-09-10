@@ -2241,6 +2241,8 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type UserIds: list of int
         :param GroupIds: 接收组列表
         :type GroupIds: list of int
+        :param NoticeIds: 根据通知模板 id 过滤，空数组/不传则不过滤
+        :type NoticeIds: list of str
         """
         self.Module = None
         self.PageNumber = None
@@ -2251,6 +2253,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.ReceiverType = None
         self.UserIds = None
         self.GroupIds = None
+        self.NoticeIds = None
 
 
     def _deserialize(self, params):
@@ -2263,6 +2266,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.ReceiverType = params.get("ReceiverType")
         self.UserIds = params.get("UserIds")
         self.GroupIds = params.get("GroupIds")
+        self.NoticeIds = params.get("NoticeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

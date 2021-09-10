@@ -481,6 +481,9 @@ class CloudBaseProjectVersion(AbstractModel):
         :param AutoDeployOnCodeChange: 是否私有仓库代码变更触发自动部署
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoDeployOnCodeChange: bool
+        :param BuildPercent: ci部署进度（%）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildPercent: int
         """
         self.Name = None
         self.Sam = None
@@ -503,6 +506,7 @@ class CloudBaseProjectVersion(AbstractModel):
         self.FailType = None
         self.RepoUrl = None
         self.AutoDeployOnCodeChange = None
+        self.BuildPercent = None
 
 
     def _deserialize(self, params):
@@ -534,6 +538,7 @@ class CloudBaseProjectVersion(AbstractModel):
         self.FailType = params.get("FailType")
         self.RepoUrl = params.get("RepoUrl")
         self.AutoDeployOnCodeChange = params.get("AutoDeployOnCodeChange")
+        self.BuildPercent = params.get("BuildPercent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2809,6 +2814,8 @@ class DescribeCloudBaseProjectLatestVersionListRequest(AbstractModel):
         :type ProjectType: str
         :param Tags: 标签
         :type Tags: list of str
+        :param CiId: ci的id
+        :type CiId: str
         """
         self.Offset = None
         self.PageSize = None
@@ -2816,6 +2823,7 @@ class DescribeCloudBaseProjectLatestVersionListRequest(AbstractModel):
         self.ProjectName = None
         self.ProjectType = None
         self.Tags = None
+        self.CiId = None
 
 
     def _deserialize(self, params):
@@ -2825,6 +2833,7 @@ class DescribeCloudBaseProjectLatestVersionListRequest(AbstractModel):
         self.ProjectName = params.get("ProjectName")
         self.ProjectType = params.get("ProjectType")
         self.Tags = params.get("Tags")
+        self.CiId = params.get("CiId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

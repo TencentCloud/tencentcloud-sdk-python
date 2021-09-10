@@ -197,6 +197,9 @@ INVALIDPARAMETER_ACTIONNOTFOUND = 'InvalidParameter.ActionNotFound'
 # 密码包含了非法字符。
 INVALIDPARAMETER_CHARACTERERROR = 'InvalidParameter.CharacterError'
 
+# 参数检测为通过。
+INVALIDPARAMETER_CHECKPARAMNOTPASS = 'InvalidParameter.CheckParamNotPass'
+
 # 未指定需要查询的订单ID。
 INVALIDPARAMETER_DEALNAMENOTGIVEN = 'InvalidParameter.DealNameNotGiven'
 
@@ -295,6 +298,9 @@ RESOURCEUNAVAILABLE_BADINSTANCESTATUS = 'ResourceUnavailable.BadInstanceStatus'
 
 # COS API调用错误。
 RESOURCEUNAVAILABLE_COSAPIFAILED = 'ResourceUnavailable.CosApiFailed'
+
+# 独享集群状态不正常。
+RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = 'ResourceUnavailable.ExclusterStatusAbnormal'
 
 # 数据库实例已被删除。
 RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = 'ResourceUnavailable.InstanceAlreadyDeleted'

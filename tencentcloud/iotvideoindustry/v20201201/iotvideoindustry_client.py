@@ -560,7 +560,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeIPCChannels(self, request):
-        """获取设备下属通道
+        """获取IPC设备下属通道
 
         :param request: Request instance for DescribeIPCChannels.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeIPCChannelsRequest`
