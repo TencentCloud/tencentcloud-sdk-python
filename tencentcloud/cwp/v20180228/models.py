@@ -780,7 +780,7 @@ class CheckBashRuleParamsRequest(AbstractModel):
         :type EventId: int
         :param Name: 填入的规则名称
         :type Name: str
-        :param Rule: 用户填入的正则表达式
+        :param Rule: 用户填入的正则表达式：“正则表达式“需与“提交EventId对应的命令内容”相匹配
         :type Rule: str
         :param Id: 编辑时传的规则id
         :type Id: int
@@ -2888,7 +2888,7 @@ class DescribeBaselineRuleResponse(AbstractModel):
         :param BaselineRuleList: 基线检测项列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type BaselineRuleList: list of BaselineRuleInfo
-        :param ShowRuleRemark: 是否显示说明列
+        :param ShowRuleRemark: 是否显示说明列：true-是，false-否
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShowRuleRemark: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4725,7 +4725,7 @@ class DescribeMalwareRiskWarningResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsCheckRisk: 是否开启自动扫描
+        :param IsCheckRisk: 是否开启自动扫描：true-开启，false-未开启
         :type IsCheckRisk: bool
         :param List: 风险文件列表信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6565,7 +6565,7 @@ class DescribeServersAndRiskAndFirstInfoResponse(AbstractModel):
         :type AddRiskFileCount: int
         :param ServersCount: 受影响服务器台数
         :type ServersCount: int
-        :param IsFirstCheck: 是否试用
+        :param IsFirstCheck: 是否试用：true-是，false-否
         :type IsFirstCheck: bool
         :param ScanTime: 木马最近检测时间
         :type ScanTime: str
@@ -7402,7 +7402,7 @@ class DescribeWebPageServiceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 是否已购服务
+        :param Status: 是否已购服务：true-是，false-否
         :type Status: bool
         :param UsedNum: 已使用授权数
         :type UsedNum: int

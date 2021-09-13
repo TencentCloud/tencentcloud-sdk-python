@@ -1370,6 +1370,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEKSContainerInstanceRegions(self, request):
+        """查询容器实例支持的地域
+
+        :param request: Request instance for DescribeEKSContainerInstanceRegions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstanceRegionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstanceRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEKSContainerInstanceRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEKSContainerInstanceRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnableVpcCniProgress(self, request):
         """本接口用于查询开启vpc-cni模式的任务进度
 

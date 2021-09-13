@@ -396,3 +396,76 @@ class DescribeErrorResponse(AbstractModel):
         self.ID = params.get("ID")
         self.CreateTime = params.get("CreateTime")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeLogListRequest(AbstractModel):
+    """DescribeLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sort: 排序方式  desc  asc
+        :type Sort: str
+        :param ActionType: searchlog   histogram
+        :type ActionType: str
+        :param ID: 项目ID
+        :type ID: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param Limit: 限制
+        :type Limit: int
+        :param Context: 上下文
+        :type Context: str
+        :param Query: 查询语句
+        :type Query: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.Sort = None
+        self.ActionType = None
+        self.ID = None
+        self.StartTime = None
+        self.Limit = None
+        self.Context = None
+        self.Query = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Sort = params.get("Sort")
+        self.ActionType = params.get("ActionType")
+        self.ID = params.get("ID")
+        self.StartTime = params.get("StartTime")
+        self.Limit = params.get("Limit")
+        self.Context = params.get("Context")
+        self.Query = params.get("Query")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogListResponse(AbstractModel):
+    """DescribeLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回字符串
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")

@@ -41,6 +41,8 @@ class ActionSummaryOverviewItem(AbstractModel):
         :type VoucherPayAmount: str
         :param BillMonth: 账单月份，格式2019-08
         :type BillMonth: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
         """
         self.ActionType = None
         self.ActionTypeName = None
@@ -50,6 +52,7 @@ class ActionSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
         self.BillMonth = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -61,6 +64,7 @@ class ActionSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -574,6 +578,8 @@ class BusinessSummaryOverviewItem(AbstractModel):
         :type VoucherPayAmount: str
         :param BillMonth: 账单月份，格式2019-08
         :type BillMonth: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
         """
         self.BusinessCode = None
         self.BusinessCodeName = None
@@ -583,6 +589,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
         self.BillMonth = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -594,6 +601,7 @@ class BusinessSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -618,11 +626,14 @@ class BusinessSummaryTotal(AbstractModel):
         :type IncentivePayAmount: str
         :param CashPayAmount: 现金金额
         :type CashPayAmount: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
         """
         self.RealTotalCost = None
         self.VoucherPayAmount = None
         self.IncentivePayAmount = None
         self.CashPayAmount = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -630,6 +641,7 @@ class BusinessSummaryTotal(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1809,10 +1821,10 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type Offset: int
         :param Limit: 数量，最大值为1000
         :type Limit: int
-        :param PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
-        :type PeriodType: str
         :param Month: 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
         :type Month: str
+        :param PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        :type PeriodType: str
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
@@ -1825,8 +1837,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         """
         self.Offset = None
         self.Limit = None
-        self.PeriodType = None
         self.Month = None
+        self.PeriodType = None
         self.NeedRecordNum = None
         self.ActionType = None
         self.ResourceId = None
@@ -1836,8 +1848,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.PeriodType = params.get("PeriodType")
         self.Month = params.get("Month")
+        self.PeriodType = params.get("PeriodType")
         self.NeedRecordNum = params.get("NeedRecordNum")
         self.ActionType = params.get("ActionType")
         self.ResourceId = params.get("ResourceId")
@@ -2156,11 +2168,14 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
         :type TagKey: str
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
+        :param TagValue: 分账标签值
+        :type TagValue: str
         """
         self.BeginTime = None
         self.EndTime = None
         self.TagKey = None
         self.PayerUin = None
+        self.TagValue = None
 
 
     def _deserialize(self, params):
@@ -2168,6 +2183,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.TagKey = params.get("TagKey")
         self.PayerUin = params.get("PayerUin")
+        self.TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2189,11 +2205,15 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
         :param SummaryOverview: 各标签值花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of TagSummaryOverviewItem
+        :param SummaryTotal: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Ready = None
         self.SummaryOverview = None
+        self.SummaryTotal = None
         self.RequestId = None
 
 
@@ -2205,6 +2225,9 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
                 obj = TagSummaryOverviewItem()
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
+        if params.get("SummaryTotal") is not None:
+            self.SummaryTotal = SummaryTotal()
+            self.SummaryTotal._deserialize(params.get("SummaryTotal"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3061,6 +3084,8 @@ class PayModeSummaryOverviewItem(AbstractModel):
         :type IncentivePayAmount: str
         :param VoucherPayAmount: 代金券金额
         :type VoucherPayAmount: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
         """
         self.PayMode = None
         self.PayModeName = None
@@ -3070,6 +3095,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -3086,6 +3112,7 @@ class PayModeSummaryOverviewItem(AbstractModel):
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3146,6 +3173,8 @@ class ProjectSummaryOverviewItem(AbstractModel):
         :type VoucherPayAmount: str
         :param BillMonth: 账单月份，格式2019-08
         :type BillMonth: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
         """
         self.ProjectId = None
         self.ProjectName = None
@@ -3155,6 +3184,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
         self.BillMonth = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -3166,6 +3196,7 @@ class ProjectSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3199,6 +3230,8 @@ class RegionSummaryOverviewItem(AbstractModel):
         :type VoucherPayAmount: str
         :param BillMonth: 账单月份，格式2019-08
         :type BillMonth: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
         """
         self.RegionId = None
         self.RegionName = None
@@ -3208,6 +3241,7 @@ class RegionSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
         self.BillMonth = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -3219,6 +3253,37 @@ class RegionSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SummaryTotal(AbstractModel):
+    """总数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RealTotalCost: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: str
+        """
+        self.RealTotalCost = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3244,16 +3309,21 @@ class TagSummaryOverviewItem(AbstractModel):
         :param RealTotalCostRatio: 费用所占百分比，两位小数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealTotalCostRatio: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: str
         """
         self.TagValue = None
         self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
         self.TagValue = params.get("TagValue")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

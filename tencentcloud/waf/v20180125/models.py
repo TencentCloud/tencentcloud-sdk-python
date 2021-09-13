@@ -502,7 +502,7 @@ class CreateAccessExportRequest(AbstractModel):
         :type To: int
         :param Query: 日志导出检索语句
         :type Query: str
-        :param Count: 日志导出数量
+        :param Count: 日志导出数量，最大值100w
         :type Count: int
         :param Format: 日志导出数据格式。json，csv，默认为json
         :type Format: str

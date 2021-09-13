@@ -561,6 +561,73 @@ class DescribeDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrivateDNSAccountListRequest(AbstractModel):
+    """DescribePrivateDNSAccountList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页偏移量，从0开始
+        :type Offset: int
+        :param Limit: 分页限制数目， 最大100，默认20
+        :type Limit: int
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateDNSAccountListResponse(AbstractModel):
+    """DescribePrivateDNSAccountList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 私有域解析账号数量
+        :type TotalCount: int
+        :param AccountSet: 私有域解析账号列表
+        :type AccountSet: list of PrivateDNSAccount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AccountSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AccountSet") is not None:
+            self.AccountSet = []
+            for item in params.get("AccountSet"):
+                obj = PrivateDNSAccount()
+                obj._deserialize(item)
+                self.AccountSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrivateZoneListRequest(AbstractModel):
     """DescribePrivateZoneList请求参数结构体
 
@@ -1134,6 +1201,38 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class PrivateDNSAccount(AbstractModel):
+    """私有域解析账号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 主账号Uin
+        :type Uin: str
+        :param Account: 主账号名称
+        :type Account: str
+        :param Nickname: 用户昵称
+        :type Nickname: str
+        """
+        self.Uin = None
+        self.Account = None
+        self.Nickname = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Account = params.get("Account")
+        self.Nickname = params.get("Nickname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PrivateZone(AbstractModel):

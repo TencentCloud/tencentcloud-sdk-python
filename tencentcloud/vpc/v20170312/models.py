@@ -15348,7 +15348,7 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
         :type VpcId: str
         :param EndPointServiceName: 终端节点服务名称。
         :type EndPointServiceName: str
-        :param AutoAcceptFlag: 是否自动接受。
+        :param AutoAcceptFlag: 是否自动接受终端节点的连接请求。<ui><li>true：自动接受<li>false：不自动接受</ul>
         :type AutoAcceptFlag: bool
         :param ServiceInstanceId: 后端服务的ID，比如lb-xxx。
         :type ServiceInstanceId: str

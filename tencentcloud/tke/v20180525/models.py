@@ -3680,6 +3680,43 @@ class DescribeEKSClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEKSContainerInstanceRegionsRequest(AbstractModel):
+    """DescribeEKSContainerInstanceRegions请求参数结构体
+
+    """
+
+
+class DescribeEKSContainerInstanceRegionsResponse(AbstractModel):
+    """DescribeEKSContainerInstanceRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regions: EKS Container Instance支持的地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regions: list of EksCiRegionInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Regions = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Regions") is not None:
+            self.Regions = []
+            for item in params.get("Regions"):
+                obj = EksCiRegionInfo()
+                obj._deserialize(item)
+                self.Regions.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnableVpcCniProgressRequest(AbstractModel):
     """DescribeEnableVpcCniProgress请求参数结构体
 
@@ -4711,6 +4748,38 @@ class DnsServerConf(AbstractModel):
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.DnsServers = params.get("DnsServers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EksCiRegionInfo(AbstractModel):
+    """EksCi地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Alias: 地域别名，形如gz
+        :type Alias: str
+        :param RegionName: 地域名，形如ap-guangzhou
+        :type RegionName: str
+        :param RegionId: 地域ID
+        :type RegionId: int
+        """
+        self.Alias = None
+        self.RegionName = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.RegionName = params.get("RegionName")
+        self.RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

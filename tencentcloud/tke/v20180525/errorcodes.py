@@ -62,6 +62,9 @@ INTERNALERROR_CLUSTERSTATE = 'InternalError.ClusterState'
 # 集群节点版本过低。
 INTERNALERROR_CLUSTERUPGRADENODEVERSION = 'InternalError.ClusterUpgradeNodeVersion'
 
+# 执行命令超时。
+INTERNALERROR_CMDTIMEOUT = 'InternalError.CmdTimeout'
+
 # 内部HTTP客户端错误。
 INTERNALERROR_COMPONENTCLIENTHTTP = 'InternalError.ComponentClientHttp'
 
