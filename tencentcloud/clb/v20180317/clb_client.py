@@ -963,6 +963,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLBListeners(self, request):
+        """查询后端云主机或弹性网卡绑定的负载均衡，支持弹性网卡和cvm查询。
+
+        :param request: Request instance for DescribeLBListeners.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLBListenersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLBListenersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLBListeners", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLBListenersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeListeners(self, request):
         """DescribeListeners 接口可根据负载均衡器 ID、监听器的协议或端口作为过滤条件获取监听器列表。如果不指定任何过滤条件，则返回该负载均衡实例下的所有监听器。
 

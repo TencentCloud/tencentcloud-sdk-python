@@ -350,6 +350,56 @@ class CreateChooseVpcsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDatabaseWhiteListRulesRequest(AbstractModel):
+    """CreateDatabaseWhiteListRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseWhiteListRuleData: 创建白名单数据
+        :type DatabaseWhiteListRuleData: list of DatabaseWhiteListRuleData
+        """
+        self.DatabaseWhiteListRuleData = None
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseWhiteListRuleData") is not None:
+            self.DatabaseWhiteListRuleData = []
+            for item in params.get("DatabaseWhiteListRuleData"):
+                obj = DatabaseWhiteListRuleData()
+                obj._deserialize(item)
+                self.DatabaseWhiteListRuleData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatabaseWhiteListRulesResponse(AbstractModel):
+    """CreateDatabaseWhiteListRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态值，0:添加成功，非0：添加失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNatFwInstanceRequest(AbstractModel):
     """CreateNatFwInstance请求参数结构体
 
@@ -543,6 +593,78 @@ class CreateSecurityGroupRulesResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+
+
+class DatabaseWhiteListRuleData(AbstractModel):
+    """数据库白名单规则数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceIp: 访问源
+        :type SourceIp: str
+        :param SourceType: 访问源类型，1 ip；6 实例；100 资源分组
+        :type SourceType: int
+        :param TargetIp: 访问目的
+        :type TargetIp: str
+        :param TargetType: 访问目的类型，1 ip；6 实例；100 资源分组
+        :type TargetType: int
+        :param Detail: 规则描述
+        :type Detail: str
+        :param IsRegionRule: 是否地域规则，0不是 1是
+        :type IsRegionRule: int
+        :param IsCloudRule: 是否云厂商规则，0不是 1 时
+        :type IsCloudRule: int
+        :param Enable: 是否启用，0 不启用，1启用
+        :type Enable: int
+        :param FirstLevelRegionCode: 地域码1
+        :type FirstLevelRegionCode: int
+        :param SecondLevelRegionCode: 地域码2
+        :type SecondLevelRegionCode: int
+        :param FirstLevelRegionName: 地域名称1
+        :type FirstLevelRegionName: str
+        :param SecondLevelRegionName: 地域名称2
+        :type SecondLevelRegionName: str
+        :param CloudCode: 云厂商码
+        :type CloudCode: str
+        """
+        self.SourceIp = None
+        self.SourceType = None
+        self.TargetIp = None
+        self.TargetType = None
+        self.Detail = None
+        self.IsRegionRule = None
+        self.IsCloudRule = None
+        self.Enable = None
+        self.FirstLevelRegionCode = None
+        self.SecondLevelRegionCode = None
+        self.FirstLevelRegionName = None
+        self.SecondLevelRegionName = None
+        self.CloudCode = None
+
+
+    def _deserialize(self, params):
+        self.SourceIp = params.get("SourceIp")
+        self.SourceType = params.get("SourceType")
+        self.TargetIp = params.get("TargetIp")
+        self.TargetType = params.get("TargetType")
+        self.Detail = params.get("Detail")
+        self.IsRegionRule = params.get("IsRegionRule")
+        self.IsCloudRule = params.get("IsCloudRule")
+        self.Enable = params.get("Enable")
+        self.FirstLevelRegionCode = params.get("FirstLevelRegionCode")
+        self.SecondLevelRegionCode = params.get("SecondLevelRegionCode")
+        self.FirstLevelRegionName = params.get("FirstLevelRegionName")
+        self.SecondLevelRegionName = params.get("SecondLevelRegionName")
+        self.CloudCode = params.get("CloudCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAcRuleRequest(AbstractModel):
@@ -3937,12 +4059,16 @@ class NatFwInstance(AbstractModel):
         :param Status: 0:正常状态， 1: 正在创建
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param NatIp: nat公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatIp: str
         """
         self.NatinsId = None
         self.NatinsName = None
         self.Region = None
         self.FwMode = None
         self.Status = None
+        self.NatIp = None
 
 
     def _deserialize(self, params):
@@ -3951,6 +4077,7 @@ class NatFwInstance(AbstractModel):
         self.Region = params.get("Region")
         self.FwMode = params.get("FwMode")
         self.Status = params.get("Status")
+        self.NatIp = params.get("NatIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

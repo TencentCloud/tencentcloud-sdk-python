@@ -82,6 +82,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDatabaseWhiteListRules(self, request):
+        """创建暴露数据库白名单规则
+
+        :param request: Request instance for CreateDatabaseWhiteListRules.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateDatabaseWhiteListRulesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateDatabaseWhiteListRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDatabaseWhiteListRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDatabaseWhiteListRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNatFwInstance(self, request):
         """创建防火墙实例
 

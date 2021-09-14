@@ -32,6 +32,9 @@ FAILEDOPERATION_CLASSNOFOUND = 'FailedOperation.ClassNoFound'
 # 操作失败：不支持的封面类型。
 FAILEDOPERATION_COVERTYPE = 'FailedOperation.CoverType'
 
+# 域名部署中，不能变更配置。
+FAILEDOPERATION_DOMAINDEPLOYING = 'FailedOperation.DomainDeploying'
+
 # 用户账户异常。
 FAILEDOPERATION_INVALIDACCOUNT = 'FailedOperation.InvalidAccount'
 
@@ -232,6 +235,9 @@ INVALIDPARAMETERVALUE_DISTRICTS = 'InvalidParameterValue.Districts'
 
 # 参数错误：不存在的域名。
 INVALIDPARAMETERVALUE_DOMAINNAME = 'InvalidParameterValue.DomainName'
+
+# 恶意域名，无法添加。
+INVALIDPARAMETERVALUE_DOMAINNAMEINBLACKLIST = 'InvalidParameterValue.DomainNameInBlackList'
 
 # 参数值，域名列表太大。
 INVALIDPARAMETERVALUE_DOMAINNAMES = 'InvalidParameterValue.DomainNames'

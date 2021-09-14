@@ -26,6 +26,36 @@ class AfClient(AbstractClient):
     _service = 'af'
 
 
+    def DescribeAntiFraud(self, request):
+        """天御反欺诈服务，主要应用于银行、证券、保险、消费金融等金融行业客户，通过腾讯的大数据风控能力，
+        可以准确识别恶意用户信息，解决客户在支付、活动、理财，风控等业务环节遇到的欺诈威胁，降低企业
+        的损失。
+
+        :param request: Request instance for DescribeAntiFraud.
+        :type request: :class:`tencentcloud.af.v20200226.models.DescribeAntiFraudRequest`
+        :rtype: :class:`tencentcloud.af.v20200226.models.DescribeAntiFraudResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAntiFraud", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAntiFraudResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryAntiFraud(self, request):
         """天御反欺诈服务，主要应用于银行、证券、保险、消费金融等金融行业客户，通过腾讯的大数据风控能力，
         可以准确识别恶意用户信息，解决客户在支付、活动、理财，风控等业务环节遇到的欺诈威胁，降低企业

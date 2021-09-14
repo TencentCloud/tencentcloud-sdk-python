@@ -6935,6 +6935,59 @@ class CreateTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVodDomainRequest(AbstractModel):
+    """CreateVodDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要接入点播的加速域名。注意：不支持填写泛域名。
+        :type Domain: str
+        :param AccelerateArea: 需要开启 CDN 加速的区域：
+<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+<li>Outside Chinese Mainland: 中国境外。</li>
+<li>Global: 全球范围。</li>
+如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
+        :type AccelerateArea: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.AccelerateArea = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.AccelerateArea = params.get("AccelerateArea")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVodDomainResponse(AbstractModel):
+    """CreateVodDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateWatermarkTemplateRequest(AbstractModel):
     """CreateWatermarkTemplate请求参数结构体
 
@@ -7852,6 +7905,51 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
 
 class DeleteTranscodeTemplateResponse(AbstractModel):
     """DeleteTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVodDomainRequest(AbstractModel):
+    """DeleteVodDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 要删除的点播加速域名。
+        :type Domain: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVodDomainResponse(AbstractModel):
+    """DeleteVodDomain返回参数结构体
 
     """
 
@@ -16253,6 +16351,122 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
+    """ModifyVodDomainAccelerateConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要设置加速配置的域名。
+        :type Domain: str
+        :param Area: 区域，可选值：
+<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+<li>Outside Chinese Mainland: 中国境外。</li>
+<li>Global: 全球范围。</li>
+        :type Area: str
+        :param Status: 开启或者关闭所选区域的域名加速，可选值：
+<li>Enabled: 开启。</li>
+<li>Disabled：关闭。</li>
+开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
+        :type Status: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.Area = None
+        self.Status = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Area = params.get("Area")
+        self.Status = params.get("Status")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVodDomainAccelerateConfigResponse(AbstractModel):
+    """ModifyVodDomainAccelerateConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVodDomainConfigRequest(AbstractModel):
+    """ModifyVodDomainConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名。
+        :type Domain: str
+        :param RefererAuthPolicy: [Referer 防盗链](/document/product/266/14046)规则。
+        :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
+        :param UrlSignatureAuthPolicy: [Key 防盗链](/document/product/266/14047)规则。
+        :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.RefererAuthPolicy = None
+        self.UrlSignatureAuthPolicy = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("RefererAuthPolicy") is not None:
+            self.RefererAuthPolicy = RefererAuthPolicy()
+            self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
+        if params.get("UrlSignatureAuthPolicy") is not None:
+            self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
+            self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVodDomainConfigResponse(AbstractModel):
+    """ModifyVodDomainConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyWatermarkTemplateRequest(AbstractModel):
     """ModifyWatermarkTemplate请求参数结构体
 
@@ -18561,14 +18775,16 @@ class RefererAuthPolicy(AbstractModel):
 <li>Disabled: 禁用。</li>
         :type Status: str
         :param AuthType: Referer 校验类型，可选值：
-<li>Black: 黑名单方式校验；</li>
-<li>White:白名单方式校验。</li>
+<li>Black：黑名单方式校验。HTTP 请求携带了 Referers 列表中的某个 Referer 将被拒绝访问。</li>
+<li>White：白名单方式校验。HTTP 请求携带了 Referers 列表中的 Referer 时才允许访问。</li>
+当 Status 取值为 Enabled 时，AuthType 必须赋值。
         :type AuthType: str
-        :param Referers: 用于校验的 Referer 名单。
+        :param Referers: 用于校验的 Referer 列表，最大支持20个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
         :type Referers: list of str
         :param BlankRefererAllowed: 是否允许空 Referer 访问本域名，可选值：
-<li>Yes: 是；</li>
-<li>No: 否。</li>
+<li>Yes： 是。</li>
+<li>No： 否。</li>
+当 Status 取值为 Enabled 时，BlankRefererAllowed 必须赋值。
         :type BlankRefererAllowed: str
         """
         self.Status = None
@@ -21094,10 +21310,11 @@ class UrlSignatureAuthPolicy(AbstractModel):
     def __init__(self):
         r"""
         :param Status: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)设置状态，可选值：
-<li>Enabled: 启用；</li>
+<li>Enabled: 启用。</li>
 <li>Disabled: 禁用。</li>
         :type Status: str
         :param EncryptedKey: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)中用于生成签名的密钥。
+EncryptedKey 字符串的长度为8~40个字节，不能包含不可见字符。
         :type EncryptedKey: str
         """
         self.Status = None

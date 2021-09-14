@@ -164,3 +164,31 @@ class RumClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProjects(self, request):
+        """获取项目列表（实例创建的团队下的项目列表）
+
+        :param request: Request instance for DescribeProjects.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProjects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

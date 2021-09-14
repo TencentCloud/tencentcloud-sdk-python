@@ -1412,6 +1412,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type BandwidthPackageId: str
         :param ExclusiveCluster: 独占集群信息。若创建独占集群负载均衡实例，则此参数必填。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
+        :param SlaType: 创建性能独享型CLB，传SLA。
+        :type SlaType: str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
         :param SnatPro: 是否支持绑定跨地域/跨Vpc绑定IP的功能。
@@ -1442,6 +1444,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.Vip = None
         self.BandwidthPackageId = None
         self.ExclusiveCluster = None
+        self.SlaType = None
         self.ClientToken = None
         self.SnatPro = None
         self.SnatIps = None
@@ -1476,6 +1479,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("ExclusiveCluster") is not None:
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
+        self.SlaType = params.get("SlaType")
         self.ClientToken = params.get("ClientToken")
         self.SnatPro = params.get("SnatPro")
         if params.get("SnatIps") is not None:
@@ -2896,6 +2900,61 @@ class DescribeExclusiveClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLBListenersRequest(AbstractModel):
+    """DescribeLBListeners请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Backends: 需要查询的内网ip列表
+        :type Backends: list of LbRsItem
+        """
+        self.Backends = None
+
+
+    def _deserialize(self, params):
+        if params.get("Backends") is not None:
+            self.Backends = []
+            for item in params.get("Backends"):
+                obj = LbRsItem()
+                obj._deserialize(item)
+                self.Backends.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLBListenersResponse(AbstractModel):
+    """DescribeLBListeners返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancers: 绑定的后端规则
+        :type LoadBalancers: list of LBItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoadBalancers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancers") is not None:
+            self.LoadBalancers = []
+            for item in params.get("LoadBalancers"):
+                obj = LBItem()
+                obj._deserialize(item)
+                self.LoadBalancers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeListenersRequest(AbstractModel):
     """DescribeListeners请求参数结构体
 
@@ -4065,6 +4124,117 @@ class LBChargePrepaid(AbstractModel):
         
 
 
+class LBItem(AbstractModel):
+    """反查Lb绑定关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: lb的字符串id
+        :type LoadBalancerId: str
+        :param Vip: lb的vip
+        :type Vip: str
+        :param Listeners: 监听器规则
+        :type Listeners: list of ListenerItem
+        :param Region: LB所在地域
+        :type Region: str
+        """
+        self.LoadBalancerId = None
+        self.Vip = None
+        self.Listeners = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Vip = params.get("Vip")
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ListenerItem()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LbRsItem(AbstractModel):
+    """查询类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: vpc的字符串id，只支持字符串id。
+        :type VpcId: str
+        :param PrivateIp: 需要查询后端的内网ip，可以是cvm和弹性网卡。
+        :type PrivateIp: str
+        """
+        self.VpcId = None
+        self.PrivateIp = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.PrivateIp = params.get("PrivateIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LbRsTargets(AbstractModel):
+    """反查结果数据类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 内网ip类型。“cvm”或“eni”
+        :type Type: str
+        :param PrivateIp: 后端实例的内网ip。
+        :type PrivateIp: str
+        :param Port: 绑定后端实例的端口。
+        :type Port: int
+        :param VpcId: rs的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: int
+        :param Weight: rs的权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        """
+        self.Type = None
+        self.PrivateIp = None
+        self.Port = None
+        self.VpcId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PrivateIp = params.get("PrivateIp")
+        self.Port = params.get("Port")
+        self.VpcId = params.get("VpcId")
+        self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Listener(AbstractModel):
     """监听器的信息
 
@@ -4278,6 +4448,63 @@ class ListenerHealth(AbstractModel):
                 obj = RuleHealth()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListenerItem(AbstractModel):
+    """反查监听器类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param Protocol: 监听器协议
+        :type Protocol: str
+        :param Port: 监听器端口
+        :type Port: int
+        :param Rules: 绑定规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of RulesItems
+        :param Targets: 四层绑定对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of LbRsTargets
+        :param EndPort: 端口段监听器的结束端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPort: int
+        """
+        self.ListenerId = None
+        self.Protocol = None
+        self.Port = None
+        self.Rules = None
+        self.Targets = None
+        self.EndPort = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RulesItems()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = LbRsTargets()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.EndPort = params.get("EndPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6300,6 +6527,47 @@ class RuleTargets(AbstractModel):
             self.Targets = []
             for item in params.get("Targets"):
                 obj = Backend()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulesItems(AbstractModel):
+    """七层规则对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocationId: 规则id
+        :type LocationId: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Url: uri
+        :type Url: str
+        :param Targets: 绑定的后端对象
+        :type Targets: list of LbRsTargets
+        """
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = LbRsTargets()
                 obj._deserialize(item)
                 self.Targets.append(obj)
         memeber_set = set(params.keys())

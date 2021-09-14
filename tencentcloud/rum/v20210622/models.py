@@ -469,3 +469,185 @@ class DescribeLogListResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeProjectsRequest(AbstractModel):
+    """DescribeProjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页每页数目，整型
+        :type Limit: int
+        :param Offset: 分页页码，整型
+        :type Offset: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectsResponse(AbstractModel):
+    """DescribeProjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 列表总数
+        :type TotalCount: int
+        :param ProjectSet: 项目列表
+        :type ProjectSet: list of RumProject
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ProjectSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ProjectSet") is not None:
+            self.ProjectSet = []
+            for item in params.get("ProjectSet"):
+                obj = RumProject()
+                obj._deserialize(item)
+                self.ProjectSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    · 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    · 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Values: 一个或者多个过滤值。
+        :type Values: list of str
+        :param Name: 过滤键的名称。
+        :type Name: str
+        """
+        self.Values = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Values = params.get("Values")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RumProject(AbstractModel):
+    """Rum 项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 项目名
+        :type Name: str
+        :param Creator: 创建者 id
+        :type Creator: str
+        :param InstanceID: 实例 id
+        :type InstanceID: str
+        :param Type: 项目类型
+        :type Type: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Repo: 项目仓库地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repo: str
+        :param URL: 项目网址地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URL: str
+        :param Rate: 项目采样频率
+        :type Rate: str
+        :param Key: 项目唯一key（长度 12 位）
+        :type Key: str
+        :param EnableURLGroup: 是否开启url聚类
+        :type EnableURLGroup: int
+        :param InstanceName: 实例名
+        :type InstanceName: str
+        :param ID: 项目 ID
+        :type ID: int
+        :param InstanceKey: 实例 key
+        :type InstanceKey: str
+        :param Desc: 项目描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param IsStar: 是否星标  1:是 0:否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsStar: int
+        """
+        self.Name = None
+        self.Creator = None
+        self.InstanceID = None
+        self.Type = None
+        self.CreateTime = None
+        self.Repo = None
+        self.URL = None
+        self.Rate = None
+        self.Key = None
+        self.EnableURLGroup = None
+        self.InstanceName = None
+        self.ID = None
+        self.InstanceKey = None
+        self.Desc = None
+        self.IsStar = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Creator = params.get("Creator")
+        self.InstanceID = params.get("InstanceID")
+        self.Type = params.get("Type")
+        self.CreateTime = params.get("CreateTime")
+        self.Repo = params.get("Repo")
+        self.URL = params.get("URL")
+        self.Rate = params.get("Rate")
+        self.Key = params.get("Key")
+        self.EnableURLGroup = params.get("EnableURLGroup")
+        self.InstanceName = params.get("InstanceName")
+        self.ID = params.get("ID")
+        self.InstanceKey = params.get("InstanceKey")
+        self.Desc = params.get("Desc")
+        self.IsStar = params.get("IsStar")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

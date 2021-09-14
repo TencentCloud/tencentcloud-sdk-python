@@ -1752,6 +1752,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type RepoLanguage: str
         :param UploadFilename: 用户实际上传文件名（仅UploadType为jar/war时必填）
         :type UploadFilename: str
+        :param PolicyDetail: 自动扩缩容策略组
+        :type PolicyDetail: list of HpaPolicy
         """
         self.EnvId = None
         self.UploadType = None
@@ -1796,6 +1798,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EntryPoint = None
         self.RepoLanguage = None
         self.UploadFilename = None
+        self.PolicyDetail = None
 
 
     def _deserialize(self, params):
@@ -1872,6 +1875,12 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EntryPoint = params.get("EntryPoint")
         self.RepoLanguage = params.get("RepoLanguage")
         self.UploadFilename = params.get("UploadFilename")
+        if params.get("PolicyDetail") is not None:
+            self.PolicyDetail = []
+            for item in params.get("PolicyDetail"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self.PolicyDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3291,6 +3300,9 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         :param RepoLanguage: 仓库语言
 注意：此字段可能返回 null，表示取不到有效值。
         :type RepoLanguage: str
+        :param PolicyDetail: 自动扩缩容策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDetail: list of HpaPolicy
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3330,6 +3342,7 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         self.BaseImage = None
         self.EntryPoint = None
         self.RepoLanguage = None
+        self.PolicyDetail = None
         self.RequestId = None
 
 
@@ -3370,6 +3383,12 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         self.BaseImage = params.get("BaseImage")
         self.EntryPoint = params.get("EntryPoint")
         self.RepoLanguage = params.get("RepoLanguage")
+        if params.get("PolicyDetail") is not None:
+            self.PolicyDetail = []
+            for item in params.get("PolicyDetail"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self.PolicyDetail.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5880,6 +5899,36 @@ class FunctionInfo(AbstractModel):
         
 
 
+class HpaPolicy(AbstractModel):
+    """扩缩容策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyType: 策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: str
+        :param PolicyThreshold: 策略阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyThreshold: int
+        """
+        self.PolicyType = None
+        self.PolicyThreshold = None
+
+
+    def _deserialize(self, params):
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyThreshold = params.get("PolicyThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KVPair(AbstractModel):
     """键值对
 
@@ -6659,6 +6708,8 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         :type ServerPath: str
         :param IsUpdateCls: 是否更新Cls
         :type IsUpdateCls: bool
+        :param PolicyDetail: 自动扩缩容策略组
+        :type PolicyDetail: list of HpaPolicy
         """
         self.EnvId = None
         self.VersionName = None
@@ -6693,6 +6744,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         self.OperatorRemark = None
         self.ServerPath = None
         self.IsUpdateCls = None
+        self.PolicyDetail = None
 
 
     def _deserialize(self, params):
@@ -6738,6 +6790,12 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         self.OperatorRemark = params.get("OperatorRemark")
         self.ServerPath = params.get("ServerPath")
         self.IsUpdateCls = params.get("IsUpdateCls")
+        if params.get("PolicyDetail") is not None:
+            self.PolicyDetail = []
+            for item in params.get("PolicyDetail"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self.PolicyDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
