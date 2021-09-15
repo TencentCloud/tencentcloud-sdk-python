@@ -399,6 +399,16 @@ def test_import_es():
     from tencentcloud.es.v20180416 import models
 
 
+def test_import_essbasic():
+    from tencentcloud.essbasic.v20201222 import essbasic_client
+    from tencentcloud.essbasic.v20201222 import models
+
+
+def test_import_essbasic():
+    from tencentcloud.essbasic.v20210526 import essbasic_client
+    from tencentcloud.essbasic.v20210526 import models
+
+
 def test_import_facefusion():
     from tencentcloud.facefusion.v20181201 import facefusion_client
     from tencentcloud.facefusion.v20181201 import models
