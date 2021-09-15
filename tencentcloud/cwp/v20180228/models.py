@@ -780,7 +780,7 @@ class CheckBashRuleParamsRequest(AbstractModel):
         :type EventId: int
         :param Name: 填入的规则名称
         :type Name: str
-        :param Rule: 用户填入的正则表达式：“正则表达式“需与“提交EventId对应的命令内容”相匹配
+        :param Rule: 用户填入的正则表达式："正则表达式" 需与 "提交EventId对应的命令内容" 相匹配
         :type Rule: str
         :param Id: 编辑时传的规则id
         :type Id: int

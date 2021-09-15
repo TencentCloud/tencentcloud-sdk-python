@@ -229,6 +229,9 @@ class FinanceAntiFraudRecord(AbstractModel):
         :param RiskInfo: 扩展字段，对风险类型的说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInfo: list of RiskDetailInfo
+        :param OtherModelScores: 多模型返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherModelScores: list of FinanceOtherModelScores
         :param Code: 业务侧错误码。成功时返回0，错误时返回非0值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
@@ -241,6 +244,7 @@ class FinanceAntiFraudRecord(AbstractModel):
         self.IdFound = None
         self.RiskScore = None
         self.RiskInfo = None
+        self.OtherModelScores = None
         self.Code = None
         self.Message = None
 
@@ -255,8 +259,44 @@ class FinanceAntiFraudRecord(AbstractModel):
                 obj = RiskDetailInfo()
                 obj._deserialize(item)
                 self.RiskInfo.append(obj)
+        if params.get("OtherModelScores") is not None:
+            self.OtherModelScores = []
+            for item in params.get("OtherModelScores"):
+                obj = FinanceOtherModelScores()
+                obj._deserialize(item)
+                self.OtherModelScores.append(obj)
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FinanceOtherModelScores(AbstractModel):
+    """借贷反欺返回结果出参中的多模型返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 模型ID序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param ModelScore: 模型ID序号对应的评分结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelScore: str
+        """
+        self.ModelId = None
+        self.ModelScore = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ModelScore = params.get("ModelScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

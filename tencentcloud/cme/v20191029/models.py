@@ -1871,7 +1871,7 @@ class DescribeTasksRequest(AbstractModel):
         :type StatusSet: list of str
         :param Offset: 分页返回的起始偏移量，默认值：0。
         :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10。
+        :param Limit: 分页返回的记录条数，默认值：10。最大值：20。
         :type Limit: int
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
         :type Operator: str
@@ -4393,6 +4393,11 @@ class PlatformInfo(AbstractModel):
         :type VodSubAppId: int
         :param LicenseId: 平台绑定的 license Id。
         :type LicenseId: str
+        :param Status: 平台状态，可取值为：
+<li>Normal：正常，可使用。；</li>
+<li>Stopped：已停用，暂无法使用；</li>
+<li>Expired：已过期，需要重新购买会员包。</li>
+        :type Status: str
         :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。
         :type CreateTime: str
         :param UpdateTime: 更新时间，格式按照 ISO 8601 标准表示。
@@ -4402,6 +4407,7 @@ class PlatformInfo(AbstractModel):
         self.Description = None
         self.VodSubAppId = None
         self.LicenseId = None
+        self.Status = None
         self.CreateTime = None
         self.UpdateTime = None
 
@@ -4411,6 +4417,7 @@ class PlatformInfo(AbstractModel):
         self.Description = params.get("Description")
         self.VodSubAppId = params.get("VodSubAppId")
         self.LicenseId = params.get("LicenseId")
+        self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
