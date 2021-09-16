@@ -698,6 +698,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupFiles(self, request):
+        """本接口(DescribeBackupFiles)用于在非打包备份模式下单个库对应的备份文件
+
+        :param request: Request instance for DescribeBackupFiles.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupFiles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupMigration(self, request):
         """本接口（DescribeBackupMigration）用于创建增量备份导入任务。
 
@@ -1735,7 +1763,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyBackupName(self, request):
-        """本接口(ModifyBackupName)用于修改备份名称。
+        """本接口(ModifyBackupName)用于修改备份任务名称。
 
         :param request: Request instance for ModifyBackupName.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupNameRequest`

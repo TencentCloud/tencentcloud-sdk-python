@@ -873,6 +873,8 @@ class DescribeScanResult(AbstractModel):
 <li>Success: 成功结束</li>
 <li>Error: 异常</li>
         :type Status: str
+        :param BizId: 提交检测的应用 ID
+        :type BizId: int
         """
         self.Code = None
         self.DataId = None
@@ -886,6 +888,7 @@ class DescribeScanResult(AbstractModel):
         self.TaskId = None
         self.Url = None
         self.Status = None
+        self.BizId = None
 
 
     def _deserialize(self, params):
@@ -906,6 +909,7 @@ class DescribeScanResult(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.Url = params.get("Url")
         self.Status = params.get("Status")
+        self.BizId = params.get("BizId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

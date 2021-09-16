@@ -169,6 +169,37 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachDisks(self, request):
+        """本接口（AttachDisks）用于挂载云硬盘。
+
+        * 支持批量操作，将多块云盘挂载到同一云主机。如果多个云盘中存在不允许挂载的云盘，则操作不执行，返回特定的错误码。
+        * 本接口为异步接口，当挂载云盘的请求成功返回时，表示后台已发起挂载云盘的操作，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHING”变为“ATTACHED”，则为挂载成功。
+
+        :param request: Request instance for AttachDisks.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AttachDisksRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AttachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AttachNetworkInterface(self, request):
         """弹性网卡绑定云主机
 
@@ -267,6 +298,38 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchRegisterTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDisks(self, request):
+        """本接口（CreateDisks）用于创建云硬盘。
+
+        * 预付费云盘的购买会预先扣除本次云盘购买所需金额，在调用本接口前请确保账户余额充足。
+        * 本接口支持传入数据盘快照来创建云盘，实现将快照数据复制到新购云盘上。
+        * 本接口为异步接口，当创建请求下发成功后会返回一个新建的云盘ID列表，此时云盘的创建并未立即完成。可以通过调用[DescribeDisks](/document/product/362/16315)接口根据DiskId查询对应云盘，如果能查到云盘，且状态为'UNATTACHED'或'ATTACHED'，则表示创建成功。
+
+        :param request: Request instance for CreateDisks.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateDisksRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -940,6 +1003,37 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteSnapshots(self, request):
+        """本接口（DeleteSnapshots）用于删除快照。
+
+        * 快照必须处于NORMAL状态，快照状态可以通过[DescribeSnapshots](/document/product/362/15647)接口查询，见输出参数中SnapshotState字段解释。
+        * 支持批量操作。如果多个快照存在无法删除的快照，则操作不执行，以返回特定的错误码返回。
+
+        :param request: Request instance for DeleteSnapshots.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteSnapshotsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSnapshotsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSubnet(self, request):
         """删除子网，若子网为可用区下的默认子网，则默认子网会回退到系统自动创建的默认子网，非用户最新创建的子网。若默认子网不满足需求，可调用设置默认子网接口设置。
 
@@ -1150,6 +1244,37 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultSubnetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisks(self, request):
+        """本接口（DescribeDisks）用于查询云硬盘列表。
+
+        * 可以根据云硬盘ID、云硬盘类型或者云硬盘状态等信息来查询云硬盘的详细信息，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘列表。
+
+        :param request: Request instance for DescribeDisks.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeDisksRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1808,6 +1933,37 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSnapshots(self, request):
+        """本接口（DescribeSnapshots）用于查询快照的详细信息。
+
+        * 根据快照ID、创建快照的云硬盘ID、创建快照的云硬盘类型等对结果进行过滤，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+        *  如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照列表。
+
+        :param request: Request instance for DescribeSnapshots.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSnapshotsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubnets(self, request):
         """查询子网列表
 
@@ -1962,6 +2118,37 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetachDisks(self, request):
+        """本接口（DetachDisks）用于卸载云硬盘。
+
+        * 支持批量操作，卸载挂载在同一主机上的多块云盘。如果多块云盘中存在不允许卸载的云盘，则操作不执行，返回特定的错误码。
+        * 本接口为异步接口，当请求成功返回时，云盘并未立即从主机卸载，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHED”变为“UNATTACHED”，则为卸载成功。
+
+        :param request: Request instance for DetachDisks.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DetachDisksRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DetachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3344,6 +3531,38 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateDisks(self, request):
+        """本接口（TerminateDisks）用于退还云硬盘。
+
+        * 不再使用的云盘，可通过本接口主动退还。
+        * 本接口支持退还预付费云盘和按小时后付费云盘。按小时后付费云盘可直接退还，预付费云盘需符合退还规则。
+        * 支持批量操作，每次请求批量云硬盘的上限为50。如果批量云盘存在不允许操作的，请求会以特定错误码返回。
+
+        :param request: Request instance for TerminateDisks.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.TerminateDisksRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.TerminateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

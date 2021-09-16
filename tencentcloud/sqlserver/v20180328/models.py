@@ -293,19 +293,19 @@ class Backup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileName: 文件名
+        :param FileName: 文件名，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取文件名
         :type FileName: str
-        :param Size: 文件大小，单位 KB
+        :param Size: 文件大小，单位 KB，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取文件大小
         :type Size: int
         :param StartTime: 备份开始时间
         :type StartTime: str
         :param EndTime: 备份结束时间
         :type EndTime: str
-        :param InternalAddr: 内网下载地址
+        :param InternalAddr: 内网下载地址，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取下载地址
         :type InternalAddr: str
-        :param ExternalAddr: 外网下载地址
+        :param ExternalAddr: 外网下载地址，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取下载地址
         :type ExternalAddr: str
-        :param Id: 备份文件唯一标识，RestoreInstance接口会用到该字段
+        :param Id: 备份文件唯一标识，RestoreInstance接口会用到该字段，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取可回档的ID
         :type Id: int
         :param Status: 备份文件状态（0-创建中；1-成功；2-失败）
         :type Status: int
@@ -315,8 +315,10 @@ class Backup(AbstractModel):
         :type Strategy: int
         :param BackupWay: 备份方式，0-定时备份；1-手动临时备份
         :type BackupWay: int
-        :param BackupName: 备份名称，可自定义
+        :param BackupName: 备份任务名称，可自定义
         :type BackupName: str
+        :param GroupId: 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
+        :type GroupId: str
         """
         self.FileName = None
         self.Size = None
@@ -330,6 +332,7 @@ class Backup(AbstractModel):
         self.Strategy = None
         self.BackupWay = None
         self.BackupName = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -345,6 +348,47 @@ class Backup(AbstractModel):
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
         self.BackupName = params.get("BackupName")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupFile(AbstractModel):
+    """在非打包上传备份模式下，每个库对应一个备份文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 备份文件唯一标识
+        :type Id: int
+        :param FileName: 备份文件名称
+        :type FileName: str
+        :param Size: 文件大小(K)
+        :type Size: int
+        :param DBs: 备份文件的库的名称
+        :type DBs: list of str
+        :param DownloadLink: 下载地址
+        :type DownloadLink: str
+        """
+        self.Id = None
+        self.FileName = None
+        self.Size = None
+        self.DBs = None
+        self.DownloadLink = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.FileName = params.get("FileName")
+        self.Size = params.get("Size")
+        self.DBs = params.get("DBs")
+        self.DownloadLink = params.get("DownloadLink")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1451,7 +1495,7 @@ class DBInstance(AbstractModel):
         :type VpcId: int
         :param SubnetId: 实例所在私有网络子网ID，基础网络时为 0
         :type SubnetId: int
-        :param Status: 实例状态。取值范围： <li>1：申请中</li> <li>2：运行中</li> <li>3：受限运行中 (主备切换中)</li> <li>4：已隔离</li> <li>5：回收中</li> <li>6：已回收</li> <li>7：任务执行中 (实例做备份、回档等操作)</li> <li>8：已下线</li> <li>9：实例扩容中</li> <li>10：实例迁移中</li> <li>11：只读</li> <li>12：重启中</li>
+        :param Status: 实例状态。取值范围： <li>1：申请中</li> <li>2：运行中</li> <li>3：受限运行中 (主备切换中)</li> <li>4：已隔离</li> <li>5：回收中</li> <li>6：已回收</li> <li>7：任务执行中 (实例做备份、回档等操作)</li> <li>8：已下线</li> <li>9：实例扩容中</li> <li>10：实例迁移中</li> <li>11：只读</li> <li>12：重启中</li>  <li>13：实例修改中且待切换</li> <li>14：订阅发布创建中</li> <li>15：订阅发布修改中</li> <li>16：实例修改中且切换中</li> <li>17：创建RO副本中</li>
         :type Status: int
         :param Vip: 实例访问IP
         :type Vip: str
@@ -1516,6 +1560,9 @@ class DBInstance(AbstractModel):
         :param ResourceTags: 实例绑定的标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of ResourceTag
+        :param BackupModel: 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupModel: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1554,6 +1601,7 @@ class DBInstance(AbstractModel):
         self.ROFlag = None
         self.HAFlag = None
         self.ResourceTags = None
+        self.BackupModel = None
 
 
     def _deserialize(self, params):
@@ -1599,6 +1647,7 @@ class DBInstance(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.BackupModel = params.get("BackupModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2349,30 +2398,32 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 备份文件唯一标识，RestoreInstance接口会用到该字段
+        :param Id: 备份文件唯一标识，RestoreInstance接口会用到该字段，对于单库备份文件只返回第一条记录的备份文件唯一标识；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的可回档的ID
         :type Id: int
-        :param FileName: 存储文件名
+        :param FileName: 文件名，对于单库备份文件只返回第一条记录的文件名；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的文件名
         :type FileName: str
-        :param BackupName: 备份名称，可自定义
+        :param BackupName: 备份任务名称，可自定义
         :type BackupName: str
         :param StartTime: 备份开始时间
         :type StartTime: str
         :param EndTime: 备份结束时间
         :type EndTime: str
-        :param Size: 文件大小，单位 KB
+        :param Size: 文件大小，单位 KB，对于单库备份文件只返回第一条记录的文件大小；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的文件大小
         :type Size: int
         :param Strategy: 备份策略，0-实例备份；1-多库备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
         :type Strategy: int
-        :param BackupWay: 备份方式，0-定时备份；1-手动临时备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
-        :type BackupWay: int
         :param Status: 备份文件状态，0-创建中；1-成功；2-失败
         :type Status: int
-        :param DBs: 多库备份时的DB列表
+        :param BackupWay: 备份方式，0-定时备份；1-手动临时备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
+        :type BackupWay: int
+        :param DBs: DB列表，对于单库备份文件只返回第一条记录包含的库名；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的库名。
         :type DBs: list of str
-        :param InternalAddr: 内网下载地址
+        :param InternalAddr: 内网下载地址，对于单库备份文件只返回第一条记录的内网下载地址；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的下载地址
         :type InternalAddr: str
-        :param ExternalAddr: 外网下载地址
+        :param ExternalAddr: 外网下载地址，对于单库备份文件只返回第一条记录的外网下载地址；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的下载地址
         :type ExternalAddr: str
+        :param GroupId: 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
+        :type GroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2383,11 +2434,12 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
         self.EndTime = None
         self.Size = None
         self.Strategy = None
-        self.BackupWay = None
         self.Status = None
+        self.BackupWay = None
         self.DBs = None
         self.InternalAddr = None
         self.ExternalAddr = None
+        self.GroupId = None
         self.RequestId = None
 
 
@@ -2399,11 +2451,12 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.Size = params.get("Size")
         self.Strategy = params.get("Strategy")
-        self.BackupWay = params.get("BackupWay")
         self.Status = params.get("Status")
+        self.BackupWay = params.get("BackupWay")
         self.DBs = params.get("DBs")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.GroupId = params.get("GroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2461,6 +2514,76 @@ class DescribeBackupCommandResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Command = params.get("Command")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupFilesRequest(AbstractModel):
+    """DescribeBackupFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，形如mssql-njj2mtpl
+        :type InstanceId: str
+        :param GroupId: 聚合ID, 可通过接口DescribeBackups获取
+        :type GroupId: str
+        :param Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
+        :type Limit: int
+        :param Offset: 分页返回，页编号，默认值为第0页
+        :type Offset: int
+        :param DatabaseName: 按照备份的库名称筛选，不填则不筛选此项
+        :type DatabaseName: str
+        """
+        self.InstanceId = None
+        self.GroupId = None
+        self.Limit = None
+        self.Offset = None
+        self.DatabaseName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupId = params.get("GroupId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupFilesResponse(AbstractModel):
+    """DescribeBackupFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 备份总数量
+        :type TotalCount: int
+        :param BackupFiles: 备份文件列表详情
+        :type BackupFiles: list of BackupFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BackupFiles = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BackupFiles") is not None:
+            self.BackupFiles = []
+            for item in params.get("BackupFiles"):
+                obj = BackupFile()
+                obj._deserialize(item)
+                self.BackupFiles.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2643,6 +2766,8 @@ class DescribeBackupsRequest(AbstractModel):
         :type BackupId: int
         :param DatabaseName: 按照备份的库名称筛选，不填则不筛选此项
         :type DatabaseName: str
+        :param Group: 是否分组查询，默认是0，单库备份情况下 0-兼容老方式不分组，1-单库备份分组后展示
+        :type Group: int
         """
         self.StartTime = None
         self.EndTime = None
@@ -2654,6 +2779,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupWay = None
         self.BackupId = None
         self.DatabaseName = None
+        self.Group = None
 
 
     def _deserialize(self, params):
@@ -2667,6 +2793,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupWay = params.get("BackupWay")
         self.BackupId = params.get("BackupId")
         self.DatabaseName = params.get("DatabaseName")
+        self.Group = params.get("Group")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2847,6 +2974,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type TagKeys: list of str
         :param SearchKey: 模糊查询关键字，支持实例id、实例名、内网ip
         :type SearchKey: str
+        :param UidSet: 实例唯一Uid列表
+        :type UidSet: list of str
         """
         self.ProjectId = None
         self.Status = None
@@ -2862,6 +2991,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Zone = None
         self.TagKeys = None
         self.SearchKey = None
+        self.UidSet = None
 
 
     def _deserialize(self, params):
@@ -2879,6 +3009,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Zone = params.get("Zone")
         self.TagKeys = params.get("TagKeys")
         self.SearchKey = params.get("SearchKey")
+        self.UidSet = params.get("UidSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5369,20 +5500,25 @@ class ModifyBackupNameRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
-        :param BackupId: 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
-        :type BackupId: int
         :param BackupName: 修改的备份名称
         :type BackupName: str
+        :param BackupId: 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
+        :type BackupId: int
+        :param GroupId: 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+ BackupId 和 GroupId 同时存在，按照BackupId进行修改。
+        :type GroupId: str
         """
         self.InstanceId = None
-        self.BackupId = None
         self.BackupName = None
+        self.BackupId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.BackupId = params.get("BackupId")
         self.BackupName = params.get("BackupName")
+        self.BackupId = params.get("BackupId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5424,11 +5560,14 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupTime: int
         :param BackupDay: BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
         :type BackupDay: int
+        :param BackupModel: 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+        :type BackupModel: str
         """
         self.InstanceId = None
         self.BackupType = None
         self.BackupTime = None
         self.BackupDay = None
+        self.BackupModel = None
 
 
     def _deserialize(self, params):
@@ -5436,6 +5575,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupType = params.get("BackupType")
         self.BackupTime = params.get("BackupTime")
         self.BackupDay = params.get("BackupDay")
+        self.BackupModel = params.get("BackupModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7277,11 +7417,14 @@ class RestoreInstanceRequest(AbstractModel):
         :type TargetInstanceId: str
         :param RenameRestore: 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
         :type RenameRestore: list of RenameRestoreDatabase
+        :param GroupId: 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+        :type GroupId: str
         """
         self.InstanceId = None
         self.BackupId = None
         self.TargetInstanceId = None
         self.RenameRestore = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -7294,6 +7437,7 @@ class RestoreInstanceRequest(AbstractModel):
                 obj = RenameRestoreDatabase()
                 obj._deserialize(item)
                 self.RenameRestore.append(obj)
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

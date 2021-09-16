@@ -768,46 +768,6 @@ class AuditApplyClientResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ClientBaseElem(AbstractModel):
-    """代客基础信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AgentUin: 代客关联的代理商UIN
-        :type AgentUin: str
-        :param ClientUin: 代客UIN
-        :type ClientUin: str
-        :param ClientRelateType: 代客关联类型 0:代理 1:转售
-        :type ClientRelateType: int
-        :param AgentCooperationMode: 代理商合作模式 0:代理 1:转售
-        :type AgentCooperationMode: int
-        :param AgentCountry: 代理商国家编码 China:中国  其他:海外，如US等
-        :type AgentCountry: str
-        """
-        self.AgentUin = None
-        self.ClientUin = None
-        self.ClientRelateType = None
-        self.AgentCooperationMode = None
-        self.AgentCountry = None
-
-
-    def _deserialize(self, params):
-        self.AgentUin = params.get("AgentUin")
-        self.ClientUin = params.get("ClientUin")
-        self.ClientRelateType = params.get("ClientRelateType")
-        self.AgentCooperationMode = params.get("AgentCooperationMode")
-        self.AgentCountry = params.get("AgentCountry")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class CreatePayRelationForClientRequest(AbstractModel):
     """CreatePayRelationForClient请求参数结构体
 
@@ -1819,60 +1779,6 @@ class DescribeClientBalanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Balance = params.get("Balance")
         self.Cash = params.get("Cash")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeClientBaseInfoRequest(AbstractModel):
-    """DescribeClientBaseInfo请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ClientUin: 代客UIN
-        :type ClientUin: str
-        """
-        self.ClientUin = None
-
-
-    def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeClientBaseInfoResponse(AbstractModel):
-    """DescribeClientBaseInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ClientBaseSet: 代客基础信息数组
-        :type ClientBaseSet: list of ClientBaseElem
-        :param TotalCount: 符合条件的代客数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ClientBaseSet = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("ClientBaseSet") is not None:
-            self.ClientBaseSet = []
-            for item in params.get("ClientBaseSet"):
-                obj = ClientBaseElem()
-                obj._deserialize(item)
-                self.ClientBaseSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

@@ -346,6 +346,7 @@ class BillResourceSummary(AbstractModel):
         :param TotalCost: 原价，单位为元
         :type TotalCost: str
         :param Discount: 折扣率
+当聚合之后折扣不唯一或者合同价的情况下，返回“-”
         :type Discount: str
         :param ReduceType: 优惠类型
         :type ReduceType: str
@@ -1828,7 +1829,36 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
-        :param ActionType: 查询交易类型。如 按量计费日结，按量计费小时结 等
+        :param ActionType: 查询交易类型，如下：
+包年包月新购
+包年包月续费
+包年包月配置变更
+包年包月退款
+按量计费扣费
+按量计费小时结
+按量计费日结
+按量计费月结
+线下项目扣费
+线下产品扣费
+调账扣费
+调账补偿
+竞价实例小时结
+线下项目调账补偿
+线下产品调账补偿
+优惠扣费
+优惠补偿
+按量计费迁入资源
+按量计费迁出资源
+包年包月迁入资源
+包年包月迁出资源
+预付费用
+小时费用
+预留实例退款
+按量计费冲正
+按量计费冲正
+按量计费冲正
+按量计费冲正
+按量计费冲正
         :type ActionType: str
         :param ResourceId: 查询指定资源信息
         :type ResourceId: str
