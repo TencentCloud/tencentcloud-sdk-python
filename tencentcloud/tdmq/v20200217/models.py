@@ -2102,16 +2102,24 @@ class DescribeCmqQueuesRequest(AbstractModel):
         :type Limit: int
         :param QueueName: 根据QueueName进行过滤
         :type QueueName: str
+        :param QueueNameList: CMQ 队列名称列表过滤
+        :type QueueNameList: list of str
+        :param IsTagFilter: 标签过滤查找时，需要设置为 true
+        :type IsTagFilter: bool
         """
         self.Offset = None
         self.Limit = None
         self.QueueName = None
+        self.QueueNameList = None
+        self.IsTagFilter = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.QueueName = params.get("QueueName")
+        self.QueueNameList = params.get("QueueNameList")
+        self.IsTagFilter = params.get("IsTagFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2279,16 +2287,24 @@ class DescribeCmqTopicsRequest(AbstractModel):
         :type Limit: int
         :param TopicName: 根据TopicName进行模糊搜索
         :type TopicName: str
+        :param TopicNameList: CMQ 主题名称列表过滤
+        :type TopicNameList: list of str
+        :param IsTagFilter: 标签过滤查找时，需要设置为 true
+        :type IsTagFilter: bool
         """
         self.Offset = None
         self.Limit = None
         self.TopicName = None
+        self.TopicNameList = None
+        self.IsTagFilter = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TopicName = params.get("TopicName")
+        self.TopicNameList = params.get("TopicNameList")
+        self.IsTagFilter = params.get("IsTagFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

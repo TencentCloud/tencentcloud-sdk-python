@@ -382,6 +382,64 @@ class AutoscalingAdded(AbstractModel):
         
 
 
+class Capabilities(AbstractModel):
+    """cloudrun安全特性能力
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Add: 启用安全能力项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Add: list of str
+        :param Drop: 禁用安全能力向列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Drop: list of str
+        """
+        self.Add = None
+        self.Drop = None
+
+
+    def _deserialize(self, params):
+        self.Add = params.get("Add")
+        self.Drop = params.get("Drop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CbsVolume(AbstractModel):
+    """EKS Instnace CBS volume
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: cbs volume 数据卷名称
+        :type Name: str
+        :param CbsDiskId: 腾讯云cbs盘Id
+        :type CbsDiskId: str
+        """
+        self.Name = None
+        self.CbsDiskId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CbsDiskId = params.get("CbsDiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckInstancesUpgradeAbleRequest(AbstractModel):
     """CheckInstancesUpgradeAble请求参数结构体
 
@@ -1204,6 +1262,159 @@ class CommonName(AbstractModel):
         
 
 
+class Container(AbstractModel):
+    """EKS Instance Container容器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Image: 镜像
+        :type Image: str
+        :param Name: 容器名
+        :type Name: str
+        :param Commands: 容器启动命令
+        :type Commands: list of str
+        :param Args: 容器启动参数
+        :type Args: list of str
+        :param EnvironmentVars: 容器内操作系统的环境变量
+        :type EnvironmentVars: list of EnvironmentVariable
+        :param Cpu: CPU，制改容器最多可使用的核数，该值不可超过容器实例的总核数。单位：核。
+        :type Cpu: float
+        :param Memory: 内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
+        :type Memory: float
+        :param VolumeMounts: 数据卷挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMounts: list of VolumeMount
+        :param CurrentState: 当前状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentState: :class:`tencentcloud.tke.v20180525.models.ContainerState`
+        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
+        :param WorkingDir: 容器工作目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkingDir: str
+        :param LivenessProbe: 存活探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessProbe: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        :param ReadinessProbe: 就绪探针
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadinessProbe: :class:`tencentcloud.tke.v20180525.models.LivenessOrReadinessProbe`
+        :param GpuLimit: Gpu限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuLimit: int
+        """
+        self.Image = None
+        self.Name = None
+        self.Commands = None
+        self.Args = None
+        self.EnvironmentVars = None
+        self.Cpu = None
+        self.Memory = None
+        self.VolumeMounts = None
+        self.CurrentState = None
+        self.RestartCount = None
+        self.WorkingDir = None
+        self.LivenessProbe = None
+        self.ReadinessProbe = None
+        self.GpuLimit = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Name = params.get("Name")
+        self.Commands = params.get("Commands")
+        self.Args = params.get("Args")
+        if params.get("EnvironmentVars") is not None:
+            self.EnvironmentVars = []
+            for item in params.get("EnvironmentVars"):
+                obj = EnvironmentVariable()
+                obj._deserialize(item)
+                self.EnvironmentVars.append(obj)
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        if params.get("VolumeMounts") is not None:
+            self.VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self.VolumeMounts.append(obj)
+        if params.get("CurrentState") is not None:
+            self.CurrentState = ContainerState()
+            self.CurrentState._deserialize(params.get("CurrentState"))
+        self.RestartCount = params.get("RestartCount")
+        self.WorkingDir = params.get("WorkingDir")
+        if params.get("LivenessProbe") is not None:
+            self.LivenessProbe = LivenessOrReadinessProbe()
+            self.LivenessProbe._deserialize(params.get("LivenessProbe"))
+        if params.get("ReadinessProbe") is not None:
+            self.ReadinessProbe = LivenessOrReadinessProbe()
+            self.ReadinessProbe._deserialize(params.get("ReadinessProbe"))
+        self.GpuLimit = params.get("GpuLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerState(AbstractModel):
+    """容器状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 容器运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param State: 容器状态：created, running, exited, unknown
+        :type State: str
+        :param FinishTime: 容器运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param ExitCode: 容器运行退出码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExitCode: int
+        :param Reason: 容器状态 Reason
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param Message: 容器状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param RestartCount: 容器重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
+        """
+        self.StartTime = None
+        self.State = None
+        self.FinishTime = None
+        self.ExitCode = None
+        self.Reason = None
+        self.Message = None
+        self.RestartCount = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.State = params.get("State")
+        self.FinishTime = params.get("FinishTime")
+        self.ExitCode = params.get("ExitCode")
+        self.Reason = params.get("Reason")
+        self.Message = params.get("Message")
+        self.RestartCount = params.get("RestartCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ControllerStatus(AbstractModel):
     """集群中控制器的状态描述
 
@@ -1901,6 +2112,159 @@ class CreateEKSClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEKSContainerInstancesRequest(AbstractModel):
+    """CreateEKSContainerInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Containers: 容器组
+        :type Containers: list of Container
+        :param EksCiName: EKS Container Instance容器实例名称
+        :type EksCiName: str
+        :param SecurityGroupIds: 指定新创建实例所属于的安全组Id
+        :type SecurityGroupIds: list of str
+        :param SubnetId: 实例所属子网Id
+        :type SubnetId: str
+        :param VpcId: 实例所属VPC的Id
+        :type VpcId: str
+        :param Memory: 内存，单位：GiB。可参考[资源规格](https://cloud.tencent.com/document/product/457/39808)文档
+        :type Memory: float
+        :param Cpu: CPU，单位：核。可参考[资源规格](https://cloud.tencent.com/document/product/457/39808)文档
+        :type Cpu: float
+        :param RestartPolicy: 实例重启策略： Always(总是重启)、Never(从不重启)、OnFailure(失败时重启)，默认：Always。
+        :type RestartPolicy: str
+        :param ImageRegistryCredentials: 镜像仓库凭证数组
+        :type ImageRegistryCredentials: list of ImageRegistryCredential
+        :param EksCiVolume: 数据卷，包含NfsVolume数组和CbsVolume数组
+        :type EksCiVolume: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
+        :param Replicas: 实例副本数，默认为1
+        :type Replicas: int
+        :param InitContainers: Init 容器
+        :type InitContainers: list of Container
+        :param DnsConfig: 自定义DNS配置
+        :type DnsConfig: :class:`tencentcloud.tke.v20180525.models.DNSConfig`
+        :param ExistedEipIds: 用来绑定容器实例的已有EIP的列表。如传值，需要保证数值和Replicas相等。
+另外此参数和AutoCreateEipAttribute互斥。
+        :type ExistedEipIds: list of str
+        :param AutoCreateEipAttribute: 自动创建EIP的可选参数。若传此参数，则会自动创建EIP。
+另外此参数和ExistedEipIds互斥
+        :type AutoCreateEipAttribute: :class:`tencentcloud.tke.v20180525.models.EipAttribute`
+        :param AutoCreateEip: 是否为容器实例自动创建EIP，默认为false。若传true，则此参数和ExistedEipIds互斥
+        :type AutoCreateEip: bool
+        :param CpuType: Pod 所需的 CPU 资源型号，如果不填写则默认不强制指定 CPU 类型。目前支持型号如下：
+intel
+amd
+- 支持优先级顺序写法，如 “amd,intel” 表示优先创建 amd 资源 Pod，如果所选地域可用区 amd 资源不足，则会创建 intel 资源 Pod。
+        :type CpuType: str
+        :param GpuType: 容器实例所需的 GPU 资源型号，目前支持型号如下：
+1/4\*V100
+1/2\*V100
+V100
+1/4\*T4
+1/2\*T4
+T4
+        :type GpuType: str
+        :param GpuCount: Pod 所需的 GPU 数量，如填写，请确保为支持的规格。默认单位为卡，无需再次注明。
+        :type GpuCount: int
+        :param CamRoleName: 为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
+        :type CamRoleName: str
+        """
+        self.Containers = None
+        self.EksCiName = None
+        self.SecurityGroupIds = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.Memory = None
+        self.Cpu = None
+        self.RestartPolicy = None
+        self.ImageRegistryCredentials = None
+        self.EksCiVolume = None
+        self.Replicas = None
+        self.InitContainers = None
+        self.DnsConfig = None
+        self.ExistedEipIds = None
+        self.AutoCreateEipAttribute = None
+        self.AutoCreateEip = None
+        self.CpuType = None
+        self.GpuType = None
+        self.GpuCount = None
+        self.CamRoleName = None
+
+
+    def _deserialize(self, params):
+        if params.get("Containers") is not None:
+            self.Containers = []
+            for item in params.get("Containers"):
+                obj = Container()
+                obj._deserialize(item)
+                self.Containers.append(obj)
+        self.EksCiName = params.get("EksCiName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.Memory = params.get("Memory")
+        self.Cpu = params.get("Cpu")
+        self.RestartPolicy = params.get("RestartPolicy")
+        if params.get("ImageRegistryCredentials") is not None:
+            self.ImageRegistryCredentials = []
+            for item in params.get("ImageRegistryCredentials"):
+                obj = ImageRegistryCredential()
+                obj._deserialize(item)
+                self.ImageRegistryCredentials.append(obj)
+        if params.get("EksCiVolume") is not None:
+            self.EksCiVolume = EksCiVolume()
+            self.EksCiVolume._deserialize(params.get("EksCiVolume"))
+        self.Replicas = params.get("Replicas")
+        if params.get("InitContainers") is not None:
+            self.InitContainers = []
+            for item in params.get("InitContainers"):
+                obj = Container()
+                obj._deserialize(item)
+                self.InitContainers.append(obj)
+        if params.get("DnsConfig") is not None:
+            self.DnsConfig = DNSConfig()
+            self.DnsConfig._deserialize(params.get("DnsConfig"))
+        self.ExistedEipIds = params.get("ExistedEipIds")
+        if params.get("AutoCreateEipAttribute") is not None:
+            self.AutoCreateEipAttribute = EipAttribute()
+            self.AutoCreateEipAttribute._deserialize(params.get("AutoCreateEipAttribute"))
+        self.AutoCreateEip = params.get("AutoCreateEip")
+        self.CpuType = params.get("CpuType")
+        self.GpuType = params.get("GpuType")
+        self.GpuCount = params.get("GpuCount")
+        self.CamRoleName = params.get("CamRoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEKSContainerInstancesResponse(AbstractModel):
+    """CreateEKSContainerInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiIds: EKS Container Instance Id集合，格式为eksci-xxx，是容器实例的唯一标识。
+        :type EksCiIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EksCiIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EksCiIds = params.get("EksCiIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusAlertRuleRequest(AbstractModel):
     """CreatePrometheusAlertRule请求参数结构体
 
@@ -2047,6 +2411,76 @@ class CreatePrometheusTemplateResponse(AbstractModel):
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
         self.RequestId = params.get("RequestId")
+
+
+class DNSConfig(AbstractModel):
+    """自定义DNS配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Nameservers: DNS 服务器IP地址列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nameservers: list of str
+        :param Searches: DNS搜索域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Searches: list of str
+        :param Options: 对象选项列表，每个对象由name和value（可选）构成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Options: list of DNSConfigOption
+        """
+        self.Nameservers = None
+        self.Searches = None
+        self.Options = None
+
+
+    def _deserialize(self, params):
+        self.Nameservers = params.get("Nameservers")
+        self.Searches = params.get("Searches")
+        if params.get("Options") is not None:
+            self.Options = []
+            for item in params.get("Options"):
+                obj = DNSConfigOption()
+                obj._deserialize(item)
+                self.Options.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DNSConfigOption(AbstractModel):
+    """DNS配置选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 项值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DataDisk(AbstractModel):
@@ -2521,6 +2955,51 @@ class DeleteEKSClusterRequest(AbstractModel):
 
 class DeleteEKSClusterResponse(AbstractModel):
     """DeleteEKSCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteEKSContainerInstancesRequest(AbstractModel):
+    """DeleteEKSContainerInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiIds: 需要删除的EksCi的Id。 最大数量不超过20
+        :type EksCiIds: list of str
+        :param ReleaseAutoCreatedEip: 是否释放为EksCi自动创建的Eip
+        :type ReleaseAutoCreatedEip: bool
+        """
+        self.EksCiIds = None
+        self.ReleaseAutoCreatedEip = None
+
+
+    def _deserialize(self, params):
+        self.EksCiIds = params.get("EksCiIds")
+        self.ReleaseAutoCreatedEip = params.get("ReleaseAutoCreatedEip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEKSContainerInstancesResponse(AbstractModel):
+    """DeleteEKSContainerInstances返回参数结构体
 
     """
 
@@ -3680,6 +4159,64 @@ class DescribeEKSClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEKSContainerInstanceEventRequest(AbstractModel):
+    """DescribeEKSContainerInstanceEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiId: 容器实例id
+        :type EksCiId: str
+        :param Limit: 最大事件数量。默认为50，最大取值100。
+        :type Limit: int
+        """
+        self.EksCiId = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EksCiId = params.get("EksCiId")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEKSContainerInstanceEventResponse(AbstractModel):
+    """DescribeEKSContainerInstanceEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Events: 事件集合
+        :type Events: list of Event
+        :param EksCiId: 容器实例id
+        :type EksCiId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Events = None
+        self.EksCiId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = Event()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.EksCiId = params.get("EksCiId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEKSContainerInstanceRegionsRequest(AbstractModel):
     """DescribeEKSContainerInstanceRegions请求参数结构体
 
@@ -3714,6 +4251,170 @@ class DescribeEKSContainerInstanceRegionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Regions.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEKSContainerInstancesRequest(AbstractModel):
+    """DescribeEKSContainerInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100
+        :type Limit: int
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Filters: 过滤条件，可条件：
+(1)实例名称
+KeyName: eks-ci-name
+类型：String
+
+(2)实例状态
+KeyName: status
+类型：String
+可选值："Pending", "Running", "Succeeded", "Failed"
+
+(3)内网ip
+KeyName: private-ip
+类型：String
+
+(4)EIP地址
+KeyName: eip-address
+类型：String
+
+(5)VpcId
+KeyName: vpc-id
+类型：String
+        :type Filters: list of Filter
+        :param EksCiIds: 容器实例 ID 数组
+        :type EksCiIds: list of str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.EksCiIds = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.EksCiIds = params.get("EksCiIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEKSContainerInstancesResponse(AbstractModel):
+    """DescribeEKSContainerInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 容器组总数
+        :type TotalCount: int
+        :param EksCis: 容器组列表
+        :type EksCis: list of EksCi
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EksCis = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EksCis") is not None:
+            self.EksCis = []
+            for item in params.get("EksCis"):
+                obj = EksCi()
+                obj._deserialize(item)
+                self.EksCis.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEksContainerInstanceLogRequest(AbstractModel):
+    """DescribeEksContainerInstanceLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiId: Eks Container Instance Id，即容器实例Id
+        :type EksCiId: str
+        :param ContainerName: 容器名称，单容器的实例可选填。如果为多容器实例，请指定容器名称。
+        :type ContainerName: str
+        :param Tail: 返回最新日志行数，默认500，最大2000。日志内容最大返回 1M 数据。
+        :type Tail: int
+        :param StartTime: UTC时间，RFC3339标准
+        :type StartTime: str
+        :param Previous: 是否是查上一个容器（如果容器退出重启了）
+        :type Previous: bool
+        :param SinceSeconds: 查询最近多少秒内的日志
+        :type SinceSeconds: int
+        :param LimitBytes: 日志总大小限制
+        :type LimitBytes: int
+        """
+        self.EksCiId = None
+        self.ContainerName = None
+        self.Tail = None
+        self.StartTime = None
+        self.Previous = None
+        self.SinceSeconds = None
+        self.LimitBytes = None
+
+
+    def _deserialize(self, params):
+        self.EksCiId = params.get("EksCiId")
+        self.ContainerName = params.get("ContainerName")
+        self.Tail = params.get("Tail")
+        self.StartTime = params.get("StartTime")
+        self.Previous = params.get("Previous")
+        self.SinceSeconds = params.get("SinceSeconds")
+        self.LimitBytes = params.get("LimitBytes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEksContainerInstanceLogResponse(AbstractModel):
+    """DescribeEksContainerInstanceLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerName: 容器名称
+        :type ContainerName: str
+        :param LogContent: 日志内容
+        :type LogContent: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContainerName = None
+        self.LogContent = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ContainerName = params.get("ContainerName")
+        self.LogContent = params.get("LogContent")
         self.RequestId = params.get("RequestId")
 
 
@@ -4757,6 +5458,189 @@ class DnsServerConf(AbstractModel):
         
 
 
+class EipAttribute(AbstractModel):
+    """用以帮助用户自动创建EIP的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeletePolicy: 容器实例删除后，EIP是否释放。
+Never表示不释放，其他任意值（包括空字符串）表示释放。
+        :type DeletePolicy: str
+        :param InternetServiceProvider: EIP线路类型。默认值：BGP。
+已开通静态单线IP白名单的用户，可选值：
+CMCC：中国移动
+CTCC：中国电信
+CUCC：中国联通
+注意：仅部分地域支持静态单线IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetServiceProvider: str
+        :param InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        """
+        self.DeletePolicy = None
+        self.InternetServiceProvider = None
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.DeletePolicy = params.get("DeletePolicy")
+        self.InternetServiceProvider = params.get("InternetServiceProvider")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EksCi(AbstractModel):
+    """EksContainerInstance实例类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiId: EKS Cotainer Instance Id
+        :type EksCiId: str
+        :param EksCiName: EKS Cotainer Instance Name
+        :type EksCiName: str
+        :param Memory: 内存大小
+        :type Memory: float
+        :param Cpu: CPU大小
+        :type Cpu: float
+        :param SecurityGroupIds: 安全组ID
+        :type SecurityGroupIds: list of str
+        :param RestartPolicy: 容器组的重启策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartPolicy: str
+        :param Status: 返回容器组创建状态：Pending，Running，Succeeded，Failed。其中：
+Failed （运行失败）指的容器组退出，RestartPolilcy为Never， 有容器exitCode非0；
+Succeeded（运行成功）指的是容器组退出了，RestartPolicy为Never或onFailure，所有容器exitCode都为0；
+Failed和Succeeded这两种状态都会停止运行，停止计费。
+Pending是创建中，Running是 运行中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param CreationTime: 接到请求后的系统创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param SucceededTime: 容器全部成功退出后的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SucceededTime: str
+        :param Containers: 容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Containers: list of Container
+        :param EksCiVolume: 数据卷信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EksCiVolume: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
+        :param SecurityContext: 容器组运行的安全上下文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityContext: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
+        :param PrivateIp: 内网ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIp: str
+        :param EipAddress: 容器实例绑定的Eip地址，注意可能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipAddress: str
+        :param GpuType: GPU类型。如无使用GPU则不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param CpuType: CPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuType: str
+        :param GpuCount: GPU卡数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuCount: int
+        :param VpcId: 实例所属VPC的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 实例所属子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param InitContainers: 初始化容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitContainers: list of Container
+        :param CamRoleName: 为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CamRoleName: str
+        :param AutoCreatedEipId: 自动为用户创建的EipId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoCreatedEipId: str
+        """
+        self.EksCiId = None
+        self.EksCiName = None
+        self.Memory = None
+        self.Cpu = None
+        self.SecurityGroupIds = None
+        self.RestartPolicy = None
+        self.Status = None
+        self.CreationTime = None
+        self.SucceededTime = None
+        self.Containers = None
+        self.EksCiVolume = None
+        self.SecurityContext = None
+        self.PrivateIp = None
+        self.EipAddress = None
+        self.GpuType = None
+        self.CpuType = None
+        self.GpuCount = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.InitContainers = None
+        self.CamRoleName = None
+        self.AutoCreatedEipId = None
+
+
+    def _deserialize(self, params):
+        self.EksCiId = params.get("EksCiId")
+        self.EksCiName = params.get("EksCiName")
+        self.Memory = params.get("Memory")
+        self.Cpu = params.get("Cpu")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.RestartPolicy = params.get("RestartPolicy")
+        self.Status = params.get("Status")
+        self.CreationTime = params.get("CreationTime")
+        self.SucceededTime = params.get("SucceededTime")
+        if params.get("Containers") is not None:
+            self.Containers = []
+            for item in params.get("Containers"):
+                obj = Container()
+                obj._deserialize(item)
+                self.Containers.append(obj)
+        if params.get("EksCiVolume") is not None:
+            self.EksCiVolume = EksCiVolume()
+            self.EksCiVolume._deserialize(params.get("EksCiVolume"))
+        if params.get("SecurityContext") is not None:
+            self.SecurityContext = SecurityContext()
+            self.SecurityContext._deserialize(params.get("SecurityContext"))
+        self.PrivateIp = params.get("PrivateIp")
+        self.EipAddress = params.get("EipAddress")
+        self.GpuType = params.get("GpuType")
+        self.CpuType = params.get("CpuType")
+        self.GpuCount = params.get("GpuCount")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("InitContainers") is not None:
+            self.InitContainers = []
+            for item in params.get("InitContainers"):
+                obj = Container()
+                obj._deserialize(item)
+                self.InitContainers.append(obj)
+        self.CamRoleName = params.get("CamRoleName")
+        self.AutoCreatedEipId = params.get("AutoCreatedEipId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EksCiRegionInfo(AbstractModel):
     """EksCi地域信息
 
@@ -4780,6 +5664,46 @@ class EksCiRegionInfo(AbstractModel):
         self.Alias = params.get("Alias")
         self.RegionName = params.get("RegionName")
         self.RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EksCiVolume(AbstractModel):
+    """EKS Instance Volume,  可选包括CbsVolume和NfsVolume
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CbsVolumes: Cbs Volume
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CbsVolumes: list of CbsVolume
+        :param NfsVolumes: Nfs Volume
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NfsVolumes: list of NfsVolume
+        """
+        self.CbsVolumes = None
+        self.NfsVolumes = None
+
+
+    def _deserialize(self, params):
+        if params.get("CbsVolumes") is not None:
+            self.CbsVolumes = []
+            for item in params.get("CbsVolumes"):
+                obj = CbsVolume()
+                obj._deserialize(item)
+                self.CbsVolumes.append(obj)
+        if params.get("NfsVolumes") is not None:
+            self.NfsVolumes = []
+            for item in params.get("NfsVolumes"):
+                obj = NfsVolume()
+                obj._deserialize(item)
+                self.NfsVolumes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4958,6 +5882,107 @@ class EnhancedService(AbstractModel):
         if params.get("AutomationService") is not None:
             self.AutomationService = RunAutomationServiceEnabled()
             self.AutomationService._deserialize(params.get("AutomationService"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentVariable(AbstractModel):
+    """EnvironmentVariable
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: key
+        :type Name: str
+        :param Value: val
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Event(AbstractModel):
+    """服务事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PodName: pod名称
+        :type PodName: str
+        :param Reason: 事件原因内容
+        :type Reason: str
+        :param Type: 事件类型
+        :type Type: str
+        :param Count: 事件出现次数
+        :type Count: int
+        :param FirstTimestamp: 事件第一次出现时间
+        :type FirstTimestamp: str
+        :param LastTimestamp: 事件最后一次出现时间
+        :type LastTimestamp: str
+        :param Message: 事件内容
+        :type Message: str
+        """
+        self.PodName = None
+        self.Reason = None
+        self.Type = None
+        self.Count = None
+        self.FirstTimestamp = None
+        self.LastTimestamp = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.PodName = params.get("PodName")
+        self.Reason = params.get("Reason")
+        self.Type = params.get("Type")
+        self.Count = params.get("Count")
+        self.FirstTimestamp = params.get("FirstTimestamp")
+        self.LastTimestamp = params.get("LastTimestamp")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Exec(AbstractModel):
+    """探针在容器内执行检测命令参数类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Commands: 容器内检测的命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Commands: list of str
+        """
+        self.Commands = None
+
+
+    def _deserialize(self, params):
+        self.Commands = params.get("Commands")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5296,6 +6321,41 @@ aborted 已取消
         self.RequestId = params.get("RequestId")
 
 
+class HttpGet(AbstractModel):
+    """Probe中的HttpGet
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: HttpGet检测的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Port: HttpGet检测的端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Scheme: HTTP or HTTPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: str
+        """
+        self.Path = None
+        self.Port = None
+        self.Scheme = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Port = params.get("Port")
+        self.Scheme = params.get("Scheme")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPAddress(AbstractModel):
     """IP 地址
 
@@ -5359,6 +6419,42 @@ class ImageInstance(AbstractModel):
         self.OsName = params.get("OsName")
         self.ImageId = params.get("ImageId")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageRegistryCredential(AbstractModel):
+    """从镜像仓库拉取镜像的凭据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Server: 镜像仓库地址
+        :type Server: str
+        :param Username: 用户名
+        :type Username: str
+        :param Password: 密码
+        :type Password: str
+        :param Name: ImageRegistryCredential的名字
+        :type Name: str
+        """
+        self.Server = None
+        self.Username = None
+        self.Password = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Server = params.get("Server")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5762,6 +6858,54 @@ class Label(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LivenessOrReadinessProbe(AbstractModel):
+    """健康探针
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Probe: 探针参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Probe: :class:`tencentcloud.tke.v20180525.models.Probe`
+        :param HttpGet: HttpGet检测参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpGet: :class:`tencentcloud.tke.v20180525.models.HttpGet`
+        :param Exec: 容器内检测命令参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exec: :class:`tencentcloud.tke.v20180525.models.Exec`
+        :param TcpSocket: TcpSocket检测的端口参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcpSocket: :class:`tencentcloud.tke.v20180525.models.TcpSocket`
+        """
+        self.Probe = None
+        self.HttpGet = None
+        self.Exec = None
+        self.TcpSocket = None
+
+
+    def _deserialize(self, params):
+        if params.get("Probe") is not None:
+            self.Probe = Probe()
+            self.Probe._deserialize(params.get("Probe"))
+        if params.get("HttpGet") is not None:
+            self.HttpGet = HttpGet()
+            self.HttpGet._deserialize(params.get("HttpGet"))
+        if params.get("Exec") is not None:
+            self.Exec = Exec()
+            self.Exec._deserialize(params.get("Exec"))
+        if params.get("TcpSocket") is not None:
+            self.TcpSocket = TcpSocket()
+            self.TcpSocket._deserialize(params.get("TcpSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6328,6 +7472,42 @@ class ModifyPrometheusTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NfsVolume(AbstractModel):
+    """EKS Instance Nfs Volume
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: nfs volume 数据卷名称
+        :type Name: str
+        :param Server: NFS 服务器地址
+        :type Server: str
+        :param Path: NFS 数据卷路径
+        :type Path: str
+        :param ReadOnly: 默认为 False
+        :type ReadOnly: bool
+        """
+        self.Name = None
+        self.Server = None
+        self.Path = None
+        self.ReadOnly = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Server = params.get("Server")
+        self.Path = params.get("Path")
+        self.ReadOnly = params.get("ReadOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeCountSummary(AbstractModel):
     """节点统计列表
 
@@ -6575,6 +7755,52 @@ class PodLimitsInstance(AbstractModel):
         if params.get("PodLimits") is not None:
             self.PodLimits = PodLimitsByType()
             self.PodLimits._deserialize(params.get("PodLimits"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Probe(AbstractModel):
+    """健康检查探测参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InitialDelaySeconds: Number of seconds after the container has started before liveness probes are initiated.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitialDelaySeconds: int
+        :param TimeoutSeconds: Number of seconds after which the probe times out.
+Defaults to 1 second. Minimum value is 1.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutSeconds: int
+        :param PeriodSeconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodSeconds: int
+        :param SuccessThreshold: Minimum consecutive successes for the probe to be considered successful after having failed.Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessThreshold: int
+        :param FailureThreshold: Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureThreshold: int
+        """
+        self.InitialDelaySeconds = None
+        self.TimeoutSeconds = None
+        self.PeriodSeconds = None
+        self.SuccessThreshold = None
+        self.FailureThreshold = None
+
+
+    def _deserialize(self, params):
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.TimeoutSeconds = params.get("TimeoutSeconds")
+        self.PeriodSeconds = params.get("PeriodSeconds")
+        self.SuccessThreshold = params.get("SuccessThreshold")
+        self.FailureThreshold = params.get("FailureThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7510,6 +8736,47 @@ class ResourceDeleteOption(AbstractModel):
         
 
 
+class RestartEKSContainerInstancesRequest(AbstractModel):
+    """RestartEKSContainerInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiIds: EKS instance ids
+        :type EksCiIds: list of str
+        """
+        self.EksCiIds = None
+
+
+    def _deserialize(self, params):
+        self.EksCiIds = params.get("EksCiIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartEKSContainerInstancesResponse(AbstractModel):
+    """RestartEKSContainerInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RouteInfo(AbstractModel):
     """集群路由对象
 
@@ -7713,6 +8980,33 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityContext(AbstractModel):
+    """cloudrun安全特性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Capabilities: 安全能力清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Capabilities: :class:`tencentcloud.tke.v20180525.models.Capabilities`
+        """
+        self.Capabilities = None
+
+
+    def _deserialize(self, params):
+        if params.get("Capabilities") is not None:
+            self.Capabilities = Capabilities()
+            self.Capabilities._deserialize(params.get("Capabilities"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7977,6 +9271,31 @@ failed: 步骤失败
         
 
 
+class TcpSocket(AbstractModel):
+    """探针使用TcpSocket检测容器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: TcpSocket检测的端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        """
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateClusterVersionRequest(AbstractModel):
     """UpdateClusterVersion请求参数结构体
 
@@ -8119,6 +9438,93 @@ class UpdateEKSClusterResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateEKSContainerInstanceRequest(AbstractModel):
+    """UpdateEKSContainerInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiId: 容器实例 ID
+        :type EksCiId: str
+        :param RestartPolicy: 实例重启策略： Always(总是重启)、Never(从不重启)、OnFailure(失败时重启)
+        :type RestartPolicy: str
+        :param EksCiVolume: 数据卷，包含NfsVolume数组和CbsVolume数组
+        :type EksCiVolume: :class:`tencentcloud.tke.v20180525.models.EksCiVolume`
+        :param Containers: 容器组
+        :type Containers: list of Container
+        :param InitContainers: Init 容器组
+        :type InitContainers: list of Container
+        :param Name: 容器实例名称
+        :type Name: str
+        :param ImageRegistryCredentials: 镜像仓库凭证数组
+        :type ImageRegistryCredentials: list of ImageRegistryCredential
+        """
+        self.EksCiId = None
+        self.RestartPolicy = None
+        self.EksCiVolume = None
+        self.Containers = None
+        self.InitContainers = None
+        self.Name = None
+        self.ImageRegistryCredentials = None
+
+
+    def _deserialize(self, params):
+        self.EksCiId = params.get("EksCiId")
+        self.RestartPolicy = params.get("RestartPolicy")
+        if params.get("EksCiVolume") is not None:
+            self.EksCiVolume = EksCiVolume()
+            self.EksCiVolume._deserialize(params.get("EksCiVolume"))
+        if params.get("Containers") is not None:
+            self.Containers = []
+            for item in params.get("Containers"):
+                obj = Container()
+                obj._deserialize(item)
+                self.Containers.append(obj)
+        if params.get("InitContainers") is not None:
+            self.InitContainers = []
+            for item in params.get("InitContainers"):
+                obj = Container()
+                obj._deserialize(item)
+                self.InitContainers.append(obj)
+        self.Name = params.get("Name")
+        if params.get("ImageRegistryCredentials") is not None:
+            self.ImageRegistryCredentials = []
+            for item in params.get("ImageRegistryCredentials"):
+                obj = ImageRegistryCredential()
+                obj._deserialize(item)
+                self.ImageRegistryCredentials.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateEKSContainerInstanceResponse(AbstractModel):
+    """UpdateEKSContainerInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EksCiId: 容器实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EksCiId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EksCiId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EksCiId = params.get("EksCiId")
         self.RequestId = params.get("RequestId")
 
 
@@ -8296,6 +9702,56 @@ class VersionInstance(AbstractModel):
         self.Name = params.get("Name")
         self.Version = params.get("Version")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeMount(AbstractModel):
+    """数据卷挂载路径信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: volume名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param MountPath: 挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPath: str
+        :param ReadOnly: 是否只读
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnly: bool
+        :param SubPath: 子路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubPath: str
+        :param MountPropagation: 传播挂载方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPropagation: str
+        :param SubPathExpr: 子路径表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubPathExpr: str
+        """
+        self.Name = None
+        self.MountPath = None
+        self.ReadOnly = None
+        self.SubPath = None
+        self.MountPropagation = None
+        self.SubPathExpr = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.MountPath = params.get("MountPath")
+        self.ReadOnly = params.get("ReadOnly")
+        self.SubPath = params.get("SubPath")
+        self.MountPropagation = params.get("MountPropagation")
+        self.SubPathExpr = params.get("SubPathExpr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

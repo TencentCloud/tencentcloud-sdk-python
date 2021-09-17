@@ -299,6 +299,8 @@ class Code(AbstractModel):
         :type GitCommitId: str
         :param GitUserNameSecret: 加密后的Git用户名，一般无需指定
         :type GitUserNameSecret: str
+        :param ImageConfig: 镜像部署时配置TCR镜像信息
+        :type ImageConfig: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
         """
         self.CosBucketName = None
         self.CosObjectName = None
@@ -314,6 +316,7 @@ class Code(AbstractModel):
         self.GitDirectory = None
         self.GitCommitId = None
         self.GitUserNameSecret = None
+        self.ImageConfig = None
 
 
     def _deserialize(self, params):
@@ -331,6 +334,9 @@ class Code(AbstractModel):
         self.GitDirectory = params.get("GitDirectory")
         self.GitCommitId = params.get("GitCommitId")
         self.GitUserNameSecret = params.get("GitUserNameSecret")
+        if params.get("ImageConfig") is not None:
+            self.ImageConfig = ImageConfig()
+            self.ImageConfig._deserialize(params.get("ImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -522,7 +528,7 @@ class CreateFunctionRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: 文件系统配置参数，用于云函数挂载文件系统
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: 函数初始化超时时间
+        :param InitTimeout: 函数初始化超时时间，默认 65s，镜像部署函数默认 90s。
         :type InitTimeout: int
         :param Tags: 函数 Tag 参数，以键值对数组形式传入
         :type Tags: list of Tag
@@ -2259,6 +2265,54 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
     def _deserialize(self, params):
         self.ReservedMem = params.get("ReservedMem")
         self.RequestId = params.get("RequestId")
+
+
+class ImageConfig(AbstractModel):
+    """TCR镜像信息描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageType: 镜像仓库类型，个人版或者企业版：personal/enterprise
+        :type ImageType: str
+        :param ImageUri: {domain}/{namespace}/{imageName}:{tag}@{digest}
+        :type ImageUri: str
+        :param RegistryId: 用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryId: str
+        :param EntryPoint: 应用的ENTRYPOINT
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntryPoint: str
+        :param Command: entrypoint执行命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Command: str
+        :param Args: 命令参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Args: str
+        """
+        self.ImageType = None
+        self.ImageUri = None
+        self.RegistryId = None
+        self.EntryPoint = None
+        self.Command = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.ImageType = params.get("ImageType")
+        self.ImageUri = params.get("ImageUri")
+        self.RegistryId = params.get("RegistryId")
+        self.EntryPoint = params.get("EntryPoint")
+        self.Command = params.get("Command")
+        self.Args = params.get("Args")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InvokeFunctionRequest(AbstractModel):
@@ -4348,7 +4402,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: 文件系统配置入参，用于云函数绑定CFS文件系统
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param InitTimeout: 函数初始化执行超时时间，默认15秒
+        :param InitTimeout: 函数初始化执行超时时间
         :type InitTimeout: int
         """
         self.FunctionName = None

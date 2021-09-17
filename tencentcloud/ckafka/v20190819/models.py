@@ -98,6 +98,91 @@ class AclResponse(AbstractModel):
         
 
 
+class AclRule(AbstractModel):
+    """AclRule列表接口出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: Acl规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param PatternType: 匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PatternType: str
+        :param Pattern: 表示前缀匹配的前缀的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pattern: str
+        :param ResourceType: Acl资源类型,目前只支持Topic,枚举值列表：Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param AclList: 该规则所包含的ACL信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclList: str
+        :param CreateTimeStamp: 规则所创建的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimeStamp: str
+        :param IsApplied: 预设ACL规则是否应用到新增的topic中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsApplied: int
+        :param UpdateTimeStamp: 规则更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTimeStamp: str
+        :param Comment: 规则的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param TopicName: 其中一个显示的对应的TopicName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param TopicCount: 应用该ACL规则的Topic数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicCount: int
+        :param PatternTypeTitle: patternType的中文显示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PatternTypeTitle: str
+        """
+        self.RuleName = None
+        self.InstanceId = None
+        self.PatternType = None
+        self.Pattern = None
+        self.ResourceType = None
+        self.AclList = None
+        self.CreateTimeStamp = None
+        self.IsApplied = None
+        self.UpdateTimeStamp = None
+        self.Comment = None
+        self.TopicName = None
+        self.TopicCount = None
+        self.PatternTypeTitle = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.InstanceId = params.get("InstanceId")
+        self.PatternType = params.get("PatternType")
+        self.Pattern = params.get("Pattern")
+        self.ResourceType = params.get("ResourceType")
+        self.AclList = params.get("AclList")
+        self.CreateTimeStamp = params.get("CreateTimeStamp")
+        self.IsApplied = params.get("IsApplied")
+        self.UpdateTimeStamp = params.get("UpdateTimeStamp")
+        self.Comment = params.get("Comment")
+        self.TopicName = params.get("TopicName")
+        self.TopicCount = params.get("TopicCount")
+        self.PatternTypeTitle = params.get("PatternTypeTitle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AclRuleInfo(AbstractModel):
     """表示ACL 规则的四元组信息
 
@@ -933,6 +1018,10 @@ class CreateTopicRequest(AbstractModel):
         :type RetentionMs: int
         :param SegmentMs: Segment分片滚动的时长，单位ms，当前最小为3600000ms
         :type SegmentMs: int
+        :param EnableAclRule: 预设ACL规则, 1:打开  0:关闭，默认不打开
+        :type EnableAclRule: int
+        :param AclRuleName: 预设ACL规则的名称
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.TopicName = None
@@ -946,6 +1035,8 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = None
         self.RetentionMs = None
         self.SegmentMs = None
+        self.EnableAclRule = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -961,6 +1052,8 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self.RetentionMs = params.get("RetentionMs")
         self.SegmentMs = params.get("SegmentMs")
+        self.EnableAclRule = params.get("EnableAclRule")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2171,11 +2264,14 @@ class DescribeTopicDetailRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，不填则默认 10，最大值20，取值要大于0
         :type Limit: int
+        :param AclRuleName: Acl预设策略名称
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -2183,6 +2279,7 @@ class DescribeTopicDetailRequest(AbstractModel):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2230,11 +2327,14 @@ class DescribeTopicRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为50
         :type Limit: int
+        :param AclRuleName: Acl预设策略名称
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -2242,6 +2342,7 @@ class DescribeTopicRequest(AbstractModel):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3640,6 +3741,12 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type MaxMessageBytes: int
         :param CleanUpPolicy: 消息删除策略，可以选择delete 或者compact
         :type CleanUpPolicy: str
+        :param IpWhiteList: Ip白名单列表，配额限制，enableWhileList=1时必选
+        :type IpWhiteList: list of str
+        :param EnableAclRule: 预设ACL规则, 1:打开  0:关闭，默认不打开
+        :type EnableAclRule: int
+        :param AclRuleName: 预设ACL规则的名称
+        :type AclRuleName: str
         """
         self.InstanceId = None
         self.TopicName = None
@@ -3651,6 +3758,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.SegmentMs = None
         self.MaxMessageBytes = None
         self.CleanUpPolicy = None
+        self.IpWhiteList = None
+        self.EnableAclRule = None
+        self.AclRuleName = None
 
 
     def _deserialize(self, params):
@@ -3664,6 +3774,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.SegmentMs = params.get("SegmentMs")
         self.MaxMessageBytes = params.get("MaxMessageBytes")
         self.CleanUpPolicy = params.get("CleanUpPolicy")
+        self.IpWhiteList = params.get("IpWhiteList")
+        self.EnableAclRule = params.get("EnableAclRule")
+        self.AclRuleName = params.get("AclRuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4079,6 +4192,12 @@ class TopicAttributesResponse(AbstractModel):
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
         :param Partitions: 分区详情
         :type Partitions: list of TopicPartitionDO
+        :param EnableAclRule: ACL预设策略开关，1：打开； 0：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAclRule: int
+        :param AclRuleList: 预设策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclRuleList: list of AclRule
         """
         self.TopicId = None
         self.CreateTime = None
@@ -4088,6 +4207,8 @@ class TopicAttributesResponse(AbstractModel):
         self.IpWhiteList = None
         self.Config = None
         self.Partitions = None
+        self.EnableAclRule = None
+        self.AclRuleList = None
 
 
     def _deserialize(self, params):
@@ -4106,6 +4227,13 @@ class TopicAttributesResponse(AbstractModel):
                 obj = TopicPartitionDO()
                 obj._deserialize(item)
                 self.Partitions.append(obj)
+        self.EnableAclRule = params.get("EnableAclRule")
+        if params.get("AclRuleList") is not None:
+            self.AclRuleList = []
+            for item in params.get("AclRuleList"):
+                obj = AclRule()
+                obj._deserialize(item)
+                self.AclRuleList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4152,6 +4280,9 @@ class TopicDetail(AbstractModel):
         :param RetentionTimeConfig: 消息保留时间配置(用于动态配置变更记录)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
+        :param Status: 0:正常，1：已删除，2：删除中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.TopicName = None
         self.TopicId = None
@@ -4166,6 +4297,7 @@ class TopicDetail(AbstractModel):
         self.ForwardInterval = None
         self.Config = None
         self.RetentionTimeConfig = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -4186,6 +4318,7 @@ class TopicDetail(AbstractModel):
         if params.get("RetentionTimeConfig") is not None:
             self.RetentionTimeConfig = TopicRetentionTimeConfigRsp()
             self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

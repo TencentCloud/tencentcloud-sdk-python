@@ -5608,7 +5608,7 @@ class DomainSetList(AbstractModel):
         r"""
         :param DomainName: 域名名称。
         :type DomainName: str
-        :param Status: 域名解析状态。True 表示正常解析，False 表示解析失败。
+        :param Status: 域名解析状态。1 表示正常解析，0 表示解析失败。
         :type Status: int
         :param CertificateId: 证书ID。
         :type CertificateId: str

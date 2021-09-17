@@ -191,12 +191,18 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type ProxyOperatorName: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模版管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+        :type Module: str
+        :param ModuleId: 控制台指定模块Id
+        :type ModuleId: str
         """
         self.Agent = None
         self.ProxyOrganizationName = None
         self.UniformSocialCreditCode = None
         self.ProxyOperatorName = None
         self.Operator = None
+        self.Module = None
+        self.ModuleId = None
 
 
     def _deserialize(self, params):
@@ -209,6 +215,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.Module = params.get("Module")
+        self.ModuleId = params.get("ModuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -328,7 +336,7 @@ class CreateSignUrlsRequest(AbstractModel):
         :type FlowIds: list of str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param Endpoint: 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面
+        :param Endpoint: 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面; “APP”-第三方APP或小程序跳转电子签小程序;
         :type Endpoint: str
         :param JumpUrl: 签署完成后H5引导页跳转URL
         :type JumpUrl: str
@@ -396,9 +404,12 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param TemplateId: 模版唯一标识,可以通过模版列表处获取
+        :type TemplateId: str
         """
         self.Agent = None
         self.Operator = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -408,6 +419,7 @@ class DescribeTemplatesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -548,6 +560,10 @@ class FlowApproverInfo(AbstractModel):
         :type Deadline: int
         :param CallbackUrl: 签署完回调url
         :type CallbackUrl: str
+        :param ApproverType: 签署人类型，PERSON和ORGANIZATION
+        :type ApproverType: str
+        :param OpenId: 用户侧第三方id
+        :type OpenId: str
         """
         self.Name = None
         self.Mobile = None
@@ -555,6 +571,8 @@ class FlowApproverInfo(AbstractModel):
         self.JumpUrl = None
         self.Deadline = None
         self.CallbackUrl = None
+        self.ApproverType = None
+        self.OpenId = None
 
 
     def _deserialize(self, params):
@@ -564,6 +582,8 @@ class FlowApproverInfo(AbstractModel):
         self.JumpUrl = params.get("JumpUrl")
         self.Deadline = params.get("Deadline")
         self.CallbackUrl = params.get("CallbackUrl")
+        self.ApproverType = params.get("ApproverType")
+        self.OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -787,6 +807,58 @@ class ProxyOrganizationOperator(AbstractModel):
         
 
 
+class Recipient(AbstractModel):
+    """签署参与者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecipientId: 签署人唯一标识
+        :type RecipientId: str
+        :param RecipientType: 签署方类型：ENTERPRISE-企业INDIVIDUAL-自然人
+        :type RecipientType: str
+        :param Description: 描述
+        :type Description: str
+        :param RoleName: 签署方备注信息
+        :type RoleName: str
+        :param RequireValidation: 是否需要校验
+        :type RequireValidation: bool
+        :param RequireSign: 是否必须填写
+        :type RequireSign: bool
+        :param SignType: 签署类型
+        :type SignType: int
+        :param RoutingOrder: 签署顺序：数字越小优先级越高
+        :type RoutingOrder: int
+        """
+        self.RecipientId = None
+        self.RecipientType = None
+        self.Description = None
+        self.RoleName = None
+        self.RequireValidation = None
+        self.RequireSign = None
+        self.SignType = None
+        self.RoutingOrder = None
+
+
+    def _deserialize(self, params):
+        self.RecipientId = params.get("RecipientId")
+        self.RecipientType = params.get("RecipientType")
+        self.Description = params.get("Description")
+        self.RoleName = params.get("RoleName")
+        self.RequireValidation = params.get("RequireValidation")
+        self.RequireSign = params.get("RequireSign")
+        self.SignType = params.get("SignType")
+        self.RoutingOrder = params.get("RoutingOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SignUrlInfo(AbstractModel):
     """签署链接内容
 
@@ -864,6 +936,36 @@ PERSON 自然人
         
 
 
+class SyncFailReason(AbstractModel):
+    """同步经办人失败原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 经办人Id
+        :type Id: str
+        :param Message: 失败原因
+例如：Id不符合规范、证件号码不合法等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self.Id = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncProxyOrganizationOperatorsRequest(AbstractModel):
     """SyncProxyOrganizationOperators请求参数结构体
 
@@ -916,13 +1018,30 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Status: Status 同步状态,全部同步失败接口会直接报错
+1-成功 
+2-部分成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param FailedList: 同步失败经办人及其失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedList: list of SyncFailReason
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Status = None
+        self.FailedList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
+        if params.get("FailedList") is not None:
+            self.FailedList = []
+            for item in params.get("FailedList"):
+                obj = SyncFailReason()
+                obj._deserialize(item)
+                self.FailedList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1009,6 +1128,10 @@ class TemplateInfo(AbstractModel):
         :type Creator: str
         :param CreatedOn: 模板创建的时间戳（精确到秒）
         :type CreatedOn: int
+        :param TemplateType: 模板类型：1-静默签；2-静默签授权；3-普通模版
+        :type TemplateType: int
+        :param Recipients: 模板中的流程参与人信息
+        :type Recipients: list of Recipient
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -1017,6 +1140,8 @@ class TemplateInfo(AbstractModel):
         self.SignComponents = None
         self.Creator = None
         self.CreatedOn = None
+        self.TemplateType = None
+        self.Recipients = None
 
 
     def _deserialize(self, params):
@@ -1037,6 +1162,13 @@ class TemplateInfo(AbstractModel):
                 self.SignComponents.append(obj)
         self.Creator = params.get("Creator")
         self.CreatedOn = params.get("CreatedOn")
+        self.TemplateType = params.get("TemplateType")
+        if params.get("Recipients") is not None:
+            self.Recipients = []
+            for item in params.get("Recipients"):
+                obj = Recipient()
+                obj._deserialize(item)
+                self.Recipients.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

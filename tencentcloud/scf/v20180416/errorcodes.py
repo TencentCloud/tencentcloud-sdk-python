@@ -293,6 +293,9 @@ INVALIDPARAMETERVALUE_GITUSERNAME = 'InvalidParameterValue.GitUserName'
 # Handler传入错误。
 INVALIDPARAMETERVALUE_HANDLER = 'InvalidParameterValue.Handler'
 
+# IdleTimeOut参数传入错误。
+INVALIDPARAMETERVALUE_IDLETIMEOUT = 'InvalidParameterValue.IdleTimeOut'
+
 # InlineZipFile非法。
 INVALIDPARAMETERVALUE_INLINEZIPFILE = 'InvalidParameterValue.InlineZipFile'
 
@@ -337,6 +340,9 @@ INVALIDPARAMETERVALUE_ORDERBY = 'InvalidParameterValue.OrderBy'
 
 # 入参不是标准的json。
 INVALIDPARAMETERVALUE_PARAM = 'InvalidParameterValue.Param'
+
+# ProtocolType参数传入错误。
+INVALIDPARAMETERVALUE_PROTOCOLTYPE = 'InvalidParameterValue.ProtocolType'
 
 # PublicNetConfig参数错误。
 INVALIDPARAMETERVALUE_PUBLICNETCONFIG = 'InvalidParameterValue.PublicNetConfig'
@@ -391,6 +397,9 @@ INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 
 # 开启cfs配置的同时必须开启vpc。
 INVALIDPARAMETERVALUE_VPCNOTSETWHENOPENCFS = 'InvalidParameterValue.VpcNotSetWhenOpenCfs'
+
+# WebSocketsParams参数传入错误。
+INVALIDPARAMETERVALUE_WEBSOCKETSPARAMS = 'InvalidParameterValue.WebSocketsParams'
 
 # 检测到不是标准的zip文件，请重新压缩后再试。
 INVALIDPARAMETERVALUE_ZIPFILE = 'InvalidParameterValue.ZipFile'

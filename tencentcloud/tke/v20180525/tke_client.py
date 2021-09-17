@@ -474,6 +474,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEKSContainerInstances(self, request):
+        """创建容器实例
+
+        :param request: Request instance for CreateEKSContainerInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEKSContainerInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEKSContainerInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateEKSContainerInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEKSContainerInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusAlertRule(self, request):
         """创建告警规则
 
@@ -796,6 +824,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEKSClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEKSContainerInstances(self, request):
+        """删除容器实例，可批量删除
+
+        :param request: Request instance for DeleteEKSContainerInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEKSContainerInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteEKSContainerInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteEKSContainerInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEKSContainerInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1370,6 +1426,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEKSContainerInstanceEvent(self, request):
+        """查询容器实例的事件
+
+        :param request: Request instance for DescribeEKSContainerInstanceEvent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstanceEventRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstanceEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEKSContainerInstanceEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEKSContainerInstanceEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEKSContainerInstanceRegions(self, request):
         """查询容器实例支持的地域
 
@@ -1384,6 +1468,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEKSContainerInstanceRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEKSContainerInstances(self, request):
+        """查询容器实例
+
+        :param request: Request instance for DescribeEKSContainerInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEKSContainerInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEKSContainerInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEKSContainerInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEksContainerInstanceLog(self, request):
+        """查询容器实例中容器日志
+
+        :param request: Request instance for DescribeEksContainerInstanceLog.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEksContainerInstanceLogRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEksContainerInstanceLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEksContainerInstanceLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEksContainerInstanceLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2210,6 +2350,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartEKSContainerInstances(self, request):
+        """重启弹性容器实例，支持批量操作
+
+        :param request: Request instance for RestartEKSContainerInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.RestartEKSContainerInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.RestartEKSContainerInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartEKSContainerInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartEKSContainerInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetNodePoolNodeProtection(self, request):
         """仅能设置节点池中处于伸缩组的节点
 
@@ -2308,6 +2476,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEKSClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEKSContainerInstance(self, request):
+        """更新容器实例
+
+        :param request: Request instance for UpdateEKSContainerInstance.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEKSContainerInstanceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateEKSContainerInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateEKSContainerInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEKSContainerInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
