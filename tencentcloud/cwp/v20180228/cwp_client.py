@@ -1064,6 +1064,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAvailableExpertServiceDetail(self, request):
+        """专家服务-可用订单详情
+
+        :param request: Request instance for DescribeAvailableExpertServiceDetail.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAvailableExpertServiceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAvailableExpertServiceDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAvailableExpertServiceDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBanMode(self, request):
         """获取爆破阻断模式
 
@@ -1148,6 +1176,62 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBanWhiteList(self, request):
+        """获取阻断白名单列表
+
+        :param request: Request instance for DescribeBanWhiteList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBanWhiteListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBanWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBanWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBanWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselineAnalysisData(self, request):
+        """根据基线策略id查询基线策略数据概览统计
+
+        :param request: Request instance for DescribeBaselineAnalysisData.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineAnalysisDataRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineAnalysisDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineAnalysisData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineAnalysisDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBaselineBasicInfo(self, request):
         """查询基线基础信息列表
 
@@ -1204,6 +1288,90 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBaselineEffectHostList(self, request):
+        """根据基线id查询基线影响主机列表
+
+        :param request: Request instance for DescribeBaselineEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineEffectHostList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineEffectHostListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselineHostTop(self, request):
+        """接口返回TopN的风险服务器
+
+        :param request: Request instance for DescribeBaselineHostTop.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostTopRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostTopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineHostTop", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineHostTopResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselineList(self, request):
+        """查询基线列表信息
+
+        :param request: Request instance for DescribeBaselineList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBaselineRule(self, request):
         """根据基线id查询下属检测项信息
 
@@ -1246,6 +1414,90 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineScanScheduleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselineStrategyDetail(self, request):
+        """根据基线策略id查询策略详情
+
+        :param request: Request instance for DescribeBaselineStrategyDetail.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyDetailRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineStrategyDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineStrategyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselineStrategyList(self, request):
+        """查询一个用户下的基线策略信息
+
+        :param request: Request instance for DescribeBaselineStrategyList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineStrategyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineStrategyList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineStrategyListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselineTop(self, request):
+        """根据策略id查询基线检测项TOP
+
+        :param request: Request instance for DescribeBaselineTop.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineTopRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineTopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBaselineTop", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineTopResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1344,6 +1596,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBruteAttackRules(self, request):
+        """获取爆破破解规则
+
+        :param request: Request instance for DescribeBruteAttackRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBruteAttackRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBruteAttackRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeComponentStatistics(self, request):
         """本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 
@@ -1428,6 +1708,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEmergencyResponseList(self, request):
+        """专家服务-应急响应列表
+
+        :param request: Request instance for DescribeEmergencyResponseList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeEmergencyResponseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEmergencyResponseList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEmergencyResponseListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEmergencyVulList(self, request):
         """获取应急漏洞列表
 
@@ -1442,6 +1750,62 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEmergencyVulListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExpertServiceList(self, request):
+        """专家服务-安全管家列表
+
+        :param request: Request instance for DescribeExpertServiceList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExpertServiceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExpertServiceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExpertServiceOrderList(self, request):
+        """专家服务-专家服务订单列表
+
+        :param request: Request instance for DescribeExpertServiceOrderList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExpertServiceOrderListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExpertServiceOrderList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExpertServiceOrderListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1610,6 +1974,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIgnoreBaselineRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIgnoreRuleEffectHostList(self, request):
+        """根据检测项id与筛选条件查询忽略检测项影响主机列表信息
+
+        :param request: Request instance for DescribeIgnoreRuleEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreRuleEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeIgnoreRuleEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIgnoreRuleEffectHostList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIgnoreRuleEffectHostListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1918,6 +2310,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalWareListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMaliciousRequestWhiteList(self, request):
+        """查询恶意请求白名单列表
+
+        :param request: Request instance for DescribeMaliciousRequestWhiteList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMaliciousRequestWhiteListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMaliciousRequestWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMaliciousRequestWhiteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMaliciousRequestWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2324,6 +2744,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProtectNetList(self, request):
+        """专家服务-旗舰护网列表
+
+        :param request: Request instance for DescribeProtectNetList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectNetListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectNetListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProtectNetList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProtectNetListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeReverseShellEvents(self, request):
         """获取反弹Shell列表
 
@@ -2534,6 +2982,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanTaskDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScanTaskStatus(self, request):
+        """DescribeScanTaskStatus 查询机器扫描状态列表用于过滤筛选
+
+        :param request: Request instance for DescribeScanTaskStatus.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskStatusRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScanTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanTaskStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3010,6 +3486,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulHostCountScanTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulHostTop(self, request):
+        """获取服务器风险top列表
+
+        :param request: Request instance for DescribeVulHostTop.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulHostTopRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulHostTopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVulHostTop", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulHostTopResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3738,6 +4242,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportScanTaskDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportSecurityTrends(self, request):
+        """导出风险趋势
+
+        :param request: Request instance for ExportSecurityTrends.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportSecurityTrendsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportSecurityTrendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportSecurityTrends", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportSecurityTrendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

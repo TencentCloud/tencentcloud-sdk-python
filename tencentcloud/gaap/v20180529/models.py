@@ -4682,6 +4682,9 @@ class DomainRuleSet(AbstractModel):
 2表示删除中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainStatus: int
+        :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BanStatus: str
         """
         self.Domain = None
         self.RuleSet = None
@@ -4702,6 +4705,7 @@ class DomainRuleSet(AbstractModel):
         self.PolyClientCertificateAliasInfo = None
         self.PolyRealServerCertificateAliasInfo = None
         self.DomainStatus = None
+        self.BanStatus = None
 
 
     def _deserialize(self, params):
@@ -4739,6 +4743,7 @@ class DomainRuleSet(AbstractModel):
                 obj._deserialize(item)
                 self.PolyRealServerCertificateAliasInfo.append(obj)
         self.DomainStatus = params.get("DomainStatus")
+        self.BanStatus = params.get("BanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6564,7 +6569,7 @@ UNKNOWN表示未知状态。
         :param ModifyConfigTime: 配置变更时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyConfigTime: int
-        :param ProxyType: 通道类型
+        :param ProxyType: 通道类型，100表示THUNDER通道，103表示微软合作通道
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
         :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
@@ -6579,6 +6584,9 @@ UNKNOWN表示未知状态。
         :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
+        :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BanStatus: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6610,6 +6618,7 @@ UNKNOWN表示未知状态。
         self.IPAddressVersion = None
         self.NetworkType = None
         self.PackageType = None
+        self.BanStatus = None
 
 
     def _deserialize(self, params):
@@ -6652,6 +6661,7 @@ UNKNOWN表示未知状态。
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
+        self.BanStatus = params.get("BanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

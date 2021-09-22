@@ -9922,6 +9922,9 @@ class QuerySinglePaymentResultData(AbstractModel):
         :param AgentName: 代理商名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentName: str
+        :param TradeStatusDesc: 交易状态描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeStatusDesc: str
         """
         self.TradeSerialNo = None
         self.OrderId = None
@@ -9929,6 +9932,7 @@ class QuerySinglePaymentResultData(AbstractModel):
         self.Remark = None
         self.AgentId = None
         self.AgentName = None
+        self.TradeStatusDesc = None
 
 
     def _deserialize(self, params):
@@ -9938,6 +9942,7 @@ class QuerySinglePaymentResultData(AbstractModel):
         self.Remark = params.get("Remark")
         self.AgentId = params.get("AgentId")
         self.AgentName = params.get("AgentName")
+        self.TradeStatusDesc = params.get("TradeStatusDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

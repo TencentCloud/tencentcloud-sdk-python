@@ -271,16 +271,21 @@ class AuthorizationResouceEntityInfo(AbstractModel):
         :param Resource: 授权的资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
+        :param ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
         """
         self.ResourceId = None
         self.ResourceType = None
         self.Resource = None
+        self.ResourceName = None
 
 
     def _deserialize(self, params):
         self.ResourceId = params.get("ResourceId")
         self.ResourceType = params.get("ResourceType")
         self.Resource = params.get("Resource")
+        self.ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -312,12 +317,16 @@ class AuthorizationUserResouceInfo(AbstractModel):
         :param ApplicationAccounts: 应用账户
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationAccounts: list of str
+        :param ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
         """
         self.ResourceId = None
         self.ResourceType = None
         self.Resource = None
         self.InheritedForm = None
         self.ApplicationAccounts = None
+        self.ResourceName = None
 
 
     def _deserialize(self, params):
@@ -328,6 +337,7 @@ class AuthorizationUserResouceInfo(AbstractModel):
             self.InheritedForm = InheritedForm()
             self.InheritedForm._deserialize(params.get("InheritedForm"))
         self.ApplicationAccounts = params.get("ApplicationAccounts")
+        self.ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -913,6 +923,9 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
         :param AuthorizationOrgResourceList: 资源列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizationOrgResourceList: list of AuthorizationResouceEntityInfo
+        :param TotalCount: 资源数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -921,6 +934,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
         self.OrgNodeName = None
         self.OrgNodePath = None
         self.AuthorizationOrgResourceList = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -935,6 +949,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
                 obj = AuthorizationResouceEntityInfo()
                 obj._deserialize(item)
                 self.AuthorizationOrgResourceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

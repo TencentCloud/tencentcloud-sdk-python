@@ -755,7 +755,7 @@ class FaceidClient(AbstractClient):
 
 
     def MinorsVerification(self, request):
-        """未成年人守护接口是通过传入手机号或姓名和身份证号，结合权威数据源和腾讯健康守护可信模型，判断该信息是否真实且年满18周岁。腾讯健康守护可信模型覆盖了上十亿手机库源，覆盖率高、准确率高，如果不在库中的手机号，还可以通过姓名+身份证进行兜底验证。
+        """通过传入手机号或姓名和身份证号，结合权威数据源和腾讯健康守护可信模型，判断该信息是否真实且年满18周岁。腾讯健康守护可信模型覆盖了上十亿手机库源，覆盖率高、准确率高，如果不在库中的手机号，还可以通过姓名+身份证进行兜底验证。
 
         :param request: Request instance for MinorsVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.MinorsVerificationRequest`

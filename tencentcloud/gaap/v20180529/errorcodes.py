@@ -197,6 +197,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# 账号下存在违规资源，详情请查看站内信或邮件。
+RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = 'ResourceUnavailable.AccountViolation'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

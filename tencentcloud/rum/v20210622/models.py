@@ -27,7 +27,7 @@ class CreateProjectRequest(AbstractModel):
         r"""
         :param Name: 创建的项目名(不为空且最长为 200)
         :type Name: str
-        :param InstanceID: 项目对应实例 id
+        :param InstanceID: 业务系统 ID
         :type InstanceID: str
         :param Rate: 项目抽样率(大于等于 0)
         :type Rate: str

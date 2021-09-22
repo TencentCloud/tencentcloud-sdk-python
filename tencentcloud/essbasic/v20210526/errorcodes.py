@@ -38,6 +38,12 @@ INTERNALERROR_THIRDPARTY = 'InternalError.ThirdParty'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 数据不存在。
+INVALIDPARAMETER_DATANOTFOUND = 'InvalidParameter.DataNotFound'
+
+# 参数错误。
+INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -58,6 +64,12 @@ OPERATIONDENIED_USERNOTINORGANIZATION = 'OperationDenied.UserNotInOrganization'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 应用号不存在。
+RESOURCENOTFOUND_APPLICATION = 'ResourceNotFound.Application'
+
+# 模板不存在。
+RESOURCENOTFOUND_TEMPLATE = 'ResourceNotFound.Template'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
