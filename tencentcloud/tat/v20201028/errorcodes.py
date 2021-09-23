@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -98,6 +101,9 @@ INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
+
 # 命令不存在。
 RESOURCENOTFOUND_COMMANDNOTFOUND = 'ResourceNotFound.CommandNotFound'
 
@@ -112,6 +118,9 @@ RESOURCEUNAVAILABLE_AGENTSTATUSNOTONLINE = 'ResourceUnavailable.AgentStatusNotOn
 
 # 命令正在执行中。
 RESOURCEUNAVAILABLE_COMMANDINEXECUTING = 'ResourceUnavailable.CommandInExecuting'
+
+# 命令已关联执行器。
+RESOURCEUNAVAILABLE_COMMANDININVOKER = 'ResourceUnavailable.CommandInInvoker'
 
 # 实例未处于运行中。
 RESOURCEUNAVAILABLE_INSTANCESTATENOTRUNNING = 'ResourceUnavailable.InstanceStateNotRunning'

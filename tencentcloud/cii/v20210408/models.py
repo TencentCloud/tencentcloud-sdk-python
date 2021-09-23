@@ -18,6 +18,50 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ClassifyInfo(AbstractModel):
+    """报告分类信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FirstClass: 一级分类
+        :type FirstClass: str
+        :param SecondClass: 二级分类
+        :type SecondClass: str
+        :param ThirdClass: 三级分类
+        :type ThirdClass: str
+        :param FirstClassId: 一级分类序号
+        :type FirstClassId: int
+        :param SecondClassId: 二级分类序号
+        :type SecondClassId: int
+        :param ThirdClassId: 三级分类序号
+        :type ThirdClassId: int
+        """
+        self.FirstClass = None
+        self.SecondClass = None
+        self.ThirdClass = None
+        self.FirstClassId = None
+        self.SecondClassId = None
+        self.ThirdClassId = None
+
+
+    def _deserialize(self, params):
+        self.FirstClass = params.get("FirstClass")
+        self.SecondClass = params.get("SecondClass")
+        self.ThirdClass = params.get("ThirdClass")
+        self.FirstClassId = params.get("FirstClassId")
+        self.SecondClassId = params.get("SecondClassId")
+        self.ThirdClassId = params.get("ThirdClassId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompareMetricsData(AbstractModel):
     """结构化对比指标（准确率/召回率）数据
 
@@ -556,14 +600,24 @@ class ResultObject(AbstractModel):
         :type Quality: float
         :param StructureResult: 由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
         :type StructureResult: str
+        :param ReportType: 报告分类信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportType: list of ClassifyInfo
         """
         self.Quality = None
         self.StructureResult = None
+        self.ReportType = None
 
 
     def _deserialize(self, params):
         self.Quality = params.get("Quality")
         self.StructureResult = params.get("StructureResult")
+        if params.get("ReportType") is not None:
+            self.ReportType = []
+            for item in params.get("ReportType"):
+                obj = ClassifyInfo()
+                obj._deserialize(item)
+                self.ReportType.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

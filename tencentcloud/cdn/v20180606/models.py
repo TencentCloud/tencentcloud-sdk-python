@@ -9970,6 +9970,9 @@ class ScdnDomain(AbstractModel):
         :param Area: 域名加速区域，取值global | mainland |  overseas
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
+        :param WafLevel: waf规则等级，可取100|200|300
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafLevel: int
         """
         self.Domain = None
         self.Status = None
@@ -9981,6 +9984,7 @@ class ScdnDomain(AbstractModel):
         self.AclRuleNumbers = None
         self.Bot = None
         self.Area = None
+        self.WafLevel = None
 
 
     def _deserialize(self, params):
@@ -9994,6 +9998,7 @@ class ScdnDomain(AbstractModel):
         self.AclRuleNumbers = params.get("AclRuleNumbers")
         self.Bot = params.get("Bot")
         self.Area = params.get("Area")
+        self.WafLevel = params.get("WafLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

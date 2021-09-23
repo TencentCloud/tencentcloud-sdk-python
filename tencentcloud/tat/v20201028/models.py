@@ -278,6 +278,77 @@ class CreateCommandResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInvokerRequest(AbstractModel):
+    """CreateInvoker请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 执行器名称。
+        :type Name: str
+        :param Type: 执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        :type Type: str
+        :param CommandId: 远程命令ID。
+        :type CommandId: str
+        :param InstanceIds: 触发器关联的实例ID。列表上限 100。
+        :type InstanceIds: list of str
+        :param Username: 命令执行用户。
+        :type Username: str
+        :param Parameters: 命令自定义参数。
+        :type Parameters: str
+        :param ScheduleSettings: 周期执行器设置，当创建周期执行器时，必须指定此参数。
+        :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
+        self.Name = None
+        self.Type = None
+        self.CommandId = None
+        self.InstanceIds = None
+        self.Username = None
+        self.Parameters = None
+        self.ScheduleSettings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.CommandId = params.get("CommandId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Username = params.get("Username")
+        self.Parameters = params.get("Parameters")
+        if params.get("ScheduleSettings") is not None:
+            self.ScheduleSettings = ScheduleSettings()
+            self.ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInvokerResponse(AbstractModel):
+    """CreateInvoker返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 执行器ID。
+        :type InvokerId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InvokerId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCommandRequest(AbstractModel):
     """DeleteCommand请求参数结构体
 
@@ -304,6 +375,47 @@ class DeleteCommandRequest(AbstractModel):
 
 class DeleteCommandResponse(AbstractModel):
     """DeleteCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteInvokerRequest(AbstractModel):
+    """DeleteInvoker请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 待删除的执行器ID。
+        :type InvokerId: str
+        """
+        self.InvokerId = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInvokerResponse(AbstractModel):
+    """DeleteInvoker返回参数结构体
 
     """
 
@@ -619,6 +731,143 @@ class DescribeInvocationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInvokerRecordsRequest(AbstractModel):
+    """DescribeInvokerRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerIds: 执行器ID列表。列表上限 100。
+        :type InvokerIds: list of str
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.InvokerIds = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InvokerIds = params.get("InvokerIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInvokerRecordsResponse(AbstractModel):
+    """DescribeInvokerRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的历史记录数量。
+        :type TotalCount: int
+        :param InvokerRecordSet: 执行器执行历史记录。
+        :type InvokerRecordSet: list of InvokerRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InvokerRecordSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InvokerRecordSet") is not None:
+            self.InvokerRecordSet = []
+            for item in params.get("InvokerRecordSet"):
+                obj = InvokerRecord()
+                obj._deserialize(item)
+                self.InvokerRecordSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInvokersRequest(AbstractModel):
+    """DescribeInvokers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerIds: 执行器ID列表。
+        :type InvokerIds: list of str
+        :param Filters: 过滤条件：
+
+<li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
+<li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
+<li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.InvokerIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InvokerIds = params.get("InvokerIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInvokersResponse(AbstractModel):
+    """DescribeInvokers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 满足条件的执行器数量。
+        :type TotalCount: int
+        :param InvokerSet: 执行器信息。
+        :type InvokerSet: list of Invoker
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InvokerSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InvokerSet") is not None:
+            self.InvokerSet = []
+            for item in params.get("InvokerSet"):
+                obj = Invoker()
+                obj._deserialize(item)
+                self.InvokerSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     """DescribeRegions请求参数结构体
 
@@ -652,6 +901,88 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self.RegionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DisableInvokerRequest(AbstractModel):
+    """DisableInvoker请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 待停止的执行器ID。
+        :type InvokerId: str
+        """
+        self.InvokerId = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableInvokerResponse(AbstractModel):
+    """DisableInvoker返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableInvokerRequest(AbstractModel):
+    """EnableInvoker请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 待启用的执行器ID。
+        :type InvokerId: str
+        """
+        self.InvokerId = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableInvokerResponse(AbstractModel):
+    """EnableInvoker返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -994,6 +1325,113 @@ class InvokeCommandResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Invoker(AbstractModel):
+    """执行器信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 执行器ID。
+        :type InvokerId: str
+        :param Name: 执行器名称。
+        :type Name: str
+        :param Type: 执行器类型。
+        :type Type: str
+        :param CommandId: 命令ID。
+        :type CommandId: str
+        :param Username: 用户名。
+        :type Username: str
+        :param Parameters: 自定义参数。
+        :type Parameters: str
+        :param InstanceIds: 实例ID列表。
+        :type InstanceIds: list of str
+        :param Enable: 执行器是否启用。
+        :type Enable: bool
+        :param ScheduleSettings: 执行器周期计划。周期执行器会返回此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param UpdatedTime: 修改时间。
+        :type UpdatedTime: str
+        """
+        self.InvokerId = None
+        self.Name = None
+        self.Type = None
+        self.CommandId = None
+        self.Username = None
+        self.Parameters = None
+        self.InstanceIds = None
+        self.Enable = None
+        self.ScheduleSettings = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.CommandId = params.get("CommandId")
+        self.Username = params.get("Username")
+        self.Parameters = params.get("Parameters")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Enable = params.get("Enable")
+        if params.get("ScheduleSettings") is not None:
+            self.ScheduleSettings = ScheduleSettings()
+            self.ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokerRecord(AbstractModel):
+    """执行器执行记录。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 执行器ID。
+        :type InvokerId: str
+        :param InvokeTime: 执行时间。
+        :type InvokeTime: str
+        :param Reason: 执行原因。
+        :type Reason: str
+        :param InvocationId: 命令执行ID。
+        :type InvocationId: str
+        :param Result: 触发结果。
+        :type Result: str
+        """
+        self.InvokerId = None
+        self.InvokeTime = None
+        self.Reason = None
+        self.InvocationId = None
+        self.Result = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        self.InvokeTime = params.get("InvokeTime")
+        self.Reason = params.get("Reason")
+        self.InvocationId = params.get("InvocationId")
+        self.Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyCommandRequest(AbstractModel):
     """ModifyCommand请求参数结构体
 
@@ -1058,6 +1496,77 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 
 class ModifyCommandResponse(AbstractModel):
     """ModifyCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInvokerRequest(AbstractModel):
+    """ModifyInvoker请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokerId: 待修改的执行器ID。
+        :type InvokerId: str
+        :param Name: 待修改的执行器名称。
+        :type Name: str
+        :param Type: 执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+        :type Type: str
+        :param CommandId: 待修改的命令ID。
+        :type CommandId: str
+        :param Username: 待修改的用户名。
+        :type Username: str
+        :param Parameters: 待修改的自定义参数。
+        :type Parameters: str
+        :param InstanceIds: 待修改的实例ID列表。列表长度上限100。
+        :type InstanceIds: list of str
+        :param ScheduleSettings: 待修改的周期执行器设置。
+        :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
+        self.InvokerId = None
+        self.Name = None
+        self.Type = None
+        self.CommandId = None
+        self.Username = None
+        self.Parameters = None
+        self.InstanceIds = None
+        self.ScheduleSettings = None
+
+
+    def _deserialize(self, params):
+        self.InvokerId = params.get("InvokerId")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.CommandId = params.get("CommandId")
+        self.Username = params.get("Username")
+        self.Parameters = params.get("Parameters")
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ScheduleSettings") is not None:
+            self.ScheduleSettings = ScheduleSettings()
+            self.ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInvokerResponse(AbstractModel):
+    """ModifyInvoker返回参数结构体
 
     """
 
@@ -1280,6 +1789,40 @@ class RunCommandResponse(AbstractModel):
         self.CommandId = params.get("CommandId")
         self.InvocationId = params.get("InvocationId")
         self.RequestId = params.get("RequestId")
+
+
+class ScheduleSettings(AbstractModel):
+    """周期执行器设置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Policy: 执行策略：
+<br><li>ONCE：单次执行
+<br><li>RECURRENCE：周期执行
+        :type Policy: str
+        :param Recurrence: 触发 Crontab 表达式。Policy 为 RECURRENCE 时，需要指定此字段。Crontab 按北京时间解析。
+        :type Recurrence: str
+        :param InvokeTime: 执行器下次执行时间。Policy 为 ONCE 时，需要指定此字段。
+        :type InvokeTime: str
+        """
+        self.Policy = None
+        self.Recurrence = None
+        self.InvokeTime = None
+
+
+    def _deserialize(self, params):
+        self.Policy = params.get("Policy")
+        self.Recurrence = params.get("Recurrence")
+        self.InvokeTime = params.get("InvokeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):

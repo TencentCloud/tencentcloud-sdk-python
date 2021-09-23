@@ -178,6 +178,34 @@ class SmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePhoneNumberInfo(self, request):
+        """提供 E.164 格式号码国家或地区码识别，以及解析后规范的E.164号码。
+
+        :param request: Request instance for DescribePhoneNumberInfo.
+        :type request: :class:`tencentcloud.sms.v20210111.models.DescribePhoneNumberInfoRequest`
+        :rtype: :class:`tencentcloud.sms.v20210111.models.DescribePhoneNumberInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePhoneNumberInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePhoneNumberInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSmsSignList(self, request):
         """⚠️注意：个人认证用户不支持使用 API 查询短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629),如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 查询短信签名。
         >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。

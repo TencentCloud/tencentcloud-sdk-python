@@ -4430,7 +4430,7 @@ class SetInstancesProtectionRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param InstanceIds: 实例ID。
         :type InstanceIds: list of str
-        :param ProtectedFromScaleIn: 实例是否需要移出保护。
+        :param ProtectedFromScaleIn: 实例是否需要设置保护。
         :type ProtectedFromScaleIn: bool
         """
         self.AutoScalingGroupId = None

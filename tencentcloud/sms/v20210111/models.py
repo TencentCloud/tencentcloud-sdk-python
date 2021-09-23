@@ -501,6 +501,57 @@ class DeleteTemplateStatus(AbstractModel):
         
 
 
+class DescribePhoneNumberInfoRequest(AbstractModel):
+    """DescribePhoneNumberInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneNumberSet: 查询手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号。
+例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+        :type PhoneNumberSet: list of str
+        """
+        self.PhoneNumberSet = None
+
+
+    def _deserialize(self, params):
+        self.PhoneNumberSet = params.get("PhoneNumberSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePhoneNumberInfoResponse(AbstractModel):
+    """DescribePhoneNumberInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneNumberInfoSet: 获取号码信息。
+        :type PhoneNumberInfoSet: list of PhoneNumberInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PhoneNumberInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PhoneNumberInfoSet") is not None:
+            self.PhoneNumberInfoSet = []
+            for item in params.get("PhoneNumberInfoSet"):
+                obj = PhoneNumberInfo()
+                obj._deserialize(item)
+                self.PhoneNumberInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSignListStatus(AbstractModel):
     """获取短信签名信息响应
 
@@ -918,6 +969,54 @@ class ModifyTemplateStatus(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneNumberInfo(AbstractModel):
+    """号码信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 号码信息查询错误码，查询成功返回 "Ok"。
+        :type Code: str
+        :param Message: 号码信息查询错误码描述。
+        :type Message: str
+        :param NationCode: 国家（或地区）码。
+        :type NationCode: str
+        :param SubscriberNumber: 用户号码，去除国家或地区码前缀的普通格式，示例如：13711112222。
+        :type SubscriberNumber: str
+        :param PhoneNumber: 解析后的规范的 E.164 号码，与下发短信的号码解析结果一致。解析失败时会原样返回。
+        :type PhoneNumber: str
+        :param IsoCode: 国家码或地区码，例如 CN、US 等，对于未识别出国家码或者地区码，默认返回 DEF。
+        :type IsoCode: str
+        :param IsoName: 国家码或地区名，例如 China，可参考 [国际/港澳台短信价格总览](https://cloud.tencent.com/document/product/382/18051#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)
+        :type IsoName: str
+        """
+        self.Code = None
+        self.Message = None
+        self.NationCode = None
+        self.SubscriberNumber = None
+        self.PhoneNumber = None
+        self.IsoCode = None
+        self.IsoName = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.NationCode = params.get("NationCode")
+        self.SubscriberNumber = params.get("SubscriberNumber")
+        self.PhoneNumber = params.get("PhoneNumber")
+        self.IsoCode = params.get("IsoCode")
+        self.IsoName = params.get("IsoName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
