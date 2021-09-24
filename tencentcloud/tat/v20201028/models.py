@@ -35,7 +35,9 @@ class AutomationAgentInfo(AbstractModel):
 <li> Online：在线
 <li> Offline：离线
         :type AgentStatus: str
-        :param Environment: Agent运行环境
+        :param Environment: Agent运行环境，取值范围：
+<li> Linux：Linux实例
+<li> Windows：Windows实例
         :type Environment: str
         """
         self.InstanceId = None

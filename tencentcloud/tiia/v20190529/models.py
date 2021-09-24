@@ -99,6 +99,51 @@ class AssessQualityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CarPlateContent(AbstractModel):
+    """车牌信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plate: 车牌信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Plate: str
+        :param Color: 车牌颜色。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Color: str
+        :param Type: 车牌类型；渣土车车牌遮挡时,该值为枚举值“异常”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param PlateLocation: 车牌在图片中的坐标信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateLocation: list of Coord
+        """
+        self.Plate = None
+        self.Color = None
+        self.Type = None
+        self.PlateLocation = None
+
+
+    def _deserialize(self, params):
+        self.Plate = params.get("Plate")
+        self.Color = params.get("Color")
+        self.Type = params.get("Type")
+        if params.get("PlateLocation") is not None:
+            self.PlateLocation = []
+            for item in params.get("PlateLocation"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.PlateLocation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CarTagItem(AbstractModel):
     """车辆属性识别的结果
 
@@ -120,6 +165,9 @@ class CarTagItem(AbstractModel):
         :type Year: int
         :param CarLocation: 车辆在图片中的坐标信息
         :type CarLocation: list of Coord
+        :param PlateContent: 车牌信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateContent: :class:`tencentcloud.tiia.v20190529.models.CarPlateContent`
         """
         self.Serial = None
         self.Brand = None
@@ -128,6 +176,7 @@ class CarTagItem(AbstractModel):
         self.Confidence = None
         self.Year = None
         self.CarLocation = None
+        self.PlateContent = None
 
 
     def _deserialize(self, params):
@@ -143,6 +192,9 @@ class CarTagItem(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self.CarLocation.append(obj)
+        if params.get("PlateContent") is not None:
+            self.PlateContent = CarPlateContent()
+            self.PlateContent._deserialize(params.get("PlateContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

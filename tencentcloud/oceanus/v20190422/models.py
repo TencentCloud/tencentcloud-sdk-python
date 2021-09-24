@@ -138,6 +138,8 @@ class CreateJobRequest(AbstractModel):
         :type Remark: str
         :param FolderId: 作业名所属文件夹ID，根目录为"root"
         :type FolderId: str
+        :param FlinkVersion: 作业运行的Flink版本
+        :type FlinkVersion: str
         """
         self.Name = None
         self.JobType = None
@@ -146,6 +148,7 @@ class CreateJobRequest(AbstractModel):
         self.CuMem = None
         self.Remark = None
         self.FolderId = None
+        self.FlinkVersion = None
 
 
     def _deserialize(self, params):
@@ -156,6 +159,7 @@ class CreateJobRequest(AbstractModel):
         self.CuMem = params.get("CuMem")
         self.Remark = params.get("Remark")
         self.FolderId = params.get("FolderId")
+        self.FlinkVersion = params.get("FlinkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -826,12 +830,15 @@ class DescribeSystemResourcesRequest(AbstractModel):
         :type Filters: list of Filter
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param FlinkVersion: 查询对应Flink版本的内置connector
+        :type FlinkVersion: str
         """
         self.ResourceIds = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
         self.ClusterId = None
+        self.FlinkVersion = None
 
 
     def _deserialize(self, params):
@@ -845,6 +852,7 @@ class DescribeSystemResourcesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.ClusterId = params.get("ClusterId")
+        self.FlinkVersion = params.get("FlinkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

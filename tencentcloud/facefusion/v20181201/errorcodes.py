@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 认证失败。
+AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 

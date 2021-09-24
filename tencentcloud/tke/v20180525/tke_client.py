@@ -1594,6 +1594,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExternalClusterSpec(self, request):
+        """获取导入第三方集群YAML定义
+
+        :param request: Request instance for DescribeExternalClusterSpec.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalClusterSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExternalClusterSpec", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExternalClusterSpecResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImages(self, request):
         """获取镜像信息
 

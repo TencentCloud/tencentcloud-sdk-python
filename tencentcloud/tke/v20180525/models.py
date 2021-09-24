@@ -3961,13 +3961,44 @@ class DescribeClustersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 最大输出条数，默认20，最大为100
         :type Limit: int
-        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+        :param Filters: ·  ClusterName
+    按照【集群名】进行过滤。
+    类型：String
+    必选：否
+
+·  Tags
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+
+·  vpc-id
+    按照【VPC】进行过滤。
+    类型：String
+    必选：否
+
+·  tag-key
+    按照【标签键】进行过滤。
+    类型：String
+    必选：否
+
+·  tag-value
+    按照【标签值】进行过滤。
+    类型：String
+    必选：否
+
+·  tag:tag-key
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
         :type Filters: list of Filter
+        :param ClusterType: 集群类型，例如：MANAGED_CLUSTER
+        :type ClusterType: str
         """
         self.ClusterIds = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.ClusterType = None
 
 
     def _deserialize(self, params):
@@ -3980,6 +4011,7 @@ class DescribeClustersRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4553,6 +4585,63 @@ class DescribeExistedInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ExistedInstanceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExternalClusterSpecRequest(AbstractModel):
+    """DescribeExternalClusterSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 注册集群ID
+        :type ClusterId: str
+        :param IsExtranet: 默认false 获取内网，是否获取外网版注册命令
+        :type IsExtranet: bool
+        :param IsRefreshExpirationTime: 默认false 不刷新有效时间 ，true刷新有效时间
+        :type IsRefreshExpirationTime: bool
+        """
+        self.ClusterId = None
+        self.IsExtranet = None
+        self.IsRefreshExpirationTime = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
+        self.IsRefreshExpirationTime = params.get("IsRefreshExpirationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalClusterSpecResponse(AbstractModel):
+    """DescribeExternalClusterSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Spec: 导入第三方集群YAML定义
+        :type Spec: str
+        :param Expiration: agent.yaml文件过期时间字符串，时区UTC
+        :type Expiration: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Spec = None
+        self.Expiration = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Spec = params.get("Spec")
+        self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
 
 

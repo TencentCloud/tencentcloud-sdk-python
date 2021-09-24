@@ -322,6 +322,12 @@ class ClusterInfo(AbstractModel):
         :param DbaUins: 审批人uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbaUins: list of str
+        :param DataFlowStatus: 是否开启了数据订阅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataFlowStatus: int
+        :param KafkaInfo: 数据订阅的kafka信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -347,6 +353,8 @@ class ClusterInfo(AbstractModel):
         self.ProxyList = None
         self.Censorship = None
         self.DbaUins = None
+        self.DataFlowStatus = None
+        self.KafkaInfo = None
 
 
     def _deserialize(self, params):
@@ -384,6 +392,10 @@ class ClusterInfo(AbstractModel):
                 self.ProxyList.append(obj)
         self.Censorship = params.get("Censorship")
         self.DbaUins = params.get("DbaUins")
+        self.DataFlowStatus = params.get("DataFlowStatus")
+        if params.get("KafkaInfo") is not None:
+            self.KafkaInfo = KafkaInfo()
+            self.KafkaInfo._deserialize(params.get("KafkaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1067,6 +1079,69 @@ class DeleteSnapshotsResponse(AbstractModel):
             self.TableResults = []
             for item in params.get("TableResults"):
                 obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTableDataFlowRequest(AbstractModel):
+    """DeleteTableDataFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 表格所属集群实例ID
+        :type ClusterId: str
+        :param SelectedTables: 待删除分布式索引的表格列表
+        :type SelectedTables: list of SelectedTableInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTableDataFlowResponse(AbstractModel):
+    """DeleteTableDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 删除表格分布式索引结果数量
+        :type TotalCount: int
+        :param TableResults: 删除表格分布式索引结果列表
+        :type TableResults: list of TableResultNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
                 obj._deserialize(item)
                 self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
@@ -2507,6 +2582,50 @@ class ImportSnapshotsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class KafkaInfo(AbstractModel):
+    """ckafka地址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: kafaka address
+        :type Address: str
+        :param Topic: kafaka topic
+        :type Topic: str
+        :param User: kafka username
+        :type User: str
+        :param Password: kafka password
+        :type Password: str
+        :param Instance: ckafka实例
+        :type Instance: str
+        :param IsVpc: 是否走VPC
+        :type IsVpc: int
+        """
+        self.Address = None
+        self.Topic = None
+        self.User = None
+        self.Password = None
+        self.Instance = None
+        self.IsVpc = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Topic = params.get("Topic")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        self.Instance = params.get("Instance")
+        self.IsVpc = params.get("IsVpc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyFile(AbstractModel):
     """部分key导入快照数据时所需要的key文件
 
@@ -3670,14 +3789,18 @@ class ProxyMachineInfo(AbstractModel):
         :type ProxyUid: str
         :param MachineType: 机器类型
         :type MachineType: str
+        :param AvailableCount: 可分配proxy资源数
+        :type AvailableCount: int
         """
         self.ProxyUid = None
         self.MachineType = None
+        self.AvailableCount = None
 
 
     def _deserialize(self, params):
         self.ProxyUid = params.get("ProxyUid")
         self.MachineType = params.get("MachineType")
+        self.AvailableCount = params.get("AvailableCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3950,10 +4073,12 @@ class SelectedTableWithField(AbstractModel):
         :type TableIdlType: str
         :param TableType: 表格数据结构类型：`GENERIC`或`LIST`
         :type TableType: str
-        :param SelectedFields: 待创建索引的字段列表
+        :param SelectedFields: 待创建索引、缓写、数据订阅的字段列表
         :type SelectedFields: list of FieldInfo
         :param ShardNum: 索引分片数
         :type ShardNum: int
+        :param KafkaInfo: ckafka实例信息
+        :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
         """
         self.TableGroupId = None
         self.TableName = None
@@ -3962,6 +4087,7 @@ class SelectedTableWithField(AbstractModel):
         self.TableType = None
         self.SelectedFields = None
         self.ShardNum = None
+        self.KafkaInfo = None
 
 
     def _deserialize(self, params):
@@ -3977,6 +4103,9 @@ class SelectedTableWithField(AbstractModel):
                 obj._deserialize(item)
                 self.SelectedFields.append(obj)
         self.ShardNum = params.get("ShardNum")
+        if params.get("KafkaInfo") is not None:
+            self.KafkaInfo = KafkaInfo()
+            self.KafkaInfo._deserialize(params.get("KafkaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4056,6 +4185,69 @@ class ServerMachineInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetTableDataFlowRequest(AbstractModel):
+    """SetTableDataFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 表所属集群实例ID
+        :type ClusterId: str
+        :param SelectedTables: 待创建分布式索引表格列表
+        :type SelectedTables: list of SelectedTableWithField
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableWithField()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetTableDataFlowResponse(AbstractModel):
+    """SetTableDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 表格数据订阅创建结果数量
+        :type TotalCount: int
+        :param TableResults: 表格数据订阅创建结果列表
+        :type TableResults: list of TableResultNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = TableResultNew()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class SetTableIndexRequest(AbstractModel):
@@ -4394,7 +4586,7 @@ class TableInfoNew(AbstractModel):
         :param SortRule: SORTLIST类型表格排序顺序
 注意：此字段可能返回 null，表示取不到有效值。
         :type SortRule: int
-        :param DbClusterInfoStruct: 表格分布式索引信息
+        :param DbClusterInfoStruct: 表格分布式索引/缓写、kafka数据订阅信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbClusterInfoStruct: str
         """

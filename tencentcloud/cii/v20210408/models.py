@@ -454,11 +454,14 @@ class DescribeStructureResultResponse(AbstractModel):
         :type Status: int
         :param Results: 结构化结果
         :type Results: list of StructureResultObject
+        :param MainTaskId: 主任务ID
+        :type MainTaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
         self.Results = None
+        self.MainTaskId = None
         self.RequestId = None
 
 
@@ -470,6 +473,7 @@ class DescribeStructureResultResponse(AbstractModel):
                 obj = StructureResultObject()
                 obj._deserialize(item)
                 self.Results.append(obj)
+        self.MainTaskId = params.get("MainTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -676,16 +680,20 @@ class StructureResultObject(AbstractModel):
         :type TaskType: str
         :param StructureResult: 结构化结果
         :type StructureResult: str
+        :param SubTaskId: 子任务ID
+        :type SubTaskId: str
         """
         self.Code = None
         self.TaskType = None
         self.StructureResult = None
+        self.SubTaskId = None
 
 
     def _deserialize(self, params):
         self.Code = params.get("Code")
         self.TaskType = params.get("TaskType")
         self.StructureResult = params.get("StructureResult")
+        self.SubTaskId = params.get("SubTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

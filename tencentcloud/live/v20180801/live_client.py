@@ -1175,7 +1175,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCallbackRecordsList(self, request):
-        """回调事件查询
+        """用于查询回调事件。
 
         :param request: Request instance for DescribeCallbackRecordsList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCallbackRecordsListRequest`
