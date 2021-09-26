@@ -89,7 +89,7 @@ SIGN_PERSONAL_SEAL - 个人签署印章控件；
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str
-        :param ComponentName: 控件名称
+        :param ComponentName: 控件简称
         :type ComponentName: str
         :param ComponentRequired: 定义控件是否为必填项，默认为false
         :type ComponentRequired: bool

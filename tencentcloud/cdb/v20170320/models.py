@@ -1513,6 +1513,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type Cpu: int
         :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
         :type AutoSyncFlag: int
+        :param CageId: 金融围拢 ID 。
+        :type CageId: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1545,6 +1547,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.InstanceNodes = None
         self.Cpu = None
         self.AutoSyncFlag = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1591,6 +1594,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.InstanceNodes = params.get("InstanceNodes")
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
+        self.CageId = params.get("CageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1696,6 +1700,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Cpu: int
         :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
         :type AutoSyncFlag: int
+        :param CageId: 金融围拢 ID。
+        :type CageId: str
         """
         self.Memory = None
         self.Volume = None
@@ -1729,6 +1735,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.InstanceNodes = None
         self.Cpu = None
         self.AutoSyncFlag = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1776,6 +1783,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.InstanceNodes = params.get("InstanceNodes")
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
+        self.CageId = params.get("CageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3974,6 +3982,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type DeployGroupIds: list of str
         :param TagKeysForSearch: 是否以标签键为过滤条件。
         :type TagKeysForSearch: list of str
+        :param CageIds: 金融围拢 ID 。
+        :type CageIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -4002,6 +4012,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithMaster = None
         self.DeployGroupIds = None
         self.TagKeysForSearch = None
+        self.CageIds = None
 
 
     def _deserialize(self, params):
@@ -4032,6 +4043,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithMaster = params.get("WithMaster")
         self.DeployGroupIds = params.get("DeployGroupIds")
         self.TagKeysForSearch = params.get("TagKeysForSearch")
+        self.CageIds = params.get("CageIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
