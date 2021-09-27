@@ -2973,8 +2973,8 @@ class VodClient(AbstractClient):
 
 
     def ModifyVodDomainAccelerateConfig(self, request):
-        """该接口用于开启或者关闭点播域名的加速区域。
-        1、域名部署状态为 Online 状态时才允许开启或者关闭域名加速区域。
+        """该接口用于修改点播域名的加速区域。
+        1、域名部署状态为 Online 状态时才允许修改加速区域。
 
         :param request: Request instance for ModifyVodDomainAccelerateConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyVodDomainAccelerateConfigRequest`

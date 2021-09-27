@@ -182,6 +182,9 @@ INVALIDPARAMETER_FORMATERROR = 'InvalidParameter.FormatError'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 插件定义参数取值重复，请修改后重新操作。
+INVALIDPARAMETERVALUE_DUPLICATEPLUGINCONFIG = 'InvalidParameterValue.DuplicatePluginConfig'
+
 # 密钥错误。
 INVALIDPARAMETERVALUE_INVALIDACCESSKEYIDS = 'InvalidParameterValue.InvalidAccessKeyIds'
 

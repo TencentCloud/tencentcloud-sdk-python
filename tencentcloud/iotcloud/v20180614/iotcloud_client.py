@@ -1566,6 +1566,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetProductsForbiddenStatus(self, request):
+        """批量设置产品禁用状态
+
+        :param request: Request instance for SetProductsForbiddenStatus.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.SetProductsForbiddenStatusRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.SetProductsForbiddenStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetProductsForbiddenStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetProductsForbiddenStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindDevices(self, request):
         """本接口（UnbindDevices）用于网关设备批量解绑子设备
 
@@ -1636,6 +1664,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDeviceShadowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateDevicesEnableState(self, request):
+        """批量启用或者禁用设备
+
+        :param request: Request instance for UpdateDevicesEnableState.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.UpdateDevicesEnableStateRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.UpdateDevicesEnableStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDevicesEnableState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDevicesEnableStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

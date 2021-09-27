@@ -26,6 +26,34 @@ class CfwClient(AbstractClient):
     _service = 'cfw'
 
 
+    def AddAcRule(self, request):
+        """添加互联网边界规则
+
+        :param request: Request instance for AddAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.AddAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddAcRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddAcRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcRules(self, request):
         """创建规则
 
@@ -124,6 +152,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatFwInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNatFwInstanceWithDomain(self, request):
+        """创建防火墙实例和接入域名
+
+        :param request: Request instance for CreateNatFwInstanceWithDomain.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceWithDomainRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceWithDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNatFwInstanceWithDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNatFwInstanceWithDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1668,6 +1724,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVPCSwitchStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveAcRule(self, request):
+        """删除互联网边界规则
+
+        :param request: Request instance for RemoveAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.RemoveAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveAcRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveAcRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

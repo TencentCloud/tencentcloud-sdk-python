@@ -161,6 +161,9 @@ LIMITEXCEEDED_SHIPPER = 'LimitExceeded.Shipper'
 # tag超过限制。
 LIMITEXCEEDED_TAG = 'LimitExceeded.Tag'
 
+# 日志主题数目超过限制。
+LIMITEXCEEDED_TOPIC = 'LimitExceeded.Topic'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 

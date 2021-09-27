@@ -538,6 +538,64 @@ class DescribeProjectsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScoresRequest(AbstractModel):
+    """DescribeScores请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param ID: 项目ID
+        :type ID: int
+        """
+        self.EndTime = None
+        self.StartTime = None
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScoresResponse(AbstractModel):
+    """DescribeScores返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScoreSet: 数组
+        :type ScoreSet: list of ScoreInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScoreSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScoreSet") is not None:
+            self.ScoreSet = []
+            for item in params.get("ScoreSet"):
+                obj = ScoreInfo()
+                obj._deserialize(item)
+                self.ScoreSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
@@ -644,6 +702,78 @@ class RumProject(AbstractModel):
         self.InstanceKey = params.get("InstanceKey")
         self.Desc = params.get("Desc")
         self.IsStar = params.get("IsStar")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScoreInfo(AbstractModel):
+    """project Score分数实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StaticDuration: duration
+        :type StaticDuration: str
+        :param PagePv: pv
+        :type PagePv: str
+        :param ApiFail: 失败
+        :type ApiFail: str
+        :param ApiNum: 请求
+        :type ApiNum: str
+        :param StaticFail: fail
+        :type StaticFail: str
+        :param ProjectID: 项目id
+        :type ProjectID: int
+        :param PageUv: uv
+        :type PageUv: str
+        :param ApiDuration: 请求次数
+        :type ApiDuration: str
+        :param Score: 分数
+        :type Score: str
+        :param PageError: error
+        :type PageError: str
+        :param StaticNum: num
+        :type StaticNum: str
+        :param RecordNum: num
+        :type RecordNum: int
+        :param PageDuration: Duration
+        :type PageDuration: str
+        """
+        self.StaticDuration = None
+        self.PagePv = None
+        self.ApiFail = None
+        self.ApiNum = None
+        self.StaticFail = None
+        self.ProjectID = None
+        self.PageUv = None
+        self.ApiDuration = None
+        self.Score = None
+        self.PageError = None
+        self.StaticNum = None
+        self.RecordNum = None
+        self.PageDuration = None
+
+
+    def _deserialize(self, params):
+        self.StaticDuration = params.get("StaticDuration")
+        self.PagePv = params.get("PagePv")
+        self.ApiFail = params.get("ApiFail")
+        self.ApiNum = params.get("ApiNum")
+        self.StaticFail = params.get("StaticFail")
+        self.ProjectID = params.get("ProjectID")
+        self.PageUv = params.get("PageUv")
+        self.ApiDuration = params.get("ApiDuration")
+        self.Score = params.get("Score")
+        self.PageError = params.get("PageError")
+        self.StaticNum = params.get("StaticNum")
+        self.RecordNum = params.get("RecordNum")
+        self.PageDuration = params.get("PageDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3626,12 +3626,16 @@ class DescribeClusterKubeconfigRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param IsExtranet: 默认false 获取内网，是否获取外网访问的kubeconfig
+        :type IsExtranet: bool
         """
         self.ClusterId = None
+        self.IsExtranet = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.IsExtranet = params.get("IsExtranet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

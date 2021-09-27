@@ -3649,7 +3649,8 @@ class VpcClient(AbstractClient):
 
 
     def DescribeIpGeolocationInfos(self, request):
-        """该接口用于查询IP地址信息，包括地理位置信息和网络信息。
+        """本接口（DescribeIpGeolocationInfos）用于查询IP地址信息，包括地理位置信息和网络信息。
+        本接口目前处于内测中，如需使用，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2)。
 
         :param request: Request instance for DescribeIpGeolocationInfos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationInfosRequest`

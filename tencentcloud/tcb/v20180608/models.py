@@ -2960,6 +2960,52 @@ class DescribeCloudBaseProjectVersionListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudBaseRunAllVpcsRequest(AbstractModel):
+    """DescribeCloudBaseRunAllVpcs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunAllVpcsResponse(AbstractModel):
+    """DescribeCloudBaseRunAllVpcs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vpcs: 所有vpcid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vpcs: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Vpcs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Vpcs = params.get("Vpcs")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCloudBaseRunConfForGateWayRequest(AbstractModel):
     """DescribeCloudBaseRunConfForGateWay请求参数结构体
 
@@ -3017,6 +3063,61 @@ class DescribeCloudBaseRunConfForGateWayResponse(AbstractModel):
                 obj = CloudBaseRunForGatewayConf()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunOperationTypesRequest(AbstractModel):
+    """DescribeCloudBaseRunOperationTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称，精确匹配
+        :type ServerName: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunOperationTypesResponse(AbstractModel):
+    """DescribeCloudBaseRunOperationTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: list of str
+        :param ServerName: 服务名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerName: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Action = None
+        self.ServerName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.ServerName = params.get("ServerName")
         self.RequestId = params.get("RequestId")
 
 
@@ -3581,6 +3682,29 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.CpuSize = params.get("CpuSize")
         self.MemSize = params.get("MemSize")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunVersionRsByConditionRequest(AbstractModel):
+    """DescribeCloudBaseRunVersionRsByCondition请求参数结构体
+
+    """
+
+
+class DescribeCloudBaseRunVersionRsByConditionResponse(AbstractModel):
+    """DescribeCloudBaseRunVersionRsByCondition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

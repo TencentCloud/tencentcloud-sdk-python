@@ -587,16 +587,20 @@ class ExternalContactSimpleInfo(AbstractModel):
         :param SalesName: 添加了此外部联系人的企业成员的姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
+        :param DepartmentIdList: 添加了此外部联系人的企业成员的归属部门id列表
+        :type DepartmentIdList: list of int
         """
         self.ExternalUserId = None
         self.UserId = None
         self.SalesName = None
+        self.DepartmentIdList = None
 
 
     def _deserialize(self, params):
         self.ExternalUserId = params.get("ExternalUserId")
         self.UserId = params.get("UserId")
         self.SalesName = params.get("SalesName")
+        self.DepartmentIdList = params.get("DepartmentIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

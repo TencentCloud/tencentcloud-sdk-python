@@ -4280,6 +4280,51 @@ class SearchKeyword(AbstractModel):
         
 
 
+class SetProductsForbiddenStatusRequest(AbstractModel):
+    """SetProductsForbiddenStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductID: 要设置禁用状态的产品列表
+        :type ProductID: list of str
+        :param Status: 0启用，1禁用
+        :type Status: int
+        """
+        self.ProductID = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetProductsForbiddenStatusResponse(AbstractModel):
+    """SetProductsForbiddenStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StatusStatistic(AbstractModel):
     """状态统计信息
 
@@ -4643,6 +4688,55 @@ class UpdateDeviceShadowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateDevicesEnableStateRequest(AbstractModel):
+    """UpdateDevicesEnableState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductID: 设备所属产品id
+        :type ProductID: str
+        :param DeviceNames: 设备名称集合
+        :type DeviceNames: list of str
+        :param Status: 要设置的设备状态，1为启用，0为禁用
+        :type Status: int
+        """
+        self.ProductID = None
+        self.DeviceNames = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.DeviceNames = params.get("DeviceNames")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDevicesEnableStateResponse(AbstractModel):
+    """UpdateDevicesEnableState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

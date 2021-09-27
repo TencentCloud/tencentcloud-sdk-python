@@ -1466,6 +1466,8 @@ class DescribeManagersRequest(AbstractModel):
 'expiring'  即将过期
 'expired' 已过期
         :type Status: str
+        :param SearchKey: 管理人姓名/邮箱/部门精准匹配
+        :type SearchKey: str
         """
         self.CompanyId = None
         self.Offset = None
@@ -1473,6 +1475,7 @@ class DescribeManagersRequest(AbstractModel):
         self.ManagerName = None
         self.ManagerMail = None
         self.Status = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -1482,6 +1485,7 @@ class DescribeManagersRequest(AbstractModel):
         self.ManagerName = params.get("ManagerName")
         self.ManagerMail = params.get("ManagerMail")
         self.Status = params.get("Status")
+        self.SearchKey = params.get("SearchKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1716,6 +1720,9 @@ class ManagerInfo(AbstractModel):
         :param VerifyTime: 审核通过时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyTime: str
+        :param StatusInfo: 具体审核状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusInfo: list of ManagerStatusInfo
         """
         self.Status = None
         self.ManagerFirstName = None
@@ -1731,6 +1738,7 @@ class ManagerInfo(AbstractModel):
         self.ExpireTime = None
         self.SubmitAuditTime = None
         self.VerifyTime = None
+        self.StatusInfo = None
 
 
     def _deserialize(self, params):
@@ -1748,6 +1756,12 @@ class ManagerInfo(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
         self.SubmitAuditTime = params.get("SubmitAuditTime")
         self.VerifyTime = params.get("VerifyTime")
+        if params.get("StatusInfo") is not None:
+            self.StatusInfo = []
+            for item in params.get("StatusInfo"):
+                obj = ManagerStatusInfo()
+                obj._deserialize(item)
+                self.StatusInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1755,6 +1769,12 @@ class ManagerInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ManagerStatusInfo(AbstractModel):
+    """管理人的四种审核状态
+
+    """
 
 
 class ModifyCertificateAliasRequest(AbstractModel):

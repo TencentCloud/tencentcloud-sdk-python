@@ -924,6 +924,202 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAssetAppList(self, request):
+        """查询应用列表
+
+        :param request: Request instance for DescribeAssetAppList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetAppList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetAppListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetAppProcessList(self, request):
+        """获取软件关联进程列表
+
+        :param request: Request instance for DescribeAssetAppProcessList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppProcessListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetAppProcessListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetAppProcessList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetAppProcessListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetCoreModuleInfo(self, request):
+        """获取内核模块详情
+
+        :param request: Request instance for DescribeAssetCoreModuleInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetCoreModuleInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetCoreModuleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetCoreModuleList(self, request):
+        """查询资产管理内核模块列表
+
+        :param request: Request instance for DescribeAssetCoreModuleList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetCoreModuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetCoreModuleList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetCoreModuleListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetDatabaseInfo(self, request):
+        """获取资产管理数据库详情
+
+        :param request: Request instance for DescribeAssetDatabaseInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetDatabaseInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetDatabaseInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetDatabaseList(self, request):
+        """查询资产管理数据库列表
+
+        :param request: Request instance for DescribeAssetDatabaseList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetDatabaseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetDatabaseList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetDatabaseListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetEnvList(self, request):
+        """查询资产管理环境变量列表
+
+        :param request: Request instance for DescribeAssetEnvList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetEnvListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetEnvListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetEnvList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetEnvListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAssetInfo(self, request):
         """获取资产数量： 主机数、账号数、端口数、进程数、软件数、数据库数、Web应用数、Web框架数、Web服务数、Web站点数
 
@@ -952,6 +1148,230 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAssetInitServiceList(self, request):
+        """查询资产管理启动服务列表
+
+        :param request: Request instance for DescribeAssetInitServiceList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInitServiceListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInitServiceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetInitServiceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetInitServiceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetJarInfo(self, request):
+        """获取Jar包详情
+
+        :param request: Request instance for DescribeAssetJarInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetJarInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetJarInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetJarList(self, request):
+        """查询Jar包列表
+
+        :param request: Request instance for DescribeAssetJarList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetJarListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetJarList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetJarListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetMachineDetail(self, request):
+        """获取资产管理主机资源详细信息
+
+        :param request: Request instance for DescribeAssetMachineDetail.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineDetailRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetMachineDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetMachineDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetMachineList(self, request):
+        """获取资产指纹页面的资源监控列表
+
+        :param request: Request instance for DescribeAssetMachineList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetMachineListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetMachineList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetMachineListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetPlanTaskList(self, request):
+        """查询资产管理计划任务列表
+
+        :param request: Request instance for DescribeAssetPlanTaskList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPlanTaskListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPlanTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetPlanTaskList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetPlanTaskListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetPortInfoList(self, request):
+        """获取资产管理端口列表
+
+        :param request: Request instance for DescribeAssetPortInfoList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPortInfoListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetPortInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetPortInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetPortInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetProcessInfoList(self, request):
+        """获取资产管理进程列表
+
+        :param request: Request instance for DescribeAssetProcessInfoList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetProcessInfoListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetProcessInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetProcessInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetProcessInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAssetRecentMachineInfo(self, request):
         """获取主机最近趋势情况
 
@@ -966,6 +1386,286 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetRecentMachineInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetSystemPackageList(self, request):
+        """获取资产管理系统安装包列表
+
+        :param request: Request instance for DescribeAssetSystemPackageList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetSystemPackageListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetSystemPackageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetSystemPackageList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetSystemPackageListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetUserInfo(self, request):
+        """获取主机账号详情
+
+        :param request: Request instance for DescribeAssetUserInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetUserInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetUserInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetUserList(self, request):
+        """获取账号列表
+
+        :param request: Request instance for DescribeAssetUserList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetUserList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetUserListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebAppList(self, request):
+        """获取资产管理Web应用列表
+
+        :param request: Request instance for DescribeAssetWebAppList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebAppList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebAppListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebAppPluginList(self, request):
+        """获取资产管理Web应用插件列表
+
+        :param request: Request instance for DescribeAssetWebAppPluginList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppPluginListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebAppPluginListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebAppPluginList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebAppPluginListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebFrameList(self, request):
+        """获取资产管理Web框架列表
+
+        :param request: Request instance for DescribeAssetWebFrameList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebFrameListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebFrameListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebFrameList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebFrameListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebLocationInfo(self, request):
+        """获取Web站点详情
+
+        :param request: Request instance for DescribeAssetWebLocationInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebLocationInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebLocationInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebLocationList(self, request):
+        """获取Web站点列表
+
+        :param request: Request instance for DescribeAssetWebLocationList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebLocationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebLocationList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebLocationListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebServiceInfoList(self, request):
+        """查询资产管理Web服务列表
+
+        :param request: Request instance for DescribeAssetWebServiceInfoList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceInfoListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebServiceInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebServiceInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetWebServiceProcessList(self, request):
+        """获取Web服务关联进程列表
+
+        :param request: Request instance for DescribeAssetWebServiceProcessList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceProcessListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetWebServiceProcessListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetWebServiceProcessList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetWebServiceProcessListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

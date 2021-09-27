@@ -790,6 +790,70 @@ class AdvancedAuthenticationTypeF(AbstractModel):
         
 
 
+class AdvancedCCRules(AbstractModel):
+    """scdn 的自定义 cc 规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param DetectionTime: 探测时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectionTime: int
+        :param FrequencyLimit: 限频阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrequencyLimit: int
+        :param PunishmentSwitch: IP 惩罚开关，可选on|off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PunishmentSwitch: str
+        :param PunishmentTime: IP 惩罚时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PunishmentTime: int
+        :param Action: 执行动作，intercept|redirect
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param RedirectUrl: 动作为 redirect 时，重定向的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectUrl: str
+        :param Configure: 七层限频具体配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configure: list of ScdnSevenLayerRules
+        """
+        self.RuleName = None
+        self.DetectionTime = None
+        self.FrequencyLimit = None
+        self.PunishmentSwitch = None
+        self.PunishmentTime = None
+        self.Action = None
+        self.RedirectUrl = None
+        self.Configure = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.DetectionTime = params.get("DetectionTime")
+        self.FrequencyLimit = params.get("FrequencyLimit")
+        self.PunishmentSwitch = params.get("PunishmentSwitch")
+        self.PunishmentTime = params.get("PunishmentTime")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+        if params.get("Configure") is not None:
+            self.Configure = []
+            for item in params.get("Configure"):
+                obj = ScdnSevenLayerRules()
+                obj._deserialize(item)
+                self.Configure.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdvancedCache(AbstractModel):
     """缓存过期配置高级版，注意：此字段已经弃用，请使用RuleCache
 
@@ -5890,10 +5954,14 @@ class EnableCachesResponse(AbstractModel):
         :param CacheOptResult: 结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CacheOptResult = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -5901,6 +5969,7 @@ class EnableCachesResponse(AbstractModel):
         if params.get("CacheOptResult") is not None:
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -9896,9 +9965,13 @@ class ScdnConfig(AbstractModel):
         :param Rules: 自定义 cc 防护规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of ScdnCCRules
+        :param AdvancedRules: 增强自定义 cc 防护规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedRules: list of AdvancedCCRules
         """
         self.Switch = None
         self.Rules = None
+        self.AdvancedRules = None
 
 
     def _deserialize(self, params):
@@ -9909,6 +9982,12 @@ class ScdnConfig(AbstractModel):
                 obj = ScdnCCRules()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        if params.get("AdvancedRules") is not None:
+            self.AdvancedRules = []
+            for item in params.get("AdvancedRules"):
+                obj = AdvancedCCRules()
+                obj._deserialize(item)
+                self.AdvancedRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10163,6 +10242,67 @@ DefenceMode映射如下：
                 obj._deserialize(item)
                 self.Conditions.append(obj)
         self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScdnSevenLayerRules(AbstractModel):
+    """Scdn的七层限频配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CaseSensitive: 区分大小写
+        :type CaseSensitive: bool
+        :param RuleType: 规则类型：
+protocol：协议，填写 HTTP/HTTPS
+method：请求方法，支持 HEAD、GET、POST、PUT、OPTIONS、TRACE、DELETE、PATCH、CONNECT
+all：域名 匹配内容固定为"*",不可编辑修改
+ip：IP 填写 CIDR 表达式
+directory：路径，以/开头，支持目录和具体路径，128字符以内
+index：首页 默认固定值：/;/index.html,不可编辑修改
+path：文件全路径，资源地址，如/acb/test.png，支持通配符，如/abc/*.jpg
+file：文件扩展名，填写具体扩展名，如 jpg;png;css
+param：请求参数，填写具体 value 值，512字符以内
+referer：Referer，填写具体 value 值，512字符以内
+cookie：Cookie，填写具体 value 值，512字符以内
+user-agent：User-Agent，填写具体 value 值，512字符以内
+head：自定义请求头，填写具体value值，512字符以内；内容为空或者不存在时，无匹配内容输入框，填写匹配参数即可
+        :type RuleType: str
+        :param LogicOperator: 逻辑操作符，取值 ：
+不包含：exclude, 
+包含：include, 
+不等于：notequal, 
+等于：equal, 
+前缀匹配：matching
+内容为空或不存在：null
+        :type LogicOperator: str
+        :param RuleValue: 规则值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleValue: list of str
+        :param RuleParam: 匹配参数，只有请求参数、Cookie、自定义请求头 有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleParam: str
+        """
+        self.CaseSensitive = None
+        self.RuleType = None
+        self.LogicOperator = None
+        self.RuleValue = None
+        self.RuleParam = None
+
+
+    def _deserialize(self, params):
+        self.CaseSensitive = params.get("CaseSensitive")
+        self.RuleType = params.get("RuleType")
+        self.LogicOperator = params.get("LogicOperator")
+        self.RuleValue = params.get("RuleValue")
+        self.RuleParam = params.get("RuleParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

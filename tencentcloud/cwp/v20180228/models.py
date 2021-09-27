@@ -104,6 +104,640 @@ class AccountStatistics(AbstractModel):
         
 
 
+class AssetAppBaseInfo(AbstractModel):
+    """资源管理进程基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param Name: 应用名称
+        :type Name: str
+        :param Type: 应用类型	
+1: 运维
+2 : 数据库
+3 : 安全
+4 : 可疑应用
+5 : 系统架构
+6 : 系统应用
+7 : WEB服务
+99: 其他
+        :type Type: int
+        :param BinPath: 二进制路径
+        :type BinPath: str
+        :param ConfigPath: 配置文件路径
+        :type ConfigPath: str
+        :param ProcessCount: 关联进程数
+        :type ProcessCount: int
+        :param Desc: 应用描述
+        :type Desc: str
+        :param Version: 版本号
+        :type Version: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Name = None
+        self.Type = None
+        self.BinPath = None
+        self.ConfigPath = None
+        self.ProcessCount = None
+        self.Desc = None
+        self.Version = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.BinPath = params.get("BinPath")
+        self.ConfigPath = params.get("ConfigPath")
+        self.ProcessCount = params.get("ProcessCount")
+        self.Desc = params.get("Desc")
+        self.Version = params.get("Version")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetAppProcessInfo(AbstractModel):
+    """软件应用关联进程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Status: 进程状态
+        :type Status: str
+        :param Version: 进程版本
+        :type Version: str
+        :param Path: 路径
+        :type Path: str
+        :param User: 用户
+        :type User: str
+        :param StartTime: 启动时间
+        :type StartTime: str
+        """
+        self.Name = None
+        self.Status = None
+        self.Version = None
+        self.Path = None
+        self.User = None
+        self.StartTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.Version = params.get("Version")
+        self.Path = params.get("Path")
+        self.User = params.get("User")
+        self.StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetCoreModuleBaseInfo(AbstractModel):
+    """资产管理内核模块列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Desc: 描述
+        :type Desc: str
+        :param Path: 路径
+        :type Path: str
+        :param Version: 版本
+        :type Version: str
+        :param MachineIp: 服务器IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Size: 模块大小
+        :type Size: int
+        :param ProcessCount: 依赖进程数
+        :type ProcessCount: int
+        :param ModuleCount: 依赖模块数
+        :type ModuleCount: int
+        :param Id: 模块ID
+        :type Id: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机uuid
+        :type Uuid: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Desc = None
+        self.Path = None
+        self.Version = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Size = None
+        self.ProcessCount = None
+        self.ModuleCount = None
+        self.Id = None
+        self.Quuid = None
+        self.Uuid = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        self.Path = params.get("Path")
+        self.Version = params.get("Version")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Size = params.get("Size")
+        self.ProcessCount = params.get("ProcessCount")
+        self.ModuleCount = params.get("ModuleCount")
+        self.Id = params.get("Id")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetCoreModuleDetail(AbstractModel):
+    """资产管理内核模块详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Desc: 描述
+        :type Desc: str
+        :param Path: 路径
+        :type Path: str
+        :param Version: 版本
+        :type Version: str
+        :param Size: 大小
+        :type Size: int
+        :param Processes: 依赖进程
+        :type Processes: str
+        :param Modules: 被依赖模块
+        :type Modules: str
+        :param Params: 参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of AssetCoreModuleParam
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Desc = None
+        self.Path = None
+        self.Version = None
+        self.Size = None
+        self.Processes = None
+        self.Modules = None
+        self.Params = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        self.Path = params.get("Path")
+        self.Version = params.get("Version")
+        self.Size = params.get("Size")
+        self.Processes = params.get("Processes")
+        self.Modules = params.get("Modules")
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = AssetCoreModuleParam()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetCoreModuleParam(AbstractModel):
+    """资产管理内核模块参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Data: 数据
+        :type Data: str
+        """
+        self.Name = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetDatabaseBaseInfo(AbstractModel):
+    """资源管理数据库列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param Name: 数据库名
+        :type Name: str
+        :param Version: 版本
+        :type Version: str
+        :param Port: 监听端口
+        :type Port: str
+        :param Proto: 协议
+        :type Proto: str
+        :param User: 运行用户
+        :type User: str
+        :param Ip: 绑定IP
+        :type Ip: str
+        :param ConfigPath: 配置文件路径
+        :type ConfigPath: str
+        :param LogPath: 日志文件路径
+        :type LogPath: str
+        :param DataPath: 数据路径
+        :type DataPath: str
+        :param Permission: 运行权限
+        :type Permission: str
+        :param ErrorLogPath: 错误日志路径
+        :type ErrorLogPath: str
+        :param PlugInPath: 插件路径
+        :type PlugInPath: str
+        :param BinPath: 二进制路径
+        :type BinPath: str
+        :param Param: 启动参数
+        :type Param: str
+        :param Id: 数据库ID
+        :type Id: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Name = None
+        self.Version = None
+        self.Port = None
+        self.Proto = None
+        self.User = None
+        self.Ip = None
+        self.ConfigPath = None
+        self.LogPath = None
+        self.DataPath = None
+        self.Permission = None
+        self.ErrorLogPath = None
+        self.PlugInPath = None
+        self.BinPath = None
+        self.Param = None
+        self.Id = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.Port = params.get("Port")
+        self.Proto = params.get("Proto")
+        self.User = params.get("User")
+        self.Ip = params.get("Ip")
+        self.ConfigPath = params.get("ConfigPath")
+        self.LogPath = params.get("LogPath")
+        self.DataPath = params.get("DataPath")
+        self.Permission = params.get("Permission")
+        self.ErrorLogPath = params.get("ErrorLogPath")
+        self.PlugInPath = params.get("PlugInPath")
+        self.BinPath = params.get("BinPath")
+        self.Param = params.get("Param")
+        self.Id = params.get("Id")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetDatabaseDetail(AbstractModel):
+    """资源管理数据库列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param Name: 数据库名
+        :type Name: str
+        :param Version: 版本
+        :type Version: str
+        :param Port: 监听端口
+        :type Port: str
+        :param Proto: 协议
+        :type Proto: str
+        :param User: 运行用户
+        :type User: str
+        :param Ip: 绑定IP
+        :type Ip: str
+        :param ConfigPath: 配置文件路径
+        :type ConfigPath: str
+        :param LogPath: 日志文件路径
+        :type LogPath: str
+        :param DataPath: 数据路径
+        :type DataPath: str
+        :param Permission: 运行权限
+        :type Permission: str
+        :param ErrorLogPath: 错误日志路径
+        :type ErrorLogPath: str
+        :param PlugInPath: 插件路径
+        :type PlugInPath: str
+        :param BinPath: 二进制路径
+        :type BinPath: str
+        :param Param: 启动参数
+        :type Param: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.Name = None
+        self.Version = None
+        self.Port = None
+        self.Proto = None
+        self.User = None
+        self.Ip = None
+        self.ConfigPath = None
+        self.LogPath = None
+        self.DataPath = None
+        self.Permission = None
+        self.ErrorLogPath = None
+        self.PlugInPath = None
+        self.BinPath = None
+        self.Param = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.Port = params.get("Port")
+        self.Proto = params.get("Proto")
+        self.User = params.get("User")
+        self.Ip = params.get("Ip")
+        self.ConfigPath = params.get("ConfigPath")
+        self.LogPath = params.get("LogPath")
+        self.DataPath = params.get("DataPath")
+        self.Permission = params.get("Permission")
+        self.ErrorLogPath = params.get("ErrorLogPath")
+        self.PlugInPath = params.get("PlugInPath")
+        self.BinPath = params.get("BinPath")
+        self.Param = params.get("Param")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetDiskPartitionInfo(AbstractModel):
+    """资产管理磁盘分区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 分区名
+        :type Name: str
+        :param Size: 分区大小：单位G
+        :type Size: int
+        :param Percent: 分区使用率
+        :type Percent: float
+        :param Type: 文件系统类型
+        :type Type: str
+        :param Path: 挂载目录
+        :type Path: str
+        :param Used: 已使用空间：单位G
+        :type Used: int
+        """
+        self.Name = None
+        self.Size = None
+        self.Percent = None
+        self.Type = None
+        self.Path = None
+        self.Used = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Size = params.get("Size")
+        self.Percent = params.get("Percent")
+        self.Type = params.get("Type")
+        self.Path = params.get("Path")
+        self.Used = params.get("Used")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetEnvBaseInfo(AbstractModel):
+    """资产管理环境变量列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Type: 类型：
+0:用户变量
+1:系统变量
+        :type Type: int
+        :param User: 启动用户
+        :type User: str
+        :param Value: 环境变量值
+        :type Value: str
+        :param MachineIp: 服务器IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机uuid
+        :type Uuid: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Type = None
+        self.User = None
+        self.Value = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Quuid = None
+        self.Uuid = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.User = params.get("User")
+        self.Value = params.get("Value")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetFilters(AbstractModel):
     """容器安全
     描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
@@ -139,6 +773,229 @@ class AssetFilters(AbstractModel):
         
 
 
+class AssetInitServiceBaseInfo(AbstractModel):
+    """资产管理启动服务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Type: 类型：
+1:编码器
+2:IE插件
+3:网络提供者
+4:镜像劫持
+5:LSA提供者
+6:KnownDLLs
+7:启动执行
+8:WMI
+9:计划任务
+10:Winsock提供者
+11:打印监控器
+12:资源管理器
+13:驱动服务
+14:登录
+        :type Type: int
+        :param Status: 默认启用状态：0未启用，1启用
+        :type Status: int
+        :param User: 启动用户
+        :type User: str
+        :param Path: 路径
+        :type Path: str
+        :param MachineIp: 服务器IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机uuid
+        :type Uuid: str
+        :param UpdateTime: 数据更新时间
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Status = None
+        self.User = None
+        self.Path = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Quuid = None
+        self.Uuid = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.User = params.get("User")
+        self.Path = params.get("Path")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetJarBaseInfo(AbstractModel):
+    """资产管理jar包列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Type: 类型：1应用程序，2系统类库，3Web服务自带库，8:其他，
+        :type Type: int
+        :param Status: 是否可执行：0未知，1是，2否
+        :type Status: int
+        :param Version: 版本
+        :type Version: str
+        :param Path: 路径
+        :type Path: str
+        :param MachineIp: 服务器IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Id: Jar包ID
+        :type Id: str
+        :param Md5: Jar包Md5
+        :type Md5: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机uuid
+        :type Uuid: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Status = None
+        self.Version = None
+        self.Path = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Id = None
+        self.Md5 = None
+        self.Quuid = None
+        self.Uuid = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.Version = params.get("Version")
+        self.Path = params.get("Path")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Id = params.get("Id")
+        self.Md5 = params.get("Md5")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetJarDetail(AbstractModel):
+    """资产管理jar包详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Type: 类型：1应用程序，2系统类库，3Web服务自带库，8:其他，
+        :type Type: int
+        :param Status: 是否可执行：0未知，1是，2否
+        :type Status: int
+        :param Version: 版本
+        :type Version: str
+        :param Path: 路径
+        :type Path: str
+        :param MachineIp: 服务器IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Process: 引用进程列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Process: list of AssetAppProcessInfo
+        :param Md5: Jar包Md5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Status = None
+        self.Version = None
+        self.Path = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Process = None
+        self.Md5 = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.Version = params.get("Version")
+        self.Path = params.get("Path")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        if params.get("Process") is not None:
+            self.Process = []
+            for item in params.get("Process"):
+                obj = AssetAppProcessInfo()
+                obj._deserialize(item)
+                self.Process.append(obj)
+        self.Md5 = params.get("Md5")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetKeyVal(AbstractModel):
     """key-val类型的通用数据结构
 
@@ -163,6 +1020,1470 @@ class AssetKeyVal(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetMachineBaseInfo(AbstractModel):
+    """资产指纹中服务器列表的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器uuid
+        :type Uuid: str
+        :param MachineIp: 服务器内网IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统名称
+        :type OsInfo: str
+        :param Cpu: CPU信息
+        :type Cpu: str
+        :param MemSize: 内存容量：单位G
+        :type MemSize: int
+        :param MemLoad: 内存使用率百分比
+        :type MemLoad: str
+        :param DiskSize: 硬盘容量：单位G
+        :type DiskSize: int
+        :param DiskLoad: 硬盘使用率百分比
+        :type DiskLoad: str
+        :param PartitionCount: 分区数
+        :type PartitionCount: int
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param ProjectId: 业务组ID
+        :type ProjectId: int
+        :param CpuSize: Cpu数量
+        :type CpuSize: int
+        :param CpuLoad: Cpu使用率百分比
+        :type CpuLoad: str
+        :param Tag: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Cpu = None
+        self.MemSize = None
+        self.MemLoad = None
+        self.DiskSize = None
+        self.DiskLoad = None
+        self.PartitionCount = None
+        self.MachineWanIp = None
+        self.ProjectId = None
+        self.CpuSize = None
+        self.CpuLoad = None
+        self.Tag = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Cpu = params.get("Cpu")
+        self.MemSize = params.get("MemSize")
+        self.MemLoad = params.get("MemLoad")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskLoad = params.get("DiskLoad")
+        self.PartitionCount = params.get("PartitionCount")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.ProjectId = params.get("ProjectId")
+        self.CpuSize = params.get("CpuSize")
+        self.CpuLoad = params.get("CpuLoad")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetMachineDetail(AbstractModel):
+    """资产指纹中服务器列表的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器uuid
+        :type Uuid: str
+        :param MachineIp: 服务器内网IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统名称
+        :type OsInfo: str
+        :param Cpu: CPU信息
+        :type Cpu: str
+        :param MemSize: 内存容量：单位G
+        :type MemSize: int
+        :param MemLoad: 内存使用率百分比
+        :type MemLoad: str
+        :param DiskSize: 硬盘容量：单位G
+        :type DiskSize: int
+        :param DiskLoad: 硬盘使用率百分比
+        :type DiskLoad: str
+        :param PartitionCount: 分区数
+        :type PartitionCount: int
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param CpuSize: Cpu数量
+        :type CpuSize: int
+        :param CpuLoad: Cpu使用率百分比
+        :type CpuLoad: str
+        :param ProtectLevel: 防护级别：0基础版，1专业版
+        :type ProtectLevel: int
+        :param RiskStatus: 风险状态：UNKNOW-未知，RISK-风险，SAFT-安全
+        :type RiskStatus: str
+        :param ProtectDays: 已防护天数
+        :type ProtectDays: int
+        :param BuyTime: 专业版开通时间
+        :type BuyTime: str
+        :param EndTime: 专业版到期时间
+        :type EndTime: str
+        :param CoreVersion: 内核版本
+        :type CoreVersion: str
+        :param OsType: linux/windows
+        :type OsType: str
+        :param AgentVersion: agent版本
+        :type AgentVersion: str
+        :param InstallTime: 安装时间
+        :type InstallTime: str
+        :param BootTime: 系统启动时间
+        :type BootTime: str
+        :param LastLiveTime: 最后上线时间
+        :type LastLiveTime: str
+        :param Producer: 生产商
+        :type Producer: str
+        :param SerialNumber: 序列号
+        :type SerialNumber: str
+        :param NetCards: 网卡
+        :type NetCards: list of AssetNetworkCardInfo
+        :param Disks: 分区
+        :type Disks: list of AssetDiskPartitionInfo
+        :param Status: 0在线，1已离线
+        :type Status: int
+        :param ProjectId: 业务组ID
+        :type ProjectId: int
+        :param DeviceVersion: 设备型号
+        :type DeviceVersion: str
+        :param OfflineTime: 离线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTime: str
+        :param InstanceId: 主机ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Cpu = None
+        self.MemSize = None
+        self.MemLoad = None
+        self.DiskSize = None
+        self.DiskLoad = None
+        self.PartitionCount = None
+        self.MachineWanIp = None
+        self.CpuSize = None
+        self.CpuLoad = None
+        self.ProtectLevel = None
+        self.RiskStatus = None
+        self.ProtectDays = None
+        self.BuyTime = None
+        self.EndTime = None
+        self.CoreVersion = None
+        self.OsType = None
+        self.AgentVersion = None
+        self.InstallTime = None
+        self.BootTime = None
+        self.LastLiveTime = None
+        self.Producer = None
+        self.SerialNumber = None
+        self.NetCards = None
+        self.Disks = None
+        self.Status = None
+        self.ProjectId = None
+        self.DeviceVersion = None
+        self.OfflineTime = None
+        self.InstanceId = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Cpu = params.get("Cpu")
+        self.MemSize = params.get("MemSize")
+        self.MemLoad = params.get("MemLoad")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskLoad = params.get("DiskLoad")
+        self.PartitionCount = params.get("PartitionCount")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.CpuSize = params.get("CpuSize")
+        self.CpuLoad = params.get("CpuLoad")
+        self.ProtectLevel = params.get("ProtectLevel")
+        self.RiskStatus = params.get("RiskStatus")
+        self.ProtectDays = params.get("ProtectDays")
+        self.BuyTime = params.get("BuyTime")
+        self.EndTime = params.get("EndTime")
+        self.CoreVersion = params.get("CoreVersion")
+        self.OsType = params.get("OsType")
+        self.AgentVersion = params.get("AgentVersion")
+        self.InstallTime = params.get("InstallTime")
+        self.BootTime = params.get("BootTime")
+        self.LastLiveTime = params.get("LastLiveTime")
+        self.Producer = params.get("Producer")
+        self.SerialNumber = params.get("SerialNumber")
+        if params.get("NetCards") is not None:
+            self.NetCards = []
+            for item in params.get("NetCards"):
+                obj = AssetNetworkCardInfo()
+                obj._deserialize(item)
+                self.NetCards.append(obj)
+        if params.get("Disks") is not None:
+            self.Disks = []
+            for item in params.get("Disks"):
+                obj = AssetDiskPartitionInfo()
+                obj._deserialize(item)
+                self.Disks.append(obj)
+        self.Status = params.get("Status")
+        self.ProjectId = params.get("ProjectId")
+        self.DeviceVersion = params.get("DeviceVersion")
+        self.OfflineTime = params.get("OfflineTime")
+        self.InstanceId = params.get("InstanceId")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetNetworkCardInfo(AbstractModel):
+    """资产管理网卡信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 网卡名称
+        :type Name: str
+        :param Ip: Ipv4对应IP
+        :type Ip: str
+        :param GateWay: 网关
+        :type GateWay: str
+        :param Mac: MAC地址
+        :type Mac: str
+        :param Ipv6: Ipv6对应IP
+        :type Ipv6: str
+        :param DnsServer: DNS服务器
+        :type DnsServer: str
+        """
+        self.Name = None
+        self.Ip = None
+        self.GateWay = None
+        self.Mac = None
+        self.Ipv6 = None
+        self.DnsServer = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Ip = params.get("Ip")
+        self.GateWay = params.get("GateWay")
+        self.Mac = params.get("Mac")
+        self.Ipv6 = params.get("Ipv6")
+        self.DnsServer = params.get("DnsServer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetPlanTask(AbstractModel):
+    """资产管理计划任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 默认启用状态：1启用，2未启用
+        :type Status: int
+        :param Cycle: 执行周期
+        :type Cycle: str
+        :param Command: 执行命令或脚本
+        :type Command: str
+        :param User: 启动用户
+        :type User: str
+        :param ConfigPath: 配置文件路径
+        :type ConfigPath: str
+        :param MachineIp: 服务器IP
+        :type MachineIp: str
+        :param MachineName: 服务器名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机uuid
+        :type Uuid: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Status = None
+        self.Cycle = None
+        self.Command = None
+        self.User = None
+        self.ConfigPath = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Quuid = None
+        self.Uuid = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Cycle = params.get("Cycle")
+        self.Command = params.get("Command")
+        self.User = params.get("User")
+        self.ConfigPath = params.get("ConfigPath")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetPortBaseInfo(AbstractModel):
+    """资源管理账号基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param ProcessName: 进程名称
+        :type ProcessName: str
+        :param ProcessVersion: 进程版本
+        :type ProcessVersion: str
+        :param ProcessPath: 进程路径
+        :type ProcessPath: str
+        :param Pid: 进程ID
+        :type Pid: str
+        :param User: 运行用户
+        :type User: str
+        :param StartTime: 启动时间
+        :type StartTime: str
+        :param Param: 启动参数
+        :type Param: str
+        :param Teletype: 进程TTY
+        :type Teletype: str
+        :param Port: 端口
+        :type Port: str
+        :param GroupName: 所属用户组
+        :type GroupName: str
+        :param Md5: 进程MD5
+        :type Md5: str
+        :param Ppid: 父进程ID
+        :type Ppid: str
+        :param ParentProcessName: 父进程名称
+        :type ParentProcessName: str
+        :param Proto: 端口协议
+        :type Proto: str
+        :param BindIp: 绑定IP
+        :type BindIp: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.ProcessName = None
+        self.ProcessVersion = None
+        self.ProcessPath = None
+        self.Pid = None
+        self.User = None
+        self.StartTime = None
+        self.Param = None
+        self.Teletype = None
+        self.Port = None
+        self.GroupName = None
+        self.Md5 = None
+        self.Ppid = None
+        self.ParentProcessName = None
+        self.Proto = None
+        self.BindIp = None
+        self.MachineName = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.ProcessName = params.get("ProcessName")
+        self.ProcessVersion = params.get("ProcessVersion")
+        self.ProcessPath = params.get("ProcessPath")
+        self.Pid = params.get("Pid")
+        self.User = params.get("User")
+        self.StartTime = params.get("StartTime")
+        self.Param = params.get("Param")
+        self.Teletype = params.get("Teletype")
+        self.Port = params.get("Port")
+        self.GroupName = params.get("GroupName")
+        self.Md5 = params.get("Md5")
+        self.Ppid = params.get("Ppid")
+        self.ParentProcessName = params.get("ParentProcessName")
+        self.Proto = params.get("Proto")
+        self.BindIp = params.get("BindIp")
+        self.MachineName = params.get("MachineName")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetProcessBaseInfo(AbstractModel):
+    """资源管理进程基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param Name: 进程名称
+        :type Name: str
+        :param Desc: 进程说明
+        :type Desc: str
+        :param Path: 进程路径
+        :type Path: str
+        :param Pid: 进程ID
+        :type Pid: str
+        :param User: 运行用户
+        :type User: str
+        :param StartTime: 启动时间
+        :type StartTime: str
+        :param Param: 启动参数
+        :type Param: str
+        :param Tty: 进程TTY
+        :type Tty: str
+        :param Version: 进程版本
+        :type Version: str
+        :param GroupName: 进程用户组
+        :type GroupName: str
+        :param Md5: 进程MD5
+        :type Md5: str
+        :param Ppid: 父进程ID
+        :type Ppid: str
+        :param ParentProcessName: 父进程名称
+        :type ParentProcessName: str
+        :param Status: 进程状态
+        :type Status: str
+        :param HasSign: 数字签名:0无，1有， 999 空，仅windows
+        :type HasSign: int
+        :param InstallByPackage: 是否通过安装包安装：:0否，1是， 999 空，仅linux
+        :type InstallByPackage: int
+        :param PackageName: 软件包名
+        :type PackageName: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Name = None
+        self.Desc = None
+        self.Path = None
+        self.Pid = None
+        self.User = None
+        self.StartTime = None
+        self.Param = None
+        self.Tty = None
+        self.Version = None
+        self.GroupName = None
+        self.Md5 = None
+        self.Ppid = None
+        self.ParentProcessName = None
+        self.Status = None
+        self.HasSign = None
+        self.InstallByPackage = None
+        self.PackageName = None
+        self.MachineName = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        self.Path = params.get("Path")
+        self.Pid = params.get("Pid")
+        self.User = params.get("User")
+        self.StartTime = params.get("StartTime")
+        self.Param = params.get("Param")
+        self.Tty = params.get("Tty")
+        self.Version = params.get("Version")
+        self.GroupName = params.get("GroupName")
+        self.Md5 = params.get("Md5")
+        self.Ppid = params.get("Ppid")
+        self.ParentProcessName = params.get("ParentProcessName")
+        self.Status = params.get("Status")
+        self.HasSign = params.get("HasSign")
+        self.InstallByPackage = params.get("InstallByPackage")
+        self.PackageName = params.get("PackageName")
+        self.MachineName = params.get("MachineName")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetSystemPackageInfo(AbstractModel):
+    """资源管理系统安装包列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 数据库名
+        :type Name: str
+        :param Desc: 描述
+        :type Desc: str
+        :param Version: 版本
+        :type Version: str
+        :param InstallTime: 安装时间
+        :type InstallTime: str
+        :param Type: 类型
+        :type Type: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param MachineIp: 主机IP
+        :type MachineIp: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Desc = None
+        self.Version = None
+        self.InstallTime = None
+        self.Type = None
+        self.MachineName = None
+        self.MachineIp = None
+        self.OsInfo = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        self.Version = params.get("Version")
+        self.InstallTime = params.get("InstallTime")
+        self.Type = params.get("Type")
+        self.MachineName = params.get("MachineName")
+        self.MachineIp = params.get("MachineIp")
+        self.OsInfo = params.get("OsInfo")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetUserBaseInfo(AbstractModel):
+    """资源管理账号基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uid: 账号UID
+        :type Uid: str
+        :param Gid: 账号GID
+        :type Gid: str
+        :param Status: 账号状态：0-禁用；1-启用
+        :type Status: int
+        :param IsRoot: 是否有root权限：0-否；1是，999为空: 仅linux
+        :type IsRoot: int
+        :param LoginType: 登录方式：0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码，999为空，仅linux
+        :type LoginType: int
+        :param LastLoginTime: 上次登录时间
+        :type LastLoginTime: str
+        :param Name: 账号名称
+        :type Name: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param UserType: 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+        :type UserType: int
+        :param IsDomain: 是否域账号：0否， 1是，2否, 999为空  仅windows
+        :type IsDomain: int
+        :param IsSudo: 是否有sudo权限，1是，0否, 999为空, 仅linux
+        :type IsSudo: int
+        :param IsSshLogin: 是否允许ssh登录，1是，0否, 999为空, 仅linux
+        :type IsSshLogin: int
+        :param HomePath: Home目录
+        :type HomePath: str
+        :param Shell: Shell路径  仅linux
+        :type Shell: str
+        :param ShellLoginStatus: 是否shell登录性，0不是；1是 仅linux
+        :type ShellLoginStatus: int
+        :param PasswordChangeTime: 密码修改时间
+        :type PasswordChangeTime: str
+        :param PasswordDueTime: 密码过期时间  仅linux
+        :type PasswordDueTime: str
+        :param PasswordLockDays: 密码锁定时间：单位天, -1为永不锁定 999为空，仅linux
+        :type PasswordLockDays: int
+        :param PasswordStatus: 密码状态：1正常 2即将过期 3已过期 4已锁定 999为空 仅linux
+        :type PasswordStatus: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Uuid = None
+        self.Quuid = None
+        self.Uid = None
+        self.Gid = None
+        self.Status = None
+        self.IsRoot = None
+        self.LoginType = None
+        self.LastLoginTime = None
+        self.Name = None
+        self.ProjectId = None
+        self.UserType = None
+        self.IsDomain = None
+        self.IsSudo = None
+        self.IsSshLogin = None
+        self.HomePath = None
+        self.Shell = None
+        self.ShellLoginStatus = None
+        self.PasswordChangeTime = None
+        self.PasswordDueTime = None
+        self.PasswordLockDays = None
+        self.PasswordStatus = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.Uid = params.get("Uid")
+        self.Gid = params.get("Gid")
+        self.Status = params.get("Status")
+        self.IsRoot = params.get("IsRoot")
+        self.LoginType = params.get("LoginType")
+        self.LastLoginTime = params.get("LastLoginTime")
+        self.Name = params.get("Name")
+        self.ProjectId = params.get("ProjectId")
+        self.UserType = params.get("UserType")
+        self.IsDomain = params.get("IsDomain")
+        self.IsSudo = params.get("IsSudo")
+        self.IsSshLogin = params.get("IsSshLogin")
+        self.HomePath = params.get("HomePath")
+        self.Shell = params.get("Shell")
+        self.ShellLoginStatus = params.get("ShellLoginStatus")
+        self.PasswordChangeTime = params.get("PasswordChangeTime")
+        self.PasswordDueTime = params.get("PasswordDueTime")
+        self.PasswordLockDays = params.get("PasswordLockDays")
+        self.PasswordStatus = params.get("PasswordStatus")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetUserDetail(AbstractModel):
+    """资源管理账号基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uid: 账号UID
+        :type Uid: str
+        :param Gid: 账号GID
+        :type Gid: str
+        :param Status: 账号状态：0-禁用；1-启用
+        :type Status: int
+        :param IsRoot: 是否有root权限：0-否；1是，999为空: 仅linux
+        :type IsRoot: int
+        :param LastLoginTime: 上次登录时间
+        :type LastLoginTime: str
+        :param Name: 账号名称
+        :type Name: str
+        :param UserType: 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+        :type UserType: int
+        :param IsDomain: 是否域账号：0否， 1是, 999为空  仅windows
+        :type IsDomain: int
+        :param IsSshLogin: 是否允许ssh登录，1是，0否, 999为空, 仅linux
+        :type IsSshLogin: int
+        :param HomePath: Home目录
+        :type HomePath: str
+        :param Shell: Shell路径  仅linux
+        :type Shell: str
+        :param ShellLoginStatus: 是否shell登录性，0不是；1是 仅linux
+        :type ShellLoginStatus: int
+        :param PasswordChangeTime: 密码修改时间
+        :type PasswordChangeTime: str
+        :param PasswordDueTime: 密码过期时间  仅linux
+        :type PasswordDueTime: str
+        :param PasswordLockDays: 密码锁定时间：单位天, -1为永不锁定 999为空，仅linux
+        :type PasswordLockDays: int
+        :param Remark: 备注
+        :type Remark: str
+        :param GroupName: 用户组名
+        :type GroupName: str
+        :param DisableTime: 账号到期时间
+        :type DisableTime: str
+        :param LastLoginTerminal: 最近登录终端
+        :type LastLoginTerminal: str
+        :param LastLoginLoc: 最近登录位置
+        :type LastLoginLoc: str
+        :param LastLoginIp: 最近登录IP
+        :type LastLoginIp: str
+        :param PasswordWarnDays: 密码过期提醒：单位天
+        :type PasswordWarnDays: int
+        :param PasswordChangeType: 密码修改设置：0-不可修改，1-可修改
+        :type PasswordChangeType: int
+        :param Keys: 用户公钥列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of AssetUserKeyInfo
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineName = None
+        self.Uuid = None
+        self.Quuid = None
+        self.Uid = None
+        self.Gid = None
+        self.Status = None
+        self.IsRoot = None
+        self.LastLoginTime = None
+        self.Name = None
+        self.UserType = None
+        self.IsDomain = None
+        self.IsSshLogin = None
+        self.HomePath = None
+        self.Shell = None
+        self.ShellLoginStatus = None
+        self.PasswordChangeTime = None
+        self.PasswordDueTime = None
+        self.PasswordLockDays = None
+        self.Remark = None
+        self.GroupName = None
+        self.DisableTime = None
+        self.LastLoginTerminal = None
+        self.LastLoginLoc = None
+        self.LastLoginIp = None
+        self.PasswordWarnDays = None
+        self.PasswordChangeType = None
+        self.Keys = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.Uid = params.get("Uid")
+        self.Gid = params.get("Gid")
+        self.Status = params.get("Status")
+        self.IsRoot = params.get("IsRoot")
+        self.LastLoginTime = params.get("LastLoginTime")
+        self.Name = params.get("Name")
+        self.UserType = params.get("UserType")
+        self.IsDomain = params.get("IsDomain")
+        self.IsSshLogin = params.get("IsSshLogin")
+        self.HomePath = params.get("HomePath")
+        self.Shell = params.get("Shell")
+        self.ShellLoginStatus = params.get("ShellLoginStatus")
+        self.PasswordChangeTime = params.get("PasswordChangeTime")
+        self.PasswordDueTime = params.get("PasswordDueTime")
+        self.PasswordLockDays = params.get("PasswordLockDays")
+        self.Remark = params.get("Remark")
+        self.GroupName = params.get("GroupName")
+        self.DisableTime = params.get("DisableTime")
+        self.LastLoginTerminal = params.get("LastLoginTerminal")
+        self.LastLoginLoc = params.get("LastLoginLoc")
+        self.LastLoginIp = params.get("LastLoginIp")
+        self.PasswordWarnDays = params.get("PasswordWarnDays")
+        self.PasswordChangeType = params.get("PasswordChangeType")
+        if params.get("Keys") is not None:
+            self.Keys = []
+            for item in params.get("Keys"):
+                obj = AssetUserKeyInfo()
+                obj._deserialize(item)
+                self.Keys.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetUserKeyInfo(AbstractModel):
+    """资产管理账号key详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Value: 公钥值
+        :type Value: str
+        :param Comment: 公钥备注
+        :type Comment: str
+        :param EncryptType: 加密方式
+        :type EncryptType: str
+        """
+        self.Value = None
+        self.Comment = None
+        self.EncryptType = None
+
+
+    def _deserialize(self, params):
+        self.Value = params.get("Value")
+        self.Comment = params.get("Comment")
+        self.EncryptType = params.get("EncryptType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetWebAppBaseInfo(AbstractModel):
+    """资源管理Web应用列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param Name: 应用名
+        :type Name: str
+        :param Version: 版本
+        :type Version: str
+        :param RootPath: 根路径
+        :type RootPath: str
+        :param ServiceType: 服务类型
+        :type ServiceType: str
+        :param Domain: 站点域名
+        :type Domain: str
+        :param VirtualPath: 虚拟路径
+        :type VirtualPath: str
+        :param PluginCount: 插件数
+        :type PluginCount: int
+        :param Id: 应用ID
+        :type Id: str
+        :param Desc: 应用描述
+        :type Desc: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Name = None
+        self.Version = None
+        self.RootPath = None
+        self.ServiceType = None
+        self.Domain = None
+        self.VirtualPath = None
+        self.PluginCount = None
+        self.Id = None
+        self.Desc = None
+        self.MachineName = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.RootPath = params.get("RootPath")
+        self.ServiceType = params.get("ServiceType")
+        self.Domain = params.get("Domain")
+        self.VirtualPath = params.get("VirtualPath")
+        self.PluginCount = params.get("PluginCount")
+        self.Id = params.get("Id")
+        self.Desc = params.get("Desc")
+        self.MachineName = params.get("MachineName")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetWebAppPluginInfo(AbstractModel):
+    """资产管理Web应用插件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Desc: 描述
+        :type Desc: str
+        :param Version: 版本
+        :type Version: str
+        :param Link: 链接
+        :type Link: str
+        """
+        self.Name = None
+        self.Desc = None
+        self.Version = None
+        self.Link = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        self.Version = params.get("Version")
+        self.Link = params.get("Link")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetWebFrameBaseInfo(AbstractModel):
+    """资源管理Web应用列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param Name: 数据库名
+        :type Name: str
+        :param Version: 版本
+        :type Version: str
+        :param Lang: 语言
+        :type Lang: str
+        :param ServiceType: 服务类型
+        :type ServiceType: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Name = None
+        self.Version = None
+        self.Lang = None
+        self.ServiceType = None
+        self.MachineName = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.Lang = params.get("Lang")
+        self.ServiceType = params.get("ServiceType")
+        self.MachineName = params.get("MachineName")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetWebLocationBaseInfo(AbstractModel):
+    """资产管理Web站点列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param MachineIp: 内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 外网IP
+        :type MachineWanIp: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param OsInfo: 操作系统
+        :type OsInfo: str
+        :param Name: 域名
+        :type Name: str
+        :param Port: 站点端口
+        :type Port: str
+        :param Proto: 站点协议
+        :type Proto: str
+        :param ServiceType: 服务类型
+        :type ServiceType: str
+        :param PathCount: 站点路经数
+        :type PathCount: int
+        :param User: 运行用户
+        :type User: str
+        :param MainPath: 主目录
+        :type MainPath: str
+        :param MainPathOwner: 主目录所有者
+        :type MainPathOwner: str
+        :param Permission: 拥有者权限
+        :type Permission: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+        :type Tag: list of MachineTag
+        :param Id: Web站点Id
+        :type Id: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Uuid = None
+        self.Quuid = None
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.MachineName = None
+        self.OsInfo = None
+        self.Name = None
+        self.Port = None
+        self.Proto = None
+        self.ServiceType = None
+        self.PathCount = None
+        self.User = None
+        self.MainPath = None
+        self.MainPathOwner = None
+        self.Permission = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Id = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.MachineName = params.get("MachineName")
+        self.OsInfo = params.get("OsInfo")
+        self.Name = params.get("Name")
+        self.Port = params.get("Port")
+        self.Proto = params.get("Proto")
+        self.ServiceType = params.get("ServiceType")
+        self.PathCount = params.get("PathCount")
+        self.User = params.get("User")
+        self.MainPath = params.get("MainPath")
+        self.MainPathOwner = params.get("MainPathOwner")
+        self.Permission = params.get("Permission")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Id = params.get("Id")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetWebLocationInfo(AbstractModel):
+    """资产管理Web站点列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 域名
+        :type Name: str
+        :param Port: 站点端口
+        :type Port: str
+        :param Proto: 站点协议
+        :type Proto: str
+        :param ServiceType: 服务类型
+        :type ServiceType: str
+        :param SafeStatus: 安全模块状态：0未启用，1启用，999空，仅nginx
+        :type SafeStatus: int
+        :param User: 运行用户
+        :type User: str
+        :param MainPath: 主目录
+        :type MainPath: str
+        :param Command: 启动命令
+        :type Command: str
+        :param Ip: 绑定IP
+        :type Ip: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Name = None
+        self.Port = None
+        self.Proto = None
+        self.ServiceType = None
+        self.SafeStatus = None
+        self.User = None
+        self.MainPath = None
+        self.Command = None
+        self.Ip = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Port = params.get("Port")
+        self.Proto = params.get("Proto")
+        self.ServiceType = params.get("ServiceType")
+        self.SafeStatus = params.get("SafeStatus")
+        self.User = params.get("User")
+        self.MainPath = params.get("MainPath")
+        self.Command = params.get("Command")
+        self.Ip = params.get("Ip")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetWebServiceBaseInfo(AbstractModel):
+    """资源管理Web服务列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineIp: 主机内网IP
+        :type MachineIp: str
+        :param MachineWanIp: 主机外网IP
+        :type MachineWanIp: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
+        :param ProjectId: 主机业务组ID
+        :type ProjectId: int
+        :param Tag: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of MachineTag
+        :param Name: 数据库名
+        :type Name: str
+        :param Version: 版本
+        :type Version: str
+        :param BinPath: 二进制路径
+        :type BinPath: str
+        :param User: 启动用户
+        :type User: str
+        :param InstallPath: 安装路径
+        :type InstallPath: str
+        :param ConfigPath: 配置路径
+        :type ConfigPath: str
+        :param ProcessCount: 关联进程数
+        :type ProcessCount: int
+        :param Id: Web服务ID
+        :type Id: str
+        :param MachineName: 主机名称
+        :type MachineName: str
+        :param Desc: 描述
+        :type Desc: str
+        :param UpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.MachineIp = None
+        self.MachineWanIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.OsInfo = None
+        self.ProjectId = None
+        self.Tag = None
+        self.Name = None
+        self.Version = None
+        self.BinPath = None
+        self.User = None
+        self.InstallPath = None
+        self.ConfigPath = None
+        self.ProcessCount = None
+        self.Id = None
+        self.MachineName = None
+        self.Desc = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.MachineIp = params.get("MachineIp")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.OsInfo = params.get("OsInfo")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.BinPath = params.get("BinPath")
+        self.User = params.get("User")
+        self.InstallPath = params.get("InstallPath")
+        self.ConfigPath = params.get("ConfigPath")
+        self.ProcessCount = params.get("ProcessCount")
+        self.Id = params.get("Id")
+        self.MachineName = params.get("MachineName")
+        self.Desc = params.get("Desc")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2602,6 +4923,543 @@ class DescribeAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssetAppListRequest(AbstractModel):
+    """DescribeAssetAppList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>AppName- string - 是否必填：否 - 应用名搜索</li>
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Type - int - 是否必填：否 - 类型	: 仅linux
+0: 全部
+1: 运维
+2 : 数据库
+3 : 安全
+4 : 可疑应用
+5 : 系统架构
+6 : 系统应用
+7 : WEB服务
+99:其他</li>
+<li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of AssetFilters
+        :param By: 排序方式：ProcessCount
+        :type By: str
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetAppListResponse(AbstractModel):
+    """DescribeAssetAppList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Apps: 应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Apps: list of AssetAppBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Apps = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Apps") is not None:
+            self.Apps = []
+            for item in params.get("Apps"):
+                obj = AssetAppBaseInfo()
+                obj._deserialize(item)
+                self.Apps.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetAppProcessListRequest(AbstractModel):
+    """DescribeAssetAppProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Name: App名
+        :type Name: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetAppProcessListResponse(AbstractModel):
+    """DescribeAssetAppProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Process: 进程列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Process: list of AssetAppProcessInfo
+        :param Total: 分区总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Process = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self.Process = []
+            for item in params.get("Process"):
+                obj = AssetAppProcessInfo()
+                obj._deserialize(item)
+                self.Process.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetCoreModuleInfoRequest(AbstractModel):
+    """DescribeAssetCoreModuleInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Id: 内核模块ID
+        :type Id: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetCoreModuleInfoResponse(AbstractModel):
+    """DescribeAssetCoreModuleInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 内核模块详情
+        :type Module: :class:`tencentcloud.cwp.v20180228.models.AssetCoreModuleDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Module = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Module") is not None:
+            self.Module = AssetCoreModuleDetail()
+            self.Module._deserialize(params.get("Module"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetCoreModuleListRequest(AbstractModel):
+    """DescribeAssetCoreModuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name- string - 是否必填：否 - 包名</li>
+<li>User- string - 是否必填：否 - 用户</li>
+        :type Filters: list of AssetFilters
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序依据:Size,ProcessCount,ModuleCount
+        :type By: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetCoreModuleListResponse(AbstractModel):
+    """DescribeAssetCoreModuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Modules: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modules: list of AssetCoreModuleBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Modules = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Modules") is not None:
+            self.Modules = []
+            for item in params.get("Modules"):
+                obj = AssetCoreModuleBaseInfo()
+                obj._deserialize(item)
+                self.Modules.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetDatabaseInfoRequest(AbstractModel):
+    """DescribeAssetDatabaseInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Id: 数据库ID
+        :type Id: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetDatabaseInfoResponse(AbstractModel):
+    """DescribeAssetDatabaseInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: 数据库详情
+        :type Database: :class:`tencentcloud.cwp.v20180228.models.AssetDatabaseDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Database = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Database") is not None:
+            self.Database = AssetDatabaseDetail()
+            self.Database._deserialize(params.get("Database"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetDatabaseListRequest(AbstractModel):
+    """DescribeAssetDatabaseList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>User- string - 是否必填：否 - 运行用户</li>
+<li>Ip - String - 是否必填：否 - 绑定IP</li>
+<li>Port - Int - 是否必填：否 - 端口</li>
+<li>Name - Int - 是否必填：否 - 数据库名称
+0:全部
+1:MySQL
+2:Redis
+3:Oracle
+4:MongoDB
+5:MemCache
+6:PostgreSQL
+7:HBase
+8:DB2
+9:Sybase
+10:TiDB</li>
+<li>Proto - String - 是否必填：否 - 协议：1:TCP, 2:UDP, 3:未知</li>
+<li>OsType - String - 是否必填：否 - 操作系统: linux/windows</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of AssetFilters
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetDatabaseListResponse(AbstractModel):
+    """DescribeAssetDatabaseList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Databases: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Databases: list of AssetDatabaseBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Databases = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Databases") is not None:
+            self.Databases = []
+            for item in params.get("Databases"):
+                obj = AssetDatabaseBaseInfo()
+                obj._deserialize(item)
+                self.Databases.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetEnvListRequest(AbstractModel):
+    """DescribeAssetEnvList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Type: 类型：
+0
+        :type Type: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name- string - 是否必填：否 - 环境变量名</li>
+<li>Type- int - 是否必填：否 - 类型：0用户变量，1系统变量</li>
+        :type Filters: list of AssetFilters
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Type = None
+        self.Filters = None
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Type = params.get("Type")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetEnvListResponse(AbstractModel):
+    """DescribeAssetEnvList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Envs: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Envs: list of AssetEnvBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Envs = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Envs") is not None:
+            self.Envs = []
+            for item in params.get("Envs"):
+                obj = AssetEnvBaseInfo()
+                obj._deserialize(item)
+                self.Envs.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAssetInfoRequest(AbstractModel):
     """DescribeAssetInfo请求参数结构体
 
@@ -2662,6 +5520,651 @@ class DescribeAssetInfoResponse(AbstractModel):
         self.WebFrameCount = params.get("WebFrameCount")
         self.WebServiceCount = params.get("WebServiceCount")
         self.WebLocationCount = params.get("WebLocationCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetInitServiceListRequest(AbstractModel):
+    """DescribeAssetInitServiceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name- string - 是否必填：否 - 包名</li>
+<li>User- string - 是否必填：否 - 用户</li>
+<li>Status- string - 是否必填：否 - 默认启用状态：0未启用， 1启用 仅linux</li>
+<li>Type- string - 是否必填：否 - 类型：类型 仅windows：
+1:编码器
+2:IE插件
+3:网络提供者
+4:镜像劫持
+5:LSA提供者
+6:KnownDLLs
+7:启动执行
+8:WMI
+9:计划任务
+10:Winsock提供者
+11:打印监控器
+12:资源管理器
+13:驱动服务
+14:登录</li>
+        :type Filters: list of AssetFilters
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetInitServiceListResponse(AbstractModel):
+    """DescribeAssetInitServiceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Services: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Services: list of AssetInitServiceBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Services = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Services") is not None:
+            self.Services = []
+            for item in params.get("Services"):
+                obj = AssetInitServiceBaseInfo()
+                obj._deserialize(item)
+                self.Services.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetJarInfoRequest(AbstractModel):
+    """DescribeAssetJarInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Id: Jar包ID
+        :type Id: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetJarInfoResponse(AbstractModel):
+    """DescribeAssetJarInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Jar: Jar包详情
+        :type Jar: :class:`tencentcloud.cwp.v20180228.models.AssetJarDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Jar = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Jar") is not None:
+            self.Jar = AssetJarDetail()
+            self.Jar._deserialize(params.get("Jar"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetJarListRequest(AbstractModel):
+    """DescribeAssetJarList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name- string - 是否必填：否 - 包名</li>
+<li>Type- uint - 是否必填：否 - 类型	
+1: 应用程序
+2 : 系统类库
+3 : Web服务自带库
+4 : 其他依赖包</li>
+<li>Status- string - 是否必填：否 - 是否可执行：0否，1是</li>
+        :type Filters: list of AssetFilters
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetJarListResponse(AbstractModel):
+    """DescribeAssetJarList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Jars: 应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Jars: list of AssetJarBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Jars = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Jars") is not None:
+            self.Jars = []
+            for item in params.get("Jars"):
+                obj = AssetJarBaseInfo()
+                obj._deserialize(item)
+                self.Jars.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetMachineDetailRequest(AbstractModel):
+    """DescribeAssetMachineDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetMachineDetailResponse(AbstractModel):
+    """DescribeAssetMachineDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineDetail: 主机详情
+        :type MachineDetail: :class:`tencentcloud.cwp.v20180228.models.AssetMachineDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MachineDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MachineDetail") is not None:
+            self.MachineDetail = AssetMachineDetail()
+            self.MachineDetail._deserialize(params.get("MachineDetail"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetMachineListRequest(AbstractModel):
+    """DescribeAssetMachineList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>OsType - String - 是否必填：否 - windows或linux</li>
+<li>CpuLoad - Int - 是否必填：否 - 
+0: 未知  1: 低负载
+2: 中负载  3: 高负载</li>
+<li>DiskLoad - Int - 是否必填：否 - 
+0: 0%或未知  1: 0%～20%
+2: 20%～50%  3: 50%～80%
+4: 80%～100%</li>
+<li>MemLoad - Int - 是否必填：否 - 
+0: 0%或未知  1: 0%～20%
+2: 20%～50%  3: 50%～80%
+4: 80%～100%</li>
+<li>Quuid：主机Quuid</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param By: 可选排序：PartitionCount
+        :type By: str
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetMachineListResponse(AbstractModel):
+    """DescribeAssetMachineList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param Machines: 记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Machines: list of AssetMachineBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Machines = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Machines") is not None:
+            self.Machines = []
+            for item in params.get("Machines"):
+                obj = AssetMachineBaseInfo()
+                obj._deserialize(item)
+                self.Machines.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetPlanTaskListRequest(AbstractModel):
+    """DescribeAssetPlanTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>User- string - 是否必填：否 - 用户</li>
+<li>Status- int - 是否必填：否 - 默认启用状态：0未启用， 1启用 </li>
+        :type Filters: list of AssetFilters
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetPlanTaskListResponse(AbstractModel):
+    """DescribeAssetPlanTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tasks: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of AssetPlanTask
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = AssetPlanTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetPortInfoListRequest(AbstractModel):
+    """DescribeAssetPortInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Port - uint64 - 是否必填：否 - 端口</li>
+<li>Ip - String - 是否必填：否 - 绑定IP</li>
+<li>ProcessName - String - 是否必填：否 - 监听进程</li>
+<li>Pid - uint64 - 是否必填：否 - PID</li>
+<li>User - String - 是否必填：否 - 运行用户</li>
+<li>Group - String - 是否必填：否 - 所属用户组</li>
+<li>Ppid - uint64 - 是否必填：否 - PPID</li>
+<li>Proto - string - 是否必填：否 - tcp/udp或“”(空字符串筛选未知状态)</li>
+<li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+<li>RunTimeStart - String - 是否必填：否 - 运行开始时间</li>
+<li>RunTimeEnd - String - 是否必填：否 - 运行结束时间</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：StartTime
+        :type By: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetPortInfoListResponse(AbstractModel):
+    """DescribeAssetPortInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param Ports: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ports: list of AssetPortBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Ports = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Ports") is not None:
+            self.Ports = []
+            for item in params.get("Ports"):
+                obj = AssetPortBaseInfo()
+                obj._deserialize(item)
+                self.Ports.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetProcessInfoListRequest(AbstractModel):
+    """DescribeAssetProcessInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name - String - 是否必填：否 - 进程名</li>
+<li>User - String - 是否必填：否 - 进程用户</li>
+<li>Group - String - 是否必填：否 - 进程用户组</li>
+<li>Pid - uint64 - 是否必填：否 - 进程ID</li>
+<li>Ppid - uint64 - 是否必填：否 - 父进程ID</li>
+<li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+<li>Status - string - 是否必填：否 - 进程状态：
+1:R 可执行
+2:S 可中断
+3:D 不可中断
+4:T 暂停状态或跟踪状态
+5:Z 僵尸状态
+6:X 将被销毁</li>
+<li>RunTimeStart - String - 是否必填：否 - 运行开始时间</li>
+<li>RunTimeEnd - String - 是否必填：否 - 运行结束时间</li>
+<li>InstallByPackage - uint64 - 是否必填：否 - 是否包安装：0否，1是</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：StartTime
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Quuid = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Quuid = params.get("Quuid")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetProcessInfoListResponse(AbstractModel):
+    """DescribeAssetProcessInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param Process: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Process: list of AssetProcessBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Process = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Process") is not None:
+            self.Process = []
+            for item in params.get("Process"):
+                obj = AssetProcessBaseInfo()
+                obj._deserialize(item)
+                self.Process.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2747,6 +6250,840 @@ class DescribeAssetRecentMachineInfoResponse(AbstractModel):
                 obj = AssetKeyVal()
                 obj._deserialize(item)
                 self.RiskList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetSystemPackageListRequest(AbstractModel):
+    """DescribeAssetSystemPackageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Name - String - 是否必填：否 - 包 名</li>
+<li>StartTime - String - 是否必填：否 - 安装开始时间</li>
+<li>EndTime - String - 是否必填：否 - 安装开始时间</li>
+<li>Type - int - 是否必填：否 - 安装包类型：
+1:rmp
+2:dpkg
+3:java
+4:system</li>
+        :type Filters: list of Filter
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式可选：InstallTime 安装时间
+        :type By: str
+        """
+        self.Uuid = None
+        self.Quuid = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetSystemPackageListResponse(AbstractModel):
+    """DescribeAssetSystemPackageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param Packages: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Packages: list of AssetSystemPackageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Packages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Packages") is not None:
+            self.Packages = []
+            for item in params.get("Packages"):
+                obj = AssetSystemPackageInfo()
+                obj._deserialize(item)
+                self.Packages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetUserInfoRequest(AbstractModel):
+    """DescribeAssetUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Name: 账户名
+        :type Name: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetUserInfoResponse(AbstractModel):
+    """DescribeAssetUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param User: 用户详细信息
+        :type User: :class:`tencentcloud.cwp.v20180228.models.AssetUserDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.User = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("User") is not None:
+            self.User = AssetUserDetail()
+            self.User._deserialize(params.get("User"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetUserListRequest(AbstractModel):
+    """DescribeAssetUserList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name - String - 是否必填：否 - 账户名（模糊匹配）</li>
+<li>NameStrict - String - 是否必填：否 - 账户名（严格匹配）</li>
+<li>Uid - uint64 - 是否必填：否 - Uid</li>
+<li>Guid - uint64 - 是否必填：否 - Guid</li>
+<li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li>
+<li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li>
+<li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li>
+<li>OsType - String - 是否必填：否 - windows或linux</li>
+<li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li>
+<li>UserType - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li>
+<li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows
+<li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux
+<li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li>
+<li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li>
+<li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li>
+<li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 可选排序：
+LoginTime
+PasswordChangeTime
+PasswordDuaTime
+PasswordLockDays
+        :type By: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetUserListResponse(AbstractModel):
+    """DescribeAssetUserList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param Users: 账号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Users: list of AssetUserBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Users = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = AssetUserBaseInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebAppListRequest(AbstractModel):
+    """DescribeAssetWebAppList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name - String - 是否必填：否 - 应用名</li>
+<li>Domain - String - 是否必填：否 - 站点域名</li>
+<li>Type - int - 是否必填：否 - 服务类型：
+0：全部
+1:Tomcat
+2:Apache
+3:Nginx
+4:WebLogic
+5:Websphere
+6:JBoss
+7:Jetty
+8:IHS
+9:Tengine</li>
+<li>OsType - String - 是否必填：否 - windows/linux</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 可选排序：PluginCount
+        :type By: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebAppListResponse(AbstractModel):
+    """DescribeAssetWebAppList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param WebApps: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebApps: list of AssetWebAppBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.WebApps = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("WebApps") is not None:
+            self.WebApps = []
+            for item in params.get("WebApps"):
+                obj = AssetWebAppBaseInfo()
+                obj._deserialize(item)
+                self.WebApps.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebAppPluginListRequest(AbstractModel):
+    """DescribeAssetWebAppPluginList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Id: Web应用ID
+        :type Id: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Id = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Id = params.get("Id")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebAppPluginListResponse(AbstractModel):
+    """DescribeAssetWebAppPluginList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plugins: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Plugins: list of AssetWebAppPluginInfo
+        :param Total: 分区总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Plugins = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plugins") is not None:
+            self.Plugins = []
+            for item in params.get("Plugins"):
+                obj = AssetWebAppPluginInfo()
+                obj._deserialize(item)
+                self.Plugins.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebFrameListRequest(AbstractModel):
+    """DescribeAssetWebFrameList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name - String - 是否必填：否 - 框架名</li>
+<li>NameStrict - String - 是否必填：否 - 框架名（严格匹配）</li>
+<li>Lang - String - 是否必填：否 - 框架语言:java/python</li>
+<li>Type - String - 是否必填：否 - 服务类型：
+0：全部
+1:Tomcat
+2:Apache
+3:Nginx
+4:WebLogic
+5:Websphere
+6:JBoss
+7:WildFly
+8:Jetty
+9:IHS
+10:Tengine</li>
+<li>OsType - String - 是否必填：否 - windows/linux</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 可选排序：JarCount
+        :type By: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebFrameListResponse(AbstractModel):
+    """DescribeAssetWebFrameList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param WebFrames: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebFrames: list of AssetWebFrameBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.WebFrames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("WebFrames") is not None:
+            self.WebFrames = []
+            for item in params.get("WebFrames"):
+                obj = AssetWebFrameBaseInfo()
+                obj._deserialize(item)
+                self.WebFrames.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebLocationInfoRequest(AbstractModel):
+    """DescribeAssetWebLocationInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Id: 站点Id
+        :type Id: str
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebLocationInfoResponse(AbstractModel):
+    """DescribeAssetWebLocationInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WebLocation: 站点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebLocation: :class:`tencentcloud.cwp.v20180228.models.AssetWebLocationInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WebLocation = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WebLocation") is not None:
+            self.WebLocation = AssetWebLocationInfo()
+            self.WebLocation._deserialize(params.get("WebLocation"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebLocationListRequest(AbstractModel):
+    """DescribeAssetWebLocationList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Name - String - 是否必填：否 - 域名</li>
+<li>User - String - 是否必填：否 - 运行用户</li>
+<li>Port - uint64 - 是否必填：否 - 站点端口</li>
+<li>Proto - uint64 - 是否必填：否 - 站点协议：1:HTTP,2:HTTPS</li>
+<li>ServiceType - uint64 - 是否必填：否 - 服务类型：
+1:Tomcat
+2：Apache
+3:Nginx
+4:WebLogic
+5:Websphere
+6:JBoss
+7:WildFly
+8:Jetty
+9:IHS
+10:Tengine</li>
+<li>OsType - String - 是否必填：否 - windows/linux</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of Filter
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 可选排序：PathCount
+        :type By: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebLocationListResponse(AbstractModel):
+    """DescribeAssetWebLocationList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数
+        :type Total: int
+        :param Locations: 站点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Locations: list of AssetWebLocationBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Locations = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Locations") is not None:
+            self.Locations = []
+            for item in params.get("Locations"):
+                obj = AssetWebLocationBaseInfo()
+                obj._deserialize(item)
+                self.Locations.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebServiceInfoListRequest(AbstractModel):
+    """DescribeAssetWebServiceInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>User- string - 是否必填：否 - 运行用户</li>
+<li>Name- string - 是否必填：否 - Web服务名：
+1:Tomcat
+2:Apache
+3:Nginx
+4:WebLogic
+5:Websphere
+6:JBoss
+7:WildFly
+8:Jetty
+9:IHS
+10:Tengine</li>
+<li>OsType- string - 是否必填：否 - Windows/linux</li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+        :type Filters: list of AssetFilters
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 可选排序：ProcessCount
+        :type By: str
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebServiceInfoListResponse(AbstractModel):
+    """DescribeAssetWebServiceInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WebServices: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebServices: list of AssetWebServiceBaseInfo
+        :param Total: 总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WebServices = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WebServices") is not None:
+            self.WebServices = []
+            for item in params.get("WebServices"):
+                obj = AssetWebServiceBaseInfo()
+                obj._deserialize(item)
+                self.WebServices.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssetWebServiceProcessListRequest(AbstractModel):
+    """DescribeAssetWebServiceProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Id: Web服务ID
+        :type Id: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        """
+        self.Quuid = None
+        self.Uuid = None
+        self.Id = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Id = params.get("Id")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetWebServiceProcessListResponse(AbstractModel):
+    """DescribeAssetWebServiceProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Process: 进程列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Process: list of AssetAppProcessInfo
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Process = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self.Process = []
+            for item in params.get("Process"):
+                obj = AssetAppProcessInfo()
+                obj._deserialize(item)
+                self.Process.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3753,7 +8090,7 @@ class DescribeBaselineStrategyDetailResponse(AbstractModel):
         :param IsGlobal: 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsGlobal: int
-        :param MachineType: 云主机类型：
+        :param MachineType: 云服务器类型：
 cvm：腾讯云服务器
 bm：裸金属
 ecm：边缘计算主机
@@ -8371,13 +12708,21 @@ class DescribeVersionStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param BasicVersionNum: 基础版数量
+        :type BasicVersionNum: int
+        :param ProVersionNum: 专业版数量
+        :type ProVersionNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.BasicVersionNum = None
+        self.ProVersionNum = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.BasicVersionNum = params.get("BasicVersionNum")
+        self.ProVersionNum = params.get("ProVersionNum")
         self.RequestId = params.get("RequestId")
 
 

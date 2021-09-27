@@ -2373,6 +2373,8 @@ class CreateApplicationRequest(AbstractModel):
         :type ProgramId: str
         :param ServiceConfigList: 服务配置信息列表
         :type ServiceConfigList: list of ServiceConfig
+        :param IgnoreCreateImageRepository: 忽略创建镜像仓库
+        :type IgnoreCreateImageRepository: bool
         """
         self.ApplicationName = None
         self.ApplicationType = None
@@ -2383,6 +2385,7 @@ class CreateApplicationRequest(AbstractModel):
         self.ApplicationRuntimeType = None
         self.ProgramId = None
         self.ServiceConfigList = None
+        self.IgnoreCreateImageRepository = None
 
 
     def _deserialize(self, params):
@@ -2400,6 +2403,7 @@ class CreateApplicationRequest(AbstractModel):
                 obj = ServiceConfig()
                 obj._deserialize(item)
                 self.ServiceConfigList.append(obj)
+        self.IgnoreCreateImageRepository = params.get("IgnoreCreateImageRepository")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

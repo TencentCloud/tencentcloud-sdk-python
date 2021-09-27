@@ -85,6 +85,153 @@ class AcListsData(AbstractModel):
         
 
 
+class AddAcRuleRequest(AbstractModel):
+    """AddAcRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderIndex: -1表示优先级最低，1表示优先级最高
+        :type OrderIndex: str
+        :param RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值：
+accept：放行
+drop：拒绝
+log：观察
+        :type RuleAction: str
+        :param Direction: 访问控制策略的流量方向。取值：
+in：外对内流量访问控制
+out：内对外流量访问控制
+        :type Direction: str
+        :param Description: 访问控制策略的描述信息
+        :type Description: str
+        :param SourceType: 访问控制策略中的源地址类型。取值：
+net：源IP或网段（IP或者CIDR）
+location：源区域
+template：云防火墙地址模板
+instance：实例id
+vendor：云厂商
+        :type SourceType: str
+        :param SourceContent: 访问控制策略中的源地址。取值：
+当SourceType为net时，SourceContent为源IP地址或者CIDR地址。
+例如：1.1.1.0/24
+
+当SourceType为template时，SourceContent为源地址模板名称。
+
+当SourceType为location时，SourceContent为源区域。
+例如["BJ11", "ZB"]
+
+当SourceType为instance时，SourceContent为该实例id对应的公网ip。
+例如ins-xxxxx
+
+当SourceType为vendor时，SourceContent为所选择厂商的公网ip列表。
+例如：aws,huawei,tencent,aliyun,azure,all代表以上五个
+        :type SourceContent: str
+        :param DestType: 访问控制策略中的目的地址类型。取值：
+net：目的IP或者网段（IP或者CIDR）
+location：源区域
+template：云防火墙地址模板
+instance：实例id
+vendor：云厂商
+domain: 域名或者ip
+        :type DestType: str
+        :param DestContent: 访问控制策略中的目的地址。取值：
+当DestType为net时，DestContent为源IP地址或者CIDR地址。
+例如：1.1.1.0/24
+
+当DestType为template时，DestContent为源地址模板名称。
+
+当DestType为location时，DestContent为源区域。
+例如["BJ11", "ZB"]
+
+当DestType为instance时，DestContent为该实例id对应的公网ip。
+例如ins-xxxxx
+
+当DestType为domain时，DestContent为该实例id对应的域名规则。
+例如*.qq.com
+
+当DestType为vendor时，DestContent为所选择厂商的公网ip列表。
+例如：aws,huawei,tencent,aliyun,azure,all代表以上五个
+        :type DestContent: str
+        :param Port: 访问控制策略的端口。取值：
+-1/-1：全部端口
+80,443：80或者443
+        :type Port: str
+        :param Protocol: 访问控制策略中流量访问的协议类型。取值：TCP，目前互联网边界规则只能支持TCP，不传参数默认就是TCP
+        :type Protocol: str
+        :param ApplicationName: 七层协议，取值：
+HTTP/HTTPS
+TLS/SSL
+        :type ApplicationName: str
+        :param Enable: 是否启用规则，默认为启用，取值：
+true为启用，false为不启用
+        :type Enable: str
+        """
+        self.OrderIndex = None
+        self.RuleAction = None
+        self.Direction = None
+        self.Description = None
+        self.SourceType = None
+        self.SourceContent = None
+        self.DestType = None
+        self.DestContent = None
+        self.Port = None
+        self.Protocol = None
+        self.ApplicationName = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.OrderIndex = params.get("OrderIndex")
+        self.RuleAction = params.get("RuleAction")
+        self.Direction = params.get("Direction")
+        self.Description = params.get("Description")
+        self.SourceType = params.get("SourceType")
+        self.SourceContent = params.get("SourceContent")
+        self.DestType = params.get("DestType")
+        self.DestContent = params.get("DestContent")
+        self.Port = params.get("Port")
+        self.Protocol = params.get("Protocol")
+        self.ApplicationName = params.get("ApplicationName")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAcRuleResponse(AbstractModel):
+    """AddAcRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 创建成功后返回新策略的uuid
+        :type RuleUuid: int
+        :param ReturnCode: 0代表成功，-1代表失败
+        :type ReturnCode: int
+        :param ReturnMsg: success代表成功，failed代表失败
+        :type ReturnMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class AssetZone(AbstractModel):
     """AssetZone
 
@@ -456,6 +603,85 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
 class CreateNatFwInstanceResponse(AbstractModel):
     """CreateNatFwInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatFwInstanceWithDomainRequest(AbstractModel):
+    """CreateNatFwInstanceWithDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 防火墙实例名称
+        :type Name: str
+        :param Width: 带宽
+        :type Width: int
+        :param Mode: 模式 1：接入模式；0：新增模式
+        :type Mode: int
+        :param NewModeItems: 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+        :type NewModeItems: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
+        :param NatGwList: 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+        :type NatGwList: list of str
+        :param Zone: 主可用区，为空则选择默认可用区
+        :type Zone: str
+        :param ZoneBak: 备可用区，为空则选择默认可用区
+        :type ZoneBak: str
+        :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备
+        :type CrossAZone: int
+        :param IsCreateDomain: 0不创建域名,1创建域名
+        :type IsCreateDomain: int
+        :param Domain: 如果要创建域名则必填
+        :type Domain: str
+        """
+        self.Name = None
+        self.Width = None
+        self.Mode = None
+        self.NewModeItems = None
+        self.NatGwList = None
+        self.Zone = None
+        self.ZoneBak = None
+        self.CrossAZone = None
+        self.IsCreateDomain = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Width = params.get("Width")
+        self.Mode = params.get("Mode")
+        if params.get("NewModeItems") is not None:
+            self.NewModeItems = NewModeItems()
+            self.NewModeItems._deserialize(params.get("NewModeItems"))
+        self.NatGwList = params.get("NatGwList")
+        self.Zone = params.get("Zone")
+        self.ZoneBak = params.get("ZoneBak")
+        self.CrossAZone = params.get("CrossAZone")
+        self.IsCreateDomain = params.get("IsCreateDomain")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNatFwInstanceWithDomainResponse(AbstractModel):
+    """CreateNatFwInstanceWithDomain返回参数结构体
 
     """
 
@@ -4189,6 +4415,61 @@ class NewModeItems(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RemoveAcRuleRequest(AbstractModel):
+    """RemoveAcRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 规则的uuid，可通过查询规则列表获取
+        :type RuleUuid: int
+        """
+        self.RuleUuid = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveAcRuleResponse(AbstractModel):
+    """RemoveAcRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 删除成功后返回被删除策略的uuid
+        :type RuleUuid: int
+        :param ReturnCode: 0代表成功，-1代表失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: int
+        :param ReturnMsg: success代表成功，failed代表失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
 
 
 class RuleInfoData(AbstractModel):

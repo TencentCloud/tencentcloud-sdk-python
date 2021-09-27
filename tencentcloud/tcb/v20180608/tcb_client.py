@@ -670,6 +670,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudBaseRunAllVpcs(self, request):
+        """查询环境下所有的vpc列表
+
+        :param request: Request instance for DescribeCloudBaseRunAllVpcs.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunAllVpcsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunAllVpcsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunAllVpcs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunAllVpcsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudBaseRunConfForGateWay(self, request):
         """独立网关中拉取云托管服务对应的配置信息
 
@@ -684,6 +712,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunConfForGateWayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudBaseRunOperationTypes(self, request):
+        """查询服务、版本和操作类型
+
+        :param request: Request instance for DescribeCloudBaseRunOperationTypes.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOperationTypesRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOperationTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunOperationTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunOperationTypesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -796,6 +852,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudBaseRunVersionRsByCondition(self, request):
+        """DescribeCloudBaseRunVersionRsByCondition 获取云托管详情
+
+        :param request: Request instance for DescribeCloudBaseRunVersionRsByCondition.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRsByConditionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRsByConditionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunVersionRsByCondition", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunVersionRsByConditionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

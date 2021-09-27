@@ -58,15 +58,15 @@ class CreateQosRequest(AbstractModel):
         :param DestAddressInfo: 加速业务目标地址信息
         :type DestAddressInfo: :class:`tencentcloud.mna.v20210119.models.DestAddressInfo`
         :param QosMenu: 加速套餐
-T100K：上/下行保障 100kbps
-T200K：上/下行保障 200kbps
-T400K：上/下行保障 400kbps
-BD1M：下行带宽保障1Mbps
-BD2M：下行带宽保障2Mbps
-BD4M：下行带宽保障4Mbps
-BU1M：上行带宽保障1Mbps
-BU2M：上行带宽保障2Mbps
-BU4M：上行带宽保障4Mbps
+T100K：时延性保障 + 带宽保障上下行保障 100kbps
+T200K：时延性保障 + 带宽保障上下行保障 200kbps
+T400K：时延性保障 + 带宽保障上下行保障  400kbps
+BD1M：带宽型保障 + 下行带宽保障1Mbps
+BD2M：带宽型保障 + 下行带宽保障2Mbps
+BD4M：带宽型保障 + 下行带宽保障4Mbps
+BU1M：带宽型保障 + 上行带宽保障1Mbps
+BU2M：带宽型保障 + 上行带宽保障2Mbps
+BU4M：带宽型保障 + 上行带宽保障4Mbps
         :type QosMenu: str
         :param DeviceInfo: 申请加速的设备信息，包括运营商，操作系统，设备唯一标识等。
         :type DeviceInfo: :class:`tencentcloud.mna.v20210119.models.DeviceInfo`
@@ -76,6 +76,11 @@ BU4M：上行带宽保障4Mbps
         :type Capacity: :class:`tencentcloud.mna.v20210119.models.Capacity`
         :param TemplateId: 应用模板ID
         :type TemplateId: str
+        :param Protocol: 针对特殊协议进行加速
+1. IP （默认值）
+2. UDP
+3. TCP
+        :type Protocol: int
         """
         self.SrcAddressInfo = None
         self.DestAddressInfo = None
@@ -84,6 +89,7 @@ BU4M：上行带宽保障4Mbps
         self.Duration = None
         self.Capacity = None
         self.TemplateId = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -102,6 +108,7 @@ BU4M：上行带宽保障4Mbps
             self.Capacity = Capacity()
             self.Capacity._deserialize(params.get("Capacity"))
         self.TemplateId = params.get("TemplateId")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
