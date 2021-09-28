@@ -2109,16 +2109,20 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param IsWords: 是否返回单字信息，默认关
         :type IsWords: bool
+        :param EnableDetectSplit: 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+        :type EnableDetectSplit: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.IsWords = None
+        self.EnableDetectSplit = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.IsWords = params.get("IsWords")
+        self.EnableDetectSplit = params.get("EnableDetectSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -10493,6 +10493,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type AutoIsolation: int
         :param ClickTimeout: 一键扫描超时时长，如：1800秒（s）
         :type ClickTimeout: int
+        :param KillProcess: 是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效
+        :type KillProcess: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10508,6 +10510,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.RealTimeMonitoring = None
         self.AutoIsolation = None
         self.ClickTimeout = None
+        self.KillProcess = None
         self.RequestId = None
 
 
@@ -10524,6 +10527,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.RealTimeMonitoring = params.get("RealTimeMonitoring")
         self.AutoIsolation = params.get("AutoIsolation")
         self.ClickTimeout = params.get("ClickTimeout")
+        self.KillProcess = params.get("KillProcess")
         self.RequestId = params.get("RequestId")
 
 
@@ -16242,6 +16246,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type QuuidList: list of str
         :param AutoIsolation: 是否自动隔离 1隔离 0 不隔离
         :type AutoIsolation: int
+        :param KillProcess: 是否杀掉进程 1杀掉 0不杀掉
+        :type KillProcess: int
         """
         self.CheckPattern = None
         self.StartTime = None
@@ -16253,6 +16259,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.RealTimeMonitoring = None
         self.QuuidList = None
         self.AutoIsolation = None
+        self.KillProcess = None
 
 
     def _deserialize(self, params):
@@ -16266,6 +16273,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.RealTimeMonitoring = params.get("RealTimeMonitoring")
         self.QuuidList = params.get("QuuidList")
         self.AutoIsolation = params.get("AutoIsolation")
+        self.KillProcess = params.get("KillProcess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18353,12 +18361,16 @@ class SeparateMalwaresRequest(AbstractModel):
         r"""
         :param Ids: 木马事件ID数组。(最大100条)
         :type Ids: list of int non-negative
+        :param KillProcess: 是否杀掉进程
+        :type KillProcess: bool
         """
         self.Ids = None
+        self.KillProcess = None
 
 
     def _deserialize(self, params):
         self.Ids = params.get("Ids")
+        self.KillProcess = params.get("KillProcess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

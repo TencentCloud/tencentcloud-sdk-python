@@ -4722,6 +4722,10 @@ class DeployGroupRequest(AbstractModel):
         :type StopScript: str
         :param IncrementalDeployment: 是否进行增量部署，默认为false，全量更新
         :type IncrementalDeployment: bool
+        :param JdkName: JDK名称: konaJDK或openJDK
+        :type JdkName: str
+        :param JdkVersion: JDK版本: 8或11 (openJDK只支持8)
+        :type JdkVersion: str
         """
         self.GroupId = None
         self.PkgId = None
@@ -4738,6 +4742,8 @@ class DeployGroupRequest(AbstractModel):
         self.StartScript = None
         self.StopScript = None
         self.IncrementalDeployment = None
+        self.JdkName = None
+        self.JdkVersion = None
 
 
     def _deserialize(self, params):
@@ -4758,6 +4764,8 @@ class DeployGroupRequest(AbstractModel):
         self.StartScript = params.get("StartScript")
         self.StopScript = params.get("StopScript")
         self.IncrementalDeployment = params.get("IncrementalDeployment")
+        self.JdkName = params.get("JdkName")
+        self.JdkVersion = params.get("JdkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13907,6 +13915,9 @@ class ScalableRule(AbstractModel):
         :param Desc: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
+        :param Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self.RuleId = None
         self.Name = None
@@ -13914,6 +13925,7 @@ class ScalableRule(AbstractModel):
         self.ShrinkVmCountLimit = None
         self.GroupCount = None
         self.Desc = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -13923,6 +13935,7 @@ class ScalableRule(AbstractModel):
         self.ShrinkVmCountLimit = params.get("ShrinkVmCountLimit")
         self.GroupCount = params.get("GroupCount")
         self.Desc = params.get("Desc")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

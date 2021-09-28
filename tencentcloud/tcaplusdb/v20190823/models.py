@@ -638,6 +638,8 @@ class CreateClusterRequest(AbstractModel):
         :type ProxyList: list of MachineInfo
         :param ClusterType: 集群类型1共享2独占
         :type ClusterType: int
+        :param AuthType: 密码认证类型，0 静态认证， 1 签名认证
+        :type AuthType: int
         """
         self.IdlType = None
         self.ClusterName = None
@@ -649,6 +651,7 @@ class CreateClusterRequest(AbstractModel):
         self.ServerList = None
         self.ProxyList = None
         self.ClusterType = None
+        self.AuthType = None
 
 
     def _deserialize(self, params):
@@ -677,6 +680,7 @@ class CreateClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ProxyList.append(obj)
         self.ClusterType = params.get("ClusterType")
+        self.AuthType = params.get("AuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3157,9 +3161,9 @@ class ModifySnapshotsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 批量创建的快照数量
+        :param TotalCount: 批量修改的快照数量
         :type TotalCount: int
-        :param TableResults: 批量创建的快照结果列表
+        :param TableResults: 批量修改的快照结果列表
         :type TableResults: list of SnapshotResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
