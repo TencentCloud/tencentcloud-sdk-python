@@ -2725,11 +2725,14 @@ class DescribeCloudBaseBuildServiceRequest(AbstractModel):
         :type CIBusiness: str
         :param ServiceVersion: 服务版本
         :type ServiceVersion: str
+        :param Suffix: 文件后缀
+        :type Suffix: str
         """
         self.EnvId = None
         self.ServiceName = None
         self.CIBusiness = None
         self.ServiceVersion = None
+        self.Suffix = None
 
 
     def _deserialize(self, params):
@@ -2737,6 +2740,7 @@ class DescribeCloudBaseBuildServiceRequest(AbstractModel):
         self.ServiceName = params.get("ServiceName")
         self.CIBusiness = params.get("CIBusiness")
         self.ServiceVersion = params.get("ServiceVersion")
+        self.Suffix = params.get("Suffix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

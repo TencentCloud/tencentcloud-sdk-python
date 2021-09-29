@@ -7313,6 +7313,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type OsName: str
         :param OsCustomizeType: 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
         :type OsCustomizeType: str
+        :param ExtraArgs: 节点自定义参数
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -7324,6 +7326,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = None
         self.OsName = None
         self.OsCustomizeType = None
+        self.ExtraArgs = None
 
 
     def _deserialize(self, params):
@@ -7347,6 +7350,9 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = params.get("EnableAutoscale")
         self.OsName = params.get("OsName")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = InstanceExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

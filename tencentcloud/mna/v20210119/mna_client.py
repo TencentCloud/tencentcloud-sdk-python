@@ -80,3 +80,31 @@ class MnaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQos(self, request):
+        """获取Qos加速状态
+
+        :param request: Request instance for DescribeQos.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DescribeQosRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DescribeQosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

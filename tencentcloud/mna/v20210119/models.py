@@ -192,6 +192,72 @@ class DeleteQosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQosRequest(AbstractModel):
+    """DescribeQos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 单次加速唯一 Id
+        :type SessionId: str
+        """
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQosResponse(AbstractModel):
+    """DescribeQos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 0：无匹配的加速中会话
+1：存在匹配的加速中会话
+        :type Status: int
+        :param SrcPublicIpv4: 手机公网出口IP，仅匹配时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcPublicIpv4: str
+        :param DestIpv4: 业务访问目的IP，仅匹配时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestIpv4: list of str
+        :param Duration: 当前加速剩余时长（单位秒）有，仅匹配时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param QosMenu: 加速套餐类型，仅匹配时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QosMenu: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.SrcPublicIpv4 = None
+        self.DestIpv4 = None
+        self.Duration = None
+        self.QosMenu = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.SrcPublicIpv4 = params.get("SrcPublicIpv4")
+        self.DestIpv4 = params.get("DestIpv4")
+        self.Duration = params.get("Duration")
+        self.QosMenu = params.get("QosMenu")
+        self.RequestId = params.get("RequestId")
+
+
 class DestAddressInfo(AbstractModel):
     """移动网络加速目标地址结构体
 
