@@ -377,6 +377,82 @@ class ChatArchivingMsgTypeVideo(AbstractModel):
         
 
 
+class ClueInfoDetail(AbstractModel):
+    """线索信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClueId: 线索id，线索唯一识别编码
+        :type ClueId: str
+        :param DealerId: 接待客户经销商顾问所属组织id,多个组织使用逗号分割
+        :type DealerId: str
+        :param EnquireTime: 线索获取时间，用户添加企业微信时间，单位是秒
+        :type EnquireTime: int
+        :param UnionId: 客户在微信生态中唯一识别码
+        :type UnionId: str
+        :param Name: 微信昵称
+        :type Name: str
+        :param Phone: 联系方式
+        :type Phone: str
+        :param SeriesCode: 车系编号
+        :type SeriesCode: str
+        :param ModelCode: 车型编号
+        :type ModelCode: str
+        :param ProvinceCode: 省份编号
+        :type ProvinceCode: str
+        :param CityCode: 城市编号
+        :type CityCode: str
+        :param SalesName: 顾问名称
+        :type SalesName: str
+        :param SalesPhone: 顾问电话
+        :type SalesPhone: str
+        :param Remark: 备注
+        :type Remark: str
+        :param TagList: 标签
+        :type TagList: list of str
+        """
+        self.ClueId = None
+        self.DealerId = None
+        self.EnquireTime = None
+        self.UnionId = None
+        self.Name = None
+        self.Phone = None
+        self.SeriesCode = None
+        self.ModelCode = None
+        self.ProvinceCode = None
+        self.CityCode = None
+        self.SalesName = None
+        self.SalesPhone = None
+        self.Remark = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.ClueId = params.get("ClueId")
+        self.DealerId = params.get("DealerId")
+        self.EnquireTime = params.get("EnquireTime")
+        self.UnionId = params.get("UnionId")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+        self.SeriesCode = params.get("SeriesCode")
+        self.ModelCode = params.get("ModelCode")
+        self.ProvinceCode = params.get("ProvinceCode")
+        self.CityCode = params.get("CityCode")
+        self.SalesName = params.get("SalesName")
+        self.SalesPhone = params.get("SalesPhone")
+        self.Remark = params.get("Remark")
+        self.TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateChannelCodeRequest(AbstractModel):
     """CreateChannelCode请求参数结构体
 
@@ -1202,6 +1278,71 @@ class QueryChatArchivingListResponse(AbstractModel):
                 obj = ChatArchivingDetail()
                 obj._deserialize(item)
                 self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryClueInfoListRequest(AbstractModel):
+    """QueryClueInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryClueInfoListResponse(AbstractModel):
+    """QueryClueInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageData: 线索信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ClueInfoDetail
+        :param NextCursor: 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param HasMore: 是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasMore: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PageData = None
+        self.NextCursor = None
+        self.HasMore = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = ClueInfoDetail()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.NextCursor = params.get("NextCursor")
+        self.HasMore = params.get("HasMore")
         self.RequestId = params.get("RequestId")
 
 

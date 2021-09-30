@@ -13358,18 +13358,18 @@ class EditBashRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 规则名称
-        :type Name: str
-        :param Rule: 正则表达式
-        :type Rule: str
         :param Id: 规则ID（新增时不填）
         :type Id: int
         :param Uuids: 客户端ID数组
         :type Uuids: list of str
         :param HostIp: 主机IP
         :type HostIp: str
+        :param Name: 规则名称，编辑时不可修改规则名称
+        :type Name: str
         :param Level: 危险等级(0:无，1: 高危 2:中危 3: 低危)
         :type Level: int
+        :param Rule: 正则表达式 ，编辑时不可修改正则表达式，需要对内容QueryEscape后再base64
+        :type Rule: str
         :param IsGlobal: 是否全局规则(默认否)：1-全局，0-非全局
         :type IsGlobal: int
         :param White: 0=黑名单， 1=白名单
@@ -13379,12 +13379,12 @@ class EditBashRulesRequest(AbstractModel):
         :param DealOldEvents: 是否处理旧事件为白名单 0=不处理 1=处理
         :type DealOldEvents: int
         """
-        self.Name = None
-        self.Rule = None
         self.Id = None
         self.Uuids = None
         self.HostIp = None
+        self.Name = None
         self.Level = None
+        self.Rule = None
         self.IsGlobal = None
         self.White = None
         self.EventId = None
@@ -13392,12 +13392,12 @@ class EditBashRulesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Rule = params.get("Rule")
         self.Id = params.get("Id")
         self.Uuids = params.get("Uuids")
         self.HostIp = params.get("HostIp")
+        self.Name = params.get("Name")
         self.Level = params.get("Level")
+        self.Rule = params.get("Rule")
         self.IsGlobal = params.get("IsGlobal")
         self.White = params.get("White")
         self.EventId = params.get("EventId")
@@ -15955,6 +15955,18 @@ class MalwareInfo(AbstractModel):
         :type LatestScanTime: str
         :param Reference: 参考链接
         :type Reference: str
+        :param MachineWanIp: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineWanIp: str
+        :param PsTree: 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PsTree: str
+        :param MachineStatus: 主机在线状态 OFFLINE  ONLINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineStatus: str
+        :param Status: 状态；4-:待处理，5-已信任，6-已隔离
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.VirusName = None
         self.FileSize = None
@@ -15976,6 +15988,10 @@ class MalwareInfo(AbstractModel):
         self.CreateTime = None
         self.LatestScanTime = None
         self.Reference = None
+        self.MachineWanIp = None
+        self.PsTree = None
+        self.MachineStatus = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -15999,6 +16015,10 @@ class MalwareInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.LatestScanTime = params.get("LatestScanTime")
         self.Reference = params.get("Reference")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.PsTree = params.get("PsTree")
+        self.MachineStatus = params.get("MachineStatus")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17780,6 +17800,12 @@ class RiskDnsList(AbstractModel):
         :type SuggestScheme: str
         :param Tags: 标签特性
         :type Tags: list of str
+        :param MachineWanIp: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineWanIp: str
+        :param MachineStatus: 主机在线状态 OFFLINE  ONLINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineStatus: str
         """
         self.Url = None
         self.AccessCount = None
@@ -17801,6 +17827,8 @@ class RiskDnsList(AbstractModel):
         self.Uuid = None
         self.SuggestScheme = None
         self.Tags = None
+        self.MachineWanIp = None
+        self.MachineStatus = None
 
 
     def _deserialize(self, params):
@@ -17824,6 +17852,8 @@ class RiskDnsList(AbstractModel):
         self.Uuid = params.get("Uuid")
         self.SuggestScheme = params.get("SuggestScheme")
         self.Tags = params.get("Tags")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.MachineStatus = params.get("MachineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

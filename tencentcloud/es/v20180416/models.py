@@ -1867,6 +1867,59 @@ class UpdateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateJdkRequest(AbstractModel):
+    """UpdateJdk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES实例ID
+        :type InstanceId: str
+        :param Jdk: Jdk类型，支持kona和oracle
+        :type Jdk: str
+        :param Gc: Gc类型，支持g1和cms
+        :type Gc: str
+        :param ForceRestart: 是否强制重启
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.Jdk = None
+        self.Gc = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Jdk = params.get("Jdk")
+        self.Gc = params.get("Gc")
+        self.ForceRestart = params.get("ForceRestart")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateJdkResponse(AbstractModel):
+    """UpdateJdk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdatePluginsRequest(AbstractModel):
     """UpdatePlugins请求参数结构体
 

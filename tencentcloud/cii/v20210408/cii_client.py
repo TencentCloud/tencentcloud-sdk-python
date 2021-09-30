@@ -54,20 +54,48 @@ class CiiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateStructureTaskTest(self, request):
-        """本接口(CreateStructureTaskTest)基于提供的客户及保单信息，创建并启动结构化识别任务。用于路由到测试环境。
+    def CreateUnderwriteTaskById(self, request):
+        """本接口(CreateUnderwriteTaskById)用于根据结构化任务ID创建核保任务
 
-        :param request: Request instance for CreateStructureTaskTest.
-        :type request: :class:`tencentcloud.cii.v20210408.models.CreateStructureTaskTestRequest`
-        :rtype: :class:`tencentcloud.cii.v20210408.models.CreateStructureTaskTestResponse`
+        :param request: Request instance for CreateUnderwriteTaskById.
+        :type request: :class:`tencentcloud.cii.v20210408.models.CreateUnderwriteTaskByIdRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.CreateUnderwriteTaskByIdResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStructureTaskTest", params)
+            body = self.call("CreateUnderwriteTaskById", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateStructureTaskTestResponse()
+                model = models.CreateUnderwriteTaskByIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMachineUnderwrite(self, request):
+        """本接口(DescribeMachineUnderwrite)用于查询机器核保任务数据
+
+        :param request: Request instance for DescribeMachineUnderwrite.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeMachineUnderwriteRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeMachineUnderwriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMachineUnderwrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMachineUnderwriteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -96,6 +124,34 @@ class CiiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructCompareDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStructureDifference(self, request):
+        """结构化复核差异查询接口，对比结构化复核前后数据差异，返回差异的部分。
+
+        :param request: Request instance for DescribeStructureDifference.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureDifferenceRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeStructureDifferenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStructureDifference", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStructureDifferenceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -152,34 +208,6 @@ class CiiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureTaskResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeStructureTaskResultTest(self, request):
-        """依据任务ID获取结构化结果接口，该接口用于路由到测试环境。
-
-        :param request: Request instance for DescribeStructureTaskResultTest.
-        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureTaskResultTestRequest`
-        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeStructureTaskResultTestResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeStructureTaskResultTest", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeStructureTaskResultTestResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

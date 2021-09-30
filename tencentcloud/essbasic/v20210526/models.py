@@ -901,6 +901,9 @@ PERSON 自然人
         :param FlowId: 签署链接对应流程Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
+        :param OpenId: 企业经办人 用户在渠道的编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
         """
         self.SignUrl = None
         self.Deadline = None
@@ -913,6 +916,7 @@ PERSON 自然人
         self.ApproverType = None
         self.IdCardNumber = None
         self.FlowId = None
+        self.OpenId = None
 
 
     def _deserialize(self, params):
@@ -927,6 +931,7 @@ PERSON 自然人
         self.ApproverType = params.get("ApproverType")
         self.IdCardNumber = params.get("IdCardNumber")
         self.FlowId = params.get("FlowId")
+        self.OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

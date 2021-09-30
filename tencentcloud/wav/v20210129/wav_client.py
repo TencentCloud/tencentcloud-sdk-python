@@ -222,6 +222,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryClueInfoList(self, request):
+        """企业可通过此接口获取线索列表。
+
+        :param request: Request instance for QueryClueInfoList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryClueInfoListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryClueInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryClueInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryClueInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryExternalContactDetail(self, request):
         """企业可通过此接口，根据外部联系人的userid，拉取客户详情
 

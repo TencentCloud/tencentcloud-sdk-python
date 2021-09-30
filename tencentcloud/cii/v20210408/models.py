@@ -233,52 +233,24 @@ class CreateStructureTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateStructureTaskTestRequest(AbstractModel):
-    """CreateStructureTaskTest请求参数结构体
+class CreateUnderwriteTaskByIdRequest(AbstractModel):
+    """CreateUnderwriteTaskById请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param ServiceType: 服务类型
-Structured 仅结构化
-Underwrite 结构化+核保
-        :type ServiceType: str
-        :param TaskInfos: 创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
-        :type TaskInfos: list of CreateStructureTaskInfo
-        :param PolicyId: 保单号
-        :type PolicyId: str
-        :param TriggerType: 核保触发方式
-Auto 自动
-Manual 手动
-        :type TriggerType: str
-        :param InsuranceTypes: 险种，如果是体检报告类型，此参数是必填，类型说明如下：
-CriticalDiseaseInsurance:重疾险
-LifeInsurance：寿险
-AccidentInsurance：意外险
-        :type InsuranceTypes: list of str
-        :param CallbackUrl: 回调地址，接收Post请求传送结果
+        :param MainTaskIds: 主任务ID数组，
+        :type MainTaskIds: list of str
+        :param CallbackUrl: 回调地址，可不传（提供轮询机制）。
         :type CallbackUrl: str
         """
-        self.ServiceType = None
-        self.TaskInfos = None
-        self.PolicyId = None
-        self.TriggerType = None
-        self.InsuranceTypes = None
+        self.MainTaskIds = None
         self.CallbackUrl = None
 
 
     def _deserialize(self, params):
-        self.ServiceType = params.get("ServiceType")
-        if params.get("TaskInfos") is not None:
-            self.TaskInfos = []
-            for item in params.get("TaskInfos"):
-                obj = CreateStructureTaskInfo()
-                obj._deserialize(item)
-                self.TaskInfos.append(obj)
-        self.PolicyId = params.get("PolicyId")
-        self.TriggerType = params.get("TriggerType")
-        self.InsuranceTypes = params.get("InsuranceTypes")
+        self.MainTaskIds = params.get("MainTaskIds")
         self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -289,24 +261,98 @@ AccidentInsurance：意外险
         
 
 
-class CreateStructureTaskTestResponse(AbstractModel):
-    """CreateStructureTaskTest返回参数结构体
+class CreateUnderwriteTaskByIdResponse(AbstractModel):
+    """CreateUnderwriteTaskById返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param MainTaskId: 创建的主任务号，用于查询结果
-        :type MainTaskId: str
+        :param UnderwriteTaskIds: 核保任务ID数据
+        :type UnderwriteTaskIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.MainTaskId = None
+        self.UnderwriteTaskIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.UnderwriteTaskIds = params.get("UnderwriteTaskIds")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMachineUnderwriteRequest(AbstractModel):
+    """DescribeMachineUnderwrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnderwriteTaskId: 核保任务ID
+        :type UnderwriteTaskId: str
+        """
+        self.UnderwriteTaskId = None
+
+
+    def _deserialize(self, params):
+        self.UnderwriteTaskId = params.get("UnderwriteTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMachineUnderwriteResponse(AbstractModel):
+    """DescribeMachineUnderwrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 腾讯云主账号ID
+        :type Uin: str
+        :param SubAccountUin: 操作人子账户ID
+        :type SubAccountUin: str
+        :param PolicyId: 保单ID
+        :type PolicyId: str
+        :param MainTaskId: 主任务ID
+        :type MainTaskId: str
+        :param UnderwriteTaskId: 核保任务ID
+        :type UnderwriteTaskId: str
+        :param Status: 状态码
+        :type Status: int
+        :param UnderwriteResults: 机器核保结果
+        :type UnderwriteResults: list of MachineUnderwriteOutput
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.SubAccountUin = None
+        self.PolicyId = None
+        self.MainTaskId = None
+        self.UnderwriteTaskId = None
+        self.Status = None
+        self.UnderwriteResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.PolicyId = params.get("PolicyId")
         self.MainTaskId = params.get("MainTaskId")
+        self.UnderwriteTaskId = params.get("UnderwriteTaskId")
+        self.Status = params.get("Status")
+        if params.get("UnderwriteResults") is not None:
+            self.UnderwriteResults = []
+            for item in params.get("UnderwriteResults"):
+                obj = MachineUnderwriteOutput()
+                obj._deserialize(item)
+                self.UnderwriteResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -413,6 +459,72 @@ class DescribeStructCompareDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AllTasks.append(obj)
         self.TaskType = params.get("TaskType")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStructureDifferenceRequest(AbstractModel):
+    """DescribeStructureDifference请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainTaskId: 主任务号
+        :type MainTaskId: str
+        :param SubTaskId: 子任务号
+        :type SubTaskId: str
+        """
+        self.MainTaskId = None
+        self.SubTaskId = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        self.SubTaskId = params.get("SubTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStructureDifferenceResponse(AbstractModel):
+    """DescribeStructureDifference返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainTaskId: 主任务号
+        :type MainTaskId: str
+        :param Status: 结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Results: 差异的结果数组
+        :type Results: list of PerStructDifference
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MainTaskId = None
+        self.Status = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        self.Status = params.get("Status")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = PerStructDifference()
+                obj._deserialize(item)
+                self.Results.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -535,21 +647,30 @@ class DescribeStructureTaskResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeStructureTaskResultTestRequest(AbstractModel):
-    """DescribeStructureTaskResultTest请求参数结构体
+class InsuranceResult(AbstractModel):
+    """包含险种的各个核保结论
 
     """
 
     def __init__(self):
         r"""
-        :param MainTaskId: 结构化任务ID
-        :type MainTaskId: str
+        :param InsuranceType: 险种
+        :type InsuranceType: str
+        :param Result: 对应险种的机器核保结果
+        :type Result: list of MachinePredict
         """
-        self.MainTaskId = None
+        self.InsuranceType = None
+        self.Result = None
 
 
     def _deserialize(self, params):
-        self.MainTaskId = params.get("MainTaskId")
+        self.InsuranceType = params.get("InsuranceType")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = MachinePredict()
+                obj._deserialize(item)
+                self.Result.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -559,38 +680,151 @@ class DescribeStructureTaskResultTestRequest(AbstractModel):
         
 
 
-class DescribeStructureTaskResultTestResponse(AbstractModel):
-    """DescribeStructureTaskResultTest返回参数结构体
+class MachinePredict(AbstractModel):
+    """机器核保预测结果
 
     """
 
     def __init__(self):
         r"""
-        :param Status: 结果状态：
-0：返回成功
-1：结果未生成
-2：结果生成失败
-        :type Status: int
-        :param Results: 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Results: list of ResultObject
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
+        :param Title: 核保引擎名称
+        :type Title: str
+        :param Conclusion: 核保结论
+        :type Conclusion: str
+        :param Explanation: AI决策树解释
+        :type Explanation: list of UnderwriteItem
+        :param Disease: 疾病指标
+        :type Disease: list of UnderwriteItem
+        :param Laboratory: 检查异常
+        :type Laboratory: list of UnderwriteItem
         """
-        self.Status = None
-        self.Results = None
-        self.RequestId = None
+        self.Title = None
+        self.Conclusion = None
+        self.Explanation = None
+        self.Disease = None
+        self.Laboratory = None
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
+        self.Title = params.get("Title")
+        self.Conclusion = params.get("Conclusion")
+        if params.get("Explanation") is not None:
+            self.Explanation = []
+            for item in params.get("Explanation"):
+                obj = UnderwriteItem()
+                obj._deserialize(item)
+                self.Explanation.append(obj)
+        if params.get("Disease") is not None:
+            self.Disease = []
+            for item in params.get("Disease"):
+                obj = UnderwriteItem()
+                obj._deserialize(item)
+                self.Disease.append(obj)
+        if params.get("Laboratory") is not None:
+            self.Laboratory = []
+            for item in params.get("Laboratory"):
+                obj = UnderwriteItem()
+                obj._deserialize(item)
+                self.Laboratory.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MachineUnderwriteOutput(AbstractModel):
+    """机器核保输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerId: 客户号
+        :type CustomerId: str
+        :param CustomerName: 客户姓名
+        :type CustomerName: str
+        :param Results: 各个险种的结果
+        :type Results: list of InsuranceResult
+        """
+        self.CustomerId = None
+        self.CustomerName = None
+        self.Results = None
+
+
+    def _deserialize(self, params):
+        self.CustomerId = params.get("CustomerId")
+        self.CustomerName = params.get("CustomerName")
         if params.get("Results") is not None:
             self.Results = []
             for item in params.get("Results"):
-                obj = ResultObject()
+                obj = InsuranceResult()
                 obj._deserialize(item)
                 self.Results.append(obj)
-        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PerStructDifference(AbstractModel):
+    """复核差异接口的每一份报告的差异结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubTaskId: 子任务ID
+        :type SubTaskId: str
+        :param TaskType: 任务类型
+        :type TaskType: str
+        :param ModifyItems: 修改的项
+        :type ModifyItems: list of StructureModifyItem
+        :param NewItems: 新增的项
+        :type NewItems: list of StructureOneItem
+        :param RemoveItems: 删除的项
+        :type RemoveItems: list of StructureOneItem
+        """
+        self.SubTaskId = None
+        self.TaskType = None
+        self.ModifyItems = None
+        self.NewItems = None
+        self.RemoveItems = None
+
+
+    def _deserialize(self, params):
+        self.SubTaskId = params.get("SubTaskId")
+        self.TaskType = params.get("TaskType")
+        if params.get("ModifyItems") is not None:
+            self.ModifyItems = []
+            for item in params.get("ModifyItems"):
+                obj = StructureModifyItem()
+                obj._deserialize(item)
+                self.ModifyItems.append(obj)
+        if params.get("NewItems") is not None:
+            self.NewItems = []
+            for item in params.get("NewItems"):
+                obj = StructureOneItem()
+                obj._deserialize(item)
+                self.NewItems.append(obj)
+        if params.get("RemoveItems") is not None:
+            self.RemoveItems = []
+            for item in params.get("RemoveItems"):
+                obj = StructureOneItem()
+                obj._deserialize(item)
+                self.RemoveItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResultObject(AbstractModel):
@@ -667,6 +901,71 @@ class ReviewDataTaskInfo(AbstractModel):
         
 
 
+class StructureModifyItem(AbstractModel):
+    """结构化复核差异接口的修改的项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: 修改的字段的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Machine: 机器结果的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Machine: str
+        :param Manual: 人工结果的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manual: str
+        """
+        self.Path = None
+        self.Machine = None
+        self.Manual = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Machine = params.get("Machine")
+        self.Manual = params.get("Manual")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StructureOneItem(AbstractModel):
+    """复核差异接口的新增或者删除的项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: 新字段的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Value: 字段的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Path = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StructureResultObject(AbstractModel):
     """结构化结果
 
@@ -694,6 +993,38 @@ class StructureResultObject(AbstractModel):
         self.TaskType = params.get("TaskType")
         self.StructureResult = params.get("StructureResult")
         self.SubTaskId = params.get("SubTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnderwriteItem(AbstractModel):
+    """机器核保结论子项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 字段名
+        :type Name: str
+        :param Result: 结果
+        :type Result: str
+        :param Value: 风险值或者说明
+        :type Value: str
+        """
+        self.Name = None
+        self.Result = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Result = params.get("Result")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

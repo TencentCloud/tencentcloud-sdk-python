@@ -258,6 +258,91 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Cdc(AbstractModel):
+    """描述独享集群的详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CageId: 独享集群围笼ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CageId: str
+        :param CdcState: 独享集群状态。取值范围：<br><li>NORMAL:正常<br><li>CLOSED：关闭售卖<br><li>FAULT：状态异常<br><li>ISOLATED：已隔离。
+        :type CdcState: str
+        :param Zone: 独享集群所属的[可用区](/document/api/213/9452#zone)ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param CdcName: 独享集群实例名称。
+        :type CdcName: str
+        :param CdcResource: 独享集群的资源大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcResource: :class:`tencentcloud.cbs.v20170312.models.CdcSize`
+        :param CdcId: 独享集群实例id。
+        :type CdcId: str
+        :param DiskType: 独享集群类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘集群<br><li>CLOUD_PREMIUM：表示高性能云硬盘集群<br><li>CLOUD_SSD：SSD表示SSD云硬盘集群。
+        :type DiskType: str
+        :param ExpiredTime: 独享集群过期时间。
+        :type ExpiredTime: str
+        """
+        self.CageId = None
+        self.CdcState = None
+        self.Zone = None
+        self.CdcName = None
+        self.CdcResource = None
+        self.CdcId = None
+        self.DiskType = None
+        self.ExpiredTime = None
+
+
+    def _deserialize(self, params):
+        self.CageId = params.get("CageId")
+        self.CdcState = params.get("CdcState")
+        self.Zone = params.get("Zone")
+        self.CdcName = params.get("CdcName")
+        if params.get("CdcResource") is not None:
+            self.CdcResource = CdcSize()
+            self.CdcResource._deserialize(params.get("CdcResource"))
+        self.CdcId = params.get("CdcId")
+        self.DiskType = params.get("DiskType")
+        self.ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdcSize(AbstractModel):
+    """显示独享集群的大小
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskAavilable: 独享集群的可用容量大小，单位GiB
+        :type DiskAavilable: int
+        :param DiskTotal: 独享集群的总容量大小，单位GiB
+        :type DiskTotal: int
+        """
+        self.DiskAavilable = None
+        self.DiskTotal = None
+
+
+    def _deserialize(self, params):
+        self.DiskAavilable = params.get("DiskAavilable")
+        self.DiskTotal = params.get("DiskTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAutoSnapshotPolicyRequest(AbstractModel):
     """CreateAutoSnapshotPolicy请求参数结构体
 
@@ -849,6 +934,77 @@ class DescribeDiskOperationLogsResponse(AbstractModel):
                 obj = DiskOperationLog()
                 obj._deserialize(item)
                 self.DiskOperationLogSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskStoragePoolRequest(AbstractModel):
+    """DescribeDiskStoragePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+        :type Limit: int
+        :param CdcIds: 指定需要查询的独享集群ID列表，该入参不能与Filters一起使用。
+        :type CdcIds: list of str
+        :param Filters: 过滤条件。参数不支持同时指定`CdcIds`和`Filters`。<br><li>cdc-id - Array of String - 是否必填：否 -（过滤条件）按独享集群ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按独享集群所在[可用区](/document/api/213/9452#zone)过滤。<br><li>cage-id - Array of String - 是否必填：否 -（过滤条件）按独享集群所在围笼的ID过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+        :type Offset: int
+        """
+        self.Limit = None
+        self.CdcIds = None
+        self.Filters = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.CdcIds = params.get("CdcIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskStoragePoolResponse(AbstractModel):
+    """DescribeDiskStoragePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的独享集群的数量
+        :type TotalCount: int
+        :param DiskStoragePoolSet: 独享集群的详细信息列表
+        :type DiskStoragePoolSet: list of Cdc
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DiskStoragePoolSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DiskStoragePoolSet") is not None:
+            self.DiskStoragePoolSet = []
+            for item in params.get("DiskStoragePoolSet"):
+                obj = Cdc()
+                obj._deserialize(item)
+                self.DiskStoragePoolSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
