@@ -3325,6 +3325,59 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterAuthenticationOptionsRequest(AbstractModel):
+    """DescribeClusterAuthenticationOptions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
+    """DescribeClusterAuthenticationOptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceAccounts: ServiceAccount认证配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
+        :param LatestOperationState: 最近一次修改操作结果，返回值可能为：Updating，Success，Failed，TimeOut
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationState: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceAccounts = None
+        self.LatestOperationState = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceAccounts") is not None:
+            self.ServiceAccounts = ServiceAccountAuthenticationOptions()
+            self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
+        self.LatestOperationState = params.get("LatestOperationState")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterCommonNamesRequest(AbstractModel):
     """DescribeClusterCommonNames请求参数结构体
 
@@ -7241,6 +7294,53 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterAuthenticationOptionsRequest(AbstractModel):
+    """ModifyClusterAuthenticationOptions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ServiceAccounts: ServiceAccount认证配置
+        :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
+        """
+        self.ClusterId = None
+        self.ServiceAccounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServiceAccounts") is not None:
+            self.ServiceAccounts = ServiceAccountAuthenticationOptions()
+            self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterAuthenticationOptionsResponse(AbstractModel):
+    """ModifyClusterAuthenticationOptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterEndpointSPRequest(AbstractModel):
     """ModifyClusterEndpointSP请求参数结构体
 
@@ -9106,6 +9206,41 @@ class SecurityContext(AbstractModel):
         if params.get("Capabilities") is not None:
             self.Capabilities = Capabilities()
             self.Capabilities._deserialize(params.get("Capabilities"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceAccountAuthenticationOptions(AbstractModel):
+    """ServiceAccount认证相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Issuer: service-account-issuer
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Issuer: str
+        :param JWKSURI: service-account-jwks-uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JWKSURI: str
+        :param AutoCreateDiscoveryAnonymousAuth: 如果为true，则会自动创建允许匿名用户访问'/.well-known/openid-configuration'和/openid/v1/jwks的rbac规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoCreateDiscoveryAnonymousAuth: bool
+        """
+        self.Issuer = None
+        self.JWKSURI = None
+        self.AutoCreateDiscoveryAnonymousAuth = None
+
+
+    def _deserialize(self, params):
+        self.Issuer = params.get("Issuer")
+        self.JWKSURI = params.get("JWKSURI")
+        self.AutoCreateDiscoveryAnonymousAuth = params.get("AutoCreateDiscoveryAnonymousAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
