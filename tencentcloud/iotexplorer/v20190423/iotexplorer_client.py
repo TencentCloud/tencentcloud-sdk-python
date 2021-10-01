@@ -250,6 +250,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTopicPolicy(self, request):
+        """本接口（CreateTopicPolicy）用于创建一个Topic
+
+        :param request: Request instance for CreateTopicPolicy.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTopicPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTopicRule(self, request):
         """创建规则
 

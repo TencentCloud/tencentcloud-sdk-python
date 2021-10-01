@@ -633,6 +633,55 @@ class CreateStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTopicPolicyRequest(AbstractModel):
+    """CreateTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param TopicName: Topic名称
+        :type TopicName: str
+        :param Privilege: Topic权限，1发布，2订阅，3订阅和发布
+        :type Privilege: int
+        """
+        self.ProductId = None
+        self.TopicName = None
+        self.Privilege = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.TopicName = params.get("TopicName")
+        self.Privilege = params.get("Privilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTopicPolicyResponse(AbstractModel):
+    """CreateTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTopicRuleRequest(AbstractModel):
     """CreateTopicRule请求参数结构体
 

@@ -4238,23 +4238,23 @@ class DescribeLivePackageInfoRequest(AbstractModel):
     def __init__(self):
         r"""
         :param PackageType: 包类型，可选值：
-0：流量包；
-1：转码包。
+0：流量包
+1：转码包
 2: 连麦包。
         :type PackageType: int
         :param OrderBy: 排序规则:
 1. BuyTimeDesc： 最新购买的排在最前面
 2. BuyTimeAsc： 最老购买的排在最前面
 3. ExpireTimeDesc： 最后过期的排在最前面
-4. ExpireTimeAsc：最先过期的排在最前面
+4. ExpireTimeAsc：最先过期的排在最前面。
 
 注意：
-1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序
+1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序。
         :type OrderBy: str
         :param PageNum: 取得第几页的数据，和 PageSize 同时传递才会生效。
         :type PageNum: int
         :param PageSize: 分页大小，和 PageNum 同时传递才会生效。
-取值：10 ～ 100 之间的任意整数
+取值：10 ～ 100 之间的任意整数。
         :type PageSize: int
         """
         self.PackageType = None
@@ -4296,19 +4296,19 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 204: 日结流量
 205: 日结时长
 206: 月结时长
-304: 日结流量
+304: 日结流量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageBillMode: int
-        :param TotalPage: 总页数
+        :param TotalPage: 总页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPage: int
-        :param TotalNum: 数据总条数
+        :param TotalNum: 数据总条数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
-        :param PageNum: 当前页数
+        :param PageNum: 当前页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNum: int
-        :param PageSize: 当前每页数量
+        :param PageSize: 当前每页数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

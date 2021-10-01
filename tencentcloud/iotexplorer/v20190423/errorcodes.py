@@ -188,6 +188,9 @@ INVALIDPARAMETERVALUE_PROJECTPARMSERROR = 'InvalidParameterValue.ProjectParmsErr
 # 规则数量超过限制。
 INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = 'InvalidParameterValue.RuleNumberBeyondLimit'
 
+# Topic已存在。
+INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = 'InvalidParameterValue.TopicPolicyAlreadyExist'
+
 # 规则已存在。
 INVALIDPARAMETERVALUE_TOPICRULEALREADYEXIST = 'InvalidParameterValue.TopicRuleAlreadyExist'
 
