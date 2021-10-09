@@ -5620,6 +5620,71 @@ class MerchantManagementResult(AbstractModel):
         
 
 
+class MerchantPayWayData(AbstractModel):
+    """商户支付方式数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayCurrency: 支付币种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayCurrency: str
+        :param PayIcon: 支付图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayIcon: str
+        :param PayInternalName: 支付名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayInternalName: str
+        :param PayName: 支付简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
+        :param PaySplitRefund: 是否支持退款
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaySplitRefund: str
+        :param PayTag: 支付标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTag: str
+        :param PayTicketIcon: 支付凭证图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTicketIcon: str
+        :param PayType: 支付类型，逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayType: str
+        :param TicketName: 凭证名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TicketName: str
+        """
+        self.PayCurrency = None
+        self.PayIcon = None
+        self.PayInternalName = None
+        self.PayName = None
+        self.PaySplitRefund = None
+        self.PayTag = None
+        self.PayTicketIcon = None
+        self.PayType = None
+        self.TicketName = None
+
+
+    def _deserialize(self, params):
+        self.PayCurrency = params.get("PayCurrency")
+        self.PayIcon = params.get("PayIcon")
+        self.PayInternalName = params.get("PayInternalName")
+        self.PayName = params.get("PayName")
+        self.PaySplitRefund = params.get("PaySplitRefund")
+        self.PayTag = params.get("PayTag")
+        self.PayTicketIcon = params.get("PayTicketIcon")
+        self.PayType = params.get("PayType")
+        self.TicketName = params.get("TicketName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MigrateOrderRefundQueryRequest(AbstractModel):
     """MigrateOrderRefundQuery请求参数结构体
 
@@ -8938,6 +9003,78 @@ class QueryMerchantOrderResponse(AbstractModel):
         self.MerchantAppId = params.get("MerchantAppId")
         self.OrderNo = params.get("OrderNo")
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryMerchantPayWayListRequest(AbstractModel):
+    """QueryMerchantPayWayList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param PayType: 支付类型，逗号分隔
+        :type PayType: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
+        """
+        self.OpenId = None
+        self.OpenKey = None
+        self.PayType = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.PayType = params.get("PayType")
+        self.Profile = params.get("Profile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMerchantPayWayListResponse(AbstractModel):
+    """QueryMerchantPayWayList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 查询商户支付方式列表结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of MerchantPayWayData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = MerchantPayWayData()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 

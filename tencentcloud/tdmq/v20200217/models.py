@@ -1249,6 +1249,121 @@ class CreateEnvironmentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEnvironmentRoleRequest(AbstractModel):
+    """CreateEnvironmentRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param RoleName: 角色名称。
+        :type RoleName: str
+        :param Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。
+        :type Permissions: list of str
+        :param ClusterId: 必填字段，集群的ID
+        :type ClusterId: str
+        """
+        self.EnvironmentId = None
+        self.RoleName = None
+        self.Permissions = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.RoleName = params.get("RoleName")
+        self.Permissions = params.get("Permissions")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnvironmentRoleResponse(AbstractModel):
+    """CreateEnvironmentRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRoleRequest(AbstractModel):
+    """CreateRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleName: 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+        :type RoleName: str
+        :param Remark: 备注说明，长度必须大等于0且小等于128。
+        :type Remark: str
+        :param ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        """
+        self.RoleName = None
+        self.Remark = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoleResponse(AbstractModel):
+    """CreateRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleName: 角色名称
+        :type RoleName: str
+        :param Token: 角色token
+        :type Token: str
+        :param Remark: 备注说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleName = None
+        self.Token = None
+        self.Remark = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.Token = params.get("Token")
+        self.Remark = params.get("Remark")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSubscriptionRequest(AbstractModel):
     """CreateSubscription请求参数结构体
 
@@ -1586,6 +1701,55 @@ class DeleteCmqTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteEnvironmentRolesRequest(AbstractModel):
+    """DeleteEnvironmentRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param RoleNames: 角色名称数组。
+        :type RoleNames: list of str
+        :param ClusterId: 必填字段，集群的ID
+        :type ClusterId: str
+        """
+        self.EnvironmentId = None
+        self.RoleNames = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.RoleNames = params.get("RoleNames")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEnvironmentRolesResponse(AbstractModel):
+    """DeleteEnvironmentRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteEnvironmentsRequest(AbstractModel):
     """DeleteEnvironments请求参数结构体
 
@@ -1632,6 +1796,55 @@ class DeleteEnvironmentsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.EnvironmentIds = params.get("EnvironmentIds")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRolesRequest(AbstractModel):
+    """DeleteRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleNames: 角色名称数组。
+        :type RoleNames: list of str
+        :param ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        """
+        self.RoleNames = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.RoleNames = params.get("RoleNames")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRolesResponse(AbstractModel):
+    """DeleteRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleNames: 成功删除的角色名称数组。
+        :type RoleNames: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleNames = params.get("RoleNames")
         self.RequestId = params.get("RequestId")
 
 
@@ -2429,13 +2642,13 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentId: 环境（命名空间）名称。
+        :param EnvironmentId: 必填字段，环境（命名空间）名称。
         :type EnvironmentId: str
         :param Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
-        :param ClusterId: Pulsar 集群的ID
+        :param ClusterId: 必填字段，Pulsar 集群的ID
         :type ClusterId: str
         :param RoleName: 角色名称
         :type RoleName: str
@@ -2776,6 +2989,84 @@ class DescribeProducersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ProducerSets.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRolesRequest(AbstractModel):
+    """DescribeRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleName: 角色名称，模糊查询
+        :type RoleName: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        :param Filters: * RoleName
+按照角色名进行过滤，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
+        """
+        self.RoleName = None
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRolesResponse(AbstractModel):
+    """DescribeRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数。
+        :type TotalCount: int
+        :param RoleSets: 角色数组。
+        :type RoleSets: list of Role
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RoleSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RoleSets") is not None:
+            self.RoleSets = []
+            for item in params.get("RoleSets"):
+                obj = Role()
+                obj._deserialize(item)
+                self.RoleSets.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3458,6 +3749,116 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEnvironmentRoleRequest(AbstractModel):
+    """ModifyEnvironmentRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param RoleName: 角色名称。
+        :type RoleName: str
+        :param Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。
+        :type Permissions: list of str
+        :param ClusterId: 必填字段，集群的ID
+        :type ClusterId: str
+        """
+        self.EnvironmentId = None
+        self.RoleName = None
+        self.Permissions = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.RoleName = params.get("RoleName")
+        self.Permissions = params.get("Permissions")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnvironmentRoleResponse(AbstractModel):
+    """ModifyEnvironmentRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRoleRequest(AbstractModel):
+    """ModifyRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleName: 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+        :type RoleName: str
+        :param Remark: 备注说明，长度必须大等于0且小等于128。
+        :type Remark: str
+        :param ClusterId: 必填字段，集群Id
+        :type ClusterId: str
+        """
+        self.RoleName = None
+        self.Remark = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoleResponse(AbstractModel):
+    """ModifyRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleName: 角色名称
+        :type RoleName: str
+        :param Remark: 备注说明
+        :type Remark: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleName = None
+        self.Remark = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.Remark = params.get("Remark")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTopicRequest(AbstractModel):
     """ModifyTopic请求参数结构体
 
@@ -3916,6 +4317,46 @@ class RewindCmqQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Role(AbstractModel):
+    """角色实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleName: 角色名称。
+        :type RoleName: str
+        :param Token: 角色token值。
+        :type Token: str
+        :param Remark: 备注说明。
+        :type Remark: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间。
+        :type UpdateTime: str
+        """
+        self.RoleName = None
+        self.Token = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.RoleName = params.get("RoleName")
+        self.Token = params.get("Token")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SendBatchMessagesRequest(AbstractModel):

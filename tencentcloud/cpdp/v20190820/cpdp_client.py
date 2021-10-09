@@ -1995,6 +1995,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryMerchantPayWayList(self, request):
+        """商户查询已开通的支付方式列表
+
+        :param request: Request instance for QueryMerchantPayWayList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantPayWayListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantPayWayListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMerchantPayWayList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMerchantPayWayListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryOrder(self, request):
         """根据订单号，或者用户Id，查询支付订单状态
 

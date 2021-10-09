@@ -26,6 +26,9 @@ FAILEDOPERATION_CREATECLUSTER = 'FailedOperation.CreateCluster'
 # 环境创建失败。
 FAILEDOPERATION_CREATEENVIRONMENT = 'FailedOperation.CreateEnvironment'
 
+# 创建环境角色失败。
+FAILEDOPERATION_CREATEENVIRONMENTROLE = 'FailedOperation.CreateEnvironmentRole'
+
 # 创建命名空间失败。
 FAILEDOPERATION_CREATENAMESPACE = 'FailedOperation.CreateNamespace'
 
@@ -34,6 +37,12 @@ FAILEDOPERATION_CREATEPRODUCERERROR = 'FailedOperation.CreateProducerError'
 
 # 创建TDMQ client的出错。
 FAILEDOPERATION_CREATEPULSARCLIENTERROR = 'FailedOperation.CreatePulsarClientError'
+
+# 角色创建失败。
+FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
+
+# 创建秘钥失败。
+FAILEDOPERATION_CREATESECRETKEY = 'FailedOperation.CreateSecretKey'
 
 # 创建订阅关系失败。
 FAILEDOPERATION_CREATESUBSCRIPTION = 'FailedOperation.CreateSubscription'
@@ -44,11 +53,17 @@ FAILEDOPERATION_CREATETOPIC = 'FailedOperation.CreateTopic'
 # 删除集群失败。
 FAILEDOPERATION_DELETECLUSTER = 'FailedOperation.DeleteCluster'
 
+# 删除环境角色失败。
+FAILEDOPERATION_DELETEENVIRONMENTROLES = 'FailedOperation.DeleteEnvironmentRoles'
+
 # 环境删除失败。
 FAILEDOPERATION_DELETEENVIRONMENTS = 'FailedOperation.DeleteEnvironments'
 
 # 删除命名空间失败。
 FAILEDOPERATION_DELETENAMESPACE = 'FailedOperation.DeleteNamespace'
+
+# 角色删除失败。
+FAILEDOPERATION_DELETEROLES = 'FailedOperation.DeleteRoles'
 
 # 删除订阅关系失败。
 FAILEDOPERATION_DELETESUBSCRIPTIONS = 'FailedOperation.DeleteSubscriptions'
@@ -83,6 +98,9 @@ FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = 'FailedOperation.ResetMsgSu
 # 必须先清除关联角色数据才能继续操作。
 FAILEDOPERATION_ROLEINUSE = 'FailedOperation.RoleInUse'
 
+# 保存秘钥失败。
+FAILEDOPERATION_SAVESECRETKEY = 'FailedOperation.SaveSecretKey'
+
 # 发送消息失败。
 FAILEDOPERATION_SENDMSGFAILED = 'FailedOperation.SendMsgFailed'
 
@@ -94,6 +112,12 @@ FAILEDOPERATION_TOPICINUSE = 'FailedOperation.TopicInUse'
 
 # 环境更新失败。
 FAILEDOPERATION_UPDATEENVIRONMENT = 'FailedOperation.UpdateEnvironment'
+
+# 更新环境角色失败。
+FAILEDOPERATION_UPDATEENVIRONMENTROLE = 'FailedOperation.UpdateEnvironmentRole'
+
+# 角色更新失败。
+FAILEDOPERATION_UPDATEROLE = 'FailedOperation.UpdateRole'
 
 # 主题更新失败。
 FAILEDOPERATION_UPDATETOPIC = 'FailedOperation.UpdateTopic'
@@ -170,8 +194,14 @@ OPERATIONDENIED_DEFAULTENVIRONMENT = 'OperationDenied.DefaultEnvironment'
 # 集群已存在。
 RESOURCEINUSE_CLUSTER = 'ResourceInUse.Cluster'
 
+# 环境角色已存在。
+RESOURCEINUSE_ENVIRONMENTROLE = 'ResourceInUse.EnvironmentRole'
+
 # 重名，命名空间已存在。
 RESOURCEINUSE_NAMESPACE = 'ResourceInUse.Namespace'
+
+# 角色已存在。
+RESOURCEINUSE_ROLE = 'ResourceInUse.Role'
 
 # 重名，订阅关系已存在。
 RESOURCEINUSE_SUBSCRIPTION = 'ResourceInUse.Subscription'
@@ -187,6 +217,9 @@ RESOURCENOTFOUND_CLUSTER = 'ResourceNotFound.Cluster'
 
 # 环境不存在。
 RESOURCENOTFOUND_ENVIRONMENT = 'ResourceNotFound.Environment'
+
+# 环境角色不存在。
+RESOURCENOTFOUND_ENVIRONMENTROLE = 'ResourceNotFound.EnvironmentRole'
 
 # 命名空间不存在。
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'

@@ -250,6 +250,62 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEnvironmentRole(self, request):
+        """创建环境角色授权
+
+        :param request: Request instance for CreateEnvironmentRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateEnvironmentRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEnvironmentRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRole(self, request):
+        """创建角色
+
+        :param request: Request instance for CreateRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSubscription(self, request):
         """创建一个主题的订阅关系
 
@@ -418,6 +474,34 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteEnvironmentRoles(self, request):
+        """删除环境角色授权。
+
+        :param request: Request instance for DeleteEnvironmentRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteEnvironmentRoles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEnvironmentRolesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteEnvironments(self, request):
         """批量删除租户下的命名空间
 
@@ -432,6 +516,34 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEnvironmentsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRoles(self, request):
+        """删除角色，支持批量。
+
+        :param request: Request instance for DeleteRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRoles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRolesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -950,6 +1062,34 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoles(self, request):
+        """获取角色列表
+
+        :param request: Request instance for DescribeRoles.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRolesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRolesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubscriptions(self, request):
         """查询指定环境和主题下的订阅者列表
 
@@ -1132,6 +1272,62 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvironmentAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyEnvironmentRole(self, request):
+        """修改环境角色授权。
+
+        :param request: Request instance for ModifyEnvironmentRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyEnvironmentRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyEnvironmentRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRole(self, request):
+        """角色修改
+
+        :param request: Request instance for ModifyRole.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRoleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

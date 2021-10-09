@@ -825,14 +825,18 @@ class CreateReplicationInstanceRequest(AbstractModel):
         :type RegistryId: str
         :param ReplicationRegionId: 复制实例地域ID
         :type ReplicationRegionId: int
+        :param ReplicationRegionName: 复制实例地域名称
+        :type ReplicationRegionName: str
         """
         self.RegistryId = None
         self.ReplicationRegionId = None
+        self.ReplicationRegionName = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.ReplicationRegionId = params.get("ReplicationRegionId")
+        self.ReplicationRegionName = params.get("ReplicationRegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4495,14 +4499,17 @@ class ManageInternalEndpointRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 需要接入的用户子网id
         :type SubnetId: str
-        :param RegionId: 请求的地域ID
+        :param RegionId: 请求的地域ID，用于实例复制地域
         :type RegionId: int
+        :param RegionName: 请求的地域名称，用于实例复制地域
+        :type RegionName: str
         """
         self.RegistryId = None
         self.Operation = None
         self.VpcId = None
         self.SubnetId = None
         self.RegionId = None
+        self.RegionName = None
 
 
     def _deserialize(self, params):
@@ -4511,6 +4518,7 @@ class ManageInternalEndpointRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
