@@ -138,6 +138,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFenceBind(self, request):
+        """创建围栏绑定信息
+
+        :param request: Request instance for CreateFenceBind.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFenceBindRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateFenceBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFenceBind", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFenceBindResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLoRaFrequency(self, request):
         """创建 LoRa 自定义频点
 
@@ -180,6 +208,62 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoRaGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePositionFence(self, request):
+        """创建围栏
+
+        :param request: Request instance for CreatePositionFence.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionFenceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionFenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePositionFence", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePositionFenceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePositionSpace(self, request):
+        """创建位置空间
+
+        :param request: Request instance for CreatePositionSpace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionSpaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePositionSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePositionSpace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePositionSpaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -362,6 +446,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteFenceBind(self, request):
+        """删除围栏绑定信息
+
+        :param request: Request instance for DeleteFenceBind.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteFenceBindRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteFenceBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFenceBind", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFenceBindResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteLoRaFrequency(self, request):
         """提供删除LoRa自定义频点的能力
 
@@ -404,6 +516,62 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoRaGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePositionFence(self, request):
+        """删除围栏
+
+        :param request: Request instance for DeletePositionFence.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionFenceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionFenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePositionFence", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePositionFenceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePositionSpace(self, request):
+        """删除位置空间
+
+        :param request: Request instance for DeletePositionSpace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionSpaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePositionSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePositionSpace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePositionSpaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -586,6 +754,90 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDevicePositionList(self, request):
+        """获取设备位置列表
+
+        :param request: Request instance for DescribeDevicePositionList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDevicePositionListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDevicePositionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDevicePositionList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDevicePositionListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFenceBindList(self, request):
+        """获取围栏绑定信息列表
+
+        :param request: Request instance for DescribeFenceBindList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceBindListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceBindListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFenceBindList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFenceBindListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFenceEventList(self, request):
+        """获取围栏告警事件列表
+
+        :param request: Request instance for DescribeFenceEventList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceEventListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFenceEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFenceEventList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFenceEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFirmwareTask(self, request):
         """查询固件升级任务列表
 
@@ -670,6 +922,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePositionFenceList(self, request):
+        """获取围栏列表
+
+        :param request: Request instance for DescribePositionFenceList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePositionFenceListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePositionFenceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePositionFenceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePositionFenceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProject(self, request):
         """查询项目详情
 
@@ -684,6 +964,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSpaceFenceEventList(self, request):
+        """获取位置空间中围栏告警事件列表
+
+        :param request: Request instance for DescribeSpaceFenceEventList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeSpaceFenceEventListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeSpaceFenceEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSpaceFenceEventList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSpaceFenceEventListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -894,6 +1202,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetDeviceLocationHistory(self, request):
+        """获取设备历史位置
+
+        :param request: Request instance for GetDeviceLocationHistory.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceLocationHistoryRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceLocationHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDeviceLocationHistory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDeviceLocationHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetLoRaGatewayList(self, request):
         """获取 LoRa 网关列表接口
 
@@ -908,6 +1244,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLoRaGatewayListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetPositionSpaceList(self, request):
+        """获取位置空间列表
+
+        :param request: Request instance for GetPositionSpaceList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetPositionSpaceListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetPositionSpaceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetPositionSpaceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPositionSpaceListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1062,6 +1426,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyFenceBind(self, request):
+        """更新围栏绑定信息
+
+        :param request: Request instance for ModifyFenceBind.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyFenceBindRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyFenceBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyFenceBind", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyFenceBindResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLoRaFrequency(self, request):
         """修改LoRa自定义频点
 
@@ -1146,6 +1538,62 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPositionFence(self, request):
+        """更新围栏
+
+        :param request: Request instance for ModifyPositionFence.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionFenceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionFenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPositionFence", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPositionFenceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPositionSpace(self, request):
+        """更新位置空间
+
+        :param request: Request instance for ModifyPositionSpace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionSpaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyPositionSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPositionSpace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPositionSpaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyProject(self, request):
         """修改项目
 
@@ -1160,6 +1608,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySpaceProperty(self, request):
+        """更新位置空间产品属性
+
+        :param request: Request instance for ModifySpaceProperty.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifySpacePropertyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifySpacePropertyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySpaceProperty", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySpacePropertyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1272,6 +1748,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseStudioProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchPositionSpace(self, request):
+        """搜索位置空间
+
+        :param request: Request instance for SearchPositionSpace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.SearchPositionSpaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SearchPositionSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchPositionSpace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchPositionSpaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

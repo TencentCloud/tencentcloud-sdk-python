@@ -50,6 +50,9 @@ INVALIDPARAMETER_SEQINTERVALTOOLARGE = 'InvalidParameter.SeqIntervalTooLarge'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 超出请求频率。
+LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = 'LimitExceeded.LimitedAccessFrequency'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 

@@ -351,6 +351,56 @@ class CreateDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFenceBindRequest(AbstractModel):
+    """CreateFenceBind请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param Items: 围栏绑定的产品列表
+        :type Items: list of FenceBindProductItem
+        """
+        self.FenceId = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.FenceId = params.get("FenceId")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = FenceBindProductItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFenceBindResponse(AbstractModel):
+    """CreateFenceBind返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLoRaFrequencyRequest(AbstractModel):
     """CreateLoRaFrequency请求参数结构体
 
@@ -500,6 +550,125 @@ class CreateLoRaGatewayResponse(AbstractModel):
         if params.get("Gateway") is not None:
             self.Gateway = LoRaGatewayItem()
             self.Gateway._deserialize(params.get("Gateway"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePositionFenceRequest(AbstractModel):
+    """CreatePositionFence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param FenceName: 围栏名称
+        :type FenceName: str
+        :param FenceArea: 围栏区域信息，采用 GeoJSON 格式
+        :type FenceArea: str
+        :param FenceDesc: 围栏描述
+        :type FenceDesc: str
+        """
+        self.SpaceId = None
+        self.FenceName = None
+        self.FenceArea = None
+        self.FenceDesc = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        self.FenceName = params.get("FenceName")
+        self.FenceArea = params.get("FenceArea")
+        self.FenceDesc = params.get("FenceDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePositionFenceResponse(AbstractModel):
+    """CreatePositionFence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePositionSpaceRequest(AbstractModel):
+    """CreatePositionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param SpaceName: 空间名称
+        :type SpaceName: str
+        :param AuthorizeType: 授权类型，0：只读 1：读写
+        :type AuthorizeType: int
+        :param ProductIdList: 产品列表
+        :type ProductIdList: list of str
+        :param Description: 描述
+        :type Description: str
+        :param Icon: 缩略图
+        :type Icon: str
+        """
+        self.ProjectId = None
+        self.SpaceName = None
+        self.AuthorizeType = None
+        self.ProductIdList = None
+        self.Description = None
+        self.Icon = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.SpaceName = params.get("SpaceName")
+        self.AuthorizeType = params.get("AuthorizeType")
+        self.ProductIdList = params.get("ProductIdList")
+        self.Description = params.get("Description")
+        self.Icon = params.get("Icon")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePositionSpaceResponse(AbstractModel):
+    """CreatePositionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 空间Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SpaceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -844,6 +1013,56 @@ class DeleteDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteFenceBindRequest(AbstractModel):
+    """DeleteFenceBind请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param Items: 围栏绑定的产品信息
+        :type Items: list of FenceBindProductItem
+        """
+        self.FenceId = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.FenceId = params.get("FenceId")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = FenceBindProductItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFenceBindResponse(AbstractModel):
+    """DeleteFenceBind返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLoRaFrequencyRequest(AbstractModel):
     """DeleteLoRaFrequency请求参数结构体
 
@@ -911,6 +1130,92 @@ class DeleteLoRaGatewayRequest(AbstractModel):
 
 class DeleteLoRaGatewayResponse(AbstractModel):
     """DeleteLoRaGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePositionFenceRequest(AbstractModel):
+    """DeletePositionFence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        """
+        self.SpaceId = None
+        self.FenceId = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        self.FenceId = params.get("FenceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePositionFenceResponse(AbstractModel):
+    """DeletePositionFence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePositionSpaceRequest(AbstractModel):
+    """DeletePositionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        """
+        self.SpaceId = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePositionSpaceResponse(AbstractModel):
+    """DeletePositionSpace返回参数结构体
 
     """
 
@@ -1192,6 +1497,29 @@ class DescribeDeviceDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDevicePositionListRequest(AbstractModel):
+    """DescribeDevicePositionList请求参数结构体
+
+    """
+
+
+class DescribeDevicePositionListResponse(AbstractModel):
+    """DescribeDevicePositionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceRequest(AbstractModel):
     """DescribeDevice请求参数结构体
 
@@ -1244,6 +1572,146 @@ class DescribeDeviceResponse(AbstractModel):
         if params.get("Device") is not None:
             self.Device = DeviceInfo()
             self.Device._deserialize(params.get("Device"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFenceBindListRequest(AbstractModel):
+    """DescribeFenceBindList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param Offset: 翻页偏移量，0起始
+        :type Offset: int
+        :param Limit: 最大返回结果数
+        :type Limit: int
+        """
+        self.FenceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FenceId = params.get("FenceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFenceBindListResponse(AbstractModel):
+    """DescribeFenceBindList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 围栏绑定的产品设备列表
+        :type List: list of FenceBindProductItem
+        :param Total: 围栏绑定的设备总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = FenceBindProductItem()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFenceEventListRequest(AbstractModel):
+    """DescribeFenceEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 围栏告警信息的查询起始时间，Unix时间，单位为毫秒
+        :type StartTime: int
+        :param EndTime: 围栏告警信息的查询结束时间，Unix时间，单位为毫秒
+        :type EndTime: int
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param Offset: 翻页偏移量，0起始
+        :type Offset: int
+        :param Limit: 最大返回结果数
+        :type Limit: int
+        :param ProductId: 告警对应的产品Id
+        :type ProductId: str
+        :param DeviceName: 告警对应的设备名称
+        :type DeviceName: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.FenceId = None
+        self.Offset = None
+        self.Limit = None
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.FenceId = params.get("FenceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFenceEventListResponse(AbstractModel):
+    """DescribeFenceEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 围栏告警事件列表
+        :type List: list of FenceEventItem
+        :param Total: 围栏告警事件总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = FenceEventItem()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -1431,6 +1899,70 @@ class DescribeModelDefinitionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePositionFenceListRequest(AbstractModel):
+    """DescribePositionFenceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param Offset: 翻页偏移量，0起始
+        :type Offset: int
+        :param Limit: 最大返回结果数
+        :type Limit: int
+        """
+        self.SpaceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePositionFenceListResponse(AbstractModel):
+    """DescribePositionFenceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 围栏列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of PositionFenceInfo
+        :param Total: 围栏数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = PositionFenceInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectRequest(AbstractModel):
     """DescribeProject请求参数结构体
 
@@ -1475,6 +2007,77 @@ class DescribeProjectResponse(AbstractModel):
         if params.get("Project") is not None:
             self.Project = ProjectEntryEx()
             self.Project._deserialize(params.get("Project"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSpaceFenceEventListRequest(AbstractModel):
+    """DescribeSpaceFenceEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param StartTime: 围栏告警信息的查询起始时间，Unix时间，单位为毫秒
+        :type StartTime: int
+        :param EndTime: 围栏告警信息的查询结束时间，Unix时间，单位为毫秒
+        :type EndTime: int
+        :param Offset: 翻页偏移量，0起始
+        :type Offset: int
+        :param Limit: 最大返回结果数
+        :type Limit: int
+        """
+        self.SpaceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpaceFenceEventListResponse(AbstractModel):
+    """DescribeSpaceFenceEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 围栏告警事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of FenceEventItem
+        :param Total: 围栏告警事件总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = FenceEventItem()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -1966,6 +2569,149 @@ class EventHistoryItem(AbstractModel):
         
 
 
+class FenceAlarmPoint(AbstractModel):
+    """围栏告警位置点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmTime: 围栏告警时间
+        :type AlarmTime: int
+        :param Longitude: 围栏告警位置的经度
+        :type Longitude: float
+        :param Latitude: 围栏告警位置的纬度
+        :type Latitude: float
+        """
+        self.AlarmTime = None
+        self.Longitude = None
+        self.Latitude = None
+
+
+    def _deserialize(self, params):
+        self.AlarmTime = params.get("AlarmTime")
+        self.Longitude = params.get("Longitude")
+        self.Latitude = params.get("Latitude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FenceBindDeviceItem(AbstractModel):
+    """围栏绑定的设备信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param AlertCondition: 告警条件(In，进围栏报警；Out，出围栏报警；InOrOut，进围栏或者出围栏均报警)
+        :type AlertCondition: str
+        :param FenceEnable: 是否使能围栏(true，使能；false，禁用)
+        :type FenceEnable: bool
+        :param Method: 告警处理方法
+        :type Method: str
+        """
+        self.DeviceName = None
+        self.AlertCondition = None
+        self.FenceEnable = None
+        self.Method = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.AlertCondition = params.get("AlertCondition")
+        self.FenceEnable = params.get("FenceEnable")
+        self.Method = params.get("Method")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FenceBindProductItem(AbstractModel):
+    """围栏绑定的产品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Devices: 围栏绑定的设备信息
+        :type Devices: list of FenceBindDeviceItem
+        :param ProductId: 围栏绑定的产品Id
+        :type ProductId: str
+        """
+        self.Devices = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = FenceBindDeviceItem()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FenceEventItem(AbstractModel):
+    """围栏事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 围栏事件的产品Id
+        :type ProductId: str
+        :param DeviceName: 围栏事件的设备名称
+        :type DeviceName: str
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param AlertType: 围栏事件的告警类型（In，进围栏报警；Out，出围栏报警；InOrOut，进围栏或者出围栏均报警）
+        :type AlertType: str
+        :param Data: 围栏事件的设备位置信息
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.FenceAlarmPoint`
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.FenceId = None
+        self.AlertType = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.FenceId = params.get("FenceId")
+        self.AlertType = params.get("AlertType")
+        if params.get("Data") is not None:
+            self.Data = FenceAlarmPoint()
+            self.Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FirmwareInfo(AbstractModel):
     """设备固件详细信息
 
@@ -2162,6 +2908,72 @@ class GetDeviceListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetDeviceLocationHistoryRequest(AbstractModel):
+    """GetDeviceLocationHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param StartTime: 查询起始时间，Unix时间，单位为毫秒
+        :type StartTime: int
+        :param EndTime: 查询结束时间，Unix时间，单位为毫秒
+        :type EndTime: int
+        :param CoordinateType: 坐标类型
+        :type CoordinateType: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CoordinateType = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CoordinateType = params.get("CoordinateType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDeviceLocationHistoryResponse(AbstractModel):
+    """GetDeviceLocationHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Positions: 历史位置列表
+        :type Positions: list of PositionItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Positions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Positions") is not None:
+            self.Positions = []
+            for item in params.get("Positions"):
+                obj = PositionItem()
+                obj._deserialize(item)
+                self.Positions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetLoRaGatewayListRequest(AbstractModel):
     """GetLoRaGatewayList请求参数结构体
 
@@ -2222,6 +3034,70 @@ class GetLoRaGatewayListResponse(AbstractModel):
                 obj = LoRaGatewayItem()
                 obj._deserialize(item)
                 self.Gateways.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetPositionSpaceListRequest(AbstractModel):
+    """GetPositionSpaceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param Offset: 翻页偏移量，0起始
+        :type Offset: int
+        :param Limit: 最大返回结果数
+        :type Limit: int
+        """
+        self.ProjectId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPositionSpaceListResponse(AbstractModel):
+    """GetPositionSpaceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 位置空间列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of PositionSpaceInfo
+        :param Total: 位置空间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = PositionSpaceInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -2756,6 +3632,56 @@ class LoRaGatewayLocation(AbstractModel):
         
 
 
+class ModifyFenceBindRequest(AbstractModel):
+    """ModifyFenceBind请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param Items: 围栏绑定的产品列表
+        :type Items: list of FenceBindProductItem
+        """
+        self.FenceId = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.FenceId = params.get("FenceId")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = FenceBindProductItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFenceBindResponse(AbstractModel):
+    """ModifyFenceBind返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLoRaFrequencyRequest(AbstractModel):
     """ModifyLoRaFrequency请求参数结构体
 
@@ -2957,6 +3883,90 @@ class ModifyModelDefinitionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPositionFenceRequest(AbstractModel):
+    """ModifyPositionFence请求参数结构体
+
+    """
+
+
+class ModifyPositionFenceResponse(AbstractModel):
+    """ModifyPositionFence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPositionSpaceRequest(AbstractModel):
+    """ModifyPositionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param SpaceName: 位置空间名称
+        :type SpaceName: str
+        :param AuthorizeType: 授权类型
+        :type AuthorizeType: int
+        :param ProductIdList: 产品列表
+        :type ProductIdList: list of str
+        :param Description: 位置空间描述
+        :type Description: str
+        :param Icon: 缩略图
+        :type Icon: str
+        """
+        self.SpaceId = None
+        self.SpaceName = None
+        self.AuthorizeType = None
+        self.ProductIdList = None
+        self.Description = None
+        self.Icon = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        self.SpaceName = params.get("SpaceName")
+        self.AuthorizeType = params.get("AuthorizeType")
+        self.ProductIdList = params.get("ProductIdList")
+        self.Description = params.get("Description")
+        self.Icon = params.get("Icon")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPositionSpaceResponse(AbstractModel):
+    """ModifyPositionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyProjectRequest(AbstractModel):
     """ModifyProject请求参数结构体
 
@@ -3009,6 +4019,55 @@ class ModifyProjectResponse(AbstractModel):
         if params.get("Project") is not None:
             self.Project = ProjectEntry()
             self.Project._deserialize(params.get("Project"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySpacePropertyRequest(AbstractModel):
+    """ModifySpaceProperty请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param Data: 产品属性
+        :type Data: str
+        """
+        self.SpaceId = None
+        self.ProductId = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.SpaceId = params.get("SpaceId")
+        self.ProductId = params.get("ProductId")
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySpacePropertyResponse(AbstractModel):
+    """ModifySpaceProperty返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3120,6 +4179,173 @@ class ModifyTopicRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class PositionFenceInfo(AbstractModel):
+    """围栏详细信息(包含创建时间及更新时间)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GeoFence: 围栏信息
+        :type GeoFence: :class:`tencentcloud.iotexplorer.v20190423.models.PositionFenceItem`
+        :param CreateTime: 围栏创建时间
+        :type CreateTime: int
+        :param UpdateTime: 围栏更新时间
+        :type UpdateTime: int
+        """
+        self.GeoFence = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        if params.get("GeoFence") is not None:
+            self.GeoFence = PositionFenceItem()
+            self.GeoFence._deserialize(params.get("GeoFence"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PositionFenceItem(AbstractModel):
+    """围栏信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FenceId: 围栏Id
+        :type FenceId: int
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param FenceName: 围栏名称
+        :type FenceName: str
+        :param FenceDesc: 围栏描述
+        :type FenceDesc: str
+        :param FenceArea: 围栏区域信息，采用 GeoJSON 格式
+        :type FenceArea: str
+        """
+        self.FenceId = None
+        self.SpaceId = None
+        self.FenceName = None
+        self.FenceDesc = None
+        self.FenceArea = None
+
+
+    def _deserialize(self, params):
+        self.FenceId = params.get("FenceId")
+        self.SpaceId = params.get("SpaceId")
+        self.FenceName = params.get("FenceName")
+        self.FenceDesc = params.get("FenceDesc")
+        self.FenceArea = params.get("FenceArea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PositionItem(AbstractModel):
+    """位置点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CreateTime: 位置点的时间
+        :type CreateTime: int
+        :param Longitude: 位置点的经度
+        :type Longitude: float
+        :param Latitude: 位置点的纬度
+        :type Latitude: float
+        """
+        self.CreateTime = None
+        self.Longitude = None
+        self.Latitude = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.Longitude = params.get("Longitude")
+        self.Latitude = params.get("Latitude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PositionSpaceInfo(AbstractModel):
+    """位置空间详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param SpaceId: 位置空间Id
+        :type SpaceId: str
+        :param SpaceName: 位置空间名称
+        :type SpaceName: str
+        :param AuthorizeType: 授权类型
+        :type AuthorizeType: int
+        :param Description: 描述备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param ProductIdList: 产品列表
+        :type ProductIdList: list of str
+        :param Icon: 缩略图
+        :type Icon: str
+        :param CreateTime: 创建时间
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param Zoom: 用户自定义地图缩放
+        :type Zoom: int
+        """
+        self.ProjectId = None
+        self.SpaceId = None
+        self.SpaceName = None
+        self.AuthorizeType = None
+        self.Description = None
+        self.ProductIdList = None
+        self.Icon = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Zoom = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.SpaceId = params.get("SpaceId")
+        self.SpaceName = params.get("SpaceName")
+        self.AuthorizeType = params.get("AuthorizeType")
+        self.Description = params.get("Description")
+        self.ProductIdList = params.get("ProductIdList")
+        self.Icon = params.get("Icon")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Zoom = params.get("Zoom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProductEntry(AbstractModel):
@@ -3498,6 +4724,74 @@ class SearchKeyword(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SearchPositionSpaceRequest(AbstractModel):
+    """SearchPositionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param SpaceName: 位置空间名字
+        :type SpaceName: str
+        :param Offset: 偏移量，从0开始
+        :type Offset: int
+        :param Limit: 最大获取数量
+        :type Limit: int
+        """
+        self.ProjectId = None
+        self.SpaceName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.SpaceName = params.get("SpaceName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchPositionSpaceResponse(AbstractModel):
+    """SearchPositionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 位置空间列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of PositionSpaceInfo
+        :param Total: 符合条件的位置空间个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = PositionSpaceInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
 
 
 class SearchStudioProductRequest(AbstractModel):
