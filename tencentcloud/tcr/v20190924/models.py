@@ -3230,16 +3230,28 @@ class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
         :type ReplicationRegistryId: str
         :param ReplicationRegionId: 复制实例的地域Id
         :type ReplicationRegionId: int
+        :param ShowReplicationLog: 是否显示同步日志
+        :type ShowReplicationLog: bool
+        :param Offset: 日志页号, 默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认5，最大为20
+        :type Limit: int
         """
         self.RegistryId = None
         self.ReplicationRegistryId = None
         self.ReplicationRegionId = None
+        self.ShowReplicationLog = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.ReplicationRegistryId = params.get("ReplicationRegistryId")
         self.ReplicationRegionId = params.get("ReplicationRegionId")
+        self.ShowReplicationLog = params.get("ShowReplicationLog")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3260,17 +3272,24 @@ class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
         :type ReplicationStatus: str
         :param ReplicationTime: 同步完成时间
         :type ReplicationTime: str
+        :param ReplicationLog: 同步日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationLog: :class:`tencentcloud.tcr.v20190924.models.ReplicationLog`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ReplicationStatus = None
         self.ReplicationTime = None
+        self.ReplicationLog = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ReplicationStatus = params.get("ReplicationStatus")
         self.ReplicationTime = params.get("ReplicationTime")
+        if params.get("ReplicationLog") is not None:
+            self.ReplicationLog = ReplicationLog()
+            self.ReplicationLog._deserialize(params.get("ReplicationLog"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5644,6 +5663,56 @@ class ReplicationFilter(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplicationLog(AbstractModel):
+    """同步日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param Source: 源资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param Destination: 目的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destination: str
+        :param Status: 同步状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self.ResourceType = None
+        self.Source = None
+        self.Destination = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.Source = params.get("Source")
+        self.Destination = params.get("Destination")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

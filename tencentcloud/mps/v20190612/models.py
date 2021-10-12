@@ -8354,11 +8354,17 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
         :type TopicName: str
+        :param NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+        :type NotifyType: str
+        :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
+        :type NotifyUrl: str
         """
         self.CmqModel = None
         self.CmqRegion = None
         self.QueueName = None
         self.TopicName = None
+        self.NotifyType = None
+        self.NotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -8366,6 +8372,8 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.CmqRegion = params.get("CmqRegion")
         self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
+        self.NotifyType = params.get("NotifyType")
+        self.NotifyUrl = params.get("NotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

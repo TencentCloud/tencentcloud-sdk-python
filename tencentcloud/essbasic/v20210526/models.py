@@ -376,10 +376,13 @@ class CreateSignUrlsResponse(AbstractModel):
         r"""
         :param SignUrlInfos: 签署参与者签署H5链接信息数组
         :type SignUrlInfos: list of SignUrlInfo
+        :param ErrorMessages: 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
+        :type ErrorMessages: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SignUrlInfos = None
+        self.ErrorMessages = None
         self.RequestId = None
 
 
@@ -390,6 +393,7 @@ class CreateSignUrlsResponse(AbstractModel):
                 obj = SignUrlInfo()
                 obj._deserialize(item)
                 self.SignUrlInfos.append(obj)
+        self.ErrorMessages = params.get("ErrorMessages")
         self.RequestId = params.get("RequestId")
 
 

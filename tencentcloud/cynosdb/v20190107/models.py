@@ -90,6 +90,8 @@ class AddInstancesRequest(AbstractModel):
         :type DbType: str
         :param OrderSource: 订单来源
         :type OrderSource: str
+        :param DealMode: 交易模式 0-下单并支付 1-下单
+        :type DealMode: int
         """
         self.ClusterId = None
         self.Cpu = None
@@ -103,6 +105,7 @@ class AddInstancesRequest(AbstractModel):
         self.AutoVoucher = None
         self.DbType = None
         self.OrderSource = None
+        self.DealMode = None
 
 
     def _deserialize(self, params):
@@ -118,6 +121,7 @@ class AddInstancesRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.DbType = params.get("DbType")
         self.OrderSource = params.get("OrderSource")
+        self.DealMode = params.get("DealMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -420,6 +424,16 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
 回档与克隆均不支持包年包月存储
         :type StoragePayMode: int
+        :param SecurityGroupIds: 安全组id数组
+        :type SecurityGroupIds: list of str
+        :param AlarmPolicyIds: 告警策略Id数组
+        :type AlarmPolicyIds: list of str
+        :param ClusterParams: 参数数组
+        :type ClusterParams: list of ParamItem
+        :param DealMode: 交易模式，0-下单且支付，1-下单
+        :type DealMode: int
+        :param ParamTemplateId: 参数模版ID
+        :type ParamTemplateId: int
         """
         self.Zone = None
         self.VpcId = None
@@ -455,6 +469,11 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.AutoPause = None
         self.AutoPauseDelay = None
         self.StoragePayMode = None
+        self.SecurityGroupIds = None
+        self.AlarmPolicyIds = None
+        self.ClusterParams = None
+        self.DealMode = None
+        self.ParamTemplateId = None
 
 
     def _deserialize(self, params):
@@ -497,6 +516,16 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.AutoPause = params.get("AutoPause")
         self.AutoPauseDelay = params.get("AutoPauseDelay")
         self.StoragePayMode = params.get("StoragePayMode")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.AlarmPolicyIds = params.get("AlarmPolicyIds")
+        if params.get("ClusterParams") is not None:
+            self.ClusterParams = []
+            for item in params.get("ClusterParams"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self.ClusterParams.append(obj)
+        self.DealMode = params.get("DealMode")
+        self.ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -519,10 +548,10 @@ class CreateClustersResponse(AbstractModel):
         :param DealNames: 订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
-        :param ResourceIds: 资源ID列表（异步发货可能无法返回该字段, 强烈建议使用dealNames字段查询接口DescribeResourcesByDealName获取异步发货的资源ID）
+        :param ResourceIds: 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
-        :param ClusterIds: 集群ID列表（异步发货可能不返回该字段, 强烈建议使用dealNames查询接口DescribeResourcesByDealName获取异步发货的集群ID）
+        :param ClusterIds: 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIds: list of str
         :param BigDealIds: 大订单号
@@ -2613,6 +2642,38 @@ class OfflineInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ParamItem(AbstractModel):
+    """修改参数时，传入参数描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param CurrentValue: 当前值
+        :type CurrentValue: str
+        :param OldValue: 原有值
+        :type OldValue: str
+        """
+        self.ParamName = None
+        self.CurrentValue = None
+        self.OldValue = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.CurrentValue = params.get("CurrentValue")
+        self.OldValue = params.get("OldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolicyRule(AbstractModel):
     """安全组规则
 
@@ -2858,6 +2919,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :param DbType: 数据库类型，取值范围: 
 <li> MYSQL </li>
         :type DbType: str
+        :param DealMode: 交易模式 0-下单并支付 1-下单
+        :type DealMode: int
         """
         self.InstanceId = None
         self.Cpu = None
@@ -2866,6 +2929,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.StorageLimit = None
         self.AutoVoucher = None
         self.DbType = None
+        self.DealMode = None
 
 
     def _deserialize(self, params):
@@ -2876,6 +2940,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.StorageLimit = params.get("StorageLimit")
         self.AutoVoucher = params.get("AutoVoucher")
         self.DbType = params.get("DbType")
+        self.DealMode = params.get("DealMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

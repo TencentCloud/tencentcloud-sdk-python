@@ -273,7 +273,7 @@ class Code(AbstractModel):
         r"""
         :param CosBucketName: 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
         :type CosBucketName: str
-        :param CosObjectName: 对象存储对象路径
+        :param CosObjectName: 对象存储中代码包文件路径，以/开头
         :type CosObjectName: str
         :param ZipFile: 包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
         :type ZipFile: str

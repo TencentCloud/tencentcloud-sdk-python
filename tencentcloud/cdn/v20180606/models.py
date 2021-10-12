@@ -901,6 +901,330 @@ off：关闭，遵循用户自定义的节点缓存规则
         
 
 
+class AdvancedScdnAclGroup(AbstractModel):
+    """SCDN精准访问控制配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Configure: 具体配置
+        :type Configure: list of AdvancedScdnAclRule
+        :param Result: 执行动作，intercept|redirect
+        :type Result: str
+        :param Status: 规则是否生效，active|inactive
+        :type Status: str
+        :param ErrorPage: 错误页面配置
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        """
+        self.RuleName = None
+        self.Configure = None
+        self.Result = None
+        self.Status = None
+        self.ErrorPage = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("Configure") is not None:
+            self.Configure = []
+            for item in params.get("Configure"):
+                obj = AdvancedScdnAclRule()
+                obj._deserialize(item)
+                self.Configure.append(obj)
+        self.Result = params.get("Result")
+        self.Status = params.get("Status")
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdvancedScdnAclRule(AbstractModel):
+    """精准访问控制匹配规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MatchKey: 匹配关键字：
+protocol：HTTP协议
+httpVersion：HTTP版本
+method：请求方法
+ip：请求源IP
+ipAsn：请求源IP自治域号
+ipCountry：请求源IP所在国家
+ipArea：请求源IP所在大区
+xForwardFor：请求头X-Forward-For
+directory：路径
+index：首页
+path：文件全路径
+file：文件扩展名
+param：请求参数
+referer：请求头Referer
+cookie：请求头Cookie
+userAgent：请求头User-Agent
+head：自定义请求头
+        :type MatchKey: str
+        :param LogicOperator: 逻辑操作符，取值如下：
+不包含：exclude
+包含：include
+不等于：notequal
+等于：equal
+前缀匹配：matching
+内容为空或不存在：null
+        :type LogicOperator: str
+        :param MatchValue: 匹配值。
+当MatchKey为protocol时
+取值：HTTP、HTTPS
+
+当MatchKey为httpVersion时
+取值：HTTP/1.0、HTTP/1.1、HTTP/1.2、HTTP/2、HTTP/3
+
+当MatchKey为method时
+取值：HEAD、GET、POST、PUT、OPTIONS、TRACE、DELETE、PATCH、CONNECT
+
+当MatchKey为ipCountry时，取值为：
+其他：OTHER
+委内瑞拉：VE
+乌拉圭：UY
+苏里南：SR
+巴拉圭：PY
+秘鲁：PE
+圭亚那：GY
+厄瓜多尔：EC
+哥伦比亚：CO
+智利：CL
+巴西：BR
+玻利维亚：BO
+阿根廷：AR
+新西兰：NZ
+萨摩亚：WS
+瓦努阿图：VU
+图瓦卢：TV
+汤加：TO
+托克劳：TK
+帕劳：PW
+纽埃：NU
+瑙鲁：NR
+基里巴斯：KI
+关岛：GU
+密克罗尼西亚：FM
+澳大利亚：AU
+美国：US
+波多黎各：PR
+多米尼加共和国：DO
+哥斯达黎加：CR
+东萨摩亚：AS
+安提瓜和巴布达：AG
+巴拿马：PA
+尼加拉瓜：NI
+墨西哥：MX
+牙买加：JM
+海地：HT
+洪都拉斯：HN
+危地马拉：GT
+瓜德罗普岛：GP
+格陵兰：GL
+格林纳达：GD
+古巴：CU
+加拿大：CA
+伯利兹：BZ
+巴哈马：BS
+百慕大：BM
+巴巴多斯：BB
+阿鲁巴：AW
+安圭拉：AI
+梵蒂冈：VA
+斯洛伐克：SK
+俄罗斯：RU
+英国：GB
+捷克共和国：CZ
+乌克兰：UA
+土耳其：TR
+斯洛文尼亚：SI
+瑞典：SE
+塞尔维亚：RS
+罗马尼亚：RO
+葡萄牙：PT
+波兰：PL
+挪威：NO
+荷兰：NL
+马耳他：MT
+马其顿：MK
+黑山：ME
+摩尔多瓦：MD
+摩纳哥：MC
+拉脱维亚：LV
+卢森堡：LU
+立陶宛：LT
+列支敦士登：LI
+哈萨克斯坦：KZ
+意大利：IT
+冰岛：IS
+爱尔兰：IE
+匈牙利：HU
+克罗地亚：HR
+希腊：GR
+直布罗陀：GI
+根西岛：GG
+格鲁吉亚：GE
+法国：FR
+芬兰：FI
+西班牙：ES
+爱沙尼亚：EE
+丹麦：DK
+德国：DE
+塞浦路斯：CY
+瑞士：CH
+白俄罗斯：BY
+保加利亚：BG
+比利时：BE
+阿塞拜疆：AZ
+奥地利：AT
+亚美尼亚：AM
+阿尔巴尼亚：AL
+安道尔：AD
+东帝汶：TL
+叙利亚：SY
+沙特阿拉伯：SA
+巴勒斯坦：PS
+斯里兰卡：LK
+斯里兰卡：LK
+朝鲜：KP
+吉尔吉斯斯坦：KG
+中国香港：HK
+文莱：BN
+孟加拉：BD
+阿联酋：AE
+也门：YE
+越南：VN
+乌兹别克斯坦：UZ
+中国台湾：TW
+土库曼斯坦：TM
+塔吉克斯坦：TJ
+泰国：TH
+新加坡：SG
+卡塔尔：QA
+巴基斯坦：PK
+菲律宾：PH
+阿曼：OM
+尼泊尔：NP
+马来西亚：MY
+马尔代夫：MV
+中国澳门：MO
+蒙古：MN
+缅甸：MM
+黎巴嫩：LB
+科威特：KW
+韩国：KR
+柬埔寨：KH
+日本：JP
+约旦：JO
+伊朗：IR
+伊拉克：IQ
+印度：IN
+以色列：IL
+印度尼西亚：ID
+中国：CN
+不丹：BT
+巴林：BH
+阿富汗：AF
+利比亚：LY
+刚果金：CG
+留尼汪岛：RE
+斯威士兰：SZ
+津巴布韦：ZW
+赞比亚：ZM
+马约特：YT
+乌干达：UG
+坦桑尼亚：TZ
+突尼斯：TN
+多哥：TG
+乍得：TD
+索马里：SO
+塞内加尔：SN
+苏丹：SD
+塞舌尔：SC
+卢旺达：RW
+尼日利亚：NG
+尼日尔：NE
+纳米比亚：NA
+莫桑比克：MZ
+马拉维：MW
+毛里求斯：MU
+毛里塔尼亚：MR
+马里：ML
+马达加斯加：MG
+摩洛哥：MA
+莱索托：LS
+利比里亚：LR
+科摩罗：KM
+肯尼亚：KE
+几内亚：GN
+冈比亚：GM
+加纳：GH
+加蓬：GA
+埃塞俄比亚：ET
+厄立特里亚：ER
+埃及：EG
+阿尔及利亚：DZ
+吉布提：DJ
+喀麦隆：CM
+刚果：CG
+博茨瓦纳：BW
+贝宁：BJ
+布隆迪：BI
+安哥拉：AO
+
+当MatchKey为ipArea时，取值为：
+其他：OTHER
+亚洲：AS
+欧洲：EU
+南极洲：AN
+非洲：AF
+大洋洲：OC
+北美洲：NA
+南美洲：SA
+
+当MatchKey为index时
+取值为：/;/index.html
+        :type MatchValue: list of str
+        :param CaseSensitive: 是否区分大小写 true：区分 false：不区分
+        :type CaseSensitive: bool
+        :param MatchKeyParam: 当MatchKey为param时必填：表示请求参数Key 当MatchKey为cookie时必填：表示请求头Cookie中参数的
+        :type MatchKeyParam: str
+        """
+        self.MatchKey = None
+        self.LogicOperator = None
+        self.MatchValue = None
+        self.CaseSensitive = None
+        self.MatchKeyParam = None
+
+
+    def _deserialize(self, params):
+        self.MatchKey = params.get("MatchKey")
+        self.LogicOperator = params.get("LogicOperator")
+        self.MatchValue = params.get("MatchValue")
+        self.CaseSensitive = params.get("CaseSensitive")
+        self.MatchKeyParam = params.get("MatchKeyParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Authentication(AbstractModel):
     """时间戳防盗链配置
 
@@ -2200,7 +2524,7 @@ off：关闭
 
 
 class CompressionRule(AbstractModel):
-    """压缩规则配置，最多可设置 100 条
+    """智能压缩规则配置
 
     """
 
@@ -2209,10 +2533,6 @@ class CompressionRule(AbstractModel):
         :param Compress: true：需要设置为 ture，启用压缩
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compress: bool
-        :param FileExtensions: 根据文件后缀类型压缩
-例如 jpg、txt
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FileExtensions: list of str
         :param MinLength: 触发压缩的文件长度最小值，单位为字节数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinLength: int
@@ -2225,20 +2545,45 @@ gzip：指定 GZIP 压缩
 brotli：指定Brotli压缩
 注意：此字段可能返回 null，表示取不到有效值。
         :type Algorithms: list of str
+        :param FileExtensions: 根据文件后缀类型压缩
+例如 jpg、txt
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileExtensions: list of str
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+contentType：指定Content-Type头为特定值时生效
+当指定了此字段时，FileExtensions字段不生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RulePaths: CacheType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test
+path 时填充绝对路径，如 /xxx/test.html
+contentType 时填充 text/html
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
         """
         self.Compress = None
-        self.FileExtensions = None
         self.MinLength = None
         self.MaxLength = None
         self.Algorithms = None
+        self.FileExtensions = None
+        self.RuleType = None
+        self.RulePaths = None
 
 
     def _deserialize(self, params):
         self.Compress = params.get("Compress")
-        self.FileExtensions = params.get("FileExtensions")
         self.MinLength = params.get("MinLength")
         self.MaxLength = params.get("MaxLength")
         self.Algorithms = params.get("Algorithms")
+        self.FileExtensions = params.get("FileExtensions")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9182,12 +9527,62 @@ class RangeOriginPull(AbstractModel):
 on：开启
 off：关闭
         :type Switch: str
+        :param RangeRules: 分路径分片回源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeRules: list of RangeOriginPullRule
         """
         self.Switch = None
+        self.RangeRules = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        if params.get("RangeRules") is not None:
+            self.RangeRules = []
+            for item in params.get("RangeRules"):
+                obj = RangeOriginPullRule()
+                obj._deserialize(item)
+                self.RangeRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangeOriginPullRule(AbstractModel):
+    """分路径分片回源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 分片回源配置开关
+        :type Switch: str
+        :param RuleType: 规则类型：
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RulePaths: RuleType 对应类型下的匹配内容：
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test
+path 时填充绝对路径，如 /xxx/test.html
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        """
+        self.Switch = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9730,16 +10125,20 @@ class ScdnAclConfig(AbstractModel):
         r"""
         :param Switch: 是否开启，on | off
         :type Switch: str
-        :param ScriptData: Acl规则组，switch为on时必填
+        :param ScriptData: 新版本请使用AdvancedScriptData
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptData: list of ScdnAclGroup
         :param ErrorPage: 错误页面配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        :param AdvancedScriptData: Acl规则组，switch为on时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedScriptData: list of AdvancedScdnAclGroup
         """
         self.Switch = None
         self.ScriptData = None
         self.ErrorPage = None
+        self.AdvancedScriptData = None
 
 
     def _deserialize(self, params):
@@ -9753,6 +10152,12 @@ class ScdnAclConfig(AbstractModel):
         if params.get("ErrorPage") is not None:
             self.ErrorPage = ScdnErrorPage()
             self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("AdvancedScriptData") is not None:
+            self.AdvancedScriptData = []
+            for item in params.get("AdvancedScriptData"):
+                obj = AdvancedScdnAclGroup()
+                obj._deserialize(item)
+                self.AdvancedScriptData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9773,9 +10178,9 @@ class ScdnAclGroup(AbstractModel):
         :type RuleName: str
         :param Configure: 具体配置
         :type Configure: list of ScdnAclRule
-        :param Result: 规则行为，一般为refuse，重定向redirect
+        :param Result: 执行动作，intercept|redirect
         :type Result: str
-        :param Status: 规则是否生效中active|inactive
+        :param Status: 规则是否生效，active|inactive
         :type Status: str
         :param ErrorPage: 错误页面配置
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9817,11 +10222,11 @@ class ScdnAclRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MatchKey: 匹配关键字, params | url | ip | referer | user-agent
+        :param MatchKey: 匹配关键字
         :type MatchKey: str
-        :param LogiOperator: 逻辑操作符，取值 exclude, include, notequal, equal, len-less, len-equal, len-more
+        :param LogiOperator: 逻辑操作符，取值如下
         :type LogiOperator: str
-        :param MatchValue: 匹配值
+        :param MatchValue: 匹配值。
         :type MatchValue: str
         """
         self.MatchKey = None
@@ -10095,6 +10500,8 @@ class ScdnErrorPage(AbstractModel):
     def __init__(self):
         r"""
         :param RedirectCode: 状态码
+执行动作为：intercept 默认传值 403
+执行动作为：redirect 默认传值 301
         :type RedirectCode: int
         :param RedirectUrl: 重定向url
         :type RedirectUrl: str
