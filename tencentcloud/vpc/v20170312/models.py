@@ -8694,6 +8694,72 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
+    """DescribeNatGatewayDirectConnectGatewayRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatGatewayId: nat的唯一标识
+        :type NatGatewayId: str
+        :param VpcId: vpc的唯一标识
+        :type VpcId: str
+        :param Limit: 0到200之间
+        :type Limit: int
+        :param Offset: 大于0
+        :type Offset: int
+        """
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatGatewayDirectConnectGatewayRouteResponse(AbstractModel):
+    """DescribeNatGatewayDirectConnectGatewayRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NatDirectConnectGatewayRouteSet: 路由数据
+        :type NatDirectConnectGatewayRouteSet: list of NatDirectConnectGatewayRoute
+        :param Total: 路由总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NatDirectConnectGatewayRouteSet = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatDirectConnectGatewayRouteSet") is not None:
+            self.NatDirectConnectGatewayRouteSet = []
+            for item in params.get("NatDirectConnectGatewayRouteSet"):
+                obj = NatDirectConnectGatewayRoute()
+                obj._deserialize(item)
+                self.NatDirectConnectGatewayRouteSet.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewaySourceIpTranslationNatRules请求参数结构体
 
@@ -11250,6 +11316,34 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
         
 
 
+class DirectConnectSubnet(AbstractModel):
+    """IDC子网信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DirectConnectGatewayId: 专线网关ID
+        :type DirectConnectGatewayId: str
+        :param CidrBlock: IDC子网网段
+        :type CidrBlock: str
+        """
+        self.DirectConnectGatewayId = None
+        self.CidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.CidrBlock = params.get("CidrBlock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableCcnRoutesRequest(AbstractModel):
     """DisableCcnRoutes请求参数结构体
 
@@ -13742,16 +13836,20 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
         :type BandwidthPackageName: str
         :param ChargeType: 带宽包计费模式
         :type ChargeType: str
+        :param MigrateOnRefund: 退款时迁移为后付费带宽包。默认值：否
+        :type MigrateOnRefund: bool
         """
         self.BandwidthPackageId = None
         self.BandwidthPackageName = None
         self.ChargeType = None
+        self.MigrateOnRefund = None
 
 
     def _deserialize(self, params):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.BandwidthPackageName = params.get("BandwidthPackageName")
         self.ChargeType = params.get("ChargeType")
+        self.MigrateOnRefund = params.get("MigrateOnRefund")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13837,9 +13935,9 @@ class ModifyCcnAttributeRequest(AbstractModel):
         r"""
         :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
         :type CcnId: str
-        :param CcnName: CCN名称，最大长度不能超过60个字节。
+        :param CcnName: CCN名称，最大长度不能超过60个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
         :type CcnName: str
-        :param CcnDescription: CCN描述信息，最大长度不能超过100个字节。
+        :param CcnDescription: CCN描述信息，最大长度不能超过100个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
         :type CcnDescription: str
         """
         self.CcnId = None
@@ -15682,6 +15780,47 @@ class ModifyVpnGatewayRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NatDirectConnectGatewayRoute(AbstractModel):
+    """查询nat路由的返回路由对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DestinationCidrBlock: 子网的 `IPv4` `CIDR`
+        :type DestinationCidrBlock: str
+        :param GatewayType: 下一跳网关的类型，目前此接口支持的类型有：
+DIRECTCONNECT：专线网关
+        :type GatewayType: str
+        :param GatewayId: 下一跳网关ID
+        :type GatewayId: str
+        :param CreateTime: 路由的创建时间
+        :type CreateTime: str
+        :param UpdateTime: 路由的更新时间
+        :type UpdateTime: str
+        """
+        self.DestinationCidrBlock = None
+        self.GatewayType = None
+        self.GatewayId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.GatewayType = params.get("GatewayType")
+        self.GatewayId = params.get("GatewayId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatGateway(AbstractModel):
     """NAT网关对象。
 
@@ -16588,6 +16727,64 @@ class ReferredSecurityGroup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
+    """RefreshDirectConnectGatewayRouteToNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: vpc的ID
+        :type VpcId: str
+        :param NatGatewayId: NAT网关ID
+        :type NatGatewayId: str
+        :param DryRun: 是否是预刷新；True:是， False:否
+        :type DryRun: bool
+        """
+        self.VpcId = None
+        self.NatGatewayId = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshDirectConnectGatewayRouteToNatGatewayResponse(AbstractModel):
+    """RefreshDirectConnectGatewayRouteToNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DirectConnectSubnetSet: IDC子网信息
+        :type DirectConnectSubnetSet: list of DirectConnectSubnet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DirectConnectSubnetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DirectConnectSubnetSet") is not None:
+            self.DirectConnectSubnetSet = []
+            for item in params.get("DirectConnectSubnetSet"):
+                obj = DirectConnectSubnet()
+                obj._deserialize(item)
+                self.DirectConnectSubnetSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class RejectAttachCcnInstancesRequest(AbstractModel):
@@ -17848,6 +18045,9 @@ class SecurityGroup(AbstractModel):
         :type CreatedTime: str
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
+        :param UpdateTime: 安全组更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.SecurityGroupId = None
         self.SecurityGroupName = None
@@ -17856,6 +18056,7 @@ class SecurityGroup(AbstractModel):
         self.IsDefault = None
         self.CreatedTime = None
         self.TagSet = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -17871,6 +18072,7 @@ class SecurityGroup(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18732,9 +18934,12 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param InstanceId: 网卡绑定的子机实例ID，该参数仅用于指定网卡退还IP并解绑子机的场景，如果不涉及解绑子机，请勿填写。
+        :type InstanceId: str
         """
         self.NetworkInterfaceId = None
         self.PrivateIpAddresses = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -18745,6 +18950,7 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

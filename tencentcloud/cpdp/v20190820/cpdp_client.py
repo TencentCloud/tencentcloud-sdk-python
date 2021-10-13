@@ -2051,6 +2051,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryOrderStatus(self, request):
+        """云支付-查询订单付款状态
+
+        :param request: Request instance for QueryOrderStatus.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOrderStatusRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOrderStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOrderStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOrderStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryOutwardOrder(self, request):
         """跨境-查询汇出结果
 
@@ -2527,6 +2555,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RefundTlinxOrder(self, request):
+        """云支付Tlinx退款接口
+
+        :param request: Request instance for RefundTlinxOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.RefundTlinxOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.RefundTlinxOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RefundTlinxOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RefundTlinxOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RegisterBehavior(self, request):
         """商户查询是否签约和签约行为上报
 
@@ -2877,6 +2933,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnifiedOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnifiedTlinxOrder(self, request):
+        """云支付Tlinx统一下单接口
+
+        :param request: Request instance for UnifiedTlinxOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.UnifiedTlinxOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.UnifiedTlinxOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnifiedTlinxOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnifiedTlinxOrderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

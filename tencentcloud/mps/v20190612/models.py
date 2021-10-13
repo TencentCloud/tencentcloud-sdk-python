@@ -9753,6 +9753,9 @@ class MediaVideoStreamItem(AbstractModel):
         :param ColorTransfer: 色彩空间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorTransfer: str
+        :param HdrType: HDR类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HdrType: str
         """
         self.Bitrate = None
         self.Height = None
@@ -9762,6 +9765,7 @@ class MediaVideoStreamItem(AbstractModel):
         self.ColorPrimaries = None
         self.ColorSpace = None
         self.ColorTransfer = None
+        self.HdrType = None
 
 
     def _deserialize(self, params):
@@ -9773,6 +9777,7 @@ class MediaVideoStreamItem(AbstractModel):
         self.ColorPrimaries = params.get("ColorPrimaries")
         self.ColorSpace = params.get("ColorSpace")
         self.ColorTransfer = params.get("ColorTransfer")
+        self.HdrType = params.get("HdrType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

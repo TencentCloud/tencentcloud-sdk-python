@@ -531,12 +531,15 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         :type PlayToken: str
         :param LyricsUrl: 歌词下载地址
         :type LyricsUrl: str
+        :param DefinitionInfoSet: 歌曲规格信息列表
+        :type DefinitionInfoSet: list of KTVMusicDefinitionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.KTVMusicBaseInfo = None
         self.PlayToken = None
         self.LyricsUrl = None
+        self.DefinitionInfoSet = None
         self.RequestId = None
 
 
@@ -546,6 +549,12 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
             self.KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
         self.PlayToken = params.get("PlayToken")
         self.LyricsUrl = params.get("LyricsUrl")
+        if params.get("DefinitionInfoSet") is not None:
+            self.DefinitionInfoSet = []
+            for item in params.get("DefinitionInfoSet"):
+                obj = KTVMusicDefinitionInfo()
+                obj._deserialize(item)
+                self.DefinitionInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1210,6 +1219,41 @@ class KTVMusicBaseInfo(AbstractModel):
         self.ComposerSet = params.get("ComposerSet")
         self.TagSet = params.get("TagSet")
         self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVMusicDefinitionInfo(AbstractModel):
+    """直播互动歌曲规格信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 规格，取值有：
+<li>audio/mi：低规格；</li>
+<li>audio/lo：中规格；</li>
+<li>audio/hi：高规格。</li>
+        :type Definition: str
+        :param Bitrate: 码率，单位为 bps。
+        :type Bitrate: int
+        :param Size: 文件大小，单位为字节。
+        :type Size: int
+        """
+        self.Definition = None
+        self.Bitrate = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Bitrate = params.get("Bitrate")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3733,6 +3733,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNatGatewayDirectConnectGatewayRoute(self, request):
+        """查询专线绑定NAT的路由
+
+        :param request: Request instance for DescribeNatGatewayDirectConnectGatewayRoute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDirectConnectGatewayRouteRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewayDirectConnectGatewayRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNatGatewayDirectConnectGatewayRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNatGatewayDirectConnectGatewayRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNatGatewaySourceIpTranslationNatRules(self, request):
         """本接口（DescribeNatGatewaySourceIpTranslationNatRules）用于查询NAT网关SNAT转发规则对象数组。
 
@@ -6757,6 +6785,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.NotifyRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RefreshDirectConnectGatewayRouteToNatGateway(self, request):
+        """刷新专线直连nat路由，更新nat到专线的路由表
+
+        :param request: Request instance for RefreshDirectConnectGatewayRouteToNatGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RefreshDirectConnectGatewayRouteToNatGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RefreshDirectConnectGatewayRouteToNatGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RefreshDirectConnectGatewayRouteToNatGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RefreshDirectConnectGatewayRouteToNatGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

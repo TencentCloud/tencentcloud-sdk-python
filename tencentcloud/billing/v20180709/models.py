@@ -2000,16 +2000,25 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
         :type EndTime: str
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
+        :param PayType: 款项类别，与L0账单上的汇总类别对应。
+此参数自账单3.0（即2021-05）之后开始生效。
+枚举值：
+consume-消费
+refund-退款
+adjustment-调账
+        :type PayType: str
         """
         self.BeginTime = None
         self.EndTime = None
         self.PayerUin = None
+        self.PayType = None
 
 
     def _deserialize(self, params):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.PayerUin = params.get("PayerUin")
+        self.PayType = params.get("PayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

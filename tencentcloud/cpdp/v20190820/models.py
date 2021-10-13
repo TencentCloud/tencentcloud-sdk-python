@@ -6299,6 +6299,96 @@ class OrganizationInfo(AbstractModel):
         
 
 
+class PayOrderResult(AbstractModel):
+    """订单支付响应对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderNo: 付款订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderNo: str
+        :param DeveloperNo: 开发者流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeveloperNo: str
+        :param TradeDiscountAmount: 交易优惠金额（免充值券）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeDiscountAmount: str
+        :param PayName: 付款方式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
+        :param OrderMerchantId: 商户流水号（从1开始自增长不重复）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderMerchantId: str
+        :param TradeAccount: 交易帐号（银行卡号、支付宝帐号、微信帐号等，某些收单机构没有此数据）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeAccount: str
+        :param TradeAmount: 实际交易金额（以分为单位，没有小数点）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeAmount: str
+        :param CurrencySign: 币种签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrencySign: str
+        :param TradePayTime: 付款完成时间（以收单机构为准）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradePayTime: str
+        :param ShopOrderId: 门店流水号（从1开始自增长不重复）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopOrderId: str
+        :param PayTag: 支付标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTag: str
+        :param Status: 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param OrderCurrency: 币种代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderCurrency: str
+        :param TradeQrcode: 二维码字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeQrcode: str
+        """
+        self.OrderNo = None
+        self.DeveloperNo = None
+        self.TradeDiscountAmount = None
+        self.PayName = None
+        self.OrderMerchantId = None
+        self.TradeAccount = None
+        self.TradeAmount = None
+        self.CurrencySign = None
+        self.TradePayTime = None
+        self.ShopOrderId = None
+        self.PayTag = None
+        self.Status = None
+        self.OrderCurrency = None
+        self.TradeQrcode = None
+
+
+    def _deserialize(self, params):
+        self.OrderNo = params.get("OrderNo")
+        self.DeveloperNo = params.get("DeveloperNo")
+        self.TradeDiscountAmount = params.get("TradeDiscountAmount")
+        self.PayName = params.get("PayName")
+        self.OrderMerchantId = params.get("OrderMerchantId")
+        self.TradeAccount = params.get("TradeAccount")
+        self.TradeAmount = params.get("TradeAmount")
+        self.CurrencySign = params.get("CurrencySign")
+        self.TradePayTime = params.get("TradePayTime")
+        self.ShopOrderId = params.get("ShopOrderId")
+        self.PayTag = params.get("PayTag")
+        self.Status = params.get("Status")
+        self.OrderCurrency = params.get("OrderCurrency")
+        self.TradeQrcode = params.get("TradeQrcode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryAcctBindingRequest(AbstractModel):
     """QueryAcctBinding请求参数结构体
 
@@ -9416,6 +9506,259 @@ class QueryOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryOrderStatusRequest(AbstractModel):
+    """QueryOrderStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param DeveloperNo: 开发者流水号
+        :type DeveloperNo: str
+        :param OrderNo: 付款订单号
+        :type OrderNo: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
+        """
+        self.OpenId = None
+        self.OpenKey = None
+        self.DeveloperNo = None
+        self.OrderNo = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.DeveloperNo = params.get("DeveloperNo")
+        self.OrderNo = params.get("OrderNo")
+        self.Profile = params.get("Profile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOrderStatusResponse(AbstractModel):
+    """QueryOrderStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 查询订单付款状态结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOrderStatusResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOrderStatusResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOrderStatusResult(AbstractModel):
+    """查询订单付款状态响应对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderNo: 付款订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderNo: str
+        :param DeveloperNo: 开发者流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeveloperNo: str
+        :param TradeDiscountAmount: 交易优惠金额（免充值券）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeDiscountAmount: str
+        :param PayName: 付款方式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
+        :param OrderMerchantId: 商户流水号（从1开始自增长不重复）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderMerchantId: str
+        :param TradeAccount: 交易帐号（银行卡号、支付宝帐号、微信帐号等，某些收单机构没有此数据）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeAccount: str
+        :param TradeAmount: 实际交易金额（以分为单位，没有小数点）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeAmount: str
+        :param CurrencySign: 币种签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrencySign: str
+        :param TradePayTime: 付款完成时间（以收单机构为准）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradePayTime: str
+        :param ShopOrderId: 门店流水号（从1开始自增长不重复）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopOrderId: str
+        :param PayTag: 支付标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTag: str
+        :param Status: 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param OrderCurrency: 币种代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderCurrency: str
+        :param TradeQrcode: 二维码字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeQrcode: str
+        :param TradeTime: 开始交易时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeTime: str
+        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountAmount: str
+        :param MerchantNo: 商户号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantNo: str
+        :param Remark: 订单备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param OrderName: 订单标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderName: str
+        :param OriginalAmount: 原始金额（以分为单位，没有小数点）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalAmount: str
+        :param ShopNo: 门店编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopNo: str
+        :param TradeResult: 收单机构原始交易数据，如果返回非标准json数据，请自行转换
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeResult: str
+        :param OrderId: 订单流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param OrderType: 订单类型（1消费，2辙单）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderType: str
+        :param TradeNo: 收单机构交易号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeNo: str
+        :param OriginalOrderNo: 原始订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalOrderNo: str
+        :param Tag: 订单标记，订单附加数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
+        :param AddTime: 下单时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddTime: str
+        :param CashierId: 收银员编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashierId: str
+        :param CashierRealName: 收银员名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashierRealName: str
+        :param ShopFullName: 店铺全称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopFullName: str
+        :param ShopName: 店铺名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopName: str
+        """
+        self.OrderNo = None
+        self.DeveloperNo = None
+        self.TradeDiscountAmount = None
+        self.PayName = None
+        self.OrderMerchantId = None
+        self.TradeAccount = None
+        self.TradeAmount = None
+        self.CurrencySign = None
+        self.TradePayTime = None
+        self.ShopOrderId = None
+        self.PayTag = None
+        self.Status = None
+        self.OrderCurrency = None
+        self.TradeQrcode = None
+        self.TradeTime = None
+        self.DiscountAmount = None
+        self.MerchantNo = None
+        self.Remark = None
+        self.OrderName = None
+        self.OriginalAmount = None
+        self.ShopNo = None
+        self.TradeResult = None
+        self.OrderId = None
+        self.OrderType = None
+        self.TradeNo = None
+        self.OriginalOrderNo = None
+        self.Tag = None
+        self.AddTime = None
+        self.CashierId = None
+        self.CashierRealName = None
+        self.ShopFullName = None
+        self.ShopName = None
+
+
+    def _deserialize(self, params):
+        self.OrderNo = params.get("OrderNo")
+        self.DeveloperNo = params.get("DeveloperNo")
+        self.TradeDiscountAmount = params.get("TradeDiscountAmount")
+        self.PayName = params.get("PayName")
+        self.OrderMerchantId = params.get("OrderMerchantId")
+        self.TradeAccount = params.get("TradeAccount")
+        self.TradeAmount = params.get("TradeAmount")
+        self.CurrencySign = params.get("CurrencySign")
+        self.TradePayTime = params.get("TradePayTime")
+        self.ShopOrderId = params.get("ShopOrderId")
+        self.PayTag = params.get("PayTag")
+        self.Status = params.get("Status")
+        self.OrderCurrency = params.get("OrderCurrency")
+        self.TradeQrcode = params.get("TradeQrcode")
+        self.TradeTime = params.get("TradeTime")
+        self.DiscountAmount = params.get("DiscountAmount")
+        self.MerchantNo = params.get("MerchantNo")
+        self.Remark = params.get("Remark")
+        self.OrderName = params.get("OrderName")
+        self.OriginalAmount = params.get("OriginalAmount")
+        self.ShopNo = params.get("ShopNo")
+        self.TradeResult = params.get("TradeResult")
+        self.OrderId = params.get("OrderId")
+        self.OrderType = params.get("OrderType")
+        self.TradeNo = params.get("TradeNo")
+        self.OriginalOrderNo = params.get("OriginalOrderNo")
+        self.Tag = params.get("Tag")
+        self.AddTime = params.get("AddTime")
+        self.CashierId = params.get("CashierId")
+        self.CashierRealName = params.get("CashierRealName")
+        self.ShopFullName = params.get("ShopFullName")
+        self.ShopName = params.get("ShopName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryOutwardOrderData(AbstractModel):
     """查询汇出数据
 
@@ -11522,6 +11865,101 @@ class RefundOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RefundOrderResult(AbstractModel):
+    """订单退款响应对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderNo: 付款订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderNo: str
+        :param DeveloperNo: 开发者流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeveloperNo: str
+        :param TradeDiscountAmount: 交易优惠金额（免充值券）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeDiscountAmount: str
+        :param PayName: 付款方式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
+        :param OrderMerchantId: 商户流水号（从1开始自增长不重复）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderMerchantId: str
+        :param TradeAmount: 实际交易金额（以分为单位，没有小数点）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeAmount: str
+        :param CurrencySign: 币种签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrencySign: str
+        :param TradePayTime: 付款完成时间（以收单机构为准）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradePayTime: str
+        :param ShopOrderId: 门店流水号（从1开始自增长不重复）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopOrderId: str
+        :param PayTag: 支付标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTag: str
+        :param Status: 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param OrderCurrency: 币种代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderCurrency: str
+        :param TradeTime: 开始交易时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeTime: str
+        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountAmount: str
+        :param OriginalOrderNo: 原始订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalOrderNo: str
+        """
+        self.OrderNo = None
+        self.DeveloperNo = None
+        self.TradeDiscountAmount = None
+        self.PayName = None
+        self.OrderMerchantId = None
+        self.TradeAmount = None
+        self.CurrencySign = None
+        self.TradePayTime = None
+        self.ShopOrderId = None
+        self.PayTag = None
+        self.Status = None
+        self.OrderCurrency = None
+        self.TradeTime = None
+        self.DiscountAmount = None
+        self.OriginalOrderNo = None
+
+
+    def _deserialize(self, params):
+        self.OrderNo = params.get("OrderNo")
+        self.DeveloperNo = params.get("DeveloperNo")
+        self.TradeDiscountAmount = params.get("TradeDiscountAmount")
+        self.PayName = params.get("PayName")
+        self.OrderMerchantId = params.get("OrderMerchantId")
+        self.TradeAmount = params.get("TradeAmount")
+        self.CurrencySign = params.get("CurrencySign")
+        self.TradePayTime = params.get("TradePayTime")
+        self.ShopOrderId = params.get("ShopOrderId")
+        self.PayTag = params.get("PayTag")
+        self.Status = params.get("Status")
+        self.OrderCurrency = params.get("OrderCurrency")
+        self.TradeTime = params.get("TradeTime")
+        self.DiscountAmount = params.get("DiscountAmount")
+        self.OriginalOrderNo = params.get("OriginalOrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefundOutSubOrderRefundList(AbstractModel):
     """退款子订单列表
 
@@ -11653,6 +12091,95 @@ class RefundResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RefundTlinxOrderRequest(AbstractModel):
+    """RefundTlinxOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param DeveloperNo: 原始订单的开发者交易流水号
+        :type DeveloperNo: str
+        :param RefundOutNo: 新退款订单的开发者流水号，同一门店内唯一
+        :type RefundOutNo: str
+        :param RefundOrderName: 退款订单名称，可以为空
+        :type RefundOrderName: str
+        :param RefundAmount: 退款金额（以分为单位，没有小数点）
+        :type RefundAmount: str
+        :param ShopPassword: 主管密码，对密码进行sha1加密，默认为123456
+        :type ShopPassword: str
+        :param Remark: 退款备注
+        :type Remark: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
+        """
+        self.OpenId = None
+        self.OpenKey = None
+        self.DeveloperNo = None
+        self.RefundOutNo = None
+        self.RefundOrderName = None
+        self.RefundAmount = None
+        self.ShopPassword = None
+        self.Remark = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.DeveloperNo = params.get("DeveloperNo")
+        self.RefundOutNo = params.get("RefundOutNo")
+        self.RefundOrderName = params.get("RefundOrderName")
+        self.RefundAmount = params.get("RefundAmount")
+        self.ShopPassword = params.get("ShopPassword")
+        self.Remark = params.get("Remark")
+        self.Profile = params.get("Profile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefundTlinxOrderResponse(AbstractModel):
+    """RefundTlinxOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 退款响应对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.RefundOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = RefundOrderResult()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -13683,6 +14210,135 @@ class UnifiedOrderResponse(AbstractModel):
         self.OutTradeNo = params.get("OutTradeNo")
         self.PayInfo = params.get("PayInfo")
         self.TransactionId = params.get("TransactionId")
+        self.RequestId = params.get("RequestId")
+
+
+class UnifiedTlinxOrderRequest(AbstractModel):
+    """UnifiedTlinxOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param DeveloperNo: 开发者流水号
+        :type DeveloperNo: str
+        :param PayTag: 支付标签
+        :type PayTag: str
+        :param TradeAmount: 实际交易金额（以分为单位，没有小数点）
+        :type TradeAmount: str
+        :param Tag: 订单标记，订单附加数据
+        :type Tag: str
+        :param NotifyUrl: 交易结果异步通知url地址
+        :type NotifyUrl: str
+        :param PayName: 付款方式名称(当PayTag为Diy时，PayName不能为空)
+        :type PayName: str
+        :param OrderName: 订单名称（描述）
+        :type OrderName: str
+        :param OriginalAmount: 原始交易金额（以分为单位，没有小数点）
+        :type OriginalAmount: str
+        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
+        :type DiscountAmount: str
+        :param IgnoreAmount: 抹零金额（以分为单位，没有小数点）
+        :type IgnoreAmount: str
+        :param TradeAccount: 交易帐号（银行卡号）
+        :type TradeAccount: str
+        :param TradeNo: 交易号（收单机构交易号）
+        :type TradeNo: str
+        :param TradeResult: 收单机构原始交易报文，请转换为json
+        :type TradeResult: str
+        :param Remark: 订单备注
+        :type Remark: str
+        :param AuthCode: 条码支付的授权码（条码抢扫手机扫到的一串数字）
+        :type AuthCode: str
+        :param JumpUrl: 公众号支付时，支付成功后跳转url地址
+        :type JumpUrl: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
+        """
+        self.OpenId = None
+        self.OpenKey = None
+        self.DeveloperNo = None
+        self.PayTag = None
+        self.TradeAmount = None
+        self.Tag = None
+        self.NotifyUrl = None
+        self.PayName = None
+        self.OrderName = None
+        self.OriginalAmount = None
+        self.DiscountAmount = None
+        self.IgnoreAmount = None
+        self.TradeAccount = None
+        self.TradeNo = None
+        self.TradeResult = None
+        self.Remark = None
+        self.AuthCode = None
+        self.JumpUrl = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.DeveloperNo = params.get("DeveloperNo")
+        self.PayTag = params.get("PayTag")
+        self.TradeAmount = params.get("TradeAmount")
+        self.Tag = params.get("Tag")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.PayName = params.get("PayName")
+        self.OrderName = params.get("OrderName")
+        self.OriginalAmount = params.get("OriginalAmount")
+        self.DiscountAmount = params.get("DiscountAmount")
+        self.IgnoreAmount = params.get("IgnoreAmount")
+        self.TradeAccount = params.get("TradeAccount")
+        self.TradeNo = params.get("TradeNo")
+        self.TradeResult = params.get("TradeResult")
+        self.Remark = params.get("Remark")
+        self.AuthCode = params.get("AuthCode")
+        self.JumpUrl = params.get("JumpUrl")
+        self.Profile = params.get("Profile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnifiedTlinxOrderResponse(AbstractModel):
+    """UnifiedTlinxOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 统一下单响应对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PayOrderResult()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 

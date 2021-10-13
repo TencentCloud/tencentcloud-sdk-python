@@ -3269,6 +3269,9 @@ class Environment(AbstractModel):
         :param TopicNum: Topic数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicNum: int
+        :param RetentionPolicy: 消息保留策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         """
         self.EnvironmentId = None
         self.Remark = None
@@ -3278,6 +3281,7 @@ class Environment(AbstractModel):
         self.NamespaceId = None
         self.NamespaceName = None
         self.TopicNum = None
+        self.RetentionPolicy = None
 
 
     def _deserialize(self, params):
@@ -3289,6 +3293,9 @@ class Environment(AbstractModel):
         self.NamespaceId = params.get("NamespaceId")
         self.NamespaceName = params.get("NamespaceName")
         self.TopicNum = params.get("TopicNum")
+        if params.get("RetentionPolicy") is not None:
+            self.RetentionPolicy = RetentionPolicy()
+            self.RetentionPolicy._deserialize(params.get("RetentionPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
