@@ -978,6 +978,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScdnIpStrategy(self, request):
+        """查询在SCDN IP安全策略
+
+        :param request: Request instance for DescribeScdnIpStrategy.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnIpStrategyRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnIpStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScdnIpStrategy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScdnIpStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScdnTopData(self, request):
         """获取SCDN的Top数据
 

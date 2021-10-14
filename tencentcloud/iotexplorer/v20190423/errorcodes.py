@@ -296,6 +296,9 @@ RESOURCENOTFOUND_STUDIOLORAFREQNOTEXIST = 'ResourceNotFound.StudioLoRaFreqNotExi
 # 产品不存在。
 RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = 'ResourceNotFound.StudioProductNotExist'
 
+# Topic不存在。
+RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = 'ResourceNotFound.TopicPolicyNotExist'
+
 # 规则不存在。
 RESOURCENOTFOUND_TOPICRULENOTEXIST = 'ResourceNotFound.TopicRuleNotExist'
 

@@ -4977,6 +4977,83 @@ class DescribeScdnConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScdnIpStrategyRequest(AbstractModel):
+    """DescribeScdnIpStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页起始地址
+        :type Offset: int
+        :param Limit: 列表分页记录条数，最大1000
+        :type Limit: int
+        :param Filters: 查询条件过滤器
+        :type Filters: list of ScdnIpStrategyFilter
+        :param Order: 指定查询返回结果的排序字段，支持domain，update_time
+        :type Order: str
+        :param Sequence: 排序方式，支持asc，desc
+        :type Sequence: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.Order = None
+        self.Sequence = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ScdnIpStrategyFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.Sequence = params.get("Sequence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScdnIpStrategyResponse(AbstractModel):
+    """DescribeScdnIpStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpStrategyList: IP策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpStrategyList: list of ScdnIpStrategy
+        :param TotalCount: 配置的策略条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IpStrategyList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IpStrategyList") is not None:
+            self.IpStrategyList = []
+            for item in params.get("IpStrategyList"):
+                obj = ScdnIpStrategy()
+                obj._deserialize(item)
+                self.IpStrategyList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScdnTopDataRequest(AbstractModel):
     """DescribeScdnTopData请求参数结构体
 
@@ -6930,11 +7007,16 @@ blacklist：黑名单
         :param FilterRules: IP 黑白名单分路径配置，白名单功能
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of IpFilterPathRule
+        :param ReturnCode: IP 黑白名单验证失败时返回的 HTTP Code
+合法值: 400~499
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: int
         """
         self.Switch = None
         self.FilterType = None
         self.Filters = None
         self.FilterRules = None
+        self.ReturnCode = None
 
 
     def _deserialize(self, params):
@@ -6947,6 +7029,7 @@ blacklist：黑名单
                 obj = IpFilterPathRule()
                 obj._deserialize(item)
                 self.FilterRules.append(obj)
+        self.ReturnCode = params.get("ReturnCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10545,6 +10628,89 @@ class ScdnEventLogConditions(AbstractModel):
         self.Key = params.get("Key")
         self.Operator = params.get("Operator")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScdnIpStrategy(AbstractModel):
+    """scdn的IP白名单策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名|global表示全部域名
+        :type Domain: str
+        :param StrategyId: 策略ID
+        :type StrategyId: str
+        :param IpList: IP白名单列表
+        :type IpList: list of str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Remark: 备注
+        :type Remark: str
+        :param RuleType: 规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RuleValue: 规则值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleValue: list of str
+        """
+        self.Domain = None
+        self.StrategyId = None
+        self.IpList = None
+        self.UpdateTime = None
+        self.Remark = None
+        self.RuleType = None
+        self.RuleValue = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StrategyId = params.get("StrategyId")
+        self.IpList = params.get("IpList")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Remark = params.get("Remark")
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScdnIpStrategyFilter(AbstractModel):
+    """IP策略查询过滤参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 过滤字段名，支持domain, ip
+        :type Name: str
+        :param Value: 过滤字段值
+        :type Value: list of str
+        :param Fuzzy: 是否启用模糊查询，仅支持过滤字段名为domain。
+模糊查询时，Value长度最大为1
+        :type Fuzzy: bool
+        """
+        self.Name = None
+        self.Value = None
+        self.Fuzzy = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Fuzzy = params.get("Fuzzy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1313,6 +1313,51 @@ class DeleteStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTopicPolicyRequest(AbstractModel):
+    """DeleteTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param TopicName: Topic名称
+        :type TopicName: str
+        """
+        self.ProductId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTopicPolicyResponse(AbstractModel):
+    """DeleteTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTopicRuleRequest(AbstractModel):
     """DeleteTopicRule请求参数结构体
 
@@ -2125,6 +2170,63 @@ class DescribeStudioProductResponse(AbstractModel):
         if params.get("Product") is not None:
             self.Product = ProductEntry()
             self.Product._deserialize(params.get("Product"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopicPolicyRequest(AbstractModel):
+    """DescribeTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param TopicName: Topic名字
+        :type TopicName: str
+        """
+        self.ProductId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicPolicyResponse(AbstractModel):
+    """DescribeTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param TopicName: Topic名称
+        :type TopicName: str
+        :param Privilege: Topic权限
+        :type Privilege: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProductId = None
+        self.TopicName = None
+        self.Privilege = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.TopicName = params.get("TopicName")
+        self.Privilege = params.get("Privilege")
         self.RequestId = params.get("RequestId")
 
 
@@ -3470,6 +3572,56 @@ class ListFirmwaresResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListTopicPolicyRequest(AbstractModel):
+    """ListTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopicPolicyResponse(AbstractModel):
+    """ListTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Topics: Topic列表
+        :type Topics: list of TopicItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Topics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Topics") is not None:
+            self.Topics = []
+            for item in params.get("Topics"):
+                obj = TopicItem()
+                obj._deserialize(item)
+                self.Topics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class LoRaFrequencyEntry(AbstractModel):
     """LoRa自定义频点信息
 
@@ -4131,6 +4283,59 @@ class ModifyStudioProductResponse(AbstractModel):
         if params.get("Product") is not None:
             self.Product = ProductEntry()
             self.Product._deserialize(params.get("Product"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTopicPolicyRequest(AbstractModel):
+    """ModifyTopicPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param TopicName: 更新前Topic名
+        :type TopicName: str
+        :param NewTopicName: 更新后Topic名
+        :type NewTopicName: str
+        :param Privilege: Topic权限
+        :type Privilege: int
+        """
+        self.ProductId = None
+        self.TopicName = None
+        self.NewTopicName = None
+        self.Privilege = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.TopicName = params.get("TopicName")
+        self.NewTopicName = params.get("NewTopicName")
+        self.Privilege = params.get("Privilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTopicPolicyResponse(AbstractModel):
+    """ModifyTopicPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4920,6 +5125,34 @@ class SearchTopicRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Rules.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class TopicItem(AbstractModel):
+    """Topic信息, 包括Topic名字和权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic名称
+        :type TopicName: str
+        :param Privilege: Topic权限 , 1上报  2下发
+        :type Privilege: int
+        """
+        self.TopicName = None
+        self.Privilege = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.Privilege = params.get("Privilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TopicRule(AbstractModel):

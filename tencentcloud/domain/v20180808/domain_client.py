@@ -138,6 +138,34 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePhoneEmail(self, request):
+        """此接口用于创建有效的手机、邮箱
+
+        :param request: Request instance for CreatePhoneEmail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.CreatePhoneEmailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CreatePhoneEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePhoneEmail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePhoneEmailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTemplate(self, request):
         """本接口 ( CreateTemplate ) 用于添加域名信息模板 。
 
@@ -152,6 +180,34 @@ class DomainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePhoneEmail(self, request):
+        """此接口用于删除已验证的手机邮箱
+
+        :param request: Request instance for DeletePhoneEmail.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DeletePhoneEmailRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DeletePhoneEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePhoneEmail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePhoneEmailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -334,6 +390,34 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePhoneEmailList(self, request):
+        """本接口用于获取已验证的手机邮箱列表
+
+        :param request: Request instance for DescribePhoneEmailList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribePhoneEmailListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribePhoneEmailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePhoneEmailList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePhoneEmailListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTemplate(self, request):
         """本接口 (DescribeTemplate) 用于获取模板信息。
 
@@ -460,6 +544,34 @@ class DomainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewDomainBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SendPhoneEmailCode(self, request):
+        """此接口用于发送手机邮箱验证码。
+
+        :param request: Request instance for SendPhoneEmailCode.
+        :type request: :class:`tencentcloud.domain.v20180808.models.SendPhoneEmailCodeRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.SendPhoneEmailCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendPhoneEmailCode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendPhoneEmailCodeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

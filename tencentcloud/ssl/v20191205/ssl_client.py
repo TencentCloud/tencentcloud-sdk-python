@@ -362,6 +362,34 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeployedResources(self, request):
+        """证书查询关联资源
+
+        :param request: Request instance for DescribeDeployedResources.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeDeployedResourcesRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeDeployedResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeployedResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeployedResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeManagerDetail(self, request):
         """查询管理人详情
 

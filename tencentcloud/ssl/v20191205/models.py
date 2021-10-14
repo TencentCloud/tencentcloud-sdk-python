@@ -718,6 +718,38 @@ class DeleteManagerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeployedResources(AbstractModel):
+    """资源详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        :param Count: 数量
+        :type Count: int
+        :param Type: 资源标识:clb,cdn,live,waf,antiddos
+        :type Type: str
+        """
+        self.CertificateId = None
+        self.Count = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.Count = params.get("Count")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeCertificateDetailRequest(AbstractModel):
     """DescribeCertificateDetail请求参数结构体
 
@@ -1312,6 +1344,60 @@ class DescribeCertificatesResponse(AbstractModel):
                 obj = Certificates()
                 obj._deserialize(item)
                 self.Certificates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeployedResourcesRequest(AbstractModel):
+    """DescribeDeployedResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateIds: 证书ID
+        :type CertificateIds: list of str
+        :param ResourceType: 资源类型:clb,cdn,live,waf,antiddos
+        :type ResourceType: str
+        """
+        self.CertificateIds = None
+        self.ResourceType = None
+
+
+    def _deserialize(self, params):
+        self.CertificateIds = params.get("CertificateIds")
+        self.ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeployedResourcesResponse(AbstractModel):
+    """DescribeDeployedResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployedResources: 资源详情
+        :type DeployedResources: list of DeployedResources
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeployedResources = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeployedResources") is not None:
+            self.DeployedResources = []
+            for item in params.get("DeployedResources"):
+                obj = DeployedResources()
+                obj._deserialize(item)
+                self.DeployedResources.append(obj)
         self.RequestId = params.get("RequestId")
 
 

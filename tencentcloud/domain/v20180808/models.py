@@ -468,6 +468,55 @@ class CreateDomainBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePhoneEmailRequest(AbstractModel):
+    """CreatePhoneEmail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 手机号或者邮箱
+        :type Code: str
+        :param Type: 1：手机   2：邮箱
+        :type Type: int
+        :param VerifyCode: 验证码
+        :type VerifyCode: str
+        """
+        self.Code = None
+        self.Type = None
+        self.VerifyCode = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Type = params.get("Type")
+        self.VerifyCode = params.get("VerifyCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePhoneEmailResponse(AbstractModel):
+    """CreatePhoneEmail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTemplateRequest(AbstractModel):
     """CreateTemplate请求参数结构体
 
@@ -520,6 +569,51 @@ class CreateTemplateResponse(AbstractModel):
         if params.get("Template") is not None:
             self.Template = TemplateInfo()
             self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePhoneEmailRequest(AbstractModel):
+    """DeletePhoneEmail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 手机或者邮箱
+        :type Code: str
+        :param Type: 1：手机  2：邮箱
+        :type Type: int
+        """
+        self.Code = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePhoneEmailResponse(AbstractModel):
+    """DeletePhoneEmail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -852,6 +946,72 @@ class DescribeDomainPriceListResponse(AbstractModel):
                 obj = PriceInfo()
                 obj._deserialize(item)
                 self.PriceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePhoneEmailListRequest(AbstractModel):
+    """DescribePhoneEmailList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 0：所有类型  1：手机  2：邮箱，默认0
+        :type Type: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，取值范围[1,200]
+        :type Limit: int
+        :param Code: 手机或者邮箱精确搜索
+        :type Code: str
+        """
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePhoneEmailListResponse(AbstractModel):
+    """DescribePhoneEmailList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneEmailList: 手机或者邮箱列表
+        :type PhoneEmailList: list of PhoneEmailData
+        :param TotalCount: 总数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PhoneEmailList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PhoneEmailList") is not None:
+            self.PhoneEmailList = []
+            for item in params.get("PhoneEmailList"):
+                obj = PhoneEmailData()
+                obj._deserialize(item)
+                self.PhoneEmailList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1350,6 +1510,38 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PhoneEmailData(AbstractModel):
+    """手机号邮箱列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 手机号或者邮箱
+        :type Code: str
+        :param Type: 1：手机  2：邮箱
+        :type Type: int
+        :param CreatedOn: 创建时间
+        :type CreatedOn: str
+        """
+        self.Code = None
+        self.Type = None
+        self.CreatedOn = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Type = params.get("Type")
+        self.CreatedOn = params.get("CreatedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PriceInfo(AbstractModel):
     """域名价格信息
 
@@ -1447,6 +1639,51 @@ class RenewDomainBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
+class SendPhoneEmailCodeRequest(AbstractModel):
+    """SendPhoneEmailCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 手机或者邮箱号。
+        :type Code: str
+        :param Type: 1：手机  2：邮箱。
+        :type Type: int
+        """
+        self.Code = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendPhoneEmailCodeResponse(AbstractModel):
+    """SendPhoneEmailCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

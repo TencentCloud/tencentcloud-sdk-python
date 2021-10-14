@@ -874,6 +874,47 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserSAMLConfigRequest(AbstractModel):
+    """CreateUserSAMLConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SAMLMetadataDocument: SAML元数据文档，需要base64 encode
+        :type SAMLMetadataDocument: str
+        """
+        self.SAMLMetadataDocument = None
+
+
+    def _deserialize(self, params):
+        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserSAMLConfigResponse(AbstractModel):
+    """CreateUserSAMLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteGroupRequest(AbstractModel):
     """DeleteGroup请求参数结构体
 
@@ -1510,6 +1551,37 @@ class DescribeSubAccountsResponse(AbstractModel):
                 obj = SubAccountUser()
                 obj._deserialize(item)
                 self.SubAccounts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserSAMLConfigRequest(AbstractModel):
+    """DescribeUserSAMLConfig请求参数结构体
+
+    """
+
+
+class DescribeUserSAMLConfigResponse(AbstractModel):
+    """DescribeUserSAMLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SAMLMetadata: SAML元数据文档
+        :type SAMLMetadata: str
+        :param Status: 状态：0:未设置，11:已开启，2:已禁用
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SAMLMetadata = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SAMLMetadata = params.get("SAMLMetadata")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -4556,6 +4628,51 @@ class UpdateUserRequest(AbstractModel):
 
 class UpdateUserResponse(AbstractModel):
     """UpdateUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateUserSAMLConfigRequest(AbstractModel):
+    """UpdateUserSAMLConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operate: 修改的操作类型:enable:启用,disable:禁用,updateSAML:修改元数据文档
+        :type Operate: str
+        :param SAMLMetadataDocument: 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
+        :type SAMLMetadataDocument: str
+        """
+        self.Operate = None
+        self.SAMLMetadataDocument = None
+
+
+    def _deserialize(self, params):
+        self.Operate = params.get("Operate")
+        self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserSAMLConfigResponse(AbstractModel):
+    """UpdateUserSAMLConfig返回参数结构体
 
     """
 

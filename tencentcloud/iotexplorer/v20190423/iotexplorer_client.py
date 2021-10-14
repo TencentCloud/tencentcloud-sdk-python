@@ -642,6 +642,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTopicPolicy(self, request):
+        """本接口（DeleteTopicPolicy）用于删除Topic
+
+        :param request: Request instance for DeleteTopicPolicy.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTopicPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTopicRule(self, request):
         """删除规则
 
@@ -1020,6 +1048,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStudioProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopicPolicy(self, request):
+        """本接口（DescribeTopicPolicy）用于查看Topic详细信息
+
+        :param request: Request instance for DescribeTopicPolicy.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopicPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1426,6 +1482,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListTopicPolicy(self, request):
+        """本接口（ListTopicPolicy）用于获取Topic列表
+
+        :param request: Request instance for ListTopicPolicy.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ListTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTopicPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyFenceBind(self, request):
         """更新围栏绑定信息
 
@@ -1664,6 +1748,34 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStudioProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTopicPolicy(self, request):
+        """本接口（UpdateTopicPolicy）用于更新Topic信息
+
+        :param request: Request instance for ModifyTopicPolicy.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTopicPolicyRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTopicPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTopicPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTopicPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
