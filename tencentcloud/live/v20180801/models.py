@@ -1760,7 +1760,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 仅支持中文、英文、数字、_、-。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
-范围： 5s ~ 300s。
+范围： 2s ~ 300s。
         :type SnapshotInterval: int
         :param Width: 截图宽度。默认：0（原始宽）。
 范围：0-3000 。
@@ -9199,11 +9199,11 @@ class PushDataInfo(AbstractModel):
         :type ServerIp: str
         :param VideoFps: 推流视频帧率，单位: Hz。
         :type VideoFps: int
-        :param VideoSpeed: 推流视频码率，单位: bps。
+        :param VideoSpeed: 推流视频码率，单位: Kbps。
         :type VideoSpeed: int
         :param AudioFps: 推流音频帧率，单位: Hz。
         :type AudioFps: int
-        :param AudioSpeed: 推流音频码率，单位: bps。
+        :param AudioSpeed: 推流音频码率，单位: Kbps。
         :type AudioSpeed: int
         :param PushDomain: 推流域名。
         :type PushDomain: str

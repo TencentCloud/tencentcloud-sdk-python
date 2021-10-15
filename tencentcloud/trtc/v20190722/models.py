@@ -1300,6 +1300,8 @@ class EncodeParams(AbstractModel):
         :type BackgroundImageId: int
         :param AudioCodec: 混流-输出流音频编码类型，取值范围[0,1, 2]，0为LC-AAC，1为HE-AAC，2为HE-AACv2。默认值为0。当音频编码设置为HE-AACv2时，只支持输出流音频声道数为双声道。HE-AAC和HE-AACv2支持的输出流音频采样率范围为[48000, 44100, 32000, 24000, 16000]
         :type AudioCodec: int
+        :param BackgroundImageUrl: 混流-输出流背景图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。BackgroundImageUrl和BackgroundImageId参数都填时，以BackgroundImageUrl为准。图片大小限制不超过10MB。
+        :type BackgroundImageUrl: str
         """
         self.AudioSampleRate = None
         self.AudioBitrate = None
@@ -1312,6 +1314,7 @@ class EncodeParams(AbstractModel):
         self.BackgroundColor = None
         self.BackgroundImageId = None
         self.AudioCodec = None
+        self.BackgroundImageUrl = None
 
 
     def _deserialize(self, params):
@@ -1326,6 +1329,7 @@ class EncodeParams(AbstractModel):
         self.BackgroundColor = params.get("BackgroundColor")
         self.BackgroundImageId = params.get("BackgroundImageId")
         self.AudioCodec = params.get("AudioCodec")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2570,12 +2574,15 @@ class WaterMarkParams(AbstractModel):
         :type LocationX: int
         :param LocationY: 水印在输出时的Y偏移。单位为像素值。
         :type LocationY: int
+        :param WaterMarkUrl: 混流-水印图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。WaterMarkUrl和WaterMarkId参数都填时，以WaterMarkUrl为准。图片大小限制不超过10MB。
+        :type WaterMarkUrl: str
         """
         self.WaterMarkId = None
         self.WaterMarkWidth = None
         self.WaterMarkHeight = None
         self.LocationX = None
         self.LocationY = None
+        self.WaterMarkUrl = None
 
 
     def _deserialize(self, params):
@@ -2584,6 +2591,7 @@ class WaterMarkParams(AbstractModel):
         self.WaterMarkHeight = params.get("WaterMarkHeight")
         self.LocationX = params.get("LocationX")
         self.LocationY = params.get("LocationY")
+        self.WaterMarkUrl = params.get("WaterMarkUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -69,11 +69,20 @@ class AccessRegionDetial(AbstractModel):
         :type ConcurrentList: list of int
         :param BandwidthList: 可选的带宽取值数组
         :type BandwidthList: list of int
+        :param RegionArea: 机房所属大区
+        :type RegionArea: str
+        :param RegionAreaName: 机房所属大区名
+        :type RegionAreaName: str
+        :param IDCType: 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
+        :type IDCType: str
         """
         self.RegionId = None
         self.RegionName = None
         self.ConcurrentList = None
         self.BandwidthList = None
+        self.RegionArea = None
+        self.RegionAreaName = None
+        self.IDCType = None
 
 
     def _deserialize(self, params):
@@ -81,6 +90,9 @@ class AccessRegionDetial(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.ConcurrentList = params.get("ConcurrentList")
         self.BandwidthList = params.get("BandwidthList")
+        self.RegionArea = params.get("RegionArea")
+        self.RegionAreaName = params.get("RegionAreaName")
+        self.IDCType = params.get("IDCType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3085,6 +3097,18 @@ IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版�
 当该字段为0时，仅拉取通道组的通道，
 不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
         :type Independent: int
+        :param Order: 输出通道列表的排列顺序。取值范围：
+asc：升序排列
+desc：降序排列。
+默认为降序。
+        :type Order: str
+        :param OrderField: 通道列表排序的依据字段。取值范围：
+create_time：依据通道的创建时间排序
+proxy_id：依据通道的ID排序
+bandwidth：依据通道带宽上限排序
+concurrent_connections：依据通道并发排序
+默认按通道创建时间排序。
+        :type OrderField: str
         """
         self.InstanceIds = None
         self.Offset = None
@@ -3093,6 +3117,8 @@ IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版�
         self.ProxyIds = None
         self.TagSet = None
         self.Independent = None
+        self.Order = None
+        self.OrderField = None
 
 
     def _deserialize(self, params):
@@ -3113,6 +3139,8 @@ IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版�
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.Independent = params.get("Independent")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4984,6 +5012,38 @@ class HttpHeaderParam(AbstractModel):
         
 
 
+class IPDetail(AbstractModel):
+    """ip信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IP: IP字符串
+        :type IP: str
+        :param Provider: 供应商，BGP表示默认，CMCC表示中国移动，CUCC表示中国联通，CTCC表示中国电信
+        :type Provider: str
+        :param Bandwidth: 带宽
+        :type Bandwidth: int
+        """
+        self.IP = None
+        self.Provider = None
+        self.Bandwidth = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Provider = params.get("Provider")
+        self.Bandwidth = params.get("Bandwidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquiryPriceCreateProxyRequest(AbstractModel):
     """InquiryPriceCreateProxy请求参数结构体
 
@@ -6524,8 +6584,7 @@ CLOSED表示已关闭；
 ADJUSTING表示配置变更中；
 ISOLATING表示隔离中；
 ISOLATED表示已隔离；
-CLONING表示复制中；
-UNKNOWN表示未知状态。
+CLONING表示复制中。
         :type Status: str
         :param Domain: 接入域名。
         :type Domain: str
@@ -6578,7 +6637,7 @@ UNKNOWN表示未知状态。
         :param IPAddressVersion: IP版本：IPv4、IPv6
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
-        :param NetworkType: 网络类型：normal、cn2
+        :param NetworkType: 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
         :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
@@ -6587,6 +6646,9 @@ UNKNOWN表示未知状态。
         :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: str
+        :param IPList: IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPList: list of IPDetail
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6619,6 +6681,7 @@ UNKNOWN表示未知状态。
         self.NetworkType = None
         self.PackageType = None
         self.BanStatus = None
+        self.IPList = None
 
 
     def _deserialize(self, params):
@@ -6662,6 +6725,12 @@ UNKNOWN表示未知状态。
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
         self.BanStatus = params.get("BanStatus")
+        if params.get("IPList") is not None:
+            self.IPList = []
+            for item in params.get("IPList"):
+                obj = IPDetail()
+                obj._deserialize(item)
+                self.IPList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6727,8 +6796,7 @@ CLOSING表示关闭中；
 CLOSED表示已关闭；
 ADJUSTING表示配置变更中；
 ISOLATING表示隔离中；
-ISOLATED表示已隔离；
-UNKNOWN表示未知状态。
+ISOLATED表示已隔离。
         :type Status: str
         """
         self.InstanceId = None
@@ -6836,16 +6904,21 @@ class RealServerStatus(AbstractModel):
         :type BindStatus: int
         :param ProxyId: 绑定此源站的通道ID，没有绑定时为空字符串。
         :type ProxyId: str
+        :param GroupId: 绑定此源站的通道组ID，没有绑定时为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
         """
         self.RealServerId = None
         self.BindStatus = None
         self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
         self.RealServerId = params.get("RealServerId")
         self.BindStatus = params.get("BindStatus")
         self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6866,14 +6939,26 @@ class RegionDetail(AbstractModel):
         :type RegionId: str
         :param RegionName: 区域英文名或中文名
         :type RegionName: str
+        :param RegionArea: 机房所属大区
+        :type RegionArea: str
+        :param RegionAreaName: 机房所属大区名
+        :type RegionAreaName: str
+        :param IDCType: 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
+        :type IDCType: str
         """
         self.RegionId = None
         self.RegionName = None
+        self.RegionArea = None
+        self.RegionAreaName = None
+        self.IDCType = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.RegionName = params.get("RegionName")
+        self.RegionArea = params.get("RegionArea")
+        self.RegionAreaName = params.get("RegionAreaName")
+        self.IDCType = params.get("IDCType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

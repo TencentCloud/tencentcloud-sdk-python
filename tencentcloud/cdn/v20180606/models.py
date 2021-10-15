@@ -2695,12 +2695,16 @@ class CreateDiagnoseUrlRequest(AbstractModel):
         r"""
         :param Url: 需诊断的url，形如：http://www.test.com/test.txt。
         :type Url: str
+        :param Origin: 请求源带协议头，形如：https://console.cloud.tencent.com
+        :type Origin: str
         """
         self.Url = None
+        self.Origin = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.Origin = params.get("Origin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7428,14 +7432,18 @@ class ListDiagnoseReportRequest(AbstractModel):
         :type KeyWords: str
         :param DiagnoseLink: 用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
         :type DiagnoseLink: str
+        :param Origin: 请求源带协议头，形如：https://console.cloud.tencent.com
+        :type Origin: str
         """
         self.KeyWords = None
         self.DiagnoseLink = None
+        self.Origin = None
 
 
     def _deserialize(self, params):
         self.KeyWords = params.get("KeyWords")
         self.DiagnoseLink = params.get("DiagnoseLink")
+        self.Origin = params.get("Origin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8584,7 +8592,9 @@ domain：域名类型
 cos：对象存储源站
 ip：IP 列表作为源站
 ipv6：源站列表为一个单独的 IPv6 地址
-ip_ipv6：源站列表为多个 IPv4 地址和一个 IPv6 地址
+ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
+ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 出参增加以下几种类型：
 image：数据万象源站
 ftp：历史 FTP 托管源源站，现已不维护
@@ -8614,6 +8624,11 @@ https：强制 https 回源，https 回源时仅支持源站 443 端口
 domain：域名类型
 ip：IP 列表作为源站
 修改 BackupOrigins 时需要同时填充对应的 BackupOriginType
+以下备源源站类型尚未全量支持，需要申请试用：
+ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
+ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupOriginType: str
         :param BackupServerName: 回备源站时 Host 头部，不填充则默认为主源站的 ServerName

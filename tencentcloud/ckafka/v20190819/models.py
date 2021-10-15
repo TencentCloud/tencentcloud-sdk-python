@@ -4063,6 +4063,46 @@ class RouteResponse(AbstractModel):
         
 
 
+class SaleInfo(AbstractModel):
+    """标准版销售信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Flag: 手动设置的flag标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Flag: bool
+        :param Version: ckakfa版本号(1.1.1/2.4.2/0.10.2)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param Platform: 专业版、标准版标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Platform: str
+        :param SoldOut: 售罄标志：true售罄
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoldOut: bool
+        """
+        self.Flag = None
+        self.Version = None
+        self.Platform = None
+        self.SoldOut = None
+
+
+    def _deserialize(self, params):
+        self.Flag = params.get("Flag")
+        self.Version = params.get("Version")
+        self.Platform = params.get("Platform")
+        self.SoldOut = params.get("SoldOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubscribedInfo(AbstractModel):
     """订阅信息实体
 
@@ -4721,6 +4761,9 @@ class ZoneInfo(AbstractModel):
         :type Exflag: str
         :param SoldOut: json对象，key为机型，value true为售罄，false为未售罄
         :type SoldOut: str
+        :param SalesInfo: 标准版售罄信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesInfo: list of SaleInfo
         """
         self.ZoneId = None
         self.IsInternalApp = None
@@ -4730,6 +4773,7 @@ class ZoneInfo(AbstractModel):
         self.ZoneStatus = None
         self.Exflag = None
         self.SoldOut = None
+        self.SalesInfo = None
 
 
     def _deserialize(self, params):
@@ -4741,6 +4785,12 @@ class ZoneInfo(AbstractModel):
         self.ZoneStatus = params.get("ZoneStatus")
         self.Exflag = params.get("Exflag")
         self.SoldOut = params.get("SoldOut")
+        if params.get("SalesInfo") is not None:
+            self.SalesInfo = []
+            for item in params.get("SalesInfo"):
+                obj = SaleInfo()
+                obj._deserialize(item)
+                self.SalesInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

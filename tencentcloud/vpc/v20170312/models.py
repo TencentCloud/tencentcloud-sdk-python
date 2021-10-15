@@ -211,6 +211,56 @@ class AddIp6RulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddTemplateMemberRequest(AbstractModel):
+    """AddTemplateMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板实例ID，支持IP地址、协议端口、IP地址组、协议端口组四种参数模板的实例ID。
+        :type TemplateId: str
+        :param TemplateMember: 需要添加的参数模板成员信息，支持IP地址、协议端口、IP地址组、协议端口组四种类型，类型需要与TemplateId参数类型一致。
+        :type TemplateMember: list of MemberInfo
+        """
+        self.TemplateId = None
+        self.TemplateMember = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("TemplateMember") is not None:
+            self.TemplateMember = []
+            for item in params.get("TemplateMember"):
+                obj = MemberInfo()
+                obj._deserialize(item)
+                self.TemplateMember.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddTemplateMemberResponse(AbstractModel):
+    """AddTemplateMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Address(AbstractModel):
     """描述 EIP 信息
 
@@ -6119,6 +6169,56 @@ class DeleteSubnetRequest(AbstractModel):
 
 class DeleteSubnetResponse(AbstractModel):
     """DeleteSubnet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTemplateMemberRequest(AbstractModel):
+    """DeleteTemplateMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板实例ID，支持IP地址、协议端口、IP地址组、协议端口组四种参数模板的实例ID。
+        :type TemplateId: str
+        :param TemplateMember: 需要添加的参数模板成员信息，支持IP地址、协议端口、IP地址组、协议端口组四种类型，类型需要与TemplateId参数类型一致。
+        :type TemplateMember: list of MemberInfo
+        """
+        self.TemplateId = None
+        self.TemplateMember = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("TemplateMember") is not None:
+            self.TemplateMember = []
+            for item in params.get("TemplateMember"):
+                obj = MemberInfo()
+                obj._deserialize(item)
+                self.TemplateMember.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTemplateMemberResponse(AbstractModel):
+    """DeleteTemplateMember返回参数结构体
 
     """
 
@@ -13403,6 +13503,34 @@ class LocalGateway(AbstractModel):
         
 
 
+class MemberInfo(AbstractModel):
+    """模板对象成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Member: 模板对象成员
+        :type Member: str
+        :param Description: 模板对象成员描述信息
+        :type Description: str
+        """
+        self.Member = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Member = params.get("Member")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MigrateNetworkInterfaceRequest(AbstractModel):
     """MigrateNetworkInterface请求参数结构体
 
@@ -15312,6 +15440,65 @@ class ModifySubnetAttributeRequest(AbstractModel):
 
 class ModifySubnetAttributeResponse(AbstractModel):
     """ModifySubnetAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTemplateMemberRequest(AbstractModel):
+    """ModifyTemplateMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板实例ID，支持IP地址、协议端口、IP地址组、协议端口组四种参数模板的实例ID。
+        :type TemplateId: str
+        :param OriginalTemplateMember: 需要修改的参数模板成员信息，支持IP地址、协议端口、IP地址组、协议端口组四种类型，类型需要与TemplateId参数类型一致，修改顺序与TemplateMember参数顺序一一对应，入参长度需要与TemplateMember参数保持一致。
+        :type OriginalTemplateMember: list of MemberInfo
+        :param TemplateMember: 新的参数模板成员信息，支持IP地址、协议端口、IP地址组、协议端口组四种类型，类型需要与TemplateId参数类型一致，修改顺序与OriginalTemplateMember参数顺序一一对应，入参长度需要与OriginalTemplateMember参数保持一致。
+        :type TemplateMember: list of MemberInfo
+        """
+        self.TemplateId = None
+        self.OriginalTemplateMember = None
+        self.TemplateMember = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("OriginalTemplateMember") is not None:
+            self.OriginalTemplateMember = []
+            for item in params.get("OriginalTemplateMember"):
+                obj = MemberInfo()
+                obj._deserialize(item)
+                self.OriginalTemplateMember.append(obj)
+        if params.get("TemplateMember") is not None:
+            self.TemplateMember = []
+            for item in params.get("TemplateMember"):
+                obj = MemberInfo()
+                obj._deserialize(item)
+                self.TemplateMember.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTemplateMemberResponse(AbstractModel):
+    """ModifyTemplateMember返回参数结构体
 
     """
 

@@ -112,6 +112,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddTemplateMember(self, request):
+        """增加模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+
+        :param request: Request instance for AddTemplateMember.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AddTemplateMemberRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddTemplateMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddTemplateMember", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddTemplateMemberResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AllocateAddresses(self, request):
         """本接口 (AllocateAddresses) 用于申请一个或多个[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
         * EIP 是专为动态云计算设计的静态 IP 地址。借助 EIP，您可以快速将 EIP 重新映射到您的另一个实例上，从而屏蔽实例故障。
@@ -2590,6 +2618,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSubnetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTemplateMember(self, request):
+        """删除模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+
+        :param request: Request instance for DeleteTemplateMember.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTemplateMemberRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteTemplateMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTemplateMember", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTemplateMemberResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -6532,6 +6588,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubnetAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTemplateMember(self, request):
+        """修改模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+
+        :param request: Request instance for ModifyTemplateMember.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyTemplateMemberRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyTemplateMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTemplateMember", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTemplateMemberResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

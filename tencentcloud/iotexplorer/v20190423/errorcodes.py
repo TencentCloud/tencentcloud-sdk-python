@@ -104,6 +104,9 @@ INVALIDPARAMETERVALUE_DEVICENAMEINVALID = 'InvalidParameterValue.DeviceNameInval
 # 任务不存在。
 INVALIDPARAMETERVALUE_ERRORTASKNOTEXIST = 'InvalidParameterValue.ErrorTaskNotExist'
 
+# 存失败，行为操作和转发错误行为数据目标不可为同一设备。
+INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = 'InvalidParameterValue.FailActionHasSameDevice'
+
 # 固件已经存在。
 INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = 'InvalidParameterValue.FirmwareAlreadyExist'
 
@@ -172,6 +175,9 @@ INVALIDPARAMETERVALUE_MSGTITLEINVALID = 'InvalidParameterValue.MsgTitleInvalid'
 
 # 消息类型非法。
 INVALIDPARAMETERVALUE_MSGTYPEINVALID = 'InvalidParameterValue.MsgTypeInvalid'
+
+# 操作不支持。
+INVALIDPARAMETERVALUE_OPERATIONDENIED = 'InvalidParameterValue.OperationDenied'
 
 # 创建的产品名已存在。
 INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = 'InvalidParameterValue.ProductAlreadyExist'
