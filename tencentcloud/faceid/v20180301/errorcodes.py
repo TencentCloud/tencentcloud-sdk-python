@@ -65,6 +65,9 @@ FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 # 图片内容为空。
 FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 
+# 加密失败。
+FAILEDOPERATION_ENCRYPTSYSTEMERROR = 'FailedOperation.EncryptSystemError'
+
 # 文件存储失败，请稍后重试。
 FAILEDOPERATION_FILESAVEERROR = 'FailedOperation.FileSaveError'
 

@@ -203,6 +203,9 @@ INVALIDPARAMETER_DATADISKNOTBELONGSPECIFIEDINSTANCE = 'InvalidParameter.DataDisk
 # 只能包含一个系统盘快照。
 INVALIDPARAMETER_DUPLICATESYSTEMSNAPSHOTS = 'InvalidParameter.DuplicateSystemSnapshots'
 
+# 该主机当前状态不支持该操作。
+INVALIDPARAMETER_HOSTIDSTATUSNOTSUPPORT = 'InvalidParameter.HostIdStatusNotSupport'
+
 # 指定的hostName不符合规范。
 INVALIDPARAMETER_HOSTNAMEILLEGAL = 'InvalidParameter.HostNameIllegal'
 

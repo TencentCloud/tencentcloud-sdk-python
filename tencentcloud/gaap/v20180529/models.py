@@ -3098,15 +3098,15 @@ IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版�
 不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
         :type Independent: int
         :param Order: 输出通道列表的排列顺序。取值范围：
-asc：升序排列
+asc：升序排列；
 desc：降序排列。
 默认为降序。
         :type Order: str
         :param OrderField: 通道列表排序的依据字段。取值范围：
-create_time：依据通道的创建时间排序
-proxy_id：依据通道的ID排序
-bandwidth：依据通道带宽上限排序
-concurrent_connections：依据通道并发排序
+create_time：依据通道的创建时间排序；
+proxy_id：依据通道的ID排序；
+bandwidth：依据通道带宽上限排序；
+concurrent_connections：依据通道并发排序；
 默认按通道创建时间排序。
         :type OrderField: str
         """

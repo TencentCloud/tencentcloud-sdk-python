@@ -3796,7 +3796,7 @@ class UrlInfo(AbstractModel):
 1：直播流。 
 默认为0。其他非0非1值默认为0。画质重生任务只支持0。
         :type Format: int
-        :param Host: 指定请求资源时，HTTP头部host的值。
+        :param Host: 【不再支持】指定请求资源时，HTTP头部host的值。
         :type Host: str
         """
         self.Url = None

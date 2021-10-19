@@ -1547,6 +1547,36 @@ class DescribeDevicePositionListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ProductIdList: 产品标识列表
+        :type ProductIdList: list of str
+        :param CoordinateType: 坐标类型
+        :type CoordinateType: int
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 分页的大小
+        :type Limit: int
+        """
+        self.ProductIdList = None
+        self.CoordinateType = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProductIdList = params.get("ProductIdList")
+        self.CoordinateType = params.get("CoordinateType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeDevicePositionListResponse(AbstractModel):
     """DescribeDevicePositionList返回参数结构体
@@ -1555,13 +1585,26 @@ class DescribeDevicePositionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Positions: 产品设备位置信息列表
+        :type Positions: list of ProductDevicesPositionItem
+        :param Total: 产品设备位置信息的数目
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Positions = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Positions") is not None:
+            self.Positions = []
+            for item in params.get("Positions"):
+                obj = ProductDevicesPositionItem()
+                obj._deserialize(item)
+                self.Positions.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -2435,6 +2478,42 @@ class DeviceInfo(AbstractModel):
         self.NwkSKey = params.get("NwkSKey")
         self.CreateUserId = params.get("CreateUserId")
         self.CreatorNickName = params.get("CreatorNickName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DevicePositionItem(AbstractModel):
+    """设备位置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param CreateTime: 位置信息时间
+        :type CreateTime: int
+        :param Longitude: 设备经度信息
+        :type Longitude: float
+        :param Latitude: 设备纬度信息
+        :type Latitude: float
+        """
+        self.DeviceName = None
+        self.CreateTime = None
+        self.Longitude = None
+        self.Latitude = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.CreateTime = params.get("CreateTime")
+        self.Longitude = params.get("Longitude")
+        self.Latitude = params.get("Latitude")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4544,6 +4623,43 @@ class PositionSpaceInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.Zoom = params.get("Zoom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductDevicesPositionItem(AbstractModel):
+    """产品设备位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 设备位置列表
+        :type Items: list of DevicePositionItem
+        :param ProductId: 产品标识
+        :type ProductId: str
+        :param Total: 设备位置数量
+        :type Total: int
+        """
+        self.Items = None
+        self.ProductId = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = DevicePositionItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.ProductId = params.get("ProductId")
+        self.Total = params.get("Total")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
