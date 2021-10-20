@@ -651,6 +651,46 @@ class CreateKeyPairResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataDiskPrice(AbstractModel):
+    """数据盘价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 磁盘ID
+        :type DiskId: str
+        :param OriginalDiskPrice: 磁盘单价
+        :type OriginalDiskPrice: float
+        :param OriginalPrice: 磁盘总价
+        :type OriginalPrice: float
+        :param Discount: 折扣
+        :type Discount: float
+        :param DiscountPrice: 折后总价
+        :type DiscountPrice: float
+        """
+        self.DiskId = None
+        self.OriginalDiskPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.OriginalDiskPrice = params.get("OriginalDiskPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteBlueprintsRequest(AbstractModel):
     """DeleteBlueprints请求参数结构体
 
@@ -3451,14 +3491,23 @@ class Price(AbstractModel):
         r"""
         :param InstancePrice: 实例价格。
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        :param DataDiskPrices: 数据盘价格。
+        :type DataDiskPrices: list of DataDiskPrice
         """
         self.InstancePrice = None
+        self.DataDiskPrices = None
 
 
     def _deserialize(self, params):
         if params.get("InstancePrice") is not None:
             self.InstancePrice = InstancePrice()
             self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("DataDiskPrices") is not None:
+            self.DataDiskPrices = []
+            for item in params.get("DataDiskPrices"):
+                obj = DataDiskPrice()
+                obj._deserialize(item)
+                self.DataDiskPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

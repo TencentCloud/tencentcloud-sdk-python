@@ -1940,6 +1940,12 @@ class CreateVpcResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataDisk(AbstractModel):
+    """描述了数据盘的信息
+
+    """
+
+
 class DeleteHaVipRequest(AbstractModel):
     """DeleteHaVip请求参数结构体
 
@@ -8391,6 +8397,10 @@ DELETEFAILED：删除失败。
         :type DefaultBandwidthIn: int
         :param UserData: 自定义脚本数据
         :type UserData: str
+        :param SystemDisk: 系统盘信息。
+        :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
+        :param DataDisks: 数据盘信息。
+        :type DataDisks: list of DataDisk
         """
         self.ModuleId = None
         self.ModuleName = None
@@ -8406,6 +8416,8 @@ DELETEFAILED：删除失败。
         self.SecurityGroupIds = None
         self.DefaultBandwidthIn = None
         self.UserData = None
+        self.SystemDisk = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
@@ -8432,6 +8444,15 @@ DELETEFAILED：删除失败。
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.DefaultBandwidthIn = params.get("DefaultBandwidthIn")
         self.UserData = params.get("UserData")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10346,6 +10367,10 @@ FALSE：表示不保持镜像的登录设置
 默认取值：FALSE。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepImageLogin: str
+        :param SystemDisk: 系统盘信息。
+        :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
+        :param DataDisks: 数据盘信息。
+        :type DataDisks: list of DataDisk
         """
         self.ZoneInstanceCountISPSet = None
         self.Password = None
@@ -10366,6 +10391,8 @@ FALSE：表示不保持镜像的登录设置
         self.InstanceChargeType = None
         self.KeyIds = None
         self.KeepImageLogin = None
+        self.SystemDisk = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
@@ -10400,6 +10427,15 @@ FALSE：表示不保持镜像的登录设置
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11256,6 +11292,41 @@ class Subnet(AbstractModel):
         self.VpcCidrBlock = params.get("VpcCidrBlock")
         self.VpcIpv6CidrBlock = params.get("VpcIpv6CidrBlock")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SystemDisk(AbstractModel):
+    """用于描述系统盘。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: 硬盘类型。取值范围：
+- LOCAL_BASIC：本地硬盘；
+- CLOUD_PREMIUM：高性能云硬盘；
+默认取值：CLOUD_BASIC。
+        :type DiskType: str
+        :param DiskId: 硬盘ID。此参数暂不可用。
+        :type DiskId: str
+        :param DiskSize: 硬盘容量大小。单位GB。
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskId = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskId = params.get("DiskId")
+        self.DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
