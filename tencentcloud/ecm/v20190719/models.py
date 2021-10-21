@@ -1945,6 +1945,32 @@ class DataDisk(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param DiskSize: 数据盘大小。单位GB。
+        :type DiskSize: int
+        :param DiskType: 数据盘类型，取值范围：
+- LOCAL_BASIC：本地硬盘
+- CLOUD_PREMIUM：高性能云硬盘
+
+默认取值： LOCAL_BASIC。
+        :type DiskType: str
+        """
+        self.DiskSize = None
+        self.DiskType = None
+
+
+    def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteHaVipRequest(AbstractModel):
     """DeleteHaVip请求参数结构体

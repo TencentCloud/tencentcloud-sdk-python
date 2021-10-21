@@ -387,6 +387,236 @@ class DiseaseMedicalHistory(AbstractModel):
         
 
 
+class EcgDescription(AbstractModel):
+    """心电图详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeartRate: 心率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeartRate: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param AuricularRate: 心房率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuricularRate: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param VentricularRate: 心室率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VentricularRate: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param Rhythm: 节律
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rhythm: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param PDuration: P波时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PDuration: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param QrsDuration: QRS时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QrsDuration: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param QrsAxis: QRS电轴
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QrsAxis: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param PRInterval: P-R间期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PRInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param PPInterval: P-P间期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PPInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param RRInterval: R-R间期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RRInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param PJInterval: P-J间期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PJInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param QTInterval: Q-T间期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QTInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param QTCInterval: qt/qtc间期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QTCInterval: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param Rv5SV1Amplitude: RV5/SV1振幅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rv5SV1Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param Rv5AddSV1Amplitude: RV5+SV1振幅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rv5AddSV1Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param PRTAxis: PRT电轴
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PRTAxis: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param Rv5Amplitude: RV5振幅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rv5Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param SV1Amplitude: SV1振幅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SV1Amplitude: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param RV6SV2: RV6/SV2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RV6SV2: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        :param PQRSTAxis: P/QRS/T电轴
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PQRSTAxis: :class:`tencentcloud.mrs.v20200910.models.EcgItem`
+        """
+        self.HeartRate = None
+        self.AuricularRate = None
+        self.VentricularRate = None
+        self.Rhythm = None
+        self.PDuration = None
+        self.QrsDuration = None
+        self.QrsAxis = None
+        self.PRInterval = None
+        self.PPInterval = None
+        self.RRInterval = None
+        self.PJInterval = None
+        self.QTInterval = None
+        self.QTCInterval = None
+        self.Rv5SV1Amplitude = None
+        self.Rv5AddSV1Amplitude = None
+        self.PRTAxis = None
+        self.Rv5Amplitude = None
+        self.SV1Amplitude = None
+        self.RV6SV2 = None
+        self.PQRSTAxis = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeartRate") is not None:
+            self.HeartRate = EcgItem()
+            self.HeartRate._deserialize(params.get("HeartRate"))
+        if params.get("AuricularRate") is not None:
+            self.AuricularRate = EcgItem()
+            self.AuricularRate._deserialize(params.get("AuricularRate"))
+        if params.get("VentricularRate") is not None:
+            self.VentricularRate = EcgItem()
+            self.VentricularRate._deserialize(params.get("VentricularRate"))
+        if params.get("Rhythm") is not None:
+            self.Rhythm = EcgItem()
+            self.Rhythm._deserialize(params.get("Rhythm"))
+        if params.get("PDuration") is not None:
+            self.PDuration = EcgItem()
+            self.PDuration._deserialize(params.get("PDuration"))
+        if params.get("QrsDuration") is not None:
+            self.QrsDuration = EcgItem()
+            self.QrsDuration._deserialize(params.get("QrsDuration"))
+        if params.get("QrsAxis") is not None:
+            self.QrsAxis = EcgItem()
+            self.QrsAxis._deserialize(params.get("QrsAxis"))
+        if params.get("PRInterval") is not None:
+            self.PRInterval = EcgItem()
+            self.PRInterval._deserialize(params.get("PRInterval"))
+        if params.get("PPInterval") is not None:
+            self.PPInterval = EcgItem()
+            self.PPInterval._deserialize(params.get("PPInterval"))
+        if params.get("RRInterval") is not None:
+            self.RRInterval = EcgItem()
+            self.RRInterval._deserialize(params.get("RRInterval"))
+        if params.get("PJInterval") is not None:
+            self.PJInterval = EcgItem()
+            self.PJInterval._deserialize(params.get("PJInterval"))
+        if params.get("QTInterval") is not None:
+            self.QTInterval = EcgItem()
+            self.QTInterval._deserialize(params.get("QTInterval"))
+        if params.get("QTCInterval") is not None:
+            self.QTCInterval = EcgItem()
+            self.QTCInterval._deserialize(params.get("QTCInterval"))
+        if params.get("Rv5SV1Amplitude") is not None:
+            self.Rv5SV1Amplitude = EcgItem()
+            self.Rv5SV1Amplitude._deserialize(params.get("Rv5SV1Amplitude"))
+        if params.get("Rv5AddSV1Amplitude") is not None:
+            self.Rv5AddSV1Amplitude = EcgItem()
+            self.Rv5AddSV1Amplitude._deserialize(params.get("Rv5AddSV1Amplitude"))
+        if params.get("PRTAxis") is not None:
+            self.PRTAxis = EcgItem()
+            self.PRTAxis._deserialize(params.get("PRTAxis"))
+        if params.get("Rv5Amplitude") is not None:
+            self.Rv5Amplitude = EcgItem()
+            self.Rv5Amplitude._deserialize(params.get("Rv5Amplitude"))
+        if params.get("SV1Amplitude") is not None:
+            self.SV1Amplitude = EcgItem()
+            self.SV1Amplitude._deserialize(params.get("SV1Amplitude"))
+        if params.get("RV6SV2") is not None:
+            self.RV6SV2 = EcgItem()
+            self.RV6SV2._deserialize(params.get("RV6SV2"))
+        if params.get("PQRSTAxis") is not None:
+            self.PQRSTAxis = EcgItem()
+            self.PQRSTAxis._deserialize(params.get("PQRSTAxis"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EcgDiagnosis(AbstractModel):
+    """心电图诊断
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EcgItem(AbstractModel):
+    """心电图指标项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param Src: 原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: str
+        """
+        self.Name = None
+        self.Value = None
+        self.Unit = None
+        self.Src = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Unit = params.get("Unit")
+        self.Src = params.get("Src")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Elastic(AbstractModel):
     """弹性质地
 
@@ -423,6 +653,40 @@ class Elastic(AbstractModel):
         self.Src = params.get("Src")
         self.Value = params.get("Value")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Electrocardiogram(AbstractModel):
+    """心电图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EcgDescription: 心电图详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EcgDescription: :class:`tencentcloud.mrs.v20200910.models.EcgDescription`
+        :param EcgDiagnosis: 心电图诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EcgDiagnosis: :class:`tencentcloud.mrs.v20200910.models.EcgDiagnosis`
+        """
+        self.EcgDescription = None
+        self.EcgDiagnosis = None
+
+
+    def _deserialize(self, params):
+        if params.get("EcgDescription") is not None:
+            self.EcgDescription = EcgDescription()
+            self.EcgDescription._deserialize(params.get("EcgDescription"))
+        if params.get("EcgDiagnosis") is not None:
+            self.EcgDiagnosis = EcgDiagnosis()
+            self.EcgDiagnosis._deserialize(params.get("EcgDiagnosis"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -848,7 +1112,7 @@ class ImageToObjectRequest(AbstractModel):
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
-        :param Type: 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        :param Type: 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :type Type: int
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
@@ -1832,6 +2096,21 @@ class PatientInfo(AbstractModel):
         :param MedicalInsuranceType: 医保类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalInsuranceType: str
+        :param AgeNorm: 标准化年龄
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgeNorm: str
+        :param Nation: 民族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nation: str
+        :param MarriedCode: 婚姻代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarriedCode: str
+        :param ProfessionCode: 职业代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfessionCode: str
+        :param MedicalInsuranceTypeCode: 居民医保代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicalInsuranceTypeCode: str
         """
         self.Name = None
         self.Sex = None
@@ -1849,6 +2128,11 @@ class PatientInfo(AbstractModel):
         self.Nationality = None
         self.BirthPlace = None
         self.MedicalInsuranceType = None
+        self.AgeNorm = None
+        self.Nation = None
+        self.MarriedCode = None
+        self.ProfessionCode = None
+        self.MedicalInsuranceTypeCode = None
 
 
     def _deserialize(self, params):
@@ -1868,6 +2152,11 @@ class PatientInfo(AbstractModel):
         self.Nationality = params.get("Nationality")
         self.BirthPlace = params.get("BirthPlace")
         self.MedicalInsuranceType = params.get("MedicalInsuranceType")
+        self.AgeNorm = params.get("AgeNorm")
+        self.Nation = params.get("Nation")
+        self.MarriedCode = params.get("MarriedCode")
+        self.ProfessionCode = params.get("ProfessionCode")
+        self.MedicalInsuranceTypeCode = params.get("MedicalInsuranceTypeCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2332,6 +2621,9 @@ class Template(AbstractModel):
         :param Surgery: 手术记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type Surgery: :class:`tencentcloud.mrs.v20200910.models.Surgery`
+        :param Electrocardiogram: 心电图报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Electrocardiogram: :class:`tencentcloud.mrs.v20200910.models.Electrocardiogram`
         """
         self.PatientInfo = None
         self.ReportInfo = None
@@ -2345,6 +2637,7 @@ class Template(AbstractModel):
         self.MedicalRecordInfo = None
         self.Hospitalization = None
         self.Surgery = None
+        self.Electrocardiogram = None
 
 
     def _deserialize(self, params):
@@ -2382,6 +2675,9 @@ class Template(AbstractModel):
         if params.get("Surgery") is not None:
             self.Surgery = Surgery()
             self.Surgery._deserialize(params.get("Surgery"))
+        if params.get("Electrocardiogram") is not None:
+            self.Electrocardiogram = Electrocardiogram()
+            self.Electrocardiogram._deserialize(params.get("Electrocardiogram"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2450,7 +2746,7 @@ class TextToObjectRequest(AbstractModel):
         r"""
         :param Text: 报告文本
         :type Text: str
-        :param Type: 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        :param Type: 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :type Type: int
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。

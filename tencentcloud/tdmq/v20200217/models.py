@@ -218,7 +218,7 @@ class Cluster(AbstractModel):
         :type MaxTopicNum: int
         :param MaxQps: 最大QPS
         :type MaxQps: int
-        :param MessageRetentionTime: 消息保留时间
+        :param MessageRetentionTime: 最大消息保留时间，分钟为单位
         :type MessageRetentionTime: int
         :param MaxStorageCapacity: 最大存储容量
         :type MaxStorageCapacity: int
@@ -237,6 +237,30 @@ class Cluster(AbstractModel):
         :param UsedStorageBudget: 已使用存储限制，MB为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedStorageBudget: int
+        :param MaxPublishRateInMessages: 最大生产消息速率，以条数为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxPublishRateInMessages: int
+        :param MaxDispatchRateInMessages: 最大推送消息速率，以条数为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDispatchRateInMessages: int
+        :param MaxPublishRateInBytes: 最大生产消息速率，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxPublishRateInBytes: int
+        :param MaxDispatchRateInBytes: 最大推送消息速率，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDispatchRateInBytes: int
+        :param TopicNum: 已创建主题数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNum: int
+        :param MaxMessageDelayInSeconds: 最长消息延时，以秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMessageDelayInSeconds: int
+        :param PublicAccessEnabled: 是否开启公网访问，不填时默认开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAccessEnabled: bool
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -256,6 +280,14 @@ class Cluster(AbstractModel):
         self.VpcEndPoint = None
         self.NamespaceNum = None
         self.UsedStorageBudget = None
+        self.MaxPublishRateInMessages = None
+        self.MaxDispatchRateInMessages = None
+        self.MaxPublishRateInBytes = None
+        self.MaxDispatchRateInBytes = None
+        self.TopicNum = None
+        self.MaxMessageDelayInSeconds = None
+        self.PublicAccessEnabled = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -277,6 +309,19 @@ class Cluster(AbstractModel):
         self.VpcEndPoint = params.get("VpcEndPoint")
         self.NamespaceNum = params.get("NamespaceNum")
         self.UsedStorageBudget = params.get("UsedStorageBudget")
+        self.MaxPublishRateInMessages = params.get("MaxPublishRateInMessages")
+        self.MaxDispatchRateInMessages = params.get("MaxDispatchRateInMessages")
+        self.MaxPublishRateInBytes = params.get("MaxPublishRateInBytes")
+        self.MaxDispatchRateInBytes = params.get("MaxDispatchRateInBytes")
+        self.TopicNum = params.get("TopicNum")
+        self.MaxMessageDelayInSeconds = params.get("MaxMessageDelayInSeconds")
+        self.PublicAccessEnabled = params.get("PublicAccessEnabled")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -891,11 +936,14 @@ class CreateClusterRequest(AbstractModel):
         :type Remark: str
         :param Tags: 集群的标签列表
         :type Tags: list of Tag
+        :param PublicAccessEnabled: 是否开启公网访问，不填时默认开启
+        :type PublicAccessEnabled: bool
         """
         self.ClusterName = None
         self.BindClusterId = None
         self.Remark = None
         self.Tags = None
+        self.PublicAccessEnabled = None
 
 
     def _deserialize(self, params):
@@ -908,6 +956,7 @@ class CreateClusterRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2140,16 +2189,29 @@ class DescribeClustersRequest(AbstractModel):
         :type Limit: int
         :param ClusterIdList: 集群ID列表过滤
         :type ClusterIdList: list of str
+        :param IsTagFilter: 是否标签过滤
+        :type IsTagFilter: bool
+        :param Filters: 过滤器。目前支持按标签过滤。
+        :type Filters: list of Filter
         """
         self.Offset = None
         self.Limit = None
         self.ClusterIdList = None
+        self.IsTagFilter = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ClusterIdList = params.get("ClusterIdList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2319,12 +2381,15 @@ class DescribeCmqQueuesRequest(AbstractModel):
         :type QueueNameList: list of str
         :param IsTagFilter: 标签过滤查找时，需要设置为 true
         :type IsTagFilter: bool
+        :param Filters: 过滤器。目前支持按标签过滤。
+        :type Filters: list of Filter
         """
         self.Offset = None
         self.Limit = None
         self.QueueName = None
         self.QueueNameList = None
         self.IsTagFilter = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -2333,6 +2398,12 @@ class DescribeCmqQueuesRequest(AbstractModel):
         self.QueueName = params.get("QueueName")
         self.QueueNameList = params.get("QueueNameList")
         self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2504,12 +2575,15 @@ class DescribeCmqTopicsRequest(AbstractModel):
         :type TopicNameList: list of str
         :param IsTagFilter: 标签过滤查找时，需要设置为 true
         :type IsTagFilter: bool
+        :param Filters: 过滤器。目前支持按标签过滤。
+        :type Filters: list of Filter
         """
         self.Offset = None
         self.Limit = None
         self.TopicName = None
         self.TopicNameList = None
         self.IsTagFilter = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -2518,6 +2592,12 @@ class DescribeCmqTopicsRequest(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.TopicNameList = params.get("TopicNameList")
         self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3426,16 +3506,20 @@ class ModifyClusterRequest(AbstractModel):
         :type ClusterName: str
         :param Remark: 说明信息。
         :type Remark: str
+        :param PublicAccessEnabled: 开启公网访问，只能为true
+        :type PublicAccessEnabled: bool
         """
         self.ClusterId = None
         self.ClusterName = None
         self.Remark = None
+        self.PublicAccessEnabled = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.ClusterName = params.get("ClusterName")
         self.Remark = params.get("Remark")
+        self.PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

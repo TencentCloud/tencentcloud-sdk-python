@@ -407,11 +407,20 @@ class AutoScalingNotification(AbstractModel):
         :type NotificationTypes: list of str
         :param AutoScalingNotificationId: 事件通知ID。
         :type AutoScalingNotificationId: str
+        :param TargetType: 通知接收端类型。
+        :type TargetType: str
+        :param QueueName: CMQ 队列名。
+        :type QueueName: str
+        :param TopicName: CMQ 主题名。
+        :type TopicName: str
         """
         self.AutoScalingGroupId = None
         self.NotificationUserGroupIds = None
         self.NotificationTypes = None
         self.AutoScalingNotificationId = None
+        self.TargetType = None
+        self.QueueName = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
@@ -419,6 +428,9 @@ class AutoScalingNotification(AbstractModel):
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
         self.NotificationTypes = params.get("NotificationTypes")
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        self.TargetType = params.get("TargetType")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1037,16 +1049,28 @@ class CreateNotificationConfigurationRequest(AbstractModel):
         :type NotificationTypes: list of str
         :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
         :type NotificationUserGroupIds: list of str
+        :param TargetType: 通知接收端类型，取值：`USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`。默认值为：`USER_GROUP`。
+        :type TargetType: str
+        :param QueueName: CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE`，该字段必填。
+        :type QueueName: str
+        :param TopicName: CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC`，该字段必填。
+        :type TopicName: str
         """
         self.AutoScalingGroupId = None
         self.NotificationTypes = None
         self.NotificationUserGroupIds = None
+        self.TargetType = None
+        self.QueueName = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.NotificationTypes = params.get("NotificationTypes")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        self.TargetType = params.get("TargetType")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3789,16 +3813,24 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
         :type NotificationTypes: list of str
         :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
         :type NotificationUserGroupIds: list of str
+        :param QueueName: CMQ 队列名。
+        :type QueueName: str
+        :param TopicName: CMQ 主题名。
+        :type TopicName: str
         """
         self.AutoScalingNotificationId = None
         self.NotificationTypes = None
         self.NotificationUserGroupIds = None
+        self.QueueName = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
         self.NotificationTypes = params.get("NotificationTypes")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        self.QueueName = params.get("QueueName")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

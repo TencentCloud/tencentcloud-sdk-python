@@ -24,6 +24,11 @@ def test_import_aai():
     from tencentcloud.aai.v20180522 import models
 
 
+def test_import_advisor():
+    from tencentcloud.advisor.v20200721 import advisor_client
+    from tencentcloud.advisor.v20200721 import models
+
+
 def test_import_af():
     from tencentcloud.af.v20200226 import af_client
     from tencentcloud.af.v20200226 import models

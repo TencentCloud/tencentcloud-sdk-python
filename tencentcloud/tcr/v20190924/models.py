@@ -632,11 +632,14 @@ class CreateInternalEndpointDnsRequest(AbstractModel):
 false: 使用vpc域名
 默认为vpc域名
         :type UsePublicDomain: bool
+        :param RegionName: 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+        :type RegionName: str
         """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
         self.UsePublicDomain = None
+        self.RegionName = None
 
 
     def _deserialize(self, params):
@@ -644,6 +647,7 @@ false: 使用vpc域名
         self.VpcId = params.get("VpcId")
         self.EniLBIp = params.get("EniLBIp")
         self.UsePublicDomain = params.get("UsePublicDomain")
+        self.RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1590,11 +1594,14 @@ class DeleteInternalEndpointDnsRequest(AbstractModel):
         :param UsePublicDomain: true：使用默认域名
 false:  使用带有vpc的域名
         :type UsePublicDomain: bool
+        :param RegionName: 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+        :type RegionName: str
         """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
         self.UsePublicDomain = None
+        self.RegionName = None
 
 
     def _deserialize(self, params):
@@ -1602,6 +1609,7 @@ false:  使用带有vpc的域名
         self.VpcId = params.get("VpcId")
         self.EniLBIp = params.get("EniLBIp")
         self.UsePublicDomain = params.get("UsePublicDomain")
+        self.RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7035,11 +7043,14 @@ class VpcAndDomainInfo(AbstractModel):
         :param UsePublicDomain: true：use instance name as subdomain
 false: use instancename+"-vpc" as subdomain
         :type UsePublicDomain: bool
+        :param RegionName: 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+        :type RegionName: str
         """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
         self.UsePublicDomain = None
+        self.RegionName = None
 
 
     def _deserialize(self, params):
@@ -7047,6 +7058,7 @@ false: use instancename+"-vpc" as subdomain
         self.VpcId = params.get("VpcId")
         self.EniLBIp = params.get("EniLBIp")
         self.UsePublicDomain = params.get("UsePublicDomain")
+        self.RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

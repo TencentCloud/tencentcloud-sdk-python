@@ -894,36 +894,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccounts(self, request):
-        """该接口已废弃
-
-        本接口 (DescribeAccounts) 用于获取帐号列表数据。
-
-        :param request: Request instance for DescribeAccounts.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeAccounts", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccountsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeAssetAppList(self, request):
         """查询应用列表
 

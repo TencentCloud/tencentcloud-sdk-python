@@ -1310,6 +1310,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type DeviceType: str
         :param InstanceNodes: 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
         :type InstanceNodes: int
+        :param DeployGroupId: 置放群组 ID。
+        :type DeployGroupId: str
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -1328,6 +1330,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.BackupZone = None
         self.DeviceType = None
         self.InstanceNodes = None
+        self.DeployGroupId = None
 
 
     def _deserialize(self, params):
@@ -1353,6 +1356,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.BackupZone = params.get("BackupZone")
         self.DeviceType = params.get("DeviceType")
         self.InstanceNodes = params.get("InstanceNodes")
+        self.DeployGroupId = params.get("DeployGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

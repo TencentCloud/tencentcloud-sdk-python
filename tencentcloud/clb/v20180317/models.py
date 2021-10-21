@@ -1427,6 +1427,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SlaveZoneId: str
         :param EipAddressId: EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
         :type EipAddressId: str
+        :param LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+        :type LoadBalancerPassToTarget: bool
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -1451,6 +1453,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ClusterTag = None
         self.SlaveZoneId = None
         self.EipAddressId = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -1491,6 +1494,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ClusterTag = params.get("ClusterTag")
         self.SlaveZoneId = params.get("SlaveZoneId")
         self.EipAddressId = params.get("EipAddressId")
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4015,6 +4019,9 @@ class HealthCheck(AbstractModel):
         :param HttpVersion: 自定义探测相关参数。健康检查协议CheckType的值取HTTP时，必传此字段，代表后端服务的HTTP版本：HTTP/1.0、HTTP/1.1；（仅适用于TCP监听器）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpVersion: str
+        :param SourceIpType: 自定义探测相关参数。健康检查原IP类型：0（使用LB的VIP做为源IP），1（使用100.64网段IP做为源IP），默认值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceIpType: int
         """
         self.HealthSwitch = None
         self.TimeOut = None
@@ -4031,6 +4038,7 @@ class HealthCheck(AbstractModel):
         self.RecvContext = None
         self.CheckType = None
         self.HttpVersion = None
+        self.SourceIpType = None
 
 
     def _deserialize(self, params):
@@ -4049,6 +4057,7 @@ class HealthCheck(AbstractModel):
         self.RecvContext = params.get("RecvContext")
         self.CheckType = params.get("CheckType")
         self.HttpVersion = params.get("HttpVersion")
+        self.SourceIpType = params.get("SourceIpType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5369,6 +5378,8 @@ class ModifyListenerRequest(AbstractModel):
         :type KeepaliveEnable: int
         :param DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
         :type DeregisterTargetRst: bool
+        :param SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+        :type SessionType: str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5380,6 +5391,7 @@ class ModifyListenerRequest(AbstractModel):
         self.SniSwitch = None
         self.KeepaliveEnable = None
         self.DeregisterTargetRst = None
+        self.SessionType = None
 
 
     def _deserialize(self, params):
@@ -5397,6 +5409,7 @@ class ModifyListenerRequest(AbstractModel):
         self.SniSwitch = params.get("SniSwitch")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
+        self.SessionType = params.get("SessionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

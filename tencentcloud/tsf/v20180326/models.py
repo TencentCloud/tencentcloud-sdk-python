@@ -4033,6 +4033,52 @@ class DeleteLaneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLaneRuleRequest(AbstractModel):
+    """DeleteLaneRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 泳道规则Id
+        :type RuleId: str
+        """
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLaneRuleResponse(AbstractModel):
+    """DeleteLaneRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 操作状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteMicroserviceRequest(AbstractModel):
     """DeleteMicroservice请求参数结构体
 
@@ -6328,6 +6374,69 @@ class DescribeGatewayAllGroupApisResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = GatewayVo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewayApisRequest(AbstractModel):
+    """DescribeGatewayApis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 分组ID
+        :type GroupId: str
+        :param Offset: 翻页偏移量
+        :type Offset: int
+        :param Limit: 每页的记录数
+        :type Limit: int
+        :param SearchWord: 搜索关键字，支持 API path
+        :type SearchWord: str
+        :param GatewayDeployGroupId: 部署组ID
+        :type GatewayDeployGroupId: str
+        """
+        self.GroupId = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchWord = None
+        self.GatewayDeployGroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayApisResponse(AbstractModel):
+    """DescribeGatewayApis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 翻页结构
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiDetailInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageApiDetailInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -15501,6 +15610,39 @@ class TsfApiListResponse(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = MsApiArray()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TsfPageApiDetailInfo(AbstractModel):
+    """ApiDetailInfo 翻页对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Content: API 信息列表
+        :type Content: list of ApiDetailInfo
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ApiDetailInfo()
                 obj._deserialize(item)
                 self.Content.append(obj)
         memeber_set = set(params.keys())

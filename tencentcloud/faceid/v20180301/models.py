@@ -1597,6 +1597,8 @@ class GetEidTokenRequest(AbstractModel):
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
         :param RedirectUrl: 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
         :type RedirectUrl: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.MerchantId = None
         self.IdCard = None
@@ -1604,6 +1606,7 @@ class GetEidTokenRequest(AbstractModel):
         self.Extra = None
         self.Config = None
         self.RedirectUrl = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -1615,6 +1618,9 @@ class GetEidTokenRequest(AbstractModel):
             self.Config = GetEidTokenConfig()
             self.Config._deserialize(params.get("Config"))
         self.RedirectUrl = params.get("RedirectUrl")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

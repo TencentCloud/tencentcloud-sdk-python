@@ -362,6 +362,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCcData(self, request):
+        """CC统计数据查询
+
+        :param request: Request instance for DescribeCcData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCcDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCcDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdnData(self, request):
         """DescribeCdnData 用于查询 CDN 实时访问监控数据，支持以下指标查询：
 
@@ -515,6 +543,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDDoSData(self, request):
+        """DDoS统计数据查询
+
+        :param request: Request instance for DescribeDDoSData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDDoSDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDDoSDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDDoSData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDDoSDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDiagnoseReport(self, request):
         """DescribeDiagnoseReport 用于获取指定报告id的内容
 
@@ -614,6 +670,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainsConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEventLogData(self, request):
+        """DescribeEventLogData 用于查询事件日志统计曲线
+
+        :param request: Request instance for DescribeEventLogData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeEventLogDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeEventLogDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEventLogData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEventLogDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1091,6 +1175,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWafData(self, request):
+        """Waf统计数据查询
+
+        :param request: Request instance for DescribeWafData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeWafDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeWafDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWafData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWafDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableCaches(self, request):
         """DisableCaches 用于禁用 CDN 上指定 URL 的访问，禁用完成后，中国境内访问会直接返回 403。（注：接口尚在内测中，暂未全量开放；封禁URL并非无限期永久封禁）
 
@@ -1441,6 +1553,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopCcDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListTopClsLogData(self, request):
+        """通过CLS日志计算Top信息。支持近7天的日志数据。
+
+        :param request: Request instance for ListTopClsLogData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListTopClsLogDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListTopClsLogDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListTopClsLogData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListTopClsLogDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

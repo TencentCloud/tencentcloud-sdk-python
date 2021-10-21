@@ -978,6 +978,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLaneRule(self, request):
+        """删除泳道规则
+
+        :param request: Request instance for DeleteLaneRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLaneRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLaneRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteMicroservice(self, request):
         """删除微服务
 
@@ -2030,6 +2058,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayAllGroupApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGatewayApis(self, request):
+        """查询API分组下的Api列表信息
+
+        :param request: Request instance for DescribeGatewayApis.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayApisRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGatewayApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGatewayApisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1928,6 +1928,7 @@ origin: 保持原始编码格式
         :param Height: 高，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始高度。
+极速高清模板（AiTransCode = 1 的时候）必须传。
         :type Height: int
         :param Fps: 帧率，默认0。
 范围0-60fps

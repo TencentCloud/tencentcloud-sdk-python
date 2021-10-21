@@ -2381,6 +2381,42 @@ class ClientInfo(AbstractModel):
         
 
 
+class ClsLogIpData(AbstractModel):
+    """通过Cls日志，计算出来的IP每秒访问数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientIp: IP
+        :type ClientIp: str
+        :param Request: 在给定的时间段中，1秒内的最大请求量
+        :type Request: int
+        :param Count: 在获取的Top信息中，IP出现的次数
+        :type Count: int
+        :param Time: 在给定的时间段中，1秒内的最大请求量对应的时间
+        :type Time: str
+        """
+        self.ClientIp = None
+        self.Request = None
+        self.Count = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.ClientIp = params.get("ClientIp")
+        self.Request = params.get("Request")
+        self.Count = params.get("Count")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClsLogObject(AbstractModel):
     """CLS日志搜索对象
 
@@ -3088,6 +3124,106 @@ class CreateVerifyRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DDoSAttackBandwidthData(AbstractModel):
+    """ddos攻击带宽峰值数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttackType: ddos攻击类型，当值为all的时候表示所有的攻击类型的总带宽峰值
+        :type AttackType: str
+        :param Value: ddos攻击带宽大小
+        :type Value: float
+        :param Time: 攻击时间点
+        :type Time: str
+        """
+        self.AttackType = None
+        self.Value = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.AttackType = params.get("AttackType")
+        self.Value = params.get("Value")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSAttackIPTopData(AbstractModel):
+    """攻击ip数据详细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttackIP: 攻击ip
+        :type AttackIP: str
+        :param Province: 攻击ip所在省份
+        :type Province: str
+        :param Country: 攻击ip所在国家
+        :type Country: str
+        :param Isp: 红果电信
+        :type Isp: str
+        :param AttackCount: 攻击次数
+        :type AttackCount: float
+        """
+        self.AttackIP = None
+        self.Province = None
+        self.Country = None
+        self.Isp = None
+        self.AttackCount = None
+
+
+    def _deserialize(self, params):
+        self.AttackIP = params.get("AttackIP")
+        self.Province = params.get("Province")
+        self.Country = params.get("Country")
+        self.Isp = params.get("Isp")
+        self.AttackCount = params.get("AttackCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSStatsData(AbstractModel):
+    """DDoS统计数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 时间
+        :type Time: str
+        :param Value: 带宽数值，单位bps
+        :type Value: float
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DDoSTopData(AbstractModel):
     """DDoS攻击Top数据
 
@@ -3358,6 +3494,125 @@ day：天粒度
                 obj = ResourceBillingData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcDataRequest(AbstractModel):
+    """DescribeCcData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        :type EndTime: str
+        :param Interval: 时间粒度，支持以下几种模式：
+min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
+hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
+day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
+        :type Interval: str
+        :param Domain: 指定域名查询，为空时，表示查询账号级别数据
+        :type Domain: str
+        :param ActionName: 执行动作，取值为：intercept/redirect/observe
+分别表示：拦截/重定向/观察
+为空时，表示所有执行动作
+        :type ActionName: str
+        :param Domains: 指定域名列表查询，为空时，表示查询账号级别数据
+        :type Domains: list of str
+        :param Source: cdn表示CDN数据，默认值
+ecdn表示ECDN数据
+        :type Source: str
+        :param Area: 地域：mainland或overseas，表示国内或海外，不填写默认表示国内
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.Domain = None
+        self.ActionName = None
+        self.Domains = None
+        self.Source = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.Domain = params.get("Domain")
+        self.ActionName = params.get("ActionName")
+        self.Domains = params.get("Domains")
+        self.Source = params.get("Source")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcDataResponse(AbstractModel):
+    """DescribeCcData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 指定执行动作的请求数数据，如果指定类型为空，表示所有类型的请求总数
+        :type Data: list of TimestampData
+        :param Interval: 粒度
+        :type Interval: str
+        :param InterceptQpsData: 执行动作为拦截类型QPS统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterceptQpsData: list of TimestampData
+        :param RedirectQpsData: 执行动作为重定向类型QPS统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectQpsData: list of TimestampData
+        :param ObserveQpsData: 执行动作为观察类型QPS统计数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObserveQpsData: list of TimestampData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Interval = None
+        self.InterceptQpsData = None
+        self.RedirectQpsData = None
+        self.ObserveQpsData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TimestampData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Interval = params.get("Interval")
+        if params.get("InterceptQpsData") is not None:
+            self.InterceptQpsData = []
+            for item in params.get("InterceptQpsData"):
+                obj = TimestampData()
+                obj._deserialize(item)
+                self.InterceptQpsData.append(obj)
+        if params.get("RedirectQpsData") is not None:
+            self.RedirectQpsData = []
+            for item in params.get("RedirectQpsData"):
+                obj = TimestampData()
+                obj._deserialize(item)
+                self.RedirectQpsData.append(obj)
+        if params.get("ObserveQpsData") is not None:
+            self.ObserveQpsData = []
+            for item in params.get("ObserveQpsData"):
+                obj = TimestampData()
+                obj._deserialize(item)
+                self.ObserveQpsData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3750,6 +4005,85 @@ class DescribeCertDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDDoSDataRequest(AbstractModel):
+    """DescribeDDoSData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        :type EndTime: str
+        :param Interval: 时间粒度，支持以下几种模式：
+min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
+hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
+day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
+        :type Interval: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSDataResponse(AbstractModel):
+    """DescribeDDoSData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: DDoS统计数据数组
+        :type Data: list of DDoSStatsData
+        :param Interval: 时间粒度：
+min：1 分钟粒度
+5min：5 分钟粒度
+hour：1 小时粒度
+day：天粒度
+        :type Interval: str
+        :param AttackBandwidthData: DDoS统计攻击带宽峰值数组
+        :type AttackBandwidthData: list of DDoSAttackBandwidthData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Interval = None
+        self.AttackBandwidthData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DDoSStatsData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Interval = params.get("Interval")
+        if params.get("AttackBandwidthData") is not None:
+            self.AttackBandwidthData = []
+            for item in params.get("AttackBandwidthData"):
+                obj = DDoSAttackBandwidthData()
+                obj._deserialize(item)
+                self.AttackBandwidthData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDiagnoseReportRequest(AbstractModel):
     """DescribeDiagnoseReport请求参数结构体
 
@@ -4076,6 +4410,91 @@ class DescribeDomainsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Domains.append(obj)
         self.TotalNumber = params.get("TotalNumber")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEventLogDataRequest(AbstractModel):
+    """DescribeEventLogData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: 防护类型，映射如下：
+  waf = "Web攻击"
+  cc = "CC攻击"
+        :type Mode: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间，最长跨度为30分钟
+        :type EndTime: str
+        :param Domain: 域名
+        :type Domain: str
+        :param ActionName: 执行动作，取值为：intercept/redirect/observe
+分别表示：拦截/重定向/观察
+参数放空，表示查询全部动作数据
+        :type ActionName: str
+        :param Url: 请求URL，支持URL开头和结尾使用\*表示通配
+如：
+/files/* 表示所有以/files/开头的请求
+*.jpg 表示所有以.jpg结尾的请求
+        :type Url: str
+        :param Area: 地域 mainland 或者 overseas，为空时默认 mainland
+        :type Area: str
+        :param Source: 来源产品，cdn 或者 ecdn，为空时默认 cdn
+        :type Source: str
+        """
+        self.Mode = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Domain = None
+        self.ActionName = None
+        self.Url = None
+        self.Area = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domain = params.get("Domain")
+        self.ActionName = params.get("ActionName")
+        self.Url = params.get("Url")
+        self.Area = params.get("Area")
+        self.Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventLogDataResponse(AbstractModel):
+    """DescribeEventLogData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Results: 统计曲线结果
+        :type Results: list of EventLogStatsData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = EventLogStatsData()
+                obj._deserialize(item)
+                self.Results.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5316,6 +5735,117 @@ class DescribeUrlViolationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWafDataRequest(AbstractModel):
+    """DescribeWafData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        :type EndTime: str
+        :param Interval: 时间粒度，支持以下几种模式：
+min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
+hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
+day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
+
+仅支持30天内数据查询，且查询时间范围在 7 到 30 天最小粒度是 hour。
+        :type Interval: str
+        :param Domain: 指定域名查询
+        :type Domain: str
+        :param AttackType: 指定攻击类型
+不填则查询所有攻击类型的数据分布
+AttackType 映射如下:
+"webshell" : Webshell检测防护
+"oa" : 常见OA漏洞防护
+"xss" : XSS跨站脚本攻击防护
+"xxe" : XXE攻击防护
+"webscan" : 扫描器攻击漏洞防护
+"cms" : 常见CMS漏洞防护
+"upload" : 恶意文件上传攻击防护
+"sql" : SQL注入攻击防护
+"cmd_inject": 命令/代码注入攻击防护
+"osc" : 开源组件漏洞防护
+"file_read" : 任意文件读取
+"ldap" : LDAP注入攻击防护
+"other" : 其它漏洞防护
+        :type AttackType: str
+        :param DefenceMode: 指定防御模式
+不填则查询所有防御模式的数据总和
+DefenceMode映射如下：
+  observe = '观察模式'
+  intercept = '拦截模式'
+        :type DefenceMode: str
+        :param Area: 地域：mainland 或 overseas
+        :type Area: str
+        :param AttackTypes: 指定多个攻击类型，取值参考AttackType
+        :type AttackTypes: list of str
+        :param Domains: 指定域名列表查询
+        :type Domains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.Domain = None
+        self.AttackType = None
+        self.DefenceMode = None
+        self.Area = None
+        self.AttackTypes = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.Domain = params.get("Domain")
+        self.AttackType = params.get("AttackType")
+        self.DefenceMode = params.get("DefenceMode")
+        self.Area = params.get("Area")
+        self.AttackTypes = params.get("AttackTypes")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWafDataResponse(AbstractModel):
+    """DescribeWafData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 粒度数据
+        :type Data: list of TimestampData
+        :param Interval: 粒度
+        :type Interval: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Interval = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TimestampData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Interval = params.get("Interval")
+        self.RequestId = params.get("RequestId")
+
+
 class DetailDomain(AbstractModel):
     """加速域名全量配置信息
 
@@ -6511,6 +7041,34 @@ class ErrorPageRule(AbstractModel):
         self.StatusCode = params.get("StatusCode")
         self.RedirectCode = params.get("RedirectCode")
         self.RedirectUrl = params.get("RedirectUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventLogStatsData(AbstractModel):
+    """事件日志统计数据结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Datetime: 时间
+        :type Datetime: str
+        :param Request: 请求数
+        :type Request: int
+        """
+        self.Datetime = None
+        self.Request = None
+
+
+    def _deserialize(self, params):
+        self.Datetime = params.get("Datetime")
+        self.Request = params.get("Request")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7760,6 +8318,99 @@ class ListTopCcDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListTopClsLogDataRequest(AbstractModel):
+    """ListTopClsLogData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogsetId: 需要查询的日志集ID
+        :type LogsetId: str
+        :param TopicIds: 需要查询的日志主题ID组合，多个以逗号分隔
+        :type TopicIds: str
+        :param StartTime: 需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
+        :type StartTime: str
+        :param EndTime: 需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS，时间跨度应小于10分钟
+        :type EndTime: str
+        :param Domain: 指定域名查询
+        :type Domain: str
+        :param Url: 指定访问的URL查询，支持URL开头和结尾使用\*表示通配
+如：
+/files/* 表示所有以/files/开头的请求
+*.jpg 表示所有以.jpg结尾的请求
+        :type Url: str
+        :param Channel: 接入渠道，默认值为cdn
+        :type Channel: str
+        :param Limit: 要查询的Top条数，最大值为100，默认为10
+        :type Limit: int
+        :param Sort: 按请求量排序， asc（升序）或者 desc（降序），默认为 desc
+        :type Sort: str
+        """
+        self.LogsetId = None
+        self.TopicIds = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Domain = None
+        self.Url = None
+        self.Channel = None
+        self.Limit = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicIds = params.get("TopicIds")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.Channel = params.get("Channel")
+        self.Limit = params.get("Limit")
+        self.Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopClsLogDataResponse(AbstractModel):
+    """ListTopClsLogData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据列表
+        :type Data: list of ClsLogIpData
+        :param TotalCount: 获取到Top总记录数
+        :type TotalCount: int
+        :param IpCount: 获取到的不重复IP条数
+        :type IpCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.TotalCount = None
+        self.IpCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ClsLogIpData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.IpCount = params.get("IpCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ListTopDDoSDataRequest(AbstractModel):
     """ListTopDDoSData请求参数结构体
 
@@ -7774,16 +8425,20 @@ class ListTopDDoSDataRequest(AbstractModel):
         :type EndTime: str
         :param TopCount: 查询Top的数量，不填默认值为10
         :type TopCount: int
+        :param Metric: AttackIP表示查询攻击ip的top排行，AttackType表示攻击类型的top排行，为空默认为AttackType
+        :type Metric: str
         """
         self.StartTime = None
         self.EndTime = None
         self.TopCount = None
+        self.Metric = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.TopCount = params.get("TopCount")
+        self.Metric = params.get("Metric")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7800,12 +8455,15 @@ class ListTopDDoSDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: DDoS Top数据
+        :param Data: DDoS 攻击类型的top数据，当Metric=AttackType的时候返回攻击类型的统计数据，IPData为空
         :type Data: list of DDoSTopData
+        :param IPData: ddos攻击ip的top数据，Metric=AttackIP的时候返回IPData，Data为空
+        :type IPData: list of DDoSAttackIPTopData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Data = None
+        self.IPData = None
         self.RequestId = None
 
 
@@ -7816,6 +8474,12 @@ class ListTopDDoSDataResponse(AbstractModel):
                 obj = DDoSTopData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        if params.get("IPData") is not None:
+            self.IPData = []
+            for item in params.get("IPData"):
+                obj = DDoSAttackIPTopData()
+                obj._deserialize(item)
+                self.IPData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
