@@ -397,6 +397,73 @@ class CreateSignUrlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceUrlsByFlowsRequest(AbstractModel):
+    """DescribeResourceUrlsByFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param FlowIds: 查询资源所对应的流程Id
+        :type FlowIds: list of str
+        """
+        self.Agent = None
+        self.Operator = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceUrlsByFlowsResponse(AbstractModel):
+    """DescribeResourceUrlsByFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowResourceUrlInfos: 流程资源对应链接信息
+        :type FlowResourceUrlInfos: list of FlowResourceUrlInfo
+        :param ErrorMessages: 创建消息，对应多个合同ID，
+成功为“”,创建失败则对应失败消息
+        :type ErrorMessages: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowResourceUrlInfos = None
+        self.ErrorMessages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowResourceUrlInfos") is not None:
+            self.FlowResourceUrlInfos = []
+            for item in params.get("FlowResourceUrlInfos"):
+                obj = FlowResourceUrlInfo()
+                obj._deserialize(item)
+                self.FlowResourceUrlInfos.append(obj)
+        self.ErrorMessages = params.get("ErrorMessages")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTemplatesRequest(AbstractModel):
     """DescribeTemplates请求参数结构体
 
@@ -667,6 +734,41 @@ class FlowInfo(AbstractModel):
         
 
 
+class FlowResourceUrlInfo(AbstractModel):
+    """流程对应资源链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程对应Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param ResourceUrlInfos: 流程对应资源链接信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceUrlInfos: list of ResourceUrlInfo
+        """
+        self.FlowId = None
+        self.ResourceUrlInfos = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("ResourceUrlInfos") is not None:
+            self.ResourceUrlInfos = []
+            for item in params.get("ResourceUrlInfos"):
+                obj = ResourceUrlInfo()
+                obj._deserialize(item)
+                self.ResourceUrlInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FormField(AbstractModel):
     """此结构 (FormField) 用于描述内容控件填充结构。
 
@@ -854,6 +956,41 @@ class Recipient(AbstractModel):
         self.RequireSign = params.get("RequireSign")
         self.SignType = params.get("SignType")
         self.RoutingOrder = params.get("RoutingOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUrlInfo(AbstractModel):
+    """资源链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 资源链接地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param Name: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Type: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Url = None
+        self.Name = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

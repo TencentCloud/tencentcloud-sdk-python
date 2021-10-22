@@ -8594,7 +8594,7 @@ class DescribeIpGeolocationInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressIps: 需查询的IP地址列表，支持IPv4和IPv6。批量查询的IP地址上限为100个。
+        :param AddressIps: 需查询的IP地址列表，目前仅支持IPv4地址。查询的IP地址数量上限为100个。
         :type AddressIps: list of str
         :param Fields: 需查询的IP地址的字段信息。
         :type Fields: :class:`tencentcloud.vpc.v20170312.models.IpField`

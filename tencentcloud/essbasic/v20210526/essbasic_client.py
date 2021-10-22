@@ -110,6 +110,34 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceUrlsByFlows(self, request):
+        """根据流程信息批量获取资源下载链接
+
+        :param request: Request instance for DescribeResourceUrlsByFlows.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeResourceUrlsByFlowsRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeResourceUrlsByFlowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceUrlsByFlows", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceUrlsByFlowsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTemplates(self, request):
         """通过此接口（DescribeTemplates）查询该企业在电子签渠道版中配置的有效模板列表
 
