@@ -3607,11 +3607,14 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         :type VersionProvisionedConcurrencyNum: int
         :param Namespace: 函数所属命名空间，默认为default
         :type Namespace: str
+        :param TriggerActions: 定时预置任务
+        :type TriggerActions: list of TriggerAction
         """
         self.FunctionName = None
         self.Qualifier = None
         self.VersionProvisionedConcurrencyNum = None
         self.Namespace = None
+        self.TriggerActions = None
 
 
     def _deserialize(self, params):
@@ -3619,6 +3622,12 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         self.Qualifier = params.get("Qualifier")
         self.VersionProvisionedConcurrencyNum = params.get("VersionProvisionedConcurrencyNum")
         self.Namespace = params.get("Namespace")
+        if params.get("TriggerActions") is not None:
+            self.TriggerActions = []
+            for item in params.get("TriggerActions"):
+                obj = TriggerAction()
+                obj._deserialize(item)
+                self.TriggerActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4073,6 +4082,41 @@ class Trigger(AbstractModel):
         self.BindStatus = params.get("BindStatus")
         self.TriggerAttribute = params.get("TriggerAttribute")
         self.Qualifier = params.get("Qualifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerAction(AbstractModel):
+    """预置定时任务动作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TriggerName: 定时预置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerName: str
+        :param TriggerProvisionedConcurrencyNum: 定时预置并发数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerProvisionedConcurrencyNum: int
+        :param TriggerCronConfig: 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerCronConfig: str
+        """
+        self.TriggerName = None
+        self.TriggerProvisionedConcurrencyNum = None
+        self.TriggerCronConfig = None
+
+
+    def _deserialize(self, params):
+        self.TriggerName = params.get("TriggerName")
+        self.TriggerProvisionedConcurrencyNum = params.get("TriggerProvisionedConcurrencyNum")
+        self.TriggerCronConfig = params.get("TriggerCronConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4714,12 +4758,16 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
         :type StatusReason: str
         :param Qualifier: 函数版本号
         :type Qualifier: str
+        :param TriggerActions: 预置并发定时任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerActions: list of TriggerAction
         """
         self.AllocatedProvisionedConcurrencyNum = None
         self.AvailableProvisionedConcurrencyNum = None
         self.Status = None
         self.StatusReason = None
         self.Qualifier = None
+        self.TriggerActions = None
 
 
     def _deserialize(self, params):
@@ -4728,6 +4776,12 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
         self.Status = params.get("Status")
         self.StatusReason = params.get("StatusReason")
         self.Qualifier = params.get("Qualifier")
+        if params.get("TriggerActions") is not None:
+            self.TriggerActions = []
+            for item in params.get("TriggerActions"):
+                obj = TriggerAction()
+                obj._deserialize(item)
+                self.TriggerActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

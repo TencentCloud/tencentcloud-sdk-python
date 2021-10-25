@@ -1709,6 +1709,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePackingQuotaGroup(self, request):
+        """使用本接口获取某种机型在某些区域的装箱配额（当使用虚拟机型时，返回的是一组相互关联的装箱配额）。
+
+        :param request: Request instance for DescribePackingQuotaGroup.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribePackingQuotaGroupRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribePackingQuotaGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePackingQuotaGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePackingQuotaGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePeakBaseOverview(self, request):
         """CPU 内存 硬盘等基础信息峰值数据
 

@@ -404,6 +404,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # 密钥已绑定使用计划。
 UNSUPPORTEDOPERATION_ALREADYBINDUSAGEPLAN = 'UnsupportedOperation.AlreadyBindUsagePlan'
 
+# 当前插件不支持绑定。
+UNSUPPORTEDOPERATION_ATTACHPLUGIN = 'UnsupportedOperation.AttachPlugin'
+
 # 协议为HTTP时，不支持强制Https。
 UNSUPPORTEDOPERATION_FORCEHTTPS = 'UnsupportedOperation.ForceHttps'
 

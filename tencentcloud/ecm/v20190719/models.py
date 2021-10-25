@@ -1412,6 +1412,10 @@ false：表示开通IP直通
         :type DefaultBandWidthIn: int
         :param DisableWanIp: 是否禁止分配外网IP
         :type DisableWanIp: bool
+        :param SystemDisk: 系统盘信息。
+        :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
+        :param DataDisks: 数据盘信息。
+        :type DataDisks: list of DataDisk
         """
         self.ModuleName = None
         self.DefaultBandWidth = None
@@ -1424,6 +1428,8 @@ false：表示开通IP直通
         self.SecurityGroups = None
         self.DefaultBandWidthIn = None
         self.DisableWanIp = None
+        self.SystemDisk = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
@@ -1443,6 +1449,15 @@ false：表示开通IP直通
         self.SecurityGroups = params.get("SecurityGroups")
         self.DefaultBandWidthIn = params.get("DefaultBandWidthIn")
         self.DisableWanIp = params.get("DisableWanIp")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4023,6 +4038,61 @@ class DescribeNodeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NodeSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePackingQuotaGroupRequest(AbstractModel):
+    """DescribePackingQuotaGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件，name取值为：Zone-可用区， InstanceType-实例类型，DataDiskSize - 数据盘大小
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePackingQuotaGroupResponse(AbstractModel):
+    """DescribePackingQuotaGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackingQuotaSet: 装箱配额组
+        :type PackingQuotaSet: list of PackingQuotaGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PackingQuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PackingQuotaSet") is not None:
+            self.PackingQuotaSet = []
+            for item in params.get("PackingQuotaSet"):
+                obj = PackingQuotaGroup()
+                obj._deserialize(item)
+                self.PackingQuotaSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7633,16 +7703,35 @@ class ModifyModuleConfigRequest(AbstractModel):
         :type InstanceType: str
         :param DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultDataDiskSize: int
+        :param DefaultSystemDiskSize: 默认系统盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+        :type DefaultSystemDiskSize: int
+        :param SystemDisk: 系统盘
+        :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
+        :param DataDisks: 数据盘
+        :type DataDisks: list of DataDisk
         """
         self.ModuleId = None
         self.InstanceType = None
         self.DefaultDataDiskSize = None
+        self.DefaultSystemDiskSize = None
+        self.SystemDisk = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
         self.ModuleId = params.get("ModuleId")
         self.InstanceType = params.get("InstanceType")
         self.DefaultDataDiskSize = params.get("DefaultDataDiskSize")
+        self.DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8878,21 +8967,21 @@ class Node(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneInfo: zone信息
+        :param ZoneInfo: zone信息。
         :type ZoneInfo: :class:`tencentcloud.ecm.v20190719.models.ZoneInfo`
-        :param Country: 国家信息
+        :param Country: 国家信息。
         :type Country: :class:`tencentcloud.ecm.v20190719.models.Country`
-        :param Area: 区域信息
+        :param Area: 区域信息。
         :type Area: :class:`tencentcloud.ecm.v20190719.models.Area`
-        :param Province: 省份信息
+        :param Province: 省份信息。
         :type Province: :class:`tencentcloud.ecm.v20190719.models.Province`
-        :param City: 城市信息
+        :param City: 城市信息。
         :type City: :class:`tencentcloud.ecm.v20190719.models.City`
-        :param RegionInfo: Region信息
+        :param RegionInfo: Region信息。
         :type RegionInfo: :class:`tencentcloud.ecm.v20190719.models.RegionInfo`
-        :param ISPSet: 运营商列表
+        :param ISPSet: 运营商列表。
         :type ISPSet: list of ISP
-        :param ISPNum: 运营商数量
+        :param ISPNum: 运营商数量。
         :type ISPNum: int
         """
         self.ZoneInfo = None
@@ -9027,6 +9116,75 @@ class OsVersion(AbstractModel):
         self.OsName = params.get("OsName")
         self.OsVersions = params.get("OsVersions")
         self.Architecture = params.get("Architecture")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackingQuotaGroup(AbstractModel):
+    """一组相互关联的装箱配额，以实例类型的优先级排序，优先级高的在前
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区
+        :type Zone: str
+        :param ZoneId: 可用区id
+        :type ZoneId: int
+        :param ISPId: ISP id
+        :type ISPId: str
+        :param PackingQuotaInfos: 一组相互关联的装箱配额
+        :type PackingQuotaInfos: list of PackingQuotaInfo
+        """
+        self.Zone = None
+        self.ZoneId = None
+        self.ISPId = None
+        self.PackingQuotaInfos = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneId = params.get("ZoneId")
+        self.ISPId = params.get("ISPId")
+        if params.get("PackingQuotaInfos") is not None:
+            self.PackingQuotaInfos = []
+            for item in params.get("PackingQuotaInfos"):
+                obj = PackingQuotaInfo()
+                obj._deserialize(item)
+                self.PackingQuotaInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackingQuotaInfo(AbstractModel):
+    """一组相关联的装箱配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: 实例类型
+        :type InstanceType: str
+        :param PackingQuota: 装箱配额
+        :type PackingQuota: int
+        """
+        self.InstanceType = None
+        self.PackingQuota = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.PackingQuota = params.get("PackingQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
