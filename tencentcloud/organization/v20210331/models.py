@@ -65,3 +65,68 @@ class BindOrganizationMemberAuthAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class CreateOrganizationMemberRequest(AbstractModel):
+    """CreateOrganizationMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param PolicyType: 关系策略
+        :type PolicyType: str
+        :param PermissionIds: 关系权限
+        :type PermissionIds: list of int non-negative
+        :param NodeId: 需要调节的节点
+        :type NodeId: int
+        :param AccountName: 账号名
+        :type AccountName: str
+        :param Remark: 备注
+        :type Remark: str
+        :param RecordId: 重试创建传记录ID
+        :type RecordId: int
+        """
+        self.Name = None
+        self.PolicyType = None
+        self.PermissionIds = None
+        self.NodeId = None
+        self.AccountName = None
+        self.Remark = None
+        self.RecordId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.PolicyType = params.get("PolicyType")
+        self.PermissionIds = params.get("PermissionIds")
+        self.NodeId = params.get("NodeId")
+        self.AccountName = params.get("AccountName")
+        self.Remark = params.get("Remark")
+        self.RecordId = params.get("RecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationMemberResponse(AbstractModel):
+    """CreateOrganizationMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

@@ -395,6 +395,35 @@ class AddressChargePrepaid(AbstractModel):
         
 
 
+class AddressInfo(AbstractModel):
+    """IP地址模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: ip地址
+        :type Address: str
+        :param Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Address = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddressTemplate(AbstractModel):
     """IP地址模板
 
@@ -410,11 +439,14 @@ class AddressTemplate(AbstractModel):
         :type AddressSet: list of str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param AddressExtraSet: 带备注的IP地址信息。
+        :type AddressExtraSet: list of AddressInfo
         """
         self.AddressTemplateName = None
         self.AddressTemplateId = None
         self.AddressSet = None
         self.CreatedTime = None
+        self.AddressExtraSet = None
 
 
     def _deserialize(self, params):
@@ -422,6 +454,12 @@ class AddressTemplate(AbstractModel):
         self.AddressTemplateId = params.get("AddressTemplateId")
         self.AddressSet = params.get("AddressSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("AddressExtraSet") is not None:
+            self.AddressExtraSet = []
+            for item in params.get("AddressExtraSet"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressExtraSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2399,16 +2437,25 @@ class CreateAddressTemplateRequest(AbstractModel):
         r"""
         :param AddressTemplateName: IP地址模版名称
         :type AddressTemplateName: str
-        :param Addresses: 地址信息，支持 IP、CIDR、IP 范围。
+        :param Addresses: 地址信息，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。
         :type Addresses: list of str
+        :param AddressesExtra: 地址信息，支持携带备注，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。
+        :type AddressesExtra: list of AddressInfo
         """
         self.AddressTemplateName = None
         self.Addresses = None
+        self.AddressesExtra = None
 
 
     def _deserialize(self, params):
         self.AddressTemplateName = params.get("AddressTemplateName")
         self.Addresses = params.get("Addresses")
+        if params.get("AddressesExtra") is not None:
+            self.AddressesExtra = []
+            for item in params.get("AddressesExtra"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4101,16 +4148,25 @@ class CreateServiceTemplateRequest(AbstractModel):
         r"""
         :param ServiceTemplateName: 协议端口模板名称
         :type ServiceTemplateName: str
-        :param Services: 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+        :param Services: 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。Services与ServicesExtra必填其一。
         :type Services: list of str
+        :param ServicesExtra: 支持添加备注，单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。Services与ServicesExtra必填其一。
+        :type ServicesExtra: list of ServicesInfo
         """
         self.ServiceTemplateName = None
         self.Services = None
+        self.ServicesExtra = None
 
 
     def _deserialize(self, params):
         self.ServiceTemplateName = params.get("ServiceTemplateName")
         self.Services = params.get("Services")
+        if params.get("ServicesExtra") is not None:
+            self.ServicesExtra = []
+            for item in params.get("ServicesExtra"):
+                obj = ServicesInfo()
+                obj._deserialize(item)
+                self.ServicesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6674,8 +6730,9 @@ class DescribeAddressTemplatesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Filters: 过滤条件。
-<li>address-template-name - String - （过滤条件）IP地址模板名称。</li>
-<li>address-template-id - String - （过滤条件）IP地址模板实例ID，例如：ipm-mdunqeb6。</li>
+<li>address-template-name - IP地址模板名称。</li>
+<li>address-template-id - IP地址模板实例ID，例如：ipm-mdunqeb6。</li>
+<li>address-ip - IP地址。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: str
@@ -9892,8 +9949,9 @@ class DescribeServiceTemplatesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Filters: 过滤条件。
-<li>service-template-name - String - （过滤条件）协议端口模板名称。</li>
-<li>service-template-id - String - （过滤条件）协议端口模板实例ID，例如：ppm-e6dy460g。</li>
+<li>service-template-name - 协议端口模板名称。</li>
+<li>service-template-id - 协议端口模板实例ID，例如：ppm-e6dy460g。</li>
+<li>service-port- 协议端口。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: str
@@ -13750,16 +13808,25 @@ class ModifyAddressTemplateAttributeRequest(AbstractModel):
         :type AddressTemplateName: str
         :param Addresses: 地址信息，支持 IP、CIDR、IP 范围。
         :type Addresses: list of str
+        :param AddressesExtra: 支持添加备注的地址信息，支持 IP、CIDR、IP 范围。
+        :type AddressesExtra: list of AddressInfo
         """
         self.AddressTemplateId = None
         self.AddressTemplateName = None
         self.Addresses = None
+        self.AddressesExtra = None
 
 
     def _deserialize(self, params):
         self.AddressTemplateId = params.get("AddressTemplateId")
         self.AddressTemplateName = params.get("AddressTemplateName")
         self.Addresses = params.get("Addresses")
+        if params.get("AddressesExtra") is not None:
+            self.AddressesExtra = []
+            for item in params.get("AddressesExtra"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15321,16 +15388,25 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
         :type ServiceTemplateName: str
         :param Services: 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
         :type Services: list of str
+        :param ServicesExtra: 支持添加备注的协议端口信息，支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+        :type ServicesExtra: list of ServicesInfo
         """
         self.ServiceTemplateId = None
         self.ServiceTemplateName = None
         self.Services = None
+        self.ServicesExtra = None
 
 
     def _deserialize(self, params):
         self.ServiceTemplateId = params.get("ServiceTemplateId")
         self.ServiceTemplateName = params.get("ServiceTemplateName")
         self.Services = params.get("Services")
+        if params.get("ServicesExtra") is not None:
+            self.ServicesExtra = []
+            for item in params.get("ServicesExtra"):
+                obj = ServicesInfo()
+                obj._deserialize(item)
+                self.ServicesExtra.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18519,11 +18595,14 @@ class ServiceTemplate(AbstractModel):
         :type ServiceSet: list of str
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
+        :param ServiceExtraSet: 带备注的协议端口信息。
+        :type ServiceExtraSet: list of ServicesInfo
         """
         self.ServiceTemplateId = None
         self.ServiceTemplateName = None
         self.ServiceSet = None
         self.CreatedTime = None
+        self.ServiceExtraSet = None
 
 
     def _deserialize(self, params):
@@ -18531,6 +18610,12 @@ class ServiceTemplate(AbstractModel):
         self.ServiceTemplateName = params.get("ServiceTemplateName")
         self.ServiceSet = params.get("ServiceSet")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("ServiceExtraSet") is not None:
+            self.ServiceExtraSet = []
+            for item in params.get("ServiceExtraSet"):
+                obj = ServicesInfo()
+                obj._deserialize(item)
+                self.ServiceExtraSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18604,6 +18689,35 @@ class ServiceTemplateSpecification(AbstractModel):
     def _deserialize(self, params):
         self.ServiceId = params.get("ServiceId")
         self.ServiceGroupId = params.get("ServiceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicesInfo(AbstractModel):
+    """协议端口模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Service: 协议端口
+        :type Service: str
+        :param Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Service = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Service = params.get("Service")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

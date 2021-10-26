@@ -4142,6 +4142,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVulEffectHostList(self, request):
+        """漏洞影响主机列表
+
+        :param request: Request instance for DescribeVulEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVulEffectHostList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulEffectHostListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVulHostCountScanTime(self, request):
         """获取待处理漏洞数+影响主机数
 
@@ -4240,6 +4268,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulLevelCountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulList(self, request):
+        """获取漏洞列表数据
+
+        :param request: Request instance for DescribeVulList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVulList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

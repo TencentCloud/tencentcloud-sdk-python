@@ -1467,6 +1467,64 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceParametersRequest(AbstractModel):
+    """DescribeDBInstanceParameters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ParamName: 查询指定参数详情。ParamName为空或不传，默认返回全部参数列表
+        :type ParamName: str
+        """
+        self.DBInstanceId = None
+        self.ParamName = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ParamName = params.get("ParamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceParametersResponse(AbstractModel):
+    """DescribeDBInstanceParameters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 参数列表总数
+        :type TotalCount: int
+        :param Detail: 参数列表返回详情
+        :type Detail: list of ParamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Detail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.Detail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances请求参数结构体
 
@@ -1792,6 +1850,60 @@ class DescribeOrdersResponse(AbstractModel):
                 obj = PgDeal()
                 obj._deserialize(item)
                 self.Deals.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamsEventRequest(AbstractModel):
+    """DescribeParamsEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例DB ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamsEventResponse(AbstractModel):
+    """DescribeParamsEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 参数修改事件总数，以参数为统计粒度
+        :type TotalCount: int
+        :param EventItems: 实例参数修改事件详情
+        :type EventItems: list of EventItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EventItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EventItems") is not None:
+            self.EventItems = []
+            for item in params.get("EventItems"):
+                obj = EventItem()
+                obj._deserialize(item)
+                self.EventItems.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2432,6 +2544,106 @@ class ErrLogDetail(AbstractModel):
         
 
 
+class EventInfo(AbstractModel):
+    """参数修改事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamName: str
+        :param OldValue: 原参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldValue: str
+        :param NewValue: 本次修改期望参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewValue: str
+        :param ModifyTime: 后台参数修改开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param EffectiveTime: 后台参数生效开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveTime: str
+        :param State: 修改状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param Operator: 操作者（一般为用户sub UIN）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param EventLog: 时间日志。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventLog: str
+        """
+        self.ParamName = None
+        self.OldValue = None
+        self.NewValue = None
+        self.ModifyTime = None
+        self.EffectiveTime = None
+        self.State = None
+        self.Operator = None
+        self.EventLog = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        self.ModifyTime = params.get("ModifyTime")
+        self.EffectiveTime = params.get("EffectiveTime")
+        self.State = params.get("State")
+        self.Operator = params.get("Operator")
+        self.EventLog = params.get("EventLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventItem(AbstractModel):
+    """修改参数条目，以参数为维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamName: str
+        :param EventCount: 修改事件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCount: int
+        :param EventDetail: 修改时间详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventDetail: list of EventInfo
+        """
+        self.ParamName = None
+        self.EventCount = None
+        self.EventDetail = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.EventCount = params.get("EventCount")
+        if params.get("EventDetail") is not None:
+            self.EventDetail = []
+            for item in params.get("EventDetail"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self.EventDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
     * 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
@@ -2841,6 +3053,56 @@ class ModifyDBInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceParametersRequest(AbstractModel):
+    """ModifyDBInstanceParameters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ParamList: 待修改参数及期望值
+        :type ParamList: list of ParamEntry
+        """
+        self.DBInstanceId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamEntry()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceParametersResponse(AbstractModel):
+    """ModifyDBInstanceParameters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
     """ModifyDBInstanceReadOnlyGroup请求参数结构体
 
@@ -3229,6 +3491,139 @@ class OpenServerlessDBExtranetAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ParamEntry(AbstractModel):
+    """批量修改参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名
+        :type Name: str
+        :param ExpectedValue: 修改参数值。入参均以字符串形式传递，例如：小数”0.1“、整数”1000“、枚举”replica“
+        :type ExpectedValue: str
+        """
+        self.Name = None
+        self.ExpectedValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ExpectedValue = params.get("ExpectedValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamInfo(AbstractModel):
+    """参数详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 参数ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param Name: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param ParamValueType: 参数值类型：integer（整型）、real（浮点型）、bool（布尔型）、enum（枚举类型）、mutil_enum（枚举类型、支持多选）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamValueType: str
+        :param Unit: 参数值 单位。参数没有单位是，该字段返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param DefaultValue: 参数默认值。以字符串形式返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param CurrentValue: 参数当前运行值。以字符串形式返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentValue: str
+        :param EnumValue: 枚举类型参数，取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        :param Max: 数值类型（integer、real）参数，取值下界
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: float
+        :param Min: 数值类型（integer、real）参数，取值上界
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: float
+        :param ParamDescriptionCH: 参数中文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamDescriptionCH: str
+        :param ParamDescriptionEN: 参数英文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamDescriptionEN: str
+        :param NeedReboot: 参数修改，是否重启生效。（true为需要，false为不需要）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedReboot: bool
+        :param ClassificationCN: 参数中文分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassificationCN: str
+        :param ClassificationEN: 参数英文分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassificationEN: str
+        :param SpecRelated: 是否和规格相关。（true为相关，false为不想关）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecRelated: bool
+        :param Advanced: 是否为重点参数。（true为重点参数，修改是需要重点关注，可能会影响实例性能）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Advanced: bool
+        :param LastModifyTime: 参数最后一次修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: str
+        """
+        self.ID = None
+        self.Name = None
+        self.ParamValueType = None
+        self.Unit = None
+        self.DefaultValue = None
+        self.CurrentValue = None
+        self.EnumValue = None
+        self.Max = None
+        self.Min = None
+        self.ParamDescriptionCH = None
+        self.ParamDescriptionEN = None
+        self.NeedReboot = None
+        self.ClassificationCN = None
+        self.ClassificationEN = None
+        self.SpecRelated = None
+        self.Advanced = None
+        self.LastModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.Name = params.get("Name")
+        self.ParamValueType = params.get("ParamValueType")
+        self.Unit = params.get("Unit")
+        self.DefaultValue = params.get("DefaultValue")
+        self.CurrentValue = params.get("CurrentValue")
+        self.EnumValue = params.get("EnumValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.ParamDescriptionCH = params.get("ParamDescriptionCH")
+        self.ParamDescriptionEN = params.get("ParamDescriptionEN")
+        self.NeedReboot = params.get("NeedReboot")
+        self.ClassificationCN = params.get("ClassificationCN")
+        self.ClassificationEN = params.get("ClassificationEN")
+        self.SpecRelated = params.get("SpecRelated")
+        self.Advanced = params.get("Advanced")
+        self.LastModifyTime = params.get("LastModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PgDeal(AbstractModel):

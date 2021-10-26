@@ -418,6 +418,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceParameters(self, request):
+        """获取实例可修改参数列表
+
+        :param request: Request instance for DescribeDBInstanceParameters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBInstanceParameters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceParametersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
 
@@ -544,6 +572,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrdersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeParamsEvent(self, request):
+        """获取参数修改事件详情
+
+        :param request: Request instance for DescribeParamsEvent.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParamsEventRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeParamsEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeParamsEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParamsEventResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -992,6 +1048,34 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceParameters(self, request):
+        """批量修改参数
+
+        :param request: Request instance for ModifyDBInstanceParameters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceParametersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceParametersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceParameters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceParametersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

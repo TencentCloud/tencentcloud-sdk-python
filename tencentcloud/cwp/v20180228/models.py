@@ -12652,6 +12652,82 @@ class DescribeVulCountByDatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVulEffectHostListRequest(AbstractModel):
+    """DescribeVulEffectHostList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页limit 最大100
+        :type Limit: int
+        :param Offset: 分页Offset
+        :type Offset: int
+        :param VulId: 漏洞id
+        :type VulId: int
+        :param Filters: 过滤条件。
+<li>AliasName - String - 主机名筛选</li>
+<li>TagIds - String - 主机标签id串，多个用英文逗号分隔</li>
+<li>Status - String - 状态,0: 待处理 1:忽略  3:已修复  5:检测中  6:修复这中.</li>
+<li>Uuid - String数组 - Uuid串数组</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.VulId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.VulId = params.get("VulId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulEffectHostListResponse(AbstractModel):
+    """DescribeVulEffectHostList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 列表总数量
+        :type TotalCount: int
+        :param VulEffectHostList: 影响主机列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulEffectHostList: list of VulEffectHostList
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VulEffectHostList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VulEffectHostList") is not None:
+            self.VulEffectHostList = []
+            for item in params.get("VulEffectHostList"):
+                obj = VulEffectHostList()
+                obj._deserialize(item)
+                self.VulEffectHostList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVulHostCountScanTimeRequest(AbstractModel):
     """DescribeVulHostCountScanTime请求参数结构体
 
@@ -12886,6 +12962,88 @@ class DescribeVulLevelCountResponse(AbstractModel):
                 obj = VulLevelInfo()
                 obj._deserialize(item)
                 self.VulLevelList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulListRequest(AbstractModel):
+    """DescribeVulList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回数量，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IfEmergency - String - 是否必填：否 - 是否为应急漏洞，查询应急漏洞传:yes</li>
+<li>Status - String - 是否必填：是 - 漏洞状态筛选，0: 待处理 1:忽略  3:已修复  5:检测中，6：修复中 控制台仅处理0,1,3,5,6五种状态</li>
+<li>Level - String - 是否必填：否 - 漏洞等级筛选 1:低 2:中 3:高 4:提示</li>
+<li>VulName- String - 是否必填：否 - 漏洞名称搜索</li>
+<li>LastDay- int - 是否必填：否 - 查询近几日的数据，需要 -1 之后传入，例如近3日数据，传2</li>
+<li>OrderBy - String 是否必填：否 默认按照处理状态,威胁等级,检测时间排序 -排序字段，支持：level,lastTime的动态排序  hostCount 影响主机台数排序</li>
+<li>IsShowFollowVul -  String 是否必填：否   是否仅展示重点关注漏洞  0=展示全部 1=仅展示重点关注漏洞</li>
+<li>VulCategory-  String 是否必填：否   1: web应用漏洞 2:系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁</li>
+        :type Filters: list of Filters
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulListResponse(AbstractModel):
+    """DescribeVulList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulInfoList: 漏洞列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulInfoList: list of VulInfoList
+        :param TotalCount: 漏洞总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param FollowVulCount: 重点关注漏洞总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowVulCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VulInfoList = None
+        self.TotalCount = None
+        self.FollowVulCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VulInfoList") is not None:
+            self.VulInfoList = []
+            for item in params.get("VulInfoList"):
+                obj = VulInfoList()
+                obj._deserialize(item)
+                self.VulInfoList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.FollowVulCount = params.get("FollowVulCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -18998,6 +19156,76 @@ class VulDetailInfo(AbstractModel):
         
 
 
+class VulEffectHostList(AbstractModel):
+    """漏洞影响主机列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: 事件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: int
+        :param Status: 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param LastTime: 最后检测时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTime: str
+        :param Level: 危害等级：1-低危；2-中危；3-高危；4-严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Quuid: 主机Quuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quuid: str
+        :param Uuid: 主机Uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param HostIp: 主机HostIp
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIp: str
+        :param AliasName: 主机别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
+        :param Tags: 主机标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param Description: 说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.EventId = None
+        self.Status = None
+        self.LastTime = None
+        self.Level = None
+        self.Quuid = None
+        self.Uuid = None
+        self.HostIp = None
+        self.AliasName = None
+        self.Tags = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.Status = params.get("Status")
+        self.LastTime = params.get("LastTime")
+        self.Level = params.get("Level")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.HostIp = params.get("HostIp")
+        self.AliasName = params.get("AliasName")
+        self.Tags = params.get("Tags")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VulHostTopInfo(AbstractModel):
     """服务器风险top5实体
 
@@ -19034,6 +19262,88 @@ class VulHostTopInfo(AbstractModel):
                 self.VulLevelList.append(obj)
         self.Quuid = params.get("Quuid")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulInfoList(AbstractModel):
+    """主机安全-漏洞管理-漏洞列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ids: 漏洞包含的事件id串，多个用“,”分割
+        :type Ids: str
+        :param Name: 漏洞名
+        :type Name: str
+        :param Status: 0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 控制台仅处理0,1,3,5,6四种状态
+        :type Status: int
+        :param VulId: 漏洞id
+        :type VulId: int
+        :param PublishTime: 漏洞披露事件
+        :type PublishTime: str
+        :param LastTime: 最后检测时间
+        :type LastTime: str
+        :param HostCount: 影响主机数
+        :type HostCount: int
+        :param Level: 漏洞等级 1:低 2:中 3:高 4:提示
+        :type Level: int
+        :param From: 废弃字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type From: int
+        :param Descript: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Descript: str
+        :param PublishTimeWisteria: 废弃字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishTimeWisteria: str
+        :param NameWisteria: 废弃字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameWisteria: str
+        :param DescriptWisteria: 废弃字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescriptWisteria: str
+        :param StatusStr: 聚合后事件状态串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusStr: str
+        """
+        self.Ids = None
+        self.Name = None
+        self.Status = None
+        self.VulId = None
+        self.PublishTime = None
+        self.LastTime = None
+        self.HostCount = None
+        self.Level = None
+        self.From = None
+        self.Descript = None
+        self.PublishTimeWisteria = None
+        self.NameWisteria = None
+        self.DescriptWisteria = None
+        self.StatusStr = None
+
+
+    def _deserialize(self, params):
+        self.Ids = params.get("Ids")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.VulId = params.get("VulId")
+        self.PublishTime = params.get("PublishTime")
+        self.LastTime = params.get("LastTime")
+        self.HostCount = params.get("HostCount")
+        self.Level = params.get("Level")
+        self.From = params.get("From")
+        self.Descript = params.get("Descript")
+        self.PublishTimeWisteria = params.get("PublishTimeWisteria")
+        self.NameWisteria = params.get("NameWisteria")
+        self.DescriptWisteria = params.get("DescriptWisteria")
+        self.StatusStr = params.get("StatusStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

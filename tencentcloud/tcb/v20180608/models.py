@@ -728,6 +728,41 @@ class CloudBaseRunImageSecretInfo(AbstractModel):
         
 
 
+class CloudBaseRunKVPriority(AbstractModel):
+    """KV参数的优先级
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 参数的Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 参数的Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Priority: 优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        """
+        self.Key = None
+        self.Value = None
+        self.Priority = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudBaseRunNfsVolumeSource(AbstractModel):
     """nfs挂载资源
 
@@ -759,6 +794,116 @@ class CloudBaseRunNfsVolumeSource(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.SecretName = params.get("SecretName")
         self.EnableEmptyDirVolume = params.get("EnableEmptyDirVolume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudBaseRunServerVersionItem(AbstractModel):
+    """版本的列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param FlowRatio: 流量占比
+        :type FlowRatio: int
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        :param BuildId: 构建ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildId: int
+        :param UploadType: 构建方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UploadType: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param UrlParam: url中的参数路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlParam: :class:`tencentcloud.tcb.v20180608.models.ObjectKV`
+        :param Priority: 优先级（数值越小，优先级越高）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param IsDefaultPriority: 是否是默认兜底版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultPriority: bool
+        :param FlowParams: KV Params
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowParams: list of CloudBaseRunKVPriority
+        :param MinReplicas: 最小副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinReplicas: int
+        :param MaxReplicas: 最大副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        :param RunId: 操作记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunId: str
+        :param Percent: 进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: int
+        :param CurrentReplicas: 当前副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentReplicas: int
+        """
+        self.VersionName = None
+        self.Status = None
+        self.FlowRatio = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.BuildId = None
+        self.UploadType = None
+        self.Remark = None
+        self.UrlParam = None
+        self.Priority = None
+        self.IsDefaultPriority = None
+        self.FlowParams = None
+        self.MinReplicas = None
+        self.MaxReplicas = None
+        self.RunId = None
+        self.Percent = None
+        self.CurrentReplicas = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.Status = params.get("Status")
+        self.FlowRatio = params.get("FlowRatio")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.BuildId = params.get("BuildId")
+        self.UploadType = params.get("UploadType")
+        self.Remark = params.get("Remark")
+        if params.get("UrlParam") is not None:
+            self.UrlParam = ObjectKV()
+            self.UrlParam._deserialize(params.get("UrlParam"))
+        self.Priority = params.get("Priority")
+        self.IsDefaultPriority = params.get("IsDefaultPriority")
+        if params.get("FlowParams") is not None:
+            self.FlowParams = []
+            for item in params.get("FlowParams"):
+                obj = CloudBaseRunKVPriority()
+                obj._deserialize(item)
+                self.FlowParams.append(obj)
+        self.MinReplicas = params.get("MinReplicas")
+        self.MaxReplicas = params.get("MaxReplicas")
+        self.RunId = params.get("RunId")
+        self.Percent = params.get("Percent")
+        self.CurrentReplicas = params.get("CurrentReplicas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3125,6 +3270,71 @@ class DescribeCloudBaseRunOperationTypesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudBaseRunPodListRequest(AbstractModel):
+    """DescribeCloudBaseRunPodList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param ServerName: 服务名
+        :type ServerName: str
+        :param VersionName: 版本名
+        :type VersionName: str
+        :param Limit: 分页限制
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Status: 容器状态
+        :type Status: str
+        :param PodName: 容器名
+        :type PodName: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionName = None
+        self.Limit = None
+        self.Offset = None
+        self.Status = None
+        self.PodName = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Status = params.get("Status")
+        self.PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunPodListResponse(AbstractModel):
+    """DescribeCloudBaseRunPodList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCloudBaseRunResourceForExtendRequest(AbstractModel):
     """DescribeCloudBaseRunResourceForExtend请求参数结构体
 
@@ -3264,6 +3474,103 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
                 obj = CloudBaseRunVpcSubnet()
                 obj._deserialize(item)
                 self.SubnetIds.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunServerRequest(AbstractModel):
+    """DescribeCloudBaseRunServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 分页数量
+        :type Limit: int
+        :param VersionName: 版本名字（精确匹配）
+        :type VersionName: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.Offset = None
+        self.Limit = None
+        self.VersionName = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunServerResponse(AbstractModel):
+    """DescribeCloudBaseRunServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param VersionItems: 版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionItems: list of CloudBaseRunServerVersionItem
+        :param ServerName: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerName: str
+        :param IsPublic: 是否对于外网开放
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPublic: bool
+        :param ImageRepo: 镜像仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageRepo: str
+        :param TrafficType: 流量配置的类型（FLOW,URL_PARAMS)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficType: str
+        :param SourceType: 服务创建类型，默认为空，一键部署为oneclick
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VersionItems = None
+        self.ServerName = None
+        self.IsPublic = None
+        self.ImageRepo = None
+        self.TrafficType = None
+        self.SourceType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VersionItems") is not None:
+            self.VersionItems = []
+            for item in params.get("VersionItems"):
+                obj = CloudBaseRunServerVersionItem()
+                obj._deserialize(item)
+                self.VersionItems.append(obj)
+        self.ServerName = params.get("ServerName")
+        self.IsPublic = params.get("IsPublic")
+        self.ImageRepo = params.get("ImageRepo")
+        self.TrafficType = params.get("TrafficType")
+        self.SourceType = params.get("SourceType")
         self.RequestId = params.get("RequestId")
 
 
