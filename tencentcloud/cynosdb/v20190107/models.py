@@ -652,6 +652,8 @@ pause
         :type MinStorageSize: int
         :param MaxStorageSize: 集群计算规格对应的最大存储值
         :type MaxStorageSize: int
+        :param NetAddrs: 集群网络信息
+        :type NetAddrs: list of NetAddr
         """
         self.Status = None
         self.UpdateTime = None
@@ -686,6 +688,7 @@ pause
         self.StoragePayMode = None
         self.MinStorageSize = None
         self.MaxStorageSize = None
+        self.NetAddrs = None
 
 
     def _deserialize(self, params):
@@ -732,6 +735,12 @@ pause
         self.StoragePayMode = params.get("StoragePayMode")
         self.MinStorageSize = params.get("MinStorageSize")
         self.MaxStorageSize = params.get("MaxStorageSize")
+        if params.get("NetAddrs") is not None:
+            self.NetAddrs = []
+            for item in params.get("NetAddrs"):
+                obj = NetAddr()
+                obj._deserialize(item)
+                self.NetAddrs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2501,6 +2510,51 @@ class ModifyMaintainPeriodConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class NetAddr(AbstractModel):
+    """网络信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Vport: 内网端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param WanDomain: 外网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanDomain: str
+        :param WanPort: 外网端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanPort: int
+        :param NetType: 网络类型（ro-只读,rw/ha-读写）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: str
+        """
+        self.Vip = None
+        self.Vport = None
+        self.WanDomain = None
+        self.WanPort = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.WanDomain = params.get("WanDomain")
+        self.WanPort = params.get("WanPort")
+        self.NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ObjectTask(AbstractModel):
