@@ -1218,6 +1218,53 @@ class CreateImageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateKeyPairRequest(AbstractModel):
+    """CreateKeyPair请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyName: 密钥对名称，可由数字，字母和下划线组成，长度不超过25个字符。
+        :type KeyName: str
+        """
+        self.KeyName = None
+
+
+    def _deserialize(self, params):
+        self.KeyName = params.get("KeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKeyPairResponse(AbstractModel):
+    """CreateKeyPair返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyPair: 密钥对信息。
+        :type KeyPair: :class:`tencentcloud.ecm.v20190719.models.KeyPair`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyPair = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyPair") is not None:
+            self.KeyPair = KeyPair()
+            self.KeyPair._deserialize(params.get("KeyPair"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateListenerRequest(AbstractModel):
     """CreateListener请求参数结构体
 
@@ -5238,6 +5285,65 @@ class DisassociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateInstancesKeyPairsRequest(AbstractModel):
+    """DisassociateInstancesKeyPairs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 可以通过以下方式获取可用的实例ID：
+通过登录控制台查询实例ID。
+通过调用接口 DescribeInstances ，取返回信息中的 InstanceId 获取实例ID。
+        :type InstanceIds: list of str
+        :param KeyIds: 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：skey-11112222。
+
+可以通过以下方式获取可用的密钥ID：
+通过登录控制台查询密钥ID。
+通过调用接口 DescribeKeyPairs ，取返回信息中的 KeyId 获取密钥对ID。
+        :type KeyIds: list of str
+        :param ForceStop: 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再解绑密钥。取值范围：
+TRUE：表示在正常关机失败后进行强制关机。
+FALSE：表示在正常关机失败后不进行强制关机。
+
+默认取值：FALSE。
+        :type ForceStop: bool
+        """
+        self.InstanceIds = None
+        self.KeyIds = None
+        self.ForceStop = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.KeyIds = params.get("KeyIds")
+        self.ForceStop = params.get("ForceStop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateInstancesKeyPairsResponse(AbstractModel):
+    """DisassociateInstancesKeyPairs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateSecurityGroupsRequest(AbstractModel):
     """DisassociateSecurityGroups请求参数结构体
 
@@ -6766,6 +6872,66 @@ AVAILABLE：可用的
         self.Description = params.get("Description")
         self.IsWanIpBlocked = params.get("IsWanIpBlocked")
         self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyPair(AbstractModel):
+    """描述密钥对信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyId: 密钥对的ID，是密钥对的唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param KeyName: 密钥对名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyName: str
+        :param ProjectId: 密钥对所属的项目ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param Description: 密钥对描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param PublicKey: 密钥对的纯文本公钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicKey: str
+        :param PrivateKey: 钥对的纯文本私钥。腾讯云不会保管私钥，请用户自行妥善保存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateKey: str
+        :param AssociatedInstanceIds: 钥关联的实例ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedInstanceIds: list of str
+        :param CreatedTime: 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self.KeyId = None
+        self.KeyName = None
+        self.ProjectId = None
+        self.Description = None
+        self.PublicKey = None
+        self.PrivateKey = None
+        self.AssociatedInstanceIds = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.KeyName = params.get("KeyName")
+        self.ProjectId = params.get("ProjectId")
+        self.Description = params.get("Description")
+        self.PublicKey = params.get("PublicKey")
+        self.PrivateKey = params.get("PrivateKey")
+        self.AssociatedInstanceIds = params.get("AssociatedInstanceIds")
+        self.CreatedTime = params.get("CreatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -15503,7 +15503,7 @@ class TcrRepoInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 地域
+        :param Region: 地域（填数字）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param RegistryId: 实例id

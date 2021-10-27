@@ -301,6 +301,34 @@ class Filter(AbstractModel):
         
 
 
+class KVPair(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SREInstance(AbstractModel):
     """微服务注册引擎实例
 
@@ -360,6 +388,9 @@ class SREInstance(AbstractModel):
         :param ServiceGovernanceInfos: 服务治理相关信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceGovernanceInfos: list of ServiceGovernanceInfo
+        :param Tags: 实例的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of KVPair
         """
         self.InstanceId = None
         self.Name = None
@@ -381,6 +412,7 @@ class SREInstance(AbstractModel):
         self.EnableInternet = None
         self.VpcInfos = None
         self.ServiceGovernanceInfos = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -419,6 +451,12 @@ class SREInstance(AbstractModel):
                 obj = ServiceGovernanceInfo()
                 obj._deserialize(item)
                 self.ServiceGovernanceInfos.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

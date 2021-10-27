@@ -402,9 +402,9 @@ class AddressInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Address: ip地址
+        :param Address: ip地址。
         :type Address: str
-        :param Description: 备注
+        :param Description: 备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
@@ -18705,9 +18705,9 @@ class ServicesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Service: 协议端口
+        :param Service: 协议端口。
         :type Service: str
-        :param Description: 备注
+        :param Description: 备注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """

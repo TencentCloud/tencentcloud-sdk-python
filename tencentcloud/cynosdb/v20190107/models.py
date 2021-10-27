@@ -2410,6 +2410,60 @@ class ModifyBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterParamRequest(AbstractModel):
+    """ModifyClusterParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ParamList: 修改参数列表
+        :type ParamList: list of ParamItem
+        """
+        self.ClusterId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterParamResponse(AbstractModel):
+    """ModifyClusterParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步请求Id，用于查询结果
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups请求参数结构体
 

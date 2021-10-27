@@ -71,6 +71,9 @@ INVALIDPARAMETERVALUE_LACKOFPARAMETERINFO = 'InvalidParameterValue.LackOfParamet
 # 未提供 Parameters 信息。
 INVALIDPARAMETERVALUE_LACKOFPARAMETERS = 'InvalidParameterValue.LackOfParameters'
 
+# 超过参数限制。
+INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
+
 # 未启用自定义参数功能。
 INVALIDPARAMETERVALUE_PARAMETERDISABLED = 'InvalidParameterValue.ParameterDisabled'
 

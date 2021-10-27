@@ -1594,7 +1594,7 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UploadLog(self, request):
+    def UploadLog(self, request, body):
         """## 功能描述
 
         本接口用于将日志写入到指定的日志主题。
@@ -1767,8 +1767,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadLog", params)
-            response = json.loads(body)
+            params = {"X-CLS-"+key: value for key, value in params.items()}
+            response = self.call_octet_stream("UploadLog", params, body)
             if "Error" not in response["Response"]:
                 model = models.UploadLogResponse()
                 model._deserialize(response["Response"])

@@ -5626,36 +5626,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RescanImpactedHost(self, request):
-        """该接口已废弃
-
-        本接口 (RescanImpactedHost) 用于漏洞重新检测。
-
-        :param request: Request instance for RescanImpactedHost.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.RescanImpactedHostRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.RescanImpactedHostResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("RescanImpactedHost", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RescanImpactedHostResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ScanAsset(self, request):
         """资产指纹启动扫描
 

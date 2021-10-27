@@ -109,6 +109,38 @@ class DescribeRiskModelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InputCryptoManageMarketingRisk(AbstractModel):
+    """全栈式风控引擎入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsAuthorized: 是否授权
+        :type IsAuthorized: str
+        :param CryptoType: 加密类型
+        :type CryptoType: str
+        :param CryptoContent: 加密内容
+        :type CryptoContent: str
+        """
+        self.IsAuthorized = None
+        self.CryptoType = None
+        self.CryptoContent = None
+
+
+    def _deserialize(self, params):
+        self.IsAuthorized = params.get("IsAuthorized")
+        self.CryptoType = params.get("CryptoType")
+        self.CryptoContent = params.get("CryptoContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputDescribeRiskModelData(AbstractModel):
     """客户请求入参
 
@@ -299,14 +331,20 @@ class ManageMarketingRiskRequest(AbstractModel):
         r"""
         :param BusinessSecurityData: 业务入参
         :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputManageMarketingRisk`
+        :param BusinessCryptoData: 业务入参
+        :type BusinessCryptoData: :class:`tencentcloud.rce.v20201103.models.InputCryptoManageMarketingRisk`
         """
         self.BusinessSecurityData = None
+        self.BusinessCryptoData = None
 
 
     def _deserialize(self, params):
         if params.get("BusinessSecurityData") is not None:
             self.BusinessSecurityData = InputManageMarketingRisk()
             self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        if params.get("BusinessCryptoData") is not None:
+            self.BusinessCryptoData = InputCryptoManageMarketingRisk()
+            self.BusinessCryptoData._deserialize(params.get("BusinessCryptoData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

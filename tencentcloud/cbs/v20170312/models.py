@@ -1781,18 +1781,18 @@ class Image(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageId: 镜像实例ID。
-        :type ImageId: str
         :param ImageName: 镜像名称。
         :type ImageName: str
+        :param ImageId: 镜像实例ID。
+        :type ImageId: str
         """
-        self.ImageId = None
         self.ImageName = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
         self.ImageName = params.get("ImageName")
+        self.ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2747,92 +2747,92 @@ class Snapshot(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotId: 快照ID。
-        :type SnapshotId: str
         :param Placement: 快照所在的位置。
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
-        :param DiskUsage: 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
-        :type DiskUsage: str
-        :param DiskId: 创建此快照的云硬盘ID。
-        :type DiskId: str
-        :param DiskSize: 创建此快照的云硬盘大小，单位GB。
-        :type DiskSize: int
-        :param SnapshotState: 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
-        :type SnapshotState: str
-        :param SnapshotName: 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
-        :type SnapshotName: str
-        :param Percent: 快照创建进度百分比，快照创建成功后此字段恒为100。
-        :type Percent: int
-        :param CreateTime: 快照的创建时间。
-        :type CreateTime: str
-        :param DeadlineTime: 快照到期时间。如果快照为永久保留，此字段为空。
-        :type DeadlineTime: str
-        :param Encrypt: 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
-        :type Encrypt: bool
-        :param IsPermanent: 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
-        :type IsPermanent: bool
-        :param CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
-        :type CopyingToRegions: list of str
         :param CopyFromRemote: 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
         :type CopyFromRemote: bool
+        :param SnapshotState: 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
+        :type SnapshotState: str
+        :param IsPermanent: 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
+        :type IsPermanent: bool
+        :param SnapshotName: 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
+        :type SnapshotName: str
+        :param DeadlineTime: 快照到期时间。如果快照为永久保留，此字段为空。
+        :type DeadlineTime: str
+        :param Percent: 快照创建进度百分比，快照创建成功后此字段恒为100。
+        :type Percent: int
         :param Images: 快照关联的镜像列表。
         :type Images: list of Image
-        :param ImageCount: 快照关联的镜像个数。
-        :type ImageCount: int
-        :param SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
-        :type SnapshotType: str
         :param ShareReference: 快照当前被共享数。
         :type ShareReference: int
+        :param SnapshotType: 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
+        :type SnapshotType: str
+        :param DiskSize: 创建此快照的云硬盘大小，单位GB。
+        :type DiskSize: int
+        :param DiskId: 创建此快照的云硬盘ID。
+        :type DiskId: str
+        :param CopyingToRegions: 快照正在跨地域复制的目的地域，默认取值为[]。
+        :type CopyingToRegions: list of str
+        :param Encrypt: 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
+        :type Encrypt: bool
+        :param CreateTime: 快照的创建时间。
+        :type CreateTime: str
+        :param ImageCount: 快照关联的镜像个数。
+        :type ImageCount: int
+        :param DiskUsage: 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+        :type DiskUsage: str
+        :param SnapshotId: 快照ID。
+        :type SnapshotId: str
         :param TimeStartShare: 快照开始共享的时间。
         :type TimeStartShare: str
         """
-        self.SnapshotId = None
         self.Placement = None
-        self.DiskUsage = None
-        self.DiskId = None
-        self.DiskSize = None
-        self.SnapshotState = None
-        self.SnapshotName = None
-        self.Percent = None
-        self.CreateTime = None
-        self.DeadlineTime = None
-        self.Encrypt = None
-        self.IsPermanent = None
-        self.CopyingToRegions = None
         self.CopyFromRemote = None
+        self.SnapshotState = None
+        self.IsPermanent = None
+        self.SnapshotName = None
+        self.DeadlineTime = None
+        self.Percent = None
         self.Images = None
-        self.ImageCount = None
-        self.SnapshotType = None
         self.ShareReference = None
+        self.SnapshotType = None
+        self.DiskSize = None
+        self.DiskId = None
+        self.CopyingToRegions = None
+        self.Encrypt = None
+        self.CreateTime = None
+        self.ImageCount = None
+        self.DiskUsage = None
+        self.SnapshotId = None
         self.TimeStartShare = None
 
 
     def _deserialize(self, params):
-        self.SnapshotId = params.get("SnapshotId")
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
-        self.DiskUsage = params.get("DiskUsage")
-        self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
-        self.SnapshotState = params.get("SnapshotState")
-        self.SnapshotName = params.get("SnapshotName")
-        self.Percent = params.get("Percent")
-        self.CreateTime = params.get("CreateTime")
-        self.DeadlineTime = params.get("DeadlineTime")
-        self.Encrypt = params.get("Encrypt")
-        self.IsPermanent = params.get("IsPermanent")
-        self.CopyingToRegions = params.get("CopyingToRegions")
         self.CopyFromRemote = params.get("CopyFromRemote")
+        self.SnapshotState = params.get("SnapshotState")
+        self.IsPermanent = params.get("IsPermanent")
+        self.SnapshotName = params.get("SnapshotName")
+        self.DeadlineTime = params.get("DeadlineTime")
+        self.Percent = params.get("Percent")
         if params.get("Images") is not None:
             self.Images = []
             for item in params.get("Images"):
                 obj = Image()
                 obj._deserialize(item)
                 self.Images.append(obj)
-        self.ImageCount = params.get("ImageCount")
-        self.SnapshotType = params.get("SnapshotType")
         self.ShareReference = params.get("ShareReference")
+        self.SnapshotType = params.get("SnapshotType")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskId = params.get("DiskId")
+        self.CopyingToRegions = params.get("CopyingToRegions")
+        self.Encrypt = params.get("Encrypt")
+        self.CreateTime = params.get("CreateTime")
+        self.ImageCount = params.get("ImageCount")
+        self.DiskUsage = params.get("DiskUsage")
+        self.SnapshotId = params.get("SnapshotId")
         self.TimeStartShare = params.get("TimeStartShare")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

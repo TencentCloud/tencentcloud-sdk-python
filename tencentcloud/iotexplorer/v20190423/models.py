@@ -2442,6 +2442,18 @@ class DeviceInfo(AbstractModel):
         :param CreatorNickName: 创建人昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
+        :param EnableState: 启用/禁用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableState: int
+        :param ProductId: 产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param ProductName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param DeviceType: 设备类型（设备、子设备、网关）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceType: str
         """
         self.DeviceName = None
         self.Status = None
@@ -2459,6 +2471,10 @@ class DeviceInfo(AbstractModel):
         self.NwkSKey = None
         self.CreateUserId = None
         self.CreatorNickName = None
+        self.EnableState = None
+        self.ProductId = None
+        self.ProductName = None
+        self.DeviceType = None
 
 
     def _deserialize(self, params):
@@ -2478,6 +2494,10 @@ class DeviceInfo(AbstractModel):
         self.NwkSKey = params.get("NwkSKey")
         self.CreateUserId = params.get("CreateUserId")
         self.CreatorNickName = params.get("CreatorNickName")
+        self.EnableState = params.get("EnableState")
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

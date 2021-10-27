@@ -3785,6 +3785,8 @@ class GetAlarmLogRequest(AbstractModel):
         :type Context: str
         :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
         :type Sort: str
+        :param UseNewAnalysis: 为true代表使用新检索,响应参数AnalysisRecords和Columns有效， 为false时代表使用老检索方式, AnalysisResults和ColNames有效
+        :type UseNewAnalysis: bool
         """
         self.From = None
         self.To = None
@@ -3792,6 +3794,7 @@ class GetAlarmLogRequest(AbstractModel):
         self.Limit = None
         self.Context = None
         self.Sort = None
+        self.UseNewAnalysis = None
 
 
     def _deserialize(self, params):
@@ -3801,6 +3804,7 @@ class GetAlarmLogRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Context = params.get("Context")
         self.Sort = params.get("Sort")
+        self.UseNewAnalysis = params.get("UseNewAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3832,6 +3836,12 @@ class GetAlarmLogResponse(AbstractModel):
         :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of LogItems
+        :param AnalysisRecords: 新的日志分析结果; UseNewAnalysis为true有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisRecords: list of str
+        :param Columns: 日志分析的列属性; UseNewAnalysis为true有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of Column
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3841,6 +3851,8 @@ class GetAlarmLogResponse(AbstractModel):
         self.ColNames = None
         self.Results = None
         self.AnalysisResults = None
+        self.AnalysisRecords = None
+        self.Columns = None
         self.RequestId = None
 
 
@@ -3861,6 +3873,13 @@ class GetAlarmLogResponse(AbstractModel):
                 obj = LogItems()
                 obj._deserialize(item)
                 self.AnalysisResults.append(obj)
+        self.AnalysisRecords = params.get("AnalysisRecords")
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self.Columns.append(obj)
         self.RequestId = params.get("RequestId")
 
 

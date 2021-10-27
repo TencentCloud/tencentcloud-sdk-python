@@ -586,6 +586,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyClusterParam(self, request):
+        """修改集群参数
+
+        :param request: Request instance for ModifyClusterParam.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterParamRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterParamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterParam", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterParamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 

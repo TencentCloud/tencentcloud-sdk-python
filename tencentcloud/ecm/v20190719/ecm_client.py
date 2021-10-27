@@ -400,6 +400,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateKeyPair(self, request):
+        """用于创建一个 OpenSSH RSA 密钥对，可以用于登录 Linux 实例。
+
+        :param request: Request instance for CreateKeyPair.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateKeyPairRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateKeyPairResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateKeyPair", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateKeyPairResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateListener(self, request):
         """创建负载均衡监听器。
 
@@ -2263,6 +2291,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateInstancesKeyPairs(self, request):
+        """用于解除实例的密钥绑定关系。
+
+        :param request: Request instance for DisassociateInstancesKeyPairs.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DisassociateInstancesKeyPairsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DisassociateInstancesKeyPairsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateInstancesKeyPairs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateInstancesKeyPairsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
