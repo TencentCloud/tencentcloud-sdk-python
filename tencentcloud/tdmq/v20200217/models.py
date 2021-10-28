@@ -218,7 +218,7 @@ class Cluster(AbstractModel):
         :type MaxTopicNum: int
         :param MaxQps: 最大QPS
         :type MaxQps: int
-        :param MessageRetentionTime: 最大消息保留时间，分钟为单位
+        :param MessageRetentionTime: 最大消息保留时间，秒为单位
         :type MessageRetentionTime: int
         :param MaxStorageCapacity: 最大存储容量
         :type MaxStorageCapacity: int
@@ -1351,6 +1351,230 @@ class CreateEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRocketMQClusterRequest(AbstractModel):
+    """CreateRocketMQCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 集群名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type Name: str
+        :param Remark: 集群描述，128个字符以内
+        :type Remark: str
+        """
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQClusterResponse(AbstractModel):
+    """CreateRocketMQCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRocketMQGroupRequest(AbstractModel):
+    """CreateRocketMQGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Group名称，8~64个字符
+        :type GroupId: str
+        :param Namespaces: 命名空间，目前只支持单个命名空间
+        :type Namespaces: list of str
+        :param ReadEnable: 是否开启消费
+        :type ReadEnable: bool
+        :param BroadcastEnable: 是否开启广播消费
+        :type BroadcastEnable: bool
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Remark: 说明信息，最长128个字符
+        :type Remark: str
+        """
+        self.GroupId = None
+        self.Namespaces = None
+        self.ReadEnable = None
+        self.BroadcastEnable = None
+        self.ClusterId = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Namespaces = params.get("Namespaces")
+        self.ReadEnable = params.get("ReadEnable")
+        self.BroadcastEnable = params.get("BroadcastEnable")
+        self.ClusterId = params.get("ClusterId")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQGroupResponse(AbstractModel):
+    """CreateRocketMQGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRocketMQNamespaceRequest(AbstractModel):
+    """CreateRocketMQNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type NamespaceId: str
+        :param Ttl: 未消费消息的保留时间，以毫秒为单位，60秒-15天
+        :type Ttl: int
+        :param RetentionTime: 消息持久化后保留的时间，以毫秒为单位
+        :type RetentionTime: int
+        :param Remark: 说明，最大128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.Ttl = None
+        self.RetentionTime = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Ttl = params.get("Ttl")
+        self.RetentionTime = params.get("RetentionTime")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQNamespaceResponse(AbstractModel):
+    """CreateRocketMQNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRocketMQTopicRequest(AbstractModel):
+    """CreateRocketMQTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Topic: 主题名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type Topic: str
+        :param Namespaces: 主题所在的命名空间，目前支持在单个命名空间下创建主题
+        :type Namespaces: list of str
+        :param Type: 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction
+        :type Type: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Remark: 主题说明，最大128个字符
+        :type Remark: str
+        """
+        self.Topic = None
+        self.Namespaces = None
+        self.Type = None
+        self.ClusterId = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.Namespaces = params.get("Namespaces")
+        self.Type = params.get("Type")
+        self.ClusterId = params.get("ClusterId")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQTopicResponse(AbstractModel):
+    """CreateRocketMQTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRoleRequest(AbstractModel):
     """CreateRole请求参数结构体
 
@@ -1845,6 +2069,190 @@ class DeleteEnvironmentsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.EnvironmentIds = params.get("EnvironmentIds")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRocketMQClusterRequest(AbstractModel):
+    """DeleteRocketMQCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 待删除的集群Id。
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQClusterResponse(AbstractModel):
+    """DeleteRocketMQCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRocketMQGroupRequest(AbstractModel):
+    """DeleteRocketMQGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param GroupId: 消费组名称
+        :type GroupId: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQGroupResponse(AbstractModel):
+    """DeleteRocketMQGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRocketMQNamespaceRequest(AbstractModel):
+    """DeleteRocketMQNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQNamespaceResponse(AbstractModel):
+    """DeleteRocketMQNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRocketMQTopicRequest(AbstractModel):
+    """DeleteRocketMQTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param Topic: 主题名称
+        :type Topic: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.Topic = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRocketMQTopicResponse(AbstractModel):
+    """DeleteRocketMQTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3072,6 +3480,376 @@ class DescribeProducersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQClusterRequest(AbstractModel):
+    """DescribeRocketMQCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQClusterResponse(AbstractModel):
+    """DescribeRocketMQCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterInfo: 集群信息
+        :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterInfo`
+        :param ClusterConfig: 集群配置
+        :type ClusterConfig: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterConfig`
+        :param ClusterStats: 集群最近使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStats: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterRecentStats`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterInfo = None
+        self.ClusterConfig = None
+        self.ClusterStats = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = RocketMQClusterInfo()
+            self.ClusterInfo._deserialize(params.get("ClusterInfo"))
+        if params.get("ClusterConfig") is not None:
+            self.ClusterConfig = RocketMQClusterConfig()
+            self.ClusterConfig._deserialize(params.get("ClusterConfig"))
+        if params.get("ClusterStats") is not None:
+            self.ClusterStats = RocketMQClusterRecentStats()
+            self.ClusterStats._deserialize(params.get("ClusterStats"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQClustersRequest(AbstractModel):
+    """DescribeRocketMQClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param IdKeyword: 按照集群ID关键字搜索
+        :type IdKeyword: str
+        :param NameKeyword: 按照集群名称关键字搜索
+        :type NameKeyword: str
+        :param ClusterIdList: 集群ID列表过滤
+        :type ClusterIdList: list of str
+        :param IsTagFilter: 标签过滤查找时，需要设置为true
+        :type IsTagFilter: bool
+        :param Filters: 过滤器。目前支持标签过滤。
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.IdKeyword = None
+        self.NameKeyword = None
+        self.ClusterIdList = None
+        self.IsTagFilter = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.IdKeyword = params.get("IdKeyword")
+        self.NameKeyword = params.get("NameKeyword")
+        self.ClusterIdList = params.get("ClusterIdList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQClustersResponse(AbstractModel):
+    """DescribeRocketMQClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterList: 集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterList: list of RocketMQClusterDetail
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = RocketMQClusterDetail()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQGroupsRequest(AbstractModel):
+    """DescribeRocketMQGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制条数
+        :type Limit: int
+        :param FilterTopic: 主题名称，输入此参数可查询该主题下所有的订阅组
+        :type FilterTopic: str
+        :param FilterGroup: 按消费组名称查询消费组，支持模糊查询
+        :type FilterGroup: str
+        :param SortedBy: 按照指定字段排序，可选值为tps，accumulative
+        :type SortedBy: str
+        :param SortOrder: 按升序或降序排列，可选值为asc，desc
+        :type SortOrder: str
+        :param FilterOneGroup: 订阅组名称，指定此参数后将只返回该订阅组信息
+        :type FilterOneGroup: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.Offset = None
+        self.Limit = None
+        self.FilterTopic = None
+        self.FilterGroup = None
+        self.SortedBy = None
+        self.SortOrder = None
+        self.FilterOneGroup = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.FilterTopic = params.get("FilterTopic")
+        self.FilterGroup = params.get("FilterGroup")
+        self.SortedBy = params.get("SortedBy")
+        self.SortOrder = params.get("SortOrder")
+        self.FilterOneGroup = params.get("FilterOneGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQGroupsResponse(AbstractModel):
+    """DescribeRocketMQGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param Groups: 订阅组列表
+        :type Groups: list of RocketMQGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = RocketMQGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQNamespacesRequest(AbstractModel):
+    """DescribeRocketMQNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param NameKeyword: 按名称搜索
+        :type NameKeyword: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.NameKeyword = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.NameKeyword = params.get("NameKeyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQNamespacesResponse(AbstractModel):
+    """DescribeRocketMQNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Namespaces: 命名空间列表
+        :type Namespaces: list of RocketMQNamespace
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Namespaces = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Namespaces") is not None:
+            self.Namespaces = []
+            for item in params.get("Namespaces"):
+                obj = RocketMQNamespace()
+                obj._deserialize(item)
+                self.Namespaces.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQTopicsRequest(AbstractModel):
+    """DescribeRocketMQTopics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询限制数
+        :type Limit: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param FilterType: 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Transaction
+        :type FilterType: list of str
+        :param FilterName: 按主题名称搜索，支持模糊查询
+        :type FilterName: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.FilterType = None
+        self.FilterName = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.FilterType = params.get("FilterType")
+        self.FilterName = params.get("FilterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQTopicsResponse(AbstractModel):
+    """DescribeRocketMQTopics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Topics: 主题信息列表
+        :type Topics: list of RocketMQTopic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Topics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Topics") is not None:
+            self.Topics = []
+            for item in params.get("Topics"):
+                obj = RocketMQTopic()
+                obj._deserialize(item)
+                self.Topics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRolesRequest(AbstractModel):
     """DescribeRoles请求参数结构体
 
@@ -3893,6 +4671,226 @@ class ModifyEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRocketMQClusterRequest(AbstractModel):
+    """ModifyRocketMQCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: RocketMQ集群ID
+        :type ClusterId: str
+        :param ClusterName: 3-64个字符，只能包含字母、数字、“-”及“_”
+        :type ClusterName: str
+        :param Remark: 说明信息，不超过128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQClusterResponse(AbstractModel):
+    """ModifyRocketMQCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRocketMQGroupRequest(AbstractModel):
+    """ModifyRocketMQGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param GroupId: 消费组名称
+        :type GroupId: str
+        :param Remark: 说明信息，最长128个字符
+        :type Remark: str
+        :param ReadEnable: 是否开启消费
+        :type ReadEnable: bool
+        :param BroadcastEnable: 是否开启广播消费
+        :type BroadcastEnable: bool
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.GroupId = None
+        self.Remark = None
+        self.ReadEnable = None
+        self.BroadcastEnable = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.GroupId = params.get("GroupId")
+        self.Remark = params.get("Remark")
+        self.ReadEnable = params.get("ReadEnable")
+        self.BroadcastEnable = params.get("BroadcastEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQGroupResponse(AbstractModel):
+    """ModifyRocketMQGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRocketMQNamespaceRequest(AbstractModel):
+    """ModifyRocketMQNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type NamespaceId: str
+        :param Ttl: 未消费消息的保留时间，以毫秒为单位，60秒-15天
+        :type Ttl: int
+        :param RetentionTime: 消息持久化后保留的时间，以毫秒为单位
+        :type RetentionTime: int
+        :param Remark: 说明，最大128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.Ttl = None
+        self.RetentionTime = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Ttl = params.get("Ttl")
+        self.RetentionTime = params.get("RetentionTime")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQNamespaceResponse(AbstractModel):
+    """ModifyRocketMQNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRocketMQTopicRequest(AbstractModel):
+    """ModifyRocketMQTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param Topic: 主题名称
+        :type Topic: str
+        :param Remark: 说明信息，最大128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.Topic = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.Topic = params.get("Topic")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQTopicResponse(AbstractModel):
+    """ModifyRocketMQTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRoleRequest(AbstractModel):
     """ModifyRole请求参数结构体
 
@@ -4408,6 +5406,48 @@ class RewindCmqQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RocketMQClusterConfig(AbstractModel):
+    """RocketMQ集群配置
+
+    """
+
+
+class RocketMQClusterDetail(AbstractModel):
+    """租户RocketMQ集群详细信息
+
+    """
+
+
+class RocketMQClusterInfo(AbstractModel):
+    """RocketMQ集群基本信息
+
+    """
+
+
+class RocketMQClusterRecentStats(AbstractModel):
+    """RocketMQ近期使用量
+
+    """
+
+
+class RocketMQGroup(AbstractModel):
+    """RocketMQ消费组信息
+
+    """
+
+
+class RocketMQNamespace(AbstractModel):
+    """RocketMQ命名空间信息
+
+    """
+
+
+class RocketMQTopic(AbstractModel):
+    """RocketMQ主题信息
+
+    """
 
 
 class Role(AbstractModel):

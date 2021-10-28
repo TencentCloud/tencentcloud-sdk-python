@@ -278,6 +278,118 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRocketMQCluster(self, request):
+        """此接口用于创建一个RocketMQ集群
+
+        :param request: Request instance for CreateRocketMQCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRocketMQCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRocketMQClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRocketMQGroup(self, request):
+        """创建RocketMQ消费组
+
+        :param request: Request instance for CreateRocketMQGroup.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRocketMQGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRocketMQGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRocketMQNamespace(self, request):
+        """创建RocketMQ命名空间
+
+        :param request: Request instance for CreateRocketMQNamespace.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQNamespaceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRocketMQNamespace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRocketMQNamespaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRocketMQTopic(self, request):
+        """创建RocketMQ主题
+
+        :param request: Request instance for CreateRocketMQTopic.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRocketMQTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRocketMQTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRole(self, request):
         """创建角色
 
@@ -516,6 +628,118 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEnvironmentsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRocketMQCluster(self, request):
+        """删除RocketMQ集群
+
+        :param request: Request instance for DeleteRocketMQCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRocketMQCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRocketMQClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRocketMQGroup(self, request):
+        """删除RocketMQ消费组
+
+        :param request: Request instance for DeleteRocketMQGroup.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQGroupRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRocketMQGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRocketMQGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRocketMQNamespace(self, request):
+        """删除RocketMQ命名空间
+
+        :param request: Request instance for DeleteRocketMQNamespace.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQNamespaceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRocketMQNamespace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRocketMQNamespaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRocketMQTopic(self, request):
+        """删除RocketMQ主题
+
+        :param request: Request instance for DeleteRocketMQTopic.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQTopicRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRocketMQTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRocketMQTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRocketMQTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1062,6 +1286,146 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRocketMQCluster(self, request):
+        """获取单个RocketMQ集群信息
+
+        :param request: Request instance for DescribeRocketMQCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRocketMQCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRocketMQClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRocketMQClusters(self, request):
+        """获取RocketMQ集群列表
+
+        :param request: Request instance for DescribeRocketMQClusters.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClustersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRocketMQClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRocketMQClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRocketMQGroups(self, request):
+        """获取RocketMQ消费组列表
+
+        :param request: Request instance for DescribeRocketMQGroups.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGroupsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRocketMQGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRocketMQGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRocketMQNamespaces(self, request):
+        """获取RocketMQ命名空间列表
+
+        :param request: Request instance for DescribeRocketMQNamespaces.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQNamespacesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRocketMQNamespaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRocketMQNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRocketMQTopics(self, request):
+        """获取RocketMQ主题列表
+
+        :param request: Request instance for DescribeRocketMQTopics.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRocketMQTopics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRocketMQTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoles(self, request):
         """获取角色列表
 
@@ -1300,6 +1664,118 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvironmentRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRocketMQCluster(self, request):
+        """更新RocketMQ集群信息
+
+        :param request: Request instance for ModifyRocketMQCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRocketMQCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRocketMQClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRocketMQGroup(self, request):
+        """更新RocketMQ消费组信息
+
+        :param request: Request instance for ModifyRocketMQGroup.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQGroupRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRocketMQGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRocketMQGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRocketMQNamespace(self, request):
+        """更新RocketMQ命名空间
+
+        :param request: Request instance for ModifyRocketMQNamespace.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQNamespaceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRocketMQNamespace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRocketMQNamespaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRocketMQTopic(self, request):
+        """更新RocketMQ主题信息
+
+        :param request: Request instance for ModifyRocketMQTopic.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQTopicRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRocketMQTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRocketMQTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

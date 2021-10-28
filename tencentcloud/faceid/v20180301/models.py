@@ -853,10 +853,10 @@ class DetectInfoBestFrame(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BestFrame: 活体比对最佳帧。
+        :param BestFrame: 活体比对最佳帧Base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrame: str
-        :param BestFrames: 自截帧。
+        :param BestFrames: 自截帧Base64编码数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrames: list of str
         """

@@ -191,6 +191,9 @@ INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = 'InvalidParameterValue.ProductParmsErr
 # 项目参数错误。
 INVALIDPARAMETERVALUE_PROJECTPARMSERROR = 'InvalidParameterValue.ProjectParmsError'
 
+# 转发的topic格式错误。
+INVALIDPARAMETERVALUE_REPUBLISHTOPICFORMATERROR = 'InvalidParameterValue.RepublishTopicFormatError'
+
 # 规则数量超过限制。
 INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = 'InvalidParameterValue.RuleNumberBeyondLimit'
 
