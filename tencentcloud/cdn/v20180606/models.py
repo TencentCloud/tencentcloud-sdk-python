@@ -1676,6 +1676,165 @@ class BotJavaScript(AbstractModel):
         
 
 
+class BotRecord(AbstractModel):
+    """BOT记录详细内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 动作，取值为以为3个类型中的一个："intercept","permit","monitor"，分别表示： 拦截， 放行，监控
+        :type Action: str
+        :param Nums: 会话总次数
+        :type Nums: int
+        :param RuleName: BotType=UB时，表示预测标签，取值如下：
+                "crawler_unregular",
+                "crawler_regular",
+                "request_repeat",
+                "credential_miss_user",
+                "credential_without_user",
+                "credential_only_action",
+                "credential_user_password",
+                "credential_cracking",
+                "credential_stuffing",
+                "brush_sms",
+                "brush_captcha",
+                "reg_malicious"
+BotType=TCB时，表示Bot分类，取值如下：
+                "Uncategorised",
+                "Search engine bot",
+                "Site monitor",
+                "Screenshot creator",
+                "Link checker",
+                "Web scraper",
+                "Vulnerability scanner",
+                "Virus scanner",
+                "Speed tester",
+                "Feed Fetcher",
+                "Tool",
+                "Marketing"
+BotType=UCB时，为二期接口，暂时未定义内容
+        :type RuleName: str
+        :param SessionDuration: 会话持续时间
+        :type SessionDuration: float
+        :param SrcIp: 访问源IP
+        :type SrcIp: str
+        :param BotFeature: 异常特征
+        :type BotFeature: list of str
+        :param Time: 最新检测时间
+        :type Time: str
+        :param Score: BOT得分
+        :type Score: int
+        :param AvgSpeed: 平均速率
+        :type AvgSpeed: float
+        :param TcbDetail: BotType=TCB，表示TCB名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcbDetail: str
+        :param Id: BOT记录唯一ID，用于查询访问详情
+        :type Id: str
+        """
+        self.Action = None
+        self.Nums = None
+        self.RuleName = None
+        self.SessionDuration = None
+        self.SrcIp = None
+        self.BotFeature = None
+        self.Time = None
+        self.Score = None
+        self.AvgSpeed = None
+        self.TcbDetail = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Nums = params.get("Nums")
+        self.RuleName = params.get("RuleName")
+        self.SessionDuration = params.get("SessionDuration")
+        self.SrcIp = params.get("SrcIp")
+        self.BotFeature = params.get("BotFeature")
+        self.Time = params.get("Time")
+        self.Score = params.get("Score")
+        self.AvgSpeed = params.get("AvgSpeed")
+        self.TcbDetail = params.get("TcbDetail")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotSortBy(AbstractModel):
+    """Bot记录的排序选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 排序参数名称， 取值为：timestamp， nums， session_duration，score.total，stat.avg_speed分别表示按照：最新检测时间，会话总次数，会话持续时间，BOT得分，平均速率排序
+        :type Key: str
+        :param Sequence: asc/desc
+        :type Sequence: str
+        """
+        self.Key = None
+        self.Sequence = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Sequence = params.get("Sequence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotStatisticsCount(AbstractModel):
+    """session/ip维度的bot统计复杂对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: BOT次数
+        :type Count: int
+        :param Value: Top指标值,如果是ip维度就是ip如果是session维度就是域名
+        :type Value: str
+        :param Country: ip所在国家
+        :type Country: str
+        :param Province: ip所在省份
+        :type Province: str
+        :param Isp: ip归属的idc
+        :type Isp: str
+        """
+        self.Count = None
+        self.Value = None
+        self.Country = None
+        self.Province = None
+        self.Isp = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Value = params.get("Value")
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.Isp = params.get("Isp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BriefDomain(AbstractModel):
     """域名基础配置信息，含 CNAME、状态、业务类型、加速区域、创建时间、更新时间、源站配置等。
 
@@ -5324,6 +5483,168 @@ class DescribeReportDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScdnBotRecordsRequest(AbstractModel):
+    """DescribeScdnBotRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BotType: BOT类型，取值为"UB","UCB","TCB"，分别表示：未知类型，自定义类型，公开类型
+        :type BotType: str
+        :param Domain: 域名
+        :type Domain: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Offset: 分页参数
+        :type Offset: int
+        :param Limit: 分页参数
+        :type Limit: int
+        :param Area: mainland 大陆地区 overseas境外地区
+        :type Area: str
+        :param SortBy: 排序参数
+        :type SortBy: list of BotSortBy
+        :param FilterName: BotType=UB时，表示需要过滤的预测标签，取值如下：
+                "crawler_unregular",
+                "crawler_regular",
+                "request_repeat",
+                "credential_miss_user",
+                "credential_without_user",
+                "credential_only_action",
+                "credential_user_password",
+                "credential_cracking",
+                "credential_stuffing",
+                "brush_sms",
+                "brush_captcha",
+                "reg_malicious"
+BotType=TCB时，表示需要过滤的Bot分类，取值如下：
+                "Uncategorised",
+                "Search engine bot",
+                "Site monitor",
+                "Screenshot creator",
+                "Link checker",
+                "Web scraper",
+                "Vulnerability scanner",
+                "Virus scanner",
+                "Speed tester",
+                "Feed Fetcher",
+                "Tool",
+                "Marketing"
+BotType=UCB时，取值如下：
+User-Agent为空或不存在
+User-Agent类型为BOT
+User-Agent类型为HTTP Library
+User-Agent类型为Framework
+User-Agent类型为Tools
+User-Agent类型为Unkonwn BOT
+User-Agent类型为Scanner
+Referer空或不存在
+Referer滥用(多个UA使用相同Referer)
+Cookie滥用(多个UA使用相同Cookie)
+Cookie空或不存在
+Connection空或不存在
+Accept空或不存在
+Accept-Language空或不存在
+Accept-Enconding空或不存在
+使用HTTP HEAD方法
+HTTP协议为1.0或者更低
+IDC-IP 腾讯云
+IDC-IP 阿里云
+IDC-IP 华为云
+IDC-IP 金山云
+IDC-IP UCloud
+IDC-IP 百度云
+IDC-IP 京东云
+IDC-IP 青云
+IDC-IP Aws
+IDC-IP Azure
+IDC-IP Google
+
+以上所有类型，FilterName为空时，表示不过滤，获取所有内容
+        :type FilterName: str
+        :param FilterAction: 目前支持的Action
+"intercept" 拦截
+"monitor"，监控
+"permit" 放行
+"redirect" 重定向
+
+尚未支持的Action
+"captcha" 验证码
+        :type FilterAction: str
+        :param FilterIp: 过滤的IP
+        :type FilterIp: str
+        """
+        self.BotType = None
+        self.Domain = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.Area = None
+        self.SortBy = None
+        self.FilterName = None
+        self.FilterAction = None
+        self.FilterIp = None
+
+
+    def _deserialize(self, params):
+        self.BotType = params.get("BotType")
+        self.Domain = params.get("Domain")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Area = params.get("Area")
+        if params.get("SortBy") is not None:
+            self.SortBy = []
+            for item in params.get("SortBy"):
+                obj = BotSortBy()
+                obj._deserialize(item)
+                self.SortBy.append(obj)
+        self.FilterName = params.get("FilterName")
+        self.FilterAction = params.get("FilterAction")
+        self.FilterIp = params.get("FilterIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScdnBotRecordsResponse(AbstractModel):
+    """DescribeScdnBotRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: BOT拦截结果数组
+        :type Data: list of BotRecord
+        :param TotalCount: 记录数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BotRecord()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScdnConfigRequest(AbstractModel):
     """DescribeScdnConfig请求参数结构体
 
@@ -5603,6 +5924,93 @@ class DescribeScdnTopDataResponse(AbstractModel):
                 obj = ScdnTopUrlData()
                 obj._deserialize(item)
                 self.TopUrlData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopDataRequest(AbstractModel):
+    """DescribeTopData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询起始日期：yyyy-MM-dd HH:mm:ss
+当前仅支持按天粒度的数据查询，参数需为某天的起点时刻
+        :type StartTime: str
+        :param EndTime: 查询起始日期：yyyy-MM-dd HH:mm:ss
+当前仅支持按天粒度的数据查询，参数需为某天的结束时刻
+        :type EndTime: str
+        :param Metric: 排序对象，支持以下几种形式：
+ip、ua_device、ua_browser、ua_os、referer
+        :type Metric: str
+        :param Filter: 排序使用的指标名称：
+flux：Metric 为 host 时指代访问流量
+request：Metric 为 host 时指代访问请求数
+        :type Filter: str
+        :param Domains: 指定查询域名列表，最多可一次性查询 30 个加速域名明细
+        :type Domains: list of str
+        :param Project: 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+        :type Project: int
+        :param Detail: 是否详细显示每个域名的的具体数值
+        :type Detail: bool
+        :param Area: 地域，目前可不填，默认是大陆
+        :type Area: str
+        :param Product: 产品名，目前仅可使用cdn
+        :type Product: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Metric = None
+        self.Filter = None
+        self.Domains = None
+        self.Project = None
+        self.Detail = None
+        self.Area = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Metric = params.get("Metric")
+        self.Filter = params.get("Filter")
+        self.Domains = params.get("Domains")
+        self.Project = params.get("Project")
+        self.Detail = params.get("Detail")
+        self.Area = params.get("Area")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopDataResponse(AbstractModel):
+    """DescribeTopData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 各个资源的Top 访问数据详情。
+        :type Data: list of TopDataMore
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TopDataMore()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5902,7 +6310,7 @@ media：流媒体点播加速
         :param FollowRedirect: 301/302 回源自动跟随配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param ErrorPage: 自定义错误页面配置（功能灰度中，敬请期待）
+        :param ErrorPage: 自定义错误页面配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         :param RequestHeader: 自定义请求头部配置
@@ -6021,13 +6429,13 @@ off：不支持
         :param Ipv6Access: Ipv6访问配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param AdvanceSet: 高级配置集合。
+        :param AdvanceSet: 高级配置集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceSet: list of AdvanceConfig
-        :param OfflineCache: 离线缓存
+        :param OfflineCache: 离线缓存（功能灰度中，尚未全量，请等待后续全量发布）
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param OriginCombine: 合并回源
+        :param OriginCombine: 合并回源（白名单功能）
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         :param PostMaxSize: POST上传配置项
@@ -6042,6 +6450,9 @@ off：不支持
         :param WebSocket: WebSocket配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
+        :param RemoteAuthentication: 远程鉴权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
         """
         self.ResourceId = None
         self.AppId = None
@@ -6101,6 +6512,7 @@ off：不支持
         self.Quic = None
         self.OssPrivateAccess = None
         self.WebSocket = None
+        self.RemoteAuthentication = None
 
 
     def _deserialize(self, params):
@@ -6256,6 +6668,9 @@ off：不支持
         if params.get("WebSocket") is not None:
             self.WebSocket = WebSocket()
             self.WebSocket._deserialize(params.get("WebSocket"))
+        if params.get("RemoteAuthentication") is not None:
+            self.RemoteAuthentication = RemoteAuthentication()
+            self.RemoteAuthentication._deserialize(params.get("RemoteAuthentication"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8159,6 +8574,79 @@ class ListScdnLogTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListScdnTopBotDataRequest(AbstractModel):
+    """ListScdnTopBotData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopCount: 获取Top量，取值范围[1-10]
+        :type TopCount: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Area: mainland 大陆地区 overseas境外地区
+        :type Area: str
+        :param Metric: session表示查询BOT会话的Top信息
+ip表示查询BOT客户端IP的Top信息
+
+不填代表获取会话信息
+        :type Metric: str
+        :param Domains: 域名，仅当Metric=ip，并且Domain为空时有效，不填写表示获取AppID信息
+        :type Domains: list of str
+        """
+        self.TopCount = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Area = None
+        self.Metric = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.TopCount = params.get("TopCount")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Area = params.get("Area")
+        self.Metric = params.get("Metric")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListScdnTopBotDataResponse(AbstractModel):
+    """ListScdnTopBotData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 域名BOT次数列表
+        :type Data: list of BotStatisticsCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BotStatisticsCount()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListTopBotDataRequest(AbstractModel):
     """ListTopBotData请求参数结构体
 
@@ -8543,6 +9031,8 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         :type AreaType: str
         :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :type Product: str
+        :param Limit: 只返回前N条数据，默认为最大值100，metric=url时默认为最大值1000
+        :type Limit: int
         """
         self.StartTime = None
         self.EndTime = None
@@ -8555,6 +9045,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         self.Area = None
         self.AreaType = None
         self.Product = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
@@ -8569,6 +9060,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
         self.Product = params.get("Product")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10461,6 +10953,107 @@ class RegionMapRelation(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.SubRegionIdList = params.get("SubRegionIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteAuthentication(AbstractModel):
+    """远程鉴权规则配置，可以包含多种规则配置。
+    RemoteAuthenticationRule 和Server 互斥，配置其中一个。
+    若只配置Server ，规则参数将采用默认参数；
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 远程鉴权开关；
+on : 开启;
+off: 关闭；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param RemoteAuthenticationRules: 远程鉴权规则配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteAuthenticationRules: list of RemoteAuthenticationRule
+        :param Server: 远程鉴权Server
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Server: str
+        """
+        self.Switch = None
+        self.RemoteAuthenticationRules = None
+        self.Server = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("RemoteAuthenticationRules") is not None:
+            self.RemoteAuthenticationRules = []
+            for item in params.get("RemoteAuthenticationRules"):
+                obj = RemoteAuthenticationRule()
+                obj._deserialize(item)
+                self.RemoteAuthenticationRules.append(obj)
+        self.Server = params.get("Server")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteAuthenticationRule(AbstractModel):
+    """远程鉴权规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Server: 远程鉴权服务http url
+        :type Server: str
+        :param AuthMethod: 请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; all 表示不限制请求方法；
+all: 不指定访问访问方法；
+        :type AuthMethod: str
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+        :type RuleType: str
+        :param RulePaths: 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test
+path 时填充绝对路径，如 /xxx/test.html
+index 时填充 /
+        :type RulePaths: list of str
+        :param AuthTimeout: 请求远程鉴权服务器超时时间，单位毫秒；
+取值范围：[1,30 000]
+        :type AuthTimeout: int
+        :param AuthTimeoutAction: 请求远程鉴权服务器超时后执行拦截或者放行；
+RETURN_200: 超时后放行；
+RETURN_403:超时返回403；
+        :type AuthTimeoutAction: str
+        """
+        self.Server = None
+        self.AuthMethod = None
+        self.RuleType = None
+        self.RulePaths = None
+        self.AuthTimeout = None
+        self.AuthTimeoutAction = None
+
+
+    def _deserialize(self, params):
+        self.Server = params.get("Server")
+        self.AuthMethod = params.get("AuthMethod")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.AuthTimeout = params.get("AuthTimeout")
+        self.AuthTimeoutAction = params.get("AuthTimeoutAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12562,6 +13155,39 @@ all：账号维度明细数据
         
 
 
+class TopDataMore(AbstractModel):
+    """排序类型数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 资源名称，根据查询条件不同分为以下几类：
+        :type Resource: str
+        :param DetailData: 排序结果详情
+        :type DetailData: list of TopDetailDataMore
+        """
+        self.Resource = None
+        self.DetailData = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        if params.get("DetailData") is not None:
+            self.DetailData = []
+            for item in params.get("DetailData"):
+                obj = TopDetailDataMore()
+                obj._deserialize(item)
+                self.DetailData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TopDetailData(AbstractModel):
     """排序类型的数据结构
 
@@ -12581,6 +13207,39 @@ class TopDetailData(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopDetailDataMore(AbstractModel):
+    """排序类型的数据结构，同时附带上该项的在总值的占比
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 数据类型的名称
+        :type Name: str
+        :param Value: 数据值
+        :type Value: float
+        :param Percent: 数据值在总值中的百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: float
+        """
+        self.Name = None
+        self.Value = None
+        self.Percent = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12689,7 +13348,7 @@ disabled：未启用
         :type AutoExtension: bool
         :param Channel: 流量包来源
         :type Channel: str
-        :param Area: 流量包生效区域，目前仅支持mainland
+        :param Area: 流量包生效区域，mainland或overseas
         :type Area: str
         :param LifeTimeMonth: 流量包生命周期月数
         :type LifeTimeMonth: int
@@ -12697,6 +13356,18 @@ disabled：未启用
         :type ExtensionAvailable: bool
         :param RefundAvailable: 流量包是否支持退费
         :type RefundAvailable: bool
+        :param Region: 流量包生效区域
+0：中国大陆
+1：亚太一区
+2：亚太二区
+3：亚太三区
+4：中东
+5：北美
+6：欧洲
+7：南美
+8：非洲
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
         """
         self.Id = None
         self.Type = None
@@ -12713,6 +13384,7 @@ disabled：未启用
         self.LifeTimeMonth = None
         self.ExtensionAvailable = None
         self.RefundAvailable = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -12731,6 +13403,7 @@ disabled：未启用
         self.LifeTimeMonth = params.get("LifeTimeMonth")
         self.ExtensionAvailable = params.get("ExtensionAvailable")
         self.RefundAvailable = params.get("RefundAvailable")
+        self.Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12809,6 +13482,7 @@ media：流媒体点播加速
 mainland：中国境内加速
 overseas：中国境外加速
 global：全球加速
+从mainland/overseas修改至global时，域名的配置将被同步至overseas/mainland。若域名含有后端特殊配置，此类配置的同步过程有一定延时，请耐心等待
         :type Area: str
         :param OriginPullTimeout: 回源超时配置
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
@@ -12818,7 +13492,7 @@ global：全球加速
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         :param AccessControl: 访问控制
         :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
-        :param UrlRedirect: URL重定向配置
+        :param UrlRedirect: 访问URL重写配置
         :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         :param AccessPort: 访问端口配置
         :type AccessPort: list of int
@@ -12838,6 +13512,8 @@ global：全球加速
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         :param WebSocket: WebSocket配置
         :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
+        :param RemoteAuthentication: 远程鉴权配置
+        :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
         """
         self.Domain = None
         self.ProjectId = None
@@ -12881,6 +13557,7 @@ global：全球加速
         self.Quic = None
         self.OssPrivateAccess = None
         self.WebSocket = None
+        self.RemoteAuthentication = None
 
 
     def _deserialize(self, params):
@@ -13000,6 +13677,9 @@ global：全球加速
         if params.get("WebSocket") is not None:
             self.WebSocket = WebSocket()
             self.WebSocket._deserialize(params.get("WebSocket"))
+        if params.get("RemoteAuthentication") is not None:
+            self.RemoteAuthentication = RemoteAuthentication()
+            self.RemoteAuthentication._deserialize(params.get("RemoteAuthentication"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
