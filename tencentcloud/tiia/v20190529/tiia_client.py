@@ -56,6 +56,62 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateGroup(self, request):
+        """用于创建一个空的图片库，如果图片库已存在则返回错误。
+
+        :param request: Request instance for CreateGroup.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.CreateGroupRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.CreateGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateImage(self, request):
+        """创建图片，并添加对应图片的自定义信息。
+
+        :param request: Request instance for CreateImage.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.CreateImageRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.CreateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CropImage(self, request):
         """根据输入的裁剪比例，智能判断一张图片的最佳裁剪区域，确保原图的主体区域不受影响。
 
@@ -74,6 +130,90 @@ class TiiaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CropImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteImages(self, request):
+        """删除图片。
+
+        :param request: Request instance for DeleteImages.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DeleteImagesRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DeleteImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroups(self, request):
+        """查询所有的图库信息。
+
+        :param request: Request instance for DescribeGroups.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DescribeGroupsRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DescribeGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImages(self, request):
+        """获取指定图片库中的图片列表。
+
+        :param request: Request instance for DescribeImages.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DescribeImagesRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DescribeImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImagesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -376,6 +516,34 @@ class TiiaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeCarResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchImage(self, request):
+        """本接口用于对一张待识别的商品图片，在指定图片库中检索出最相似的图片列表。
+
+        :param request: Request instance for SearchImage.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.SearchImageRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.SearchImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

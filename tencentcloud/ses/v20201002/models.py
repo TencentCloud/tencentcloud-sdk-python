@@ -46,6 +46,102 @@ class Attachment(AbstractModel):
         
 
 
+class BatchSendEmailRequest(AbstractModel):
+    """BatchSendEmail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
+发信人 <邮件地址> 的方式填写，例如：
+腾讯云团队 <noreply@mail.qcloud.com>
+        :type FromEmailAddress: str
+        :param ReceiverId: 收件人列表ID
+        :type ReceiverId: int
+        :param Subject: 邮件主题
+        :type Subject: str
+        :param TaskType: 任务类型 1即时 2 定时 3 周期
+        :type TaskType: int
+        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
+        :type ReplyToAddresses: str
+        :param Template: 使用模板发送时，填写的模板相关参数
+        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
+        :param Simple: 使用API直接发送内容时，填写的邮件内容
+        :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
+        :param Attachments: 需要发送附件时，填写附件相关参数。
+        :type Attachments: list of Attachment
+        :param CycleParam: 周期发送任务的必要参数
+        :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
+        :param TimedParam: 定时发送任务的必要参数
+        :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        """
+        self.FromEmailAddress = None
+        self.ReceiverId = None
+        self.Subject = None
+        self.TaskType = None
+        self.ReplyToAddresses = None
+        self.Template = None
+        self.Simple = None
+        self.Attachments = None
+        self.CycleParam = None
+        self.TimedParam = None
+
+
+    def _deserialize(self, params):
+        self.FromEmailAddress = params.get("FromEmailAddress")
+        self.ReceiverId = params.get("ReceiverId")
+        self.Subject = params.get("Subject")
+        self.TaskType = params.get("TaskType")
+        self.ReplyToAddresses = params.get("ReplyToAddresses")
+        if params.get("Template") is not None:
+            self.Template = Template()
+            self.Template._deserialize(params.get("Template"))
+        if params.get("Simple") is not None:
+            self.Simple = Simple()
+            self.Simple._deserialize(params.get("Simple"))
+        if params.get("Attachments") is not None:
+            self.Attachments = []
+            for item in params.get("Attachments"):
+                obj = Attachment()
+                obj._deserialize(item)
+                self.Attachments.append(obj)
+        if params.get("CycleParam") is not None:
+            self.CycleParam = CycleEmailParam()
+            self.CycleParam._deserialize(params.get("CycleParam"))
+        if params.get("TimedParam") is not None:
+            self.TimedParam = TimedEmailParam()
+            self.TimedParam._deserialize(params.get("TimedParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchSendEmailResponse(AbstractModel):
+    """BatchSendEmail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 发送任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class BlackEmailAddress(AbstractModel):
     """邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间
 
@@ -222,6 +318,34 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class CycleEmailParam(AbstractModel):
+    """创建重复周期发送邮件任务的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 任务开始时间
+        :type BeginTime: str
+        :param IntervalTime: 任务周期 小时维度
+        :type IntervalTime: int
+        """
+        self.BeginTime = None
+        self.IntervalTime = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.IntervalTime = params.get("IntervalTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DNSAttributes(AbstractModel):
@@ -938,8 +1062,8 @@ class SendEmailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照 
-发信人 &lt;邮件地址&gt; 的方式填写，例如：
-腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
+发信人 <邮件地址> 的方式填写，例如：
+腾讯云团队 <noreply@mail.qcloud.com>
         :type FromEmailAddress: str
         :param Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
         :type Destination: list of str
@@ -1220,6 +1344,30 @@ class TemplatesMetadata(AbstractModel):
         self.TemplateStatus = params.get("TemplateStatus")
         self.TemplateID = params.get("TemplateID")
         self.ReviewReason = params.get("ReviewReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimedEmailParam(AbstractModel):
+    """创建定时发送邮件任务时，设置的定时参数，比如开始时间之类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 定时发送邮件的开始时间
+        :type BeginTime: str
+        """
+        self.BeginTime = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

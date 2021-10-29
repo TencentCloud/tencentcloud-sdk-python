@@ -376,14 +376,34 @@ class InputSendTrafficSecuritySmsMsg(AbstractModel):
         :type TaskId: str
         :param Mobiles: 手机号码列表（号码量<=200）
         :type Mobiles: list of str
+        :param IsAuthorized: 是否授权，1：已授权
+        :type IsAuthorized: int
+        :param EncryptMethod: 加密方式，0：AES加密；1：DES加密
+        :type EncryptMethod: int
+        :param EncryptMode: 加密算法中的块处理模式，0：ECB模式；1：CBC模式；2：CTR模式；3：CFB模式；4：OFB模式；
+        :type EncryptMode: int
+        :param PaddingType: 填充模式，0：ZeroPadding；1：PKCS5Padding；2：PKCS7Padding；
+        :type PaddingType: int
+        :param EncryptData: 加密数据
+        :type EncryptData: str
         """
         self.TaskId = None
         self.Mobiles = None
+        self.IsAuthorized = None
+        self.EncryptMethod = None
+        self.EncryptMode = None
+        self.PaddingType = None
+        self.EncryptData = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Mobiles = params.get("Mobiles")
+        self.IsAuthorized = params.get("IsAuthorized")
+        self.EncryptMethod = params.get("EncryptMethod")
+        self.EncryptMode = params.get("EncryptMode")
+        self.PaddingType = params.get("PaddingType")
+        self.EncryptData = params.get("EncryptData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1086,7 +1086,7 @@ class DetectInfoVideoData(AbstractModel):
 
 
 class EidInfo(AbstractModel):
-    """Eid出参
+    """Eid出参，包括商户方用户的标识和加密的用户姓名身份证信息。
 
     """
 
@@ -1094,16 +1094,24 @@ class EidInfo(AbstractModel):
         r"""
         :param EidCode: 商户方 appeIDcode 的数字证书
         :type EidCode: str
-        :param EidSign: eID 中心针对商户方EidCode的电子签名
+        :param EidSign: Eid中心针对商户方EidCode的电子签名
         :type EidSign: str
+        :param DesKey: 商户方公钥加密的会话密钥的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+        :type DesKey: str
+        :param UserInfo: 会话密钥sm2加密后的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+        :type UserInfo: str
         """
         self.EidCode = None
         self.EidSign = None
+        self.DesKey = None
+        self.UserInfo = None
 
 
     def _deserialize(self, params):
         self.EidCode = params.get("EidCode")
         self.EidSign = params.get("EidSign")
+        self.DesKey = params.get("DesKey")
+        self.UserInfo = params.get("UserInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1509,7 +1517,7 @@ class GetEidResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Text: 文本类信息。
+        :param Text: 文本类信息。（基于对敏感信息的保护，验证使用的姓名和身份证号统一通过加密后从Eidinfo参数中返回，如需获取请在控制台申请返回身份信息，详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
         :param IdCardData: 身份证照片信息。
@@ -1518,7 +1526,7 @@ class GetEidResultResponse(AbstractModel):
         :param BestFrame: 最佳帧信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.DetectInfoBestFrame`
-        :param EidInfo: Eid信息
+        :param EidInfo: Eid信息。（包括商户下用户唯一标识以及加密后的姓名、身份证号信息。解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EidInfo: :class:`tencentcloud.faceid.v20180301.models.EidInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1705,10 +1713,10 @@ class GetFaceIdResultResponse(AbstractModel):
         :type Description: str
         :param Similarity: 相似度，0-100，数值越大相似度越高
         :type Similarity: float
-        :param VideoBase64: 用户核验的视频
+        :param VideoBase64: 用户核验的视频base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoBase64: str
-        :param BestFrameBase64: 用户核验视频的截帧
+        :param BestFrameBase64: 用户核验视频的截帧base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
         :param Extra: 获取token时透传的信息
@@ -1777,6 +1785,9 @@ class GetFaceIdTokenRequest(AbstractModel):
         :type Meta: str
         :param Extra: 透传参数 1000长度字符串
         :type Extra: str
+        :param UseCos: 默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
+【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+        :type UseCos: bool
         """
         self.CompareLib = None
         self.IdCard = None
@@ -1784,6 +1795,7 @@ class GetFaceIdTokenRequest(AbstractModel):
         self.ImageBase64 = None
         self.Meta = None
         self.Extra = None
+        self.UseCos = None
 
 
     def _deserialize(self, params):
@@ -1793,6 +1805,7 @@ class GetFaceIdTokenRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.Meta = params.get("Meta")
         self.Extra = params.get("Extra")
+        self.UseCos = params.get("UseCos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

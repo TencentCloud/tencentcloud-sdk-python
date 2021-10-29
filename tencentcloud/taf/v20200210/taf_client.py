@@ -197,7 +197,7 @@ class TafClient(AbstractClient):
 
 
     def SendTrafficSecuritySmsMessage(self, request):
-        """SendTrafficSecuritySmsMessage
+        """流量安选产品，短信发送接口
 
         :param request: Request instance for SendTrafficSecuritySmsMessage.
         :type request: :class:`tencentcloud.taf.v20200210.models.SendTrafficSecuritySmsMessageRequest`

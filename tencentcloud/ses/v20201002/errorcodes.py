@@ -110,6 +110,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 附件内容错误，请检查base64内容是否正确。
 INVALIDPARAMETERVALUE_ATTACHCONTENTISWRONG = 'InvalidParameterValue.AttachContentIsWrong'
 
+# 开始时间不能早于当前时间。
+INVALIDPARAMETERVALUE_BEGINTIMEBEFORENOW = 'InvalidParameterValue.BeginTimeBeforeNow'
+
 # 该域名已被其他腾讯云账号创建。
 INVALIDPARAMETERVALUE_CREATEDBYOTHER = 'InvalidParameterValue.CreatedByOther'
 
@@ -143,6 +146,9 @@ INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = 'InvalidParameterValue.TemplateCon
 # 模版内容错误，请检查base64内容是否正确。
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = 'InvalidParameterValue.TemplateContentIsWrong'
 
+# 变量设置必须为json格式。
+INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataError'
+
 # 模版名字不合法，请检查字符内容及大小。
 INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = 'InvalidParameterValue.TemplateNameIllegal'
 
@@ -161,6 +167,15 @@ LIMITEXCEEDED = 'LimitExceeded'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 周期发送任务需选择开始时间和间隔时间。
+MISSINGPARAMETER_CYCLEPARAMNECESSARY = 'MissingParameter.CycleParamNecessary'
+
+# 发件地址、收件人列表,发件模板必须传。
+MISSINGPARAMETER_SENDPARAMNECESSARY = 'MissingParameter.SendParamNecessary'
+
+# 定时发送任务需选择开始时间。
+MISSINGPARAMETER_TIMEDPARAMNECESSARY = 'MissingParameter.TimedParamNecessary'
+
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
@@ -172,6 +187,18 @@ OPERATIONDENIED_EXCEEDDOMAINLIMIT = 'OperationDenied.ExceedDomainLimit'
 
 # 超出最大发信地址限制。
 OPERATIONDENIED_EXCEEDSENDERLIMIT = 'OperationDenied.ExceedSenderLimit'
+
+# 收件人列表不存在。
+OPERATIONDENIED_RECEIVERNOTEXIST = 'OperationDenied.ReceiverNotExist'
+
+# 收件人列表空或状态不是上传完成。
+OPERATIONDENIED_RECEIVERSTATUSERROR = 'OperationDenied.ReceiverStatusError'
+
+# 发信地址不存在或者状态不是通过状态。
+OPERATIONDENIED_SENDADDRESSSTATUSERROR = 'OperationDenied.SendAddressStatusError'
+
+# 发信模板不存在或者状态不是审核通过状态。
+OPERATIONDENIED_TEMPLATESTATUSERROR = 'OperationDenied.TemplateStatusError'
 
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'

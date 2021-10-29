@@ -460,12 +460,15 @@ class ObjectDetail(AbstractModel):
         :type Score: int
         :param Location: 该字段用于返回实体检测框的坐标位置（左上角xy坐标、长宽、旋转角度）以方便快速定位实体的相关信息。
         :type Location: :class:`tencentcloud.ims.v20201229.models.Location`
+        :param SubLabel: 该参数用于返回命中的实体二级标签。
+        :type SubLabel: str
         """
         self.Id = None
         self.Name = None
         self.Value = None
         self.Score = None
         self.Location = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -476,6 +479,7 @@ class ObjectDetail(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -618,6 +622,8 @@ class OcrTextDetail(AbstractModel):
         :type Location: :class:`tencentcloud.ims.v20201229.models.Location`
         :param Rate: 该参数用于返回OCR文本识别结果的置信度，取值在**0**（**置信度最低**）-**100**（**置信度最高**），越高代表对应图像越有可能是识别出的文字；如：*你好 99*，则表明OCR识别框内的文字大概率是”你好“。
         :type Rate: int
+        :param SubLabel: 该字段用于返回检测结果所对应的恶意二级标签。
+        :type SubLabel: str
         """
         self.Text = None
         self.Label = None
@@ -627,6 +633,7 @@ class OcrTextDetail(AbstractModel):
         self.Score = None
         self.Location = None
         self.Rate = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -640,6 +647,7 @@ class OcrTextDetail(AbstractModel):
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
         self.Rate = params.get("Rate")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

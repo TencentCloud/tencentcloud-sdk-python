@@ -461,5 +461,8 @@ UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = 'UnauthorizedOperation.NotEnoughPriv
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
+# 旧的延迟RO特性已经下线，新的延迟RO特性正在上线中。如果有特殊需要，请您提单，由后端为您开通。
+UNSUPPORTEDOPERATION_NOTSUPPORTTHISFEATURE = 'UnsupportedOperation.NotSupportThisFeature'
+
 # 权限不支持。
 UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = 'UnsupportedOperation.PrivilegesUnsupportedError'

@@ -684,6 +684,74 @@ Finished - 任务已结束
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTIWDailyUsageRequest(AbstractModel):
+    """DescribeTIWDailyUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 互动白板应用SdkAppId
+        :type SdkAppId: int
+        :param SubProduct: 需要查询的子产品用量，支持传入以下值
+- sp_tiw_board: 互动白板时长，单位为分钟
+- sp_tiw_dt: 动态转码页数，单位页
+- sp_tiw_st: 静态转码页数，单位页
+- sp_tiw_ric: 实时录制时长，单位分钟
+
+注意：动态转码以1:8的比例计算文档转码页数，静态转码以1:1的比例计算文档转码页数
+        :type SubProduct: str
+        :param StartTime: 开始时间，格式YYYY-MM-DD，查询结果里包括该天数据
+        :type StartTime: str
+        :param EndTime: 结束时间，格式YYYY-MM-DD，查询结果里包括该天数据，单次查询统计区间最多不能超过31天。
+        :type EndTime: str
+        """
+        self.SdkAppId = None
+        self.SubProduct = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.SubProduct = params.get("SubProduct")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTIWDailyUsageResponse(AbstractModel):
+    """DescribeTIWDailyUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Usages: 指定区间指定产品的用量汇总
+        :type Usages: list of UsageDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Usages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Usages") is not None:
+            self.Usages = []
+            for item in params.get("Usages"):
+                obj = UsageDataItem()
+                obj._deserialize(item)
+                self.Usages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTranscodeCallbackRequest(AbstractModel):
     """DescribeTranscodeCallback请求参数结构体
 
@@ -2368,6 +2436,48 @@ class TimeValue(AbstractModel):
 
     def _deserialize(self, params):
         self.Time = params.get("Time")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageDataItem(AbstractModel):
+    """互动白板用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 日期，格式为YYYY-MM-DD
+        :type Time: str
+        :param SdkAppId: 白板应用SDKAppID
+        :type SdkAppId: int
+        :param SubProduct: 互动白板子产品，请求参数传入的一致
+- sp_tiw_board: 互动白板时长
+- sp_tiw_dt: 动态转码页数
+- sp_tiw_st: 静态转码页数
+- sp_tiw_ric: 实时录制时长
+        :type SubProduct: str
+        :param Value: 用量值
+- 静态转码、动态转码单位为页
+- 白板时长、实时录制时长单位为分钟
+        :type Value: float
+        """
+        self.Time = None
+        self.SdkAppId = None
+        self.SubProduct = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.SdkAppId = params.get("SdkAppId")
+        self.SubProduct = params.get("SubProduct")
         self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

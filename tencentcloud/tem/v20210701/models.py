@@ -972,14 +972,18 @@ class DescribeDeployApplicationDetailRequest(AbstractModel):
         :type ApplicationId: str
         :param EnvironmentId: 环境id
         :type EnvironmentId: str
+        :param VersionId: 版本部署id
+        :type VersionId: str
         """
         self.ApplicationId = None
         self.EnvironmentId = None
+        self.VersionId = None
 
 
     def _deserialize(self, params):
         self.ApplicationId = params.get("ApplicationId")
         self.EnvironmentId = params.get("EnvironmentId")
+        self.VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

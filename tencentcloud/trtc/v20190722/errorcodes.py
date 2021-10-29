@@ -59,9 +59,6 @@ INTERNALERROR_INTERFACEERR = 'InternalError.InterfaceErr'
 # 不支持的方法。
 INTERNALERROR_METHODERR = 'InternalError.MethodErr'
 
-# 查询秒级监控失败。
-INTERNALERROR_MONITORQUERYERR = 'InternalError.MonitorQueryErr'
-
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 

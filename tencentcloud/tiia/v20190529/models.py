@@ -232,6 +232,144 @@ class Coord(AbstractModel):
         
 
 
+class CreateGroupRequest(AbstractModel):
+    """CreateGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库ID，不可重复，仅支持字母、数字和下划线。
+        :type GroupId: str
+        :param GroupName: 图库名称描述。
+        :type GroupName: str
+        :param MaxCapacity: 该库的容量限制。
+        :type MaxCapacity: int
+        :param Brief: 简介。
+        :type Brief: str
+        :param MaxQps: 该库的访问限频 ，默认10。
+        :type MaxQps: int
+        :param GroupType: 图库类型， 默认为通用。
+类型： 
+1: 通用图库，以用户输入图提取特征。
+2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+        :type GroupType: int
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.MaxCapacity = None
+        self.Brief = None
+        self.MaxQps = None
+        self.GroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.MaxCapacity = params.get("MaxCapacity")
+        self.Brief = params.get("Brief")
+        self.MaxQps = params.get("MaxQps")
+        self.GroupType = params.get("GroupType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGroupResponse(AbstractModel):
+    """CreateGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateImageRequest(AbstractModel):
+    """CreateImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库ID。
+        :type GroupId: str
+        :param EntityId: 物品ID，最多支持64个字符。 
+若EntityId已存在，则对其追加图片。
+        :type EntityId: str
+        :param PicName: 图片名称，最多支持64个字符， 
+同一个EntityId，最大支持5张图。如果图片名称已存在，则会更新库中的图片。
+        :type PicName: str
+        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过2M。  
+Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片分辨率不超过1920*1080。
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type ImageUrl: str
+        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过2M。 
+图片分辨率不超过1920*1080。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type ImageBase64: str
+        :param CustomContent: 用户自定义的内容，最多支持4096个字符，查询时原样带回。
+        :type CustomContent: str
+        :param Tags: 图片自定义标签，最多不超过10个，格式为JSON。
+        :type Tags: str
+        """
+        self.GroupId = None
+        self.EntityId = None
+        self.PicName = None
+        self.ImageUrl = None
+        self.ImageBase64 = None
+        self.CustomContent = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.EntityId = params.get("EntityId")
+        self.PicName = params.get("PicName")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.CustomContent = params.get("CustomContent")
+        self.Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImageResponse(AbstractModel):
+    """CreateImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CropImageRequest(AbstractModel):
     """CropImage请求参数结构体
 
@@ -330,6 +468,180 @@ class CropImageResponse(AbstractModel):
         self.OriginalWidth = params.get("OriginalWidth")
         self.OriginalHeight = params.get("OriginalHeight")
         self.CropResult = params.get("CropResult")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteImagesRequest(AbstractModel):
+    """DeleteImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库名称。
+        :type GroupId: str
+        :param EntityId: 物品ID。
+        :type EntityId: str
+        :param PicName: 图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
+        :type PicName: str
+        """
+        self.GroupId = None
+        self.EntityId = None
+        self.PicName = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.EntityId = params.get("EntityId")
+        self.PicName = params.get("PicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteImagesResponse(AbstractModel):
+    """DeleteImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupsRequest(AbstractModel):
+    """DescribeGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 起始序号，默认值为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认值为10，最大值为100。
+        :type Limit: int
+        :param GroupId: 图库ID，如果不为空，则返回指定库信息。
+        :type GroupId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupsResponse(AbstractModel):
+    """DescribeGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Groups: 图库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of GroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImagesRequest(AbstractModel):
+    """DescribeImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库名称。
+        :type GroupId: str
+        :param EntityId: 物品ID。
+        :type EntityId: str
+        :param PicName: 图片名称。
+        :type PicName: str
+        """
+        self.GroupId = None
+        self.EntityId = None
+        self.PicName = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.EntityId = params.get("EntityId")
+        self.PicName = params.get("PicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImagesResponse(AbstractModel):
+    """DescribeImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库名称。
+        :type GroupId: str
+        :param EntityId: 物品ID。
+        :type EntityId: str
+        :param ImageInfos: 图片信息。
+        :type ImageInfos: list of ImageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.EntityId = None
+        self.ImageInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.EntityId = params.get("EntityId")
+        if params.get("ImageInfos") is not None:
+            self.ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = ImageInfo()
+                obj._deserialize(item)
+                self.ImageInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1051,6 +1363,104 @@ class Face(AbstractModel):
         
 
 
+class GroupInfo(AbstractModel):
+    """图库信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库Id。
+        :type GroupId: str
+        :param GroupName: 图库名称。
+        :type GroupName: str
+        :param Brief: 图库简介。
+        :type Brief: str
+        :param MaxCapacity: 图库容量。
+        :type MaxCapacity: int
+        :param MaxQps: 该库的访问限频 。
+        :type MaxQps: int
+        :param GroupType: 图库类型： 
+1: 通用图库，以用户输入图提取特征。
+2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+        :type GroupType: int
+        :param PicCount: 图库图片数量。
+        :type PicCount: int
+        :param CreateTime: 图库创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 图库更新时间。
+        :type UpdateTime: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.Brief = None
+        self.MaxCapacity = None
+        self.MaxQps = None
+        self.GroupType = None
+        self.PicCount = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.Brief = params.get("Brief")
+        self.MaxCapacity = params.get("MaxCapacity")
+        self.MaxQps = params.get("MaxQps")
+        self.GroupType = params.get("GroupType")
+        self.PicCount = params.get("PicCount")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageInfo(AbstractModel):
+    """图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EntityId: 图片名称。
+        :type EntityId: str
+        :param CustomContent: 用户自定义的内容。
+        :type CustomContent: str
+        :param Tags: 图片自定义标签，JSON格式。
+        :type Tags: str
+        :param PicName: 图片名称。
+        :type PicName: str
+        :param Score: 相似度。
+        :type Score: int
+        """
+        self.EntityId = None
+        self.CustomContent = None
+        self.Tags = None
+        self.PicName = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.EntityId = params.get("EntityId")
+        self.CustomContent = params.get("CustomContent")
+        self.Tags = params.get("Tags")
+        self.PicName = params.get("PicName")
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Labels(AbstractModel):
     """名人识别的标签
 
@@ -1331,6 +1741,92 @@ class RegionDetected(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SearchImageRequest(AbstractModel):
+    """SearchImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库名称。
+        :type GroupId: str
+        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过2M。 
+图片分辨率不超过1920*1080。 
+Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type ImageUrl: str
+        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过2M。 
+图片分辨率不超过1920*1080。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type ImageBase64: str
+        :param MatchThreshold: 出参Score中，只有超过MatchThreshold值的结果才会返回。默认为0
+        :type MatchThreshold: int
+        :param Offset: 起始序号，默认值为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认值为10，最大值为100。
+        :type Limit: int
+        :param Filter: 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+        :type Filter: str
+        """
+        self.GroupId = None
+        self.ImageUrl = None
+        self.ImageBase64 = None
+        self.MatchThreshold = None
+        self.Offset = None
+        self.Limit = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.MatchThreshold = params.get("MatchThreshold")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Filter = params.get("Filter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchImageResponse(AbstractModel):
+    """SearchImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 返回结果数量。
+        :type Count: int
+        :param ImageInfos: 图片信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfos: list of ImageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.ImageInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("ImageInfos") is not None:
+            self.ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = ImageInfo()
+                obj._deserialize(item)
+                self.ImageInfos.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class Threshold(AbstractModel):

@@ -547,6 +547,8 @@ class BackupInfo(AbstractModel):
         :type Method: str
         :param Way: 备份方式。可能的值有 "manual": 手动备份， "automatic": 自动备份。
         :type Way: str
+        :param ManualBackupName: 手动备份别名
+        :type ManualBackupName: str
         """
         self.Name = None
         self.Size = None
@@ -561,6 +563,7 @@ class BackupInfo(AbstractModel):
         self.StartTime = None
         self.Method = None
         self.Way = None
+        self.ManualBackupName = None
 
 
     def _deserialize(self, params):
@@ -577,6 +580,7 @@ class BackupInfo(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.Method = params.get("Method")
         self.Way = params.get("Way")
+        self.ManualBackupName = params.get("ManualBackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1224,10 +1228,13 @@ class CreateBackupRequest(AbstractModel):
         :param BackupDBTableList: 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。
 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ]。
         :type BackupDBTableList: list of BackupItem
+        :param ManualBackupName: 手动备份别名
+        :type ManualBackupName: str
         """
         self.InstanceId = None
         self.BackupMethod = None
         self.BackupDBTableList = None
+        self.ManualBackupName = None
 
 
     def _deserialize(self, params):
@@ -1239,6 +1246,7 @@ class CreateBackupRequest(AbstractModel):
                 obj = BackupItem()
                 obj._deserialize(item)
                 self.BackupDBTableList.append(obj)
+        self.ManualBackupName = params.get("ManualBackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1312,6 +1320,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type InstanceNodes: int
         :param DeployGroupId: 置放群组 ID。
         :type DeployGroupId: str
+        :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
+        :type DryRun: bool
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -1331,6 +1341,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.DeviceType = None
         self.InstanceNodes = None
         self.DeployGroupId = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
@@ -1357,6 +1368,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.DeviceType = params.get("DeviceType")
         self.InstanceNodes = params.get("InstanceNodes")
         self.DeployGroupId = params.get("DeployGroupId")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1519,6 +1531,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: 金融围拢 ID 。
         :type CageId: str
+        :param AlarmPolicyIdList: 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
+        :type AlarmPolicyIdList: list of str
+        :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
+        :type DryRun: bool
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1552,6 +1568,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Cpu = None
         self.AutoSyncFlag = None
         self.CageId = None
+        self.AlarmPolicyIdList = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
@@ -1599,6 +1617,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
         self.CageId = params.get("CageId")
+        self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1706,6 +1726,10 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: 金融围拢 ID。
         :type CageId: str
+        :param AlarmPolicyIdList: 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
+        :type AlarmPolicyIdList: list of str
+        :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
+        :type DryRun: bool
         """
         self.Memory = None
         self.Volume = None
@@ -1740,6 +1764,8 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Cpu = None
         self.AutoSyncFlag = None
         self.CageId = None
+        self.AlarmPolicyIdList = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
@@ -1788,6 +1814,8 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
         self.CageId = params.get("CageId")
+        self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
