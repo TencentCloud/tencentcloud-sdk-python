@@ -7912,59 +7912,6 @@ class ModifyRoReplicationDelayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyRoTypeRequest(AbstractModel):
-    """ModifyRoType请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例 ID。
-        :type InstanceId: str
-        :param SrcRoInstType: 只读实例源类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
-        :type SrcRoInstType: str
-        :param DstRoInstType: 只读实例目标类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
-        :type DstRoInstType: str
-        :param ReplicationDelay: 延迟时间（s），将实例修改为延迟只读实例时必传。最小值1，最大值259200。
-        :type ReplicationDelay: int
-        """
-        self.InstanceId = None
-        self.SrcRoInstType = None
-        self.DstRoInstType = None
-        self.ReplicationDelay = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.SrcRoInstType = params.get("SrcRoInstType")
-        self.DstRoInstType = params.get("DstRoInstType")
-        self.ReplicationDelay = params.get("ReplicationDelay")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyRoTypeResponse(AbstractModel):
-    """ModifyRoType返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyTimeWindowRequest(AbstractModel):
     """ModifyTimeWindow请求参数结构体
 

@@ -2184,6 +2184,8 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type ExportDestination: str
         :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
         :type TrackData: str
+        :param AspectRatio: 轨道数据对应的画布宽高比。
+        :type AspectRatio: str
         :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
         :type CoverData: str
         :param CMEExportInfo: 导出的云剪媒体信息。当导出目标为 CME 时必填。
@@ -2197,6 +2199,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self.Definition = None
         self.ExportDestination = None
         self.TrackData = None
+        self.AspectRatio = None
         self.CoverData = None
         self.CMEExportInfo = None
         self.VODExportInfo = None
@@ -2208,6 +2211,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self.Definition = params.get("Definition")
         self.ExportDestination = params.get("ExportDestination")
         self.TrackData = params.get("TrackData")
+        self.AspectRatio = params.get("AspectRatio")
         self.CoverData = params.get("CoverData")
         if params.get("CMEExportInfo") is not None:
             self.CMEExportInfo = CMEExportInfo()

@@ -5674,6 +5674,32 @@ class UploadLogRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param TopicId: 主题id
+        :type TopicId: str
+        :param HashKey: 根据 hashkey 写入相应范围的主题分区
+        :type HashKey: str
+        :param CompressType: 压缩方法
+        :type CompressType: str
+        """
+        self.TopicId = None
+        self.HashKey = None
+        self.CompressType = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.HashKey = params.get("HashKey")
+        self.CompressType = params.get("CompressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UploadLogResponse(AbstractModel):
     """UploadLog返回参数结构体

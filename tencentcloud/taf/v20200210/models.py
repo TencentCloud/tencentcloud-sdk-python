@@ -77,14 +77,20 @@ class EnhanceTaDegreeRequest(AbstractModel):
         r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputTaBspData`
+        :param BusinessEncryptData: 业务加密数据
+        :type BusinessEncryptData: :class:`tencentcloud.taf.v20200210.models.InputBusinessEncryptData`
         """
         self.BspData = None
+        self.BusinessEncryptData = None
 
 
     def _deserialize(self, params):
         if params.get("BspData") is not None:
             self.BspData = InputTaBspData()
             self.BspData._deserialize(params.get("BspData"))
+        if params.get("BusinessEncryptData") is not None:
+            self.BusinessEncryptData = InputBusinessEncryptData()
+            self.BusinessEncryptData._deserialize(params.get("BusinessEncryptData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -116,6 +122,12 @@ class EnhanceTaDegreeResponse(AbstractModel):
             self.Data = OutputTaData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class InputBusinessEncryptData(AbstractModel):
+    """业务入参
+
+    """
 
 
 class InputKolBspData(AbstractModel):
@@ -430,7 +442,7 @@ class InputTaBspData(AbstractModel):
         :type AgeCeil: int
         :param Gender: 性别[1：男；2：女]
         :type Gender: int
-        :param UserTime: 用户操作时间
+        :param UserTime: 用户操作时间,uinux时间戳，精确到秒
         :type UserTime: int
         :param Imei: Imei [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
         :type Imei: str
@@ -470,6 +482,8 @@ class InputTaBspData(AbstractModel):
         :type Longitude: str
         :param Context: 辅助区分信息
         :type Context: str
+        :param IsAuthorized: 是否授权
+        :type IsAuthorized: int
         """
         self.Seq = None
         self.OsType = None
@@ -496,6 +510,7 @@ class InputTaBspData(AbstractModel):
         self.Latitude = None
         self.Longitude = None
         self.Context = None
+        self.IsAuthorized = None
 
 
     def _deserialize(self, params):
@@ -524,6 +539,7 @@ class InputTaBspData(AbstractModel):
         self.Latitude = params.get("Latitude")
         self.Longitude = params.get("Longitude")
         self.Context = params.get("Context")
+        self.IsAuthorized = params.get("IsAuthorized")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

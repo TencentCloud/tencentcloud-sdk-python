@@ -514,34 +514,38 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CdrId: 服务记录ID
-        :type CdrId: str
         :param InstanceId: 实例ID
         :type InstanceId: int
         :param SdkAppId: 应用ID
         :type SdkAppId: int
+        :param CdrId: 服务记录ID
+        :type CdrId: str
         :param Limit: 返回记录条数 最大为100默认20
         :type Limit: int
         :param Offset: 返回记录偏移 默认为0
         :type Offset: int
         :param Order: 1为从早到晚，2为从晚到早，默认为2
         :type Order: int
+        :param SessionId: 服务记录SessionID
+        :type SessionId: str
         """
-        self.CdrId = None
         self.InstanceId = None
         self.SdkAppId = None
+        self.CdrId = None
         self.Limit = None
         self.Offset = None
         self.Order = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
-        self.CdrId = params.get("CdrId")
         self.InstanceId = params.get("InstanceId")
         self.SdkAppId = params.get("SdkAppId")
+        self.CdrId = params.get("CdrId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.Order = params.get("Order")
+        self.SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1063,6 +1067,8 @@ class DescribeTelCdrRequest(AbstractModel):
         :type PageNumber: int
         :param Phones: 按手机号筛选
         :type Phones: list of str
+        :param SessionIds: 按SessionId筛选
+        :type SessionIds: list of str
         """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
@@ -1073,6 +1079,7 @@ class DescribeTelCdrRequest(AbstractModel):
         self.PageSize = None
         self.PageNumber = None
         self.Phones = None
+        self.SessionIds = None
 
 
     def _deserialize(self, params):
@@ -1085,6 +1092,7 @@ class DescribeTelCdrRequest(AbstractModel):
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
         self.Phones = params.get("Phones")
+        self.SessionIds = params.get("SessionIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1387,6 +1395,10 @@ finished 已完成
         :type OutBoundCaller: str
         :param OutBoundCallee: 转外线被叫
         :type OutBoundCallee: str
+        :param ProtectedCaller: 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+        :type ProtectedCaller: str
+        :param ProtectedCallee: 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+        :type ProtectedCallee: str
         """
         self.SessionID = None
         self.RoomID = None
@@ -1401,6 +1413,8 @@ finished 已完成
         self.Direction = None
         self.OutBoundCaller = None
         self.OutBoundCallee = None
+        self.ProtectedCaller = None
+        self.ProtectedCallee = None
 
 
     def _deserialize(self, params):
@@ -1417,6 +1431,8 @@ finished 已完成
         self.Direction = params.get("Direction")
         self.OutBoundCaller = params.get("OutBoundCaller")
         self.OutBoundCallee = params.get("OutBoundCallee")
+        self.ProtectedCaller = params.get("ProtectedCaller")
+        self.ProtectedCallee = params.get("ProtectedCallee")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1455,6 +1471,10 @@ class PSTNSessionInfo(AbstractModel):
         :type Direction: int
         :param RingTimestamp: 振铃时间，Unix 时间戳
         :type RingTimestamp: int
+        :param ProtectedCaller: 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+        :type ProtectedCaller: str
+        :param ProtectedCallee: 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+        :type ProtectedCallee: str
         """
         self.SessionID = None
         self.RoomID = None
@@ -1467,6 +1487,8 @@ class PSTNSessionInfo(AbstractModel):
         self.SessionStatus = None
         self.Direction = None
         self.RingTimestamp = None
+        self.ProtectedCaller = None
+        self.ProtectedCallee = None
 
 
     def _deserialize(self, params):
@@ -1481,6 +1503,8 @@ class PSTNSessionInfo(AbstractModel):
         self.SessionStatus = params.get("SessionStatus")
         self.Direction = params.get("Direction")
         self.RingTimestamp = params.get("RingTimestamp")
+        self.ProtectedCaller = params.get("ProtectedCaller")
+        self.ProtectedCallee = params.get("ProtectedCallee")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1997,6 +2021,12 @@ notInService       不在服务区
         :param SessionId: 会话 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: str
+        :param ProtectedCaller: 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectedCaller: str
+        :param ProtectedCallee: 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectedCallee: str
         """
         self.Caller = None
         self.Callee = None
@@ -2022,6 +2052,8 @@ notInService       不在服务区
         self.PostIVRKeyPressed = None
         self.QueuedSkillGroupId = None
         self.SessionId = None
+        self.ProtectedCaller = None
+        self.ProtectedCallee = None
 
 
     def _deserialize(self, params):
@@ -2061,6 +2093,8 @@ notInService       不在服务区
                 self.PostIVRKeyPressed.append(obj)
         self.QueuedSkillGroupId = params.get("QueuedSkillGroupId")
         self.SessionId = params.get("SessionId")
+        self.ProtectedCaller = params.get("ProtectedCaller")
+        self.ProtectedCallee = params.get("ProtectedCallee")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

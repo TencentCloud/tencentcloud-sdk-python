@@ -38,6 +38,9 @@ INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = 'InvalidParameterValue.AccountNotExist'
 # 实例不存在。
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'
 
+# 查询记录不存在。
+INVALIDPARAMETERVALUE_RECORDNOTEXIST = 'InvalidParameterValue.RecordNotExist'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
