@@ -12579,17 +12579,21 @@ class DescribeVersionStatisticsResponse(AbstractModel):
         :type BasicVersionNum: int
         :param ProVersionNum: 专业版数量
         :type ProVersionNum: int
+        :param UltimateVersionNum: 旗舰版数量
+        :type UltimateVersionNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BasicVersionNum = None
         self.ProVersionNum = None
+        self.UltimateVersionNum = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.BasicVersionNum = params.get("BasicVersionNum")
         self.ProVersionNum = params.get("ProVersionNum")
+        self.UltimateVersionNum = params.get("UltimateVersionNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -13523,6 +13527,12 @@ class EffectiveMachineInfo(AbstractModel):
         :param Uuid: 云镜Uuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
+        :param KernelVersion: 内核版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KernelVersion: str
+        :param MachineStatus: 在线状态 OFFLINE，ONLINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineStatus: str
         """
         self.MachineName = None
         self.MachinePublicIp = None
@@ -13530,6 +13540,8 @@ class EffectiveMachineInfo(AbstractModel):
         self.MachineTag = None
         self.Quuid = None
         self.Uuid = None
+        self.KernelVersion = None
+        self.MachineStatus = None
 
 
     def _deserialize(self, params):
@@ -13544,6 +13556,8 @@ class EffectiveMachineInfo(AbstractModel):
                 self.MachineTag.append(obj)
         self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
+        self.KernelVersion = params.get("KernelVersion")
+        self.MachineStatus = params.get("MachineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15719,6 +15733,8 @@ class Machine(AbstractModel):
         :type HasAssetScan: int
         :param MachineType: 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
         :type MachineType: str
+        :param KernelVersion: 内核版本
+        :type KernelVersion: str
         """
         self.MachineName = None
         self.MachineOs = None
@@ -15742,6 +15758,7 @@ class Machine(AbstractModel):
         self.ProjectId = None
         self.HasAssetScan = None
         self.MachineType = None
+        self.KernelVersion = None
 
 
     def _deserialize(self, params):
@@ -15774,6 +15791,7 @@ class Machine(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.HasAssetScan = params.get("HasAssetScan")
         self.MachineType = params.get("MachineType")
+        self.KernelVersion = params.get("KernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

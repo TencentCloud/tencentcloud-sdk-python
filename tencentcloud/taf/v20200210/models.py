@@ -282,12 +282,14 @@ class InputRecognizeTargetAudience(AbstractModel):
         :type ReqMd5: str
         :param AdType: ad_type
         :type AdType: int
-        :param AppName: app name
+        :param AppName: app名称
         :type AppName: str
-        :param AppVer: appVer
+        :param AppVer: app版本描述
         :type AppVer: str
         :param ReqType: 竞价模式1：rtb 2:pd
         :type ReqType: int
+        :param IsAuthorized: 用户是否授权,1为授权，0为未授权
+        :type IsAuthorized: int
         """
         self.Uid = None
         self.AccountType = None
@@ -327,6 +329,7 @@ class InputRecognizeTargetAudience(AbstractModel):
         self.AppName = None
         self.AppVer = None
         self.ReqType = None
+        self.IsAuthorized = None
 
 
     def _deserialize(self, params):
@@ -368,6 +371,7 @@ class InputRecognizeTargetAudience(AbstractModel):
         self.AppName = params.get("AppName")
         self.AppVer = params.get("AppVer")
         self.ReqType = params.get("ReqType")
+        self.IsAuthorized = params.get("IsAuthorized")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1028,14 +1032,20 @@ class RecognizeTargetAudienceRequest(AbstractModel):
         r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputRecognizeTargetAudience`
+        :param BusinessEncryptData: 业务加密数据
+        :type BusinessEncryptData: :class:`tencentcloud.taf.v20200210.models.InputBusinessEncryptData`
         """
         self.BspData = None
+        self.BusinessEncryptData = None
 
 
     def _deserialize(self, params):
         if params.get("BspData") is not None:
             self.BspData = InputRecognizeTargetAudience()
             self.BspData._deserialize(params.get("BspData"))
+        if params.get("BusinessEncryptData") is not None:
+            self.BusinessEncryptData = InputBusinessEncryptData()
+            self.BusinessEncryptData._deserialize(params.get("BusinessEncryptData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

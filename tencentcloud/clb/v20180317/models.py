@@ -1538,9 +1538,12 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
         :type LoadBalancerId: str
         :param SnatIps: 添加SnatIp信息，可指定IP申请，或者指定子网自动申请。
         :type SnatIps: list of SnatIp
+        :param Number: 添加SnatIp个数，与SnatIps一起使用，当指定Ip时，不能指定创建SnatIp个数。
+        :type Number: int
         """
         self.LoadBalancerId = None
         self.SnatIps = None
+        self.Number = None
 
 
     def _deserialize(self, params):
@@ -1551,6 +1554,7 @@ class CreateLoadBalancerSnatIpsRequest(AbstractModel):
                 obj = SnatIp()
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
+        self.Number = params.get("Number")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5076,6 +5076,8 @@ class ComposeMediaTask(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
+        :param Progress: 制作媒体文件任务进度，取值范围 [0-100] 。
+        :type Progress: int
         :param Input: 制作媒体文件任务的输入。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskInput`
@@ -5085,20 +5087,21 @@ class ComposeMediaTask(AbstractModel):
         :param MetaData: 原始视频的元信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
         """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
         self.Message = None
+        self.Progress = None
         self.Input = None
         self.Output = None
         self.MetaData = None
-        self.SessionContext = None
         self.SessionId = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -5106,6 +5109,7 @@ class ComposeMediaTask(AbstractModel):
         self.Status = params.get("Status")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         if params.get("Input") is not None:
             self.Input = ComposeMediaTaskInput()
             self.Input._deserialize(params.get("Input"))
@@ -5115,8 +5119,8 @@ class ComposeMediaTask(AbstractModel):
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
-        self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11070,32 +11074,35 @@ class EditMediaTask(AbstractModel):
         :type ErrCodeExt: str
         :param Message: 错误信息。
         :type Message: str
+        :param Progress: 编辑视频任务进度，取值范围 [0-100] 。
+        :type Progress: int
         :param Input: 视频编辑任务的输入。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Input: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskInput`
         :param Output: 视频编辑任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
-        :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
-        :type ProcedureTaskId: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-        :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
-        :type SessionId: str
         :param MetaData: 原始视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
+        :type ProcedureTaskId: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
         """
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
         self.ErrCodeExt = None
         self.Message = None
+        self.Progress = None
         self.Input = None
         self.Output = None
-        self.ProcedureTaskId = None
-        self.SessionContext = None
-        self.SessionId = None
         self.MetaData = None
+        self.ProcedureTaskId = None
+        self.SessionId = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -11104,18 +11111,19 @@ class EditMediaTask(AbstractModel):
         self.ErrCode = params.get("ErrCode")
         self.ErrCodeExt = params.get("ErrCodeExt")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         if params.get("Input") is not None:
             self.Input = EditMediaTaskInput()
             self.Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self.Output = EditMediaTaskOutput()
             self.Output._deserialize(params.get("Output"))
-        self.ProcedureTaskId = params.get("ProcedureTaskId")
-        self.SessionContext = params.get("SessionContext")
-        self.SessionId = params.get("SessionId")
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
+        self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

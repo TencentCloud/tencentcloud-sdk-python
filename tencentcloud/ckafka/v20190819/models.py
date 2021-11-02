@@ -431,6 +431,9 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         :param MaxMessageBytes: 最大消息字节数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMessageBytes: int
+        :param RetentionBytes: 消息保留文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionBytes: int
         """
         self.Retention = None
         self.MinInsyncReplicas = None
@@ -439,6 +442,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         self.UncleanLeaderElectionEnable = None
         self.SegmentBytes = None
         self.MaxMessageBytes = None
+        self.RetentionBytes = None
 
 
     def _deserialize(self, params):
@@ -449,6 +453,7 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self.SegmentBytes = params.get("SegmentBytes")
         self.MaxMessageBytes = params.get("MaxMessageBytes")
+        self.RetentionBytes = params.get("RetentionBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -996,7 +1001,7 @@ class CreateTopicRequest(AbstractModel):
         r"""
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param TopicName: 主题名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param TopicName: 主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type TopicName: str
         :param PartitionNum: Partition个数，大于0
         :type PartitionNum: int
@@ -1022,6 +1027,8 @@ class CreateTopicRequest(AbstractModel):
         :type EnableAclRule: int
         :param AclRuleName: 预设ACL规则的名称
         :type AclRuleName: str
+        :param RetentionBytes: 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+        :type RetentionBytes: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -1037,6 +1044,7 @@ class CreateTopicRequest(AbstractModel):
         self.SegmentMs = None
         self.EnableAclRule = None
         self.AclRuleName = None
+        self.RetentionBytes = None
 
 
     def _deserialize(self, params):
@@ -1054,6 +1062,7 @@ class CreateTopicRequest(AbstractModel):
         self.SegmentMs = params.get("SegmentMs")
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
+        self.RetentionBytes = params.get("RetentionBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3747,6 +3756,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type EnableAclRule: int
         :param AclRuleName: 预设ACL规则的名称
         :type AclRuleName: str
+        :param RetentionBytes: 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+        :type RetentionBytes: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -3761,6 +3772,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.IpWhiteList = None
         self.EnableAclRule = None
         self.AclRuleName = None
+        self.RetentionBytes = None
 
 
     def _deserialize(self, params):
@@ -3777,6 +3789,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.IpWhiteList = params.get("IpWhiteList")
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
+        self.RetentionBytes = params.get("RetentionBytes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -23,6 +23,9 @@ FAILEDOPERATION_APIGATEWAY = 'FailedOperation.ApiGateway'
 # 创建触发器失败。
 FAILEDOPERATION_APIGW = 'FailedOperation.Apigw'
 
+# 获取Apm InstanceId失败。
+FAILEDOPERATION_APMCONFIGINSTANCEID = 'FailedOperation.ApmConfigInstanceId'
+
 # 当前异步事件状态不支持此操作，请稍后重试。
 FAILEDOPERATION_ASYNCEVENTSTATUS = 'FailedOperation.AsyncEventStatus'
 
@@ -190,6 +193,15 @@ INVALIDPARAMETERVALUE_ALIAS = 'InvalidParameterValue.Alias'
 
 # ApiGateway参数错误。
 INVALIDPARAMETERVALUE_APIGATEWAY = 'InvalidParameterValue.ApiGateway'
+
+# ApmConfig参数传入错误。
+INVALIDPARAMETERVALUE_APMCONFIG = 'InvalidParameterValue.ApmConfig'
+
+# ApmConfigInstanceId参数传入错误。
+INVALIDPARAMETERVALUE_APMCONFIGINSTANCEID = 'InvalidParameterValue.ApmConfigInstanceId'
+
+# ApmConfigRegion参数传入错误。
+INVALIDPARAMETERVALUE_APMCONFIGREGION = 'InvalidParameterValue.ApmConfigRegion'
 
 # 函数异步重试配置参数无效。
 INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = 'InvalidParameterValue.AsyncTriggerConfig'
@@ -592,6 +604,9 @@ RESOURCENOTFOUND_GETCFSMOUNTINSERROR = 'ResourceNotFound.GetCfsMountInsError'
 
 # 获取cfs信息错误。
 RESOURCENOTFOUND_GETCFSNOTMATCH = 'ResourceNotFound.GetCfsNotMatch'
+
+# 未找到指定的ImageConfig，请创建后再试。
+RESOURCENOTFOUND_IMAGECONFIG = 'ResourceNotFound.ImageConfig'
 
 # layer不存在。
 RESOURCENOTFOUND_LAYER = 'ResourceNotFound.Layer'

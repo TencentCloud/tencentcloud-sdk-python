@@ -3959,16 +3959,20 @@ class TerminateAsyncEventRequest(AbstractModel):
         :type InvokeRequestId: str
         :param Namespace: 命名空间
         :type Namespace: str
+        :param GraceShutdown: 优雅关停
+        :type GraceShutdown: bool
         """
         self.FunctionName = None
         self.InvokeRequestId = None
         self.Namespace = None
+        self.GraceShutdown = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.InvokeRequestId = params.get("InvokeRequestId")
         self.Namespace = params.get("Namespace")
+        self.GraceShutdown = params.get("GraceShutdown")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
