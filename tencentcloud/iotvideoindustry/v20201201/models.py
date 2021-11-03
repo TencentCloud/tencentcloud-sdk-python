@@ -915,7 +915,7 @@ class DescribeDeviceStreamsRequest(AbstractModel):
         :type DeviceId: str
         :param ExpireTime: 流地址失效时间
         :type ExpireTime: int
-        :param ChannelId: 通道唯一标识
+        :param ChannelId: 通道唯一标识（接口升级字段为必填）
         :type ChannelId: str
         """
         self.DeviceId = None

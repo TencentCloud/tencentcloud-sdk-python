@@ -27,7 +27,7 @@ class TafClient(AbstractClient):
 
 
     def DetectFraudKOL(self, request):
-        """DetectFraudKOL
+        """流量反欺诈-KOL欺诈识别
 
         :param request: Request instance for DetectFraudKOL.
         :type request: :class:`tencentcloud.taf.v20200210.models.DetectFraudKOLRequest`

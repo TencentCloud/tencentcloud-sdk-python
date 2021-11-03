@@ -27,14 +27,20 @@ class DetectFraudKOLRequest(AbstractModel):
         r"""
         :param BspData: 业务数据
         :type BspData: :class:`tencentcloud.taf.v20200210.models.InputKolBspData`
+        :param BusinessEncryptData: 业务加密数据
+        :type BusinessEncryptData: :class:`tencentcloud.taf.v20200210.models.InputBusinessEncryptData`
         """
         self.BspData = None
+        self.BusinessEncryptData = None
 
 
     def _deserialize(self, params):
         if params.get("BspData") is not None:
             self.BspData = InputKolBspData()
             self.BspData._deserialize(params.get("BspData"))
+        if params.get("BusinessEncryptData") is not None:
+            self.BusinessEncryptData = InputBusinessEncryptData()
+            self.BusinessEncryptData._deserialize(params.get("BusinessEncryptData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -160,7 +166,7 @@ class InputKolBspData(AbstractModel):
 
 
 class InputKolDataList(AbstractModel):
-    """CheckKol
+    """CheckKOL
 
     """
 
@@ -176,12 +182,15 @@ class InputKolDataList(AbstractModel):
         :type Phone: str
         :param AgentInfo: 代理商名称
         :type AgentInfo: str
+        :param IsAuthorized: 是否授权
+        :type IsAuthorized: int
         """
         self.Type = None
         self.Id = None
         self.Name = None
         self.Phone = None
         self.AgentInfo = None
+        self.IsAuthorized = None
 
 
     def _deserialize(self, params):
@@ -190,6 +199,7 @@ class InputKolDataList(AbstractModel):
         self.Name = params.get("Name")
         self.Phone = params.get("Phone")
         self.AgentInfo = params.get("AgentInfo")
+        self.IsAuthorized = params.get("IsAuthorized")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
