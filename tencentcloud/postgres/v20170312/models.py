@@ -3156,6 +3156,87 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSpecRequest(AbstractModel):
+    """ModifyDBInstanceSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如：postgres-6bwgamo3。
+        :type DBInstanceId: str
+        :param Memory: 升级后的实例内存大小，单位GiB。
+        :type Memory: int
+        :param Storage: 升级后的实例磁盘大小，单位GiB。
+        :type Storage: int
+        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param ActivityId: 活动ID。
+        :type ActivityId: int
+        :param SwitchTag: 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+        :type SwitchTag: int
+        :param SwitchStartTime: 切换开始时间。
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换截止时间。
+        :type SwitchEndTime: str
+        """
+        self.DBInstanceId = None
+        self.Memory = None
+        self.Storage = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ActivityId = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.ActivityId = params.get("ActivityId")
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSpecResponse(AbstractModel):
+    """ModifyDBInstanceSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 订单号。
+        :type DealName: str
+        :param BillId: 冻结流水号。
+        :type BillId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstancesProjectRequest(AbstractModel):
     """ModifyDBInstancesProject请求参数结构体
 

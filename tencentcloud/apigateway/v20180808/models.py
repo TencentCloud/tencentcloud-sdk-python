@@ -4947,6 +4947,12 @@ class DescribeServiceResponse(AbstractModel):
         :param SetType: 集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetType: str
+        :param DeploymentType: 服务部署的集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeploymentType: str
+        :param SpecialUse: 特殊用途
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecialUse: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4974,6 +4980,8 @@ class DescribeServiceResponse(AbstractModel):
         self.InstanceId = None
         self.InstanceName = None
         self.SetType = None
+        self.DeploymentType = None
+        self.SpecialUse = None
         self.RequestId = None
 
 
@@ -5017,6 +5025,8 @@ class DescribeServiceResponse(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.InstanceName = params.get("InstanceName")
         self.SetType = params.get("SetType")
+        self.DeploymentType = params.get("DeploymentType")
+        self.SpecialUse = params.get("SpecialUse")
         self.RequestId = params.get("RequestId")
 
 
@@ -7629,6 +7639,9 @@ class Service(AbstractModel):
         :param SetType: 集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetType: str
+        :param DeploymentType: 服务部署的集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeploymentType: str
         """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
@@ -7648,6 +7661,7 @@ class Service(AbstractModel):
         self.Tags = None
         self.InstanceId = None
         self.SetType = None
+        self.DeploymentType = None
 
 
     def _deserialize(self, params):
@@ -7674,6 +7688,7 @@ class Service(AbstractModel):
                 self.Tags.append(obj)
         self.InstanceId = params.get("InstanceId")
         self.SetType = params.get("SetType")
+        self.DeploymentType = params.get("DeploymentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

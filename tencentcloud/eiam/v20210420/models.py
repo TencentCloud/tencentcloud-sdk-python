@@ -412,9 +412,9 @@ class CreateUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 昵称，长度限制：64个字符。 DisplayName是唯一的。
+        :param DisplayName: 用户组昵称，长度限制：64个字符。 DisplayName是唯一的。
         :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
+        :param Description: 用户组备注，长度限制：512个字符。
         :type Description: str
         """
         self.DisplayName = None
@@ -1110,10 +1110,10 @@ class DescribeUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: 昵称，长度限制：64个字符。 DisplayName不唯一。
+        :param DisplayName: 用户组昵称，长度限制：64个字符。 DisplayName不唯一。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayName: str
-        :param Description: 用户备注，长度限制：512个字符。
+        :param Description: 用户组备注，长度限制：512个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param UserGroupId: 用户组ID，是用户组的全局唯一标识。

@@ -1826,6 +1826,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryMaliciousRegistration(self, request):
+        """商户恶意注册接口
+
+        :param request: Request instance for QueryMaliciousRegistration.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMaliciousRegistrationRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMaliciousRegistrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMaliciousRegistration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMaliciousRegistrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryMemberBind(self, request):
         """会员绑定信息查询。查询标志为“单个会员”的情况下，返回该会员的有效的绑定账户信息。
         查询标志为“全部会员”的情况下，返回市场下的全部的有效的绑定账户信息。查询标志为“单个会员的证件信息”的情况下，返回市场下的指定的会员的留存在电商见证宝系统的证件信息。
@@ -2948,7 +2976,7 @@ class CpdpClient(AbstractClient):
 
 
     def UnifiedTlinxOrder(self, request):
-        """云支付Tlinx统一下单接口
+        """云支付-统一下单接口
 
         :param request: Request instance for UnifiedTlinxOrder.
         :type request: :class:`tencentcloud.cpdp.v20190820.models.UnifiedTlinxOrderRequest`

@@ -568,7 +568,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
         :type Zone: str
         :param ZoneBak: 备可用区，为空则选择默认可用区
         :type ZoneBak: str
-        :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备
+        :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
         :type CrossAZone: int
         """
         self.Name = None
@@ -639,7 +639,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         :type Zone: str
         :param ZoneBak: 备可用区，为空则选择默认可用区
         :type ZoneBak: str
-        :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备
+        :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
         :type CrossAZone: int
         :param IsCreateDomain: 0不创建域名,1创建域名
         :type IsCreateDomain: int
@@ -1989,7 +1989,7 @@ class DescribeResourceGroupNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QueryType: 查询类型 网络结构 vpc，业务识别- resource ，资源标签-tag
+        :param QueryType: 查询类型 网络结构-vpc，业务识别-resource ，资源标签-tag
         :type QueryType: str
         :param GroupId: 资产组id  全部传0
         :type GroupId: str
@@ -2023,11 +2023,11 @@ class DescribeResourceGroupNewResponse(AbstractModel):
         r"""
         :param Data: 返回树形结构
         :type Data: str
-        :param UnResourceNum: 无
+        :param UnResourceNum: 未分类实例数量
         :type UnResourceNum: int
-        :param ReturnMsg: 无
+        :param ReturnMsg: 接口返回消息
         :type ReturnMsg: str
-        :param ReturnCode: 无
+        :param ReturnCode: 返回码；0为请求成功
         :type ReturnCode: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2260,13 +2260,13 @@ class DescribeSourceAssetRequest(AbstractModel):
         :type FuzzySearch: str
         :param InsType: 资产类型 1公网 2内网
         :type InsType: str
-        :param ChooseType: 是否未分组 1是
+        :param ChooseType: ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
         :type ChooseType: str
         :param Zone: 地域
         :type Zone: str
-        :param Limit: 页大小
+        :param Limit: 查询单页的最大值；eg：10；则最多返回10条结果
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 查询结果的偏移量
         :type Offset: int
         """
         self.FuzzySearch = None
@@ -2304,7 +2304,7 @@ class DescribeSourceAssetResponse(AbstractModel):
         :type ZoneList: list of AssetZone
         :param Data: 数据
         :type Data: list of InstanceInfo
-        :param Total: 10
+        :param Total: 返回数据总数
         :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

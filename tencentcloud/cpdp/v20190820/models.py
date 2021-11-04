@@ -5685,6 +5685,36 @@ class MerchantPayWayData(AbstractModel):
         
 
 
+class MerchantRiskInfo(AbstractModel):
+    """商户风险信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RiskLevel: 恶意注册等级，0-9级，9级最高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: int
+        :param RiskTypes: 恶意注册代码，代码以|分割，如"G001|T002"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskTypes: str
+        """
+        self.RiskLevel = None
+        self.RiskTypes = None
+
+
+    def _deserialize(self, params):
+        self.RiskLevel = params.get("RiskLevel")
+        self.RiskTypes = params.get("RiskTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MigrateOrderRefundQueryRequest(AbstractModel):
     """MigrateOrderRefundQuery请求参数结构体
 
@@ -8625,6 +8655,106 @@ class QueryItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryMaliciousRegistrationRequest(AbstractModel):
+    """QueryMaliciousRegistration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantId: 商户ID，调用方使用的商户号信息，与商户主体一一对应
+        :type MerchantId: str
+        :param MerchantName: 商户名称
+        :type MerchantName: str
+        :param CompanyName: 企业工商注册标准名称
+        :type CompanyName: str
+        :param RegAddress: 注册地址
+        :type RegAddress: str
+        :param RegTime: 商户进件Unix时间，单位秒（非企业注册工商时间)
+        :type RegTime: int
+        :param USCI: 统一社会信用代码
+        :type USCI: str
+        :param RegNumber: 工商注册码，匹配优先级为Usci>RegNumber>CompanyName
+        :type RegNumber: str
+        :param EncryptedPhoneNumber: 手机号码32位MD5加密结果，全大写，格式为0086-13812345678
+        :type EncryptedPhoneNumber: str
+        :param EncryptedEmailAddress: 邮箱32位MD5加密结果，全大写
+        :type EncryptedEmailAddress: str
+        :param EncryptedPersonId: 身份证MD5加密结果，最后一位x大写
+        :type EncryptedPersonId: str
+        :param Ip: 填写信息设备的IP地址
+        :type Ip: str
+        :param Channel: 进件渠道号，客户自行编码即可
+        :type Channel: str
+        """
+        self.MerchantId = None
+        self.MerchantName = None
+        self.CompanyName = None
+        self.RegAddress = None
+        self.RegTime = None
+        self.USCI = None
+        self.RegNumber = None
+        self.EncryptedPhoneNumber = None
+        self.EncryptedEmailAddress = None
+        self.EncryptedPersonId = None
+        self.Ip = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.MerchantName = params.get("MerchantName")
+        self.CompanyName = params.get("CompanyName")
+        self.RegAddress = params.get("RegAddress")
+        self.RegTime = params.get("RegTime")
+        self.USCI = params.get("USCI")
+        self.RegNumber = params.get("RegNumber")
+        self.EncryptedPhoneNumber = params.get("EncryptedPhoneNumber")
+        self.EncryptedEmailAddress = params.get("EncryptedEmailAddress")
+        self.EncryptedPersonId = params.get("EncryptedPersonId")
+        self.Ip = params.get("Ip")
+        self.Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMaliciousRegistrationResponse(AbstractModel):
+    """QueryMaliciousRegistration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码
+        :type ErrCode: str
+        :param ErrMsg: 错误消息
+        :type ErrMsg: str
+        :param Result: 商户风险信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.MerchantRiskInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMsg = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMsg = params.get("ErrMsg")
+        if params.get("Result") is not None:
+            self.Result = MerchantRiskInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class QueryMemberBindRequest(AbstractModel):
@@ -14220,86 +14350,90 @@ class UnifiedTlinxOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
-        :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
-        :type OpenKey: str
         :param DeveloperNo: 开发者流水号
         :type DeveloperNo: str
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param NotifyUrl: 交易结果异步通知url地址
+        :type NotifyUrl: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
         :param PayTag: 支付标签
         :type PayTag: str
         :param TradeAmount: 实际交易金额（以分为单位，没有小数点）
         :type TradeAmount: str
-        :param Tag: 订单标记，订单附加数据
-        :type Tag: str
-        :param NotifyUrl: 交易结果异步通知url地址
-        :type NotifyUrl: str
-        :param PayName: 付款方式名称(当PayTag为Diy时，PayName不能为空)
-        :type PayName: str
-        :param OrderName: 订单名称（描述）
-        :type OrderName: str
-        :param OriginalAmount: 原始交易金额（以分为单位，没有小数点）
-        :type OriginalAmount: str
-        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
-        :type DiscountAmount: str
-        :param IgnoreAmount: 抹零金额（以分为单位，没有小数点）
-        :type IgnoreAmount: str
-        :param TradeAccount: 交易帐号（银行卡号）
-        :type TradeAccount: str
-        :param TradeNo: 交易号（收单机构交易号）
-        :type TradeNo: str
-        :param TradeResult: 收单机构原始交易报文，请转换为json
-        :type TradeResult: str
         :param Remark: 订单备注
         :type Remark: str
+        :param Tag: 订单标记，订单附加数据。
+        :type Tag: str
+        :param IgnoreAmount: 抹零金额（以分为单位，没有小数点）
+        :type IgnoreAmount: str
         :param AuthCode: 条码支付的授权码（条码抢扫手机扫到的一串数字）
         :type AuthCode: str
+        :param OriginalAmount: 原始交易金额（以分为单位，没有小数点）
+        :type OriginalAmount: str
+        :param OrderName: 订单名称（描述）
+        :type OrderName: str
         :param JumpUrl: 公众号支付时，支付成功后跳转url地址
         :type JumpUrl: str
         :param Profile: 沙箱环境填sandbox，正式环境不填
         :type Profile: str
+        :param TradeResult: 收单机构原始交易报文，请转换为json
+        :type TradeResult: str
+        :param TradeAccount: 交易帐号（银行卡号）
+        :type TradeAccount: str
+        :param TradeNo: 交易号（收单机构交易号）
+        :type TradeNo: str
+        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
+        :type DiscountAmount: str
+        :param PayName: 付款方式名称(当PayTag为Diy时，PayName不能为空)
+        :type PayName: str
+        :param Royalty: 0-不分账，1-需分账。为1时标记为待分账订单，待分账订单不会进行清算。不传默认为不分账。
+        :type Royalty: str
         """
-        self.OpenId = None
-        self.OpenKey = None
         self.DeveloperNo = None
+        self.OpenId = None
+        self.NotifyUrl = None
+        self.OpenKey = None
         self.PayTag = None
         self.TradeAmount = None
-        self.Tag = None
-        self.NotifyUrl = None
-        self.PayName = None
-        self.OrderName = None
-        self.OriginalAmount = None
-        self.DiscountAmount = None
-        self.IgnoreAmount = None
-        self.TradeAccount = None
-        self.TradeNo = None
-        self.TradeResult = None
         self.Remark = None
+        self.Tag = None
+        self.IgnoreAmount = None
         self.AuthCode = None
+        self.OriginalAmount = None
+        self.OrderName = None
         self.JumpUrl = None
         self.Profile = None
+        self.TradeResult = None
+        self.TradeAccount = None
+        self.TradeNo = None
+        self.DiscountAmount = None
+        self.PayName = None
+        self.Royalty = None
 
 
     def _deserialize(self, params):
-        self.OpenId = params.get("OpenId")
-        self.OpenKey = params.get("OpenKey")
         self.DeveloperNo = params.get("DeveloperNo")
+        self.OpenId = params.get("OpenId")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.OpenKey = params.get("OpenKey")
         self.PayTag = params.get("PayTag")
         self.TradeAmount = params.get("TradeAmount")
-        self.Tag = params.get("Tag")
-        self.NotifyUrl = params.get("NotifyUrl")
-        self.PayName = params.get("PayName")
-        self.OrderName = params.get("OrderName")
-        self.OriginalAmount = params.get("OriginalAmount")
-        self.DiscountAmount = params.get("DiscountAmount")
-        self.IgnoreAmount = params.get("IgnoreAmount")
-        self.TradeAccount = params.get("TradeAccount")
-        self.TradeNo = params.get("TradeNo")
-        self.TradeResult = params.get("TradeResult")
         self.Remark = params.get("Remark")
+        self.Tag = params.get("Tag")
+        self.IgnoreAmount = params.get("IgnoreAmount")
         self.AuthCode = params.get("AuthCode")
+        self.OriginalAmount = params.get("OriginalAmount")
+        self.OrderName = params.get("OrderName")
         self.JumpUrl = params.get("JumpUrl")
         self.Profile = params.get("Profile")
+        self.TradeResult = params.get("TradeResult")
+        self.TradeAccount = params.get("TradeAccount")
+        self.TradeNo = params.get("TradeNo")
+        self.DiscountAmount = params.get("DiscountAmount")
+        self.PayName = params.get("PayName")
+        self.Royalty = params.get("Royalty")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14316,26 +14450,26 @@ class UnifiedTlinxOrderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrCode: 业务系统返回码
-        :type ErrCode: str
         :param ErrMessage: 业务系统返回消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMessage: str
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
         :param Result: 统一下单响应对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayOrderResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ErrCode = None
         self.ErrMessage = None
+        self.ErrCode = None
         self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.ErrCode = params.get("ErrCode")
         self.ErrMessage = params.get("ErrMessage")
+        self.ErrCode = params.get("ErrCode")
         if params.get("Result") is not None:
             self.Result = PayOrderResult()
             self.Result._deserialize(params.get("Result"))
