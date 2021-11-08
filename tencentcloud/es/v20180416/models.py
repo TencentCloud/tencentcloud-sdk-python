@@ -119,6 +119,8 @@ class CreateInstanceRequest(AbstractModel):
         :type SceneType: int
         :param WebNodeTypeInfo: 可视化节点配置
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param Protocol: 创建https集群，默认是http
+        :type Protocol: str
         """
         self.Zone = None
         self.EsVersion = None
@@ -149,6 +151,7 @@ class CreateInstanceRequest(AbstractModel):
         self.BasicSecurityType = None
         self.SceneType = None
         self.WebNodeTypeInfo = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -198,6 +201,7 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("WebNodeTypeInfo") is not None:
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -902,6 +906,12 @@ class InstanceInfo(AbstractModel):
         :param Jdk: JDK类型，oracle或kona
 注意：此字段可能返回 null，表示取不到有效值。
         :type Jdk: str
+        :param Protocol: 集群网络通讯协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param SecurityGroups: 安全组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroups: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -960,6 +970,8 @@ class InstanceInfo(AbstractModel):
         self.KibanaNodeInfo = None
         self.WebNodeTypeInfo = None
         self.Jdk = None
+        self.Protocol = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
@@ -1049,6 +1061,8 @@ class InstanceInfo(AbstractModel):
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         self.Jdk = params.get("Jdk")
+        self.Protocol = params.get("Protocol")
+        self.SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1769,6 +1783,14 @@ class UpdateInstanceRequest(AbstractModel):
         :type KibanaConfig: str
         :param WebNodeTypeInfo: 可视化节点配置
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param SwitchPrivateLink: 切换到新网络架构
+        :type SwitchPrivateLink: str
+        :param EnableCerebro: 启用Cerebro
+        :type EnableCerebro: bool
+        :param CerebroPublicAccess: Cerebro公网访问状态
+        :type CerebroPublicAccess: str
+        :param CerebroPrivateAccess: Cerebro内网访问状态
+        :type CerebroPrivateAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1795,6 +1817,10 @@ class UpdateInstanceRequest(AbstractModel):
         self.SceneType = None
         self.KibanaConfig = None
         self.WebNodeTypeInfo = None
+        self.SwitchPrivateLink = None
+        self.EnableCerebro = None
+        self.CerebroPublicAccess = None
+        self.CerebroPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -1841,6 +1867,10 @@ class UpdateInstanceRequest(AbstractModel):
         if params.get("WebNodeTypeInfo") is not None:
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self.SwitchPrivateLink = params.get("SwitchPrivateLink")
+        self.EnableCerebro = params.get("EnableCerebro")
+        self.CerebroPublicAccess = params.get("CerebroPublicAccess")
+        self.CerebroPrivateAccess = params.get("CerebroPrivateAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

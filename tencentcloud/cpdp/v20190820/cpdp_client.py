@@ -2584,7 +2584,7 @@ class CpdpClient(AbstractClient):
 
 
     def RefundTlinxOrder(self, request):
-        """云支付Tlinx退款接口
+        """云支付订单退款接口
 
         :param request: Request instance for RefundTlinxOrder.
         :type request: :class:`tencentcloud.cpdp.v20190820.models.RefundTlinxOrderRequest`

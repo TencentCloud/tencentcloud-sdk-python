@@ -1338,16 +1338,21 @@ class UsageDetail(AbstractModel):
         :param Date: 日期，当需要汇总数据时日期为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
+        :param ProxyOrganizationName: 渠道侧合作企业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyOrganizationName: str
         """
         self.ProxyOrganizationOpenId = None
         self.Usage = None
         self.Date = None
+        self.ProxyOrganizationName = None
 
 
     def _deserialize(self, params):
         self.ProxyOrganizationOpenId = params.get("ProxyOrganizationOpenId")
         self.Usage = params.get("Usage")
         self.Date = params.get("Date")
+        self.ProxyOrganizationName = params.get("ProxyOrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

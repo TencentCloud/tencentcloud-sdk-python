@@ -2324,18 +2324,22 @@ class GroupIdOfUidInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uid: 子用户 UID
-        :type Uid: int
         :param GroupId: 用户组 ID
         :type GroupId: int
+        :param Uid: 子用户 UID
+        :type Uid: int
+        :param Uin: 子用户 Uin，Uid和Uin至少有一个必填
+        :type Uin: int
         """
-        self.Uid = None
         self.GroupId = None
+        self.Uid = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
-        self.Uid = params.get("Uid")
         self.GroupId = params.get("GroupId")
+        self.Uid = params.get("Uid")
+        self.Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

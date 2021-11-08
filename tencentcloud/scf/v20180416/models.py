@@ -536,6 +536,10 @@ class CreateFunctionRequest(AbstractModel):
         :type AsyncRunEnable: str
         :param TraceEnable: 是否开启事件追踪，TRUE 为开启，FALSE为关闭
         :type TraceEnable: str
+        :param ProtocolType: HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS
+        :type ProtocolType: str
+        :param ProtocolParams: HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
+        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         """
         self.FunctionName = None
         self.Code = None
@@ -560,6 +564,8 @@ class CreateFunctionRequest(AbstractModel):
         self.Tags = None
         self.AsyncRunEnable = None
         self.TraceEnable = None
+        self.ProtocolType = None
+        self.ProtocolParams = None
 
 
     def _deserialize(self, params):
@@ -608,6 +614,10 @@ class CreateFunctionRequest(AbstractModel):
                 self.Tags.append(obj)
         self.AsyncRunEnable = params.get("AsyncRunEnable")
         self.TraceEnable = params.get("TraceEnable")
+        self.ProtocolType = params.get("ProtocolType")
+        if params.get("ProtocolParams") is not None:
+            self.ProtocolParams = ProtocolParams()
+            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1942,6 +1952,12 @@ class GetFunctionResponse(AbstractModel):
         :param TraceEnable: 是否开启事件追踪
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceEnable: str
+        :param ProtocolType: HTTP函数支持的访问协议。当前支持WebSockets协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolType: str
+        :param ProtocolParams: HTTP函数配置ProtocolType访问协议，当前协议配置的参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1987,6 +2003,8 @@ class GetFunctionResponse(AbstractModel):
         self.StatusReasons = None
         self.AsyncRunEnable = None
         self.TraceEnable = None
+        self.ProtocolType = None
+        self.ProtocolParams = None
         self.RequestId = None
 
 
@@ -2067,6 +2085,10 @@ class GetFunctionResponse(AbstractModel):
                 self.StatusReasons.append(obj)
         self.AsyncRunEnable = params.get("AsyncRunEnable")
         self.TraceEnable = params.get("TraceEnable")
+        self.ProtocolType = params.get("ProtocolType")
+        if params.get("ProtocolParams") is not None:
+            self.ProtocolParams = ProtocolParams()
+            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3388,6 +3410,33 @@ class NamespaceUsage(AbstractModel):
         
 
 
+class ProtocolParams(AbstractModel):
+    """HTTP函数支持其他访问协议的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WSParams: WebSockets协议支持的参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WSParams: :class:`tencentcloud.scf.v20180416.models.WSParams`
+        """
+        self.WSParams = None
+
+
+    def _deserialize(self, params):
+        if params.get("WSParams") is not None:
+            self.WSParams = WSParams()
+            self.WSParams._deserialize(params.get("WSParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublicNetConfigIn(AbstractModel):
     """公网访问配置
 
@@ -4452,6 +4501,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param InitTimeout: 函数初始化执行超时时间
         :type InitTimeout: int
+        :param ProtocolParams: HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
+        :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         """
         self.FunctionName = None
         self.Description = None
@@ -4471,6 +4522,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.PublicNetConfig = None
         self.CfsConfig = None
         self.InitTimeout = None
+        self.ProtocolParams = None
 
 
     def _deserialize(self, params):
@@ -4507,6 +4559,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
         self.InitTimeout = params.get("InitTimeout")
+        if params.get("ProtocolParams") is not None:
+            self.ProtocolParams = ProtocolParams()
+            self.ProtocolParams._deserialize(params.get("ProtocolParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4842,6 +4897,31 @@ class VpcConfig(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WSParams(AbstractModel):
+    """HTTP函数通过WebSockets协议访问时的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdleTimeOut: 空闲超时时间, 单位秒，默认15s。可配置范围1~1800s。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdleTimeOut: int
+        """
+        self.IdleTimeOut = None
+
+
+    def _deserialize(self, params):
+        self.IdleTimeOut = params.get("IdleTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

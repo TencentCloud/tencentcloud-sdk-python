@@ -699,7 +699,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCTrend(self, request):
-        """获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)
+        """获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
 
         :param request: Request instance for DescribeCCTrend.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCTrendRequest`
