@@ -1034,6 +1034,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScdnBotData(self, request):
+        """获取BOT统计数据列表
+
+        :param request: Request instance for DescribeScdnBotData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnBotDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScdnBotData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScdnBotDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScdnBotRecords(self, request):
         """查询BOT会话记录列表
 

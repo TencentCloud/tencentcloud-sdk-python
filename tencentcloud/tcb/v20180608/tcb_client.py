@@ -726,6 +726,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudBaseRunOneClickTaskExternal(self, request):
+        """查询一键部署任务 （特定接口：外部查询使用）
+
+        :param request: Request instance for DescribeCloudBaseRunOneClickTaskExternal.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOneClickTaskExternalRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunOneClickTaskExternalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunOneClickTaskExternal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunOneClickTaskExternalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudBaseRunOperationTypes(self, request):
         """查询服务、版本和操作类型
 
@@ -852,6 +880,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunServerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudBaseRunServerDomainName(self, request):
+        """查询微信云托管服务域名
+
+        :param request: Request instance for DescribeCloudBaseRunServerDomainName.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerDomainNameRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunServerDomainNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunServerDomainName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunServerDomainNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

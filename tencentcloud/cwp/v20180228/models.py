@@ -6141,7 +6141,7 @@ class DescribeAssetSystemPackageListRequest(AbstractModel):
 3:java
 4:system</li>
         :type Filters: list of Filter
-        :param Order: 排序方式，asc升序 或 desc降序
+        :param Order: 排序方式，asc-升序 或 desc-降序
         :type Order: str
         :param By: 排序方式可选：InstallTime 安装时间
         :type By: str
@@ -7433,7 +7433,7 @@ class DescribeBaselineAnalysisDataResponse(AbstractModel):
         :param LatestScanTime: 最后检测时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestScanTime: str
-        :param IsGlobal: 是否全部服务器
+        :param IsGlobal: 是否全部服务器：1-是 0-否
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsGlobal: int
         :param ScanHostCount: 服务器总数
@@ -10121,9 +10121,9 @@ class DescribeMaliciousRequestWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 分页参数
+        :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
-        :param Offset: 分页参数
+        :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Filters: 过滤条件。
 
@@ -15412,16 +15412,16 @@ class IgnoreRuleEffectHostInfo(AbstractModel):
         :param HostName: 主机名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: str
-        :param Level: 危害等级
+        :param Level: 危害等级：1-低位，2-中危，3-高危，4-严重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
         :param TagList: 主机标签数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of str
-        :param Status: 状态
+        :param Status: 状态：0-未通过，1-忽略，3-已通过，5-检测中
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param LastScanTime: 最后检测事件
+        :param LastScanTime: 最后检测时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastScanTime: str
         :param EventId: 事件id

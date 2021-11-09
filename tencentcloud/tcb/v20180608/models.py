@@ -3215,6 +3215,90 @@ class DescribeCloudBaseRunConfForGateWayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudBaseRunOneClickTaskExternalRequest(AbstractModel):
+    """DescribeCloudBaseRunOneClickTaskExternal请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExternalId: 外部任务Id 最长64字节
+        :type ExternalId: str
+        """
+        self.ExternalId = None
+
+
+    def _deserialize(self, params):
+        self.ExternalId = params.get("ExternalId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunOneClickTaskExternalResponse(AbstractModel):
+    """DescribeCloudBaseRunOneClickTaskExternal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExternalId: 外部任务Id
+        :type ExternalId: str
+        :param EnvId: 环境Id
+        :type EnvId: str
+        :param UserUin: 用户uin
+        :type UserUin: str
+        :param ServerName: 服务名
+        :type ServerName: str
+        :param VersionName: 版本名
+        :type VersionName: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Stage: 当前阶段
+微信云托管环境创建阶段：envStage
+存储资源创建阶段：storageStage
+服务创建阶段：serverStage
+        :type Stage: str
+        :param Status: 状态
+running
+stopped
+failed
+finished
+        :type Status: str
+        :param FailReason: 失败原因
+        :type FailReason: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExternalId = None
+        self.EnvId = None
+        self.UserUin = None
+        self.ServerName = None
+        self.VersionName = None
+        self.CreateTime = None
+        self.Stage = None
+        self.Status = None
+        self.FailReason = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExternalId = params.get("ExternalId")
+        self.EnvId = params.get("EnvId")
+        self.UserUin = params.get("UserUin")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.CreateTime = params.get("CreateTime")
+        self.Stage = params.get("Stage")
+        self.Status = params.get("Status")
+        self.FailReason = params.get("FailReason")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCloudBaseRunOperationTypesRequest(AbstractModel):
     """DescribeCloudBaseRunOperationTypes请求参数结构体
 
@@ -3474,6 +3558,71 @@ class DescribeCloudBaseRunResourceResponse(AbstractModel):
                 obj = CloudBaseRunVpcSubnet()
                 obj._deserialize(item)
                 self.SubnetIds.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunServerDomainNameRequest(AbstractModel):
+    """DescribeCloudBaseRunServerDomainName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServerName: 服务名
+        :type ServerName: str
+        :param UserEnvId: 环境Id
+        :type UserEnvId: str
+        :param UserUin: 用户Uin
+        :type UserUin: str
+        :param ExternalId: 外部Id
+        :type ExternalId: str
+        """
+        self.ServerName = None
+        self.UserEnvId = None
+        self.UserUin = None
+        self.ExternalId = None
+
+
+    def _deserialize(self, params):
+        self.ServerName = params.get("ServerName")
+        self.UserEnvId = params.get("UserEnvId")
+        self.UserUin = params.get("UserUin")
+        self.ExternalId = params.get("ExternalId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunServerDomainNameResponse(AbstractModel):
+    """DescribeCloudBaseRunServerDomainName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublicDomain: 公网服务域名
+        :type PublicDomain: str
+        :param InternalDomain: 内部服务域名
+        :type InternalDomain: str
+        :param DomainName: 弃用
+        :type DomainName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PublicDomain = None
+        self.InternalDomain = None
+        self.DomainName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PublicDomain = params.get("PublicDomain")
+        self.InternalDomain = params.get("InternalDomain")
+        self.DomainName = params.get("DomainName")
         self.RequestId = params.get("RequestId")
 
 

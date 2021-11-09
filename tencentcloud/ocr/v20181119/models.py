@@ -2111,11 +2111,17 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type IsWords: bool
         :param EnableDetectSplit: 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
         :type EnableDetectSplit: bool
+        :param IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.IsWords = None
         self.EnableDetectSplit = None
+        self.IsPdf = None
+        self.PdfPageNumber = None
 
 
     def _deserialize(self, params):
@@ -2123,6 +2129,8 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.IsWords = params.get("IsWords")
         self.EnableDetectSplit = params.get("EnableDetectSplit")
+        self.IsPdf = params.get("IsPdf")
+        self.PdfPageNumber = params.get("PdfPageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -154,7 +154,7 @@ class AddUserToGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: 添加的子用户 UID 和用户组 ID 关联关系
+        :param Info: 添加的子用户 UIN/UID 和用户组 ID 关联关系
         :type Info: list of GroupIdOfUidInfo
         """
         self.Info = None
@@ -3805,7 +3805,7 @@ class RemoveUserFromGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: 要删除的用户 UID和用户组 ID对应数组
+        :param Info: 要删除的用户 UIN/UID和用户组 ID对应数组
         :type Info: list of GroupIdOfUidInfo
         """
         self.Info = None

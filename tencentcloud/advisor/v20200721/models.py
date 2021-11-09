@@ -235,6 +235,34 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class KeyValue(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 键名
+        :type Key: str
+        :param Value: 键名对应值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RiskFieldsDesc(AbstractModel):
     """风险实例字段描述
 
@@ -252,16 +280,26 @@ int: 整形，例如 111
 stringSlice : 字符串数组类型，例如["a", "b"]
 tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"vvv2"}]
         :type FieldType: str
+        :param FieldDict: 字段值对应字典
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldDict: list of KeyValue
         """
         self.Field = None
         self.FieldName = None
         self.FieldType = None
+        self.FieldDict = None
 
 
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.FieldName = params.get("FieldName")
         self.FieldType = params.get("FieldType")
+        if params.get("FieldDict") is not None:
+            self.FieldDict = []
+            for item in params.get("FieldDict"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.FieldDict.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

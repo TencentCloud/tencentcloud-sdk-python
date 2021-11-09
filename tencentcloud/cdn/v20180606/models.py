@@ -1835,6 +1835,67 @@ class BotStatisticsCount(AbstractModel):
         
 
 
+class BotStats(AbstractModel):
+    """BOT统计结果数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Metric: 指标名称
+        :type Metric: str
+        :param DetailData: 指标详细数据
+        :type DetailData: list of BotStatsDetailData
+        """
+        self.Metric = None
+        self.DetailData = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        if params.get("DetailData") is not None:
+            self.DetailData = []
+            for item in params.get("DetailData"):
+                obj = BotStatsDetailData()
+                obj._deserialize(item)
+                self.DetailData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotStatsDetailData(AbstractModel):
+    """BOT统计结果数据详细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 时间
+        :type Time: str
+        :param Value: 数据值
+        :type Value: int
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BriefDomain(AbstractModel):
     """域名基础配置信息，含 CNAME、状态、业务类型、加速区域、创建时间、更新时间、源站配置等。
 
@@ -5480,6 +5541,76 @@ class DescribeReportDataResponse(AbstractModel):
                 obj = ReportData()
                 obj._deserialize(item)
                 self.ProjectReport.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScdnBotDataRequest(AbstractModel):
+    """DescribeScdnBotData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Area: mainland 大陆地区 overseas境外地区
+        :type Area: str
+        :param Interval: 取值："2min"或者"hour"，表示查询2分钟或者1小时粒度的数据，如果查询时间范围>1天，则强制返回1小时粒度数据
+        :type Interval: str
+        :param Domains: 域名数组，多选域名时，使用此参数,不填写表示查询所有域名的数据（AppID维度数据）
+        :type Domains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Area = None
+        self.Interval = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Area = params.get("Area")
+        self.Interval = params.get("Interval")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScdnBotDataResponse(AbstractModel):
+    """DescribeScdnBotData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 统计信息详细数据
+        :type Data: list of BotStats
+        :param Interval: 当前返回数据的粒度，取值："2min"或者"hour"，分别表示2分钟或者1小时粒度
+        :type Interval: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Interval = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BotStats()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Interval = params.get("Interval")
         self.RequestId = params.get("RequestId")
 
 
@@ -13369,6 +13500,9 @@ disabled：未启用
 8：非洲
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: int
+        :param ConfigId: 流量包类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: int
         """
         self.Id = None
         self.Type = None
@@ -13386,6 +13520,7 @@ disabled：未启用
         self.ExtensionAvailable = None
         self.RefundAvailable = None
         self.Region = None
+        self.ConfigId = None
 
 
     def _deserialize(self, params):
@@ -13405,6 +13540,7 @@ disabled：未启用
         self.ExtensionAvailable = params.get("ExtensionAvailable")
         self.RefundAvailable = params.get("RefundAvailable")
         self.Region = params.get("Region")
+        self.ConfigId = params.get("ConfigId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1120,14 +1120,18 @@ class DetectProductBetaRequest(AbstractModel):
         :param ImageBase64: 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
 与ImageUrl同时存在时优先使用ImageUrl字段。
         :type ImageBase64: str
+        :param NeedLemma: 是否需要百科信息 1：是，0: 否，默认是0
+        :type NeedLemma: int
         """
         self.ImageUrl = None
         self.ImageBase64 = None
+        self.NeedLemma = None
 
 
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        self.NeedLemma = params.get("NeedLemma")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

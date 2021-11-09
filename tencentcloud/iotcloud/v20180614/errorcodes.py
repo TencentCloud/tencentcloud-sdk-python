@@ -107,6 +107,9 @@ INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = 'InvalidParameterValue.DeviceAlreadyE
 # 设备不是网关类型。
 INVALIDPARAMETERVALUE_DEVICEISNOTGATEWAY = 'InvalidParameterValue.DeviceIsNotGateway'
 
+# 设备不存在。
+INVALIDPARAMETERVALUE_DEVICENOTEXIST = 'InvalidParameterValue.DeviceNotExist'
+
 # 存失败，行为操作和转发错误行为数据目标不可为同一设备。
 INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = 'InvalidParameterValue.FailActionHasSameDevice'
 
