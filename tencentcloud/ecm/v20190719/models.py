@@ -6975,6 +6975,9 @@ class Listener(AbstractModel):
         :param SessionType: 监听器的会话类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionType: str
+        :param EndPort: 端口段结束端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPort: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -6985,6 +6988,7 @@ class Listener(AbstractModel):
         self.ListenerName = None
         self.CreateTime = None
         self.SessionType = None
+        self.EndPort = None
 
 
     def _deserialize(self, params):
@@ -6999,6 +7003,7 @@ class Listener(AbstractModel):
         self.ListenerName = params.get("ListenerName")
         self.CreateTime = params.get("CreateTime")
         self.SessionType = params.get("SessionType")
+        self.EndPort = params.get("EndPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

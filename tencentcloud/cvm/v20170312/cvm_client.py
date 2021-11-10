@@ -1525,6 +1525,7 @@ class CvmClient(AbstractClient):
     def ModifyInstancesAttribute(self, request):
         """本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称和关联的安全组）。
 
+        * 每次请求必须指定实例的一种属性用于修改。
         * “实例名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为在线支持或是进行实例管理操作的依据。
         * 支持批量操作。每次请求批量实例的上限为100。
         * 修改关联安全组时，子机原来关联的安全组会被解绑。

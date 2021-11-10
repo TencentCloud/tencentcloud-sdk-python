@@ -78,6 +78,46 @@ class AppDeviceInfo(AbstractModel):
         
 
 
+class BatchProductionInfo(AbstractModel):
+    """获取返回列表的详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchProductionId: 量产ID
+        :type BatchProductionId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param BurnMethod: 烧录方式
+        :type BurnMethod: int
+        :param CreateTime: 创建时间
+        :type CreateTime: int
+        :param ProductName: 产品名称
+        :type ProductName: str
+        """
+        self.BatchProductionId = None
+        self.ProductId = None
+        self.BurnMethod = None
+        self.CreateTime = None
+        self.ProductName = None
+
+
+    def _deserialize(self, params):
+        self.BatchProductionId = params.get("BatchProductionId")
+        self.ProductId = params.get("ProductId")
+        self.BurnMethod = params.get("BurnMethod")
+        self.CreateTime = params.get("CreateTime")
+        self.ProductName = params.get("ProductName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallDeviceActionAsyncRequest(AbstractModel):
     """CallDeviceActionAsync请求参数结构体
 
@@ -273,6 +313,83 @@ Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
     def _deserialize(self, params):
         self.Data = params.get("Data")
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBatchProductionRequest(AbstractModel):
+    """CreateBatchProduction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param BurnMethod: 烧录方式，0为直接烧录，1为动态注册。
+        :type BurnMethod: int
+        :param GenerationMethod: 生成方式，0为系统生成，1为文件上传。
+        :type GenerationMethod: int
+        :param UploadUrl: 文件上传URL，用于文件上传时填写。
+        :type UploadUrl: str
+        :param BatchCnt: 量产数量，用于系统生成时填写。
+        :type BatchCnt: int
+        :param GenerationQRCode: 是否生成二维码,0为不生成，1为生成。
+        :type GenerationQRCode: int
+        """
+        self.ProjectId = None
+        self.ProductId = None
+        self.BurnMethod = None
+        self.GenerationMethod = None
+        self.UploadUrl = None
+        self.BatchCnt = None
+        self.GenerationQRCode = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ProductId = params.get("ProductId")
+        self.BurnMethod = params.get("BurnMethod")
+        self.GenerationMethod = params.get("GenerationMethod")
+        self.UploadUrl = params.get("UploadUrl")
+        self.BatchCnt = params.get("BatchCnt")
+        self.GenerationQRCode = params.get("GenerationQRCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchProductionResponse(AbstractModel):
+    """CreateBatchProduction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param BatchProductionId: 量产id
+        :type BatchProductionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProjectId = None
+        self.ProductId = None
+        self.BatchProductionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ProductId = params.get("ProductId")
+        self.BatchProductionId = params.get("BatchProductionId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1396,6 +1513,75 @@ class DeleteTopicRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBatchProductionRequest(AbstractModel):
+    """DescribeBatchProduction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param BatchProductionId: 量产ID
+        :type BatchProductionId: str
+        """
+        self.ProductId = None
+        self.BatchProductionId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.BatchProductionId = params.get("BatchProductionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchProductionResponse(AbstractModel):
+    """DescribeBatchProduction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchCnt: 量产数量。
+        :type BatchCnt: int
+        :param BurnMethod: 烧录方式。
+        :type BurnMethod: int
+        :param CreateTime: 创建时间。
+        :type CreateTime: int
+        :param DownloadUrl: 下载URL。
+        :type DownloadUrl: str
+        :param GenerationMethod: 生成方式。
+        :type GenerationMethod: int
+        :param UploadUrl: 上传URL。
+        :type UploadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchCnt = None
+        self.BurnMethod = None
+        self.CreateTime = None
+        self.DownloadUrl = None
+        self.GenerationMethod = None
+        self.UploadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchCnt = params.get("BatchCnt")
+        self.BurnMethod = params.get("BurnMethod")
+        self.CreateTime = params.get("CreateTime")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.GenerationMethod = params.get("GenerationMethod")
+        self.UploadUrl = params.get("UploadUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -2978,6 +3164,69 @@ class FirmwareInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetBatchProductionsListRequest(AbstractModel):
+    """GetBatchProductionsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量限制
+        :type Limit: int
+        """
+        self.ProjectId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetBatchProductionsListResponse(AbstractModel):
+    """GetBatchProductionsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchProductions: 返回详情信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchProductions: list of BatchProductionInfo
+        :param TotalCnt: 返回数量。
+        :type TotalCnt: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchProductions = None
+        self.TotalCnt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BatchProductions") is not None:
+            self.BatchProductions = []
+            for item in params.get("BatchProductions"):
+                obj = BatchProductionInfo()
+                obj._deserialize(item)
+                self.BatchProductions.append(obj)
+        self.TotalCnt = params.get("TotalCnt")
+        self.RequestId = params.get("RequestId")
 
 
 class GetCOSURLRequest(AbstractModel):

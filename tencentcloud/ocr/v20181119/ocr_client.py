@@ -1485,6 +1485,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizeContainerOCR(self, request):
+        """本接口支持集装箱箱门信息识别，识别字段包括集装箱箱号、类型、总重量、有效承重、容量、自身重量，具备集装箱箱号、类型不完整或者不清晰的告警功能。
+
+        :param request: Request instance for RecognizeContainerOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeContainerOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeContainerOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeContainerOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeContainerOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RecognizeOnlineTaxiItineraryOCR(self, request):
         """本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
 

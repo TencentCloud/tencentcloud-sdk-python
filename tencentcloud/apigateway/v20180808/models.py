@@ -3955,6 +3955,113 @@ class DescribeApisStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExclusiveInstanceDetailRequest(AbstractModel):
+    """DescribeExclusiveInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 独享实例唯一id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExclusiveInstanceDetailResponse(AbstractModel):
+    """DescribeExclusiveInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 独享实例详情
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.InstanceDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InstanceDetail()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExclusiveInstancesRequest(AbstractModel):
+    """DescribeExclusiveInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页查询，limit
+        :type Limit: int
+        :param Offset: 分页查询，offset
+        :type Offset: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExclusiveInstancesResponse(AbstractModel):
+    """DescribeExclusiveInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 独享实例列表查询结果
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.InstanceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InstanceInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIPStrategyApisStatusRequest(AbstractModel):
     """DescribeIPStrategyApisStatus请求参数结构体
 
@@ -6164,6 +6271,210 @@ class IPStrategysStatus(AbstractModel):
         
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """独享实例预付费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RenewFlag: 自动续费标示
+        :type RenewFlag: str
+        :param ExpiredTime: 预付费到期时间
+        :type ExpiredTime: str
+        """
+        self.RenewFlag = None
+        self.ExpiredTime = None
+
+
+    def _deserialize(self, params):
+        self.RenewFlag = params.get("RenewFlag")
+        self.ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceDetail(AbstractModel):
+    """独享实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 独享实例唯一id
+        :type InstanceId: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param InstanceName: 独享实例名字
+        :type InstanceName: str
+        :param InstanceDescription: 独享实例描述
+        :type InstanceDescription: str
+        :param InstanceChargeType: 独享实例计费类型
+        :type InstanceChargeType: str
+        :param InstanceState: 独享实例状态
+        :type InstanceState: str
+        :param InstanceChargePrepaid: 独享实例预付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargePrepaid: :class:`tencentcloud.apigateway.v20180808.models.InstanceChargePrepaid`
+        :param InstanceType: 独享实例类型
+        :type InstanceType: str
+        :param NetworkConfig: 独享实例网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConfig: :class:`tencentcloud.apigateway.v20180808.models.NetworkConfig`
+        :param VpcConfig: 独享实例vpc配置
+        :type VpcConfig: :class:`tencentcloud.apigateway.v20180808.models.VpcConfig`
+        :param Parameters: 独享实例参数配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parameters: list of ParameterInfo
+        :param IsolationStartedTime: 独享实例隔离时间
+        :type IsolationStartedTime: str
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param Zones: 可用区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zones: str
+        """
+        self.InstanceId = None
+        self.Zone = None
+        self.InstanceName = None
+        self.InstanceDescription = None
+        self.InstanceChargeType = None
+        self.InstanceState = None
+        self.InstanceChargePrepaid = None
+        self.InstanceType = None
+        self.NetworkConfig = None
+        self.VpcConfig = None
+        self.Parameters = None
+        self.IsolationStartedTime = None
+        self.CreatedTime = None
+        self.Zones = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceDescription = params.get("InstanceDescription")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceState = params.get("InstanceState")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceType = params.get("InstanceType")
+        if params.get("NetworkConfig") is not None:
+            self.NetworkConfig = NetworkConfig()
+            self.NetworkConfig._deserialize(params.get("NetworkConfig"))
+        if params.get("VpcConfig") is not None:
+            self.VpcConfig = VpcConfig()
+            self.VpcConfig._deserialize(params.get("VpcConfig"))
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = ParameterInfo()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        self.IsolationStartedTime = params.get("IsolationStartedTime")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Zones = params.get("Zones")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceInfo(AbstractModel):
+    """独享实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 独享实例唯一id
+        :type InstanceId: str
+        :param InstanceName: 独享实例name
+        :type InstanceName: str
+        :param InstanceDescription: 独享实例描述
+        :type InstanceDescription: str
+        :param InstanceChargeType: 独享实例计费类型
+        :type InstanceChargeType: str
+        :param InstanceType: 独享实例类型
+        :type InstanceType: str
+        :param InstanceState: 独享实例状态
+        :type InstanceState: str
+        :param CreatedTime: 独享实例创建时间
+        :type CreatedTime: str
+        :param DealName: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param ResourceId: 资源ID同唯一id
+        :type ResourceId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceDescription = None
+        self.InstanceChargeType = None
+        self.InstanceType = None
+        self.InstanceState = None
+        self.CreatedTime = None
+        self.DealName = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceDescription = params.get("InstanceDescription")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceState = params.get("InstanceState")
+        self.CreatedTime = params.get("CreatedTime")
+        self.DealName = params.get("DealName")
+        self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceParameterInput(AbstractModel):
+    """独享实例参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: ServiceRequestNumPreSec，ApiRequestNumPreSec
+        :type Name: str
+        :param Value: 参数值
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogQuery(AbstractModel):
     """检索条件入参
 
@@ -6765,6 +7076,70 @@ class ModifyApiResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyExclusiveInstanceRequest(AbstractModel):
+    """ModifyExclusiveInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 独享实例唯一id
+        :type InstanceId: str
+        :param InstanceName: 独享实例name
+        :type InstanceName: str
+        :param InstanceDescription: 独享实例描述
+        :type InstanceDescription: str
+        :param Parameters: 独享实例参数配置
+        :type Parameters: list of InstanceParameterInput
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceDescription = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceDescription = params.get("InstanceDescription")
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = InstanceParameterInput()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyExclusiveInstanceResponse(AbstractModel):
+    """ModifyExclusiveInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 独享实例详情信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.InstanceDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InstanceDetail()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIPStrategyRequest(AbstractModel):
     """ModifyIPStrategy请求参数结构体
 
@@ -7129,6 +7504,46 @@ class ModifyUsagePlanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NetworkConfig(AbstractModel):
+    """独享实例网络配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InternetMaxBandwidthOut: 最大出带宽
+        :type InternetMaxBandwidthOut: int
+        :param EnableInternetInbound: EnableInternetInbound信息
+        :type EnableInternetInbound: bool
+        :param EnableInternetOutbound: EnableInternetOutbound信息
+        :type EnableInternetOutbound: bool
+        :param InboundIpAddresses: InboundIpAddresses信息
+        :type InboundIpAddresses: list of str
+        :param OutboundIpAddresses: OutboundIpAddresses信息
+        :type OutboundIpAddresses: list of str
+        """
+        self.InternetMaxBandwidthOut = None
+        self.EnableInternetInbound = None
+        self.EnableInternetOutbound = None
+        self.InboundIpAddresses = None
+        self.OutboundIpAddresses = None
+
+
+    def _deserialize(self, params):
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.EnableInternetInbound = params.get("EnableInternetInbound")
+        self.EnableInternetOutbound = params.get("EnableInternetOutbound")
+        self.InboundIpAddresses = params.get("InboundIpAddresses")
+        self.OutboundIpAddresses = params.get("OutboundIpAddresses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OauthConfig(AbstractModel):
     """Oauth授权配置信息
 
@@ -7152,6 +7567,58 @@ class OauthConfig(AbstractModel):
         self.PublicKey = params.get("PublicKey")
         self.TokenLocation = params.get("TokenLocation")
         self.LoginRedirectUrl = params.get("LoginRedirectUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterInfo(AbstractModel):
+    """独享实例配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名字
+        :type Name: str
+        :param Value: 当前值
+        :type Value: int
+        :param Default: 默认值
+        :type Default: int
+        :param Unit: 单位
+        :type Unit: str
+        :param Type: 类型
+        :type Type: str
+        :param Minimum: 最小
+        :type Minimum: int
+        :param Maximum: 最大
+        :type Maximum: int
+        :param ModifedTime: 修改时间
+        :type ModifedTime: str
+        """
+        self.Name = None
+        self.Value = None
+        self.Default = None
+        self.Unit = None
+        self.Type = None
+        self.Minimum = None
+        self.Maximum = None
+        self.ModifedTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Default = params.get("Default")
+        self.Unit = params.get("Unit")
+        self.Type = params.get("Type")
+        self.Minimum = params.get("Minimum")
+        self.Maximum = params.get("Maximum")
+        self.ModifedTime = params.get("ModifedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9154,6 +9621,34 @@ class UsagePlansStatus(AbstractModel):
                 obj = UsagePlanStatusInfo()
                 obj._deserialize(item)
                 self.UsagePlanStatusSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcConfig(AbstractModel):
+    """独享实例vpc配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UniqVpcId: vpcid
+        :type UniqVpcId: str
+        :param UniqSubnetId: subnetid
+        :type UniqSubnetId: str
+        """
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+
+
+    def _deserialize(self, params):
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

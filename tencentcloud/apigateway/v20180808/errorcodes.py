@@ -416,6 +416,9 @@ UNSUPPORTEDOPERATION_INVALIDACTION = 'UnsupportedOperation.InvalidAction'
 # 不支持后端类型。
 UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = 'UnsupportedOperation.InvalidEndpointType'
 
+# 当前实例状态，不支持当前操作。
+UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = 'UnsupportedOperation.InvalidInstanceState'
+
 # 当前服务处于隔离中，暂不支持此操作。
 UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = 'UnsupportedOperation.InvalidServiceTrade'
 

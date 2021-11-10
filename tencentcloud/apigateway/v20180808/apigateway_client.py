@@ -1130,6 +1130,62 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExclusiveInstanceDetail(self, request):
+        """本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。​
+
+        :param request: Request instance for DescribeExclusiveInstanceDetail.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExclusiveInstanceDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExclusiveInstanceDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExclusiveInstances(self, request):
+        """本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。​
+
+        :param request: Request instance for DescribeExclusiveInstances.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstancesRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExclusiveInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExclusiveInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIPStrategy(self, request):
         """本接口（DescribeIPStrategy）用于查询IP策略详情。
 
@@ -1963,6 +2019,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApiIncrementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyExclusiveInstance(self, request):
+        """本接口（ModifyExclusiveInstance）用于修改独享实例信息。​
+
+        :param request: Request instance for ModifyExclusiveInstance.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyExclusiveInstanceRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyExclusiveInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyExclusiveInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyExclusiveInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

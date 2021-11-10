@@ -4389,7 +4389,7 @@ class PlatformInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称。
+        :param Platform: 平台标识。
         :type Platform: str
         :param Description: 平台描述。
         :type Description: str

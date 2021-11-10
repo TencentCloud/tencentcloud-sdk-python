@@ -1495,6 +1495,41 @@ class Labels(AbstractModel):
         
 
 
+class LemmaInfo(AbstractModel):
+    """百科词条信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LemmaTitle: 词条
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LemmaTitle: str
+        :param LemmaAbstract: 词条描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LemmaAbstract: str
+        :param Tag: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
+        """
+        self.LemmaTitle = None
+        self.LemmaAbstract = None
+        self.Tag = None
+
+
+    def _deserialize(self, params):
+        self.LemmaTitle = params.get("LemmaTitle")
+        self.LemmaAbstract = params.get("LemmaAbstract")
+        self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Location(AbstractModel):
     """检测到的主体在图片中的矩形框位置（四个顶点坐标）
 
@@ -1607,6 +1642,9 @@ class ProductInfo(AbstractModel):
         :type Score: float
         :param Image: 搜索到的商品配图URL。
         :type Image: str
+        :param LemmaInfoList: 百科词条列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LemmaInfoList: list of LemmaInfo
         """
         self.FindSKU = None
         self.Location = None
@@ -1616,6 +1654,7 @@ class ProductInfo(AbstractModel):
         self.ProductCategory = None
         self.Score = None
         self.Image = None
+        self.LemmaInfoList = None
 
 
     def _deserialize(self, params):
@@ -1629,6 +1668,12 @@ class ProductInfo(AbstractModel):
         self.ProductCategory = params.get("ProductCategory")
         self.Score = params.get("Score")
         self.Image = params.get("Image")
+        if params.get("LemmaInfoList") is not None:
+            self.LemmaInfoList = []
+            for item in params.get("LemmaInfoList"):
+                obj = LemmaInfo()
+                obj._deserialize(item)
+                self.LemmaInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

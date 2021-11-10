@@ -2170,6 +2170,8 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
         :type EventId: str
         :param UserId: 用户ID
         :type UserId: str
+        :param ChannelId: 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+        :type ChannelId: int
         """
         self.ProductId = None
         self.DeviceName = None
@@ -2179,6 +2181,7 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
         self.Size = None
         self.EventId = None
         self.UserId = None
+        self.ChannelId = None
 
 
     def _deserialize(self, params):
@@ -2190,6 +2193,7 @@ class DescribeCloudStorageEventsRequest(AbstractModel):
         self.Size = params.get("Size")
         self.EventId = params.get("EventId")
         self.UserId = params.get("UserId")
+        self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2212,7 +2216,7 @@ class DescribeCloudStorageEventsResponse(AbstractModel):
         :type Context: str
         :param Listover: 拉取结果是否已经结束
         :type Listover: bool
-        :param Total: 拉取结果数量
+        :param Total: 内部结果数量，并不等同于事件总数。
         :type Total: int
         :param VideoURL: 视频播放URL
         :type VideoURL: str

@@ -2516,7 +2516,7 @@ class HKIDCardOCRRequest(AbstractModel):
         :type ReturnHeadImage: bool
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
@@ -2809,7 +2809,7 @@ IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时�
 Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
 
 Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0~100，分数越低越模糊，建议阈值≥50）;
-BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0~100，分数越低边框遮挡可能性越低，建议阈值≥50）;
+BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0~100，分数越低边框遮挡可能性越低，建议阈值≤50）;
 
 WarnInfos，告警信息，Code 告警码列表和释义：
 -9100	身份证有效日期不合法告警，
@@ -4692,6 +4692,104 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecognizeContainerOCRRequest(AbstractModel):
+    """RecognizeContainerOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeContainerOCRResponse(AbstractModel):
+    """RecognizeContainerOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerId: 集装箱箱号
+        :type ContainerId: str
+        :param ContainerType: 集装箱类型
+        :type ContainerType: str
+        :param GrossKG: 集装箱总重量，单位：千克（KG）
+        :type GrossKG: str
+        :param GrossLB: 集装箱总重量，单位：磅（LB）
+        :type GrossLB: str
+        :param PayloadKG: 集装箱有效承重，单位：千克（KG）
+        :type PayloadKG: str
+        :param PayloadLB: 集装箱有效承重，单位：磅（LB）
+        :type PayloadLB: str
+        :param CapacityM3: 集装箱容量，单位：立方米
+        :type CapacityM3: str
+        :param CapacityFT3: 集装箱容量，单位：立英尺
+        :type CapacityFT3: str
+        :param Warn: 告警码
+-9926	集装箱箱号不完整或者不清晰
+-9927	集装箱类型不完整或者不清晰
+        :type Warn: list of int
+        :param TareKG: 集装箱自身重量，单位：千克（KG）
+        :type TareKG: str
+        :param TareLB: 集装箱自身重量，单位：磅（LB）
+        :type TareLB: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContainerId = None
+        self.ContainerType = None
+        self.GrossKG = None
+        self.GrossLB = None
+        self.PayloadKG = None
+        self.PayloadLB = None
+        self.CapacityM3 = None
+        self.CapacityFT3 = None
+        self.Warn = None
+        self.TareKG = None
+        self.TareLB = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ContainerId = params.get("ContainerId")
+        self.ContainerType = params.get("ContainerType")
+        self.GrossKG = params.get("GrossKG")
+        self.GrossLB = params.get("GrossLB")
+        self.PayloadKG = params.get("PayloadKG")
+        self.PayloadLB = params.get("PayloadLB")
+        self.CapacityM3 = params.get("CapacityM3")
+        self.CapacityFT3 = params.get("CapacityFT3")
+        self.Warn = params.get("Warn")
+        self.TareKG = params.get("TareKG")
+        self.TareLB = params.get("TareLB")
+        self.RequestId = params.get("RequestId")
+
+
 class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
     """RecognizeOnlineTaxiItineraryOCR请求参数结构体
 
@@ -5024,6 +5122,38 @@ class ResidenceBookletOCRResponse(AbstractModel):
         :type Household: str
         :param Address: 住址
         :type Address: str
+        :param Signature: 承办人签章文字
+        :type Signature: str
+        :param IssueDate: 签发日期
+        :type IssueDate: str
+        :param HomePageNumber: 户主页编号
+        :type HomePageNumber: str
+        :param HouseholderName: 户主姓名
+        :type HouseholderName: str
+        :param Relationship: 户主或与户主关系
+        :type Relationship: str
+        :param OtherAddresses: 本市（县）其他住址
+        :type OtherAddresses: str
+        :param ReligiousBelief: 宗教信仰
+        :type ReligiousBelief: str
+        :param Height: 身高
+        :type Height: str
+        :param BloodType: 血型
+        :type BloodType: str
+        :param MaritalStatus: 婚姻状况
+        :type MaritalStatus: str
+        :param VeteranStatus: 兵役状况
+        :type VeteranStatus: str
+        :param Profession: 职业
+        :type Profession: str
+        :param MoveToCityInformation: 何时由何地迁来本市(县)
+        :type MoveToCityInformation: str
+        :param MoveToSiteInformation: 何时由何地迁来本址
+        :type MoveToSiteInformation: str
+        :param RegistrationDate: 登记日期
+        :type RegistrationDate: str
+        :param FormerName: 曾用名
+        :type FormerName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5039,6 +5169,22 @@ class ResidenceBookletOCRResponse(AbstractModel):
         self.ServicePlace = None
         self.Household = None
         self.Address = None
+        self.Signature = None
+        self.IssueDate = None
+        self.HomePageNumber = None
+        self.HouseholderName = None
+        self.Relationship = None
+        self.OtherAddresses = None
+        self.ReligiousBelief = None
+        self.Height = None
+        self.BloodType = None
+        self.MaritalStatus = None
+        self.VeteranStatus = None
+        self.Profession = None
+        self.MoveToCityInformation = None
+        self.MoveToSiteInformation = None
+        self.RegistrationDate = None
+        self.FormerName = None
         self.RequestId = None
 
 
@@ -5055,6 +5201,22 @@ class ResidenceBookletOCRResponse(AbstractModel):
         self.ServicePlace = params.get("ServicePlace")
         self.Household = params.get("Household")
         self.Address = params.get("Address")
+        self.Signature = params.get("Signature")
+        self.IssueDate = params.get("IssueDate")
+        self.HomePageNumber = params.get("HomePageNumber")
+        self.HouseholderName = params.get("HouseholderName")
+        self.Relationship = params.get("Relationship")
+        self.OtherAddresses = params.get("OtherAddresses")
+        self.ReligiousBelief = params.get("ReligiousBelief")
+        self.Height = params.get("Height")
+        self.BloodType = params.get("BloodType")
+        self.MaritalStatus = params.get("MaritalStatus")
+        self.VeteranStatus = params.get("VeteranStatus")
+        self.Profession = params.get("Profession")
+        self.MoveToCityInformation = params.get("MoveToCityInformation")
+        self.MoveToSiteInformation = params.get("MoveToSiteInformation")
+        self.RegistrationDate = params.get("RegistrationDate")
+        self.FormerName = params.get("FormerName")
         self.RequestId = params.get("RequestId")
 
 
@@ -7215,11 +7377,18 @@ class VatInvoiceVerifyRequest(AbstractModel):
         :type InvoiceNo: str
         :param InvoiceDate: 开票日期（不支持当天发票查询，只支持一年以内），如：2019-12-20。
         :type InvoiceDate: str
-        :param Additional: 金额/发票校验码后6位（根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值）
+        :param Additional: 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
+
 增值税专用发票：开具金额（不含税）
+
 增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
+
+区块链发票：不含税金额/校验码，例如：“285.01/856ab”
+
 机动车销售统一发票：不含税价
+
 货物运输业增值税专用发票：合计金额
+
 二手车销售统一发票：车价合计
         :type Additional: str
         """

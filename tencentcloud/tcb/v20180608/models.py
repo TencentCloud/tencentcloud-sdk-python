@@ -3248,7 +3248,7 @@ class DescribeCloudBaseRunOneClickTaskExternalResponse(AbstractModel):
         r"""
         :param ExternalId: 外部任务Id
         :type ExternalId: str
-        :param EnvId: 环境Id
+        :param EnvId: 弃用
         :type EnvId: str
         :param UserUin: 用户uin
         :type UserUin: str
@@ -3271,6 +3271,8 @@ finished
         :type Status: str
         :param FailReason: 失败原因
         :type FailReason: str
+        :param UserEnvId: 用户envId
+        :type UserEnvId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3283,6 +3285,7 @@ finished
         self.Stage = None
         self.Status = None
         self.FailReason = None
+        self.UserEnvId = None
         self.RequestId = None
 
 
@@ -3296,6 +3299,7 @@ finished
         self.Stage = params.get("Stage")
         self.Status = params.get("Status")
         self.FailReason = params.get("FailReason")
+        self.UserEnvId = params.get("UserEnvId")
         self.RequestId = params.get("RequestId")
 
 
