@@ -1289,6 +1289,8 @@ class CreateListenerRequest(AbstractModel):
         :type Scheduler: str
         :param SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
         :type SessionType: str
+        :param EndPorts: 批量端口段的结束端口，必须和Ports长度一样。
+        :type EndPorts: list of int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1298,6 +1300,7 @@ class CreateListenerRequest(AbstractModel):
         self.SessionExpireTime = None
         self.Scheduler = None
         self.SessionType = None
+        self.EndPorts = None
 
 
     def _deserialize(self, params):
@@ -1311,6 +1314,7 @@ class CreateListenerRequest(AbstractModel):
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.Scheduler = params.get("Scheduler")
         self.SessionType = params.get("SessionType")
+        self.EndPorts = params.get("EndPorts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

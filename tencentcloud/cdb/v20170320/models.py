@@ -618,6 +618,34 @@ class BackupItem(AbstractModel):
         
 
 
+class BackupLimitVpcItem(AbstractModel):
+    """备份文件限制下载来源VPC设置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 限制下载来源的地域。目前仅支持当前地域。
+        :type Region: str
+        :param VpcList: 限制下载的vpc列表。
+        :type VpcList: list of str
+        """
+        self.Region = None
+        self.VpcList = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupSummaryItem(AbstractModel):
     """实例备份统计项
 
@@ -3161,6 +3189,54 @@ class DescribeBackupDatabasesResponse(AbstractModel):
                 obj = DatabaseName()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction请求参数结构体
+
+    """
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: NoLimit 不限制,内外网都可以下载； LimitOnlyIntranet 仅内网可下载； Customize 用户自定义vpc:ip可下载。 只有该值为 Customize 时， LimitVpc 和 LimitIp 才有意义。
+        :type LimitType: str
+        :param VpcComparisonSymbol: 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: In: 指定的ip可以下载； NotIn: 指定的ip不可以下载。
+        :type IpComparisonSymbol: str
+        :param LimitVpc: 限制下载的vpc设置。
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: 限制下载的ip设置。
+        :type LimitIp: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
         self.RequestId = params.get("RequestId")
 
 
@@ -7359,6 +7435,68 @@ class ModifyBackupConfigRequest(AbstractModel):
 
 class ModifyBackupConfigResponse(AbstractModel):
     """ModifyBackupConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: NoLimit 不限制,内外网都可以下载； LimitOnlyIntranet 仅内网可下载； Customize 用户自定义vpc:ip可下载。 只有该值为 Customize 时，才可以设置 LimitVpc 和 LimitIp 。
+        :type LimitType: str
+        :param VpcComparisonSymbol: 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In。
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: In: 指定的ip可以下载； NotIn: 指定的ip不可以下载。 默认为In。
+        :type IpComparisonSymbol: str
+        :param LimitVpc: 限制下载的vpc设置。
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: 限制下载的ip设置
+        :type LimitIp: list of str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction返回参数结构体
 
     """
 

@@ -568,7 +568,7 @@ class BusInvoiceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Name: 识别出的字段名称(关键字)，支持以下字段：
-发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市。
+发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次。
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :type Value: str

@@ -5516,6 +5516,52 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancerSlaRequest(AbstractModel):
+    """ModifyLoadBalancerSla请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerSla: 负载均衡性能保障实例ID和变配的目标规格
+        :type LoadBalancerSla: list of SlaUpdateParam
+        """
+        self.LoadBalancerSla = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancerSla") is not None:
+            self.LoadBalancerSla = []
+            for item in params.get("LoadBalancerSla"):
+                obj = SlaUpdateParam()
+                obj._deserialize(item)
+                self.LoadBalancerSla.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerSlaResponse(AbstractModel):
+    """ModifyLoadBalancerSla返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRuleRequest(AbstractModel):
     """ModifyRule请求参数结构体
 
@@ -6805,6 +6851,34 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SlaUpdateParam(AbstractModel):
+    """性能保障变配参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: lb的字符串ID
+        :type LoadBalancerId: str
+        :param SlaType: 需要变更的性能保障级别
+        :type SlaType: str
+        """
+        self.LoadBalancerId = None
+        self.SlaType = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SlaType = params.get("SlaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SnatIp(AbstractModel):

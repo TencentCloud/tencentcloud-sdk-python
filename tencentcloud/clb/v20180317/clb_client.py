@@ -1557,6 +1557,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLoadBalancerSla(self, request):
+        """升、降配接口。支持共享型clb升级到性能保障型clb。支持性能保障型提升等级。支持性能保障降低规格。（不支持性能保障降级到共享型）。
+
+        :param request: Request instance for ModifyLoadBalancerSla.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerSlaRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerSlaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerSla", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerSlaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyRule(self, request):
         """ModifyRule 接口用来修改负载均衡七层监听器下的转发规则的各项属性，包括转发路径、健康检查属性、转发策略等。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。

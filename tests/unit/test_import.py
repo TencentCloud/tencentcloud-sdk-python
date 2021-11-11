@@ -834,6 +834,11 @@ def test_import_tci():
     from tencentcloud.tci.v20190318 import models
 
 
+def test_import_tcm():
+    from tencentcloud.tcm.v20210413 import tcm_client
+    from tencentcloud.tcm.v20210413 import models
+
+
 def test_import_tcr():
     from tencentcloud.tcr.v20190924 import tcr_client
     from tencentcloud.tcr.v20190924 import models

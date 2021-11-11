@@ -971,6 +971,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupDownloadRestriction(self, request):
+        """该接口用户查询当前地域用户设置的默认备份下载来源限制。
+
+        :param request: Request instance for DescribeBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupDownloadRestriction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupDownloadRestrictionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupOverview(self, request):
         """本接口(DescribeBackupOverview)用于查询用户的备份概览。返回用户当前备份总个数、备份总的占用容量、赠送的免费容量、计费容量（容量单位为字节）。
 
@@ -2476,6 +2504,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupDownloadRestriction(self, request):
+        """该接口用于修改用户当前地域的备份文件限制下载来源，可以设置内外网均可下载、仅内网可下载，或内网指定的vpc、ip可以下载。
+
+        :param request: Request instance for ModifyBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBackupDownloadRestriction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBackupDownloadRestrictionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
