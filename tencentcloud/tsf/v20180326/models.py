@@ -2375,6 +2375,8 @@ class CreateApplicationRequest(AbstractModel):
         :type ServiceConfigList: list of ServiceConfig
         :param IgnoreCreateImageRepository: 忽略创建镜像仓库
         :type IgnoreCreateImageRepository: bool
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.ApplicationName = None
         self.ApplicationType = None
@@ -2386,6 +2388,7 @@ class CreateApplicationRequest(AbstractModel):
         self.ProgramId = None
         self.ServiceConfigList = None
         self.IgnoreCreateImageRepository = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -2404,6 +2407,7 @@ class CreateApplicationRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ServiceConfigList.append(obj)
         self.IgnoreCreateImageRepository = params.get("IgnoreCreateImageRepository")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2466,6 +2470,14 @@ class CreateClusterRequest(AbstractModel):
         :type MaxClusterServiceNum: int
         :param ProgramId: 需要绑定的数据集ID
         :type ProgramId: str
+        :param KuberneteApiServer: api地址
+        :type KuberneteApiServer: str
+        :param KuberneteNativeType: K : kubeconfig, S : service account
+        :type KuberneteNativeType: str
+        :param KuberneteNativeSecret: native secret
+        :type KuberneteNativeSecret: str
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.ClusterName = None
         self.ClusterType = None
@@ -2479,6 +2491,10 @@ class CreateClusterRequest(AbstractModel):
         self.MaxNodePodNum = None
         self.MaxClusterServiceNum = None
         self.ProgramId = None
+        self.KuberneteApiServer = None
+        self.KuberneteNativeType = None
+        self.KuberneteNativeSecret = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -2494,6 +2510,10 @@ class CreateClusterRequest(AbstractModel):
         self.MaxNodePodNum = params.get("MaxNodePodNum")
         self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
         self.ProgramId = params.get("ProgramId")
+        self.KuberneteApiServer = params.get("KuberneteApiServer")
+        self.KuberneteNativeType = params.get("KuberneteNativeType")
+        self.KuberneteNativeSecret = params.get("KuberneteNativeSecret")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2545,6 +2565,8 @@ class CreateConfigRequest(AbstractModel):
         :type ConfigType: str
         :param EncodeWithBase64: Base64编码的配置项
         :type EncodeWithBase64: bool
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.ConfigName = None
         self.ConfigVersion = None
@@ -2553,6 +2575,7 @@ class CreateConfigRequest(AbstractModel):
         self.ConfigVersionDesc = None
         self.ConfigType = None
         self.EncodeWithBase64 = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -2563,6 +2586,7 @@ class CreateConfigRequest(AbstractModel):
         self.ConfigVersionDesc = params.get("ConfigVersionDesc")
         self.ConfigType = params.get("ConfigType")
         self.EncodeWithBase64 = params.get("EncodeWithBase64")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2763,6 +2787,8 @@ class CreateFileConfigRequest(AbstractModel):
         :type ConfigPostCmd: str
         :param EncodeWithBase64: Base64编码的配置项
         :type EncodeWithBase64: bool
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.ConfigName = None
         self.ConfigVersion = None
@@ -2774,6 +2800,7 @@ class CreateFileConfigRequest(AbstractModel):
         self.ConfigFileCode = None
         self.ConfigPostCmd = None
         self.EncodeWithBase64 = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -2787,6 +2814,7 @@ class CreateFileConfigRequest(AbstractModel):
         self.ConfigFileCode = params.get("ConfigFileCode")
         self.ConfigPostCmd = params.get("ConfigPostCmd")
         self.EncodeWithBase64 = params.get("EncodeWithBase64")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2829,9 +2857,12 @@ class CreateGatewayApiRequest(AbstractModel):
         :type GroupId: str
         :param ApiList: Api信息
         :type ApiList: list of ApiInfo
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.GroupId = None
         self.ApiList = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -2842,6 +2873,7 @@ class CreateGatewayApiRequest(AbstractModel):
                 obj = ApiInfo()
                 obj._deserialize(item)
                 self.ApiList.append(obj)
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2955,10 +2987,13 @@ class CreateLaneRequest(AbstractModel):
         :type Remark: str
         :param LaneGroupList: 泳道部署组信息
         :type LaneGroupList: list of LaneGroup
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.LaneName = None
         self.Remark = None
         self.LaneGroupList = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -2970,6 +3005,7 @@ class CreateLaneRequest(AbstractModel):
                 obj = LaneGroup()
                 obj._deserialize(item)
                 self.LaneGroupList.append(obj)
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3018,12 +3054,15 @@ class CreateLaneRuleRequest(AbstractModel):
         :type RuleTagRelationship: str
         :param LaneId: 泳道Id
         :type LaneId: str
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.RuleName = None
         self.Remark = None
         self.RuleTagList = None
         self.RuleTagRelationship = None
         self.LaneId = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -3037,6 +3076,7 @@ class CreateLaneRuleRequest(AbstractModel):
                 self.RuleTagList.append(obj)
         self.RuleTagRelationship = params.get("RuleTagRelationship")
         self.LaneId = params.get("LaneId")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3146,6 +3186,8 @@ class CreateNamespaceRequest(AbstractModel):
         :type IsHaEnable: str
         :param ProgramId: 需要绑定的数据集ID
         :type ProgramId: str
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.NamespaceName = None
         self.ClusterId = None
@@ -3155,6 +3197,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.NamespaceId = None
         self.IsHaEnable = None
         self.ProgramId = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -3166,6 +3209,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.NamespaceId = params.get("NamespaceId")
         self.IsHaEnable = params.get("IsHaEnable")
         self.ProgramId = params.get("ProgramId")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3263,6 +3307,8 @@ class CreatePublicConfigRequest(AbstractModel):
         :type ConfigType: str
         :param EncodeWithBase64: Base64编码的配置项
         :type EncodeWithBase64: bool
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.ConfigName = None
         self.ConfigVersion = None
@@ -3270,6 +3316,7 @@ class CreatePublicConfigRequest(AbstractModel):
         self.ConfigVersionDesc = None
         self.ConfigType = None
         self.EncodeWithBase64 = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -3279,6 +3326,7 @@ class CreatePublicConfigRequest(AbstractModel):
         self.ConfigVersionDesc = params.get("ConfigVersionDesc")
         self.ConfigType = params.get("ConfigType")
         self.EncodeWithBase64 = params.get("EncodeWithBase64")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5746,6 +5794,12 @@ class DescribeConfigSummaryRequest(AbstractModel):
         :type OrderBy: str
         :param OrderType: 升序传 0，降序传 1
         :type OrderType: int
+        :param ConfigTagList: 无
+        :type ConfigTagList: list of str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
+        :param ConfigIdList: 无
+        :type ConfigIdList: list of str
         """
         self.ApplicationId = None
         self.SearchWord = None
@@ -5753,6 +5807,9 @@ class DescribeConfigSummaryRequest(AbstractModel):
         self.Limit = None
         self.OrderBy = None
         self.OrderType = None
+        self.ConfigTagList = None
+        self.DisableProgramAuthCheck = None
+        self.ConfigIdList = None
 
 
     def _deserialize(self, params):
@@ -5762,6 +5819,9 @@ class DescribeConfigSummaryRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.OrderBy = params.get("OrderBy")
         self.OrderType = params.get("OrderType")
+        self.ConfigTagList = params.get("ConfigTagList")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
+        self.ConfigIdList = params.get("ConfigIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6860,6 +6920,8 @@ class DescribeGroupsRequest(AbstractModel):
         :type GroupResourceTypeList: list of str
         :param Status: 部署组状态过滤字段
         :type Status: str
+        :param GroupIdList: 无
+        :type GroupIdList: list of str
         """
         self.SearchWord = None
         self.ApplicationId = None
@@ -6871,6 +6933,7 @@ class DescribeGroupsRequest(AbstractModel):
         self.ClusterId = None
         self.GroupResourceTypeList = None
         self.Status = None
+        self.GroupIdList = None
 
 
     def _deserialize(self, params):
@@ -6884,6 +6947,7 @@ class DescribeGroupsRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.GroupResourceTypeList = params.get("GroupResourceTypeList")
         self.Status = params.get("Status")
+        self.GroupIdList = params.get("GroupIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7141,11 +7205,14 @@ class DescribeLaneRulesRequest(AbstractModel):
         :type SearchWord: str
         :param RuleId: 泳道规则ID（用于精确搜索）
         :type RuleId: str
+        :param RuleIdList: 无
+        :type RuleIdList: list of str
         """
         self.Limit = None
         self.Offset = None
         self.SearchWord = None
         self.RuleId = None
+        self.RuleIdList = None
 
 
     def _deserialize(self, params):
@@ -7153,6 +7220,7 @@ class DescribeLaneRulesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.SearchWord = params.get("SearchWord")
         self.RuleId = params.get("RuleId")
+        self.RuleIdList = params.get("RuleIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7199,16 +7267,24 @@ class DescribeLanesRequest(AbstractModel):
         :type Offset: int
         :param SearchWord: 搜索关键字
         :type SearchWord: str
+        :param LaneIdList: 无
+        :type LaneIdList: list of str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
         """
         self.Limit = None
         self.Offset = None
         self.SearchWord = None
+        self.LaneIdList = None
+        self.DisableProgramAuthCheck = None
 
 
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.SearchWord = params.get("SearchWord")
+        self.LaneIdList = params.get("LaneIdList")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7933,12 +8009,21 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
         :type OrderBy: str
         :param OrderType: 升序传 0，降序传 1
         :type OrderType: int
+        :param ConfigTagList: 无
+        :type ConfigTagList: list of str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
+        :param ConfigIdList: 无
+        :type ConfigIdList: list of str
         """
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
         self.OrderBy = None
         self.OrderType = None
+        self.ConfigTagList = None
+        self.DisableProgramAuthCheck = None
+        self.ConfigIdList = None
 
 
     def _deserialize(self, params):
@@ -7947,6 +8032,9 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.OrderBy = params.get("OrderBy")
         self.OrderType = params.get("OrderType")
+        self.ConfigTagList = params.get("ConfigTagList")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
+        self.ConfigIdList = params.get("ConfigIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8272,6 +8360,8 @@ class DescribeServerlessGroupsRequest(AbstractModel):
         :type NamespaceId: str
         :param ClusterId: 分组所属集群ID
         :type ClusterId: str
+        :param GroupIdList: 无
+        :type GroupIdList: list of str
         """
         self.SearchWord = None
         self.ApplicationId = None
@@ -8281,6 +8371,7 @@ class DescribeServerlessGroupsRequest(AbstractModel):
         self.Limit = None
         self.NamespaceId = None
         self.ClusterId = None
+        self.GroupIdList = None
 
 
     def _deserialize(self, params):
@@ -8292,6 +8383,7 @@ class DescribeServerlessGroupsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.NamespaceId = params.get("NamespaceId")
         self.ClusterId = params.get("ClusterId")
+        self.GroupIdList = params.get("GroupIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8346,6 +8438,8 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         :type ApplicationResourceTypeList: list of str
         :param SearchWord: 通过id和name进行关键词过滤
         :type SearchWord: str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
         """
         self.ApplicationIdList = None
         self.ApplicationType = None
@@ -8354,6 +8448,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self.MicroserviceType = None
         self.ApplicationResourceTypeList = None
         self.SearchWord = None
+        self.DisableProgramAuthCheck = None
 
 
     def _deserialize(self, params):
@@ -8364,6 +8459,7 @@ class DescribeSimpleApplicationsRequest(AbstractModel):
         self.MicroserviceType = params.get("MicroserviceType")
         self.ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
         self.SearchWord = params.get("SearchWord")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8414,12 +8510,15 @@ class DescribeSimpleClustersRequest(AbstractModel):
         :type Limit: int
         :param SearchWord: 对id和name进行关键词过滤
         :type SearchWord: str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
         """
         self.ClusterIdList = None
         self.ClusterType = None
         self.Offset = None
         self.Limit = None
         self.SearchWord = None
+        self.DisableProgramAuthCheck = None
 
 
     def _deserialize(self, params):
@@ -8428,6 +8527,7 @@ class DescribeSimpleClustersRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SearchWord = params.get("SearchWord")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8568,6 +8668,8 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type NamespaceName: str
         :param IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
         :type IsDefault: str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
         """
         self.NamespaceIdList = None
         self.ClusterId = None
@@ -8579,6 +8681,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.NamespaceTypeList = None
         self.NamespaceName = None
         self.IsDefault = None
+        self.DisableProgramAuthCheck = None
 
 
     def _deserialize(self, params):
@@ -8592,6 +8695,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         self.NamespaceTypeList = params.get("NamespaceTypeList")
         self.NamespaceName = params.get("NamespaceName")
         self.IsDefault = params.get("IsDefault")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
