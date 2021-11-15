@@ -1877,6 +1877,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCloudBaseRunServerVersion(self, request):
+        """修改服务版本的副本数，环境变量
+
+        :param request: Request instance for ModifyCloudBaseRunServerVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCloudBaseRunServerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCloudBaseRunServerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDatabaseACL(self, request):
         """修改数据库权限
 

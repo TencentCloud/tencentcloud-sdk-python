@@ -177,9 +177,10 @@ tar.gz： 生成`.tar.gz`压缩包
 <br/>
 注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB
         :type Priority: str
-        :param MinScaleResolution: 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
+        :param MinScaleResolution: 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。
+分辨率越高，效果越清晰，转出来的图片资源体积会越大，课件加载耗时会变长，请根据实际使用场景配置此参数。
 
-注意分辨率宽高中间为英文字母"xyz"的"x"
+示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
         :type MinScaleResolution: str
         """
         self.SdkAppId = None

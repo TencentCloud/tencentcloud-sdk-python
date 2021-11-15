@@ -303,34 +303,6 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreatePaiInstance(self, request):
-        """本接口 (CreatePaiInstance) 用于创建一个指定配置的PAI实例。
-
-        :param request: Request instance for CreatePaiInstance.
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreatePaiInstanceRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreatePaiInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("CreatePaiInstance", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreatePaiInstanceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateScalingPolicy(self, request):
         """本接口（CreateScalingPolicy）用于创建告警触发策略。
 

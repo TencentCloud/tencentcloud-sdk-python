@@ -253,6 +253,40 @@ class AnchorContractInfo(AbstractModel):
         
 
 
+class AnchorExtendInfo(AbstractModel):
+    """主播扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 扩展信息类型
+__id_card_no__:身份证号码
+__id_card_name__:身份证姓名
+__id_card_front__:身份证图片正面
+__id_card_back__:身份证图片反面
+__tax_type__:完税类型:0-自然人,1-个体工商户
+__channel_account__:渠道账号(_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密)
+        :type Type: str
+        :param Value: 扩展信息
+        :type Value: str
+        """
+        self.Type = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyApplicationMaterialRequest(AbstractModel):
     """ApplyApplicationMaterial请求参数结构体
 
@@ -2734,6 +2768,91 @@ class CreateAgentTaxPaymentInfosResponse(AbstractModel):
         if params.get("AgentTaxPaymentBatch") is not None:
             self.AgentTaxPaymentBatch = AgentTaxPaymentBatch()
             self.AgentTaxPaymentBatch._deserialize(params.get("AgentTaxPaymentBatch"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAnchorRequest(AbstractModel):
+    """CreateAnchor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorUid: 主播业务ID，唯一
+        :type AnchorUid: str
+        :param AnchorName: 主播姓名
+        :type AnchorName: str
+        :param AnchorPhone: 主播电话
+_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+        :type AnchorPhone: str
+        :param AnchorEmail: 主播邮箱
+_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+        :type AnchorEmail: str
+        :param AnchorAddress: 主播地址
+_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+        :type AnchorAddress: str
+        :param AnchorIdNo: 主播身份证号
+_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+        :type AnchorIdNo: str
+        :param AnchorType: 主播类型
+__KMusic__:全民K歌
+__QMusic__:QQ音乐
+__WeChat__:微信视频号
+        :type AnchorType: str
+        :param AnchorExtendInfo: 主播扩展信息
+        :type AnchorExtendInfo: list of AnchorExtendInfo
+        """
+        self.AnchorUid = None
+        self.AnchorName = None
+        self.AnchorPhone = None
+        self.AnchorEmail = None
+        self.AnchorAddress = None
+        self.AnchorIdNo = None
+        self.AnchorType = None
+        self.AnchorExtendInfo = None
+
+
+    def _deserialize(self, params):
+        self.AnchorUid = params.get("AnchorUid")
+        self.AnchorName = params.get("AnchorName")
+        self.AnchorPhone = params.get("AnchorPhone")
+        self.AnchorEmail = params.get("AnchorEmail")
+        self.AnchorAddress = params.get("AnchorAddress")
+        self.AnchorIdNo = params.get("AnchorIdNo")
+        self.AnchorType = params.get("AnchorType")
+        if params.get("AnchorExtendInfo") is not None:
+            self.AnchorExtendInfo = []
+            for item in params.get("AnchorExtendInfo"):
+                obj = AnchorExtendInfo()
+                obj._deserialize(item)
+                self.AnchorExtendInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAnchorResponse(AbstractModel):
+    """CreateAnchor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播ID
+        :type AnchorId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AnchorId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
         self.RequestId = params.get("RequestId")
 
 
@@ -14535,6 +14654,76 @@ class UploadExternalAnchorInfoResponse(AbstractModel):
         self.ErrCode = params.get("ErrCode")
         self.ErrMessage = params.get("ErrMessage")
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadFileRequest(AbstractModel):
+    """UploadFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: 文件名
+        :type FileName: str
+        :param FileType: 文件类型
+__IdCard__:身份证
+__IdCardCheck__:身份证加验证(只支持人像面)
+        :type FileType: str
+        :param FileUrl: 文件链接
+__FileUrl和FileContent二选一__
+        :type FileUrl: str
+        :param FileContent: 文件内容，Base64编码
+__FileUrl和FileContent二选一__
+        :type FileContent: str
+        :param FileExtendInfo: 文件扩展信息
+        :type FileExtendInfo: list of AnchorExtendInfo
+        """
+        self.FileName = None
+        self.FileType = None
+        self.FileUrl = None
+        self.FileContent = None
+        self.FileExtendInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileType = params.get("FileType")
+        self.FileUrl = params.get("FileUrl")
+        self.FileContent = params.get("FileContent")
+        if params.get("FileExtendInfo") is not None:
+            self.FileExtendInfo = []
+            for item in params.get("FileExtendInfo"):
+                obj = AnchorExtendInfo()
+                obj._deserialize(item)
+                self.FileExtendInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadFileResponse(AbstractModel):
+    """UploadFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 文件ID
+        :type FileId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
         self.RequestId = params.get("RequestId")
 
 

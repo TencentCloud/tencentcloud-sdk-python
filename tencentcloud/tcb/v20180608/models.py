@@ -859,6 +859,9 @@ class CloudBaseRunServerVersionItem(AbstractModel):
         :param CurrentReplicas: 当前副本数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentReplicas: int
+        :param Architecture: Monolithic，Microservice
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Architecture: str
         """
         self.VersionName = None
         self.Status = None
@@ -877,6 +880,7 @@ class CloudBaseRunServerVersionItem(AbstractModel):
         self.RunId = None
         self.Percent = None
         self.CurrentReplicas = None
+        self.Architecture = None
 
 
     def _deserialize(self, params):
@@ -904,6 +908,7 @@ class CloudBaseRunServerVersionItem(AbstractModel):
         self.RunId = params.get("RunId")
         self.Percent = params.get("Percent")
         self.CurrentReplicas = params.get("CurrentReplicas")
+        self.Architecture = params.get("Architecture")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6678,6 +6683,96 @@ class ModifyCloudBaseRunServerFlowConfResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 返回结果，succ代表成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCloudBaseRunServerVersionRequest(AbstractModel):
+    """ModifyCloudBaseRunServerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param EnvParams: 环境变量
+        :type EnvParams: str
+        :param MinNum: 最小副本数
+        :type MinNum: str
+        :param MaxNum: 最大副本数
+        :type MaxNum: str
+        :param ContainerPort: 端口
+        :type ContainerPort: str
+        :param Remark: 备注
+        :type Remark: str
+        :param CustomLogs: 日志采集路径
+        :type CustomLogs: str
+        :param IsResetRemark: 是否重设备注
+        :type IsResetRemark: bool
+        :param BasicModify: 修改基础信息
+        :type BasicModify: bool
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionName = None
+        self.EnvParams = None
+        self.MinNum = None
+        self.MaxNum = None
+        self.ContainerPort = None
+        self.Remark = None
+        self.CustomLogs = None
+        self.IsResetRemark = None
+        self.BasicModify = None
+        self.OperatorRemark = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.EnvParams = params.get("EnvParams")
+        self.MinNum = params.get("MinNum")
+        self.MaxNum = params.get("MaxNum")
+        self.ContainerPort = params.get("ContainerPort")
+        self.Remark = params.get("Remark")
+        self.CustomLogs = params.get("CustomLogs")
+        self.IsResetRemark = params.get("IsResetRemark")
+        self.BasicModify = params.get("BasicModify")
+        self.OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudBaseRunServerVersionResponse(AbstractModel):
+    """ModifyCloudBaseRunServerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果（succ为成功）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

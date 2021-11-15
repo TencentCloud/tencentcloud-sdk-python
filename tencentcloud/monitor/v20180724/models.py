@@ -6666,7 +6666,7 @@ class TagInstance(AbstractModel):
         :type ServiceType: str
         :param RegionId: 地域ID
 注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: str
+        :type RegionId: int
         :param BindingStatus: 绑定状态，2：绑定成功，1：绑定中
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindingStatus: int

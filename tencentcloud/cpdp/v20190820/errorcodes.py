@@ -26,6 +26,9 @@ FAILEDOPERATION_ACCTNOTBIND = 'FailedOperation.AcctNotBind'
 # 账户不存在。
 FAILEDOPERATION_ACCTNOTEXIST = 'FailedOperation.AcctNotExist'
 
+# 接口调用出错。
+FAILEDOPERATION_ACTION = 'FailedOperation.Action'
+
 # 配置参数action无效。
 FAILEDOPERATION_ACTIONINVALID = 'FailedOperation.ActionInvalid'
 
@@ -73,6 +76,9 @@ FAILEDOPERATION_CONFIGERROR = 'FailedOperation.ConfigError'
 
 # 签约状态不正确。
 FAILEDOPERATION_CONTRACTSTATUSERROR = 'FailedOperation.ContractStatusError'
+
+# 录入代理商出错。
+FAILEDOPERATION_CREATEAGENT = 'FailedOperation.CreateAgent'
 
 # 消费订单发起失败。
 FAILEDOPERATION_CREATEORDERERROR = 'FailedOperation.CreateOrderError'

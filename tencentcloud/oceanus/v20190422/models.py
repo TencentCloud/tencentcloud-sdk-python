@@ -258,30 +258,34 @@ class CreateResourceRequest(AbstractModel):
         r"""
         :param ResourceLoc: 资源位置
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
-        :param Name: 资源名称
-        :type Name: str
         :param ResourceType: 资源类型。目前只支持 JAR，取值为 1
         :type ResourceType: int
         :param Remark: 资源描述
         :type Remark: str
+        :param Name: 资源名称
+        :type Name: str
         :param ResourceConfigRemark: 资源版本描述
         :type ResourceConfigRemark: str
+        :param FolderId: 目录ID
+        :type FolderId: str
         """
         self.ResourceLoc = None
-        self.Name = None
         self.ResourceType = None
         self.Remark = None
+        self.Name = None
         self.ResourceConfigRemark = None
+        self.FolderId = None
 
 
     def _deserialize(self, params):
         if params.get("ResourceLoc") is not None:
             self.ResourceLoc = ResourceLoc()
             self.ResourceLoc._deserialize(params.get("ResourceLoc"))
-        self.Name = params.get("Name")
         self.ResourceType = params.get("ResourceType")
         self.Remark = params.get("Remark")
+        self.Name = params.get("Name")
         self.ResourceConfigRemark = params.get("ResourceConfigRemark")
+        self.FolderId = params.get("FolderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -690,11 +694,14 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，默认为20，最大值为100
         :type Limit: int
+        :param ResourceConfigVersion: 资源版本号
+        :type ResourceConfigVersion: int
         """
         self.ResourceId = None
         self.DESCByJobConfigCreateTime = None
         self.Offset = None
         self.Limit = None
+        self.ResourceConfigVersion = None
 
 
     def _deserialize(self, params):
@@ -702,6 +709,7 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
         self.DESCByJobConfigCreateTime = params.get("DESCByJobConfigCreateTime")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ResourceConfigVersion = params.get("ResourceConfigVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
