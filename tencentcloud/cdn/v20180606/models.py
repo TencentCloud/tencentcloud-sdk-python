@@ -11096,8 +11096,8 @@ class RegionMapRelation(AbstractModel):
 
 class RemoteAuthentication(AbstractModel):
     """远程鉴权规则配置，可以包含多种规则配置。
-    RemoteAuthenticationRule 和Server 互斥，配置其中一个。
-    若只配置Server ，规则参数将采用默认参数；
+    RemoteAuthenticationRules和Server 互斥，只需要配置其中一个。
+    若只配置Server ，RemoteAuthenticationRules中详细规则参数将采用默认参数；默认参数值见各个配置项中说明；
 
     """
 
@@ -11145,16 +11145,19 @@ class RemoteAuthenticationRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Server: 远程鉴权服务http url
+        :param Server: 远程鉴权Server。
+默认值:和上层配置的"Server"一致；
         :type Server: str
-        :param AuthMethod: 请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; all 表示不限制请求方法；
-all: 不指定访问访问方法；
+        :param AuthMethod: 请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; 
+all: 表示"遵循终端用户请求方法"
+默认值: all
         :type AuthMethod: str
         :param RuleType: 规则类型：
 all：所有文件生效
 file：指定文件后缀生效
-directory：指定路径生效
-path：指定绝对路径生效
+directory：指定目录生效
+path：指定文件绝对路径生效
+默认值:all
         :type RuleType: str
         :param RulePaths: 对应类型下的匹配内容：
 all 时填充 *
@@ -11162,13 +11165,16 @@ file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
 path 时填充绝对路径，如 /xxx/test.html
 index 时填充 /
+默认值:*
         :type RulePaths: list of str
         :param AuthTimeout: 请求远程鉴权服务器超时时间，单位毫秒；
 取值范围：[1,30 000]
+默认值:20000
         :type AuthTimeout: int
         :param AuthTimeoutAction: 请求远程鉴权服务器超时后执行拦截或者放行；
 RETURN_200: 超时后放行；
-RETURN_403:超时返回403；
+RETURN_403:超时拦截；
+默认值:RETURN_200
         :type AuthTimeoutAction: str
         """
         self.Server = None

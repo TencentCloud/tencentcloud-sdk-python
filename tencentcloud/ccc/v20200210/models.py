@@ -2027,6 +2027,9 @@ notInService       不在服务区
         :param ProtectedCallee: 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectedCallee: str
+        :param Uui: 客户自定义数据（User-to-User Interface）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uui: str
         """
         self.Caller = None
         self.Callee = None
@@ -2054,6 +2057,7 @@ notInService       不在服务区
         self.SessionId = None
         self.ProtectedCaller = None
         self.ProtectedCallee = None
+        self.Uui = None
 
 
     def _deserialize(self, params):
@@ -2095,6 +2099,7 @@ notInService       不在服务区
         self.SessionId = params.get("SessionId")
         self.ProtectedCaller = params.get("ProtectedCaller")
         self.ProtectedCallee = params.get("ProtectedCallee")
+        self.Uui = params.get("Uui")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

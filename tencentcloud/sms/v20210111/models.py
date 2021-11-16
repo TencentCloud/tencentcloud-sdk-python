@@ -662,21 +662,31 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateIdSet: 模板 ID 数组。
-<dx-alert infotype="notice" title="注意">默认数组长度最大100</dx-alert>
-        :type TemplateIdSet: list of int non-negative
         :param International: 是否国际/港澳台短信：
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
+        :param TemplateIdSet: 模板 ID 数组。数组为空时默认查询模板列表信息（仅允许主账号使用），请使用 Limit 和 Offset 字段设置查询范围。
+<dx-alert infotype="notice" title="注意">默认数组长度最大100</dx-alert>
+        :type TemplateIdSet: list of int non-negative
+        :param Limit: 最大上限，最多100。
+注：默认为0，TemplateIdSet 为空时启用。
+        :type Limit: int
+        :param Offset: 偏移量。
+注：默认为0，TemplateIdSet 为空时启用。
+        :type Offset: int
         """
-        self.TemplateIdSet = None
         self.International = None
+        self.TemplateIdSet = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
-        self.TemplateIdSet = params.get("TemplateIdSet")
         self.International = params.get("International")
+        self.TemplateIdSet = params.get("TemplateIdSet")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

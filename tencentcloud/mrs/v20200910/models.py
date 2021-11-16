@@ -88,6 +88,36 @@ class AspectRatio(AbstractModel):
         
 
 
+class BiopsyPart(AbstractModel):
+    """活检部位
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Src: 原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: str
+        """
+        self.Value = None
+        self.Src = None
+
+
+    def _deserialize(self, params):
+        self.Value = params.get("Value")
+        self.Src = params.get("Src")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockInfo(AbstractModel):
     """块信息
 
@@ -687,6 +717,134 @@ class Electrocardiogram(AbstractModel):
         if params.get("EcgDiagnosis") is not None:
             self.EcgDiagnosis = EcgDiagnosis()
             self.EcgDiagnosis._deserialize(params.get("EcgDiagnosis"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Endoscopy(AbstractModel):
+    """内窥镜报告
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BiopsyPart: 活检部位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BiopsyPart: :class:`tencentcloud.mrs.v20200910.models.BiopsyPart`
+        :param Desc: 可见描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: :class:`tencentcloud.mrs.v20200910.models.EndoscopyDesc`
+        :param Summary: 结论
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: :class:`tencentcloud.mrs.v20200910.models.Summary`
+        """
+        self.BiopsyPart = None
+        self.Desc = None
+        self.Summary = None
+
+
+    def _deserialize(self, params):
+        if params.get("BiopsyPart") is not None:
+            self.BiopsyPart = BiopsyPart()
+            self.BiopsyPart._deserialize(params.get("BiopsyPart"))
+        if params.get("Desc") is not None:
+            self.Desc = EndoscopyDesc()
+            self.Desc._deserialize(params.get("Desc"))
+        if params.get("Summary") is not None:
+            self.Summary = Summary()
+            self.Summary._deserialize(params.get("Summary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EndoscopyDesc(AbstractModel):
+    """内窥镜描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 描述内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param Organ: 器官
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Organ: list of EndoscopyOrgan
+        """
+        self.Text = None
+        self.Organ = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        if params.get("Organ") is not None:
+            self.Organ = []
+            for item in params.get("Organ"):
+                obj = EndoscopyOrgan()
+                obj._deserialize(item)
+                self.Organ.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EndoscopyOrgan(AbstractModel):
+    """内窥部位
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Part: 部位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Part: :class:`tencentcloud.mrs.v20200910.models.Part`
+        :param Index: 原文位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: list of int
+        :param Src: 原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: str
+        :param PartAlias: 部位别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartAlias: str
+        :param SymDescList: 症状描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SymDescList: list of BlockInfo
+        """
+        self.Part = None
+        self.Index = None
+        self.Src = None
+        self.PartAlias = None
+        self.SymDescList = None
+
+
+    def _deserialize(self, params):
+        if params.get("Part") is not None:
+            self.Part = Part()
+            self.Part._deserialize(params.get("Part"))
+        self.Index = params.get("Index")
+        self.Src = params.get("Src")
+        self.PartAlias = params.get("PartAlias")
+        if params.get("SymDescList") is not None:
+            self.SymDescList = []
+            for item in params.get("SymDescList"):
+                obj = BlockInfo()
+                obj._deserialize(item)
+                self.SymDescList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1492,6 +1650,66 @@ class MedicalRecordInfo(AbstractModel):
         
 
 
+class Medicine(AbstractModel):
+    """药品
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 药品名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param TradeName: 商品名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeName: str
+        :param Firm: 厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Firm: str
+        :param Category: 医保类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param Specification: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Specification: str
+        :param MinQuantity: 最小包装数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinQuantity: str
+        :param DosageUnit: 最小制剂单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DosageUnit: str
+        :param PackingUnit: 最小包装单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackingUnit: str
+        """
+        self.Name = None
+        self.TradeName = None
+        self.Firm = None
+        self.Category = None
+        self.Specification = None
+        self.MinQuantity = None
+        self.DosageUnit = None
+        self.PackingUnit = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TradeName = params.get("TradeName")
+        self.Firm = params.get("Firm")
+        self.Category = params.get("Category")
+        self.Specification = params.get("Specification")
+        self.MinQuantity = params.get("MinQuantity")
+        self.DosageUnit = params.get("DosageUnit")
+        self.PackingUnit = params.get("PackingUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MenstrualMedicalHistory(AbstractModel):
     """月经史
 
@@ -2211,6 +2429,36 @@ class PersonalMedicalHistory(AbstractModel):
         
 
 
+class Prescription(AbstractModel):
+    """处方单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MedicineList: 药品列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicineList: list of Medicine
+        """
+        self.MedicineList = None
+
+
+    def _deserialize(self, params):
+        if params.get("MedicineList") is not None:
+            self.MedicineList = []
+            for item in params.get("MedicineList"):
+                obj = Medicine()
+                obj._deserialize(item)
+                self.MedicineList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReportInfo(AbstractModel):
     """报告基本信息
 
@@ -2624,6 +2872,12 @@ class Template(AbstractModel):
         :param Electrocardiogram: 心电图报告
 注意：此字段可能返回 null，表示取不到有效值。
         :type Electrocardiogram: :class:`tencentcloud.mrs.v20200910.models.Electrocardiogram`
+        :param Endoscopy: 内窥镜报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endoscopy: :class:`tencentcloud.mrs.v20200910.models.Endoscopy`
+        :param Prescription: 处方单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prescription: :class:`tencentcloud.mrs.v20200910.models.Prescription`
         """
         self.PatientInfo = None
         self.ReportInfo = None
@@ -2638,6 +2892,8 @@ class Template(AbstractModel):
         self.Hospitalization = None
         self.Surgery = None
         self.Electrocardiogram = None
+        self.Endoscopy = None
+        self.Prescription = None
 
 
     def _deserialize(self, params):
@@ -2678,6 +2934,12 @@ class Template(AbstractModel):
         if params.get("Electrocardiogram") is not None:
             self.Electrocardiogram = Electrocardiogram()
             self.Electrocardiogram._deserialize(params.get("Electrocardiogram"))
+        if params.get("Endoscopy") is not None:
+            self.Endoscopy = Endoscopy()
+            self.Endoscopy._deserialize(params.get("Endoscopy"))
+        if params.get("Prescription") is not None:
+            self.Prescription = Prescription()
+            self.Prescription._deserialize(params.get("Prescription"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

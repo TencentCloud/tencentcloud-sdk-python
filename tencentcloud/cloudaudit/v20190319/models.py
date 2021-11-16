@@ -444,12 +444,16 @@ class DescribeEventsResponse(AbstractModel):
         :param Events: 日志集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ListOver = None
         self.NextToken = None
         self.Events = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -462,6 +466,7 @@ class DescribeEventsResponse(AbstractModel):
                 obj = Event()
                 obj._deserialize(item)
                 self.Events.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

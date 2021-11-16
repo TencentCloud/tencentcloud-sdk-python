@@ -92,12 +92,20 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         :type InternetAddress: str
         :param EnvAddressInfos: apollo多环境公网ip
         :type EnvAddressInfos: list of EnvAddressInfo
+        :param ConsoleInternetAddress: 控制台公网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleInternetAddress: str
+        :param ConsoleIntranetAddress: 控制台内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleIntranetAddress: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.IntranetAddress = None
         self.InternetAddress = None
         self.EnvAddressInfos = None
+        self.ConsoleInternetAddress = None
+        self.ConsoleIntranetAddress = None
         self.RequestId = None
 
 
@@ -110,6 +118,8 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
                 obj = EnvAddressInfo()
                 obj._deserialize(item)
                 self.EnvAddressInfos.append(obj)
+        self.ConsoleInternetAddress = params.get("ConsoleInternetAddress")
+        self.ConsoleIntranetAddress = params.get("ConsoleIntranetAddress")
         self.RequestId = params.get("RequestId")
 
 
@@ -391,6 +401,12 @@ class SREInstance(AbstractModel):
         :param Tags: 实例的标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of KVPair
+        :param EnableConsoleInternet: 引擎实例是否开启控制台公网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableConsoleInternet: bool
+        :param EnableConsoleIntranet: 引擎实例是否开启控制台内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableConsoleIntranet: bool
         """
         self.InstanceId = None
         self.Name = None
@@ -413,6 +429,8 @@ class SREInstance(AbstractModel):
         self.VpcInfos = None
         self.ServiceGovernanceInfos = None
         self.Tags = None
+        self.EnableConsoleInternet = None
+        self.EnableConsoleIntranet = None
 
 
     def _deserialize(self, params):
@@ -457,6 +475,8 @@ class SREInstance(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.EnableConsoleInternet = params.get("EnableConsoleInternet")
+        self.EnableConsoleIntranet = params.get("EnableConsoleIntranet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

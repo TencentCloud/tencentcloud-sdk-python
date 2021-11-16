@@ -50,5 +50,8 @@ RESOURCENOTFOUND_NOIDLE = 'ResourceNotFound.NoIdle'
 # 会话未找到。
 RESOURCENOTFOUND_SESSIONNOTFOUND = 'ResourceNotFound.SessionNotFound'
 
+# 机器还在初始化中。
+RESOURCEUNAVAILABLE_INITIALIZATION = 'ResourceUnavailable.Initialization'
+
 # 退出游戏中。
 UNSUPPORTEDOPERATION_STOPPING = 'UnsupportedOperation.Stopping'
