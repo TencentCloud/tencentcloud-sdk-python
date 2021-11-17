@@ -196,6 +196,34 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateVideoEncodingPreset(self, request):
+        """指定导出的参数，创建一个视频编码配置
+
+        :param request: Request instance for CreateVideoEncodingPreset.
+        :type request: :class:`tencentcloud.cme.v20191029.models.CreateVideoEncodingPresetRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.CreateVideoEncodingPresetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVideoEncodingPreset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVideoEncodingPresetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClass(self, request):
         """删除分类信息，删除时检验下述限制：
         <li>分类路径必须存在；</li>
@@ -354,6 +382,34 @@ class CmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTeamMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVideoEncodingPreset(self, request):
+        """删除指定 ID 的视频编码配置
+
+        :param request: Request instance for DeleteVideoEncodingPreset.
+        :type request: :class:`tencentcloud.cme.v20191029.models.DeleteVideoEncodingPresetRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.DeleteVideoEncodingPresetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVideoEncodingPreset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVideoEncodingPresetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -722,6 +778,34 @@ class CmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTeamsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVideoEncodingPresets(self, request):
+        """查询视频编码配置信息。
+
+        :param request: Request instance for DescribeVideoEncodingPresets.
+        :type request: :class:`tencentcloud.cme.v20191029.models.DescribeVideoEncodingPresetsRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.DescribeVideoEncodingPresetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVideoEncodingPresets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVideoEncodingPresetsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1159,6 +1243,34 @@ class CmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTeamMemberResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVideoEncodingPreset(self, request):
+        """修改视频编码配置信息。
+
+        :param request: Request instance for ModifyVideoEncodingPreset.
+        :type request: :class:`tencentcloud.cme.v20191029.models.ModifyVideoEncodingPresetRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ModifyVideoEncodingPresetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVideoEncodingPreset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVideoEncodingPresetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

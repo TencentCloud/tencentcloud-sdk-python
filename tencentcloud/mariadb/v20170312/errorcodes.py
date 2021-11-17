@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 实例安全组信息添加失败。
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 
@@ -248,6 +251,9 @@ INVALIDPARAMETER_VPCNOTFOUND = 'InvalidParameter.VpcNotFound'
 # 想要创建的账号已经存在。
 INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = 'InvalidParameterValue.AccountAlreadyExists'
 
+# 该实例不支持此同步模式。
+INVALIDPARAMETERVALUE_BADSYNCMODE = 'InvalidParameterValue.BadSyncMode'
+
 # 指定的权限无法赋予给该账号。
 INVALIDPARAMETERVALUE_BADUSERRIGHT = 'InvalidParameterValue.BadUserRight'
 
@@ -304,6 +310,9 @@ RESOURCENOTFOUND_NOINSTANCEFOUND = 'ResourceNotFound.NoInstanceFound'
 
 # 接入安全组产品配置不存在。
 RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = 'ResourceNotFound.ProductConfigNotExistedError'
+
+# 同步任务已删除。
+RESOURCENOTFOUND_SYNCTASKDELETED = 'ResourceNotFound.SyncTaskDeleted'
 
 # 实例状态错误，不能初始化。
 RESOURCEUNAVAILABLE_BADINSTANCESTATUS = 'ResourceUnavailable.BadInstanceStatus'

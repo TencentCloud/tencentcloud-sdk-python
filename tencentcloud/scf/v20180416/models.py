@@ -512,6 +512,8 @@ class CreateFunctionRequest(AbstractModel):
         :type Namespace: str
         :param Role: 函数绑定的角色
         :type Role: str
+        :param InstallDependency: [在线依赖安装](https://cloud.tencent.com/document/product/583/37920)，TRUE 表示安装，默认值为 FALSE。仅支持 Node.js 函数。
+        :type InstallDependency: str
         :param ClsLogsetId: 函数日志投递到的CLS LogsetID
         :type ClsLogsetId: str
         :param ClsTopicId: 函数日志投递到的CLS TopicID
@@ -552,6 +554,7 @@ class CreateFunctionRequest(AbstractModel):
         self.VpcConfig = None
         self.Namespace = None
         self.Role = None
+        self.InstallDependency = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Type = None
@@ -586,6 +589,7 @@ class CreateFunctionRequest(AbstractModel):
             self.VpcConfig._deserialize(params.get("VpcConfig"))
         self.Namespace = params.get("Namespace")
         self.Role = params.get("Role")
+        self.InstallDependency = params.get("InstallDependency")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Type = params.get("Type")
@@ -4483,6 +4487,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
         :param Role: 函数绑定的角色
         :type Role: str
+        :param InstallDependency: [在线依赖安装](https://cloud.tencent.com/document/product/583/37920)，TRUE 表示安装，默认值为 FALSE。仅支持 Node.js 函数。
+        :type InstallDependency: str
         :param ClsLogsetId: 日志投递到的cls日志集ID
         :type ClsLogsetId: str
         :param ClsTopicId: 日志投递到的cls Topic ID
@@ -4513,6 +4519,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.Namespace = None
         self.VpcConfig = None
         self.Role = None
+        self.InstallDependency = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.Publish = None
@@ -4539,6 +4546,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
             self.VpcConfig = VpcConfig()
             self.VpcConfig._deserialize(params.get("VpcConfig"))
         self.Role = params.get("Role")
+        self.InstallDependency = params.get("InstallDependency")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.Publish = params.get("Publish")

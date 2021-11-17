@@ -5234,6 +5234,24 @@ class StopSecurityGroupRuleDispatchRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param StopType: 值为1，中止全部
+        :type StopType: int
+        """
+        self.StopType = None
+
+
+    def _deserialize(self, params):
+        self.StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class StopSecurityGroupRuleDispatchResponse(AbstractModel):
     """StopSecurityGroupRuleDispatch返回参数结构体

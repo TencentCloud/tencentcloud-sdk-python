@@ -3211,7 +3211,7 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         :type Host: str
         :param DbName: 数据库名。如果为 \*，表示设置全局权限（即 \*.\*），此时忽略 Type 和 Object 参数。当DbName不为\*时，需要传入参 Type。
         :type DbName: str
-        :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
+        :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES，REPLICATION CLIENT，REPLICATION SLAVE 
 库权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER 
 表/视图权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER 
 存储过程/函数权限： ALTER ROUTINE，EXECUTE 
@@ -3876,6 +3876,55 @@ class ModifyDBParametersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBSyncModeRequest(AbstractModel):
+    """ModifyDBSyncMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 待修改同步模式的实例ID。形如：tdsql-ow728lmc。
+        :type InstanceId: str
+        :param SyncMode: 同步模式：0 异步，1 强同步， 2 强同步可退化
+        :type SyncMode: int
+        """
+        self.InstanceId = None
+        self.SyncMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SyncMode = params.get("SyncMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBSyncModeResponse(AbstractModel):
+    """ModifyDBSyncMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务Id，可通过 DescribeFlow 查询任务状态。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLogFileRetentionPeriodRequest(AbstractModel):
     """ModifyLogFileRetentionPeriod请求参数结构体
 
@@ -3955,6 +4004,51 @@ class ModifyRealServerAccessStrategyRequest(AbstractModel):
 
 class ModifyRealServerAccessStrategyResponse(AbstractModel):
     """ModifyRealServerAccessStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySyncTaskAttributeRequest(AbstractModel):
+    """ModifySyncTaskAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskIds: 一个或多个待操作的任务ID。可通过[DescribeSyncTasks](https://tcloud-dev.oa.com/document/product/237/32979?!preview&!document=1) API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
+        :type TaskIds: list of str
+        :param TaskName: 任务名称。可任意命名，但不得超过100个字符。
+        :type TaskName: str
+        """
+        self.TaskIds = None
+        self.TaskName = None
+
+
+    def _deserialize(self, params):
+        self.TaskIds = params.get("TaskIds")
+        self.TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncTaskAttributeResponse(AbstractModel):
+    """ModifySyncTaskAttribute返回参数结构体
 
     """
 
@@ -4725,6 +4819,8 @@ class SlowLogData(AbstractModel):
         :param ExampleSql: 样例Sql
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExampleSql: str
+        :param Host: 账户的域名
+        :type Host: str
         """
         self.CheckSum = None
         self.Db = None
@@ -4744,6 +4840,7 @@ class SlowLogData(AbstractModel):
         self.TsMin = None
         self.User = None
         self.ExampleSql = None
+        self.Host = None
 
 
     def _deserialize(self, params):
@@ -4765,6 +4862,7 @@ class SlowLogData(AbstractModel):
         self.TsMin = params.get("TsMin")
         self.User = params.get("User")
         self.ExampleSql = params.get("ExampleSql")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

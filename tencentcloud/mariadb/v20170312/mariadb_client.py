@@ -1380,6 +1380,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBSyncMode(self, request):
+        """本接口（ModifyDBSyncMode）用于修改云数据库实例的同步模式。
+
+        :param request: Request instance for ModifyDBSyncMode.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBSyncModeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBSyncModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBSyncMode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBSyncModeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLogFileRetentionPeriod(self, request):
         """本接口(ModifyLogFileRetentionPeriod)用于修改数据库备份日志保存天数。
 
@@ -1427,6 +1455,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRealServerAccessStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySyncTaskAttribute(self, request):
+        """本接口 (ModifySyncTaskAttribute) 用于修改同步任务的属性（目前只支持修改任务名称）
+
+        :param request: Request instance for ModifySyncTaskAttribute.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifySyncTaskAttributeRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifySyncTaskAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySyncTaskAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySyncTaskAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

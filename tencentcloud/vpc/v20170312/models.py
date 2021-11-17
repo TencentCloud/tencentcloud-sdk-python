@@ -4723,10 +4723,14 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         :param Zone: 可用区，如：ap-guangzhou-2。
         :type Zone: str
-        :param Type: VPN网关类型。值“CCN”云联网类型VPN网关
+        :param Type: VPN网关类型。值“CCN”云联网类型VPN网关，值SSL为SSL-VPN
         :type Type: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param CdcId: CDC实例ID
+        :type CdcId: str
+        :param MaxConnection: SSL-VPN 最大CLIENT 连接数。可选 [5, 10, 20, 50, 100]。仅SSL-VPN 需要选这个参数。
+        :type MaxConnection: int
         """
         self.VpcId = None
         self.VpnGatewayName = None
@@ -4736,6 +4740,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         self.Zone = None
         self.Type = None
         self.Tags = None
+        self.CdcId = None
+        self.MaxConnection = None
 
 
     def _deserialize(self, params):
@@ -4754,6 +4760,8 @@ class CreateVpnGatewayRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CdcId = params.get("CdcId")
+        self.MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14547,13 +14555,17 @@ class ModifyIp6AddressesBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -19649,6 +19661,10 @@ class VpnGateway(AbstractModel):
         :type Version: str
         :param NetworkInstanceId: Type值为CCN时，该值表示云联网实例ID
         :type NetworkInstanceId: str
+        :param CdcId: CDC 实例ID
+        :type CdcId: str
+        :param MaxConnection: SSL-VPN 客户端连接数。
+        :type MaxConnection: int
         """
         self.VpnGatewayId = None
         self.VpcId = None
@@ -19668,6 +19684,8 @@ class VpnGateway(AbstractModel):
         self.VpnGatewayQuotaSet = None
         self.Version = None
         self.NetworkInstanceId = None
+        self.CdcId = None
+        self.MaxConnection = None
 
 
     def _deserialize(self, params):
@@ -19694,6 +19712,8 @@ class VpnGateway(AbstractModel):
                 self.VpnGatewayQuotaSet.append(obj)
         self.Version = params.get("Version")
         self.NetworkInstanceId = params.get("NetworkInstanceId")
+        self.CdcId = params.get("CdcId")
+        self.MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

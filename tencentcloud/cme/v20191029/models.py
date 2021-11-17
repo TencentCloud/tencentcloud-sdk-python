@@ -846,6 +846,88 @@ class CreateTeamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVideoEncodingPresetRequest(AbstractModel):
+    """CreateVideoEncodingPreset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Name: 配置名，可用来简单描述该配置的作用。
+        :type Name: str
+        :param Container: 封装格式，可选值：
+<li>mp4 ；</li>
+<li>mov 。</li>
+默认值：mp4。
+        :type Container: str
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveAudio: int
+        :param VideoSetting: 编码配置的视频设置。默认值参考VideoEncodingPresetVideoSetting 定义。
+        :type VideoSetting: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetVideoSetting`
+        :param AudioSetting: 编码配置的音频设置。默认值参考VideoEncodingPresetAudioSetting 定义。
+        :type AudioSetting: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetAudioSetting`
+        """
+        self.Platform = None
+        self.Name = None
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoSetting = None
+        self.AudioSetting = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Name = params.get("Name")
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoSetting") is not None:
+            self.VideoSetting = VideoEncodingPresetVideoSetting()
+            self.VideoSetting._deserialize(params.get("VideoSetting"))
+        if params.get("AudioSetting") is not None:
+            self.AudioSetting = VideoEncodingPresetAudioSetting()
+            self.AudioSetting._deserialize(params.get("AudioSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoEncodingPresetResponse(AbstractModel):
+    """CreateVideoEncodingPreset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 模板 ID。
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClassRequest(AbstractModel):
     """DeleteClass请求参数结构体
 
@@ -1146,6 +1228,51 @@ class DeleteTeamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteVideoEncodingPresetRequest(AbstractModel):
+    """DeleteVideoEncodingPreset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Id: 要删除的视频编码配置 ID。
+        :type Id: int
+        """
+        self.Platform = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVideoEncodingPresetResponse(AbstractModel):
+    """DeleteVideoEncodingPreset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountsRequest(AbstractModel):
     """DescribeAccounts请求参数结构体
 
@@ -1283,7 +1410,7 @@ class DescribeJoinTeamsRequest(AbstractModel):
         :type Platform: str
         :param MemberId: 团队成员　ID。
         :type MemberId: str
-        :param Offset: 分页偏移量，默认值：0
+        :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param Limit: 返回记录条数，默认值：30，最大值：30。
         :type Limit: int
@@ -1317,7 +1444,7 @@ class DescribeJoinTeamsResponse(AbstractModel):
         r"""
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
-        :param TeamSet: 团队列表
+        :param TeamSet: 团队列表。
         :type TeamSet: list of JoinTeamInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2072,6 +2199,72 @@ class DescribeTeamsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVideoEncodingPresetsRequest(AbstractModel):
+    """DescribeVideoEncodingPresets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Ids: 要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
+        :type Ids: list of int non-negative
+        :param Limit: 分页大小，默认20。最大值50。
+        :type Limit: int
+        :param Offset: 分页起始，默认0。
+        :type Offset: int
+        """
+        self.Platform = None
+        self.Ids = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Ids = params.get("Ids")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoEncodingPresetsResponse(AbstractModel):
+    """DescribeVideoEncodingPresets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的编码配置总个数。
+        :type TotalCount: int
+        :param VideoEncodingPresetSet: 视频编码配置信息。
+        :type VideoEncodingPresetSet: list of VideoEncodingPreset
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VideoEncodingPresetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VideoEncodingPresetSet") is not None:
+            self.VideoEncodingPresetSet = []
+            for item in params.get("VideoEncodingPresetSet"):
+                obj = VideoEncodingPreset()
+                obj._deserialize(item)
+                self.VideoEncodingPresetSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class EmptyTrackItem(AbstractModel):
     """空的轨道片段，用来进行时间轴的占位。如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。
 
@@ -2173,7 +2366,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         r"""
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Definition: 导出视频编码配置 Id，推荐优先使用下面的预置模板 Id，有其他需求可通过接口定制视频编码配置。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
@@ -2184,7 +2377,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type ExportDestination: str
         :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
         :type TrackData: str
-        :param AspectRatio: 轨道数据对应的画布宽高比。
+        :param AspectRatio: 轨道数据对应的画布宽高比，配合视频编码配置中的视频短边尺寸，可决定导出画面的尺寸。例：
+<li>如果 AspectRatio 取值 16:9，视频编码配置选为12（短边1080），则导出尺寸为 1920 * 1080；</li>
+<li>如果 AspectRatio 取值 9:16，视频编码配置选为11（短边720），则导出尺寸为 720 *1280。</li>
         :type AspectRatio: str
         :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
         :type CoverData: str
@@ -2434,7 +2629,7 @@ class ExportVideoEditProjectRequest(AbstractModel):
         :type Platform: str
         :param ProjectId: 项目 Id。
         :type ProjectId: str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Definition: 视频编码配置 ID，支持自定义创建，推荐优先使用系统预置的导出配置。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
@@ -2449,6 +2644,8 @@ class ExportVideoEditProjectRequest(AbstractModel):
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        :param ExportExtensionArgs: 视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+        :type ExportExtensionArgs: :class:`tencentcloud.cme.v20191029.models.VideoExportExtensionArgs`
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
         :type Operator: str
         """
@@ -2459,6 +2656,7 @@ class ExportVideoEditProjectRequest(AbstractModel):
         self.CoverData = None
         self.CMEExportInfo = None
         self.VODExportInfo = None
+        self.ExportExtensionArgs = None
         self.Operator = None
 
 
@@ -2474,6 +2672,9 @@ class ExportVideoEditProjectRequest(AbstractModel):
         if params.get("VODExportInfo") is not None:
             self.VODExportInfo = VODExportInfo()
             self.VODExportInfo._deserialize(params.get("VODExportInfo"))
+        if params.get("ExportExtensionArgs") is not None:
+            self.ExportExtensionArgs = VideoExportExtensionArgs()
+            self.ExportExtensionArgs._deserialize(params.get("ExportExtensionArgs"))
         self.Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4151,6 +4352,81 @@ class ModifyTeamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVideoEncodingPresetRequest(AbstractModel):
+    """ModifyVideoEncodingPreset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param Id: 配置 ID。
+        :type Id: int
+        :param Name: 更改后的视频编码配置名，不填则不修改。
+        :type Name: str
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveAudio: int
+        :param VideoSetting: 更改后的编码配置的视频设置。
+        :type VideoSetting: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetVideoSettingForUpdate`
+        :param AudioSetting: 更改后的编码配置的音频设置。
+        :type AudioSetting: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetAudioSettingForUpdate`
+        """
+        self.Platform = None
+        self.Id = None
+        self.Name = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoSetting = None
+        self.AudioSetting = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoSetting") is not None:
+            self.VideoSetting = VideoEncodingPresetVideoSettingForUpdate()
+            self.VideoSetting._deserialize(params.get("VideoSetting"))
+        if params.get("AudioSetting") is not None:
+            self.AudioSetting = VideoEncodingPresetAudioSettingForUpdate()
+            self.AudioSetting._deserialize(params.get("AudioSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVideoEncodingPresetResponse(AbstractModel):
+    """ModifyVideoEncodingPreset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MoveClassRequest(AbstractModel):
     """MoveClass请求参数结构体
 
@@ -5745,6 +6021,294 @@ class VideoEditTemplateMaterial(AbstractModel):
                 obj._deserialize(item)
                 self.SlotSet.append(obj)
         self.PreviewVideoUrl = params.get("PreviewVideoUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodingPreset(AbstractModel):
+    """视频编码配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 配置 ID。
+        :type Id: int
+        :param Name: 配置名。
+        :type Name: str
+        :param Container: 封装格式，可选值：
+<li>mp4 ；</li>
+<li>mov 。</li>
+        :type Container: str
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+默认值：0。
+        :type RemoveAudio: int
+        :param VideoSetting: 视频编码配置中的视频设置。
+        :type VideoSetting: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetVideoSetting`
+        :param AudioSetting: 视频编码配置中的音频设置。
+        :type AudioSetting: :class:`tencentcloud.cme.v20191029.models.VideoEncodingPresetAudioSetting`
+        """
+        self.Id = None
+        self.Name = None
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoSetting = None
+        self.AudioSetting = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoSetting") is not None:
+            self.VideoSetting = VideoEncodingPresetVideoSetting()
+            self.VideoSetting._deserialize(params.get("VideoSetting"))
+        if params.get("AudioSetting") is not None:
+            self.AudioSetting = VideoEncodingPresetAudioSetting()
+            self.AudioSetting._deserialize(params.get("AudioSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodingPresetAudioSetting(AbstractModel):
+    """视频编码配置中的音频设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Codec: 音频流的编码格式，可选值：
+AAC：AAC 编码。
+
+默认值：AAC。
+        :type Codec: str
+        :param Bitrate: 音频码率，单位：bps。
+默认值：64K。
+        :type Bitrate: int
+        :param Channels: 音频声道数，可选值： 
+<li>1：单声道；</li>
+<li>2：双声道。</li> 
+默认值：2。
+        :type Channels: int
+        :param SampleRate: 音频流的采样率，仅支持 16000； 32000； 44100； 48000。单位：Hz。 
+默认值：16000。
+        :type SampleRate: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.Channels = None
+        self.SampleRate = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.Channels = params.get("Channels")
+        self.SampleRate = params.get("SampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodingPresetAudioSettingForUpdate(AbstractModel):
+    """视频编码配置中的音频设置更新信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Bitrate: 音频码率，单位：bps。
+不填则不修改。
+        :type Bitrate: str
+        :param Channels: 音频声道数，可选值： 
+<li>1：单声道；</li>
+<li>2：双声道。</li> 
+不填则不修改。
+        :type Channels: int
+        :param SampleRate: 音频流的采样率，目前仅支持： 16000； 32000； 44100； 48000。单位：Hz。
+不填则不修改。
+        :type SampleRate: int
+        """
+        self.Bitrate = None
+        self.Channels = None
+        self.SampleRate = None
+
+
+    def _deserialize(self, params):
+        self.Bitrate = params.get("Bitrate")
+        self.Channels = params.get("Channels")
+        self.SampleRate = params.get("SampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodingPresetVideoSetting(AbstractModel):
+    """视频编码配置中的视频设置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Codec: 视频流的编码格式，可选值：
+<li>H264：H.264 编码。</li>
+        :type Codec: str
+        :param ShortEdge: 视频短边尺寸，取值范围： [128, 4096]，单位：px。
+视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+例：如果项目的宽高比是 16：9 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720。</li>
+如果项目的宽高比是 9：16 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1080 * 1920。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 720 * 1280。</li>
+默认值：1080。
+        :type ShortEdge: int
+        :param Bitrate: 指定码率，单位 bps。当该参数为'0'时则不强制限定码率。
+默认值：0。
+        :type Bitrate: int
+        """
+        self.Codec = None
+        self.ShortEdge = None
+        self.Bitrate = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.ShortEdge = params.get("ShortEdge")
+        self.Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodingPresetVideoSettingForUpdate(AbstractModel):
+    """视频编码配置的视频设置更新信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShortEdge: 视频短边尺寸，取值范围： [128, 4096]，单位：px。
+视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+例：如果项目的宽高比是 16：9 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720。</li>
+如果项目的宽高比是 9：16 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1080 * 1920。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 720 * 1280。</li>
+不填则不修改。
+        :type ShortEdge: int
+        :param Bitrate: 指定码率，单位 bps。当该参数为'0' 时则不强制限定码率。
+不填则不修改。
+        :type Bitrate: int
+        :param FrameRate: 指定帧率。单位 Hz。
+不填则不修改。
+        :type FrameRate: float
+        """
+        self.ShortEdge = None
+        self.Bitrate = None
+        self.FrameRate = None
+
+
+    def _deserialize(self, params):
+        self.ShortEdge = params.get("ShortEdge")
+        self.Bitrate = params.get("Bitrate")
+        self.FrameRate = params.get("FrameRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoExportExtensionArgs(AbstractModel):
+    """视频导出扩展参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Container: 封装格式，可选值：
+<li>mp4 </li>
+<li>mov </li>
+不填则默认使用导出模板中的值。
+        :type Container: str
+        :param ShortEdge: 视频短边尺寸，取值范围： [128, 4096]，单位：px。
+视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+例如：项目的宽高比是 16：9 ：
+<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
+不填则默认使用导出模板中对的值。
+        :type ShortEdge: int
+        :param VideoBitrate: 指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
+不填则默认使用导出模板中的值。
+        :type VideoBitrate: int
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+不填则默认使用导出模板中对的值。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+不填则默认使用导出模板中对的值。
+        :type RemoveAudio: int
+        :param StartTime: 片段起始时间，单位：毫秒。
+        :type StartTime: int
+        :param EndTime: 片段结束时间，单位：毫秒。
+        :type EndTime: int
+        """
+        self.Container = None
+        self.ShortEdge = None
+        self.VideoBitrate = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.ShortEdge = params.get("ShortEdge")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

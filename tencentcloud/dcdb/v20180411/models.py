@@ -520,6 +520,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type DcnRegion: str
         :param DcnInstanceId: DCN源实例ID
         :type DcnInstanceId: str
+        :param AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
+        :type AutoRenewFlag: int
         """
         self.Zones = None
         self.Period = None
@@ -541,6 +543,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.InitParams = None
         self.DcnRegion = None
         self.DcnInstanceId = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -574,6 +577,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
                 self.InitParams.append(obj)
         self.DcnRegion = params.get("DcnRegion")
         self.DcnInstanceId = params.get("DcnInstanceId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3261,10 +3265,9 @@ class GrantAccountPrivilegesRequest(AbstractModel):
         :type Host: str
         :param DbName: 数据库名。如果为 \*，表示查询全局权限（即 \*.\*），此时忽略 Type 和 Object 参数
         :type DbName: str
-        :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES 
+        :param Privileges: 全局权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER，SHOW DATABASES，REPLICATION CLIENT，REPLICATION SLAVE
 库权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE TEMPORARY TABLES，LOCK TABLES，EXECUTE，CREATE VIEW，SHOW VIEW，CREATE ROUTINE，ALTER ROUTINE，EVENT，TRIGGER 
-表/视图权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER 
-存储过程/函数权限： ALTER ROUTINE，EXECUTE 
+表权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER  
 字段权限： INSERT，REFERENCES，SELECT，UPDATE
         :type Privileges: list of str
         :param Type: 类型,可以填入 table 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
