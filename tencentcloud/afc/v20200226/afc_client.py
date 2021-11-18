@@ -26,6 +26,34 @@ class AfcClient(AbstractClient):
     _service = 'afc'
 
 
+    def GetAntiFraudVip(self, request):
+        """反欺诈VIP评分接口
+
+        :param request: Request instance for GetAntiFraudVip.
+        :type request: :class:`tencentcloud.afc.v20200226.models.GetAntiFraudVipRequest`
+        :rtype: :class:`tencentcloud.afc.v20200226.models.GetAntiFraudVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAntiFraudVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAntiFraudVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryAntiFraudVip(self, request):
         """天御反欺诈服务，主要应用于银行、证券、保险、P2P等金融行业客户，通过腾讯的大数据风控能力，
         可以准确识别恶意用户信息，解决客户在支付、活动、理财，风控等业务环节遇到的欺诈威胁，降低企业

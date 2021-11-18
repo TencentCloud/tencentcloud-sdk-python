@@ -232,6 +232,64 @@ class AddAcRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
+    """AddEnterpriseSecurityGroupRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 创建规则数据
+        :type Data: list of SecurityGroupRule
+        :param Type: 添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后
+        :type Type: int
+        :param ClientToken: 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        :type ClientToken: str
+        """
+        self.Data = None
+        self.Type = None
+        self.ClientToken = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecurityGroupRule()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Type = params.get("Type")
+        self.ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
+    """AddEnterpriseSecurityGroupRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态值，0：添加成功，非0：添加失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class AssetZone(AbstractModel):
     """AssetZone
 
@@ -1608,6 +1666,127 @@ class DescribeCfwEipsResponse(AbstractModel):
                 obj = NatFwEipsInfo()
                 obj._deserialize(item)
                 self.NatFwEipList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnterpriseSecurityGroupRuleRequest(AbstractModel):
+    """DescribeEnterpriseSecurityGroupRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNo: 分页查询时，显示的当前页的页码。
+
+默认值为1。
+        :type PageNo: str
+        :param PageSize: 分页查询时，显示的每页数据的最大条数。
+
+可设置值最大为50。
+        :type PageSize: str
+        :param SourceContent: 访问源示例：
+net：IP/CIDR(192.168.0.2)
+template：参数模板(ipm-dyodhpby)
+instance：资产实例(ins-123456)
+resourcegroup：资产分组(/全部分组/分组1/子分组1)
+tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+region：地域(ap-gaungzhou)
+支持通配
+        :type SourceContent: str
+        :param DestContent: 访问目的示例：
+net：IP/CIDR(192.168.0.2)
+template：参数模板(ipm-dyodhpby)
+instance：资产实例(ins-123456)
+resourcegroup：资产分组(/全部分组/分组1/子分组1)
+tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+region：地域(ap-gaungzhou)
+支持通配
+        :type DestContent: str
+        :param Description: 规则描述，支持通配
+        :type Description: str
+        :param RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值：
+accept：放行
+drop：拒绝
+        :type RuleAction: str
+        :param Enable: 是否启用规则，默认为启用，取值：
+true为启用，false为不启用
+        :type Enable: str
+        :param Port: 访问控制策略的端口。取值：
+-1/-1：全部端口
+80：80端口
+        :type Port: str
+        :param Protocol: 协议；TCP/UDP/ICMP/ANY
+        :type Protocol: str
+        :param ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
+        :type ServiceTemplateId: str
+        """
+        self.PageNo = None
+        self.PageSize = None
+        self.SourceContent = None
+        self.DestContent = None
+        self.Description = None
+        self.RuleAction = None
+        self.Enable = None
+        self.Port = None
+        self.Protocol = None
+        self.ServiceTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
+        self.SourceContent = params.get("SourceContent")
+        self.DestContent = params.get("DestContent")
+        self.Description = params.get("Description")
+        self.RuleAction = params.get("RuleAction")
+        self.Enable = params.get("Enable")
+        self.Port = params.get("Port")
+        self.Protocol = params.get("Protocol")
+        self.ServiceTemplateId = params.get("ServiceTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnterpriseSecurityGroupRuleResponse(AbstractModel):
+    """DescribeEnterpriseSecurityGroupRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNo: 分页查询时，显示的当前页的页码。
+        :type PageNo: str
+        :param PageSize: 分页查询时，显示的每页数据的最大条数。
+        :type PageSize: str
+        :param Rules: 访问控制策略列表
+        :type Rules: list of SecurityGroupRule
+        :param TotalCount: 访问控制策略的总数量。
+        :type TotalCount: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PageNo = None
+        self.PageSize = None
+        self.Rules = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = SecurityGroupRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4472,6 +4651,60 @@ class RemoveAcRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
+    """RemoveEnterpriseSecurityGroupRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 规则的uuid，可通过查询规则列表获取
+        :type RuleUuid: int
+        :param RemoveType: 删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可
+        :type RemoveType: int
+        """
+        self.RuleUuid = None
+        self.RemoveType = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.RemoveType = params.get("RemoveType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
+    """RemoveEnterpriseSecurityGroupRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 删除成功后返回被删除策略的uuid
+        :type RuleUuid: int
+        :param Status: 0代表成功，-1代表失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class RuleInfoData(AbstractModel):
     """规则输入对象
 
@@ -5024,6 +5257,85 @@ class SecurityGroupOrderIndexData(AbstractModel):
     def _deserialize(self, params):
         self.OrderIndex = params.get("OrderIndex")
         self.NewOrderIndex = params.get("NewOrderIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupRule(AbstractModel):
+    """安全组规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceContent: 访问源示例：
+net：IP/CIDR(192.168.0.2)
+template：参数模板(ipm-dyodhpby)
+instance：资产实例(ins-123456)
+resourcegroup：资产分组(/全部分组/分组1/子分组1)
+tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+region：地域(ap-gaungzhou)
+        :type SourceContent: str
+        :param SourceType: 访问源类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
+        :type SourceType: str
+        :param DestContent: 访问目的示例：
+net：IP/CIDR(192.168.0.2)
+template：参数模板(ipm-dyodhpby)
+instance：资产实例(ins-123456)
+resourcegroup：资产分组(/全部分组/分组1/子分组1)
+tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+region：地域(ap-gaungzhou)
+        :type DestContent: str
+        :param DestType: 访问目的类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
+        :type DestType: str
+        :param RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值：
+accept：放行
+drop：拒绝
+        :type RuleAction: str
+        :param Description: 描述
+        :type Description: str
+        :param OrderIndex: 规则顺序，-1表示最低，1表示最高
+        :type OrderIndex: str
+        :param Protocol: 协议；TCP/UDP/ICMP/ANY
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 访问控制策略的端口。取值：
+-1/-1：全部端口
+80：80端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceTemplateId: str
+        """
+        self.SourceContent = None
+        self.SourceType = None
+        self.DestContent = None
+        self.DestType = None
+        self.RuleAction = None
+        self.Description = None
+        self.OrderIndex = None
+        self.Protocol = None
+        self.Port = None
+        self.ServiceTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.SourceContent = params.get("SourceContent")
+        self.SourceType = params.get("SourceType")
+        self.DestContent = params.get("DestContent")
+        self.DestType = params.get("DestType")
+        self.RuleAction = params.get("RuleAction")
+        self.Description = params.get("Description")
+        self.OrderIndex = params.get("OrderIndex")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.ServiceTemplateId = params.get("ServiceTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

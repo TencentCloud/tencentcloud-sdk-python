@@ -54,6 +54,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddEnterpriseSecurityGroupRules(self, request):
+        """创建新企业安全组规则
+
+        :param request: Request instance for AddEnterpriseSecurityGroupRules.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.AddEnterpriseSecurityGroupRulesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.AddEnterpriseSecurityGroupRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddEnterpriseSecurityGroupRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddEnterpriseSecurityGroupRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcRules(self, request):
         """创建规则
 
@@ -572,6 +600,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfwEipsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnterpriseSecurityGroupRule(self, request):
+        """查询新企业安全组规则
+
+        :param request: Request instance for DescribeEnterpriseSecurityGroupRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSecurityGroupRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEnterpriseSecurityGroupRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnterpriseSecurityGroupRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1752,6 +1808,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveAcRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveEnterpriseSecurityGroupRule(self, request):
+        """删除新企业安全组规则
+
+        :param request: Request instance for RemoveEnterpriseSecurityGroupRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveEnterpriseSecurityGroupRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.RemoveEnterpriseSecurityGroupRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveEnterpriseSecurityGroupRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveEnterpriseSecurityGroupRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

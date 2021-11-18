@@ -695,6 +695,36 @@ class IngressGatewayStatus(AbstractModel):
         
 
 
+class InjectConfig(AbstractModel):
+    """自动注入配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExcludeIPRanges: 不需要进行代理的 ip 地址范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeIPRanges: list of str
+        :param HoldApplicationUntilProxyStarts: 是否等待sidecar启动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HoldApplicationUntilProxyStarts: bool
+        """
+        self.ExcludeIPRanges = None
+        self.HoldApplicationUntilProxyStarts = None
+
+
+    def _deserialize(self, params):
+        self.ExcludeIPRanges = params.get("ExcludeIPRanges")
+        self.HoldApplicationUntilProxyStarts = params.get("HoldApplicationUntilProxyStarts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IstioConfig(AbstractModel):
     """Istio配置
 
@@ -706,9 +736,13 @@ class IstioConfig(AbstractModel):
         :type OutboundTrafficPolicy: str
         :param Tracing: 调用链配置
         :type Tracing: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
+        :param DisablePolicyChecks: 禁用策略检查功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisablePolicyChecks: bool
         """
         self.OutboundTrafficPolicy = None
         self.Tracing = None
+        self.DisablePolicyChecks = None
 
 
     def _deserialize(self, params):
@@ -716,6 +750,7 @@ class IstioConfig(AbstractModel):
         if params.get("Tracing") is not None:
             self.Tracing = TracingConfig()
             self.Tracing._deserialize(params.get("Tracing"))
+        self.DisablePolicyChecks = params.get("DisablePolicyChecks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -922,10 +957,14 @@ class MeshConfig(AbstractModel):
         :type AccessLog: :class:`tencentcloud.tcm.v20210413.models.AccessLogConfig`
         :param Prometheus: Prometheus配置
         :type Prometheus: :class:`tencentcloud.tcm.v20210413.models.PrometheusConfig`
+        :param Inject: 自动注入配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Inject: :class:`tencentcloud.tcm.v20210413.models.InjectConfig`
         """
         self.Istio = None
         self.AccessLog = None
         self.Prometheus = None
+        self.Inject = None
 
 
     def _deserialize(self, params):
@@ -938,6 +977,9 @@ class MeshConfig(AbstractModel):
         if params.get("Prometheus") is not None:
             self.Prometheus = PrometheusConfig()
             self.Prometheus._deserialize(params.get("Prometheus"))
+        if params.get("Inject") is not None:
+            self.Inject = InjectConfig()
+            self.Inject._deserialize(params.get("Inject"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

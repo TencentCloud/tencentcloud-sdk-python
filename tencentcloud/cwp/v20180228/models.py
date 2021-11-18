@@ -11486,6 +11486,15 @@ class DescribeScanStateResponse(AbstractModel):
         :type VulId: list of int non-negative
         :param Type: 0一键检测 1定时检测
         :type Type: int
+        :param ScanBeginTime: 开始扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanBeginTime: str
+        :param RiskEventCount: 扫描漏洞数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskEventCount: int
+        :param ScanEndTime: 扫描结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanEndTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11494,6 +11503,9 @@ class DescribeScanStateResponse(AbstractModel):
         self.TaskId = None
         self.VulId = None
         self.Type = None
+        self.ScanBeginTime = None
+        self.RiskEventCount = None
+        self.ScanEndTime = None
         self.RequestId = None
 
 
@@ -11503,6 +11515,9 @@ class DescribeScanStateResponse(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.VulId = params.get("VulId")
         self.Type = params.get("Type")
+        self.ScanBeginTime = params.get("ScanBeginTime")
+        self.RiskEventCount = params.get("RiskEventCount")
+        self.ScanEndTime = params.get("ScanEndTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -11963,7 +11978,7 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
         :type PrivilegeRules: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
         :param ReverseShell: 反弹Shell相关风险事件
         :type ReverseShell: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
-        :param SysVul: 系统组件相关风险事件
+        :param SysVul: 应用漏洞风险事件
         :type SysVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
         :param WebVul: Web应用漏洞相关风险事件
         :type WebVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
@@ -11977,6 +11992,12 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
         :type EffectMachineCount: int
         :param EventsCount: 所有事件总数
         :type EventsCount: int
+        :param WindowVul: window 系统漏洞事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WindowVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param LinuxVul: linux系统漏洞事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinuxVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11994,6 +12015,8 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
         self.AttackLogs = None
         self.EffectMachineCount = None
         self.EventsCount = None
+        self.WindowVul = None
+        self.LinuxVul = None
         self.RequestId = None
 
 
@@ -12036,6 +12059,12 @@ class DescribeSecurityEventsCntResponse(AbstractModel):
             self.AttackLogs._deserialize(params.get("AttackLogs"))
         self.EffectMachineCount = params.get("EffectMachineCount")
         self.EventsCount = params.get("EventsCount")
+        if params.get("WindowVul") is not None:
+            self.WindowVul = SecurityEventInfo()
+            self.WindowVul._deserialize(params.get("WindowVul"))
+        if params.get("LinuxVul") is not None:
+            self.LinuxVul = SecurityEventInfo()
+            self.LinuxVul._deserialize(params.get("LinuxVul"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12671,7 +12700,7 @@ class DescribeVulEffectHostListRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>AliasName - String - 主机名筛选</li>
 <li>TagIds - String - 主机标签id串，多个用英文逗号分隔</li>
-<li>Status - String - 状态,0: 待处理 1:忽略  3:已修复  5:检测中  6:修复这中.</li>
+<li>Status - String - 状态,0: 待处理 1:忽略  3:已修复  5:检测中  6:修复中  8=:修复失败.</li>
 <li>Uuid - String数组 - Uuid串数组</li>
         :type Filters: list of Filter
         """
@@ -12869,7 +12898,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         :param VulLevel: 危害等级：1-低危；2-中危；3-高危；4-严重
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulLevel: int
-        :param VulType: 漏洞分类 1: web应用漏洞 2:系统组件漏洞
+        :param VulType: 漏洞分类 1: web应用漏洞 2:应用漏洞3:安全基线 4: Linux系统漏洞 5: Windows系统漏洞
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulType: int
         :param Description: 漏洞描述信息
@@ -12899,6 +12928,9 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         :param CvssScoreFloat: cvss 分数 浮点型
 注意：此字段可能返回 null，表示取不到有效值。
         :type CvssScoreFloat: float
+        :param Labels: 漏洞标签 多个逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12915,6 +12947,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self.CvssScore = None
         self.CveInfo = None
         self.CvssScoreFloat = None
+        self.Labels = None
         self.RequestId = None
 
 
@@ -12932,6 +12965,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self.CvssScore = params.get("CvssScore")
         self.CveInfo = params.get("CveInfo")
         self.CvssScoreFloat = params.get("CvssScoreFloat")
+        self.Labels = params.get("Labels")
         self.RequestId = params.get("RequestId")
 
 
@@ -12939,6 +12973,24 @@ class DescribeVulLevelCountRequest(AbstractModel):
     """DescribeVulLevelCount请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param VulCategory: 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+        :type VulCategory: int
+        """
+        self.VulCategory = None
+
+
+    def _deserialize(self, params):
+        self.VulCategory = params.get("VulCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeVulLevelCountResponse(AbstractModel):
@@ -12980,19 +13032,22 @@ class DescribeVulListRequest(AbstractModel):
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Filters: 过滤条件。
-<li>IfEmergency - String - 是否必填：否 - 是否为应急漏洞，查询应急漏洞传:yes</li>
-<li>Status - String - 是否必填：是 - 漏洞状态筛选，0: 待处理 1:忽略  3:已修复  5:检测中，6：修复中 控制台仅处理0,1,3,5,6五种状态</li>
-<li>Level - String - 是否必填：否 - 漏洞等级筛选 1:低 2:中 3:高 4:提示</li>
-<li>VulName- String - 是否必填：否 - 漏洞名称搜索</li>
-<li>LastDay- int - 是否必填：否 - 查询近几日的数据，需要 -1 之后传入，例如近3日数据，传2</li>
-<li>OrderBy - String 是否必填：否 默认按照处理状态,威胁等级,检测时间排序 -排序字段，支持：level,lastTime的动态排序  hostCount 影响主机台数排序</li>
-<li>IsShowFollowVul -  String 是否必填：否   是否仅展示重点关注漏洞  0=展示全部 1=仅展示重点关注漏洞</li>
-<li>VulCategory-  String 是否必填：否   1: web应用漏洞 2:系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁</li>
+<li>Status - String - 是否必填：否 - 处理状态  0 -- 待处理 1 -- 已加白 2 -- 已删除 3 - 已忽略</li>
+<li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
+<li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
+<li>VulName- string -</li>
+<li>HostIp- string - 是否必填：否 - 主机ip</li>
         :type Filters: list of Filters
+        :param By: 可选排序字段 Level，LastTime，HostCount
+        :type By: str
+        :param Order: 排序顺序：desc  默认asc
+        :type Order: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.By = None
+        self.Order = None
 
 
     def _deserialize(self, params):
@@ -13004,6 +13059,8 @@ class DescribeVulListRequest(AbstractModel):
                 obj = Filters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13059,7 +13116,7 @@ class DescribeVulTopRequest(AbstractModel):
         r"""
         :param Top: 漏洞风险服务器top，1-100
         :type Top: int
-        :param VulCategory: 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁，传0的时候表示查应急漏洞
+        :param VulCategory: 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
         :type VulCategory: int
         """
         self.Top = None
@@ -13634,6 +13691,18 @@ class EmergencyVul(AbstractModel):
         :type LastScanTime: str
         :param Progress: 扫描进度
         :type Progress: int
+        :param CveId: cve编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CveId: str
+        :param CvssScore: CVSS评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvssScore: float
+        :param Labels: 漏洞标签 多个逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: str
+        :param HostCount: 影响机器数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostCount: int
         """
         self.VulId = None
         self.Level = None
@@ -13643,6 +13712,10 @@ class EmergencyVul(AbstractModel):
         self.Status = None
         self.LastScanTime = None
         self.Progress = None
+        self.CveId = None
+        self.CvssScore = None
+        self.Labels = None
+        self.HostCount = None
 
 
     def _deserialize(self, params):
@@ -13654,6 +13727,10 @@ class EmergencyVul(AbstractModel):
         self.Status = params.get("Status")
         self.LastScanTime = params.get("LastScanTime")
         self.Progress = params.get("Progress")
+        self.CveId = params.get("CveId")
+        self.CvssScore = params.get("CvssScore")
+        self.Labels = params.get("Labels")
+        self.HostCount = params.get("HostCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18031,12 +18108,12 @@ class ScanVulRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文;分隔)
-        :type VulCategories: str
         :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文;分隔)
         :type VulLevels: str
         :param HostType: 服务器分类：1:专业版服务器；2:自选服务器
         :type HostType: int
+        :param VulCategories: 漏洞类型：1: web应用漏洞（webCMS） 2:系统组件（应用漏洞）漏洞  3:安全基线 4:Linux软件漏洞 5:Windows系统漏洞(多选英文;分隔)
+        :type VulCategories: str
         :param QuuidList: 自选服务器时生效，主机quuid的string数组
         :type QuuidList: list of str
         :param VulEmergency: 是否是应急漏洞 0 否 1 是
@@ -18046,9 +18123,9 @@ class ScanVulRequest(AbstractModel):
         :param VulIds: 需要扫描的漏洞id
         :type VulIds: list of int non-negative
         """
-        self.VulCategories = None
         self.VulLevels = None
         self.HostType = None
+        self.VulCategories = None
         self.QuuidList = None
         self.VulEmergency = None
         self.TimeoutPeriod = None
@@ -18056,9 +18133,9 @@ class ScanVulRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.VulCategories = params.get("VulCategories")
         self.VulLevels = params.get("VulLevels")
         self.HostType = params.get("HostType")
+        self.VulCategories = params.get("VulCategories")
         self.QuuidList = params.get("QuuidList")
         self.VulEmergency = params.get("VulEmergency")
         self.TimeoutPeriod = params.get("TimeoutPeriod")
@@ -19142,7 +19219,7 @@ class VulEffectHostList(AbstractModel):
         :param EventId: 事件id
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: int
-        :param Status: 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中
+        :param Status: 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 7: 回滚中 8:修复失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param LastTime: 最后检测时间
@@ -19169,6 +19246,15 @@ class VulEffectHostList(AbstractModel):
         :param Description: 说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param HostVersion: 版本信息 0=普通版本 1=专业版 2=旗舰版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostVersion: int
+        :param IsSupportAutoFix: 是否能自动修复 0 :漏洞不可自动修复，  1：可自动修复， 2：客户端已离线， 3：主机不是旗舰版只能手动修复， 4：机型不允许 ，5：修复中 ，6：已修复， 7：检测中  9:修复失败，10:已忽略 11:漏洞只支持linux不支持Windows 12：漏洞只支持Windows不支持linux，13:修复失败但此时主机已离线，14:修复失败但此时主机不是旗舰版， 15:已手动修复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportAutoFix: int
+        :param FixStatusMsg: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixStatusMsg: str
         """
         self.EventId = None
         self.Status = None
@@ -19180,6 +19266,9 @@ class VulEffectHostList(AbstractModel):
         self.AliasName = None
         self.Tags = None
         self.Description = None
+        self.HostVersion = None
+        self.IsSupportAutoFix = None
+        self.FixStatusMsg = None
 
 
     def _deserialize(self, params):
@@ -19193,6 +19282,9 @@ class VulEffectHostList(AbstractModel):
         self.AliasName = params.get("AliasName")
         self.Tags = params.get("Tags")
         self.Description = params.get("Description")
+        self.HostVersion = params.get("HostVersion")
+        self.IsSupportAutoFix = params.get("IsSupportAutoFix")
+        self.FixStatusMsg = params.get("FixStatusMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19258,7 +19350,7 @@ class VulInfoList(AbstractModel):
         :type Ids: str
         :param Name: 漏洞名
         :type Name: str
-        :param Status: 0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 控制台仅处理0,1,3,5,6四种状态
+        :param Status: 0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中  8:修复失败
         :type Status: int
         :param VulId: 漏洞id
         :type VulId: int
@@ -19288,6 +19380,21 @@ class VulInfoList(AbstractModel):
         :param StatusStr: 聚合后事件状态串
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusStr: str
+        :param CveId: cve编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CveId: str
+        :param CvssScore: CVSS评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvssScore: float
+        :param Labels: 漏洞标签 多个逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: str
+        :param FixSwitch: 是否能自动修复且包含能自动修复的主机， 0=否  1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixSwitch: int
+        :param TaskId: 最后扫描任务的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
         """
         self.Ids = None
         self.Name = None
@@ -19303,6 +19410,11 @@ class VulInfoList(AbstractModel):
         self.NameWisteria = None
         self.DescriptWisteria = None
         self.StatusStr = None
+        self.CveId = None
+        self.CvssScore = None
+        self.Labels = None
+        self.FixSwitch = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
@@ -19320,6 +19432,11 @@ class VulInfoList(AbstractModel):
         self.NameWisteria = params.get("NameWisteria")
         self.DescriptWisteria = params.get("DescriptWisteria")
         self.StatusStr = params.get("StatusStr")
+        self.CveId = params.get("CveId")
+        self.CvssScore = params.get("CvssScore")
+        self.Labels = params.get("Labels")
+        self.FixSwitch = params.get("FixSwitch")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19432,7 +19549,7 @@ class WarningInfoObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：wen应用漏洞，11：应急漏洞，12：安全基线 ,13: 防篡改
+        :param Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：应用漏洞，10：web-cms漏洞，11：应急漏洞，12：安全基线 ,13: 防篡改，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
         :type Type: int
         :param DisablePhoneWarning: 1: 关闭告警 0: 开启告警
         :type DisablePhoneWarning: int
