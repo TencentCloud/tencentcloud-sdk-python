@@ -51,6 +51,191 @@ class AggregationObj(AbstractModel):
         
 
 
+class AlertListData(AbstractModel):
+    """告警列表响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param AlertList: 返回列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertList: list of AlertType
+        """
+        self.Total = None
+        self.AlertList = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AlertList") is not None:
+            self.AlertList = []
+            for item in params.get("AlertList"):
+                obj = AlertType()
+                obj._deserialize(item)
+                self.AlertList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlertType(AbstractModel):
+    """告警字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlertTime: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertTime: str
+        :param AlertId: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertId: str
+        :param AssetId: 资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetId: str
+        :param AssetPrivateIp: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetPrivateIp: list of str
+        :param AlertName: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertName: str
+        :param Level: 告警级别  0:未知 1:低危 2:中危 3:高危 4:严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Source: 来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param AttackChain: 攻击字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackChain: str
+        :param AttackId: 攻击字段2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackId: str
+        :param Concerns: 关注点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Concerns: list of ConcernInfo
+        :param Action: 1：已防御，0,2：仅检测(0:告警类 1:拦截类 2:放行类 )
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: int
+        :param AttackResult: 0/空：未知，1：未成功，2：成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackResult: int
+        :param EventStatus: //调查状态  0/空：未启用，1：调查中，2：完成调查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventStatus: int
+        :param EventId: //关联事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
+        :param Status: //处置状态  0：未关闭，1：已关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param AssetName: 资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param ConcernMaliciousCount: 恶意实体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConcernMaliciousCount: int
+        :param ConcernVictimCount: 受害者实体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConcernVictimCount: int
+        :param VictimAssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VictimAssetType: str
+        :param SubType: 告警子类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubType: str
+        :param AttackName: 攻击技术名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackName: str
+        :param AssetPublicIp: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetPublicIp: list of str
+        :param AttackTactic: 攻击战术名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackTactic: str
+        :param VictimAssetSub: 资产子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VictimAssetSub: str
+        """
+        self.AlertTime = None
+        self.AlertId = None
+        self.AssetId = None
+        self.AssetPrivateIp = None
+        self.AlertName = None
+        self.Level = None
+        self.Type = None
+        self.Source = None
+        self.AttackChain = None
+        self.AttackId = None
+        self.Concerns = None
+        self.Action = None
+        self.AttackResult = None
+        self.EventStatus = None
+        self.EventId = None
+        self.Status = None
+        self.AssetName = None
+        self.ConcernMaliciousCount = None
+        self.ConcernVictimCount = None
+        self.VictimAssetType = None
+        self.SubType = None
+        self.AttackName = None
+        self.AssetPublicIp = None
+        self.AttackTactic = None
+        self.VictimAssetSub = None
+
+
+    def _deserialize(self, params):
+        self.AlertTime = params.get("AlertTime")
+        self.AlertId = params.get("AlertId")
+        self.AssetId = params.get("AssetId")
+        self.AssetPrivateIp = params.get("AssetPrivateIp")
+        self.AlertName = params.get("AlertName")
+        self.Level = params.get("Level")
+        self.Type = params.get("Type")
+        self.Source = params.get("Source")
+        self.AttackChain = params.get("AttackChain")
+        self.AttackId = params.get("AttackId")
+        if params.get("Concerns") is not None:
+            self.Concerns = []
+            for item in params.get("Concerns"):
+                obj = ConcernInfo()
+                obj._deserialize(item)
+                self.Concerns.append(obj)
+        self.Action = params.get("Action")
+        self.AttackResult = params.get("AttackResult")
+        self.EventStatus = params.get("EventStatus")
+        self.EventId = params.get("EventId")
+        self.Status = params.get("Status")
+        self.AssetName = params.get("AssetName")
+        self.ConcernMaliciousCount = params.get("ConcernMaliciousCount")
+        self.ConcernVictimCount = params.get("ConcernVictimCount")
+        self.VictimAssetType = params.get("VictimAssetType")
+        self.SubType = params.get("SubType")
+        self.AttackName = params.get("AttackName")
+        self.AssetPublicIp = params.get("AssetPublicIp")
+        self.AttackTactic = params.get("AttackTactic")
+        self.VictimAssetSub = params.get("VictimAssetSub")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Asset(AbstractModel):
     """资产类型
 
@@ -772,6 +957,46 @@ class ComplianceCheckDetail(AbstractModel):
         self.IsIgnore = params.get("IsIgnore")
         self.RiskItem = params.get("RiskItem")
         self.Title = params.get("Title")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConcernInfo(AbstractModel):
+    """关注点类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConcernType: 关注点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConcernType: int
+        :param EntityType: 实体类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntityType: int
+        :param Concern: 关注点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Concern: str
+        :param StatisticsCount: 最近数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticsCount: int
+        """
+        self.ConcernType = None
+        self.EntityType = None
+        self.Concern = None
+        self.StatisticsCount = None
+
+
+    def _deserialize(self, params):
+        self.ConcernType = params.get("ConcernType")
+        self.EntityType = params.get("EntityType")
+        self.Concern = params.get("Concern")
+        self.StatisticsCount = params.get("StatisticsCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1998,6 +2223,79 @@ class DescribeSafetyEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSocAlertListRequest(AbstractModel):
+    """DescribeSocAlertList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageSize: 页大小
+        :type PageSize: int
+        :param PageIndex: 页码
+        :type PageIndex: int
+        :param Scenes: 业务场景 参考ScenesType
+        :type Scenes: int
+        :param Filter: 查询参数
+        :type Filter: list of QueryFilter
+        :param Sorter: 排序参数
+        :type Sorter: list of QuerySort
+        """
+        self.PageSize = None
+        self.PageIndex = None
+        self.Scenes = None
+        self.Filter = None
+        self.Sorter = None
+
+
+    def _deserialize(self, params):
+        self.PageSize = params.get("PageSize")
+        self.PageIndex = params.get("PageIndex")
+        self.Scenes = params.get("Scenes")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        if params.get("Sorter") is not None:
+            self.Sorter = []
+            for item in params.get("Sorter"):
+                obj = QuerySort()
+                obj._deserialize(item)
+                self.Sorter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSocAlertListResponse(AbstractModel):
+    """DescribeSocAlertList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务数据
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.AlertListData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = AlertListData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSocCspmComplianceRequest(AbstractModel):
     """DescribeSocCspmCompliance请求参数结构体
 
@@ -2251,6 +2549,66 @@ class Filter(AbstractModel):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
         self.ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFilter(AbstractModel):
+    """查询参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FilterKey: 查询的字段
+        :type FilterKey: str
+        :param FilterValue: 查询的值
+        :type FilterValue: str
+        :param FilterOperatorType: 匹配类型，枚举见pb
+        :type FilterOperatorType: int
+        """
+        self.FilterKey = None
+        self.FilterValue = None
+        self.FilterOperatorType = None
+
+
+    def _deserialize(self, params):
+        self.FilterKey = params.get("FilterKey")
+        self.FilterValue = params.get("FilterValue")
+        self.FilterOperatorType = params.get("FilterOperatorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuerySort(AbstractModel):
+    """排序的字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SortKey: 排序字段
+        :type SortKey: str
+        :param SortType: 顺序，1升序2降序
+        :type SortType: int
+        """
+        self.SortKey = None
+        self.SortType = None
+
+
+    def _deserialize(self, params):
+        self.SortKey = params.get("SortKey")
+        self.SortType = params.get("SortType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

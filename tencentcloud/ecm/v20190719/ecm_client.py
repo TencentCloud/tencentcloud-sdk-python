@@ -1821,6 +1821,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePriceRunInstance(self, request):
+        """查询实例价格
+
+        :param request: Request instance for DescribePriceRunInstance.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribePriceRunInstanceRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribePriceRunInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePriceRunInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePriceRunInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRouteConflicts(self, request):
         """查询自定义路由策略与云联网路由策略冲突列表
 

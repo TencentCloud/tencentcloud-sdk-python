@@ -2475,6 +2475,15 @@ class RecordTaskItem(AbstractModel):
         :param RecordStatus: 本录制片段当前的录制状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordStatus: int
+        :param SceneId: 场景ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneId: int
+        :param WarnId: 告警ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnId: int
+        :param RecordId: 录制id，NVR下属设备有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
         """
         self.RecordTaskId = None
         self.RecordPlanId = None
@@ -2483,6 +2492,9 @@ class RecordTaskItem(AbstractModel):
         self.EventId = None
         self.VideoUrl = None
         self.RecordStatus = None
+        self.SceneId = None
+        self.WarnId = None
+        self.RecordId = None
 
 
     def _deserialize(self, params):
@@ -2493,6 +2505,9 @@ class RecordTaskItem(AbstractModel):
         self.EventId = params.get("EventId")
         self.VideoUrl = params.get("VideoUrl")
         self.RecordStatus = params.get("RecordStatus")
+        self.SceneId = params.get("SceneId")
+        self.WarnId = params.get("WarnId")
+        self.RecordId = params.get("RecordId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

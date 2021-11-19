@@ -4276,6 +4276,72 @@ class DescribePeakNetworkOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePriceRunInstanceRequest(AbstractModel):
+    """DescribePriceRunInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: 实例的机型信息
+        :type InstanceType: str
+        :param SystemDisk: 系统盘信息
+        :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
+        :param InstanceCount: 实例个数
+        :type InstanceCount: int
+        :param DataDisk: 数据盘信息
+        :type DataDisk: list of DataDisk
+        """
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.InstanceCount = None
+        self.DataDisk = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        self.InstanceCount = params.get("InstanceCount")
+        if params.get("DataDisk") is not None:
+            self.DataDisk = []
+            for item in params.get("DataDisk"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisk.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePriceRunInstanceResponse(AbstractModel):
+    """DescribePriceRunInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstancePrice: 实例价格信息
+        :type InstancePrice: :class:`tencentcloud.ecm.v20190719.models.InstancesPrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstancePrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = InstancesPrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRouteConflictsRequest(AbstractModel):
     """DescribeRouteConflicts请求参数结构体
 
@@ -6692,6 +6758,44 @@ class InstanceOperator(AbstractModel):
         
 
 
+class InstancePricesPartDetail(AbstractModel):
+    """描述实例的价格相关
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CpuPrice: cpu的价格信息
+        :type CpuPrice: :class:`tencentcloud.ecm.v20190719.models.PriceDetail`
+        :param MemPrice: 内存价格信息
+        :type MemPrice: :class:`tencentcloud.ecm.v20190719.models.PriceDetail`
+        :param DisksPrice: 磁盘价格信息
+        :type DisksPrice: :class:`tencentcloud.ecm.v20190719.models.PriceDetail`
+        """
+        self.CpuPrice = None
+        self.MemPrice = None
+        self.DisksPrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("CpuPrice") is not None:
+            self.CpuPrice = PriceDetail()
+            self.CpuPrice._deserialize(params.get("CpuPrice"))
+        if params.get("MemPrice") is not None:
+            self.MemPrice = PriceDetail()
+            self.MemPrice._deserialize(params.get("MemPrice"))
+        if params.get("DisksPrice") is not None:
+            self.DisksPrice = PriceDetail()
+            self.DisksPrice._deserialize(params.get("DisksPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceStatistic(AbstractModel):
     """用于描述实例的统计信息
 
@@ -6778,6 +6882,44 @@ class InstanceTypeConfig(AbstractModel):
         self.ExtInfo = params.get("ExtInfo")
         self.Vgpu = params.get("Vgpu")
         self.GpuModelName = params.get("GpuModelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstancesPrice(AbstractModel):
+    """实例价格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstancePricesPartDetail: 分部描述实例子维度的价格
+        :type InstancePricesPartDetail: :class:`tencentcloud.ecm.v20190719.models.InstancePricesPartDetail`
+        :param Discount: 实例总价折扣
+        :type Discount: int
+        :param DiscountPrice: 折扣后价格
+        :type DiscountPrice: int
+        :param OriginalPrice: 折扣前价格，原始总价
+        :type OriginalPrice: int
+        """
+        self.InstancePricesPartDetail = None
+        self.Discount = None
+        self.DiscountPrice = None
+        self.OriginalPrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePricesPartDetail") is not None:
+            self.InstancePricesPartDetail = InstancePricesPartDetail()
+            self.InstancePricesPartDetail._deserialize(params.get("InstancePricesPartDetail"))
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9635,6 +9777,38 @@ class Position(AbstractModel):
         if params.get("RegionInfo") is not None:
             self.RegionInfo = RegionInfo()
             self.RegionInfo._deserialize(params.get("RegionInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PriceDetail(AbstractModel):
+    """描述cpu,内存等维度的价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Discount: 表示折扣，20 表示20%，打2折
+        :type Discount: int
+        :param DiscountPrice: 打折后价格，单位分
+        :type DiscountPrice: int
+        :param OriginalPrice: 折扣前价格，单位分
+        :type OriginalPrice: int
+        """
+        self.Discount = None
+        self.DiscountPrice = None
+        self.OriginalPrice = None
+
+
+    def _deserialize(self, params):
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

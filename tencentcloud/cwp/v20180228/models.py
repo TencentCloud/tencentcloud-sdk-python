@@ -12812,7 +12812,7 @@ class DescribeVulHostTopRequest(AbstractModel):
         r"""
         :param Top: 获取top值，1-100
         :type Top: int
-        :param VulCategory: 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+        :param VulCategory: 1:web-cms 漏洞，2.应用漏洞 3:安全基线 4: Linux软件漏洞 5: windows系统漏洞 6:应急漏洞
         :type VulCategory: int
         """
         self.Top = None
@@ -12976,7 +12976,7 @@ class DescribeVulLevelCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulCategory: 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+        :param VulCategory: 1:web-cms 漏洞，2.应用漏洞 3:安全基线 4: Linux软件漏洞 5: windows系统漏洞 6:应急漏洞
         :type VulCategory: int
         """
         self.VulCategory = None
@@ -13116,7 +13116,7 @@ class DescribeVulTopRequest(AbstractModel):
         r"""
         :param Top: 漏洞风险服务器top，1-100
         :type Top: int
-        :param VulCategory: 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+        :param VulCategory: 1:web-cms 漏洞，2.应用漏洞 3:安全基线 4: Linux软件漏洞 5: windows系统漏洞 6:应急漏洞
         :type VulCategory: int
         """
         self.Top = None

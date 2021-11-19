@@ -2080,7 +2080,9 @@ class StartWhiteboardPushRequest(AbstractModel):
         r"""
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
-        :param RoomId: 需要推流白板的房间号，取值范围: (1, 4294967295)
+        :param RoomId: 需要推流的白板房间号，取值范围: (1, 4294967295)。
+
+在没有指定TRTCRoomId和TRTCRoomIdStr的情况下，默认会以RoomId作为白板流进行推流的TRTC房间号。
         :type RoomId: int
         :param PushUserId: 用于白板推流服务进房进行推流的用户ID，最大长度不能大于60个字节，该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
         :type PushUserId: str
@@ -2146,6 +2148,20 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
         :type UserDefinedStreamId: str
         :param ExtraData: 内部参数，不需要关注此参数
         :type ExtraData: str
+        :param TRTCRoomId: **内部体验字段，若需要体验可以提工单申请开通体验**
+
+TRTC数字类型房间号，取值范围: (1, 4294967295)。
+
+在同时指定了RoomId与TRTCRoomId的情况下，优先使用TRTCRoomId作为白板流进行推流的TRTC房间号。
+
+当指定了TRTCRoomIdStr的情况下，此字段将被忽略。
+        :type TRTCRoomId: int
+        :param TRTCRoomIdStr: **内部体验字段，若需要体验可以提工单申请开通体验**
+
+TRTC字符串类型房间号。
+
+在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
+        :type TRTCRoomIdStr: str
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -2163,6 +2179,8 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
         self.AutoPublish = None
         self.UserDefinedStreamId = None
         self.ExtraData = None
+        self.TRTCRoomId = None
+        self.TRTCRoomIdStr = None
 
 
     def _deserialize(self, params):
@@ -2186,6 +2204,8 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
         self.AutoPublish = params.get("AutoPublish")
         self.UserDefinedStreamId = params.get("UserDefinedStreamId")
         self.ExtraData = params.get("ExtraData")
+        self.TRTCRoomId = params.get("TRTCRoomId")
+        self.TRTCRoomIdStr = params.get("TRTCRoomIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

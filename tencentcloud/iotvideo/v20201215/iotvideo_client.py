@@ -1482,6 +1482,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProductDynamicRegister(self, request):
+        """获取产品动态注册详情
+
+        :param request: Request instance for DescribeProductDynamicRegister.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeProductDynamicRegisterRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeProductDynamicRegisterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductDynamicRegister", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductDynamicRegisterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProducts(self, request):
         """获取产品列表
 
@@ -1916,6 +1944,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyProductDynamicRegister(self, request):
+        """修改产品动态注册
+
+        :param request: Request instance for ModifyProductDynamicRegister.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.ModifyProductDynamicRegisterRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.ModifyProductDynamicRegisterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyProductDynamicRegister", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyProductDynamicRegisterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

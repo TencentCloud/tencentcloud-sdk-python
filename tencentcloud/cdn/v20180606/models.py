@@ -1308,12 +1308,17 @@ class AuthenticationTypeA(AbstractModel):
         :param FilterType: whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         :type FilterType: str
+        :param BackupSecretKey: 计算签名的备用密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.SignParam = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -1322,6 +1327,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         self.ExpireTime = params.get("ExpireTime")
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1351,11 +1357,16 @@ class AuthenticationTypeB(AbstractModel):
         :param FilterType: whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         :type FilterType: str
+        :param BackupSecretKey: 计算签名的备用密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -1363,6 +1374,7 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
         self.ExpireTime = params.get("ExpireTime")
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1400,12 +1412,17 @@ dec：十进制
 hex：十六进制
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeFormat: str
+        :param BackupSecretKey: 计算签名的备用密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.ExpireTime = None
         self.FileExtensions = None
         self.FilterType = None
         self.TimeFormat = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -1414,6 +1431,7 @@ hex：十六进制
         self.FileExtensions = params.get("FileExtensions")
         self.FilterType = params.get("FilterType")
         self.TimeFormat = params.get("TimeFormat")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1456,6 +1474,10 @@ blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 dec：十进制
 hex：十六进制
         :type TimeFormat: str
+        :param BackupSecretKey: 计算签名的备用密钥
+仅允许大小写字母与数字，长度 6~32 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSecretKey: str
         """
         self.SecretKey = None
         self.ExpireTime = None
@@ -1464,6 +1486,7 @@ hex：十六进制
         self.SignParam = None
         self.TimeParam = None
         self.TimeFormat = None
+        self.BackupSecretKey = None
 
 
     def _deserialize(self, params):
@@ -1474,6 +1497,7 @@ hex：十六进制
         self.SignParam = params.get("SignParam")
         self.TimeParam = params.get("TimeParam")
         self.TimeFormat = params.get("TimeFormat")
+        self.BackupSecretKey = params.get("BackupSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6584,6 +6608,9 @@ off：不支持
         :param RemoteAuthentication: 远程鉴权配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
+        :param ShareCname: 共享CNAME配置（白名单功能）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
         self.ResourceId = None
         self.AppId = None
@@ -6644,6 +6671,7 @@ off：不支持
         self.OssPrivateAccess = None
         self.WebSocket = None
         self.RemoteAuthentication = None
+        self.ShareCname = None
 
 
     def _deserialize(self, params):
@@ -6802,6 +6830,9 @@ off：不支持
         if params.get("RemoteAuthentication") is not None:
             self.RemoteAuthentication = RemoteAuthentication()
             self.RemoteAuthentication._deserialize(params.get("RemoteAuthentication"))
+        if params.get("ShareCname") is not None:
+            self.ShareCname = ShareCname()
+            self.ShareCname._deserialize(params.get("ShareCname"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12745,6 +12776,37 @@ class ServerCert(AbstractModel):
         
 
 
+class ShareCname(AbstractModel):
+    """ShareCname配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: ShareCname 配置开关, 开关为off时，域名使用默认CNAME，若需要使用共享CNAME，将开关置为on.
+
+* ShareCname 为内测功能,如需使用,请联系腾讯云工程师开白.
+        :type Switch: str
+        :param Cname: 设置共享CNAME.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cname: str
+        """
+        self.Switch = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Cname = params.get("Cname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SimpleCache(AbstractModel):
     """缓存配置基础版本
     默认情况下所有文件缓存过期时间为 30 天
@@ -13657,6 +13719,8 @@ global：全球加速
         :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         :param RemoteAuthentication: 远程鉴权配置
         :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
+        :param ShareCname: 共享CNAME配置，白名单功能
+        :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
         self.Domain = None
         self.ProjectId = None
@@ -13701,6 +13765,7 @@ global：全球加速
         self.OssPrivateAccess = None
         self.WebSocket = None
         self.RemoteAuthentication = None
+        self.ShareCname = None
 
 
     def _deserialize(self, params):
@@ -13823,6 +13888,9 @@ global：全球加速
         if params.get("RemoteAuthentication") is not None:
             self.RemoteAuthentication = RemoteAuthentication()
             self.RemoteAuthentication._deserialize(params.get("RemoteAuthentication"))
+        if params.get("ShareCname") is not None:
+            self.ShareCname = ShareCname()
+            self.ShareCname._deserialize(params.get("ShareCname"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

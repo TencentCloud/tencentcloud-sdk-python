@@ -362,6 +362,34 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSocAlertList(self, request):
+        """拉取告警列表
+
+        :param request: Request instance for DescribeSocAlertList.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertListRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSocAlertList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSocAlertListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSocCspmCompliance(self, request):
         """合规详情项
 
