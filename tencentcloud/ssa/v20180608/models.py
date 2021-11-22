@@ -51,6 +51,38 @@ class AggregationObj(AbstractModel):
         
 
 
+class AlertDetail(AbstractModel):
+    """告警详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BaseInfo: 告警基础信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseInfo: :class:`tencentcloud.ssa.v20180608.models.AlertType`
+        :param Detail: 告警详情，json序列化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: str
+        """
+        self.BaseInfo = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        if params.get("BaseInfo") is not None:
+            self.BaseInfo = AlertType()
+            self.BaseInfo._deserialize(params.get("BaseInfo"))
+        self.Detail = params.get("Detail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlertListData(AbstractModel):
     """告警列表响应数据
 
@@ -2220,6 +2252,58 @@ class DescribeSafetyEventListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.List.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSocAlertDetailsRequest(AbstractModel):
+    """DescribeSocAlertDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlertId: 告警id
+        :type AlertId: str
+        :param AlertTimestamp: 告警时间，取Timestamp字段
+        :type AlertTimestamp: str
+        """
+        self.AlertId = None
+        self.AlertTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.AlertId = params.get("AlertId")
+        self.AlertTimestamp = params.get("AlertTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSocAlertDetailsResponse(AbstractModel):
+    """DescribeSocAlertDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 返回详情数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.AlertDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = AlertDetail()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 

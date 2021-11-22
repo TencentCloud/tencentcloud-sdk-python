@@ -4026,7 +4026,7 @@ class ModifySyncTaskAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 一个或多个待操作的任务ID。可通过[DescribeSyncTasks](https://tcloud-dev.oa.com/document/product/237/32979?!preview&!document=1) API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
+        :param TaskIds: 一个或多个待操作的任务ID。可通过DescribeSyncTasks API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
         :type TaskIds: list of str
         :param TaskName: 任务名称。可任意命名，但不得超过100个字符。
         :type TaskName: str

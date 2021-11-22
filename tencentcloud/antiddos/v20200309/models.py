@@ -184,6 +184,8 @@ class BGPIPInstance(AbstractModel):
         :param Domain: 建议客户接入的域名，客户可使用域名接入。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
+        :param DamDDoSStatus: 是否开启安全加速，是为1，否为0。
+        :type DamDDoSStatus: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -202,6 +204,7 @@ class BGPIPInstance(AbstractModel):
         self.EipAddressPackRelation = None
         self.EipAddressInfo = None
         self.Domain = None
+        self.DamDDoSStatus = None
 
 
     def _deserialize(self, params):
@@ -238,6 +241,7 @@ class BGPIPInstance(AbstractModel):
             self.EipAddressInfo = EipAddressRelation()
             self.EipAddressInfo._deserialize(params.get("EipAddressInfo"))
         self.Domain = params.get("Domain")
+        self.DamDDoSStatus = params.get("DamDDoSStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2306,6 +2310,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterEipType: int
         :param FilterEipEipAddressStatus: 高防弹性公网IP实例的绑定状态搜索条件，取值范围 [BINDING、 BIND、UNBINDING、UNBIND]。该搜索条件只在FilterEipType=1时才有效。
         :type FilterEipEipAddressStatus: list of str
+        :param FilterDamDDoSStatus: 是否只获取安全加速实例。填写时，只能填写1或者0。当填写1时，表示返回安全加速实例。当填写0时，表示返回非安全加速实例。
+        :type FilterDamDDoSStatus: int
         """
         self.Offset = None
         self.Limit = None
@@ -2316,6 +2322,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterName = None
         self.FilterEipType = None
         self.FilterEipEipAddressStatus = None
+        self.FilterDamDDoSStatus = None
 
 
     def _deserialize(self, params):
@@ -2328,6 +2335,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterName = params.get("FilterName")
         self.FilterEipType = params.get("FilterEipType")
         self.FilterEipEipAddressStatus = params.get("FilterEipEipAddressStatus")
+        self.FilterDamDDoSStatus = params.get("FilterDamDDoSStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

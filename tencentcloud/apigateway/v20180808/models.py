@@ -5310,7 +5310,7 @@ class DescribeServicesStatusRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为 0。
         :type Offset: int
-        :param Filters: 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId
+        :param Filters: 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion、InstanceId、NetType、EIAMAppId。
         :type Filters: list of Filter
         """
         self.Limit = None
