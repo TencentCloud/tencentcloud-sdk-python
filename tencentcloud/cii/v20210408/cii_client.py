@@ -220,3 +220,32 @@ class CiiClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadMedicalFile(self, request):
+        """上传医疗影像文件，可以用来做结构化。
+
+        :param request: Request instance for UploadMedicalFile.
+        :type request: :class:`tencentcloud.cii.v20210408.models.UploadMedicalFileRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.UploadMedicalFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            options = {'IsMultipart': True, 'BinaryParams': [u'File']}
+            body = self.call("UploadMedicalFile", params, options=options)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadMedicalFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -5363,14 +5363,22 @@ class ResetCloudStorageRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
+        :param ChannelId: 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+        :type ChannelId: int
+        :param UserId: 云存用户Id，为空则为默认云存空间。
+        :type UserId: str
         """
         self.ProductId = None
         self.DeviceName = None
+        self.ChannelId = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.ChannelId = params.get("ChannelId")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1032,3 +1032,53 @@ class UnderwriteItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UploadMedicalFileRequest(AbstractModel):
+    """UploadMedicalFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param File: 文件内容的base64的值。FileBase64与FileURL有一个不为空即可，若FileURL同时存在，那么取FileBase64。
+        :type File: binary
+        :param FileURL: 文件的URL地址。FileBase64与FileURL有一个不为空即可，若FileBase64同时存在，那么取FileBase64。
+        :type FileURL: str
+        """
+        self.File = None
+        self.FileURL = None
+
+
+    def _deserialize(self, params):
+        self.File = params.get("File")
+        self.FileURL = params.get("FileURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadMedicalFileResponse(AbstractModel):
+    """UploadMedicalFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileKey: 文件存储的key，可以用来创建结构化任务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileKey = params.get("FileKey")
+        self.RequestId = params.get("RequestId")

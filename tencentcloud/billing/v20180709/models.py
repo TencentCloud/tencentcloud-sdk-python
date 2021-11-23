@@ -1592,7 +1592,7 @@ class DescribeBillDetailRequest(AbstractModel):
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
-        :param ProductCode: 查询指定产品信息（暂时未开放获取）
+        :param ProductCode: 已废弃参数，未开放
         :type ProductCode: str
         :param PayMode: 付费模式 prePay/postPay
         :type PayMode: str
@@ -1602,6 +1602,9 @@ class DescribeBillDetailRequest(AbstractModel):
         :type ActionType: str
         :param ProjectId: 项目ID:资源所属项目ID
         :type ProjectId: int
+        :param BusinessCode: 商品名称代码
+备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+        :type BusinessCode: str
         """
         self.Offset = None
         self.Limit = None
@@ -1615,6 +1618,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ResourceId = None
         self.ActionType = None
         self.ProjectId = None
+        self.BusinessCode = None
 
 
     def _deserialize(self, params):
@@ -1630,6 +1634,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.ActionType = params.get("ActionType")
         self.ProjectId = params.get("ProjectId")
+        self.BusinessCode = params.get("BusinessCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1864,6 +1869,9 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type ResourceId: str
         :param PayMode: 付费模式 prePay/postPay
         :type PayMode: str
+        :param BusinessCode: 商品名称代码
+备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+        :type BusinessCode: str
         """
         self.Offset = None
         self.Limit = None
@@ -1873,6 +1881,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.ActionType = None
         self.ResourceId = None
         self.PayMode = None
+        self.BusinessCode = None
 
 
     def _deserialize(self, params):
@@ -1884,6 +1893,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.ActionType = params.get("ActionType")
         self.ResourceId = params.get("ResourceId")
         self.PayMode = params.get("PayMode")
+        self.BusinessCode = params.get("BusinessCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
