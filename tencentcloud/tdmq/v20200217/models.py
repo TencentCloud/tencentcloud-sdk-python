@@ -18,6 +18,424 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AMQPClusterConfig(AbstractModel):
+    """AMQP集群配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxTpsPerVHost: 单Vhost TPS上限
+        :type MaxTpsPerVHost: int
+        :param MaxConnNumPerVHost: 单Vhost客户端连接数上限
+        :type MaxConnNumPerVHost: int
+        :param MaxVHostNum: 最大Vhost数量
+        :type MaxVHostNum: int
+        :param MaxExchangeNum: 最大exchange数量
+        :type MaxExchangeNum: int
+        :param MaxQueueNum: 最大Queue数量
+        :type MaxQueueNum: int
+        :param MaxRetentionTime: 消息最大保留时间，以毫秒为单位
+        :type MaxRetentionTime: int
+        :param UsedVHostNum: 已使用Vhost数量
+        :type UsedVHostNum: int
+        :param UsedExchangeNum: 已使用exchange数量
+        :type UsedExchangeNum: int
+        :param UsedQueueNum: 已使用queue数量
+        :type UsedQueueNum: int
+        """
+        self.MaxTpsPerVHost = None
+        self.MaxConnNumPerVHost = None
+        self.MaxVHostNum = None
+        self.MaxExchangeNum = None
+        self.MaxQueueNum = None
+        self.MaxRetentionTime = None
+        self.UsedVHostNum = None
+        self.UsedExchangeNum = None
+        self.UsedQueueNum = None
+
+
+    def _deserialize(self, params):
+        self.MaxTpsPerVHost = params.get("MaxTpsPerVHost")
+        self.MaxConnNumPerVHost = params.get("MaxConnNumPerVHost")
+        self.MaxVHostNum = params.get("MaxVHostNum")
+        self.MaxExchangeNum = params.get("MaxExchangeNum")
+        self.MaxQueueNum = params.get("MaxQueueNum")
+        self.MaxRetentionTime = params.get("MaxRetentionTime")
+        self.UsedVHostNum = params.get("UsedVHostNum")
+        self.UsedExchangeNum = params.get("UsedExchangeNum")
+        self.UsedQueueNum = params.get("UsedQueueNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPClusterDetail(AbstractModel):
+    """租户AMQP集群详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 集群基本信息
+        :type Info: :class:`tencentcloud.tdmq.v20200217.models.AMQPClusterInfo`
+        :param Config: 集群配置信息
+        :type Config: :class:`tencentcloud.tdmq.v20200217.models.AMQPClusterConfig`
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self.Info = None
+        self.Config = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = AMQPClusterInfo()
+            self.Info._deserialize(params.get("Info"))
+        if params.get("Config") is not None:
+            self.Config = AMQPClusterConfig()
+            self.Config._deserialize(params.get("Config"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPClusterInfo(AbstractModel):
+    """AMQP集群基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param Region: 地域信息
+        :type Region: str
+        :param CreateTime: 创建时间，毫秒为单位
+        :type CreateTime: int
+        :param Remark: 集群说明信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param PublicEndPoint: 公网接入地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicEndPoint: str
+        :param VpcEndPoint: VPC接入地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcEndPoint: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Region = None
+        self.CreateTime = None
+        self.Remark = None
+        self.PublicEndPoint = None
+        self.VpcEndPoint = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Region = params.get("Region")
+        self.CreateTime = params.get("CreateTime")
+        self.Remark = params.get("Remark")
+        self.PublicEndPoint = params.get("PublicEndPoint")
+        self.VpcEndPoint = params.get("VpcEndPoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPClusterRecentStats(AbstractModel):
+    """AMQP集群近期使用量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueueNum: Queue数量
+        :type QueueNum: int
+        :param ProducedMsgNum: 消息生产数
+        :type ProducedMsgNum: int
+        :param AccumulativeMsgNum: 消息堆积数
+        :type AccumulativeMsgNum: int
+        :param ExchangeNum: Exchange数量
+        :type ExchangeNum: int
+        """
+        self.QueueNum = None
+        self.ProducedMsgNum = None
+        self.AccumulativeMsgNum = None
+        self.ExchangeNum = None
+
+
+    def _deserialize(self, params):
+        self.QueueNum = params.get("QueueNum")
+        self.ProducedMsgNum = params.get("ProducedMsgNum")
+        self.AccumulativeMsgNum = params.get("AccumulativeMsgNum")
+        self.ExchangeNum = params.get("ExchangeNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPExchange(AbstractModel):
+    """AMQP Exchange信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Exchange名称
+        :type Name: str
+        :param Type: Exchange的类别，为枚举类型:Direct, Fanout, Topic
+        :type Type: str
+        :param SourceBindedNum: 主绑定数
+        :type SourceBindedNum: int
+        :param Remark: 说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param DestBindedNum: 被绑定数
+        :type DestBindedNum: int
+        :param CreateTime: 创建时间，以毫秒为单位
+        :type CreateTime: int
+        :param UpdateTime: 创建时间，以毫秒为单位
+        :type UpdateTime: int
+        :param Internal: 是否为内部Exchange(以amq.前缀开头的)
+        :type Internal: bool
+        """
+        self.Name = None
+        self.Type = None
+        self.SourceBindedNum = None
+        self.Remark = None
+        self.DestBindedNum = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Internal = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.SourceBindedNum = params.get("SourceBindedNum")
+        self.Remark = params.get("Remark")
+        self.DestBindedNum = params.get("DestBindedNum")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Internal = params.get("Internal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPQueueDetail(AbstractModel):
+    """AMQP 队列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Queue名称
+        :type Name: str
+        :param Remark: 说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param DestBindedNum: 被绑定数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestBindedNum: int
+        :param CreateTime: 创建时间，以毫秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 创建时间，以毫秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param OnlineConsumerNum: 在线消费者数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineConsumerNum: int
+        :param Tps: 每秒钟的事务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tps: int
+        :param AccumulativeMsgNum: 消息堆积数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccumulativeMsgNum: int
+        :param AutoDelete: 是否自动删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoDelete: bool
+        :param DeadLetterExchange: 死信交换机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterExchange: str
+        :param DeadLetterRoutingKey: 死信交换机路由键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterRoutingKey: str
+        """
+        self.Name = None
+        self.Remark = None
+        self.DestBindedNum = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.OnlineConsumerNum = None
+        self.Tps = None
+        self.AccumulativeMsgNum = None
+        self.AutoDelete = None
+        self.DeadLetterExchange = None
+        self.DeadLetterRoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        self.DestBindedNum = params.get("DestBindedNum")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.OnlineConsumerNum = params.get("OnlineConsumerNum")
+        self.Tps = params.get("Tps")
+        self.AccumulativeMsgNum = params.get("AccumulativeMsgNum")
+        self.AutoDelete = params.get("AutoDelete")
+        self.DeadLetterExchange = params.get("DeadLetterExchange")
+        self.DeadLetterRoutingKey = params.get("DeadLetterRoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPRouteRelation(AbstractModel):
+    """AMQP路由关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteRelationId: 路由关系ID
+        :type RouteRelationId: str
+        :param SourceExchange: 源Exchange
+        :type SourceExchange: str
+        :param DestType: 目标类型:Queue|Exchange
+        :type DestType: str
+        :param DestValue: 目标值
+        :type DestValue: str
+        :param RoutingKey: 绑定key
+        :type RoutingKey: str
+        :param SourceExchangeType: 源路由类型:Direct|Topic|Fanout
+        :type SourceExchangeType: str
+        :param CreateTime: 创建时间，以毫秒为单位
+        :type CreateTime: int
+        :param UpdateTime: 修改时间，以毫秒为单位
+        :type UpdateTime: int
+        :param Remark: 说明信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.RouteRelationId = None
+        self.SourceExchange = None
+        self.DestType = None
+        self.DestValue = None
+        self.RoutingKey = None
+        self.SourceExchangeType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.RouteRelationId = params.get("RouteRelationId")
+        self.SourceExchange = params.get("SourceExchange")
+        self.DestType = params.get("DestType")
+        self.DestValue = params.get("DestValue")
+        self.RoutingKey = params.get("RoutingKey")
+        self.SourceExchangeType = params.get("SourceExchangeType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AMQPVHost(AbstractModel):
+    """vhostd信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VHostId: 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type VHostId: str
+        :param MsgTtl: 未消费消息的保留时间，以毫秒单位，范围60秒到15天
+        :type MsgTtl: int
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间，以毫秒为单位
+        :type CreateTime: int
+        :param UpdateTime: 更新时间，以毫秒为单位
+        :type UpdateTime: int
+        :param Username: 用户名
+        :type Username: str
+        :param Password: 密码
+        :type Password: str
+        """
+        self.VHostId = None
+        self.MsgTtl = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.VHostId = params.get("VHostId")
+        self.MsgTtl = params.get("MsgTtl")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AcknowledgeMessageRequest(AbstractModel):
     """AcknowledgeMessage请求参数结构体
 
@@ -921,6 +1339,299 @@ class ConsumersSchedule(AbstractModel):
         
 
 
+class CreateAMQPClusterRequest(AbstractModel):
+    """CreateAMQPCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 3-64个字符，只能包含字母、数字、“-”及“_”
+        :type Name: str
+        :param Remark: 集群描述，128个字符以内
+        :type Remark: str
+        """
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAMQPClusterResponse(AbstractModel):
+    """CreateAMQPCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAMQPExchangeRequest(AbstractModel):
+    """CreateAMQPExchange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Exchange: 交换机名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type Exchange: str
+        :param VHosts: 交换机所在的vhost，目前支持在单个vhost下创建主题
+        :type VHosts: list of str
+        :param Type: 交换机类型，可选值为Direct, Fanout, Topic
+        :type Type: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Remark: 交换机说明，最大128个字符
+        :type Remark: str
+        :param AlternateExchange: 备用交换机名称
+        :type AlternateExchange: str
+        """
+        self.Exchange = None
+        self.VHosts = None
+        self.Type = None
+        self.ClusterId = None
+        self.Remark = None
+        self.AlternateExchange = None
+
+
+    def _deserialize(self, params):
+        self.Exchange = params.get("Exchange")
+        self.VHosts = params.get("VHosts")
+        self.Type = params.get("Type")
+        self.ClusterId = params.get("ClusterId")
+        self.Remark = params.get("Remark")
+        self.AlternateExchange = params.get("AlternateExchange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAMQPExchangeResponse(AbstractModel):
+    """CreateAMQPExchange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAMQPQueueRequest(AbstractModel):
+    """CreateAMQPQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Queue: 队列名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type Queue: str
+        :param VHostId: 队列所在的vhost名称
+        :type VHostId: str
+        :param AutoDelete: 是否自动清除
+        :type AutoDelete: bool
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Remark: 队列说明，最大128个字符
+        :type Remark: str
+        :param DeadLetterExchange: 死信exchange
+        :type DeadLetterExchange: str
+        :param DeadLetterRoutingKey: 路由键
+        :type DeadLetterRoutingKey: str
+        """
+        self.Queue = None
+        self.VHostId = None
+        self.AutoDelete = None
+        self.ClusterId = None
+        self.Remark = None
+        self.DeadLetterExchange = None
+        self.DeadLetterRoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.Queue = params.get("Queue")
+        self.VHostId = params.get("VHostId")
+        self.AutoDelete = params.get("AutoDelete")
+        self.ClusterId = params.get("ClusterId")
+        self.Remark = params.get("Remark")
+        self.DeadLetterExchange = params.get("DeadLetterExchange")
+        self.DeadLetterRoutingKey = params.get("DeadLetterRoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAMQPQueueResponse(AbstractModel):
+    """CreateAMQPQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAMQPRouteRelationRequest(AbstractModel):
+    """CreateAMQPRouteRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: 交换机所在的vhost
+        :type VHostId: str
+        :param SourceExchange: 源Exchange名称
+        :type SourceExchange: str
+        :param DestType: 目标类型:Queue|Exchange
+        :type DestType: str
+        :param DestValue: 目标值
+        :type DestValue: str
+        :param Remark: 交换机说明，最大128个字符
+        :type Remark: str
+        :param RoutingKey: 绑定key,缺省值为default
+        :type RoutingKey: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.SourceExchange = None
+        self.DestType = None
+        self.DestValue = None
+        self.Remark = None
+        self.RoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.SourceExchange = params.get("SourceExchange")
+        self.DestType = params.get("DestType")
+        self.DestValue = params.get("DestValue")
+        self.Remark = params.get("Remark")
+        self.RoutingKey = params.get("RoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAMQPRouteRelationResponse(AbstractModel):
+    """CreateAMQPRouteRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAMQPVHostRequest(AbstractModel):
+    """CreateAMQPVHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: vhost名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type VHostId: str
+        :param MsgTtl: 未消费消息的保留时间，以毫秒为单位，60秒-15天
+        :type MsgTtl: int
+        :param Remark: 说明，最大128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.MsgTtl = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.MsgTtl = params.get("MsgTtl")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAMQPVHostResponse(AbstractModel):
+    """CreateAMQPVHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClusterRequest(AbstractModel):
     """CreateCluster请求参数结构体
 
@@ -1802,6 +2513,239 @@ class CreateTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAMQPClusterRequest(AbstractModel):
+    """DeleteAMQPCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 待删除的集群Id。
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAMQPClusterResponse(AbstractModel):
+    """DeleteAMQPCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAMQPExchangeRequest(AbstractModel):
+    """DeleteAMQPExchange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost名称
+        :type VHostId: str
+        :param Exchange: 交换机名称
+        :type Exchange: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.Exchange = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.Exchange = params.get("Exchange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAMQPExchangeResponse(AbstractModel):
+    """DeleteAMQPExchange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAMQPQueueRequest(AbstractModel):
+    """DeleteAMQPQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost名称
+        :type VHostId: str
+        :param Queue: 队列名称
+        :type Queue: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.Queue = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.Queue = params.get("Queue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAMQPQueueResponse(AbstractModel):
+    """DeleteAMQPQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAMQPRouteRelationRequest(AbstractModel):
+    """DeleteAMQPRouteRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost名称
+        :type VHostId: str
+        :param RouteRelationId: 路由关系ID
+        :type RouteRelationId: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.RouteRelationId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.RouteRelationId = params.get("RouteRelationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAMQPRouteRelationResponse(AbstractModel):
+    """DeleteAMQPRouteRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAMQPVHostRequest(AbstractModel):
+    """DeleteAMQPVHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: vhost名称
+        :type VHostId: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAMQPVHostResponse(AbstractModel):
+    """DeleteAMQPVHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterRequest(AbstractModel):
     """DeleteCluster请求参数结构体
 
@@ -2436,6 +3380,497 @@ class DeleteTopicsResponse(AbstractModel):
                 obj = TopicRecord()
                 obj._deserialize(item)
                 self.TopicSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPClusterRequest(AbstractModel):
+    """DescribeAMQPCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAMQPClusterResponse(AbstractModel):
+    """DescribeAMQPCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterInfo: 集群信息
+        :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.AMQPClusterInfo`
+        :param ClusterConfig: 集群配置
+        :type ClusterConfig: :class:`tencentcloud.tdmq.v20200217.models.AMQPClusterConfig`
+        :param ClusterStats: 集群最近使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStats: :class:`tencentcloud.tdmq.v20200217.models.AMQPClusterRecentStats`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterInfo = None
+        self.ClusterConfig = None
+        self.ClusterStats = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = AMQPClusterInfo()
+            self.ClusterInfo._deserialize(params.get("ClusterInfo"))
+        if params.get("ClusterConfig") is not None:
+            self.ClusterConfig = AMQPClusterConfig()
+            self.ClusterConfig._deserialize(params.get("ClusterConfig"))
+        if params.get("ClusterStats") is not None:
+            self.ClusterStats = AMQPClusterRecentStats()
+            self.ClusterStats._deserialize(params.get("ClusterStats"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPClustersRequest(AbstractModel):
+    """DescribeAMQPClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param IdKeyword: 按照集群ID关键字搜索
+        :type IdKeyword: str
+        :param NameKeyword: 按照集群名称关键字搜索
+        :type NameKeyword: str
+        :param ClusterIdList: 集群ID列表过滤
+        :type ClusterIdList: list of str
+        :param IsTagFilter: 标签过滤查找时，需要设置为true
+        :type IsTagFilter: bool
+        :param Filters: 过滤器。目前支持按标签过滤。
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.IdKeyword = None
+        self.NameKeyword = None
+        self.ClusterIdList = None
+        self.IsTagFilter = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.IdKeyword = params.get("IdKeyword")
+        self.NameKeyword = params.get("NameKeyword")
+        self.ClusterIdList = params.get("ClusterIdList")
+        self.IsTagFilter = params.get("IsTagFilter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAMQPClustersResponse(AbstractModel):
+    """DescribeAMQPClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterList: 集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterList: list of AMQPClusterDetail
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = AMQPClusterDetail()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPCreateQuotaRequest(AbstractModel):
+    """DescribeAMQPCreateQuota请求参数结构体
+
+    """
+
+
+class DescribeAMQPCreateQuotaResponse(AbstractModel):
+    """DescribeAMQPCreateQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxClusterNum: 租户总共可使用集群数量
+        :type MaxClusterNum: int
+        :param UsedClusterNum: 租户已创建集群数量
+        :type UsedClusterNum: int
+        :param ExchangeCapacity: Exchange容量
+        :type ExchangeCapacity: int
+        :param QueueCapacity: Queue容量
+        :type QueueCapacity: int
+        :param MaxTpsPerVHost: 单Vhost TPS
+        :type MaxTpsPerVHost: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MaxClusterNum = None
+        self.UsedClusterNum = None
+        self.ExchangeCapacity = None
+        self.QueueCapacity = None
+        self.MaxTpsPerVHost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MaxClusterNum = params.get("MaxClusterNum")
+        self.UsedClusterNum = params.get("UsedClusterNum")
+        self.ExchangeCapacity = params.get("ExchangeCapacity")
+        self.QueueCapacity = params.get("QueueCapacity")
+        self.MaxTpsPerVHost = params.get("MaxTpsPerVHost")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPExchangesRequest(AbstractModel):
+    """DescribeAMQPExchanges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询限制数
+        :type Limit: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost ID
+        :type VHostId: str
+        :param FilterType: 按路由类型过滤查询结果，可选择Direct, Fanout, Topic
+        :type FilterType: list of str
+        :param FilterName: 按exchange名称搜索，支持模糊查询
+        :type FilterName: str
+        :param FilterInternal: 过滤查询内部或者外部exchange
+        :type FilterInternal: bool
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.VHostId = None
+        self.FilterType = None
+        self.FilterName = None
+        self.FilterInternal = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.FilterType = params.get("FilterType")
+        self.FilterName = params.get("FilterName")
+        self.FilterInternal = params.get("FilterInternal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAMQPExchangesResponse(AbstractModel):
+    """DescribeAMQPExchanges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Exchanges: 主题信息列表
+        :type Exchanges: list of AMQPExchange
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Exchanges = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Exchanges") is not None:
+            self.Exchanges = []
+            for item in params.get("Exchanges"):
+                obj = AMQPExchange()
+                obj._deserialize(item)
+                self.Exchanges.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPQueuesRequest(AbstractModel):
+    """DescribeAMQPQueues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询限制数
+        :type Limit: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost名称
+        :type VHostId: str
+        :param NameKeyword: 按队列名称搜索，支持模糊查询
+        :type NameKeyword: str
+        :param SortOrder: 查询结果排序规则，ASC为升序，DESC为降序
+        :type SortOrder: str
+        :param SortedBy: 对查询结果排序，此为排序字段，目前支持Accumulative（消息堆积量）、Tps
+        :type SortedBy: str
+        :param FilterOneQueue: 队列名称，指定此参数后将只返回该队列信息
+        :type FilterOneQueue: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.VHostId = None
+        self.NameKeyword = None
+        self.SortOrder = None
+        self.SortedBy = None
+        self.FilterOneQueue = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.NameKeyword = params.get("NameKeyword")
+        self.SortOrder = params.get("SortOrder")
+        self.SortedBy = params.get("SortedBy")
+        self.FilterOneQueue = params.get("FilterOneQueue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAMQPQueuesResponse(AbstractModel):
+    """DescribeAMQPQueues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Queues: 队列信息列表
+        :type Queues: list of AMQPQueueDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Queues = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Queues") is not None:
+            self.Queues = []
+            for item in params.get("Queues"):
+                obj = AMQPQueueDetail()
+                obj._deserialize(item)
+                self.Queues.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPRouteRelationsRequest(AbstractModel):
+    """DescribeAMQPRouteRelations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询限制数
+        :type Limit: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost名称
+        :type VHostId: str
+        :param FilterSourceExchange: 按源exchange名称过滤查询结果，支持模糊查询
+        :type FilterSourceExchange: str
+        :param FilterDestType: 按绑定的目标类型过滤查询结果，可选值:Exchange、Queue
+        :type FilterDestType: str
+        :param FilterDestValue: 按目标名称过滤查询结果，支持模糊查询
+        :type FilterDestValue: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+        self.VHostId = None
+        self.FilterSourceExchange = None
+        self.FilterDestType = None
+        self.FilterDestValue = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.FilterSourceExchange = params.get("FilterSourceExchange")
+        self.FilterDestType = params.get("FilterDestType")
+        self.FilterDestValue = params.get("FilterDestValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAMQPRouteRelationsResponse(AbstractModel):
+    """DescribeAMQPRouteRelations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param RouteRelations: 路由关系列表
+        :type RouteRelations: list of AMQPRouteRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteRelations = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteRelations") is not None:
+            self.RouteRelations = []
+            for item in params.get("RouteRelations"):
+                obj = AMQPRouteRelation()
+                obj._deserialize(item)
+                self.RouteRelations.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAMQPVHostsRequest(AbstractModel):
+    """DescribeAMQPVHosts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param NameKeyword: 按名称搜索
+        :type NameKeyword: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.NameKeyword = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.NameKeyword = params.get("NameKeyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAMQPVHostsResponse(AbstractModel):
+    """DescribeAMQPVHosts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VHosts: Vhost 列表
+        :type VHosts: list of AMQPVHost
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VHosts = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VHosts") is not None:
+            self.VHosts = []
+            for item in params.get("VHosts"):
+                obj = AMQPVHost()
+                obj._deserialize(item)
+                self.VHosts.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4269,6 +5704,226 @@ class FilterSubscription(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAMQPClusterRequest(AbstractModel):
+    """ModifyAMQPCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 3-64个字符，只能包含字母、数字、“-”及“_”
+        :type ClusterName: str
+        :param Remark: 说明信息，不超过128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAMQPClusterResponse(AbstractModel):
+    """ModifyAMQPCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAMQPExchangeRequest(AbstractModel):
+    """ModifyAMQPExchange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost间名称
+        :type VHostId: str
+        :param Exchange: 交换机名称
+        :type Exchange: str
+        :param Remark: 说明信息，最大128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.Exchange = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.Exchange = params.get("Exchange")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAMQPExchangeResponse(AbstractModel):
+    """ModifyAMQPExchange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAMQPQueueRequest(AbstractModel):
+    """ModifyAMQPQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: Vhost名称
+        :type VHostId: str
+        :param Queue: 队列名称
+        :type Queue: str
+        :param AutoDelete: 是否自动清除
+        :type AutoDelete: bool
+        :param Remark: 说明信息，最大128个字符
+        :type Remark: str
+        :param DeadLetterExchange: 死信exchange
+        :type DeadLetterExchange: str
+        :param DeadLetterRoutingKey: 路由键
+        :type DeadLetterRoutingKey: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.Queue = None
+        self.AutoDelete = None
+        self.Remark = None
+        self.DeadLetterExchange = None
+        self.DeadLetterRoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.Queue = params.get("Queue")
+        self.AutoDelete = params.get("AutoDelete")
+        self.Remark = params.get("Remark")
+        self.DeadLetterExchange = params.get("DeadLetterExchange")
+        self.DeadLetterRoutingKey = params.get("DeadLetterRoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAMQPQueueResponse(AbstractModel):
+    """ModifyAMQPQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAMQPVHostRequest(AbstractModel):
+    """ModifyAMQPVHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VHostId: vhost名称，3-64个字符，只能包含字母、数字、“-”及“_”
+        :type VHostId: str
+        :param MsgTtl: 未消费消息的保留时间，以毫秒为单位，60秒-15天
+        :type MsgTtl: int
+        :param Remark: 说明，最大128个字符
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.VHostId = None
+        self.MsgTtl = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VHostId = params.get("VHostId")
+        self.MsgTtl = params.get("MsgTtl")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAMQPVHostResponse(AbstractModel):
+    """ModifyAMQPVHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyClusterRequest(AbstractModel):

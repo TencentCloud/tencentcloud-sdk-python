@@ -941,7 +941,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceVersion: str
         :param DBCharset: 实例DB字符集
         :type DBCharset: str
-        :param DBVersion: PostgreSQL内核版本
+        :param DBVersion: PostgreSQL主版本
         :type DBVersion: str
         :param CreateTime: 实例创建时间
         :type CreateTime: str
@@ -980,6 +980,12 @@ class DBInstance(AbstractModel):
         :param OfflineTime: 下线时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
+        :param DBKernelVersion: 数据库内核版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBKernelVersion: str
+        :param NetworkAccessList: 实例网络信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAccessList: list of NetworkAccess
         """
         self.Region = None
         self.Zone = None
@@ -1013,6 +1019,8 @@ class DBInstance(AbstractModel):
         self.ReadOnlyInstanceNum = None
         self.StatusInReadonlyGroup = None
         self.OfflineTime = None
+        self.DBKernelVersion = None
+        self.NetworkAccessList = None
 
 
     def _deserialize(self, params):
@@ -1058,6 +1066,13 @@ class DBInstance(AbstractModel):
         self.ReadOnlyInstanceNum = params.get("ReadOnlyInstanceNum")
         self.StatusInReadonlyGroup = params.get("StatusInReadonlyGroup")
         self.OfflineTime = params.get("OfflineTime")
+        self.DBKernelVersion = params.get("DBKernelVersion")
+        if params.get("NetworkAccessList") is not None:
+            self.NetworkAccessList = []
+            for item in params.get("NetworkAccessList"):
+                obj = NetworkAccess()
+                obj._deserialize(item)
+                self.NetworkAccessList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3400,6 +3415,66 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NetworkAccess(AbstractModel):
+    """网络类型信息，用于实例查询接口和RO组查询接口的返回。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 网络资源id，实例id或RO组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param ResourceType: 资源类型，1-实例 2-RO组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: int
+        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param Vip: IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Vip6: ipv6的IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip6: str
+        :param Vport: 连接Port地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param VpcStatus: 网络状态，1-申请中，2-使用中，3-删除中，4-已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcStatus: int
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.VpcId = None
+        self.Vip = None
+        self.Vip6 = None
+        self.Vport = None
+        self.SubnetId = None
+        self.VpcStatus = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.VpcId = params.get("VpcId")
+        self.Vip = params.get("Vip")
+        self.Vip6 = params.get("Vip6")
+        self.Vport = params.get("Vport")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcStatus = params.get("VpcStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NormalQueryItem(AbstractModel):
     """单条SlowQuery信息
 
@@ -3845,6 +3920,9 @@ class ReadOnlyGroup(AbstractModel):
         :type Rebalance: int
         :param DBInstanceNetInfo: 网络信息
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        :param NetworkAccessList: 只读组网络信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAccessList: list of NetworkAccess
         """
         self.ReadOnlyGroupId = None
         self.ReadOnlyGroupName = None
@@ -3863,6 +3941,7 @@ class ReadOnlyGroup(AbstractModel):
         self.ReadOnlyDBInstanceList = None
         self.Rebalance = None
         self.DBInstanceNetInfo = None
+        self.NetworkAccessList = None
 
 
     def _deserialize(self, params):
@@ -3893,6 +3972,12 @@ class ReadOnlyGroup(AbstractModel):
                 obj = DBInstanceNetInfo()
                 obj._deserialize(item)
                 self.DBInstanceNetInfo.append(obj)
+        if params.get("NetworkAccessList") is not None:
+            self.NetworkAccessList = []
+            for item in params.get("NetworkAccessList"):
+                obj = NetworkAccess()
+                obj._deserialize(item)
+                self.NetworkAccessList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4271,6 +4356,9 @@ class ServerlessDBInstance(AbstractModel):
         :param TagList: 实例绑定的标签数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of Tag
+        :param DBKernelVersion: 数据库内核版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBKernelVersion: str
         """
         self.DBInstanceId = None
         self.DBInstanceName = None
@@ -4287,6 +4375,7 @@ class ServerlessDBInstance(AbstractModel):
         self.DBAccountSet = None
         self.DBDatabaseList = None
         self.TagList = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
@@ -4320,6 +4409,7 @@ class ServerlessDBInstance(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -110,6 +110,146 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAMQPCluster(self, request):
+        """创建AMQP集群
+
+        :param request: Request instance for CreateAMQPCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAMQPCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAMQPClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAMQPExchange(self, request):
+        """创建AMQP Exchange
+
+        :param request: Request instance for CreateAMQPExchange.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPExchangeRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPExchangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAMQPExchange", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAMQPExchangeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAMQPQueue(self, request):
+        """创建AMQP队列
+
+        :param request: Request instance for CreateAMQPQueue.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPQueueRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAMQPQueue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAMQPQueueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAMQPRouteRelation(self, request):
+        """创建AMQP路由关系
+
+        :param request: Request instance for CreateAMQPRouteRelation.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPRouteRelationRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPRouteRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAMQPRouteRelation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAMQPRouteRelationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAMQPVHost(self, request):
+        """创建Amqp Vhost
+
+        :param request: Request instance for CreateAMQPVHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPVHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateAMQPVHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAMQPVHost", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAMQPVHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCluster(self, request):
         """创建用户的集群
 
@@ -474,6 +614,146 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAMQPCluster(self, request):
+        """删除AMQP集群
+
+        :param request: Request instance for DeleteAMQPCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAMQPCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAMQPClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAMQPExchange(self, request):
+        """删除Amqp交换机
+
+        :param request: Request instance for DeleteAMQPExchange.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPExchangeRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPExchangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAMQPExchange", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAMQPExchangeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAMQPQueue(self, request):
+        """删除Amqp队列
+
+        :param request: Request instance for DeleteAMQPQueue.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPQueueRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAMQPQueue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAMQPQueueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAMQPRouteRelation(self, request):
+        """删除Amqp路由关系
+
+        :param request: Request instance for DeleteAMQPRouteRelation.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPRouteRelationRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPRouteRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAMQPRouteRelation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAMQPRouteRelationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAMQPVHost(self, request):
+        """删除Vhost
+
+        :param request: Request instance for DeleteAMQPVHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPVHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteAMQPVHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAMQPVHost", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAMQPVHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCluster(self, request):
         """删除集群
 
@@ -824,6 +1104,202 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPCluster(self, request):
+        """获取单个Amqp集群信息
+
+        :param request: Request instance for DescribeAMQPCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPClusters(self, request):
+        """获取amqp集群列表
+
+        :param request: Request instance for DescribeAMQPClusters.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPClustersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPCreateQuota(self, request):
+        """获取用户的配额，如Queue容量，Exchange容量，Vhost容量，单Vhost Tps数,剩余可创建集群数
+
+        :param request: Request instance for DescribeAMQPCreateQuota.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPCreateQuotaRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPCreateQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPCreateQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPCreateQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPExchanges(self, request):
+        """获取AMQP Exchange列表
+
+        :param request: Request instance for DescribeAMQPExchanges.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPExchangesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPExchangesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPExchanges", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPExchangesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPQueues(self, request):
+        """获取Amqp队列列表
+
+        :param request: Request instance for DescribeAMQPQueues.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPQueuesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPQueuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPQueues", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPQueuesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPRouteRelations(self, request):
+        """获取Amqp路由关系列表
+
+        :param request: Request instance for DescribeAMQPRouteRelations.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPRouteRelationsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPRouteRelationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPRouteRelations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPRouteRelationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAMQPVHosts(self, request):
+        """获取Amqp Vhost 列表
+
+        :param request: Request instance for DescribeAMQPVHosts.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPVHostsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAMQPVHostsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAMQPVHosts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAMQPVHostsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1496,6 +1972,118 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAMQPCluster(self, request):
+        """更新Amqp集群信息
+
+        :param request: Request instance for ModifyAMQPCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAMQPCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAMQPClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAMQPExchange(self, request):
+        """更新Amqp交换机
+
+        :param request: Request instance for ModifyAMQPExchange.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPExchangeRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPExchangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAMQPExchange", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAMQPExchangeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAMQPQueue(self, request):
+        """更新Amqp队列
+
+        :param request: Request instance for ModifyAMQPQueue.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPQueueRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAMQPQueue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAMQPQueueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAMQPVHost(self, request):
+        """更新Vhost
+
+        :param request: Request instance for ModifyAMQPVHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPVHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPVHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAMQPVHost", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAMQPVHostResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
