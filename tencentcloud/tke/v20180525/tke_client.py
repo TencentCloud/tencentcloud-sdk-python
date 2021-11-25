@@ -2462,6 +2462,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ScaleInClusterMaster(self, request):
+        """缩容独立集群master节点
+
+        :param request: Request instance for ScaleInClusterMaster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ScaleInClusterMasterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ScaleInClusterMasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScaleInClusterMaster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleInClusterMasterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutClusterMaster(self, request):
+        """扩容独立集群master节点
+
+        :param request: Request instance for ScaleOutClusterMaster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ScaleOutClusterMasterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ScaleOutClusterMasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScaleOutClusterMaster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleOutClusterMasterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetNodePoolNodeProtection(self, request):
         """仅能设置节点池中处于伸缩组的节点
 

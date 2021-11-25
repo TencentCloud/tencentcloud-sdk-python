@@ -9188,6 +9188,159 @@ class RunSecurityServiceEnabled(AbstractModel):
         
 
 
+class ScaleInClusterMasterRequest(AbstractModel):
+    """ScaleInClusterMaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群实例ID
+        :type ClusterId: str
+        :param ScaleInMasters: master缩容选项
+        :type ScaleInMasters: list of ScaleInMaster
+        """
+        self.ClusterId = None
+        self.ScaleInMasters = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ScaleInMasters") is not None:
+            self.ScaleInMasters = []
+            for item in params.get("ScaleInMasters"):
+                obj = ScaleInMaster()
+                obj._deserialize(item)
+                self.ScaleInMasters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleInClusterMasterResponse(AbstractModel):
+    """ScaleInClusterMaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ScaleInMaster(AbstractModel):
+    """master节点缩容参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param NodeRole: 缩容的实例角色：MASTER,ETCD,MASTER_ETCD
+        :type NodeRole: str
+        :param InstanceDeleteMode: 实例的保留模式
+        :type InstanceDeleteMode: str
+        """
+        self.InstanceId = None
+        self.NodeRole = None
+        self.InstanceDeleteMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeRole = params.get("NodeRole")
+        self.InstanceDeleteMode = params.get("InstanceDeleteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutClusterMasterRequest(AbstractModel):
+    """ScaleOutClusterMaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群实例ID
+        :type ClusterId: str
+        :param RunInstancesForNode: 新建节点参数
+        :type RunInstancesForNode: list of RunInstancesForNode
+        :param ExistedInstancesForNode: 添加已有节点相关参数
+        :type ExistedInstancesForNode: list of ExistedInstancesForNode
+        :param InstanceAdvancedSettings: 实例高级设置
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param ExtraArgs: 集群master组件自定义参数
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
+        """
+        self.ClusterId = None
+        self.RunInstancesForNode = None
+        self.ExistedInstancesForNode = None
+        self.InstanceAdvancedSettings = None
+        self.ExtraArgs = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("RunInstancesForNode") is not None:
+            self.RunInstancesForNode = []
+            for item in params.get("RunInstancesForNode"):
+                obj = RunInstancesForNode()
+                obj._deserialize(item)
+                self.RunInstancesForNode.append(obj)
+        if params.get("ExistedInstancesForNode") is not None:
+            self.ExistedInstancesForNode = []
+            for item in params.get("ExistedInstancesForNode"):
+                obj = ExistedInstancesForNode()
+                obj._deserialize(item)
+                self.ExistedInstancesForNode.append(obj)
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = ClusterExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutClusterMasterResponse(AbstractModel):
+    """ScaleOutClusterMaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SecurityContext(AbstractModel):
     """cloudrun安全特性
 
