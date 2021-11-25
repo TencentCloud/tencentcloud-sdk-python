@@ -30,7 +30,7 @@ pip install --upgrade tencentcloud-sdk-python
 
 ## 通过源码包安装
 
-前往 [Github 代码托管地址](https://github.com/tencentcloud/tencentcloud-sdk-python) 下载最新代码，解压后
+前往 [Github 仓库](https://github.com/tencentcloud/tencentcloud-sdk-python) 或者 [Gitee 仓库](https://gitee.com/tencentcloud/tencentcloud-sdk-python) 下载最新代码，解压后
 
     $ cd tencentcloud-sdk-python
     $ python setup.py install
