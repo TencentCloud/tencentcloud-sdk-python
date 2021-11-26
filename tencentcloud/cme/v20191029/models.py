@@ -97,13 +97,13 @@ class AddTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamId: 团队 ID。
         :type TeamId: str
         :param TeamMembers: 要添加的成员列表，一次最多添加30个成员。
         :type TeamMembers: list of AddMemberInfo
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向任意团队中添加成员。如果指定操作者，则操作者必须为管理员或者团队所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -585,9 +585,9 @@ class CreateLinkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param Type: 链接类型，取值有:
+        :param Type: 链接类型，可取值有:
 <li>CLASS: 分类链接；</li>
 <li> MATERIAL：媒体文件链接。</li>
         :type Type: str
@@ -595,7 +595,7 @@ class CreateLinkRequest(AbstractModel):
         :type Name: str
         :param Owner: 链接归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param DestinationId: 目标资源Id。取值：
+        :param DestinationId: 目标资源Id。可取值有：
 <li>当 Type 为 MATERIAL 时填媒体 ID；</li>
 <li>当 Type 为 CLASS 时填写分类路径。</li>
         :type DestinationId: str
@@ -603,7 +603,7 @@ class CreateLinkRequest(AbstractModel):
         :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param ClassPath: 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
         :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以创建任意源及目标资源的链接。如果指定操作者，则操作者必须对源资源有读权限，对目标媒体有写权限。
         :type Operator: str
         """
         self.Platform = None
@@ -666,12 +666,13 @@ class CreateProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param Name: 项目名称，不可超过30个字符。
         :type Name: str
-        :param Owner: 项目归属者。
-注：云转推项目，仅支持个人归属。
+        :param Owner: 项目归属者，即项目的所有者，后续操作只有该所有者有权限操作。
+
+注：目前所有项目只能设置归属个人，暂不支持团队项目。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Category: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
@@ -682,25 +683,27 @@ class CreateProjectRequest(AbstractModel):
         :type Category: str
         :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
-<li>Default：默认模式。</li>
-<li>VideoEditTemplate：视频编辑模板制作模式。</li>
+<li>Default：默认模式，即普通视频编辑项目。</li>
+<li>VideoEditTemplate：剪辑模板制作模式，用于制作剪辑模板。</li>
+
+注：不填则为默认模式。
         :type Mode: str
         :param AspectRatio: 画布宽高比。
 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
         :type AspectRatio: str
         :param Description: 项目描述信息。
         :type Description: str
-        :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时必填。
+        :param SwitcherProjectInput: 导播台项目输入信息，仅当项目类型为 SWITCHER 时必填。
         :type SwitcherProjectInput: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`
-        :param LiveStreamClipProjectInput: 直播剪辑信息，暂未开放，请勿使用。
+        :param LiveStreamClipProjectInput: 直播剪辑项目输入信息，暂未开放，请勿使用。
         :type LiveStreamClipProjectInput: :class:`tencentcloud.cme.v20191029.models.LiveStreamClipProjectInput`
-        :param VideoEditProjectInput: 视频编辑信息，仅当项目类型为 VIDEO_EDIT 时必填。
+        :param VideoEditProjectInput: 视频编辑项目输入信息，仅当项目类型为 VIDEO_EDIT 时必填。
         :type VideoEditProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`
-        :param VideoSegmentationProjectInput: 视频拆条信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
+        :param VideoSegmentationProjectInput: 视频拆条项目输入信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
         :type VideoSegmentationProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoSegmentationProjectInput`
-        :param StreamConnectProjectInput: 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。
+        :param StreamConnectProjectInput: 云转推项目输入信息，仅当项目类型为 STREAM_CONNECT 时必填。
         :type StreamConnectProjectInput: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`
-        :param RecordReplayProjectInput: 录制回放项目信息，仅当项目类型为 RECORD_REPLAY 时必填。
+        :param RecordReplayProjectInput: 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
         :type RecordReplayProjectInput: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`
         """
         self.Platform = None
@@ -764,8 +767,7 @@ class CreateProjectResponse(AbstractModel):
         r"""
         :param ProjectId: 项目 Id。
         :type ProjectId: str
-        :param RtmpPushInputInfoSet: 输入源推流信息。
- <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为 2 ，第 0 个代表主输入源，第 1 个代表备输入源。只有当各自输入源类型为推流时才有有效内容。</li>
+        :param RtmpPushInputInfoSet: <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为2 ，第0个代表主输入源推流信息，第1个代表备输入源推流信息。只有当各自输入源类型为推流时才有有效内容。</li>
         :type RtmpPushInputInfoSet: list of RtmpPushInputInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1085,11 +1087,11 @@ class DeleteProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param ProjectId: 项目 Id。
+        :param ProjectId: 要删除的项目 Id。
         :type ProjectId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对项目删除操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除一切项目。如果指定操作者，则操作者必须为项目所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -1134,13 +1136,13 @@ class DeleteTeamMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamId: 团队 ID。
         :type TeamId: str
         :param MemberIds: 要删除的成员列表。
         :type MemberIds: list of str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除所有团队的成员。如果指定操作者，则操作者必须为团队管理员或者所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -1187,11 +1189,11 @@ class DeleteTeamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamId: 要删除的团队  ID。
         :type TeamId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除所有团队。如果指定操作者，则操作者必须为团队所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -1281,9 +1283,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台唯一标识。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param Phone: 手机号码。
+        :param Phone: 手机号码。指定手机号获取账号信息，目前仅支持国内手机号，且号码不加地区码 `+86` 等。
         :type Phone: str
         :param Offset: 分页返回的起始偏移量，默认值：0。
         :type Offset: int
@@ -1407,7 +1409,7 @@ class DescribeJoinTeamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param MemberId: 团队成员　ID。
         :type MemberId: str
@@ -1473,9 +1475,9 @@ class DescribeLoginStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param UserIds: 用户 Id 列表，N 从 0 开始取值，最大 19。
+        :param UserIds: 用户 Id 列表，N 从0开始取值，最大19。
         :type UserIds: list of str
         """
         self.Platform = None
@@ -1527,15 +1529,15 @@ class DescribeMaterialsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param MaterialIds: 媒体 ID 列表，N 从 0 开始取值，最大 19。
+        :param MaterialIds: 媒体 ID 列表，一次最多可拉取20个媒体的信息。
         :type MaterialIds: list of str
         :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
 <li>UpdateTime：更新时间。</li>
         :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体的访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取任意媒体的信息。如果指定操作者，则操作者必须对媒体有读权限。
         :type Operator: str
         """
         self.Platform = None
@@ -1593,13 +1595,13 @@ class DescribePlatformsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platforms: 平台集合。
+        :param Platforms: 平台 Id 列表。如果不填，则不按平台 Id 进行过滤。
         :type Platforms: list of str
-        :param LicenseIds: 平台绑定的 license Id 集合。
+        :param LicenseIds: 平台绑定的 License Id 列表。如果不填，则不按平台绑定的 License Id 进行过滤。
         :type LicenseIds: list of str
         :param Offset: 分页返回的起始偏移量，默认值：0。
         :type Offset: int
-        :param Limit: 分页返回的记录条数，默认值：10。
+        :param Limit: 分页返回的记录条数，默认值：10，最大值：20。
         :type Limit: int
         """
         self.Platforms = None
@@ -1629,7 +1631,7 @@ class DescribePlatformsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合搜索条件的记录总数。
+        :param TotalCount: 符合查询条件的记录总数。
         :type TotalCount: int
         :param PlatformInfoSet: 平台信息列表。
         :type PlatformInfoSet: list of PlatformInfo
@@ -1659,35 +1661,41 @@ class DescribeProjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param ProjectIds: 项目 Id 列表，N 从 0 开始取值，最大 19。
+        :param ProjectIds: 项目 Id 过滤参数列表，最大支持20个项目 Id 过滤。如果不填不需要项目 Id 进行过滤。
         :type ProjectIds: list of str
-        :param AspectRatioSet: 画布宽高比集合。
+        :param AspectRatioSet: 画布宽高比过滤参数列表。如果不填则不用画布宽高比进行过滤。
         :type AspectRatioSet: list of str
-        :param CategorySet: 项目类别，取值有：
+        :param CategorySet: 项目类型过滤参数列表，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
 <li>RECORD_REPLAY：录制回放。</li>
+
+注：如果不填则不使用项目类型进行过滤。
         :type CategorySet: list of str
-        :param Modes: 项目模式，一个项目可以有多种模式并相互切换。
+        :param Modes: 项目模式过滤参数列表，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
 <li>Default：默认模式。</li>
 <li>VideoEditTemplate：视频编辑模板制作模式。</li>
+
+注：不填不使用项目模式进行过滤。
         :type Modes: list of str
-        :param Sort: 列表排序，支持下列排序字段：
+        :param Sort: 结果排序方式，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
 <li>UpdateTime：更新时间。</li>
+
+注：如不填，则使用项目创建时间倒序排列。
         :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
-        :param Owner: 项目归属者。
+        :param Owner: 项目所有者，目前仅支持个人项目过滤。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Offset: 分页返回的起始偏移量，默认值：0。
         :type Offset: int
         :param Limit: 分页返回的记录条数，默认值：10。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询一切用户项目信息。如果指定操作者，则操作者必须为项目所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -1763,13 +1771,13 @@ class DescribeResourceAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Resource: 资源。
         :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询任意资源的被授权情况。如果指定操作者，则操作者必须对被授权资源有读权限。
         :type Operator: str
         """
         self.Platform = None
@@ -1834,11 +1842,11 @@ class DescribeSharedSpaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param Authorizee: 被授权目标,，个人或团队。
+        :param Authorizee: 被授权目标，个人或团队。
         :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询任意个人或者团队的共享空间。如果指定操作者，则操作者必须本人或者团队成员。
         :type Operator: str
         """
         self.Platform = None
@@ -1871,7 +1879,6 @@ class DescribeSharedSpaceResponse(AbstractModel):
         :param TotalCount: 查询到的共享空间总数。
         :type TotalCount: int
         :param AuthorizerSet: 各个共享空间对应的授权者信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizerSet: list of Authorizer
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1899,11 +1906,11 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TaskId: 任务 Id。
         :type TaskId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取任意任务信息。如果指定操作者，则操作者需要是任务发起者。
         :type Operator: str
         """
         self.Platform = None
@@ -1985,23 +1992,27 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param ProjectId: 项目 Id。
+        :param ProjectId: 项目 Id，使用项目 Id 进行过滤。
         :type ProjectId: str
         :param TaskTypeSet: 任务类型集合，取值有：
 <li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
+
+注：不填不使用任务类型进行过滤。
         :type TaskTypeSet: list of str
         :param StatusSet: 任务状态集合，取值有：
 <li>PROCESSING：处理中；</li>
 <li>SUCCESS：成功；</li>
 <li>FAIL：失败。</li>
+
+注：不填则不使用任务状态进行过滤。
         :type StatusSet: list of str
         :param Offset: 分页返回的起始偏移量，默认值：0。
         :type Offset: int
         :param Limit: 分页返回的记录条数，默认值：10。最大值：20。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取所有任务信息。如果指定操作者，则操作者需要是任务发起者。
         :type Operator: str
         """
         self.Platform = None
@@ -2067,7 +2078,7 @@ class DescribeTeamMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamId: 团队 ID。
         :type TeamId: str
@@ -2077,7 +2088,7 @@ class DescribeTeamMembersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：30，最大值：30。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以拉取任意团队成员的信息。如果指定操作者，则操作者必须为团队成员。
         :type Operator: str
         """
         self.Platform = None
@@ -2141,7 +2152,7 @@ class DescribeTeamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamIds: 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
         :type TeamIds: list of str
@@ -2365,22 +2376,22 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param Definition: 导出视频编码配置 Id，推荐优先使用下面的预置模板 Id，有其他需求可通过接口定制视频编码配置。
+        :param Definition: 导出视频预设配置 Id，推荐优先使用下面的默认预设配置 Id，有其他需求可通过接口定制预设配置。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
         :type Definition: int
-        :param ExportDestination: 导出目标。
-<li>CME：云剪，即导出为云剪素材；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
+        :param ExportDestination: 导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：云剪，即导出为云剪媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在云剪媒资库将不可见。</li>
         :type ExportDestination: str
         :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
         :type TrackData: str
-        :param AspectRatio: 轨道数据对应的画布宽高比，配合视频编码配置中的视频短边尺寸，可决定导出画面的尺寸。例：
-<li>如果 AspectRatio 取值 16:9，视频编码配置选为12（短边1080），则导出尺寸为 1920 * 1080；</li>
-<li>如果 AspectRatio 取值 9:16，视频编码配置选为11（短边720），则导出尺寸为 720 *1280。</li>
+        :param AspectRatio: 轨道数据对应的画布宽高比，配合预设配置中的视频短边尺寸，可决定导出画面的尺寸。例：
+<li>如果 AspectRatio 取值 16:9，预设配置选为12（短边1080），则导出尺寸为 1920 * 1080；</li>
+<li>如果 AspectRatio 取值 9:16，预设配置选为11（短边720），则导出尺寸为 720 *1280。</li>
         :type AspectRatio: str
         :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
         :type CoverData: str
@@ -2388,7 +2399,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验导出操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使的媒资该操作者需要拥有使用权限。
         :type Operator: str
         """
         self.Platform = None
@@ -2453,26 +2464,26 @@ class ExportVideoByTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TemplateId: 视频编辑模板  Id。
         :type TemplateId: str
-        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+        :param Definition: 导出视频预设配置 Id，推荐优先使用下面的默认预设配置 Id，有其他需求可通过接口定制预设配置。
 <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
         :type Definition: int
-        :param ExportDestination: 导出目标，可取值为：
-<li>CME：云剪，即导出为云剪媒体；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
+        :param ExportDestination: 导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：云剪，即导出为云剪媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在云剪媒资库将不可见。</li>
         :type ExportDestination: str
         :param SlotReplacements: 需要替换的素材信息。
         :type SlotReplacements: list of SlotReplacementInfo
-        :param CMEExportInfo: 导出的云剪媒体信息。当导出目标为 CME 时必填。
+        :param CMEExportInfo: 导出的云剪媒资信息。当导出目标为 CME 时必填。
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，则操作者需要有替换媒体及剪辑模板的权限。
         :type Operator: str
         """
         self.Platform = None
@@ -2540,7 +2551,7 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param ProjectId: 视频拆条项目 Id 。
         :type ProjectId: str
@@ -2553,15 +2564,15 @@ class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
 <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
         :type Definition: int
-        :param ExportDestination: 导出目标。
-<li>CME：云剪，即导出为云剪素材；</li>
-<li>VOD：云点播，即导出为云点播媒资。</li>
+        :param ExportDestination: 导出目标，指定导出视频的目标媒资库，可取值有：
+<li>CME：云剪，即导出为云剪媒资库，此导出目标在云点播媒资库依然可见；</li>
+<li>VOD：云点播，即导出为云点播媒资库，此导出目标在云剪媒资库将不可见。</li>
         :type ExportDestination: str
         :param CMEExportInfo: 导出的云剪媒体信息。当导出目标为 CME 时必填。
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作任意智能拆条项目。如果指定操作者，则操作者必须为项目所有。
         :type Operator: str
         """
         self.Platform = None
@@ -2747,7 +2758,7 @@ class FlattenListMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
         :type ClassPath: str
@@ -2757,7 +2768,7 @@ class FlattenListMediaRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：50。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以平铺查询任意分类下的媒体信息。如果指定操作者，则操作者必须对当前分类有读权限。
         :type Operator: str
         """
         self.Platform = None
@@ -2823,11 +2834,11 @@ class GenerateVideoSegmentationSchemeByAiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param ProjectId: 视频拆条项目 Id 。
         :type ProjectId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以对任务视频拆条项目发起拆条任务。如果指定操作者，则操作者必须为项目所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -2876,7 +2887,7 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param Owner: 资源归属者，个人或者团队。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
@@ -2890,7 +2901,7 @@ class GrantResourceAuthorizationRequest(AbstractModel):
 <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 <li>W：可修改、删除媒资。</li>
         :type Permissions: list of str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以授权任意归属者的资源。如果指定操作者，则操作者必须对资源拥有写权限。
         :type Operator: str
         """
         self.Platform = None
@@ -2953,9 +2964,9 @@ class HandleStreamConnectProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param ProjectId: 云转推项目Id 。
+        :param ProjectId: 云转推项目 Id 。
         :type ProjectId: str
         :param Operation: 请参考 [操作类型](#Operation)
         :type Operation: str
@@ -2969,6 +2980,8 @@ class HandleStreamConnectProjectRequest(AbstractModel):
         :type OutputInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
         :param CurrentStopTime: 云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。
         :type CurrentStopTime: str
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有云转推项目。如果指定操作者，则操作者必须为项目所有者。
+        :type Operator: str
         """
         self.Platform = None
         self.ProjectId = None
@@ -2977,6 +2990,7 @@ class HandleStreamConnectProjectRequest(AbstractModel):
         self.InputEndpoint = None
         self.OutputInfo = None
         self.CurrentStopTime = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -2991,6 +3005,7 @@ class HandleStreamConnectProjectRequest(AbstractModel):
             self.OutputInfo = StreamConnectOutput()
             self.OutputInfo._deserialize(params.get("OutputInfo"))
         self.CurrentStopTime = params.get("CurrentStopTime")
+        self.Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3072,9 +3087,9 @@ class ImportMaterialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param Owner: 媒体归属者，团队或个人。
+        :param Owner: 媒体归属者，可支持归属团队或个人。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Name: 媒体名称，不能超过30个字符。
         :type Name: str
@@ -3082,7 +3097,7 @@ class ImportMaterialRequest(AbstractModel):
 <li>VOD：云点播文件；</li>
 <li>EXTERNAL：媒资绑定。</li>
 
-注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。另外，导入云点播的文件，使用云点播的子应用 Id 必须与创建云剪平台时使用的云点播子应用一致。
         :type SourceType: str
         :param VodFileId: 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
         :type VodFileId: str
@@ -3090,10 +3105,10 @@ class ImportMaterialRequest(AbstractModel):
         :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
         :param ClassPath: 媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
         :type ClassPath: str
-        :param PreProcessDefinition: 媒体预处理任务模板 ID。取值：
+        :param PreProcessDefinition: 媒体预处理任务参数 ID。可取值有：
 <li>10：进行编辑预处理。</li>
         :type PreProcessDefinition: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向任意团队或者个人导入媒体。如果指定操作者，如果媒体归属为个人，则操作者必须与归属者一致；如果媒体归属为团队，则必须为团队可导入媒体的团队成员(如果没有特殊设置，所有团队成员可导入媒体)。
         :type Operator: str
         """
         self.Platform = None
@@ -3162,7 +3177,7 @@ class ImportMediaToProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param ProjectId: 项目 Id。
         :type ProjectId: str
@@ -3176,13 +3191,14 @@ class ImportMediaToProjectRequest(AbstractModel):
         :type VodFileId: str
         :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
         :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
-        :param Name: 媒体名称，不能超过30个字符。
+        :param Name: 媒体名称，不能超过30个字符。如果不填，则媒体名称为点播媒资文件名称。
         :type Name: str
-        :param PreProcessDefinition: 媒体预处理任务模板 ID，取值：
-<li>10：进行编辑预处理。</li>
-注意：如果填0则不进行处理。
+        :param PreProcessDefinition: 媒体预处理配置 ID，取值：
+<li>10：进行视频编辑预处理。</li>
+
+注意：如果填0或者不填则不进行处理，如果原始视频不可在浏览器直接播放将无法在编辑页面编辑。
         :type PreProcessDefinition: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目和媒体文件访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向所有视频编辑项目导入媒体；如果指定操作者，则操作者必须为项目所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -3431,7 +3447,7 @@ class ListMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
         :type ClassPath: str
@@ -3441,7 +3457,7 @@ class ListMediaRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：50。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对媒体的访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以浏览任意分类的信息。如果指定操作者，则操作者必须对分类有读权限。
         :type Operator: str
         """
         self.Platform = None
@@ -4113,17 +4129,17 @@ class ModifyMaterialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
-        :param MaterialId: 媒体 Id。
+        :param MaterialId: 要修改的媒体 Id。
         :type MaterialId: str
-        :param Owner: 媒体或分类路径归属。
+        :param Owner: 媒体归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 媒体名称，不能超过30个字符。
+        :param Name: 媒体名称，不能超过30个字符，不填则不修改。
         :type Name: str
         :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。
         :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意媒体的信息。如果指定操作者，则操作者必须对媒体有写权限。
         :type Operator: str
         """
         self.Platform = None
@@ -4176,22 +4192,20 @@ class ModifyProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param ProjectId: 项目 Id。
         :type ProjectId: str
         :param Name: 项目名称，不可超过30个字符。
         :type Name: str
-        :param AspectRatio: 画布宽高比，取值有：
-<li>16:9；</li>
-<li>9:16。</li>
+        :param AspectRatio: 画布宽高比，值为视频编辑项目画布宽与高的像素值的比值，如 16:9、9:16 等。
         :type AspectRatio: str
-        :param Owner: 项目归属者。
+        :param Owner: 项目所有者。目前仅支持个人项目，不支持团队项目。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
-<li>Defualt：默认模式。</li>
-<li>VideoEditTemplate：视频编辑模板制作模式。</li>
+<li>Default：默认模式，即普通视频编辑项目。</li>
+<li>VideoEditTemplate：剪辑模板制作模式，用于制作剪辑模板。</li>
         :type Mode: str
         """
         self.Platform = None
@@ -4244,19 +4258,19 @@ class ModifyTeamMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamId: 团队 ID。
         :type TeamId: str
         :param MemberId: 团队成员 ID。
         :type MemberId: str
-        :param Remark: 成员备注，允许设置备注为空，不为空时长度不能超过15个字符。
+        :param Remark: 成员备注，长度不能超过15个字符。
         :type Remark: str
-        :param Role: 成员角色，取值：
+        :param Role: 成员角色，可取值有：
 <li>Admin：团队管理员；</li>
 <li>Member：普通成员。</li>
         :type Role: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以个改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -4307,13 +4321,13 @@ class ModifyTeamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param TeamId: 团队 ID。
         :type TeamId: str
-        :param Name: 团队名称，不能超过 30 个字符。
+        :param Name: 团队名称。团队名称不能置空，并且不能超过30个字符。
         :type Name: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改所有团队的信息。如果指定操作者，则操作者必须为团队管理员或者所有者。
         :type Operator: str
         """
         self.Platform = None
@@ -4494,13 +4508,13 @@ class MoveResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param SourceResource: 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
         :type SourceResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
         :param DestinationResource: 目标信息，包含分类及归属，仅支持移动资源到分类。
         :type DestinationResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验资源访问以及写权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以移动任务资源。如果指定操作者，则操作者必须对源及目标资源有写权限。
         :type Operator: str
         """
         self.Platform = None
@@ -4946,7 +4960,7 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param Owner: 资源所属实体。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
@@ -4960,7 +4974,7 @@ class RevokeResourceAuthorizationRequest(AbstractModel):
 <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 <li>W：可修改、删除媒资。</li>
         :type Permissions: list of str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，撤销任意资源的授权权限。如果指定操作者，则操作者必须对被授权资源有写权限。
         :type Operator: str
         """
         self.Platform = None
@@ -5051,14 +5065,15 @@ class SearchMaterialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Platform: 平台名称，指定访问的平台。
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
         :type Platform: str
         :param SearchScopes: 指定搜索空间，数组长度不得超过5。
         :type SearchScopes: list of SearchScope
-        :param MaterialTypes: 媒体类型，取值：
+        :param MaterialTypes: 媒体类型，可取值有：
 <li>AUDIO：音频；</li>
 <li>VIDEO：视频 ；</li>
-<li>IMAGE：图片。</li>
+<li>IMAGE：图片；</li>
+<li>VIDEO_EDIT_TEMPLATE：剪辑模板。</li>
         :type MaterialTypes: list of str
         :param Text: 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
         :type Text: str
@@ -5076,7 +5091,7 @@ class SearchMaterialRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：50。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以搜索任意媒体的信息。如果指定操作者，则操作者必须对媒体有读权限。
         :type Operator: str
         """
         self.Platform = None

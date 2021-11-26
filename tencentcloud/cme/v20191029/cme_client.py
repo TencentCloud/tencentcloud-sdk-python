@@ -27,7 +27,7 @@ class CmeClient(AbstractClient):
 
 
     def AddTeamMember(self, request):
-        """向一个团队中团队成员，并且指定成员的角色。
+        """向一个团队中添加团队成员，并且指定成员的角色。
 
         :param request: Request instance for AddTeamMember.
         :type request: :class:`tencentcloud.cme.v20191029.models.AddTeamMemberRequest`
@@ -139,9 +139,13 @@ class CmeClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """创建云剪的编辑项目，支持创建视频剪辑、直播剪辑、导播台、视频拆条、录制回放以及云转推项目。
-
-        <b>若需使用云转推功能，请先咨询 [智能客服](https://cloud.tencent.com/act/event/smarty-service?from=doc_1138) 或 [提交工单](https://console.cloud.tencent.com/workorder/category) 。</b>
+        """创建云剪项目，目前支持的项目类型有：
+        <li>视频剪辑项目：用于普通视频剪辑；</li>
+        <li>直播剪辑项目：用于直播流剪辑；</li>
+        <li>导播台项目：用于云导播台；</li>
+        <li>视频拆条：用于视频拆条；</li>
+        <li>录制回放项目：用于直播录制回放；</li>
+        <li>云转推项目：用于直播云转推。</li>
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.cme.v20191029.models.CreateProjectRequest`
@@ -311,7 +315,7 @@ class CmeClient(AbstractClient):
 
 
     def DeleteProject(self, request):
-        """删除云剪编辑项目。
+        """删除项目。
 
         :param request: Request instance for DeleteProject.
         :type request: :class:`tencentcloud.cme.v20191029.models.DeleteProjectRequest`
@@ -339,7 +343,7 @@ class CmeClient(AbstractClient):
 
 
     def DeleteTeam(self, request):
-        """删除一个团队。
+        """删除一个团队。要删除团队，必须满足以下条件：
         <li>要删除的团队必须没有归属的素材；</li>
         <li>要删除的团队必须没有归属的分类。</li>
 
@@ -369,7 +373,7 @@ class CmeClient(AbstractClient):
 
 
     def DeleteTeamMembers(self, request):
-        """将团队成员从团队中删除，默认只有 Owner 及管理员才有此权限。
+        """将团队成员从团队中删除。
 
         :param request: Request instance for DeleteTeamMembers.
         :type request: :class:`tencentcloud.cme.v20191029.models.DeleteTeamMembersRequest`
@@ -425,7 +429,7 @@ class CmeClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """获取用户账号信息。
+        """获取平台中所有的已注册账号。
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cme.v20191029.models.DescribeAccountsRequest`
@@ -481,7 +485,7 @@ class CmeClient(AbstractClient):
 
 
     def DescribeJoinTeams(self, request):
-        """获取指定的团队成员所加入的团队列表。
+        """获取用户所加入的团队列表
 
         :param request: Request instance for DescribeJoinTeams.
         :type request: :class:`tencentcloud.cme.v20191029.models.DescribeJoinTeamsRequest`
@@ -568,6 +572,8 @@ class CmeClient(AbstractClient):
         """<li>支持获取所创建的所有平台列表信息；</li>
         <li>支持获取指定的平台列表信息。</li>
 
+        关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+
 
         :param request: Request instance for DescribePlatforms.
         :type request: :class:`tencentcloud.cme.v20191029.models.DescribePlatformsRequest`
@@ -623,7 +629,7 @@ class CmeClient(AbstractClient):
 
 
     def DescribeResourceAuthorization(self, request):
-        """查询指定资源的授权列表。
+        """查询资源被授权的情况。
 
         :param request: Request instance for DescribeResourceAuthorization.
         :type request: :class:`tencentcloud.cme.v20191029.models.DescribeResourceAuthorizationRequest`
@@ -737,7 +743,7 @@ class CmeClient(AbstractClient):
 
 
     def DescribeTeamMembers(self, request):
-        """获取指定成员 ID 的信息，同时支持拉取所有团队成员信息。
+        """获取指定团队的成员信息。支持获取指定成员的信息，同时也支持分页拉取指定团队的所有成员信息。
 
         :param request: Request instance for DescribeTeamMembers.
         :type request: :class:`tencentcloud.cme.v20191029.models.DescribeTeamMembersRequest`
@@ -821,7 +827,7 @@ class CmeClient(AbstractClient):
 
 
     def ExportVideoByEditorTrackData(self, request):
-        """使用视频合成协议导出视频，支持导出到CME云媒资和VOD云媒资。
+        """使用 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225) 合成视频，支持导出视频到 CME 云媒资或者云点播媒资。
 
         :param request: Request instance for ExportVideoByEditorTrackData.
         :type request: :class:`tencentcloud.cme.v20191029.models.ExportVideoByEditorTrackDataRequest`
@@ -849,7 +855,7 @@ class CmeClient(AbstractClient):
 
 
     def ExportVideoByTemplate(self, request):
-        """使用视频编辑模板直接导出视频。
+        """使用视频剪辑模板直接导出视频。
 
         :param request: Request instance for ExportVideoByTemplate.
         :type request: :class:`tencentcloud.cme.v20191029.models.ExportVideoByTemplateRequest`
@@ -877,7 +883,7 @@ class CmeClient(AbstractClient):
 
 
     def ExportVideoByVideoSegmentationData(self, request):
-        """使用视频智能拆条数据导出视频，将指定的视频拆条片段导出为一个视频。
+        """使用视频智能拆条数据导出视频，将指定的视频拆条片段导出为一个视频(内测中，请勿使用)。
 
         :param request: Request instance for ExportVideoByVideoSegmentationData.
         :type request: :class:`tencentcloud.cme.v20191029.models.ExportVideoByVideoSegmentationDataRequest`
@@ -933,7 +939,7 @@ class CmeClient(AbstractClient):
 
 
     def FlattenListMedia(self, request):
-        """平铺分类路径下及其子分类下的所有媒体基础信息。
+        """平铺分类路径下及其子分类下的所有媒体基础信息，返回当前分类及子分类中的所有媒体的基础信息。
 
         :param request: Request instance for FlattenListMedia.
         :type request: :class:`tencentcloud.cme.v20191029.models.FlattenListMediaRequest`
@@ -991,7 +997,7 @@ class CmeClient(AbstractClient):
 
 
     def GrantResourceAuthorization(self, request):
-        """资源归属者对目标个人或团队授予目标资源的相应权限。
+        """资源归属者对个人或团队授予目标资源的相应权限。
 
         :param request: Request instance for GrantResourceAuthorization.
         :type request: :class:`tencentcloud.cme.v20191029.models.GrantResourceAuthorizationRequest`
@@ -1061,7 +1067,7 @@ class CmeClient(AbstractClient):
 
 
     def ImportMaterial(self, request):
-        """将云点播媒资文件导入到云剪媒体资源库。
+        """将云点播媒资文件导入到云剪媒体资源库。支持导入媒体归属团队或者个人。
 
         :param request: Request instance for ImportMaterial.
         :type request: :class:`tencentcloud.cme.v20191029.models.ImportMaterialRequest`
@@ -1089,7 +1095,7 @@ class CmeClient(AbstractClient):
 
 
     def ImportMediaToProject(self, request):
-        """将云点播中的媒资或者用户自有媒资文件添加到媒体库中，跟项目关联，供后续视频编辑使用。目前仅普通编辑项目和智能视频拆条项目有效。
+        """将云点播中的媒资或者用户自有媒资文件添加到项目中与项目关联，供后续视频编辑使用。目前仅视频编辑项目和智能视频拆条项目有效。
 
         :param request: Request instance for ImportMediaToProject.
         :type request: :class:`tencentcloud.cme.v20191029.models.ImportMediaToProjectRequest`
@@ -1173,7 +1179,7 @@ class CmeClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """修改云剪编辑项目的信息。
+        """修改项目信息。
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.cme.v20191029.models.ModifyProjectRequest`
@@ -1378,7 +1384,7 @@ class CmeClient(AbstractClient):
 
 
     def RevokeResourceAuthorization(self, request):
-        """资源所属实体对目标实体回收目标资源的相应权限，若原本没有相应权限则不产生变更。
+        """资源所属实体对目标实体撤销目标资源的相应权限，若原本没有相应权限则不产生变更。
 
         :param request: Request instance for RevokeResourceAuthorization.
         :type request: :class:`tencentcloud.cme.v20191029.models.RevokeResourceAuthorizationRequest`

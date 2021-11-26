@@ -4615,6 +4615,8 @@ class UpgradeDCDBInstanceRequest(AbstractModel):
         :type AutoVoucher: bool
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
         :type VoucherIds: list of str
+        :param Zones: 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+        :type Zones: list of str
         """
         self.InstanceId = None
         self.UpgradeType = None
@@ -4623,6 +4625,7 @@ class UpgradeDCDBInstanceRequest(AbstractModel):
         self.SplitShardConfig = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.Zones = None
 
 
     def _deserialize(self, params):
@@ -4639,6 +4642,7 @@ class UpgradeDCDBInstanceRequest(AbstractModel):
             self.SplitShardConfig._deserialize(params.get("SplitShardConfig"))
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

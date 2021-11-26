@@ -308,7 +308,7 @@ class SesClient(AbstractClient):
 
 
     def GetSendEmailStatus(self, request):
-        """获取邮件发送状态。仅支持查询90天之内的数据
+        """获取邮件发送状态。仅支持查询180天之内的数据
 
         :param request: Request instance for GetSendEmailStatus.
         :type request: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusRequest`

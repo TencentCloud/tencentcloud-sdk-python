@@ -3278,6 +3278,10 @@ finished
         :type FailReason: str
         :param UserEnvId: 用户envId
         :type UserEnvId: str
+        :param StartTime: 创建时间
+        :type StartTime: str
+        :param Steps: 步骤信息
+        :type Steps: list of OneClickTaskStepInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3291,6 +3295,8 @@ finished
         self.Status = None
         self.FailReason = None
         self.UserEnvId = None
+        self.StartTime = None
+        self.Steps = None
         self.RequestId = None
 
 
@@ -3305,6 +3311,13 @@ finished
         self.Status = params.get("Status")
         self.FailReason = params.get("FailReason")
         self.UserEnvId = params.get("UserEnvId")
+        self.StartTime = params.get("StartTime")
+        if params.get("Steps") is not None:
+            self.Steps = []
+            for item in params.get("Steps"):
+                obj = OneClickTaskStepInfo()
+                obj._deserialize(item)
+                self.Steps.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6955,6 +6968,53 @@ class ObjectKV(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OneClickTaskStepInfo(AbstractModel):
+    """一键部署步骤信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 未启动："todo"
+运行中："running"
+失败："failed"
+成功结束："finished"
+        :type Status: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param CostTime: 耗时：秒
+        :type CostTime: int
+        :param FailReason: 失败原因
+        :type FailReason: str
+        :param Name: 步骤名
+        :type Name: str
+        """
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CostTime = None
+        self.FailReason = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CostTime = params.get("CostTime")
+        self.FailReason = params.get("FailReason")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

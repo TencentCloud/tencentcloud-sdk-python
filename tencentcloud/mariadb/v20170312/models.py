@@ -2977,16 +2977,20 @@ class DescribeUpgradePriceRequest(AbstractModel):
         :param Storage: 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
  查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
         :type Storage: int
+        :param NodeCount: 新节点数，传0表示节点数不变
+        :type NodeCount: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
+        self.NodeCount = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Memory = params.get("Memory")
         self.Storage = params.get("Storage")
+        self.NodeCount = params.get("NodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5039,12 +5043,15 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type AutoVoucher: bool
         :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
         :type VoucherIds: list of str
+        :param Zones: 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+        :type Zones: list of str
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.Zones = None
 
 
     def _deserialize(self, params):
@@ -5053,6 +5060,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Storage = params.get("Storage")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        self.Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

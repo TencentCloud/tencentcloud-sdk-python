@@ -502,6 +502,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAddrTemplateList(self, request):
+        """获取地址模版列表
+
+        :param request: Request instance for DescribeAddrTemplateList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAddrTemplateListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeAddrTemplateListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAddrTemplateList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAddrTemplateListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAssociatedInstanceList(self, request):
         """获取安全组关联实例列表
 

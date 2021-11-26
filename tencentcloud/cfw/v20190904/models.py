@@ -1391,6 +1391,80 @@ class DescribeAcListsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAddrTemplateListRequest(AbstractModel):
+    """DescribeAddrTemplateList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，分页用
+        :type Offset: int
+        :param Limit: 条数，分页用
+        :type Limit: int
+        :param By: 排序字段，取值 'UpdateTime' | 'RulesNum'
+        :type By: str
+        :param Order: 排序，取值 'asc'|'desc'
+        :type Order: str
+        :param SearchValue: 搜索值
+        :type SearchValue: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.By = None
+        self.Order = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAddrTemplateListResponse(AbstractModel):
+    """DescribeAddrTemplateList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 模版总数
+        :type Total: int
+        :param Data: 模版列表数据
+        :type Data: list of TemplateListInfo
+        :param NameList: 模版名称列表
+        :type NameList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Data = None
+        self.NameList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TemplateListInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.NameList = params.get("NameList")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAssociatedInstanceListRequest(AbstractModel):
     """DescribeAssociatedInstanceList请求参数结构体
 
@@ -5312,6 +5386,10 @@ drop：拒绝
         :param ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTemplateId: str
+        :param Id: 规则对应的唯一id
+        :type Id: str
+        :param Enable: 规则状态，true表示启用，false表示禁用
+        :type Enable: str
         """
         self.SourceContent = None
         self.SourceType = None
@@ -5323,6 +5401,8 @@ drop：拒绝
         self.Protocol = None
         self.Port = None
         self.ServiceTemplateId = None
+        self.Id = None
+        self.Enable = None
 
 
     def _deserialize(self, params):
@@ -5336,6 +5416,8 @@ drop：拒绝
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
         self.ServiceTemplateId = params.get("ServiceTemplateId")
+        self.Id = params.get("Id")
+        self.Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5704,6 +5786,66 @@ class TLogInfo(AbstractModel):
         self.NetworkNum = params.get("NetworkNum")
         self.BanNum = params.get("BanNum")
         self.BruteForceNum = params.get("BruteForceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateListInfo(AbstractModel):
+    """地址模版列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uuid: 模版ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param Name: 模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Detail: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: str
+        :param IpString: IP模版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpString: str
+        :param InsertTime: 插入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: str
+        :param UpdateTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Type: 模版类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param RulesNum: 关联规则条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulesNum: int
+        """
+        self.Uuid = None
+        self.Name = None
+        self.Detail = None
+        self.IpString = None
+        self.InsertTime = None
+        self.UpdateTime = None
+        self.Type = None
+        self.RulesNum = None
+
+
+    def _deserialize(self, params):
+        self.Uuid = params.get("Uuid")
+        self.Name = params.get("Name")
+        self.Detail = params.get("Detail")
+        self.IpString = params.get("IpString")
+        self.InsertTime = params.get("InsertTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
+        self.RulesNum = params.get("RulesNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

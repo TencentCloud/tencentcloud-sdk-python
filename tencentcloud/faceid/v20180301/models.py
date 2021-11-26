@@ -2756,11 +2756,11 @@ class PhoneVerificationRequest(AbstractModel):
         :type Name: str
         :param Phone: 手机号
         :type Phone: str
-        :param CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+        :param CiphertextBlob: 有加密需求的用户，传入kms的CiphertextBlob，关于数据加密可查阅 <a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
         :type CiphertextBlob: str
-        :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个
+        :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个。
         :type EncryptList: list of str
-        :param Iv: 有加密需求的用户，传入CBC加密的初试向量
+        :param Iv: 有加密需求的用户，传入CBC加密的初始向量。
         :type Iv: str
         """
         self.IdCard = None
