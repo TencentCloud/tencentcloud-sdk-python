@@ -1261,7 +1261,7 @@ class KmsClient(AbstractClient):
 
     def SignByAsymmetricKey(self, request):
         """非对称密钥签名。
-        注意：只有成功创建了KeyUsage= ASYMMETRIC_SIGN_VERIFY_SM2、ASYMMETRIC_SIGN_VERIFY_ECC 或 ASYMMETRIC_SIGN_VERIFY_RSA_2048 的密钥才可以使用签名功能
+        注意：只有 KeyUsage 为 ASYMMETRIC_SIGN_VERIFY_SM2、ASYMMETRIC_SIGN_VERIFY_ECC 或其他支持的 ASYMMETRIC_SIGN_VERIFY_${ALGORITHM} 的密钥才可以使用签名功能。
 
         :param request: Request instance for SignByAsymmetricKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.SignByAsymmetricKeyRequest`

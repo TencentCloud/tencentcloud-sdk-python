@@ -2042,6 +2042,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableClusterDeletionProtection(self, request):
+        """关闭集群删除保护
+
+        :param request: Request instance for DisableClusterDeletionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableClusterDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableClusterDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableClusterDeletionProtection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableClusterDeletionProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableVpcCniNetworkType(self, request):
         """提供给附加了VPC-CNI能力的Global-Route集群关闭VPC-CNI
 
@@ -2056,6 +2084,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableVpcCniNetworkTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableClusterDeletionProtection(self, request):
+        """启用集群删除保护
+
+        :param request: Request instance for EnableClusterDeletionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableClusterDeletionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableClusterDeletionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableClusterDeletionProtection", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableClusterDeletionProtectionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -2433,7 +2433,7 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Algorithm: 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256
+        :param Algorithm: 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
         :type Algorithm: str
         :param Message: 消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，消息摘要长度（Base64编码前的长度）必须等于32字节
         :type Message: str
@@ -2691,7 +2691,7 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
         :type SignatureValue: str
         :param Message: 消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，则消息摘要长度（Base64编码前的长度）必须等于32字节
         :type Message: str
-        :param Algorithm: 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256
+        :param Algorithm: 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
         :type Algorithm: str
         :param MessageType: 消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
         :type MessageType: str

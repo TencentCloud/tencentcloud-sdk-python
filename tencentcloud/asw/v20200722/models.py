@@ -615,7 +615,7 @@ class StartExecutionRequest(AbstractModel):
         r"""
         :param StateMachineResourceName: 状态机资源名
         :type StateMachineResourceName: str
-        :param Input: 输入参数
+        :param Input: 输入参数，内容为JsonObject，长度不大于524288字符。
         :type Input: str
         :param Name: 本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一
         :type Name: str

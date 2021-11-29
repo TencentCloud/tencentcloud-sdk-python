@@ -83,6 +83,9 @@ LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = 'LimitExceeded.FingerprintsLimitExceed
 # 创建的密钥个数超过限制。
 LIMITEXCEEDED_KEYLIMITEXCEEDED = 'LimitExceeded.KeyLimitExceeded'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

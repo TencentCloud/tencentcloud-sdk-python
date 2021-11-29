@@ -9558,7 +9558,7 @@ class SlowLogItem(AbstractModel):
         :param Timestamp: Sql的执行时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
-        :param QueryTime: Sql的执行时长。
+        :param QueryTime: Sql的执行时长（秒）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueryTime: float
         :param SqlText: Sql语句。
@@ -9573,7 +9573,7 @@ class SlowLogItem(AbstractModel):
         :param Database: 数据库名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
-        :param LockTime: 锁时长。
+        :param LockTime: 锁时长（秒）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockTime: float
         :param RowsExamined: 扫描行数。
