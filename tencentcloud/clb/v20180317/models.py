@@ -3208,6 +3208,45 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancerOverviewRequest(AbstractModel):
+    """DescribeLoadBalancerOverview请求参数结构体
+
+    """
+
+
+class DescribeLoadBalancerOverviewResponse(AbstractModel):
+    """DescribeLoadBalancerOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 负载均衡总数
+        :type TotalCount: int
+        :param RunningCount: 运行中的负载均衡数目
+        :type RunningCount: int
+        :param IsolationCount: 隔离中的负载均衡数目
+        :type IsolationCount: int
+        :param WillExpireCount: 即将到期的负载均衡数目
+        :type WillExpireCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RunningCount = None
+        self.IsolationCount = None
+        self.WillExpireCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.RunningCount = params.get("RunningCount")
+        self.IsolationCount = params.get("IsolationCount")
+        self.WillExpireCount = params.get("WillExpireCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancerTrafficRequest(AbstractModel):
     """DescribeLoadBalancerTraffic请求参数结构体
 
@@ -3270,7 +3309,7 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
         :type Limit: int
         :param Offset: 返回负载均衡列表起始偏移量，默认0。
         :type Offset: int
-        :param Fields: 选择返回的Fields列表，默认添加LoadBalancerId和LoadBalancerName。
+        :param Fields: 选择返回的Fields列表，系统仅会返回Fileds中填写的字段，可填写的字段详情请参见<a href="https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail">LoadBalancerDetail</a>。若未在Fileds填写相关字段，则此字段返回null。Fileds中默认添加LoadBalancerId和LoadBalancerName字段。
         :type Fields: list of str
         :param TargetType: 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
         :type TargetType: str
@@ -3390,7 +3429,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SecurityGroup: str
         :param MasterZone: 主可用区ID，如 ："100001" （对应的是广州一区）。
         :type MasterZone: str
-        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
+        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
+<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li>
 <li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
 <li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
 <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
@@ -3398,6 +3438,7 @@ OPEN：公网属性， INTERNAL：内网属性。
 <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 <li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
+<li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge"。</li>
         :type Filters: list of Filter
         """
         self.LoadBalancerIds = None
@@ -4812,6 +4853,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param HealthLogTopicId: 负载均衡日志服务(CLS)的健康检查日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthLogTopicId: str
+        :param ClusterIds: 集群ID.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIds: list of str
+        :param AttributeFlags: 负载均衡的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttributeFlags: list of str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4864,6 +4911,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.NfvInfo = None
         self.HealthLogSetId = None
         self.HealthLogTopicId = None
+        self.ClusterIds = None
+        self.AttributeFlags = None
 
 
     def _deserialize(self, params):
@@ -4945,6 +4994,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.NfvInfo = params.get("NfvInfo")
         self.HealthLogSetId = params.get("HealthLogSetId")
         self.HealthLogTopicId = params.get("HealthLogTopicId")
+        self.ClusterIds = params.get("ClusterIds")
+        self.AttributeFlags = params.get("AttributeFlags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

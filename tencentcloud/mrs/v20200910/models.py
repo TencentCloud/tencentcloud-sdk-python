@@ -1200,11 +1200,11 @@ class ImageToClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的url或base64编码
+        :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
-        :param Type: 图片类型，目前支持11（检验报告），12（检查报告），15（病理报告），218（诊断证明）。
+        :param Type: 不填，默认为0
         :type Type: int
         """
         self.ImageInfoList = None
@@ -1266,11 +1266,11 @@ class ImageToObjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的url或base64编码
+        :param ImageInfoList: 图片列表，允许传入多张图片，目前只支持传入图片base64编码，图片url暂不支持
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
-        :param Type: 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        :param Type: 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :type Type: int
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
@@ -2878,6 +2878,9 @@ class Template(AbstractModel):
         :param Prescription: 处方单
 注意：此字段可能返回 null，表示取不到有效值。
         :type Prescription: :class:`tencentcloud.mrs.v20200910.models.Prescription`
+        :param VaccineCertificate: 免疫接种证明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VaccineCertificate: :class:`tencentcloud.mrs.v20200910.models.VaccineCertificate`
         """
         self.PatientInfo = None
         self.ReportInfo = None
@@ -2894,6 +2897,7 @@ class Template(AbstractModel):
         self.Electrocardiogram = None
         self.Endoscopy = None
         self.Prescription = None
+        self.VaccineCertificate = None
 
 
     def _deserialize(self, params):
@@ -2940,6 +2944,9 @@ class Template(AbstractModel):
         if params.get("Prescription") is not None:
             self.Prescription = Prescription()
             self.Prescription._deserialize(params.get("Prescription"))
+        if params.get("VaccineCertificate") is not None:
+            self.VaccineCertificate = VaccineCertificate()
+            self.VaccineCertificate._deserialize(params.get("VaccineCertificate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3008,7 +3015,7 @@ class TextToObjectRequest(AbstractModel):
         r"""
         :param Text: 报告文本
         :type Text: str
-        :param Type: 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        :param Type: 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :type Type: int
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
@@ -3489,6 +3496,101 @@ class TuberInfo(AbstractModel):
             self.IsthmusThicknese = Size()
             self.IsthmusThicknese._deserialize(params.get("IsthmusThicknese"))
         self.Src = params.get("Src")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Vaccination(AbstractModel):
+    """免疫接种记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Vaccine: 疫苗名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vaccine: str
+        :param Dose: 剂次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dose: str
+        :param Date: 接种日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        :param LotNumber: 疫苗批号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LotNumber: str
+        :param Manufacturer: 生产企业
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manufacturer: str
+        :param Clinic: 接种单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clinic: str
+        :param Site: 接种部位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Site: str
+        :param Provider: 接种者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Provider: str
+        """
+        self.Id = None
+        self.Vaccine = None
+        self.Dose = None
+        self.Date = None
+        self.LotNumber = None
+        self.Manufacturer = None
+        self.Clinic = None
+        self.Site = None
+        self.Provider = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Vaccine = params.get("Vaccine")
+        self.Dose = params.get("Dose")
+        self.Date = params.get("Date")
+        self.LotNumber = params.get("LotNumber")
+        self.Manufacturer = params.get("Manufacturer")
+        self.Clinic = params.get("Clinic")
+        self.Site = params.get("Site")
+        self.Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VaccineCertificate(AbstractModel):
+    """免疫接种证明
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VaccineList: 免疫接种列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VaccineList: list of Vaccination
+        """
+        self.VaccineList = None
+
+
+    def _deserialize(self, params):
+        if params.get("VaccineList") is not None:
+            self.VaccineList = []
+            for item in params.get("VaccineList"):
+                obj = Vaccination()
+                obj._deserialize(item)
+                self.VaccineList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

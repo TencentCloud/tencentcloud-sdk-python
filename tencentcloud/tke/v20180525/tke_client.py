@@ -2154,6 +2154,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ForwardApplicationRequestV3(self, request):
+        """操作TKE集群的addon
+
+        :param request: Request instance for ForwardApplicationRequestV3.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ForwardApplicationRequestV3Request`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ForwardApplicationRequestV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ForwardApplicationRequestV3", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ForwardApplicationRequestV3Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTkeAppChartList(self, request):
+        """获取TKE支持的App列表
+
+        :param request: Request instance for GetTkeAppChartList.
+        :type request: :class:`tencentcloud.tke.v20180525.models.GetTkeAppChartListRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.GetTkeAppChartListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTkeAppChartList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTkeAppChartListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetUpgradeInstanceProgress(self, request):
         """获得节点升级当前的进度
 

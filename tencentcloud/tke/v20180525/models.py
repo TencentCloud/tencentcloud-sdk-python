@@ -318,6 +318,39 @@ class AddVpcCniSubnetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AppChart(AbstractModel):
+    """app所支持的chart
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: chart名称
+        :type Name: str
+        :param Label: chart的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param LatestVersion: chart的版本
+        :type LatestVersion: str
+        """
+        self.Name = None
+        self.Label = None
+        self.LatestVersion = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Label = params.get("Label")
+        self.LatestVersion = params.get("LatestVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoScalingGroupRange(AbstractModel):
     """集群关联的伸缩组最大实例数最小值实例数
 
@@ -6465,6 +6498,134 @@ class Filter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ForwardApplicationRequestV3Request(AbstractModel):
+    """ForwardApplicationRequestV3请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Method: 请求集群addon的访问
+        :type Method: str
+        :param Path: 请求集群addon的路径
+        :type Path: str
+        :param Accept: 请求集群addon后允许接收的数据格式
+        :type Accept: str
+        :param ContentType: 请求集群addon的数据格式
+        :type ContentType: str
+        :param RequestBody: 请求集群addon的数据
+        :type RequestBody: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param EncodedBody: 是否编码请求内容
+        :type EncodedBody: str
+        """
+        self.Method = None
+        self.Path = None
+        self.Accept = None
+        self.ContentType = None
+        self.RequestBody = None
+        self.ClusterName = None
+        self.EncodedBody = None
+
+
+    def _deserialize(self, params):
+        self.Method = params.get("Method")
+        self.Path = params.get("Path")
+        self.Accept = params.get("Accept")
+        self.ContentType = params.get("ContentType")
+        self.RequestBody = params.get("RequestBody")
+        self.ClusterName = params.get("ClusterName")
+        self.EncodedBody = params.get("EncodedBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardApplicationRequestV3Response(AbstractModel):
+    """ForwardApplicationRequestV3返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResponseBody: 请求集群addon后返回的数据
+        :type ResponseBody: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResponseBody = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResponseBody = params.get("ResponseBody")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTkeAppChartListRequest(AbstractModel):
+    """GetTkeAppChartList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Kind: app类型，取值log,scheduler,network,storage,monitor,dns,image,other,invisible
+        :type Kind: str
+        :param Arch: app支持的操作系统，取值arm32、arm64、amd64
+        :type Arch: str
+        :param ClusterType: 集群类型，取值tke、eks
+        :type ClusterType: str
+        """
+        self.Kind = None
+        self.Arch = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.Kind = params.get("Kind")
+        self.Arch = params.get("Arch")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTkeAppChartListResponse(AbstractModel):
+    """GetTkeAppChartList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppCharts: 所支持的chart列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppCharts: list of AppChart
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AppCharts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AppCharts") is not None:
+            self.AppCharts = []
+            for item in params.get("AppCharts"):
+                obj = AppChart()
+                obj._deserialize(item)
+                self.AppCharts.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class GetUpgradeInstanceProgressRequest(AbstractModel):

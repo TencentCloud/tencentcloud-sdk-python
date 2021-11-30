@@ -2156,6 +2156,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGroupAttribute(self, request):
+        """获取部署组其他属性
+
+        :param request: Request instance for DescribeGroupAttribute.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupBindedGateways(self, request):
         """查询某个API分组已绑定的网关部署组信息列表
 

@@ -79,6 +79,11 @@ def test_import_apigateway():
     from tencentcloud.apigateway.v20180808 import models
 
 
+def test_import_apm():
+    from tencentcloud.apm.v20210622 import apm_client
+    from tencentcloud.apm.v20210622 import models
+
+
 def test_import_autoscaling():
     from tencentcloud.autoscaling.v20180419 import autoscaling_client
     from tencentcloud.autoscaling.v20180419 import models
@@ -862,6 +867,11 @@ def test_import_tem():
 def test_import_tem():
     from tencentcloud.tem.v20210701 import tem_client
     from tencentcloud.tem.v20210701 import models
+
+
+def test_import_thpc():
+    from tencentcloud.thpc.v20211109 import thpc_client
+    from tencentcloud.thpc.v20211109 import models
 
 
 def test_import_tia():

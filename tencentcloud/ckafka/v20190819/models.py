@@ -868,10 +868,14 @@ class CreateInstancePreResponse(AbstractModel):
         :param Data: 操作型返回的Data数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
+        :param DeleteRouteTimestamp: 删除是时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteRouteTimestamp: str
         """
         self.ReturnCode = None
         self.ReturnMessage = None
         self.Data = None
+        self.DeleteRouteTimestamp = None
 
 
     def _deserialize(self, params):
@@ -880,6 +884,7 @@ class CreateInstancePreResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = CreateInstancePreData()
             self.Data._deserialize(params.get("Data"))
+        self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
 
 
 class CreatePartitionRequest(AbstractModel):

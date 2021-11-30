@@ -56,6 +56,9 @@ INTERNALERROR_UNDEFIENDERROR = 'InternalError.UndefiendError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 已经存在绑定的账号。
+INVALIDPARAMETER_ACCOUNTEXIST = 'InvalidParameter.AccountExist'
+
 # 非法CIDR。
 INVALIDPARAMETER_ILLEGALCIDR = 'InvalidParameter.IllegalCidr'
 
@@ -178,3 +181,6 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # 账号未绑定。
 UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = 'UnsupportedOperation.AccountNotBound'
+
+# 存在绑定的VPC资源。
+UNSUPPORTEDOPERATION_EXISTBOUNDVPC = 'UnsupportedOperation.ExistBoundVpc'

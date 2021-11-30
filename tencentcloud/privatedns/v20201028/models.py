@@ -57,6 +57,42 @@ class AccountVpcInfo(AbstractModel):
         
 
 
+class AccountVpcInfoOut(AbstractModel):
+    """查询关联账号VPC列表出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VpcId： vpc-xadsafsdasd
+        :type VpcId: str
+        :param Region: Vpc所属地区: ap-guangzhou, ap-shanghai
+        :type Region: str
+        :param Uin: Vpc所属账号: 123456789
+        :type Uin: str
+        :param VpcName: vpc资源名称：testname
+        :type VpcName: str
+        """
+        self.VpcId = None
+        self.Region = None
+        self.Uin = None
+        self.VpcName = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.Region = params.get("Region")
+        self.Uin = params.get("Uin")
+        self.VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccountVpcInfoOutput(AbstractModel):
     """关联的VPC出参
 
@@ -160,6 +196,49 @@ class AuditLogInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreatePrivateDNSAccountRequest(AbstractModel):
+    """CreatePrivateDNSAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Account: 私有域解析账号
+        :type Account: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
+        """
+        self.Account = None
+
+
+    def _deserialize(self, params):
+        if params.get("Account") is not None:
+            self.Account = PrivateDNSAccount()
+            self.Account._deserialize(params.get("Account"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateDNSAccountResponse(AbstractModel):
+    """CreatePrivateDNSAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreatePrivateZoneRecordRequest(AbstractModel):
@@ -352,6 +431,49 @@ class DatePoint(AbstractModel):
         
 
 
+class DeletePrivateDNSAccountRequest(AbstractModel):
+    """DeletePrivateDNSAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Account: 私有域解析账号
+        :type Account: :class:`tencentcloud.privatedns.v20201028.models.PrivateDNSAccount`
+        """
+        self.Account = None
+
+
+    def _deserialize(self, params):
+        if params.get("Account") is not None:
+            self.Account = PrivateDNSAccount()
+            self.Account._deserialize(params.get("Account"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateDNSAccountResponse(AbstractModel):
+    """DeletePrivateDNSAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePrivateZoneRecordRequest(AbstractModel):
     """DeletePrivateZoneRecord请求参数结构体
 
@@ -443,6 +565,77 @@ class DeletePrivateZoneResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountVpcListRequest(AbstractModel):
+    """DescribeAccountVpcList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountUin: 关联账号的uin
+        :type AccountUin: str
+        :param Offset: 分页偏移量，从0开始
+        :type Offset: int
+        :param Limit: 分页限制数目， 最大100，默认20
+        :type Limit: int
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
+        """
+        self.AccountUin = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.AccountUin = params.get("AccountUin")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountVpcListResponse(AbstractModel):
+    """DescribeAccountVpcList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: VPC数量
+        :type TotalCount: int
+        :param VpcSet: VPC 列表
+        :type VpcSet: list of AccountVpcInfoOut
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpcSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpcSet") is not None:
+            self.VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = AccountVpcInfoOut()
+                obj._deserialize(item)
+                self.VpcSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

@@ -11713,7 +11713,7 @@ class DescribeScanVulSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文逗号分隔)
+        :param VulCategories: 漏洞类型：1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
         :type VulCategories: str
         :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文逗号分隔)
         :type VulLevels: str
@@ -12488,7 +12488,7 @@ class DescribeUndoVulCountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VulCategory: 漏洞分类，最小值为1，最大值为5
+        :param VulCategory: 漏洞分类，1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
         :type VulCategory: int
         :param IfEmergency: 是否应急漏洞筛选, 是 : yes
         :type IfEmergency: str
@@ -12635,7 +12635,7 @@ class DescribeVulCountByDatesRequest(AbstractModel):
         r"""
         :param LastDays: 需要查询最近几天的数据，需要都 -1后传入
         :type LastDays: list of int non-negative
-        :param VulCategory: 漏洞的分类，最小值为1最大值为5
+        :param VulCategory: 漏洞的分类: 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
         :type VulCategory: int
         :param IfEmergency: 是否为应急漏洞筛选  是: yes
         :type IfEmergency: str
@@ -12898,7 +12898,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         :param VulLevel: 危害等级：1-低危；2-中危；3-高危；4-严重
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulLevel: int
-        :param VulType: 漏洞分类 1: web应用漏洞 2:应用漏洞3:安全基线 4: Linux系统漏洞 5: Windows系统漏洞
+        :param VulType: 漏洞分类 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulType: int
         :param Description: 漏洞描述信息
@@ -13037,6 +13037,7 @@ class DescribeVulListRequest(AbstractModel):
 <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 <li>VulName- string -</li>
 <li>HostIp- string - 是否必填：否 - 主机ip</li>
+<li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
         :type Filters: list of Filters
         :param By: 可选排序字段 Level，LastTime，HostCount
         :type By: str
@@ -15042,7 +15043,7 @@ class ExportVulListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Filters: 过滤条件。
-<li>VulCategory - int - 是否必填：否 - 漏洞分类筛选 1: web应用漏洞 2:系统组件漏洞 3:安全基线</li>
+<li>VulCategory - int - 是否必填：否 - 漏洞分类筛选1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 <li>IfEmergency - String - 是否必填：否 - 是否为应急漏洞，查询应急漏洞传:yes</li>
 <li>Status - String - 是否必填：是 - 漏洞状态筛选，0: 待处理 1:忽略  3:已修复  5:检测中， 控制台仅处理0,1,3,5四种状态</li>
 <li>Level - String - 是否必填：否 - 漏洞等级筛选 1:低 2:中 3:高 4:提示</li>
@@ -18112,7 +18113,7 @@ class ScanVulRequest(AbstractModel):
         :type VulLevels: str
         :param HostType: 服务器分类：1:专业版服务器；2:自选服务器
         :type HostType: int
-        :param VulCategories: 漏洞类型：1: web应用漏洞（webCMS） 2:系统组件（应用漏洞）漏洞  3:安全基线 4:Linux软件漏洞 5:Windows系统漏洞(多选英文;分隔)
+        :param VulCategories: 漏洞类型：1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞 (多选英文;分隔)
         :type VulCategories: str
         :param QuuidList: 自选服务器时生效，主机quuid的string数组
         :type QuuidList: list of str
@@ -18180,7 +18181,7 @@ class ScanVulSettingRequest(AbstractModel):
         r"""
         :param TimerInterval: 定期检测间隔时间（天）
         :type TimerInterval: int
-        :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞, 以数组方式传参[1,2]
+        :param VulCategories: 漏洞类型：1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞, 以数组方式传参[1,2]
         :type VulCategories: list of int non-negative
         :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重,以数组方式传参[1,2,3]
         :type VulLevels: list of int non-negative
@@ -19160,7 +19161,7 @@ class VulDetailInfo(AbstractModel):
         :type Name: str
         :param CveId: cve编号
         :type CveId: str
-        :param VulCategory: 漏洞分类
+        :param VulCategory: 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞 0= 应急漏洞
         :type VulCategory: int
         :param Descript: 漏洞描述
         :type Descript: str

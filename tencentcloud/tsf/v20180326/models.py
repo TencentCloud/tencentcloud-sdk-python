@@ -6548,6 +6548,54 @@ class DescribeGatewayMonitorOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGroupAttributeRequest(AbstractModel):
+    """DescribeGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组ID字段
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupAttributeResponse(AbstractModel):
+    """DescribeGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 虚拟机部署组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.VmGroupOther`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = VmGroupOther()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGroupBindedGatewaysRequest(AbstractModel):
     """DescribeGroupBindedGateways请求参数结构体
 
@@ -17428,6 +17476,71 @@ class VmGroup(AbstractModel):
         self.StartScript = params.get("StartScript")
         self.StopScript = params.get("StopScript")
         self.Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VmGroupOther(AbstractModel):
+    """虚拟机部署组其他字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param PackageId: 程序包ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageId: str
+        :param PackageName: 程序包名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageName: str
+        :param PackageVersion: 程序包版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageVersion: str
+        :param InstanceCount: 部署组实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
+        :param RunInstanceCount: 部署组运行中实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunInstanceCount: int
+        :param OffInstanceCount: 部署组中停止实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffInstanceCount: int
+        :param GroupStatus: 部署组状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupStatus: str
+        :param IsNotEqualServiceConfig: 服务配置信息是否匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNotEqualServiceConfig: bool
+        """
+        self.GroupId = None
+        self.PackageId = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.InstanceCount = None
+        self.RunInstanceCount = None
+        self.OffInstanceCount = None
+        self.GroupStatus = None
+        self.IsNotEqualServiceConfig = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.PackageId = params.get("PackageId")
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        self.InstanceCount = params.get("InstanceCount")
+        self.RunInstanceCount = params.get("RunInstanceCount")
+        self.OffInstanceCount = params.get("OffInstanceCount")
+        self.GroupStatus = params.get("GroupStatus")
+        self.IsNotEqualServiceConfig = params.get("IsNotEqualServiceConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
