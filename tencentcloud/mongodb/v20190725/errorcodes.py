@@ -163,3 +163,6 @@ INVALIDPARAMETERVALUE_ZONECLOSED = 'InvalidParameterValue.ZoneClosed'
 
 # 无效的可用区。
 INVALIDPARAMETERVALUE_ZONEERROR = 'InvalidParameterValue.ZoneError'
+
+# 当前版本不支持该操作。
+UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = 'UnsupportedOperation.VersionNotSupport'

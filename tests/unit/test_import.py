@@ -549,6 +549,11 @@ def test_import_iotvideoindustry():
     from tencentcloud.iotvideoindustry.v20201201 import models
 
 
+def test_import_ivld():
+    from tencentcloud.ivld.v20210903 import ivld_client
+    from tencentcloud.ivld.v20210903 import models
+
+
 def test_import_kms():
     from tencentcloud.kms.v20190118 import kms_client
     from tencentcloud.kms.v20190118 import models

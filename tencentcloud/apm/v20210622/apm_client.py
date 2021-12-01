@@ -52,3 +52,31 @@ class ApmClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApmInstances(self, request):
+        """APM实例列表拉取
+
+        :param request: Request instance for DescribeApmInstances.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmInstancesRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeApmInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApmInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApmInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

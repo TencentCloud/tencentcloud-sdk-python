@@ -68,6 +68,147 @@ class ApmAgentInfo(AbstractModel):
         
 
 
+class ApmInstanceDetail(AbstractModel):
+    """apm实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AmountOfUsedStorage: 存储使用量(MB)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountOfUsedStorage: float
+        :param Name: 实例名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Tags: 实例所属tag列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ApmTag
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param CreateUin: 创建人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: str
+        :param ServiceCount: 该实例已上报的服务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCount: int
+        :param CountOfReportSpanPerDay: 日均上报Span数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountOfReportSpanPerDay: int
+        :param AppId: AppId信息
+        :type AppId: int
+        :param TraceDuration: Trace数据保存时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceDuration: int
+        :param Description: 实例描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Status: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Region: 实例所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param SpanDailyCounters: 实例上报额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpanDailyCounters: int
+        :param BillingInstance: 实例是否开通计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingInstance: int
+        :param ErrRateThreshold: 错误率阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrRateThreshold: int
+        :param SampleRate: 采样率阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SampleRate: int
+        :param ErrorSample: 是否开启错误采样 0  关 1 开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorSample: int
+        :param SlowRequestSavedThreshold: 慢调用保存阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowRequestSavedThreshold: int
+        """
+        self.AmountOfUsedStorage = None
+        self.Name = None
+        self.Tags = None
+        self.InstanceId = None
+        self.CreateUin = None
+        self.ServiceCount = None
+        self.CountOfReportSpanPerDay = None
+        self.AppId = None
+        self.TraceDuration = None
+        self.Description = None
+        self.Status = None
+        self.Region = None
+        self.SpanDailyCounters = None
+        self.BillingInstance = None
+        self.ErrRateThreshold = None
+        self.SampleRate = None
+        self.ErrorSample = None
+        self.SlowRequestSavedThreshold = None
+
+
+    def _deserialize(self, params):
+        self.AmountOfUsedStorage = params.get("AmountOfUsedStorage")
+        self.Name = params.get("Name")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.CreateUin = params.get("CreateUin")
+        self.ServiceCount = params.get("ServiceCount")
+        self.CountOfReportSpanPerDay = params.get("CountOfReportSpanPerDay")
+        self.AppId = params.get("AppId")
+        self.TraceDuration = params.get("TraceDuration")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.SpanDailyCounters = params.get("SpanDailyCounters")
+        self.BillingInstance = params.get("BillingInstance")
+        self.ErrRateThreshold = params.get("ErrRateThreshold")
+        self.SampleRate = params.get("SampleRate")
+        self.ErrorSample = params.get("ErrorSample")
+        self.SlowRequestSavedThreshold = params.get("SlowRequestSavedThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApmTag(AbstractModel):
+    """维度（标签）对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 维度Key(列名，标签Key)
+        :type Key: str
+        :param Value: 维度值（标签值）
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeApmAgentRequest(AbstractModel):
     """DescribeApmAgent请求参数结构体
 
@@ -125,4 +266,68 @@ class DescribeApmAgentResponse(AbstractModel):
         if params.get("ApmAgent") is not None:
             self.ApmAgent = ApmAgentInfo()
             self.ApmAgent._deserialize(params.get("ApmAgent"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApmInstancesRequest(AbstractModel):
+    """DescribeApmInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: Tag列表
+        :type Tags: list of ApmTag
+        :param InstanceName: 搜索实例名
+        :type InstanceName: str
+        :param InstanceIds: 过滤实例ID
+        :type InstanceIds: list of str
+        """
+        self.Tags = None
+        self.InstanceName = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApmInstancesResponse(AbstractModel):
+    """DescribeApmInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Instances: apm实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of ApmInstanceDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = ApmInstanceDetail()
+                obj._deserialize(item)
+                self.Instances.append(obj)
         self.RequestId = params.get("RequestId")
