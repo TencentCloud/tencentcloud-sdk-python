@@ -17,6 +17,12 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 调用 CVM 失败。
+FAILEDOPERATION_CVMERROR = 'FailedOperation.CVMError'
+
+# 调用 Lighthouse 失败。
+FAILEDOPERATION_LIGHTHOUSEERROR = 'FailedOperation.LighthouseError'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -25,12 +31,6 @@ INVALIDPARAMETER = 'InvalidParameter'
 
 # 参数冲突。
 INVALIDPARAMETER_CONFLICTPARAMETER = 'InvalidParameter.ConflictParameter'
-
-# OutputCOSBucketUrl 无效。
-INVALIDPARAMETER_INVALIDOUTPUTCOSBUCKETURL = 'InvalidParameter.InvalidOutputCOSBucketUrl'
-
-# OutputCOSKeyPrefix 无效。
-INVALIDPARAMETER_INVALIDOUTPUTCOSKEYPREFIX = 'InvalidParameter.InvalidOutputCOSKeyPrefix'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -70,6 +70,12 @@ INVALIDPARAMETERVALUE_INVALIDINVOCATIONTASKID = 'InvalidParameterValue.InvalidIn
 
 # InvokerId 无效。
 INVALIDPARAMETERVALUE_INVALIDINVOKERID = 'InvalidParameterValue.InvalidInvokerId'
+
+# OutputCOSBucketUrl 无效。
+INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = 'InvalidParameterValue.InvalidOutputCOSBucketUrl'
+
+# OutputCOSKeyPrefix 无效。
+INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = 'InvalidParameterValue.InvalidOutputCOSKeyPrefix'
 
 # 命令执行路径不合法。
 INVALIDPARAMETERVALUE_INVALIDWORKINGDIRECTORY = 'InvalidParameterValue.InvalidWorkingDirectory'

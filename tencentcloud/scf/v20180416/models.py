@@ -2243,6 +2243,78 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRequestStatusRequest(AbstractModel):
+    """GetRequestStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param FunctionRequestId: 需要查询状态的请求 id
+        :type FunctionRequestId: str
+        :param Namespace: 函数的所在的命名空间
+        :type Namespace: str
+        :param StartTime: 查询的开始时间，例如：2017-05-16 20:00:00，不填默认为当前时间 - 24小时
+        :type StartTime: str
+        :param EndTime: 查询的结束时间，例如：2017-05-16 20:59:59，不填默认为当前时间。EndTime 需要晚于 StartTime。
+        :type EndTime: str
+        """
+        self.FunctionName = None
+        self.FunctionRequestId = None
+        self.Namespace = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionRequestId = params.get("FunctionRequestId")
+        self.Namespace = params.get("Namespace")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRequestStatusResponse(AbstractModel):
+    """GetRequestStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 函数运行状态的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Data: 函数运行状态数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of RequestStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RequestStatus()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetReservedConcurrencyConfigRequest(AbstractModel):
     """GetReservedConcurrencyConfig请求参数结构体
 
@@ -2419,7 +2491,7 @@ class InvokeRequest(AbstractModel):
         :type FunctionName: str
         :param InvocationType: 同步调用请使用[同步 Invoke 调用接口](https://cloud.tencent.com/document/product/583/58400) 或填写同步调用参数 RequestResponse ，建议使用同步调用接口以获取最佳性能；异步调用填写 Event；默认为同步。接口超时时间为 300s，更长超时时间请使用异步调用。
         :type InvocationType: str
-        :param Qualifier: 触发函数的版本号或别名
+        :param Qualifier: 触发函数的版本号或别名，默认值为 $LATEST
         :type Qualifier: str
         :param ClientContext: 运行函数时的参数，以json格式传入，同步调用最大支持 6MB，异步调用最大支持 128 KB。该字段信息对应函数 [event 入参](https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E)。
         :type ClientContext: str
@@ -3799,6 +3871,58 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RequestStatus(AbstractModel):
+    """函数运行状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionName: 函数的名称
+        :type FunctionName: str
+        :param RetMsg: 函数执行完成后的返回值
+        :type RetMsg: str
+        :param RequestId: 查询的请求 id
+        :type RequestId: str
+        :param StartTime: 请求开始时间
+        :type StartTime: str
+        :param RetCode: 请求执行结果， 0 表示执行成功，1表示运行中，-1 表示执行异常。
+        :type RetCode: int
+        :param Duration: 请求运行耗时，单位：ms
+        :type Duration: float
+        :param MemUsage: 请求消耗内存，单位为 MB
+        :type MemUsage: float
+        :param RetryNum: 重试次数
+        :type RetryNum: int
+        """
+        self.FunctionName = None
+        self.RetMsg = None
+        self.RequestId = None
+        self.StartTime = None
+        self.RetCode = None
+        self.Duration = None
+        self.MemUsage = None
+        self.RetryNum = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.RetMsg = params.get("RetMsg")
+        self.RequestId = params.get("RequestId")
+        self.StartTime = params.get("StartTime")
+        self.RetCode = params.get("RetCode")
+        self.Duration = params.get("Duration")
+        self.MemUsage = params.get("MemUsage")
+        self.RetryNum = params.get("RetryNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Result(AbstractModel):

@@ -593,6 +593,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRequestStatus(self, request):
+        """该接口根据指定的查询条件返回函数单个请求运行状态。
+
+        :param request: Request instance for GetRequestStatus.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetRequestStatusRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetRequestStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRequestStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRequestStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetReservedConcurrencyConfig(self, request):
         """获取函数的最大独占配额详情。
 

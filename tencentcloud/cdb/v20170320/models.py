@@ -10319,11 +10319,14 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type WaitSwitch: int
         :param UpgradeSubversion: 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
         :type UpgradeSubversion: int
+        :param MaxDelayTime: 延迟阈值。取值范围1~10
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.EngineVersion = None
         self.WaitSwitch = None
         self.UpgradeSubversion = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -10331,6 +10334,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         self.EngineVersion = params.get("EngineVersion")
         self.WaitSwitch = params.get("WaitSwitch")
         self.UpgradeSubversion = params.get("UpgradeSubversion")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10394,6 +10398,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type Cpu: int
         :param FastUpgrade: 是否极速变配。0-普通升级，1-极速变配。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
         :type FastUpgrade: int
+        :param MaxDelayTime: 延迟阈值。取值范围1~10，默认值为10。
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.Memory = None
@@ -10408,6 +10414,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DeviceType = None
         self.Cpu = None
         self.FastUpgrade = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -10424,6 +10431,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DeviceType = params.get("DeviceType")
         self.Cpu = params.get("Cpu")
         self.FastUpgrade = params.get("FastUpgrade")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

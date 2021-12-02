@@ -1293,6 +1293,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :type WorkingDirectory: str
         :param Timeout: 命令超时时间，取值范围[1, 86400]。默认以Command配置的Timeout执行。
         :type Timeout: int
+        :param OutputCOSBucketUrl: 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :type OutputCOSBucketUrl: str
+        :param OutputCOSKeyPrefix: 指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+        :type OutputCOSKeyPrefix: str
         """
         self.CommandId = None
         self.InstanceIds = None
@@ -1300,6 +1307,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.Username = None
         self.WorkingDirectory = None
         self.Timeout = None
+        self.OutputCOSBucketUrl = None
+        self.OutputCOSKeyPrefix = None
 
 
     def _deserialize(self, params):
@@ -1309,6 +1318,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.Username = params.get("Username")
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Timeout = params.get("Timeout")
+        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1477,6 +1488,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
         :type Username: str
+        :param OutputCOSBucketUrl: 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :type OutputCOSBucketUrl: str
+        :param OutputCOSKeyPrefix: 指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+        :type OutputCOSKeyPrefix: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -1487,6 +1505,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.Timeout = None
         self.DefaultParameters = None
         self.Username = None
+        self.OutputCOSBucketUrl = None
+        self.OutputCOSKeyPrefix = None
 
 
     def _deserialize(self, params):
@@ -1499,6 +1519,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.Timeout = params.get("Timeout")
         self.DefaultParameters = params.get("DefaultParameters")
         self.Username = params.get("Username")
+        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1736,6 +1758,13 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
         :type Username: str
+        :param OutputCOSBucketUrl: 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+        :type OutputCOSBucketUrl: str
+        :param OutputCOSKeyPrefix: 指定日志在cos bucket中的目录，目录命名有如下规则：
+1. 可用数字、中英文和可见字符的组合，长度最多为60。
+2. 用 / 分割路径，可快速创建子目录。
+3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+        :type OutputCOSKeyPrefix: str
         """
         self.Content = None
         self.InstanceIds = None
@@ -1750,6 +1779,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.Parameters = None
         self.Tags = None
         self.Username = None
+        self.OutputCOSBucketUrl = None
+        self.OutputCOSKeyPrefix = None
 
 
     def _deserialize(self, params):
@@ -1771,6 +1802,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Username = params.get("Username")
+        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

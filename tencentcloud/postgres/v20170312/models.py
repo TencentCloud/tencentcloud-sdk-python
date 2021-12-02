@@ -983,7 +983,7 @@ class DBInstance(AbstractModel):
         :param DBKernelVersion: 数据库内核版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBKernelVersion: str
-        :param NetworkAccessList: 实例网络信息列表
+        :param NetworkAccessList: 实例网络信息列表（此字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAccessList: list of NetworkAccess
         """
@@ -1097,14 +1097,22 @@ class DBInstanceNetInfo(AbstractModel):
         :type Port: int
         :param NetType: 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
         :type NetType: str
-        :param Status: 网络连接状态
+        :param Status: 网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
         :type Status: str
+        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
         """
         self.Address = None
         self.Ip = None
         self.Port = None
         self.NetType = None
         self.Status = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1113,6 +1121,8 @@ class DBInstanceNetInfo(AbstractModel):
         self.Port = params.get("Port")
         self.NetType = params.get("NetType")
         self.Status = params.get("Status")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3416,16 +3426,16 @@ class ModifySwitchTimePeriodResponse(AbstractModel):
 
 
 class NetworkAccess(AbstractModel):
-    """网络相关信息。
+    """网络相关信息。（该数据结构已废弃，网络相关信息使用DBInstanceNetInfo）
 
     """
 
     def __init__(self):
         r"""
-        :param ResourceId: 网络资源id，实例id或RO组id(此字段已废弃)
+        :param ResourceId: 网络资源id，实例id或RO组id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param ResourceType: 资源类型，1-实例 2-RO组(此字段已废弃)
+        :param ResourceType: 资源类型，1-实例 2-RO组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: int
         :param VpcId: 私有网络ID
@@ -3920,7 +3930,7 @@ class ReadOnlyGroup(AbstractModel):
         :type Rebalance: int
         :param DBInstanceNetInfo: 网络信息
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
-        :param NetworkAccessList: 只读组网络信息列表
+        :param NetworkAccessList: 只读组网络信息列表（此字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAccessList: list of NetworkAccess
         """

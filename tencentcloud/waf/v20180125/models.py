@@ -878,6 +878,40 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
+        :type TopicId: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Query: 查询语句，语句长度最大为4096，由于本接口是分析接口，如果无过滤条件，必须传 * 表示匹配所有，参考CLS的分析统计语句的文档
+        :type Query: str
+        :param FieldName: 需要分析统计的字段名
+        :type FieldName: str
+        """
+        self.TopicId = None
+        self.From = None
+        self.To = None
+        self.Query = None
+        self.FieldName = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Query = params.get("Query")
+        self.FieldName = params.get("FieldName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAccessFastAnalysisResponse(AbstractModel):
     """DescribeAccessFastAnalysis返回参数结构体

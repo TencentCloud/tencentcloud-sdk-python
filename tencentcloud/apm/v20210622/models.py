@@ -209,6 +209,73 @@ class ApmTag(AbstractModel):
         
 
 
+class CreateApmInstanceRequest(AbstractModel):
+    """CreateApmInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 实例名
+        :type Name: str
+        :param Description: 实例描述信息
+        :type Description: str
+        :param TraceDuration: Trace数据保存时长
+        :type TraceDuration: int
+        :param Tags: 标签列表
+        :type Tags: list of ApmTag
+        :param SpanDailyCounters: 实例上报额度值
+        :type SpanDailyCounters: int
+        """
+        self.Name = None
+        self.Description = None
+        self.TraceDuration = None
+        self.Tags = None
+        self.SpanDailyCounters = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.TraceDuration = params.get("TraceDuration")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.SpanDailyCounters = params.get("SpanDailyCounters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApmInstanceResponse(AbstractModel):
+    """CreateApmInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApmAgentRequest(AbstractModel):
     """DescribeApmAgent请求参数结构体
 

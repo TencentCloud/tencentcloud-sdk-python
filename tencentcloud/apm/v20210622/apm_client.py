@@ -26,6 +26,34 @@ class ApmClient(AbstractClient):
     _service = 'apm'
 
 
+    def CreateApmInstance(self, request):
+        """业务购买APM实例，调用该接口创建
+
+        :param request: Request instance for CreateApmInstance.
+        :type request: :class:`tencentcloud.apm.v20210622.models.CreateApmInstanceRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.CreateApmInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateApmInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApmInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApmAgent(self, request):
         """获取Apm Agent信息
 

@@ -1028,7 +1028,7 @@ class DescribeTemplateListRequest(AbstractModel):
         :type Limit: int
         :param Type: 用户注册类型，默认:all , 个人：I ,企业: E
         :type Type: str
-        :param Status: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+        :param Status: 认证状态：未实名审核:NotUpload, 实名审核中:InAudit，已实名审核:Approved，实名审核失败:Reject，更新手机邮箱:NotVerified。
         :type Status: str
         :param Keyword: 域名所有者筛选
         :type Keyword: str

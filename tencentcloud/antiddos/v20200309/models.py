@@ -186,6 +186,9 @@ class BGPIPInstance(AbstractModel):
         :type Domain: str
         :param DamDDoSStatus: 是否开启安全加速，是为1，否为0。
         :type DamDDoSStatus: int
+        :param V6Flag: 是否Ipv6版本的IP, 是为1，否为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type V6Flag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -205,6 +208,7 @@ class BGPIPInstance(AbstractModel):
         self.EipAddressInfo = None
         self.Domain = None
         self.DamDDoSStatus = None
+        self.V6Flag = None
 
 
     def _deserialize(self, params):
@@ -242,6 +246,7 @@ class BGPIPInstance(AbstractModel):
             self.EipAddressInfo._deserialize(params.get("EipAddressInfo"))
         self.Domain = params.get("Domain")
         self.DamDDoSStatus = params.get("DamDDoSStatus")
+        self.V6Flag = params.get("V6Flag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
