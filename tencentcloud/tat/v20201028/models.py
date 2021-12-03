@@ -99,6 +99,10 @@ class Command(AbstractModel):
         :type Tags: list of Tag
         :param Username: 在实例上执行命令的用户名。
         :type Username: str
+        :param OutputCOSBucketUrl: 日志上传的cos bucket 地址。
+        :type OutputCOSBucketUrl: str
+        :param OutputCOSKeyPrefix: 日志在cos bucket中的目录。
+        :type OutputCOSKeyPrefix: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -115,6 +119,8 @@ class Command(AbstractModel):
         self.CreatedBy = None
         self.Tags = None
         self.Username = None
+        self.OutputCOSBucketUrl = None
+        self.OutputCOSKeyPrefix = None
 
 
     def _deserialize(self, params):
@@ -138,6 +144,8 @@ class Command(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Username = params.get("Username")
+        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -200,9 +208,9 @@ class CreateCommandRequest(AbstractModel):
         :type Content: str
         :param Description: 命令描述。不超过120字符。
         :type Description: str
-        :param CommandType: 命令类型，目前仅支持取值：SHELL。默认：SHELL。
+        :param CommandType: 命令类型，目前支持取值：SHELL、POWERSHELL。默认：SHELL。
         :type CommandType: str
-        :param WorkingDirectory: 命令执行路径，默认：/root。
+        :param WorkingDirectory: 命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
         :type WorkingDirectory: str
         :param Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
         :type Timeout: int
@@ -219,7 +227,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :param Tags: 为命令关联的标签，列表长度不超过10。
         :type Tags: list of Tag
         :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；Windows 实例当前仅支持以 System 用户执行命令。
         :type Username: str
         :param OutputCOSBucketUrl: 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
         :type OutputCOSBucketUrl: str
@@ -1088,6 +1096,10 @@ class Invocation(AbstractModel):
         :type Timeout: int
         :param WorkingDirectory: 执行命令的工作路径
         :type WorkingDirectory: str
+        :param OutputCOSBucketUrl: 日志上传的cos bucket 地址。
+        :type OutputCOSBucketUrl: str
+        :param OutputCOSKeyPrefix: 日志在cos bucket中的目录。
+        :type OutputCOSKeyPrefix: str
         """
         self.InvocationId = None
         self.CommandId = None
@@ -1107,6 +1119,8 @@ class Invocation(AbstractModel):
         self.CommandType = None
         self.Timeout = None
         self.WorkingDirectory = None
+        self.OutputCOSBucketUrl = None
+        self.OutputCOSKeyPrefix = None
 
 
     def _deserialize(self, params):
@@ -1133,6 +1147,8 @@ class Invocation(AbstractModel):
         self.CommandType = params.get("CommandType")
         self.Timeout = params.get("Timeout")
         self.WorkingDirectory = params.get("WorkingDirectory")
+        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1166,6 +1182,9 @@ class InvocationTask(AbstractModel):
 <li> FAILED：命令执行失败，执行完退出码不为 0
 <li> TIMEOUT：命令超时
 <li> TASK_TIMEOUT：执行任务超时
+<li> CANCELLING：取消中
+<li> CANCELLED：已取消（命令启动前就被取消）
+<li> TERMINATED：已中止（命令执行期间被取消）
         :type TaskStatus: str
         :param InstanceId: 实例ID。
         :type InstanceId: str
@@ -1242,11 +1261,15 @@ class InvocationTaskBasicInfo(AbstractModel):
 <li> DELIVERING：下发中
 <li> DELIVER_DELAYED：延时下发 
 <li> DELIVER_FAILED：下发失败
+<li> START_FAILED：命令启动失败
 <li> RUNNING：命令运行中
 <li> SUCCESS：命令成功
-<li> FAILED：命令失败
+<li> FAILED：命令执行失败，执行完退出码不为 0
 <li> TIMEOUT：命令超时
 <li> TASK_TIMEOUT：执行任务超时
+<li> CANCELLING：取消中
+<li> CANCELLED：已取消（命令启动前就被取消）
+<li> TERMINATED：已中止（命令执行期间被取消）
         :type TaskStatus: str
         :param InstanceId: 实例ID。
         :type InstanceId: str
@@ -1472,11 +1495,11 @@ class ModifyCommandRequest(AbstractModel):
         :type Description: str
         :param Content: Base64编码后的命令内容，长度不可超过64KB。
         :type Content: str
-        :param CommandType: 命令类型，目前仅支持取值：SHELL。
+        :param CommandType: 命令类型，目前支持取值：SHELL、POWERSHELL。
         :type CommandType: str
-        :param WorkingDirectory: 命令执行路径，默认：`/root`。
+        :param WorkingDirectory: 命令执行路径。
         :type WorkingDirectory: str
-        :param Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
+        :param Timeout: 命令超时时间。取值范围[1, 86400]。
         :type Timeout: int
         :param DefaultParameters: 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
 采取整体全覆盖式修改，即修改时必须提供所有新默认值。
@@ -1486,7 +1509,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type DefaultParameters: str
         :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。Windows 实例当前仅支持以 System 用户执行命令。
         :type Username: str
         :param OutputCOSBucketUrl: 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
         :type OutputCOSBucketUrl: str
@@ -1726,9 +1749,9 @@ class RunCommandRequest(AbstractModel):
         :type CommandName: str
         :param Description: 命令描述。不超过120字符。
         :type Description: str
-        :param CommandType: 命令类型，目前仅支持取值：SHELL。默认：SHELL。
+        :param CommandType: 命令类型，目前支持取值：SHELL、POWERSHELL。默认：SHELL。
         :type CommandType: str
-        :param WorkingDirectory: 命令执行路径，默认：/root。
+        :param WorkingDirectory: 命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
         :type WorkingDirectory: str
         :param Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
         :type Timeout: int
@@ -1756,7 +1779,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :param Tags: 如果保存命令，可为命令设置标签。列表长度不超过10。
         :type Tags: list of Tag
         :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；Windows 实例当前仅支持以 System 用户执行命令。
         :type Username: str
         :param OutputCOSBucketUrl: 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
         :type OutputCOSBucketUrl: str
@@ -1917,12 +1940,18 @@ class TaskResult(AbstractModel):
         :type ExecEndTime: str
         :param Dropped: 命令最终输出被截断的字节数。
         :type Dropped: int
+        :param OutputUrl: 日志在cos中的地址
+        :type OutputUrl: str
+        :param OutputUploadCOSErrorInfo: 日志上传cos的错误信息。
+        :type OutputUploadCOSErrorInfo: str
         """
         self.ExitCode = None
         self.Output = None
         self.ExecStartTime = None
         self.ExecEndTime = None
         self.Dropped = None
+        self.OutputUrl = None
+        self.OutputUploadCOSErrorInfo = None
 
 
     def _deserialize(self, params):
@@ -1931,6 +1960,8 @@ class TaskResult(AbstractModel):
         self.ExecStartTime = params.get("ExecStartTime")
         self.ExecEndTime = params.get("ExecEndTime")
         self.Dropped = params.get("Dropped")
+        self.OutputUrl = params.get("OutputUrl")
+        self.OutputUploadCOSErrorInfo = params.get("OutputUploadCOSErrorInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

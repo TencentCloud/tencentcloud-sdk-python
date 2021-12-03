@@ -1523,16 +1523,20 @@ class PhoneEmailData(AbstractModel):
         :type Type: int
         :param CreatedOn: 创建时间
         :type CreatedOn: str
+        :param CheckStatus: 1=控制台校验，2=第三方校验
+        :type CheckStatus: int
         """
         self.Code = None
         self.Type = None
         self.CreatedOn = None
+        self.CheckStatus = None
 
 
     def _deserialize(self, params):
         self.Code = params.get("Code")
         self.Type = params.get("Type")
         self.CreatedOn = params.get("CreatedOn")
+        self.CheckStatus = params.get("CheckStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4524,6 +4524,8 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type Namespace: str
         :param CosBucketRegion: 对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
         :type CosBucketRegion: str
+        :param InstallDependency: 是否自动安装依赖
+        :type InstallDependency: str
         :param EnvId: 函数所属环境
         :type EnvId: str
         :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
@@ -4540,6 +4542,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
         self.ZipFile = None
         self.Namespace = None
         self.CosBucketRegion = None
+        self.InstallDependency = None
         self.EnvId = None
         self.Publish = None
         self.Code = None
@@ -4554,6 +4557,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
         self.ZipFile = params.get("ZipFile")
         self.Namespace = params.get("Namespace")
         self.CosBucketRegion = params.get("CosBucketRegion")
+        self.InstallDependency = params.get("InstallDependency")
         self.EnvId = params.get("EnvId")
         self.Publish = params.get("Publish")
         if params.get("Code") is not None:

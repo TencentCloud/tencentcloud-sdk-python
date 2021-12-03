@@ -1203,6 +1203,8 @@ class CreateProductRequest(AbstractModel):
         :type ProductDescription: str
         :param EncryptionType: 认证方式 只支持取值为2 psk认证
         :type EncryptionType: int
+        :param NetType: 连接类型，wifi表示WIFI连接，cellular表示4G连接
+        :type NetType: str
         """
         self.ProductName = None
         self.DeviceType = None
@@ -1213,6 +1215,7 @@ class CreateProductRequest(AbstractModel):
         self.ChipId = None
         self.ProductDescription = None
         self.EncryptionType = None
+        self.NetType = None
 
 
     def _deserialize(self, params):
@@ -1225,6 +1228,7 @@ class CreateProductRequest(AbstractModel):
         self.ChipId = params.get("ChipId")
         self.ProductDescription = params.get("ProductDescription")
         self.EncryptionType = params.get("EncryptionType")
+        self.NetType = params.get("NetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5898,6 +5902,9 @@ class VideoProduct(AbstractModel):
         :type CreateTime: int
         :param UpdateTime: 修改时间unix时间戳
         :type UpdateTime: int
+        :param NetType: 连接类型，wifi表示WIFI连接，cellular表示4G连接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: str
         """
         self.ProductId = None
         self.ProductName = None
@@ -5910,6 +5917,7 @@ class VideoProduct(AbstractModel):
         self.ProductDescription = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.NetType = None
 
 
     def _deserialize(self, params):
@@ -5924,6 +5932,7 @@ class VideoProduct(AbstractModel):
         self.ProductDescription = params.get("ProductDescription")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.NetType = params.get("NetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

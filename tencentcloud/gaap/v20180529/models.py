@@ -3568,12 +3568,15 @@ class DescribeProxyStatisticsRequest(AbstractModel):
 当时间范围不超过7天，支持最小粒度300秒；
 当时间范围不超过30天，支持最小粒度3600秒。
         :type Granularity: int
+        :param Isp: 运营商（通道为三网通道时有效），支持CMCC，CUCC，CTCC，传空值或不传则合并三个运营商数据
+        :type Isp: str
         """
         self.ProxyId = None
         self.StartTime = None
         self.EndTime = None
         self.MetricNames = None
         self.Granularity = None
+        self.Isp = None
 
 
     def _deserialize(self, params):
@@ -3582,6 +3585,7 @@ class DescribeProxyStatisticsRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.MetricNames = params.get("MetricNames")
         self.Granularity = params.get("Granularity")
+        self.Isp = params.get("Isp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

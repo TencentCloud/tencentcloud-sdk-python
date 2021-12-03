@@ -23,6 +23,9 @@ ADDRESSQUOTALIMITEXCEEDED_DAILYALLOCATE = 'AddressQuotaLimitExceeded.DailyAlloca
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 地址没有弹性网卡信息。
+FAILEDOPERATION_ADDRESSENIINFONOTFOUND = 'FailedOperation.AddressEniInfoNotFound'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -85,6 +88,9 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 该地址ID不合法。
+INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = 'InvalidParameterValue.AddressIdMalformed'
 
 # 该地址计费方式与其他地址冲突。
 INVALIDPARAMETERVALUE_ADDRESSINTERNETCHARGETYPECONFLICT = 'InvalidParameterValue.AddressInternetChargeTypeConflict'
@@ -350,6 +356,9 @@ UNSUPPORTEDOPERATION_ADDRESSIPNOTSUPPORTINSTANCE = 'UnsupportedOperation.Address
 # 此IP地址状态不支持该操作。
 UNSUPPORTEDOPERATION_ADDRESSIPSTATUSNOTPERMIT = 'UnsupportedOperation.AddressIpStatusNotPermit'
 
+# 该地址状态不支持此操作。
+UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = 'UnsupportedOperation.AddressStatusNotPermit'
+
 # 资源不在指定的AppId下。
 UNSUPPORTEDOPERATION_APPIDMISMATCH = 'UnsupportedOperation.AppIdMismatch'
 
@@ -416,8 +425,17 @@ UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = 'UnsupportedOperation.EcmpWithUserRoute
 # 用户配置的实例和路由表不匹配。
 UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = 'UnsupportedOperation.InstanceAndRtbNotMatch'
 
+# 该地址绑定的实例状态不支持此操作。
+UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = 'UnsupportedOperation.InstanceStateNotSupported'
+
 # 账户余额不足。
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
+
+# 该地址的网络付费方式不支持此操作。
+UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = 'UnsupportedOperation.InvalidAddressInternetChargeType'
+
+# 该地址状态不支持此操作。
+UNSUPPORTEDOPERATION_INVALIDADDRESSSTATE = 'UnsupportedOperation.InvalidAddressState'
 
 # 无效的实例状态。
 UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = 'UnsupportedOperation.InvalidInstanceState'

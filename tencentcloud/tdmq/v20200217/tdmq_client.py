@@ -1314,6 +1314,34 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAllTenants(self, request):
+        """获取某个租户的虚拟集群列表
+
+        :param request: Request instance for DescribeAllTenants.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeAllTenantsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeAllTenantsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllTenants", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllTenantsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBindClusters(self, request):
         """获取用户绑定的专享集群列表
 

@@ -2581,9 +2581,9 @@ class Whiteboard(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Width: 实时录制结果里白板视频宽，默认为1280
+        :param Width: 实时录制结果里白板视频宽，取值必须大于等于2，默认为1280
         :type Width: int
-        :param Height: 实时录制结果里白板视频高，默认为960
+        :param Height: 实时录制结果里白板视频高，取值必须大于等于2，默认为960
         :type Height: int
         :param InitParam: 白板初始化参数，透传到白板 SDK
         :type InitParam: str

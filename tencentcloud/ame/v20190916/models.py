@@ -1717,6 +1717,8 @@ class PackageItem(AbstractModel):
         :type Duration: str
         :param AuthorizedArea: 授权区域，global: 全球 CN: 中国
         :type AuthorizedArea: str
+        :param Tags: 标签数组
+        :type Tags: list of str
         """
         self.OrderId = None
         self.TrackName = None
@@ -1725,6 +1727,7 @@ class PackageItem(AbstractModel):
         self.ArtistName = None
         self.Duration = None
         self.AuthorizedArea = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1735,6 +1738,7 @@ class PackageItem(AbstractModel):
         self.ArtistName = params.get("ArtistName")
         self.Duration = params.get("Duration")
         self.AuthorizedArea = params.get("AuthorizedArea")
+        self.Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
