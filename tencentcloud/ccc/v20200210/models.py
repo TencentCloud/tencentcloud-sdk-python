@@ -428,6 +428,69 @@ class DeleteStaffResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCCBuyInfoListRequest(AbstractModel):
+    """DescribeCCCBuyInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppIds: 应用ID列表，不传时查询所有应用
+        :type SdkAppIds: list of int
+        """
+        self.SdkAppIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppIds = params.get("SdkAppIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCCBuyInfoListResponse(AbstractModel):
+    """DescribeCCCBuyInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 应用总数
+        :type TotalCount: int
+        :param SdkAppIdBuyList: 应用购买信息列表
+        :type SdkAppIdBuyList: list of SdkAppIdBuyInfo
+        :param PackageBuyList: 套餐包购买信息列表
+        :type PackageBuyList: list of PackageBuyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SdkAppIdBuyList = None
+        self.PackageBuyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SdkAppIdBuyList") is not None:
+            self.SdkAppIdBuyList = []
+            for item in params.get("SdkAppIdBuyList"):
+                obj = SdkAppIdBuyInfo()
+                obj._deserialize(item)
+                self.SdkAppIdBuyList.append(obj)
+        if params.get("PackageBuyList") is not None:
+            self.PackageBuyList = []
+            for item in params.get("PackageBuyList"):
+                obj = PackageBuyInfo()
+                obj._deserialize(item)
+                self.PackageBuyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCallInMetricsRequest(AbstractModel):
     """DescribeCallInMetrics请求参数结构体
 
@@ -1514,6 +1577,144 @@ class PSTNSessionInfo(AbstractModel):
         
 
 
+class PackageBuyInfo(AbstractModel):
+    """套餐包购买信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageId: 套餐包Id
+        :type PackageId: str
+        :param Type: 套餐包类型，0-外呼套餐包|1-400呼入套餐包
+        :type Type: int
+        :param CapacitySize: 套餐包总量
+        :type CapacitySize: int
+        :param CapacityRemain: 套餐包剩余量
+        :type CapacityRemain: int
+        :param BuyTime: 购买时间戳
+        :type BuyTime: int
+        :param EndTime: 截至时间戳
+        :type EndTime: int
+        """
+        self.PackageId = None
+        self.Type = None
+        self.CapacitySize = None
+        self.CapacityRemain = None
+        self.BuyTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.PackageId = params.get("PackageId")
+        self.Type = params.get("Type")
+        self.CapacitySize = params.get("CapacitySize")
+        self.CapacityRemain = params.get("CapacityRemain")
+        self.BuyTime = params.get("BuyTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneNumBuyInfo(AbstractModel):
+    """号码购买信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneNum: 电话号码
+        :type PhoneNum: str
+        :param Type: 号码类型，0-固话|1-虚商号码|2-运营商号码|3-400号码
+        :type Type: int
+        :param CallType: 号码呼叫类型，1-呼入|2-呼出|3-呼入呼出
+        :type CallType: int
+        :param BuyTime: 购买时间戳
+        :type BuyTime: int
+        :param EndTime: 截至时间戳
+        :type EndTime: int
+        :param State: 号码状态，1正常|2停用
+        :type State: int
+        """
+        self.PhoneNum = None
+        self.Type = None
+        self.CallType = None
+        self.BuyTime = None
+        self.EndTime = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.PhoneNum = params.get("PhoneNum")
+        self.Type = params.get("Type")
+        self.CallType = params.get("CallType")
+        self.BuyTime = params.get("BuyTime")
+        self.EndTime = params.get("EndTime")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SdkAppIdBuyInfo(AbstractModel):
+    """应用购买信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Name: 应用名称
+        :type Name: str
+        :param StaffBuyNum: 坐席购买数（还在有效期内）
+        :type StaffBuyNum: int
+        :param StaffBuyList: 坐席购买列表 （还在有效期内）
+        :type StaffBuyList: list of StaffBuyInfo
+        :param PhoneNumBuyList: 号码购买列表
+        :type PhoneNumBuyList: list of PhoneNumBuyInfo
+        """
+        self.SdkAppId = None
+        self.Name = None
+        self.StaffBuyNum = None
+        self.StaffBuyList = None
+        self.PhoneNumBuyList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Name = params.get("Name")
+        self.StaffBuyNum = params.get("StaffBuyNum")
+        if params.get("StaffBuyList") is not None:
+            self.StaffBuyList = []
+            for item in params.get("StaffBuyList"):
+                obj = StaffBuyInfo()
+                obj._deserialize(item)
+                self.StaffBuyList.append(obj)
+        if params.get("PhoneNumBuyList") is not None:
+            self.PhoneNumBuyList = []
+            for item in params.get("PhoneNumBuyList"):
+                obj = PhoneNumBuyInfo()
+                obj._deserialize(item)
+                self.PhoneNumBuyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeatUserInfo(AbstractModel):
     """坐席用户信息
 
@@ -1743,6 +1944,38 @@ class SkillGroupItem(AbstractModel):
         self.SkillGroupName = params.get("SkillGroupName")
         self.Priority = params.get("Priority")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffBuyInfo(AbstractModel):
+    """坐席购买信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Num: 购买坐席数量
+        :type Num: int
+        :param BuyTime: 购买时间戳
+        :type BuyTime: int
+        :param EndTime: 截至时间戳
+        :type EndTime: int
+        """
+        self.Num = None
+        self.BuyTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Num = params.get("Num")
+        self.BuyTime = params.get("BuyTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

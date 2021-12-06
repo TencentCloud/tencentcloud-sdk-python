@@ -1014,6 +1014,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeduceQuota(self, request):
+        """直播平台-扣减额度
+
+        :param request: Request instance for DeduceQuota.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.DeduceQuotaRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.DeduceQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeduceQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeduceQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAgentTaxPaymentInfo(self, request):
         """直播平台-删除代理商完税信息
 
@@ -1812,6 +1840,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryApplicationMaterialResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryAssignment(self, request):
+        """直播平台-查询分配关系
+
+        :param request: Request instance for QueryAssignment.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryAssignmentRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryAssignmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryAssignment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryAssignmentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1258,6 +1258,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GenSingleDeviceSignatureOfPublic(self, request):
+        """无
+
+        :param request: Request instance for GenSingleDeviceSignatureOfPublic.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GenSingleDeviceSignatureOfPublicRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GenSingleDeviceSignatureOfPublicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GenSingleDeviceSignatureOfPublic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenSingleDeviceSignatureOfPublicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetBatchProductionsList(self, request):
         """列出量产数据列表信息。
 

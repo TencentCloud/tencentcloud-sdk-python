@@ -2045,6 +2045,14 @@ class CreateApiRequest(AbstractModel):
         :type IsBase64Encoded: bool
         :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
         :type ServiceScfFunctionType: str
+        :param EIAMAppType: EIAM应用类型。
+        :type EIAMAppType: str
+        :param EIAMAuthType: EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
+        :type EIAMAuthType: str
+        :param TokenTimeout: EIAM应用Token 有效时间，单位为秒，默认为7200秒。
+        :type TokenTimeout: int
+        :param EIAMAppId: EIAM应用ID。
+        :type EIAMAppId: str
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -2093,6 +2101,10 @@ class CreateApiRequest(AbstractModel):
         self.UserType = None
         self.IsBase64Encoded = None
         self.ServiceScfFunctionType = None
+        self.EIAMAppType = None
+        self.EIAMAuthType = None
+        self.TokenTimeout = None
+        self.EIAMAppId = None
 
 
     def _deserialize(self, params):
@@ -2185,6 +2197,10 @@ class CreateApiRequest(AbstractModel):
         self.UserType = params.get("UserType")
         self.IsBase64Encoded = params.get("IsBase64Encoded")
         self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self.EIAMAppType = params.get("EIAMAppType")
+        self.EIAMAuthType = params.get("EIAMAuthType")
+        self.TokenTimeout = params.get("TokenTimeout")
+        self.EIAMAppId = params.get("EIAMAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

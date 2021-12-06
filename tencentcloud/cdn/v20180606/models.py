@@ -7655,6 +7655,43 @@ class EventLogStatsData(AbstractModel):
         
 
 
+class ExtraLogset(AbstractModel):
+    """除上海外其他区域日志集和日志主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Logset: 日志集信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
+        :param Topics: 日志主题信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topics: list of TopicInfo
+        """
+        self.Logset = None
+        self.Topics = None
+
+
+    def _deserialize(self, params):
+        if params.get("Logset") is not None:
+            self.Logset = LogSetInfo()
+            self.Logset._deserialize(params.get("Logset"))
+        if params.get("Topics") is not None:
+            self.Topics = []
+            for item in params.get("Topics"):
+                obj = TopicInfo()
+                obj._deserialize(item)
+                self.Topics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FollowRedirect(AbstractModel):
     """回源 301/302 状态码自动跟随配置，默认为关闭状态
 
@@ -8447,16 +8484,20 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Logset: 日志集信息
+        :param Logset: 上海区域日志集信息
         :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
-        :param Topics: 日志主题信息列表
+        :param Topics: 上海区域日志主题信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Topics: list of TopicInfo
+        :param ExtraLogset: 其他区域日志集信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraLogset: list of ExtraLogset
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Logset = None
         self.Topics = None
+        self.ExtraLogset = None
         self.RequestId = None
 
 
@@ -8470,6 +8511,12 @@ class ListClsLogTopicsResponse(AbstractModel):
                 obj = TopicInfo()
                 obj._deserialize(item)
                 self.Topics.append(obj)
+        if params.get("ExtraLogset") is not None:
+            self.ExtraLogset = []
+            for item in params.get("ExtraLogset"):
+                obj = ExtraLogset()
+                obj._deserialize(item)
+                self.ExtraLogset.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9414,6 +9461,12 @@ class LogSetInfo(AbstractModel):
         :type CreateTime: str
         :param Region: 区域
         :type Region: str
+        :param Deleted: cls侧是否已经被删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deleted: str
+        :param RegionEn: 英文区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionEn: str
         """
         self.AppId = None
         self.Channel = None
@@ -9423,6 +9476,8 @@ class LogSetInfo(AbstractModel):
         self.LogsetSavePeriod = None
         self.CreateTime = None
         self.Region = None
+        self.Deleted = None
+        self.RegionEn = None
 
 
     def _deserialize(self, params):
@@ -9434,6 +9489,8 @@ class LogSetInfo(AbstractModel):
         self.LogsetSavePeriod = params.get("LogsetSavePeriod")
         self.CreateTime = params.get("CreateTime")
         self.Region = params.get("Region")
+        self.Deleted = params.get("Deleted")
+        self.RegionEn = params.get("RegionEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13468,12 +13525,16 @@ class TopicInfo(AbstractModel):
         :param Channel: 归属于cdn或ecdn
 注意：此字段可能返回 null，表示取不到有效值。
         :type Channel: str
+        :param Deleted: cls侧是否已经被删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deleted: str
         """
         self.TopicId = None
         self.TopicName = None
         self.Enabled = None
         self.CreateTime = None
         self.Channel = None
+        self.Deleted = None
 
 
     def _deserialize(self, params):
@@ -13482,6 +13543,7 @@ class TopicInfo(AbstractModel):
         self.Enabled = params.get("Enabled")
         self.CreateTime = params.get("CreateTime")
         self.Channel = params.get("Channel")
+        self.Deleted = params.get("Deleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

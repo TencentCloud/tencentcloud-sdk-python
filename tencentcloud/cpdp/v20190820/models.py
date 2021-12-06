@@ -1817,6 +1817,42 @@ class ApplyWithdrawalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssignmentData(AbstractModel):
+    """分配关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播ID
+        :type AnchorId: str
+        :param AnchorName: 主播名称
+        :type AnchorName: str
+        :param AgentId: 代理商ID
+        :type AgentId: str
+        :param AgentName: 代理商名称
+        :type AgentName: str
+        """
+        self.AnchorId = None
+        self.AnchorName = None
+        self.AgentId = None
+        self.AgentName = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.AnchorName = params.get("AnchorName")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BankCardItem(AbstractModel):
     """绑卡列表
 
@@ -5682,6 +5718,70 @@ class CreateTransferBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeduceQuotaRequest(AbstractModel):
+    """DeduceQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播ID
+        :type AnchorId: str
+        :param Amount: 提现金额，单位为"分"
+        :type Amount: int
+        :param OrderId: 外部业务订单号
+        :type OrderId: str
+        """
+        self.AnchorId = None
+        self.Amount = None
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        self.Amount = params.get("Amount")
+        self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeduceQuotaResponse(AbstractModel):
+    """DeduceQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMsg: 响应消息
+        :type ErrMsg: str
+        :param Result: 返回响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.AssignmentData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMsg = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMsg = params.get("ErrMsg")
+        if params.get("Result") is not None:
+            self.Result = AssignmentData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAgentTaxPaymentInfoRequest(AbstractModel):
     """DeleteAgentTaxPaymentInfo请求参数结构体
 
@@ -9103,6 +9203,62 @@ class QueryApplicationMaterialResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = QueryDeclareResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryAssignmentRequest(AbstractModel):
+    """QueryAssignment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnchorId: 主播ID
+        :type AnchorId: str
+        """
+        self.AnchorId = None
+
+
+    def _deserialize(self, params):
+        self.AnchorId = params.get("AnchorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryAssignmentResponse(AbstractModel):
+    """QueryAssignment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功。
+        :type ErrCode: str
+        :param ErrMsg: 响应消息
+        :type ErrMsg: str
+        :param Result: 返回响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.AssignmentData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMsg = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMsg = params.get("ErrMsg")
+        if params.get("Result") is not None:
+            self.Result = AssignmentData()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

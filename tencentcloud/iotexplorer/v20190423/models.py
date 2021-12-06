@@ -2729,6 +2729,34 @@ class DevicePositionItem(AbstractModel):
         
 
 
+class DeviceSignatureInfo(AbstractModel):
+    """设备签名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param DeviceSignature: 设备签名
+        :type DeviceSignature: str
+        """
+        self.DeviceName = None
+        self.DeviceSignature = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.DeviceSignature = params.get("DeviceSignature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DevicesItem(AbstractModel):
     """ProductId -> DeviceName
 
@@ -3164,6 +3192,61 @@ class FirmwareInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GenSingleDeviceSignatureOfPublicRequest(AbstractModel):
+    """GenSingleDeviceSignatureOfPublic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 设备所属的产品ID
+        :type ProductId: str
+        :param DeviceName: 需要绑定的设备
+        :type DeviceName: str
+        :param Expire: 设备绑定签名的有效时间,以秒为单位。取值范围：0 < Expire <= 86400，Expire == -1（十年）
+        :type Expire: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Expire = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Expire = params.get("Expire")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenSingleDeviceSignatureOfPublicResponse(AbstractModel):
+    """GenSingleDeviceSignatureOfPublic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceSignature: 设备签名
+        :type DeviceSignature: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceSignatureInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceSignature = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceSignature") is not None:
+            self.DeviceSignature = DeviceSignatureInfo()
+            self.DeviceSignature._deserialize(params.get("DeviceSignature"))
+        self.RequestId = params.get("RequestId")
 
 
 class GetBatchProductionsListRequest(AbstractModel):

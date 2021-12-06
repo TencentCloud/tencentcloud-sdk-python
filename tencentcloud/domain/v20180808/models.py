@@ -421,6 +421,10 @@ class CreateDomainBatchRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param PackageResourceId: 使用的特惠包ID，PayMode为2时必填
         :type PackageResourceId: str
+        :param UpdateProhibition: 是否开启更新锁：0=默认不开启，1=开启
+        :type UpdateProhibition: int
+        :param TransferProhibition: 是否开启转移锁：0=默认不开启，1=开启
+        :type TransferProhibition: int
         """
         self.TemplateId = None
         self.Period = None
@@ -428,6 +432,8 @@ class CreateDomainBatchRequest(AbstractModel):
         self.PayMode = None
         self.AutoRenewFlag = None
         self.PackageResourceId = None
+        self.UpdateProhibition = None
+        self.TransferProhibition = None
 
 
     def _deserialize(self, params):
@@ -437,6 +443,8 @@ class CreateDomainBatchRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.PackageResourceId = params.get("PackageResourceId")
+        self.UpdateProhibition = params.get("UpdateProhibition")
+        self.TransferProhibition = params.get("TransferProhibition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1830,6 +1838,10 @@ class TransferInDomainBatchRequest(AbstractModel):
 false：关闭60天内禁止转移注册商锁定
 默认 true
         :type LockTransfer: bool
+        :param UpdateProhibition: 是否开启更新锁：0=默认不开启，1=开启
+        :type UpdateProhibition: int
+        :param TransferProhibition: 是否开启转移锁：0=默认不开启，1=开启
+        :type TransferProhibition: int
         """
         self.Domains = None
         self.PassWords = None
@@ -1837,6 +1849,8 @@ false：关闭60天内禁止转移注册商锁定
         self.PayMode = None
         self.AutoRenewFlag = None
         self.LockTransfer = None
+        self.UpdateProhibition = None
+        self.TransferProhibition = None
 
 
     def _deserialize(self, params):
@@ -1846,6 +1860,8 @@ false：关闭60天内禁止转移注册商锁定
         self.PayMode = params.get("PayMode")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.LockTransfer = params.get("LockTransfer")
+        self.UpdateProhibition = params.get("UpdateProhibition")
+        self.TransferProhibition = params.get("TransferProhibition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
