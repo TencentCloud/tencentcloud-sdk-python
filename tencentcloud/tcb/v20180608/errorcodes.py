@@ -47,6 +47,9 @@ INVALIDPARAMETER_ACTION = 'InvalidParameter.Action'
 # 环境ID非法。
 INVALIDPARAMETER_ENVID = 'InvalidParameter.EnvId'
 
+# 对应资源不存在。
+INVALIDPARAMETER_RESOURCENOTEXISTS = 'InvalidParameter.ResourceNotExists'
+
 # 没有操作权限。
 INVALIDPARAMETER_SERVICEEVIL = 'InvalidParameter.ServiceEvil'
 

@@ -1571,14 +1571,18 @@ class CommonServiceAPIRequest(AbstractModel):
         :type Service: str
         :param JSONData: 需要转发的云API参数，要转成JSON格式
         :type JSONData: str
+        :param ApiRole: 指定角色
+        :type ApiRole: str
         """
         self.Service = None
         self.JSONData = None
+        self.ApiRole = None
 
 
     def _deserialize(self, params):
         self.Service = params.get("Service")
         self.JSONData = params.get("JSONData")
+        self.ApiRole = params.get("ApiRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -49,6 +49,10 @@ class CreateJobConfigRequest(AbstractModel):
         :type JobManagerSpec: float
         :param TaskManagerSpec: TaskManager规格
         :type TaskManagerSpec: float
+        :param ClsLogsetId: CLS日志集ID
+        :type ClsLogsetId: str
+        :param ClsTopicId: CLS日志主题ID
+        :type ClsTopicId: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -62,6 +66,8 @@ class CreateJobConfigRequest(AbstractModel):
         self.LogCollect = None
         self.JobManagerSpec = None
         self.TaskManagerSpec = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
 
 
     def _deserialize(self, params):
@@ -87,6 +93,8 @@ class CreateJobConfigRequest(AbstractModel):
         self.LogCollect = params.get("LogCollect")
         self.JobManagerSpec = params.get("JobManagerSpec")
         self.TaskManagerSpec = params.get("TaskManagerSpec")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -980,6 +988,12 @@ class JobConfig(AbstractModel):
         :param TaskManagerSpec: TaskManager规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskManagerSpec: float
+        :param ClsLogsetId: CLS日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClsLogsetId: str
+        :param ClsTopicId: CLS日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClsTopicId: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -997,6 +1011,8 @@ class JobConfig(AbstractModel):
         self.MaxParallelism = None
         self.JobManagerSpec = None
         self.TaskManagerSpec = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
 
 
     def _deserialize(self, params):
@@ -1026,6 +1042,8 @@ class JobConfig(AbstractModel):
         self.MaxParallelism = params.get("MaxParallelism")
         self.JobManagerSpec = params.get("JobManagerSpec")
         self.TaskManagerSpec = params.get("TaskManagerSpec")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
