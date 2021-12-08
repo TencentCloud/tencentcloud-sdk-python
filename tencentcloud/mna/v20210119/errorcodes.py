@@ -58,3 +58,6 @@ OPERATIONDENIED_VENDORSERVERERROR = 'OperationDenied.VendorServerError'
 
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
+# 资源不可用。
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'

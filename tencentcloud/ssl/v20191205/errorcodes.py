@@ -83,6 +83,9 @@ FAILEDOPERATION_INVALIDFILETYPE = 'FailedOperation.InvalidFileType'
 # 参数有误。
 FAILEDOPERATION_INVALIDPARAM = 'FailedOperation.InvalidParam'
 
+# 该主域（%s）下申请的免费证书数量已达到%s个上限，请购买付费证书。
+FAILEDOPERATION_MAINDOMAINCERTIFICATECOUNTLIMIT = 'FailedOperation.MainDomainCertificateCountLimit'
+
 # 当前 CA 机构访问繁忙，请稍后重试。
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetworkError'
 
@@ -97,6 +100,12 @@ FAILEDOPERATION_ORDERALREADYREPLACED = 'FailedOperation.OrderAlreadyReplaced'
 
 # 重颁发失败。
 FAILEDOPERATION_ORDERREPLACEFAILED = 'FailedOperation.OrderReplaceFailed'
+
+# 剩余权益点不足。
+FAILEDOPERATION_PACKAGECOUNTLIMIT = 'FailedOperation.PackageCountLimit'
+
+# 权益包已过期。
+FAILEDOPERATION_PACKAGEEXPIRED = 'FailedOperation.PackageExpired'
 
 # 证书吊销失败。
 FAILEDOPERATION_REVOKEFAILED = 'FailedOperation.RevokeFailed'
@@ -118,6 +127,9 @@ INVALIDPARAMETER_CERTIFICATEIDNUMBERLIMIT = 'InvalidParameter.CertificateIdNumbe
 
 # 包含无效的证书ID。
 INVALIDPARAMETER_CONTAINSINVALIDCERTIFICATEID = 'InvalidParameter.ContainsInvalidCertificateId'
+
+# 权益点ID列表无效。
+INVALIDPARAMETER_PACKAGEIDSINVALID = 'InvalidParameter.PackageIdsInvalid'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'

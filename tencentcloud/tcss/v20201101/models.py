@@ -2519,6 +2519,8 @@ class ContainerInfo(AbstractModel):
         :type UpdateTime: str
         :param HostName: 主机名称
         :type HostName: str
+        :param PublicIp: 外网ip
+        :type PublicIp: str
         """
         self.ContainerID = None
         self.ContainerName = None
@@ -2535,6 +2537,7 @@ class ContainerInfo(AbstractModel):
         self.HostIP = None
         self.UpdateTime = None
         self.HostName = None
+        self.PublicIp = None
 
 
     def _deserialize(self, params):
@@ -2553,6 +2556,7 @@ class ContainerInfo(AbstractModel):
         self.HostIP = params.get("HostIP")
         self.UpdateTime = params.get("UpdateTime")
         self.HostName = params.get("HostName")
+        self.PublicIp = params.get("PublicIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2948,7 +2952,7 @@ class CreateCheckComponentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstallResult: “InstallSucc"表示安装成功，"InstallFailed"表示安装失败
+        :param InstallResult: "InstallSucc"表示安装成功，"InstallFailed"表示安装失败
         :type InstallResult: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5034,14 +5038,20 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         :type ImageCnt: int
         :param ContainerCnt: 容器数
         :type ContainerCnt: int
-        :param K8sMasterIP: k8s ip
+        :param K8sMasterIP: k8s IP
         :type K8sMasterIP: str
         :param K8sVersion: k8s version
         :type K8sVersion: str
         :param KubeProxyVersion: kube proxy
         :type KubeProxyVersion: str
-        :param Status: 主机运行状态 offline,online,pause
+        :param Status: "UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中
         :type Status: str
+        :param IsContainerd: 是否Containerd
+        :type IsContainerd: bool
+        :param MachineType: 主机来源;"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"
+        :type MachineType: str
+        :param PublicIp: 外网ip
+        :type PublicIp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5064,6 +5074,9 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.K8sVersion = None
         self.KubeProxyVersion = None
         self.Status = None
+        self.IsContainerd = None
+        self.MachineType = None
+        self.PublicIp = None
         self.RequestId = None
 
 
@@ -5087,6 +5100,9 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.K8sVersion = params.get("K8sVersion")
         self.KubeProxyVersion = params.get("KubeProxyVersion")
         self.Status = params.get("Status")
+        self.IsContainerd = params.get("IsContainerd")
+        self.MachineType = params.get("MachineType")
+        self.PublicIp = params.get("PublicIp")
         self.RequestId = params.get("RequestId")
 
 
@@ -5102,12 +5118,13 @@ class DescribeAssetHostListRequest(AbstractModel):
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Filters: 过滤条件。
-<li>Status - String - 是否必填：否 - 主机运行状态筛选，0："offline",1："online", 2："paused"</li>
+<li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
 <li>HostName - String - 是否必填：否 - 主机名筛选</li>
 <li>Group- String - 是否必填：否 - 主机群组搜索</li>
 <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
+<li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
         :type Filters: list of AssetFilters
         :param By: 排序字段
         :type By: str
@@ -9172,7 +9189,7 @@ class DescribeProVersionInfoResponse(AbstractModel):
         :param EndTime: 专业版结束时间，补充购买时才不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param CoresCnt: 需购买的虚拟机核数
+        :param CoresCnt: 需购买的机器核数
         :type CoresCnt: int
         :param MaxPostPayCoresCnt: 弹性计费上限
         :type MaxPostPayCoresCnt: int
@@ -11358,7 +11375,7 @@ class HostInfo(AbstractModel):
         r"""
         :param HostID: 主机id
         :type HostID: str
-        :param HostIP: 主机ip
+        :param HostIP: 主机ip即内网ip
         :type HostIP: str
         :param HostName: 主机名称
         :type HostName: str
@@ -11372,8 +11389,16 @@ class HostInfo(AbstractModel):
         :type ImageCnt: int
         :param ContainerCnt: 容器个数
         :type ContainerCnt: int
-        :param Status: 主机运行状态
+        :param Status: agent运行状态
         :type Status: str
+        :param IsContainerd: 是否是Containerd
+        :type IsContainerd: bool
+        :param MachineType: 主机来源
+        :type MachineType: str
+        :param PublicIp: 外网ip
+        :type PublicIp: str
+        :param Uuid: 主机uuid
+        :type Uuid: str
         """
         self.HostID = None
         self.HostIP = None
@@ -11384,6 +11409,10 @@ class HostInfo(AbstractModel):
         self.ImageCnt = None
         self.ContainerCnt = None
         self.Status = None
+        self.IsContainerd = None
+        self.MachineType = None
+        self.PublicIp = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
@@ -11396,6 +11425,10 @@ class HostInfo(AbstractModel):
         self.ImageCnt = params.get("ImageCnt")
         self.ContainerCnt = params.get("ContainerCnt")
         self.Status = params.get("Status")
+        self.IsContainerd = params.get("IsContainerd")
+        self.MachineType = params.get("MachineType")
+        self.PublicIp = params.get("PublicIp")
+        self.Uuid = params.get("Uuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13197,6 +13230,10 @@ class PortInfo(AbstractModel):
         :type ListenHost: str
         :param RunAs: 运行账号
         :type RunAs: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param PublicIp: 外网ip
+        :type PublicIp: str
         """
         self.Type = None
         self.PublicIP = None
@@ -13210,6 +13247,8 @@ class PortInfo(AbstractModel):
         self.ListenContainer = None
         self.ListenHost = None
         self.RunAs = None
+        self.HostName = None
+        self.PublicIp = None
 
 
     def _deserialize(self, params):
@@ -13225,6 +13264,8 @@ class PortInfo(AbstractModel):
         self.ListenContainer = params.get("ListenContainer")
         self.ListenHost = params.get("ListenHost")
         self.RunAs = params.get("RunAs")
+        self.HostName = params.get("HostName")
+        self.PublicIp = params.get("PublicIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13361,6 +13402,10 @@ class ProcessInfo(AbstractModel):
         :type HostIP: str
         :param ProcessName: 进程名称
         :type ProcessName: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param PublicIp: 外网ip
+        :type PublicIp: str
         """
         self.StartTime = None
         self.RunAs = None
@@ -13372,6 +13417,8 @@ class ProcessInfo(AbstractModel):
         self.HostID = None
         self.HostIP = None
         self.ProcessName = None
+        self.HostName = None
+        self.PublicIp = None
 
 
     def _deserialize(self, params):
@@ -13385,6 +13432,8 @@ class ProcessInfo(AbstractModel):
         self.HostID = params.get("HostID")
         self.HostIP = params.get("HostIP")
         self.ProcessName = params.get("ProcessName")
+        self.HostName = params.get("HostName")
+        self.PublicIp = params.get("PublicIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14419,6 +14468,10 @@ class ServiceInfo(AbstractModel):
         :type Parameter: str
         :param ContainerId: 容器id
         :type ContainerId: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param PublicIp: 外网ip
+        :type PublicIp: str
         """
         self.ServiceID = None
         self.HostID = None
@@ -14439,6 +14492,8 @@ class ServiceInfo(AbstractModel):
         self.Exe = None
         self.Parameter = None
         self.ContainerId = None
+        self.HostName = None
+        self.PublicIp = None
 
 
     def _deserialize(self, params):
@@ -14461,6 +14516,8 @@ class ServiceInfo(AbstractModel):
         self.Exe = params.get("Exe")
         self.Parameter = params.get("Parameter")
         self.ContainerId = params.get("ContainerId")
+        self.HostName = params.get("HostName")
+        self.PublicIp = params.get("PublicIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14509,7 +14566,7 @@ class SetCheckModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SetCheckResult: “Succ"表示设置成功，"Failed"表示设置失败
+        :param SetCheckResult: "Succ"表示设置成功，"Failed"表示设置失败
         :type SetCheckResult: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

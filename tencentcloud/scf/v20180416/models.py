@@ -140,6 +140,38 @@ class AsyncEvent(AbstractModel):
         
 
 
+class AsyncEventStatus(AbstractModel):
+    """异步事件状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 异步事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败。
+        :type Status: str
+        :param StatusCode: 请求状态码
+        :type StatusCode: int
+        :param InvokeRequestId: 异步执行请求 Id
+        :type InvokeRequestId: str
+        """
+        self.Status = None
+        self.StatusCode = None
+        self.InvokeRequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.StatusCode = params.get("StatusCode")
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsyncTriggerConfig(AbstractModel):
     """函数的异步重试配置详情
 
@@ -1258,7 +1290,10 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 需要过滤的字段。
+        :param Name: 需要过滤的字段。过滤条件数量限制为10。
+Name可选值：VpcId, SubnetId, ClsTopicId, ClsLogsetId, Role, CfsId, CfsMountInsId, Eip；Values 长度限制为1。
+Name可选值：Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable；Values 长度限制为20。
+当 Name = Runtime 时，CustomImage 表示过滤镜像类型函数。
         :type Name: str
         :param Values: 字段的过滤值。
         :type Values: list of str
@@ -1596,6 +1631,53 @@ class GetAliasResponse(AbstractModel):
         self.Description = params.get("Description")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+        self.RequestId = params.get("RequestId")
+
+
+class GetAsyncEventStatusRequest(AbstractModel):
+    """GetAsyncEventStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvokeRequestId: 异步执行请求 id
+        :type InvokeRequestId: str
+        """
+        self.InvokeRequestId = None
+
+
+    def _deserialize(self, params):
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAsyncEventStatusResponse(AbstractModel):
+    """GetAsyncEventStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 异步事件状态
+        :type Result: :class:`tencentcloud.scf.v20180416.models.AsyncEventStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AsyncEventStatus()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 

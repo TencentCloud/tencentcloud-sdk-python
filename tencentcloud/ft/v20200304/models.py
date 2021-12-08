@@ -481,11 +481,15 @@ class QueryFaceMorphJobResponse(AbstractModel):
         :param FaceMorphOutput: 人像渐变输出的结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceMorphOutput: :class:`tencentcloud.ft.v20200304.models.FaceMorphOutput`
+        :param JobStatusCode: 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobStatusCode: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.JobStatus = None
         self.FaceMorphOutput = None
+        self.JobStatusCode = None
         self.RequestId = None
 
 
@@ -494,6 +498,7 @@ class QueryFaceMorphJobResponse(AbstractModel):
         if params.get("FaceMorphOutput") is not None:
             self.FaceMorphOutput = FaceMorphOutput()
             self.FaceMorphOutput._deserialize(params.get("FaceMorphOutput"))
+        self.JobStatusCode = params.get("JobStatusCode")
         self.RequestId = params.get("RequestId")
 
 

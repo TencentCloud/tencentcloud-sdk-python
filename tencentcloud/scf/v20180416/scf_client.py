@@ -425,6 +425,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAsyncEventStatus(self, request):
+        """获取函数异步执行事件状态，事件状态保留 3 * 24 小时（从事件完成开始计时）。
+
+        :param request: Request instance for GetAsyncEventStatus.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetAsyncEventStatusRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetAsyncEventStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAsyncEventStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAsyncEventStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFunction(self, request):
         """该接口获取某个函数的详细信息，包括名称、代码、处理方法、关联触发器和超时时间等字段。
 

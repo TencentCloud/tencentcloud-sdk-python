@@ -304,6 +304,24 @@ class ClusterInstancesInfo(AbstractModel):
         :param Zone: 地区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
+        :param SceneName: 场景名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneName: str
+        :param SceneServiceClass: 场景化集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneServiceClass: str
+        :param SceneEmrVersion: 场景化EMR版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneEmrVersion: str
+        :param DisplayName: 场景化集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param VpcName: vpc name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param SubnetName: subnet name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetName: str
         """
         self.Id = None
         self.ClusterId = None
@@ -335,6 +353,12 @@ class ClusterInstancesInfo(AbstractModel):
         self.AliasInfo = None
         self.ProductId = None
         self.Zone = None
+        self.SceneName = None
+        self.SceneServiceClass = None
+        self.SceneEmrVersion = None
+        self.DisplayName = None
+        self.VpcName = None
+        self.SubnetName = None
 
 
     def _deserialize(self, params):
@@ -375,6 +399,12 @@ class ClusterInstancesInfo(AbstractModel):
         self.AliasInfo = params.get("AliasInfo")
         self.ProductId = params.get("ProductId")
         self.Zone = params.get("Zone")
+        self.SceneName = params.get("SceneName")
+        self.SceneServiceClass = params.get("SceneServiceClass")
+        self.SceneEmrVersion = params.get("SceneEmrVersion")
+        self.DisplayName = params.get("DisplayName")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
