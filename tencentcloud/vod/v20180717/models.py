@@ -521,9 +521,16 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
     def __init__(self):
         r"""
         :param ClassificationSet: 视频智能分类列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ClassificationSetFileUrl 对应的文件中获取。
         :type ClassificationSet: list of MediaAiAnalysisClassificationItem
+        :param ClassificationSetFileUrl: 视频智能分类列表文件 URL。文件的内容为 JSON，数据结构与 ClassificationSet 字段一致。 （文件不会永久存储，到达 ClassificationSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type ClassificationSetFileUrl: str
+        :param ClassificationSetFileUrlExpireTime: 视频智能分类列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ClassificationSetFileUrlExpireTime: str
         """
         self.ClassificationSet = None
+        self.ClassificationSetFileUrl = None
+        self.ClassificationSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -533,6 +540,8 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
                 obj = MediaAiAnalysisClassificationItem()
                 obj._deserialize(item)
                 self.ClassificationSet.append(obj)
+        self.ClassificationSetFileUrl = params.get("ClassificationSetFileUrl")
+        self.ClassificationSetFileUrlExpireTime = params.get("ClassificationSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -623,9 +632,16 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
     def __init__(self):
         r"""
         :param CoverSet: 智能封面列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 CoverSetFileUrl 对应的文件中获取。
         :type CoverSet: list of MediaAiAnalysisCoverItem
+        :param CoverSetFileUrl: 智能封面列表文件 URL。文件的内容为 JSON，数据结构与 CoverSet 字段一致。 （文件不会永久存储，到达 CoverSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type CoverSetFileUrl: str
+        :param CoverSetFileUrlExpireTime: 智能封面列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CoverSetFileUrlExpireTime: str
         """
         self.CoverSet = None
+        self.CoverSetFileUrl = None
+        self.CoverSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -635,6 +651,8 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
                 obj = MediaAiAnalysisCoverItem()
                 obj._deserialize(item)
                 self.CoverSet.append(obj)
+        self.CoverSetFileUrl = params.get("CoverSetFileUrl")
+        self.CoverSetFileUrlExpireTime = params.get("CoverSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -725,9 +743,16 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
     def __init__(self):
         r"""
         :param SegmentSet: 视频按帧标签列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaAiAnalysisFrameTagSegmentItem
+        :param SegmentSetFileUrl: 视频按帧标签列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 视频按帧标签列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -737,6 +762,8 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
                 obj = MediaAiAnalysisFrameTagSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -827,9 +854,16 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
     def __init__(self):
         r"""
         :param HighlightSet: 视频智能精彩片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 HighlightSetFileUrl 对应的文件中获取。
         :type HighlightSet: list of MediaAiAnalysisHighlightItem
+        :param HighlightSetFileUrl: 视频智能精彩片段列表文件 URL。文件的内容为 JSON，数据结构与 HighlightSet 字段一致。 （文件不会永久存储，到达 HighlightSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type HighlightSetFileUrl: str
+        :param HighlightSetFileUrlExpireTime: 视频智能精彩片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type HighlightSetFileUrlExpireTime: str
         """
         self.HighlightSet = None
+        self.HighlightSetFileUrl = None
+        self.HighlightSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -839,6 +873,8 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
                 obj = MediaAiAnalysisHighlightItem()
                 obj._deserialize(item)
                 self.HighlightSet.append(obj)
+        self.HighlightSetFileUrl = params.get("HighlightSetFileUrl")
+        self.HighlightSetFileUrlExpireTime = params.get("HighlightSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -953,9 +989,16 @@ class AiAnalysisTaskTagOutput(AbstractModel):
     def __init__(self):
         r"""
         :param TagSet: 视频智能标签列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 TagSetFileUrl 对应的文件中获取。
         :type TagSet: list of MediaAiAnalysisTagItem
+        :param TagSetFileUrl: 视频智能标签列表文件 URL。文件的内容为 JSON，数据结构与 TagSet 字段一致。 （文件不会永久存储，到达 TagSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type TagSetFileUrl: str
+        :param TagSetFileUrlExpireTime: 视频智能标签列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type TagSetFileUrlExpireTime: str
         """
         self.TagSet = None
+        self.TagSetFileUrl = None
+        self.TagSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -965,6 +1008,8 @@ class AiAnalysisTaskTagOutput(AbstractModel):
                 obj = MediaAiAnalysisTagItem()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.TagSetFileUrl = params.get("TagSetFileUrl")
+        self.TagSetFileUrlExpireTime = params.get("TagSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2635,11 +2680,18 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Asr 文字有涉政、敏感嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        :param SegmentSetFileUrl: Asr 文字有涉政、敏感嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Asr 文字有涉政、敏感嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2651,6 +2703,8 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
                 obj = MediaContentReviewAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2699,11 +2753,18 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: Ocr 文字有涉政、敏感嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Ocr 文字有涉政、敏感嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2715,6 +2776,8 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2769,12 +2832,19 @@ violation_photo：
 <li>politician：政治人物。</li>
         :type Label: str
         :param SegmentSet: 有涉政嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
+        :param SegmentSetFileUrl: 涉政嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 涉政嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2787,6 +2857,8 @@ violation_photo：
                 obj = MediaContentReviewPoliticalSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2835,11 +2907,18 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Asr 文字有涉黄嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        :param SegmentSetFileUrl: Asr 文字有涉黄嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Asr 文字有涉黄嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2851,6 +2930,8 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
                 obj = MediaContentReviewAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2899,11 +2980,18 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Ocr 文字有涉黄嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: Ocr 文字有涉黄嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Ocr 文字有涉黄嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2915,6 +3003,8 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2969,12 +3059,19 @@ class AiReviewPornTaskOutput(AbstractModel):
 <li>intimacy：亲密行为。</li>
         :type Label: str
         :param SegmentSet: 有涉黄嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewSegmentItem
+        :param SegmentSetFileUrl: 涉黄嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 涉黄嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2987,6 +3084,8 @@ class AiReviewPornTaskOutput(AbstractModel):
                 obj = MediaContentReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3035,11 +3134,18 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Asr 文字有涉违禁嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
+        :param SegmentSetFileUrl: Asr 文字有涉违禁嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Asr 文字有涉违禁嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3051,6 +3157,8 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
                 obj = MediaContentReviewAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3099,11 +3207,18 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Ocr 文字有涉违禁嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: Ocr 文字有涉违禁嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Ocr 文字有涉违禁嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3115,6 +3230,8 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3652,11 +3769,18 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 <li>block。</li>
         :type Suggestion: str
         :param SegmentSet: Ocr 文字有涉恐嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
+        :param SegmentSetFileUrl: Ocr 文字有涉恐嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: Ocr 文字有涉恐嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3668,6 +3792,8 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
                 obj = MediaContentReviewOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3727,12 +3853,19 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 <li>scenario：暴恐画面。</li>
         :type Label: str
         :param SegmentSet: 有暴恐嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of MediaContentReviewSegmentItem
+        :param SegmentSetFileUrl: 暴恐嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 暴恐嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Confidence = None
         self.Suggestion = None
         self.Label = None
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -3745,6 +3878,8 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
                 obj = MediaContentReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11312,6 +11447,9 @@ class EventContent(AbstractModel):
         :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
+        :param RestoreMediaCompleteEvent: 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -11329,6 +11467,7 @@ class EventContent(AbstractModel):
         self.SnapshotByTimeOffsetCompleteEvent = None
         self.WechatPublishCompleteEvent = None
         self.WechatMiniProgramPublishCompleteEvent = None
+        self.RestoreMediaCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -11376,6 +11515,9 @@ class EventContent(AbstractModel):
         if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
             self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
             self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
+        if params.get("RestoreMediaCompleteEvent") is not None:
+            self.RestoreMediaCompleteEvent = RestoreMediaTask()
+            self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18936,6 +19078,58 @@ class ResourceTag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreMediaTask(AbstractModel):
+    """取回视频任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 取回任务状态，0表示取回完成，其他值表示取回还未完成。
+        :type Status: int
+        :param Message: 提示信息。
+        :type Message: str
+        :param FileId: 文件ID。
+        :type FileId: str
+        :param OriginalStorageClass: 文件原始存储类型。
+        :type OriginalStorageClass: str
+        :param TargetStorageClass: 文件目标存储类型。对于临时取回，目标存储类型与原始存储类型相同。
+        :type TargetStorageClass: str
+        :param RestoreTier: 取回模式，取值：
+<li>Expedited：极速模式</li>
+<li>Standard：标准模式</li>
+<li>Bulk：批量模式</li>
+        :type RestoreTier: str
+        :param RestoreDay: 临时取回副本有效期，单位：天。对于永久取回，取值为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestoreDay: int
+        """
+        self.Status = None
+        self.Message = None
+        self.FileId = None
+        self.OriginalStorageClass = None
+        self.TargetStorageClass = None
+        self.RestoreTier = None
+        self.RestoreDay = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        self.FileId = params.get("FileId")
+        self.OriginalStorageClass = params.get("OriginalStorageClass")
+        self.TargetStorageClass = params.get("TargetStorageClass")
+        self.RestoreTier = params.get("RestoreTier")
+        self.RestoreDay = params.get("RestoreDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

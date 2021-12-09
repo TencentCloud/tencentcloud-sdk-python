@@ -54,6 +54,34 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDataEventUrl(self, request):
+        """获取DescribeDataEventUrl信息
+
+        :param request: Request instance for DescribeDataEventUrl.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataEventUrlRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataEventUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataEventUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataEventUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDataLogUrlStatistics(self, request):
         """获取LogUrlStatistics信息
 
@@ -96,6 +124,34 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataPerformancePageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataPvUrlStatistics(self, request):
+        """获取DescribeDataPvUrlStatistics信息
+
+        :param request: Request instance for DescribeDataPvUrlStatistics.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlStatisticsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataPvUrlStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataPvUrlStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

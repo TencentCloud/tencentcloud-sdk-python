@@ -433,6 +433,63 @@ off：不支持
         
 
 
+class AdvanceHttps(AbstractModel):
+    """回源的自定义Https配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomTlsStatus: 自定义Tls数据开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomTlsStatus: str
+        :param TlsVersion: Tls版本列表，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TlsVersion: list of str
+        :param Cipher: 自定义加密套件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cipher: str
+        :param VerifyOriginType: 回源双向校验开启状态
+off - 关闭校验
+oneWay - 校验源站
+twoWay - 双向校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyOriginType: str
+        :param CertInfo: 回源层证书配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertInfo: :class:`tencentcloud.cdn.v20180606.models.ServerCert`
+        :param OriginCertInfo: 源站证书配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginCertInfo: :class:`tencentcloud.cdn.v20180606.models.ClientCert`
+        """
+        self.CustomTlsStatus = None
+        self.TlsVersion = None
+        self.Cipher = None
+        self.VerifyOriginType = None
+        self.CertInfo = None
+        self.OriginCertInfo = None
+
+
+    def _deserialize(self, params):
+        self.CustomTlsStatus = params.get("CustomTlsStatus")
+        self.TlsVersion = params.get("TlsVersion")
+        self.Cipher = params.get("Cipher")
+        self.VerifyOriginType = params.get("VerifyOriginType")
+        if params.get("CertInfo") is not None:
+            self.CertInfo = ServerCert()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        if params.get("OriginCertInfo") is not None:
+            self.OriginCertInfo = ClientCert()
+            self.OriginCertInfo._deserialize(params.get("OriginCertInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdvancedAuthentication(AbstractModel):
     """时间戳防盗链高级版配置，白名单功能
 
@@ -10019,6 +10076,9 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         :param PathBasedOrigin: 分路径回源配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathBasedOrigin: list of PathBasedOriginRule
+        :param AdvanceHttps: HTTPS回源高级配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
         """
         self.Origins = None
         self.OriginType = None
@@ -10031,6 +10091,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         self.BasePath = None
         self.PathRules = None
         self.PathBasedOrigin = None
+        self.AdvanceHttps = None
 
 
     def _deserialize(self, params):
@@ -10055,6 +10116,9 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
                 obj = PathBasedOriginRule()
                 obj._deserialize(item)
                 self.PathBasedOrigin.append(obj)
+        if params.get("AdvanceHttps") is not None:
+            self.AdvanceHttps = AdvanceHttps()
+            self.AdvanceHttps._deserialize(params.get("AdvanceHttps"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

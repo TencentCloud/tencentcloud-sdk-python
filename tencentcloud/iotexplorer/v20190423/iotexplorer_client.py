@@ -1958,6 +1958,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PublishRRPCMessage(self, request):
+        """下发RRPC消息
+
+        :param request: Request instance for PublishRRPCMessage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishRRPCMessageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.PublishRRPCMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishRRPCMessage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishRRPCMessageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReleaseStudioProduct(self, request):
         """产品开发完成并测试通过后，通过发布产品将产品设置为发布状态
 

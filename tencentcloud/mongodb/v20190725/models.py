@@ -246,14 +246,18 @@ class ClientConnection(AbstractModel):
         :type IP: str
         :param Count: 对应客户端IP的连接数
         :type Count: int
+        :param InternalService: 是否为内部ip
+        :type InternalService: bool
         """
         self.IP = None
         self.Count = None
+        self.InternalService = None
 
 
     def _deserialize(self, params):
         self.IP = params.get("IP")
         self.Count = params.get("Count")
+        self.InternalService = params.get("InternalService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

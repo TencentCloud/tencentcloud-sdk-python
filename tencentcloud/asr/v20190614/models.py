@@ -1434,6 +1434,9 @@ class TaskStatus(AbstractModel):
         :param ResultDetail: 识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultDetail: list of SentenceDetail
+        :param AudioDuration: 音频时长(秒)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioDuration: float
         """
         self.TaskId = None
         self.Status = None
@@ -1441,6 +1444,7 @@ class TaskStatus(AbstractModel):
         self.Result = None
         self.ErrorMsg = None
         self.ResultDetail = None
+        self.AudioDuration = None
 
 
     def _deserialize(self, params):
@@ -1455,6 +1459,7 @@ class TaskStatus(AbstractModel):
                 obj = SentenceDetail()
                 obj._deserialize(item)
                 self.ResultDetail.append(obj)
+        self.AudioDuration = params.get("AudioDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

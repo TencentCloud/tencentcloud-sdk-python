@@ -1099,6 +1099,60 @@ class DescribeBatchTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainAliasListRequest(AbstractModel):
+    """DescribeDomainAliasList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainAliasListResponse(AbstractModel):
+    """DescribeDomainAliasList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainAliasList: 域名别名列表
+        :type DomainAliasList: list of DomainAliasInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainAliasList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainAliasList") is not None:
+            self.DomainAliasList = []
+            for item in params.get("DomainAliasList"):
+                obj = DomainAliasInfo()
+                obj._deserialize(item)
+                self.DomainAliasList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainListRequest(AbstractModel):
     """DescribeDomainList请求参数结构体
 
@@ -1698,6 +1752,34 @@ class DescribeUserDetailResponse(AbstractModel):
             self.UserInfo = UserInfo()
             self.UserInfo._deserialize(params.get("UserInfo"))
         self.RequestId = params.get("RequestId")
+
+
+class DomainAliasInfo(AbstractModel):
+    """域名别名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 域名别名ID
+        :type Id: int
+        :param DomainAlias: 域名别名
+        :type DomainAlias: str
+        """
+        self.Id = None
+        self.DomainAlias = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.DomainAlias = params.get("DomainAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DomainCountInfo(AbstractModel):

@@ -95,6 +95,131 @@ class CreateProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDataEventUrlRequest(AbstractModel):
+    """DescribeDataEventUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param Type: 类型
+        :type Type: str
+        :param EndTime: 结束时间
+        :type EndTime: int
+        :param ID: 项目ID
+        :type ID: int
+        :param ExtSecond: 自定义2
+        :type ExtSecond: str
+        :param Engine: 浏览器引擎
+        :type Engine: str
+        :param Isp: 运营商
+        :type Isp: str
+        :param From: 来源页面
+        :type From: str
+        :param Level: 日志等级
+        :type Level: str
+        :param Brand: 品牌
+        :type Brand: str
+        :param Area: 地区
+        :type Area: str
+        :param VersionNum: 版本
+        :type VersionNum: str
+        :param Platform: 平台
+        :type Platform: str
+        :param ExtThird: 自定义3
+        :type ExtThird: str
+        :param ExtFirst: 自定义1
+        :type ExtFirst: str
+        :param NetType: 网络类型
+        :type NetType: str
+        :param Device: 机型
+        :type Device: str
+        :param IsAbroad: 是否海外
+        :type IsAbroad: str
+        :param Os: 操作系统
+        :type Os: str
+        :param Browser: 浏览器
+        :type Browser: str
+        :param Name: 筛选条件
+        :type Name: str
+        """
+        self.StartTime = None
+        self.Type = None
+        self.EndTime = None
+        self.ID = None
+        self.ExtSecond = None
+        self.Engine = None
+        self.Isp = None
+        self.From = None
+        self.Level = None
+        self.Brand = None
+        self.Area = None
+        self.VersionNum = None
+        self.Platform = None
+        self.ExtThird = None
+        self.ExtFirst = None
+        self.NetType = None
+        self.Device = None
+        self.IsAbroad = None
+        self.Os = None
+        self.Browser = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.Type = params.get("Type")
+        self.EndTime = params.get("EndTime")
+        self.ID = params.get("ID")
+        self.ExtSecond = params.get("ExtSecond")
+        self.Engine = params.get("Engine")
+        self.Isp = params.get("Isp")
+        self.From = params.get("From")
+        self.Level = params.get("Level")
+        self.Brand = params.get("Brand")
+        self.Area = params.get("Area")
+        self.VersionNum = params.get("VersionNum")
+        self.Platform = params.get("Platform")
+        self.ExtThird = params.get("ExtThird")
+        self.ExtFirst = params.get("ExtFirst")
+        self.NetType = params.get("NetType")
+        self.Device = params.get("Device")
+        self.IsAbroad = params.get("IsAbroad")
+        self.Os = params.get("Os")
+        self.Browser = params.get("Browser")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEventUrlResponse(AbstractModel):
+    """DescribeDataEventUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回值
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDataLogUrlStatisticsRequest(AbstractModel):
     """DescribeDataLogUrlStatistics请求参数结构体
 
@@ -322,6 +447,127 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
 class DescribeDataPerformancePageResponse(AbstractModel):
     """DescribeDataPerformancePage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回值
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataPvUrlStatisticsRequest(AbstractModel):
+    """DescribeDataPvUrlStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param Type: 类型:"allcount", "falls", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+        :type Type: str
+        :param EndTime: 结束时间
+        :type EndTime: int
+        :param ID: 项目ID
+        :type ID: int
+        :param ExtSecond: 自定义2
+        :type ExtSecond: str
+        :param Engine: 浏览器引擎
+        :type Engine: str
+        :param Isp: 运营商
+        :type Isp: str
+        :param From: 来源页面
+        :type From: str
+        :param Level: 日志等级
+        :type Level: str
+        :param Brand: 品牌
+        :type Brand: str
+        :param Area: 地区
+        :type Area: str
+        :param VersionNum: 版本
+        :type VersionNum: str
+        :param Platform: 平台
+        :type Platform: str
+        :param ExtThird: 自定义3
+        :type ExtThird: str
+        :param ExtFirst: 自定义1
+        :type ExtFirst: str
+        :param NetType: 网络类型
+        :type NetType: str
+        :param Device: 机型
+        :type Device: str
+        :param IsAbroad: 是否海外
+        :type IsAbroad: str
+        :param Os: 操作系统
+        :type Os: str
+        :param Browser: 浏览器
+        :type Browser: str
+        """
+        self.StartTime = None
+        self.Type = None
+        self.EndTime = None
+        self.ID = None
+        self.ExtSecond = None
+        self.Engine = None
+        self.Isp = None
+        self.From = None
+        self.Level = None
+        self.Brand = None
+        self.Area = None
+        self.VersionNum = None
+        self.Platform = None
+        self.ExtThird = None
+        self.ExtFirst = None
+        self.NetType = None
+        self.Device = None
+        self.IsAbroad = None
+        self.Os = None
+        self.Browser = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.Type = params.get("Type")
+        self.EndTime = params.get("EndTime")
+        self.ID = params.get("ID")
+        self.ExtSecond = params.get("ExtSecond")
+        self.Engine = params.get("Engine")
+        self.Isp = params.get("Isp")
+        self.From = params.get("From")
+        self.Level = params.get("Level")
+        self.Brand = params.get("Brand")
+        self.Area = params.get("Area")
+        self.VersionNum = params.get("VersionNum")
+        self.Platform = params.get("Platform")
+        self.ExtThird = params.get("ExtThird")
+        self.ExtFirst = params.get("ExtFirst")
+        self.NetType = params.get("NetType")
+        self.Device = params.get("Device")
+        self.IsAbroad = params.get("IsAbroad")
+        self.Os = params.get("Os")
+        self.Browser = params.get("Browser")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataPvUrlStatisticsResponse(AbstractModel):
+    """DescribeDataPvUrlStatistics返回参数结构体
 
     """
 

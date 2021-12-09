@@ -62,6 +62,53 @@ class AutomationAgentInfo(AbstractModel):
         
 
 
+class CancelInvocationRequest(AbstractModel):
+    """CancelInvocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvocationId: 执行活动ID
+        :type InvocationId: str
+        :param InstanceIds: 实例ID列表，上限100。支持实例类型：
+<li> CVM
+<li> LIGHTHOUSE
+        :type InstanceIds: list of str
+        """
+        self.InvocationId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InvocationId = params.get("InvocationId")
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelInvocationResponse(AbstractModel):
+    """CancelInvocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Command(AbstractModel):
     """命令详情。
 

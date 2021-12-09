@@ -362,6 +362,34 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainAliasList(self, request):
+        """获取域名别名列表
+
+        :param request: Request instance for DescribeDomainAliasList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAliasListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainAliasListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainAliasList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainAliasListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomainList(self, request):
         """获取域名列表
 

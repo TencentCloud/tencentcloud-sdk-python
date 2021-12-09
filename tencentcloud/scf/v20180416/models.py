@@ -892,7 +892,7 @@ class DeleteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param Namespace: 函数所属命名空间
         :type Namespace: str
-        :param Qualifier: 函数版本
+        :param Qualifier: 函数版本，如果删除版本的话传入版本号，不传入改字段删除函数下的所有版本
         :type Qualifier: str
         """
         self.FunctionName = None
@@ -1500,11 +1500,15 @@ class FunctionVersion(AbstractModel):
         :param ModTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModTime: str
+        :param Status: 版本状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self.Version = None
         self.Description = None
         self.AddTime = None
         self.ModTime = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1512,6 +1516,7 @@ class FunctionVersion(AbstractModel):
         self.Description = params.get("Description")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4218,7 +4223,7 @@ class TerminateAsyncEventRequest(AbstractModel):
         :type InvokeRequestId: str
         :param Namespace: 命名空间
         :type Namespace: str
-        :param GraceShutdown: 优雅关停
+        :param GraceShutdown: 该参数已下线
         :type GraceShutdown: bool
         """
         self.FunctionName = None

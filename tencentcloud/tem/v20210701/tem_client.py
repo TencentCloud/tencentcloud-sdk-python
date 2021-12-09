@@ -418,6 +418,34 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyApplicationReplicas(self, request):
+        """修改应用实例数量
+
+        :param request: Request instance for ModifyApplicationReplicas.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationReplicasRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationReplicasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyApplicationReplicas", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApplicationReplicasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyEnvironment(self, request):
         """编辑环境
 

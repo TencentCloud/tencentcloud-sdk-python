@@ -8589,6 +8589,24 @@ class PayOrderResult(AbstractModel):
         :param TradeQrcode: 二维码字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeQrcode: str
+        :param WechatAppId: 微信返回调起小程序/原生JS支付的appid参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatAppId: str
+        :param WechatTimeStamp: 微信返回调起小程序/原生JS支付的timeStamp参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatTimeStamp: str
+        :param WechatNonceStr: 微信返回调起小程序/原生JS支付的nonceStr参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatNonceStr: str
+        :param WechatSignType: 微信返回调起小程序/原生JS支付的signType参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatSignType: str
+        :param WechatPackage: 微信返回调起小程序/原生JS支付的package参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatPackage: str
+        :param WechatPaySign: 微信返回调起小程序/原生JS支付的paySign参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatPaySign: str
         """
         self.OrderNo = None
         self.DeveloperNo = None
@@ -8604,6 +8622,12 @@ class PayOrderResult(AbstractModel):
         self.Status = None
         self.OrderCurrency = None
         self.TradeQrcode = None
+        self.WechatAppId = None
+        self.WechatTimeStamp = None
+        self.WechatNonceStr = None
+        self.WechatSignType = None
+        self.WechatPackage = None
+        self.WechatPaySign = None
 
 
     def _deserialize(self, params):
@@ -8621,6 +8645,12 @@ class PayOrderResult(AbstractModel):
         self.Status = params.get("Status")
         self.OrderCurrency = params.get("OrderCurrency")
         self.TradeQrcode = params.get("TradeQrcode")
+        self.WechatAppId = params.get("WechatAppId")
+        self.WechatTimeStamp = params.get("WechatTimeStamp")
+        self.WechatNonceStr = params.get("WechatNonceStr")
+        self.WechatSignType = params.get("WechatSignType")
+        self.WechatPackage = params.get("WechatPackage")
+        self.WechatPaySign = params.get("WechatPaySign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17287,6 +17317,14 @@ class UnifiedTlinxOrderRequest(AbstractModel):
         :type PayName: str
         :param Royalty: 0-不分账，1-需分账。为1时标记为待分账订单，待分账订单不会进行清算。不传默认为不分账。
         :type Royalty: str
+        :param Jsapi: 小程序支付参数：填默认值 1
+        :type Jsapi: str
+        :param SubAppId: 小程序支付参数：
+当前调起支付的小程序APPID
+        :type SubAppId: str
+        :param SubOpenId: 小程序支付参数:
+用户在子商户appid下的唯一标识。
+        :type SubOpenId: str
         """
         self.DeveloperNo = None
         self.OpenId = None
@@ -17308,6 +17346,9 @@ class UnifiedTlinxOrderRequest(AbstractModel):
         self.DiscountAmount = None
         self.PayName = None
         self.Royalty = None
+        self.Jsapi = None
+        self.SubAppId = None
+        self.SubOpenId = None
 
 
     def _deserialize(self, params):
@@ -17331,6 +17372,9 @@ class UnifiedTlinxOrderRequest(AbstractModel):
         self.DiscountAmount = params.get("DiscountAmount")
         self.PayName = params.get("PayName")
         self.Royalty = params.get("Royalty")
+        self.Jsapi = params.get("Jsapi")
+        self.SubAppId = params.get("SubAppId")
+        self.SubOpenId = params.get("SubOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

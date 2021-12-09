@@ -5790,6 +5790,9 @@ Pending是创建中，Running是 运行中。
         :param AutoCreatedEipId: 自动为用户创建的EipId
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoCreatedEipId: str
+        :param PersistStatus: 容器状态是否持久化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersistStatus: bool
         """
         self.EksCiId = None
         self.EksCiName = None
@@ -5813,6 +5816,7 @@ Pending是创建中，Running是 运行中。
         self.InitContainers = None
         self.CamRoleName = None
         self.AutoCreatedEipId = None
+        self.PersistStatus = None
 
 
     def _deserialize(self, params):
@@ -5852,6 +5856,7 @@ Pending是创建中，Running是 运行中。
                 self.InitContainers.append(obj)
         self.CamRoleName = params.get("CamRoleName")
         self.AutoCreatedEipId = params.get("AutoCreatedEipId")
+        self.PersistStatus = params.get("PersistStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

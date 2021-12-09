@@ -26,6 +26,37 @@ class TatClient(AbstractClient):
     _service = 'tat'
 
 
+    def CancelInvocation(self, request):
+        """取消一台或多台CVM实例执行的命令
+
+        * 如果命令还未下发到agent，任务状态处于处于PENDING、DELIVERING、DELIVER_DELAYED，取消后任务状态是CANCELLED
+        * 如果命令已下发到agent，任务状态处于RUNNING， 取消后任务状态是TERMINATED
+
+        :param request: Request instance for CancelInvocation.
+        :type request: :class:`tencentcloud.tat.v20201028.models.CancelInvocationRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.CancelInvocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelInvocation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelInvocationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCommand(self, request):
         """此接口用于创建命令。
 

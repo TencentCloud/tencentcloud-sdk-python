@@ -47,6 +47,9 @@ INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = 'InvalidParameterValue.CommandName
 # 实例类型不一致。
 INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = 'InvalidParameterValue.InconsistentInstance'
 
+# 实例ID与执行活动无关。
+INVALIDPARAMETERVALUE_INSTANCEISNOTRELATEDTOINVOCATION = 'InvalidParameterValue.InstanceIsNotRelatedToInvocation'
+
 # CommandId 无效。
 INVALIDPARAMETERVALUE_INVALIDCOMMANDID = 'InvalidParameterValue.InvalidCommandId'
 
@@ -119,6 +122,9 @@ INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = 'InvalidParameter
 # 长度超过限制。
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 
+# 超过配额限制。
+LIMITEXCEEDED = 'LimitExceeded'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
@@ -130,6 +136,9 @@ RESOURCENOTFOUND_COMMANDNOTFOUND = 'ResourceNotFound.CommandNotFound'
 
 # 实例不存在。
 RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
+
+# 执行活动未找到。
+RESOURCENOTFOUND_INVOCATIONNOTFOUND = 'ResourceNotFound.InvocationNotFound'
 
 # Agent 未安装。
 RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = 'ResourceUnavailable.AgentNotInstalled'
@@ -157,3 +166,6 @@ UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 
 # Multi-Factor Authentication(MFA) 不存在。
 UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
+
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'

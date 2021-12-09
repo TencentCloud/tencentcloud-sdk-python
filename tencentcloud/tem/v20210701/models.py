@@ -1899,6 +1899,59 @@ class ModifyApplicationInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyApplicationReplicasRequest(AbstractModel):
+    """ModifyApplicationReplicas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param Replicas: 实例数量
+        :type Replicas: int
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.Replicas = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Replicas = params.get("Replicas")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationReplicasResponse(AbstractModel):
+    """ModifyApplicationReplicas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEnvironmentRequest(AbstractModel):
     """ModifyEnvironment请求参数结构体
 
