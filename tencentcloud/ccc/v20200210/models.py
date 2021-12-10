@@ -2263,6 +2263,9 @@ notInService       不在服务区
         :param Uui: 客户自定义数据（User-to-User Interface）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uui: str
+        :param IVRKeyPressedEx: IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IVRKeyPressedEx: list of IVRKeyPressedElement
         """
         self.Caller = None
         self.Callee = None
@@ -2291,6 +2294,7 @@ notInService       不在服务区
         self.ProtectedCaller = None
         self.ProtectedCallee = None
         self.Uui = None
+        self.IVRKeyPressedEx = None
 
 
     def _deserialize(self, params):
@@ -2333,6 +2337,12 @@ notInService       不在服务区
         self.ProtectedCaller = params.get("ProtectedCaller")
         self.ProtectedCallee = params.get("ProtectedCallee")
         self.Uui = params.get("Uui")
+        if params.get("IVRKeyPressedEx") is not None:
+            self.IVRKeyPressedEx = []
+            for item in params.get("IVRKeyPressedEx"):
+                obj = IVRKeyPressedElement()
+                obj._deserialize(item)
+                self.IVRKeyPressedEx.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

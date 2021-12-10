@@ -634,6 +634,12 @@ class CreateInstanceRequest(AbstractModel):
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
         :param ApplicationRole: 自定义应用角色。
         :type ApplicationRole: str
+        :param SceneName: 场景化取值：
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+        :type SceneName: str
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -662,6 +668,7 @@ class CreateInstanceRequest(AbstractModel):
         self.UnifyMetaInstanceId = None
         self.MetaDBInfo = None
         self.ApplicationRole = None
+        self.SceneName = None
 
 
     def _deserialize(self, params):
@@ -714,6 +721,7 @@ class CreateInstanceRequest(AbstractModel):
             self.MetaDBInfo = CustomMetaInfo()
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ApplicationRole = params.get("ApplicationRole")
+        self.SceneName = params.get("SceneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1580,6 +1588,12 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>4：表示EMR-V2.1.0。</li>
 <li>7：表示EMR-V3.0.0。</li>
         :type ProductId: int
+        :param SceneName: 场景化取值：
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+        :type SceneName: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1594,6 +1608,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         self.UnifyMetaInstanceId = None
         self.MetaDBInfo = None
         self.ProductId = None
+        self.SceneName = None
 
 
     def _deserialize(self, params):
@@ -1618,6 +1633,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
             self.MetaDBInfo = CustomMetaInfo()
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ProductId = params.get("ProductId")
+        self.SceneName = params.get("SceneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

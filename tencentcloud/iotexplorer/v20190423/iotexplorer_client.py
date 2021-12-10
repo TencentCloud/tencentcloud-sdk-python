@@ -1398,6 +1398,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetFamilyDeviceUserList(self, request):
+        """用于获取设备绑定的用户列表
+
+        :param request: Request instance for GetFamilyDeviceUserList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetFamilyDeviceUserListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetFamilyDeviceUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetFamilyDeviceUserList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetFamilyDeviceUserListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetLoRaGatewayList(self, request):
         """获取 LoRa 网关列表接口
 

@@ -2881,6 +2881,9 @@ class Template(AbstractModel):
         :param VaccineCertificate: 免疫接种证明
 注意：此字段可能返回 null，表示取不到有效值。
         :type VaccineCertificate: :class:`tencentcloud.mrs.v20200910.models.VaccineCertificate`
+        :param OcrText: OCR文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrText: str
         """
         self.PatientInfo = None
         self.ReportInfo = None
@@ -2898,6 +2901,7 @@ class Template(AbstractModel):
         self.Endoscopy = None
         self.Prescription = None
         self.VaccineCertificate = None
+        self.OcrText = None
 
 
     def _deserialize(self, params):
@@ -2947,6 +2951,7 @@ class Template(AbstractModel):
         if params.get("VaccineCertificate") is not None:
             self.VaccineCertificate = VaccineCertificate()
             self.VaccineCertificate._deserialize(params.get("VaccineCertificate"))
+        self.OcrText = params.get("OcrText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2501,7 +2501,7 @@ class ContainerInfo(AbstractModel):
         :type RunAs: str
         :param Cmd: 命令行
         :type Cmd: str
-        :param CPUUsage: cpu 使用率 *1000
+        :param CPUUsage: CPU使用率 *1000
         :type CPUUsage: int
         :param RamUsage: 内存使用 kb
         :type RamUsage: int

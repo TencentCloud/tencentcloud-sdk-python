@@ -3713,11 +3713,14 @@ class CreateScanMalwareSettingRequest(AbstractModel):
         :type QuuidList: list of str
         :param TimeoutPeriod: 超时时间单位 秒 默认3600 秒
         :type TimeoutPeriod: int
+        :param EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        :type EngineType: int
         """
         self.ScanPattern = None
         self.HostType = None
         self.QuuidList = None
         self.TimeoutPeriod = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -3725,6 +3728,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
         self.HostType = params.get("HostType")
         self.QuuidList = params.get("QuuidList")
         self.TimeoutPeriod = params.get("TimeoutPeriod")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10358,6 +10362,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type ClickTimeout: int
         :param KillProcess: 是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效
         :type KillProcess: int
+        :param EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        :type EngineType: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10374,6 +10380,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.AutoIsolation = None
         self.ClickTimeout = None
         self.KillProcess = None
+        self.EngineType = None
         self.RequestId = None
 
 
@@ -10391,6 +10398,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.AutoIsolation = params.get("AutoIsolation")
         self.ClickTimeout = params.get("ClickTimeout")
         self.KillProcess = params.get("KillProcess")
+        self.EngineType = params.get("EngineType")
         self.RequestId = params.get("RequestId")
 
 
@@ -15926,7 +15934,7 @@ class MalWareList(AbstractModel):
         :type FilePath: str
         :param VirusName: 描述
         :type VirusName: str
-        :param Status: 状态；4-:待处理，5-已信任，6-已隔离
+        :param Status: 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除
         :type Status: int
         :param Id: 唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15946,6 +15954,8 @@ class MalWareList(AbstractModel):
         :type CreateTime: str
         :param LatestScanTime: 最近扫描时间
         :type LatestScanTime: str
+        :param Level: 风险等级 0未知、1低、2中、3高、4严重
+        :type Level: int
         """
         self.HostIp = None
         self.Uuid = None
@@ -15959,6 +15969,7 @@ class MalWareList(AbstractModel):
         self.FileModifierTime = None
         self.CreateTime = None
         self.LatestScanTime = None
+        self.Level = None
 
 
     def _deserialize(self, params):
@@ -15974,6 +15985,7 @@ class MalWareList(AbstractModel):
         self.FileModifierTime = params.get("FileModifierTime")
         self.CreateTime = params.get("CreateTime")
         self.LatestScanTime = params.get("LatestScanTime")
+        self.Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16084,6 +16096,9 @@ class MalwareInfo(AbstractModel):
         :param Status: 状态；4-:待处理，5-已信任，6-已隔离
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param Level: 风险等级 0提示、1低、2中、3高、4严重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
         """
         self.VirusName = None
         self.FileSize = None
@@ -16109,6 +16124,7 @@ class MalwareInfo(AbstractModel):
         self.PsTree = None
         self.MachineStatus = None
         self.Status = None
+        self.Level = None
 
 
     def _deserialize(self, params):
@@ -16136,6 +16152,7 @@ class MalwareInfo(AbstractModel):
         self.PsTree = params.get("PsTree")
         self.MachineStatus = params.get("MachineStatus")
         self.Status = params.get("Status")
+        self.Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16385,6 +16402,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type AutoIsolation: int
         :param KillProcess: 是否杀掉进程 1杀掉 0不杀掉
         :type KillProcess: int
+        :param EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        :type EngineType: int
         """
         self.CheckPattern = None
         self.StartTime = None
@@ -16397,6 +16416,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.QuuidList = None
         self.AutoIsolation = None
         self.KillProcess = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -16411,6 +16431,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.QuuidList = params.get("QuuidList")
         self.AutoIsolation = params.get("AutoIsolation")
         self.KillProcess = params.get("KillProcess")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

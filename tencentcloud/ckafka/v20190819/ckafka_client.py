@@ -278,6 +278,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteInstancePre(self, request):
+        """删除预付费实例
+
+        :param request: Request instance for DeleteInstancePre.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteInstancePre", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteInstancePreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRouteTriggerTime(self, request):
         """修改删除路由延迟触发时间
 

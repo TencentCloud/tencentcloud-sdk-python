@@ -700,6 +700,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         :type ImageBase64: str
         :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param IntentionVerifyText: 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受100的字符串长度。
+        :type IntentionVerifyText: str
         """
         self.RuleId = None
         self.TerminalType = None
@@ -709,6 +711,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self.Extra = None
         self.ImageBase64 = None
         self.Encryption = None
+        self.IntentionVerifyText = None
 
 
     def _deserialize(self, params):
@@ -722,6 +725,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         if params.get("Encryption") is not None:
             self.Encryption = Encryption()
             self.Encryption._deserialize(params.get("Encryption"))
+        self.IntentionVerifyText = params.get("IntentionVerifyText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1343,6 +1347,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param Encryption: 敏感数据加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param IntentionVerifyData: 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1351,6 +1358,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self.BestFrame = None
         self.VideoData = None
         self.Encryption = None
+        self.IntentionVerifyData = None
         self.RequestId = None
 
 
@@ -1370,6 +1378,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         if params.get("Encryption") is not None:
             self.Encryption = Encryption()
             self.Encryption._deserialize(params.get("Encryption"))
+        if params.get("IntentionVerifyData") is not None:
+            self.IntentionVerifyData = IntentionVerifyData()
+            self.IntentionVerifyData._deserialize(params.get("IntentionVerifyData"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2221,6 +2232,51 @@ class ImageRecognitionResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
+
+
+class IntentionVerifyData(AbstractModel):
+    """意愿核身相关结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntentionVerifyVideo: 意愿确认环节中录制的视频（base64）。若不存在则为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionVerifyVideo: str
+        :param AsrResult: 意愿确认环节中用户语音转文字的识别结果。若不存在则为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrResult: str
+        :param ErrorCode: 意愿确认环节的结果码。当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param ErrorMessage: 意愿确认环节的结果信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param IntentionVerifyBestFrame: 意愿确认环节中录制视频的最佳帧（base64）。若不存在则为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionVerifyBestFrame: str
+        """
+        self.IntentionVerifyVideo = None
+        self.AsrResult = None
+        self.ErrorCode = None
+        self.ErrorMessage = None
+        self.IntentionVerifyBestFrame = None
+
+
+    def _deserialize(self, params):
+        self.IntentionVerifyVideo = params.get("IntentionVerifyVideo")
+        self.AsrResult = params.get("AsrResult")
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.IntentionVerifyBestFrame = params.get("IntentionVerifyBestFrame")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LivenessCompareRequest(AbstractModel):

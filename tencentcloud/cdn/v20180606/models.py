@@ -13697,6 +13697,9 @@ disabled：未启用
         :param ConfigId: 流量包类型id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigId: int
+        :param ExtensionMode: 流量包当前续订模式，0 未续订、1到期续订、2用完续订、3到期或用完续订
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtensionMode: int
         """
         self.Id = None
         self.Type = None
@@ -13715,6 +13718,7 @@ disabled：未启用
         self.RefundAvailable = None
         self.Region = None
         self.ConfigId = None
+        self.ExtensionMode = None
 
 
     def _deserialize(self, params):
@@ -13735,6 +13739,7 @@ disabled：未启用
         self.RefundAvailable = params.get("RefundAvailable")
         self.Region = params.get("Region")
         self.ConfigId = params.get("ConfigId")
+        self.ExtensionMode = params.get("ExtensionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
