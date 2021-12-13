@@ -4551,6 +4551,62 @@ class ModifyImageSharePermissionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceDiskTypeRequest(AbstractModel):
+    """ModifyInstanceDiskType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/9388)接口返回值中的`InstanceId`获取。
+        :type InstanceId: str
+        :param DataDisks: 实例数据盘配置信息，只需要指定要转换的目标云硬盘的介质类型，指定DiskType的值，当前只支持一个数据盘转化。只支持CDHPAID类型实例指定CdcId参数。
+        :type DataDisks: list of DataDisk
+        :param SystemDisk: 实例系统盘配置信息，只需要指定要转换的目标云硬盘的介质类型，指定DiskType的值。只支持CDHPAID类型实例指定CdcId参数。
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        """
+        self.InstanceId = None
+        self.DataDisks = None
+        self.SystemDisk = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceDiskTypeResponse(AbstractModel):
+    """ModifyInstanceDiskType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstancesAttributeRequest(AbstractModel):
     """ModifyInstancesAttribute请求参数结构体
 

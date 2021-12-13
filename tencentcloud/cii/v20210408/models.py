@@ -112,6 +112,119 @@ class CompareMetricsData(AbstractModel):
         
 
 
+class CreateAutoClassifyStructureTaskInfo(AbstractModel):
+    """创建自动分类的结构化任务子任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileList: 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+        :type FileList: list of str
+        :param CustomerId: 客户号
+        :type CustomerId: str
+        :param CustomerName: 客户姓名
+        :type CustomerName: str
+        :param ImageList: 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+        :type ImageList: list of str
+        """
+        self.FileList = None
+        self.CustomerId = None
+        self.CustomerName = None
+        self.ImageList = None
+
+
+    def _deserialize(self, params):
+        self.FileList = params.get("FileList")
+        self.CustomerId = params.get("CustomerId")
+        self.CustomerName = params.get("CustomerName")
+        self.ImageList = params.get("ImageList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoClassifyStructureTaskRequest(AbstractModel):
+    """CreateAutoClassifyStructureTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceType: 服务类型
+Structured 仅结构化
+Underwrite 结构化+核保
+        :type ServiceType: str
+        :param TaskInfos: 创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
+        :type TaskInfos: list of CreateAutoClassifyStructureTaskInfo
+        :param PolicyId: 保单号
+        :type PolicyId: str
+        :param TriggerType: 核保触发方式
+Auto 自动
+Manual 手动
+        :type TriggerType: str
+        :param InsuranceTypes: 险种，如果是体检报告类型，此参数是必填，类型说明如下：
+CriticalDiseaseInsurance:重疾险
+LifeInsurance：寿险
+AccidentInsurance：意外险
+        :type InsuranceTypes: list of str
+        :param CallbackUrl: 回调地址，接收Post请求传送结果
+        :type CallbackUrl: str
+        """
+        self.ServiceType = None
+        self.TaskInfos = None
+        self.PolicyId = None
+        self.TriggerType = None
+        self.InsuranceTypes = None
+        self.CallbackUrl = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = CreateAutoClassifyStructureTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        self.PolicyId = params.get("PolicyId")
+        self.TriggerType = params.get("TriggerType")
+        self.InsuranceTypes = params.get("InsuranceTypes")
+        self.CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoClassifyStructureTaskResponse(AbstractModel):
+    """CreateAutoClassifyStructureTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainTaskId: 创建的主任务号，用于查询结果
+        :type MainTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MainTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateStructureTaskInfo(AbstractModel):
     """创建结构化任务子任务信息
 

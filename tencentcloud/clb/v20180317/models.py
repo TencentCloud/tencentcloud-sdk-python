@@ -5338,6 +5338,53 @@ class ManualRewriteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MigrateClassicalLoadBalancersRequest(AbstractModel):
+    """MigrateClassicalLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerIds: 传统型负载均衡ID数组
+        :type LoadBalancerIds: list of str
+        :param ExclusiveCluster: 独占集群信息
+        :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
+        """
+        self.LoadBalancerIds = None
+        self.ExclusiveCluster = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ExclusiveCluster") is not None:
+            self.ExclusiveCluster = ExclusiveCluster()
+            self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateClassicalLoadBalancersResponse(AbstractModel):
+    """MigrateClassicalLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBlockIPListRequest(AbstractModel):
     """ModifyBlockIPList请求参数结构体
 

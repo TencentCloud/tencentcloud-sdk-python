@@ -18,6 +18,42 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CFSOption(AbstractModel):
+    """描述CFS文件系统版本和挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalPath: 文件系统本地挂载路径
+        :type LocalPath: str
+        :param RemotePath: 文件系统远程挂载ip及路径
+        :type RemotePath: str
+        :param Protocol: 文件系统协议类型，默认值NFS 3.0
+        :type Protocol: str
+        :param StorageType: 文件系统存储类型，默认值SD
+        :type StorageType: str
+        """
+        self.LocalPath = None
+        self.RemotePath = None
+        self.Protocol = None
+        self.StorageType = None
+
+
+    def _deserialize(self, params):
+        self.LocalPath = params.get("LocalPath")
+        self.RemotePath = params.get("RemotePath")
+        self.Protocol = params.get("Protocol")
+        self.StorageType = params.get("StorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComputeNode(AbstractModel):
     """计算节点信息。
 
@@ -121,6 +157,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type AccountType: str
         :param ClusterName: 集群显示名称。
         :type ClusterName: str
+        :param StorageOption: 集群存储选项
+        :type StorageOption: :class:`tencentcloud.thpc.v20211109.models.StorageOption`
         """
         self.Placement = None
         self.ManagerNode = None
@@ -136,6 +174,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.DryRun = None
         self.AccountType = None
         self.ClusterName = None
+        self.StorageOption = None
 
 
     def _deserialize(self, params):
@@ -163,6 +202,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.DryRun = params.get("DryRun")
         self.AccountType = params.get("AccountType")
         self.ClusterName = params.get("ClusterName")
+        if params.get("StorageOption") is not None:
+            self.StorageOption = StorageOption()
+            self.StorageOption._deserialize(params.get("StorageOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -431,6 +473,35 @@ class Placement(AbstractModel):
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageOption(AbstractModel):
+    """描述集群文件系统选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CFSOptions: 集群挂载CFS文件系统选项
+        :type CFSOptions: list of CFSOption
+        """
+        self.CFSOptions = None
+
+
+    def _deserialize(self, params):
+        if params.get("CFSOptions") is not None:
+            self.CFSOptions = []
+            for item in params.get("CFSOptions"):
+                obj = CFSOption()
+                obj._deserialize(item)
+                self.CFSOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

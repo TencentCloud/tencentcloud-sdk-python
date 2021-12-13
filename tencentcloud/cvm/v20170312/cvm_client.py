@@ -1522,6 +1522,39 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstanceDiskType(self, request):
+        """本接口 (ModifyInstanceDiskType) 用于修改实例硬盘介质类型。
+
+        * 只支持实例的本地系统盘、本地数据盘转化成指定云硬盘介质。
+        * 只支持实例在关机状态下转换成指定云硬盘介质。
+        * 不支持竞价实例类型。
+        * 修改前请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/378/4397)接口查询账户余额。
+
+        :param request: Request instance for ModifyInstanceDiskType.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstanceDiskTypeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstanceDiskTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstanceDiskType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceDiskTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyInstancesAttribute(self, request):
         """本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称和关联的安全组）。
 

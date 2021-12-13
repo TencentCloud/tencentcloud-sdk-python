@@ -26,6 +26,34 @@ class CiiClient(AbstractClient):
     _service = 'cii'
 
 
+    def CreateAutoClassifyStructureTask(self, request):
+        """本接口(CreateAutoClassifyStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
+
+        :param request: Request instance for CreateAutoClassifyStructureTask.
+        :type request: :class:`tencentcloud.cii.v20210408.models.CreateAutoClassifyStructureTaskRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.CreateAutoClassifyStructureTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAutoClassifyStructureTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAutoClassifyStructureTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateStructureTask(self, request):
         """本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 

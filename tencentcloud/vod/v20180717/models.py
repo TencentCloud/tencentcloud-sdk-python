@@ -19094,10 +19094,6 @@ class RestoreMediaTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 取回任务状态，0表示取回完成，其他值表示取回还未完成。
-        :type Status: int
-        :param Message: 提示信息。
-        :type Message: str
         :param FileId: 文件ID。
         :type FileId: str
         :param OriginalStorageClass: 文件原始存储类型。
@@ -19110,26 +19106,29 @@ class RestoreMediaTask(AbstractModel):
 <li>Bulk：批量模式</li>
         :type RestoreTier: str
         :param RestoreDay: 临时取回副本有效期，单位：天。对于永久取回，取值为0。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RestoreDay: int
+        :param Status: 该字段已废弃。
+        :type Status: int
+        :param Message: 该字段已废弃。
+        :type Message: str
         """
-        self.Status = None
-        self.Message = None
         self.FileId = None
         self.OriginalStorageClass = None
         self.TargetStorageClass = None
         self.RestoreTier = None
         self.RestoreDay = None
+        self.Status = None
+        self.Message = None
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Message = params.get("Message")
         self.FileId = params.get("FileId")
         self.OriginalStorageClass = params.get("OriginalStorageClass")
         self.TargetStorageClass = params.get("TargetStorageClass")
         self.RestoreTier = params.get("RestoreTier")
         self.RestoreDay = params.get("RestoreDay")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

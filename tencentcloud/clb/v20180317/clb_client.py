@@ -1469,6 +1469,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MigrateClassicalLoadBalancers(self, request):
+        """本接口将传统型负载均衡迁移成(原应用型)负载均衡
+        本接口为异步接口，接口成功返回后，可使用 DescribeLoadBalancers 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
+
+        :param request: Request instance for MigrateClassicalLoadBalancers.
+        :type request: :class:`tencentcloud.clb.v20180317.models.MigrateClassicalLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.MigrateClassicalLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MigrateClassicalLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MigrateClassicalLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBlockIPList(self, request):
         """修改负载均衡的IP（client IP）封禁黑名单列表，一个转发规则最多支持封禁 2000000 个IP，及黑名单容量为 2000000。
         （接口灰度中，如需使用请提工单）
