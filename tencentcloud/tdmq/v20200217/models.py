@@ -2240,18 +2240,21 @@ class CreateRocketMQTopicRequest(AbstractModel):
         :type Topic: str
         :param Namespaces: 主题所在的命名空间，目前支持在单个命名空间下创建主题
         :type Namespaces: list of str
-        :param Type: 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction
+        :param Type: 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder
         :type Type: str
         :param ClusterId: 集群ID
         :type ClusterId: str
         :param Remark: 主题说明，最大128个字符
         :type Remark: str
+        :param PartitionNum: 分区数，全局顺序无效
+        :type PartitionNum: int
         """
         self.Topic = None
         self.Namespaces = None
         self.Type = None
         self.ClusterId = None
         self.Remark = None
+        self.PartitionNum = None
 
 
     def _deserialize(self, params):
@@ -2260,6 +2263,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
         self.Type = params.get("Type")
         self.ClusterId = params.get("ClusterId")
         self.Remark = params.get("Remark")
+        self.PartitionNum = params.get("PartitionNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6697,11 +6701,14 @@ class ModifyRocketMQTopicRequest(AbstractModel):
         :type Topic: str
         :param Remark: 说明信息，最大128个字符
         :type Remark: str
+        :param PartitionNum: 分区数，全局类型无效，不可小于当前分区数
+        :type PartitionNum: int
         """
         self.ClusterId = None
         self.NamespaceId = None
         self.Topic = None
         self.Remark = None
+        self.PartitionNum = None
 
 
     def _deserialize(self, params):
@@ -6709,6 +6716,7 @@ class ModifyRocketMQTopicRequest(AbstractModel):
         self.NamespaceId = params.get("NamespaceId")
         self.Topic = params.get("Topic")
         self.Remark = params.get("Remark")
+        self.PartitionNum = params.get("PartitionNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1880,6 +1880,60 @@ class CreateTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrossTargets(AbstractModel):
+    """跨域2.0云联网下子机和网卡信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalVpcId: 本地私有网络ID，即负载均衡的VpcId。
+        :type LocalVpcId: str
+        :param VpcId: 子机或网卡所属的私有网络ID。
+        :type VpcId: str
+        :param IP: 子机或网卡的IP地址
+        :type IP: str
+        :param VpcName: 子机或网卡所属的私有网络名称。
+        :type VpcName: str
+        :param EniId: 子机的网卡ID。
+        :type EniId: str
+        :param InstanceId: 子机实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 子机实例名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param Region: 子机或者网卡所属的地域。
+        :type Region: str
+        """
+        self.LocalVpcId = None
+        self.VpcId = None
+        self.IP = None
+        self.VpcName = None
+        self.EniId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.LocalVpcId = params.get("LocalVpcId")
+        self.VpcId = params.get("VpcId")
+        self.IP = params.get("IP")
+        self.VpcName = params.get("VpcName")
+        self.EniId = params.get("EniId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteListenerRequest(AbstractModel):
     """DeleteListener请求参数结构体
 
@@ -2810,6 +2864,77 @@ class DescribeClusterResourcesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ClusterResourceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCrossTargetsRequest(AbstractModel):
+    """DescribeCrossTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回后端服务列表数目，默认20，最大值100。
+        :type Limit: int
+        :param Offset: 返回后端服务列表起始偏移量，默认0。
+        :type Offset: int
+        :param Filters: 查询跨域2.0版本云联网后端子机和网卡服务列表条件，详细的过滤条件如下：
+<li> vpc-id - String - 是否必填：否 - （过滤条件）按照 本地私有网络ID，即负载均衡的VpcId 过滤，如："vpc-12345678"。</li>
+<li> ip - String - 是否必填：否 - （过滤条件）按照 后端服务ip 过滤，如："192.168.0.1"。</li>
+<li> listener-id - String - 是否必填：否 - （过滤条件）按照 监听器ID 过滤，如："lbl-12345678"。</li>
+<li> location-id - String - 是否必填：否 - （过滤条件）按照 七层监听器规则ID 过滤，如："loc-12345678"。</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCrossTargetsResponse(AbstractModel):
+    """DescribeCrossTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 后端服务列表总数。
+        :type TotalCount: int
+        :param CrossTargetSet: 后端服务列表。
+        :type CrossTargetSet: list of CrossTargets
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CrossTargetSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CrossTargetSet") is not None:
+            self.CrossTargetSet = []
+            for item in params.get("CrossTargetSet"):
+                obj = CrossTargets()
+                obj._deserialize(item)
+                self.CrossTargetSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5747,7 +5872,7 @@ class ModifyLoadBalancerSlaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerSla: 负载均衡性能保障实例ID和变配的目标规格
+        :param LoadBalancerSla: 负载均衡实例信息
         :type LoadBalancerSla: list of SlaUpdateParam
         """
         self.LoadBalancerSla = None
@@ -7085,7 +7210,7 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
 
 class SlaUpdateParam(AbstractModel):
-    """性能保障变配参数
+    """性能容量型变配参数
 
     """
 
@@ -7093,7 +7218,7 @@ class SlaUpdateParam(AbstractModel):
         r"""
         :param LoadBalancerId: lb的字符串ID
         :type LoadBalancerId: str
-        :param SlaType: 需要变更的性能保障级别
+        :param SlaType: 变更为性能容量型，固定为SLA
         :type SlaType: str
         """
         self.LoadBalancerId = None

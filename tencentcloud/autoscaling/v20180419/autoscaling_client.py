@@ -585,6 +585,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAutoScalingAdvices(self, request):
+        """此接口用于查询伸缩组配置建议。
+
+        :param request: Request instance for DescribeAutoScalingAdvices.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingAdvicesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeAutoScalingAdvicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAutoScalingAdvices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoScalingAdvicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAutoScalingGroupLastActivities(self, request):
         """本接口（DescribeAutoScalingGroupLastActivities）用于查询伸缩组的最新一次伸缩活动记录。
 

@@ -150,6 +150,38 @@ class ActivtyRelatedInstance(AbstractModel):
         
 
 
+class Advice(AbstractModel):
+    """伸缩配置建议。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Problem: 问题描述。
+        :type Problem: str
+        :param Detail: 问题详情。
+        :type Detail: str
+        :param Solution: 建议解决方案。
+        :type Solution: str
+        """
+        self.Problem = None
+        self.Detail = None
+        self.Solution = None
+
+
+    def _deserialize(self, params):
+        self.Problem = params.get("Problem")
+        self.Detail = params.get("Detail")
+        self.Solution = params.get("Solution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttachInstancesRequest(AbstractModel):
     """AttachInstances请求参数结构体
 
@@ -197,6 +229,39 @@ class AttachInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+
+
+class AutoScalingAdvice(AbstractModel):
+    """伸缩组配置建议。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param Advices: 伸缩组配置建议集合。
+        :type Advices: list of Advice
+        """
+        self.AutoScalingGroupId = None
+        self.Advices = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        if params.get("Advices") is not None:
+            self.Advices = []
+            for item in params.get("Advices"):
+                obj = Advice()
+                obj._deserialize(item)
+                self.Advices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AutoScalingGroup(AbstractModel):
@@ -1653,6 +1718,56 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
                 obj = Activity()
                 obj._deserialize(item)
                 self.ActivitySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoScalingAdvicesRequest(AbstractModel):
+    """DescribeAutoScalingAdvices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupIds: 待查询的伸缩组列表，上限100。
+        :type AutoScalingGroupIds: list of str
+        """
+        self.AutoScalingGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScalingAdvicesResponse(AbstractModel):
+    """DescribeAutoScalingAdvices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingAdviceSet: 伸缩组配置建议集合。
+        :type AutoScalingAdviceSet: list of AutoScalingAdvice
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AutoScalingAdviceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AutoScalingAdviceSet") is not None:
+            self.AutoScalingAdviceSet = []
+            for item in params.get("AutoScalingAdviceSet"):
+                obj = AutoScalingAdvice()
+                obj._deserialize(item)
+                self.AutoScalingAdviceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

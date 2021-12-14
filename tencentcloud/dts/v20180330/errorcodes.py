@@ -29,6 +29,9 @@ INTERNALERROR = 'InternalError'
 # 添加异步任务失败。
 INTERNALERROR_ADDTASKERROR = 'InternalError.AddTaskError'
 
+# 内部调度系统错误。
+INTERNALERROR_CELERYERROR = 'InternalError.CeleryError'
+
 # cgw系统错误。
 INTERNALERROR_CGWSYSTEMERROR = 'InternalError.CgwSystemError'
 
@@ -58,6 +61,12 @@ LIMITEXCEEDED_MAXUNUSEDJOBS = 'LimitExceeded.MaxUnusedJobs'
 
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
+
+# 任务操作失败。
+OPERATIONDENIED_JOBOPERATIONDENIEDERROR = 'OperationDenied.JobOperationDeniedError'
+
+# 数据迁移服务不支持当前迁移类型。
+OPERATIONDENIED_MIGRATESERVICESUPPORTERROR = 'OperationDenied.MigrateServiceSupportError'
 
 # 该操作不能执行。
 OPERATIONDENIED_OPERATIONDENIED = 'OperationDenied.OperationDenied'

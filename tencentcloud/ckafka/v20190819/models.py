@@ -2133,7 +2133,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，不填则默认10，最大值100
         :type Limit: int
-        :param TagKey: 匹配标签key值。
+        :param TagKey: 已废弃。匹配标签key值。
         :type TagKey: str
         """
         self.InstanceId = None
@@ -3192,6 +3192,12 @@ class InstanceAttributesResponse(AbstractModel):
         :param DeleteRouteTimestamp: 时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteRouteTimestamp: str
+        :param RemainingPartitions: 剩余创建分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainingPartitions: int
+        :param RemainingTopics: 剩余创建主题数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainingTopics: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3225,6 +3231,8 @@ class InstanceAttributesResponse(AbstractModel):
         self.MaxConnection = None
         self.PublicNetwork = None
         self.DeleteRouteTimestamp = None
+        self.RemainingPartitions = None
+        self.RemainingTopics = None
 
 
     def _deserialize(self, params):
@@ -3274,6 +3282,8 @@ class InstanceAttributesResponse(AbstractModel):
         self.MaxConnection = params.get("MaxConnection")
         self.PublicNetwork = params.get("PublicNetwork")
         self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
+        self.RemainingPartitions = params.get("RemainingPartitions")
+        self.RemainingTopics = params.get("RemainingTopics")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

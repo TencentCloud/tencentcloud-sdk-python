@@ -1380,6 +1380,87 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceEnumParam: 值为枚举类型参数集合
+        :type InstanceEnumParam: list of InstanceEnumParam
+        :param InstanceIntegerParam: 值为integer类型参数集合
+        :type InstanceIntegerParam: list of InstanceIntegerParam
+        :param InstanceTextParam: 值为text类型的参数集合
+        :type InstanceTextParam: list of InstanceTextParam
+        :param InstanceMultiParam: 值为混合类型的参数集合
+        :type InstanceMultiParam: list of InstanceMultiParam
+        :param TotalCount: 当前实例支持修改的参数个数统计 如0
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceEnumParam = None
+        self.InstanceIntegerParam = None
+        self.InstanceTextParam = None
+        self.InstanceMultiParam = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceEnumParam") is not None:
+            self.InstanceEnumParam = []
+            for item in params.get("InstanceEnumParam"):
+                obj = InstanceEnumParam()
+                obj._deserialize(item)
+                self.InstanceEnumParam.append(obj)
+        if params.get("InstanceIntegerParam") is not None:
+            self.InstanceIntegerParam = []
+            for item in params.get("InstanceIntegerParam"):
+                obj = InstanceIntegerParam()
+                obj._deserialize(item)
+                self.InstanceIntegerParam.append(obj)
+        if params.get("InstanceTextParam") is not None:
+            self.InstanceTextParam = []
+            for item in params.get("InstanceTextParam"):
+                obj = InstanceTextParam()
+                obj._deserialize(item)
+                self.InstanceTextParam.append(obj)
+        if params.get("InstanceMultiParam") is not None:
+            self.InstanceMultiParam = []
+            for item in params.get("InstanceMultiParam"):
+                obj = InstanceMultiParam()
+                obj._deserialize(item)
+                self.InstanceMultiParam.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupRequest(AbstractModel):
     """DescribeSecurityGroup请求参数结构体
 
@@ -2089,6 +2170,222 @@ class InstanceDetail(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.InstanceStatusDesc = params.get("InstanceStatusDesc")
         self.RealInstanceId = params.get("RealInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceEnumParam(AbstractModel):
+    """实例可修改参数枚举类型集合。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param DefaultValue: 默认值
+        :type DefaultValue: str
+        :param EnumValue: 枚举值，所有支持的值
+        :type EnumValue: list of str
+        :param NeedRestart: 是否需要重启后生效，"1"需要，"0"无需重启
+        :type NeedRestart: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param Tips: 中英文说明
+        :type Tips: list of str
+        :param ValueType: 参数值类型说明
+        :type ValueType: str
+        :param Status: 是否获取到参数，1为获取，前端正常显示，0:前段显示loading
+        :type Status: int
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.EnumValue = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.Tips = None
+        self.ValueType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.EnumValue = params.get("EnumValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceIntegerParam(AbstractModel):
+    """实例可修改参数integer类型集合。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 当前值
+        :type CurrentValue: str
+        :param DefaultValue: 默认值
+        :type DefaultValue: str
+        :param Max: 最大值
+        :type Max: str
+        :param Min: 最小值
+        :type Min: str
+        :param NeedRestart: 是否徐亚哦重启后生效 1:需要重启；0:无需重启
+        :type NeedRestart: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param Tips: 参数说明
+        :type Tips: list of str
+        :param ValueType: 参数类型
+        :type ValueType: str
+        :param Status: 是否正常获取到，1：未正常获取；0：正常获取，仅对前端有实际意义；
+        :type Status: int
+        :param Unit: 暂时未用到，前端使用redis侧代码，为了兼容，保留该参数
+        :type Unit: str
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.Max = None
+        self.Min = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.Tips = None
+        self.ValueType = None
+        self.Status = None
+        self.Unit = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        self.Status = params.get("Status")
+        self.Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceMultiParam(AbstractModel):
+    """实例可修改参数Multi类型集合。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 当前值
+        :type CurrentValue: str
+        :param DefaultValue: 默认值
+        :type DefaultValue: str
+        :param EnumValue: 指导值范围
+        :type EnumValue: list of str
+        :param NeedRestart: 是否需要重启
+        :type NeedRestart: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param Status: 状态值
+        :type Status: int
+        :param Tips: 参数说明
+        :type Tips: list of str
+        :param ValueType: 值类型，multi混合类型
+        :type ValueType: str
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.EnumValue = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.Status = None
+        self.Tips = None
+        self.ValueType = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.EnumValue = params.get("EnumValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.Status = params.get("Status")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceTextParam(AbstractModel):
+    """实例可修改参数text类型集合。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 当前值(暂未使用)
+        :type CurrentValue: str
+        :param DefaultValue: 默认值(暂未使用)
+        :type DefaultValue: str
+        :param NeedRestart: 是否需要重启(暂未使用)
+        :type NeedRestart: str
+        :param ParamName: 参数名称(暂未使用)
+        :type ParamName: str
+        :param TextValue: text类型值(暂未使用)
+        :type TextValue: str
+        :param Tips: 说明(暂未使用)
+        :type Tips: list of str
+        :param ValueType: 值类型(暂未使用)
+        :type ValueType: str
+        :param Status: 值获取状态(暂未使用)
+        :type Status: str
+        """
+        self.CurrentValue = None
+        self.DefaultValue = None
+        self.NeedRestart = None
+        self.ParamName = None
+        self.TextValue = None
+        self.Tips = None
+        self.ValueType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.ParamName = params.get("ParamName")
+        self.TextValue = params.get("TextValue")
+        self.Tips = params.get("Tips")
+        self.ValueType = params.get("ValueType")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

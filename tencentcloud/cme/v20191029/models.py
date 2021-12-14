@@ -2725,23 +2725,22 @@ class ExternalMediaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 媒资绑定模板 ID，可取值为：
-<li>1000000：媒体文件为 URL，且 URL Scheme 为 https；</li>
-<li>1000001：媒体文件为 URL，且 URL Scheme 为 http。</li>
-
-注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。
-        :type Definition: int
-        :param MediaKey: 媒资绑定媒体路径或文件 ID。如果要绑定 URL 类型的媒体，请将 URL 的 <code>'https://'</code> 或者 <code>'http://'</code> 去掉，例如：
-原始媒体 URL 为 `https://www.example.com/a.mp4`，则 MediaKey 为 `www.example.com/a.mp4`。
+        :param MediaKey: 目前仅支持绑定 COS 桶的媒体，请填写存储对象 Key 值，例如：`example-folder/example.mp4`。
         :type MediaKey: str
+        :param Definition: 该字段废弃，请勿使用。
+        :type Definition: int
+        :param StorageId: 媒资挂载的存储 Id。
+        :type StorageId: str
         """
-        self.Definition = None
         self.MediaKey = None
+        self.Definition = None
+        self.StorageId = None
 
 
     def _deserialize(self, params):
-        self.Definition = params.get("Definition")
         self.MediaKey = params.get("MediaKey")
+        self.Definition = params.get("Definition")
+        self.StorageId = params.get("StorageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

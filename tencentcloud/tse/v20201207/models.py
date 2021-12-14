@@ -138,11 +138,14 @@ class DescribeSREInstancesRequest(AbstractModel):
         :type Offset: int
         :param QueryType: 查询类型
         :type QueryType: str
+        :param QuerySource: 调用方来源
+        :type QuerySource: str
         """
         self.Filters = None
         self.Limit = None
         self.Offset = None
         self.QueryType = None
+        self.QuerySource = None
 
 
     def _deserialize(self, params):
@@ -155,6 +158,7 @@ class DescribeSREInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.QueryType = params.get("QueryType")
+        self.QuerySource = params.get("QuerySource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

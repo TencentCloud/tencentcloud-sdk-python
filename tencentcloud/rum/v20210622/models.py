@@ -144,6 +144,8 @@ class DescribeDataEventUrlRequest(AbstractModel):
         :type Browser: str
         :param Name: 筛选条件
         :type Name: str
+        :param Env: 环境
+        :type Env: str
         """
         self.StartTime = None
         self.Type = None
@@ -166,6 +168,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
         self.Os = None
         self.Browser = None
         self.Name = None
+        self.Env = None
 
 
     def _deserialize(self, params):
@@ -190,6 +193,7 @@ class DescribeDataEventUrlRequest(AbstractModel):
         self.Os = params.get("Os")
         self.Browser = params.get("Browser")
         self.Name = params.get("Name")
+        self.Env = params.get("Env")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -267,6 +271,8 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         :type Os: str
         :param Browser: 浏览器
         :type Browser: str
+        :param Env: 环境区分
+        :type Env: str
         """
         self.StartTime = None
         self.Type = None
@@ -288,6 +294,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         self.IsAbroad = None
         self.Os = None
         self.Browser = None
+        self.Env = None
 
 
     def _deserialize(self, params):
@@ -311,6 +318,7 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
         self.IsAbroad = params.get("IsAbroad")
         self.Os = params.get("Os")
         self.Browser = params.get("Browser")
+        self.Env = params.get("Env")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -390,6 +398,8 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         :type From: str
         :param CostType: 耗时计算方式
         :type CostType: str
+        :param Env: 环境变量
+        :type Env: str
         """
         self.ID = None
         self.StartTime = None
@@ -412,6 +422,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self.Brand = None
         self.From = None
         self.CostType = None
+        self.Env = None
 
 
     def _deserialize(self, params):
@@ -436,6 +447,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self.Brand = params.get("Brand")
         self.From = params.get("From")
         self.CostType = params.get("CostType")
+        self.Env = params.get("Env")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -513,6 +525,8 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         :type Os: str
         :param Browser: 浏览器
         :type Browser: str
+        :param Env: 环境
+        :type Env: str
         """
         self.StartTime = None
         self.Type = None
@@ -534,6 +548,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         self.IsAbroad = None
         self.Os = None
         self.Browser = None
+        self.Env = None
 
 
     def _deserialize(self, params):
@@ -557,6 +572,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         self.IsAbroad = params.get("IsAbroad")
         self.Os = params.get("Os")
         self.Browser = params.get("Browser")
+        self.Env = params.get("Env")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

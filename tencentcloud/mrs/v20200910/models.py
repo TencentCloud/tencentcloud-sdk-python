@@ -2884,6 +2884,9 @@ class Template(AbstractModel):
         :param OcrText: OCR文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrText: str
+        :param OcrResult: OCR拼接后文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrResult: str
         """
         self.PatientInfo = None
         self.ReportInfo = None
@@ -2902,6 +2905,7 @@ class Template(AbstractModel):
         self.Prescription = None
         self.VaccineCertificate = None
         self.OcrText = None
+        self.OcrResult = None
 
 
     def _deserialize(self, params):
@@ -2952,6 +2956,7 @@ class Template(AbstractModel):
             self.VaccineCertificate = VaccineCertificate()
             self.VaccineCertificate._deserialize(params.get("VaccineCertificate"))
         self.OcrText = params.get("OcrText")
+        self.OcrResult = params.get("OcrResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

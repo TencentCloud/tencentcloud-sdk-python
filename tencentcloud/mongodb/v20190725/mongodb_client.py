@@ -392,6 +392,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceParams(self, request):
+        """本接口(DescribeInstanceParams)用于查询当前实例可修改的参数列表。
+
+        :param request: Request instance for DescribeInstanceParams.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceParamsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceParams", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceParamsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecurityGroup(self, request):
         """查询实例绑定的安全组
 

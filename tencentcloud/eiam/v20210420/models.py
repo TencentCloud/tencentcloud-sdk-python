@@ -2415,14 +2415,39 @@ class UserInfo(AbstractModel):
         :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayName: str
+        :param UserName: 用户名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Phone: 用户手机号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param Email: 邮箱地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param Status: 用户状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param DataSource: 数据来源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSource: str
         """
         self.UserId = None
         self.DisplayName = None
+        self.UserName = None
+        self.Phone = None
+        self.Email = None
+        self.Status = None
+        self.DataSource = None
 
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.DisplayName = params.get("DisplayName")
+        self.UserName = params.get("UserName")
+        self.Phone = params.get("Phone")
+        self.Email = params.get("Email")
+        self.Status = params.get("Status")
+        self.DataSource = params.get("DataSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
