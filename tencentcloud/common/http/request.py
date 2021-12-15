@@ -101,7 +101,8 @@ class ApiRequest(object):
     def _request(self, req_inter):
         if self.keep_alive:
             req_inter.header["Connection"] = "Keep-Alive"
-        logger.debug("SendRequest %s" % req_inter)
+        if self.debug:
+            logger.debug("SendRequest %s" % req_inter)
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
             self.conn.request(req_inter.method, req_inter_url,
