@@ -304,6 +304,38 @@ class DeleteClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GooseFSOption(AbstractModel):
+    """描述GooseFS挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalPath: 文件系统本地挂载路径
+        :type LocalPath: str
+        :param RemotePath: 文件系统远程挂载路径
+        :type RemotePath: str
+        :param Masters: 文件系统master的ip和端口
+        :type Masters: list of str
+        """
+        self.LocalPath = None
+        self.RemotePath = None
+        self.Masters = None
+
+
+    def _deserialize(self, params):
+        self.LocalPath = params.get("LocalPath")
+        self.RemotePath = params.get("RemotePath")
+        self.Masters = params.get("Masters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceChargePrepaid(AbstractModel):
     """描述了实例的计费模式
 
@@ -491,8 +523,11 @@ class StorageOption(AbstractModel):
         r"""
         :param CFSOptions: 集群挂载CFS文件系统选项
         :type CFSOptions: list of CFSOption
+        :param GooseFSOptions: 集群挂在GooseFS文件系统选项
+        :type GooseFSOptions: list of GooseFSOption
         """
         self.CFSOptions = None
+        self.GooseFSOptions = None
 
 
     def _deserialize(self, params):
@@ -502,6 +537,12 @@ class StorageOption(AbstractModel):
                 obj = CFSOption()
                 obj._deserialize(item)
                 self.CFSOptions.append(obj)
+        if params.get("GooseFSOptions") is not None:
+            self.GooseFSOptions = []
+            for item in params.get("GooseFSOptions"):
+                obj = GooseFSOption()
+                obj._deserialize(item)
+                self.GooseFSOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

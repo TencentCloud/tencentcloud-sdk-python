@@ -83,7 +83,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """该接口用户创建告警通知模板。
+        """该接口用户创建通知渠道组。
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmNoticeRequest`
@@ -391,7 +391,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteAlarmNotice(self, request):
-        """该接口用于删除告警通知模板
+        """该接口用于删除通知渠道组
 
         :param request: Request instance for DeleteAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmNoticeRequest`
@@ -699,7 +699,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """该接口用于获取告警通知模板列表
+        """该接口用于获取通知渠道组列表
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmNoticesRequest`
@@ -727,7 +727,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarms(self, request):
-        """本接口用于获取告警策略。
+        """本接口用于获取告警策略列表。
 
         :param request: Request instance for DescribeAlarms.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmsRequest`
@@ -1315,7 +1315,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """该接口用于修改告警通知模板。
+        """该接口用于修改通知渠道组
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmNoticeRequest`
@@ -1539,7 +1539,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """本接口用于搜索日志
+        """本接口用于搜索日志, 该接口除受默认接口请求频率限制外，针对单个日志主题，并发数不能超过15
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchLogRequest`

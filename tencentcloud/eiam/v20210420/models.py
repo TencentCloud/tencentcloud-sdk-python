@@ -18,6 +18,111 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountGroupInfo(AbstractModel):
+    """查询账号组信息列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupId: 账号组ID。
+        :type AccountGroupId: str
+        :param GroupName: 账号组名。
+        :type GroupName: str
+        :param Description: 备注。
+        :type Description: str
+        :param CreatedDate: 创建时间。
+        :type CreatedDate: str
+        """
+        self.AccountGroupId = None
+        self.GroupName = None
+        self.Description = None
+        self.CreatedDate = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupId = params.get("AccountGroupId")
+        self.GroupName = params.get("GroupName")
+        self.Description = params.get("Description")
+        self.CreatedDate = params.get("CreatedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccountGroupSearchCriteria(AbstractModel):
+    """账号组查询参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Keyword: 关键字
+        :type Keyword: str
+        """
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAccountToAccountGroupRequest(AbstractModel):
+    """AddAccountToAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupId: 账号组ID
+        :type AccountGroupId: str
+        :param AccountIds: 加入账号组的账号ID列表。
+        :type AccountIds: list of str
+        """
+        self.AccountGroupId = None
+        self.AccountIds = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupId = params.get("AccountGroupId")
+        self.AccountIds = params.get("AccountIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAccountToAccountGroupResponse(AbstractModel):
+    """AddAccountToAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddUserToUserGroupRequest(AbstractModel):
     """AddUserToUserGroup请求参数结构体
 
@@ -63,6 +168,79 @@ class AddUserToUserGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AppAccountInfo(AbstractModel):
+    """查询账号信息列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountId: 账号ID。
+        :type AccountId: str
+        :param AccountName: 账号名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param UserList: 用户信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserList: list of LinkUserInfo
+        :param Description: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreatedDate: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedDate: str
+        """
+        self.AccountId = None
+        self.AccountName = None
+        self.UserList = None
+        self.Description = None
+        self.CreatedDate = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.AccountName = params.get("AccountName")
+        if params.get("UserList") is not None:
+            self.UserList = []
+            for item in params.get("UserList"):
+                obj = LinkUserInfo()
+                obj._deserialize(item)
+                self.UserList.append(obj)
+        self.Description = params.get("Description")
+        self.CreatedDate = params.get("CreatedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppAccountSearchCriteria(AbstractModel):
+    """账号查询参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Keyword: 关键字
+        :type Keyword: str
+        """
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicationAuthorizationInfo(AbstractModel):
     """应用信息列表。
 
@@ -79,10 +257,18 @@ class ApplicationAuthorizationInfo(AbstractModel):
         :param InheritedForm: 展示用户所在的用户组、机构节点拥有该应用的访问权限的ID信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InheritedForm: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
+        :param ApplicationName: 应用名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param CreatedDate: 应用创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedDate: str
         """
         self.ApplicationAccounts = None
         self.ApplicationId = None
         self.InheritedForm = None
+        self.ApplicationName = None
+        self.CreatedDate = None
 
 
     def _deserialize(self, params):
@@ -91,6 +277,8 @@ class ApplicationAuthorizationInfo(AbstractModel):
         if params.get("InheritedForm") is not None:
             self.InheritedForm = InheritedForm()
             self.InheritedForm._deserialize(params.get("InheritedForm"))
+        self.ApplicationName = params.get("ApplicationName")
+        self.CreatedDate = params.get("CreatedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -347,6 +535,118 @@ class AuthorizationUserResouceInfo(AbstractModel):
         
 
 
+class CreateAccountGroupRequest(AbstractModel):
+    """CreateAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID。
+        :type ApplicationId: str
+        :param GroupName: 账号组名。
+        :type GroupName: str
+        :param Description: 描述。
+        :type Description: str
+        """
+        self.ApplicationId = None
+        self.GroupName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.GroupName = params.get("GroupName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountGroupResponse(AbstractModel):
+    """CreateAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupId: 账号组ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupId = params.get("AccountGroupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAppAccountRequest(AbstractModel):
+    """CreateAppAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param AccountName: 账号名称
+        :type AccountName: str
+        :param Password: 账号密码
+        :type Password: str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.ApplicationId = None
+        self.AccountName = None
+        self.Password = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.AccountName = params.get("AccountName")
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAppAccountResponse(AbstractModel):
+    """CreateAppAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountId: 账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateOrgNodeRequest(AbstractModel):
     """CreateOrgNode请求参数结构体
 
@@ -537,6 +837,88 @@ class CreateUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAccountGroupRequest(AbstractModel):
+    """DeleteAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupIdList: 账号组ID数组。
+        :type AccountGroupIdList: list of str
+        """
+        self.AccountGroupIdList = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupIdList = params.get("AccountGroupIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountGroupResponse(AbstractModel):
+    """DeleteAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAppAccountRequest(AbstractModel):
+    """DeleteAppAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountIdList: 账号ID数组。
+        :type AccountIdList: list of str
+        """
+        self.AccountIdList = None
+
+
+    def _deserialize(self, params):
+        self.AccountIdList = params.get("AccountIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAppAccountResponse(AbstractModel):
+    """DeleteAppAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteOrgNodeRequest(AbstractModel):
     """DeleteOrgNode请求参数结构体
 
@@ -661,6 +1043,206 @@ class DeleteUserResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUsersRequest(AbstractModel):
+    """DeleteUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeleteIdList: 被删除用户的ID列表。DeleteIdList 和 DeleteNameList 需至少一个不为空；都不为空时优先使用 DeleteNameList。
+        :type DeleteIdList: list of str
+        :param DeleteNameList: 被删除用户的名称列表。DeleteIdList 和 DeleteNameList 需至少一个不为空；都不为空时优先使用 DeleteNameList。
+        :type DeleteNameList: list of str
+        """
+        self.DeleteIdList = None
+        self.DeleteNameList = None
+
+
+    def _deserialize(self, params):
+        self.DeleteIdList = params.get("DeleteIdList")
+        self.DeleteNameList = params.get("DeleteNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUsersResponse(AbstractModel):
+    """DeleteUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedItems: 未被成功删除的用户信息。当业务参数为DeleteIdList时，本字段将返回未成功删除的用户ID列表。当业务参数为DeleteNameList时，本字段将返回未成功删除的用户名称列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedItems: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailedItems = params.get("FailedItems")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountGroupRequest(AbstractModel):
+    """DescribeAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID。
+        :type ApplicationId: str
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.ApplicationId = None
+        self.SearchCondition = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = AccountGroupSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountGroupResponse(AbstractModel):
+    """DescribeAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回查询的总记录数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApplicationId: 应用ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param AccountGroupList: 返回符合条件的数据列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupList: list of AccountGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ApplicationId = None
+        self.AccountGroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("AccountGroupList") is not None:
+            self.AccountGroupList = []
+            for item in params.get("AccountGroupList"):
+                obj = AccountGroupInfo()
+                obj._deserialize(item)
+                self.AccountGroupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAppAccountRequest(AbstractModel):
+    """DescribeAppAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID。
+        :type ApplicationId: str
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AppAccountSearchCriteria`
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.ApplicationId = None
+        self.SearchCondition = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = AppAccountSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppAccountResponse(AbstractModel):
+    """DescribeAppAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回查询的总记录数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApplicationId: 应用ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param AppAccountList: 返回符合条件的数据列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppAccountList: list of AppAccountInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ApplicationId = None
+        self.AppAccountList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.ApplicationId = params.get("ApplicationId")
+        if params.get("AppAccountList") is not None:
+            self.AppAccountList = []
+            for item in params.get("AppAccountList"):
+                obj = AppAccountInfo()
+                obj._deserialize(item)
+                self.AppAccountList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -843,6 +1425,9 @@ class DescribeOrgNodeResponse(AbstractModel):
         :param OrgNodeChildInfo: 当前机构节点下的子节点列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgNodeChildInfo: list of OrgNodeChildInfo
+        :param Description: 机构节点描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -854,6 +1439,7 @@ class DescribeOrgNodeResponse(AbstractModel):
         self.DataSource = None
         self.CreatedDate = None
         self.OrgNodeChildInfo = None
+        self.Description = None
         self.RequestId = None
 
 
@@ -871,6 +1457,7 @@ class DescribeOrgNodeResponse(AbstractModel):
                 obj = OrgNodeChildInfo()
                 obj._deserialize(item)
                 self.OrgNodeChildInfo.append(obj)
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -1206,6 +1793,9 @@ class DescribeUserInfoResponse(AbstractModel):
         :param ActivationTime: 用户激活时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivationTime: str
+        :param PwdNeedReset: 当前用户的密码是否需要重置，该字段为false表示不需要重置密码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PwdNeedReset: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1221,6 +1811,7 @@ class DescribeUserInfoResponse(AbstractModel):
         self.DataSource = None
         self.ExpirationTime = None
         self.ActivationTime = None
+        self.PwdNeedReset = None
         self.RequestId = None
 
 
@@ -1237,6 +1828,7 @@ class DescribeUserInfoResponse(AbstractModel):
         self.DataSource = params.get("DataSource")
         self.ExpirationTime = params.get("ExpirationTime")
         self.ActivationTime = params.get("ActivationTime")
+        self.PwdNeedReset = params.get("PwdNeedReset")
         self.RequestId = params.get("RequestId")
 
 
@@ -1322,6 +1914,69 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
+    """DescribeUserThirdPartyAccountInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 用户名。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
+        :type UserName: str
+        :param UserId: 用户 ID。 Username 和 UserId 需至少一个不为空；都不为空时优先使用 Username。
+        :type UserId: str
+        """
+        self.UserName = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
+    """DescribeUserThirdPartyAccountInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户 id。
+        :type UserId: str
+        :param UserName: 用户名。
+        :type UserName: str
+        :param ThirdPartyAccounts: 三方账号的绑定情况。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThirdPartyAccounts: list of ThirdPartyAccountInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserId = None
+        self.UserName = None
+        self.ThirdPartyAccounts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        if params.get("ThirdPartyAccounts") is not None:
+            self.ThirdPartyAccounts = []
+            for item in params.get("ThirdPartyAccounts"):
+                obj = ThirdPartyAccountInfo()
+                obj._deserialize(item)
+                self.ThirdPartyAccounts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class InheritedForm(AbstractModel):
     """应用信息列表。
 
@@ -1350,6 +2005,111 @@ class InheritedForm(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class LinkUserInfo(AbstractModel):
+    """账号关联的用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户ID，是用户全局唯一标识，长度限制：64个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param UserName: 用户名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self.UserId = None
+        self.UserName = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAccountInAccountGroupRequest(AbstractModel):
+    """ListAccountInAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupId: 账号组ID。
+        :type AccountGroupId: str
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.AccountGroupId = None
+        self.SearchCondition = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupId = params.get("AccountGroupId")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = AccountGroupSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAccountInAccountGroupResponse(AbstractModel):
+    """ListAccountInAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountList: 查询返回的相关账号列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountList: list of AppAccountInfo
+        :param TotalCount: 返回查询账号的总数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param AccountGroupId: 账号组ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountList = None
+        self.TotalCount = None
+        self.AccountGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountList") is not None:
+            self.AccountList = []
+            for item in params.get("AccountList"):
+                obj = AppAccountInfo()
+                obj._deserialize(item)
+                self.AccountList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.AccountGroupId = params.get("AccountGroupId")
+        self.RequestId = params.get("RequestId")
 
 
 class ListApplicationAuthorizationsRequest(AbstractModel):
@@ -1656,12 +2416,32 @@ class ListUserGroupsOfUserRequest(AbstractModel):
         r"""
         :param UserId: 用户ID，是用户的全局唯一标识。
         :type UserId: str
+        :param SearchCondition: 模糊查询条件，支持匹配用户组名称（DisplayName）。如果该字段为空，则默认展示该用户所有的用户组。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserGroupInformationSearchCriteria`
+        :param Sort: 排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、创建时间（CreatedDate）。如果该字段为空，则默认按照用户组名称正向排序。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户组。
+        :type Offset: int
+        :param Limit: 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户组。
+        :type Limit: int
         """
         self.UserId = None
+        self.SearchCondition = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = UserGroupInformationSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1684,17 +2464,32 @@ class ListUserGroupsOfUserResponse(AbstractModel):
         :param UserId: 用户ID，是用户的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
+        :param UserGroupInfoList: 用户所属的用户组信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupInfoList: list of UserGroupInfo
+        :param TotalCount: 返回的用户组信息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.UserGroupIds = None
         self.UserId = None
+        self.UserGroupInfoList = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.UserGroupIds = params.get("UserGroupIds")
         self.UserId = params.get("UserId")
+        if params.get("UserGroupInfoList") is not None:
+            self.UserGroupInfoList = []
+            for item in params.get("UserGroupInfoList"):
+                obj = UserGroupInfo()
+                obj._deserialize(item)
+                self.UserGroupInfoList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1781,14 +2576,34 @@ class ListUsersInOrgNodeRequest(AbstractModel):
         :type OrgNodeId: str
         :param IncludeOrgNodeChildInfo: 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
         :type IncludeOrgNodeChildInfo: bool
+        :param SearchCondition: 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ListUsersInOrgNodeSearchCriteria`
+        :param Sort: 排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        :type Offset: int
+        :param Limit: 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        :type Limit: int
         """
         self.OrgNodeId = None
         self.IncludeOrgNodeChildInfo = None
+        self.SearchCondition = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.OrgNodeId = params.get("OrgNodeId")
         self.IncludeOrgNodeChildInfo = params.get("IncludeOrgNodeChildInfo")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = ListUsersInOrgNodeSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1817,6 +2632,12 @@ class ListUsersInOrgNodeResponse(AbstractModel):
         :param TotalUserNum: 当前机构节点下的用户总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUserNum: int
+        :param OrgNodeIdPath: 组织机构ID路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgNodeIdPath: str
+        :param OrgNodeNamePath: 组织机构名称路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgNodeNamePath: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1824,6 +2645,8 @@ class ListUsersInOrgNodeResponse(AbstractModel):
         self.OrgNodeId = None
         self.UserInfo = None
         self.TotalUserNum = None
+        self.OrgNodeIdPath = None
+        self.OrgNodeNamePath = None
         self.RequestId = None
 
 
@@ -1842,7 +2665,57 @@ class ListUsersInOrgNodeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.UserInfo.append(obj)
         self.TotalUserNum = params.get("TotalUserNum")
+        self.OrgNodeIdPath = params.get("OrgNodeIdPath")
+        self.OrgNodeNamePath = params.get("OrgNodeNamePath")
         self.RequestId = params.get("RequestId")
+
+
+class ListUsersInOrgNodeSearchCriteria(AbstractModel):
+    """展示机构下用户的属性搜索条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 用户名，长度限制：64个字符。
+        :type UserName: str
+        :param Phone: 用户手机号。
+        :type Phone: str
+        :param Email: 用户邮箱。
+        :type Email: str
+        :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+        :type Status: str
+        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
+        :type CreationTime: str
+        :param LastUpdateTime: 用户上次更新时间。
+        :type LastUpdateTime: str
+        :param Keyword: 名称匹配搜索，匹配范围包括：用户名称、用户手机号。
+        :type Keyword: str
+        """
+        self.UserName = None
+        self.Phone = None
+        self.Email = None
+        self.Status = None
+        self.CreationTime = None
+        self.LastUpdateTime = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Phone = params.get("Phone")
+        self.Email = params.get("Email")
+        self.Status = params.get("Status")
+        self.CreationTime = params.get("CreationTime")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ListUsersInUserGroupRequest(AbstractModel):
@@ -1986,6 +2859,108 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAccountGroupRequest(AbstractModel):
+    """ModifyAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupId: 账号组ID。
+        :type AccountGroupId: str
+        :param GroupName: 账号组名。未传入该参数时，表示不进行修改。
+        :type GroupName: str
+        :param Description: 描述，未传入该参数时，表示不进行修改。
+        :type Description: str
+        """
+        self.AccountGroupId = None
+        self.GroupName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupId = params.get("AccountGroupId")
+        self.GroupName = params.get("GroupName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountGroupResponse(AbstractModel):
+    """ModifyAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAppAccountRequest(AbstractModel):
+    """ModifyAppAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountId: 账号ID。
+        :type AccountId: str
+        :param AccountName: 账号名称。未传入该参数时，表示不进行修改。
+        :type AccountName: str
+        :param Password: 账号密码。未传入该参数时，表示不进行修改。
+        :type Password: str
+        :param Description: 描述，未传入该参数时，表示不进行修改。
+        :type Description: str
+        """
+        self.AccountId = None
+        self.AccountName = None
+        self.Password = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.AccountName = params.get("AccountName")
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAppAccountResponse(AbstractModel):
+    """ModifyAppAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyApplicationRequest(AbstractModel):
     """ModifyApplication请求参数结构体
 
@@ -2074,6 +3049,8 @@ class ModifyUserInfoRequest(AbstractModel):
         :type Email: str
         :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。
         :type PwdNeedReset: bool
+        :param OrgNodeId: 用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
+        :type OrgNodeId: str
         """
         self.UserName = None
         self.DisplayName = None
@@ -2085,6 +3062,7 @@ class ModifyUserInfoRequest(AbstractModel):
         self.Password = None
         self.Email = None
         self.PwdNeedReset = None
+        self.OrgNodeId = None
 
 
     def _deserialize(self, params):
@@ -2098,6 +3076,7 @@ class ModifyUserInfoRequest(AbstractModel):
         self.Password = params.get("Password")
         self.Email = params.get("Email")
         self.PwdNeedReset = params.get("PwdNeedReset")
+        self.OrgNodeId = params.get("OrgNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2152,6 +3131,9 @@ class OrgNodeChildInfo(AbstractModel):
         :param CreatedDate: 机构节点创建时间，符合 ISO8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedDate: str
+        :param Description: 机构节点描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self.DisplayName = None
         self.LastModifiedDate = None
@@ -2160,6 +3142,7 @@ class OrgNodeChildInfo(AbstractModel):
         self.OrgNodeId = None
         self.DataSource = None
         self.CreatedDate = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -2170,6 +3153,7 @@ class OrgNodeChildInfo(AbstractModel):
         self.OrgNodeId = params.get("OrgNodeId")
         self.DataSource = params.get("DataSource")
         self.CreatedDate = params.get("CreatedDate")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2195,10 +3179,18 @@ class OrgNodeChildUserInfo(AbstractModel):
         :param TotalUserNum: 当前机构节点下的用户总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalUserNum: int
+        :param OrgNodeIdPath: 组织机构ID路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgNodeIdPath: str
+        :param OrgNodeNamePath: 组织机构名称路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgNodeNamePath: str
         """
         self.OrgNodeId = None
         self.UserInfo = None
         self.TotalUserNum = None
+        self.OrgNodeIdPath = None
+        self.OrgNodeNamePath = None
 
 
     def _deserialize(self, params):
@@ -2210,6 +3202,8 @@ class OrgNodeChildUserInfo(AbstractModel):
                 obj._deserialize(item)
                 self.UserInfo.append(obj)
         self.TotalUserNum = params.get("TotalUserNum")
+        self.OrgNodeIdPath = params.get("OrgNodeIdPath")
+        self.OrgNodeNamePath = params.get("OrgNodeNamePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2217,6 +3211,51 @@ class OrgNodeChildUserInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RemoveAccountFromAccountGroupRequest(AbstractModel):
+    """RemoveAccountFromAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountGroupId: 账号组ID
+        :type AccountGroupId: str
+        :param AccountIds: 需要移除账号ID列表。
+        :type AccountIds: list of str
+        """
+        self.AccountGroupId = None
+        self.AccountIds = None
+
+
+    def _deserialize(self, params):
+        self.AccountGroupId = params.get("AccountGroupId")
+        self.AccountIds = params.get("AccountIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveAccountFromAccountGroupResponse(AbstractModel):
+    """RemoveAccountFromAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RemoveUserFromUserGroupRequest(AbstractModel):
@@ -2292,6 +3331,36 @@ class SortCondition(AbstractModel):
         
 
 
+class ThirdPartyAccountInfo(AbstractModel):
+    """三方账号信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountCode: 第三方账号代码。"2"代表企业微信。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountCode: str
+        :param AccountName: 账号对应的用户名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        """
+        self.AccountCode = None
+        self.AccountName = None
+
+
+    def _deserialize(self, params):
+        self.AccountCode = params.get("AccountCode")
+        self.AccountName = params.get("AccountName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateOrgNodeRequest(AbstractModel):
     """UpdateOrgNode请求参数结构体
 
@@ -2345,6 +3414,46 @@ class UpdateOrgNodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UserGroupInfo(AbstractModel):
+    """返回的用户组列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param UserGroupId: 用户组ID，是用户组全局唯一标识，长度限制：64个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupId: str
+        :param Description: 用户组备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreatedDate: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedDate: str
+        """
+        self.DisplayName = None
+        self.UserGroupId = None
+        self.Description = None
+        self.CreatedDate = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.UserGroupId = params.get("UserGroupId")
+        self.Description = params.get("Description")
+        self.CreatedDate = params.get("CreatedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserGroupInfoSearchCriteria(AbstractModel):
     """用户组属性搜索条件。
 
@@ -2393,6 +3502,30 @@ class UserGroupInformation(AbstractModel):
         self.UserGroupId = params.get("UserGroupId")
         self.UserGroupName = params.get("UserGroupName")
         self.LastModifiedDate = params.get("LastModifiedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroupInformationSearchCriteria(AbstractModel):
+    """获取用户所在的用户组列表功能中用户组属性搜索条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Keyword: 名称匹配搜索，匹配范围包括：用户组名称。
+        :type Keyword: str
+        """
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

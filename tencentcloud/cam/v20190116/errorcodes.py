@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 没有权限。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 

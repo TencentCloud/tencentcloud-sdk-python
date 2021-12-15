@@ -3304,7 +3304,8 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
         :param EventType: 事件类型。
 0: "断流",
 1: "推流",
-100: "录制"。
+100: "录制"
+200: "截图回调"。
         :type EventType: int
         :param ResultCode: 回调结果。
 0为成功，其他为失败。
@@ -4312,6 +4313,13 @@ class DescribeLivePackageInfoResponse(AbstractModel):
         :param PageSize: 当前每页数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
+        :param FluxPackageBillMode: 当请求参数 PackageType = 0 时生效，逗号分隔，从第一个到最后一个分别表示：
+标准直播，中国大陆（境内全地区）计费方式。
+标准直播，国际/港澳台（境外多地区）计费方式。
+快直播，中国大陆（境内全地区）计费方式。
+快直播，国际/港澳台（境外多地区）计费方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FluxPackageBillMode: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4321,6 +4329,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
         self.TotalNum = None
         self.PageNum = None
         self.PageSize = None
+        self.FluxPackageBillMode = None
         self.RequestId = None
 
 
@@ -4336,6 +4345,7 @@ class DescribeLivePackageInfoResponse(AbstractModel):
         self.TotalNum = params.get("TotalNum")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.FluxPackageBillMode = params.get("FluxPackageBillMode")
         self.RequestId = params.get("RequestId")
 
 

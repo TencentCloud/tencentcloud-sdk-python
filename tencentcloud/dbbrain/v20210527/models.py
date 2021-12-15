@@ -674,6 +674,80 @@ class DescribeDBDiagEventResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBDiagEventsRequest(AbstractModel):
+    """DescribeDBDiagEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+        :type StartTime: str
+        :param EndTime: 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
+        :type EndTime: str
+        :param Severities: 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
+        :type Severities: list of int
+        :param InstanceIds: 实例ID列表。
+        :type InstanceIds: list of str
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param Limit: 返回数量，默认20，最大值为50。
+        :type Limit: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Severities = None
+        self.InstanceIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Severities = params.get("Severities")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBDiagEventsResponse(AbstractModel):
+    """DescribeDBDiagEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 诊断事件的总数目。
+        :type TotalCount: int
+        :param Items: 诊断事件的列表。
+        :type Items: list of DiagHistoryEventItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = DiagHistoryEventItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBDiagHistoryRequest(AbstractModel):
     """DescribeDBDiagHistory请求参数结构体
 

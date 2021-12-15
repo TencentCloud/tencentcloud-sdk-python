@@ -2317,6 +2317,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterEipEipAddressStatus: list of str
         :param FilterDamDDoSStatus: 是否只获取安全加速实例。填写时，只能填写1或者0。当填写1时，表示返回安全加速实例。当填写0时，表示返回非安全加速实例。
         :type FilterDamDDoSStatus: int
+        :param FilterStatus: 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking
+        :type FilterStatus: str
         """
         self.Offset = None
         self.Limit = None
@@ -2328,6 +2330,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterEipType = None
         self.FilterEipEipAddressStatus = None
         self.FilterDamDDoSStatus = None
+        self.FilterStatus = None
 
 
     def _deserialize(self, params):
@@ -2341,6 +2344,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterEipType = params.get("FilterEipType")
         self.FilterEipEipAddressStatus = params.get("FilterEipEipAddressStatus")
         self.FilterDamDDoSStatus = params.get("FilterDamDDoSStatus")
+        self.FilterStatus = params.get("FilterStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2401,6 +2405,10 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterName: str
         :param FilterLine: 按照线路搜索, 1: BGP; 2: 三网
         :type FilterLine: int
+        :param FilterStatus: 状态搜索，idle：允许中；attacking：攻击中；blocking：封堵中
+        :type FilterStatus: str
+        :param FilterBoundStatus: 高防包绑定状态搜索，bounding：绑定中； failed：绑定失败
+        :type FilterBoundStatus: str
         """
         self.Offset = None
         self.Limit = None
@@ -2409,6 +2417,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterRegion = None
         self.FilterName = None
         self.FilterLine = None
+        self.FilterStatus = None
+        self.FilterBoundStatus = None
 
 
     def _deserialize(self, params):
@@ -2419,6 +2429,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterRegion = params.get("FilterRegion")
         self.FilterName = params.get("FilterName")
         self.FilterLine = params.get("FilterLine")
+        self.FilterStatus = params.get("FilterStatus")
+        self.FilterBoundStatus = params.get("FilterBoundStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

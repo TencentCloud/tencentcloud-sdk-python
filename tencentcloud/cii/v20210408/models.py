@@ -232,7 +232,7 @@ class CreateStructureTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: 任务类型
+        :param TaskType: 任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
         :type TaskType: str
         :param FileList: 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
         :type FileList: list of str
@@ -767,7 +767,7 @@ class InsuranceResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InsuranceType: 险种
+        :param InsuranceType: 险种:CriticalDiseaseInsurance(重疾险);LifeInsurance(寿险);AccidentInsurance(意外险);MedicalInsurance(医疗险)
         :type InsuranceType: str
         :param Result: 对应险种的机器核保结果
         :type Result: list of MachinePredict
@@ -894,7 +894,7 @@ class PerStructDifference(AbstractModel):
         r"""
         :param SubTaskId: 子任务ID
         :type SubTaskId: str
-        :param TaskType: 任务类型
+        :param TaskType: 任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
         :type TaskType: str
         :param ModifyItems: 修改的项
         :type ModifyItems: list of StructureModifyItem
@@ -991,7 +991,7 @@ class ReviewDataTaskInfo(AbstractModel):
         :type SubTaskId: str
         :param TaskName: 任务名
         :type TaskName: str
-        :param TaskType: 任务类型
+        :param TaskType: 任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
         :type TaskType: str
         """
         self.MainTaskId = None
@@ -1086,9 +1086,9 @@ class StructureResultObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 0表示正常返回
+        :param Code: 0表示正常返回；1代表结果未生成；2代表任务执行失败
         :type Code: int
-        :param TaskType: 报告类型
+        :param TaskType: 报告类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
         :type TaskType: str
         :param StructureResult: 结构化结果
         :type StructureResult: str

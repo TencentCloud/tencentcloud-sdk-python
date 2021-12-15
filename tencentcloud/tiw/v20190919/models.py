@@ -2148,17 +2148,13 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
         :type UserDefinedStreamId: str
         :param ExtraData: 内部参数，不需要关注此参数
         :type ExtraData: str
-        :param TRTCRoomId: **内部体验字段，若需要体验可以提工单申请开通体验**
-
-TRTC数字类型房间号，取值范围: (1, 4294967295)。
+        :param TRTCRoomId: TRTC数字类型房间号，取值范围: (1, 4294967295)。
 
 在同时指定了RoomId与TRTCRoomId的情况下，优先使用TRTCRoomId作为白板流进行推流的TRTC房间号。
 
 当指定了TRTCRoomIdStr的情况下，此字段将被忽略。
         :type TRTCRoomId: int
-        :param TRTCRoomIdStr: **内部体验字段，若需要体验可以提工单申请开通体验**
-
-TRTC字符串类型房间号。
+        :param TRTCRoomIdStr: TRTC字符串类型房间号。
 
 在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
         :type TRTCRoomIdStr: str

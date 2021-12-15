@@ -38,6 +38,9 @@ INTERNALERROR_INTERNALSERVEREXCEPTIONDB = 'InternalError.InternalServerException
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 通道状态在线。
+INVALIDPARAMETER_DEVICEONLINE = 'InvalidParameter.DeviceOnline'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -73,6 +76,9 @@ INVALIDPARAMETERVALUE_GROUPPARMSERROR = 'InvalidParameterValue.GroupParmsError'
 
 # 回看流不存在。
 INVALIDPARAMETERVALUE_RECORDNOTEXIST = 'InvalidParameterValue.RecordNotExist'
+
+# 最多创建100个录制计划。
+INVALIDPARAMETERVALUE_RECORDPLANBEYONDLIMIT = 'InvalidParameterValue.RecordPlanBeyondLimit'
 
 # 流Id不合法。
 INVALIDPARAMETERVALUE_STREAMID = 'InvalidParameterValue.StreamId'
@@ -184,6 +190,9 @@ UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = 'UnsupportedOperation.PlanExistUnd
 
 # 该名字录制计划已创建，请修改其他计划名字。
 UNSUPPORTEDOPERATION_RECORDPLANEXIST = 'UnsupportedOperation.RecordPlanExist'
+
+# 已存在同名场景。
+UNSUPPORTEDOPERATION_SCENEEXIST = 'UnsupportedOperation.SceneExist'
 
 # 子分组数量超过最大值。
 UNSUPPORTEDOPERATION_SUBGROUPISMAX = 'UnsupportedOperation.SubGroupIsMax'
