@@ -26,6 +26,34 @@ class ThpcClient(AbstractClient):
     _service = 'thpc'
 
 
+    def BindAutoScalingGroup(self, request):
+        """本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+
+        :param request: Request instance for BindAutoScalingGroup.
+        :type request: :class:`tencentcloud.thpc.v20211109.models.BindAutoScalingGroupRequest`
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.BindAutoScalingGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindAutoScalingGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindAutoScalingGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCluster(self, request):
         """本接口 (CreateCluster) 用于创建并启动集群。
 

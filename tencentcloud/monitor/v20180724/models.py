@@ -4845,6 +4845,104 @@ class DescribeProductListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusInstancesRequest(AbstractModel):
+    """DescribePrometheusInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+        :type InstanceIds: list of str
+        :param InstanceStatus: 按照【实例状态】进行过滤。
+<ul>
+<li>1：正在创建</li>
+<li>2：运行中</li>
+<li>3：异常</li>
+<li>4：重建中</li>
+<li>5：销毁中</li>
+<li>6：已停服</li>
+<li>8：欠费停服中</li>
+<li>9：欠费已停服</li>
+</ul>
+        :type InstanceStatus: list of int
+        :param InstanceName: 按照【实例名称】进行过滤。
+        :type InstanceName: str
+        :param Zones: 按照【可用区】进行过滤。可用区形如：ap-guangzhou-1。
+        :type Zones: list of str
+        :param TagFilters: 按照【标签键值对】进行过滤。tag-key使用具体的标签键进行替换。
+        :type TagFilters: list of PrometheusTag
+        :param IPv4Address: 按照【实例的IPv4地址】进行过滤。
+        :type IPv4Address: list of str
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.InstanceIds = None
+        self.InstanceStatus = None
+        self.InstanceName = None
+        self.Zones = None
+        self.TagFilters = None
+        self.IPv4Address = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.InstanceName = params.get("InstanceName")
+        self.Zones = params.get("Zones")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.IPv4Address = params.get("IPv4Address")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusInstancesResponse(AbstractModel):
+    """DescribePrometheusInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceSet: 实例详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSet: list of PrometheusInstancesItem
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = PrometheusInstancesItem()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeServiceDiscoveryRequest(AbstractModel):
     """DescribeServiceDiscovery请求参数结构体
 
@@ -6244,6 +6342,239 @@ class ProductSimple(AbstractModel):
         
 
 
+class PrometheusInstanceGrantInfo(AbstractModel):
+    """实例的授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HasChargeOperation: 是否有计费操作权限(1=有，2=无)
+        :type HasChargeOperation: int
+        :param HasVpcDisplay: 是否显示VPC信息的权限(1=有，2=无)
+        :type HasVpcDisplay: int
+        :param HasGrafanaStatusChange: 是否可修改Grafana的状态(1=有，2=无)
+        :type HasGrafanaStatusChange: int
+        :param HasAgentManage: 是否有管理agent的权限(1=有，2=无)
+        :type HasAgentManage: int
+        :param HasTkeManage: 是否有管理TKE集成的权限(1=有，2=无)
+        :type HasTkeManage: int
+        :param HasApiOperation: 是否显示API等信息(1=有, 2=无)
+        :type HasApiOperation: int
+        """
+        self.HasChargeOperation = None
+        self.HasVpcDisplay = None
+        self.HasGrafanaStatusChange = None
+        self.HasAgentManage = None
+        self.HasTkeManage = None
+        self.HasApiOperation = None
+
+
+    def _deserialize(self, params):
+        self.HasChargeOperation = params.get("HasChargeOperation")
+        self.HasVpcDisplay = params.get("HasVpcDisplay")
+        self.HasGrafanaStatusChange = params.get("HasGrafanaStatusChange")
+        self.HasAgentManage = params.get("HasAgentManage")
+        self.HasTkeManage = params.get("HasTkeManage")
+        self.HasApiOperation = params.get("HasApiOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusInstancesItem(AbstractModel):
+    """Prometheus 服务响应体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param InstanceName: 实例名称。
+        :type InstanceName: str
+        :param InstanceChargeType: 实例计费模式。取值范围：
+<ul>
+<li>2：包年包月</li>
+<li>3：按量</li>
+</ul>
+        :type InstanceChargeType: int
+        :param RegionId: 地域 ID
+        :type RegionId: int
+        :param Zone: 可用区
+        :type Zone: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: 子网 ID
+        :type SubnetId: str
+        :param DataRetentionTime: 存储周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataRetentionTime: int
+        :param InstanceStatus: 实例业务状态。取值范围：
+<ul>
+<li>1：正在创建</li>
+<li>2：运行中</li>
+<li>3：异常</li>
+<li>4：重建中</li>
+<li>5：销毁中</li>
+<li>6：已停服</li>
+<li>8：欠费停服中</li>
+<li>9：欠费已停服</li>
+</ul>
+        :type InstanceStatus: int
+        :param GrafanaURL: Grafana 面板 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaURL: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param EnableGrafana: 是否开启 Grafana
+<li>0：不开启</li>
+<li>1：开启</li>
+        :type EnableGrafana: int
+        :param IPv4Address: 实例IPV4地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv4Address: str
+        :param TagSpecification: 实例关联的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: list of PrometheusTag
+        :param ExpireTime: 购买的实例过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param ChargeStatus: 计费状态
+<ul>
+<li>1：正常</li>
+<li>2：过期</li>
+<li>3：销毁</li>
+<li>4：分配中</li>
+<li>5：分配失败</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeStatus: int
+        :param SpecName: 规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        :param AutoRenewFlag: 自动续费标记
+<ul>
+<li>0：不自动续费</li>
+<li>1：开启自动续费</li>
+<li>2：禁止自动续费</li>
+<li>-1：无效</ii>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param IsNearExpire: 是否快过期
+<ul>
+<li>0：否</li>
+<li>1：快过期</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNearExpire: int
+        :param AuthToken: 数据写入需要的 Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthToken: str
+        :param RemoteWrite: Prometheus Remote Write 的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteWrite: str
+        :param ApiRootPath: Prometheus HTTP Api 根地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiRootPath: str
+        :param ProxyAddress: Proxy 的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyAddress: str
+        :param GrafanaStatus: Grafana 运行状态
+<ul>
+<li>1：正在创建</li>
+<li>2：运行中</li>
+<li>3：异常</li>
+<li>4：重启中</li>
+<li>5：销毁中</li>
+<li>6：已停机</li>
+<li>7：已删除</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaStatus: int
+        :param GrafanaIpWhiteList: Grafana IP 白名单列表，使用英文分号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaIpWhiteList: str
+        :param Grant: 实例的授权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grant: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceChargeType = None
+        self.RegionId = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DataRetentionTime = None
+        self.InstanceStatus = None
+        self.GrafanaURL = None
+        self.CreatedAt = None
+        self.EnableGrafana = None
+        self.IPv4Address = None
+        self.TagSpecification = None
+        self.ExpireTime = None
+        self.ChargeStatus = None
+        self.SpecName = None
+        self.AutoRenewFlag = None
+        self.IsNearExpire = None
+        self.AuthToken = None
+        self.RemoteWrite = None
+        self.ApiRootPath = None
+        self.ProxyAddress = None
+        self.GrafanaStatus = None
+        self.GrafanaIpWhiteList = None
+        self.Grant = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.RegionId = params.get("RegionId")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.GrafanaURL = params.get("GrafanaURL")
+        self.CreatedAt = params.get("CreatedAt")
+        self.EnableGrafana = params.get("EnableGrafana")
+        self.IPv4Address = params.get("IPv4Address")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.ExpireTime = params.get("ExpireTime")
+        self.ChargeStatus = params.get("ChargeStatus")
+        self.SpecName = params.get("SpecName")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.IsNearExpire = params.get("IsNearExpire")
+        self.AuthToken = params.get("AuthToken")
+        self.RemoteWrite = params.get("RemoteWrite")
+        self.ApiRootPath = params.get("ApiRootPath")
+        self.ProxyAddress = params.get("ProxyAddress")
+        self.GrafanaStatus = params.get("GrafanaStatus")
+        self.GrafanaIpWhiteList = params.get("GrafanaIpWhiteList")
+        if params.get("Grant") is not None:
+            self.Grant = PrometheusInstanceGrantInfo()
+            self.Grant._deserialize(params.get("Grant"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusRuleKV(AbstractModel):
     """prometheus 报警规则 KV 参数
 
@@ -6353,6 +6684,35 @@ class PrometheusRuleSet(AbstractModel):
         self.Health = params.get("Health")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusTag(AbstractModel):
+    """Prometheus 托管服务标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签的健值
+        :type Key: str
+        :param Value: 标签对应的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

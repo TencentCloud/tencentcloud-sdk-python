@@ -1089,6 +1089,79 @@ class DetectInfoVideoData(AbstractModel):
         
 
 
+class DetectReflectLivenessAndCompareRequest(AbstractModel):
+    """DetectReflectLivenessAndCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LiveDataUrl: SDK生成的数据包活体数据包的资源地址。
+        :type LiveDataUrl: str
+        :param LiveDataMd5: SDK生成的数据包活体数据包的资源Md5。
+        :type LiveDataMd5: str
+        :param ImageUrl: 用于比对的目标图片的资源地址。
+        :type ImageUrl: str
+        :param ImageMd5: 用于比对的目标图片的资源Md5。
+        :type ImageMd5: str
+        """
+        self.LiveDataUrl = None
+        self.LiveDataMd5 = None
+        self.ImageUrl = None
+        self.ImageMd5 = None
+
+
+    def _deserialize(self, params):
+        self.LiveDataUrl = params.get("LiveDataUrl")
+        self.LiveDataMd5 = params.get("LiveDataMd5")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageMd5 = params.get("ImageMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectReflectLivenessAndCompareResponse(AbstractModel):
+    """DetectReflectLivenessAndCompare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BestFrameUrl: 验证通过后的视频最佳截图照片资源地址，jpg格式。
+        :type BestFrameUrl: str
+        :param BestFrameMd5: 验证通过后的视频最佳截图照片资源Md5。
+        :type BestFrameMd5: str
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+        :type Sim: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BestFrameUrl = None
+        self.BestFrameMd5 = None
+        self.Result = None
+        self.Description = None
+        self.Sim = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BestFrameUrl = params.get("BestFrameUrl")
+        self.BestFrameMd5 = params.get("BestFrameMd5")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.Sim = params.get("Sim")
+        self.RequestId = params.get("RequestId")
+
+
 class EidInfo(AbstractModel):
     """Eid出参，包括商户方用户的标识和加密的用户姓名身份证信息。
 

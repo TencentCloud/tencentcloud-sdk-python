@@ -253,6 +253,7 @@ class CreateGroupRequest(AbstractModel):
 类型： 
 1: 通用图库，以用户输入图提取特征。
 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+3: 针对电商（通用品类）和logo优化。
         :type GroupType: int
         """
         self.GroupId = None
@@ -1465,6 +1466,42 @@ class ImageInfo(AbstractModel):
         
 
 
+class ImageRect(AbstractModel):
+    """图像主体区域坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param X: 左上角横坐标。
+        :type X: int
+        :param Y: 左上角纵坐标。
+        :type Y: int
+        :param Width: 宽度。
+        :type Width: int
+        :param Height: 高度。
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Labels(AbstractModel):
     """名人识别的标签
 
@@ -1820,6 +1857,8 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         :type Limit: int
         :param Filter: 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
         :type Filter: str
+        :param ImageRect: 图像主体区域。
+        :type ImageRect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
         """
         self.GroupId = None
         self.ImageUrl = None
@@ -1828,6 +1867,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Offset = None
         self.Limit = None
         self.Filter = None
+        self.ImageRect = None
 
 
     def _deserialize(self, params):
@@ -1838,6 +1878,9 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Filter = params.get("Filter")
+        if params.get("ImageRect") is not None:
+            self.ImageRect = ImageRect()
+            self.ImageRect._deserialize(params.get("ImageRect"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

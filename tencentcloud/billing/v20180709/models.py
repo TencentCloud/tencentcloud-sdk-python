@@ -2940,7 +2940,7 @@ cdn业务：
 100762 视频直播宽带(海外)
         :type ProductCode: str
         :param Domain: 查询域名 例如 www.qq.com
-非CDN业务查询时值为空
+非CDN业务查询时传入空字符串，返回的值为空
         :type Domain: str
         :param InstanceID: 1、如果为空，则返回EIP或CLB所有实例的明细；
 2、如果传入实例名，则返回该实例明细

@@ -234,6 +234,54 @@ class Credentials(AbstractModel):
         
 
 
+class GetCallerIdentityRequest(AbstractModel):
+    """GetCallerIdentity请求参数结构体
+
+    """
+
+
+class GetCallerIdentityResponse(AbstractModel):
+    """GetCallerIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Arn: 当前调用者ARN。
+        :type Arn: str
+        :param AccountId: 当前调用者所属主账号Uin。
+        :type AccountId: str
+        :param UserId: 身份标识。
+1. 调用者是云账号时，返回的是当前账号Uin
+2. 调用者是角色时，返回的是roleId:roleSessionName
+3. 调用者是联合身份时，返回的是uin:federatedUserName
+        :type UserId: str
+        :param PrincipalId: 密钥所属账号Uin。
+1. 调用者是云账号，返回的当前账号Uin
+2, 调用者是角色，返回的申请角色密钥的账号Uin
+        :type PrincipalId: str
+        :param Type: 身份类型。
+        :type Type: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Arn = None
+        self.AccountId = None
+        self.UserId = None
+        self.PrincipalId = None
+        self.Type = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Arn = params.get("Arn")
+        self.AccountId = params.get("AccountId")
+        self.UserId = params.get("UserId")
+        self.PrincipalId = params.get("PrincipalId")
+        self.Type = params.get("Type")
+        self.RequestId = params.get("RequestId")
+
+
 class GetFederationTokenRequest(AbstractModel):
     """GetFederationToken请求参数结构体
 

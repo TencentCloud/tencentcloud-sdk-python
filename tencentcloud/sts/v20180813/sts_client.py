@@ -82,6 +82,35 @@ class StsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetCallerIdentity(self, request):
+        """获取当前调用者的身份信息。
+        接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时凭据的身份获取。
+
+        :param request: Request instance for GetCallerIdentity.
+        :type request: :class:`tencentcloud.sts.v20180813.models.GetCallerIdentityRequest`
+        :rtype: :class:`tencentcloud.sts.v20180813.models.GetCallerIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCallerIdentity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCallerIdentityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFederationToken(self, request):
         """获取联合身份临时访问凭证
 

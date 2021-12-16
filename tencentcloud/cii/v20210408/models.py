@@ -802,7 +802,7 @@ class MachinePredict(AbstractModel):
         r"""
         :param Title: 核保引擎名称
         :type Title: str
-        :param Conclusion: 核保结论
+        :param Conclusion: 核保结论：加费、承保、拒保、延期、除外、加费+除外
         :type Conclusion: str
         :param Explanation: AI决策树解释
         :type Explanation: list of UnderwriteItem

@@ -119,6 +119,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachDisks(self, request):
+        """本接口（AttachDisks）用于挂载一个或多个弹性云盘。
+
+        :param request: Request instance for AttachDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.AttachDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.AttachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBlueprint(self, request):
         """本接口 (CreateBlueprint) 用于创建镜像。
 
@@ -503,6 +531,146 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDiskConfigs(self, request):
+        """本接口（DescribeDiskConfigs）用于查询磁盘配置。
+
+        :param request: Request instance for DescribeDiskConfigs.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskConfigsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiskConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskDiscount(self, request):
+        """本接口(DescribeDiskDiscount)用于查询云硬盘折扣信息
+
+        :param request: Request instance for DescribeDiskDiscount.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskDiscountRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskDiscountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiskDiscount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskDiscountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisks(self, request):
+        """本接口（DescribeDisks）用于查询磁盘信息。
+
+        :param request: Request instance for DescribeDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisksDeniedActions(self, request):
+        """本接口（DescribeDisksDeniedActions）用于查询一个或多个磁盘的操作限制列表信息
+
+        :param request: Request instance for DescribeDisksDeniedActions.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksDeniedActionsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksDeniedActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisksDeniedActions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksDeniedActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDisksReturnable(self, request):
+        """本接口（DescribeDisksReturnable）用于查询磁盘是否可退还。
+
+        :param request: Request instance for DescribeDisksReturnable.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksReturnableRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksReturnableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDisksReturnable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDisksReturnableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFirewallRules(self, request):
         """本接口（DescribeFirewallRules）用于查询实例的防火墙规则。
 
@@ -695,6 +863,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDeniedActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstancesDiskNum(self, request):
+        """本接口(DescribeInstancesDiskNum)用于查询实例挂载云盘数量。
+
+        :param request: Request instance for DescribeInstancesDiskNum.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDiskNumRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDiskNumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstancesDiskNum", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesDiskNumResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -989,6 +1185,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachDisks(self, request):
+        """本接口（DetachDisks）用于卸载一个或多个弹性云盘。
+
+        :param request: Request instance for DetachDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DetachDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateInstancesKeyPairs(self, request):
         """本接口（DisassociateInstancesKeyPairs）用于解除实例与指定密钥对的绑定关系。
 
@@ -1079,6 +1303,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquirePriceCreateDisks(self, request):
+        """本接口（InquirePriceCreateDisks）用于新购磁盘询价。
+
+        :param request: Request instance for InquirePriceCreateDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceCreateDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceCreateDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceCreateInstances(self, request):
         """本接口（InquiryPriceCreateInstances）用于创建实例询价。
 
@@ -1093,6 +1345,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceRenewDisks(self, request):
+        """本接口（InquirePriceRenewDisks）用于续费磁盘询价。
+
+        :param request: Request instance for InquirePriceRenewDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceRenewDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceRenewDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1149,6 +1429,62 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlueprintAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDisksAttribute(self, request):
+        """本接口(ModifyDisksAttribute)用于修改磁盘属性
+
+        :param request: Request instance for ModifyDisksAttribute.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksAttributeRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDisksAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDisksAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDisksRenewFlag(self, request):
+        """本接口（ModifyDisksRenewFlag）用于修改磁盘续费标识。
+
+        :param request: Request instance for ModifyDisksRenewFlag.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDisksRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDisksRenewFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1538,6 +1874,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateDisks(self, request):
+        """本接口（TerminateDisks）用于销毁一个或多个磁盘。
+
+        :param request: Request instance for TerminateDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDisksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

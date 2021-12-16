@@ -669,17 +669,17 @@ class DescribeLogListRequest(AbstractModel):
         r"""
         :param Sort: 排序方式  desc  asc
         :type Sort: str
-        :param ActionType: searchlog   histogram
+        :param ActionType: searchlog  histogram
         :type ActionType: str
         :param ID: 项目ID
         :type ID: int
         :param StartTime: 开始时间
         :type StartTime: str
-        :param Limit: 限制
+        :param Limit: 单次查询返回的原始日志条数，最大值为100
         :type Limit: int
-        :param Context: 上下文
+        :param Context: 上下文，加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容，总计最多可获取1万条原始日志。过期时间1小时
         :type Context: str
-        :param Query: 查询语句
+        :param Query: 查询语句，语句长度最大为4096
         :type Query: str
         :param EndTime: 结束时间
         :type EndTime: str

@@ -902,6 +902,38 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusInstances(self, request):
+        """本接口 (DescribePrometheusInstances) 用于查询一个或多个实例的详细信息。
+        <ul>
+        <li>可以根据实例ID、实例名称或者实例状态等信息来查询实例的详细信息</li>
+        <li>如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的实例。</li>
+        </ul>
+
+        :param request: Request instance for DescribePrometheusInstances.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeServiceDiscovery(self, request):
         """列出在腾讯云容器服务下创建的 Prometheus 服务发现。
         <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考

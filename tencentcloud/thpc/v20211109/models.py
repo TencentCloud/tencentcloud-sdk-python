@@ -18,6 +18,79 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BindAutoScalingGroupRequest(AbstractModel):
+    """BindAutoScalingGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param LaunchConfigurationId: 弹性伸缩启动配置ID。
+        :type LaunchConfigurationId: str
+        :param AutoScalingGroupId: 弹性伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param ExpansionBusyTime: 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
+        :type ExpansionBusyTime: int
+        :param ShrinkIdleTime: 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
+        :type ShrinkIdleTime: int
+        :param EnableAutoExpansion: 是否开启自动扩容，默认值true。
+        :type EnableAutoExpansion: bool
+        :param EnableAutoShrink: 是否开启自动缩容，默认值true。
+        :type EnableAutoShrink: bool
+        :param DryRun: 是否只预检此次请求。
+true：发送检查请求，不会绑定弹性伸缩组。检查项包括是否填写了必需参数，请求格式，业务限制。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId。
+false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩组。
+        :type DryRun: bool
+        """
+        self.ClusterId = None
+        self.LaunchConfigurationId = None
+        self.AutoScalingGroupId = None
+        self.ExpansionBusyTime = None
+        self.ShrinkIdleTime = None
+        self.EnableAutoExpansion = None
+        self.EnableAutoShrink = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ExpansionBusyTime = params.get("ExpansionBusyTime")
+        self.ShrinkIdleTime = params.get("ShrinkIdleTime")
+        self.EnableAutoExpansion = params.get("EnableAutoExpansion")
+        self.EnableAutoShrink = params.get("EnableAutoShrink")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindAutoScalingGroupResponse(AbstractModel):
+    """BindAutoScalingGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CFSOption(AbstractModel):
     """描述CFS文件系统版本和挂载信息
 

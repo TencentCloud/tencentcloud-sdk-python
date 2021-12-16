@@ -149,6 +149,87 @@ class AttachCcnResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachDetail(AbstractModel):
+    """挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AttachedDiskCount: 实例已挂载弹性云盘数量
+        :type AttachedDiskCount: int
+        :param MaxAttachCount: 可挂载弹性云盘数量
+        :type MaxAttachCount: int
+        """
+        self.InstanceId = None
+        self.AttachedDiskCount = None
+        self.MaxAttachCount = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AttachedDiskCount = params.get("AttachedDiskCount")
+        self.MaxAttachCount = params.get("MaxAttachCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachDisksRequest(AbstractModel):
+    """AttachDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param RenewFlag: 续费标识
+        :type RenewFlag: str
+        """
+        self.DiskIds = None
+        self.InstanceId = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.InstanceId = params.get("InstanceId")
+        self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachDisksResponse(AbstractModel):
+    """AttachDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Blueprint(AbstractModel):
     """描述了镜像信息。
 
@@ -1174,6 +1255,336 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDiskConfigsRequest(AbstractModel):
+    """DescribeDiskConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: - zone:
+可用区
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskConfigsResponse(AbstractModel):
+    """DescribeDiskConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskConfigSet: 磁盘配置列表
+        :type DiskConfigSet: list of DiskConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskConfigSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskConfigSet") is not None:
+            self.DiskConfigSet = []
+            for item in params.get("DiskConfigSet"):
+                obj = DiskConfig()
+                obj._deserialize(item)
+                self.DiskConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskDiscountRequest(AbstractModel):
+    """DescribeDiskDiscount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: 磁盘类型, 取值: "CLOUD_PREMIUM"
+        :type DiskType: str
+        :param DiskSize: 磁盘大小
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskDiscountResponse(AbstractModel):
+    """DescribeDiskDiscount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Currency: 币种：CNY人民币，USD 美元。
+        :type Currency: str
+        :param DiscountDetail: 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+        :type DiscountDetail: list of DiscountDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Currency = None
+        self.DiscountDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        if params.get("DiscountDetail") is not None:
+            self.DiscountDetail = []
+            for item in params.get("DiscountDetail"):
+                obj = DiscountDetail()
+                obj._deserialize(item)
+                self.DiscountDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisksDeniedActionsRequest(AbstractModel):
+    """DescribeDisksDeniedActions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDisksDeniedActionsResponse(AbstractModel):
+    """DescribeDisksDeniedActions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskDeniedActionSet: 磁盘操作限制列表详细信息。
+        :type DiskDeniedActionSet: list of DiskDeniedActions
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskDeniedActionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskDeniedActionSet") is not None:
+            self.DiskDeniedActionSet = []
+            for item in params.get("DiskDeniedActionSet"):
+                obj = DiskDeniedActions()
+                obj._deserialize(item)
+                self.DiskDeniedActionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisksRequest(AbstractModel):
+    """DescribeDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        :param Filters: 过滤器列表。
+disk-id
+按照【磁盘 ID】进行过滤。
+类型：String
+必选：否
+instance-id
+按照【实例ID】进行过滤。
+类型：String
+必选：否
+disk-name
+按照【磁盘名称】进行过滤。
+类型：String
+必选：否
+zone
+按照【可用区】进行过滤。
+类型：String
+必选：否
+disk-usage
+按照【磁盘类型】进行过滤。
+类型：String
+必选：否
+disk-state
+按照【磁盘状态】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 DiskIds 和 Filters。
+        :type Filters: list of Filter
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param OrderField: 云盘列表排序的依据字段。取值范围："CREATED_TIME"：依据云盘的创建时间排序。 "EXPIRED_TIME"：依据云盘的到期时间排序。"DISK_SIZE"：依据云盘的大小排序。默认按云盘创建时间排序。
+        :type OrderField: str
+        :param Order: 输出云盘列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列
+        :type Order: str
+        """
+        self.DiskIds = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderField = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDisksResponse(AbstractModel):
+    """DescribeDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskSet: 磁盘信息列表
+        :type DiskSet: list of Disk
+        :param TotalCount: 符合条件的磁盘信息数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskSet") is not None:
+            self.DiskSet = []
+            for item in params.get("DiskSet"):
+                obj = Disk()
+                obj._deserialize(item)
+                self.DiskSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDisksReturnableRequest(AbstractModel):
+    """DescribeDisksReturnable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.DiskIds = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDisksReturnableResponse(AbstractModel):
+    """DescribeDisksReturnable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskReturnableSet: 可退还磁盘详细信息列表。
+        :type DiskReturnableSet: list of DiskReturnable
+        :param TotalCount: 符合条件的磁盘数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskReturnableSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskReturnableSet") is not None:
+            self.DiskReturnableSet = []
+            for item in params.get("DiskReturnableSet"):
+                obj = DiskReturnable()
+                obj._deserialize(item)
+                self.DiskReturnableSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFirewallRulesRequest(AbstractModel):
     """DescribeFirewallRules请求参数结构体
 
@@ -1463,6 +1874,60 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
                 obj = InstanceDeniedActions()
                 obj._deserialize(item)
                 self.InstanceDeniedActionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstancesDiskNumRequest(AbstractModel):
+    """DescribeInstancesDiskNum请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesDiskNumResponse(AbstractModel):
+    """DescribeInstancesDiskNum返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttachDetailSet: 挂载信息列表
+        :type AttachDetailSet: list of AttachDetail
+        :param TotalCount: 挂载信息数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AttachDetailSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AttachDetailSet") is not None:
+            self.AttachDetailSet = []
+            for item in params.get("AttachDetailSet"):
+                obj = AttachDetail()
+                obj._deserialize(item)
+                self.AttachDetailSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2172,6 +2637,47 @@ class DetachCcnResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachDisksRequest(AbstractModel):
+    """DetachDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachDisksResponse(AbstractModel):
+    """DetachDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
     """DisassociateInstancesKeyPairs请求参数结构体
 
@@ -2254,6 +2760,281 @@ class DiscountDetail(AbstractModel):
         if params.get("PolicyDetail") is not None:
             self.PolicyDetail = PolicyDetail()
             self.PolicyDetail._deserialize(params.get("PolicyDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Disk(AbstractModel):
+    """磁盘信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 磁盘ID
+        :type DiskId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param DiskName: 磁盘名称
+        :type DiskName: str
+        :param DiskUsage: 磁盘类型
+        :type DiskUsage: str
+        :param DiskType: 磁盘介质类型
+        :type DiskType: str
+        :param DiskChargeType: 磁盘付费类型
+        :type DiskChargeType: str
+        :param DiskSize: 磁盘大小
+        :type DiskSize: int
+        :param RenewFlag: 续费标识
+        :type RenewFlag: str
+        :param DiskState: 磁盘状态
+        :type DiskState: str
+        :param Attached: 磁盘挂载状态
+        :type Attached: bool
+        :param DeleteWithInstance: 是否随实例释放
+        :type DeleteWithInstance: bool
+        :param LatestOperation: 上一次操作
+        :type LatestOperation: str
+        :param LatestOperationState: 上一次操作状态
+        :type LatestOperationState: str
+        :param LatestOperationRequestId: 上一次请求ID
+        :type LatestOperationRequestId: str
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param ExpiredTime: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        :param IsolatedTime: 隔离时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolatedTime: str
+        """
+        self.DiskId = None
+        self.InstanceId = None
+        self.Zone = None
+        self.DiskName = None
+        self.DiskUsage = None
+        self.DiskType = None
+        self.DiskChargeType = None
+        self.DiskSize = None
+        self.RenewFlag = None
+        self.DiskState = None
+        self.Attached = None
+        self.DeleteWithInstance = None
+        self.LatestOperation = None
+        self.LatestOperationState = None
+        self.LatestOperationRequestId = None
+        self.CreatedTime = None
+        self.ExpiredTime = None
+        self.IsolatedTime = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        self.DiskName = params.get("DiskName")
+        self.DiskUsage = params.get("DiskUsage")
+        self.DiskType = params.get("DiskType")
+        self.DiskChargeType = params.get("DiskChargeType")
+        self.DiskSize = params.get("DiskSize")
+        self.RenewFlag = params.get("RenewFlag")
+        self.DiskState = params.get("DiskState")
+        self.Attached = params.get("Attached")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.LatestOperation = params.get("LatestOperation")
+        self.LatestOperationState = params.get("LatestOperationState")
+        self.LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.IsolatedTime = params.get("IsolatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskChargePrepaid(AbstractModel):
+    """磁盘包年包月相关参数设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: 新购周期
+        :type Period: int
+        :param RenewFlag: 续费标识
+        :type RenewFlag: str
+        :param TimeUnit: 新购单位. 默认值: "m"
+        :type TimeUnit: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+        self.TimeUnit = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+        self.TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskConfig(AbstractModel):
+    """磁盘配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区
+        :type Zone: str
+        :param DiskType: 磁盘类型
+        :type DiskType: str
+        :param DiskSalesState: 磁盘可售卖状态
+        :type DiskSalesState: str
+        :param MaxDiskSize: 最大磁盘大小
+        :type MaxDiskSize: int
+        :param MinDiskSize: 最小磁盘大小
+        :type MinDiskSize: int
+        :param DiskStepSize: 磁盘步长
+        :type DiskStepSize: int
+        """
+        self.Zone = None
+        self.DiskType = None
+        self.DiskSalesState = None
+        self.MaxDiskSize = None
+        self.MinDiskSize = None
+        self.DiskStepSize = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.DiskType = params.get("DiskType")
+        self.DiskSalesState = params.get("DiskSalesState")
+        self.MaxDiskSize = params.get("MaxDiskSize")
+        self.MinDiskSize = params.get("MinDiskSize")
+        self.DiskStepSize = params.get("DiskStepSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskDeniedActions(AbstractModel):
+    """磁盘操作限制列表详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 磁盘ID
+        :type DiskId: str
+        :param DeniedActions: 操作限制列表
+        :type DeniedActions: list of DeniedAction
+        """
+        self.DiskId = None
+        self.DeniedActions = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        if params.get("DeniedActions") is not None:
+            self.DeniedActions = []
+            for item in params.get("DeniedActions"):
+                obj = DeniedAction()
+                obj._deserialize(item)
+                self.DeniedActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskPrice(AbstractModel):
+    """磁盘价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalDiskPrice: 磁盘单价
+        :type OriginalDiskPrice: float
+        :param OriginalPrice: 磁盘总价
+        :type OriginalPrice: float
+        :param Discount: 折扣
+        :type Discount: float
+        :param DiscountPrice: 折后总价
+        :type DiscountPrice: float
+        """
+        self.OriginalDiskPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalDiskPrice = params.get("OriginalDiskPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskReturnable(AbstractModel):
+    """可退还磁盘详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 磁盘ID
+        :type DiskId: str
+        :param IsReturnable: 磁盘是否可退还。
+        :type IsReturnable: bool
+        :param ReturnFailCode: 实例退还失败错误码。
+        :type ReturnFailCode: int
+        :param ReturnFailMessage: 实例退还失败错误信息。
+        :type ReturnFailMessage: str
+        """
+        self.DiskId = None
+        self.IsReturnable = None
+        self.ReturnFailCode = None
+        self.ReturnFailMessage = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.IsReturnable = params.get("IsReturnable")
+        self.ReturnFailCode = params.get("ReturnFailCode")
+        self.ReturnFailMessage = params.get("ReturnFailMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2514,6 +3295,67 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquirePriceCreateDisksRequest(AbstractModel):
+    """InquirePriceCreateDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskSize: 磁盘大小
+        :type DiskSize: int
+        :param DiskType: 硬盘介质类型
+        :type DiskType: str
+        :param DiskChargePrepaid: 新购磁盘包年包月相关参数设置
+        :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        :param DiskCount: 磁盘个数, 默认值: 1
+        :type DiskCount: int
+        """
+        self.DiskSize = None
+        self.DiskType = None
+        self.DiskChargePrepaid = None
+        self.DiskCount = None
+
+
+    def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+        if params.get("DiskChargePrepaid") is not None:
+            self.DiskChargePrepaid = DiskChargePrepaid()
+            self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self.DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceCreateDisksResponse(AbstractModel):
+    """InquirePriceCreateDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskPrice: 磁盘价格
+        :type DiskPrice: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = DiskPrice()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquirePriceCreateInstancesRequest(AbstractModel):
     """InquirePriceCreateInstances请求参数结构体
 
@@ -2572,6 +3414,59 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
         if params.get("Price") is not None:
             self.Price = Price()
             self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceRenewDisksRequest(AbstractModel):
+    """InquirePriceRenewDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        :param RenewDiskChargePrepaid: 续费磁盘包年包月相关参数设置
+        :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        """
+        self.DiskIds = None
+        self.RenewDiskChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        if params.get("RenewDiskChargePrepaid") is not None:
+            self.RenewDiskChargePrepaid = RenewDiskChargePrepaid()
+            self.RenewDiskChargePrepaid._deserialize(params.get("RenewDiskChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceRenewDisksResponse(AbstractModel):
+    """InquirePriceRenewDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskPrice: 磁盘价格
+        :type DiskPrice: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = DiskPrice()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3131,6 +4026,96 @@ class ModifyBundle(AbstractModel):
         
 
 
+class ModifyDisksAttributeRequest(AbstractModel):
+    """ModifyDisksAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        :param DiskName: 磁盘名称
+        :type DiskName: str
+        """
+        self.DiskIds = None
+        self.DiskName = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.DiskName = params.get("DiskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDisksAttributeResponse(AbstractModel):
+    """ModifyDisksAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDisksRenewFlagRequest(AbstractModel):
+    """ModifyDisksRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        :param RenewFlag: 续费标识
+        :type RenewFlag: str
+        """
+        self.DiskIds = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDisksRenewFlagResponse(AbstractModel):
+    """ModifyDisksRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyFirewallRuleDescriptionRequest(AbstractModel):
     """ModifyFirewallRuleDescription请求参数结构体
 
@@ -3542,6 +4527,42 @@ class RegionInfo(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.RegionState = params.get("RegionState")
         self.IsChinaMainland = params.get("IsChinaMainland")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDiskChargePrepaid(AbstractModel):
+    """续费磁盘包年包月相关参数设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: 新购周期
+        :type Period: int
+        :param RenewFlag: 续费标识
+        :type RenewFlag: str
+        :param TimeUnit: 周期单位. 默认值: "m"
+        :type TimeUnit: str
+        :param CurInstanceDeadline: 当前实例到期时间
+        :type CurInstanceDeadline: str
+        """
+        self.Period = None
+        self.RenewFlag = None
+        self.TimeUnit = None
+        self.CurInstanceDeadline = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+        self.TimeUnit = params.get("TimeUnit")
+        self.CurInstanceDeadline = params.get("CurInstanceDeadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4022,6 +5043,47 @@ class SystemDisk(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateDisksRequest(AbstractModel):
+    """TerminateDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 磁盘ID列表
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateDisksResponse(AbstractModel):
+    """TerminateDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateInstancesRequest(AbstractModel):

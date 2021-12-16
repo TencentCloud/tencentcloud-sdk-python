@@ -514,6 +514,76 @@ class CreateLiveRecordPlanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateMessageForwardRequest(AbstractModel):
+    """CreateMessageForward请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: 区域ID
+        :type RegionId: str
+        :param RegionName: 区域名称
+        :type RegionName: str
+        :param Instance: 实例ID
+        :type Instance: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param MessageType: json数组， 转发类型 1: 告警 2:GPS
+        :type MessageType: str
+        :param TopicId: kafka topic id
+        :type TopicId: str
+        :param TopicName: kafka topic 名称
+        :type TopicName: str
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.Instance = None
+        self.InstanceName = None
+        self.MessageType = None
+        self.TopicId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.Instance = params.get("Instance")
+        self.InstanceName = params.get("InstanceName")
+        self.MessageType = params.get("MessageType")
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMessageForwardResponse(AbstractModel):
+    """CreateMessageForward返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IntId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRecordPlanRequest(AbstractModel):
     """CreateRecordPlan请求参数结构体
 
@@ -954,6 +1024,47 @@ class DeleteLiveVideoListRequest(AbstractModel):
 
 class DeleteLiveVideoListResponse(AbstractModel):
     """DeleteLiveVideoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMessageForwardRequest(AbstractModel):
+    """DeleteMessageForward请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 配置ID
+        :type IntId: int
+        """
+        self.IntId = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMessageForwardResponse(AbstractModel):
+    """DeleteMessageForward返回参数结构体
 
     """
 
@@ -2233,6 +2344,157 @@ class DescribeLiveVideoListResponse(AbstractModel):
                 obj = LiveRecordItem()
                 obj._deserialize(item)
                 self.RecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMessageForwardRequest(AbstractModel):
+    """DescribeMessageForward请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 配置ID
+        :type IntId: int
+        """
+        self.IntId = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageForwardResponse(AbstractModel):
+    """DescribeMessageForward返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: 区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param RegionName: 区域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param Instance: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param IntId: 配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntId: int
+        :param MessageType: json数组， 转发类型 1: 告警 2:GPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageType: str
+        :param TopicId: kafka topic id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param CreateTime: 配置创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Uin: 用户Uin信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param TopicName: kafka topic 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.Instance = None
+        self.InstanceName = None
+        self.IntId = None
+        self.MessageType = None
+        self.TopicId = None
+        self.CreateTime = None
+        self.Uin = None
+        self.TopicName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.Instance = params.get("Instance")
+        self.InstanceName = params.get("InstanceName")
+        self.IntId = params.get("IntId")
+        self.MessageType = params.get("MessageType")
+        self.TopicId = params.get("TopicId")
+        self.CreateTime = params.get("CreateTime")
+        self.Uin = params.get("Uin")
+        self.TopicName = params.get("TopicName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMessageForwardsRequest(AbstractModel):
+    """DescribeMessageForwards请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 数量限制
+        :type Limit: int
+        :param Offset: 偏移
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageForwardsResponse(AbstractModel):
+    """DescribeMessageForwards返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 配置总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param List: 配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of MessageForward
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = MessageForward()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3677,6 +3939,81 @@ class LiveRecordPlanItem(AbstractModel):
         
 
 
+class MessageForward(AbstractModel):
+    """消息转发配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntId: int
+        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param MessageType: json数组， 转发类型 1: 告警 2:GPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageType: str
+        :param RegionId: 区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param RegionName: 区域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param Instance: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param TopicId: kafka topic id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param TopicName: topic 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        """
+        self.IntId = None
+        self.Uin = None
+        self.MessageType = None
+        self.RegionId = None
+        self.RegionName = None
+        self.Instance = None
+        self.InstanceName = None
+        self.TopicId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        self.Uin = params.get("Uin")
+        self.MessageType = params.get("MessageType")
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.Instance = params.get("Instance")
+        self.InstanceName = params.get("InstanceName")
+        self.TopicId = params.get("TopicId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyBindPlanLiveChannelRequest(AbstractModel):
     """ModifyBindPlanLiveChannel请求参数结构体
 
@@ -3900,6 +4237,51 @@ class ModifyLiveVideoRequest(AbstractModel):
 
 class ModifyLiveVideoResponse(AbstractModel):
     """ModifyLiveVideo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMessageForwardRequest(AbstractModel):
+    """ModifyMessageForward请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 配置ID
+        :type IntId: int
+        :param MessageType: json数组， 转发类型 1: 告警 2:GPS
+        :type MessageType: str
+        """
+        self.IntId = None
+        self.MessageType = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        self.MessageType = params.get("MessageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMessageForwardResponse(AbstractModel):
+    """ModifyMessageForward返回参数结构体
 
     """
 
