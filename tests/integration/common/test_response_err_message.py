@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+import json
+import os
+from tencentcloud.common import credential
+from tencentcloud.common.profile.client_profile import ClientProfile
+from tencentcloud.common.profile.http_profile import HttpProfile
+from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.cvm.v20170312 import cvm_client, models
+
+
+def test_response_error_message():
+    try:
+        cred = credential.Credential(
+            os.environ.get("TENCENTCLOUD_SECRET_ID"),
+            os.environ.get("TENCENTCLOUD_SECRET_KEY"))
+        httpProfile = HttpProfile()
+        httpProfile.endpoint = "cvm.tencentcloudapi.com"
+
+        clientProfile = ClientProfile()
+        clientProfile.httpProfile = httpProfile
+        client = cvm_client.CvmClient(cred, "ap-guangzhou", clientProfile)
+
+        req = models.DescribeInstancesOperationLimitRequest()
+        params = {
+            "InstanceIds": [""],
+            "Operation": "INSTANCE_DEGRADE",
+        }
+        req.from_json_string(json.dumps(params))
+        resp = client.DescribeInstancesOperationLimit(req)
+        assert False, "It must fail because param InstanceIds is empty"
+    except TencentCloudSDKException as err:
+        assert "InvalidInstanceId.Malformed" in err.code, "unexpected error code"
