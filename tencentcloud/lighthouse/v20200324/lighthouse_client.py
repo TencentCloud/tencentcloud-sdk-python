@@ -120,7 +120,7 @@ class LighthouseClient(AbstractClient):
 
 
     def AttachDisks(self, request):
-        """本接口（AttachDisks）用于挂载一个或多个弹性云盘。
+        """本接口（AttachDisks）用于挂载一个或多个云硬盘。
 
         :param request: Request instance for AttachDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.AttachDisksRequest`
@@ -560,7 +560,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDiskDiscount(self, request):
-        """本接口(DescribeDiskDiscount)用于查询云硬盘折扣信息
+        """本接口(DescribeDiskDiscount)用于查询云硬盘折扣信息。
 
         :param request: Request instance for DescribeDiskDiscount.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskDiscountRequest`
@@ -588,7 +588,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDisks(self, request):
-        """本接口（DescribeDisks）用于查询磁盘信息。
+        """本接口（DescribeDisks）用于查询云硬盘信息。
 
         :param request: Request instance for DescribeDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksRequest`
@@ -616,7 +616,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDisksDeniedActions(self, request):
-        """本接口（DescribeDisksDeniedActions）用于查询一个或多个磁盘的操作限制列表信息
+        """本接口（DescribeDisksDeniedActions）用于查询一个或多个云硬盘的操作限制列表信息。
 
         :param request: Request instance for DescribeDisksDeniedActions.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksDeniedActionsRequest`
@@ -644,7 +644,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDisksReturnable(self, request):
-        """本接口（DescribeDisksReturnable）用于查询磁盘是否可退还。
+        """本接口（DescribeDisksReturnable）用于查询云硬盘是否可退还。
 
         :param request: Request instance for DescribeDisksReturnable.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDisksReturnableRequest`
@@ -878,7 +878,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeInstancesDiskNum(self, request):
-        """本接口(DescribeInstancesDiskNum)用于查询实例挂载云盘数量。
+        """本接口(DescribeInstancesDiskNum)用于查询实例挂载云硬盘数量。
 
         :param request: Request instance for DescribeInstancesDiskNum.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesDiskNumRequest`
@@ -1186,7 +1186,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DetachDisks(self, request):
-        """本接口（DetachDisks）用于卸载一个或多个弹性云盘。
+        """本接口（DetachDisks）用于卸载一个或多个云硬盘。
 
         :param request: Request instance for DetachDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachDisksRequest`
@@ -1360,7 +1360,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceRenewDisks(self, request):
-        """本接口（InquirePriceRenewDisks）用于续费磁盘询价。
+        """本接口（InquirePriceRenewDisks）用于续费云硬盘询价。
 
         :param request: Request instance for InquirePriceRenewDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewDisksRequest`
@@ -1444,7 +1444,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyDisksAttribute(self, request):
-        """本接口(ModifyDisksAttribute)用于修改磁盘属性
+        """本接口(ModifyDisksAttribute)用于修改云硬盘属性。
 
         :param request: Request instance for ModifyDisksAttribute.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksAttributeRequest`
@@ -1472,7 +1472,7 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyDisksRenewFlag(self, request):
-        """本接口（ModifyDisksRenewFlag）用于修改磁盘续费标识。
+        """本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识。
 
         :param request: Request instance for ModifyDisksRenewFlag.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksRenewFlagRequest`
@@ -1889,7 +1889,7 @@ class LighthouseClient(AbstractClient):
 
 
     def TerminateDisks(self, request):
-        """本接口（TerminateDisks）用于销毁一个或多个磁盘。
+        """本接口（TerminateDisks）用于销毁一个或多个云硬盘。
 
         :param request: Request instance for TerminateDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.TerminateDisksRequest`

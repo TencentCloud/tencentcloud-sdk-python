@@ -341,6 +341,15 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         :param Nullable: 是否为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nullable: str
+        :param Position: 字段位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param CreateTime: 字段创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ModifiedTime: 字段修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
         """
         self.Name = None
         self.Type = None
@@ -348,6 +357,9 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         self.Precision = None
         self.Scale = None
         self.Nullable = None
+        self.Position = None
+        self.CreateTime = None
+        self.ModifiedTime = None
 
 
     def _deserialize(self, params):
@@ -357,6 +369,9 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         self.Precision = params.get("Precision")
         self.Scale = params.get("Scale")
         self.Nullable = params.get("Nullable")
+        self.Position = params.get("Position")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifiedTime = params.get("ModifiedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -375,7 +390,7 @@ class CreateDatabaseRequest(AbstractModel):
         r"""
         :param DatabaseInfo: 数据库基础信息
         :type DatabaseInfo: :class:`tencentcloud.dlc.v20210125.models.DatabaseInfo`
-        :param DatasourceConnectionName: 数据源名称，默认为CosDataCatalog
+        :param DatasourceConnectionName: 数据源名称，默认为DataLakeCatalog
         :type DatasourceConnectionName: str
         """
         self.DatabaseInfo = None
@@ -575,10 +590,13 @@ class CreateTaskRequest(AbstractModel):
         :type DatabaseName: str
         :param DatasourceConnectionName: 默认数据源名称。
         :type DatasourceConnectionName: str
+        :param DataEngineName: 数据引擎名称，不填提交到默认集群
+        :type DataEngineName: str
         """
         self.Task = None
         self.DatabaseName = None
         self.DatasourceConnectionName = None
+        self.DataEngineName = None
 
 
     def _deserialize(self, params):
@@ -587,6 +605,7 @@ class CreateTaskRequest(AbstractModel):
             self.Task._deserialize(params.get("Task"))
         self.DatabaseName = params.get("DatabaseName")
         self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.DataEngineName = params.get("DataEngineName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -688,12 +707,15 @@ class CreateTasksRequest(AbstractModel):
         :type DatabaseName: str
         :param Tasks: SQL任务信息
         :type Tasks: :class:`tencentcloud.dlc.v20210125.models.TasksInfo`
-        :param DatasourceConnectionName: 数据源名称，默认为COSDataCatalog
+        :param DatasourceConnectionName: 数据源名称，默认为DataLakeCatalog
         :type DatasourceConnectionName: str
+        :param DataEngineName: 计算引擎名称，不填任务提交到默认集群
+        :type DataEngineName: str
         """
         self.DatabaseName = None
         self.Tasks = None
         self.DatasourceConnectionName = None
+        self.DataEngineName = None
 
 
     def _deserialize(self, params):
@@ -702,6 +724,7 @@ class CreateTasksRequest(AbstractModel):
             self.Tasks = TasksInfo()
             self.Tasks._deserialize(params.get("Tasks"))
         self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.DataEngineName = params.get("DataEngineName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -917,18 +940,22 @@ class DatabaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DatabaseName: 数据库名称。
+        :param DatabaseName: 数据库名称，长度0~128，支持数字、字母下划线，不允许数字大头，统一转换为小写。
         :type DatabaseName: str
-        :param Comment: 数据库描述信息，长度 0~256。
+        :param Comment: 数据库描述信息，长度 0~500。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
         :param Properties: 数据库属性列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
+        :param Location: 数据库cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
         """
         self.DatabaseName = None
         self.Comment = None
         self.Properties = None
+        self.Location = None
 
 
     def _deserialize(self, params):
@@ -940,6 +967,7 @@ class DatabaseInfo(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self.Properties.append(obj)
+        self.Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -961,7 +989,7 @@ class DatabaseResponseInfo(AbstractModel):
         :param Comment: 数据库描述信息，长度 0~256。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
-        :param Properties: 数据库属性列表。
+        :param Properties: 允许针对数据库的属性元数据信息进行指定。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
         :param CreateTime: 数据库创建时间戳，单位：s。
@@ -1181,13 +1209,19 @@ class DescribeDatabasesRequest(AbstractModel):
         :type Offset: int
         :param KeyWord: 模糊匹配，库名关键字。
         :type KeyWord: str
-        :param DatasourceConnectionName: 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为CosDataCatalog
+        :param DatasourceConnectionName: 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
         :type DatasourceConnectionName: str
+        :param Sort: 排序字段，当前版本仅支持按库名排序
+        :type Sort: str
+        :param Asc: 排序类型：false：降序（默认）、true：升序
+        :type Asc: bool
         """
         self.Limit = None
         self.Offset = None
         self.KeyWord = None
         self.DatasourceConnectionName = None
+        self.Sort = None
+        self.Asc = None
 
 
     def _deserialize(self, params):
@@ -1195,6 +1229,8 @@ class DescribeDatabasesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.KeyWord = params.get("KeyWord")
         self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.Sort = params.get("Sort")
+        self.Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1412,14 +1448,29 @@ class DescribeTablesRequest(AbstractModel):
 table-name - String - （过滤条件）数据表名称,形如：table-001。
 table-id - String - （过滤条件）table id形如：12342。
         :type Filters: list of Filter
-        :param DatasourceConnectionName: 指定查询的数据源名称，默认为CosDataCatalog
+        :param DatasourceConnectionName: 指定查询的数据源名称，默认为DataLakeCatalog
         :type DatasourceConnectionName: str
+        :param StartTime: 起始时间：用于对更新时间的筛选
+        :type StartTime: str
+        :param EndTime: 终止时间：用于对更新时间的筛选
+        :type EndTime: str
+        :param Sort: 排序字段，支持：ModifiedTime（默认）；CreateTime
+        :type Sort: str
+        :param Asc: 排序字段，false：降序（默认）；true
+        :type Asc: bool
+        :param TableType: table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+        :type TableType: str
         """
         self.DatabaseName = None
         self.Limit = None
         self.Offset = None
         self.Filters = None
         self.DatasourceConnectionName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Sort = None
+        self.Asc = None
+        self.TableType = None
 
 
     def _deserialize(self, params):
@@ -1433,6 +1484,11 @@ table-id - String - （过滤条件）table id形如：12342。
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Sort = params.get("Sort")
+        self.Asc = params.get("Asc")
+        self.TableType = params.get("TableType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1487,8 +1543,10 @@ class DescribeTasksRequest(AbstractModel):
 task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+task-operator- string （子uin过滤）
+task-type -string （任务类型过滤）分导入任务和sql任务
         :type Filters: list of Filter
-        :param SortBy: 排序字段，支持如下字段类型，create-time
+        :param SortBy: 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
         :type SortBy: str
         :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc。
         :type Sorting: str
@@ -1496,6 +1554,8 @@ task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：D
         :type StartTime: str
         :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
         :type EndTime: str
+        :param DataEngineName: 支持计算资源名字筛选
+        :type DataEngineName: str
         """
         self.Limit = None
         self.Offset = None
@@ -1504,6 +1564,7 @@ task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：D
         self.Sorting = None
         self.StartTime = None
         self.EndTime = None
+        self.DataEngineName = None
 
 
     def _deserialize(self, params):
@@ -1519,6 +1580,7 @@ task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：D
         self.Sorting = params.get("Sorting")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.DataEngineName = params.get("DataEngineName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1647,12 +1709,24 @@ view-id - String - （过滤条件）view id形如：12342。
         :type Filters: list of Filter
         :param DatasourceConnectionName: 数据库所属的数据源名称
         :type DatasourceConnectionName: str
+        :param Sort: 排序字段
+        :type Sort: str
+        :param Asc: 排序规则
+        :type Asc: bool
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
         """
         self.DatabaseName = None
         self.Limit = None
         self.Offset = None
         self.Filters = None
         self.DatasourceConnectionName = None
+        self.Sort = None
+        self.Asc = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -1666,6 +1740,10 @@ view-id - String - （过滤条件）view id形如：12342。
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.Sort = params.get("Sort")
+        self.Asc = params.get("Asc")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2277,16 +2355,31 @@ class TableBaseInfo(AbstractModel):
         :param DatasourceConnectionName: 该数据表所属数据源名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceConnectionName: str
+        :param TableComment: 该数据表备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableComment: str
+        :param Type: 具体类型，表or视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param TableFormat: 数据格式类型，hive，iceberg等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableFormat: str
         """
         self.DatabaseName = None
         self.TableName = None
         self.DatasourceConnectionName = None
+        self.TableComment = None
+        self.Type = None
+        self.TableFormat = None
 
 
     def _deserialize(self, params):
         self.DatabaseName = params.get("DatabaseName")
         self.TableName = params.get("TableName")
         self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.TableComment = params.get("TableComment")
+        self.Type = params.get("Type")
+        self.TableFormat = params.get("TableFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2501,6 +2594,30 @@ class TaskResponseInfo(AbstractModel):
         :param ProgressDetail: 任务进度明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressDetail: str
+        :param UpdateTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param DataEngineId: 计算资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param OperateUin: 执行sql的子uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param DataEngineName: 计算资源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineName: str
+        :param InputType: 导入类型是本地导入还是cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputType: str
+        :param InputConf: 导入配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputConf: str
+        :param DataNumber: 数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataNumber: int
+        :param CanDownload: 查询数据能不能下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDownload: bool
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -2519,6 +2636,14 @@ class TaskResponseInfo(AbstractModel):
         self.OutputMessage = None
         self.TaskType = None
         self.ProgressDetail = None
+        self.UpdateTime = None
+        self.DataEngineId = None
+        self.OperateUin = None
+        self.DataEngineName = None
+        self.InputType = None
+        self.InputConf = None
+        self.DataNumber = None
+        self.CanDownload = None
 
 
     def _deserialize(self, params):
@@ -2539,6 +2664,14 @@ class TaskResponseInfo(AbstractModel):
         self.OutputMessage = params.get("OutputMessage")
         self.TaskType = params.get("TaskType")
         self.ProgressDetail = params.get("ProgressDetail")
+        self.UpdateTime = params.get("UpdateTime")
+        self.DataEngineId = params.get("DataEngineId")
+        self.OperateUin = params.get("OperateUin")
+        self.DataEngineName = params.get("DataEngineName")
+        self.InputType = params.get("InputType")
+        self.InputConf = params.get("InputConf")
+        self.DataNumber = params.get("DataNumber")
+        self.CanDownload = params.get("CanDownload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

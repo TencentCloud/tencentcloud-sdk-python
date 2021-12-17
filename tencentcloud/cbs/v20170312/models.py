@@ -148,6 +148,38 @@ class AttachDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AutoMountConfiguration(AbstractModel):
+    """自动初始化、挂载云盘时指定配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 要挂载到的实例ID。
+        :type InstanceId: list of str
+        :param MountPoint: 子机内的挂载点。
+        :type MountPoint: list of str
+        :param FileSystemType: 文件系统类型，支持的有 ext4、xfs。
+        :type FileSystemType: str
+        """
+        self.InstanceId = None
+        self.MountPoint = None
+        self.FileSystemType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.MountPoint = params.get("MountPoint")
+        self.FileSystemType = params.get("FileSystemType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoSnapshotPolicy(AbstractModel):
     """描述了定期快照策略的详细信息
 
@@ -452,6 +484,8 @@ class CreateDisksRequest(AbstractModel):
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         :param DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
         :type DeleteSnapshot: int
+        :param AutoMountConfiguration: 创建云盘时指定自动挂载并初始化该数据盘。
+        :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         """
         self.Placement = None
         self.DiskChargeType = None
@@ -467,6 +501,7 @@ class CreateDisksRequest(AbstractModel):
         self.Encrypt = None
         self.DiskChargePrepaid = None
         self.DeleteSnapshot = None
+        self.AutoMountConfiguration = None
 
 
     def _deserialize(self, params):
@@ -493,6 +528,9 @@ class CreateDisksRequest(AbstractModel):
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
         self.DeleteSnapshot = params.get("DeleteSnapshot")
+        if params.get("AutoMountConfiguration") is not None:
+            self.AutoMountConfiguration = AutoMountConfiguration()
+            self.AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

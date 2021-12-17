@@ -1813,6 +1813,9 @@ BotType=UCB时，为二期接口，暂时未定义内容
         :type TcbDetail: str
         :param Id: BOT记录唯一ID，用于查询访问详情
         :type Id: str
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.Action = None
         self.Nums = None
@@ -1825,6 +1828,7 @@ BotType=UCB时，为二期接口，暂时未定义内容
         self.AvgSpeed = None
         self.TcbDetail = None
         self.Id = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -1839,6 +1843,7 @@ BotType=UCB时，为二期接口，暂时未定义内容
         self.AvgSpeed = params.get("AvgSpeed")
         self.TcbDetail = params.get("TcbDetail")
         self.Id = params.get("Id")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5787,6 +5792,8 @@ IDC-IP Google
         :type FilterAction: str
         :param FilterIp: 过滤的IP
         :type FilterIp: str
+        :param Domains: 域名列表，为空表示查询AppID维度数据
+        :type Domains: list of str
         """
         self.BotType = None
         self.Domain = None
@@ -5799,6 +5806,7 @@ IDC-IP Google
         self.FilterName = None
         self.FilterAction = None
         self.FilterIp = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
@@ -5818,6 +5826,7 @@ IDC-IP Google
         self.FilterName = params.get("FilterName")
         self.FilterAction = params.get("FilterAction")
         self.FilterIp = params.get("FilterIp")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

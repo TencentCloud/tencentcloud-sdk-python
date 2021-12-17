@@ -960,6 +960,8 @@ class ClusterBasicSettings(AbstractModel):
         :type OsCustomizeType: str
         :param NeedWorkSecurityGroup: 是否开启节点的默认安全组(默认: 否，Aphla特性)
         :type NeedWorkSecurityGroup: bool
+        :param SubnetId: 当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
+        :type SubnetId: str
         """
         self.ClusterOs = None
         self.ClusterVersion = None
@@ -970,6 +972,7 @@ class ClusterBasicSettings(AbstractModel):
         self.TagSpecification = None
         self.OsCustomizeType = None
         self.NeedWorkSecurityGroup = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -987,6 +990,7 @@ class ClusterBasicSettings(AbstractModel):
                 self.TagSpecification.append(obj)
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.NeedWorkSecurityGroup = params.get("NeedWorkSecurityGroup")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1866,7 +1870,7 @@ class CreateClusterRequest(AbstractModel):
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
         :param InstanceAdvancedSettings: 节点高级配置信息
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
+        :param ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
         :param InstanceDataDiskMountSettings: CVM类型和其对应的数据盘挂载配置信息
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting

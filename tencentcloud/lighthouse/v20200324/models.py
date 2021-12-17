@@ -188,11 +188,11 @@ class AttachDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param RenewFlag: 续费标识
+        :param RenewFlag: 续费标识。
         :type RenewFlag: str
         """
         self.DiskIds = None
@@ -1318,9 +1318,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: 磁盘类型, 取值: "CLOUD_PREMIUM"
+        :param DiskType: 云硬盘类型, 取值: "CLOUD_PREMIUM"。
         :type DiskType: str
-        :param DiskSize: 磁盘大小
+        :param DiskSize: 云硬盘大小。
         :type DiskSize: int
         """
         self.DiskType = None
@@ -1376,7 +1376,7 @@ class DescribeDisksDeniedActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
         """
         self.DiskIds = None
@@ -1400,7 +1400,7 @@ class DescribeDisksDeniedActionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskDeniedActionSet: 磁盘操作限制列表详细信息。
+        :param DiskDeniedActionSet: 云硬盘操作限制列表详细信息。
         :type DiskDeniedActionSet: list of DiskDeniedActions
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1426,11 +1426,11 @@ class DescribeDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
         :param Filters: 过滤器列表。
 disk-id
-按照【磁盘 ID】进行过滤。
+按照【云硬盘 ID】进行过滤。
 类型：String
 必选：否
 instance-id
@@ -1438,7 +1438,7 @@ instance-id
 类型：String
 必选：否
 disk-name
-按照【磁盘名称】进行过滤。
+按照【云硬盘名称】进行过滤。
 类型：String
 必选：否
 zone
@@ -1446,22 +1446,22 @@ zone
 类型：String
 必选：否
 disk-usage
-按照【磁盘类型】进行过滤。
+按照【云硬盘类型】进行过滤。
 类型：String
 必选：否
 disk-state
-按照【磁盘状态】进行过滤。
+按照【云硬盘状态】进行过滤。
 类型：String
 必选：否
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 DiskIds 和 Filters。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param Offset: 偏移量，默认为0
+        :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param OrderField: 云盘列表排序的依据字段。取值范围："CREATED_TIME"：依据云盘的创建时间排序。 "EXPIRED_TIME"：依据云盘的到期时间排序。"DISK_SIZE"：依据云盘的大小排序。默认按云盘创建时间排序。
+        :param OrderField: 云硬盘列表排序的依据字段。取值范围："CREATED_TIME"：依据云硬盘的创建时间排序。 "EXPIRED_TIME"：依据云硬盘的到期时间排序。"DISK_SIZE"：依据云硬盘的大小排序。默认按云硬盘创建时间排序。
         :type OrderField: str
-        :param Order: 输出云盘列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列
+        :param Order: 输出云硬盘列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
         :type Order: str
         """
         self.DiskIds = None
@@ -1500,9 +1500,9 @@ class DescribeDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskSet: 磁盘信息列表
+        :param DiskSet: 云硬盘信息列表。
         :type DiskSet: list of Disk
-        :param TotalCount: 符合条件的磁盘信息数量
+        :param TotalCount: 符合条件的云硬盘信息数量。
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1530,7 +1530,7 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -1562,9 +1562,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskReturnableSet: 可退还磁盘详细信息列表。
+        :param DiskReturnableSet: 可退还云硬盘详细信息列表。
         :type DiskReturnableSet: list of DiskReturnable
-        :param TotalCount: 符合条件的磁盘数量。
+        :param TotalCount: 符合条件的云硬盘数量。
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1884,7 +1884,7 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表
+        :param InstanceIds: 实例ID列表。
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -2644,7 +2644,7 @@ class DetachDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
         """
         self.DiskIds = None
@@ -2864,17 +2864,17 @@ class Disk(AbstractModel):
 
 
 class DiskChargePrepaid(AbstractModel):
-    """磁盘包年包月相关参数设置
+    """云硬盘包年包月相关参数设置
 
     """
 
     def __init__(self):
         r"""
-        :param Period: 新购周期
+        :param Period: 新购周期。
         :type Period: int
-        :param RenewFlag: 续费标识
+        :param RenewFlag: 续费标识。
         :type RenewFlag: str
-        :param TimeUnit: 新购单位. 默认值: "m"
+        :param TimeUnit: 新购单位. 默认值: "m"。
         :type TimeUnit: str
         """
         self.Period = None
@@ -2896,23 +2896,23 @@ class DiskChargePrepaid(AbstractModel):
 
 
 class DiskConfig(AbstractModel):
-    """磁盘配置
+    """云硬盘配置
 
     """
 
     def __init__(self):
         r"""
-        :param Zone: 可用区
+        :param Zone: 可用区。
         :type Zone: str
-        :param DiskType: 磁盘类型
+        :param DiskType: 云硬盘类型。
         :type DiskType: str
-        :param DiskSalesState: 磁盘可售卖状态
+        :param DiskSalesState: 云硬盘可售卖状态。
         :type DiskSalesState: str
-        :param MaxDiskSize: 最大磁盘大小
+        :param MaxDiskSize: 最大云硬盘大小。
         :type MaxDiskSize: int
-        :param MinDiskSize: 最小磁盘大小
+        :param MinDiskSize: 最小云硬盘大小。
         :type MinDiskSize: int
-        :param DiskStepSize: 磁盘步长
+        :param DiskStepSize: 云硬盘步长。
         :type DiskStepSize: int
         """
         self.Zone = None
@@ -2946,9 +2946,9 @@ class DiskDeniedActions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskId: 磁盘ID
+        :param DiskId: 云硬盘ID。
         :type DiskId: str
-        :param DeniedActions: 操作限制列表
+        :param DeniedActions: 操作限制列表。
         :type DeniedActions: list of DeniedAction
         """
         self.DiskId = None
@@ -2973,19 +2973,19 @@ class DiskDeniedActions(AbstractModel):
 
 
 class DiskPrice(AbstractModel):
-    """磁盘价格
+    """云硬盘价格
 
     """
 
     def __init__(self):
         r"""
-        :param OriginalDiskPrice: 磁盘单价
+        :param OriginalDiskPrice: 云硬盘单价。
         :type OriginalDiskPrice: float
-        :param OriginalPrice: 磁盘总价
+        :param OriginalPrice: 云硬盘总价。
         :type OriginalPrice: float
-        :param Discount: 折扣
+        :param Discount: 折扣。
         :type Discount: float
-        :param DiscountPrice: 折后总价
+        :param DiscountPrice: 折后总价。
         :type DiscountPrice: float
         """
         self.OriginalDiskPrice = None
@@ -3009,19 +3009,19 @@ class DiskPrice(AbstractModel):
 
 
 class DiskReturnable(AbstractModel):
-    """可退还磁盘详细信息
+    """可退还云硬盘详细信息
 
     """
 
     def __init__(self):
         r"""
-        :param DiskId: 磁盘ID
+        :param DiskId: 云硬盘ID。
         :type DiskId: str
-        :param IsReturnable: 磁盘是否可退还。
+        :param IsReturnable: 云硬盘是否可退还。
         :type IsReturnable: bool
-        :param ReturnFailCode: 实例退还失败错误码。
+        :param ReturnFailCode: 云硬盘退还失败错误码。
         :type ReturnFailCode: int
-        :param ReturnFailMessage: 实例退还失败错误信息。
+        :param ReturnFailMessage: 云硬盘退还失败错误信息。
         :type ReturnFailMessage: str
         """
         self.DiskId = None
@@ -3424,9 +3424,9 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
-        :param RenewDiskChargePrepaid: 续费磁盘包年包月相关参数设置
+        :param RenewDiskChargePrepaid: 续费云硬盘包年包月相关参数设置。
         :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
         """
         self.DiskIds = None
@@ -3454,7 +3454,7 @@ class InquirePriceRenewDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskPrice: 磁盘价格
+        :param DiskPrice: 云硬盘价格。
         :type DiskPrice: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4033,9 +4033,9 @@ class ModifyDisksAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
-        :param DiskName: 磁盘名称
+        :param DiskName: 云硬盘名称。
         :type DiskName: str
         """
         self.DiskIds = None
@@ -4078,9 +4078,9 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
-        :param RenewFlag: 续费标识
+        :param RenewFlag: 续费标识。
         :type RenewFlag: str
         """
         self.DiskIds = None
@@ -4537,19 +4537,19 @@ class RegionInfo(AbstractModel):
 
 
 class RenewDiskChargePrepaid(AbstractModel):
-    """续费磁盘包年包月相关参数设置
+    """续费云硬盘包年包月相关参数设置
 
     """
 
     def __init__(self):
         r"""
-        :param Period: 新购周期
+        :param Period: 新购周期。
         :type Period: int
-        :param RenewFlag: 续费标识
+        :param RenewFlag: 续费标识。
         :type RenewFlag: str
-        :param TimeUnit: 周期单位. 默认值: "m"
+        :param TimeUnit: 周期单位. 默认值: "m"。
         :type TimeUnit: str
-        :param CurInstanceDeadline: 当前实例到期时间
+        :param CurInstanceDeadline: 当前实例到期时间。
         :type CurInstanceDeadline: str
         """
         self.Period = None
@@ -5052,7 +5052,7 @@ class TerminateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 磁盘ID列表
+        :param DiskIds: 云硬盘ID列表。
         :type DiskIds: list of str
         """
         self.DiskIds = None

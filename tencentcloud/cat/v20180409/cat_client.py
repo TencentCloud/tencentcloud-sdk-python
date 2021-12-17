@@ -82,6 +82,34 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProbeTasks(self, request):
+        """批量创建探测任务
+
+        :param request: Request instance for CreateProbeTasks.
+        :type request: :class:`tencentcloud.cat.v20180409.models.CreateProbeTasksRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.CreateProbeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateProbeTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProbeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTaskEx(self, request):
         """创建拨测任务(扩展)
 
@@ -124,6 +152,34 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAgentGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteProbeTask(self, request):
+        """删除拨测任务
+
+        :param request: Request instance for DeleteProbeTask.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DeleteProbeTaskRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DeleteProbeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteProbeTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteProbeTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -320,6 +376,90 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCatLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDetailedSingleProbeData(self, request):
+        """根据时间范围、任务ID、运营商等条件查询单次拨测详情数据
+
+        :param request: Request instance for DescribeDetailedSingleProbeData.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeDetailedSingleProbeDataRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeDetailedSingleProbeDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDetailedSingleProbeData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDetailedSingleProbeDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProbeNodes(self, request):
+        """查询拨测节点
+
+        :param request: Request instance for DescribeProbeNodes.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeNodesRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeProbeNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProbeNodes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProbeNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProbeTasks(self, request):
+        """查询探测任务列表
+
+        :param request: Request instance for DescribeProbeTasks.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeTasksRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeProbeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProbeTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProbeTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -726,6 +866,34 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ResumeProbeTask(self, request):
+        """恢复拨测任务
+
+        :param request: Request instance for ResumeProbeTask.
+        :type request: :class:`tencentcloud.cat.v20180409.models.ResumeProbeTaskRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.ResumeProbeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResumeProbeTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResumeProbeTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RunTask(self, request):
         """运行拨测任务
 
@@ -740,6 +908,62 @@ class CatClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SuspendProbeTask(self, request):
+        """暂停拨测任务
+
+        :param request: Request instance for SuspendProbeTask.
+        :type request: :class:`tencentcloud.cat.v20180409.models.SuspendProbeTaskRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.SuspendProbeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SuspendProbeTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SuspendProbeTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateProbeTaskConfigurationList(self, request):
+        """批量更新拨测任务配置
+
+        :param request: Request instance for UpdateProbeTaskConfigurationList.
+        :type request: :class:`tencentcloud.cat.v20180409.models.UpdateProbeTaskConfigurationListRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.UpdateProbeTaskConfigurationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateProbeTaskConfigurationList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateProbeTaskConfigurationListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

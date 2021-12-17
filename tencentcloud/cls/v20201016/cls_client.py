@@ -194,6 +194,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConsumer(self, request):
+        """本接口用于创建投递任务
+
+        :param request: Request instance for CreateConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConsumerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateExport(self, request):
         """本接口用于创建日志下载任务
 
@@ -516,6 +544,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigFromMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteConsumer(self, request):
+        """本接口用于删除投递配置
+
+        :param request: Request instance for DeleteConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -908,6 +964,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConsumer(self, request):
+        """本接口用于获取投递配置
+
+        :param request: Request instance for DescribeConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1356,6 +1440,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyConsumer(self, request):
+        """本接口用于修改投递任务
+
+        :param request: Request instance for ModifyConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConsumerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

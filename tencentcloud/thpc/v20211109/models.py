@@ -104,7 +104,7 @@ class CFSOption(AbstractModel):
         :type RemotePath: str
         :param Protocol: 文件系统协议类型，默认值NFS 3.0
         :type Protocol: str
-        :param StorageType: 文件系统存储类型，默认值SD
+        :param StorageType: 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :type StorageType: str
         """
         self.LocalPath = None

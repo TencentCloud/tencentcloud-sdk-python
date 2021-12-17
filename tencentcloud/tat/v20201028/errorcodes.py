@@ -59,6 +59,9 @@ INVALIDPARAMETERVALUE_INVALIDCOMMANDNAME = 'InvalidParameterValue.InvalidCommand
 # 命令内容无效。
 INVALIDPARAMETERVALUE_INVALIDCONTENT = 'InvalidParameterValue.InvalidContent'
 
+# Crontab 表达式无效。
+INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = 'InvalidParameterValue.InvalidCronExpression'
+
 # Filter 无效。
 INVALIDPARAMETERVALUE_INVALIDFILTER = 'InvalidParameterValue.InvalidFilter'
 

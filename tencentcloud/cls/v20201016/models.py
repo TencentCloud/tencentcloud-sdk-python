@@ -520,6 +520,50 @@ class CallBackInfo(AbstractModel):
         
 
 
+class Ckafka(AbstractModel):
+    """CKafka的描述-需要投递到的kafka信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: Ckafka 的 Vip
+        :type Vip: str
+        :param Vport: Ckafka 的 Vport
+        :type Vport: str
+        :param InstanceId: Ckafka 的 InstanceId
+        :type InstanceId: str
+        :param InstanceName: Ckafka 的 InstanceName
+        :type InstanceName: str
+        :param TopicId: Ckafka 的 TopicId
+        :type TopicId: str
+        :param TopicName: Ckafka 的 TopicName
+        :type TopicName: str
+        """
+        self.Vip = None
+        self.Vport = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.TopicId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Column(AbstractModel):
     """日志分析的列属性
 
@@ -637,6 +681,36 @@ class ConfigInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
         self.UserDefineRule = params.get("UserDefineRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerContent(AbstractModel):
+    """投递任务出入参 Content
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableTag: 是否投递 TAG 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableTag: bool
+        :param MetaFields: 需要投递的元数据列表，目前仅支持：__SOURCE__，__FILENAME__和__TIMESTAMP__
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaFields: list of str
+        """
+        self.EnableTag = None
+        self.MetaFields = None
+
+
+    def _deserialize(self, params):
+        self.EnableTag = params.get("EnableTag")
+        self.MetaFields = params.get("MetaFields")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1052,6 +1126,63 @@ class CreateConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateConsumerRequest(AbstractModel):
+    """CreateConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 投递任务绑定的日志主题 ID
+        :type TopicId: str
+        :param NeedContent: 是否投递日志的元数据信息，默认为 true
+        :type NeedContent: bool
+        :param Content: 如果需要投递元数据信息，元数据信息的描述
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param Ckafka: CKafka的描述
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
+        self.TopicId = None
+        self.NeedContent = None
+        self.Content = None
+        self.Ckafka = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self.Content = ConsumerContent()
+            self.Content._deserialize(params.get("Content"))
+        if params.get("Ckafka") is not None:
+            self.Ckafka = Ckafka()
+            self.Ckafka._deserialize(params.get("Ckafka"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerResponse(AbstractModel):
+    """CreateConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1757,6 +1888,47 @@ class DeleteConfigRequest(AbstractModel):
 
 class DeleteConfigResponse(AbstractModel):
     """DeleteConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteConsumerRequest(AbstractModel):
+    """DeleteConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 投递任务绑定的日志主题 ID
+        :type TopicId: str
+        """
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerResponse(AbstractModel):
+    """DeleteConsumer返回参数结构体
 
     """
 
@@ -2669,6 +2841,68 @@ class DescribeConfigsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Configs.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConsumerRequest(AbstractModel):
+    """DescribeConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 投递任务绑定的日志主题 ID
+        :type TopicId: str
+        """
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerResponse(AbstractModel):
+    """DescribeConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Effective: 投递任务是否生效
+        :type Effective: bool
+        :param NeedContent: 是否投递日志的元数据信息
+        :type NeedContent: bool
+        :param Content: 如果需要投递元数据信息，元数据信息的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param Ckafka: CKafka的描述
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Effective = None
+        self.NeedContent = None
+        self.Content = None
+        self.Ckafka = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Effective = params.get("Effective")
+        self.NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self.Content = ConsumerContent()
+            self.Content._deserialize(params.get("Content"))
+        if params.get("Ckafka") is not None:
+            self.Ckafka = Ckafka()
+            self.Ckafka._deserialize(params.get("Ckafka"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4608,6 +4842,67 @@ class ModifyConfigRequest(AbstractModel):
 
 class ModifyConfigResponse(AbstractModel):
     """ModifyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyConsumerRequest(AbstractModel):
+    """ModifyConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 投递任务绑定的日志主题 ID
+        :type TopicId: str
+        :param Effective: 投递任务是否生效
+        :type Effective: bool
+        :param NeedContent: 是否投递日志的元数据信息，默认为 false
+        :type NeedContent: bool
+        :param Content: 如果需要投递元数据信息，元数据信息的描述
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
+        :param Ckafka: CKafka的描述
+        :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        """
+        self.TopicId = None
+        self.Effective = None
+        self.NeedContent = None
+        self.Content = None
+        self.Ckafka = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Effective = params.get("Effective")
+        self.NeedContent = params.get("NeedContent")
+        if params.get("Content") is not None:
+            self.Content = ConsumerContent()
+            self.Content._deserialize(params.get("Content"))
+        if params.get("Ckafka") is not None:
+            self.Ckafka = Ckafka()
+            self.Ckafka._deserialize(params.get("Ckafka"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsumerResponse(AbstractModel):
+    """ModifyConsumer返回参数结构体
 
     """
 

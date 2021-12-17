@@ -2653,6 +2653,59 @@ class DescribeDcnDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFileDownloadUrlRequest(AbstractModel):
+    """DescribeFileDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ShardId: 实例分片ID
+        :type ShardId: str
+        :param FilePath: 不带签名的文件路径
+        :type FilePath: str
+        """
+        self.InstanceId = None
+        self.ShardId = None
+        self.FilePath = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ShardId = params.get("ShardId")
+        self.FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileDownloadUrlResponse(AbstractModel):
+    """DescribeFileDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PreSignedUrl: 带签名的下载连接
+        :type PreSignedUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PreSignedUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PreSignedUrl = params.get("PreSignedUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowRequest(AbstractModel):
     """DescribeFlow请求参数结构体
 

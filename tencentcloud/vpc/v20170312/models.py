@@ -3085,6 +3085,8 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         :type ModeType: str
         :param Zone: 专线网关可用区
         :type Zone: str
+        :param HaZoneGroupId: 专线网关高可用区容灾组ID
+        :type HaZoneGroupId: str
         """
         self.DirectConnectGatewayName = None
         self.NetworkType = None
@@ -3092,6 +3094,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self.GatewayType = None
         self.ModeType = None
         self.Zone = None
+        self.HaZoneGroupId = None
 
 
     def _deserialize(self, params):
@@ -3101,6 +3104,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self.GatewayType = params.get("GatewayType")
         self.ModeType = params.get("ModeType")
         self.Zone = params.get("Zone")
+        self.HaZoneGroupId = params.get("HaZoneGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11421,6 +11425,28 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         :param Zone: 专线网关所在可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
+        :param EnableFlowDetails: 网关流控明细启用状态：
+0：关闭
+1：开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableFlowDetails: int
+        :param FlowDetailsUpdateTime: 开启、关闭网关流控明细时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowDetailsUpdateTime: str
+        :param NewAfc: 是否支持开启网关流控明细
+0：不支持
+1：支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewAfc: int
+        :param AccessNetworkType: 专线网关接入网络类型：
+<li>`VXLAN` - VXLAN类型。</li>
+<li>`MPLS` - MPLS类型。</li>
+<li>`Hybrid` - Hybrid类型。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessNetworkType: str
+        :param HaZoneList: 跨可用区容灾专线网关的可用区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HaZoneList: list of str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -11439,6 +11465,11 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.ModeType = None
         self.LocalZone = None
         self.Zone = None
+        self.EnableFlowDetails = None
+        self.FlowDetailsUpdateTime = None
+        self.NewAfc = None
+        self.AccessNetworkType = None
+        self.HaZoneList = None
 
 
     def _deserialize(self, params):
@@ -11459,6 +11490,11 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.ModeType = params.get("ModeType")
         self.LocalZone = params.get("LocalZone")
         self.Zone = params.get("Zone")
+        self.EnableFlowDetails = params.get("EnableFlowDetails")
+        self.FlowDetailsUpdateTime = params.get("FlowDetailsUpdateTime")
+        self.NewAfc = params.get("NewAfc")
+        self.AccessNetworkType = params.get("AccessNetworkType")
+        self.HaZoneList = params.get("HaZoneList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11481,16 +11517,24 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
         :type DestinationCidrBlock: str
         :param ASPath: `BGP`的`AS-Path`属性。
         :type ASPath: list of str
+        :param Description: 备注
+        :type Description: str
+        :param UpdateTime: 最后更新时间
+        :type UpdateTime: str
         """
         self.RouteId = None
         self.DestinationCidrBlock = None
         self.ASPath = None
+        self.Description = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
         self.RouteId = params.get("RouteId")
         self.DestinationCidrBlock = params.get("DestinationCidrBlock")
         self.ASPath = params.get("ASPath")
+        self.Description = params.get("Description")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

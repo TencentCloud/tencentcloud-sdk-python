@@ -757,6 +757,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFileDownloadUrl(self, request):
+        """本接口(DescribeFileDownloadUrl)用于获取数据库指定备份或日志文件的下载连接。
+
+        :param request: Request instance for DescribeFileDownloadUrl.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFileDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeFileDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFileDownloadUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileDownloadUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlow(self, request):
         """本接口（DescribeFlow）用于查询流程状态
 

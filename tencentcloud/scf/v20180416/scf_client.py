@@ -538,7 +538,7 @@ class ScfClient(AbstractClient):
 
 
     def GetFunctionLogs(self, request):
-        """该接口根据指定的日志查询条件返回函数运行日志。
+        """该接口根据指定的日志查询条件返回函数运行日志。该接口已下线，查询函数请求运行的返回信息，请使用 [GetRequestStatus](https://cloud.tencent.com/document/product/583/65348)。查询函数运行日志，请参考[日志检索教程](https://cloud.tencent.com/document/product/583/52637)。
 
         :param request: Request instance for GetFunctionLogs.
         :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionLogsRequest`
