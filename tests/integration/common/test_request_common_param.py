@@ -8,7 +8,7 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.cvm.v20170312 import cvm_client, models
 
 
-def test_request_common_param_languane():
+def test_request_common_param_language():
     endpoint = "cvm.tencentcloudapi.com"
     region = "ap-guangzhou"
     language = "en-US"
