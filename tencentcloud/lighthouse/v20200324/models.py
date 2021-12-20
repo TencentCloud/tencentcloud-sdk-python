@@ -732,6 +732,46 @@ class CreateKeyPairResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataDiskPrice(AbstractModel):
+    """数据盘价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 云硬盘ID。
+        :type DiskId: str
+        :param OriginalDiskPrice: 云硬盘单价。
+        :type OriginalDiskPrice: float
+        :param OriginalPrice: 云硬盘总价。
+        :type OriginalPrice: float
+        :param Discount: 折扣。
+        :type Discount: float
+        :param DiscountPrice: 折后总价。
+        :type DiscountPrice: float
+        """
+        self.DiskId = None
+        self.OriginalDiskPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.OriginalDiskPrice = params.get("OriginalDiskPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteBlueprintsRequest(AbstractModel):
     """DeleteBlueprints请求参数结构体
 
@@ -1262,8 +1302,10 @@ class DescribeDiskConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: - zone:
-可用区
+        :param Filters: 过滤器列表。
+<li>zone</li>按照【可用区】进行过滤。
+类型：String
+必选：否
         :type Filters: list of Filter
         """
         self.Filters = None
@@ -1292,7 +1334,7 @@ class DescribeDiskConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskConfigSet: 磁盘配置列表
+        :param DiskConfigSet: 云硬盘配置列表。
         :type DiskConfigSet: list of DiskConfig
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3302,13 +3344,13 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskSize: 磁盘大小
+        :param DiskSize: 云硬盘大小, 单位: GB。
         :type DiskSize: int
-        :param DiskType: 硬盘介质类型
+        :param DiskType: 云硬盘介质类型。取值: "CLOUD_PREMIUM"(高性能云盘), "CLOUD_SSD"(SSD云硬盘)。
         :type DiskType: str
-        :param DiskChargePrepaid: 新购磁盘包年包月相关参数设置
+        :param DiskChargePrepaid: 新购云硬盘包年包月相关参数设置。
         :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
-        :param DiskCount: 磁盘个数, 默认值: 1
+        :param DiskCount: 云硬盘个数, 默认值: 1。
         :type DiskCount: int
         """
         self.DiskSize = None
@@ -3340,7 +3382,7 @@ class InquirePriceCreateDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskPrice: 磁盘价格
+        :param DiskPrice: 云硬盘价格。
         :type DiskPrice: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3481,9 +3523,15 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        :param RenewDataDisk: 是否续费数据盘
+        :type RenewDataDisk: bool
+        :param AlignInstanceExpiredTime: 数据盘是否对齐实例到期时间
+        :type AlignInstanceExpiredTime: bool
         """
         self.InstanceIds = None
         self.InstanceChargePrepaid = None
+        self.RenewDataDisk = None
+        self.AlignInstanceExpiredTime = None
 
 
     def _deserialize(self, params):
@@ -3491,6 +3539,8 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.RenewDataDisk = params.get("RenewDataDisk")
+        self.AlignInstanceExpiredTime = params.get("AlignInstanceExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3509,10 +3559,14 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         r"""
         :param Price: 询价信息。
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        :param DataDiskPriceSet: 数据盘价格信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDiskPriceSet: list of DataDiskPrice
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
+        self.DataDiskPriceSet = None
         self.RequestId = None
 
 
@@ -3520,6 +3574,12 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         if params.get("Price") is not None:
             self.Price = Price()
             self.Price._deserialize(params.get("Price"))
+        if params.get("DataDiskPriceSet") is not None:
+            self.DataDiskPriceSet = []
+            for item in params.get("DataDiskPriceSet"):
+                obj = DataDiskPrice()
+                obj._deserialize(item)
+                self.DataDiskPriceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

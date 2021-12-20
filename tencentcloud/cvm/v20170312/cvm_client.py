@@ -206,6 +206,66 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLaunchTemplate(self, request):
+        """本接口（CreateLaunchTemplate）用于创建实例启动模板。
+
+        实例启动模板是一种配置数据并可用于创建实例，其内容包含创建实例所需的配置，比如实例类型，数据盘和系统盘的类型和大小，以及安全组等信息。
+
+        初次创建实例模板后，其模板版本为默认版本1，新版本的创建可使用CreateLaunchTemplateVersion创建，版本号递增。默认情况下，在RunInstances中指定实例启动模板，若不指定模板版本号，则使用默认版本。
+
+        :param request: Request instance for CreateLaunchTemplate.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLaunchTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaunchTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLaunchTemplateVersion(self, request):
+        """本接口（CreateLaunchTemplateVersion）根据指定的实例模板ID以及对应的模板版本号创建新的实例启动模板，若未指定模板版本号则使用默认版本号。每个实例启动模板最多创建30个版本。
+
+        :param request: Request instance for CreateLaunchTemplateVersion.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateVersionRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLaunchTemplateVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLaunchTemplateVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDisasterRecoverGroups(self, request):
         """本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云服务器，才能执行删除操作，不然会产生删除置放群组失败的错误。
 
@@ -283,6 +343,62 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteKeyPairsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLaunchTemplate(self, request):
+        """本接口（DeleteLaunchTemplate）用于删除一个实例启动模板。
+
+        :param request: Request instance for DeleteLaunchTemplate.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLaunchTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLaunchTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLaunchTemplateVersions(self, request):
+        """本接口（DeleteLaunchTemplateVersions）用于删除一个或者多个实例启动模板版本。
+
+        :param request: Request instance for DeleteLaunchTemplateVersions.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateVersionsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteLaunchTemplateVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLaunchTemplateVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLaunchTemplateVersionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -821,6 +937,62 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeyPairsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLaunchTemplateVersions(self, request):
+        """本接口（DescribeLaunchTemplateVersions）用于查询实例模板版本信息。
+
+        :param request: Request instance for DescribeLaunchTemplateVersions.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplateVersionsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplateVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLaunchTemplateVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLaunchTemplateVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLaunchTemplates(self, request):
+        """本接口（DescribeLaunchTemplates）用于查询一个或者多个实例启动模板。
+
+        :param request: Request instance for DescribeLaunchTemplates.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplatesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeLaunchTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLaunchTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLaunchTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1736,6 +1908,34 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyKeyPairAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLaunchTemplateDefaultVersion(self, request):
+        """本接口（ModifyLaunchTemplateDefaultVersion）用于修改实例启动模板默认版本。
+
+        :param request: Request instance for ModifyLaunchTemplateDefaultVersion.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyLaunchTemplateDefaultVersionRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyLaunchTemplateDefaultVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLaunchTemplateDefaultVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLaunchTemplateDefaultVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

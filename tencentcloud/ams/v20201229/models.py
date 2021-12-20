@@ -54,6 +54,10 @@ class AudioResult(AbstractModel):
         :type MoanResults: list of AudioResultDetailMoanResult
         :param LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
         :type LanguageResults: list of AudioResultDetailLanguageResult
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self.HitFlag = None
         self.Label = None
@@ -66,6 +70,7 @@ class AudioResult(AbstractModel):
         self.TextResults = None
         self.MoanResults = None
         self.LanguageResults = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -95,6 +100,7 @@ class AudioResult(AbstractModel):
                 obj = AudioResultDetailLanguageResult()
                 obj._deserialize(item)
                 self.LanguageResults.append(obj)
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -167,12 +173,17 @@ class AudioResultDetailMoanResult(AbstractModel):
         :type EndTime: float
         :param SubLabelCode: *内测中，敬请期待*
         :type SubLabelCode: str
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self.Label = None
         self.Score = None
         self.StartTime = None
         self.EndTime = None
         self.SubLabelCode = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -181,6 +192,7 @@ class AudioResultDetailMoanResult(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.SubLabelCode = params.get("SubLabelCode")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -218,6 +230,10 @@ class AudioResultDetailTextResult(AbstractModel):
         :type Suggestion: str
         :param LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
         :type LibType: int
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self.Label = None
         self.Keywords = None
@@ -226,6 +242,7 @@ class AudioResultDetailTextResult(AbstractModel):
         self.Score = None
         self.Suggestion = None
         self.LibType = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -236,6 +253,7 @@ class AudioResultDetailTextResult(AbstractModel):
         self.Score = params.get("Score")
         self.Suggestion = params.get("Suggestion")
         self.LibType = params.get("LibType")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1072,16 +1090,22 @@ class TaskLabel(AbstractModel):
         :param Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self.Label = None
         self.Suggestion = None
         self.Score = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
         self.Label = params.get("Label")
         self.Suggestion = params.get("Suggestion")
         self.Score = params.get("Score")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

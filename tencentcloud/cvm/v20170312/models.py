@@ -552,6 +552,366 @@ class CreateKeyPairResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLaunchTemplateRequest(AbstractModel):
+    """CreateLaunchTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateName: 实例启动模板名称。长度为2~128个英文或中文字符。
+        :type LaunchTemplateName: str
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，传入InstanceType获取当前机型支持的镜像列表，取返回信息中的`ImageId`字段。</li>
+        :type ImageId: str
+        :param LaunchTemplateVersionDescription: 实例启动模板版本描述。长度为2~256个英文或中文字符。
+        :type LaunchTemplateVersionDescription: str
+        :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格。
+<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则系统将根据当前地域的资源售卖情况动态指定默认机型。<br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。
+        :type InstanceType: str
+        :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :type DataDisks: list of DataDisk
+        :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络IP，即表示每个实例的主网卡IP；同时，InstanceCount参数必须与私有网络IP的个数一致且不能大于20。
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param InstanceCount: 购买实例数量。包年包月实例取值范围：[1，300]，按量计费实例取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
+        :type InstanceCount: int
+        :param InstanceName: 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。</li><li>最多支持60个字符（包含模式串）。
+        :type InstanceName: str
+        :param LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :type SecurityGroupIds: list of str
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务；自定义镜像与镜像市场镜像默认不开启云监控，云安全服务，而使用镜像里保留的服务。
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        :param HostName: 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+        :type HostName: str
+        :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+        :type DisasterRecoverGroupIds: list of str
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云服务器实例。
+        :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :type UserData: str
+        :param DryRun: 是否只预检此次请求。
+true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId.
+false（默认）：发送正常请求，通过检查后直接创建实例。
+        :type DryRun: bool
+        :param CamRoleName: CAM角色名称。可通过[`DescribeRoleList`](https://cloud.tencent.com/document/product/598/13887)接口返回值中的`roleName`获取。
+        :type CamRoleName: str
+        :param HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+        :type HpcClusterId: str
+        :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享子机（基于专用宿主机创建，宿主机部分的资源不收费）<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        self.LaunchTemplateName = None
+        self.Placement = None
+        self.ImageId = None
+        self.LaunchTemplateVersionDescription = None
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.VirtualPrivateCloud = None
+        self.InternetAccessible = None
+        self.InstanceCount = None
+        self.InstanceName = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+        self.EnhancedService = None
+        self.ClientToken = None
+        self.HostName = None
+        self.ActionTimer = None
+        self.DisasterRecoverGroupIds = None
+        self.TagSpecification = None
+        self.InstanceMarketOptions = None
+        self.UserData = None
+        self.DryRun = None
+        self.CamRoleName = None
+        self.HpcClusterId = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateName = params.get("LaunchTemplateName")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ImageId = params.get("ImageId")
+        self.LaunchTemplateVersionDescription = params.get("LaunchTemplateVersionDescription")
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceCount = params.get("InstanceCount")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.ClientToken = params.get("ClientToken")
+        self.HostName = params.get("HostName")
+        if params.get("ActionTimer") is not None:
+            self.ActionTimer = ActionTimer()
+            self.ActionTimer._deserialize(params.get("ActionTimer"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.UserData = params.get("UserData")
+        self.DryRun = params.get("DryRun")
+        self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLaunchTemplateResponse(AbstractModel):
+    """CreateLaunchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: 当通过本接口来创建实例启动模板时会返回该参数，表示创建成功的实例启动模板`ID`。
+        :type LaunchTemplateId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LaunchTemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLaunchTemplateVersionRequest(AbstractModel):
+    """CreateLaunchTemplateVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param LaunchTemplateId: 启动模板ID，新版本将基于该实例启动模板ID创建。
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersion: 若给定，新实例启动模板将基于给定的版本号创建。若未指定则使用默认版本。
+        :type LaunchTemplateVersion: int
+        :param LaunchTemplateVersionDescription: 实例启动模板版本描述。长度为2~256个英文或中文字符。
+        :type LaunchTemplateVersionDescription: str
+        :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格。
+<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则系统将根据当前地域的资源售卖情况动态指定默认机型。<br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。
+        :type InstanceType: str
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，传入InstanceType获取当前机型支持的镜像列表，取返回信息中的`ImageId`字段。</li>
+        :type ImageId: str
+        :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: 实例数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :type DataDisks: list of DataDisk
+        :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。若不指定该参数，则默认使用基础网络。若在此参数中指定了私有网络IP，即表示每个实例的主网卡IP；同时，InstanceCount参数必须与私有网络IP的个数一致且不能大于20。
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param InstanceCount: 购买实例数量。包年包月实例取值范围：[1，300]，按量计费实例取值范围：[1，100]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量，具体配额相关限制详见[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)。
+        :type InstanceCount: int
+        :param InstanceName: 实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server_{R:3}`，购买1台时，实例显示名称为`server_3`；购买2台时，实例显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。</li><li>购买多台实例，如果不指定模式串，则在实例显示名称添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server_`，购买2台时，实例显示名称分别为`server_1`，`server_2`。</li><li>最多支持60个字符（包含模式串）。
+        :type InstanceName: str
+        :param LoginSettings: 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :type SecurityGroupIds: list of str
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务；自定义镜像与镜像市场镜像默认不开启云监控，云安全服务，而使用镜像里保留的服务。
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        :param HostName: 云服务器的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+        :type HostName: str
+        :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+        :type DisasterRecoverGroupIds: list of str
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到云服务器实例。
+        :type TagSpecification: list of TagSpecification
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :type UserData: str
+        :param DryRun: 是否只预检此次请求。
+true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId.
+false（默认）：发送正常请求，通过检查后直接创建实例。
+        :type DryRun: bool
+        :param CamRoleName: CAM角色名称。可通过[`DescribeRoleList`](https://cloud.tencent.com/document/product/598/13887)接口返回值中的`roleName`获取。
+        :type CamRoleName: str
+        :param HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+        :type HpcClusterId: str
+        :param InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDHPAID：独享子机（基于专用宿主机创建，宿主机部分的资源不收费）<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        self.Placement = None
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersion = None
+        self.LaunchTemplateVersionDescription = None
+        self.InstanceType = None
+        self.ImageId = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.VirtualPrivateCloud = None
+        self.InternetAccessible = None
+        self.InstanceCount = None
+        self.InstanceName = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+        self.EnhancedService = None
+        self.ClientToken = None
+        self.HostName = None
+        self.ActionTimer = None
+        self.DisasterRecoverGroupIds = None
+        self.TagSpecification = None
+        self.InstanceMarketOptions = None
+        self.UserData = None
+        self.DryRun = None
+        self.CamRoleName = None
+        self.HpcClusterId = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersion = params.get("LaunchTemplateVersion")
+        self.LaunchTemplateVersionDescription = params.get("LaunchTemplateVersionDescription")
+        self.InstanceType = params.get("InstanceType")
+        self.ImageId = params.get("ImageId")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceCount = params.get("InstanceCount")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.ClientToken = params.get("ClientToken")
+        self.HostName = params.get("HostName")
+        if params.get("ActionTimer") is not None:
+            self.ActionTimer = ActionTimer()
+            self.ActionTimer._deserialize(params.get("ActionTimer"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.UserData = params.get("UserData")
+        self.DryRun = params.get("DryRun")
+        self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLaunchTemplateVersionResponse(AbstractModel):
+    """CreateLaunchTemplateVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateVersionNumber: 新创建的实例启动模板版本号。
+        :type LaunchTemplateVersionNumber: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LaunchTemplateVersionNumber = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateVersionNumber = params.get("LaunchTemplateVersionNumber")
+        self.RequestId = params.get("RequestId")
+
+
 class DataDisk(AbstractModel):
     """描述了数据盘的信息
 
@@ -732,6 +1092,92 @@ class DeleteKeyPairsRequest(AbstractModel):
 
 class DeleteKeyPairsResponse(AbstractModel):
     """DeleteKeyPairs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLaunchTemplateRequest(AbstractModel):
+    """DeleteLaunchTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: 启动模板ID。
+        :type LaunchTemplateId: str
+        """
+        self.LaunchTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLaunchTemplateResponse(AbstractModel):
+    """DeleteLaunchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLaunchTemplateVersionsRequest(AbstractModel):
+    """DeleteLaunchTemplateVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: 启动模板ID。
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersions: 实例启动模板版本列表。
+        :type LaunchTemplateVersions: list of int
+        """
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersions = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersions = params.get("LaunchTemplateVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLaunchTemplateVersionsResponse(AbstractModel):
+    """DeleteLaunchTemplateVersions返回参数结构体
 
     """
 
@@ -1764,6 +2210,158 @@ class DescribeKeyPairsResponse(AbstractModel):
                 obj = KeyPair()
                 obj._deserialize(item)
                 self.KeyPairSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLaunchTemplateVersionsRequest(AbstractModel):
+    """DescribeLaunchTemplateVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: 启动模板ID。
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersions: 实例启动模板列表。
+        :type LaunchTemplateVersions: list of int non-negative
+        :param MinVersion: 通过范围指定版本时的最小版本号，默认为0。
+        :type MinVersion: int
+        :param MaxVersion: 过范围指定版本时的最大版本号，默认为30。
+        :type MaxVersion: int
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        :param DefaultVersion: 是否查询默认版本。该参数不可与LaunchTemplateVersions同时指定。
+        :type DefaultVersion: bool
+        """
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersions = None
+        self.MinVersion = None
+        self.MaxVersion = None
+        self.Offset = None
+        self.Limit = None
+        self.DefaultVersion = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersions = params.get("LaunchTemplateVersions")
+        self.MinVersion = params.get("MinVersion")
+        self.MaxVersion = params.get("MaxVersion")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DefaultVersion = params.get("DefaultVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLaunchTemplateVersionsResponse(AbstractModel):
+    """DescribeLaunchTemplateVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 实例启动模板总数。
+        :type TotalCount: int
+        :param LaunchTemplateVersionSet: 实例启动模板版本集合。
+        :type LaunchTemplateVersionSet: list of LaunchTemplateVersionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LaunchTemplateVersionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LaunchTemplateVersionSet") is not None:
+            self.LaunchTemplateVersionSet = []
+            for item in params.get("LaunchTemplateVersionSet"):
+                obj = LaunchTemplateVersionInfo()
+                obj._deserialize(item)
+                self.LaunchTemplateVersionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLaunchTemplatesRequest(AbstractModel):
+    """DescribeLaunchTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateIds: 启动模板ID，一个或者多个启动模板ID。若未指定，则显示用户所有模板。
+        :type LaunchTemplateIds: list of str
+        :param Filters: <p style="padding-left: 30px;">按照【<strong>LaunchTemplateNames</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchTemplateIds`和`Filters`。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.LaunchTemplateIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateIds = params.get("LaunchTemplateIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLaunchTemplatesResponse(AbstractModel):
+    """DescribeLaunchTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的实例模板数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param LaunchTemplateSet: 实例详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchTemplateSet: list of LaunchTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LaunchTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LaunchTemplateSet") is not None:
+            self.LaunchTemplateSet = []
+            for item in params.get("LaunchTemplateSet"):
+                obj = LaunchTemplateInfo()
+                obj._deserialize(item)
+                self.LaunchTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4280,6 +4878,24 @@ class KeyPair(AbstractModel):
         
 
 
+class LaunchTemplate(AbstractModel):
+    """实例启动模板，通过该参数可使用实例模板中的预设参数创建实例。
+
+    """
+
+
+class LaunchTemplateInfo(AbstractModel):
+    """实例启动模板简要信息。
+
+    """
+
+
+class LaunchTemplateVersionInfo(AbstractModel):
+    """实例启动模板版本集合
+
+    """
+
+
 class LocalDiskType(AbstractModel):
     """本地磁盘规格
 
@@ -4887,6 +5503,51 @@ class ModifyKeyPairAttributeRequest(AbstractModel):
 
 class ModifyKeyPairAttributeResponse(AbstractModel):
     """ModifyKeyPairAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLaunchTemplateDefaultVersionRequest(AbstractModel):
+    """ModifyLaunchTemplateDefaultVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: 启动模板ID。
+        :type LaunchTemplateId: str
+        :param DefaultVersion: 待设置的默认版本号。
+        :type DefaultVersion: int
+        """
+        self.LaunchTemplateId = None
+        self.DefaultVersion = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.DefaultVersion = params.get("DefaultVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
+    """ModifyLaunchTemplateDefaultVersion返回参数结构体
 
     """
 
@@ -6065,11 +6726,13 @@ class RunInstancesRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。
  <b>注：本数据结构中的Zone为必填参数。</b>
+如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递该参数和LaunchTemplate，则默认覆盖LaunchTemplate中对应的值。
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格。
 <br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则系统将根据当前地域的资源售卖情况动态指定默认机型。<br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。
         :type InstanceType: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，传入InstanceType获取当前机型支持的镜像列表，取返回信息中的`ImageId`字段。</li>
+如果您不指定LaunchTemplate参数，则ImageId为必选参数。若同时传递该参数和LaunchTemplate，则默认覆盖LaunchTemplate中对应的值。
         :type ImageId: str
         :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -6113,6 +6776,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type CamRoleName: str
         :param HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
         :type HpcClusterId: str
+        :param LaunchTemplate: 实例启动模板。
+        :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -6138,6 +6803,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.DryRun = None
         self.CamRoleName = None
         self.HpcClusterId = None
+        self.LaunchTemplate = None
 
 
     def _deserialize(self, params):
@@ -6193,6 +6859,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.DryRun = params.get("DryRun")
         self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("LaunchTemplate") is not None:
+            self.LaunchTemplate = LaunchTemplate()
+            self.LaunchTemplate._deserialize(params.get("LaunchTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4632,6 +4632,14 @@ CCN VPN 形的通道 可以不传VPCID
         :type HealthCheckRemoteIp: str
         :param RouteType: 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
         :type RouteType: str
+        :param NegotiationType: 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+        :type NegotiationType: str
+        :param DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        :type DpdEnable: int
+        :param DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+        :type DpdTimeout: str
+        :param DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        :type DpdAction: str
         """
         self.VpnGatewayId = None
         self.CustomerGatewayId = None
@@ -4646,6 +4654,10 @@ CCN VPN 形的通道 可以不传VPCID
         self.HealthCheckLocalIp = None
         self.HealthCheckRemoteIp = None
         self.RouteType = None
+        self.NegotiationType = None
+        self.DpdEnable = None
+        self.DpdTimeout = None
+        self.DpdAction = None
 
 
     def _deserialize(self, params):
@@ -4676,6 +4688,10 @@ CCN VPN 形的通道 可以不传VPCID
         self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
         self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
         self.RouteType = params.get("RouteType")
+        self.NegotiationType = params.get("NegotiationType")
+        self.DpdEnable = params.get("DpdEnable")
+        self.DpdTimeout = params.get("DpdTimeout")
+        self.DpdAction = params.get("DpdAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15901,6 +15917,14 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type HealthCheckLocalIp: str
         :param HealthCheckRemoteIp: 对端通道探测ip
         :type HealthCheckRemoteIp: str
+        :param NegotiationType: 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+        :type NegotiationType: str
+        :param DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        :type DpdEnable: int
+        :param DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+        :type DpdTimeout: str
+        :param DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        :type DpdAction: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -15911,6 +15935,10 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.EnableHealthCheck = None
         self.HealthCheckLocalIp = None
         self.HealthCheckRemoteIp = None
+        self.NegotiationType = None
+        self.DpdEnable = None
+        self.DpdTimeout = None
+        self.DpdAction = None
 
 
     def _deserialize(self, params):
@@ -15932,6 +15960,10 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.EnableHealthCheck = params.get("EnableHealthCheck")
         self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
         self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
+        self.NegotiationType = params.get("NegotiationType")
+        self.DpdEnable = params.get("DpdEnable")
+        self.DpdTimeout = params.get("DpdTimeout")
+        self.DpdAction = params.get("DpdAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

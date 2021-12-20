@@ -344,6 +344,232 @@ class BatchCreateAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BatchModifyGroupOffsetsRequest(AbstractModel):
+    """BatchModifyGroupOffsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupName: 消费分组名称
+        :type GroupName: str
+        :param InstanceId: 实例名称
+        :type InstanceId: str
+        :param Partitions: partition信息
+        :type Partitions: list of Partitions
+        :param TopicName: 指定topic，默认所有topic
+        :type TopicName: list of str
+        """
+        self.GroupName = None
+        self.InstanceId = None
+        self.Partitions = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = Partitions()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyGroupOffsetsResponse(AbstractModel):
+    """BatchModifyGroupOffsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class BatchModifyTopicAttributesRequest(AbstractModel):
+    """BatchModifyTopicAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Topic: 主题属性列表
+        :type Topic: list of BatchModifyTopicInfo
+        """
+        self.InstanceId = None
+        self.Topic = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Topic") is not None:
+            self.Topic = []
+            for item in params.get("Topic"):
+                obj = BatchModifyTopicInfo()
+                obj._deserialize(item)
+                self.Topic.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyTopicAttributesResponse(AbstractModel):
+    """BatchModifyTopicAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: list of BatchModifyTopicResultDTO
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = BatchModifyTopicResultDTO()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class BatchModifyTopicInfo(AbstractModel):
+    """批量修改topic参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: topic名称
+        :type TopicName: str
+        :param PartitionNum: 分区数
+        :type PartitionNum: int
+        :param Note: 备注
+        :type Note: str
+        :param ReplicaNum: 副本数
+        :type ReplicaNum: int
+        :param CleanUpPolicy: 消息删除策略，可以选择delete 或者compact
+        :type CleanUpPolicy: str
+        :param MinInsyncReplicas: 当producer设置request.required.acks为-1时，min.insync.replicas指定replicas的最小数目
+        :type MinInsyncReplicas: int
+        :param UncleanLeaderElectionEnable: 是否允许非ISR的副本成为Leader
+        :type UncleanLeaderElectionEnable: bool
+        :param RetentionMs: topic维度的消息保留时间（毫秒）范围1 分钟到90 天
+        :type RetentionMs: int
+        :param RetentionBytes: topic维度的消息保留大小，范围1 MB到1024 GB
+        :type RetentionBytes: int
+        :param SegmentMs: Segment分片滚动的时长（毫秒），范围1 到90 天
+        :type SegmentMs: int
+        :param MaxMessageBytes: 批次的消息大小，范围1 KB到12 MB
+        :type MaxMessageBytes: int
+        """
+        self.TopicName = None
+        self.PartitionNum = None
+        self.Note = None
+        self.ReplicaNum = None
+        self.CleanUpPolicy = None
+        self.MinInsyncReplicas = None
+        self.UncleanLeaderElectionEnable = None
+        self.RetentionMs = None
+        self.RetentionBytes = None
+        self.SegmentMs = None
+        self.MaxMessageBytes = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.PartitionNum = params.get("PartitionNum")
+        self.Note = params.get("Note")
+        self.ReplicaNum = params.get("ReplicaNum")
+        self.CleanUpPolicy = params.get("CleanUpPolicy")
+        self.MinInsyncReplicas = params.get("MinInsyncReplicas")
+        self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
+        self.RetentionMs = params.get("RetentionMs")
+        self.RetentionBytes = params.get("RetentionBytes")
+        self.SegmentMs = params.get("SegmentMs")
+        self.MaxMessageBytes = params.get("MaxMessageBytes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyTopicResultDTO(AbstractModel):
+    """批量修改topic属性结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param TopicName: topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param ReturnCode: 状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: str
+        :param Message: 状态消息
+        :type Message: str
+        """
+        self.InstanceId = None
+        self.TopicName = None
+        self.ReturnCode = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        self.ReturnCode = params.get("ReturnCode")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInfo(AbstractModel):
     """集群信息实体
 
@@ -3993,6 +4219,34 @@ class PartitionOffset(AbstractModel):
         
 
 
+class Partitions(AbstractModel):
+    """partition信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partition: 分区
+        :type Partition: int
+        :param Offset: partition 消费位移
+        :type Offset: int
+        """
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Price(AbstractModel):
     """消息价格实体
 
@@ -4937,6 +5191,12 @@ class ZoneResponse(AbstractModel):
         :param Physical: 购买物理独占版配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Physical: str
+        :param PublicNetwork: 公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetwork: str
+        :param PublicNetworkLimit: 公网带宽配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetworkLimit: str
         """
         self.ZoneList = None
         self.MaxBuyInstanceNum = None
@@ -4948,6 +5208,8 @@ class ZoneResponse(AbstractModel):
         self.StandardS2 = None
         self.Profession = None
         self.Physical = None
+        self.PublicNetwork = None
+        self.PublicNetworkLimit = None
 
 
     def _deserialize(self, params):
@@ -4975,6 +5237,8 @@ class ZoneResponse(AbstractModel):
         self.StandardS2 = params.get("StandardS2")
         self.Profession = params.get("Profession")
         self.Physical = params.get("Physical")
+        self.PublicNetwork = params.get("PublicNetwork")
+        self.PublicNetworkLimit = params.get("PublicNetworkLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

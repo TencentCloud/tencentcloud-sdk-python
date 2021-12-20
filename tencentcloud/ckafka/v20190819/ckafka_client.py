@@ -54,6 +54,62 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BatchModifyGroupOffsets(self, request):
+        """批量修改消费组offset
+
+        :param request: Request instance for BatchModifyGroupOffsets.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyGroupOffsetsRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyGroupOffsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchModifyGroupOffsets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchModifyGroupOffsetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchModifyTopicAttributes(self, request):
+        """批量设置主题属性
+
+        :param request: Request instance for BatchModifyTopicAttributes.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyTopicAttributesRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.BatchModifyTopicAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchModifyTopicAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchModifyTopicAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcl(self, request):
         """添加 ACL 策略
 

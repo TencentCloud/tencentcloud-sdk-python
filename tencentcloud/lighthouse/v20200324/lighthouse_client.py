@@ -532,7 +532,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeDiskConfigs(self, request):
-        """本接口（DescribeDiskConfigs）用于查询磁盘配置。
+        """本接口（DescribeDiskConfigs）用于查询云硬盘配置。
 
         :param request: Request instance for DescribeDiskConfigs.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskConfigsRequest`
@@ -1304,7 +1304,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceCreateDisks(self, request):
-        """本接口（InquirePriceCreateDisks）用于新购磁盘询价。
+        """本接口（InquirePriceCreateDisks）用于新购云硬盘询价。
 
         :param request: Request instance for InquirePriceCreateDisks.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceCreateDisksRequest`

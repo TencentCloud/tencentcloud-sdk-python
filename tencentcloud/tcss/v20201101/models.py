@@ -3027,7 +3027,7 @@ class CreateComplianceTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetTypeSet: 指定要扫描的资产类型列表。若不填，对所有资产触发扫描。
+        :param AssetTypeSet: 指定要扫描的资产类型列表。
 ASSET_CONTAINER, 容器
 ASSET_IMAGE, 镜像
 ASSET_HOST, 主机
@@ -7866,7 +7866,7 @@ class DescribeComplianceAssetPolicyItemListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerAssetId: 资产的ID。
+        :param CustomerAssetId: 客户资产的ID。
         :type CustomerAssetId: int
         :param Offset: 起始偏移量，默认为0。
         :type Offset: int
@@ -7938,9 +7938,7 @@ class DescribeCompliancePeriodTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AssetType: 资产的类型，传入时，只查询此类型资产的定时任务；不传，则返回所有定时任务。
-
-取值为：
+        :param AssetType: 资产的类型，取值为：
 ASSET_CONTAINER, 容器
 ASSET_IMAGE, 镜像
 ASSET_HOST, 主机
@@ -8127,6 +8125,10 @@ class DescribeComplianceScanFailedAssetListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param AssetTypeSet: 资产类型列表。
+ASSET_CONTAINER, 容器
+ASSET_IMAGE, 镜像
+ASSET_HOST, 主机
+ASSET_K8S, K8S资产
         :type AssetTypeSet: list of str
         :param Offset: 起始偏移量，默认为0。
         :type Offset: int

@@ -5659,9 +5659,9 @@ class ModifyDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
-        :param ListenerId: 负载均衡监听器 ID
+        :param ListenerId: 负载均衡监听器 ID。
         :type ListenerId: str
         :param Domain: 监听器下的某个旧域名。
         :type Domain: str
