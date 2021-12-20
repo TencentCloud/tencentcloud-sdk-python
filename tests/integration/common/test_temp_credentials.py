@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import json
 import os
+
+import pytest
+
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
@@ -32,11 +35,12 @@ def _get_temp_redentials():
         req.from_json_string(json.dumps(params))
         resp = client.AssumeRole(req)
         return resp.Credentials.TmpSecretId, resp.Credentials.TmpSecretKey, resp.Credentials.Token
-
     except TencentCloudSDKException as err:
         assert err.requestId is not None
 
 
+@pytest.mark.skipif(not os.environ.get("TENCENTCLOUD_ROLE_ARN"),
+                    reason="TENCENTCLOUD_ROLE_ARN env var not found")
 def test_temp_credential_ok():
     temp_info = _get_temp_redentials()
     for reqmethod in reqmethod_list:
@@ -53,6 +57,8 @@ def test_temp_credential_ok():
         resp = client.DescribeZones(req)
 
 
+@pytest.mark.skipif(not os.environ.get("TENCENTCLOUD_ROLE_ARN"),
+                    reason="TENCENTCLOUD_ROLE_ARN env var not found")
 def test_temp_credential_invalid():
     temp_info = _get_temp_redentials()
     for reqmethod in reqmethod_list:
