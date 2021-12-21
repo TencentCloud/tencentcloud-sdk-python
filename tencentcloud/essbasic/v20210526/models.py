@@ -60,6 +60,34 @@ class Agent(AbstractModel):
         
 
 
+class AuthFailMessage(AbstractModel):
+    """授权出错信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyOrganizationOpenId: 合作企业Id
+        :type ProxyOrganizationOpenId: str
+        :param Message: 出错信息
+        :type Message: str
+        """
+        self.ProxyOrganizationOpenId = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.ProxyOrganizationOpenId = params.get("ProxyOrganizationOpenId")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
@@ -612,6 +640,34 @@ class DescribeUsageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadFlowInfo(AbstractModel):
+    """合同（流程）下载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: 文件夹名称
+        :type FileName: str
+        :param FlowIdList: 合同（流程）的标识数组
+        :type FlowIdList: list of str
+        """
+        self.FileName = None
+        self.FlowIdList = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FlowIdList = params.get("FlowIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlowApproverInfo(AbstractModel):
     """创建流程签署人入参
 
@@ -635,6 +691,8 @@ class FlowApproverInfo(AbstractModel):
         :type ApproverType: str
         :param OpenId: 用户侧第三方id
         :type OpenId: str
+        :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
+        :type PreReadTime: int
         """
         self.Name = None
         self.Mobile = None
@@ -644,6 +702,7 @@ class FlowApproverInfo(AbstractModel):
         self.CallbackUrl = None
         self.ApproverType = None
         self.OpenId = None
+        self.PreReadTime = None
 
 
     def _deserialize(self, params):
@@ -655,6 +714,7 @@ class FlowApproverInfo(AbstractModel):
         self.CallbackUrl = params.get("CallbackUrl")
         self.ApproverType = params.get("ApproverType")
         self.OpenId = params.get("OpenId")
+        self.PreReadTime = params.get("PreReadTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -801,6 +861,169 @@ class FormField(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetDownloadFlowUrlRequest(AbstractModel):
+    """GetDownloadFlowUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 应用信息
+此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param DownLoadFlows: 文件夹数组，合同（流程）总数不能超过50个，一个文件夹下，不能超过20个合同（流程），
+        :type DownLoadFlows: list of DownloadFlowInfo
+        """
+        self.Agent = None
+        self.Operator = None
+        self.DownLoadFlows = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("DownLoadFlows") is not None:
+            self.DownLoadFlows = []
+            for item in params.get("DownLoadFlows"):
+                obj = DownloadFlowInfo()
+                obj._deserialize(item)
+                self.DownLoadFlows.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDownloadFlowUrlResponse(AbstractModel):
+    """GetDownloadFlowUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownLoadUrl: 进入合同（流程）下载确认页面链接
+        :type DownLoadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownLoadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownLoadUrl = params.get("DownLoadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class OperateChannelTemplateRequest(AbstractModel):
+    """OperateChannelTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 应用信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param TemplateId: 渠道方模板库模板唯一标识
+        :type TemplateId: str
+        :param OperateType: 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
+        :type OperateType: str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param AuthTag: 模板可见性, 全部可见-"all", 部分可见-"part"
+        :type AuthTag: str
+        :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据
+        :type ProxyOrganizationOpenIds: str
+        """
+        self.Agent = None
+        self.TemplateId = None
+        self.OperateType = None
+        self.Operator = None
+        self.AuthTag = None
+        self.ProxyOrganizationOpenIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.TemplateId = params.get("TemplateId")
+        self.OperateType = params.get("OperateType")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.AuthTag = params.get("AuthTag")
+        self.ProxyOrganizationOpenIds = params.get("ProxyOrganizationOpenIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateChannelTemplateResponse(AbstractModel):
+    """OperateChannelTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 腾讯电子签颁发给渠道的应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param TemplateId: 渠道方模板库模板唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param OperateResult: 全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateResult: str
+        :param AuthTag: 模板可见性, 全部可见-"all", 部分可见-"part"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthTag: str
+        :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyOrganizationOpenIds: list of str
+        :param FailMessageList: 操作失败信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailMessageList: list of AuthFailMessage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AppId = None
+        self.TemplateId = None
+        self.OperateResult = None
+        self.AuthTag = None
+        self.ProxyOrganizationOpenIds = None
+        self.FailMessageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.TemplateId = params.get("TemplateId")
+        self.OperateResult = params.get("OperateResult")
+        self.AuthTag = params.get("AuthTag")
+        self.ProxyOrganizationOpenIds = params.get("ProxyOrganizationOpenIds")
+        if params.get("FailMessageList") is not None:
+            self.FailMessageList = []
+            for item in params.get("FailMessageList"):
+                obj = AuthFailMessage()
+                obj._deserialize(item)
+                self.FailMessageList.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class PrepareFlowsRequest(AbstractModel):

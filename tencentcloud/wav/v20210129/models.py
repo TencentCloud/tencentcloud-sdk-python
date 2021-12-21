@@ -603,6 +603,139 @@ class CreateCorpTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLeadRequest(AbstractModel):
+    """CreateLead请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 来源ID
+        :type ChannelId: int
+        :param ChannelName: 来源名称
+        :type ChannelName: str
+        :param CreateTime: 创建时间， 单位毫秒
+        :type CreateTime: int
+        :param SourceType: 线索类型：1-400呼入，2-常规留资
+        :type SourceType: int
+        :param DealerId: 经销商id
+        :type DealerId: int
+        :param BrandId: 品牌id
+        :type BrandId: int
+        :param SeriesId: 车系id
+        :type SeriesId: int
+        :param CustomerName: 客户姓名
+        :type CustomerName: str
+        :param CustomerPhone: 客户手机号
+        :type CustomerPhone: str
+        :param ModelId: 车型id
+        :type ModelId: int
+        :param CustomerSex: 客户性别: 0-未知, 1-男, 2-女
+        :type CustomerSex: int
+        :param SalesName: 销售姓名
+        :type SalesName: str
+        :param SalesPhone: 销售手机号
+        :type SalesPhone: str
+        :param CcName: Cc坐席姓名
+        :type CcName: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.ChannelId = None
+        self.ChannelName = None
+        self.CreateTime = None
+        self.SourceType = None
+        self.DealerId = None
+        self.BrandId = None
+        self.SeriesId = None
+        self.CustomerName = None
+        self.CustomerPhone = None
+        self.ModelId = None
+        self.CustomerSex = None
+        self.SalesName = None
+        self.SalesPhone = None
+        self.CcName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelName = params.get("ChannelName")
+        self.CreateTime = params.get("CreateTime")
+        self.SourceType = params.get("SourceType")
+        self.DealerId = params.get("DealerId")
+        self.BrandId = params.get("BrandId")
+        self.SeriesId = params.get("SeriesId")
+        self.CustomerName = params.get("CustomerName")
+        self.CustomerPhone = params.get("CustomerPhone")
+        self.ModelId = params.get("ModelId")
+        self.CustomerSex = params.get("CustomerSex")
+        self.SalesName = params.get("SalesName")
+        self.SalesPhone = params.get("SalesPhone")
+        self.CcName = params.get("CcName")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLeadResponse(AbstractModel):
+    """CreateLead返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessCode: 线索处理状态码： 0-表示创建成功， 1-表示线索合并，2-表示线索重复
+        :type BusinessCode: int
+        :param BusinessMsg: 线索处理结果描述
+        :type BusinessMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BusinessCode = None
+        self.BusinessMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessMsg = params.get("BusinessMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class DealerInfo(AbstractModel):
+    """经销商信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealerId: 企微SaaS平台经销商id
+        :type DealerId: int
+        :param DealerName: 经销商名称
+        :type DealerName: str
+        """
+        self.DealerId = None
+        self.DealerName = None
+
+
+    def _deserialize(self, params):
+        self.DealerId = params.get("DealerId")
+        self.DealerName = params.get("DealerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExternalContact(AbstractModel):
     """客户信息
 
@@ -1346,6 +1479,71 @@ class QueryClueInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryDealerInfoListRequest(AbstractModel):
+    """QueryDealerInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryDealerInfoListResponse(AbstractModel):
+    """QueryDealerInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageData: 经销商信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of DealerInfo
+        :param NextCursor: 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param HasMore: 是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasMore: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PageData = None
+        self.NextCursor = None
+        self.HasMore = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = DealerInfo()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.NextCursor = params.get("NextCursor")
+        self.HasMore = params.get("HasMore")
+        self.RequestId = params.get("RequestId")
+
+
 class QueryExternalContactDetailRequest(AbstractModel):
     """QueryExternalContactDetail请求参数结构体
 
@@ -1636,6 +1834,71 @@ class QueryMiniAppCodeListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryVehicleInfoListRequest(AbstractModel):
+    """QueryVehicleInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVehicleInfoListResponse(AbstractModel):
+    """QueryVehicleInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageData: 车系车型信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of VehicleInfo
+        :param NextCursor: 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param HasMore: 是否还有更多数据。0-否；1-是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasMore: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PageData = None
+        self.NextCursor = None
+        self.HasMore = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = VehicleInfo()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.NextCursor = params.get("NextCursor")
+        self.HasMore = params.get("HasMore")
+        self.RequestId = params.get("RequestId")
+
+
 class TagDetailInfo(AbstractModel):
     """标签详细信息
 
@@ -1744,6 +2007,50 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagName = params.get("TagName")
         self.Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VehicleInfo(AbstractModel):
+    """车型车系信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BrandId: 品牌id
+        :type BrandId: int
+        :param BrandName: 品牌名称
+        :type BrandName: str
+        :param SeriesId: 车系id
+        :type SeriesId: int
+        :param SeriesName: 车系名称
+        :type SeriesName: str
+        :param ModelId: 车型id
+        :type ModelId: int
+        :param ModelName: 车型名称
+        :type ModelName: str
+        """
+        self.BrandId = None
+        self.BrandName = None
+        self.SeriesId = None
+        self.SeriesName = None
+        self.ModelId = None
+        self.ModelName = None
+
+
+    def _deserialize(self, params):
+        self.BrandId = params.get("BrandId")
+        self.BrandName = params.get("BrandName")
+        self.SeriesId = params.get("SeriesId")
+        self.SeriesName = params.get("SeriesName")
+        self.ModelId = params.get("ModelId")
+        self.ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

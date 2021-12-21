@@ -265,7 +265,7 @@ class CreateFileSystemRequest(AbstractModel):
         r"""
         :param FileSystemName: 文件系统名称
         :type FileSystemName: str
-        :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+        :param CapacityQuota: 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
         :type CapacityQuota: int
         :param PosixAcl: 是否校验POSIX ACL
         :type PosixAcl: bool
@@ -277,6 +277,10 @@ class CreateFileSystemRequest(AbstractModel):
         :type RootInodeUser: str
         :param RootInodeGroup: 根目录Inode组名，默认为supergroup
         :type RootInodeGroup: str
+        :param EnableRanger: 是否打开Ranger地址校验
+        :type EnableRanger: bool
+        :param RangerServiceAddresses: Ranger地址列表，默认为空数组
+        :type RangerServiceAddresses: list of str
         """
         self.FileSystemName = None
         self.CapacityQuota = None
@@ -285,6 +289,8 @@ class CreateFileSystemRequest(AbstractModel):
         self.SuperUsers = None
         self.RootInodeUser = None
         self.RootInodeGroup = None
+        self.EnableRanger = None
+        self.RangerServiceAddresses = None
 
 
     def _deserialize(self, params):
@@ -295,6 +301,8 @@ class CreateFileSystemRequest(AbstractModel):
         self.SuperUsers = params.get("SuperUsers")
         self.RootInodeUser = params.get("RootInodeUser")
         self.RootInodeGroup = params.get("RootInodeGroup")
+        self.EnableRanger = params.get("EnableRanger")
+        self.RangerServiceAddresses = params.get("RangerServiceAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -872,18 +880,26 @@ class DescribeFileSystemResponse(AbstractModel):
         r"""
         :param FileSystem: 文件系统
         :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
-        :param CapacityUsed: 已使用容量（byte），包括标准和归档存储
+        :param CapacityUsed: 文件系统已使用容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type CapacityUsed: int
-        :param ArchiveCapacityUsed: 已使用归档存储容量（byte）
+        :param ArchiveCapacityUsed: 已使用COS归档存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArchiveCapacityUsed: int
+        :param StandardCapacityUsed: 已使用COS标准存储容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardCapacityUsed: int
+        :param DegradeCapacityUsed: 已使用COS低频存储容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DegradeCapacityUsed: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FileSystem = None
         self.CapacityUsed = None
         self.ArchiveCapacityUsed = None
+        self.StandardCapacityUsed = None
+        self.DegradeCapacityUsed = None
         self.RequestId = None
 
 
@@ -893,6 +909,8 @@ class DescribeFileSystemResponse(AbstractModel):
             self.FileSystem._deserialize(params.get("FileSystem"))
         self.CapacityUsed = params.get("CapacityUsed")
         self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
+        self.StandardCapacityUsed = params.get("StandardCapacityUsed")
+        self.DegradeCapacityUsed = params.get("DegradeCapacityUsed")
         self.RequestId = params.get("RequestId")
 
 
@@ -1258,6 +1276,12 @@ class FileSystem(AbstractModel):
         :type SuperUsers: list of str
         :param PosixAcl: POSIX权限控制
         :type PosixAcl: bool
+        :param EnableRanger: 是否打开Ranger地址校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRanger: bool
+        :param RangerServiceAddresses: Ranger地址列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangerServiceAddresses: list of str
         """
         self.AppId = None
         self.FileSystemName = None
@@ -1270,6 +1294,8 @@ class FileSystem(AbstractModel):
         self.Status = None
         self.SuperUsers = None
         self.PosixAcl = None
+        self.EnableRanger = None
+        self.RangerServiceAddresses = None
 
 
     def _deserialize(self, params):
@@ -1284,6 +1310,8 @@ class FileSystem(AbstractModel):
         self.Status = params.get("Status")
         self.SuperUsers = params.get("SuperUsers")
         self.PosixAcl = params.get("PosixAcl")
+        self.EnableRanger = params.get("EnableRanger")
+        self.RangerServiceAddresses = params.get("RangerServiceAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1450,13 +1478,17 @@ class ModifyFileSystemRequest(AbstractModel):
         :type FileSystemName: str
         :param Description: 文件系统描述
         :type Description: str
-        :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+        :param CapacityQuota: 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
 注意：修改的文件系统容量不能小于当前使用量
         :type CapacityQuota: int
         :param SuperUsers: 超级用户名列表，可以为空数组
         :type SuperUsers: list of str
         :param PosixAcl: 是否校验POSIX ACL
         :type PosixAcl: bool
+        :param EnableRanger: 是否打开Ranger地址校验
+        :type EnableRanger: bool
+        :param RangerServiceAddresses: Ranger地址列表，可以为空数组
+        :type RangerServiceAddresses: list of str
         """
         self.FileSystemId = None
         self.FileSystemName = None
@@ -1464,6 +1496,8 @@ class ModifyFileSystemRequest(AbstractModel):
         self.CapacityQuota = None
         self.SuperUsers = None
         self.PosixAcl = None
+        self.EnableRanger = None
+        self.RangerServiceAddresses = None
 
 
     def _deserialize(self, params):
@@ -1473,6 +1507,8 @@ class ModifyFileSystemRequest(AbstractModel):
         self.CapacityQuota = params.get("CapacityQuota")
         self.SuperUsers = params.get("SuperUsers")
         self.PosixAcl = params.get("PosixAcl")
+        self.EnableRanger = params.get("EnableRanger")
+        self.RangerServiceAddresses = params.get("RangerServiceAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1699,7 +1735,7 @@ class RestoreTask(AbstractModel):
         :type RestoreTaskId: int
         :param FilePath: 回热任务文件路径
         :type FilePath: str
-        :param Type: 回热任务类型（1：标准；2：极速；3：批量）
+        :param Type: 回热任务类型（1：标准；2：极速；3：批量，暂时仅支持极速）
         :type Type: int
         :param Days: 指定恢复出的临时副本的有效时长（单位天）
         :type Days: int
@@ -1769,7 +1805,7 @@ class Transition(AbstractModel):
         r"""
         :param Days: 触发时间（单位天）
         :type Days: int
-        :param Type: 转换类型（1：归档；2：删除）
+        :param Type: 转换类型（1：归档；2：删除；3：低频）
         :type Type: int
         """
         self.Days = None

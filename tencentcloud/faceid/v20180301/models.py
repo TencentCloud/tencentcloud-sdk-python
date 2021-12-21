@@ -1096,13 +1096,13 @@ class DetectReflectLivenessAndCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LiveDataUrl: SDK生成的数据包活体数据包的资源地址。
+        :param LiveDataUrl: SDK生成的活体检测数据包的资源地址。
         :type LiveDataUrl: str
-        :param LiveDataMd5: SDK生成的数据包活体数据包的资源Md5。
+        :param LiveDataMd5: SDK生成的活体检测数据包的资源内容MD5（32位，用于校验LiveData的一致性）。
         :type LiveDataMd5: str
         :param ImageUrl: 用于比对的目标图片的资源地址。
         :type ImageUrl: str
-        :param ImageMd5: 用于比对的目标图片的资源Md5。
+        :param ImageMd5: 用于比对的目标图片的资源MD5（32位，用于校验Image的一致性）。
         :type ImageMd5: str
         """
         self.LiveDataUrl = None
@@ -1132,11 +1132,11 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BestFrameUrl: 验证通过后的视频最佳截图照片资源地址，jpg格式。
+        :param BestFrameUrl: 验证通过后的视频最佳截图资源临时地址，jpg格式，资源和链接有效期2小时，务必在有效期内下载。
         :type BestFrameUrl: str
-        :param BestFrameMd5: 验证通过后的视频最佳截图照片资源Md5。
+        :param BestFrameMd5: 验证通过后的视频最佳截图资源MD5（32位，用于校验BestFrame的一致性）。
         :type BestFrameMd5: str
-        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :param Result: 业务错误码，成功情况返回Success，错误情况请参考下方错误码 列表中FailedOperation部分。
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str

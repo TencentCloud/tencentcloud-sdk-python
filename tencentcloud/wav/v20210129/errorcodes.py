@@ -23,6 +23,9 @@ AUTHFAILURE_INVALIDAUTHORIZATIONCODE = 'AuthFailure.InvalidAuthorizationCode'
 # 令牌无效。
 AUTHFAILURE_MISSINGACCESSTOKEN = 'AuthFailure.MissingAccessToken'
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 开放平台访问错误。
 FAILEDOPERATION_OPENPLATFORMERROR = 'FailedOperation.OpenPlatformError'
 
@@ -46,3 +49,6 @@ OPERATIONDENIED = 'OperationDenied'
 
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

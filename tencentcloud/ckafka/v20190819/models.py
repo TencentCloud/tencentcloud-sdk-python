@@ -1290,6 +1290,8 @@ class CreateTopicRequest(AbstractModel):
         :type AclRuleName: str
         :param RetentionBytes: 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
         :type RetentionBytes: int
+        :param Tags: 标签列表
+        :type Tags: list of Tag
         """
         self.InstanceId = None
         self.TopicName = None
@@ -1306,6 +1308,7 @@ class CreateTopicRequest(AbstractModel):
         self.EnableAclRule = None
         self.AclRuleName = None
         self.RetentionBytes = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1324,6 +1327,12 @@ class CreateTopicRequest(AbstractModel):
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
         self.RetentionBytes = params.get("RetentionBytes")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

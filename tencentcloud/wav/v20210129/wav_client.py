@@ -82,6 +82,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLead(self, request):
+        """线索回收接口
+
+        :param request: Request instance for CreateLead.
+        :type request: :class:`tencentcloud.wav.v20210129.models.CreateLeadRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.CreateLeadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLead", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLeadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryActivityJoinList(self, request):
         """根据游标拉取活动参与列表信息
 
@@ -250,6 +278,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryDealerInfoList(self, request):
+        """企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
+
+        :param request: Request instance for QueryDealerInfoList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryDealerInfoListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryDealerInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryDealerInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryDealerInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryExternalContactDetail(self, request):
         """企业可通过此接口，根据外部联系人的userid，拉取客户详情
 
@@ -376,6 +432,34 @@ class WavClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMiniAppCodeListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryVehicleInfoList(self, request):
+        """企业可通过此接口获取企微SaaS平台上的车系车型信息。
+
+        :param request: Request instance for QueryVehicleInfoList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryVehicleInfoListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryVehicleInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryVehicleInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryVehicleInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

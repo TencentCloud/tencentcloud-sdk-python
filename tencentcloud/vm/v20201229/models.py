@@ -60,7 +60,6 @@ class AudioResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LanguageResults: list of AudioResultDetailLanguageResult
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
@@ -179,7 +178,6 @@ class AudioResultDetailMoanResult(AbstractModel):
         :param SubLabelCode: *内测中，敬请期待*
         :type SubLabelCode: str
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
@@ -237,7 +235,6 @@ class AudioResultDetailTextResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibType: int
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
@@ -708,7 +705,6 @@ class ImageResult(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """
@@ -1225,7 +1221,6 @@ class TaskLabel(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
-注意：此字段可能返回null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
         """

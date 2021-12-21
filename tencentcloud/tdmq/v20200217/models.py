@@ -5001,6 +5001,161 @@ class DescribeProducersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePublisherSummaryRequest(AbstractModel):
+    """DescribePublisherSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param Topic: 主题名称
+        :type Topic: str
+        """
+        self.ClusterId = None
+        self.Namespace = None
+        self.Topic = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Namespace = params.get("Namespace")
+        self.Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublisherSummaryResponse(AbstractModel):
+    """DescribePublisherSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MsgRateIn: 生产速率（条/秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateIn: float
+        :param MsgThroughputIn: 生产速率（字节/秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputIn: float
+        :param PublisherCount: 生产者数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublisherCount: int
+        :param StorageSize: 消息存储大小，以字节为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MsgRateIn = None
+        self.MsgThroughputIn = None
+        self.PublisherCount = None
+        self.StorageSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MsgRateIn = params.get("MsgRateIn")
+        self.MsgThroughputIn = params.get("MsgThroughputIn")
+        self.PublisherCount = params.get("PublisherCount")
+        self.StorageSize = params.get("StorageSize")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublishersRequest(AbstractModel):
+    """DescribePublishers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param Topic: 主题名称
+        :type Topic: str
+        :param Filters: 参数过滤器，支持ProducerName，Address字段
+        :type Filters: list of Filter
+        :param Offset: 查询偏移量，默认为0
+        :type Offset: int
+        :param Limit: 查询条数，默认为20
+        :type Limit: int
+        :param Sort: 排序器
+        :type Sort: :class:`tencentcloud.tdmq.v20200217.models.Sort`
+        """
+        self.ClusterId = None
+        self.Namespace = None
+        self.Topic = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Namespace = params.get("Namespace")
+        self.Topic = params.get("Topic")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Sort") is not None:
+            self.Sort = Sort()
+            self.Sort._deserialize(params.get("Sort"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublishersResponse(AbstractModel):
+    """DescribePublishers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param Publishers: 生产者信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Publishers: list of Publisher
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Publishers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Publishers") is not None:
+            self.Publishers = []
+            for item in params.get("Publishers"):
+                obj = Publisher()
+                obj._deserialize(item)
+                self.Publishers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQClusterRequest(AbstractModel):
     """DescribeRocketMQCluster请求参数结构体
 
@@ -7050,6 +7205,71 @@ class PublishCmqMsgResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Publisher(AbstractModel):
+    """生产者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProducerId: 生产者id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerId: int
+        :param ProducerName: 生产者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerName: str
+        :param Address: 生产者地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param ClientVersion: 客户端版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientVersion: str
+        :param MsgRateIn: 消息生产速率（条/秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRateIn: float
+        :param MsgThroughputIn: 消息生产吞吐速率（字节/秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgThroughputIn: float
+        :param AverageMsgSize: 平均消息大小（字节）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AverageMsgSize: float
+        :param ConnectedSince: 连接时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectedSince: str
+        :param Partition: 生产者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partition: int
+        """
+        self.ProducerId = None
+        self.ProducerName = None
+        self.Address = None
+        self.ClientVersion = None
+        self.MsgRateIn = None
+        self.MsgThroughputIn = None
+        self.AverageMsgSize = None
+        self.ConnectedSince = None
+        self.Partition = None
+
+
+    def _deserialize(self, params):
+        self.ProducerId = params.get("ProducerId")
+        self.ProducerName = params.get("ProducerName")
+        self.Address = params.get("Address")
+        self.ClientVersion = params.get("ClientVersion")
+        self.MsgRateIn = params.get("MsgRateIn")
+        self.MsgThroughputIn = params.get("MsgThroughputIn")
+        self.AverageMsgSize = params.get("AverageMsgSize")
+        self.ConnectedSince = params.get("ConnectedSince")
+        self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReceiveMessageRequest(AbstractModel):
     """ReceiveMessage请求参数结构体
 
@@ -7893,6 +8113,34 @@ class SendMsgResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Sort(AbstractModel):
+    """排序器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 排序字段
+        :type Name: str
+        :param Order: 升序ASC，降序DESC
+        :type Order: str
+        """
+        self.Name = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Subscription(AbstractModel):

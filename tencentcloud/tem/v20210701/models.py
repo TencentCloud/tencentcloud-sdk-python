@@ -2376,6 +2376,67 @@ class RevertDeployApplicationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RollingUpdateApplicationByVersionRequest(AbstractModel):
+    """RollingUpdateApplicationByVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param DeployVersion: 更新版本，IMAGE 部署为 tag 值；JAR/WAR 部署 为 Version
+        :type DeployVersion: str
+        :param PackageName: JAR/WAR 包名，仅 JAR/WAR 部署时必填
+        :type PackageName: str
+        :param From: 请求来源平台，含 IntelliJ，Coding
+        :type From: str
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.DeployVersion = None
+        self.PackageName = None
+        self.From = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.DeployVersion = params.get("DeployVersion")
+        self.PackageName = params.get("PackageName")
+        self.From = params.get("From")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollingUpdateApplicationByVersionResponse(AbstractModel):
+    """RollingUpdateApplicationByVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 版本ID
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class RunVersionPod(AbstractModel):
     """应用实例
 

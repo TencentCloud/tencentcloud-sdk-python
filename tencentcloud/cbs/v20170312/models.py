@@ -29,14 +29,22 @@ class ApplySnapshotRequest(AbstractModel):
         :type SnapshotId: str
         :param DiskId: 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str
+        :param AutoStopInstance: 回滚前是否执行自动关机
+        :type AutoStopInstance: bool
+        :param AutoStartInstance: 回滚完成后是否自动开机
+        :type AutoStartInstance: bool
         """
         self.SnapshotId = None
         self.DiskId = None
+        self.AutoStopInstance = None
+        self.AutoStartInstance = None
 
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.DiskId = params.get("DiskId")
+        self.AutoStopInstance = params.get("AutoStopInstance")
+        self.AutoStartInstance = params.get("AutoStartInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

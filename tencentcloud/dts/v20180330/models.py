@@ -214,13 +214,13 @@ class CreateMigrateJobRequest(AbstractModel):
         :type JobName: str
         :param MigrateOption: 迁移任务配置选项
         :type MigrateOption: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
-        :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+        :param SrcDatabaseType: 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver 不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type SrcDatabaseType: str
         :param SrcAccessType: 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
         :type SrcAccessType: str
         :param SrcInfo: 源实例信息，具体内容跟迁移任务类型相关
         :type SrcInfo: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
-        :param DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+        :param DstDatabaseType: 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver，cynosdbmysql。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
         :type DstDatabaseType: str
         :param DstAccessType: 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
         :type DstAccessType: str
@@ -228,14 +228,12 @@ class CreateMigrateJobRequest(AbstractModel):
         :type DstInfo: :class:`tencentcloud.dts.v20180330.models.DstInfo`
         :param DatabaseInfo: 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
 对于database-table两级结构的数据库：
-[{Database:db1,Table:[table1,table2]},{Database:db2}]
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
 对于database-schema-table三级结构：
-[{Database:db1,Schema:s1
-Table:[table1,table2]},{Database:db1,Schema:s2
-Table:[table1,table2]},{Database:db2,Schema:s1
-Table:[table1,table2]},{Database:db3},{Database:db4
-Schema:s1}]
+[{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
         :type DatabaseInfo: str
+        :param Tags: 迁移实例的tag
+        :type Tags: list of TagItem
         """
         self.JobName = None
         self.MigrateOption = None
@@ -246,6 +244,7 @@ Schema:s1}]
         self.DstAccessType = None
         self.DstInfo = None
         self.DatabaseInfo = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -264,6 +263,12 @@ Schema:s1}]
             self.DstInfo = DstInfo()
             self.DstInfo._deserialize(params.get("DstInfo"))
         self.DatabaseInfo = params.get("DatabaseInfo")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

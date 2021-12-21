@@ -208,7 +208,7 @@ class CreateClusterRequest(AbstractModel):
         :type ComputeNode: :class:`tencentcloud.thpc.v20211109.models.ComputeNode`
         :param ComputeNodeCount: 指定计算节点的数量。默认取值：0。
         :type ComputeNodeCount: int
-        :param SchedulerType: 调度器类型。目前仅支持SGE调度器。
+        :param SchedulerType: 调度器类型。<br><li>SGE：SGE调度器。
         :type SchedulerType: str
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和自定义镜像。
         :type ImageId: str
@@ -226,7 +226,7 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
-        :param AccountType: 域名字服务类型。目前仅支持NIS域名字服务。
+        :param AccountType: 域名字服务类型。<br><li>NIS：NIS域名字服务。
         :type AccountType: str
         :param ClusterName: 集群显示名称。
         :type ClusterName: str
@@ -295,6 +295,7 @@ class CreateClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param ClusterId: 集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

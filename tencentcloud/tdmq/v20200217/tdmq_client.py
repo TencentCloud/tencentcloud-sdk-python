@@ -1790,6 +1790,62 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePublisherSummary(self, request):
+        """获取消息生产概览信息
+
+        :param request: Request instance for DescribePublisherSummary.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublisherSummaryRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePublisherSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublisherSummary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublisherSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublishers(self, request):
+        """获取生产者信息列表
+
+        :param request: Request instance for DescribePublishers.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePublishersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePublishersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublishers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublishersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRocketMQCluster(self, request):
         """获取单个RocketMQ集群信息
 

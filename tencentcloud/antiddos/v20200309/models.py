@@ -799,6 +799,60 @@ class CreateDDoSAIResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDDoSBlackWhiteIpListRequest(AbstractModel):
+    """CreateDDoSBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param IpList: IP列表
+        :type IpList: list of IpSegment
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.IpList = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("IpList") is not None:
+            self.IpList = []
+            for item in params.get("IpList"):
+                obj = IpSegment()
+                obj._deserialize(item)
+                self.IpList.append(obj)
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDDoSBlackWhiteIpListResponse(AbstractModel):
+    """CreateDDoSBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDDoSGeoIPBlockConfigRequest(AbstractModel):
     """CreateDDoSGeoIPBlockConfig请求参数结构体
 
@@ -1547,6 +1601,60 @@ class DeleteBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDDoSBlackWhiteIpListRequest(AbstractModel):
+    """DeleteDDoSBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param IpList: IP列表
+        :type IpList: list of IpSegment
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.IpList = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("IpList") is not None:
+            self.IpList = []
+            for item in params.get("IpList"):
+                obj = IpSegment()
+                obj._deserialize(item)
+                self.IpList.append(obj)
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDDoSBlackWhiteIpListResponse(AbstractModel):
+    """DeleteDDoSBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDDoSGeoIPBlockConfigRequest(AbstractModel):
     """DeleteDDoSGeoIPBlockConfig请求参数结构体
 
@@ -2065,6 +2173,65 @@ class DescribeCCTrendResponse(AbstractModel):
         self.Data = params.get("Data")
         self.Id = params.get("Id")
         self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSBlackWhiteIpListRequest(AbstractModel):
+    """DescribeDDoSBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSBlackWhiteIpListResponse(AbstractModel):
+    """DescribeDDoSBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BlackIpList: 黑名单IP列表
+        :type BlackIpList: list of IpSegment
+        :param WhiteIpList: 白名单IP列表
+        :type WhiteIpList: list of IpSegment
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlackIpList = None
+        self.WhiteIpList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BlackIpList") is not None:
+            self.BlackIpList = []
+            for item in params.get("BlackIpList"):
+                obj = IpSegment()
+                obj._deserialize(item)
+                self.BlackIpList.append(obj)
+        if params.get("WhiteIpList") is not None:
+            self.WhiteIpList = []
+            for item in params.get("WhiteIpList"):
+                obj = IpSegment()
+                obj._deserialize(item)
+                self.WhiteIpList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3526,6 +3693,34 @@ class InstanceRelation(AbstractModel):
     def _deserialize(self, params):
         self.EipList = params.get("EipList")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpSegment(AbstractModel):
+    """ip段数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: ip地址
+        :type Ip: str
+        :param Mask: ip掩码，如果为32位ip，填0
+        :type Mask: int
+        """
+        self.Ip = None
+        self.Mask = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Mask = params.get("Mask")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

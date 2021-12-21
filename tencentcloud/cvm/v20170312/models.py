@@ -4883,9 +4883,86 @@ class LaunchTemplate(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param LaunchTemplateId: 实例启动模板ID，通过该参数可使用实例模板中的预设参数创建实例。
+        :type LaunchTemplateId: str
+        :param LaunchTemplateVersion: 实例启动模板版本号，若给定，新实例启动模板将基于给定的版本号创建
+        :type LaunchTemplateVersion: int
+        """
+        self.LaunchTemplateId = None
+        self.LaunchTemplateVersion = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateVersion = params.get("LaunchTemplateVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class LaunchTemplateInfo(AbstractModel):
     """实例启动模板简要信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LatestVersionNumber: 实例启动模版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestVersionNumber: int
+        :param LaunchTemplateId: 实例启动模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchTemplateId: str
+        :param LaunchTemplateName: 实例启动模板名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchTemplateName: str
+        :param DefaultVersionNumber: 实例启动模板默认版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultVersionNumber: int
+        :param LaunchTemplateVersionCount: 实例启动模板包含的版本总数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchTemplateVersionCount: int
+        :param CreatedBy: 创建该模板的用户UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedBy: str
+        :param CreationTime: 创建该模板的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        """
+        self.LatestVersionNumber = None
+        self.LaunchTemplateId = None
+        self.LaunchTemplateName = None
+        self.DefaultVersionNumber = None
+        self.LaunchTemplateVersionCount = None
+        self.CreatedBy = None
+        self.CreationTime = None
+
+
+    def _deserialize(self, params):
+        self.LatestVersionNumber = params.get("LatestVersionNumber")
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.LaunchTemplateName = params.get("LaunchTemplateName")
+        self.DefaultVersionNumber = params.get("DefaultVersionNumber")
+        self.LaunchTemplateVersionCount = params.get("LaunchTemplateVersionCount")
+        self.CreatedBy = params.get("CreatedBy")
+        self.CreationTime = params.get("CreationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LaunchTemplateVersionData(AbstractModel):
+    """实例启动模板版本信息
 
     """
 
@@ -4894,6 +4971,52 @@ class LaunchTemplateVersionInfo(AbstractModel):
     """实例启动模板版本集合
 
     """
+
+    def __init__(self):
+        r"""
+        :param LaunchTemplateVersion: 实例启动模板版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchTemplateVersion: int
+        :param LaunchTemplateVersionData: 实例启动模板版本数据详情。
+        :type LaunchTemplateVersionData: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplateVersionData`
+        :param CreationTime: 实例启动模板版本创建时间。
+        :type CreationTime: str
+        :param LaunchTemplateId: 实例启动模板ID。
+        :type LaunchTemplateId: str
+        :param IsDefaultVersion: 是否为默认启动模板版本。
+        :type IsDefaultVersion: bool
+        :param LaunchTemplateVersionDescription: 实例启动模板版本描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaunchTemplateVersionDescription: str
+        :param CreatedBy: 创建者。
+        :type CreatedBy: str
+        """
+        self.LaunchTemplateVersion = None
+        self.LaunchTemplateVersionData = None
+        self.CreationTime = None
+        self.LaunchTemplateId = None
+        self.IsDefaultVersion = None
+        self.LaunchTemplateVersionDescription = None
+        self.CreatedBy = None
+
+
+    def _deserialize(self, params):
+        self.LaunchTemplateVersion = params.get("LaunchTemplateVersion")
+        if params.get("LaunchTemplateVersionData") is not None:
+            self.LaunchTemplateVersionData = LaunchTemplateVersionData()
+            self.LaunchTemplateVersionData._deserialize(params.get("LaunchTemplateVersionData"))
+        self.CreationTime = params.get("CreationTime")
+        self.LaunchTemplateId = params.get("LaunchTemplateId")
+        self.IsDefaultVersion = params.get("IsDefaultVersion")
+        self.LaunchTemplateVersionDescription = params.get("LaunchTemplateVersionDescription")
+        self.CreatedBy = params.get("CreatedBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LocalDiskType(AbstractModel):

@@ -1581,11 +1581,17 @@ class RunJobDescription(AbstractModel):
         :type StartMode: str
         :param JobConfigVersion: 当前作业的某个版本
         :type JobConfigVersion: int
+        :param SavepointPath: Savepoint路径
+        :type SavepointPath: str
+        :param SavepointId: Savepoint的Id
+        :type SavepointId: str
         """
         self.JobId = None
         self.RunType = None
         self.StartMode = None
         self.JobConfigVersion = None
+        self.SavepointPath = None
+        self.SavepointId = None
 
 
     def _deserialize(self, params):
@@ -1593,6 +1599,8 @@ class RunJobDescription(AbstractModel):
         self.RunType = params.get("RunType")
         self.StartMode = params.get("StartMode")
         self.JobConfigVersion = params.get("JobConfigVersion")
+        self.SavepointPath = params.get("SavepointPath")
+        self.SavepointId = params.get("SavepointId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
