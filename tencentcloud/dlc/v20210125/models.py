@@ -1528,6 +1528,62 @@ class DescribeTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskResultRequest(AbstractModel):
+    """DescribeTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务唯一ID
+        :type TaskId: str
+        :param NextToken: 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回1000行数据。
+        :type NextToken: str
+        :param MaxResults: 返回结果的最大行数，范围0~1000，默认为1000.
+        :type MaxResults: int
+        """
+        self.TaskId = None
+        self.NextToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.NextToken = params.get("NextToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskResultResponse(AbstractModel):
+    """DescribeTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskInfo: 查询的任务信息，返回为空表示输入任务ID对应的任务不存在。只有当任务状态为成功（2）的时候，才会返回任务的结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfo: :class:`tencentcloud.dlc.v20210125.models.TaskResultInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfo") is not None:
+            self.TaskInfo = TaskResultInfo()
+            self.TaskInfo._deserialize(params.get("TaskInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTasksRequest(AbstractModel):
     """DescribeTasks请求参数结构体
 
@@ -2672,6 +2728,107 @@ class TaskResponseInfo(AbstractModel):
         self.InputConf = params.get("InputConf")
         self.DataNumber = params.get("DataNumber")
         self.CanDownload = params.get("CanDownload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskResultInfo(AbstractModel):
+    """任务结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务唯一ID
+        :type TaskId: str
+        :param DatasourceConnectionName: 数据源名称，当前任务执行时候选中的默认数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionName: str
+        :param DatabaseName: 数据库名称，当前任务执行时候选中的默认数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param SQL: 当前执行的SQL，一个任务包含一个SQL
+        :type SQL: str
+        :param SQLType: 执行任务的类型，现在分为DDL、DML、DQL
+        :type SQLType: str
+        :param State: 任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功 -1：任务执行失败 -3：用户手动终止。只有任务执行成功的情况下，才会返回任务执行的结果
+        :type State: int
+        :param DataAmount: 扫描的数据量，单位byte
+        :type DataAmount: int
+        :param UsedTime: 任务执行耗时，单位秒
+        :type UsedTime: int
+        :param OutputPath: 任务结果输出的COS桶地址
+        :type OutputPath: str
+        :param CreateTime: 任务创建时间，时间戳
+        :type CreateTime: str
+        :param OutputMessage: 任务执行信息，成功时返回success，失败时返回失败原因
+        :type OutputMessage: str
+        :param RowAffectInfo: 被影响的行数
+        :type RowAffectInfo: str
+        :param ResultSchema: 结果的schema信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultSchema: list of Column
+        :param ResultSet: 结果信息，反转义后，外层数组的每个元素为一行数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultSet: str
+        :param NextToken: 分页信息，如果没有更多结果数据，nextToken为空
+        :type NextToken: str
+        :param Percentage: 任务执行进度num/100(%)
+        :type Percentage: int
+        :param ProgressDetail: 任务进度明细
+        :type ProgressDetail: str
+        :param DisplayFormat: 控制台展示格式。table：表格展示 text：文本展示
+        :type DisplayFormat: str
+        """
+        self.TaskId = None
+        self.DatasourceConnectionName = None
+        self.DatabaseName = None
+        self.SQL = None
+        self.SQLType = None
+        self.State = None
+        self.DataAmount = None
+        self.UsedTime = None
+        self.OutputPath = None
+        self.CreateTime = None
+        self.OutputMessage = None
+        self.RowAffectInfo = None
+        self.ResultSchema = None
+        self.ResultSet = None
+        self.NextToken = None
+        self.Percentage = None
+        self.ProgressDetail = None
+        self.DisplayFormat = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.DatabaseName = params.get("DatabaseName")
+        self.SQL = params.get("SQL")
+        self.SQLType = params.get("SQLType")
+        self.State = params.get("State")
+        self.DataAmount = params.get("DataAmount")
+        self.UsedTime = params.get("UsedTime")
+        self.OutputPath = params.get("OutputPath")
+        self.CreateTime = params.get("CreateTime")
+        self.OutputMessage = params.get("OutputMessage")
+        self.RowAffectInfo = params.get("RowAffectInfo")
+        if params.get("ResultSchema") is not None:
+            self.ResultSchema = []
+            for item in params.get("ResultSchema"):
+                obj = Column()
+                obj._deserialize(item)
+                self.ResultSchema.append(obj)
+        self.ResultSet = params.get("ResultSet")
+        self.NextToken = params.get("NextToken")
+        self.Percentage = params.get("Percentage")
+        self.ProgressDetail = params.get("ProgressDetail")
+        self.DisplayFormat = params.get("DisplayFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -315,21 +315,21 @@ class Code(AbstractModel):
         :type DemoId: str
         :param TempCosObjectName: 如果是从TempCos创建的话，需要传入TempCosObjectName
         :type TempCosObjectName: str
-        :param GitUrl: Git地址
+        :param GitUrl: Git地址。该功能已下线。
         :type GitUrl: str
-        :param GitUserName: Git用户名
+        :param GitUserName: Git用户名。该功能已下线。
         :type GitUserName: str
-        :param GitPassword: Git密码
+        :param GitPassword: Git密码。该功能已下线。
         :type GitPassword: str
-        :param GitPasswordSecret: 加密后的Git密码，一般无需指定
+        :param GitPasswordSecret: 加密后的Git密码，一般无需指定。该功能已下线。
         :type GitPasswordSecret: str
-        :param GitBranch: Git分支
+        :param GitBranch: Git分支。该功能已下线。
         :type GitBranch: str
-        :param GitDirectory: 代码在Git仓库中的路径
+        :param GitDirectory: 代码在Git仓库中的路径。该功能已下线。
         :type GitDirectory: str
-        :param GitCommitId: 指定要拉取的版本
+        :param GitCommitId: 指定要拉取的版本。该功能已下线。
         :type GitCommitId: str
-        :param GitUserNameSecret: 加密后的Git用户名，一般无需指定
+        :param GitUserNameSecret: 加密后的Git用户名，一般无需指定。该功能已下线。
         :type GitUserNameSecret: str
         :param ImageConfig: 镜像部署时配置TCR镜像信息
         :type ImageConfig: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
@@ -2469,10 +2469,10 @@ class ImageConfig(AbstractModel):
         :param EntryPoint: 参数已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type EntryPoint: str
-        :param Command: entrypoint执行命令
+        :param Command: 容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
 注意：此字段可能返回 null，表示取不到有效值。
         :type Command: str
-        :param Args: 命令参数
+        :param Args: 容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
 注意：此字段可能返回 null，表示取不到有效值。
         :type Args: str
         """

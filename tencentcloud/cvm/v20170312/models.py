@@ -4966,6 +4966,163 @@ class LaunchTemplateVersionData(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Placement: 实例所在的位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
+        :param InstanceType: 实例机型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param InstanceName: 实例名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargeType: str
+        :param SystemDisk: 实例系统盘信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
+        :param DataDisks: 实例数据盘信息。只包含随实例购买的数据盘。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisks: list of DataDisk
+        :param InternetAccessible: 实例带宽信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
+        :param VirtualPrivateCloud: 实例所属虚拟私有网络信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param ImageId: 生产实例所使用的镜像`ID`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
+        :param LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
+        :param CamRoleName: CAM角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CamRoleName: str
+        :param HpcClusterId: 高性能计算集群`ID`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HpcClusterId: str
+        :param InstanceCount: 购买实例数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
+        :param EnhancedService: 增强服务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserData: str
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisasterRecoverGroupIds: list of str
+        :param ActionTimer: 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param HostName: 云服务器的主机名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
+        :param ClientToken: 用于保证请求幂等性的字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientToken: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的云服务器、云硬盘实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: list of TagSpecification
+        """
+        self.Placement = None
+        self.InstanceType = None
+        self.InstanceName = None
+        self.InstanceChargeType = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.InternetAccessible = None
+        self.VirtualPrivateCloud = None
+        self.ImageId = None
+        self.SecurityGroupIds = None
+        self.LoginSettings = None
+        self.CamRoleName = None
+        self.HpcClusterId = None
+        self.InstanceCount = None
+        self.EnhancedService = None
+        self.UserData = None
+        self.DisasterRecoverGroupIds = None
+        self.ActionTimer = None
+        self.InstanceMarketOptions = None
+        self.HostName = None
+        self.ClientToken = None
+        self.InstanceChargePrepaid = None
+        self.TagSpecification = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self.ImageId = params.get("ImageId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.InstanceCount = params.get("InstanceCount")
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.UserData = params.get("UserData")
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("ActionTimer") is not None:
+            self.ActionTimer = ActionTimer()
+            self.ActionTimer._deserialize(params.get("ActionTimer"))
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.HostName = params.get("HostName")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class LaunchTemplateVersionInfo(AbstractModel):
     """实例启动模板版本集合

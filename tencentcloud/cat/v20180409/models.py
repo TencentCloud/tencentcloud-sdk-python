@@ -655,11 +655,11 @@ class CreateProbeTasksRequest(AbstractModel):
         :type BatchTasks: list of ProbeTaskBasicConfiguration
         :param TaskType: 任务类型
         :type TaskType: int
-        :param Nodes: 探测节点
+        :param Nodes: 拨测节点
         :type Nodes: list of str
-        :param Interval: 探测间隔
+        :param Interval: 拨测间隔
         :type Interval: int
-        :param Parameters: 探测参数
+        :param Parameters: 拨测参数
         :type Parameters: str
         :param TaskCategory: 任务分类
 <li>1 = PC</li>
@@ -667,6 +667,8 @@ class CreateProbeTasksRequest(AbstractModel):
         :type TaskCategory: int
         :param Cron: 定时任务cron表达式
         :type Cron: str
+        :param Tag: 资源标签值
+        :type Tag: list of Tag
         """
         self.BatchTasks = None
         self.TaskType = None
@@ -675,6 +677,7 @@ class CreateProbeTasksRequest(AbstractModel):
         self.Parameters = None
         self.TaskCategory = None
         self.Cron = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -690,6 +693,12 @@ class CreateProbeTasksRequest(AbstractModel):
         self.Parameters = params.get("Parameters")
         self.TaskCategory = params.get("TaskCategory")
         self.Cron = params.get("Cron")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1634,7 +1643,7 @@ class DescribeProbeTasksRequest(AbstractModel):
         :type TaskIDs: list of str
         :param TaskName: 任务名
         :type TaskName: str
-        :param TargetAddress: 探测目标
+        :param TargetAddress: 拨测目标
         :type TargetAddress: str
         :param TaskStatus: 任务状态列表
         :type TaskStatus: list of int
@@ -1658,6 +1667,8 @@ class DescribeProbeTasksRequest(AbstractModel):
         :type OrderBy: str
         :param Ascend: 是否正序
         :type Ascend: bool
+        :param TagFilters: 资源标签值
+        :type TagFilters: list of KeyValuePair
         """
         self.TaskIDs = None
         self.TaskName = None
@@ -1671,6 +1682,7 @@ class DescribeProbeTasksRequest(AbstractModel):
         self.TaskCategory = None
         self.OrderBy = None
         self.Ascend = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -1686,6 +1698,12 @@ class DescribeProbeTasksRequest(AbstractModel):
         self.TaskCategory = params.get("TaskCategory")
         self.OrderBy = params.get("OrderBy")
         self.Ascend = params.get("Ascend")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = KeyValuePair()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2617,6 +2635,34 @@ class IspDetail(AbstractModel):
         
 
 
+class KeyValuePair(AbstractModel):
+    """健值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 健
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Label(AbstractModel):
     """保存string类型字段
 
@@ -2964,7 +3010,7 @@ class PauseTaskResponse(AbstractModel):
 
 
 class ProbeTask(AbstractModel):
-    """探测任务
+    """拨测任务
 
     """
 
@@ -2977,11 +3023,11 @@ class ProbeTask(AbstractModel):
         :type TaskId: str
         :param TaskType: 任务类型
         :type TaskType: int
-        :param Nodes: 探测节点列表
+        :param Nodes: 拨测节点列表
         :type Nodes: list of str
-        :param Interval: 探测间隔
+        :param Interval: 拨测间隔
         :type Interval: int
-        :param Parameters: 探测参数
+        :param Parameters: 拨测参数
         :type Parameters: str
         :param Status: 任务状态
         :type Status: int
@@ -3007,6 +3053,9 @@ class ProbeTask(AbstractModel):
         :param CronState: 定时任务启动状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronState: int
+        :param TagInfoList: 任务当前绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInfoList: list of KeyValuePair
         """
         self.Name = None
         self.TaskId = None
@@ -3022,6 +3071,7 @@ class ProbeTask(AbstractModel):
         self.CreatedAt = None
         self.Cron = None
         self.CronState = None
+        self.TagInfoList = None
 
 
     def _deserialize(self, params):
@@ -3039,6 +3089,12 @@ class ProbeTask(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.Cron = params.get("Cron")
         self.CronState = params.get("CronState")
+        if params.get("TagInfoList") is not None:
+            self.TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = KeyValuePair()
+                obj._deserialize(item)
+                self.TagInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3328,6 +3384,34 @@ class SuspendProbeTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """资源的标签，通过标签对资源进行划分用于支持细粒度的鉴权、分账等场景
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: key
+        :type TagKey: str
+        :param TagValue: value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TaskAlarm(AbstractModel):

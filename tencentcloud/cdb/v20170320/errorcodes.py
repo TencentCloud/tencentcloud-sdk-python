@@ -68,12 +68,6 @@ FAILEDOPERATION_JSONMARSHALERROR = 'FailedOperation.JsonMarshalError'
 # json反序列化失败。
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 
-# 不是延迟复制RO。
-FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
-
-# 调用后端接口开启延迟复制操作失败。
-FAILEDOPERATION_OPERATIONREPLICATIONERROR = 'FailedOperation.OperationReplicationError'
-
 # 执行的权限修改操作非法。您可以参照产品文档，了解当前实例支持哪些权限修改操作，如有疑问，请您咨询客服进行处理。
 FAILEDOPERATION_PRIVILEGEDATAILLEGAL = 'FailedOperation.PrivilegeDataIllegal'
 
@@ -92,11 +86,11 @@ FAILEDOPERATION_STATUSCONFLICT = 'FailedOperation.StatusConflict'
 # 提交任务失败，请稍后重试。如果持续提交失败，请您联系客服进行处理。
 FAILEDOPERATION_SUBMITASYNCTASKERROR = 'FailedOperation.SubmitAsyncTaskError'
 
+# 查询超时。
+FAILEDOPERATION_TIMEOUTERROR = 'FailedOperation.TimeoutError'
+
 # 类型错误，无法执行该操作。
 FAILEDOPERATION_TYPEINCONFLICT = 'FailedOperation.TypeInConflict'
-
-# 内部错误。
-INTERNALERROR = 'InternalError'
 
 # 查询异步任务错误。
 INTERNALERROR_ASYNCREQUESTERROR = 'InternalError.AsyncRequestError'
@@ -296,17 +290,8 @@ INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = 'InvalidParameterValue.AccountP
 # 数据转换失败。
 INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
 
-# 指定时间点不能大于当前时间。
-INVALIDPARAMETERVALUE_DUETIMEWRONG = 'InvalidParameterValue.DueTimeWrong'
-
 # 参数值无效。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
-
-# 源类型与目标类型一致。
-INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = 'InvalidParameterValue.SrcTypeEqualDstType'
-
-# 当前ro实例类型与操作实例类型不一致。
-INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = 'InvalidParameterValue.SrcTypeNotEqualDstType'
 
 # 账号用户名规则错误。
 INVALIDPARAMETERVALUE_USERNAMERULEERROR = 'InvalidParameterValue.UserNameRuleError'
@@ -374,6 +359,9 @@ OPERATIONDENIED_AUDITSTATUSERROR = 'OperationDenied.AuditStatusError'
 # 审计任务冲突。
 OPERATIONDENIED_AUDITTASKCONFLICTERROR = 'OperationDenied.AuditTaskConflictError'
 
+# 当前RO组有RO实例处于非法状态，不允许执行当前操作。
+OPERATIONDENIED_CONFLICTROSTATUS = 'OperationDenied.ConflictRoStatus'
+
 # 已开通安全审计,不支持规则审计。
 OPERATIONDENIED_DBBRAINPOLICYCONFLICT = 'OperationDenied.DBBrainPolicyConflict'
 
@@ -391,9 +379,6 @@ OPERATIONDENIED_INSTANCELOCKERCONFLICT = 'OperationDenied.InstanceLockerConflict
 
 # 实例状态异常。
 OPERATIONDENIED_INSTANCESTATUSERROR = 'OperationDenied.InstanceStatusError'
-
-# 当前实例正在进行其他任务，不能执行延迟复制。
-OPERATIONDENIED_INSTANCETASKRUNNING = 'OperationDenied.InstanceTaskRunning'
 
 # 实例不支持该操作。
 OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = 'OperationDenied.InstanceUnsupportedOperateError'

@@ -108,3 +108,31 @@ class ThpcClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusters(self, request):
+        """本接口（DescribeClusters）用于查询集群列表。
+
+        :param request: Request instance for DescribeClusters.
+        :type request: :class:`tencentcloud.thpc.v20211109.models.DescribeClustersRequest`
+        :rtype: :class:`tencentcloud.thpc.v20211109.models.DescribeClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -1509,7 +1509,7 @@ class Labels(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstLabel: 公众人物身份标签的一级分类，例如体育明星、娱乐明星、政治人物等；
+        :param FirstLabel: 公众人物身份标签的一级分类，例如体育明星、娱乐明星等；
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstLabel: str
         :param SecondLabel: 公众人物身份标签的二级分类，例如歌手（对应一级标签为“娱乐明星”）；

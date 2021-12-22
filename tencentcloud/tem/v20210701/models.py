@@ -441,6 +441,63 @@ class CronHorizontalAutoscalerSchedule(AbstractModel):
         
 
 
+class DeleteApplicationRequest(AbstractModel):
+    """DeleteApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务Id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param DeleteApplicationIfNoRunningVersion: 当服务没有任何运行版本时，是否删除此服务
+        :type DeleteApplicationIfNoRunningVersion: bool
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.DeleteApplicationIfNoRunningVersion = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.DeleteApplicationIfNoRunningVersion = params.get("DeleteApplicationIfNoRunningVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationResponse(AbstractModel):
+    """DeleteApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteIngressRequest(AbstractModel):
     """DeleteIngress请求参数结构体
 

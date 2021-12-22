@@ -88,6 +88,30 @@ class AuthFailMessage(AbstractModel):
         
 
 
+class CcInfo(AbstractModel):
+    """抄送信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mobile: 被抄送人手机号
+        :type Mobile: str
+        """
+        self.Mobile = None
+
+
+    def _deserialize(self, params):
+        self.Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
@@ -753,6 +777,8 @@ class FlowInfo(AbstractModel):
         :type FlowDescription: str
         :param CustomerData: 渠道的业务信息，限制1024字符
         :type CustomerData: str
+        :param CcInfos: 被抄送人的信息列表
+        :type CcInfos: list of CcInfo
         """
         self.FlowName = None
         self.Deadline = None
@@ -763,6 +789,7 @@ class FlowInfo(AbstractModel):
         self.FormFields = None
         self.FlowDescription = None
         self.CustomerData = None
+        self.CcInfos = None
 
 
     def _deserialize(self, params):
@@ -785,6 +812,12 @@ class FlowInfo(AbstractModel):
                 self.FormFields.append(obj)
         self.FlowDescription = params.get("FlowDescription")
         self.CustomerData = params.get("CustomerData")
+        if params.get("CcInfos") is not None:
+            self.CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self.CcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1501,6 +1534,8 @@ class TemplateInfo(AbstractModel):
         :type TemplateType: int
         :param Recipients: 模板中的流程参与人信息
         :type Recipients: list of Recipient
+        :param IsPromoter: 是否是发起人
+        :type IsPromoter: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -1511,6 +1546,7 @@ class TemplateInfo(AbstractModel):
         self.CreatedOn = None
         self.TemplateType = None
         self.Recipients = None
+        self.IsPromoter = None
 
 
     def _deserialize(self, params):
@@ -1538,6 +1574,7 @@ class TemplateInfo(AbstractModel):
                 obj = Recipient()
                 obj._deserialize(item)
                 self.Recipients.append(obj)
+        self.IsPromoter = params.get("IsPromoter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

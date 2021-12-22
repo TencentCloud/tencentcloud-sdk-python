@@ -211,6 +211,8 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
         :type WordInfo: int
         :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :type HotwordId: str
+        :param AudioData: 回调数据中，是否需要对应音频数据。
+        :type AudioData: bool
         """
         self.EngineType = None
         self.Url = None
@@ -222,6 +224,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
         self.ConvertNumMode = None
         self.WordInfo = None
         self.HotwordId = None
+        self.AudioData = None
 
 
     def _deserialize(self, params):
@@ -235,6 +238,7 @@ class CreateAsyncRecognitionTaskRequest(AbstractModel):
         self.ConvertNumMode = params.get("ConvertNumMode")
         self.WordInfo = params.get("WordInfo")
         self.HotwordId = params.get("HotwordId")
+        self.AudioData = params.get("AudioData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

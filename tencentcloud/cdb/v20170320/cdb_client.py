@@ -2773,7 +2773,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyRoGroupInfo(self, request):
-        """本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重等。
+        """本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重，设置复制延迟时间等。
 
         :param request: Request instance for ModifyRoGroupInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoGroupInfoRequest`
@@ -2786,34 +2786,6 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoGroupInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyRoReplicationDelay(self, request):
-        """修改延迟只读实例的延迟复制时间。
-
-        :param request: Request instance for ModifyRoReplicationDelay.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRoReplicationDelayRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRoReplicationDelayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ModifyRoReplicationDelay", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRoReplicationDelayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3062,34 +3034,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StartDelayReplication(self, request):
-        """启动延迟只读实例的延迟复制。
-
-        :param request: Request instance for StartDelayReplication.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.StartDelayReplicationRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartDelayReplicationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StartDelayReplication", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StartDelayReplicationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def StopDBImportJob(self, request):
         """本接口(StopDBImportJob)用于终止数据导入任务。
 
@@ -3104,34 +3048,6 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopDBImportJobResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def StopDelayReplication(self, request):
-        """停止延迟只读实例的延迟复制。
-
-        :param request: Request instance for StopDelayReplication.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.StopDelayReplicationRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopDelayReplicationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("StopDelayReplication", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StopDelayReplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

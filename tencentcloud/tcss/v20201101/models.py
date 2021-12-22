@@ -10483,6 +10483,12 @@ CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: str
+        :param HostIP: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIP: str
+        :param ClientIP: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIP: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10518,6 +10524,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.EventType = None
         self.Status = None
         self.SubStatus = None
+        self.HostIP = None
+        self.ClientIP = None
         self.RequestId = None
 
 
@@ -10554,6 +10562,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.EventType = params.get("EventType")
         self.Status = params.get("Status")
         self.SubStatus = params.get("SubStatus")
+        self.HostIP = params.get("HostIP")
+        self.ClientIP = params.get("ClientIP")
         self.RequestId = params.get("RequestId")
 
 
@@ -14069,6 +14079,12 @@ MountNamespace逃逸、
         :type EventCount: int
         :param LatestFoundTime: 最近生成时间
         :type LatestFoundTime: str
+        :param HostIP: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIP: str
+        :param ClientIP: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIP: str
         """
         self.EventId = None
         self.FoundTime = None
@@ -14083,6 +14099,8 @@ MountNamespace逃逸、
         self.EventType = None
         self.EventCount = None
         self.LatestFoundTime = None
+        self.HostIP = None
+        self.ClientIP = None
 
 
     def _deserialize(self, params):
@@ -14099,6 +14117,8 @@ MountNamespace逃逸、
         self.EventType = params.get("EventType")
         self.EventCount = params.get("EventCount")
         self.LatestFoundTime = params.get("LatestFoundTime")
+        self.HostIP = params.get("HostIP")
+        self.ClientIP = params.get("ClientIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

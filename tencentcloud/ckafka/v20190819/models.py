@@ -2883,6 +2883,46 @@ class DescribeUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DynamicDiskConfig(AbstractModel):
+    """动态硬盘扩容配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 动态硬盘扩容配置开关（0: 关闭，1: 开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param StepForwardPercentage: 每次磁盘动态扩容大小百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepForwardPercentage: int
+        :param DiskQuotaPercentage: 磁盘配额百分比触发条件，即消息达到此值触发硬盘自动扩容事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskQuotaPercentage: int
+        :param MaxDiskSpace: 最大扩容硬盘大小，以 GB 为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDiskSpace: int
+        """
+        self.Enable = None
+        self.StepForwardPercentage = None
+        self.DiskQuotaPercentage = None
+        self.MaxDiskSpace = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.StepForwardPercentage = params.get("StepForwardPercentage")
+        self.DiskQuotaPercentage = params.get("DiskQuotaPercentage")
+        self.MaxDiskSpace = params.get("MaxDiskSpace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DynamicRetentionTime(AbstractModel):
     """动态消息保留时间配置
 
@@ -3433,6 +3473,9 @@ class InstanceAttributesResponse(AbstractModel):
         :param RemainingTopics: 剩余创建主题数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemainingTopics: int
+        :param DynamicDiskConfig: 动态硬盘扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3468,6 +3511,7 @@ class InstanceAttributesResponse(AbstractModel):
         self.DeleteRouteTimestamp = None
         self.RemainingPartitions = None
         self.RemainingTopics = None
+        self.DynamicDiskConfig = None
 
 
     def _deserialize(self, params):
@@ -3519,6 +3563,9 @@ class InstanceAttributesResponse(AbstractModel):
         self.DeleteRouteTimestamp = params.get("DeleteRouteTimestamp")
         self.RemainingPartitions = params.get("RemainingPartitions")
         self.RemainingTopics = params.get("RemainingTopics")
+        if params.get("DynamicDiskConfig") is not None:
+            self.DynamicDiskConfig = DynamicDiskConfig()
+            self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3937,6 +3984,8 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type RebalanceTime: int
         :param PublicNetwork: 时间戳
         :type PublicNetwork: int
+        :param DynamicDiskConfig: 动态硬盘扩容策略配置
+        :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
@@ -3945,6 +3994,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         self.DynamicRetentionConfig = None
         self.RebalanceTime = None
         self.PublicNetwork = None
+        self.DynamicDiskConfig = None
 
 
     def _deserialize(self, params):
@@ -3959,6 +4009,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
             self.DynamicRetentionConfig._deserialize(params.get("DynamicRetentionConfig"))
         self.RebalanceTime = params.get("RebalanceTime")
         self.PublicNetwork = params.get("PublicNetwork")
+        if params.get("DynamicDiskConfig") is not None:
+            self.DynamicDiskConfig = DynamicDiskConfig()
+            self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4085,6 +4138,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type AclRuleName: str
         :param RetentionBytes: 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
         :type RetentionBytes: int
+        :param Tags: 标签列表
+        :type Tags: list of Tag
         """
         self.InstanceId = None
         self.TopicName = None
@@ -4100,6 +4155,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.EnableAclRule = None
         self.AclRuleName = None
         self.RetentionBytes = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4117,6 +4173,12 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
         self.RetentionBytes = params.get("RetentionBytes")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

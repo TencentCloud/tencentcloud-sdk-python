@@ -7960,11 +7960,14 @@ class ModifyRoGroupInfoRequest(AbstractModel):
         :type RoWeightValues: list of RoWeightValue
         :param IsBalanceRoLoad: 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载时，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。
         :type IsBalanceRoLoad: int
+        :param ReplicationDelayTime: 废弃参数，无意义。
+        :type ReplicationDelayTime: int
         """
         self.RoGroupId = None
         self.RoGroupInfo = None
         self.RoWeightValues = None
         self.IsBalanceRoLoad = None
+        self.ReplicationDelayTime = None
 
 
     def _deserialize(self, params):
@@ -7979,6 +7982,7 @@ class ModifyRoGroupInfoRequest(AbstractModel):
                 obj._deserialize(item)
                 self.RoWeightValues.append(obj)
         self.IsBalanceRoLoad = params.get("IsBalanceRoLoad")
+        self.ReplicationDelayTime = params.get("ReplicationDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7995,58 +7999,18 @@ class ModifyRoGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param AsyncRequestId: 异步任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.AsyncRequestId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyRoReplicationDelayRequest(AbstractModel):
-    """ModifyRoReplicationDelay请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例 ID。
-        :type InstanceId: str
-        :param ReplicationDelay: 延迟时间（s）。最小值1，最大值259200。
-        :type ReplicationDelay: int
-        """
-        self.InstanceId = None
-        self.ReplicationDelay = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ReplicationDelay = params.get("ReplicationDelay")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyRoReplicationDelayResponse(AbstractModel):
-    """ModifyRoReplicationDelay返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -8732,6 +8696,9 @@ class RoGroup(AbstractModel):
         :param RoGroupZone: 只读组所在的可用区。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoGroupZone: str
+        :param DelayReplicationTime: 延迟复制时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayReplicationTime: int
         """
         self.RoGroupMode = None
         self.RoGroupId = None
@@ -8748,6 +8715,7 @@ class RoGroup(AbstractModel):
         self.UniqSubnetId = None
         self.RoGroupRegion = None
         self.RoGroupZone = None
+        self.DelayReplicationTime = None
 
 
     def _deserialize(self, params):
@@ -8771,6 +8739,7 @@ class RoGroup(AbstractModel):
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.RoGroupRegion = params.get("RoGroupRegion")
         self.RoGroupZone = params.get("RoGroupZone")
+        self.DelayReplicationTime = params.get("DelayReplicationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8797,12 +8766,15 @@ class RoGroupAttr(AbstractModel):
         :type MinRoInGroup: int
         :param WeightMode: 权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
         :type WeightMode: str
+        :param ReplicationDelayTime: 延迟复制时间。
+        :type ReplicationDelayTime: int
         """
         self.RoGroupName = None
         self.RoMaxDelayTime = None
         self.RoOfflineDelay = None
         self.MinRoInGroup = None
         self.WeightMode = None
+        self.ReplicationDelayTime = None
 
 
     def _deserialize(self, params):
@@ -8811,6 +8783,7 @@ class RoGroupAttr(AbstractModel):
         self.RoOfflineDelay = params.get("RoOfflineDelay")
         self.MinRoInGroup = params.get("MinRoInGroup")
         self.WeightMode = params.get("WeightMode")
+        self.ReplicationDelayTime = params.get("ReplicationDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9719,64 +9692,6 @@ class StartBatchRollbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class StartDelayReplicationRequest(AbstractModel):
-    """StartDelayReplication请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例 ID。
-        :type InstanceId: str
-        :param DelayReplicationType: 延迟复制类型。可选值 DEFAULT（按照延迟复制时间进行复制）、GTID（回放到指定GTID）、DUE_TIME（回放到指定时间点）。
-        :type DelayReplicationType: str
-        :param DueTime: 指定时间点，默认为0，最大值不能超过当前时间。
-        :type DueTime: int
-        :param Gtid: 指定GITD。回放到指定GTID时必传。
-        :type Gtid: str
-        """
-        self.InstanceId = None
-        self.DelayReplicationType = None
-        self.DueTime = None
-        self.Gtid = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DelayReplicationType = params.get("DelayReplicationType")
-        self.DueTime = params.get("DueTime")
-        self.Gtid = params.get("Gtid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class StartDelayReplicationResponse(AbstractModel):
-    """StartDelayReplication返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: 延迟复制任务 ID。DelayReplicationType不为DEFAULT时返回，可用来查询回放任务状态。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
-
-
 class StopDBImportJobRequest(AbstractModel):
     """StopDBImportJob请求参数结构体
 
@@ -9803,47 +9718,6 @@ class StopDBImportJobRequest(AbstractModel):
 
 class StopDBImportJobResponse(AbstractModel):
     """StopDBImportJob返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class StopDelayReplicationRequest(AbstractModel):
-    """StopDelayReplication请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例 ID。
-        :type InstanceId: str
-        """
-        self.InstanceId = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class StopDelayReplicationResponse(AbstractModel):
-    """StopDelayReplication返回参数结构体
 
     """
 
@@ -10400,6 +10274,10 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type FastUpgrade: int
         :param MaxDelayTime: 延迟阈值。取值范围1~10，默认值为10。
         :type MaxDelayTime: int
+        :param CrossCluster: 是否跨区迁移。0-普通迁移，1-跨区迁移，默认值为0。该值为1时支持变更实例主节点可用区。
+        :type CrossCluster: int
+        :param ZoneId: 主节点可用区，该值仅在跨区迁移时生效。仅支持同地域下的可用区进行迁移。
+        :type ZoneId: str
         """
         self.InstanceId = None
         self.Memory = None
@@ -10415,6 +10293,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Cpu = None
         self.FastUpgrade = None
         self.MaxDelayTime = None
+        self.CrossCluster = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
@@ -10432,6 +10312,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.FastUpgrade = params.get("FastUpgrade")
         self.MaxDelayTime = params.get("MaxDelayTime")
+        self.CrossCluster = params.get("CrossCluster")
+        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

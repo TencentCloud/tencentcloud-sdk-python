@@ -83,7 +83,7 @@ class CatClient(AbstractClient):
 
 
     def CreateProbeTasks(self, request):
-        """批量创建探测任务
+        """批量创建拨测任务
 
         :param request: Request instance for CreateProbeTasks.
         :type request: :class:`tencentcloud.cat.v20180409.models.CreateProbeTasksRequest`
@@ -447,7 +447,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeProbeTasks(self, request):
-        """查询探测任务列表
+        """查询拨测任务列表
 
         :param request: Request instance for DescribeProbeTasks.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeTasksRequest`
